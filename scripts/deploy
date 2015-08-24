@@ -4,7 +4,7 @@ CMDDESC="Build and deploy on remote server"
 PROGPATH=$(dirname $0)
 ROOT="$(readlink -f $PROGPATH/..)"
 PUBLIC="$ROOT/public"
-FTPCONF="$PROGPATH/ftpconf.json"
+CONF="$PROGPATH/ftp-conf.json"
 
 install_node_module() {
   for i in $@; do
@@ -13,11 +13,11 @@ install_node_module() {
 }
 
 
-if [ ! -e "$FTPCONF" ]; then
+if [ ! -e "$CONF" ]; then
   cat <<EOF
-Error! You must create $FTPCONF file first
+Error! You must create $CONF file first
 
-TIP: How to create $FTPCONF sample file
+TIP: How to create $CONF sample file
 
 echo '{
   "host": "ftp.example.com",
@@ -25,17 +25,17 @@ echo '{
   "dest": "/www",
   "username": "*****",
   "password": "*****"
-}' > $FTPCONF
+}' > $CONF
 
 EOF
   exit 1
 fi
 
-HOST=$(node -e "console.log(require('$FTPCONF').host);")
-PORT=$(node -e "console.log(require('$FTPCONF').port);")
-DEST=$(node -e "console.log(require('$FTPCONF').dest);")
-USERNAME=$(node -e "console.log(require('$FTPCONF').username);")
-PASSWORD=$(node -e "console.log(require('$FTPCONF').password);")
+HOST=$(node -e "console.log(require('$CONF').host);")
+PORT=$(node -e "console.log(require('$CONF').port);")
+DEST=$(node -e "console.log(require('$CONF').dest);")
+USERNAME=$(node -e "console.log(require('$CONF').username);")
+PASSWORD=$(node -e "console.log(require('$CONF').password);")
 
 echo "# Setup"
 tmp=$PWD

@@ -3,3 +3,4 @@ losh.tmp
 update-losh.bk
 update-losh.tmp
 node_modules/
+gh-config.toml

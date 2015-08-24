@@ -1,0 +1,39 @@
+#!/bin/bash
+
+CMDDESC="Build and deploy on remote server"
+PROGPATH=$(dirname $0)
+ROOT="$(readlink -f $PROGPATH/..)"
+PUBLIC="$ROOT/public"
+CONF="$PROGPATH/gh-config.toml"
+REPO=$(git remote -v | grep -e push | awk '{print $2}' | sed 's/https:\/\/github.com\///g' | sed 's/.git//g')
+REPOUSER=$(echo $REPO | awk -F '/' '{print $1}')
+REPONAME=$(echo $REPO | awk -F '/' '{print $2}')
+GHURL="https://$REPOUSER.github.io/$REPONAME"
+
+# Create scripts/gh-config.toml
+echo "baseurl = \"$GHURL\"" > $CONF.tmp.1
+sed "/baseurl/d" $ROOT/config.toml > $CONF.tmp.2
+cat $CONF.tmp.1 $CONF.tmp.2 > $CONF
+rm -f $CONF.tmp.1 $CONF.tmp.2
+
+install_node_module() {
+  for i in $@; do
+     [ ! -d "node_modules/$i" ] && npm install $i
+  done
+}
+
+echo "# Setup"
+tmp=$PWD
+cd $PROGPATH
+install_node_module gh-pages
+cd $tmp
+echo "OK"
+
+echo
+echo "# Building"
+hugo --source=$ROOT --config=$PROGPATH/gh-config.toml
+
+echo
+echo "# Deployement on $GHURL"
+cd $PROGPATH
+node -e "require('gh-pages').publish('$PUBLIC', console.error.bind(console));"
