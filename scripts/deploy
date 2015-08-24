@@ -1,0 +1,53 @@
+#!/bin/bash
+
+CMDDESC="Build and deploy on remote server"
+PROGPATH=$(dirname $0)
+ROOT="$(readlink -f $PROGPATH/..)"
+PUBLIC="$ROOT/public"
+FTPCONF="$PROGPATH/ftpconf.json"
+
+install_node_module() {
+  for i in $@; do
+     [ ! -d "node_modules/$i" ] && npm install $i
+  done
+}
+
+
+if [ ! -e "$FTPCONF" ]; then
+  cat <<EOF
+Error! You must create $FTPCONF file first
+
+TIP: How to create $FTPCONF sample file
+
+echo '{
+  "host": "ftp.example.com",
+  "port": 21,
+  "dest": "/www",
+  "username": "*****",
+  "password": "*****"
+}' > $FTPCONF
+
+EOF
+  exit 1
+fi
+
+HOST=$(node -e "console.log(require('$FTPCONF').host);")
+PORT=$(node -e "console.log(require('$FTPCONF').port);")
+DEST=$(node -e "console.log(require('$FTPCONF').dest);")
+USERNAME=$(node -e "console.log(require('$FTPCONF').username);")
+PASSWORD=$(node -e "console.log(require('$FTPCONF').password);")
+
+echo "# Setup"
+tmp=$PWD
+cd $PROGPATH
+install_node_module ftpsync
+cd $tmp
+echo "OK"
+
+echo
+echo "# Building"
+$PROGPATH/build
+
+echo
+echo "# Deployement on $HOST:$PORT (under $DEST)"
+$PROGPATH/node_modules/ftpsync/bin/ftpsync -l $PUBLIC -r $DEST -h $HOST -p $PORT -u $USERNAME -s $PASSWORD -c 10 -v

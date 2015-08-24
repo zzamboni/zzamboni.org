@@ -1,0 +1,8 @@
+#!/bin/bash
+
+CMDDESC="Build site into <root>/public"
+PROGPATH=$(dirname $0)
+ROOT="$(readlink -f $PROGPATH/..)"
+
+git submodule update --init --recursive
+hugo --source=$ROOT
