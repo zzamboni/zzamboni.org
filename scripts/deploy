@@ -4,7 +4,7 @@ CMDDESC="Build and deploy on remote server"
 PROGPATH=$(dirname $0)
 ROOT="$(readlink -f $PROGPATH/..)"
 PUBLIC="$ROOT/public"
-CONF="$PROGPATH/ftp-conf.json"
+CONF="$PROGPATH/ftp-config.json"
 
 install_node_module() {
   for i in $@; do

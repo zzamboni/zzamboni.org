@@ -23,7 +23,7 @@ cd awesome-site
 vi config.toml
 
 # ftp deployement configuration
-vi scripts/ftpconfig.json
+vi scripts/ftp-config.json
 ```
 
 ## Workflow
