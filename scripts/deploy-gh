@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CMDDESC="Build and deploy on remote server"
+CMDDESC="Build and deploy on Github Pages"
 PROGPATH=$(dirname $0)
 ROOT="$(readlink -f $PROGPATH/..)"
 PUBLIC="$ROOT/public"
