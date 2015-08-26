@@ -57,9 +57,9 @@ COMMANDS:
     losh build [hugo options...]
                 Build site into <root>/public
     losh deploy [hugo options...]
-                Build and deploy on FTP server
+                Build site and deploy on FTP server
     losh deploy-gh [hugo options...]
-                Build and deploy on Github Pages
+                Build site and deploy on Github Pages
     losh server [hugo options...]
                 Build site and run test server
     losh update-losh
