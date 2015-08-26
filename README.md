@@ -1,6 +1,6 @@
 # Hugo Boilerplate
 
-## [Demo](https://enten.github.io/hugo-boilerplate/)
+## [Demo](http://enten.github.io/hugo-boilerplate/)
 
 ## Requirements
 

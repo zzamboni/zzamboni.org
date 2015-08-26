@@ -9,7 +9,7 @@ CONF="$PROGPATH/gh-config.toml"
 REPO=$(git remote -v | grep -e push | awk '{print $2}' | sed 's/https:\/\/github.com\///g' | sed 's/.git//g')
 REPOUSER=$(echo $REPO | awk -F '/' '{print $1}')
 REPONAME=$(echo $REPO | awk -F '/' '{print $2}')
-GHURL="https://$REPOUSER.github.io/$REPONAME"
+GHURL="http://$REPOUSER.github.io/$REPONAME/"
 
 # Create scripts/gh-config.toml
 echo "baseurl = \"$GHURL\"" > $CONF.tmp.1
