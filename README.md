@@ -25,6 +25,13 @@ cd awesome-site
 vi config.toml
 
 # ftp deployement configuration
+echo '{
+  "host": "ftp.example.com",
+  "port": 21,
+  "dest": "/www",
+  "username": "*****",
+  "password": "*****"
+}' > ./scripts/ftp-config.json
 vi scripts/ftp-config.json
 ```
 
