@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CMDUSAGE="[hugo options...]"
-CMDDESC="Build and deploy on remote server"
+CMDDESC="Build and deploy on FTP server"
 PROGPATH=$(dirname $0)
 ROOT="$(readlink -f $PROGPATH/..)"
 PUBLIC="$ROOT/public"
