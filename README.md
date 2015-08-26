@@ -1,5 +1,7 @@
 # Hugo Boilerplate
 
+## [Demo](https://enten.github.io/hugo-boilerplate/)
+
 ## Requirements
 
 * [git](http://git-scm.com)
