@@ -4,13 +4,7 @@
     <h1>{{ .Title }}</h1>
     {{ partial "post-metas.html" . }}
     <article>
-      {{if .Params.badges}}
-      <span class="badges">
-        {{range .Params.badges}}
-        <a href="{{.url}}"><img class="badge" title="{{.alt}}" alt="{{.alt}}" src="{{.img}}"></a>
-        {{end}}
-      </span>
-      {{end}}
+      {{ partial "badges.html" .Params.badges }}
       {{ .Content }}
     </article>
     {{ partial "comments.html" . }}

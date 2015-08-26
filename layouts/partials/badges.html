@@ -1,0 +1,7 @@
+{{if . }}
+<ul class="badges">
+  {{range . }}
+  <li><a href="{{.url}}"><img class="badge" title="{{.alt}}" alt="{{.alt}}" src="{{.img}}"></a></li>
+  {{ end }}
+</ul>
+{{ end }}

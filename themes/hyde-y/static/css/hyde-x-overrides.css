@@ -85,3 +85,18 @@
   text-decoration: none;
   color: #fff;
 }
+
+ul.badges {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+ul.badges li {
+  display: inline;
+}
+
+ul.badges a, ul.badges img {
+  display: inline;
+  margin: 0;
+}
