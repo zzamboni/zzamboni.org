@@ -1,0 +1,11 @@
+{{ partial "header.html" . }}
+<section class="content container">
+  <div class="post">
+    <h1>{{ .Title }}</h1>
+    <article>
+      {{ .Content }}
+    </article>
+    {{ partial "comments.html" . }}
+  </div>
+</section>
+{{ partial "footer.html" . }}

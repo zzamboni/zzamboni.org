@@ -1,5 +1,6 @@
 #!/bin/bash
 
+CMDUSAGE="[hugo options...]"
 CMDDESC="Build and deploy on Github Pages"
 PROGPATH=$(dirname $0)
 ROOT="$(readlink -f $PROGPATH/..)"
@@ -31,7 +32,7 @@ echo "OK"
 
 echo
 echo "# Building"
-hugo --source=$ROOT --config=$PROGPATH/gh-config.toml
+hugo --source=$ROOT --config=$PROGPATH/gh-config.toml $@
 
 echo
 echo "# Deployement on $GHURL"

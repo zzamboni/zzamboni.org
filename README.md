@@ -10,7 +10,7 @@
 ## Installation
 
 ```bash
-git clone --recursive https://github.com/enten/hugo-boilerplate awesome-site
+git clone https://github.com/enten/hugo-boilerplate awesome-site
 ```
 
 ## Configuration
@@ -45,11 +45,13 @@ USAGE:
     losh [command] [arg...]
 
 COMMANDS:
-    losh build
+    losh build [hugo options...]
                 Build site into <root>/public
-    losh deploy
+    losh deploy [hugo options...]
                 Build and deploy on remote server
-    losh server
+    losh deploy-gh [hugo options...]
+                Build and deploy on Github Pages
+    losh server [hugo options...]
                 Build site and run test server
     losh update-losh
                 Update losh

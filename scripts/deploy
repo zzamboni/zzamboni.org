@@ -1,5 +1,6 @@
 #!/bin/bash
 
+CMDUSAGE="[hugo options...]"
 CMDDESC="Build and deploy on remote server"
 PROGPATH=$(dirname $0)
 ROOT="$(readlink -f $PROGPATH/..)"
@@ -46,7 +47,7 @@ echo "OK"
 
 echo
 echo "# Building"
-$PROGPATH/build
+hugo --source=$ROOT --config=$ROOT/config.toml $@
 
 echo
 echo "# Deployement on $HOST:$PORT (under $DEST)"

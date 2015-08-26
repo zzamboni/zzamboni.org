@@ -1,0 +1,10 @@
+{{ partial "header.html" . }}
+<section class="content container">
+  <h1>{{ .Title }}</h1>
+  <ul class="posts">
+  {{ range $index, $page := .Paginator.Pages }}
+  {{ .Render "summary" }}
+  {{ end }}
+  </ul>
+</section>
+{{ partial "footer.html" . }}
