@@ -1,11 +1,11 @@
-{{ partial "header.html" . }}
-<section class="content container">
-  <h1>{{ .Title }}</h1>
-  <ul class="posts">
-  {{ range $index, $page := .Paginator.Pages }}
-  {{ .Render "li" }}
+{{ partial "head" . }}
+<section id="main-content" class="container main_content section">
+  <div class="container">
+    {{ partial "atoms/page/h1-title" . }}
+  </div>
+  {{ range $index, .Paginator.Pages }}
+  {{ .Render "summary" }}
   {{ end }}
-  </ul>
-  {{ partial "pagination.html" . }}
+  {{ partial "atoms/site/pagination" . }}
 </section>
-{{ partial "footer.html" . }}
+{{ partial "foot" . }}

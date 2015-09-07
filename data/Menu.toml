@@ -1,17 +1,22 @@
 [about]
-    Name = "About"
-    URL = "/about"
+  Name = "about"
+  URL = "/about"
 
 [code]
-    Name = "Code"
-    URL = "/code"
+  Name = "code"
+  URL = "/code"
 
 [posts]
-    Name = "Posts"
-    Title = "Show list of posts"
-    URL = "/post"
+  Name = "posts"
+  Title = "Show list of posts"
+  URL = "/post"
+
+[topics]
+  Name = "topics"
+  Title = "Show list of topics"
+  URL = "/topics"
 
 [tags]
-    Name = "Tags"
-    Title = "Show list of tags"
-    URL = "/tags"
+  Name = "tags"
+  Title = "Show list of tags"
+  URL = "/tags"
