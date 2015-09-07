@@ -14,7 +14,7 @@ metaDataFormat = "yaml"
 theme = "hyde-y"
 
 # pagination
-paginate = 2
+paginate = 5
 paginatePath = "page"
 
 # Enable Disqus integration
@@ -22,7 +22,7 @@ disqusShortname = "your_disqus_shortname"
 
 [permalinks]
     post = "/:year/:month/:day/:slug/"
-    repo = "/:slug/"
+    code = "/:slug/"
 
 [taxonomies]
     tag = "tags"
@@ -36,22 +36,17 @@ disqusShortname = "your_disqus_shortname"
 # All parameters below here are optional and can be mixed and matched.
 #
 [params]
-    # Displays under the author name in the sidebar, keep it short.
+    # Displays in the sidebar, keep it short.
     # You can use markdown here.
-    brand = "![hugo](http://gohugo.io/img/hugo.png)"
-    topline = ""
+    brand = "You site"
+    topline = "few words about your site"
     footline = "made with love"
 
-    sidebar = "right"
+    sidebar = "left"
 
     # Text for the top menu link, which goes the root URL for the site.
     # Default (if omitted) is "Home".
     home = "home"
-
-    # Changes sidebar background and link/accent colours.
-    # See below for more colour options.
-    # This also works: "theme-base-08 layout-reverse", or just "layout-reverse".
-    theme = "theme-base-00"
 
     # Select a syntax highight.
     # Check the static/css/highlight directory for options.
@@ -61,7 +56,7 @@ disqusShortname = "your_disqus_shortname"
     googleAnalytics = "Your Google Analytics tracking code"
 
     # Sidebar social links.
-    github = "enten" # Your Github profile ID
+    github = "enten/hugo-boilerplate" # Your Github profile ID
     bitbucket = "" # Your Bitbucket profile ID
     linkedin = "" # Your LinkedIn profile ID (from public URL)
     googleplus = "" # Your Google+ profile ID
