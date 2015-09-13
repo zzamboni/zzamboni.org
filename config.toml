@@ -2,7 +2,10 @@
 baseurl = "http://www.example.com"
 
 # Site title
-title = "Your site"
+title = "sitename"
+
+# Copyright
+copyright = "(c) 2015 yourname."
 
 # Language
 languageCode = "en-EN"
@@ -14,7 +17,7 @@ metaDataFormat = "yaml"
 theme = "hyde-y"
 
 # pagination
-paginate = 5
+paginate = 10
 paginatePath = "page"
 
 # Enable Disqus integration
@@ -29,19 +32,20 @@ disqusShortname = "your_disqus_shortname"
     topic = "topics"
 
 [author]
-    name = "Your Name"
+    name = "yourname"
     email = "yourname@example.com"
 
 #
 # All parameters below here are optional and can be mixed and matched.
 #
 [params]
-    # Displays in the sidebar, keep it short.
     # You can use markdown here.
-    brand = "You site"
+    brand = "foobar"
     topline = "few words about your site"
-    footline = "made with love"
+    footline = "code with <i class='fa fa-heart'></i>"
 
+    # Sidebar position
+    # false, true, "left", "right"
     sidebar = "left"
 
     # Text for the top menu link, which goes the root URL for the site.
@@ -64,7 +68,6 @@ disqusShortname = "your_disqus_shortname"
     twitter = "" # Your Twitter profile ID
     youtube = ""  # Your Youtube channel ID
     flattr = ""  # populate with your flattr uid
-    rss = true  # switch to true to enable RSS icon link
 
 [blackfriday]
     angledQuotes = true
