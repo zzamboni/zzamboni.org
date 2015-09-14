@@ -6,7 +6,7 @@ Boilerplate to start fast with [Hugo](http://gohugo.io/).
 
 ## Screenshot
 
-![preview](https://github.com/enten/hugo-boilerplate/blob/master/themes/hyde-y/screenshot.png)
+![preview](https://raw.githubusercontent.com/enten/hugo-boilerplate/master/themes/hyde-y/screenshot.png)
 
 ## Requirements
 
@@ -46,7 +46,7 @@ cd awesome-site
 vi config.toml
 
 # configure origin repository
-git remote add origin http://github.com/<USERNAME>/<REPONAME>
+git remote add origin https://github.com/<USERNAME>/<REPONAME>
 
 # run deployment task
 npm run deploy:gh
