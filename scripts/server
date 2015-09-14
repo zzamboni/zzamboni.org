@@ -1,8 +1,0 @@
-#!/bin/bash
-
-CMDUSAGE="[hugo options...]"
-CMDDESC="Build site and run test server"
-PROGPATH=$(dirname $0)
-ROOT="$(readlink -f $PROGPATH/..)"
-
-hugo server --source=$ROOT -w $@

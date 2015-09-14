@@ -1,5 +1,5 @@
 # hostname (and path) to the root eg. http://spf13.com/
-baseurl = "http://www.example.com"
+baseurl = "http://enten.fr/hugo-boilerplate/"
 
 # Site title
 title = "sitename"
@@ -21,7 +21,7 @@ paginate = 10
 paginatePath = "page"
 
 # Enable Disqus integration
-disqusShortname = "your_disqus_shortname"
+disqusShortname = "enten"
 
 [permalinks]
     post = "/:year/:month/:day/:slug/"

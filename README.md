@@ -2,6 +2,8 @@
 
 ## [Demo](http://enten.github.io/hugo-boilerplate/)
 
+Boilerplate to start fast with [Hugo]((http://gohugo.io/).
+
 ## Requirements
 
 * [git](http://git-scm.com)
@@ -12,60 +14,74 @@
 ## Installation
 
 ```bash
+# clone hugo-boilerplate into new project folder
 git clone https://github.com/enten/hugo-boilerplate awesome-site
+
+# remove origin repository (enten/hugo-boilerplate)
+cd awesome-site
+git remote remove origin
+
+# start hugo development server
+npm run server
+
+Watching for changes in /home/steven/code/hugo-boilerplate/{data,content,layouts,static,themes/hyde-y}
+Serving pages from /home/steven/code/hugo-boilerplate/public
+Web Server is available at http://127.0.0.1:1313/hugo-boilerplate/
+Press Ctrl+C to stop
+
 ```
 
-## Configuration
+## Deployment
+
+### [GitHub Pages](https://pages.github.com/)
 
 ```bash
-# change directory to your awesome site
 cd awesome-site
 
-# building configuration
+# check hugo configuration
 vi config.toml
 
-# ftp deployement configuration
+# configure origin repository
+git remote add origin http://github.com/<USERNAME>/<REPONAME>
+
+# run deployment task
+npm run deploy:gh
+```
+
+__Warnings__ :
+
+* `baseurl` in `config.toml` will be replace by the correct URL (http://username.github.io/reponame)
+* static site is rebuilt in `public/` folder when `deploy:gh` is fired
+
+### FTP
+
+```bash
+cd awesome-site
+
+# check hugo configuration
+vi config.toml
+
+# create ftp configuration
 echo '{
   "host": "ftp.example.com",
   "port": 21,
-  "dest": "/www",
-  "username": "*****",
-  "password": "*****"
-}' > ./scripts/ftp-config.json
-vi scripts/ftp-config.json
+  "remote": "/www",
+  "user": "*****",
+  "pass": "*****"
+}' > ftp-config.json
+
+# edit ftp configuration
+vi ftp-config.json
+
+# run deployment task
+npm run deploy
 ```
 
-## Workflow
+__Warnings__ :
 
-```bash
-# change directory to your awesome site
-cd awesome-site
+* `remote` folder must exists on the host
+* __BUG__: several attempts are needed to deploy all files
 
-# one script to rule them all..
-./scripts/losh
+## License
 
-NAME:
-    losh - Lord of the shell scripts (one script to rull them all)
-
-VERSION:
-    0.0.2
-
-USAGE:
-    losh [command] [arg...]
-
-COMMANDS:
-    losh build [hugo options...]
-                Build site into <root>/public
-    losh deploy [hugo options...]
-                Build site and deploy on FTP server
-    losh deploy-gh [hugo options...]
-                Build site and deploy on Github Pages
-    losh server [hugo options...]
-                Build site and run test server
-    losh update-losh
-                Update losh
-    losh [?|h|help]
-                Print this help message
-
-
-```
+Open sourced under the [MIT license](https://github.com/enten/hugo-boilerplate/blob/master/LICENSE).

@@ -1,5 +1,4 @@
 ---
-draft: true
 author: "Steven Enten"
 date: 2015-08-26
 title: Third

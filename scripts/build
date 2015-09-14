@@ -1,8 +1,0 @@
-#!/bin/bash
-
-CMDUSAGE="[hugo options...]"
-CMDDESC="Build site into <root>/public"
-PROGPATH=$(dirname $0)
-ROOT="$(readlink -f $PROGPATH/..)"
-
-hugo --source=$ROOT --config=$ROOT/config.toml $@
