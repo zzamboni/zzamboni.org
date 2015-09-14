@@ -1,5 +1,5 @@
 ---
-author: Author
+author: spf13
 badges:
   build:
     alt: build status
