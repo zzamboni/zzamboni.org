@@ -1,8 +1,12 @@
 # Hugo Boilerplate
 
+Boilerplate to start fast with [Hugo](http://gohugo.io/).
+
 ## [Demo](http://enten.github.io/hugo-boilerplate/)
 
-Boilerplate to start fast with [Hugo]((http://gohugo.io/).
+## Screenshot
+
+![preview](https://github.com/enten/hugo-boilerplate/blob/master/themes/hyde-y/screenshot.png)
 
 ## Requirements
 
