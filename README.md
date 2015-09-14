@@ -6,7 +6,7 @@ Boilerplate to start fast with [Hugo](http://gohugo.io/).
 
 ## Screenshot
 
-![preview](https://raw.githubusercontent.com/enten/hugo-boilerplate/master/themes/hyde-y/screenshot.png)
+![preview](https://raw.githubusercontent.com/enten/hugo-boilerplate/master/themes/hyde-y/images/screenshot.png)
 
 ## Requirements
 

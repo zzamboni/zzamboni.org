@@ -23,7 +23,7 @@ and the corresponding source code [here](https://github.com/enten/hugo-boilerpla
 
 ## Screenshot
 
-![preview](https://raw.githubusercontent.com/enten/hugo-boilerplate/master/themes/hyde-y/screenshot.png)
+![preview](https://raw.githubusercontent.com/enten/hugo-boilerplate/master/themes/hyde-y/images/screenshot.png)
 
 ## Installation
 
