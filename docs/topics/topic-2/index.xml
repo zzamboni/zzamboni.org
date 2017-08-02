@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Topic 2 on sitename</title>
+    <link>http://enten.fr/topics/topic-2/</link>
+    <description>Recent content in Topic 2 on sitename</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>yourname@example.com (yourname)</managingEditor>
+    <webMaster>yourname@example.com (yourname)</webMaster>
+    <copyright>(c) 2015 yourname.</copyright>
+    <lastBuildDate>Wed, 26 Aug 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://enten.fr/topics/topic-2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Third</title>
+      <link>http://enten.fr/2015/08/26/third/</link>
+      <pubDate>Wed, 26 Aug 2015 00:00:00 +0000</pubDate>
+      <author>yourname@example.com (yourname)</author>
+      <guid>http://enten.fr/2015/08/26/third/</guid>
+      <description>Inducere de premit eodem luserat me domos Lorem markdownum numerem et puta vacantem: vidit agros melius deprensi et talia viribus bacis pondere non, in. Aut fama Iovi umbris gravitate trahit aequare mortuaque petens infelix quicumque videns? Non celer, nec atque contigit; qua in epulae, est reseminet fictaque dique tanget.
+ Credi repetitque spicea, Rhodon, et cervix quisquis Bacchi labefactum nepotum reficisque virtutis Tritona. Nec saevo fecit refundit curvamina! Gemitum fecundaque, tamen est ore serior, et domusque qui ait, iura modo grana, subit.</description>
+    </item>
+    
+  </channel>
+</rss>
