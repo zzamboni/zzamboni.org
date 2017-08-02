@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Generator on sitename</title>
-    <link>http://enten.fr/tags/generator/</link>
+    <link>http://zzamboni.org/ng/tags/generator/</link>
     <description>Recent content in Generator on sitename</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
@@ -11,15 +11,15 @@
     <copyright>(c) 2015 yourname.</copyright>
     <lastBuildDate>Wed, 26 Aug 2015 15:08:27 +0200</lastBuildDate>
     
-	<atom:link href="http://enten.fr/tags/generator/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://zzamboni.org/ng/tags/generator/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hugo</title>
-      <link>http://enten.fr/hugo/</link>
+      <link>http://zzamboni.org/ng/hugo/</link>
       <pubDate>Wed, 26 Aug 2015 15:08:27 +0200</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>http://enten.fr/hugo/</guid>
+      <guid>http://zzamboni.org/ng/hugo/</guid>
       <description>A Fast and Flexible Static Site Generator built with love by spf13 and friends in Go.
 Website | Forum | Chat | Documentation | Installation Guide | Twitter
 Overview Hugo is a static site generator written in Go. It is optimized for speed, easy use and configurability. Hugo takes a directory with content and templates and renders them into a full HTML website.

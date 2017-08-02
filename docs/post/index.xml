@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on sitename</title>
-    <link>http://enten.fr/post/</link>
+    <link>http://zzamboni.org/ng/post/</link>
     <description>Recent content in Posts on sitename</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
@@ -11,25 +11,25 @@
     <copyright>(c) 2015 yourname.</copyright>
     <lastBuildDate>Wed, 26 Aug 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://enten.fr/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://zzamboni.org/ng/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Third</title>
-      <link>http://enten.fr/2015/08/26/third/</link>
+      <link>http://zzamboni.org/ng/2015/08/26/third/</link>
       <pubDate>Wed, 26 Aug 2015 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>http://enten.fr/2015/08/26/third/</guid>
+      <guid>http://zzamboni.org/ng/2015/08/26/third/</guid>
       <description>Inducere de premit eodem luserat me domos Lorem markdownum numerem et puta vacantem: vidit agros melius deprensi et talia viribus bacis pondere non, in. Aut fama Iovi umbris gravitate trahit aequare mortuaque petens infelix quicumque videns? Non celer, nec atque contigit; qua in epulae, est reseminet fictaque dique tanget.
  Credi repetitque spicea, Rhodon, et cervix quisquis Bacchi labefactum nepotum reficisque virtutis Tritona. Nec saevo fecit refundit curvamina! Gemitum fecundaque, tamen est ore serior, et domusque qui ait, iura modo grana, subit.</description>
     </item>
     
     <item>
       <title>Second</title>
-      <link>http://enten.fr/2015/08/25/second/</link>
+      <link>http://zzamboni.org/ng/2015/08/25/second/</link>
       <pubDate>Tue, 25 Aug 2015 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>http://enten.fr/2015/08/25/second/</guid>
+      <guid>http://zzamboni.org/ng/2015/08/25/second/</guid>
       <description>Title 2 Content of post 2
 Title 3 Content of post 2
 Title 4 Content of post 2
@@ -39,19 +39,19 @@ Title 6 Content of post 2</description>
     
     <item>
       <title>First</title>
-      <link>http://enten.fr/2015/08/24/first/</link>
+      <link>http://zzamboni.org/ng/2015/08/24/first/</link>
       <pubDate>Mon, 24 Aug 2015 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>http://enten.fr/2015/08/24/first/</guid>
+      <guid>http://zzamboni.org/ng/2015/08/24/first/</guid>
       <description>Level 02 Heading Lorem ipsum emphasised text dolor sit amet, strong text consectetur adipisicing elit, abbreviated text sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut quoted text enim ad minim veniam, quis nostrud exercitation link text ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute inserted text irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat code text cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
     </item>
     
     <item>
       <title>Another Hugo Post</title>
-      <link>http://enten.fr/2014/09/02/another-hugo-post/</link>
+      <link>http://zzamboni.org/ng/2014/09/02/another-hugo-post/</link>
       <pubDate>Tue, 02 Sep 2014 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>http://enten.fr/2014/09/02/another-hugo-post/</guid>
+      <guid>http://zzamboni.org/ng/2014/09/02/another-hugo-post/</guid>
       <description>TOML, YAML, JSON &amp;mdash; Oh my! One of the nifty Hugo features we should cover: flexible configuration and front matter formats! This entry has front matter in toml, unlike the last one which used yaml, and json is also available if that&amp;rsquo;s your preference.
 The toml front matter used on this entry:
 +++ title = &amp;quot;Another Hugo Post&amp;quot; description = &amp;quot;Nothing special, but one post is boring.&amp;quot; date = &amp;quot;2014-09-02&amp;quot; categories = [ &amp;quot;example&amp;quot;, &amp;quot;configuration&amp;quot; ] tags = [ &amp;quot;example&amp;quot;, &amp;quot;hugo&amp;quot;, &amp;quot;toml&amp;quot; ] +++  This flexibility also extends to your site&amp;rsquo;s global configuration file.</description>
@@ -59,10 +59,10 @@ The toml front matter used on this entry:
     
     <item>
       <title>Hello Hugo!</title>
-      <link>http://enten.fr/2014/09/01/hello-hugo/</link>
+      <link>http://zzamboni.org/ng/2014/09/01/hello-hugo/</link>
       <pubDate>Mon, 01 Sep 2014 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>http://enten.fr/2014/09/01/hello-hugo/</guid>
+      <guid>http://zzamboni.org/ng/2014/09/01/hello-hugo/</guid>
       <description>Hello from Hugo! If you&amp;rsquo;re reading this in your browser, good job! The file content/post/hello-hugo.md has been converted into a complete HTML document by Hugo. Isn&amp;rsquo;t that pretty nifty?
 A Section Here&amp;rsquo;s a simple titled section where you can place whatever information you want.
 You can use inline HTML if you want, but really there&amp;rsquo;s not much that Markdown can&amp;rsquo;t do.

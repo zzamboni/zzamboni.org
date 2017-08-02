@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Example on sitename</title>
-    <link>http://enten.fr/tags/example/</link>
+    <link>http://zzamboni.org/ng/tags/example/</link>
     <description>Recent content in Example on sitename</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
@@ -11,15 +11,15 @@
     <copyright>(c) 2015 yourname.</copyright>
     <lastBuildDate>Tue, 02 Sep 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://enten.fr/tags/example/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://zzamboni.org/ng/tags/example/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Another Hugo Post</title>
-      <link>http://enten.fr/2014/09/02/another-hugo-post/</link>
+      <link>http://zzamboni.org/ng/2014/09/02/another-hugo-post/</link>
       <pubDate>Tue, 02 Sep 2014 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>http://enten.fr/2014/09/02/another-hugo-post/</guid>
+      <guid>http://zzamboni.org/ng/2014/09/02/another-hugo-post/</guid>
       <description>TOML, YAML, JSON &amp;mdash; Oh my! One of the nifty Hugo features we should cover: flexible configuration and front matter formats! This entry has front matter in toml, unlike the last one which used yaml, and json is also available if that&amp;rsquo;s your preference.
 The toml front matter used on this entry:
 +++ title = &amp;quot;Another Hugo Post&amp;quot; description = &amp;quot;Nothing special, but one post is boring.&amp;quot; date = &amp;quot;2014-09-02&amp;quot; categories = [ &amp;quot;example&amp;quot;, &amp;quot;configuration&amp;quot; ] tags = [ &amp;quot;example&amp;quot;, &amp;quot;hugo&amp;quot;, &amp;quot;toml&amp;quot; ] +++  This flexibility also extends to your site&amp;rsquo;s global configuration file.</description>
@@ -27,10 +27,10 @@ The toml front matter used on this entry:
     
     <item>
       <title>Hello Hugo!</title>
-      <link>http://enten.fr/2014/09/01/hello-hugo/</link>
+      <link>http://zzamboni.org/ng/2014/09/01/hello-hugo/</link>
       <pubDate>Mon, 01 Sep 2014 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>http://enten.fr/2014/09/01/hello-hugo/</guid>
+      <guid>http://zzamboni.org/ng/2014/09/01/hello-hugo/</guid>
       <description>Hello from Hugo! If you&amp;rsquo;re reading this in your browser, good job! The file content/post/hello-hugo.md has been converted into a complete HTML document by Hugo. Isn&amp;rsquo;t that pretty nifty?
 A Section Here&amp;rsquo;s a simple titled section where you can place whatever information you want.
 You can use inline HTML if you want, but really there&amp;rsquo;s not much that Markdown can&amp;rsquo;t do.

@@ -3,164 +3,164 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://enten.fr/hugo-boilerplate/</loc>
+    <loc>http://zzamboni.org/ng/hugo-boilerplate/</loc>
     <lastmod>2015-09-14T15:08:27+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://enten.fr/hyde-y/</loc>
+    <loc>http://zzamboni.org/ng/hyde-y/</loc>
     <lastmod>2015-09-13T15:08:27+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://enten.fr/hugo/</loc>
+    <loc>http://zzamboni.org/ng/hugo/</loc>
     <lastmod>2015-08-26T15:08:27+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://enten.fr/2015/08/26/third/</loc>
+    <loc>http://zzamboni.org/ng/2015/08/26/third/</loc>
     <lastmod>2015-08-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://enten.fr/2015/08/25/second/</loc>
+    <loc>http://zzamboni.org/ng/2015/08/25/second/</loc>
     <lastmod>2015-08-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://enten.fr/about/</loc>
+    <loc>http://zzamboni.org/ng/about/</loc>
     <lastmod>2015-08-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://enten.fr/2015/08/24/first/</loc>
+    <loc>http://zzamboni.org/ng/2015/08/24/first/</loc>
     <lastmod>2015-08-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://enten.fr/2014/09/02/another-hugo-post/</loc>
+    <loc>http://zzamboni.org/ng/2014/09/02/another-hugo-post/</loc>
     <lastmod>2014-09-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://enten.fr/2014/09/01/hello-hugo/</loc>
+    <loc>http://zzamboni.org/ng/2014/09/01/hello-hugo/</loc>
     <lastmod>2014-09-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://enten.fr/license/</loc>
+    <loc>http://zzamboni.org/ng/license/</loc>
   </url>
   
   <url>
-    <loc>http://enten.fr/tags/blog/</loc>
+    <loc>http://zzamboni.org/ng/tags/blog/</loc>
     <lastmod>2014-09-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/tags/boilerplate/</loc>
+    <loc>http://zzamboni.org/ng/tags/boilerplate/</loc>
     <lastmod>2015-09-14T15:08:27+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/code/</loc>
+    <loc>http://zzamboni.org/ng/code/</loc>
     <lastmod>2015-09-14T15:08:27+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/tags/example/</loc>
+    <loc>http://zzamboni.org/ng/tags/example/</loc>
     <lastmod>2014-09-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/tags/generator/</loc>
+    <loc>http://zzamboni.org/ng/tags/generator/</loc>
     <lastmod>2015-08-26T15:08:27+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/tags/go/</loc>
+    <loc>http://zzamboni.org/ng/tags/go/</loc>
     <lastmod>2015-09-14T15:08:27+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/tags/hugo/</loc>
+    <loc>http://zzamboni.org/ng/tags/hugo/</loc>
     <lastmod>2015-09-13T15:08:27+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/tags/one/</loc>
+    <loc>http://zzamboni.org/ng/tags/one/</loc>
     <lastmod>2015-08-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/post/</loc>
+    <loc>http://zzamboni.org/ng/post/</loc>
     <lastmod>2015-08-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/topics/project/</loc>
+    <loc>http://zzamboni.org/ng/topics/project/</loc>
     <lastmod>2015-09-14T15:08:27+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/tags/site/</loc>
+    <loc>http://zzamboni.org/ng/tags/site/</loc>
     <lastmod>2015-09-14T15:08:27+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/tags/</loc>
+    <loc>http://zzamboni.org/ng/tags/</loc>
     <lastmod>2014-09-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/tags/three/</loc>
+    <loc>http://zzamboni.org/ng/tags/three/</loc>
     <lastmod>2015-08-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/tags/toml/</loc>
+    <loc>http://zzamboni.org/ng/tags/toml/</loc>
     <lastmod>2014-09-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/topics/topic-1/</loc>
+    <loc>http://zzamboni.org/ng/topics/topic-1/</loc>
     <lastmod>2015-08-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/topics/topic-2/</loc>
+    <loc>http://zzamboni.org/ng/topics/topic-2/</loc>
     <lastmod>2015-08-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/topics/</loc>
+    <loc>http://zzamboni.org/ng/topics/</loc>
     <lastmod>2015-09-14T15:08:27+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/tags/two/</loc>
+    <loc>http://zzamboni.org/ng/tags/two/</loc>
     <lastmod>2015-08-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://enten.fr/</loc>
+    <loc>http://zzamboni.org/ng/</loc>
     <lastmod>2015-09-14T15:08:27+02:00</lastmod>
     <priority>0</priority>
   </url>

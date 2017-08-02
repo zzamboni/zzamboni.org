@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Topic 1 on sitename</title>
-    <link>http://enten.fr/topics/topic-1/</link>
+    <link>http://zzamboni.org/ng/topics/topic-1/</link>
     <description>Recent content in Topic 1 on sitename</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
@@ -11,15 +11,15 @@
     <copyright>(c) 2015 yourname.</copyright>
     <lastBuildDate>Tue, 25 Aug 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://enten.fr/topics/topic-1/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://zzamboni.org/ng/topics/topic-1/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Second</title>
-      <link>http://enten.fr/2015/08/25/second/</link>
+      <link>http://zzamboni.org/ng/2015/08/25/second/</link>
       <pubDate>Tue, 25 Aug 2015 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>http://enten.fr/2015/08/25/second/</guid>
+      <guid>http://zzamboni.org/ng/2015/08/25/second/</guid>
       <description>Title 2 Content of post 2
 Title 3 Content of post 2
 Title 4 Content of post 2
@@ -29,10 +29,10 @@ Title 6 Content of post 2</description>
     
     <item>
       <title>First</title>
-      <link>http://enten.fr/2015/08/24/first/</link>
+      <link>http://zzamboni.org/ng/2015/08/24/first/</link>
       <pubDate>Mon, 24 Aug 2015 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>http://enten.fr/2015/08/24/first/</guid>
+      <guid>http://zzamboni.org/ng/2015/08/24/first/</guid>
       <description>Level 02 Heading Lorem ipsum emphasised text dolor sit amet, strong text consectetur adipisicing elit, abbreviated text sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut quoted text enim ad minim veniam, quis nostrud exercitation link text ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute inserted text irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat code text cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
     </item>
     
