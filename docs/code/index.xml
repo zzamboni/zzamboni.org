@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code on zzamboni.org</title>
+    <link>https://zzamboni.org/ng/code/</link>
+    <description>Recent content in Code on zzamboni.org</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy;2016 Diego Zamboni</copyright>
+    <lastBuildDate>Thu, 03 Aug 2017 17:55:47 +0200</lastBuildDate>
+    
+	<atom:link href="https://zzamboni.org/ng/code/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Enwrite</title>
+      <link>https://zzamboni.org/ng/code/enwrite/</link>
+      <pubDate>Thu, 03 Aug 2017 17:25:50 +0200</pubDate>
+      
+      <guid>https://zzamboni.org/ng/code/enwrite/</guid>
+      <description>&lt;p&gt;An Evernote-based static-website generation tool.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Grabcartoons</title>
+      <link>https://zzamboni.org/ng/code/grabcartoons/</link>
+      <pubDate>Thu, 03 Aug 2017 17:25:50 +0200</pubDate>
+      
+      <guid>https://zzamboni.org/ng/code/grabcartoons/</guid>
+      <description>&lt;p&gt;A simple cartoon-grabbing program.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

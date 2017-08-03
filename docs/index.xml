@@ -7,9 +7,78 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy;2016 Diego Zamboni</copyright>
+    <lastBuildDate>Thu, 03 Aug 2017 18:03:45 +0200</lastBuildDate>
     
 	<atom:link href="https://zzamboni.org/ng/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hammerspoon</title>
+      <link>https://zzamboni.org/ng/books/hammerspoon/</link>
+      <pubDate>Thu, 03 Aug 2017 18:03:45 +0200</pubDate>
+      
+      <guid>https://zzamboni.org/ng/books/hammerspoon/</guid>
+      <description>My Hammerspoon book</description>
+    </item>
+    
+    <item>
+      <title>Learning CFEngine 3</title>
+      <link>https://zzamboni.org/ng/books/cfengine/</link>
+      <pubDate>Thu, 03 Aug 2017 17:56:58 +0200</pubDate>
+      
+      <guid>https://zzamboni.org/ng/books/cfengine/</guid>
+      <description>My CFEngine book</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://zzamboni.org/ng/contact/</link>
+      <pubDate>Thu, 03 Aug 2017 17:55:04 +0200</pubDate>
+      
+      <guid>https://zzamboni.org/ng/contact/</guid>
+      <description>Contact me</description>
+    </item>
+    
+    <item>
+      <title>Enwrite</title>
+      <link>https://zzamboni.org/ng/code/enwrite/</link>
+      <pubDate>Thu, 03 Aug 2017 17:25:50 +0200</pubDate>
+      
+      <guid>https://zzamboni.org/ng/code/enwrite/</guid>
+      <description>&lt;p&gt;An Evernote-based static-website generation tool.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Grabcartoons</title>
+      <link>https://zzamboni.org/ng/code/grabcartoons/</link>
+      <pubDate>Thu, 03 Aug 2017 17:25:50 +0200</pubDate>
+      
+      <guid>https://zzamboni.org/ng/code/grabcartoons/</guid>
+      <description>&lt;p&gt;A simple cartoon-grabbing program.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>First Post</title>
+      <link>https://zzamboni.org/ng/post/first-post/</link>
+      <pubDate>Thu, 03 Aug 2017 15:33:07 +0200</pubDate>
+      
+      <guid>https://zzamboni.org/ng/post/first-post/</guid>
+      <description>Hello world! First post.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://zzamboni.org/ng/about/</link>
+      <pubDate>Thu, 03 Aug 2017 12:50:11 +0200</pubDate>
+      
+      <guid>https://zzamboni.org/ng/about/</guid>
+      <description>This is me.
+How are you?</description>
+    </item>
     
   </channel>
 </rss>
