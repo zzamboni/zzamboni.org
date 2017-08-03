@@ -1,0 +1,11 @@
+baseurl = "https://zzamboni.org/ng"
+relbase = "/ng"
+title = "zzamboni.org"
+theme = "ananke"
+languageCode = "en-us"
+# Enable comments by entering your Disqus shortname
+disqusShortname = ""
+# Enable Google Analytics by entering your tracking code
+googleAnalytics = ""
+copyright = "&copy;2016 Diego Zamboni"
+publishDir = "docs"
