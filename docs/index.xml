@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Home on zzamboni.org</title>
+    <title>zzamboni.org</title>
     <link>https://zzamboni.org/ng/</link>
-    <description>Recent content in Home on zzamboni.org</description>
+    <description>Recent content on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy;2016 Diego Zamboni</copyright>
@@ -32,19 +32,19 @@
     
     <item>
       <title>Hammerspoon</title>
-      <link>https://zzamboni.org/ng/books/hammerspoon/</link>
+      <link>https://zzamboni.org/ng/book/hammerspoon/</link>
       <pubDate>Thu, 03 Aug 2017 18:03:45 +0200</pubDate>
       
-      <guid>https://zzamboni.org/ng/books/hammerspoon/</guid>
+      <guid>https://zzamboni.org/ng/book/hammerspoon/</guid>
       <description>My Hammerspoon book</description>
     </item>
     
     <item>
       <title>Learning CFEngine 3</title>
-      <link>https://zzamboni.org/ng/books/cfengine/</link>
+      <link>https://zzamboni.org/ng/book/cfengine/</link>
       <pubDate>Thu, 03 Aug 2017 17:56:58 +0200</pubDate>
       
-      <guid>https://zzamboni.org/ng/books/cfengine/</guid>
+      <guid>https://zzamboni.org/ng/book/cfengine/</guid>
       <description>My CFEngine book</description>
     </item>
     
