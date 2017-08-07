@@ -29,9 +29,19 @@
       <pubDate>Thu, 03 Aug 2017 17:25:50 +0200</pubDate>
       
       <guid>https://zzamboni.org/ng/code/grabcartoons/</guid>
-      <description>&lt;p&gt;A simple cartoon-grabbing program.&lt;/p&gt;
+      <description>&lt;p&gt;GrabCartoons is a comic-summarizing utility. It is modular, and it is
+very easy to write modules for new comics.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://zzamboni.org/ng/code/grabcartoons/cartoons-sample/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zzamboni.org/ng/code/grabcartoons/cartoons-sample/</guid>
+      <description>  Daily Comics  Daily Comics - Thu May 3 23:28:38 2007  xkcd   Sinfest   Piled Higher and Deeper   User Friendly   This page was created by grabcartoons.   </description>
     </item>
     
   </channel>

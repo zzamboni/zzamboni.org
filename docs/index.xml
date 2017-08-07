@@ -49,16 +49,6 @@
     </item>
     
     <item>
-      <title>Contact</title>
-      <link>https://zzamboni.org/ng/contact/</link>
-      <pubDate>Thu, 03 Aug 2017 17:55:04 +0200</pubDate>
-      
-      <guid>https://zzamboni.org/ng/contact/</guid>
-      <description>If you have any questions, comments or feedback about this site, please use the form below to send me a message.
-Your Name Email Address An email address is required.  Message   </description>
-    </item>
-    
-    <item>
       <title>Enwrite</title>
       <link>https://zzamboni.org/ng/code/enwrite/</link>
       <pubDate>Thu, 03 Aug 2017 17:25:50 +0200</pubDate>
@@ -75,7 +65,8 @@ Your Name Email Address An email address is required.  Message   </description>
       <pubDate>Thu, 03 Aug 2017 17:25:50 +0200</pubDate>
       
       <guid>https://zzamboni.org/ng/code/grabcartoons/</guid>
-      <description>&lt;p&gt;A simple cartoon-grabbing program.&lt;/p&gt;
+      <description>&lt;p&gt;GrabCartoons is a comic-summarizing utility. It is modular, and it is
+very easy to write modules for new comics.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
@@ -90,13 +81,12 @@ Your Name Email Address An email address is required.  Message   </description>
     </item>
     
     <item>
-      <title>About</title>
-      <link>https://zzamboni.org/ng/about/</link>
-      <pubDate>Thu, 03 Aug 2017 12:50:11 +0200</pubDate>
+      <title></title>
+      <link>https://zzamboni.org/ng/code/grabcartoons/cartoons-sample/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://zzamboni.org/ng/about/</guid>
-      <description>Who: I am a computer scientist, consultant, programmer, sysadmin, author, and overall geek. I am from Mexico but live in Switzerland with my awesome wife and our two beautiful daughters.
-What: I work as the lead of a development team in the Cloud Platform Division of Swisscom, where I am applying my experience and background in security, configuration management, cloud computing and automation to build the next-generation cloud infrastructure for Swisscom and its customers.</description>
+      <guid>https://zzamboni.org/ng/code/grabcartoons/cartoons-sample/</guid>
+      <description>  Daily Comics  Daily Comics - Thu May 3 23:28:38 2007  xkcd   Sinfest   Piled Higher and Deeper   User Friendly   This page was created by grabcartoons.   </description>
     </item>
     
   </channel>

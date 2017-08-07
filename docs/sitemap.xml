@@ -94,6 +94,12 @@
   </url>
   
   <url>
+    <loc>https://zzamboni.org/ng/code/grabcartoons/cartoons-sample/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://zzamboni.org/ng/categories/</loc>
     <changefreq>monthly</changefreq>
     <priority>0</priority>
