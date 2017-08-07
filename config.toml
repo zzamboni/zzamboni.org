@@ -1,4 +1,4 @@
-baseurl = "https://zzamboni.org/ng"
+baseurl = "http://zzamboni.org/ng"
 relbase = "/ng"
 title = "zzamboni.org"
 theme = "gohugo-theme-ananke"
