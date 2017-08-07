@@ -3,104 +3,104 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://zzamboni.org/ng/blog/</loc>
+    <loc>http://zzamboni.org/ng/blog/</loc>
     <lastmod>2017-08-03T23:04:22+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://zzamboni.org/ng/blog/third-post/</loc>
+    <loc>http://zzamboni.org/ng/blog/third-post/</loc>
     <lastmod>2017-08-03T22:43:26+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://zzamboni.org/ng/blog/second-post/</loc>
+    <loc>http://zzamboni.org/ng/blog/second-post/</loc>
     <lastmod>2017-08-03T22:43:13+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://zzamboni.org/ng/</loc>
+    <loc>http://zzamboni.org/ng/</loc>
     <lastmod>2017-08-03T22:37:17+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://zzamboni.org/ng/book/hammerspoon/</loc>
+    <loc>http://zzamboni.org/ng/book/hammerspoon/</loc>
     <lastmod>2017-08-03T18:03:45+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://zzamboni.org/ng/book/</loc>
+    <loc>http://zzamboni.org/ng/book/</loc>
     <lastmod>2017-08-03T17:57:03+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://zzamboni.org/ng/book/cfengine/</loc>
+    <loc>http://zzamboni.org/ng/book/cfengine/</loc>
     <lastmod>2017-08-03T17:56:58+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://zzamboni.org/ng/code/</loc>
+    <loc>http://zzamboni.org/ng/code/</loc>
     <lastmod>2017-08-03T17:55:47+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://zzamboni.org/ng/contact/</loc>
+    <loc>http://zzamboni.org/ng/contact/</loc>
     <lastmod>2017-08-03T17:55:04+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://zzamboni.org/ng/code/enwrite/</loc>
+    <loc>http://zzamboni.org/ng/code/enwrite/</loc>
     <lastmod>2017-08-03T17:25:50+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://zzamboni.org/ng/code/grabcartoons/</loc>
+    <loc>http://zzamboni.org/ng/code/grabcartoons/</loc>
     <lastmod>2017-08-03T17:25:50+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://zzamboni.org/ng/blog/first-post/</loc>
+    <loc>http://zzamboni.org/ng/blog/first-post/</loc>
     <lastmod>2017-08-03T15:33:07+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://zzamboni.org/ng/about/</loc>
+    <loc>http://zzamboni.org/ng/about/</loc>
     <lastmod>2017-08-03T12:50:11+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://zzamboni.org/ng/categories/</loc>
+    <loc>http://zzamboni.org/ng/categories/</loc>
     <changefreq>monthly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://zzamboni.org/ng/tags/</loc>
+    <loc>http://zzamboni.org/ng/tags/</loc>
     <changefreq>monthly</changefreq>
     <priority>0</priority>
   </url>

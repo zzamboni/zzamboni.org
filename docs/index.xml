@@ -2,58 +2,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>zzamboni.org</title>
-    <link>https://zzamboni.org/ng/</link>
+    <link>http://zzamboni.org/ng/</link>
     <description>Recent content on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy;2016 Diego Zamboni</copyright>
     <lastBuildDate>Thu, 03 Aug 2017 22:37:17 +0200</lastBuildDate>
     
-	<atom:link href="https://zzamboni.org/ng/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://zzamboni.org/ng/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Third Post</title>
-      <link>https://zzamboni.org/ng/blog/third-post/</link>
+      <link>http://zzamboni.org/ng/blog/third-post/</link>
       <pubDate>Thu, 03 Aug 2017 22:43:26 +0200</pubDate>
       
-      <guid>https://zzamboni.org/ng/blog/third-post/</guid>
+      <guid>http://zzamboni.org/ng/blog/third-post/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Second Post</title>
-      <link>https://zzamboni.org/ng/blog/second-post/</link>
+      <link>http://zzamboni.org/ng/blog/second-post/</link>
       <pubDate>Thu, 03 Aug 2017 22:43:13 +0200</pubDate>
       
-      <guid>https://zzamboni.org/ng/blog/second-post/</guid>
+      <guid>http://zzamboni.org/ng/blog/second-post/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hammerspoon</title>
-      <link>https://zzamboni.org/ng/book/hammerspoon/</link>
+      <link>http://zzamboni.org/ng/book/hammerspoon/</link>
       <pubDate>Thu, 03 Aug 2017 18:03:45 +0200</pubDate>
       
-      <guid>https://zzamboni.org/ng/book/hammerspoon/</guid>
+      <guid>http://zzamboni.org/ng/book/hammerspoon/</guid>
       <description>My Hammerspoon book</description>
     </item>
     
     <item>
       <title>Learning CFEngine 3</title>
-      <link>https://zzamboni.org/ng/book/cfengine/</link>
+      <link>http://zzamboni.org/ng/book/cfengine/</link>
       <pubDate>Thu, 03 Aug 2017 17:56:58 +0200</pubDate>
       
-      <guid>https://zzamboni.org/ng/book/cfengine/</guid>
+      <guid>http://zzamboni.org/ng/book/cfengine/</guid>
       <description>My CFEngine book</description>
     </item>
     
     <item>
       <title>Enwrite</title>
-      <link>https://zzamboni.org/ng/code/enwrite/</link>
+      <link>http://zzamboni.org/ng/code/enwrite/</link>
       <pubDate>Thu, 03 Aug 2017 17:25:50 +0200</pubDate>
       
-      <guid>https://zzamboni.org/ng/code/enwrite/</guid>
+      <guid>http://zzamboni.org/ng/code/enwrite/</guid>
       <description>&lt;p&gt;An Evernote-based static-website generation tool.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -61,10 +61,10 @@
     
     <item>
       <title>Grabcartoons</title>
-      <link>https://zzamboni.org/ng/code/grabcartoons/</link>
+      <link>http://zzamboni.org/ng/code/grabcartoons/</link>
       <pubDate>Thu, 03 Aug 2017 17:25:50 +0200</pubDate>
       
-      <guid>https://zzamboni.org/ng/code/grabcartoons/</guid>
+      <guid>http://zzamboni.org/ng/code/grabcartoons/</guid>
       <description>&lt;p&gt;GrabCartoons is a comic-summarizing utility. It is modular, and it is
 very easy to write modules for new comics.&lt;/p&gt;
 
@@ -73,10 +73,10 @@ very easy to write modules for new comics.&lt;/p&gt;
     
     <item>
       <title>First Post</title>
-      <link>https://zzamboni.org/ng/blog/first-post/</link>
+      <link>http://zzamboni.org/ng/blog/first-post/</link>
       <pubDate>Thu, 03 Aug 2017 15:33:07 +0200</pubDate>
       
-      <guid>https://zzamboni.org/ng/blog/first-post/</guid>
+      <guid>http://zzamboni.org/ng/blog/first-post/</guid>
       <description>Hello world! First post.</description>
     </item>
     

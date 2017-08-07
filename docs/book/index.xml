@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Books on zzamboni.org</title>
-    <link>https://zzamboni.org/ng/book/</link>
+    <link>http://zzamboni.org/ng/book/</link>
     <description>Recent content in Books on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy;2016 Diego Zamboni</copyright>
     <lastBuildDate>Thu, 03 Aug 2017 17:57:03 +0200</lastBuildDate>
     
-	<atom:link href="https://zzamboni.org/ng/book/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://zzamboni.org/ng/book/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hammerspoon</title>
-      <link>https://zzamboni.org/ng/book/hammerspoon/</link>
+      <link>http://zzamboni.org/ng/book/hammerspoon/</link>
       <pubDate>Thu, 03 Aug 2017 18:03:45 +0200</pubDate>
       
-      <guid>https://zzamboni.org/ng/book/hammerspoon/</guid>
+      <guid>http://zzamboni.org/ng/book/hammerspoon/</guid>
       <description>My Hammerspoon book</description>
     </item>
     
     <item>
       <title>Learning CFEngine 3</title>
-      <link>https://zzamboni.org/ng/book/cfengine/</link>
+      <link>http://zzamboni.org/ng/book/cfengine/</link>
       <pubDate>Thu, 03 Aug 2017 17:56:58 +0200</pubDate>
       
-      <guid>https://zzamboni.org/ng/book/cfengine/</guid>
+      <guid>http://zzamboni.org/ng/book/cfengine/</guid>
       <description>My CFEngine book</description>
     </item>
     
