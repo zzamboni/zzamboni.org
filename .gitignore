@@ -2,3 +2,4 @@ ftp-config.json
 gh-config.toml*
 node_modules
 public
+.DS_Store

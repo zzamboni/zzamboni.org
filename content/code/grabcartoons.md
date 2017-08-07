@@ -13,20 +13,34 @@ very easy to write modules for new comics.
 [(ChangeLog)](http://github.com/zzamboni/grabcartoons/raw/master/ChangeLog)
 
 You can see a sample of grabcartoons output
-[here](cartoons-sample).
+[here](../../cartoons-sample.html).
+
+Installation
+--------
+
+You can download the latest source code for this project in either
+[zip](http://github.com/zzamboni/grabcartoons/zipball/master) or
+[tar](http://github.com/zzamboni/grabcartoons/tarball/master) formats.
+
+You can also clone the project with [Git](http://git-scm.com) by
+running:
+
+    $ git clone git://github.com/zzamboni/grabcartoons
+
+From within the source directory, run `make install`.
 
 Available comics
 ----------------
 
 Here's the list of comics for which we currently have modules:
 
-{{< readfile file="/content/code/grabcartoons/lom.txt" >}}
+{{< readfile file="/layouts/partials/grabcartoons/lom.txt" >}}
 
 Grabcartoons also includes *templates* that allow you to fetch any comic
 from a given site. At the moment we have the following templates:
 
 {{< highlight console >}}
-{{< readfile file="/content/code/grabcartoons/templates.txt" >}}
+{{< readfile file="/layouts/partials/grabcartoons/templates.txt" >}}
 {{< /highlight >}}
 
 To fetch a comic using a module, simply use *template:comic* as the
@@ -45,7 +59,7 @@ And then open `output.html` in your web browser.
 Full set of options:
 
 {{< highlight console >}}
-{{< readfile file="/content/code/grabcartoons/usage.txt" >}}
+{{< readfile file="/layouts/partials/grabcartoons/usage.txt" >}}
 {{< /highlight >}}
 
 Contributions
@@ -64,17 +78,3 @@ Authors
 [Diego Zamboni](http://github.com/zzamboni/)\
 [Benjamin Kuperman](http://github.com/kuperman/)\
 
-Download
---------
-
-For the latest released version, use the download links at the top of
-this page.
-
-You can download the latest source code for this project in either
-[zip](http://github.com/zzamboni/grabcartoons/zipball/master) or
-[tar](http://github.com/zzamboni/grabcartoons/tarball/master) formats.
-
-You can also clone the project with [Git](http://git-scm.com) by
-running:
-
-    $ git clone git://github.com/zzamboni/grabcartoons
