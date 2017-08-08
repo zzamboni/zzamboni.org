@@ -6,55 +6,18 @@
     <description>Recent content on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy;2016 Diego Zamboni</copyright>
     <lastBuildDate>Thu, 03 Aug 2017 22:37:17 +0200</lastBuildDate>
     
 	<atom:link href="http://zzamboni.org/ng/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Third Post</title>
-      <link>http://zzamboni.org/ng/blog/third-post/</link>
-      <pubDate>Thu, 03 Aug 2017 22:43:26 +0200</pubDate>
+      <title>The Big Website Reboot</title>
+      <link>http://zzamboni.org/ng/blog/the-big-website-reboot/</link>
+      <pubDate>Tue, 08 Aug 2017 06:56:52 +0200</pubDate>
       
-      <guid>http://zzamboni.org/ng/blog/third-post/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Second Post</title>
-      <link>http://zzamboni.org/ng/blog/second-post/</link>
-      <pubDate>Thu, 03 Aug 2017 22:43:13 +0200</pubDate>
-      
-      <guid>http://zzamboni.org/ng/blog/second-post/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hammerspoon</title>
-      <link>http://zzamboni.org/ng/book/hammerspoon/</link>
-      <pubDate>Thu, 03 Aug 2017 18:03:45 +0200</pubDate>
-      
-      <guid>http://zzamboni.org/ng/book/hammerspoon/</guid>
-      <description>My Hammerspoon book</description>
-    </item>
-    
-    <item>
-      <title>Learning CFEngine 3</title>
-      <link>http://zzamboni.org/ng/book/cfengine/</link>
-      <pubDate>Thu, 03 Aug 2017 17:56:58 +0200</pubDate>
-      
-      <guid>http://zzamboni.org/ng/book/cfengine/</guid>
-      <description>My CFEngine book</description>
-    </item>
-    
-    <item>
-      <title>Enwrite</title>
-      <link>http://zzamboni.org/ng/code/enwrite/</link>
-      <pubDate>Thu, 03 Aug 2017 17:25:50 +0200</pubDate>
-      
-      <guid>http://zzamboni.org/ng/code/enwrite/</guid>
-      <description>&lt;p&gt;An Evernote-based static-website generation tool.&lt;/p&gt;
+      <guid>http://zzamboni.org/ng/blog/the-big-website-reboot/</guid>
+      <description>&lt;p&gt;Welcome to the new &lt;a href=&#34;http://zzamboni.org/&#34;&gt;zzamboni.org&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
@@ -69,15 +32,6 @@
 very easy to write modules for new comics.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>First Post</title>
-      <link>http://zzamboni.org/ng/blog/first-post/</link>
-      <pubDate>Thu, 03 Aug 2017 15:33:07 +0200</pubDate>
-      
-      <guid>http://zzamboni.org/ng/blog/first-post/</guid>
-      <description>Hello world! First post.</description>
     </item>
     
   </channel>
