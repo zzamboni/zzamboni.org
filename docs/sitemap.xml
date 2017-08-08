@@ -3,22 +3,15 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://zzamboni.org/ng/blog/the-big-website-reboot/</loc>
+    <lastmod>2017-08-08T06:56:52+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://zzamboni.org/ng/blog/</loc>
     <lastmod>2017-08-03T23:04:22+02:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://zzamboni.org/ng/blog/third-post/</loc>
-    <lastmod>2017-08-03T22:43:26+02:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://zzamboni.org/ng/blog/second-post/</loc>
-    <lastmod>2017-08-03T22:43:13+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -31,22 +24,8 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/ng/book/hammerspoon/</loc>
-    <lastmod>2017-08-03T18:03:45+02:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>http://zzamboni.org/ng/book/</loc>
     <lastmod>2017-08-03T17:57:03+02:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://zzamboni.org/ng/book/cfengine/</loc>
-    <lastmod>2017-08-03T17:56:58+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -66,22 +45,8 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/ng/code/enwrite/</loc>
-    <lastmod>2017-08-03T17:25:50+02:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>http://zzamboni.org/ng/code/grabcartoons/</loc>
     <lastmod>2017-08-03T17:25:50+02:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://zzamboni.org/ng/blog/first-post/</loc>
-    <lastmod>2017-08-03T15:33:07+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

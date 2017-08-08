@@ -1,0 +1,249 @@
+/*
+	custom.css — custom styles for Cutline that YOU define
+	------------------------------------------------------
+	
+	This stylesheet will allow you to futureproof your
+	changes against future releases and upgrades. I know
+	you work hard on your modified styles, and I don't
+	want you to feel like every upgrade is a total drag!
+	
+	Instructions:
+	
+	Modifying existing Cutline styles to your liking is a
+	breeze with this handy stylesheet. The <body> tag
+	within the header.php file has been appended with a
+	CSS class called "custom," and thanks to this, you now
+	have the ability to override ANY style that's declared
+	in the original Cutline stylesheet.
+	
+	In practice, you simply need to copy the CSS for the
+	element that you want to change (from style.css) and
+	then paste it here. Prefix the new CSS declaration
+	with .custom, and then make your tweaks as necessary.
+	
+	Here's an example:
+	
+	To change the default color of unvisited links from 
+	blue to red (#c00) and remove the default underline, 
+	this is what you would do:
+	
+	.custom a { color: #c00; text-decoration: none; }
+	
+	Cool? Now get to hackin!
+*/
+
+/* Retired notice */
+	ul#nav li.retired { padding: 0.85em 0 0.7em 0; float: right; }
+			
+		ul#nav li.retired a { color: #ff0000; }
+			
+
+/* Google ads right below header */
+.custom #header_img { margin: 0 ; border-bottom: 1px solid #000; float: left; clear: both; } /* modified as per http://www.captainhops.com/2006/10/website-header-images-available/#comment-8 */
+#header_links { margin: 0 0 30px 0; border-bottom: 1px solid #000; float: left; clear: both; width:770px; background: #000; text-align:center; }
+
+/* This is the styling for asides*/
+.asides p {
+border: dotted #C4BFAB;
+font-family: Verdana;
+font-size:1.0em;
+/*font-color: #666;*/
+/*      list-style-type: none;
+        list-style-image: url("www.png");*/
+/*margin: 30px;*/
+background: url("www.png") no-repeat #eee;
+background-position: left top;
+padding: 5px;
+padding-left: 40px;
+/*text-transform: lowercase;*/
+}
+/* to change the link behavior:
+.asides p a {
+text-decoration:none;
+} */
+/* end stylling for asides */
+
+/* Styling for my comments */
+.mycomment { background: #D0FCD0 }
+
+/* Styling for Friendfeed widget */
+.friendfeed.widget,
+div.friendfeed.widget div,
+div.friendfeed.widget span,
+div.friendfeed.widget img,
+div.friendfeed.widget table,
+div.friendfeed.widget tr,
+div.friendfeed.widget td {
+  position: relative;
+  background-color: white;
+  color: black;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  text-align: left;
+  line-height: 1.3em;
+  width: auto;
+  float: none;
+}
+
+.friendfeed.widget {
+  color: #222222;
+  font-family: Arial, sans-serif !important;
+  font-size: 10pt !important;
+  position: relative;
+  border: 1px solid #437ec7;
+  overflow: hidden;
+}
+
+.friendfeed.widget a {
+  background: none;
+  color: #1030cc;
+  font-weight: normal;
+  text-decoration: underline;
+  margin: 0;
+  padding: 0;
+}
+
+.friendfeed.widget a:visited {
+  color: #1030cc;
+}
+
+.friendfeed.widget div {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.friendfeed.widget img {
+  border: 0px;
+}
+
+/*
+.friendfeed.widget .logo {
+  background: url("../images/widget-top-border.png?v=1") 0px 0px repeat-x;
+}
+*/
+
+.friendfeed.widget .logo img {
+  margin-left: 5px;
+}
+
+.friendfeed.widget .feed {
+  padding-left: 12px;
+  padding-right: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.friendfeed.widget .feed .entry {
+  clear: left;
+  margin-bottom: 1.25em;
+}
+
+.friendfeed.widget .feed .child {
+  margin-left: 23px;
+}
+
+.friendfeed.widget .feed .entry div.icon {
+  float: left;
+}
+
+.friendfeed.widget .feed .entry .body {
+  margin-left: 23px;
+  padding: 0;
+}
+
+.friendfeed.widget .feed .entry .comments .comment,
+.friendfeed.widget .feed .entry .body .summary {
+  overflow: hidden;
+  white-space: nowrap;
+  font-size:10pt !important;
+}
+
+.friendfeed.widget .feed .entry .body .link {
+  margin-top:0.3em;
+  font-size:10pt !important;
+}
+
+.friendfeed.widget .feed .entry .info {
+  color: gray;
+  font-size: 9pt !important;
+  margin-top: 3px;
+}
+
+.friendfeed.widget .feed .entry .info a.timestamp {
+  color: gray;
+  text-decoration: none;
+}
+
+.friendfeed.widget .feed .entry .info a.timestamp:visited {
+  color: gray;
+}
+
+.friendfeed.widget .feed .entry .media {
+  margin-top: 0.6em;
+}
+
+.friendfeed.widget .feed .entry .media img {
+  padding: 3px;
+  border: 1px solid #d0d0d0;
+  vertical-align: middle;
+}
+
+.friendfeed.widget .feed .entry .media .thumbnail {
+  margin-right: 10px;
+}
+
+.friendfeed.widget .feed .entry .comments .comment,
+.friendfeed.widget .feed .entry .likes {
+  margin-top: 0.4em;
+  color: gray;
+  padding-left: 32px;
+}
+
+.friendfeed.widget .feed .entry .comments .comment {
+  background: url("../images/comment-lighter.png?v=2") 13px 2px no-repeat; 
+}
+
+.friendfeed.widget .feed .entry .likes {
+  background: url("../images/smile.png?v=2") 12px 0px no-repeat; 
+}
+
+.friendfeed.widget .feed .entry .info a,
+.friendfeed.widget .feed .entry .info a:visited,
+.friendfeed.widget .feed .entry .comments .comment a,
+.friendfeed.widget .feed .entry .comments .comment a:visited,
+.friendfeed.widget .feed .entry .comments .more a,
+.friendfeed.widget .feed .entry .comments .more a:visited,
+.friendfeed.widget .feed .entry .likes a,
+.friendfeed.widget .feed .entry .likes a:visited {
+  color: #7777cc;
+}
+
+.friendfeed.widget .feed .entry,
+.friendfeed.widget .feed .more {
+  margin-top: 0.3em;
+}
+
+.friendfeed.widget .feed .more a:visited {
+  color: #1030cc;
+}
+
+.friendfeed.widget .bottom {
+/*  background: #cddff6 url("../images/widget-bottom-bg.png?v=1") repeat-x;*/
+  border-top: 1px solid #437ec7;
+  padding: 3px 5px 3px 5px;
+}
+
+.friendfeed.widget .bottom a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.friendfeed.widget .bottom a:visited {
+  color: #1030cc;
+}
+
+.friendfeed.widget .clear {
+  clear: both;
+}
