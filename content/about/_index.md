@@ -1,7 +1,6 @@
 ---
 title: "About"
 date: 2017-08-03T12:50:11+02:00
-draft: true
 featured_image: "/images/legoland.jpg"
 ---
 
