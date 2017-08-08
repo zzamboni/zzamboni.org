@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+		>
+<channel>
+	<title>Comments on: Using the Thinkpad fingerprint reader on Linux (HOWTO)</title>
+	<atom:link href="http://zzamboni.org/brt/2006/04/25/using-the-thinkpad-fingerprint-reader-on-linux/feed/" rel="self" type="application/rss+xml" />
+	<link>http://zzamboni.org/brt/2006/04/25/using-the-thinkpad-fingerprint-reader-on-linux/</link>
+	<description>Musings about technology and other neat stuff</description>
+	<lastBuildDate>Tue, 29 Sep 2009 21:48:06 +0200</lastBuildDate>
+	<generator>http://wordpress.org/?v=2.8.4</generator>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+		<item>
+		<title>By: Run xscreensaver GL hacks only on one xinerama screen &#124; BrT</title>
+		<link>http://zzamboni.org/brt/2006/04/25/using-the-thinkpad-fingerprint-reader-on-linux/comment-page-1/#comment-10740</link>
+		<dc:creator>Run xscreensaver GL hacks only on one xinerama screen &#124; BrT</dc:creator>
+		<pubDate>Mon, 19 Feb 2007 09:40:41 +0000</pubDate>
+		<guid isPermaLink="false">http://www.zzamboni.org/brt/2006/04/25/106/#comment-10740</guid>
+		<description>[...] You can get the patch for xscreensaver 5.00 here: xscreensaver-5.00-glscreencontrol.patch If you use Gentoo, you can get the xscreensaver portage overlay (which also includes the fingerprint reader patch) here: xscreensaver-overlay.tar.gz [...]</description>
+		<content:encoded><![CDATA[<p>[...] You can get the patch for xscreensaver 5.00 here: xscreensaver-5.00-glscreencontrol.patch If you use Gentoo, you can get the xscreensaver portage overlay (which also includes the fingerprint reader patch) here: xscreensaver-overlay.tar.gz [...]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Jürgen Löb</title>
+		<link>http://zzamboni.org/brt/2006/04/25/using-the-thinkpad-fingerprint-reader-on-linux/comment-page-1/#comment-10527</link>
+		<dc:creator>Jürgen Löb</dc:creator>
+		<pubDate>Thu, 18 Jan 2007 00:59:04 +0000</pubDate>
+		<guid isPermaLink="false">http://www.zzamboni.org/brt/2006/04/25/106/#comment-10527</guid>
+		<description>&lt;p&gt;I was unable to compile the ebuild (alternative-auth patch failed). After modifying the ebuild for 4.24-r1 I was able to compile the ebuild and use it.&lt;/p&gt;
+
+&lt;p&gt;I made the following changes:&lt;/p&gt;
+
+&lt;p&gt;commented out:
+eautoreconf&lt;/p&gt;
+
+&lt;p&gt;added line in function src_compile():
+--with-pam-alt-service-name=bioapi4a7d3d609129a9296bf7ac0608c2097
+
+&lt;p&gt;Using the same changes in the 5.00 ebuild results in getting the following error:&lt;/p&gt;
+
+&lt;p&gt;Jan 17 23:22:49 galadriel xscreensaver[13322]: PAM _pam_load_conf_file: unable t
+o open /etc/pam.d/system.auth
+Jan 17 23:22:49 galadriel xscreensaver[13322]: PAM unable to dlopen(&lt;&lt;em&gt;unknown mo
+dule path&lt;/em&gt;&gt;)
+Jan 17 23:22:49 galadriel xscreensaver[13322]: PAM [error: &lt;&lt;em&gt;unknown module path
+*&gt;: cannot open shared object file: No such file or directory]
+Jan 17 23:22:49 galadriel xscreensaver[13322]: PAM adding faulty module: &lt;&lt;/em&gt;unkno
+wn module path*&gt;&lt;/p&gt;
+
+&lt;p&gt;I hope this of some help.&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>I was unable to compile the ebuild (alternative-auth patch failed). After modifying the ebuild for 4.24-r1 I was able to compile the ebuild and use it.</p>
+<p>I made the following changes:</p>
+<p>commented out:<br />
+eautoreconf</p>
+<p>added line in function src_compile():<br />
+&#8211;with-pam-alt-service-name=bioapi4a7d3d609129a9296bf7ac0608c2097</p>
+<p>Using the same changes in the 5.00 ebuild results in getting the following error:</p>
+<p>Jan 17 23:22:49 galadriel xscreensaver[13322]: PAM _pam_load_conf_file: unable t<br />
+o open /etc/pam.d/system.auth<br />
+Jan 17 23:22:49 galadriel xscreensaver[13322]: PAM unable to dlopen(&lt;<em>unknown mo<br />
+dule path</em>&gt;)<br />
+Jan 17 23:22:49 galadriel xscreensaver[13322]: PAM [error: &lt;<em>unknown module path<br />
+*&gt;: cannot open shared object file: No such file or directory]<br />
+Jan 17 23:22:49 galadriel xscreensaver[13322]: PAM adding faulty module: &lt;</em>unkno<br />
+wn module path*&gt;</p>
+<p>I hope this of some help.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

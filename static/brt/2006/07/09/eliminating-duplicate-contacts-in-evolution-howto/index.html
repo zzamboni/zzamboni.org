@@ -1,0 +1,694 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<title>  Eliminating duplicate contacts in Evolution (HowTo)</title>
+	
+	<meta name="generator" content="WordPress 2.8.4" /> <!-- leave this for stats -->
+	
+	<link rel="stylesheet" href="../../../../wp-content/themes/Cutline_BrT_retired/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="../../../../wp-content/themes/Cutline_BrT_retired/custom.css" type="text/css" media="screen" />
+	<!--[if lte IE 7]>
+	<link rel="stylesheet" type="text/css" href="http://zzamboni.org/brt/wp-content/themes/Cutline_BrT_retired/ie7.css" media="screen" />
+	<![endif]-->
+	<!--[if lte IE 6]>
+	<link rel="stylesheet" type="text/css" href="http://zzamboni.org/brt/wp-content/themes/Cutline_BrT_retired/ie6.css" media="screen" />
+	<![endif]-->
+<!-- RETIRED
+  <link rel="alternate" type="application/rss+xml" title="<.?php bloginfo('name'); ?> RSS Feed" href="<.?php bloginfo('rss2_url'); ?>" />
+	<link rel="pingback" href="<.?php bloginfo('pingback_url'); ?>" />
+	-->
+
+	<link rel="alternate" type="application/rss+xml" title="BrT &raquo; Eliminating duplicate contacts in Evolution (HowTo) Comments Feed" href="feed/index.html" />
+<link rel='stylesheet' id='thickbox-css'  href='../../../../wp-includes/js/thickbox/thickbox.css%3Fver=20090514' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../wp-includes/js/jquery/jquery.js%3Fver=1.3.2'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://zzamboni.org/brt/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../../../wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='BrT' href='../../../../index.html' />
+<link rel='start' title='Welcome to BrT' href='../../../../2005/01/23/welcome-to-brt/index.html' />
+<link rel='prev' title='Big Spanish Castle' href='../../../06/25/big-spanish-castle/index.html' />
+<link rel='next' title='25 Great Calvin &amp; Hobbes Strips @ Progressive Boink' href='../../12/25-great-calvin-hobbes-strips-progressive-boink/index.html' />
+<meta name="generator" content="WordPress 2.8.4" />
+</head>
+<body class="custom">
+<!-- RETIRED ?php if(function_exists('wp_admin_bar')) wp_admin_bar(); ?> -->
+
+<div id="container">
+
+	<div id="masthead">
+		<h1><a href="../../../../index.html">BrT</a></h1>
+		<h3>Musings about technology and other neat stuff</h3>
+	</div>
+
+	<ul id="nav">
+		<li><a href="../../../../index.html">blog</a></li>
+		<li><a href="../../../../archives/index.html">archives</a></li>
+<!--		<li id="safari-search-field"><form method='get' id='searchform' action='http://zzamboni.org/brt'><div><input type='search' placeholder='Search BrT...' autosave='zzamboni.org.searchhistory' results=5 value='' name='s' id='s' /></div></form></li>-->
+<li>
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+	    <input type="hidden" name="cx" value="007336107369566601471:rwvrqwxlxt4" />
+			    <input type="hidden" name="ie" value="ISO-8859-1" />
+					    <input type="text" name="q" size="20" />
+							    <input type="submit" name="sa" value="Search" />
+									  </div>
+										</form>
+										<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&lang=en"></script>
+</li>
+<!-- RETIRED		<li class="rss"><a href="<.?php bloginfo('rss2_url'); ?>">RSS</a></li>
+-->
+<li class="retired">
+<a href="../../../../2009/09/29/transitions/index.html">Retired</a> - <a style="background-color: yellow;" href="http://zzamboni.org/">go to the new site</a>
+</li>
+	</ul>
+	
+	<div id="header_img">
+	  		<img src="../../../../wp-content/themes/Cutline_BrT_retired/images/headers/IMG_3287.jpg" width="770" height="140" alt="BrT random header image" />
+	</div>
+		<div id="header_links">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3029003434032114";
+/* BrT header ads */
+google_ad_slot = "2123164689";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+		  </div>
+
+	<div id="content_box">
+		
+		<div id="content" class="posts">
+			
+					
+			
+<div class="navigation">
+	<span class="previous">&larr; <a href="../../../06/25/big-spanish-castle/index.html">Big Spanish Castle</a></span>
+	<span class="next"><a href="../../12/25-great-calvin-hobbes-strips-progressive-boink/index.html">25 Great Calvin &#038; Hobbes Strips @ Progressive Boink</a> &rarr;</span>
+</div>
+<div class="clear whitespace"></div>
+
+			
+			<h2>Eliminating duplicate contacts in Evolution (HowTo)</h2>
+			<h4>July 9th, 2006<!-- by ZZamboni --> &middot; <a href="index.html#comments">27 Comments</a></h4>
+			<div class="entry">
+				<p>This had been bothering me for a while. Due mostly to artifacts in synchronizing with my PalmOS device, a large number of duplicates had accumulated in my Evolution addressbook. Today I put together this short script to eliminate them. It&#8217;s crude, but it sort of works.</p>
+<p>Standard disclaimer applies: use at your own risk, backup your data, floss your teeth, etc. etc.</p>
+<p>Because wordpress tends to mess with quotes and such, instead of cutting-and-pasting the code below, you may want to download it from here:<br />
+<a  href="../../../../files/evo_eliminate_duplicate_contacts.pl">evo_eliminate_duplicate_contacts.pl</a></p>
+<pre>
+#!/usr/bin/perl -w
+
+use DB_File;
+
+$addrdb=$ARGV[0]
+    || "$ENV{HOME}/.evolution/addressbook/local/system/addressbook.db";
+print "* Examining $addrdb\n";
+
+tie %h, 'DB_File', $addrdb, O_RDWR, 0777, $DB_HASH
+  or die "Error opening file: $!\n";
+
+# Keep track of names we've seen
+%names=();
+
+for $k (keys %h) {
+    $card=$h{$k};
+    if ($card =~ /^FN:(.*)$/m) {
+        $name=$1;
+        $name=~s/\r//g;
+        chomp $name;
+        if (exists($names{$name})) {
+            print "* Previously found $name, removing\n";
+            delete $h{$k};
+        }
+        $names{$name}++;
+    }
+}
+
+print "* Done. Duplicate statistics:\n";
+print join("\n", map { "$_: $names{$_} times" }
+           sort { $names{$b} <=> $names{$a} }
+           grep { $names{$_} > 1 } keys %names
+          )."\n";
+</pre>
+<p><!-- technorati tags start -->
+<p style="text-align:right;font-size:10px;">Technorati Tags: <a  href="http://www.technorati.com/tag/email" rel="tag">email</a>, <a  href="http://www.technorati.com/tag/evolution" rel="tag">evolution</a>, <a  href="http://www.technorati.com/tag/howto" rel="tag">howto</a>, <a  href="http://www.technorati.com/tag/linux" rel="tag">linux</a>, <a  href="http://www.technorati.com/tag/tips" rel="tag">tips</a></p>
+<p><!-- technorati tags end --></p>
+							</div>
+			<!--<p class="tagged"><strong>Tags:</strong> Uncategorized</p>--><p class="tagged"><strong>Tags:</strong> <a href="../../../../tag/computing/index.html" rel="tag">Computing</a> &middot; <a href="../../../../tag/programming/index.html" rel="tag">Programming</a> &middot; <a href="../../../../tag/tips-tricks/index.html" rel="tag">Tips &#038; tricks</a></p>
+			<div class="clear"></div>
+			
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h3 class="comments_headers">27 responses so far &darr;</h3>
+	
+	<ul id="comment_list">
+
+	
+			
+		<li class="comment  " id="comment-3641">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-3641" title="Permalink to this comment">1</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/48ac24abf238a0b597450618286b724d?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;adam lark </strong>
+				<span class="comment_time">// Jul 29, 2006 at 1:54 pm</span>
+			</p>
+			<div class="entry">
+				<p>sorry i don;t undertsnad how to use this. I saved the file as &#8220;evolution_clean_script&#8221; to my home directory &amp; fired the following</p>
+<p>adam@adams-desktop:~$ sudo perl evolution_clean_script </p>
+<p>I get the following output<br />
+* Examining /home/adam/.evolution/addressbook/local/system/addressbook.db<br />
+Error opening file: No such file or directory</p>
+<p>but I can see the file?</p>
+<p>adam@adams-desktop:~$ ls /home/adam/.evolution/addressbook/local/system/ addressbook.db<br />
+addressbook.db.summary<br />
+beagle-cufGXc9lGkWLA5Ap1WyKpw.changes.db<br />
+pilot-map-1000.xml<br />
+pilot-sync-evolution-addressbook-1000.changes.db</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment mycomment " id="comment-3644">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-3644" title="Permalink to this comment">2</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/ea65e5d90b2df05ac60184927386d4e0?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://www.zzamboni.org/brt/' rel='external nofollow' class='url'>Hitchhiker</a> </strong>
+				<span class="comment_time">// Jul 29, 2006 at 9:09 pm</span>
+			</p>
+			<div class="entry">
+				<p>adam &#8211; I&#8217;m not sure what could be causing the problem. But you do not need to run it using sudo, since the file that it modifies belongs to you, so you have permissions on it already. Could you please try without sudo, and see if the problem persists?</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-6526">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-6526" title="Permalink to this comment">3</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/8c026df0d0d580ddc08d7dadd5a6cd10?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Larry </strong>
+				<span class="comment_time">// Sep 19, 2006 at 5:16 am</span>
+			</p>
+			<div class="entry">
+				<p>I have the same problem, whether I run sudo perl evolution_clean_script or perl evolution_clean_script<br />
+* Examining /home/drfox/.evolution/addressbook/local/system/addressbook.db<br />
+Error opening file: No such file or directory</p>
+<p>Can you offer any other suggestions?</p>
+<p>Larry</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment mycomment " id="comment-6529">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-6529" title="Permalink to this comment">4</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/ea65e5d90b2df05ac60184927386d4e0?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://www.zzamboni.org/brt/' rel='external nofollow' class='url'>Hitchhiker</a> </strong>
+				<span class="comment_time">// Sep 19, 2006 at 10:33 am</span>
+			</p>
+			<div class="entry">
+				<p>Larry &#8211; your addressbook.db must be in a different location, you should find it and pass it as an argument to the script. Which version of evolution are you using? The use of $HOME/.evolution is only in recent versions, previously it used to be $HOME/evolution (without the dot).</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment mycomment " id="comment-6530">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-6530" title="Permalink to this comment">5</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/ea65e5d90b2df05ac60184927386d4e0?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://www.zzamboni.org/brt/' rel='external nofollow' class='url'>Hitchhiker</a> </strong>
+				<span class="comment_time">// Sep 19, 2006 at 10:36 am</span>
+			</p>
+			<div class="entry">
+				<p>adam, Larry &#8211; I just noticed I had a stupid mistake in the script, it was not using the $addrdb variable, no matter how it was defined. This was the cause of your problems &#8211; please try the new version.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-6541">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-6541" title="Permalink to this comment">6</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/8c026df0d0d580ddc08d7dadd5a6cd10?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Larry </strong>
+				<span class="comment_time">// Sep 19, 2006 at 10:34 pm</span>
+			</p>
+			<div class="entry">
+				<p>This worked great! Thanks, Hitchhiker!</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-10213">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-10213" title="Permalink to this comment">7</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/a4e649017d1d15a84033bc097dbf7225?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://andypaxo.net' rel='external nofollow' class='url'>Andy</a> </strong>
+				<span class="comment_time">// Dec 8, 2006 at 1:01 am</span>
+			</p>
+			<div class="entry">
+				<p>Thanks a lot for this &#8211; found it through a search.<br />
+Evolution had gone crazy and created 100 copies of several of my contacts!<br />
+Anyway, this program cleared up all the mess &#8211; brilliant!</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-10337">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-10337" title="Permalink to this comment">8</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/39d2ecaae25446535997828a587466f1?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;jan </strong>
+				<span class="comment_time">// Dec 24, 2006 at 2:02 pm</span>
+			</p>
+			<div class="entry">
+				<p>Thanks a lot!<br />
+Never even knew Perl could read/write the evolution db, this is great!</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-10833">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-10833" title="Permalink to this comment">9</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/88745acd45bce722950ffa0b928006e6?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Alex </strong>
+				<span class="comment_time">// Apr 4, 2007 at 7:31 am</span>
+			</p>
+			<div class="entry">
+				<p>I tried this script and got: &#8220;Unrecognized character xE2 at ./evo line 33.&#8221; .  I don&#8217;t know what it is. I don&#8217;t know any programming language but I have a lot duplicates in my Evolution contacts.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment mycomment " id="comment-10834">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-10834" title="Permalink to this comment">10</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/ea65e5d90b2df05ac60184927386d4e0?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://www.zzamboni.org/brt/' rel='external nofollow' class='url'>Hitchhiker</a> </strong>
+				<span class="comment_time">// Apr 4, 2007 at 9:56 am</span>
+			</p>
+			<div class="entry">
+				<p>Alex: the script has only 32 lines. Maybe you inserted some weird character when copying/pasting into the script?</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-10836">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-10836" title="Permalink to this comment">11</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/88745acd45bce722950ffa0b928006e6?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Alex </strong>
+				<span class="comment_time">// Apr 4, 2007 at 6:12 pm</span>
+			</p>
+			<div class="entry">
+				<p>Sorry maybe I am stupid. I just copied and pasted.</p>
+<p>Line 33:            ).”n”;</p>
+<p>Unrecognized character xE2 at ./evo line 33.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-10837">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-10837" title="Permalink to this comment">12</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/88745acd45bce722950ffa0b928006e6?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Alex </strong>
+				<span class="comment_time">// Apr 4, 2007 at 11:46 pm</span>
+			</p>
+			<div class="entry">
+				<p>OK, it&#8217;s working now. The problem is your HTML code:  ).&#8221;n&#8221;; for line 33. I copied it from the source and changed #8221; into regular quotes and it works now. Thank&#8217;s for the script.<br />
+Alex.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment mycomment " id="comment-10838">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-10838" title="Permalink to this comment">13</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/ea65e5d90b2df05ac60184927386d4e0?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://www.zzamboni.org/brt/' rel='external nofollow' class='url'>Hitchhiker</a> </strong>
+				<span class="comment_time">// Apr 5, 2007 at 12:20 am</span>
+			</p>
+			<div class="entry">
+				<p>Alex &#8211; I think Wordpress was messing with the quotes. I have added a link to the script for download &#8211; I&#8217;m glad you got it working.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-10839">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-10839" title="Permalink to this comment">14</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/88745acd45bce722950ffa0b928006e6?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Alex </strong>
+				<span class="comment_time">// Apr 5, 2007 at 12:35 am</span>
+			</p>
+			<div class="entry">
+				<p>Did you try to contact Evolution people? Maybe they will want to include your script into their next release? Your script is really great. It removed 578 duplicates from my contacts. I don&#8217;t know why duplicates appeared. Maybe Evolution is buggy?</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-10918">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-10918" title="Permalink to this comment">15</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/36e58c4bf81962ab0b29cdfaa3c8de04?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Bruno </strong>
+				<span class="comment_time">// Jun 25, 2007 at 5:20 pm</span>
+			</p>
+			<div class="entry">
+				<p>Worked great for me. Removed whole load of duplicates after synchronizing Palm.</p>
+<p>Thanks.</p>
+<p>Bruno</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-11020">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11020" title="Permalink to this comment">16</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/429f3b6497c81c4503313d92b1688422?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://symbianverse.com' rel='external nofollow' class='url'>Matthew Stevens</a> </strong>
+				<span class="comment_time">// Nov 8, 2007 at 3:26 am</span>
+			</p>
+			<div class="entry">
+				<p>Any such script out there for calendar entires? TIA</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment mycomment " id="comment-11021">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11021" title="Permalink to this comment">17</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/ea65e5d90b2df05ac60184927386d4e0?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://www.zzamboni.org/brt/' rel='external nofollow' class='url'>Hitchhiker</a> </strong>
+				<span class="comment_time">// Nov 9, 2007 at 12:43 am</span>
+			</p>
+			<div class="entry">
+				<p>Matthew: I just looked and the calendars are not stored in database files (which would have made adapting the script really easy) but as ical files (.ics), so a completely different technique would have to be used to remove duplicates. Unfortunately I am no longer using evolution myself, and don&#8217;t have the time to look into it.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-11136">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11136" title="Permalink to this comment">18</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/2b7bac198b8d719b486d570bb8d5173b?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://noweb' rel='external nofollow' class='url'>Ch0c0bn</a> </strong>
+				<span class="comment_time">// Mar 5, 2008 at 8:46 am</span>
+			</p>
+			<div class="entry">
+				<p>My adressbook had gone wild after using syncevolution with scheduleworld.</p>
+<p>Your script worked really fine for me. thank you.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-11137">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11137" title="Permalink to this comment">19</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/8ff03356b634e87000204e165d0a3ab1?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://olea.org/diario/' rel='external nofollow' class='url'>Ismael Olea</a> </strong>
+				<span class="comment_time">// Mar 7, 2008 at 2:04 pm</span>
+			</p>
+			<div class="entry">
+				<p>You&#8217;re script is very nice, but it removes all contacts not only duplicates but complementary contacts for same persons in different roles.</p>
+<p>Anyhow, it&#8217;ll be really useful a cleaning tool for evo.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-11161">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11161" title="Permalink to this comment">20</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/4835bfe098bfece484e15968c6142da4?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Addressed Out </strong>
+				<span class="comment_time">// Apr 16, 2008 at 8:25 pm</span>
+			</p>
+			<div class="entry">
+				<p>Thanks a lot &#8211; your script worked well for me.</p>
+<p>I just had a question &#8211;<br />
+your script just eliminates duplicates &#8211; but does it merge duplicate contacts? (e.g. if I&#8217;d added a work telephone No. to one entry and a Mob. No. to the other does this info get saved) &#8211; or does the script just delete the second version. Many thanks.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment mycomment " id="comment-11162">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11162" title="Permalink to this comment">21</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/ea65e5d90b2df05ac60184927386d4e0?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://www.zzamboni.org/brt/' rel='external nofollow' class='url'>Hitchhiker</a> </strong>
+				<span class="comment_time">// Apr 16, 2008 at 9:06 pm</span>
+			</p>
+			<div class="entry">
+				<p>Everyone: thanks for all the comments! I am happy that the script has been useful for some people.</p>
+<p>@Addressed Out &amp; Ismael: it&#8217;s a very dumb script, it simply keeps the first record for each person, and it does the checking based on the person&#8217;s name. So it will not merge duplicate records, and it will blindly remove everything beyond the first one it finds for each person. If the first record it finds is empty, that&#8217;s the one it&#8217;ll keep. Furthermore, there&#8217;s no way to know which record it will find first, given the nature of the database file in which the records are stored.</p>
+<p>The script could be improved to do merging, or at least to check which record has more information before deleting them. Unfortunately I am not using Evolution any more, so that will have to be a task for someone else <img src='../../../../wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-12006">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-12006" title="Permalink to this comment">22</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/92e2b12d5d599b13958039b06d48f2aa?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Edmond Tong </strong>
+				<span class="comment_time">// Aug 21, 2008 at 5:22 pm</span>
+			</p>
+			<div class="entry">
+				<p>Wow you&#8217;ve saved me hours with that script!! Thanks a bunch!</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-12040">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-12040" title="Permalink to this comment">23</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/fdba1dde11dc7b4f62a912ad88379379?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://michaeljaylissner.com' rel='external nofollow' class='url'>Mike</a> </strong>
+				<span class="comment_time">// Sep 28, 2008 at 3:31 am</span>
+			</p>
+			<div class="entry">
+				<p>There is an easier way! Create a new address book. Name it whatever you want. Take the two known* duplicate entries and drag them there. It will give you the duplicate merge dialog. Merge them. Drag them back. Done!</p>
+<p>*this being the tricky part&#8230;</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-12286">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-12286" title="Permalink to this comment">24</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/ba37ad56f95b7a528f13b2adad8878f4?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Shane Rice </strong>
+				<span class="comment_time">// Feb 16, 2009 at 2:03 am</span>
+			</p>
+			<div class="entry">
+				<p>Works great for me!  I had a bunch of duplicates after syncing with Palm.  This eliminated them.  Thanks!!!  2000+ contacts down to 1000+ contacts!</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-13078">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-13078" title="Permalink to this comment">25</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/f67676f6b78da6ce122ba216bc4b4f65?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://rohan-kapoor.com/' rel='external nofollow' class='url'>Rohan Kapoor</a> </strong>
+				<span class="comment_time">// Aug 24, 2009 at 6:39 am</span>
+			</p>
+			<div class="entry">
+				<p>Thanks a lot for this! You saved me around hours of work when synce messed up and I ended up with 8 of the same contact x 400 contacts!</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-13079">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-13079" title="Permalink to this comment">26</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/1676a82098b5114312b7c401a47d65f3?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Brion Kidder </strong>
+				<span class="comment_time">// Aug 24, 2009 at 9:31 pm</span>
+			</p>
+			<div class="entry">
+				<p>When I run the script from Terminal I get the error message &#8220;command not found&#8221;</p>
+<p>evo_eliminate_duplicate_contacts.pl</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-13080">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-13080" title="Permalink to this comment">27</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/1676a82098b5114312b7c401a47d65f3?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Brion Kidder </strong>
+				<span class="comment_time">// Aug 24, 2009 at 9:35 pm</span>
+			</p>
+			<div class="entry">
+				<p>OIC. You have to add the command perl in front of the script. Did not know that.</p>
+<p>brion@brion-laptop:~$ perl evo_eliminate_duplicate_contacts.pl</p>
+ 
+							</div>
+		</li>
+		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h3 id="respond" class="comments_headers">Leave a Comment</h3>
+			<form action="http://zzamboni.org/brt/wp-comments-post.php" method="post" id="comment_form">
+			
+										<p><input class="text_input" type="text" name="author" id="author" value="" tabindex="1" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="text" name="email" id="email" value="" tabindex="2" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="text" name="url" id="url" value="" tabindex="3" /><label for="url"><strong>Website</strong></label></p>
+							<!--<p><small><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </small></p>-->
+			
+				<p><textarea class="text_input text_area" name="comment" id="comment" rows="7" tabindex="4"></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="../../../../wp-content/themes/Cutline_BrT_retired/images/submit_bg.gif" tabindex="5" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="116" />
+				</p>
+		
+				<p class="comment-timeout">Comments for this post will be closed on 24 August 2010.</p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+			
+				
+		</div>
+		
+		<div id="sidebar">
+	<ul class="sidebar_list">
+		<li id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div><a href='../../../../tag/readlater/index.html' class='tag-link-138' title='5 topics' rel="tag" style='font-size: 8.28571428571pt;'>@readlater</a>
+<a href='../../../../tag/apple/index.html' class='tag-link-129' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>apple</a>
+<a href='../../../../tag/art/index.html' class='tag-link-36' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>art</a>
+<a href='../../../../tag/blogging/index.html' class='tag-link-10' title='19 topics' rel="tag" style='font-size: 9.61904761905pt;'>Blogging</a>
+<a href='../../../../tag/cocoa/index.html' class='tag-link-153' title='8 topics' rel="tag" style='font-size: 8.57142857143pt;'>cocoa</a>
+<a href='../../../../tag/commodore/index.html' class='tag-link-31' title='2 topics' rel="tag" style='font-size: 8pt;'>commodore</a>
+<a href='../../../../tag/computing/index.html' class='tag-link-8' title='8 topics' rel="tag" style='font-size: 8.57142857143pt;'>Computing</a>
+<a href='../../../../tag/cool/index.html' class='tag-link-37' title='11 topics' rel="tag" style='font-size: 8.85714285714pt;'>cool</a>
+<a href='../../../../tag/copperexport/index.html' class='tag-link-4' title='12 topics' rel="tag" style='font-size: 8.95238095238pt;'>CopperExport</a>
+<a href='../../../../tag/education/index.html' class='tag-link-141' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>education</a>
+<a href='../../../../tag/fun/index.html' class='tag-link-81' title='4 topics' rel="tag" style='font-size: 8.19047619048pt;'>fun</a>
+<a href='../../../../tag/gtd/index.html' class='tag-link-19' title='16 topics' rel="tag" style='font-size: 9.33333333333pt;'>GTD</a>
+<a href='../../../../tag/health/index.html' class='tag-link-14' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>Health</a>
+<a href='../../../../tag/howto/index.html' class='tag-link-34' title='21 topics' rel="tag" style='font-size: 9.80952380952pt;'>howto</a>
+<a href='../../../../tag/humor/index.html' class='tag-link-18' title='4 topics' rel="tag" style='font-size: 8.19047619048pt;'>Humor</a>
+<a href='../../../../tag/image/index.html' class='tag-link-193' title='2 topics' rel="tag" style='font-size: 8pt;'>image</a>
+<a href='../../../../tag/interesting/index.html' class='tag-link-39' title='4 topics' rel="tag" style='font-size: 8.19047619048pt;'>interesting</a>
+<a href='../../../../tag/linky/index.html' class='tag-link-3' title='149 topics' rel="tag" style='font-size: 22pt;'>Linky</a>
+<a href='../../../../tag/linux/index.html' class='tag-link-11' title='18 topics' rel="tag" style='font-size: 9.52380952381pt;'>Linux</a>
+<a href='../../../../tag/mac/index.html' class='tag-link-7' title='42 topics' rel="tag" style='font-size: 11.8095238095pt;'>Mac</a>
+<a href='../../../../tag/macosx/index.html' class='tag-link-134' title='24 topics' rel="tag" style='font-size: 10.0952380952pt;'>macosx</a>
+<a href='../../../../tag/mailapp/index.html' class='tag-link-147' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>mail.app</a>
+<a href='../../../../tag/news/index.html' class='tag-link-28' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>news</a>
+<a href='../../../../tag/osx/index.html' class='tag-link-148' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>osx</a>
+<a href='../../../../tag/passwords/index.html' class='tag-link-26' title='2 topics' rel="tag" style='font-size: 8pt;'>passwords</a>
+<a href='../../../../tag/personal/index.html' class='tag-link-15' title='14 topics' rel="tag" style='font-size: 9.14285714286pt;'>Personal</a>
+<a href='../../../../tag/photography/index.html' class='tag-link-16' title='6 topics' rel="tag" style='font-size: 8.38095238095pt;'>Photography</a>
+<a href='../../../../tag/productivity/index.html' class='tag-link-5' title='21 topics' rel="tag" style='font-size: 9.80952380952pt;'>Productivity</a>
+<a href='../../../../tag/programming/index.html' class='tag-link-13' title='22 topics' rel="tag" style='font-size: 9.90476190476pt;'>Programming</a>
+<a href='../../../../tag/quicksilver/index.html' class='tag-link-25' title='2 topics' rel="tag" style='font-size: 8pt;'>QuickSilver</a>
+<a href='../../../../tag/reference/index.html' class='tag-link-132' title='4 topics' rel="tag" style='font-size: 8.19047619048pt;'>reference</a>
+<a href='../../../../tag/reviews/index.html' class='tag-link-20' title='4 topics' rel="tag" style='font-size: 8.19047619048pt;'>Reviews</a>
+<a href='../../../../tag/ruby/index.html' class='tag-link-22' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>Ruby</a>
+<a href='../../../../tag/security/index.html' class='tag-link-9' title='8 topics' rel="tag" style='font-size: 8.57142857143pt;'>Security</a>
+<a href='../../../../tag/site-news/index.html' class='tag-link-12' title='30 topics' rel="tag" style='font-size: 10.6666666667pt;'>Site news</a>
+<a href='../../../../tag/software/index.html' class='tag-link-2' title='30 topics' rel="tag" style='font-size: 10.6666666667pt;'>Software</a>
+<a href='../../../../tag/timemachine/index.html' class='tag-link-155' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>timemachine</a>
+<a href='../../../../tag/tips/index.html' class='tag-link-151' title='9 topics' rel="tag" style='font-size: 8.66666666667pt;'>tips</a>
+<a href='../../../../tag/tips-tricks/index.html' class='tag-link-6' title='49 topics' rel="tag" style='font-size: 12.4761904762pt;'>Tips &#038; tricks</a>
+<a href='../../../../tag/tools/index.html' class='tag-link-83' title='12 topics' rel="tag" style='font-size: 8.95238095238pt;'>tools</a>
+<a href='../../../../tag/tutorial/index.html' class='tag-link-154' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>tutorial</a>
+<a href='../../../../tag/unix/index.html' class='tag-link-30' title='2 topics' rel="tag" style='font-size: 8pt;'>unix</a>
+<a href='../../../../tag/video/index.html' class='tag-link-146' title='6 topics' rel="tag" style='font-size: 8.38095238095pt;'>video</a>
+<a href='../../../../tag/wiltac/index.html' class='tag-link-202' title='5 topics' rel="tag" style='font-size: 8.28571428571pt;'>wiltac</a>
+<a href='../../../../tag/wordpress/index.html' class='tag-link-157' title='6 topics' rel="tag" style='font-size: 8.38095238095pt;'>wordpress</a></div>
+</li>
+<li id="calendar-2" class="widget widget_calendar"><h2 class="widgettitle">Archives</h2>
+<div id="calendar_wrap"><table id="wp-calendar" summary="Calendar">
+	<caption>July 2006</caption>
+	<thead>
+	<tr>
+		<th abbr="Sunday" scope="col" title="Sunday">S</th>
+		<th abbr="Monday" scope="col" title="Monday">M</th>
+		<th abbr="Tuesday" scope="col" title="Tuesday">T</th>
+		<th abbr="Wednesday" scope="col" title="Wednesday">W</th>
+		<th abbr="Thursday" scope="col" title="Thursday">T</th>
+		<th abbr="Friday" scope="col" title="Friday">F</th>
+		<th abbr="Saturday" scope="col" title="Saturday">S</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td abbr="June" colspan="3" id="prev"><a href="../../../06/index.html" title="View posts for June 2006">&laquo; Jun</a></td>
+		<td class="pad">&nbsp;</td>
+		<td abbr="September" colspan="3" id="next"><a href="../../../09/index.html" title="View posts for September 2006">Sep &raquo;</a></td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="6" class="pad">&nbsp;</td><td>1</td>
+	</tr>
+	<tr>
+		<td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
+	</tr>
+	<tr>
+		<td><a href="../index.html" title="Eliminating duplicate contacts in Evolution (HowTo)">9</a></td><td>10</td><td>11</td><td><a href="../../12/index.html" title="25 Great Calvin &amp; Hobbes Strips @ Progressive Boink, Life of a space shuttle booster rocket">12</a></td><td>13</td><td>14</td><td>15</td>
+	</tr>
+	<tr>
+		<td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td>
+	</tr>
+	<tr>
+		<td>23</td><td>24</td><td><a href="../../25/index.html" title="Yes! It&#8217;s the all-out nuclear war USB hub! | Reg Hardware">25</a></td><td>26</td><td>27</td><td>28</td><td>29</td>
+	</tr>
+	<tr>
+		<td>30</td><td>31</td>
+		<td class="pad" colspan="5">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table></div></li>
+<li id="text-3" class="widget widget_text"><h2 class="widgettitle">My blogroll</h2>
+			<div class="textwidget"><script type="text/javascript" src="http://www.google.com/reader/ui/publisher-en.js"></script>
+<script type="text/javascript" src="http://www.google.com/reader/public/javascript-sub/user/07157728015005316665/label/Can't miss?callback=GRC_p(%7Bc%3A%22-%22%2Ct%3A%22%22%2Cb%3A%22true%22%7D)%3Bnew%20GRC"></script></div>
+		</li>
+	</ul>
+</div>			
+	</div>
+
+	<div id="footer">
+		<p>&copy; 2006&ndash;2007 BrT &mdash; <a href="../../../../sitemap/index.html">Sitemap</a> &mdash; <a href="http://cutline.tubetorial.com/">Cutline</a> by <a href="http://www.tubetorial.com">Chris Pearson</a></p>
+		<script type='text/javascript' src='../../../../wp-includes/js/thickbox/thickbox.js%3Fver=3.1-20090123'></script>
+
+<script type="text/javascript">
+var tb_pathToImage = "http://zzamboni.org/brt/wp-includes/js/thickbox/loadingAnimation.gif";
+var tb_closeImage = "http://zzamboni.org/brt/wp-includes/js/thickbox/tb-close.png";
+</script>
+<script src="http://stats.wordpress.com/e-200940.js" type="text/javascript"></script>
+<script type="text/javascript">
+st_go({blog:'1092596',v:'ext',post:'116'});
+var load_cmc = function(){linktracker_init(1092596,116,2);};
+if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+else load_cmc();
+</script>
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,529 @@
+
+
+
+
+     Super Cataloger 128 by Diego Martin Zamboni
+     
+     
+     
+     Catalog all of your software (up to as many as 2500 titles) quickly
+     and efficiently with this great utility for the 128! 80-column monitor
+     require. Printer optional.
+     
+     
+     Super Cataloger 128 has two modes of operation: in Directory mode, you
+     view the directory of one disk, select which files you will add to the
+     main list, add them, and perform other operations. In List mode you
+     view the list itself, which contains all the files you have added, and
+     perform tasks like sorting, searching, deleting, and so on.
+     
+        When you first run Super Cataloger 128, you will see the main
+     screen. It's divided in four sections. The top line contains the name
+     of the program and some information I'll describe later. The middle
+     section is the work place, which contains the filenames either from
+     the directory or from the list. The bottom three lines contain the
+     menu with the options you have at the moment, and the message and
+     input line. As you have no files in memory either from a directory or
+     from a list, you will see an almost empty screen. A message on the
+     bottom line (the message and input line), says "Press R or L to
+     continue". Pressing ESC here will exit you from the program without
+     confirmation. If you look at the menu lines, you'll see that R
+     corresponds to Read Dir, and L to Load List. If you press R, SC128
+     will read the directory from the disk in the drive and put you in
+     directory mode. On the other hand, if you press L, SC128 will ask you
+     for a file name and will look for a list with that name in the disk,
+     and if found, will load it and put you directly into list mode.
+     
+     
+     DIRECTORY MODE
+     
+     When you press R, SC128 will read the directory from the disk in the
+     drive and show the filenames in a four-column format in the middle
+     section of the screen. At the top line you will see the name of the
+     disk and the number of files on it. At the bottom you will see a menu
+     with a list of options. You activate each option by pressing the
+     highlighted letter. Also, you will see the first filename in reverse
+     video. This is the cursor, and you can move it around with the cursor
+     keys (either set is OK). The cursor wraps around from top to bottom,
+     bottom to top and to the sides. If you press RETURN over a file, it
+     will turn red, indicating it's selected. Pressing RETURN over a
+     selected file will deselect it. If there are more than 76 files in the
+     disk, you can view the rest of them by pressing the O key, which
+     stands for Other page (there can be a maximum of two pages, as the
+     maximum number of files in a disk is 144). Your can move to the top of
+     the page by pressing HOME. If you are already at the top of the page,
+     HOME takes you to the top of the directory. 
+     
+         R - Read dir: This allows you to work on another disk. Simply
+
+
+
+
+
+
+                                     - 1 -
+
+
+
+
+
+
+     change the disk in the drive and press this letter. SC128 will erase
+     the directory currently in memory and read the new one.
+     
+         T - Toggle all files: This will invert the status of all the files
+     in the current directory. Selected files will be deselected, and
+     deselected files will be selected. If you wish to select all but a few
+     ones of the files, simply select the ones you don't want selected and
+     press T.
+     
+         X - Examine list: This puts you into list mode, which will be
+     explained later.
+     
+         K - Disk Command: This allows you to send a command to the disk
+     drive. Type in the command at the prompt and press RETURN. After the
+     command is sent, the error channel will be read and shown, then you
+     must press any key to return to the directory. If you press RETURN
+     without typing anything or press ESC, no command will be sent and only
+     the error channel will be read. Again, press any key to continue
+     working.
+     
+         V - View file: If you can't remember the contents of a file this
+     command can help. Simply put the cursor over it and press V. If the
+     file is a BASIC program, it will list to the screen. If it's a
+     sequential, user or program file containing only text, only the first
+     four bytes of the file will be scrambled, and the rest of it will
+     display correctly. If the file contains any other codes (for example,
+     a text file from SpeedScript), strange things may appear. While the
+     file is listing, you can press NO SCROLL to pause it (press NO SCROLL
+     again no continue) or ESC to interrupt the listing and return to
+     directory mode.
+     
+         E - Edit filename: This allows you to change the way a filename
+     will appear in the list. For example, if you have SpeedScript on disk
+     under the name "SS" for convenience in loading, you may want to expand
+     it to "SpeedScript" before adding it to the list, so you may identify
+     it easily. Remember, this command does not affect the name of the file
+     in the disk, simply its name in memory. You can move the cursor with
+     the cursor keys, and edit the filename with DEL and INST (this is true
+     for any input within this program). If you press ESC instead of
+     RETURN, all changes made to the filename will be discarded and it will
+     be left as it was before invoking the command.
+     
+         CTRL-E - Edit diskname: In a similar manner to the previous
+     command, this lets you edit the name of the disk as it will appear
+     when added to the list. For example, you may change it to the name
+     that appears in the disk label, for easily identifying the files that
+     belong to it.
+     
+         C - Catalog files: This command will add all the selected files
+     (the ones in red) to the master list in memory. This allows you to add
+     files selectively. For example, if you have a game called SPACE GAME
+     that loads the files SPACE.SPRITES and SPACE.ML when it's run, you
+     don't want to put those "auxiliary" files in the list. Usually you
+
+
+
+
+
+
+                                     - 2 -
+
+
+
+
+
+
+     will only want to know which programs, not files, you have in each
+     disk.
+     
+         If you have previously started a list and saved it to disk,
+     remember to load it before starting to add more files. There is no way
+     to merge two list files.
+     
+         When you perform the Catalog command, SC128 will check if there is
+     space available in memory for adding the selected files, and will
+     inform you if there isn't. In this case, save the list in memory to
+     disk, erase it and start a new one. If the command is successfully
+     performed, you will be informed how many files have been added to the
+     list. After this, all selected files will be deselected.
+     
+         A - Scratch files: This allows you to do some housekeeping with
+     your disks. If you discover some files that you don't need anymore,
+     select them and press A. After asking you for a confirmation, SC128
+     will scratch from the disk those files and will re-read the directory.
+     This is the only command from SC128 which will alter mour disk files,
+     so use it carefully.
+     
+         F - Free mem: Gives you the aproximate number of files that will
+     still fit in memory. The program can't give you an exact number,
+     because of the method used for storing the list. The sum of filenames
+     and disknames (the number of disks you have added to the list, no
+     matter how many files each one has) cannot exceed 2500. The number
+     SC128 gives you is the exact space remaining if you added only disks
+     with 70 files each.
+     
+         D - Directory: This command clears the screen and shows you the
+     directory of the disk in the drive in the normal way, that is, exactly
+     as it appears when you execute the DIRECTORY command from BASIC. You
+     can press the NO SCROLL key to pause the listing or RUN/STOP to abort
+     it (press it only once). After finishing, press any key to return to
+     the directory mode.
+     
+         L - Load list: Asks for a filename (the default is the name of the
+     last list accessed, either in a load or a save, or MASTER LIST if it's
+     the first) and tries to load it from the disk. When finished loading,
+     you will return to directory mode as if nothing has happened, but if
+     you press X, you will see that the new list is now in memory, ready to
+     be used.
+     
+          If there is a list already in memory, SC128 will ask you for a
+     confirmation, since loading a new list will erase it. You can cancel
+     the command by pressing ESC instead of RETURN or by pressing RETURN
+     without a filename.
+     
+         S - Save list: If there is a list in memory this option asks for a
+     filename (again, the default is the last name given in a save/load
+     operation, or MASTER LIST if this is the first) and tries to save the
+     list in memory to the disk with that name. You can cancel by pressing
+     ESC or giving a null filename. If the file you specified already
+
+
+
+
+
+
+                                     - 3 -
+
+
+
+
+
+
+     exists in the disk, SC128 will ask if you wish to replace it. If you
+     answer Y, the file will be scratched before saving the list in
+     memory.
+     
+          SC128 automatically adds "SC." at the beginning of the filenames,
+     for identification, so the maximum length of the filename you give is
+     13 characters. 
+     
+         ESC - Quit: Simply quits the program after asking for
+     confirmation. If you discover too late that you didn't really want to
+     quit (or if you accidentally press RUN/STOP), type GOTO 400 and press
+     RETURN for reentering the program without losing anything that was in
+     memory.
+     
+          One command that is not in the menu is SPACE, which redraws the
+     screen (this works also in list mode).
+     
+     
+     LIST MODE
+     
+     If you press L from the initial screen or you press X from directory
+     mode, you will be put in list mode. At the top of the screen, you will
+     see the name of the list (the default is MASTER LIST) and the number
+     of files on it. You will also note that the menu lines have changed,
+     and so the middle section. The files are shown in two columns,
+     containing the filename, the disk to which it belongs and the number
+     of the disk. This number depends on the order in which the disks were
+     added to the list, but it can be changed (more on this later). If
+     there are no files in the list, you will see a message telling so, and
+     you will only be allowed to perform the commands X, A, F and L (see
+     below for explanation). If there are files in the list, you will see a
+     cursor, and you can move it using the cursor keys. If there are more
+     than 34 files in the list, you can see the other ones by pressing N
+     (for Next page) or P (for Previous page). These commands wrap around,
+     that is, if you are in the first page and press P, you will be taken
+     to the last page. By the way, if you are in the last page and press N,
+     you will see the first page again. At the bottom left of the screen
+     you will see an indicator showing the current page. You can quickly go
+     to the top of the current page with HOME. If you are already there and
+     press HOME, you will move to the top of the first page. Let's see the
+     description of each command, in the order they appear in the menu.
+     
+         CTRL-P - Print: This is the more complex part of the program. You
+     will see a status bar at the bottom of the screen.
+     
+         Pressing C changes Columns to 40, 80 and 120, which affects the
+     number of columns in which the list is printed. With D you can change
+     the device for printing to 4, 5, 8 or 9. If you select 8 or 9,
+     printing will be to the disk, so you will be asked for a filename at
+     the time of printout. Answer with a filename, adding ",x,W" to the
+     end, where x is P, S or U, depending if you wish to create a program,
+     sequential or user file.
+     
+
+
+
+
+
+
+                                     - 4 -
+
+
+
+
+
+
+         After selecting the device and number of colums, you are ready for
+     printing. Pressing A will print all the list. At this time you will be
+     asked if you wish to print the list as is or by disk. Pressing A will
+     print the list in the order it is, in a format similar to that of the
+     screen. To find how many columns will print, divide the setting of
+     'Columns' by 40. Pressing B will print all the list by disk, that is,
+     first all the files from disk #1, then all the files from disk #2, and
+     so on. The number of columns will be Columns/20 (the double of the
+     above).
+     
+        Pressing T at the print menu will print all the files which belong
+     to the currently selected disk (the one the cursor was on at the time
+     of pressing CTRL-P). In this way, if you wish to print all the files
+     from one disk, simply put the cursor over any file of that disk, press
+     CTRL-P, set columns and device and then press T. The filenames will be
+     printed in a number of columns equal to Columns/20.
+     
+         With all the options (except when printing to disk), SC128 will
+     divide the printout into pages, putting a header at the top of each
+     page. The header contains the name of the list and the page number.
+     SC128 uses the form-feed character (CHR$(12)) to jump to the next
+     page. If your printer uses a different code from this, change it in
+     line 2170 of the program.
+     
+         If you select Columns=120, the printer must be in condensed mode
+     for printing properly. Some printers (mine for example) don't have
+     codes for starting condensed printing (it's set by DIP switches), but
+     others do have codes for that. Simply put in line 60 the proper codes
+     for your printer, and SC128 will send them out automatically if you
+     select 120 columns.
+     
+         When printing to disk, SC128 does no error checking, so be careful
+     that the filename you give is a valid one, and be sure to append the
+     ",x,W" part to the end. You can then print this file from another
+     program, edit it with a word processor, etc.
+     
+         You can cancel a printout in progress by holding down ESC until
+     the printer stops. With the same key you can exit from the print menu
+     without printing anything.
+     
+         CTRL-D - Delete filename: Position the cursor over a filename you
+     wish to erase from the list and press this key. SC128 will ask for
+     confirmation, and if you answer Y, it will delete the file from the
+     list. After deletion, you will be returned to the top of the current
+     page, or to the first page if the deletion made the cursor be after
+     the end of the list (this applies also to the next command).
+     
+        CTRL-E - Erase disk: This allows you to erase many files from one
+     disk at once. When this command is executed, SC128 asks you if the
+     file is Sorted or Unsorted. If you press S, SC128 will search through
+     all the list (starting at the cursor, so if you wish to affect all the
+     list, move first to the top of the first page) for files that belong
+     to the current disk (the one under the cursor) and will erase them
+
+
+
+
+
+
+                                     - 5 -
+
+
+
+
+
+
+     from the list (if the list is long this may take a while, so the
+     program cycles screen colors to indicate it's working). If you press
+     U, SC128 will erase all consecutive files (starting at the cursor)
+     which belong to the current disk. Deletion will stop at the first file
+     from other disk that is encountered.
+     
+         When it finishes any deletion command (CTRL-E or CTRL-D), SC128
+     will check to see if any files remain in the list for that disk. If
+     there aren't, the disk will also be erased from the list, and all the
+     other disks will be shifted down, thus changing their numbers. For
+     example, if you erase all files from disk #3, after deletion disk #4
+     will become #3, disk #5 will become #4, and so on.
+     
+         X - Exit list mode: Returns you to directory mode if there is a
+     directory in memory. If there isn't, you will be returned to the first
+     screen, from where you can read a directory. If you left any files in
+     the list, you will see that the "Press R or L to continue" message has
+     changed to "Press R or X to continue". This allows you to reenter list
+     mode without having to read a directory.
+     
+         M - Move: With this option you can rearrange the files within the
+     list. Put the cursor over a file you wish to move and press M. The
+     file is put in a buffer, and it's shown at the bottom of the screen.
+     Then move the cursor to the place where you want to put the file and
+     press M again. The file will be moved to that place and all the files
+     in between will be shifted down or up acordingly. (The RETURN key has
+     exactly the same function as M.) Note that the operation performed is
+     not an exchange, that is, the selected file is not exchanged with the
+     other file. It's actually deleted from its original place, all
+     following files are shifted down, and then it's inserted into the new
+     place. You can cancel a selection (clear the buffer) by pressing ESC.
+     
+         E - Search: With this option you can search through the list
+     (starting at the position following the cursor) for a file. After you
+     press E you will be asked to enter a filename. Type the file you are
+     looking for and press RETURN. If you start the filename with an
+     asterisk, the search will be partial, that is, any file that contains
+     the text you entered will match. If the file you requested is found,
+     the cursor is moved to it. The text you entered becomes the default
+     search string for the next search, so you can make multiple searches
+     simply by pressing E again and then RETURN (for accepting the default
+     string).
+     
+         A variation of this command is SHIFT-E, which allows you to search
+     for a disk instead of a file. The procedure is exactly the same as for
+     searching a file, but the search string you enter will be searched for
+     in the disk list instead of the file list, and the cursor will be
+     positioned on the first file (after the initial cursor position) that
+     belongs to that disk.
+     
+         A - Add filename: This allows you to add an individual filename to
+     the list. I find this option particularly useful for adding the names
+     of commercial programs to the list. Generally, commercial disks
+
+
+
+
+
+
+                                     - 6 -
+
+
+
+
+
+
+     contain many files, all of them belonging to the same program. So you
+     can add only the name of the program, without bothering about the
+     other files. When you press A, you will be asked for the filename, and
+     then the diskname (by default, the diskname is the same as the
+     filename). If the diskname you entered is already in the list (for
+     example, if you want to register in the list a file you have added to
+     a disk already in the list), the file will be added to it, and you
+     will be notified. If the diskname you enter is not in the list (in the
+     case of a commercial program), the disk will be added to the list
+     along with the filename.
+     
+         G - Goto page: This allows you to home in directly into a specific
+     page number. You will be asked for the new page number, and if it's
+     valid, you will be taken there.
+     
+         O - Sort: This command allows you to perform sortings on either
+     the file list or the disk list. When you press O, a submenu will
+     appear, containing three options:
+     
+         F - Sort File list: sorts the file list alphabetically. The
+     sorting may take up to more than one minute if the list contains many
+     filenames.
+     
+         D - Sort Disk list: sorts the disk list alphabetically. This means
+     that the order of the files in the list will not be affected, only the
+     disks' numbers will change to reflect that the disk list is now in
+     alphabetical order.  When the sorting finishes, a message will appear
+     asking if you want to automatically execute the following option
+     (reorder files according to disk number).
+     
+         R - Reorder files according to disk number: This option will
+     change the order of the files in the list, so the files from disk #1
+     will be grouped at the beginning of the list, followed by the files
+     from disk #2, and so on.
+     
+         CLR - Clear list: Pressing SHIFT-CLR/HOME causes the program to
+     ask you if you really want to erase all the list from memory. If you
+     answer Y, all the list will be erased. BE CAREFUL! This is absolutely
+     irrecoverable.
+     
+         # - Change disk number: SC128 numbers the disks as they are
+     entered in the list. To renumber them, use this option. You will be
+     asked to enter the new disk number (as always, you can cancel with
+     ESC). The diskname will actually be moved inside the disk list, pretty
+     much the way the filenames are moved with the M key. All other disk
+     numbers will be adjusted accordingly.
+     
+         F - Free mem: Is exactly the same option as in directory mode.
+     Refer to it for details.
+     
+         L/S - Load/Save list: Works exactly as in directory mode, but it
+     returns you to list mode after completing its operation.
+     
+
+
+
+
+
+
+                                     - 7 -
+
+
+
+
+
+
+     - END OF FILE
+     -@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@88888888888888888888888888888888888888
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 8 -
+
+
+
