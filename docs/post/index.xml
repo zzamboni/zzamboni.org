@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on zzamboni.org</title>
-    <link>https://zzamboni.org/ng/post/</link>
-    <description>Recent content in Posts on zzamboni.org</description>
+    <title>Blog on zzamboni.org</title>
+    <link>http://zzamboni.org/ng/post/</link>
+    <description>Recent content in Blog on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy;2016 Diego Zamboni</copyright>
-    <lastBuildDate>Thu, 03 Aug 2017 15:33:07 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 03 Aug 2017 23:04:22 +0200</lastBuildDate>
     
-	<atom:link href="https://zzamboni.org/ng/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://zzamboni.org/ng/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>First Post</title>
-      <link>https://zzamboni.org/ng/post/first-post/</link>
-      <pubDate>Thu, 03 Aug 2017 15:33:07 +0200</pubDate>
+      <title>The Big Website Reboot</title>
+      <link>http://zzamboni.org/ng/post/the-big-website-reboot/</link>
+      <pubDate>Tue, 08 Aug 2017 06:56:52 +0200</pubDate>
       
-      <guid>https://zzamboni.org/ng/post/first-post/</guid>
-      <description>Hello world! First post.</description>
+      <guid>http://zzamboni.org/ng/post/the-big-website-reboot/</guid>
+      <description>&lt;p&gt;Welcome to the new zzamboni.org.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ellen on password security</title>
+      <link>http://zzamboni.org/ng/post/2013-04-25-ellen-on-password-security/</link>
+      <pubDate>Thu, 25 Apr 2013 14:46:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/ng/post/2013-04-25-ellen-on-password-security/</guid>
+      <description>Hilarious - Ellen on the &amp;ldquo;Internet Password Minder&amp;rdquo;
+ </description>
     </item>
     
   </channel>
