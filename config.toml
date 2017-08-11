@@ -4,7 +4,7 @@ title = "zzamboni.org"
 theme = "gohugo-theme-ananke"
 languageCode = "en-us"
 # Enable comments by entering your Disqus shortname
-disqusShortname = "the-new-zzamboni-org"
+disqusShortname = "zzamboni-ng"
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = ""
 publishDir = "docs"
