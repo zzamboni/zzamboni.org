@@ -56,7 +56,7 @@ use and available for free.
   from my Commodore 128 program [Supercataloguer
   128](http://zzamboni.org/brt/2008/01/24/supercataloger-128).
 - [Scrabble letters](https://www.pexels.com/photo/alphabet-board-game-bundle-close-up-278888/)
-  ([blog](../blog) header background) from
+  ([blog](../post) header background) from
   [Pexels](https://www.pexels.com/), licensed under
   [CC0](https://www.pexels.com/photo-license/).
 - All other header background photos were taken either by my wife or
