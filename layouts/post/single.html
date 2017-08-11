@@ -22,8 +22,8 @@
         {{ .Content }}
       </section>
       {{ partial "tags.html" . }}
+      {{ template "_internal/disqus.html" . }}
     </article>
-    {{ template "_internal/disqus.html" . }}
     <div class="ph3 mt2 mt6-ns">
       {{ partial "menu-contextual.html" . }}
     </div>
