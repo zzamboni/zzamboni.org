@@ -72,7 +72,29 @@
   </url>
   
   <url>
+    <loc>http://zzamboni.org/ng/tags/fun/</loc>
+    <lastmod>2013-04-25T14:46:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://zzamboni.org/ng/tags/sitenews/</loc>
+    <lastmod>2017-08-08T06:56:52+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://zzamboni.org/ng/tags/</loc>
+    <lastmod>2013-04-25T14:46:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://zzamboni.org/ng/tags/video/</loc>
+    <lastmod>2013-04-25T14:46:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0</priority>
   </url>
