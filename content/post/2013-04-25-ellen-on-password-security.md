@@ -1,7 +1,10 @@
 ---
 date: 2013-04-25T14:46:00
 title: "Ellen on password security"
-tags: ["zznippets"]
+tags:
+- zznippets
+- fun
+- video
 ---
 Hilarious - Ellen on the "Internet Password Minder"
 
