@@ -104,8 +104,8 @@ display, react and interact with notifications.
     specification which consists of a list (Lua lists and table
     literals are represented using curly braces) with two elements: a
     list of the key modifiers, and the key itself. In this example, `{
-    { "ctrl", "cmd", "alt" }, "h" }` represent pressing
-    Ctrl-Command-Alt-h.
+    { "ctrl", "cmd", "alt" }, "h" }` represents pressing
+    {{< keys Ctrl "⌘" Alt h >}}.
 
 -   The second argument to `bindSpec()` is the function to call when
     the key is pressed. Here we are defining an inline function, so it
@@ -147,12 +147,12 @@ hs.hotkey.bindSpec({ { "ctrl", "cmd", "alt" }, "y" },
                    hs.toggleConsole)
 ```
 
-Once you reload your configuration, you should be able to use
-Ctrl-Cmd-Alt-y to open and close the console. Any Lua code you type in
-the Console will be evaluated in the main Hammerspoon context, so you
-can add to your configuration directly from there. This is a good way
-to incrementally develop your code before committing it to the
-`init.lua` file.
+Once you reload your configuration, you should be able to use {{< keys
+Ctrl "⌘" Alt y >}} to open and close the console. Any Lua code you
+type in the Console will be evaluated in the main Hammerspoon context,
+so you can add to your configuration directly from there. This is a
+good way to incrementally develop your code before committing it to
+the `init.lua` file.
 
 You may have noticed by now another common operation while developing
 Hammerspoon code: reloading the configuration, which you normally have
