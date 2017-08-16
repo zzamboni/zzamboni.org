@@ -14,6 +14,7 @@ DefaultContentLanguage = "en"
 SectionPagesMenu = "main"
 Paginate = 10
 enableRobotsTXT = true
+pygmentsCodeFences = true
 
 [sitemap]
   changefreq = "monthly"
