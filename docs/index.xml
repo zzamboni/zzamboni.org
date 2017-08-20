@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>zzamboni.org</title>
-    <link>http://zzamboni.org/ng/</link>
+    <link>http://zzamboni.org/</link>
     <description>Recent content on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 03 Aug 2017 22:37:17 +0200</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/ng/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://zzamboni.org/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>The Big Website Reboot</title>
-      <link>http://zzamboni.org/ng/post/the-big-website-reboot/</link>
+      <link>http://zzamboni.org/post/the-big-website-reboot/</link>
       <pubDate>Tue, 08 Aug 2017 06:56:52 +0200</pubDate>
       
-      <guid>http://zzamboni.org/ng/post/the-big-website-reboot/</guid>
+      <guid>http://zzamboni.org/post/the-big-website-reboot/</guid>
       <description>&lt;p&gt;Welcome to the new zzamboni.org.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -24,10 +24,10 @@
     
     <item>
       <title>Grabcartoons</title>
-      <link>http://zzamboni.org/ng/code/grabcartoons/</link>
+      <link>http://zzamboni.org/code/grabcartoons/</link>
       <pubDate>Thu, 03 Aug 2017 17:25:50 +0200</pubDate>
       
-      <guid>http://zzamboni.org/ng/code/grabcartoons/</guid>
+      <guid>http://zzamboni.org/code/grabcartoons/</guid>
       <description>&lt;p&gt;GrabCartoons is a comic-summarizing utility. It is modular, and it is
 very easy to write modules for new comics.&lt;/p&gt;
 
