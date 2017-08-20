@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sitenews on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/sitenews/</link>
+    <link>http://zzamboni.org/ng/tags/sitenews/</link>
     <description>Recent content in Sitenews on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 08 Aug 2017 06:56:52 +0200</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/sitenews/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://zzamboni.org/ng/tags/sitenews/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>The Big Website Reboot</title>
-      <link>http://zzamboni.org/post/the-big-website-reboot/</link>
+      <link>http://zzamboni.org/ng/post/the-big-website-reboot/</link>
       <pubDate>Tue, 08 Aug 2017 06:56:52 +0200</pubDate>
       
-      <guid>http://zzamboni.org/post/the-big-website-reboot/</guid>
+      <guid>http://zzamboni.org/ng/post/the-big-website-reboot/</guid>
       <description>&lt;p&gt;Welcome to the new zzamboni.org.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
