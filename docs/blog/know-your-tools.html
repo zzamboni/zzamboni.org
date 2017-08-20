@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Know your tools  - zzamboni.org</title>
+  <meta name="author" content="Diego Zamboni">
+
+  
+  <meta name="description" content="I recently had to copy a very large file (&gt;4GB) from a remote Windows share to my Windows 7 machine, over a very finicky connection (frequently- &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zzamboni.github.com/blog/know-your-tools">
+  <link href="http://zzamboni.org/favicon.ico" rel="icon">
+  <link href="http://zzamboni.org/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/IdeallyBlue" rel="alternate" title="zzamboni.org" type="application/atom+xml">
+  <script src="http://zzamboni.org/javascripts/modernizr-2.0.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="http://zzamboni.org/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-697520-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="http://zzamboni.org/">zzamboni.org</a></h1>
+  
+    <h2></h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/IdeallyBlue" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zzamboni.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="http://zzamboni.org/">Home</a></li>
+  <li><a href="http://zzamboni.org/blog">Ideally Blue</a></li>
+  <li><a href="categories/zznippets/index.html">zznippets</a></li>
+  <li><a href="http://zzamboni.org/code.html">Code</a></li>
+  <li><a href="archives.html">Archives</a></li>
+  <li><a href="http://zzamboni.org/about.html">About</a></li>
+  <li><a href="http://zzamboni.org/contact.html">Contact</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Know Your Tools</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-22T00:01:36-07:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content">I recently had to copy a very large file (&gt;4GB) from a remote Windows share to my Windows 7 machine, over a very finicky connection (frequently-failing VPN over a slow Internet connection). A GUI copy didn&#8217;t work because the connection dropped frequently. I tried <a href="http://www.freedownloadmanager.org/">Free Download Manager</a>, which was the recommended tool for the download, but surprisingly, it wasn&#8217;t always able to restart the download after connectivity dropped.<p></p>
+<div>Then a colleague pointed me to the &#8220;copy /z&#8221; command:</div>
+<p></p>
+<blockquote class="gmail_quote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;">   /Z           Copies networked files in restartable mode.</blockquote>
+<p></p>
+<div>And this simple, built-in tool turned out to be the thing I needed. It was, every time, able to restart the download properly, and after a few times, it downloaded the file correctly.</div> <p></p>
+<div>As you may know, I am a reluctant recent switcher to Windows, coming from Linux and Mac OS X. I confess I still have a condescending attitude to everything in Windows, but this teaches me a lesson: <b>it pays to know the native tools of the system you are using.</b> I had subconsciously dismissed the built-in DOS copy command as too primitive to work, but it turned out to have the capabilities I needed.</div> <p></p>
+<div>A couple of tips:</div>
+<div>
+<ul>
+<li>If you interrupt the command with Ctrl-C, it will delete the portion copied so far and you&#8217;ll have to restart the copy from the beginning. If you must interrupt a copy, simply terminate the network connection (it will die with an error, but leave the copied-so-far file) or close the window where the command is running.</li> <li>When you restart it and it asks if you want to overwrite, you must answer &#8220;yes&#8221;. You can also use the /Y flag.</li>
+</ul>
+<p></p>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Diego Zamboni</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-22T00:01:36-07:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='categories/networking/index.html'>networking</a>, <a class='category' href='categories/tools/index.html'>tools</a>, <a class='category' href='categories/windows/index.html'>windows</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zzamboni.github.com/blog/know-your-tools" data-via="zzamboni" data-counturl="http://zzamboni.github.com/blog/know-your-tools" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="gorgeous-nightscape-timelapse-bad-astronomy.html" title="Previous Post: Gorgeous nightscape timelapse | Bad Astronomy">&laquo; Gorgeous nightscape timelapse | Bad Astronomy</a>
+      
+      
+        <a class="basic-alignment right" href="how-important-are-the-tools-you-use-with-gtd.html" title="Next Post: How important are the tools you use with GTD?">How important are the tools you use with GTD? &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>Get <a href="http://cf-learn.info">my book</a></h1>
+<iframe src="http://www.oreilly.com/authors/widgets/356.html" height="400px" scrolling="no" frameborder="0"></iframe>
+</section>
+<section>
+<h1>Proud to be</h1>
+<a href="http://www.cerias.purdue.edu/"><img src="http://zzamboni.org/images/cerias/cerias_alumnus_large.png" title="Purdue alumnus badge" width="200px" height="200px" /></a>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Diego Zamboni -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
