@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Cfengine3 lexer for Pygments - zzamboni.org</title>
+  <meta name="author" content="Diego Zamboni">
+
+  
+  <meta name="description" content="I have written a Cfengine3 lexer for Pygments, the open source syntax-highlighter used by Gist and many other sites. It seems to work fine on all the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zzamboni.github.com/blog/cfengine3-lexer-for-pygments">
+  <link href="http://zzamboni.org/favicon.ico" rel="icon">
+  <link href="http://zzamboni.org/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/IdeallyBlue" rel="alternate" title="zzamboni.org" type="application/atom+xml">
+  <script src="http://zzamboni.org/javascripts/modernizr-2.0.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="http://zzamboni.org/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-697520-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="http://zzamboni.org/">zzamboni.org</a></h1>
+  
+    <h2></h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/IdeallyBlue" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zzamboni.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="http://zzamboni.org/">Home</a></li>
+  <li><a href="http://zzamboni.org/blog">Ideally Blue</a></li>
+  <li><a href="categories/zznippets/index.html">zznippets</a></li>
+  <li><a href="http://zzamboni.org/code.html">Code</a></li>
+  <li><a href="archives.html">Archives</a></li>
+  <li><a href="http://zzamboni.org/about.html">About</a></li>
+  <li><a href="http://zzamboni.org/contact.html">Contact</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Cfengine3 Lexer for Pygments</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-08T19:16:00-07:00" pubdate data-updated="true">Sep 8<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I have written a <a href="http://cfengine.org/">Cfengine3</a> lexer for <a href="http://pygments.org/">Pygments</a>, the open source syntax-highlighter used by <a href="http://gist.github.com/">Gist</a> and many other sites. It seems to work fine on all the cfengine policy files I have tested, but if you find anything that doesn&#8217;t quite work as expected, please let me know. This is my first-ever Pygments lexer, so if you are an expert and can advise me on better ways of doing things, I&#8217;d very much appreciate the feedback too.</p>
+
+<p><strong>Update: Since version 1.5, Pygments includes this lexer. If you are using 1.5 or later, you already have the CFEngine lexer. You can sometimes find a newer version of the lexer in <a href="https://bitbucket.org/zzamboni/pygments-main/src/7304e4759ae65343d89a51359ca538912519cc31/pygments/lexers/other.py?at=default#cl-2532">my fork of the Pygments project</a> (updates are infrequent, only when there are changes in the CFEngine language).</strong></p>
+
+<strike><p></p>  Here&#8217;s how to install it (again, I don&#8217;t know if this is the better or easier way):
+<ol>
+<li>Obtain the Pygments <a href="http://pygments.org/download/">source code</a>.</li>
+<li>Put the <a href="https://raw.github.com/gist/571230/9b28129fde567df4576fb1d48db7e5e6111477a3/pygments_cfengine_lexer.py">pygments_cfengine_lexer.py</a> file into the pygments/lexers/ directory</li>
+<li>run (cd pygments/lexers; python _mapping.py)</li>
+<li>run ./setup.py install</li>
+</ol>
+<p>If you already have Pygments installed, you should follow these instructions:</p>
+<ol>
+<li>Put the <a href="https://raw.github.com/gist/571230/9b28129fde567df4576fb1d48db7e5e6111477a3/pygments_cfengine_lexer.py">pygments_cfengine_lexer.py</a> file in the installed pygments/lexers/ directory (on my Mac, this is /Library/Python/2.6/site-packages/Pygments-1.4-py2.6.egg/pygments/lexers, under Linux it should be something like /usr/lib/python2.6/site-packages/Pygments&#8230;./pygments/lexers)
+</li>
+<li>cd into that directory</li>
+<li>run &#8220;python _mapping.py&#8221;</li>
+
+</ol></strike>
+
+<p>Then run pygmentize on any .cf file, and it should output properly highlighted code. You can view a sample <a href="http://zzamboni.org/files/cfengine_stdlib.html">here</a>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Diego Zamboni</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-08T19:16:00-07:00" pubdate data-updated="true">Sep 8<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='categories/cfengine/index.html'>cfengine</a>, <a class='category' href='categories/pygments/index.html'>pygments</a>, <a class='category' href='categories/python/index.html'>python</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zzamboni.github.com/blog/cfengine3-lexer-for-pygments" data-via="zzamboni" data-counturl="http://zzamboni.github.com/blog/cfengine3-lexer-for-pygments" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="google-scribe-generated-prose.html" title="Previous Post: Google Scribe-generated prose (aka "Google Scribe channels Kanye West")">&laquo; Google Scribe-generated prose (aka "Google Scribe channels Kanye West")</a>
+      
+      
+        <a class="basic-alignment right" href="woot-refurbished-coffeenaker-ewww.html" title="Next Post: Woot: Refurbished Coffeenaker - Ewww">Woot: Refurbished Coffeenaker - Ewww &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>Get <a href="http://cf-learn.info">my book</a></h1>
+<iframe src="http://www.oreilly.com/authors/widgets/356.html" height="400px" scrolling="no" frameborder="0"></iframe>
+</section>
+<section>
+<h1>Proud to be</h1>
+<a href="http://www.cerias.purdue.edu/"><img src="http://zzamboni.org/images/cerias/cerias_alumnus_large.png" title="Purdue alumnus badge" width="200px" height="200px" /></a>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Diego Zamboni -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
