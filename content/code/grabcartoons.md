@@ -24,7 +24,9 @@ You can download the latest source code for this project in either
 You can also clone the project with [Git](http://git-scm.com) by
 running:
 
-    $ git clone git://github.com/zzamboni/grabcartoons
+```console
+git clone git://github.com/zzamboni/grabcartoons
+```
 
 From within the source directory, run `make install`.
 
@@ -38,9 +40,9 @@ Here's the list of comics for which we currently have modules:
 Grabcartoons also includes *templates* that allow you to fetch any comic
 from a given site. At the moment we have the following templates:
 
-{{< highlight console >}}
+```console
 {{< readfile file="/layouts/partials/grabcartoons/templates.txt" >}}
-{{< /highlight >}}
+```
 
 To fetch a comic using a module, simply use *template:comic* as the
 specification in the command line. *name* can be any unique part of the
@@ -51,7 +53,7 @@ Usage
 
 Basic usage example:
 
-    $ grabcartoons.pl sinfest xkcd savage_chickens gocomics.com:gasoline > output.html
+    grabcartoons.pl sinfest xkcd savage_chickens gocomics.com:gasoline > output.html
 
 And then open `output.html` in your web browser.
 

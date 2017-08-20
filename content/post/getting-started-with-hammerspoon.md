@@ -9,6 +9,14 @@ tags:
 - mac
 ---
 
+This is the first installment of a series of posts about Hammerspoon,
+a staggeringly powerful automation utility which gives you an amazing
+degree of control over your Mac, allowing you to automate and control
+almost anything. In the word of Hammerspoon's motto: _Making the
+runtime, funtime_.
+
+<!--more-->
+
 # What is Hammerspoon?
 
 Hammerspoon is a Mac application maintained by Chris Jones and others,
@@ -54,7 +62,7 @@ When you run Hammerspoon for the first time, you will see its icon
 appear in the menubar, and a notification telling you that it couldn’t
 find a configuration file. Let’s fix that!
 
-{{< figure src="/ng/figures/hammerspoon-startup.png" title="Hammerspoon's icon and first-startup notificatoin" >}}
+{{< figure src="/ng/figures/hammerspoon-startup.png" >}}
 
 > **Tip**
 >
@@ -83,7 +91,7 @@ Save the file, and from the Hammerspoon icon in the menubar, select
 Control-Alt-Command-h on your keyboard, you will see a notification on
 your screen welcoming you to the world of Hammerspoon.
 
-{{< figure src="/ng/figures/hammerspoon-hello-world.png" title="Hello World in Hammerspoon" >}}
+{{< figure src="/ng/figures/hammerspoon-hello-world.png" >}}
 
 Although it should be fairly self-explanatory, let us dissect this
 example to give you a clearer understanding of its components:
