@@ -3,106 +3,78 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://zzamboni.org/ng/post/the-big-website-reboot/</loc>
+    <loc>http://zzamboni.org/post/the-big-website-reboot/</loc>
     <lastmod>2017-08-08T06:56:52+02:00</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/ng/post/</loc>
+    <loc>http://zzamboni.org/post/</loc>
     <lastmod>2017-08-03T23:04:22+02:00</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/ng/</loc>
+    <loc>http://zzamboni.org/</loc>
     <lastmod>2017-08-03T22:37:17+02:00</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/ng/book/</loc>
+    <loc>http://zzamboni.org/book/</loc>
     <lastmod>2017-08-03T17:57:03+02:00</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/ng/code/</loc>
+    <loc>http://zzamboni.org/code/</loc>
     <lastmod>2017-08-03T17:55:47+02:00</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/ng/contact/</loc>
+    <loc>http://zzamboni.org/contact/</loc>
     <lastmod>2017-08-03T17:55:04+02:00</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/ng/code/grabcartoons/</loc>
+    <loc>http://zzamboni.org/code/grabcartoons/</loc>
     <lastmod>2017-08-03T17:25:50+02:00</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/ng/about/</loc>
+    <loc>http://zzamboni.org/about/</loc>
     <lastmod>2017-08-03T12:50:11+02:00</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/ng/post/2013-04-25-ellen-on-password-security/</loc>
-    <lastmod>2013-04-25T14:46:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://zzamboni.org/ng/categories/</loc>
-    <changefreq>monthly</changefreq>
+    <loc>http://zzamboni.org/categories/</loc>
+    <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/ng/tags/fun/</loc>
-    <lastmod>2013-04-25T14:46:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://zzamboni.org/ng/tags/sitenews/</loc>
+    <loc>http://zzamboni.org/tags/sitenews/</loc>
     <lastmod>2017-08-08T06:56:52+02:00</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/ng/tags/</loc>
-    <lastmod>2013-04-25T14:46:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://zzamboni.org/ng/tags/video/</loc>
-    <lastmod>2013-04-25T14:46:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://zzamboni.org/ng/tags/zznippets/</loc>
-    <lastmod>2013-04-25T14:46:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>http://zzamboni.org/tags/</loc>
+    <lastmod>2017-08-08T06:56:52+02:00</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   

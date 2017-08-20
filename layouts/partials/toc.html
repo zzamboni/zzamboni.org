@@ -1,6 +1,7 @@
-{{ if .Params.toc }}
+{{- if .Params.toc -}}
 <div class="bg-light-gray pa3">
       <p class="list b mb3">What's in this {{ humanize .Type }}</p>
       {{ .TableOfContents | replaceRE "<li>" "<li class=\"list f5 w-100 hover-bg-white nl1\">" | replaceRE "<a " "<a class=\"link ph2 pv2 db black\"" | safeHTML }}
 </div>
-{{ end }}
+<br/>
+{{- end -}}

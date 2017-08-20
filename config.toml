@@ -1,5 +1,4 @@
-baseurl = "http://zzamboni.org/ng"
-relbase = "/ng"
+baseurl = "http://zzamboni.org/"
 title = "zzamboni.org"
 theme = "gohugo-theme-ananke"
 languageCode = "en-us"
@@ -17,7 +16,7 @@ enableRobotsTXT = true
 pygmentsCodeFences = true
 
 [sitemap]
-  changefreq = "monthly"
+  changefreq = "weekly"
   priority = 0.5
   filename = "sitemap.xml"
 
