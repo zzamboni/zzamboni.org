@@ -1,6 +1,6 @@
 ---
 title: "Getting Started With Hammerspoon"
-date: 2017-08-21T21:31:31+02:00
+date: 2017-08-21T15:23:31+02:00
 toc: true
 tags:
 - hammerspoon
