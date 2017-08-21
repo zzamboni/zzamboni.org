@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     
+    <title>zzamboni.org  | Getting Started With Hammerspoon</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+     <meta name="generator" content="Hugo 0.26" />
+      
+      
+        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+      
+
+     <link href='http://zzamboni.org/dist/main.css' rel='stylesheet' type="text/css" />
+     <link href='http://zzamboni.org/css/site.css' rel='stylesheet' type="text/css" />
+
+     
+
+      <meta property="og:title" content="Getting Started With Hammerspoon" />
+<meta property="og:description" content="This is the first installment of a series of posts about Hammerspoon,
+a staggeringly powerful automation utility which gives you an amazing
+degree of control over your Mac, allowing you to automate and control
+almost anything. In the word of Hammerspoon&rsquo;s motto: Making the
+runtime, funtime.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://zzamboni.org/post/getting-started-with-hammerspoon/" />
+
+
+
+<meta property="article:published_time" content="2017-08-21T21:31:31&#43;02:00"/>
+<meta property="article:modified_time" content="2017-08-21T21:31:31&#43;02:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Getting Started With Hammerspoon">
+<meta itemprop="description" content="This is the first installment of a series of posts about Hammerspoon,
+a staggeringly powerful automation utility which gives you an amazing
+degree of control over your Mac, allowing you to automate and control
+almost anything. In the word of Hammerspoon&rsquo;s motto: Making the
+runtime, funtime.
+
+">
+
+
+<meta itemprop="dateModified" content="2017-08-21T21:31:31&#43;02:00" />
+<meta itemprop="wordCount" content="1518">
+
+
+
+<meta itemprop="keywords" content="hammerspoon,howto,mac," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Getting Started With Hammerspoon"/>
+<meta name="twitter:description" content="This is the first installment of a series of posts about Hammerspoon,
+a staggeringly powerful automation utility which gives you an amazing
+degree of control over your Mac, allowing you to automate and control
+almost anything. In the word of Hammerspoon&rsquo;s motto: Making the
+runtime, funtime.
+
+"/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://zzamboni.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      zzamboni.org
+    </a>
+    <div class="flex-l items-center">
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Blog page">
+              Blog
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/book/" title="Books page">
+              Books
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/code/" title="Code page">
+              Code
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+  <a href="https://twitter.com/zzamboni" class="link-transition twitter link dib z-999 pt3 pt0-l mr2" title="Twitter link">
+    <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+  </a>
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <div class="flex-l mt2 mw8 center">
+    <article class="center cf pv5 ph3 ph4-ns mw7">
+      <p class="f6 b helvetica tracked">
+        
+        POST
+      </p>
+      <h1 class="f1 athelas">
+        Getting Started With Hammerspoon
+      </h1>
+        
+        
+      <time class="f6 mv4 dib tracked" datetime="2017-08-21T21:31:31&#43;02:00">
+        August 21, 2017
+      </time>
+      <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
+        <p>This is the first installment of a series of posts about Hammerspoon,
+a staggeringly powerful automation utility which gives you an amazing
+degree of control over your Mac, allowing you to automate and control
+almost anything. In the word of Hammerspoon&rsquo;s motto: <em>Making the
+runtime, funtime</em>.</p>
+
+<p></p>
+
+<h1 id="why-hammerspoon">Why Hammerspoon?</h1>
+
+<p><a href="http://www.hammerspoon.org/">Hammerspoon</a> is a Mac application that
+allows you to achieve an unprecedented level of control over your
+Mac. Hammerspoon enables interaction with the system at multiple
+layers&ndash;from low-level file system or network access, mouse or
+keyboard event capture and generation, all the way to manipulating
+applications or windows, processing URLs and drawing on the screen. It
+also allows interfacing with
+<a href="https://www.macosxautomation.com/applescript/">AppleScript</a>, Unix
+commands and scripts, and other applications. Hammerspoon
+configuration is written in <a href="https://www.lua.org/about.html">Lua</a>, a
+popular embedded programming language.</p>
+
+<p>Using Hammerspoon, you can replace many stand-alone Mac utilities for
+controlling or customizing specific aspects of your Mac (the kind that
+tends to overcrowd the menubar). For example, the following are doable
+using Hammerspoon (these are all things I do with it <a href="https://github.com/zzamboni/dot-hammerspoon">on my
+machine</a>):</p>
+
+<ul>
+<li>Add missing or more convenient keyboard shortcuts to applications,
+even for complex multi-step actions. For example: automated tagging
+and filing in Evernote, mail archival in Mail or Outlook, filing
+items from multiple applications to OmniFocus using consistent
+keyboard shortcuts, or muting/unmuting a conversation in Skype.</li>
+<li>Open URLs in different browsers based on regular expression
+patterns. When combined with Site-specific Browsers (I use
+<a href="https://github.com/dmarmor/epichrome">Epichrome</a>), this allows for
+highly flexible management of bookmarks, plugins and search
+configurations.</li>
+<li>Replace Spotlight, Lacona and other launchers with a fully
+configurable, extensible launcher, which allows not only to open
+applications, files and bookmarks, but to trigger arbitrary Lua
+functions.</li>
+<li>Manipulate windows using keyboard shortcuts to resize, move and
+arrange them.</li>
+<li>Set up actions to happen automatically when switching between WiFi
+networks&ndash;for example for reconfiguring proxies in some
+applications.</li>
+<li>Keyboard-triggered translation of selected text between arbitrary
+human languages.</li>
+<li>Keep a configurable and persistent clipboard history.</li>
+<li>Automatically pause audio playback when headphones are unplugged.</li>
+</ul>
+
+<p>Hammerspoon is the most powerful Mac automation utility I have ever
+used. If you are a programmer, it can make using your Mac vastly more
+fun and productive.</p>
+
+<h1 id="how-does-hammerspoon-work">How does Hammerspoon work?</h1>
+
+<p>Hammerspoon acts as a thin layer between the operating system and a
+Lua-based configuration language. It includes extensions for querying
+and controlling many aspects of the system. Some of the lower-level
+extensions are written in Objective-C, but all of them expose a Lua
+API, and it is trivial to write your own extensions or modules to
+extend its functionality.</p>
+
+<p>From the Hammerspoon configuration you can also execute external
+commands, run AppleScript or JavaScript code using the OSA scripting
+framework, establish network connections and even run network servers;
+you can capture and generate keyboard events, detect network changes,
+USB or audio devices being plugged in or out, changes in screen or
+keyboard language configuration; you can draw directly on the screen
+to display whatever you want; and many other things. Take a quick look
+at the <a href="http://www.hammerspoon.org/docs/index.html">Hammerspoon API index
+page</a> to get a feeling of
+its extensive capabilities. And that is only the libraries that are
+built into Hammerspoon. There is an extensive and growing collection
+of <a href="http://www.hammerspoon.org/Spoons/">Spoons</a>, modules written in
+pure Lua that provide additional functionality and integration. And of
+course, the configuration is simply Lua code, so you can write your
+own code to do whatever you want.</p>
+
+<p>Interested? Let&rsquo;s get started!</p>
+
+<h1 id="installing-hammerspoon">Installing Hammerspoon</h1>
+
+<p>Hammerspoon is a regular Mac application. To install it by hand, you
+just need to download it from
+<a href="https://github.com/Hammerspoon/hammerspoon/releases/latest">https://github.com/Hammerspoon/hammerspoon/releases/latest</a>, unzip
+the downloaded file and drag it to your /Applications folder (or
+anywhere else you want).</p>
+
+<p>If you are automation-minded like me, you probably use
+<a href="https://brew.sh/">Homebrew</a> and its plugin
+<a href="https://caskroom.github.io/">Cask</a> to manage your applications. In
+this case, you can use Cask to install Hammerspoon:</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>brew cask install hammerspoon
+</pre></div>
+
+<p>When you run Hammerspoon for the first time, you will see its icon
+appear in the menubar, and a notification telling you that it couldn&rsquo;t
+find a configuration file. Let&rsquo;s fix that!</p>
+
+
+<figure >
+    
+        <img src="/figures/hammerspoon-startup.png" />
+    
+    
+</figure>
+
+
+<blockquote>
+<p><strong>Tip</strong></p>
+
+<p>If you click on the initial notification, your web browser will open
+to the excellent <a href="http://www.hammerspoon.org/go/">Getting Started with
+Hammerspoon</a> page, which I highly
+recommend you read for more examples.</p>
+</blockquote>
+
+<h1 id="your-first-hammerspoon-configuration">Your first Hammerspoon configuration</h1>
+
+<p>Let us start with a few simple examples. As tradition mandates, we
+will start with a &ldquo;Hello World&rdquo; example. Open
+<code>$HOME/.hammerspoon/init.lua</code> (Hammerspoon will create the directory
+upon first startup, but you need to create the file) in your favorite
+editor, and type the following:</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">hs.hotkey.bindSpec({</span> <span style="color: #f8f8f2">{</span> <span style="color: #e6db74">&quot;ctrl&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;cmd&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;alt&quot;</span> <span style="color: #f8f8f2">},</span> <span style="color: #e6db74">&quot;h&quot;</span> <span style="color: #f8f8f2">},</span> 
+   <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">()</span> 
+      <span style="color: #f8f8f2">hs.notify.show(</span><span style="color: #e6db74">&quot;Hello World!&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;Welcome to Hammerspoon&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;&quot;</span><span style="color: #f8f8f2">)</span> 
+   <span style="color: #66d9ef">end</span><span style="color: #f8f8f2">)</span>
+</pre></div>
+
+<p>Save the file, and from the Hammerspoon icon in the menubar, select
+&ldquo;Reload config&rdquo;. Apparently nothing will happen, but if you then press
+<kbd>Ctrl</kbd>+<kbd>⌘</kbd>+<kbd>Alt</kbd>+<kbd>h</kbd>
+ on your keyboard, you will see a
+notification on your screen welcoming you to the world of Hammerspoon.</p>
+
+
+<figure >
+    
+        <img src="/figures/hammerspoon-hello-world.png" />
+    
+    
+</figure>
+
+
+<p>Although it should be fairly self-explanatory, let us dissect this
+example to give you a clearer understanding of its components:</p>
+
+<ul>
+<li><p>All Hammerspoon built-in extensions start with <code>hs.</code> In this case,
+
+
+
+
+
+
+<a href="http://www.hammerspoon.org/docs/hs.hotkey.html"><code>hs.hotkey</code></a>
+ is the extension that handles keyboard
+bindings. It allows us to easily define which functions will be
+called in response to different keyboard combinations. You can even
+differentiate between the keys being pressed, released or held down
+if you need to. The other extension used in this example is
+
+
+
+
+
+
+<a href="http://www.hammerspoon.org/docs/hs.notify.html"><code>hs.notify</code></a>
+, which allows us to interact with the macOS
+Notification Center to display, react and interact with
+notifications.</p></li>
+
+<li><p>Within <code>hs.hotkey</code>, the 
+
+
+
+
+
+<a href="http://www.hammerspoon.org/docs/hs.hotkey.html#bindSpec"><code>hs.hotkey.bindSpec</code></a>
+ function
+allows you to bind a function to a pressed key. Its first argument
+is a key specification which consists of a list (Lua lists and table
+literals are represented using curly braces) with two elements: a
+list of the key modifiers, and the key itself. In this example, <code>{ {
+&quot;ctrl&quot;, &quot;cmd&quot;, &quot;alt&quot; }, &quot;h&quot; }</code> represents pressing <kbd>Ctrl</kbd>+<kbd>⌘</kbd>+<kbd>Alt</kbd>+<kbd>h</kbd>
+.</p></li>
+
+<li><p>The second argument to <code>bindSpec</code> is the function to call when the
+key is pressed. Here we are defining an inline anonymous function
+using <code>function() ... end</code>.</p></li>
+
+<li><p>The callback function uses 
+
+
+
+
+
+<a href="http://www.hammerspoon.org/docs/hs.notify.html#show"><code>hs.notify.show</code></a>
+ to display
+the message. Take a quick look at the 
+
+
+
+
+
+<a href="http://www.hammerspoon.org/docs/hs.notify.html"><code>hs.notify</code></a>
+
+documentation to get an idea of its extensive capabilities,
+including configuration of all aspects of a notification&rsquo;s
+appearance and buttons, and the functions to call upon different
+user actions.</p></li>
+</ul>
+
+<p>Try changing the configuration to display a different message or use a
+different key. After every change, you need to instruct Hammerspoon to
+reload its configuration, which you can do through its menubar item.</p>
+
+<h1 id="debugging-tools-and-the-hammerspoon-console">Debugging tools and the Hammerspoon console</h1>
+
+<p>As you start modifying your configuration, errors will happen, as they
+always do when coding. To help in development and debugging,
+Hammerspoon offers a console window where you can see any errors and
+messages printed by your Lua code as it executes, and also type code
+to be evaluated. It is a very useful tool while developing your
+Hammerspoon configuration.</p>
+
+<p>To invoke the console, you normally choose &ldquo;Console…​&rdquo; from the
+Hammerspoon menubar item. However, this is such a common operation,
+that you might find it useful to also set a key combination for
+showing the console. Most of Hammerspoon&rsquo;s internal functionality is
+also accessible through its API. In this case, looking at the
+
+
+
+
+
+
+<a href="http://www.hammerspoon.org/docs/hs.html">documentation for the main <code>hs</code> module</a>
+ reveals that
+there is an 
+
+
+
+
+
+<a href="http://www.hammerspoon.org/docs/hs.html#toggleConsole"><code>hs.toggleConsole</code></a>
+ function. Using the knowledge
+you have acquired so far, you can easily configure a hotkey for
+opening and hiding the console:</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">hs.hotkey.bindSpec({</span> <span style="color: #f8f8f2">{</span> <span style="color: #e6db74">&quot;ctrl&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;cmd&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;alt&quot;</span> <span style="color: #f8f8f2">},</span> <span style="color: #e6db74">&quot;y&quot;</span> <span style="color: #f8f8f2">},</span>
+                   <span style="color: #f8f8f2">hs.toggleConsole)</span>
+</pre></div>
+
+<p>Once you reload your configuration, you should be able to use <kbd>Ctrl</kbd>+<kbd>⌘</kbd>+<kbd>Alt</kbd>+<kbd>y</kbd>
+ to open and close the console. Any Lua code you
+type in the Console will be evaluated in the main Hammerspoon context,
+so you can add to your configuration directly from there. This is a
+good way to incrementally develop your code before committing it to
+the <code>init.lua</code> file.</p>
+
+<p>You may have noticed by now another common operation while developing
+Hammerspoon code: reloading the configuration, which you normally have
+to do from the Hammerspoon menu. So why not set up a hotkey to do that
+as well? Again, the 
+
+
+
+
+
+<a href="http://www.hammerspoon.org/docs/hs.html"><code>hs</code></a>
+ module comes to our help with the
+
+
+
+
+
+
+<a href="http://www.hammerspoon.org/docs/hs.html#reload"><code>hs.reload</code></a>
+ method:</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">hs.hotkey.bindSpec({</span> <span style="color: #f8f8f2">{</span> <span style="color: #e6db74">&quot;ctrl&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;cmd&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;alt&quot;</span> <span style="color: #f8f8f2">},</span> <span style="color: #e6db74">&quot;r&quot;</span> <span style="color: #f8f8f2">},</span> <span style="color: #f8f8f2">hs.reload)</span>
+</pre></div>
+
+<p>Another useful development tool is the <code>hs</code> command, which you can run
+from your terminal to get a Hammerspoon console. To install it, you
+can use the 
+
+
+
+
+
+<a href="http://www.hammerspoon.org/docs/hs.ipc.html#cliInstall"><code>hs.ipc.cliInstall</code></a>
+ function, which you can just
+add to your <code>init.lua</code> file to check and install the command every
+time Hammerspoon runs.</p>
+
+<blockquote>
+<p><strong>Tip</strong></p>
+
+<p>
+
+
+
+
+
+<a href="http://www.hammerspoon.org/docs/hs.ipc.html#cliInstall"><code>hs.ipc.cliInstall</code></a>
+ creates symlinks under
+<code>/usr/local/</code> to the <code>hs</code> command and its manual page file, located
+inside the Hammerspoon application bundle. Under some circumstances
+(particularly if you build Hammerspoon from source, or if you
+install different versions of it), you may end up with broken
+symlinks. If the <code>hs</code> command stops working and
+<code>hs.ipc.cliInstall()</code> doesn&rsquo;t fix it, look for broken symlinks left
+behind from old versions of Hammerspoon. Remove them and things
+should work again.</p>
+</blockquote>
+
+<p>Now you have all the tools for developing your Hammerspoon
+configuration. In the next installment we will look at how you can
+save yourself a lot of coding by using pre-made modules. In the
+meantime, please let me know your thoughts in the comments!</p>
+      </section>
+      
+
+  <ul class="list dib ml0 pl0" id="tags">
+    <li class="b black dib mb2 mr3">Tags: </li>
+    
+      <li class="black dib mb2 mr2"><a href="/tags/hammerspoon" class="link mid-gray dim">hammerspoon</a> </li>
+    
+      <li class="black dib mb2 mr2"><a href="/tags/howto" class="link mid-gray dim">howto</a> </li>
+    
+      <li class="black dib mb2 mr2"><a href="/tags/mac" class="link mid-gray dim">mac</a> </li>
+    
+  </ul>
+  
+  
+  
+  
+  
+
+
+      <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zzamboni-ng" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+    <div class="ph3 mt2 mt6-ns">
+      <div class="bg-light-gray pa3">
+      <p class="list b mb3">What's in this Post</p>
+      <nav id="TableOfContents">
+<ul>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#why-hammerspoon">Why Hammerspoon?</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#how-does-hammerspoon-work">How does Hammerspoon work?</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#installing-hammerspoon">Installing Hammerspoon</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#your-first-hammerspoon-configuration">Your first Hammerspoon configuration</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#debugging-tools-and-the-hammerspoon-console">Debugging tools and the Hammerspoon console</a></li>
+</ul>
+</nav>
+</div>
+<br/>
+      
+
+
+
+
+
+
+
+
+  <div class="bg-light-gray pa3">
+    <ul>
+      <li class="list b mb3">
+        1 More Post
+      </li>
+      
+        <li class="list f5 w-100 hover-bg-white nl1">
+          
+          <a href="/post/getting-started-with-hammerspoon/" class="link ph2 pv2 db black o-50">
+            Getting Started With Hammerspoon
+          </a>
+        </li>
+      
+        <li class="list f5 w-100 hover-bg-white nl1">
+          
+          <a href="/post/the-big-website-reboot/" class="link ph2 pv2 db black">
+            The Big Website Reboot
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+    </div>
+  </div>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://zzamboni.org/" >
+    &copy; 2017 Diego Zamboni
+  </a>
+  
+
+
+
+  <a href="https://twitter.com/zzamboni" class="link-transition twitter link dib z-999 pt3 pt0-l mr2" title="Twitter link">
+    <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+  </a>
+
+
+
+
+  </div>
+</footer>
+
+    <script src="http://zzamboni.org/dist/app.bundle.js" async></script>
+
+  </body>
+</html>

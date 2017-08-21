@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog on zzamboni.org</title>
-    <link>http://zzamboni.org/post/</link>
-    <description>Recent content in Blog on zzamboni.org</description>
+    <title>Hammerspoon on zzamboni.org</title>
+    <link>http://zzamboni.org/tags/hammerspoon/</link>
+    <description>Recent content in Hammerspoon on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Aug 2017 23:04:22 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 21 Aug 2017 21:31:31 +0200</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://zzamboni.org/tags/hammerspoon/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -22,17 +22,6 @@ a staggeringly powerful automation utility which gives you an amazing
 degree of control over your Mac, allowing you to automate and control
 almost anything. In the word of Hammerspoon&amp;rsquo;s motto: &lt;em&gt;Making the
 runtime, funtime&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>The Big Website Reboot</title>
-      <link>http://zzamboni.org/post/the-big-website-reboot/</link>
-      <pubDate>Tue, 08 Aug 2017 06:56:52 +0200</pubDate>
-      
-      <guid>http://zzamboni.org/post/the-big-website-reboot/</guid>
-      <description>&lt;p&gt;Welcome to the new zzamboni.org.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
