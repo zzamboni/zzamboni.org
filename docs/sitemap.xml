@@ -3,6 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://zzamboni.org/post/getting-started-with-hammerspoon/</loc>
+    <lastmod>2017-08-21T21:31:31+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://zzamboni.org/post/the-big-website-reboot/</loc>
     <lastmod>2017-08-08T06:56:52+02:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -71,6 +78,27 @@
   </url>
   
   <url>
+    <loc>http://zzamboni.org/tags/hammerspoon/</loc>
+    <lastmod>2017-08-21T21:31:31+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://zzamboni.org/tags/howto/</loc>
+    <lastmod>2017-08-21T21:31:31+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://zzamboni.org/tags/mac/</loc>
+    <lastmod>2017-08-21T21:31:31+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://zzamboni.org/tags/sitenews/</loc>
     <lastmod>2017-08-08T06:56:52+02:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -79,7 +107,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/</loc>
-    <lastmod>2017-08-08T06:56:52+02:00</lastmod>
+    <lastmod>2017-08-21T21:31:31+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
