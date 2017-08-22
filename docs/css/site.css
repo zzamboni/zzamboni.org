@@ -14,6 +14,7 @@ kbd{
     box-shadow: 0 1px 0 rgba(12,13,14,0.2),0 0 0 2px #FFF inset;
     white-space: nowrap;
 }
+
 .note,
 .warning {
 
@@ -24,6 +25,7 @@ kbd{
 
   display: block;
 }
+
 .note #exclamation-icon,
 .warning #exclamation-icon {
 
@@ -34,7 +36,22 @@ kbd{
   /*background-color: white;*/
 }
 
-  .admonition-content {
+.tip-icon {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: 40px;
+    height: 60px;
+    font-size: 56px;
+    line-height: 136px;
+    border-radius: 50%;
+    -webkit-transition: box-shadow 0.2s;
+    -moz-transition: box-shadow 0.2s;
+    transition: box-shadow 0.2s;
+    float: left;
+}
+
+.admonition-content {
     display: block;
     margin: 0px;
     padding: .125em 1em;
@@ -44,25 +61,25 @@ kbd{
     overflow-x: auto;
     /*font-size: .9375em;*/
     background-color: var(--black-05);
-  }
+}
 
 
-  .hide-child-menu .child-menu {
+.hide-child-menu .child-menu {
     display: none;
-  }
-  .hide-child-menu:hover  .child-menu,
-  .hide-child-menu:focus  .child-menu,
-  .hide-child-menu:active .child-menu {
-  display: block;
-  }
+}
+.hide-child-menu:hover  .child-menu,
+.hide-child-menu:focus  .child-menu,
+.hide-child-menu:active .child-menu {
+    display: block;
+}
 
 
 /*documentation-copy headings exagerate spacing and size to chunk content */
-  .documentation-copy h2 {
+.documentation-copy h2 {
     margin-top: 3em;
     &.minor {
-      font-size: inherit;
-      margin-top: inherit;
-      border-bottom: none;
+        font-size: inherit;
+        margin-top: inherit;
+        border-bottom: none;
     }
-  }
+}
