@@ -15,28 +15,7 @@ kbd{
     white-space: nowrap;
 }
 
-.note,
-.warning {
-
-  border-left-width: 4px;
-  border-left-style: solid;
-  position: relative;
-  border-color: var(--primary-color);
-
-  display: block;
-}
-
-.note #exclamation-icon,
-.warning #exclamation-icon {
-
-  fill: var(--primary-color);
-  position: absolute;
-  top: 35%;
-  left: -12px;
-  /*background-color: white;*/
-}
-
-.tip-icon {
+.admonition-icon {
     display: inline-block;
     vertical-align: middle;
     text-align: center;
@@ -63,6 +42,12 @@ kbd{
     background-color: var(--black-05);
 }
 
+.tip {
+    fill: green;
+}
+.warning {
+    fill: orange;
+}
 
 .hide-child-menu .child-menu {
     display: none;
