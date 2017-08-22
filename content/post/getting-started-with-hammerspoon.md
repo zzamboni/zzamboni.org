@@ -226,7 +226,7 @@ can use the {{<hsapi "hs.ipc" cliInstall>}} function, which you can just
 add to your `init.lua` file to check and install the command every
 time Hammerspoon runs.
 
-{{% tip %}}
+{{% warning %}}
 {{<hsapi "hs.ipc" cliInstall >}} creates symlinks under
 `/usr/local/` to the `hs` command and its manual page file, located
 inside the Hammerspoon application bundle. Under some circumstances
@@ -236,7 +236,7 @@ symlinks. If the `hs` command stops working and
 `hs.ipc.cliInstall()` doesn't fix it, look for broken symlinks left
 behind from old versions of Hammerspoon. Remove them and things
 should work again.
-{{% /tip %}}
+{{% /warning %}}
 
 Now you have all the tools for developing your Hammerspoon
 configuration. In the next installment we will look at how you can
