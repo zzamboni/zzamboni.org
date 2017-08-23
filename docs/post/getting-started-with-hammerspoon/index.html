@@ -57,7 +57,7 @@ runtime, funtime.
 
 
 <meta itemprop="dateModified" content="2017-08-21T16:34:00&#43;02:00" />
-<meta itemprop="wordCount" content="1516">
+<meta itemprop="wordCount" content="1529">
 
 
 
@@ -191,33 +191,47 @@ popular embedded programming language.</p>
 <p>Using Hammerspoon, you can replace many stand-alone Mac utilities for
 controlling or customizing specific aspects of your Mac (the kind that
 tends to overcrowd the menubar). For example, the following are doable
-using Hammerspoon (these are all things I do with it <a href="https://github.com/zzamboni/dot-hammerspoon">on my
-machine</a>):</p>
+using Hammerspoon (these are all things I do with it on my machine -
+each paragraph links to the corresponding lines in my <a href="https://github.com/zzamboni/dot-hammerspoon">config
+file</a>):</p>
 
 <ul>
 <li>Add missing or more convenient keyboard shortcuts to applications,
-even for complex multi-step actions. For example: automated tagging
-and filing in Evernote, mail archival in Mail or Outlook, filing
-items from multiple applications to OmniFocus using consistent
-keyboard shortcuts, or muting/unmuting a conversation in Skype.</li>
-<li>Open URLs in different browsers based on regular expression
-patterns. When combined with Site-specific Browsers (I use
+even for complex multi-step actions. For example: <a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L250-L259">automated tagging
+and filing in
+Evernote</a>,
+<a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L170-L179">mail/note archival in Mail, Outlook and
+Evernote</a>,
+<a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L184-L199">filing items from multiple applications to
+OmniFocus</a>
+using consistent keyboard shortcuts, or <a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L219-L226">muting/unmuting a
+conversation in
+Skype</a>.</li>
+<li><a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L84-L102">Open URLs in different browsers based on regular expression
+patterns</a>. When
+combined with Site-specific Browsers (I use
 <a href="https://github.com/dmarmor/epichrome">Epichrome</a>), this allows for
 highly flexible management of bookmarks, plugins and search
 configurations.</li>
-<li>Replace Spotlight, Lacona and other launchers with a fully
-configurable, extensible launcher, which allows not only to open
-applications, files and bookmarks, but to trigger arbitrary Lua
-functions.</li>
-<li>Manipulate windows using keyboard shortcuts to resize, move and
-arrange them.</li>
-<li>Set up actions to happen automatically when switching between WiFi
-networks&ndash;for example for reconfiguring proxies in some
-applications.</li>
-<li>Keyboard-triggered translation of selected text between arbitrary
-human languages.</li>
-<li>Keep a configurable and persistent clipboard history.</li>
-<li>Automatically pause audio playback when headphones are unplugged.</li>
+<li>Replace Spotlight, Lacona and other launchers with a <a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L264-L303">fully
+configurable, extensible
+launcher</a>,
+which allows not only to open applications, files and bookmarks, but
+to trigger arbitrary Lua functions.</li>
+<li><a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L128-L156">Manipulate
+windows</a>
+using keyboard shortcuts to resize, move and arrange them.</li>
+<li><a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L375-L400">Set up actions to happen automatically when switching between WiFi
+networks</a>&ndash;for
+example for reconfiguring proxies in some applications.</li>
+<li><a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L405-L418">Keyboard-triggered
+translation</a>
+of selected text between arbitrary human languages.</li>
+<li>Keep a configurable and persistent <a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L308-L317">clipboard
+history</a>.</li>
+<li><a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L241-L245">Automatically pause audio
+playback</a>
+when headphones are unplugged.</li>
 </ul>
 
 <p>Hammerspoon is the most powerful Mac automation utility I have ever
