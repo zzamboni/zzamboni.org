@@ -6,6 +6,7 @@ tags:
 - hammerspoon
 - howto
 - mac
+featured_image: '/images/hammerspoon.png'
 ---
 
 This is the first installment of a series of posts about Hammerspoon,
