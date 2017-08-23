@@ -34,32 +34,46 @@ popular embedded programming language.
 Using Hammerspoon, you can replace many stand-alone Mac utilities for
 controlling or customizing specific aspects of your Mac (the kind that
 tends to overcrowd the menubar). For example, the following are doable
-using Hammerspoon (these are all things I do with it [on my
-machine](https://github.com/zzamboni/dot-hammerspoon)):
+using Hammerspoon (these are all things I do with it on my machine -
+each paragraph links to the corresponding lines in my [config
+file](https://github.com/zzamboni/dot-hammerspoon)):
 
 * Add missing or more convenient keyboard shortcuts to applications,
-  even for complex multi-step actions. For example: automated tagging
-  and filing in Evernote, mail archival in Mail or Outlook, filing
-  items from multiple applications to OmniFocus using consistent
-  keyboard shortcuts, or muting/unmuting a conversation in Skype.
-* Open URLs in different browsers based on regular expression
-  patterns. When combined with Site-specific Browsers (I use
+  even for complex multi-step actions. For example: [automated tagging
+  and filing in
+  Evernote](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L250-L259),
+  [mail/note archival in Mail, Outlook and
+  Evernote](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L170-L179),
+  [filing items from multiple applications to
+  OmniFocus](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L184-L199)
+  using consistent keyboard shortcuts, or [muting/unmuting a
+  conversation in
+  Skype](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L219-L226).
+* [Open URLs in different browsers based on regular expression
+  patterns](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L84-L102). When
+  combined with Site-specific Browsers (I use
   [Epichrome](https://github.com/dmarmor/epichrome)), this allows for
   highly flexible management of bookmarks, plugins and search
   configurations.
-* Replace Spotlight, Lacona and other launchers with a fully
-  configurable, extensible launcher, which allows not only to open
-  applications, files and bookmarks, but to trigger arbitrary Lua
-  functions.
-* Manipulate windows using keyboard shortcuts to resize, move and
-  arrange them.
-* Set up actions to happen automatically when switching between WiFi
-  networks--for example for reconfiguring proxies in some
-  applications.
-* Keyboard-triggered translation of selected text between arbitrary
-  human languages.
-* Keep a configurable and persistent clipboard history.
-* Automatically pause audio playback when headphones are unplugged.
+* Replace Spotlight, Lacona and other launchers with a [fully
+  configurable, extensible
+  launcher](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L264-L303),
+  which allows not only to open applications, files and bookmarks, but
+  to trigger arbitrary Lua functions.
+* [Manipulate
+  windows](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L128-L156)
+  using keyboard shortcuts to resize, move and arrange them.
+* [Set up actions to happen automatically when switching between WiFi
+  networks](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L375-L400)--for
+  example for reconfiguring proxies in some applications.
+* [Keyboard-triggered
+  translation](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L405-L418)
+  of selected text between arbitrary human languages.
+* Keep a configurable and persistent [clipboard
+  history](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L308-L317).
+* [Automatically pause audio
+  playback](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L241-L245)
+  when headphones are unplugged.
 
 Hammerspoon is the most powerful Mac automation utility I have ever
 used. If you are a programmer, it can make using your Mac vastly more
