@@ -3,6 +3,7 @@ title: "The Big Website Reboot"
 date: 2017-08-08T06:56:52+02:00
 tags:
 - sitenews
+featured_image: "/favicon.ico"
 ---
 
 Welcome to the new zzamboni.org.
