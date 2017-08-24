@@ -10,9 +10,9 @@
           <img src="{{ $featured_image }}" class="db w-50 fr" alt="image from {{ .Title }}">
         </div>
       {{ end }}
-      <div class="w-100{{ if .Params.featured_image }} w-60-ns pl3-ns{{ end }}">
-        <h1 class="f3 fw1 athelas mt0 lh-title">{{ .Title }}</h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height">
+      <div class="w-100{{ if .Params.featured_image }} w-60-ns {{ if $leftside }}pl3-ns{{ else }}pr3-ns{{ end }}{{ end }}">
+        <h1 class="f3 fw1 athelas mt0 lh-title{{ if (not $leftside) }} tr{{ end }}">{{ .Title }}</h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height{{ if (not $leftside) }} tr{{ end }}">
           {{ .Summary }}
         </div>
         {{/* TODO: add author
