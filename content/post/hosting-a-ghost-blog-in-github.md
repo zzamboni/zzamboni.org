@@ -200,6 +200,6 @@ While this seems scandalous, keep in mind that the active Ghost installation is 
   
 # Conclusion
 
-I followed the steps described above to create a test Ghost install, which you can access at [https://zzamboni.github.io/test-ghost-blog/](https://zzamboni.github.io/test-ghost-blog/), and its corresponding GitHub repository at [https://github.com/zzamboni/test-ghost-blog/](https://github.com/zzamboni/test-ghost-blog/). You can also find this article published there.
+I followed the steps described above to create a test Ghost install, which you can access at [https://zzamboni.github.io/test-ghost-blog/](https://zzamboni.github.io/test-ghost-blog/), and its corresponding GitHub repository at [https://github.com/zzamboni/test-ghost-blog/](https://github.com/zzamboni/test-ghost-blog/). You can also find this article [published there](https://zzamboni.github.io/test-ghost-blog/hosting-a-ghost-blog-in-github-the-easier-way/).
 
 I hope you've found it useful. I'd love to hear your comments!
