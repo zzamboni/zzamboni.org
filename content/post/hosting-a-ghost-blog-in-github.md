@@ -67,16 +67,16 @@ So, without further ado, here are the detailed instructions. I ran these on my M
    npm start
    ```
    
-5. Your blog is running! You can visit it at [http://localhost:2368/](http://localhost:2368/): {{< figure src="/images/ghost-initial-screen.png" class="shadow" >}}
+5. Your blog is running! You can visit it at [http://localhost:2368/](http://localhost:2368/): {{< figure src="/figures/ghost-initial-screen.png" class="shadow" >}}
 
 6. Go to [http://localhost:2368/ghost](http://localhost:2368/ghost), create your user and set up your blog info:
-   {{< figure src="/images/ghost-setup-blog.png" class="shadow" >}}
+   {{< figure src="/figures/ghost-setup-blog.png" class="shadow" >}}
    {{% tip %}}
    You may want to use an email address you don't mind being public. See "[Security Considerations]({{< relref "#security-considerations" >}})" below.
    {{% /tip %}}
 
 7. Start creating content!
-   {{< figure src="/images/ghost-admin-screen.png" class="shadow" >}}
+   {{< figure src="/figures/ghost-admin-screen.png" class="shadow" >}}
 
 8. Update the git repository:
    ```console
@@ -119,13 +119,13 @@ We can finally create our GitHub repo and push the contents to it.
 Now all we need to do is enable GitHub Pages on our repository, so that the contents under `docs` gets published.
 
 1. Go to your repository's "Settings" screen:
-   {{< figure src="/images/ghost-repo-settings-screen.png" class="shadow" >}}
+   {{< figure src="/figures/ghost-repo-settings-screen.png" class="shadow" >}}
 
 2. Scroll down to the "GitHub Pages" section and choose the "master branch /docs folder" option and click the "Save" button:
-   {{< figure src="/images/ghost-repo-github-pages-setting.png" class="shadow" >}}
+   {{< figure src="/figures/ghost-repo-github-pages-setting.png" class="shadow" >}}
 
 We are done! After a few minutes (usually takes 2-5 minutes for the contents to be published the first time, afterwards updates are nearly instantaneous), you will find your new website's content under `http://<github-username>.github.io/<github-repo-name>`. In our example, the URL is [https://zzamboni.github.io/test-ghost-blog/](https://zzamboni.github.io/test-ghost-blog/):
-{{< figure src="/images/ghost-published-blog.png" class="shadow" >}}
+{{< figure src="/figures/ghost-published-blog.png" class="shadow" >}}
 
 # The workflow
 
