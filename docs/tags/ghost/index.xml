@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Howto on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/howto/</link>
-    <description>Recent content in Howto on zzamboni.org</description>
+    <title>Ghost on zzamboni.org</title>
+    <link>http://zzamboni.org/tags/ghost/</link>
+    <description>Recent content in Ghost on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 25 Aug 2017 09:00:00 +0200</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/howto/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://zzamboni.org/tags/ghost/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,21 +18,6 @@
       
       <guid>http://zzamboni.org/post/hosting-a-ghost-blog-in-github/</guid>
       <description>&lt;p&gt;When I was planning the reboot of my website, I seriously considered using Ghost. It has a very nice UI, beautiful and usable theme out of the box, and a very active community. Eventually I decided to use Hugo, but in the process discovered that it is possible to host a statically-generated Ghost website using GitHub Pages.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Getting Started With Hammerspoon</title>
-      <link>http://zzamboni.org/post/getting-started-with-hammerspoon/</link>
-      <pubDate>Mon, 21 Aug 2017 16:34:00 +0200</pubDate>
-      
-      <guid>http://zzamboni.org/post/getting-started-with-hammerspoon/</guid>
-      <description>&lt;p&gt;This is the first installment of a series of posts about Hammerspoon,
-a staggeringly powerful automation utility which gives you an amazing
-degree of control over your Mac, allowing you to automate and control
-almost anything. In the word of Hammerspoon&amp;rsquo;s motto: &lt;em&gt;Making the
-runtime, funtime&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
