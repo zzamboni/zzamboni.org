@@ -72,7 +72,7 @@ So, without further ado, here are the detailed instructions. I ran these on my M
 6. Go to [http://localhost:2368/ghost](http://localhost:2368/ghost), create your user and set up your blog info:
    {{< figure src="/images/ghost-setup-blog.png" >}}
    {{% tip %}}
-   You may want to use an email address you don't mind being public. See "Security Considerations" below.
+   You may want to use an email address you don't mind being public. See "[Security Considerations]({{< relref "#security-considerations" >}})" below.
    {{% /tip %}}
 
 7. Start creating content!
