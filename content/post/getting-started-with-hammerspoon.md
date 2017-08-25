@@ -127,7 +127,7 @@ When you run Hammerspoon for the first time, you will see its icon
 appear in the menubar, and a notification telling you that it couldn't
 find a configuration file. Let's fix that!
 
-{{< figure src="/figures/hammerspoon-startup.png" >}}
+{{< figure src="/figures/hammerspoon-startup.png" class="shadow" >}}
 
 {{% tip %}}
 If you click on the initial notification, your web browser will open
@@ -156,7 +156,7 @@ Save the file, and from the Hammerspoon icon in the menubar, select
 {{< keys Ctrl "⌘" Alt h >}} on your keyboard, you will see a
 notification on your screen welcoming you to the world of Hammerspoon.
 
-{{< figure src="/figures/hammerspoon-hello-world.png" >}}
+{{< figure src="/figures/hammerspoon-hello-world.png" class="shadow" >}}
 
 Although it should be fairly self-explanatory, let us dissect this
 example to give you a clearer understanding of its components:
