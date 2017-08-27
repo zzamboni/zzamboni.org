@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+		>
+<channel>
+	<title>Comments on: How to define a new wallet item in 1Password</title>
+	<atom:link href="http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/feed/" rel="self" type="application/rss+xml" />
+	<link>http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/</link>
+	<description>Musings about technology and other neat stuff</description>
+	<lastBuildDate>Tue, 29 Sep 2009 21:48:06 +0200</lastBuildDate>
+	<generator>http://wordpress.org/?v=2.8.4</generator>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+		<item>
+		<title>By: Updated script for defining a new wallet item in 1Password</title>
+		<link>http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/comment-page-1/#comment-12031</link>
+		<dc:creator>Updated script for defining a new wallet item in 1Password</dc:creator>
+		<pubDate>Mon, 08 Sep 2008 13:52:56 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/#comment-12031</guid>
+		<description>&lt;p&gt;[...] you have been using my&#160;method for defining new wallet items in 1Password, you may have noticed that in recent versions the display of those new items has been broken. I [...]&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>[...] you have been using my&nbsp;method for defining new wallet items in 1Password, you may have noticed that in recent versions the display of those new items has been broken. I [...]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Hitchhiker</title>
+		<link>http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/comment-page-1/#comment-11993</link>
+		<dc:creator>Hitchhiker</dc:creator>
+		<pubDate>Fri, 15 Aug 2008 21:35:13 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/#comment-11993</guid>
+		<description>&lt;p&gt;Damon: thank you for the line! It works perfectly, I have modified the script to include it.&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Damon: thank you for the line! It works perfectly, I have modified the script to include it.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Damon</title>
+		<link>http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/comment-page-1/#comment-11992</link>
+		<dc:creator>Damon</dc:creator>
+		<pubDate>Fri, 15 Aug 2008 08:10:11 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/#comment-11992</guid>
+		<description>&lt;p&gt;Diego - Many thanks for posting this script. It came in handy after I updated and didn&#039;t back up my modifications. ;)&lt;/p&gt;
+
+&lt;p&gt;I ran into the UTF-16 issue and was able to replace line 98 with the following statement, which seemed to work (and will hopefully post properly):&lt;/p&gt;
+
+&lt;p&gt;open F, &quot;&gt;&gt;:raw:perlio:encoding(utf16be)&quot;, $file or die &quot;Error opening $file for appendn&quot;;&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Diego &#8211; Many thanks for posting this script. It came in handy after I updated and didn&#8217;t back up my modifications. <img src='http://zzamboni.org/brt/wp-includes/images/smilies/icon_wink.gif' alt=';)' class='wp-smiley' /> </p>
+<p>I ran into the UTF-16 issue and was able to replace line 98 with the following statement, which seemed to work (and will hopefully post properly):</p>
+<p>open F, &#8220;&gt;&gt;:raw:perlio:encoding(utf16be)&#8221;, $file or die &#8220;Error opening $file for appendn&#8221;;</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Hitchhiker</title>
+		<link>http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/comment-page-1/#comment-11982</link>
+		<dc:creator>Hitchhiker</dc:creator>
+		<pubDate>Tue, 29 Jul 2008 22:10:09 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/#comment-11982</guid>
+		<description>&lt;p&gt;Ingmar: I have noticed this problem myself, but I have not had time to fix it properly. What I have been doing for now is:
+- Run the script
+- Open the file Localizable.strings with TextEdit
+- Remove the strange characters left by the script from the end of the file, and then copy/paste manually the lines from step 5.&lt;/p&gt;
+
+&lt;p&gt;I will try to fix it ASAP, as it has also been bugging me :-)&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Ingmar: I have noticed this problem myself, but I have not had time to fix it properly. What I have been doing for now is:<br />
+- Run the script<br />
+- Open the file Localizable.strings with TextEdit<br />
+- Remove the strange characters left by the script from the end of the file, and then copy/paste manually the lines from step 5.</p>
+<p>I will try to fix it ASAP, as it has also been bugging me <img src='http://zzamboni.org/brt/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ingmar</title>
+		<link>http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/comment-page-1/#comment-11981</link>
+		<dc:creator>Ingmar</dc:creator>
+		<pubDate>Tue, 29 Jul 2008 14:08:49 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/#comment-11981</guid>
+		<description>&lt;p&gt;Tank you for this great script. But it does not work anymore. The File Localizable.strings is not formated right. I think this has to do with the UTF-16 UTF-8 problem mentioned above. Can you perhaps fix this bug?&lt;/p&gt;
+
+&lt;p&gt;Thanks forward&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Tank you for this great script. But it does not work anymore. The File Localizable.strings is not formated right. I think this has to do with the UTF-16 UTF-8 problem mentioned above. Can you perhaps fix this bug?</p>
+<p>Thanks forward</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: DCortesi . blog &#187; Unicode Grep</title>
+		<link>http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/comment-page-1/#comment-11977</link>
+		<dc:creator>DCortesi . blog &#187; Unicode Grep</dc:creator>
+		<pubDate>Thu, 17 Jul 2008 02:19:43 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/#comment-11977</guid>
+		<description>&lt;p&gt;[...] got caught by a bit of a bug today when I was trying to add a custom wallet item in 1Password. I was in the process of copying one of their templates after realizing they were just simple json, [...]&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>[...] got caught by a bit of a bug today when I was trying to add a custom wallet item in 1Password. I was in the process of copying one of their templates after realizing they were just simple json, [...]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Carsten</title>
+		<link>http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/comment-page-1/#comment-11122</link>
+		<dc:creator>Carsten</dc:creator>
+		<pubDate>Thu, 14 Feb 2008 14:45:13 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/#comment-11122</guid>
+		<description>&lt;p&gt;great, thank you&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>great, thank you</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Hitchhiker</title>
+		<link>http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/comment-page-1/#comment-11121</link>
+		<dc:creator>Hitchhiker</dc:creator>
+		<pubDate>Thu, 14 Feb 2008 14:40:10 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/#comment-11121</guid>
+		<description>&lt;p&gt;Carsten: you have to save the script to a file, and from the Terminal run it with this command: &quot;perl install_1password_new_wallet_items.pl&quot; (without the quotes).&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Carsten: you have to save the script to a file, and from the Terminal run it with this command: &#8220;perl install_1password_new_wallet_items.pl&#8221; (without the quotes).</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Carsten</title>
+		<link>http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/comment-page-1/#comment-11120</link>
+		<dc:creator>Carsten</dc:creator>
+		<pubDate>Thu, 14 Feb 2008 10:38:27 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/#comment-11120</guid>
+		<description>&lt;p&gt;Hi
+First i want to thank you for that great tutorial
+But i&#039;ve got a question
+How can i use the perl script?&lt;/p&gt;
+
+&lt;p&gt;best regards Carsten&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Hi<br />
+First i want to thank you for that great tutorial<br />
+But i&#8217;ve got a question<br />
+How can i use the perl script?</p>
+<p>best regards Carsten</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Hitchhiker</title>
+		<link>http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/comment-page-1/#comment-11061</link>
+		<dc:creator>Hitchhiker</dc:creator>
+		<pubDate>Wed, 19 Dec 2007 00:21:51 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2007/12/17/how-to-define-a-new-wallet-item-in-1password/#comment-11061</guid>
+		<description>&lt;p&gt;Hi David, thanks for the comment! If I define any new templates I&#039;ll certainly send them to you :-)&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Hi David, thanks for the comment! If I define any new templates I&#8217;ll certainly send them to you <img src='http://zzamboni.org/brt/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>
