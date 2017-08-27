@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+		>
+<channel>
+	<title>Comments on: How to emulate Unix&#8217; getent with MacOSX&#8217;s dscl</title>
+	<atom:link href="http://zzamboni.org/brt/2008/01/21/how-to-emulate-unix-getent-with-macosxs-dscl/feed/" rel="self" type="application/rss+xml" />
+	<link>http://zzamboni.org/brt/2008/01/21/how-to-emulate-unix-getent-with-macosxs-dscl/</link>
+	<description>Musings about technology and other neat stuff</description>
+	<lastBuildDate>Tue, 29 Sep 2009 21:48:06 +0200</lastBuildDate>
+	<generator>http://wordpress.org/?v=2.8.4</generator>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+		<item>
+		<title>By: yvov</title>
+		<link>http://zzamboni.org/brt/2008/01/21/how-to-emulate-unix-getent-with-macosxs-dscl/comment-page-1/#comment-12251</link>
+		<dc:creator>yvov</dc:creator>
+		<pubDate>Thu, 29 Jan 2009 22:42:26 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2008/01/21/how-to-emulate-unix-getent-with-macosxs-dscl/#comment-12251</guid>
+		<description>#!/bin/bash  
+ 
+if [ -z $1 ]; 
+then 
+echo &quot;You must specify an user&quot; 
+exit 1 
+else 
+echo `dscl . -read /Users/$1 RecordName &#124; sed &#039;s/RecordName: //g&#039;`:*:`dscl . -read /Users/$1 UniqueID &#124; sed &#039;s/UniqueID: //g&#039;`:`dscl . -read /Users/$1 PrimaryGroupID &#124; sed &#039;s/PrimaryGroupID: //g&#039;`:`dscl . -read /Users/$1 RealName &#124; sed -e &#039;s/RealName://g&#039; -e &#039;s/^ //g&#039; &#124; awk &#039;{printf(&quot;%s&quot;, $0 (NR==1 ? &quot;&quot; : &quot;&quot;))}&#039;`:/Users/$1:`dscl . -read /Users/$1 UserShell &#124; sed &#039;s/UserShell: //g&#039;` 
+fi 
+ 
+exit 0 
+ </description>
+		<content:encoded><![CDATA[<p>#!/bin/bash  </p>
+<p>if [ -z $1 ];<br />
+then<br />
+echo &quot;You must specify an user&quot;<br />
+exit 1<br />
+else<br />
+echo `dscl . -read /Users/$1 RecordName | sed &#039;s/RecordName: //g&#039;`:*:`dscl . -read /Users/$1 UniqueID | sed &#039;s/UniqueID: //g&#039;`:`dscl . -read /Users/$1 PrimaryGroupID | sed &#039;s/PrimaryGroupID: //g&#039;`:`dscl . -read /Users/$1 RealName | sed -e &#039;s/RealName://g&#039; -e &#039;s/^ //g&#039; | awk &#039;{printf(&quot;%s&quot;, $0 (NR==1 ? &quot;&quot; : &quot;&quot;))}&#039;`:/Users/$1:`dscl . -read /Users/$1 UserShell | sed &#039;s/UserShell: //g&#039;`<br />
+fi </p>
+<p>exit 0</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>
