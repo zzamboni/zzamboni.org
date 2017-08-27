@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+		>
+<channel>
+	<title>Comments on: New theme!</title>
+	<atom:link href="http://zzamboni.org/brt/2005/03/13/new-theme/feed/" rel="self" type="application/rss+xml" />
+	<link>http://zzamboni.org/brt/2005/03/13/new-theme/</link>
+	<description>Musings about technology and other neat stuff</description>
+	<lastBuildDate>Tue, 29 Sep 2009 21:48:06 +0200</lastBuildDate>
+	<generator>http://wordpress.org/?v=2.8.4</generator>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+		<item>
+		<title>By: Z. D. Smith</title>
+		<link>http://zzamboni.org/brt/2005/03/13/new-theme/comment-page-1/#comment-43</link>
+		<dc:creator>Z. D. Smith</dc:creator>
+		<pubDate>Fri, 01 Apr 2005 21:19:59 +0000</pubDate>
+		<guid isPermaLink="false">http://www.zzamboni.org/brt/2005/03/13/25/#comment-43</guid>
+		<description>Oh, hey - very nice. I think I&#039;d like to get that running, too.</description>
+		<content:encoded><![CDATA[<p>Oh, hey &#8211; very nice. I think I&#8217;d like to get that running, too.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Hitchhiker</title>
+		<link>http://zzamboni.org/brt/2005/03/13/new-theme/comment-page-1/#comment-38</link>
+		<dc:creator>Hitchhiker</dc:creator>
+		<pubDate>Wed, 30 Mar 2005 18:18:08 +0000</pubDate>
+		<guid isPermaLink="false">http://www.zzamboni.org/brt/2005/03/13/25/#comment-38</guid>
+		<description>Z.D.: thanks for the comment! I&#039;m not using any plugin. I followed the instructions from http://fernando.dubtribe.com/archives/2004/10/28/using-matts-asides-with-kubrick/, and modified the CSS style to my liking. The globe icon I&#039;m using (www.png below) is from the &lt;a href=&quot;http://www.icon-king.com/goodies.php&quot; rel=&quot;nofollow&quot;&gt;Nuvola&lt;/a&gt; icon set by David Vignoni. This is the corresponding section from my style.css file:
+
+&lt;code&gt;
+.asides p {
+    border: dotted #C4BFAB
+    font:Verdana;
+    font-size:10px;
+    background: url(&quot;www.png&quot;) no-repeat #eee;
+    background-position: left top;
+    padding: 5px;
+    padding-left: 40px;
+}
+&lt;/code&gt;
+
+Finally, I modified the stupid_hack function to fit the XHTML produced by the Theme I&#039;m using (modified Arzel XT2). Here&#039;s the one I&#039;m using:
+
+&lt;code&gt;
+function stupid\_hack($str) {
+   return preg\_replace(&#039;&#124;&lt;br /&gt;&lt;br /&gt;\s*&lt;div class=&quot;asides&quot;&gt;&#124;s&#039;, &#039;&lt;div class=&quot;asides&quot;&gt;&#039;, $str);
+}
+&lt;/code&gt;
+</description>
+		<content:encoded><![CDATA[<p>Z.D.: thanks for the comment! I&#8217;m not using any plugin. I followed the instructions from <a  href="http://fernando.dubtribe.com/archives/2004/10/28/using-matts-asides-with-kubrick/" rel="nofollow">http://fernando.dubtribe.com/archives/2004/10/28/using-matts-asides-with-kubrick/</a>, and modified the CSS style to my liking. The globe icon I&#8217;m using (www.png below) is from the <a  href="http://www.icon-king.com/goodies.php" rel="nofollow">Nuvola</a> icon set by David Vignoni. This is the corresponding section from my style.css file:</p>
+<p><code><br />
+.asides p {<br />
+    border: dotted #C4BFAB<br />
+    font:Verdana;<br />
+    font-size:10px;<br />
+    background: url("www.png") no-repeat #eee;<br />
+    background-position: left top;<br />
+    padding: 5px;<br />
+    padding-left: 40px;<br />
+}<br />
+</code></p>
+<p>Finally, I modified the stupid_hack function to fit the XHTML produced by the Theme I&#8217;m using (modified Arzel XT2). Here&#8217;s the one I&#8217;m using:</p>
+<p><code><br />
+function stupid\_hack($str) {<br />
+   return preg\_replace('|</p>
+<p>\s*
+<div class="asides">|s', '
+<div class="asides">', $str);<br />
+}
+</div>
+</div>
+<p></code></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Z. D. Smith</title>
+		<link>http://zzamboni.org/brt/2005/03/13/new-theme/comment-page-1/#comment-35</link>
+		<dc:creator>Z. D. Smith</dc:creator>
+		<pubDate>Tue, 29 Mar 2005 07:11:13 +0000</pubDate>
+		<guid isPermaLink="false">http://www.zzamboni.org/brt/2005/03/13/25/#comment-35</guid>
+		<description>I really like your asides. Which plugin are you using for them?</description>
+		<content:encoded><![CDATA[<p>I really like your asides. Which plugin are you using for them?</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

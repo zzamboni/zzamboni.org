@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+		>
+<channel>
+	<title>Comments on: Removing all extended attributes from a directory tree</title>
+	<atom:link href="http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/feed/" rel="self" type="application/rss+xml" />
+	<link>http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/</link>
+	<description>Musings about technology and other neat stuff</description>
+	<lastBuildDate>Tue, 29 Sep 2009 21:48:06 +0200</lastBuildDate>
+	<generator>http://wordpress.org/?v=2.8.4</generator>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+		<item>
+		<title>By: vikram jadhav</title>
+		<link>http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/comment-page-1/#comment-13065</link>
+		<dc:creator>vikram jadhav</dc:creator>
+		<pubDate>Sat, 08 Aug 2009 05:55:08 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/#comment-13065</guid>
+		<description>How to remove extended attribute from NTFS , using win32 API&#039;s</description>
+		<content:encoded><![CDATA[<p>How to remove extended attribute from NTFS , using win32 API&#8217;s</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: zzamboni</title>
+		<link>http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/comment-page-1/#comment-12928</link>
+		<dc:creator>zzamboni</dc:creator>
+		<pubDate>Thu, 16 Jul 2009 08:16:57 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/#comment-12928</guid>
+		<description>I think this is because Time Machine files are also created with ACLs that disallow anyone from modifying them (they are meant to be permanent copies). I imagine any copies you make also get those ACLs copied. The easiest way around this is to temporarily disable ACLs on the file system using the fsaclctl command, or to use chmod to permanently remove the ACLs. 
+ </description>
+		<content:encoded><![CDATA[<p>I think this is because Time Machine files are also created with ACLs that disallow anyone from modifying them (they are meant to be permanent copies). I imagine any copies you make also get those ACLs copied. The easiest way around this is to temporarily disable ACLs on the file system using the fsaclctl command, or to use chmod to permanently remove the ACLs.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ben</title>
+		<link>http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/comment-page-1/#comment-12924</link>
+		<dc:creator>Ben</dc:creator>
+		<pubDate>Wed, 15 Jul 2009 19:03:56 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/#comment-12924</guid>
+		<description>I was unable to get the xattr stuff to remove the extended attributes from my Time Machine copies (I had done them originally with -p which was a bad idea, I suppose). However, using &#039;cp -rX&#039; along with renames (and admin access) solved my problem. </description>
+		<content:encoded><![CDATA[<p>I was unable to get the xattr stuff to remove the extended attributes from my Time Machine copies (I had done them originally with -p which was a bad idea, I suppose). However, using &#039;cp -rX&#039; along with renames (and admin access) solved my problem.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: zzamboni</title>
+		<link>http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/comment-page-1/#comment-12775</link>
+		<dc:creator>zzamboni</dc:creator>
+		<pubDate>Wed, 10 Jun 2009 22:22:03 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/#comment-12775</guid>
+		<description>Thank you - very nice, I had never noticed the -X option. 
+ </description>
+		<content:encoded><![CDATA[<p>Thank you &#8211; very nice, I had never noticed the -X option.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: A Friend</title>
+		<link>http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/comment-page-1/#comment-12773</link>
+		<dc:creator>A Friend</dc:creator>
+		<pubDate>Wed, 10 Jun 2009 17:35:47 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/#comment-12773</guid>
+		<description>It also might be worth mentioning that you can create copy of a file or directory that doesn&#039;t have any extended attributes by passing the -X option to the cp command. 
+ 
+For example, if you want to make a clean tar file of the directory &quot;my_files&quot;, you could do the following: 
+ 
+    # copy my_files to the Desktop, excluding extended attributes 
+    cp -rX ~/Documents/my_files ~/Desktop/my_files 
+     
+    # go to Desktop 
+    cd ~/Desktop  
+     
+    # create the tar file, excluding .DS_Store files 
+    tar cjvf my_files.tar.bz2 --exclude .DS_Store my_files 
+     
+    # remove the copy 
+    rm -r my_files 
+ 
+ </description>
+		<content:encoded><![CDATA[<p>It also might be worth mentioning that you can create copy of a file or directory that doesn&#039;t have any extended attributes by passing the -X option to the cp command. </p>
+<p>For example, if you want to make a clean tar file of the directory &quot;my_files&quot;, you could do the following: </p>
+<p>    # copy my_files to the Desktop, excluding extended attributes<br />
+    cp -rX ~/Documents/my_files ~/Desktop/my_files </p>
+<p>    # go to Desktop<br />
+    cd ~/Desktop  </p>
+<p>    # create the tar file, excluding .DS_Store files<br />
+    tar cjvf my_files.tar.bz2 &#8211;exclude .DS_Store my_files </p>
+<p>    # remove the copy<br />
+    rm -r my_files</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: zzamboni</title>
+		<link>http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/comment-page-1/#comment-12599</link>
+		<dc:creator>zzamboni</dc:creator>
+		<pubDate>Fri, 08 May 2009 07:21:32 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/#comment-12599</guid>
+		<description>It was a mistake. I have corrected it. Thanks for pointing it out! </description>
+		<content:encoded><![CDATA[<p>It was a mistake. I have corrected it. Thanks for pointing it out!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Tyler Havener</title>
+		<link>http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/comment-page-1/#comment-12592</link>
+		<dc:creator>Tyler Havener</dc:creator>
+		<pubDate>Wed, 06 May 2009 22:49:17 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/#comment-12592</guid>
+		<description>is there a reason why &quot;echo&quot; is listed twice? </description>
+		<content:encoded><![CDATA[<p>is there a reason why &quot;echo&quot; is listed twice?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: John Rikes</title>
+		<link>http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/comment-page-1/#comment-12521</link>
+		<dc:creator>John Rikes</dc:creator>
+		<pubDate>Sat, 18 Apr 2009 22:26:42 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/#comment-12521</guid>
+		<description>Should this remove the info found in the &quot;Get Info&quot; menu item? After I ran this, I still see a URL from where I downloaded my files from... </description>
+		<content:encoded><![CDATA[<p>Should this remove the info found in the &quot;Get Info&quot; menu item? After I ran this, I still see a URL from where I downloaded my files from&#8230;</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: zzamboni</title>
+		<link>http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/comment-page-1/#comment-12136</link>
+		<dc:creator>zzamboni</dc:creator>
+		<pubDate>Fri, 21 Nov 2008 08:50:08 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/#comment-12136</guid>
+		<description>Justin: it doesn&#039;t, because you have to give to xattr -d the attribute you want to delete. That&#039;s what the script does - first find all the attributes that exist under the directory, and then loop over them, removing them in sequence. </description>
+		<content:encoded><![CDATA[<p>Justin: it doesn&#039;t, because you have to give to xattr -d the attribute you want to delete. That&#039;s what the script does &#8211; first find all the attributes that exist under the directory, and then loop over them, removing them in sequence.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Justin Force</title>
+		<link>http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/comment-page-1/#comment-12135</link>
+		<dc:creator>Justin Force</dc:creator>
+		<pubDate>Fri, 21 Nov 2008 01:09:42 +0000</pubDate>
+		<guid isPermaLink="false">http://zzamboni.org/brt/2008/05/07/removing-all-extended-attributes-from-a-directory-tree/#comment-12135</guid>
+		<description>Wait! No it doesn&#039;t. Wish I could delete that post... </description>
+		<content:encoded><![CDATA[<p>Wait! No it doesn&#039;t. Wish I could delete that post&#8230;</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>
