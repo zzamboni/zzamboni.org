@@ -1,6 +1,0 @@
-$ grabcartoons.pl --templates
-Templates defined:
-	arcamax.com	Comics hosted at arcamax.com
-	comics.com	Comics hosted at gocomics.com
-	comicskingdom.com	Comics hosted at comicskingdom.com
-	gocomics.com	Comics hosted at gocomics.com
