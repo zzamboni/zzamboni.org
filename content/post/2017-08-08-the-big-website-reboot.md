@@ -4,6 +4,7 @@ date: 2017-08-08T06:56:52+02:00
 tags:
 - sitenews
 featured_image: "/images/z-favicon-src.png"
+slug: the-big-website-reboot
 ---
 
 Welcome to the new zzamboni.org.
