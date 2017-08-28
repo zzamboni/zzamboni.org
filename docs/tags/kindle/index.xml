@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kindle on zzamboni.org</title>
+    <link>http://zzamboni.org/tags/kindle/</link>
+    <description>Recent content in Kindle on zzamboni.org</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 20 Dec 2011 02:17:00 -0600</lastBuildDate>
+    
+	<atom:link href="http://zzamboni.org/tags/kindle/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Reading on multiple media</title>
+      <link>http://zzamboni.org/post/2011-12-20-reading-on-multiple-media/</link>
+      <pubDate>Tue, 20 Dec 2011 02:17:00 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2011-12-20-reading-on-multiple-media/</guid>
+      <description>A couple of days ago I finished reading Steve Jobs by Walter Isaacson. I thoroughly enjoyed it (I may post a longer review later on, but I really liked learning the &#34;behind the scenes&#34; of much of what I witnessed from the outside over so many years). 
+With this book, for the first time, I decided to conduct an experiment. I got the book as an audiobook (from Audible, playing on my iPhone), as an ebook (using Kindle on my iPhone) and also the hardcover physical book.</description>
+    </item>
+    
+  </channel>
+</rss>

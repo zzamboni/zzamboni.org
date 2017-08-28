@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Copbl on zzamboni.org</title>
+    <link>http://zzamboni.org/tags/copbl/</link>
+    <description>Recent content in Copbl on zzamboni.org</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 25 Aug 2010 01:48:41 -0500</lastBuildDate>
+    
+	<atom:link href="http://zzamboni.org/tags/copbl/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Editing whitespace-separated config files with cfengine</title>
+      <link>http://zzamboni.org/post/2010-08-25-editing-whitespace-separated-config-files-wit/</link>
+      <pubDate>Wed, 25 Aug 2010 01:48:41 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-08-25-editing-whitespace-separated-config-files-wit/</guid>
+      <description>{% gist 548981 %}</description>
+    </item>
+    
+    <item>
+      <title>cfengine Community Open Promise Body Library on GitHub</title>
+      <link>http://zzamboni.org/post/2010-08-25-cfengine-community-open-body-promise-library/</link>
+      <pubDate>Wed, 25 Aug 2010 01:37:00 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-08-25-cfengine-community-open-body-promise-library/</guid>
+      <description>I have created a copy of the cfengine COPBL on GitHub , where I will use it as a playground for changes and additions. This is in no way endorsed by cfengine - it is just my personal copy. But if you use GitHub and want to use it, go ahead, I will try to keep it updated with respect to the original subversion repository , although it will include my changes too.</description>
+    </item>
+    
+  </channel>
+</rss>

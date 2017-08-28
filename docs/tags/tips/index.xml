@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tips on zzamboni.org</title>
+    <link>http://zzamboni.org/tags/tips/</link>
+    <description>Recent content in Tips on zzamboni.org</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 07 Mar 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://zzamboni.org/tags/tips/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fast translation with Google Translator</title>
+      <link>http://zzamboni.org/post/fast-translation-with-google-translator/</link>
+      <pubDate>Mon, 07 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/fast-translation-with-google-translator/</guid>
+      <description>via https://medium.com/@mrdoro/fast-translation-with-google-translator-and-mac-osx-817e32233b7a
+ https://medium.com/@mrdoro/fast-translation-with-google-translator-and-mac-osx-817e32233b7a  Nice article about how to create a service to automatically translate selected text from any application. I use this all the time, I have a “German-to-English” service bound to Command-Alt-Ctrl-Shift-E, so I can just select text off the screen, press the shortcut, and a window with the translation will pop up. Very handy.   </description>
+    </item>
+    
+    <item>
+      <title>Spotlight: use-package, a declarative configuration tool - Mastering Emacs</title>
+      <link>http://zzamboni.org/post/spotlight-use-package-a-declarative-configuration-tool-mastering-emacs/</link>
+      <pubDate>Thu, 25 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/spotlight-use-package-a-declarative-configuration-tool-mastering-emacs/</guid>
+      <description>via https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-configuration-tool
+ Have you ever heard of use-package? It’s a declarative way of expressing package configuration in Emacs but without the tears.  This looks amazingly useful. I need to start migrating my Emacs config to use-package ASAP.   </description>
+    </item>
+    
+    <item>
+      <title>Using Multiple SSH Keys with Github</title>
+      <link>http://zzamboni.org/post/using-multiple-ssh-keys-with-github/</link>
+      <pubDate>Wed, 20 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/using-multiple-ssh-keys-with-github/</guid>
+      <description>via http://www.freshblurbs.com/blog/2013/06/22/github-multiple-ssh-keys.html#tldr
+ Since Github doesn&#39;t allow us to reuse an SSH Key, the only sane solution is to jump through some hoops and generate + use multiple keys on the server itself. Let&#39;s look at some effective approaches of doing that.  Short version: define multiple hosts in the SSH config file for each repository, which use different SSH keys, then you can assign different deploy keys to each repo.</description>
+    </item>
+    
+    <item>
+      <title>Fixing Emacs problems with the fish shell</title>
+      <link>http://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</link>
+      <pubDate>Thu, 14 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</guid>
+      <description>I started getting errors from the TRAMP Emacs package because I was using fish as my default shell, and it does not recognize certain standard syntax elements (such as &amp;amp;&amp;amp; to separate commands), and Emacs runs subcommands under the default shell. I fixed this by:
+ Changing my account&#39;s default shell back to `/bin/bash` Changing my Terminal.app preferences to run `/usr/local/bin/fish` when a shell opens, instead of the default login shell:  Log out and back in to have everything reloaded properly.</description>
+    </item>
+    
+    <item>
+      <title>Moving files between git repositories, preserving history</title>
+      <link>http://zzamboni.org/post/moving-files-between-git-repositories-preserving-history/</link>
+      <pubDate>Fri, 17 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/moving-files-between-git-repositories-preserving-history/</guid>
+      <description>I needed to copy a directory between two git repositories while preserving its history. I found some good instructions at http://gbayer.com/development/moving-files-from-one-git-repository-to-another-preserving-history/, which got me started, but I figured out a way to avoid having to move all the files into their directory again (lines 5-6 in Greg&amp;rsquo;s instructions) by reversing the filter to remove everything I don&amp;rsquo;t want instead of only including the directory I want. Here are the steps (the idea is the same as in Greg&amp;rsquo;s post, so please read that to get the explanation, I&amp;rsquo;m only listing the commands here for reference):</description>
+    </item>
+    
+    <item>
+      <title>Three levels of GIT config</title>
+      <link>http://zzamboni.org/post/three-levels-of-git-config/</link>
+      <pubDate>Fri, 17 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/three-levels-of-git-config/</guid>
+      <description>via http://www.codinginahurry.com/2011/02/05/three-levels-of-git-config/
+ Very nice explanation, via coding in a hurry There are 3 levels of git config; project, global and system.    project: Project configs are only available for the current project and stored in .git/config in the project&#39;s directory. global: Global configs are available for all projects for the current user and stored in ~/.gitconfig. system: System configs are available for all the users/projects and stored in /etc/gitconfig.</description>
+    </item>
+    
+    <item>
+      <title>Watching for changes (Polling notifications) in Evernote</title>
+      <link>http://zzamboni.org/post/watching-for-changes-polling-notifications-in-evernote/</link>
+      <pubDate>Thu, 16 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/watching-for-changes-polling-notifications-in-evernote/</guid>
+      <description>via https://dev.evernote.com/doc/articles/polling_notification.php
+ Useful note about how to poll an Evernote account for new content. Also a test of web clipping with Enwrite. Polling If your app wants to know about changes in a user&#39;s Evernote account, you&#39;ll probably consider calling the NoteStore.findNotesMetadata function periodically to search for new notes. findNotes is incredibly powerful, but it&#39;s also expensive for our servers - we need to load the user&#39;s Lucene index, perform the search across all of their notes, hit the database to pull out the results, and send those results over the network to your app.</description>
+    </item>
+    
+    <item>
+      <title>How to create a new KVM VM using command line tools</title>
+      <link>http://zzamboni.org/post/how-to-create-a-new-kvm-vm-using-command-line-tools/</link>
+      <pubDate>Tue, 14 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/how-to-create-a-new-kvm-vm-using-command-line-tools/</guid>
+      <description> I got tired of clicking through virt-manager to create new VMs, so I found the command needed to create one from the command line (thanks https://acidborg.wordpress.com/2010/02/18/how-to-create-virtual-machines-using-kvm-kernel-based-virtual-machine/):  virt-install --name=hostname --arch=x86_64 --vcpus=2 --ram=4096 --os-type=linux --os-variant=rhel7 --hvm --connect=qemu:///system --network bridge:br-fabric --cdrom=/var/lib/libvirt/images/CentOS-7.0-1406-x86_64-Minimal.iso --disk path=/var/lib/libvirt/images/hostname.img,size=32 --accelerate --vnc   </description>
+    </item>
+    
+    <item>
+      <title>Find all single-note tags in Evernote</title>
+      <link>http://zzamboni.org/post/find-all-single-note-tags-in-evernote/</link>
+      <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/find-all-single-note-tags-in-evernote/</guid>
+      <description>I’ve been working on cleaning up my Evernote, and noticed that I have a lot of tags assigned to a single note. I had successfully used Veritrope’s excellent Evernote empty tag remover applescript, so I made some small changes to write the attached script, which will find all single-note tags in your Evernote and list them in a new note, including links to each note. This makes it much easier to go through them and see which of those tags could be removed.</description>
+    </item>
+    
+    <item>
+      <title>How to turn off &#34;sort by relevance&#34; in Evernote 5.6.0 Beta</title>
+      <link>http://zzamboni.org/post/how-to-turn-off-sort-by-relevance-in-evernote-5-6-0-beta/</link>
+      <pubDate>Tue, 09 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/how-to-turn-off-sort-by-relevance-in-evernote-5-6-0-beta/</guid>
+      <description> This was driving me crazy, but the fix is really easy (Source: https://discussion.evernote.com/topic/62259-evernote-for-mac-56-public-beta-1/?p=287015)    </description>
+    </item>
+    
+    <item>
+      <title>Mac keyboard shortcuts by Matt Gemmell</title>
+      <link>http://zzamboni.org/post/mac-keyboard-shortcuts-by-matt-gemmell/</link>
+      <pubDate>Fri, 16 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/mac-keyboard-shortcuts-by-matt-gemmell/</guid>
+      <description>Another great article by Matt Gemmell. I knew most of them, but learned a few things. The golden part for me were the third-party utilities, in particular Shortcat, which I didn’t know and is amazing:  &amp;gt; It’s basically Spotlight but for all visible controls and objects on the screen: it’s type-to-select for *everything you can see*.   The whole article is worth a read.  </description>
+    </item>
+    
+    <item>
+      <title>Airmail tip: prevent &#34;Save to Evernote&#34; action from opening the created note</title>
+      <link>http://zzamboni.org/post/airmail-tip-prevent-save-to-evernote-action-from-opening-the-created-note/</link>
+      <pubDate>Thu, 06 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/airmail-tip-prevent-save-to-evernote-action-from-opening-the-created-note/</guid>
+      <description>I’ve been trying out Airmail as my main email app. It’s quite nice, I like the built-in integrations, particularly with Evernote. By default, when you use the “Save to Evernote” action, it saves the current message to Evernote and opens the newly-created note. I went spelunking into the Airmail application directory, and found the way to disable the note-opening. Follow these steps:   Quit Airmail (don’t know if this is necessary, but it can’t hurt) Open the Terminal app Run the following command in the terminal (all in a single line): sudo /Applications/Utilities/AppleScript\ Editor.</description>
+    </item>
+    
+    <item>
+      <title>How to stop com.apple.dock.extra from &#34;using significant energy&#34;</title>
+      <link>http://zzamboni.org/post/how-to-stop-com-apple-dock-extra-from-using-significant-energy/</link>
+      <pubDate>Tue, 04 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/how-to-stop-com-apple-dock-extra-from-using-significant-energy/</guid>
+      <description>I’d been having for some time a problem with `com.apple.dock.extra` appearing in the “Apps using significant energy” section of the battery menu. I just learned the solution (from http://forums.macrumors.com/showthread.php?t=1651662): remove BusyCal 1.6 (I upgraded to BusyCal 2, but left the old version around in case I had to go back to it). After removing it and restarting the Dock, the problem stopped.  From the same thread, it seems the problem was caused by BusyCal’s “animate transitions” preference.</description>
+    </item>
+    
+    <item>
+      <title>Top 5 Recommended Google Font Combinations</title>
+      <link>http://zzamboni.org/post/top-5-recommended-google-font-combinations/</link>
+      <pubDate>Sun, 15 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/top-5-recommended-google-font-combinations/</guid>
+      <description>via http://www.studiopress.com/design/google-font-combinations.htm
+Nice suggestions.   </description>
+    </item>
+    
+    <item>
+      <title>HowTo: Changing the available display formats for Evernote&#39;s &#34;Insert Date&#34; command</title>
+      <link>http://zzamboni.org/post/2012-11-13-howto-changing-the-available-display-formats/</link>
+      <pubDate>Tue, 13 Nov 2012 23:00:30 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2012-11-13-howto-changing-the-available-display-formats/</guid>
+      <description>Evernote introduced some time ago an &#34;Insert Date&#34; keyboard shortcut, which is very handy. However, the options for the format of the inserted date seemed limited (only four options). I finally learned how this works, and how to change it on the Mac. The formats offered are those that are configured in the &#34;Languages &amp;amp; Text&#34; preferences panel. If you go to &#34;Region&#34; and then click the &#34;Customize button&#34; in the Dates part of the panel, you will see and be able to customize the formats for short, medium, long and full date representations.</description>
+    </item>
+    
+    <item>
+      <title>Changing &#34;message:&#34; protocol handler from Sparrow back to Mail.app</title>
+      <link>http://zzamboni.org/post/2012-01-25-changing-message-protocol-handler-from-sparro/</link>
+      <pubDate>Wed, 25 Jan 2012 09:54:07 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2012-01-25-changing-message-protocol-handler-from-sparro/</guid>
+      <description>After using Sparrow for a while, I have decided to switch back to Mail.app. However, even after setting my default email client to Mail.app, all my message: links (for example, from messages dragged from Mail.app into Things) were opening in Sparrow.
+After some experimentation, I figured out what happened: I switched the default email client from Sparrow to Mail using Mail&#39;s preference panel: 
+    
+Apparently this switches the application for the mailto: protocol, but not for message:, nor for .</description>
+    </item>
+    
+    <item>
+      <title>Fix journal in an HFS&#43; file system</title>
+      <link>http://zzamboni.org/post/2011-12-15-fix-journal-in-an-hfs-file-system/</link>
+      <pubDate>Thu, 15 Dec 2011 00:07:00 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2011-12-15-fix-journal-in-an-hfs-file-system/</guid>
+      <description>Yesterday my external Western Digital disk (which I use for Time Machine, among other things) stopped mounting automatically when I plug it in. This may *cough*definitely*cough*have something to do with me unmounting it forcefully while it was doing a backup, since I was in a hurry.
+Disk Utility reported everything was OK with the disk, but it still failed to mount. Upon poking a bit deeper, I found these messages in the logs:</description>
+    </item>
+    
+    <item>
+      <title>How to fix &#34;texexpand error: More than one input file specified&#34; in latex2html</title>
+      <link>http://zzamboni.org/post/2011-01-20-how-to-fix-texexpand-error-more-than-one-inpu/</link>
+      <pubDate>Thu, 20 Jan 2011 00:24:00 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2011-01-20-how-to-fix-texexpand-error-more-than-one-inpu/</guid>
+      <description>There&#39;s a bug that causes problems when running latex2html on files which have spaces in the path. The workaround is to either move things to folders with no spaces, or add appropriate symbolic links.via ubuntuforums.org  This error had me stumped in trying to process a latex file with latex2html:texexpand: Error: More than one input file specified.texexpand failed: No such file or directoryThe fix is simple - make sure the path of the current directory does not have any spaces.</description>
+    </item>
+    
+    <item>
+      <title>Installing latex2html under Win7 with cygwin</title>
+      <link>http://zzamboni.org/post/2011-01-19-installing-latex2html-under-win7-with-cygwin/</link>
+      <pubDate>Wed, 19 Jan 2011 15:28:00 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2011-01-19-installing-latex2html-under-win7-with-cygwin/</guid>
+      <description>I got latex2html to install on the latest cygwin, however to get the configure to pass I had to alter the configure to recognize cygwin as a UNIX. via mail-archive.com  Using this patch I was able to properly configure and install latex2html under cygwin in Windows 7.
+ </description>
+    </item>
+    
+    <item>
+      <title>LogParser, Event Logs, and Vista - Neil Carpenter&#39;s Blog - Site Home - TechNet Blogs</title>
+      <link>http://zzamboni.org/post/2011-01-19-logparser-event-logs-and-vista-neil-carpenter/</link>
+      <pubDate>Wed, 19 Jan 2011 12:33:00 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2011-01-19-logparser-event-logs-and-vista-neil-carpenter/</guid>
+      <description>The only workaround to this is to convert the logfile to the new evtx format prior to parsing it. You can do this in the event log viewer GUI by doing a Save As... but I find it easier to do this at the command prompt: wevtutil epl application.evt application.evtx /lf:true
+  via blogs.technet.com  I&#39;m trying to process Windows Event Viewer files (.evt) from some servers on my Win7 machine, which kept me giving a &#34;</description>
+    </item>
+    
+    <item>
+      <title>Setting up a global hotkey to add tasks to Outlook</title>
+      <link>http://zzamboni.org/post/2010-12-23-setting-up-a-global-hotkey-to-add-tasks-to-ou/</link>
+      <pubDate>Thu, 23 Dec 2010 12:14:00 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-12-23-setting-up-a-global-hotkey-to-add-tasks-to-ou/</guid>
+      <description>One thing I missed since I moved from a Mac (using The Hit List for GTD) to Outlook (using Jello Dashboard for GTD) was the availability of a global hot key that I could use to bring up a text entry box which I could use to quickly add things into my electronic Inbox, for later processing.
+I have found a way to achieve this, and here is the setup I am using now:</description>
+    </item>
+    
+    <item>
+      <title>GTD tip: clean up physical clutter using ziploc bags</title>
+      <link>http://zzamboni.org/post/2010-12-20-gtd-tip-clean-up-physical-clutter-using-ziplo/</link>
+      <pubDate>Mon, 20 Dec 2010 17:46:34 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-12-20-gtd-tip-clean-up-physical-clutter-using-ziplo/</guid>
+      <description>If you are like me, you carry in your backpack, bag or briefcase all sorts of physical stuff, other than documents, papers or magazines. You know the type: phone chargers, USB cables, power adapters, network cables, USB sticks and other small gadgets or accessories. Over time these things accumulate and it becomes harder and harder to find them and to keep them organized. 
+I have been using a low-tech tool for organizing these things: ziploc bags.</description>
+    </item>
+    
+    <item>
+      <title>Making cygwin, Windows and emacs understand the same symlinks</title>
+      <link>http://zzamboni.org/post/2010-09-28-making-cygwin-windows-and-emacs-understand-th/</link>
+      <pubDate>Tue, 28 Sep 2010 09:39:00 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-09-28-making-cygwin-windows-and-emacs-understand-th/</guid>
+      <description>Today I ran into the problem that symlinks created under cygwin using &#34;ln -s&#34; are not understood by Windows, and of course Windows shortcuts are seen by cygwin as regular files. Happily, this is a (semi-)solved problem. For reference, this is what needs to be done:
+
+ Add &#34;winsymlinks&#34; to your CYGWIN environment variable. For example, in my .bashrc I have the following:
+export CYGWIN=&#34;nodosfilewarning winsymlinks&#34;
+
+This makes cygwin create symlinks differently, in a form that is understood both by it and by Windows.</description>
+    </item>
+    
+    <item>
+      <title>Hierarchical copying with cfengine3</title>
+      <link>http://zzamboni.org/post/2010-08-27-hierarchical-copying-with-cfengine3/</link>
+      <pubDate>Fri, 27 Aug 2010 00:28:00 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-08-27-hierarchical-copying-with-cfengine3/</guid>
+      <description>I recently posted a snippet to perform hierarchical copying in cfengine3. As I was attempting to integrate this mechanism into my copy of cfengine&#39;s COPBL, I realized that no additional functions or body components are needed. Thanks to cfengine3&#39;s list expansion, all you need to do is include in the existing copy promise the list containing the desired list of suffixes to try. For example:
+{% gist 552848 %}</description>
+    </item>
+    
+    <item>
+      <title>Emulate vi&#39;s % command (jump to matching parenthesis) in Emacs</title>
+      <link>http://zzamboni.org/post/2010-08-18-emulate-vis-command-jump-to-matching-parenthe/</link>
+      <pubDate>Wed, 18 Aug 2010 16:09:18 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-08-18-emulate-vis-command-jump-to-matching-parenthe/</guid>
+      <description>{% gist 536198 %}</description>
+    </item>
+    
+    <item>
+      <title>Installing AucTeX on EmacsW32 on Win7/64bit</title>
+      <link>http://zzamboni.org/post/2010-08-17-installing-auctex-on-emacsw32-on-win764bit/</link>
+      <pubDate>Tue, 17 Aug 2010 02:36:05 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-08-17-installing-auctex-on-emacsw32-on-win764bit/</guid>
+      <description>Today I had to install AucTeX to use on my Win7/64 machine under EmacsW32. I found the basic instructions here: http://www.sturmnet.org/blog/2007/09/01/installing-auctex-in-emacsw32, but I had to modify them a bit (in particular, I am using tetex installed from cygwin instead of MiKTeX). Here are the commands I used:
+$ mkdir -p /usr/local/share/texmf
+$ ./configure --prefix=&#39;c:/Program Files (x86)/Emacs/emacs&#39; --with-texmf-dir=&#39;/usr/local/share/texmf&#39; --with-lispdir=&#39;c:/Program Files (x86)/Emacs/emacs/site-lisp&#39;
+$ make
+$ make install
+I then added the following lines to my C:\Program Files (x86)\Emacs\site-lisp\site-start.</description>
+    </item>
+    
+    <item>
+      <title>Must-Have Windows Software (or Windows Programs that I use) - good coders code, great reuse</title>
+      <link>http://zzamboni.org/post/2010-02-17-must-have-windows-software-or-windows-program/</link>
+      <pubDate>Wed, 17 Feb 2010 10:12:38 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-02-17-must-have-windows-software-or-windows-program/</guid>
+      <description>I am not just a Linux enthusiast, I also happen to use Windows quite often. In fact, Windows is my primary desktop from which I connect to all the other boxes and do my work on. During the years of Windows usage, I have accumulated a list of must-have Windows programs that I wouldn’t be able to work without. Some of them are commercial, some are freeware, but that doesn’t matter.</description>
+    </item>
+    
+  </channel>
+</rss>

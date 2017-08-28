@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on zzamboni.org</title>
+    <link>http://zzamboni.org/categories/web/</link>
+    <description>Recent content in Web on zzamboni.org</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 17 Apr 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://zzamboni.org/categories/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The First Apple Homepage</title>
+      <link>http://zzamboni.org/post/the-first-apple-homepage/</link>
+      <pubDate>Fri, 17 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/the-first-apple-homepage/</guid>
+      <description>via http://kfury.com/the-first-apple-homepage
+ Looks positively old-fashioned now, but the memories! I don’t remember this particular page, but I do remember compiling and using Mosaic as my first web browser on an old DECstation 5000, my first Unix workstation.    </description>
+    </item>
+    
+  </channel>
+</rss>

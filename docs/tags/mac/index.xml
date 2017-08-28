@@ -26,5 +26,46 @@ runtime, funtime&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>HowTo: Changing the available display formats for Evernote&#39;s &#34;Insert Date&#34; command</title>
+      <link>http://zzamboni.org/post/2012-11-13-howto-changing-the-available-display-formats/</link>
+      <pubDate>Tue, 13 Nov 2012 23:00:30 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2012-11-13-howto-changing-the-available-display-formats/</guid>
+      <description>Evernote introduced some time ago an &#34;Insert Date&#34; keyboard shortcut, which is very handy. However, the options for the format of the inserted date seemed limited (only four options). I finally learned how this works, and how to change it on the Mac. The formats offered are those that are configured in the &#34;Languages &amp;amp; Text&#34; preferences panel. If you go to &#34;Region&#34; and then click the &#34;Customize button&#34; in the Dates part of the panel, you will see and be able to customize the formats for short, medium, long and full date representations.</description>
+    </item>
+    
+    <item>
+      <title>Remapping Mac modifier keys on Emacs 23.3</title>
+      <link>http://zzamboni.org/post/2011-11-27-remapping-mac-modifier-keys-on-emacs-233/</link>
+      <pubDate>Sun, 27 Nov 2011 01:47:00 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2011-11-27-remapping-mac-modifier-keys-on-emacs-233/</guid>
+      <description>I just switched from Carbon Emacs (which is old Emacs 22.x) to Emacs for OS X Modified on my Mac (which is a Cocoa app, and Emacs 23.3).
+
+One of the unwelcome changes was that the Emacs &#39;Meta&#39; modifier is now by default mapped to the Option key and not Command as before. But this gave me the opportunity to learn how to map the Mac keyboard modifier keys arbitrarily.</description>
+    </item>
+    
+    <item>
+      <title>Installing cfengine on Mac OS X</title>
+      <link>http://zzamboni.org/post/2011-08-05-installing-cfengine-320b3-on-mac-os-x-107/</link>
+      <pubDate>Fri, 05 Aug 2011 02:31:00 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2011-08-05-installing-cfengine-320b3-on-mac-os-x-107/</guid>
+      <description>Cfengine (tested 3.2.0) installs easily on OS X (tested 10.7), given that it&#39;s Unix. One problem I encountered was that it does not compile with the bundled version of Berkeley DB (it recognizes it during configure, but produces compilation errors). The solution is to use some other DB engine. I chose Tokyo Cabinet. Using homebrew, the process is simple
+brew install tokyo-cabinet
+After this, configure --with-tokyocabinet, and then compile and install as usual.</description>
+    </item>
+    
+    <item>
+      <title>CopperExport development paused </title>
+      <link>http://zzamboni.org/post/2009-12-11-copperexport-development-paused/</link>
+      <pubDate>Fri, 11 Dec 2009 06:44:02 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2009-12-11-copperexport-development-paused/</guid>
+      <description>I want to post a short update aimed at users of my iPhoto plugin CopperExport. I have received multiple reports of it failing in recent updates of Snow Leopard, and I have also verified personally that it does not work properly in iPhoto&#39;09.
+Unfortunately, since the big move, I find myself without easy access to a Mac for development (I had a Mac at my previous job, and I use Windows at my new job), which pretty much makes fixing these bugs impossible.</description>
+    </item>
+    
   </channel>
 </rss>

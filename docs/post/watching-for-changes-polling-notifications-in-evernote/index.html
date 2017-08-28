@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     
+    <title>zzamboni.org  | Watching for changes (Polling notifications) in Evernote</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+     <meta name="generator" content="Hugo 0.26" />
+      
+      
+        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+      
+
+     <link href='http://zzamboni.org/dist/main.css' rel='stylesheet' type="text/css" />
+     <link href='http://zzamboni.org/css/site.css' rel='stylesheet' type="text/css" />
+
+     
+
+      <meta property="og:title" content="Watching for changes (Polling notifications) in Evernote" />
+<meta property="og:description" content="via https://dev.evernote.com/doc/articles/polling_notification.php
+ Useful note about how to poll an Evernote account for new content. Also a test of web clipping with Enwrite. Polling If your app wants to know about changes in a user&#39;s Evernote account, you&#39;ll probably consider calling the NoteStore.findNotesMetadata function periodically to search for new notes. findNotes is incredibly powerful, but it&#39;s also expensive for our servers - we need to load the user&#39;s Lucene index, perform the search across all of their notes, hit the database to pull out the results, and send those results over the network to your app." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://zzamboni.org/post/watching-for-changes-polling-notifications-in-evernote/" />
+
+
+
+<meta property="article:published_time" content="2015-04-16T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2015-04-16T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Watching for changes (Polling notifications) in Evernote">
+<meta itemprop="description" content="via https://dev.evernote.com/doc/articles/polling_notification.php
+ Useful note about how to poll an Evernote account for new content. Also a test of web clipping with Enwrite. Polling If your app wants to know about changes in a user&#39;s Evernote account, you&#39;ll probably consider calling the NoteStore.findNotesMetadata function periodically to search for new notes. findNotes is incredibly powerful, but it&#39;s also expensive for our servers - we need to load the user&#39;s Lucene index, perform the search across all of their notes, hit the database to pull out the results, and send those results over the network to your app.">
+
+
+<meta itemprop="dateModified" content="2015-04-16T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="317">
+
+
+
+<meta itemprop="keywords" content="evernote,tips," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Watching for changes (Polling notifications) in Evernote"/>
+<meta name="twitter:description" content="via https://dev.evernote.com/doc/articles/polling_notification.php
+ Useful note about how to poll an Evernote account for new content. Also a test of web clipping with Enwrite. Polling If your app wants to know about changes in a user&#39;s Evernote account, you&#39;ll probably consider calling the NoteStore.findNotesMetadata function periodically to search for new notes. findNotes is incredibly powerful, but it&#39;s also expensive for our servers - we need to load the user&#39;s Lucene index, perform the search across all of their notes, hit the database to pull out the results, and send those results over the network to your app."/>
+
+      <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+      <link rel="manifest" href="/manifest.json">
+      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://zzamboni.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      zzamboni.org
+    </a>
+    <div class="flex-l items-center">
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Blog page">
+              Blog
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/book/" title="Books page">
+              Books
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/code/" title="Code page">
+              Code
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+  <a href="https://twitter.com/zzamboni" class="link-transition twitter link dib z-999 pt3 pt0-l mr2" title="Twitter link">
+    <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+  </a>
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <div class="flex-l mt2 mw8 center">
+    <article class="center cf pv5 ph3 ph4-ns mw7">
+      <p class="f6 b helvetica tracked">
+        
+        POST
+      </p>
+      <h1 class="f1 athelas">
+        Watching for changes (Polling notifications) in Evernote
+      </h1>
+        
+        
+      <time class="f6 mv4 dib tracked" datetime="2015-04-16T00:00:00Z">
+        April 16, 2015
+      </time>
+      <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
+        <p class="clip-attribute">via <a href="https://dev.evernote.com/doc/articles/polling_notification.php">https://dev.evernote.com/doc/articles/polling_notification.php</a></p>
+
+<span>
+
+	<div>Useful note about how to poll an Evernote account for new content. Also a test of web clipping with Enwrite.</div>
+
+	<div style='font-size: 16px'>
+
+		<div style='box-sizing:border-box;font-size:62.5%;'>
+
+			<div style='box-sizing:border-box;background-color:white;font-family:&apos;Helvetica Neue&apos;, Helvetica, Helvetica, Arial, sans-serif;font-weight:normal;font-style:normal;font-size:14px;color:rgb(34, 34, 34);-webkit-font-smoothing:antialiased;direction:ltr;padding-top:45px;'>
+
+				<div style='box-sizing:border-box;font-size:14px;direction:ltr;'>
+
+					<div style='box-sizing:border-box;font-size:14px;direction:ltr;'>
+
+						<div style='box-sizing:border-box;font-size:14px;direction:ltr;'>
+
+							<h4 style='box-sizing:border-box;margin:0px;padding:0px;font-size:23px;direction:ltr;font-family:webfont, &apos;Helvetica Neue&apos;, Helvetica, Helvetica, Arial, sans-serif;font-weight:normal;font-style:normal;color:rgb(59, 59, 59);text-rendering:optimizelegibility;margin-bottom:14px;margin-top:14px;font-variant:normal;'>Polling</h4>
+
+							<p style='box-sizing:border-box;margin:0px;padding:0px;font-size:14px;direction:ltr;font-family:inherit;font-weight:normal;margin-bottom:17px;'>If your app wants to know about changes in a user's Evernote account, you'll probably consider calling the <a href='https://dev.evernote.com/documentation/reference/NoteStore.html#Fn_NoteStore_findNotesMetadata' style='box-sizing:border-box;color:rgb(105, 170, 53);text-decoration:none;'>NoteStore.findNotesMetadata</a> function periodically to search for new notes. findNotes is incredibly powerful, but it's also expensive for our servers - we need to load the user's Lucene index, perform the search across all of their notes, hit the database to pull out the results, and send those results over the network to your app. If you're building a web application, you should use <a href='https://dev.evernote.com/doc/articles/polling_notification.php#webhooks' style='box-sizing:border-box;color:rgb(105, 170, 53);text-decoration:none;'>webhooks</a> instead of polling. If you have to poll, you should follow the guidelines below.</p>
+
+							<p style='box-sizing:border-box;margin:0px;padding:0px;font-size:14px;direction:ltr;font-family:inherit;font-weight:normal;margin-bottom:17px;'>First, <b style='box-sizing:border-box;font-weight:bold;'>don't poll more than once every 15 minutes</b>. We keep track of calls to findNotes, and if we notice that your app is polling more frequently, we'll have to temporarily revoke your API key.</p>
+
+							<p style='box-sizing:border-box;margin:0px;padding:0px;font-size:14px;direction:ltr;font-family:inherit;font-weight:normal;margin-bottom:17px;'>Each Evernote account has a variable named <i style='box-sizing:border-box;font-style:italic;'>updateCount</i> that makes it easy for you to tell whether the account has been changed since the last time you looked. <b style='box-sizing:border-box;font-weight:bold;'>Before your application searches for new notes</b>, call <a href='https://dev.evernote.com/documentation/reference/NoteStore.html#Fn_NoteStore_getSyncState' style='box-sizing:border-box;color:rgb(105, 170, 53);text-decoration:none;'>NoteStore.getSyncState</a> to check the updateCount and see if the account has changed. Here's a basic example of how that would work:</p>
+
+							<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:16px;direction:ltr;color:rgb(51, 51, 51);'>
+
+								<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:14px;direction:ltr;margin-bottom:1em;font-family:Consolas, &apos;Liberation Mono&apos;, Menlo, Courier, monospace;border-width:1px;border-style:solid;border-color:rgb(221, 221, 221) rgb(221, 221, 221) rgb(204, 204, 204);border-top-left-radius:3px;border-top-right-radius:3px;border-bottom-right-radius:3px;border-bottom-left-radius:3px;'>
+
+									<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:14px;direction:ltr;overflow:auto;word-wrap:normal;background-color:rgb(255, 255, 255);border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:rgb(221, 221, 221);'>
+
+										<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'>
+
+											<table cellpadding='0' cellspacing='0' style='font-size:12px;font-weight:normal;font-style:inherit;font-variant:inherit;box-sizing:border-box;background-color:rgb(255, 255, 255);border-top-left-radius:3px;border-top-right-radius:3px;border-bottom-right-radius:3px;border-bottom-left-radius:3px;margin:0px;border:none;background-image:none;background-attachment:scroll;background-position:0px 0px;background-repeat:repeat repeat;font-family:Consolas, &apos;Liberation Mono&apos;, Menlo, Courier, monospace;padding:0px;color:rgb(51, 51, 51);'>
+
+												<tbody style='box-sizing:border-box;'>
+
+													<tr style='box-sizing:border-box;'>
+
+														<td style='box-sizing:border-box;margin:0px;padding:0.5em;font-size:14px;direction:ltr;display:table-cell;text-align:right;color:rgb(170, 170, 170);vertical-align:top;border:none;background-color:rgb(255, 255, 255);border-right-width:1px;border-right-style:solid;border-right-color:rgb(238, 238, 238);'><span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>1</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>2</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>3</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>4</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>5</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>6</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>7</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>8</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>9</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>10</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>11</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>12</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>13</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>14</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>15</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>16</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>17</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>18</span> <span style='box-sizing:border-box;font-size:12px;display:block;clear:right;'>19</span></td>
+
+														<td style='box-sizing:border-box;margin:0px;padding:0.5em;font-size:14px;direction:ltr;display:table-cell;text-align:left;color:rgb(51, 51, 51);vertical-align:top;border:none;'>
+
+															<pre style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;white-space:pre;font-family:Consolas, &apos;Liberation Mono&apos;, Menlo, Courier, monospace;background-color:transparent;border:0px;'>
+</pre>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'><span style='box-sizing:border-box;font-size:12px;color:rgb(167, 29, 93);'>int</span> latestUpdateCount <span style='box-sizing:border-box;font-size:12px;color:rgb(167, 29, 93);'>=</span> <span style='box-sizing:border-box;font-size:12px;color:rgb(0, 134, 179);'>...</span> <span style='box-sizing:border-box;font-size:12px;color:rgb(150, 152, 150);'>// Persist this value</span></div>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'> </div>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'><span style='box-sizing:border-box;font-size:12px;color:rgb(150, 152, 150);'>// Each time you want to check for new and updated notes...</span></div>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'><span style='box-sizing:border-box;font-size:12px;color:rgb(51, 51, 51);'>SyncState</span> currentState <span style='box-sizing:border-box;font-size:12px;color:rgb(167, 29, 93);'>=</span> noteStore<span style='box-sizing:border-box;font-size:12px;color:rgb(167, 29, 93);'>.</span>getSyncState();</div>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'><span style='box-sizing:border-box;font-size:12px;color:rgb(167, 29, 93);'>int</span> currentUpdateCount <span style='box-sizing:border-box;font-size:12px;color:rgb(167, 29, 93);'>=</span> currentState<span style='box-sizing:border-box;font-size:12px;color:rgb(167, 29, 93);'>.</span>getUpdateCount();</div>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'> </div>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'><span style='box-sizing:border-box;font-size:12px;color:rgb(167, 29, 93);'>if</span> (currentUpdateCount <span style='box-sizing:border-box;font-size:12px;color:rgb(167, 29, 93);'>&gt;</span> latestUpdateCount) {</div>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'> </div>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'><span style='box-sizing:border-box;font-size:12px;color:rgb(150, 152, 150);'>// Something in the account has changed, so search for notes</span></div>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'><span style='box-sizing:border-box;font-size:12px;color:rgb(51, 51, 51);'>NotesMetadataList</span> newNotes <span style='box-sizing:border-box;font-size:12px;color:rgb(167, 29, 93);'>=</span> noteStore<span style='box-sizing:border-box;font-size:12px;color:rgb(167, 29, 93);'>.</span>findNotesMetadata( <span style='box-sizing:border-box;font-size:12px;color:rgb(0, 134, 179);'>...</span> );</div>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'/>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'><span style='box-sizing:border-box;font-size:12px;color:rgb(150, 152, 150);'>// Do something with the notes you found...</span></div>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'><span style='box-sizing:border-box;font-size:12px;color:rgb(167, 29, 93);'>for</span> (<span style='box-sizing:border-box;font-size:12px;color:rgb(51, 51, 51);'>NoteMetadata</span> note <span style='box-sizing:border-box;font-size:12px;color:rgb(167, 29, 93);'>:</span> newNotes<span style='box-sizing:border-box;font-size:12px;color:rgb(167, 29, 93);'>.</span>getNotes()) {</div>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'><span style='box-sizing:border-box;font-size:12px;color:rgb(150, 152, 150);'>// ...</span></div>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'>}</div>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'/>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'><span style='box-sizing:border-box;font-size:12px;color:rgb(150, 152, 150);'>// Keep track of the new high-water mark</span></div>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'>latestUpdateCount <span style='box-sizing:border-box;font-size:12px;color:rgb(167, 29, 93);'>=</span> currentSyncState<span style='box-sizing:border-box;font-size:12px;color:rgb(167, 29, 93);'>.</span>getUpdateCount();</div>
+
+															<div style='box-sizing:border-box;margin:0px;padding:0px;font-size:12px;direction:ltr;'>}</div>
+
+														</td>
+
+													</tr>
+
+												</tbody>
+
+											</table>
+
+										</div>
+
+									</div>
+
+									<div style='box-sizing:border-box;margin:0px;padding:10px;font-size:12px;direction:ltr;overflow:hidden;font-style:normal;font-variant:normal;font-weight:normal;font-family:Helvetica, arial, freesans, clean, sans-serif;color:rgb(153, 153, 153);background-color:rgb(247, 247, 247);'><a href='https://gist.github.com/evernotegists/5313726/raw/update_polling.java' style='box-sizing:border-box;color:rgb(102, 102, 102);text-decoration:none;font-weight:bold;float:right;'>view raw</a> <a href='https://gist.github.com/evernotegists/5313726#file-update_polling-java' style='box-sizing:border-box;color:rgb(102, 102, 102);text-decoration:none;font-weight:bold;'>update_polling.java</a> hosted with ❤ by <a href='https://github.com/' style='box-sizing:border-box;color:rgb(102, 102, 102);text-decoration:none;font-weight:bold;'>GitHub</a></div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+<br/>
+</span>
+
+      </section>
+      
+
+  <ul class="list dib ml0 pl0" id="tags">
+    <li class="b black dib mb2 mr3">Tags: </li>
+    
+      <li class="black dib mb2 mr2"><a href="/tags/evernote" class="link mid-gray dim">evernote</a> </li>
+    
+      <li class="black dib mb2 mr2"><a href="/tags/tips" class="link mid-gray dim">tips</a> </li>
+    
+  </ul>
+  
+  
+  
+  
+  
+    <div class="mt5 f6 gray nested-lh-copy bg-light-gray ph3 pv2 measure-wide-l">
+      <ul class="list dib ml0 pl0">
+        <li class="black dib mb2 mr2">
+          Related:
+        </li>
+        
+          
+        
+          
+            <li class="mb2 mr3">
+              <a href="/post/find-all-single-note-tags-in-evernote/" class="link mid-gray dim">
+                 Find all single-note tags in Evernote
+              </a>
+            </li>
+          
+        
+          
+            <li class="mb2 mr3">
+              <a href="/post/how-to-turn-off-sort-by-relevance-in-evernote-5-6-0-beta/" class="link mid-gray dim">
+                 How to turn off &#34;sort by relevance&#34; in Evernote 5.6.0 Beta
+              </a>
+            </li>
+          
+        
+          
+            <li class="mb2 mr3">
+              <a href="/post/airmail-tip-prevent-save-to-evernote-action-from-opening-the-created-note/" class="link mid-gray dim">
+                 Airmail tip: prevent &#34;Save to Evernote&#34; action from opening the created note
+              </a>
+            </li>
+          
+        
+          
+            <li class="mb2 mr3">
+              <a href="/post/2012-11-13-howto-changing-the-available-display-formats/" class="link mid-gray dim">
+                 HowTo: Changing the available display formats for Evernote&#39;s &#34;Insert Date&#34; command
+              </a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  
+
+
+      <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zzamboni-ng" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+    <div class="ph3 mt2 mt6-ns">
+      </div>
+  </div>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://zzamboni.org/" >
+    &copy; 2017 Diego Zamboni
+  </a>
+  
+
+
+
+  <a href="https://twitter.com/zzamboni" class="link-transition twitter link dib z-999 pt3 pt0-l mr2" title="Twitter link">
+    <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+  </a>
+
+
+
+
+  </div>
+</footer>
+
+    <script src="http://zzamboni.org/dist/app.bundle.js" async></script>
+
+  </body>
+</html>
