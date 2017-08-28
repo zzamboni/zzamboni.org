@@ -1,0 +1,27 @@
+---
+title: Changing "message:" protocol handler from Sparrow back to Mail.app
+aliases:
+- /blog/changing-message-protocol-handler-from-sparro
+date: 2012-01-25 09:54:07.000000000 -06:00
+tags:
+- macosx
+- mail
+- sparrow
+- tips
+---
+After using <a href="http://www.sparrowmailapp.com/">Sparrow</a> for a while, I have decided to switch back to Mail.app. However, even after setting my default email client to Mail.app, all my message: links (for example, from messages dragged from Mail.app into <a href="http://culturedcode.com/things/">Things</a>) were opening in Sparrow.<p></p>
+<div>After some experimentation, I figured out what happened: I switched the default email client from Sparrow to Mail using Mail's preference panel:</div>
+<p></p>
+<div>
+<div class="p_embed p_image_embed">
+<a href="/images/2012/01/25/changing-message-protocol-handler-from-sparro/37129835-PastedGraphic-1.png"><img alt="Pastedgraphic-1" height="125" src="/images/2012/01/25/changing-message-protocol-handler-from-sparro/37129835-PastedGraphic-1.png" width="500"></a>
+</div>
+</div>
+<p></p>
+<div>Apparently this switches the application for the mailto: protocol, but not for message:, nor for .eml files. The solution was to <b>use Sparrow's preference panel</b> to set it again as the default email client, and then disable it. Then Sparrow correctly sets all the protocol handlers back to their default values.</div>
+<p></p>
+<div>
+<div class="p_embed p_image_embed">
+<a href="/images/2012/01/25/changing-message-protocol-handler-from-sparro/37129836-PastedGraphic-2.png"><img alt="Pastedgraphic-2" height="184" src="/images/2012/01/25/changing-message-protocol-handler-from-sparro/37129836-PastedGraphic-2.png" width="500"></a>
+</div>
+</div>

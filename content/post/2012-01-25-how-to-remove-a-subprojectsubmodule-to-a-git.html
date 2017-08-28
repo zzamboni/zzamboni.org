@@ -1,0 +1,19 @@
+---
+title: How to remove a subproject/submodule to a git-svn repository
+aliases:
+- /blog/how-to-remove-a-subprojectsubmodule-to-a-git
+date: 2012-01-25 03:16:00.000000000 -06:00
+tags:
+- zznippets
+---
+<div class="posterous_bookmarklet_entry">
+      <blockquote class="posterous_long_quote">
+<p>To sum up, you delete the offending directory and then run something to the effect of </p>
+<p><code>
+git filter-branch --index-filter \<br>
+ 'git rm --cached --ignore-unmatch path/to/the/formerly/misbehaving/module'</code></p>
+</blockquote>
+<div class="posterous_quote_citation">via <a href="http://ignoredbydinosaurs.com/2011/06/quick-trip-panic-room">ignoredbydinosaurs.com</a>
+</div>
+    <p>I accidentally added another git repository to a git-svn repository, which makes it die when trying to push the changes. This technique helped me fix it. Documenting mostly so I remember when it happens again sometime.</p>
+</div>

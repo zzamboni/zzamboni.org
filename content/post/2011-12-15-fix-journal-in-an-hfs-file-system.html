@@ -1,0 +1,59 @@
+---
+title: Fix journal in an HFS+ file system
+aliases:
+- /blog/fix-journal-in-an-hfs-file-system
+date: 2011-12-15 00:07:00.000000000 -06:00
+tags:
+- diskutil
+- hfs
+- macosx
+- tips
+---
+<p>Yesterday my external Western Digital disk (which I use for Time Machine, among other things) stopped mounting automatically when I plug it in. This may *cough*definitely*cough*have something to do with me unmounting it forcefully while it was doing a backup, since I was in a hurry.</p>
+<div>Disk Utility reported everything was OK with the disk, but it still failed to mount. Upon poking a bit deeper, I found these messages in the logs:</div>
+<p></p>
+<div>
+<div><span style="font-family: Courier New;">12/14/11 11:49:00.000 PM kernel: jnl: disk2s2: <strong>open: journal magic is bad</strong> (0x0 != 0x4a4e4c78)</span></div>
+</div>
+<div>
+<div><span style="font-family: Courier New;">12/14/11 11:49:00.000 PM kernel: hfs: late jnl init: failed to open/create the journal (retval 0).</span></div>
+</div>
+<div>
+<div><span style="font-family: Courier New;">12/14/11 11:49:00.000 PM kernel: hfs_mounthfsplus: hfs_late_journal_init returned (0)</span></div>
+</div>
+<div>
+<div><span style="font-family: Courier New;">12/14/11 11:49:00.000 PM kernel: hfs_mounthfsplus: encountered errorr (22)</span></div>
+</div>
+<div>
+<div><span style="font-family: Courier New;">12/14/11 11:49:00.000 PM kernel: hfs_mountfs: encountered failure 22 </span></div>
+</div>
+<div>
+<div><span style="font-family: Courier New;">12/14/11 11:49:00.000 PM kernel: hfs_mount: hfs_mountfs returned 22</span></div>
+</div>
+<p></p>
+<div>Aha! Journal error. A bit of Google searching led me to <a href="http://dmunsie.wordpress.com/code/hacks/">this page</a>, where one comment gave me the key:</div>
+<p></p>
+<div>
+<div><span style="font-family: Courier New;">root# mkdir /tmp/disk &amp;&amp; mount_hfs -j /dev/disk2s2 /tmp/disk</span></div>
+</div>
+<div>
+<div><span style="font-family: Courier New;">root# diskutil disableJournal /tmp/disk</span></div>
+</div>
+<div>
+<div><span style="font-family: Courier New;">An error occurred journaling the file system: The underlying task reported failure on exit (-69860)</span></div>
+</div>
+<div>
+<div><span style="font-family: Courier New;">root# diskutil enableJournal /tmp/disk</span></div>
+</div>
+<div>
+<span style="font-family: Courier New;"> </span>
+<div><span style="font-family: Courier New;">Journaling was already enabled for volume Casa on disk2s2</span></div>
+</div>
+<div>
+<div><span style="font-family: Courier New;">root# diskutil unmount /tmp/disk</span></div>
+</div>
+<div>
+<div><span style="font-family: Courier New;">Volume Casa on disk2s2 unmounted</span></div>
+</div>
+<p></p>
+<div>Despite the error in the "disableJournal" command, after this sequence the Finder was able to mount the disk, and things seem to be working fine. The trick in the first command is the -j option, since it allows the disk to be mounted (without journaling), so that the disableJournal/enableJournal commands can be issued.</div>

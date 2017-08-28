@@ -35,7 +35,11 @@ and future, as far as I can foresee them. The website continues to be
 hosted through the fantastic [Github
 Pages](https://pages.github.com/).
 
-So this is it. For now the site is mostly empty, but new content will
-be appearing shortly, both new and ported from my old website. Please
-take a look around, and [let me know](/contact) if you find anything
-broken.
+So this is it. ~~For now the site is mostly empty, but new content
+will be appearing shortly, both new and ported from my old website.~~
+I have started adding posts from my previous blogs. Thanks to Hugo's
+`aliases` feature, most of them should be accessible still through
+their old URLs.
+
+Please take a look around, and [let me know](/contact) if you find
+anything broken.

@@ -1,0 +1,46 @@
+---
+title: Installing cfengine on Windows 7 under cygwin
+aliases:
+- /blog/installing-cfengine-on-windows-7-under-cygwin
+date: 2010-08-23 00:14:00.000000000 -05:00
+tags:
+- cfengine
+- cygwin
+- howto
+- windows
+---
+<p><strong>Update (2011/09/05): Updated the instructions for cfengine 3.2.0, cygwin 1.7.9, and tested them on a clean cygwin install.</strong></p>
+<p>Installing the <a href="http://cfengine.org/">cfengine community edition</a> under Windows (the <a href="http://cfengine.com/nova"> commercial version</a> includes native Windows support) is fairly easy under <a href="http://cygwin.com/"> cygwin</a>, you just need to have the appropriate dependencies installed. Here’s how I did it.</p>
+<p><span style="font-size: large;"><strong>Versions  </strong></span></p>
+<ul>
+<li>cfengine: <a href="https://cfengine.com/source_code">3.2.0</a>
+</li>
+<li>Windows 7 Enterprise SP1/64bit</li>
+<li>cygwin: <a href="http://cygwin.com/">1.7.9-1</a>
+</li>
+</ul>
+<p><span style="font-size: large;"><strong>Additional cygwin packages needed</strong></span> </p>
+<p>To install these, run cygwin’s setup.exe, search for each packages in turn, and install them. Make sure you agree to install any additional packages that are listed as dependencies (setup.exe will ask you about it).</p>
+<ul>
+<li>make</li>
+<li>gcc</li>
+<li>libdb4.5</li>
+<li>libdb4.5-devel</li>
+<li>openssl-devel</li>
+<li>libpcre-devel</li>
+<li>bison (will install m4 as a dependency, say "Yes")</li>
+<li>flex</li>
+</ul>
+<p><span style="font-size: large;"><strong>How to compile and install</strong></span></p>
+<ol>
+<li>Unpack cfengine-3.2.0.tar.gz: <code>tar zxvf cfengine-3.2.0.tar.gz</code>
+</li>
+<li><code>cd cfengine-3.2.0</code></li>
+<li><code>./configure</code></li>
+<li><code>make</code></li>
+<li><code>make install</code></li>
+</ol>
+<p>That should be it. Remember that there is some functionality missing in the community edition under Windows (for example, userexists() does not return correct results). If you want full Windows support (including native features like registry editing, etc.) you have to use the commercial edition of cfengine. But for most purposes, the community edition works just fine.</p>
+<p>If you have different experiences, or with different versions of Windows, please let me know! I'll update these instructions as needed.</p>
+<p> </p>
+<ol></ol>

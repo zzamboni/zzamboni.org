@@ -1,0 +1,29 @@
+---
+title: Starting VirtualCenter automatically when it fails to start
+aliases:
+- /blog/starting-virtualcenter-automatically-when-it
+date: 2010-05-03 13:13:42.000000000 -05:00
+tags:
+- windowsxp
+- virtualcenter
+- vmware
+---
+<div class="posterous_bookmarklet_entry">
+      <blockquote class="posterous_long_quote">Create a .bat file with following script:<p>
+
+net start MSSQL$SQLEXP_VIM<br>
+ping 127.0.0.1 -n 120 -w 1000 &gt; null<br>
+net start vpxd</p>
+<p>
+
+Note: for SQL Server substitute MSSQLSERVER in the above batch file instead of MSSQL$SQLEXP_VIM.</p>
+<p>
+
+Set script to run on boot.</p>
+</blockquote>
+
+<div class="posterous_quote_citation">via <a href="http://communities.vmware.com/message/1247357#1247357">communities.vmware.com</a>
+</div>
+    <p>In one of my VirtualCenter servers, a Windows XP machine, the VirtualCenter Server service often fails to start because it tries to run before the MSSQL server is fully initialized. This happens even when the dependencies are set correctly between the services (which is the official solution provided by VMware). The workaround is to create a startup script as shown above. I remove the redirection to nul (which means the script window shows the ping output) as a reminder of what is happening.</p>
+<p>To make it a startup script in WinXP, click on Start -&gt; All programs, then right-click on "Startup" and select "Open All Users". Store the script there (just name it  with a .bat extension to make it executable).</p>
+</div>

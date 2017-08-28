@@ -1,0 +1,24 @@
+---
+title: ! 'Know your tools '
+aliases:
+- /blog/know-your-tools
+date: 2010-04-22 02:01:36.000000000 -05:00
+tags:
+- networking
+- tools
+- windows
+---
+I recently had to copy a very large file (&gt;4GB) from a remote Windows share to my Windows 7 machine, over a very finicky connection (frequently-failing VPN over a slow Internet connection). A GUI copy didn't work because the connection dropped frequently. I tried <a href="http://www.freedownloadmanager.org/">Free Download Manager</a>, which was the recommended tool for the download, but surprisingly, it wasn't always able to restart the download after connectivity dropped.<p></p>
+<div>Then a colleague pointed me to the "copy /z" command:</div>
+<p></p>
+<blockquote class="gmail_quote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;">   /Z           Copies networked files in restartable mode.</blockquote>
+<p></p>
+<div>And this simple, built-in tool turned out to be the thing I needed. It was, every time, able to restart the download properly, and after a few times, it downloaded the file correctly.</div> <p></p>
+<div>As you may know, I am a reluctant recent switcher to Windows, coming from Linux and Mac OS X. I confess I still have a condescending attitude to everything in Windows, but this teaches me a lesson: <b>it pays to know the native tools of the system you are using.</b> I had subconsciously dismissed the built-in DOS copy command as too primitive to work, but it turned out to have the capabilities I needed.</div> <p></p>
+<div>A couple of tips:</div>
+<div>
+<ul>
+<li>If you interrupt the command with Ctrl-C, it will delete the portion copied so far and you'll have to restart the copy from the beginning. If you must interrupt a copy, simply terminate the network connection (it will die with an error, but leave the copied-so-far file) or close the window where the command is running.</li> <li>When you restart it and it asks if you want to overwrite, you must answer "yes". You can also use the /Y flag.</li>
+</ul>
+<p></p>
+</div>

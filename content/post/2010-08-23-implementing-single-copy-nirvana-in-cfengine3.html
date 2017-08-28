@@ -1,0 +1,10 @@
+---
+title: Implementing "single-copy nirvana" in cfengine3
+aliases:
+- /blog/implementing-single-copy-nirvana-in-cfengine3
+date: 2010-08-23 01:56:35.000000000 -05:00
+tags:
+- cfengine
+- hierarchicalcopy
+---
+      Here is a sample implementation in cfengine3 of the technique described in the <a href="http://cfwiki.org/">cfengine wiki</a> as "<a href="http://cfwiki.org/cfwiki/index.php/Singlecopy_Nirvana">Singlecopy Nirvana</a>" for cfengine2. Cfengine3 makes the technique more powerful by allowing modularization, so that you can specify both the suffixes to try, and the files to copy using those suffixes, as variables. Also, cf3's automatic list expansion allows us to write a single copy statement that will be automatically expanded into all the different values to try.<p></p>  <p>{% gist 544952  %}</p>

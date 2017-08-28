@@ -1,0 +1,13 @@
+---
+title: Editing sshd configuration files with cfengine3
+aliases:
+- /blog/editing-sshd-configuration-files-with-cfengin
+date: 2010-11-24 23:30:00.000000000 -06:00
+tags:
+- cfengine
+- ssh
+---
+<p>Here's a cfengine bundle that I wrote for editing the sshd configuration file by passing an array with the parameters. Using an array is a very elegant way of defining the values to set. The bundle also restarts sshd after any changes are made, unless the no_restarts class is defined.</p>
+<p>The first gist contains the edit_sshd bundle itself, together with the set_config_values bundle that actually performs the editing job (this should go into a library file, I have it in my personal version of cfengine_stdlib.cf). The second file is a sample bundle showing how to use edit_sshd.</p>
+<p><br></p>
+<p>{% gist 714948  %}</p>

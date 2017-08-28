@@ -1,0 +1,9 @@
+---
+title: How to trick an RHEL5 client install to use server RPMs
+aliases:
+- /blog/how-to-trick-an-rhel5-client-i
+date: 2008-10-22 04:09:12.000000000 -05:00
+tags:
+- zznippets
+---
+For one of my projects at work, I am using a test install of RHEL5 in "workstation" mode, but I needed to install some packages that are only available in the "server" package list. To temporarily make yum search the server repositories, just change the following line in /etc/sysconfig/rhn/up2date: <p></p>   	versionOverride=5Server <p></p>   (normally the value is empty).
