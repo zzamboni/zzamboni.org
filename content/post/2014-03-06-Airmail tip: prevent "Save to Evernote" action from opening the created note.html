@@ -1,0 +1,35 @@
+---
+categories: &1
+- evernote
+- tips
+- applescript
+date: '2014-03-06'
+description: ''
+keywords: []
+title: 'Airmail tip: prevent "Save to Evernote" action from opening the created note'
+tags: *1
+aliases:
+- /new/blog/airmail-tip-prevent-save-to-evernote-action-from-opening-the-created-note
+slug: airmail-tip-prevent-save-to-evernote-action-from-opening-the-created-note
+---
+
+
+<span style='word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;'>
+I’ve been trying out <a href='http://airmailapp.com'>Airmail</a> as my main email app. It’s quite nice, I like the built-in integrations, particularly with Evernote. By default, when you use the “Save to Evernote” action, it saves the current message to Evernote and opens the newly-created note. I went spelunking into the Airmail application directory, and found the way to disable the note-opening. Follow these steps:
+<div>
+<ol>
+<li>Quit Airmail (don’t know if this is necessary, but it can’t hurt)</li>
+<li>Open the Terminal app</li>
+<li>Run the following command in the terminal (all in a single line):<br/>
+<font face='Andale Mono'>sudo /Applications/Utilities/AppleScript\ Editor.app/Contents/MacOS/AppleScript\ Editor  /Applications/Airmail.app/Contents/Resources/Evernote.applescript<br/></font>This will ask you for your password and then run the AppleScript Editor.<br/>
+Note: in my experience, the AppleScript Editor app may open behind the terminal window - look at the Dock for its icon, and bring it to the front.</li>
+<li>In the AppleScript Editor window, find this line:<br/>
+<font face='Andale Mono'>            open note window with the note<br/></font>and comment it out by inserting a # at the beginning, like this:<br/>
+<font face='Andale Mono'>#            open note window with the note</font><br/></li>
+<li>Save the modified file and quit AppleScript Editor.</li>
+<li>Restart Airmail.</li>
+</ol>
+<div>That’s it! Now the “Save to Evernote” action saves the current message to Evernote, but does not open it.</div>
+</div>
+<div><br/></div>
+</span>
