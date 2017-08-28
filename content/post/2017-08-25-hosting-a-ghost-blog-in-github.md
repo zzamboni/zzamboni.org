@@ -1,5 +1,6 @@
 ---
 title: "Hosting a Ghost Blog in GitHub - the easier way"
+slug: hosting-a-ghost-blog-in-github
 date: 2017-08-25T09:00:00+02:00
 featured_image: '/images/ghost-plus-github2.png'
 tags:
