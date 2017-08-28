@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Emacs on zzamboni.org</title>
+    <link>http://zzamboni.org/categories/emacs/</link>
+    <description>Recent content in Emacs on zzamboni.org</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 25 Feb 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://zzamboni.org/categories/emacs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spotlight: use-package, a declarative configuration tool - Mastering Emacs</title>
+      <link>http://zzamboni.org/post/spotlight-use-package-a-declarative-configuration-tool-mastering-emacs/</link>
+      <pubDate>Thu, 25 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/spotlight-use-package-a-declarative-configuration-tool-mastering-emacs/</guid>
+      <description>via https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-configuration-tool
+ Have you ever heard of use-package? It’s a declarative way of expressing package configuration in Emacs but without the tears.  This looks amazingly useful. I need to start migrating my Emacs config to use-package ASAP.   </description>
+    </item>
+    
+    <item>
+      <title>Fixing Emacs problems with the fish shell</title>
+      <link>http://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</link>
+      <pubDate>Thu, 14 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</guid>
+      <description>I started getting errors from the TRAMP Emacs package because I was using fish as my default shell, and it does not recognize certain standard syntax elements (such as &amp;amp;&amp;amp; to separate commands), and Emacs runs subcommands under the default shell. I fixed this by:
+ Changing my account&#39;s default shell back to `/bin/bash` Changing my Terminal.app preferences to run `/usr/local/bin/fish` when a shell opens, instead of the default login shell:  Log out and back in to have everything reloaded properly.</description>
+    </item>
+    
+  </channel>
+</rss>

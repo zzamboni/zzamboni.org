@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Translation on zzamboni.org</title>
+    <link>http://zzamboni.org/tags/translation/</link>
+    <description>Recent content in Translation on zzamboni.org</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 07 Mar 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://zzamboni.org/tags/translation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fast translation with Google Translator</title>
+      <link>http://zzamboni.org/post/fast-translation-with-google-translator/</link>
+      <pubDate>Mon, 07 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/fast-translation-with-google-translator/</guid>
+      <description>via https://medium.com/@mrdoro/fast-translation-with-google-translator-and-mac-osx-817e32233b7a
+ https://medium.com/@mrdoro/fast-translation-with-google-translator-and-mac-osx-817e32233b7a  Nice article about how to create a service to automatically translate selected text from any application. I use this all the time, I have a “German-to-English” service bound to Command-Alt-Ctrl-Shift-E, so I can just select text off the screen, press the shortcut, and a window with the translation will pop up. Very handy.   </description>
+    </item>
+    
+  </channel>
+</rss>

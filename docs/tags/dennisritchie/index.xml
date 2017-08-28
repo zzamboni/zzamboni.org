@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dennisritchie on zzamboni.org</title>
+    <link>http://zzamboni.org/tags/dennisritchie/</link>
+    <description>Recent content in Dennisritchie on zzamboni.org</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 13 Oct 2011 00:36:00 -0500</lastBuildDate>
+    
+	<atom:link href="http://zzamboni.org/tags/dennisritchie/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Dennis M. Ritchie, R.I.P.</title>
+      <link>http://zzamboni.org/post/2011-10-13-dennis-m-ritchie-rip/</link>
+      <pubDate>Thu, 13 Oct 2011 00:36:00 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2011-10-13-dennis-m-ritchie-rip/</guid>
+      <description>Dennis Ritchie passed away last weekend. He was one of the great minds in systems research and development, father of the C programming language, and one of the big contributors to Unix, both of which power the Mac on which I&#39;m typing this, the iPhone on my desk, the Windows machine I use at work, the servers on which this blog is hosted, and much of the infrastructure both you and I use to connect to it.</description>
+    </item>
+    
+  </channel>
+</rss>

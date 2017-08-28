@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windowsxp on zzamboni.org</title>
+    <link>http://zzamboni.org/tags/windowsxp/</link>
+    <description>Recent content in Windowsxp on zzamboni.org</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 03 May 2010 13:13:42 -0500</lastBuildDate>
+    
+	<atom:link href="http://zzamboni.org/tags/windowsxp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Starting VirtualCenter automatically when it fails to start</title>
+      <link>http://zzamboni.org/post/2010-05-03-starting-virtualcenter-automatically-when-it/</link>
+      <pubDate>Mon, 03 May 2010 13:13:42 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-05-03-starting-virtualcenter-automatically-when-it/</guid>
+      <description>Create a .bat file with following script:net start MSSQL$SQLEXP_VIM
+ping 127.0.0.1 -n 120 -w 1000 &amp;gt; null
+net start vpxd
+Note: for SQL Server substitute MSSQLSERVER in the above batch file instead of MSSQL$SQLEXP_VIM.
+Set script to run on boot.
+via communities.vmware.com  In one of my VirtualCenter servers, a Windows XP machine, the VirtualCenter Server service often fails to start because it tries to run before the MSSQL server is fully initialized.</description>
+    </item>
+    
+    <item>
+      <title>Installing Windows XP in Vmware ESX - &#34;Setup did not find any hard disk drives installed in your computer.&#34; | TechHead.co.uk</title>
+      <link>http://zzamboni.org/post/2010-04-07-installing-windows-xp-in-vmware-esx-setup-did/</link>
+      <pubDate>Wed, 07 Apr 2010 15:20:18 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-04-07-installing-windows-xp-in-vmware-esx-setup-did/</guid>
+      <description>Trying to install Windows XP within VMWare ESX and getting the following error message?
+&#34;Setup did not find any hard disk drives installed in your computer.&#34;
+The reason for this is that the necessary hard disk controller drivers have not been installed.
+ via techhead.co.uk  Useful information and links for installing XP VMs on a VMware ESX server.
+ </description>
+    </item>
+    
+  </channel>
+</rss>
