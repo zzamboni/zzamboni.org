@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Howto on zzamboni.org</title>
+    <link>http://zzamboni.org/tags/howto/</link>
+    <description>Recent content in Howto on zzamboni.org</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 25 Aug 2017 09:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="http://zzamboni.org/tags/howto/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hosting a Ghost Blog in GitHub - the easier way</title>
+      <link>http://zzamboni.org/post/hosting-a-ghost-blog-in-github/</link>
+      <pubDate>Fri, 25 Aug 2017 09:00:00 +0200</pubDate>
+      
+      <guid>http://zzamboni.org/post/hosting-a-ghost-blog-in-github/</guid>
+      <description>&lt;p&gt;When I was planning the reboot of my website, I seriously considered using Ghost. It has a very nice UI, beautiful and usable theme out of the box, and a very active community. Eventually I decided to use Hugo, but in the process discovered that it is possible to host a statically-generated Ghost website using GitHub Pages.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Getting Started With Hammerspoon</title>
+      <link>http://zzamboni.org/post/getting-started-with-hammerspoon/</link>
+      <pubDate>Mon, 21 Aug 2017 16:34:00 +0200</pubDate>
+      
+      <guid>http://zzamboni.org/post/getting-started-with-hammerspoon/</guid>
+      <description>&lt;p&gt;This is the first installment of a series of posts about Hammerspoon,
+a staggeringly powerful automation utility which gives you an amazing
+degree of control over your Mac, allowing you to automate and control
+almost anything. In the word of Hammerspoon&amp;rsquo;s motto: &lt;em&gt;Making the
+runtime, funtime&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Fast translation with Google Translator</title>
+      <link>http://zzamboni.org/post/fast-translation-with-google-translator/</link>
+      <pubDate>Mon, 07 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/fast-translation-with-google-translator/</guid>
+      <description>via https://medium.com/@mrdoro/fast-translation-with-google-translator-and-mac-osx-817e32233b7a
+ https://medium.com/@mrdoro/fast-translation-with-google-translator-and-mac-osx-817e32233b7a  Nice article about how to create a service to automatically translate selected text from any application. I use this all the time, I have a “German-to-English” service bound to Command-Alt-Ctrl-Shift-E, so I can just select text off the screen, press the shortcut, and a window with the translation will pop up. Very handy.   </description>
+    </item>
+    
+    <item>
+      <title>Spotlight: use-package, a declarative configuration tool - Mastering Emacs</title>
+      <link>http://zzamboni.org/post/spotlight-use-package-a-declarative-configuration-tool-mastering-emacs/</link>
+      <pubDate>Thu, 25 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/spotlight-use-package-a-declarative-configuration-tool-mastering-emacs/</guid>
+      <description>via https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-configuration-tool
+ Have you ever heard of use-package? It’s a declarative way of expressing package configuration in Emacs but without the tears.  This looks amazingly useful. I need to start migrating my Emacs config to use-package ASAP.   </description>
+    </item>
+    
+    <item>
+      <title>Moving files between git repositories, preserving history</title>
+      <link>http://zzamboni.org/post/moving-files-between-git-repositories-preserving-history/</link>
+      <pubDate>Fri, 17 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/moving-files-between-git-repositories-preserving-history/</guid>
+      <description>I needed to copy a directory between two git repositories while preserving its history. I found some good instructions at http://gbayer.com/development/moving-files-from-one-git-repository-to-another-preserving-history/, which got me started, but I figured out a way to avoid having to move all the files into their directory again (lines 5-6 in Greg&amp;rsquo;s instructions) by reversing the filter to remove everything I don&amp;rsquo;t want instead of only including the directory I want. Here are the steps (the idea is the same as in Greg&amp;rsquo;s post, so please read that to get the explanation, I&amp;rsquo;m only listing the commands here for reference):</description>
+    </item>
+    
+    <item>
+      <title>Find all single-note tags in Evernote</title>
+      <link>http://zzamboni.org/post/find-all-single-note-tags-in-evernote/</link>
+      <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/find-all-single-note-tags-in-evernote/</guid>
+      <description>I’ve been working on cleaning up my Evernote, and noticed that I have a lot of tags assigned to a single note. I had successfully used Veritrope’s excellent Evernote empty tag remover applescript, so I made some small changes to write the attached script, which will find all single-note tags in your Evernote and list them in a new note, including links to each note. This makes it much easier to go through them and see which of those tags could be removed.</description>
+    </item>
+    
+    <item>
+      <title>How to solve truncated docker output in Mac OS X using boot2docker</title>
+      <link>http://zzamboni.org/post/how-to-solve-truncated-docker-output-in-mac-os-x-using-boot2docker/</link>
+      <pubDate>Mon, 12 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/how-to-solve-truncated-docker-output-in-mac-os-x-using-boot2docker/</guid>
+      <description>If you are using docker on Mac OS X using boot2docker (http://docs.docker.io/installation/mac/), you may see truncated output from docker run, and also may have noticed that docker attach does not work properly, producing only some output and then exiting. This bug is documented here: https://github.com/boot2docker/boot2docker/issues/150, where I also found the following workaround. Documenting it here in case anyone finds it useful:
+Instead of using the default value of DOCKER_HOST provided by boot2docker up, establish the docker connection through an ssh tunnel:</description>
+    </item>
+    
+    <item>
+      <title>HowTo: Changing the available display formats for Evernote&#39;s &#34;Insert Date&#34; command</title>
+      <link>http://zzamboni.org/post/2012-11-13-howto-changing-the-available-display-formats/</link>
+      <pubDate>Tue, 13 Nov 2012 23:00:30 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2012-11-13-howto-changing-the-available-display-formats/</guid>
+      <description>Evernote introduced some time ago an &#34;Insert Date&#34; keyboard shortcut, which is very handy. However, the options for the format of the inserted date seemed limited (only four options). I finally learned how this works, and how to change it on the Mac. The formats offered are those that are configured in the &#34;Languages &amp;amp; Text&#34; preferences panel. If you go to &#34;Region&#34; and then click the &#34;Customize button&#34; in the Dates part of the panel, you will see and be able to customize the formats for short, medium, long and full date representations.</description>
+    </item>
+    
+    <item>
+      <title>Installing cfengine on Mac OS X</title>
+      <link>http://zzamboni.org/post/2011-08-05-installing-cfengine-320b3-on-mac-os-x-107/</link>
+      <pubDate>Fri, 05 Aug 2011 02:31:00 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2011-08-05-installing-cfengine-320b3-on-mac-os-x-107/</guid>
+      <description>Cfengine (tested 3.2.0) installs easily on OS X (tested 10.7), given that it&#39;s Unix. One problem I encountered was that it does not compile with the bundled version of Berkeley DB (it recognizes it during configure, but produces compilation errors). The solution is to use some other DB engine. I chose Tokyo Cabinet. Using homebrew, the process is simple
+brew install tokyo-cabinet
+After this, configure --with-tokyocabinet, and then compile and install as usual.</description>
+    </item>
+    
+    <item>
+      <title>Automatically creating tasks from email in Outlook</title>
+      <link>http://zzamboni.org/post/2011-03-16-automatically-creating-tasks-from-email-in-ou/</link>
+      <pubDate>Wed, 16 Mar 2011 01:54:00 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2011-03-16-automatically-creating-tasks-from-email-in-ou/</guid>
+      <description>Please note: I am no longer using Windows nor Outlook, so unfortunately I cannot offer any help with problems you encounter using these scripts and techniques.
+Over the last few days I have been redoing my GTD-under-Outlook setup, based on the instructions available in the &#34;GTD and Outlook&#34; guide from DavidCo (I will write more about my setup later). One of the tricks the guide suggest is creating a mail rule on outgoing mail, which scans the message body for a special tag (/wf or *wf* are suggested) and automatically adds the message to the @WAITING FOR email folder.</description>
+    </item>
+    
+    <item>
+      <title>Making cygwin, Windows and emacs understand the same symlinks</title>
+      <link>http://zzamboni.org/post/2010-09-28-making-cygwin-windows-and-emacs-understand-th/</link>
+      <pubDate>Tue, 28 Sep 2010 09:39:00 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-09-28-making-cygwin-windows-and-emacs-understand-th/</guid>
+      <description>Today I ran into the problem that symlinks created under cygwin using &#34;ln -s&#34; are not understood by Windows, and of course Windows shortcuts are seen by cygwin as regular files. Happily, this is a (semi-)solved problem. For reference, this is what needs to be done:
+
+ Add &#34;winsymlinks&#34; to your CYGWIN environment variable. For example, in my .bashrc I have the following:
+export CYGWIN=&#34;nodosfilewarning winsymlinks&#34;
+
+This makes cygwin create symlinks differently, in a form that is understood both by it and by Windows.</description>
+    </item>
+    
+    <item>
+      <title>Storing CFEngine configuration in CVS</title>
+      <link>http://zzamboni.org/post/2010-09-07-storing-cfengine-configuration-in-cvs/</link>
+      <pubDate>Tue, 07 Sep 2010 14:17:00 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-09-07-storing-cfengine-configuration-in-cvs/</guid>
+      <description> via sial.org  Useful article about storing both development and production configurations of cfengine using a version control mechanism. I am in the process of developing a similar setup using git, I will share it here when I get it to work properly.
+ </description>
+    </item>
+    
+    <item>
+      <title>Installing cfengine on Windows 7 under cygwin</title>
+      <link>http://zzamboni.org/post/2010-08-23-installing-cfengine-on-windows-7-under-cygwin/</link>
+      <pubDate>Mon, 23 Aug 2010 00:14:00 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-08-23-installing-cfengine-on-windows-7-under-cygwin/</guid>
+      <description>Update (2011/09/05): Updated the instructions for cfengine 3.2.0, cygwin 1.7.9, and tested them on a clean cygwin install.
+Installing the cfengine community edition under Windows (the commercial version includes native Windows support) is fairly easy under cygwin, you just need to have the appropriate dependencies installed. Here’s how I did it.
+Versions 
+ cfengine: 3.2.0  Windows 7 Enterprise SP1/64bit cygwin: 1.7.9-1   Additional cygwin packages needed To install these, run cygwin’s setup.</description>
+    </item>
+    
+  </channel>
+</rss>

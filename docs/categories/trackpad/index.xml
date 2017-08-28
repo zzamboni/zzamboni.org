@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Trackpad on zzamboni.org</title>
+    <link>http://zzamboni.org/categories/trackpad/</link>
+    <description>Recent content in Trackpad on zzamboni.org</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 13 Oct 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://zzamboni.org/categories/trackpad/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Clicking on the MacBook Pro is entirely artificial</title>
+      <link>http://zzamboni.org/post/clicking-on-the-macbook-pro-is-entirely-artificial/</link>
+      <pubDate>Tue, 13 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/clicking-on-the-macbook-pro-is-entirely-artificial/</guid>
+      <description>via http://sixcolors.com/post/2015/10/apple-magic-trackpad-2-review/
+ This is probably old news for most, but it still blew my mind: only now I realized that the clicking feeling and sound on my MacBook Pro’s trackpad is artificially generated. I did the experiment of turning on “Silent clicking” and turning off “Force click and haptic feedback” on the trackpad preferences panel and, indeed, the clicking is gone. Wow (/ht @jsnell)  To aid in the process, the Magic Trackpad apparently even generates its own artificial clicking noise (as the Force Touch trackpads in the MacBook and MacBook Pro do).</description>
+    </item>
+    
+  </channel>
+</rss>

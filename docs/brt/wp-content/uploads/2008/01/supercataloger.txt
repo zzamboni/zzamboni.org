@@ -1,0 +1,282 @@
+10 rem copyright 1991 - compute publications international limited - all rights reserved 
+20 rem written by diego martin zamboni 
+30 ifrgr(0)<>5thenprint"{clr}{07}switch monitor to 80-column mode, then  press any key...":getkeya$:graphic5 
+40 fast:color6,1:print"{home}{home}{clr}{white}{lower}{0B}Please wait . . . setting up" 
+50 if asc(a$)=asc("{red}")andqthena$="{white}" 
+60 s$="                ":e$=chr$(27):qt$=chr$(34):ss$="{up}{down}{left}{right}otcradlsek{white}x{home}f "+chr$(13)+e$+"v":sx$="{down}{up}{right}{left}pn{home}{10}{04}{white}xmeEao{clr}#fls g"+chr$(13)+e$
+70 cl=80:dv=4:z$=qt$+"{left}{left}{lred}"+qt$ 
+80 c1$="":c2$="":rem put here codes for condensed printing: c1$-initiate ; c2$-terminate 
+90 dim c,r,t$,ln,es,yn,pf,nf,fc,ox,cr,cc,of,pl,ph,p,a,a$,tl,tc$,tp,tq$,tz$,dv$,se$,tz,cs,mv,n$(144),f$(2500),f%(2500),fc%(5)
+100 deffnph(p)=int(p/256):deffnpl(p)=p-fnph(p)*256:fori=0to144:n$(i)=" ":next:f$(0)="master list" 
+110 bank15:bload"supercat/ml",b15 
+120 a=0:restore:fori=dec("0128")todec("013d"):reada$:pokei,dec(a$):a=a+dec(a$):next:ifa<>2021thenprint"{clr}{07}Error in data!":end
+130 gosub1160:a$="    Press {white}R{brown} or {white}L{brown} to continue":ifna>0thenmid$(a$,19,1)="X" 
+140 gosub830 
+150 getkeya$:ifna=0thenoninstr("rl"+e$,a$)+1goto150,750,1030,1290:elseoninstr("rx"+e$,a$)+1goto150,750,1330,1290 
+160 a$="Working...":gosub830:return 
+170 es=0:iffs=0thena$=" You have no files selected!{07}":gosub830:sleep1:es=-1 
+180 return 
+190 a$=" Done!{07}":gosub830:sleep1:return 
+200 forj=1tocs:print#4,a$;:ifj<csthenprint#4,"  "; 
+210 next:return 
+220 a$=a$+" from list. This is irrecoverable. Are you sure?{07}":gosub830:gosub380:return 
+230 a$=" {07}That's not a valid value!. It must be non-zero and the maximum is"+str$(tl):gosub830:sleep1:return 
+240 a$="Enter "+dv$+" to search for:                   ":gosub830:c=44:r=24:t$=se$:ln=16:gosub250:ift$=""thenes=-1:return:elsese$=t$:return 
+250 es=0:t$=t$+qt$:print"{home}{home}";:char,c,r:print"{rvsoff}"qt$e$e$;:windowc+1,r,c+ln+1,r,1:poke244,255:printt$e$e$; 
+260 tl=len(t$):tp=tl 
+270 tc$=mid$(t$,tp,1):tq$=tc$+e$+e$:print"{rvson}";:print"{home}"spc(tp-1);:poke244,255:printtq$"{home}"spc(tp-1); 
+280 getkey tz$:tz=asc(tz$):tl=len(t$) 
+290 iftz=20thenbegin:iftp>1thent$=left$(t$,tp-2)+mid$(t$,tp):tp=tp-1:printchr$(20);:goto270:else280:bend 
+300 iftz=157thenbegin:iftp>1thenpoke244,255:printtq$"{home}"spc(tp-2);:tp=tp-1:goto270:else280:bend 
+310 iftz=29thenbegin:iftp<tlthenpoke244,255:printtq$;:tp=tp+1:goto270:else280:bend 
+320 iftz=148thenbegin:iftl<ln+1thenpoke244,255:printtq$"{left}"chr$(148)" {left}";:t$=left$(t$,tp-1)+" "+mid$(t$,tp):goto270:else280:bend 
+330 iftz=13thent$=left$(t$,tl-1):poke244,255:printtc$:return 
+340 iftz=27thenes=-1:poke244,255:printtc$:return 
+350 iftp<ln+1thenpoke244,255:printtz$;:poke244,0:t$=left$(t$,tp-1)+tz$+mid$(t$,tp+1):tp=tp+1 
+360 iftp>tlthent$=t$+qt$ 
+370 goto270 
+380 getkeya$:ifa$<>"y"anda$<>"n"then380 
+390 yn=1*(a$="n"):return 
+400 pf=0 
+410 nf=n-pf:ifnf>76 then nf=76 
+420 fc=int(nf/4):fori=1to4:fc%(i)=fc:next:cc=1:cr=1:of=0 
+430 fori=1to((nf/4)-fc)*4:fc%(i)=fc%(i)+1:next:if(nf/4)=fcthenfc%(1)=fc%(1)-1 
+440 print"{home}{home}";:ifn>76thenchar,11,22,"{rvson}{grey3}O{cyan}ther page":elsechar,11,22,"{rvson}{cyan}          "
+450 window0,2,79,20,1:print"{white}{rvsoff}"; 
+460 window0,2,79,20:ox=0:fori=1to4 
+470 forj=1tofc%(i):a=pf+ox+j:ifa>nthen490 
+480 char,(i-1)*20,j-1:gosub710 
+490 next:ox=ox+fc%(i):next 
+500 print"{home}{home}{green}":char,45,0,"    {left}{left}{left}{left}"+str$(n):char,61,0:print"{cyan}"qt$n$(0)qt$ 
+510 a$="    Use {white}CURSOR KEYS{brown} to move, {white}RETURN{brown} to select-deselect files":gosub830:window0,2,79,20 
+520 a=pf+of+cr:print"{rvson}";:gosub700 
+530 getkeya$ 
+540 oninstr(ss$,a$)+1goto530,550,580,600,630,660,720,860,750,920,960,1040,1130,790,760,850,1330,730,1310,1320,670,1280,2780
+550 gosub700:ifcr=1thenbegin:ifcc>1thencc=cc-1:of=of-fc%(cc):cr=fc%(cc):elsea=4:of=nf-fc%(4):dountilfc%(a)>0:a=a-1:of=of-fc%(a):loop:cc=a:cr=fc%(cc) 
+560 bend:elsecr=cr-1 
+570 goto520 
+580 gosub700:ifcr=fc%(cc)thenbegin:cr=0:of=of+fc%(cc):cc=cc+1:ifcc>4orfc%(cc)=0thencc=1:of=0:cr=1:bend:elsecr=cr+1 
+590 goto520 
+600 gosub700:ifcc=1thenbegin:cr=cr-1:ifcr=0thencr=fc%(1) 
+610 a=4:dountilcr<=fc%(a):a=a-1:loop:cc=a:of=0:fori=1toa:of=of+fc%(i-1):next:bend:elsecc=cc-1:of=of-fc%(cc) 
+620 goto520 
+630 gosub700:ifcc=4thenbegin:cc=1:of=0:cr=cr+1:ifcr>fc%(cc)thencr=1:goto520:elsegoto520:bend 
+640 ifcr<=fc%(cc+1)thenof=of+fc%(cc):cc=cc+1:elsecc=1:of=0:cr=cr+1:ifcr>fc%(cc)thencr=1 
+650 goto520 
+660 ifn>76thenpf=76-pf:goto410:else520 
+670 gosub680:goto630 
+680 ifasc(n$(a))=34thenn$(a)=mid$(n$(a),6):fs=fs-1:elsen$(a)=z$+n$(a):fs=fs+1 
+690 return 
+700 char,(cc-1)*20,cr-1 
+710 printqt$n$(a)qt$"{white}":return 
+720 gosub160:fora=1ton:gosub680:next:goto460 
+730 ifcr=1andcc=1thenbegin:ifpf=0goto530:else400:bend 
+740 gosub700:cr=1:cc=1:of=0:goto520 
+750 a$="Reading Directory...":gosub830:dclear:sys6031:rreg,n:fs=0:ifn=0ords<>0thena$=" This disk is empty or damaged!{07}":gosub830:n=0:sleep1:goto130:else400
+760 print"{home}{home}";:char,0,24,"{cyan}>":c=1:r=24:ln=77:t$="":gosub250:ifesthen780 
+770 open15,8,15,(t$):dclose 
+780 window0,24,79,24,1:printds$;:getkeya$:goto510 
+790 yn=0:t$=n$(a):ifasc(t$)=34thenyn=-1:t$=mid$(t$,6):print"{white}"; 
+800 c=20*(cc-1):r=cr+1:ln=16:gosub250:ifesort$=""thenprint"{clr}{home}{home}";:goto510 
+810 ifynthent$=z$+t$ 
+820 n$(a)=t$:goto510 
+830 window0,24,79,24,1:print"{rvson}{brown}                                                                                {home}";
+840 printtab((80-len(a$))/2);a$"{rvsoff}{white}";:return 
+850 gosub700:c=61:r=0:t$=n$(0):ln=16:gosub250:ifesort$=""then500:elsen$(0)=left$(t$+s$,16):goto500 
+860 gosub170:ifesthen510 
+870 es=0:fori=1tond:iff$(2501-i)=n$(0)thenes=-1:i=nd+1 
+880 next:ifesthena$=" This disk is already in the list! Operation Cancelled{07}":gosub830:sleep1:goto510 
+890 ifnd+na+fs+1>2500thena$=" There is no room in the list for all those files! Operation Cancelled{07}":gosub830:sleep1:goto510
+900 gosub160:nd=nd+1:f$(2501-nd)=n$(0):tl=fs:fora=1ton:ifasc(n$(a))=34thenna=na+1:gosub680:f$(na)=n$(a):f%(na)=nd 
+910 next:a$=str$(tl)+" files added to the list{07}":gosub830:sleep1:goto460 
+920 gosub170:ifesthen510 
+930 a$=" Scratch files: Are you sure?{07}":gosub830:gosub380:ifynthen510 
+940 fora=1ton:ifasc(n$(a))=34thengosub680:print"{home}"tab(26)"{rvson}{brown}Scratching "qt$n$(a)qt$"..."s$:scratch(n$(a)) 
+950 next:gosub190:goto750 
+960 printe$"l{clr}";:trap2620:directory:trap:printe$"m";:a$="Press any key...":gosub830:getkeya$:goto440 
+970 ifna<>0thena$="Loading will erase the list in memory. Are you sure you want to continue?":gosub830:gosub380:ifynthenreturn 
+980 a$="Load: Type filename and press RETURN:                   ":gosub830:c=50:r=24:ln=13:t$=f$(0):gosub250:ifesort$=""then1020
+990 f$(0)=t$:a$="sc."+t$+",s":dclear:dopen#2,(a$):ifds<>0then1150 
+1000 a$="Loading...":gosub830:input#2,na:input#2,nd:fori=1tond:input#2,f$(2501-i):next:fori=1tona:input#2,f$(i),f%(i):next:f$(0)=t$ 
+1010 ifds<>0then1150 
+1020 dclose:return 
+1030 gosub970:ifn=0andna=0then130:else1330 
+1040 gosub970:goto510 
+1050 ifna=0thena$=" There is no list in memory!{07}":gosub830:sleep1:goto510 
+1060 a$="Save: Type filename and press RETURN:                   ":gosub830:c=50:r=24:ln=13:t$=f$(0):gosub250:ifesort$=""thenreturn
+1070 f$(0)=t$:a$="sc."+t$:dclear:dopen#2,(a$),w:ifds=0thentrap1120:goto1100 
+1080 ifds=63thendclose:a$=" File exists. Do you want to replace it?{07}":gosub830:gosub380:ifynthenreturn:elsescratch("sc."+t$):goto1070 
+1090 goto1150 
+1100 a$="Saving...":gosub830:print#2,na:print#2,nd:fori=1tond:print#2,(qt$+f$(2501-i)+qt$):next:fori=1tona:print#2,(qt$+f$(i)+qt$):print#2,(f%(i)):next:dclose 
+1110 trap:return 
+1120 ifer=5thenprint"{07}";:sleep1:resume:elseprint"{home}{home}{clr}"err$(er)" in line"el:dclose:end 
+1130 gosub1050:goto510 
+1140 gosub1050:goto1440 
+1150 a$=ds$:dclose:a$=" {07}Disk Error: "+a$:gosub830:getkeya$:return 
+1160 printe$"m{home}{home}{clr}{yellow}{lower}Super Cataloger 128       {white}{DD}{green}Files on the disk:     {white}{DD}{cyan}Diskname:"
+1170 print"{white}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}{B7}"
+1180 char,0,22:print"{rvson}{cyan} {grey3}R{cyan}ead dir              {grey3}T{cyan}oggle all  E{grey3}X{cyan}amine list  Dis{grey3}K{cyan} cmd  {grey3}V{cyan}iew file   {grey3}ESC{cyan}-Quit "; 
+1190 print" {grey3}E{cyan}dit fname  {grey3}CTRL-E{cyan}dit dskname  {grey3}C{cyan}atalog  Scr{grey3}A{cyan}tch  {grey3}F{cyan}ree mem  {grey3}D{cyan}ir  {grey3}L{cyan}oad-{grey3}S{cyan}ave list {home}{rvsoff}"; 
+1200 return 
+1210 print"{clr}{home}{home}";:char,40,0,"{green}list:     {white}{DD}{cyan}Master list:               " 
+1220 char,5,2:print"{grey3}FILENAME"tab(23)"DISKNAME    DSK#      FILENAME"tab(63)"DISKNAME    DSK#" 
+1230 print"{white}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3} {A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}"
+1240 char,39,4:fori=1to17:print"{DD}{down}{left}";:next 
+1250 char,0,22:print"{rvson}{grey3}N{cyan}ext-{grey3}P{cyan}rev page  {grey3}CTRL-P{cyan}rint  {grey3}CTRL-D{cyan}elete filename  {grey3}CTRL-E{cyan}rase dsk  E{grey3}X{cyan}it list mode"; 
+1260 print"{grey3}M{cyan}ove  S{grey3}E{cyan}arch  {grey3}A{cyan}dd  {grey3}G{cyan}oto page  S{grey3}O{cyan}rt  {grey3}CLR{cyan} list  Chg dsk{grey3}#{cyan}  {grey3}F{cyan}ree mem  {grey3}L{cyan}oad-{grey3}S{cyan}ave list{home}{rvsoff}"; 
+1270 return 
+1280 a$=" Quit: Are you sure?{07}":gosub830:gosub380:ifynthen510 
+1290 printe$"l{home}{home}{clr}{cyan}End of program.":end 
+1300 a=2500-na-nd:a=a-int(a/70+.99):a$="There is room for aproximately"+str$(a)+" more files in memory":gosub830:sleep1:return 
+1310 gosub1300:goto510 
+1320 gosub1160:goto440 
+1330 gosub1210:ifna=0orf$(0)=""thenf$(0)="master list" 
+1340 pf=0 
+1350 cc=1:cr=1:of=0 
+1360 nf=na-pf:ifnf>34thennf=34 
+1370 print"{home}{home}";:char,45,0:print"{green}    {left}{left}{left}{left}"str$(na):char,64,0,"{cyan}               ":char,64,0:printqt$f$(0)qt$:ifna<34thenchar,0,22,"{rvson}{cyan}              {rvsoff}"
+1380 fc=int(nf/2):fc%(1)=fc:fc%(2)=fc:ifnf/2<>fcthenfc%(1)=fc%(1)+1 
+1390 window0,4,38,21,1:window40,4,79,21,1 
+1400 window0,4,79,21:ifna=0thena$=" There are no files in the list{07}":gosub830:goto1470 
+1410 fori=1 to 2:forj=1tofc%(i):a=pf+fc%(1)*(i-1)+j:iffc%(i)=0then1430 
+1420 char,(i-1)*40,j-1:gosub1620 
+1430 next:next 
+1440 a$="  Use {white}CURSOR KEYS{brown} to move":gosub830:print"{home}{rvson}{brown}Page"pf/34+1;:window0,4,79,21 
+1450 a=pf+of+cr:print"{rvson}";:gosub1610 
+1460 ifmvthenchar,0,17:print"{grey3}In buffer: "f$(mv);:elsechar,0,17:printe$"@"; 
+1470 getkeya$ 
+1480 ifna=0thenoninstr("xafl",a$)+1goto1400,2560,2350,2580,1030 
+1490 oninstr(sx$,a$)+1goto1470,1500,1520,1540,1540,1560,1570,1590,2000,1870,1890,2560,1630,1730,1740,2350,2760,2440,2460,2580,1030,1140,2570,2590,1630,1690
+1500 gosub1610:ifcr=fc%(cc)thencr=1:elsecr=cr+1 
+1510 goto1450 
+1520 gosub1610:ifcr=1thencr=fc%(cc):elsecr=cr-1 
+1530 goto1450 
+1540 gosub1610:ifcr<=fc%(3-cc)thencc=3-cc:of=fc%(1)-of 
+1550 goto1450 
+1560 ifna/34>1thenpf=pf-34:pf=-pf*(pf>=0)-(int((na-1)/34)*34)*(pf<0):goto1350 
+1570 ifna/34>1thenpf=pf+34:pf=-pf*(pf<na):goto1350 
+1580 goto1470 
+1590 ifcr=1andcc=1thenbegin:ifpf=0then1470:else1340:bend 
+1600 gosub1610:cr=1:cc=1:of=0:goto1450 
+1610 char,(cc-1)*40,cr-1 
+1620 print"{white}"left$(qt$+f$(a)+qt$+s$,19);:poke244,255:printf$(2501-f%(a));right$(s$+str$(f%(a)),4):return 
+1630 es=-1:ifmv=0thenmv=pf+of+cr:goto1460 
+1640 tl=pf+of+cr:ifmv=tlthenmv=0:goto1460 
+1650 gosub160:a$=f$(mv):a=f%(mv) 
+1660 iftl>mvthenfori=mvtotl-1:f$(i)=f$(i+1):f%(i)=f%(i+1):next 
+1670 ifmv>tlthenfori=mvtotl+1step-1:f$(i)=f$(i-1):f%(i)=f%(i-1):next 
+1680 f$(tl)=a$:f%(tl)=a:ifesthenes=0:mv=0:goto1400:elsereturn 
+1690 mv=0:goto1460 
+1700 a$="Sorting...":gosub830 
+1710 p=pointer(f$(1)):poke170,fnpl(p):poke171,fnph(p):p=na+1:poke155,fnpl(p):poke156,fnph(p) 
+1720 p=pointer(f%(1)):poke180,fnpl(p):poke181,fnph(p):sys4988:gosub190:goto1400 
+1730 dv$="file":p=0:gosub240:goto1750 
+1740 dv$="disk":p=-1:gosub240:t$=left$(t$+s$,16) 
+1750 ifesthen1440:elsea$="Searching...":gosub830:a=pf+of+cr+1:yn=0:ifasc(t$)=42thent$=mid$(t$,2,tl-2):goto1850 
+1760 fori=atona:tp=-(2501-f%(i))*p-i*notp:iff$(tp)=t$thenyn=-1:tl=i:i=na+1 
+1770 next 
+1780 ifnotynthena$=" Sorry, the "+dv$+" you asked for was not found!{07}":gosub830:sleep1:goto1440 
+1790 pf=int((tl-1)/34)*34:tl=tl-pf:iftl=0thentl=34 
+1800 nf=na-pf:ifnf>34thennf=34 
+1810 fc=int(nf/2):fc%(1)=fc:fc%(2)=fc:ifnf/2<>fcthenfc%(1)=fc%(1)+1 
+1820 cc=1:iftl>fc%(1)thencc=2 
+1830 cr=tl:of=0:iftl>fc%(1)thencr=tl-fc%(1):of=fc%(1) 
+1840 goto1390 
+1850 fori=atona:tp=-(2501-f%(i))*p-i*notp:ifinstr(f$(tp),t$)<>0thenyn=-1:tl=i:i=na+1 
+1860 next:goto1780 
+1870 a$=" Delete file":gosub220:ifynthen1440 
+1880 gosub160:a=pf+of+cr:p=f%(a):fori=atona:f$(i)=f$(i+1):f%(i)=f%(i+1):next:na=na-1:goto1940 
+1890 gosub2410:ifesthen1440 
+1900 a$="Erase files":gosub220:ifynthen1440 
+1910 gosub160:tl=pf+of+cr:p=f%(tl):ifathen1980 
+1920 a=0:dowhilef%(tl)=pandtl<=na:tl=tl+1:a=a+1:loop 
+1930 fori=pf+of+crtona-a+1:f$(i)=f$(i+a):f%(i)=f%(i+a):next:na=na-a 
+1940 yn=0:fori=1tona:iff%(i)=pthenyn=-1:i=na+1:next:elsenext 
+1950 ifnotynthenbegin:fori=ptond:f$(2501-i)=f$(2501-i-1):next:fori=1tona:iff%(i)>pthenf%(i)=f%(i)-1 
+1960 next:nd=nd-1:bend 
+1970 gosub190:ifpf+of+cr<nathen1350:else1330 
+1980 a=1:i=tl-1:dowhilei<=na:i=i+1:iff%(i)=pthenforj=itona:f$(j)=f$(j+1):f%(j)=f%(j+1):next:na=na-1:a=a+2:color6,(aand15):i=i-1 
+1990 loop:color6,1:goto1940 
+2000 a$="        Print: {white}A{brown}ll list    {white}T{brown}his disk    {white}D{brown}evice="+str$(dv)+"    {white}C{brown}olumns="+str$(cl):gosub830
+2010 getkeya$:oninstr("atdc"+e$,a$)+1goto2010,2020,2260,2300,2310,1440 
+2020 a$="    Print all list: {white}A{brown}s is or {white}B{brown}y disk?":gosub830 
+2030 getkeya$:oninstr("ab"+e$,a$)+1goto2030,2040,2100,2000 
+2040 cs=cl/40:gosub2190:ifesthen2000:elsefori=1tonastepcs 
+2050 gosub2220:iftl=1thenbegin:print#4:a$="     FILENAME          DISKNAME    DSK#":gosub200 
+2060 print#4:a$="{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}{A3}":gosub200:print#4:tl=5:bend
+2070 forj=itoi+cs-1:ifj<=nathengosub2250:ifesthenj=i+cs:i=na+1:goto2080:elseifj<>i+cs-1thenprint#4,"  "; 
+2080 next:print#4:tl=tl+1:gosub2220 
+2090 next:goto2270 
+2100 cs=cl/20:gosub2190:ifesthen2000:elsefori=1tond 
+2110 gosub2220 
+2120 gosub2130:next:goto2270 
+2130 print#4:print#4,"Disk: "f$(2501-i)"      Number"i:tl=tl+2 
+2140 gosub2220:tz=0:forj=1tona:iff%(j)=ithenbegin:print#4,left$(qt$+f$(j)+qt$+s$,18);:tz=tz+1:ifpeek(213)=72thenj=na+1:i=nd+1:goto2170
+2150 iftz<csthenprint#4,"  "; 
+2160 iftz=csthenprint#4:tz=0:tl=tl+1:gosub2220:bend 
+2170 next:iftz>0thenprint#4:tl=tl+1:gosub2220 
+2180 return 
+2190 ifdv<7thendv$="":elsea$="Print to disk: Filename?                   ":gosub830:t$=dv$:c=43:r=24:ln=20:gosub250:dv$=t$:ifesthenreturn 
+2200 gosub2330:ifesthenreturn:elsea$="  Printing... press {white}ESC{brown} to stop":gosub830:a=0:tl=80:open4,dv,7,dv$:ifcl=120anddv<8thenprint#4,c1$;
+2210 return 
+2220 iftl>58anddv<6thenbegin:iftl<>80thenprint#4,chr$(12); 
+2230 a=a+1:tl=2:print#4,"Disk List: "f$(0)"   - - - Page No."a:print#4:bend 
+2240 return 
+2250 print#4,left$(qt$+f$(j)+qt$+s$,19)f$(2501-f%(j))right$(s$+str$(f%(j)),4);:es=1*(peek(213)=72):return 
+2260 i=f%(pf+of+cr):cs=cl/20:gosub2190:ifesthen400:elsetl=0:gosub2130 
+2270 ifcl=120anddv<8thenprint#4,c2$; 
+2280 print#4:close4:ifdv>7thendclear 
+2290 goto1440 
+2300 dv=val(mid$(" 4 5 8 9 4",instr(" 4 5 8 9",str$(dv))+2,2)):goto2000 
+2310 cl=cl+40:ifcl>120thencl=40 
+2320 goto2000 
+2330 a$="Make sure printer or disk drive is ready, then press any key...":gosub830:getkeya$:open4,dv,15:close4:ifst<>0anda$<>e$then2330
+2340 es=1*(a$=e$):return 
+2350 a$="Add name to list: Filename:                      Diskname:                   ":gosub830 
+2360 c=29:r=24:t$="":ln=16:gosub250:ifesor(t$="")then1400:elsea$=t$:c=60:gosub250:ifesor(t$="")then1400:elsena=na+1:f$(na)=a$:t$=left$(t$+s$,16)
+2370 yn=0:fori=1tond:iff$(2501-i)=t$thena=i:i=nd+1:yn=-1 
+2380 next:ifynthena$=" That disk already was in the list. The file was added to it{07}":gosub830:f%(na)=a:sleep1:goto2400 
+2390 nd=nd+1:f$(2501-nd)=t$:f%(na)=nd:gosub190:goto2400 
+2400 ifna<=pf+34then1360:else1440 
+2410 a$="    The list is {white}S{brown}orted or {white}U{brown}nsorted?":gosub830 
+2420 getkeya$:ifinstr("su"+e$,a$)=0then2420 
+2430 a=1*(a$="s"):es=1*(a$=e$):return 
+2440 a$=" You are about to clear the entire list!  Are you absolutely sure?{07}":gosub830:gosub380:ifynthen1440 
+2450 gosub160:fori=0tona:f$(i)="":next:fori=1tond:f$(2501-i)="":next:na=0:nd=0:goto1330 
+2460 a$="Type in new disk number, please:      ":gosub830:c=54:r=24:a=f%(a):t$=mid$(str$(a),2):ln=3:gosub250:ifesthen1440 
+2470 mv=val(t$):ifmv=0ormv>ndthenmv=0:tl=nd:gosub230:goto2460 
+2480 ifa=mvthen1440 
+2490 gosub160:a$=f$(2501-a):ifmv>athenbegin:fori=atomv-1:f$(2501-i)=f$(2500-i):next 
+2500 fori=1tona:iff%(i)>aandf%(i)<=mvthenf%(i)=f%(i)-1:elseiff%(i)=athenf%(i)=mv 
+2510 next:bend 
+2520 ifmv<athenbegin:fori=atomv+1step-1:f$(2501-i)=f$(2502-i):next:fori=1tona 
+2530 iff%(i)>=mvandf%(i)<athenf%(i)=f%(i)+1:elseiff%(i)=athenf%(i)=mv 
+2540 next:bend 
+2550 f$(2501-mv)=a$:mv=0:gosub190:goto1400 
+2560 print"{home}{home}";:ifn=0then130:elsegosub1160:goto400 
+2570 gosub1160:window0,2,79,21,1:gosub1210:goto1370 
+2580 gosub1300:ifna<>0goto1440:else1400 
+2590 a$="Enter page number to go:      ":gosub830:c=50:r=24:t$=mid$(str$(pf/34+1),2):ln=3:gosub250:ifesthen1440 
+2600 a=val(t$):tl=int((na-1)/34+1):ifa=0ora>tlthengosub230:goto2590 
+2610 pf=(a-1)*34:goto1350 
+2620 resume next 
+2630 a$="Sorting Disk List...":gosub 830 
+2640 for i=1 to nd:f%(2501-i)=i:next 
+2650 p=pointer(f$(2501-nd)):poke170,fnpl(p):poke171,fnph(p):p=nd+1:poke155,fnpl(p):poke156,fnph(p) 
+2660 p=pointer(f%(2501-nd)):poke180,fnpl(p):poke181,fnph(p):sys4988 
+2670 p=int(nd/2):poke155,fnpl(p):poke156,fnph(p):p=pointer(f$(2501-nd)):poke170,fnpl(p):poke171,fnph(p):p=pointer(f$(2500)):poke202,fnpl(p):poke203,fnph(p) 
+2680 p=pointer(f%(2501-nd)):poke180,fnpl(p):poke181,fnph(p):p=pointer(f%(2500)):poke116,fnpl(p):poke117,fnph(p):sys5258
+2690 poke166,fnpl(nd):poke167,fnph(nd):poke116,fnpl(na):poke117,fnph(na):p=pointer(f%(2501-nd)):poke170,fnpl(p):poke171,fnph(p) 
+2700 p=pointer(f%(na)):poke202,fnpl(p):poke203,fnph(p):sys5463 
+2710 a$="Do you wish to rearrange the files according to disk order?":gosub 830 
+2720 gosub380:ifynthengoto1400 
+2730 gosub160:es=0:poke116,fnpl(nd):poke117,fnph(nd):poke166,fnpl(na):poke167,fnph(na) 
+2740 p=pointer(f$(na)):poke178,fnpl(p):poke179,fnph(p):p=pointer(f%(na)):poke180,fnpl(p):poke181,fnph(p):sys5739 
+2750 mv=0:gosub190:goto1400 
+2760 a$="Select: Sort {white}F{brown}ile list; sort {white}D{brown}isk list; {white}R{brown}eorder files by disk number":gosub830
+2770 getkeya$:oninstr("fdr"+e$,a$)+1goto2770,1700,2630,2730,1400 
+2780 a$="Viewing file... press NO SCROLL to pause, ESC to abort.":gosub830:window0,2,79,20,1 
+2790 ifasc(n$(a))=34thena$=mid$(n$(a),6):elsea$=n$(a) 
+2800 printe$"l";:p=pointer(a$):sys6273,,fnpl(p),fnph(p):printe$e$e$"m";:a$="{07}Press any key":gosub830:getkeya$:goto440 
+2810 data 20,88,86,a9,0f,a2,18,a0,1e,85,02,86,03,84,04,a9 
+2820 data 00,85,05,4c,71,ff 

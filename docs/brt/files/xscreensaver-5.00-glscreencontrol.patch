@@ -1,0 +1,57 @@
+Only in xscreensaver-5.00.orig/driver: XScreenSaver_Xm_ad.h
+Only in xscreensaver-5.00.orig/driver: XScreenSaver_ad.h
+diff -r -u xscreensaver-5.00.orig/driver/prefs.c xscreensaver-5.00/driver/prefs.c
+--- xscreensaver-5.00.orig/driver/prefs.c	2006-05-24 00:03:47.000000000 +0200
++++ xscreensaver-5.00/driver/prefs.c	2006-10-18 00:15:48.000000000 +0200
+@@ -305,6 +305,7 @@
+   "overlayTextBackground",	/* not saved -- X resources only */
+   "overlayTextForeground",	/* not saved -- X resources only */
+   "bourneShell",		/* not saved -- X resources only */
++  "glScreenNumber",
+   0
+ };
+ 
+@@ -858,6 +859,7 @@
+       CHECK("overlayTextBackground") continue;  /* don't save */
+       CHECK("overlayTextForeground") continue;  /* don't save */
+       CHECK("bourneShell")	continue;
++      CHECK("glScreenNumber")		type = pref_int, b = p->gl_screen_number;
+       else			abort();
+ # undef CHECK
+ 
+@@ -1041,6 +1043,7 @@
+   p->lock_p	    = get_boolean_resource (dpy, "lock", "Boolean");
+   p->fade_p	    = get_boolean_resource (dpy, "fade", "Boolean");
+   p->unfade_p	    = get_boolean_resource (dpy, "unfade", "Boolean");
++  p->gl_screen_number = get_integer_resource (dpy, "glScreenNumber", "Integer");
+   p->fade_seconds   = 1000 * get_seconds_resource (dpy, "fadeSeconds", "Time");
+   p->fade_ticks	    = get_integer_resource (dpy, "fadeTicks", "Integer");
+   p->install_cmap_p = get_boolean_resource (dpy, "installColormap", "Boolean");
+Only in xscreensaver-5.00/driver: prefs.c~
+diff -r -u xscreensaver-5.00.orig/driver/prefs.h xscreensaver-5.00/driver/prefs.h
+--- xscreensaver-5.00.orig/driver/prefs.h	2006-05-18 01:35:54.000000000 +0200
++++ xscreensaver-5.00/driver/prefs.h	2006-10-17 23:31:49.000000000 +0200
+@@ -117,6 +117,7 @@
+   char *help_url;		/* Where the help document resides. */
+   char *load_url_command;	/* How one loads URLs. */
+   char *new_login_command;	/* Command for the "New Login" button. */
++  int gl_screen_number;         /* Screen on which to run GL screensavers */
+ };
+ 
+ 
+Only in xscreensaver-5.00/driver: prefs.h~
+diff -r -u xscreensaver-5.00.orig/driver/subprocs.c xscreensaver-5.00/driver/subprocs.c
+--- xscreensaver-5.00.orig/driver/subprocs.c	2006-03-08 06:52:23.000000000 +0100
++++ xscreensaver-5.00/driver/subprocs.c	2006-10-18 00:16:29.000000000 +0200
+@@ -960,7 +960,9 @@
+       if (!force &&
+ 	  (!hack->enabled_p ||
+ 	   !on_path_p (hack->command) ||
+-	   !select_visual_of_hack (ssi, hack)))
++	   !select_visual_of_hack (ssi, hack) ||
++	   (p->gl_screen_number && (ssi->number+1) != p->gl_screen_number && hack->visual &&
++	    (!strcmp(hack->visual, "GL") || !strcmp(hack->visual, "Gl") || !strcmp(hack->visual, "gl")))))
+ 	{
+ 	  if (++retry_count > (p->screenhacks_count*4))
+ 	    {
+Only in xscreensaver-5.00/driver: subprocs.c~

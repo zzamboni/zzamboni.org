@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cflearn on zzamboni.org</title>
+    <link>http://zzamboni.org/tags/cflearn/</link>
+    <description>Recent content in Cflearn on zzamboni.org</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 04 Jan 2012 13:16:00 -0600</lastBuildDate>
+    
+	<atom:link href="http://zzamboni.org/tags/cflearn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CFEngine posts moving to cf-learn.info</title>
+      <link>http://zzamboni.org/post/2012-01-04-cfengine-posts-moving-to-cf-learninfo/</link>
+      <pubDate>Wed, 04 Jan 2012 13:16:00 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2012-01-04-cfengine-posts-moving-to-cf-learninfo/</guid>
+      <description>I have been blogging about CFEngine here for a while (it&#39;s my most frequent tag). As of now, I&#39;m starting to post all CFEngine-related posts to http://blog.cf-learn.info/, which is part of the web site for my book &#34;Learning CFEngine 3&#34;. In this way, I intend to group all CFEngine-related content over there. I will still cross-post relevant things here, but if you want to stay fully up to date on my CFEngine writings, please subscribe over there as well.</description>
+    </item>
+    
+    <item>
+      <title>New website for &#34;Learning CFEngine 3&#34;</title>
+      <link>http://zzamboni.org/post/2011-12-15-new-website-for-learning-cfengine-3/</link>
+      <pubDate>Thu, 15 Dec 2011 02:22:00 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2011-12-15-new-website-for-learning-cfengine-3/</guid>
+      <description>I&#39;m happy to announce that the website for my book is now live at http://cf-learn.info/. 
+In this website you will find:  General information about the book.  A discussion forum for any type of questions, feedback or suggestions about the book.  Downloadable code examples from the book, plus (over time) many other new examples.  List of Errata, and access to the Errata system at O&#39;Reilly  A blog devoted to the book and to CFEngine.</description>
+    </item>
+    
+  </channel>
+</rss>

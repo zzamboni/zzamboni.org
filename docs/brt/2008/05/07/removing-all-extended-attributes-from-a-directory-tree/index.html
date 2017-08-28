@@ -1,0 +1,614 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<title>  Removing all extended attributes from a directory tree</title>
+	
+	<meta name="generator" content="WordPress 2.8.4" /> <!-- leave this for stats -->
+	
+	<link rel="stylesheet" href="../../../../wp-content/themes/Cutline_BrT_retired/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="../../../../wp-content/themes/Cutline_BrT_retired/custom.css" type="text/css" media="screen" />
+	<!--[if lte IE 7]>
+	<link rel="stylesheet" type="text/css" href="http://zzamboni.org/brt/wp-content/themes/Cutline_BrT_retired/ie7.css" media="screen" />
+	<![endif]-->
+	<!--[if lte IE 6]>
+	<link rel="stylesheet" type="text/css" href="http://zzamboni.org/brt/wp-content/themes/Cutline_BrT_retired/ie6.css" media="screen" />
+	<![endif]-->
+<!-- RETIRED
+  <link rel="alternate" type="application/rss+xml" title="<.?php bloginfo('name'); ?> RSS Feed" href="<.?php bloginfo('rss2_url'); ?>" />
+	<link rel="pingback" href="<.?php bloginfo('pingback_url'); ?>" />
+	-->
+
+	<link rel="alternate" type="application/rss+xml" title="BrT &raquo; Removing all extended attributes from a directory tree Comments Feed" href="feed/index.html" />
+<link rel='stylesheet' id='thickbox-css'  href='../../../../wp-includes/js/thickbox/thickbox.css%3Fver=20090514' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../wp-includes/js/jquery/jquery.js%3Fver=1.3.2'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://zzamboni.org/brt/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../../../wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='BrT' href='../../../../index.html' />
+<link rel='start' title='Welcome to BrT' href='../../../../2005/01/23/welcome-to-brt/index.html' />
+<link rel='prev' title='My del.icio.us bookmarks for May 6th' href='../../06/my-delicious-bookmarks-for-may-6th-2/index.html' />
+<link rel='next' title='My del.icio.us bookmarks for May 11th' href='../../12/my-delicious-bookmarks-for-may-11th-2/index.html' />
+<meta name="generator" content="WordPress 2.8.4" />
+</head>
+<body class="custom">
+<!-- RETIRED ?php if(function_exists('wp_admin_bar')) wp_admin_bar(); ?> -->
+
+<div id="container">
+
+	<div id="masthead">
+		<h1><a href="../../../../index.html">BrT</a></h1>
+		<h3>Musings about technology and other neat stuff</h3>
+	</div>
+
+	<ul id="nav">
+		<li><a href="../../../../index.html">blog</a></li>
+		<li><a href="../../../../archives/index.html">archives</a></li>
+<!--		<li id="safari-search-field"><form method='get' id='searchform' action='http://zzamboni.org/brt'><div><input type='search' placeholder='Search BrT...' autosave='zzamboni.org.searchhistory' results=5 value='' name='s' id='s' /></div></form></li>-->
+<li>
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+	    <input type="hidden" name="cx" value="007336107369566601471:rwvrqwxlxt4" />
+			    <input type="hidden" name="ie" value="ISO-8859-1" />
+					    <input type="text" name="q" size="20" />
+							    <input type="submit" name="sa" value="Search" />
+									  </div>
+										</form>
+										<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&lang=en"></script>
+</li>
+<!-- RETIRED		<li class="rss"><a href="<.?php bloginfo('rss2_url'); ?>">RSS</a></li>
+-->
+<li class="retired">
+<a href="../../../../2009/09/29/transitions/index.html">Retired</a> - <a style="background-color: yellow;" href="http://zzamboni.org/">go to the new site</a>
+</li>
+	</ul>
+	
+	<div id="header_img">
+	  		<img src="../../../../wp-content/themes/Cutline_BrT_retired/images/headers/IMG_0955.jpg" width="770" height="140" alt="BrT random header image" />
+	</div>
+		<div id="header_links">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3029003434032114";
+/* BrT header ads */
+google_ad_slot = "2123164689";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+		  </div>
+
+	<div id="content_box">
+		
+		<div id="content" class="posts">
+			
+					
+			
+<div class="navigation">
+	<span class="previous">&larr; <a href="../../06/my-delicious-bookmarks-for-may-6th-2/index.html">My del.icio.us bookmarks for May 6th</a></span>
+	<span class="next"><a href="../../12/my-delicious-bookmarks-for-may-11th-2/index.html">My del.icio.us bookmarks for May 11th</a> &rarr;</span>
+</div>
+<div class="clear whitespace"></div>
+
+			
+			<h2>Removing all extended attributes from a directory tree</h2>
+			<h4>May 7th, 2008<!-- by ZZamboni --> &middot; <a href="index.html#comments">24 Comments</a></h4>
+			<div class="entry">
+				<p>Here&#8217;s a simple one-liner I came up with to remove all HFS+ extended attributes on all files and directories below the current one in Mac OS X. Useful before creating a tar file that will be shared with non-Mac users (tar in OSX will create additional &#8220;resource&#8221; files to store extended attributes, which when untared on a Mac will be correctly reinstated, but in other systems will leave spurious hidden files all over the place).</p>
+<pre><code>
+for i in $(ls -Rl@ | grep '^      ' | awk '{print $1}' | sort -u); \
+   do echo Removing $i ... >&#038;2;  \
+   find . | xargs xattr -d $i 2>/dev/null ; done
+</code></pre>
+<p>The space after the caret in the grep command is produced by typing Ctrl-V and then Tab, to insert a Tab character.</p>
+							</div>
+			<!--<p class="tagged"><strong>Tags:</strong> <a href="http://zzamboni.org/brt/category/general/" title="View all posts in General" rel="category tag">General</a></p>--><p class="tagged"><strong>Tags:</strong> <a href="../../../../tag/howto/index.html" rel="tag">howto</a> &middot; <a href="../../../../tag/mac/index.html" rel="tag">Mac</a> &middot; <a href="../../../../tag/tips-tricks/index.html" rel="tag">Tips &#038; tricks</a></p>
+			<div class="clear"></div>
+			
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h3 class="comments_headers">24 responses so far &darr;</h3>
+	
+	<ul id="comment_list">
+
+	
+			
+		<li class="comment  " id="comment-11208">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11208" title="Permalink to this comment">1</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/9a1b7722249e6b222bbdf47c4f982356?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Dominik Hoffmann </strong>
+				<span class="comment_time">// Jun 6, 2008 at 8:42 pm</span>
+			</p>
+			<div class="entry">
+				<p>This only puts out the name of the attribute it&#8217;s supposed to remove, but doesn&#8217;t actually. I am running this in sudo mode.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment mycomment " id="comment-11209">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11209" title="Permalink to this comment">2</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/ea65e5d90b2df05ac60184927386d4e0?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://www.zzamboni.org/brt/' rel='external nofollow' class='url'>Hitchhiker</a> </strong>
+				<span class="comment_time">// Jun 7, 2008 at 8:52 am</span>
+			</p>
+			<div class="entry">
+				<p>Dominik: if you are typing &#8220;sudo&#8221; followed by the command shown, then only the first command (the &#8220;for&#8221; is executed as root, so the attributes will not be removed (the xargs command is the one that needs to be run as root). You need to enter a root shell (you could run &#8220;sudo bash&#8221;) and then type the command in that shell so that all the commands execute as root.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-11210">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11210" title="Permalink to this comment">3</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/9a1b7722249e6b222bbdf47c4f982356?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Dominik Hoffmann </strong>
+				<span class="comment_time">// Jun 7, 2008 at 1:11 pm</span>
+			</p>
+			<div class="entry">
+				<p>Hi Hitchhiker: I had executed the command inside a root shell, via sudo -s. &#8212; Dominik</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment mycomment " id="comment-11211">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11211" title="Permalink to this comment">4</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/ea65e5d90b2df05ac60184927386d4e0?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://www.zzamboni.org/brt/' rel='external nofollow' class='url'>Hitchhiker</a> </strong>
+				<span class="comment_time">// Jun 7, 2008 at 4:06 pm</span>
+			</p>
+			<div class="entry">
+				<p>Do you get any errors when executing the command? I see nothing wrong in the command as shown, it should work properly.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment mycomment " id="comment-11212">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11212" title="Permalink to this comment">5</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/ea65e5d90b2df05ac60184927386d4e0?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://www.zzamboni.org/brt/' rel='external nofollow' class='url'>Hitchhiker</a> </strong>
+				<span class="comment_time">// Jun 7, 2008 at 4:07 pm</span>
+			</p>
+			<div class="entry">
+				<p>Dominik: you could try removing the &#8220;2> /dev/null&#8221; after the xattr command, to have errors shown on the terminal.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-11214">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11214" title="Permalink to this comment">6</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/9a1b7722249e6b222bbdf47c4f982356?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Dominik Hoffmann </strong>
+				<span class="comment_time">// Jun 9, 2008 at 12:25 am</span>
+			</p>
+			<div class="entry">
+				<p>This is what I see:</p>
+<p>echo Removing com.apple.AddressBook.ImageTransform.ABClipRect_1 &#8230;<br />
+xargs: unterminated quote</p>
+<p>Dominik Hoffmann</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment mycomment " id="comment-11215">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11215" title="Permalink to this comment">7</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/ea65e5d90b2df05ac60184927386d4e0?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://www.zzamboni.org/brt/' rel='external nofollow' class='url'>Hitchhiker</a> </strong>
+				<span class="comment_time">// Jun 9, 2008 at 6:37 am</span>
+			</p>
+			<div class="entry">
+				<p>The &#8220;unterminated quote&#8221; message makes me think there is a filename in the tree you are processing that has a quote character (single or double quote) in it. You could try adding the -t option to xargs (xargs -t xattr .., still leaving out the &#8220;2> /dev/null&#8221;), which will print the commands it executes, and see which command is printed before the error.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-11216">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11216" title="Permalink to this comment">8</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/9a1b7722249e6b222bbdf47c4f982356?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Dominik Hoffmann </strong>
+				<span class="comment_time">// Jun 9, 2008 at 1:51 pm</span>
+			</p>
+			<div class="entry">
+				<p>xargs -t doesn&#8217;t output anything.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-11217">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11217" title="Permalink to this comment">9</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/9a1b7722249e6b222bbdf47c4f982356?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Dominik Hoffmann </strong>
+				<span class="comment_time">// Jun 9, 2008 at 3:32 pm</span>
+			</p>
+			<div class="entry">
+				<p>Okay, I made the working directory ~/.ssh/.</p>
+<p>This time it worked:</p>
+<p>echo Removing com.apple.metadata:_kTimeMachineNewestSnapshot &#8230;<br />
+xattr -d com.apple.metadata:_kTimeMachineNewestSnapshot . ./authorized_keys ./id_dsa ./id_dsa.pub ./known_hosts<br />
+echo Removing com.apple.metadata:_kTimeMachineOldestSnapshot &#8230;<br />
+xattr -d com.apple.metadata:_kTimeMachineOldestSnapshot . ./authorized_keys ./id_dsa ./id_dsa.pub ./known_hosts</p>
+<p>However, with the working directory being ~ and the -R option removed from the ls instruction I have</p>
+<p>xargs: unterminated quote<br />
+echo Removing com.apple.metadata:_kTimeMachineNewestSnapshot &#8230;<br />
+xargs: unterminated quote<br />
+echo Removing com.apple.metadata:_kTimeMachineOldestSnapshot &#8230;<br />
+xargs: unterminated quote</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-11218">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11218" title="Permalink to this comment">10</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/9a1b7722249e6b222bbdf47c4f982356?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Dominik Hoffmann </strong>
+				<span class="comment_time">// Jun 9, 2008 at 3:57 pm</span>
+			</p>
+			<div class="entry">
+				<p>This entry in the macosx.com forums, <a  href="http://macosx.com/forums/unix-x11/19015-xargs-grep.html" rel="nofollow">http://macosx.com/forums/unix-x11/19015-xargs-grep.html</a>, pointed me in the right direction. It suggests the use of the -0 option in xargs in conjunction with the -print0 primary in find. It therefore works, when I execute</p>
+<p>for i in $(ls -Rl@ | grep &#8216;^  &#8216; | awk &#8216;{print $1}&#8217; | sort -u);    do echo echo Removing $i &#8230; &gt;&amp;2;  find . -print0 | xargs -0t xattr -d $i 2&gt;/dev/null ; done</p>
+<p>Now it would be interesting to know, why you guys don&#8217;t need those modifications and I do.</p>
+<p>Dominik</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment mycomment " id="comment-11219">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11219" title="Permalink to this comment">11</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/ea65e5d90b2df05ac60184927386d4e0?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://www.zzamboni.org/brt/' rel='external nofollow' class='url'>Hitchhiker</a> </strong>
+				<span class="comment_time">// Jun 9, 2008 at 11:43 pm</span>
+			</p>
+			<div class="entry">
+				<p>Dominik: I figured that was the problem. You must have some files with quote characters in them (or some other punctuation), which is why it doesn&#8217;t work with the standard separators.</p>
+<p>Glad you got it to work!</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  trackback" id="comment-11772">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11772" title="Permalink to this comment">12</a></span>
+				<strong><a href='http://panthermodem.com/blog/?p=225' rel='external nofollow' class='url'>PantherModem &raquo; Blog Archive &raquo; GCC Says: error: expected unqualified-id before &#8216;OTHER&#8217; token</a> </strong>
+				<span class="comment_time">// Jul 4, 2008 at 4:42 pm</span>
+			</p>
+			<div class="entry">
+				<p>[...] coming from files with extended attributes. I cleaned out all the extended attributes (thanks to Diego Zamboni&#8217;s script), but the error still remained. In the end the only thing that worked was to delete the erroneous [...]</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-11855">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-11855" title="Permalink to this comment">13</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/95c6e9e851fe052f1ffedf19eddc7867?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Joseph </strong>
+				<span class="comment_time">// Jul 9, 2008 at 9:08 pm</span>
+			</p>
+			<div class="entry">
+				<p>Many thanks on putting this script together.  Is there a way to prevent these extended attributes from being generated in the first place?  I ask because I have never noticed this before upgrading to 10.5, and other computers using the 10.5 do not appear to create these extended attributes.  I often tar directories containing 1000s of files, and the presence of extended attributes makes the compressing/decompressing very slow.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-12134">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-12134" title="Permalink to this comment">14</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/9629ed8a1b1611d7e0c65e6945314b8c?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Justin Force </strong>
+				<span class="comment_time">// Nov 21, 2008 at 1:03 am</span>
+			</p>
+			<div class="entry">
+				<p>You can simplify this quite a lot. </p>
+<p>find . -exec xattr -d {} ; </p>
+<p>Doesn&#039;t give you the satisfying output, but it works. <img src='../../../../wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-12135">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-12135" title="Permalink to this comment">15</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/9629ed8a1b1611d7e0c65e6945314b8c?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Justin Force </strong>
+				<span class="comment_time">// Nov 21, 2008 at 1:09 am</span>
+			</p>
+			<div class="entry">
+				<p>Wait! No it doesn&#039;t. Wish I could delete that post&#8230;</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-12136">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-12136" title="Permalink to this comment">16</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/b148c845dea67e46337564f33023fe12?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;zzamboni </strong>
+				<span class="comment_time">// Nov 21, 2008 at 8:50 am</span>
+			</p>
+			<div class="entry">
+				<p>Justin: it doesn&#039;t, because you have to give to xattr -d the attribute you want to delete. That&#039;s what the script does &#8211; first find all the attributes that exist under the directory, and then loop over them, removing them in sequence.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-12521">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-12521" title="Permalink to this comment">17</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/5811b64ffd2fa7116580dafa02d9bb7b?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;John Rikes </strong>
+				<span class="comment_time">// Apr 18, 2009 at 10:26 pm</span>
+			</p>
+			<div class="entry">
+				<p>Should this remove the info found in the &quot;Get Info&quot; menu item? After I ran this, I still see a URL from where I downloaded my files from&#8230;</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-12592">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-12592" title="Permalink to this comment">18</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/8faf8ccb2ac77a48ba5f9db37dc6f465?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://resonant.com/' rel='external nofollow' class='url'>Tyler Havener</a> </strong>
+				<span class="comment_time">// May 6, 2009 at 10:49 pm</span>
+			</p>
+			<div class="entry">
+				<p>is there a reason why &quot;echo&quot; is listed twice?</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-12599">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-12599" title="Permalink to this comment">19</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/b148c845dea67e46337564f33023fe12?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;zzamboni </strong>
+				<span class="comment_time">// May 8, 2009 at 7:21 am</span>
+			</p>
+			<div class="entry">
+				<p>It was a mistake. I have corrected it. Thanks for pointing it out!</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-12773">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-12773" title="Permalink to this comment">20</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/2321223c36f58206fa96586fb8ba7975?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;A Friend </strong>
+				<span class="comment_time">// Jun 10, 2009 at 5:35 pm</span>
+			</p>
+			<div class="entry">
+				<p>It also might be worth mentioning that you can create copy of a file or directory that doesn&#039;t have any extended attributes by passing the -X option to the cp command. </p>
+<p>For example, if you want to make a clean tar file of the directory &quot;my_files&quot;, you could do the following: </p>
+<p>    # copy my_files to the Desktop, excluding extended attributes<br />
+    cp -rX ~/Documents/my_files ~/Desktop/my_files </p>
+<p>    # go to Desktop<br />
+    cd ~/Desktop  </p>
+<p>    # create the tar file, excluding .DS_Store files<br />
+    tar cjvf my_files.tar.bz2 &#8211;exclude .DS_Store my_files </p>
+<p>    # remove the copy<br />
+    rm -r my_files</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-12775">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-12775" title="Permalink to this comment">21</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/ea65e5d90b2df05ac60184927386d4e0?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://intensedebate.com/people/zzamboni' rel='external nofollow' class='url'>zzamboni</a> </strong>
+				<span class="comment_time">// Jun 10, 2009 at 10:22 pm</span>
+			</p>
+			<div class="entry">
+				<p>Thank you &#8211; very nice, I had never noticed the -X option.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-12924">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-12924" title="Permalink to this comment">22</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/859ac33cca4cbb28933cf32a9e6f658d?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;Ben </strong>
+				<span class="comment_time">// Jul 15, 2009 at 7:03 pm</span>
+			</p>
+			<div class="entry">
+				<p>I was unable to get the xattr stuff to remove the extended attributes from my Time Machine copies (I had done them originally with -p which was a bad idea, I suppose). However, using &#039;cp -rX&#039; along with renames (and admin access) solved my problem.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-12928">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-12928" title="Permalink to this comment">23</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/ea65e5d90b2df05ac60184927386d4e0?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;<a href='http://intensedebate.com/people/zzamboni' rel='external nofollow' class='url'>zzamboni</a> </strong>
+				<span class="comment_time">// Jul 16, 2009 at 8:16 am</span>
+			</p>
+			<div class="entry">
+				<p>I think this is because Time Machine files are also created with ACLs that disallow anyone from modifying them (they are meant to be permanent copies). I imagine any copies you make also get those ACLs copied. The easiest way around this is to temporarily disable ACLs on the file system using the fsaclctl command, or to use chmod to permanently remove the ACLs.</p>
+ 
+							</div>
+		</li>
+		
+			
+		<li class="comment  " id="comment-13065">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="index.html#comment-13065" title="Permalink to this comment">24</a></span>
+				<strong><img alt='' src='http://www.gravatar.com/avatar/2f3cf39f53b949635ac4cca168325985?s=24&amp;d=identicon&amp;r=R' class='avatar avatar-24 photo' height='24' width='24' />&nbsp;vikram jadhav </strong>
+				<span class="comment_time">// Aug 8, 2009 at 6:55 am</span>
+			</p>
+			<div class="entry">
+				<p>How to remove extended attribute from NTFS , using win32 API&#8217;s</p>
+ 
+							</div>
+		</li>
+		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h3 id="respond" class="comments_headers">Leave a Comment</h3>
+			<form action="http://zzamboni.org/brt/wp-comments-post.php" method="post" id="comment_form">
+			
+										<p><input class="text_input" type="text" name="author" id="author" value="" tabindex="1" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="text" name="email" id="email" value="" tabindex="2" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="text" name="url" id="url" value="" tabindex="3" /><label for="url"><strong>Website</strong></label></p>
+							<!--<p><small><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </small></p>-->
+			
+				<p><textarea class="text_input text_area" name="comment" id="comment" rows="7" tabindex="4"></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="../../../../wp-content/themes/Cutline_BrT_retired/images/submit_bg.gif" tabindex="5" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="367" />
+				</p>
+		
+				<p class="comment-timeout">Comments for this post will be closed on 8 August 2010.</p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+			
+				
+		</div>
+		
+		<div id="sidebar">
+	<ul class="sidebar_list">
+		<li id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div><a href='../../../../tag/readlater/index.html' class='tag-link-138' title='5 topics' rel="tag" style='font-size: 8.28571428571pt;'>@readlater</a>
+<a href='../../../../tag/apple/index.html' class='tag-link-129' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>apple</a>
+<a href='../../../../tag/art/index.html' class='tag-link-36' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>art</a>
+<a href='../../../../tag/blogging/index.html' class='tag-link-10' title='19 topics' rel="tag" style='font-size: 9.61904761905pt;'>Blogging</a>
+<a href='../../../../tag/cocoa/index.html' class='tag-link-153' title='8 topics' rel="tag" style='font-size: 8.57142857143pt;'>cocoa</a>
+<a href='../../../../tag/commodore/index.html' class='tag-link-31' title='2 topics' rel="tag" style='font-size: 8pt;'>commodore</a>
+<a href='../../../../tag/computing/index.html' class='tag-link-8' title='8 topics' rel="tag" style='font-size: 8.57142857143pt;'>Computing</a>
+<a href='../../../../tag/cool/index.html' class='tag-link-37' title='11 topics' rel="tag" style='font-size: 8.85714285714pt;'>cool</a>
+<a href='../../../../tag/copperexport/index.html' class='tag-link-4' title='12 topics' rel="tag" style='font-size: 8.95238095238pt;'>CopperExport</a>
+<a href='../../../../tag/education/index.html' class='tag-link-141' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>education</a>
+<a href='../../../../tag/fun/index.html' class='tag-link-81' title='4 topics' rel="tag" style='font-size: 8.19047619048pt;'>fun</a>
+<a href='../../../../tag/gtd/index.html' class='tag-link-19' title='16 topics' rel="tag" style='font-size: 9.33333333333pt;'>GTD</a>
+<a href='../../../../tag/health/index.html' class='tag-link-14' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>Health</a>
+<a href='../../../../tag/howto/index.html' class='tag-link-34' title='21 topics' rel="tag" style='font-size: 9.80952380952pt;'>howto</a>
+<a href='../../../../tag/humor/index.html' class='tag-link-18' title='4 topics' rel="tag" style='font-size: 8.19047619048pt;'>Humor</a>
+<a href='../../../../tag/image/index.html' class='tag-link-193' title='2 topics' rel="tag" style='font-size: 8pt;'>image</a>
+<a href='../../../../tag/interesting/index.html' class='tag-link-39' title='4 topics' rel="tag" style='font-size: 8.19047619048pt;'>interesting</a>
+<a href='../../../../tag/linky/index.html' class='tag-link-3' title='149 topics' rel="tag" style='font-size: 22pt;'>Linky</a>
+<a href='../../../../tag/linux/index.html' class='tag-link-11' title='18 topics' rel="tag" style='font-size: 9.52380952381pt;'>Linux</a>
+<a href='../../../../tag/mac/index.html' class='tag-link-7' title='42 topics' rel="tag" style='font-size: 11.8095238095pt;'>Mac</a>
+<a href='../../../../tag/macosx/index.html' class='tag-link-134' title='24 topics' rel="tag" style='font-size: 10.0952380952pt;'>macosx</a>
+<a href='../../../../tag/mailapp/index.html' class='tag-link-147' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>mail.app</a>
+<a href='../../../../tag/news/index.html' class='tag-link-28' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>news</a>
+<a href='../../../../tag/osx/index.html' class='tag-link-148' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>osx</a>
+<a href='../../../../tag/passwords/index.html' class='tag-link-26' title='2 topics' rel="tag" style='font-size: 8pt;'>passwords</a>
+<a href='../../../../tag/personal/index.html' class='tag-link-15' title='14 topics' rel="tag" style='font-size: 9.14285714286pt;'>Personal</a>
+<a href='../../../../tag/photography/index.html' class='tag-link-16' title='6 topics' rel="tag" style='font-size: 8.38095238095pt;'>Photography</a>
+<a href='../../../../tag/productivity/index.html' class='tag-link-5' title='21 topics' rel="tag" style='font-size: 9.80952380952pt;'>Productivity</a>
+<a href='../../../../tag/programming/index.html' class='tag-link-13' title='22 topics' rel="tag" style='font-size: 9.90476190476pt;'>Programming</a>
+<a href='../../../../tag/quicksilver/index.html' class='tag-link-25' title='2 topics' rel="tag" style='font-size: 8pt;'>QuickSilver</a>
+<a href='../../../../tag/reference/index.html' class='tag-link-132' title='4 topics' rel="tag" style='font-size: 8.19047619048pt;'>reference</a>
+<a href='../../../../tag/reviews/index.html' class='tag-link-20' title='4 topics' rel="tag" style='font-size: 8.19047619048pt;'>Reviews</a>
+<a href='../../../../tag/ruby/index.html' class='tag-link-22' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>Ruby</a>
+<a href='../../../../tag/security/index.html' class='tag-link-9' title='8 topics' rel="tag" style='font-size: 8.57142857143pt;'>Security</a>
+<a href='../../../../tag/site-news/index.html' class='tag-link-12' title='30 topics' rel="tag" style='font-size: 10.6666666667pt;'>Site news</a>
+<a href='../../../../tag/software/index.html' class='tag-link-2' title='30 topics' rel="tag" style='font-size: 10.6666666667pt;'>Software</a>
+<a href='../../../../tag/timemachine/index.html' class='tag-link-155' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>timemachine</a>
+<a href='../../../../tag/tips/index.html' class='tag-link-151' title='9 topics' rel="tag" style='font-size: 8.66666666667pt;'>tips</a>
+<a href='../../../../tag/tips-tricks/index.html' class='tag-link-6' title='49 topics' rel="tag" style='font-size: 12.4761904762pt;'>Tips &#038; tricks</a>
+<a href='../../../../tag/tools/index.html' class='tag-link-83' title='12 topics' rel="tag" style='font-size: 8.95238095238pt;'>tools</a>
+<a href='../../../../tag/tutorial/index.html' class='tag-link-154' title='3 topics' rel="tag" style='font-size: 8.09523809524pt;'>tutorial</a>
+<a href='../../../../tag/unix/index.html' class='tag-link-30' title='2 topics' rel="tag" style='font-size: 8pt;'>unix</a>
+<a href='../../../../tag/video/index.html' class='tag-link-146' title='6 topics' rel="tag" style='font-size: 8.38095238095pt;'>video</a>
+<a href='../../../../tag/wiltac/index.html' class='tag-link-202' title='5 topics' rel="tag" style='font-size: 8.28571428571pt;'>wiltac</a>
+<a href='../../../../tag/wordpress/index.html' class='tag-link-157' title='6 topics' rel="tag" style='font-size: 8.38095238095pt;'>wordpress</a></div>
+</li>
+<li id="calendar-2" class="widget widget_calendar"><h2 class="widgettitle">Archives</h2>
+<div id="calendar_wrap"><table id="wp-calendar" summary="Calendar">
+	<caption>May 2008</caption>
+	<thead>
+	<tr>
+		<th abbr="Sunday" scope="col" title="Sunday">S</th>
+		<th abbr="Monday" scope="col" title="Monday">M</th>
+		<th abbr="Tuesday" scope="col" title="Tuesday">T</th>
+		<th abbr="Wednesday" scope="col" title="Wednesday">W</th>
+		<th abbr="Thursday" scope="col" title="Thursday">T</th>
+		<th abbr="Friday" scope="col" title="Friday">F</th>
+		<th abbr="Saturday" scope="col" title="Saturday">S</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td abbr="April" colspan="3" id="prev"><a href="../../../04/index.html" title="View posts for April 2008">&laquo; Apr</a></td>
+		<td class="pad">&nbsp;</td>
+		<td abbr="June" colspan="3" id="next"><a href="../../../06/index.html" title="View posts for June 2008">Jun &raquo;</a></td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="4" class="pad">&nbsp;</td><td>1</td><td><a href="../../02/index.html" title="Twitter again">2</a></td><td>3</td>
+	</tr>
+	<tr>
+		<td>4</td><td>5</td><td><a href="../../06/index.html" title="CERIAS ranked as U.S. top information security program, My del.icio.us bookmarks for May 6th, My del.icio.us bookmarks for May 6th">6</a></td><td><a href="../index.html" title="Removing all extended attributes from a directory tree">7</a></td><td>8</td><td>9</td><td>10</td>
+	</tr>
+	<tr>
+		<td>11</td><td><a href="../../12/index.html" title="My del.icio.us bookmarks for May 11th">12</a></td><td><a href="../../13/index.html" title="How to fix IImage Gallery pages after update to Wordpress 2.5">13</a></td><td>14</td><td>15</td><td><a href="../../16/index.html" title="My del.icio.us bookmarks for May 16th">16</a></td><td><a href="../../17/index.html" title="My del.icio.us bookmarks for May 17th">17</a></td>
+	</tr>
+	<tr>
+		<td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td><a href="../../23/index.html" title="How to use Things on two accounts on the same machine">23</a></td><td><a href="../../24/index.html" title="My del.icio.us bookmarks for May 24th">24</a></td>
+	</tr>
+	<tr>
+		<td>25</td><td><a href="../../26/index.html" title="Things gets synchronization abilities">26</a></td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td>
+	</tr>
+	</tbody>
+	</table></div></li>
+<li id="text-3" class="widget widget_text"><h2 class="widgettitle">My blogroll</h2>
+			<div class="textwidget"><script type="text/javascript" src="http://www.google.com/reader/ui/publisher-en.js"></script>
+<script type="text/javascript" src="http://www.google.com/reader/public/javascript-sub/user/07157728015005316665/label/Can't miss?callback=GRC_p(%7Bc%3A%22-%22%2Ct%3A%22%22%2Cb%3A%22true%22%7D)%3Bnew%20GRC"></script></div>
+		</li>
+	</ul>
+</div>			
+	</div>
+
+	<div id="footer">
+		<p>&copy; 2006&ndash;2007 BrT &mdash; <a href="../../../../sitemap/index.html">Sitemap</a> &mdash; <a href="http://cutline.tubetorial.com/">Cutline</a> by <a href="http://www.tubetorial.com">Chris Pearson</a></p>
+		<script type='text/javascript' src='../../../../wp-includes/js/thickbox/thickbox.js%3Fver=3.1-20090123'></script>
+
+<script type="text/javascript">
+var tb_pathToImage = "http://zzamboni.org/brt/wp-includes/js/thickbox/loadingAnimation.gif";
+var tb_closeImage = "http://zzamboni.org/brt/wp-includes/js/thickbox/tb-close.png";
+</script>
+<script src="http://stats.wordpress.com/e-200940.js" type="text/javascript"></script>
+<script type="text/javascript">
+st_go({blog:'1092596',v:'ext',post:'367'});
+var load_cmc = function(){linktracker_init(1092596,367,2);};
+if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+else load_cmc();
+</script>
+	</div>
+</div>
+
+</body>
+</html>

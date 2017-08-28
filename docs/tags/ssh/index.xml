@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ssh on zzamboni.org</title>
+    <link>http://zzamboni.org/tags/ssh/</link>
+    <description>Recent content in Ssh on zzamboni.org</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 May 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://zzamboni.org/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using Multiple SSH Keys with Github</title>
+      <link>http://zzamboni.org/post/using-multiple-ssh-keys-with-github/</link>
+      <pubDate>Wed, 20 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/using-multiple-ssh-keys-with-github/</guid>
+      <description>via http://www.freshblurbs.com/blog/2013/06/22/github-multiple-ssh-keys.html#tldr
+ Since Github doesn&#39;t allow us to reuse an SSH Key, the only sane solution is to jump through some hoops and generate + use multiple keys on the server itself. Let&#39;s look at some effective approaches of doing that.  Short version: define multiple hosts in the SSH config file for each repository, which use different SSH keys, then you can assign different deploy keys to each repo.</description>
+    </item>
+    
+    <item>
+      <title>Editing sshd configuration files with cfengine3</title>
+      <link>http://zzamboni.org/post/2010-11-24-editing-sshd-configuration-files-with-cfengin/</link>
+      <pubDate>Wed, 24 Nov 2010 23:30:00 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-11-24-editing-sshd-configuration-files-with-cfengin/</guid>
+      <description>Here&#39;s a cfengine bundle that I wrote for editing the sshd configuration file by passing an array with the parameters. Using an array is a very elegant way of defining the values to set. The bundle also restarts sshd after any changes are made, unless the no_restarts class is defined.
+The first gist contains the edit_sshd bundle itself, together with the set_config_values bundle that actually performs the editing job (this should go into a library file, I have it in my personal version of cfengine_stdlib.</description>
+    </item>
+    
+  </channel>
+</rss>

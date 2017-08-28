@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Geneschultz on zzamboni.org</title>
+    <link>http://zzamboni.org/tags/geneschultz/</link>
+    <description>Recent content in Geneschultz on zzamboni.org</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 13 Oct 2011 00:36:00 -0500</lastBuildDate>
+    
+	<atom:link href="http://zzamboni.org/tags/geneschultz/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Dennis M. Ritchie, R.I.P.</title>
+      <link>http://zzamboni.org/post/2011-10-13-dennis-m-ritchie-rip/</link>
+      <pubDate>Thu, 13 Oct 2011 00:36:00 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2011-10-13-dennis-m-ritchie-rip/</guid>
+      <description>Dennis Ritchie passed away last weekend. He was one of the great minds in systems research and development, father of the C programming language, and one of the big contributors to Unix, both of which power the Mac on which I&#39;m typing this, the iPhone on my desk, the Windows machine I use at work, the servers on which this blog is hosted, and much of the infrastructure both you and I use to connect to it.</description>
+    </item>
+    
+    <item>
+      <title>Gene Schultz, R.I.P.</title>
+      <link>http://zzamboni.org/post/2011-10-03-gene-schultz-rip/</link>
+      <pubDate>Mon, 03 Oct 2011 23:08:00 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2011-10-03-gene-schultz-rip/</guid>
+      <description>A few days ago I learned through Spaf that Gene Schultz had had a severe accident and was hospitalized. Later we learned that the accident was apparently caused by an earlier stroke that went unrecognized. Yesterday, October 2nd, during the afternoon, Gene passed away.
+
+I met Gene about 15 years ago while I was a grad student at Purdue. I met him initially at a couple of conferences, and later while he was visiting Purdue for some time.</description>
+    </item>
+    
+  </channel>
+</rss>
