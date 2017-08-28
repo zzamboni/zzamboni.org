@@ -1,0 +1,21 @@
+---
+categories: &1
+- tips
+- macosx
+date: '2014-03-04'
+description: ''
+keywords: []
+title: How to stop com.apple.dock.extra from "using significant energy"
+tags: *1
+aliases:
+- /new/blog/how-to-stop-com-apple-dock-extra-from-using-significant-energy
+slug: how-to-stop-com-apple-dock-extra-from-using-significant-energy
+---
+
+
+<span style='word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;'>
+I’d been having for some time a problem with `com.apple.dock.extra` appearing in the “Apps using significant energy” section of the battery menu. I just learned the solution (from <a href='http://forums.macrumors.com/showthread.php?t=1651662'>http://forums.macrumors.com/showthread.php?t=1651662</a>): remove BusyCal 1.6 (I upgraded to BusyCal 2, but left the old version around in case I had to go back to it). After removing it and restarting the Dock, the problem stopped.
+<div><br/></div>
+<div>From the same thread, it seems the problem was caused by BusyCal’s “animate transitions” preference. I didn’t try that, but if you are still using BusyCal 1.6 and have this problem, it’s worth trying.</div>
+<div><br/></div>
+</span>

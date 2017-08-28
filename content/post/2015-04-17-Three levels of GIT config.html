@@ -1,0 +1,49 @@
+---
+categories: &1
+- tips
+- git
+date: '2015-04-17'
+description: ''
+keywords: []
+title: Three levels of GIT config
+tags: *1
+aliases:
+- /new/blog/three-levels-of-git-config
+slug: three-levels-of-git-config
+---
+
+<p class="clip-attribute">via <a href="http://www.codinginahurry.com/2011/02/05/three-levels-of-git-config/">http://www.codinginahurry.com/2011/02/05/three-levels-of-git-config/</a></p>
+
+<span>
+<div>Very nice explanation, via <a href='http://www.codinginahurry.com/2011/02/05/three-levels-of-git-config/'>coding in a hurry</a></div>
+<div style='margin-left: 40px;'>There are 3 levels of <code>git</code> config; project, global and system.</div>
+<ul>
+<li style='display:inline;list-style:none;'>
+<ul>
+<li style='display:inline;list-style:none;'>
+<ul>
+<li>project: Project configs are only available for the current project and stored in <code>.git/config</code> in the project's directory.</li>
+<li>global: Global configs are available for all projects for the current user and stored in <code>~/.gitconfig</code>.</li>
+<li>system: System configs are available for all the users/projects and stored in <code>/etc/gitconfig</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div style='margin-left:40px;'>Create a project specific config, you have to execute this under the project's directory.</div>
+<div style='margin-left:40px;'>
+<pre>
+git config user.name &quot;John Doe&quot;
+</pre></div>
+<div style='margin-left:40px;'>Create a global config</div>
+<div style='margin-left:40px;'>
+<pre>
+git config --global user.name &quot;John Doe&quot;
+</pre></div>
+<div style='margin-left:40px;'>Create a system config</div>
+<div style='margin-left:40px;'>
+<pre>
+git config --system user.name &quot;John Doe&quot;
+</pre></div>
+<div style='margin-left:40px;'>And as you may guess, project overrides global and global overrides system.</div>
+<br/></span>
