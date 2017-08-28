@@ -2,6 +2,8 @@
 title: "Grabcartoons"
 date: 2017-08-03T17:25:50+02:00
 description: "Grab your fix of the funnies"
+aliases:
+- /grabcartoons
 ---
 
 GrabCartoons is a comic-summarizing utility. It is modular, and it is
