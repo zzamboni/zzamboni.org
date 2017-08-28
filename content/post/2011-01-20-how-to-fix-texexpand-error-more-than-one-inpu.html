@@ -1,0 +1,18 @@
+---
+title: ! 'How to fix "texexpand error: More than one input file specified" in latex2html'
+aliases:
+- /blog/how-to-fix-texexpand-error-more-than-one-inpu
+date: 2011-01-20 00:24:00.000000000 -06:00
+tags:
+- latex2html
+- tips
+---
+<div class="posterous_bookmarklet_entry">
+      <blockquote class="posterous_medium_quote">There's a bug that causes problems when running latex2html on files which have spaces in the path.  The workaround is to either move things to folders with no spaces, or add appropriate symbolic links.</blockquote>
+
+<div class="posterous_quote_citation">via <a href="http://ubuntuforums.org/showthread.php?t=358775">ubuntuforums.org</a>
+</div>
+    <p>This error had me stumped in trying to process a latex file with latex2html:</p>
+<p>texexpand: Error: More than one input file specified.<br>texexpand failed: No such file or directory</p>
+<p>The fix is simple - make sure the path of the current directory does not have any spaces.</p>
+</div>

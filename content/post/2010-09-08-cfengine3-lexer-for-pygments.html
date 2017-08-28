@@ -1,0 +1,31 @@
+---
+title: Cfengine3 lexer for Pygments
+aliases:
+- /blog/cfengine3-lexer-for-pygments
+date: 2010-09-08 21:16:00.000000000 -05:00
+tags:
+- cfengine
+- pygments
+- python
+---
+<p>I have written a <a href="http://cfengine.org/">Cfengine3</a> lexer for <a href="http://pygments.org/">Pygments</a>, the open source syntax-highlighter used by <a href="http://gist.github.com/">Gist</a> and many other sites. It seems to work fine on all the cfengine policy files I have tested, but if you find anything that doesn't quite work as expected, please let me know. This is my first-ever Pygments lexer, so if you are an expert and can advise me on better ways of doing things, I'd very much appreciate the feedback too.</p>
+
+<p><strong>Update: Since version 1.5, Pygments includes this lexer. If you are using 1.5 or later, you already have the CFEngine lexer. You can sometimes find a newer version of the lexer in <a href="https://bitbucket.org/zzamboni/pygments-main/src/7304e4759ae65343d89a51359ca538912519cc31/pygments/lexers/other.py?at=default#cl-2532">my fork of the Pygments project</a> (updates are infrequent, only when there are changes in the CFEngine language).</strong></p>
+
+<strike><p></p>  Here's how to install it (again, I don't know if this is the better or easier way):
+<ol>
+<li>Obtain the Pygments <a href="http://pygments.org/download/">source code</a>.</li>
+<li>Put the <a href="https://raw.github.com/gist/571230/9b28129fde567df4576fb1d48db7e5e6111477a3/pygments_cfengine_lexer.py">pygments_cfengine_lexer.py</a> file into the pygments/lexers/ directory</li>
+<li>run (cd pygments/lexers; python _mapping.py)</li>
+<li>run ./setup.py install</li>
+</ol>
+<p>If you already have Pygments installed, you should follow these instructions:</p>
+<ol>
+<li>Put the <a href="https://raw.github.com/gist/571230/9b28129fde567df4576fb1d48db7e5e6111477a3/pygments_cfengine_lexer.py">pygments_cfengine_lexer.py</a> file in the installed pygments/lexers/ directory (on my Mac, this is /Library/Python/2.6/site-packages/Pygments-1.4-py2.6.egg/pygments/lexers, under Linux it should be something like /usr/lib/python2.6/site-packages/Pygments..../pygments/lexers)
+</li>
+<li>cd into that directory</li>
+<li>run "python _mapping.py"</li>
+
+</ol></strike>
+
+<p>Then run pygmentize on any .cf file, and it should output properly highlighted code. You can view a sample <a href="http://zzamboni.org/files/cfengine_stdlib.html">here</a>.</p>

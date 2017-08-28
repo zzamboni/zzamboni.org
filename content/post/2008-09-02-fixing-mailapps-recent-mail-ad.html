@@ -1,0 +1,9 @@
+---
+title: Fixing Mail.app's recent mail addresses problem
+aliases:
+- /blog/fixing-mailapps-recent-mail-ad
+date: 2008-09-02 07:47:52.000000000 -05:00
+tags:
+- zznippets
+---
+I had noticed for a while that somehow my Mail.app's "recent mail addresses" list was not updating (I never seemed to get any of my recently used addresses in Quicksilver). Today I noticed the following error message in /var/log/system.log: <p></p>   Mail[365]: AddressBook failed to save: Error Domain=NSCocoaErrorDomain Code=259 UserInfo=0x10c9a810 "The file MailRecents-v4.abcdmr could not be opened because it is not in the right format." ({\n  NSFilePath = "/Users/dza/Library/Application Support/AddressBook/MailRecents-v4.abcdmr";\n  NSUnderlyingException = Fatal error. The database at /Users/dza/Library/Application Support/AddressBook/MailRecents-v4.abcdmr is corrupted. SQLite error code:1;\n}) <p></p>   While trying to figure out what was wrong, I discovered that the file for some reason had an ACL that prevented everyone (including me!) from modifying it: <p></p>   ~/Library/Application Support/AddressBook $ /bin/ls -lea MailRecents-v4.abcdmr <br> -rw-------@ 1 dza staff 102400 Feb 4 2008 MailRecents-v4.abcdmr <br>  0: group:everyone deny write,delete,append,writeattr,writeextattr,chown <p></p>   So I removed the ACL: <p></p>   $ /bin/chmod -a# 0 MailRecents-v4.abcdmr <p></p>   And the error is gone! The file was not corrupted, but Mail could simply not write to it. The puzzling part is how did that ACL end up there...

@@ -1,0 +1,12 @@
+---
+title: Installing AucTeX on EmacsW32 on Win7/64bit
+aliases:
+- /blog/installing-auctex-on-emacsw32-on-win764bit
+date: 2010-08-17 02:36:05.000000000 -05:00
+tags:
+- emacs
+- latex
+- tips
+- windows
+---
+      Today I had to install AucTeX to use on my Win7/64 machine under EmacsW32. I found the basic instructions here: <a href="http://www.sturmnet.org/blog/2007/09/01/installing-auctex-in-emacsw32">http://www.sturmnet.org/blog/2007/09/01/installing-auctex-in-emacsw32</a>, but I had to modify them a bit (in particular, I am using tetex installed from cygwin instead of MiKTeX). Here are the commands I used:<p></p>  <tt>$  mkdir -p /usr/local/share/texmf<br> $ ./configure --prefix='c:/Program Files (x86)/Emacs/emacs' --with-texmf-dir='/usr/local/share/texmf' --with-lispdir='c:/Program Files (x86)/Emacs/emacs/site-lisp'<br> $  make<br> $  make install</tt><p></p>  I then added the following lines to my <tt>C:\Program Files (x86)\Emacs\site-lisp\site-start.el</tt> file:<p></p>  <tt>(load "auctex.el" nil t t)<br> (load "preview-latex.el" nil t t)<br> (eval-after-load 'info<br>        '(add-to-list 'Info-directory-list "c:/Program Files/Emacs/share/info"))<br> (setq TeX-auto-save t)<br> (setq TeX-parse-self t)</tt><p></p>  Everything seems to be working properly, even preview-mode.

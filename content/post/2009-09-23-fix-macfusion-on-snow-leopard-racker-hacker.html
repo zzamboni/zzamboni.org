@@ -1,0 +1,28 @@
+---
+title: Fix MacFusion on Snow Leopard | Racker Hacker
+aliases:
+- /blog/fix-macfusion-on-snow-leopard-racker-hacker
+date: 2009-09-23 07:20:17.000000000 -05:00
+tags:
+- zznippets
+---
+<div class="posterous_bookmarklet_entry">
+      <blockquote><div>
+				  <p>First off, credit for this fix goes to <a href="https://twitter.com/geoffwatts">Geoff Watts</a> from his <a href="http://twitter.com/geoffwatts/status/3605414263">two</a> <a href="http://twitter.com/geoffwatts/status/3605464669">tweets</a>.</p>
+<p>If you’re using Snow Leopard, you’ll find that the current version of MacFusion refuses to complete a connection to a remote server.  You can fix this in two steps:</p>
+<p>First, quit MacFusion.</p>
+<p>Second, open System Preferences and then open the MacFUSE pane.  Check the “Show Beta Versions” box and click “Check For Updates”.  Go ahead and update MacFUSE.</p>
+<p>Third, open up a terminal and do the following:</p>
+
+<div><div>
+<div class="CodeRay">
+  <div class="code"><pre>rm /Applications/Macfusion.app/Contents/PlugIns/sshfs.mfplugin/Contents/Resources/sshnodelay.so</pre></div>
+</div>
+</div></div>
+
+<p>Your MacFusion installation should now be working on Snow Leopard.  I’ve tested SSH and FTP connectivity so far, and they both appear to be working.  Thanks again to Geoff for the fix!</p>
+				</div></blockquote>
+<div class="posterous_quote_citation">via <a href="http://rackerhacker.com/2009/08/28/fix-macfusion-on-snow-leopard/">rackerhacker.com</a>
+</div>
+    <p>Worked perfectly for me. MacFusion is such a great tool.</p>
+</div>

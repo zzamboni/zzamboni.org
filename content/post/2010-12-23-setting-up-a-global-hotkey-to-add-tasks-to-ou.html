@@ -1,0 +1,28 @@
+---
+title: Setting up a global hotkey to add tasks to Outlook
+aliases:
+- /blog/setting-up-a-global-hotkey-to-add-tasks-to-ou
+date: 2010-12-23 12:14:00.000000000 -06:00
+tags:
+- autohotkey
+- gtd
+- outlook
+- productivity
+- tips
+- windows
+---
+<p>One thing I missed since I moved from a Mac (using The Hit List for GTD) to Outlook (using Jello Dashboard for GTD) was the availability of a global hot key that I could use to bring up a text entry box which I could use to quickly add things into my electronic Inbox, for later processing.</p>
+<p>I have found a way to achieve this, and here is the setup I am using now:</p>
+<p>The first component is <a href="http://www.leeholmes.com/blog/2007/03/01/getting-things-done-%E2%80%93-outlook-task-automation-with-powershell/">this PowerShell script</a> written by Lee Holmes, which takes as arguments the title of the task to add, and adds it to Outlook. I saved it as <code>Documents/Add-OutlookTask.ps1</code> in my home directory.</p>
+<p>The second component is the ever-useful and amazing <a href="http://www.autohotkey.com/">AutoHotkey</a>. I added the following lines to my <code>Documents/AutoHotKey.ahk</code> file:</p>
+<p></p>
+<p>{% gist 753333  %}</p>
+<p>This snippet assigns Win-space to open an input box, and uses whatever is typed in it as the task title to the Add-OutlookTask script. The task will be placed without any categories in the task list, so it appears automatically the next time I open my Jello Dashboard inbox. Here it is in action:</p>
+<p></p>
+<div class="p_embed p_image_embed">
+<img alt="Addtask" height="107" src="/images/2010/12/23/setting-up-a-global-hotkey-to-add-tasks-to-ou/19022076-AddTask.png" width="391">
+</div>
+
+<p>I find this extremely useful, since I can press Win-space to add new tasks from any application, without having to switch to Outlook first. At some point I would like to explore the idea of making it smarter, like the quick-add keys in Things or THL for the Mac. This would include, for example, using some information from the currently-active application to prefill the task information. Examples would include using the subject line if an Outlook email is selected or the title of the current web page if a browser is open. Also nice would be to include any selected text automatically in the notes for the task, and maybe a link to the original item.</p>
+<p> </p>
+<p> </p>

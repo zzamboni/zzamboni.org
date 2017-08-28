@@ -1,0 +1,17 @@
+---
+title: Installing cfengine on Mac OS X
+aliases:
+- /blog/installing-cfengine-320b3-on-mac-os-x-107
+date: 2011-08-05 02:31:00.000000000 -05:00
+tags:
+- cfengine
+- homebrew
+- howto
+- mac
+- osx
+---
+<p><a href="http://cfengine.com/">Cfengine</a> (tested 3.2.0) installs easily on OS X (tested 10.7), given that it's Unix. One problem I encountered was that it does not compile with the bundled version of Berkeley DB (it recognizes it during configure, but produces compilation errors). The solution is to use some other DB engine. I chose Tokyo Cabinet. Using <a href="http://mxcl.github.com/homebrew/">homebrew</a>, the process is simple</p>
+<p><code>brew install tokyo-cabinet</code></p>
+<p>After this, configure --with-tokyocabinet, and then compile and install as usual.</p>
+<p>I have submitted a <a href="https://github.com/mxcl/homebrew/pull/6835/files">homebrew formula for cfengine</a>. Once/if it gets approved, you should be able to run <code>brew install cfengine</code> to do all of the above automatically.</p>
+<p><strong>Update (2011/09/03): The cfengine homebrew formula has been accepted into the repository! You can now simply run "brew update; brew install cfengine" to get cfengine 3.2.0 installed.</strong></p>

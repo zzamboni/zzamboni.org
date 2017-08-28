@@ -1,0 +1,18 @@
+---
+title: Adding growl notification to Raymond Page's bash prompt code
+aliases:
+- /blog/adding-growl-notification-to-g
+date: 2008-09-08 16:05:00.000000000 -05:00
+tags:
+- zznippets
+---
+<p style=""><strong>Update (2008/09/10):</strong> Giles Orr kindly pointed out that he is not the author of the bash prompt package I use, I have updated to give proper credit to the author, Raymond Page.</p>
+<p>For some time I have used Raymond Page's bash prompt code (heavily based on the work by Giles Orr in the <a href="http://gilesorr.com/bashprompt/">Bash Prompt HOWTO</a>, you can get it at <a href="http://gentoo-wiki.com/TIP_Prompt_Magic">http://gentoo-wiki.com/TIP_Prompt_Magic</a> or <a href="http://code.google.com/p/homenix/source/browse/">http://code.google.com/p/homenix/source/browse/</a>, you need to get .prompt, .prompt_functions and .prompt_config from the trunk/ directory), which I like very much because it is highly customizable, and although a lot of the functions are Linux-specific, it can easily be made to work on Mac OS X. It features context-dependent prompt colorization (e.g. based on whether the current directory is writable and on the machine load), automatic shortening of the prompt based on window width, and many other features.</p>
+<p>More recently, I came across <a href="http://www.macosxhints.com/article.php?story=20071009124425468">this hint</a> for producing <a href="http://growl.info/">Growl</a> notifications for shell commands that run for more than a predefined length of time, which I find extremely useful for knowing when those commands have finished.</p>
+<p>Because both rely on some of the same mechanisms in bash, merging them is not completely straightforward. Here's what I did:</p>
+<ol>
+<li>Download and install .preexec.bash as instructed in the hint.</li>
+<li>Add the preexec() function and preexec_install call to your .bashrc or .bash_login file (as instructed)</li>
+<li>Add the code from the precmd() function in the hint to the <strong>preexisting precmd() function</strong> in the .prompt file. I added it at the end. This is the main difference from what is described in the hint. I added it at the very end of the function.</li>
+</ol>
+<p>That's it - a nice bash prompt with growl notifications for long-running commands.</p>

@@ -1,0 +1,25 @@
+---
+title: LogParser, Event Logs, and Vista - Neil Carpenter's Blog - Site Home - TechNet
+  Blogs
+aliases:
+- /blog/logparser-event-logs-and-vista-neil-carpenter
+date: 2011-01-19 12:33:00.000000000 -06:00
+tags:
+- eventviewer
+- logparser
+- tips
+- windows
+---
+<div class="posterous_bookmarklet_entry">
+      <blockquote class="posterous_long_quote">
+<p>The only workaround to this is to convert the logfile to the new evtx format prior to parsing it.  You can do this in the event log viewer GUI by doing a Save As... but I find it easier to do this at the command prompt: 
+</p>
+<blockquote class="posterous_short_quote">
+<p>wevtutil epl application.evt application.evtx /lf:true</p>
+</blockquote>
+</blockquote>
+
+<div class="posterous_quote_citation">via <a href="http://blogs.technet.com/b/neilcar/archive/2007/08/15/plogparser-event-logs-and-vista.aspx">blogs.technet.com</a>
+</div>
+    <p>I'm trying to process Windows Event Viewer files (.evt) from some servers on my Win7 machine, which kept me giving a "log file is corrupt" error message. The trick is to convert it to the newer .evtx format before processing. Thankfully this can also be easily done using a command-line utility.</p>
+</div>

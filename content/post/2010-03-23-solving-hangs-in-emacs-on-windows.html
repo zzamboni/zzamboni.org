@@ -1,0 +1,21 @@
+---
+title: Solving hangs in Emacs on Windows
+aliases:
+- /blog/solving-hangs-in-emacs-on-windows
+date: 2010-03-23 11:22:00.000000000 -06:00
+tags: []
+---
+<div class="posterous_bookmarklet_entry">
+<blockquote class="posterous_long_quote">
+<p>One change I made that had a significant improvement (for me anyway) was to add the following to my <code>.emacs</code> file:</p>
+<div class="CodeRay">
+  <div class="code"><pre>; try to improve slow performance on windows.(setq w32-get-true-file-attributes nil)</pre></div>
+</div>
+
+<p>It seems this variable was changed to default to "true" relatively recently and is known to cause some slow-down problems around file access. I still get some random hangs now and then (probably due to my <code>.emacs</code> customisations) but it is much better now.</p>
+</blockquote>
+<div class="posterous_quote_citation">via <a href="http://stackoverflow.com/questions/2007329/emacs-23-1-50-1-hangs-ramdomly-for-6-8-seconds-on-windows-xp/2008700#2008700">stackoverflow.com</a>
+</div>
+<p>I have battled for a while with Emacs on Windows (I tried Vista and Win7 so far) hanging for a few seconds every once in a while, usually while typing or saving a file. I have finally found the solution, thanks to the all-knowing stackoverflow.com. It seems the w32-get-true-file-attributes variable changed its default value to 't in recent versions, and this seems to cause the problem.</p>
+<p>After setting the variable to nil as shown above, the hangs have disappeared. It still takes a long time to open a file (I think the culprit here is font-lock-mode), but that's a far less frequent operation, so it is tolerable.</p>
+</div>

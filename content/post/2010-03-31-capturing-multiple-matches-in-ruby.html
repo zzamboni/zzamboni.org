@@ -1,0 +1,21 @@
+---
+title: Capturing multiple matches in Ruby
+aliases:
+- /blog/capturing-multiple-matches-in-ruby
+date: 2010-03-31 01:03:52.000000000 -06:00
+tags:
+- coding
+- perl
+- regex
+- ruby
+---
+<div class="posterous_bookmarklet_entry">
+      <blockquote class="posterous_long_quote">
+<p>To collect all regex matches in a string into an array, pass the regexp object to the string's <tt class="code">scan()</tt> method, e.g.: <tt class="code">myarray = mystring.scan(/regex/)</tt>.  Sometimes, it is easier to create a regex to match the delimiters rather than the text you are interested in.  In that case, use the <tt class="code">split()</tt> method instead, e.g.: <tt class="code">myarray = mystring.split(/delimiter/)</tt>.  The <tt class="code">split()</tt> method discards all regex matches, returning the text between the matches.  The <tt class="code">scan()</tt> method does the opposite.</p>
+
+<p>If your regular expression contains <a href="http://www.regular-expressions.info/ruby.html/brackets.html" target="_top">capturing groups</a>, <tt class="code">scan()</tt> returns an array of arrays.  Each element in the overall array will contain an array consisting of the overall regex match, plus the text matched by all capturing groups.</p>
+</blockquote>
+<div class="posterous_quote_citation">via <a href="http://www.regular-expressions.info/ruby.html">regular-expressions.info</a>
+</div>
+    <p>For me it was not obvious how to emulate Perl's /g regex modifier in Ruby, to capture all matches in an array, for example. Here's how you do it, through a method in the String class rather than the Regexp class:<br><code>string.scan(/regex/).flatten</code><br>The call to flatten just makes it easier to process if regex has capture groups, and you are just interested in the list of matches and not the structure of where they were found.</p>
+</div>

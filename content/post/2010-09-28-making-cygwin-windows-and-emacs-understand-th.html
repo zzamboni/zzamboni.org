@@ -1,0 +1,21 @@
+---
+title: Making cygwin, Windows and emacs understand the same symlinks
+aliases:
+- /blog/making-cygwin-windows-and-emacs-understand-th
+date: 2010-09-28 09:39:00.000000000 -05:00
+tags:
+- annoyances
+- cygwin
+- howto
+- symlink
+- tips
+- windows
+---
+<p>Today I ran into the problem that symlinks created under cygwin using "ln -s" are not understood by Windows, and of course Windows shortcuts are seen by cygwin as regular files. Happily, this is a <strong>(semi-)</strong>solved problem. For reference, this is what needs to be done:</p>
+<p></p> 
+<ol>
+<li>Add "<a href="http://www.cygwin.com/cygwin-ug-net/using-effectively.html#using-shortcuts">winsymlinks</a>" to your CYGWIN environment variable. For example, in my .bashrc I have the following:<p></p>  <tt>export CYGWIN="nodosfilewarning winsymlinks"<br></tt><br> This makes cygwin create symlinks differently, in a form that is understood both by it and by Windows.<br> This is the main step, and the only one if you just need access from the shell and from the Windows explorer. However, emacs still sees those symlinks as regular .lnk files. To fix this, follow the next step.<p></p>  </li>
+<li>Install the <a href="http://centaur.maths.qmw.ac.uk/emacs/files/w32-symlinks.el">w32-symlinks.el </a>package, and add the following to your .emacs file:<p></p>  <tt>(require 'w32-symlinks)</tt><p></p>  </li>
+<li>Run <tt>M-x customize-option</tt> and enter <tt>w32-symlinks-handle-shortcuts </tt>as the variable to customize. Turn it on, save it for future sessions, and you are all set. The new symlinks should be properly understood by the cygwin shell, Windows explorer, and emacs. Of course, you will have to re-create any symlinks or shortcuts that you created prior to setting the winsymlinks option, for them to be created in the new format.<p></p>
+<strong>Update: </strong>so this doesn't quite work on my system. I am using Emacs 23.1, and apparently w32-symlinks does not work properly in this version. If you have an older version (I hear Emacs 21 works well), then this might work for you. </li>
+</ol>
