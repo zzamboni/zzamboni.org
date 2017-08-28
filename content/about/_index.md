@@ -32,12 +32,11 @@ Zurich Research Lab](http://www.zurich.ibm.com/). After eight years, we
 vitae](/vita.html). For other useless trivia about me, see
 [here](http://www.zzamboni.org/brt/2007/03/07/blog-tagged/index.html).
 
-**My online past:** (all links are to static archives, some things may not work)
+**My online past:**
 
-- 2009-2013: My blog titled [Ideally Blue](/blog);
-- 2005-2009: My blog title [BrT](/brt);
-- 1997-2001: My [web page at Purdue
-University](http://homes.cerias.purdue.edu/~zamboni/).
+- 2009-2016: All old blog entries have been ported onto [this blog](/post);
+- 2005-2009: My blog titled [BrT](/brt) (static archive copy);
+- 1997-2001: My [web page at Purdue University](http://homes.cerias.purdue.edu/~zamboni/).
 
 ### About this site
 
