@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Productivity on zzamboni.org</title>
+    <link>http://zzamboni.org/tags/productivity/</link>
+    <description>Recent content in Productivity on zzamboni.org</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 14 Mar 2011 00:09:00 -0600</lastBuildDate>
+    
+	<atom:link href="http://zzamboni.org/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Overhauling my GTD system under Windows</title>
+      <link>http://zzamboni.org/post/2011-03-14-overhauling-my-gtd-system-under-windows/</link>
+      <pubDate>Mon, 14 Mar 2011 00:09:00 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2011-03-14-overhauling-my-gtd-system-under-windows/</guid>
+      <description>As you may know, I&#39;m a reluctant switcher from Mac to Windows. I am also a fan of GTD. I had been using Jello Dashboard (JD) to implement GTD under Outlook. JD is a very nice system, the developer is friendly and responsive, and I had even written several patches to adapt it to my way of working. I was even in the process of drafting a series of blog posts titled &#34;</description>
+    </item>
+    
+    <item>
+      <title>Setting up a global hotkey to add tasks to Outlook</title>
+      <link>http://zzamboni.org/post/2010-12-23-setting-up-a-global-hotkey-to-add-tasks-to-ou/</link>
+      <pubDate>Thu, 23 Dec 2010 12:14:00 -0600</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-12-23-setting-up-a-global-hotkey-to-add-tasks-to-ou/</guid>
+      <description>One thing I missed since I moved from a Mac (using The Hit List for GTD) to Outlook (using Jello Dashboard for GTD) was the availability of a global hot key that I could use to bring up a text entry box which I could use to quickly add things into my electronic Inbox, for later processing.
+I have found a way to achieve this, and here is the setup I am using now:</description>
+    </item>
+    
+    <item>
+      <title>How important are the tools you use with GTD?</title>
+      <link>http://zzamboni.org/post/2010-04-22-how-important-are-the-tools-you-use-with-gtd/</link>
+      <pubDate>Thu, 22 Apr 2010 09:24:46 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-04-22-how-important-are-the-tools-you-use-with-gtd/</guid>
+      <description>via gtdtimes.com  Short video of David Allen talking about the importance of the GTD tools you choose. Conclusion: the most important thing is that you choose a tool you actually use, because the moment you stop putting your stuff in it, it will stop working.Timely for me as I rebuild my GTD toolbox and system this week.
+ </description>
+    </item>
+    
+    <item>
+      <title>Setting up my GTD system in Windows - links </title>
+      <link>http://zzamboni.org/post/2010-04-09-setting-up-my-gtd-system-in-windows-links/</link>
+      <pubDate>Fri, 09 Apr 2010 17:54:00 -0500</pubDate>
+      
+      <guid>http://zzamboni.org/post/2010-04-09-setting-up-my-gtd-system-in-windows-links/</guid>
+      <description>Since I started at my new job and moved to a new machine and OS, my old GTD setup has fallen by the wayside and I have found myself at a loss trying to keep track of things. I have found OneNote to be a very useful tool for keeping notes and reference material, and Outlook 2010 is actually not that bad as a task/calendar/email management tool.
+ So, as a first step, here are some links I have found and which I am in the process of reading and digesting for creating my own setup:</description>
+    </item>
+    
+  </channel>
+</rss>
