@@ -19,14 +19,15 @@ next-generation cloud infrastructure for Swisscom and its customers.
 I am also the author of ["Learning CFEngine 3"](http://cf-learn.info).
 
 **Where:** I was born in Argentina, but have moved around all my life.
-When I was very young I moved to Mexico, where I lived in four different
-cities before moving to the U.S. to pursue my Ph.D. at [Purdue
-University](http://www.cerias.purdue.edu/) under the direction of [Gene
-Spafford](http://spaf.cerias.purdue.edu/). Upon finishing my studies, my
-wife and I decided to go to Switzerland, where I worked at the [IBM
-Zurich Research Lab](http://www.zurich.ibm.com/). After eight years, we
-[moved back to Mexico](/brt/2009/09/08/going-home/index.html) in late
-2009.
+When I was very young I moved to Mexico, where I lived in four
+different cities before moving to the U.S. to pursue my Ph.D. at
+[Purdue University](http://www.cerias.purdue.edu/) under the direction
+of [Gene Spafford](http://spaf.cerias.purdue.edu/). Upon finishing my
+studies, my wife and I decided to go to Switzerland, where I worked at
+the [IBM Zurich Research Lab](http://www.zurich.ibm.com/). Eight years
+and two kids later, we [moved to
+Mexico](/brt/2009/09/08/going-home/index.html) in late 2009. In 2015,
+we moved back to Switzerland.
 
 **Long version:** If you are interested, here's my [curriculum
 vitae](/vita.html). For other useless trivia about me, see
@@ -34,7 +35,7 @@ vitae](/vita.html). For other useless trivia about me, see
 
 **My online past:**
 
-- 2009-2016: All old blog entries have been ported onto [this blog](/post);
+- 2009-2016: All old blog entries have been incorporated onto [this blog](/post);
 - 2005-2009: My blog titled [BrT](/brt) (static archive copy);
 - 1997-2001: My [web page at Purdue University](http://homes.cerias.purdue.edu/~zamboni/).
 
