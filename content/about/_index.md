@@ -3,11 +3,13 @@ title: "About"
 date: 2017-08-03T12:50:11+02:00
 featured_image: "/images/legoland.jpg"
 aliases:
-    - /about.html
+- /about.html
 ---
 
 **Who:** I am a computer scientist, consultant, programmer, sysadmin,
-author and overall geek, now turned project leader and team manager. I
+author and overall geek, now turned project leader, team manager and
+[SAFe Product
+Owner](https://www.youracclaim.com/badges/e6bf0ca2-f1c4-4af6-bf63-09f4b8cdbd02/public_url). I
 am from Mexico but live in Switzerland with my awesome wife and our
 two beautiful daughters.
 
