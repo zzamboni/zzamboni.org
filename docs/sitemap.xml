@@ -3,6 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://zzamboni.org/post/2017-08-30-new-release-of-learning-cfengine-3/</loc>
+    <lastmod>2017-08-30T11:16:26+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://zzamboni.org/post/hosting-a-ghost-blog-in-github/</loc>
     <lastmod>2017-08-25T09:00:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -2545,7 +2552,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/books/</loc>
-    <lastmod>2011-12-20T02:17:00-06:00</lastmod>
+    <lastmod>2017-08-30T11:16:26+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -2566,7 +2573,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/cfengine/</loc>
-    <lastmod>2012-04-27T08:30:32-05:00</lastmod>
+    <lastmod>2017-08-30T11:16:26+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
