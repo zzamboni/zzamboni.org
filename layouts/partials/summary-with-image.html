@@ -1,7 +1,7 @@
 {{ $featured_image := .Params.featured_image }}
 {{ $leftside := .Scratch.Get "leftside" }}
 <article class="bb b--black-10">
-  <a class="db pv4 ph3 ph0-l no-underline dark-gray dim" href="{{ .URL }}">
+  <a class="db ph3 ph0-l no-underline dark-gray dim" href="{{ .URL }}">
     <div class="flex flex-column flex-row-ns">
       {{ if and .Params.featured_image $leftside }}
           {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
