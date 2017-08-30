@@ -7,7 +7,7 @@
           {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
         {{ $featured_image := (trim $featured_image "/") | absURL }}
         <div class="pr3-ns mb4 mb0-ns w-40-ns center">
-          <img src="{{ $featured_image }}" class="db w-50 fr" alt="image from {{ .Title }}">
+          <img src="{{ $featured_image }}" class="db w-70 fr" alt="image from {{ .Title }}">
         </div>
       {{ end }}
       <div class="w-100{{ if .Params.featured_image }} w-60-ns {{ if $leftside }}pl3-ns{{ else }}pr3-ns{{ end }}{{ end }}">
@@ -22,7 +22,7 @@
           {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
         {{ $featured_image := (trim $featured_image "/") | absURL }}
         <div class="pr3-ns mb4 mb0-ns w-40-ns center">
-          <img src="{{ $featured_image }}" class="db w-50 fl" alt="image from {{ .Title }}">
+          <img src="{{ $featured_image }}" class="db w-70 fl" alt="image from {{ .Title }}">
         </div>
       {{ end }}
     </div>
