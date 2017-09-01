@@ -1,7 +1,6 @@
-{{/* [`{{ .Get 0 }}`](http://www.hammerspoon.org/docs/{{ .Get 0 }}.html) */}}
-{{ $p := .Params | len }}
-{{ $mod := .Get 0 }}
-{{ .Scratch.Set "ext" "" }}
-{{ if ge $p 2 }}{{ .Scratch.Set "ext" (.Get 1) }}{{ end }}
-{{ $ext := .Scratch.Get "ext" }}
+{{- $p := .Params | len -}}
+{{- $mod := .Get 0 -}}
+{{- .Scratch.Set "ext" "" -}}
+{{- if ge $p 2 -}}{{- .Scratch.Set "ext" (.Get 1) -}}{{- end -}}
+{{- $ext := .Scratch.Get "ext" -}}
 <a href="http://www.hammerspoon.org/docs/{{ $mod }}.html{{ with $ext }}#{{.}}{{ end }}">{{ if ge $p 3 }}{{ .Get 2 | markdownify }}{{ else }}<code>{{ $mod }}{{ with $ext }}.{{.}}{{ end }}</code>{{ end }}</a>
