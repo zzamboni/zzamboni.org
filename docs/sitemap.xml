@@ -3,6 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://zzamboni.org/post/using-spoons-in-hammerspoon/</loc>
+    <lastmod>2017-09-01T20:17:55+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://zzamboni.org/post/2017-08-30-new-release-of-learning-cfengine-3/</loc>
     <lastmod>2017-08-30T11:16:26+02:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -2838,7 +2845,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/hammerspoon/</loc>
-    <lastmod>2017-08-21T16:34:00+02:00</lastmod>
+    <lastmod>2017-09-01T20:17:55+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -2866,7 +2873,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/howto/</loc>
-    <lastmod>2017-08-25T09:00:00+02:00</lastmod>
+    <lastmod>2017-09-01T20:17:55+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -2978,7 +2985,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/mac/</loc>
-    <lastmod>2017-08-21T16:34:00+02:00</lastmod>
+    <lastmod>2017-09-01T20:17:55+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -3266,6 +3273,13 @@
   <url>
     <loc>http://zzamboni.org/tags/sparrow/</loc>
     <lastmod>2012-01-25T09:54:07-06:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://zzamboni.org/tags/spoons/</loc>
+    <lastmod>2017-09-01T20:17:55+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

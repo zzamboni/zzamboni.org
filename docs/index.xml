@@ -12,6 +12,21 @@
     
     
     <item>
+      <title>Using Spoons in Hammerspoon</title>
+      <link>http://zzamboni.org/post/using-spoons-in-hammerspoon/</link>
+      <pubDate>Fri, 01 Sep 2017 20:17:55 +0200</pubDate>
+      
+      <guid>http://zzamboni.org/post/using-spoons-in-hammerspoon/</guid>
+      <description>&lt;p&gt;In this second article about Hammerspoon, we look into &lt;em&gt;Spoons&lt;/em&gt;,
+modules written in Lua which can be easily installed and loaded into
+Hammerspoon to provide ready-to-use functionality. Spoons provide a
+predefined API to configure and use them. They are also a good way to
+share your own work with other users.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>New Release of Learning Cfengine 3</title>
       <link>http://zzamboni.org/post/2017-08-30-new-release-of-learning-cfengine-3/</link>
       <pubDate>Wed, 30 Aug 2017 11:16:26 +0200</pubDate>

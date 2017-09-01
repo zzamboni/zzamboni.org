@@ -6,10 +6,25 @@
     <description>Recent content in Mac on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 21 Aug 2017 16:34:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 01 Sep 2017 20:17:55 +0200</lastBuildDate>
     
 	<atom:link href="http://zzamboni.org/tags/mac/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using Spoons in Hammerspoon</title>
+      <link>http://zzamboni.org/post/using-spoons-in-hammerspoon/</link>
+      <pubDate>Fri, 01 Sep 2017 20:17:55 +0200</pubDate>
+      
+      <guid>http://zzamboni.org/post/using-spoons-in-hammerspoon/</guid>
+      <description>&lt;p&gt;In this second article about Hammerspoon, we look into &lt;em&gt;Spoons&lt;/em&gt;,
+modules written in Lua which can be easily installed and loaded into
+Hammerspoon to provide ready-to-use functionality. Spoons provide a
+predefined API to configure and use them. They are also a good way to
+share your own work with other users.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Getting Started With Hammerspoon</title>
