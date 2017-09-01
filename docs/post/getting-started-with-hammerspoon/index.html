@@ -349,36 +349,18 @@ example to give you a clearer understanding of its components:</p>
 
 <ul>
 <li><p>All Hammerspoon built-in extensions start with <code>hs.</code> In this case,
-
-
-
-
-
-
 <a href="http://www.hammerspoon.org/docs/hs.hotkey.html"><code>hs.hotkey</code></a>
  is the extension that handles keyboard
 bindings. It allows us to easily define which functions will be
 called in response to different keyboard combinations. You can even
 differentiate between the keys being pressed, released or held down
 if you need to. The other extension used in this example is
-
-
-
-
-
-
 <a href="http://www.hammerspoon.org/docs/hs.notify.html"><code>hs.notify</code></a>
 , which allows us to interact with the macOS
 Notification Center to display, react and interact with
 notifications.</p></li>
 
-<li><p>Within <code>hs.hotkey</code>, the 
-
-
-
-
-
-<a href="http://www.hammerspoon.org/docs/hs.hotkey.html#bindSpec"><code>hs.hotkey.bindSpec</code></a>
+<li><p>Within <code>hs.hotkey</code>, the <a href="http://www.hammerspoon.org/docs/hs.hotkey.html#bindSpec"><code>hs.hotkey.bindSpec</code></a>
  function
 allows you to bind a function to a pressed key. Its first argument
 is a key specification which consists of a list (Lua lists and table
@@ -391,21 +373,9 @@ list of the key modifiers, and the key itself. In this example, <code>{ {
 key is pressed. Here we are defining an inline anonymous function
 using <code>function() ... end</code>.</p></li>
 
-<li><p>The callback function uses 
-
-
-
-
-
-<a href="http://www.hammerspoon.org/docs/hs.notify.html#show"><code>hs.notify.show</code></a>
+<li><p>The callback function uses <a href="http://www.hammerspoon.org/docs/hs.notify.html#show"><code>hs.notify.show</code></a>
  to display
-the message. Take a quick look at the 
-
-
-
-
-
-<a href="http://www.hammerspoon.org/docs/hs.notify.html"><code>hs.notify</code></a>
+the message. Take a quick look at the <a href="http://www.hammerspoon.org/docs/hs.notify.html"><code>hs.notify</code></a>
 
 documentation to get an idea of its extensive capabilities,
 including configuration of all aspects of a notification&rsquo;s
@@ -431,21 +401,9 @@ Hammerspoon menubar item. However, this is such a common operation,
 that you might find it useful to also set a key combination for
 showing the console. Most of Hammerspoon&rsquo;s internal functionality is
 also accessible through its API. In this case, looking at the
-
-
-
-
-
-
 <a href="http://www.hammerspoon.org/docs/hs.html">documentation for the main <code>hs</code> module</a>
  reveals that
-there is an 
-
-
-
-
-
-<a href="http://www.hammerspoon.org/docs/hs.html#toggleConsole"><code>hs.toggleConsole</code></a>
+there is an <a href="http://www.hammerspoon.org/docs/hs.html#toggleConsole"><code>hs.toggleConsole</code></a>
  function. Using the knowledge
 you have acquired so far, you can easily configure a hotkey for
 opening and hiding the console:</p>
@@ -463,20 +421,8 @@ the <code>init.lua</code> file.</p>
 <p>You may have noticed by now another common operation while developing
 Hammerspoon code: reloading the configuration, which you normally have
 to do from the Hammerspoon menu. So why not set up a hotkey to do that
-as well? Again, the 
-
-
-
-
-
-<a href="http://www.hammerspoon.org/docs/hs.html"><code>hs</code></a>
+as well? Again, the <a href="http://www.hammerspoon.org/docs/hs.html"><code>hs</code></a>
  module comes to our help with the
-
-
-
-
-
-
 <a href="http://www.hammerspoon.org/docs/hs.html#reload"><code>hs.reload</code></a>
  method:</p>
 <div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">hs.hotkey.bindSpec({</span> <span style="color: #f8f8f2">{</span> <span style="color: #e6db74">&quot;ctrl&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;cmd&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;alt&quot;</span> <span style="color: #f8f8f2">},</span> <span style="color: #e6db74">&quot;r&quot;</span> <span style="color: #f8f8f2">},</span> <span style="color: #f8f8f2">hs.reload)</span>
@@ -484,13 +430,7 @@ as well? Again, the
 
 <p>Another useful development tool is the <code>hs</code> command, which you can run
 from your terminal to get a Hammerspoon console. To install it, you
-can use the 
-
-
-
-
-
-<a href="http://www.hammerspoon.org/docs/hs.ipc.html#cliInstall"><code>hs.ipc.cliInstall</code></a>
+can use the <a href="http://www.hammerspoon.org/docs/hs.ipc.html#cliInstall"><code>hs.ipc.cliInstall</code></a>
  function, which you can just
 add to your <code>init.lua</code> file to check and install the command every
 time Hammerspoon runs.</p>
@@ -539,6 +479,25 @@ meantime, please let me know your thoughts in the comments!</p>
   
   
   
+  
+    <div class="mt5 f6 gray nested-lh-copy bg-light-gray ph3 pv2 measure-wide-l">
+      <ul class="list dib ml0 pl0">
+        <li class="black dib mb2 mr2">
+          Related:
+        </li>
+        
+          
+            <li class="mb2 mr3">
+              <a href="/post/using-spoons-in-hammerspoon/" class="link mid-gray dim">
+                 Using Spoons in Hammerspoon
+              </a>
+            </li>
+          
+        
+          
+        
+      </ul>
+    </div>
   
 
 
