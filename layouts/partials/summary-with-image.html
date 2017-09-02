@@ -1,12 +1,12 @@
 {{ $featured_image := .Params.featured_image }}
-{{ $leftside := .Scratch.Get "leftside" }}
+{{ $leftside := (.Scratch.Get "leftside") }}
 <article class="bb b--black-10">
-  <a class="db ph3 ph0-l no-underline dark-gray dim" href="{{ .URL }}">
+  <a class="db ph3 ph0-l no-underline dark-gray dim" href="{{ default .URL .Params.finalURL }}">
     <div class="flex flex-column flex-row-ns">
       {{ if and .Params.featured_image $leftside }}
           {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
         {{ $featured_image := (trim $featured_image "/") | absURL }}
-        <div class="pr3-ns mb4 mb0-ns w-40-ns center">
+        <div class="pr3-ns mb4 mb3-ns w-40-ns center">
           <img src="{{ $featured_image }}" class="db w-70 fr" alt="image from {{ .Title }}">
         </div>
       {{ end }}
@@ -21,7 +21,7 @@
       {{ if and .Params.featured_image (not $leftside) }}
           {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
         {{ $featured_image := (trim $featured_image "/") | absURL }}
-        <div class="pr3-ns mb4 mb0-ns w-40-ns center">
+        <div class="pr3-ns mb4 mb3-ns w-40-ns center">
           <img src="{{ $featured_image }}" class="db w-70 fl" alt="image from {{ .Title }}">
         </div>
       {{ end }}
