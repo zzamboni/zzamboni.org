@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>zzamboni.org  | Find all single-note tags in Evernote</title>
+    <title>zzamboni.org  | Fixing the Outlook-to-OmniFocus Script</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -20,19 +20,19 @@
 
      
 
-      <meta property="og:title" content="Find all single-note tags in Evernote" />
-<meta property="og:description" content="I’ve been working on cleaning up my Evernote, and noticed that I have a lot of tags assigned to a single note. I had successfully used Veritrope’s excellent Evernote empty tag remover applescript, so I made some small changes to write the attached script, which will find all single-note tags in your Evernote and list them in a new note, including links to each note. This makes it much easier to go through them and see which of those tags could be removed." />
+      <meta property="og:title" content="Fixing the Outlook-to-OmniFocus Script" />
+<meta property="og:description" content="Here&rsquo;s how to fix the breakage caused by one of the recent updates to
+Microsoft Outlook in the Outlook-to-OmniFocus AppleScript included
+with my SendToOmniFocus spoon.
+
+" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://zzamboni.org/post/find-all-single-note-tags-in-evernote/" />
+<meta property="og:url" content="http://zzamboni.org/post/fixing-outlook-to-omnifocus-script/" />
 
 
 
-<meta property="article:published_time" content="2015-01-14T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2015-01-14T00:00:00&#43;00:00"/>
-
-
-
-
+<meta property="article:published_time" content="2017-09-11T21:11:29&#43;02:00"/>
+<meta property="article:modified_time" content="2017-09-11T21:11:29&#43;02:00"/>
 
 
 
@@ -40,18 +40,30 @@
 
 
 
-<meta itemprop="name" content="Find all single-note tags in Evernote">
-<meta itemprop="description" content="I’ve been working on cleaning up my Evernote, and noticed that I have a lot of tags assigned to a single note. I had successfully used Veritrope’s excellent Evernote empty tag remover applescript, so I made some small changes to write the attached script, which will find all single-note tags in your Evernote and list them in a new note, including links to each note. This makes it much easier to go through them and see which of those tags could be removed.">
-
-
-<meta itemprop="dateModified" content="2015-01-14T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="109">
 
 
 
-<meta itemprop="keywords" content="howto,evernote,tips,applescript,macosx," />
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Find all single-note tags in Evernote"/>
-<meta name="twitter:description" content="I’ve been working on cleaning up my Evernote, and noticed that I have a lot of tags assigned to a single note. I had successfully used Veritrope’s excellent Evernote empty tag remover applescript, so I made some small changes to write the attached script, which will find all single-note tags in your Evernote and list them in a new note, including links to each note. This makes it much easier to go through them and see which of those tags could be removed."/>
+
+<meta itemprop="name" content="Fixing the Outlook-to-OmniFocus Script">
+<meta itemprop="description" content="Here&rsquo;s how to fix the breakage caused by one of the recent updates to
+Microsoft Outlook in the Outlook-to-OmniFocus AppleScript included
+with my SendToOmniFocus spoon.
+
+">
+
+
+<meta itemprop="dateModified" content="2017-09-11T21:11:29&#43;02:00" />
+<meta itemprop="wordCount" content="166">
+
+
+
+<meta itemprop="keywords" content="hammerspoon,howto,mac,outlook,applescript," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Fixing the Outlook-to-OmniFocus Script"/>
+<meta name="twitter:description" content="Here&rsquo;s how to fix the breakage caused by one of the recent updates to
+Microsoft Outlook in the Outlook-to-OmniFocus AppleScript included
+with my SendToOmniFocus spoon.
+
+"/>
 
       <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -66,8 +78,10 @@
    
   
 
-  <header>
-    <div class="bg-black">
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://zzamboni.org/images/hammerspoon.png');">
+    <div class="pb5-l bg-black-60">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l justify-between items-center center">
     <a href="http://zzamboni.org/" class="f3 fw2 hover-white no-underline white-90 dib">
@@ -125,6 +139,10 @@
   </div>
 </nav>
 
+      <div class="tc-l pv4 ph3 ph4-ns">
+        <h1 class="f2 f1-l fw2 white-90 mb0 mt0 lh-title">Fixing the Outlook-to-OmniFocus Script</h1>
+        
+      </div>
     </div>
   </header>
 
@@ -139,40 +157,63 @@
         POST
       </p>
       <h1 class="f1 athelas">
-        Find all single-note tags in Evernote
+        Fixing the Outlook-to-OmniFocus Script
       </h1>
         
         
-      <time class="f6 mv4 dib tracked" datetime="2015-01-14T00:00:00Z">
-        January 14, 2015
+      <time class="f6 mv4 dib tracked" datetime="2017-09-11T21:11:29&#43;02:00">
+        September 11, 2017
       </time>
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
-        <span>
-<div>I’ve been working on cleaning up my Evernote, and noticed that I have a lot of tags assigned to a single note. I had successfully used Veritrope’s excellent <a href='http://veritrope.com/code/evernote-empty-tag-remover/'>Evernote empty tag remover applescript</a>, so I made some small changes to write the attached script, which will find all single-note tags in your Evernote and list them in a new note, including links to each note. This makes it much easier to go through them and see which of those tags could be removed.</div>
-<div><br/></div>
-<div>Just download the script, open it in Script Editor and run it.</div>
-<div><br/></div>
-<div>Tip of the hat to <a href='http://justinlancy.com'>Justin</a> for his <a href='http://veritrope.com/code_library/'>excellent collection of scripts</a> at Veritrope!</div>
-<div><br/></div>
-<div><script src="https://gist.github.com/zzamboni/843142d3f759e582fe8f.js"></script></div>
-<div><br/></div>
-</span>
+        <p>Here&rsquo;s how to fix the breakage caused by one of the recent updates to
+Microsoft Outlook in the Outlook-to-OmniFocus AppleScript included
+with my SendToOmniFocus spoon.</p>
 
+<p></p>
+
+<p>One of the recent updates to Microsoft Outlook broke the
+Outlook-to-OmniFocus AppleScript (courtesy of
+<a href="http://veritrope.com/code/outlook-2011-to-evernote/">Veritrope</a>)
+included with my <a href="http://www.hammerspoon.org/Spoons/SendToOmniFocus.html">SendToOmniFocus
+spoon</a>. I’m
+not sure which precise version introduced the breaking change, I’m
+currently at version “15.39 (170905)”, and the breakage started one or
+two updates ago.  After some investigation, I found the cause — it
+seems Outlook AppleScript objects no longer have a “properties” field
+which contains things like “subject”, “content”, etc., rather their
+properties can be accessed directly on the object.</p>
+
+<p>I have submitted a <a href="https://github.com/Hammerspoon/Spoons/pull/49">pull-request for the
+fix</a>, but if you want
+to apply it right away, just change the following line in
+<code>~/.hammerspoon/Spoons/SendToOmniFocus.spoon/scripts/outlook-to-omnifocus.applescript</code>:</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">theProps</span> <span style="color: #66d9ef">to</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">properties</span> <span style="color: #66d9ef">of</span> <span style="color: #f8f8f2">selectedItem)</span>
+</pre></div>
+
+<p>to the following:</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">try</span>
+        <span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">theProps</span> <span style="color: #66d9ef">to</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">properties</span> <span style="color: #66d9ef">of</span> <span style="color: #f8f8f2">selectedItem)</span>
+<span style="color: #66d9ef">on</span> <span style="color: #66d9ef">error</span>
+        <span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">theProps</span> <span style="color: #66d9ef">to</span> <span style="color: #f8f8f2">selectedItem</span>
+<span style="color: #66d9ef">end</span> <span style="color: #66d9ef">try</span>
+</pre></div>
+
+<p>This tries the old behavior, and upon failure uses the new one.</p>
       </section>
       
 
   <ul class="list dib ml0 pl0" id="tags">
     <li class="b black dib mb2 mr3">Tags: </li>
     
+      <li class="black dib mb2 mr2"><a href="/tags/hammerspoon" class="link mid-gray dim">hammerspoon</a> </li>
+    
       <li class="black dib mb2 mr2"><a href="/tags/howto" class="link mid-gray dim">howto</a> </li>
     
-      <li class="black dib mb2 mr2"><a href="/tags/evernote" class="link mid-gray dim">evernote</a> </li>
+      <li class="black dib mb2 mr2"><a href="/tags/mac" class="link mid-gray dim">mac</a> </li>
     
-      <li class="black dib mb2 mr2"><a href="/tags/tips" class="link mid-gray dim">tips</a> </li>
+      <li class="black dib mb2 mr2"><a href="/tags/outlook" class="link mid-gray dim">outlook</a> </li>
     
       <li class="black dib mb2 mr2"><a href="/tags/applescript" class="link mid-gray dim">applescript</a> </li>
-    
-      <li class="black dib mb2 mr2"><a href="/tags/macosx" class="link mid-gray dim">macosx</a> </li>
     
   </ul>
   
@@ -187,12 +228,6 @@
         </li>
         
           
-            <li class="mb2 mr3">
-              <a href="/post/fixing-outlook-to-omnifocus-script/" class="link mid-gray dim">
-                 Fixing the Outlook-to-OmniFocus Script
-              </a>
-            </li>
-          
         
           
             <li class="mb2 mr3">
@@ -204,98 +239,8 @@
         
           
             <li class="mb2 mr3">
-              <a href="/post/hosting-a-ghost-blog-in-github/" class="link mid-gray dim">
-                 Hosting a Ghost Blog in GitHub - the easier way
-              </a>
-            </li>
-          
-        
-          
-            <li class="mb2 mr3">
               <a href="/post/getting-started-with-hammerspoon/" class="link mid-gray dim">
                  Getting Started With Hammerspoon
-              </a>
-            </li>
-          
-        
-          
-            <li class="mb2 mr3">
-              <a href="/post/fast-translation-with-google-translator/" class="link mid-gray dim">
-                 Fast translation with Google Translator
-              </a>
-            </li>
-          
-        
-          
-            <li class="mb2 mr3">
-              <a href="/post/spotlight-use-package-a-declarative-configuration-tool-mastering-emacs/" class="link mid-gray dim">
-                 Spotlight: use-package, a declarative configuration tool - Mastering Emacs
-              </a>
-            </li>
-          
-        
-          
-            <li class="mb2 mr3">
-              <a href="/post/moving-files-between-git-repositories-preserving-history/" class="link mid-gray dim">
-                 Moving files between git repositories, preserving history
-              </a>
-            </li>
-          
-        
-          
-        
-          
-            <li class="mb2 mr3">
-              <a href="/post/how-to-solve-truncated-docker-output-in-mac-os-x-using-boot2docker/" class="link mid-gray dim">
-                 How to solve truncated docker output in Mac OS X using boot2docker
-              </a>
-            </li>
-          
-        
-          
-            <li class="mb2 mr3">
-              <a href="/post/2012-11-13-howto-changing-the-available-display-formats/" class="link mid-gray dim">
-                 HowTo: Changing the available display formats for Evernote&#39;s &#34;Insert Date&#34; command
-              </a>
-            </li>
-          
-        
-          
-            <li class="mb2 mr3">
-              <a href="/post/2011-08-05-installing-cfengine-320b3-on-mac-os-x-107/" class="link mid-gray dim">
-                 Installing cfengine on Mac OS X
-              </a>
-            </li>
-          
-        
-          
-            <li class="mb2 mr3">
-              <a href="/post/2011-03-16-automatically-creating-tasks-from-email-in-ou/" class="link mid-gray dim">
-                 Automatically creating tasks from email in Outlook
-              </a>
-            </li>
-          
-        
-          
-            <li class="mb2 mr3">
-              <a href="/post/2010-09-28-making-cygwin-windows-and-emacs-understand-th/" class="link mid-gray dim">
-                 Making cygwin, Windows and emacs understand the same symlinks
-              </a>
-            </li>
-          
-        
-          
-            <li class="mb2 mr3">
-              <a href="/post/2010-09-07-storing-cfengine-configuration-in-cvs/" class="link mid-gray dim">
-                 Storing CFEngine configuration in CVS
-              </a>
-            </li>
-          
-        
-          
-            <li class="mb2 mr3">
-              <a href="/post/2010-08-23-installing-cfengine-on-windows-7-under-cygwin/" class="link mid-gray dim">
-                 Installing cfengine on Windows 7 under cygwin
               </a>
             </li>
           

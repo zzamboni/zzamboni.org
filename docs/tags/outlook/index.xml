@@ -6,10 +6,23 @@
     <description>Recent content in Outlook on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Mar 2011 01:54:00 -0600</lastBuildDate>
+    <lastBuildDate>Mon, 11 Sep 2017 21:11:29 +0200</lastBuildDate>
     
 	<atom:link href="http://zzamboni.org/tags/outlook/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Fixing the Outlook-to-OmniFocus Script</title>
+      <link>http://zzamboni.org/post/fixing-outlook-to-omnifocus-script/</link>
+      <pubDate>Mon, 11 Sep 2017 21:11:29 +0200</pubDate>
+      
+      <guid>http://zzamboni.org/post/fixing-outlook-to-omnifocus-script/</guid>
+      <description>&lt;p&gt;Here&amp;rsquo;s how to fix the breakage caused by one of the recent updates to
+Microsoft Outlook in the Outlook-to-OmniFocus AppleScript included
+with my SendToOmniFocus spoon.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Automatically creating tasks from email in Outlook</title>
