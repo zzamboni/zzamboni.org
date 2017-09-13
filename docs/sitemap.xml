@@ -3,6 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://zzamboni.org/post/limited-time-sale-learncf3/</loc>
+    <lastmod>2017-09-13T13:45:54+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://zzamboni.org/post/fixing-outlook-to-omnifocus-script/</loc>
     <lastmod>2017-09-11T21:11:29+02:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -2573,7 +2580,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/books/</loc>
-    <lastmod>2017-08-30T11:16:26+02:00</lastmod>
+    <lastmod>2017-09-13T13:45:54+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -2594,7 +2601,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/cfengine/</loc>
-    <lastmod>2017-08-30T11:16:26+02:00</lastmod>
+    <lastmod>2017-09-13T13:45:54+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
