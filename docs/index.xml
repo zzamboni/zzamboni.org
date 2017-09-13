@@ -106,8 +106,9 @@ runtime, funtime&lt;/em&gt;.&lt;/p&gt;
       <pubDate>Thu, 03 Aug 2017 17:56:58 +0200</pubDate>
       
       <guid>http://zzamboni.org/book/cfengine/</guid>
-      <description>&lt;iframe style=&#34;width:120px;height:240px;float:right;&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; frameborder=&#34;0&#34; src=&#34;//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=US&amp;source=ac&amp;ref=tf_til&amp;ad_type=product_link&amp;tracking_id=zzamboni-20&amp;marketplace=amazon&amp;region=US&amp;placement=B07562BSWG&amp;asins=B07562BSWG&amp;linkId=e9ff01abacaa63e76aff40ad1a769d3a&amp;show_border=false&amp;link_opens_in_new_window=false&amp;price_color=333333&amp;title_color=0066c0&amp;bg_color=ffffff&#34;&gt;
-    &lt;/iframe&gt;
+      <description>&lt;iframe style=&#34;width:120px;height:240px;float:right;&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; frameborder=&#34;0&#34; src=&#34;//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=US&amp;source=ac&amp;ref=qf_sp_asin_til&amp;ad_type=product_link&amp;tracking_id=zzamboni-20&amp;marketplace=amazon&amp;region=US&amp;placement=B07562BSWG&amp;asins=B07562BSWG&amp;linkId=8d7eb3010d7a790fe0dd80c1f44fbea0&amp;show_border=true&amp;link_opens_in_new_window=true&amp;price_color=333333&amp;title_color=0066c0&amp;bg_color=ffffff&#34;&gt;
+&lt;/iframe&gt;
+
 
 &lt;p&gt;I am the author of &amp;ldquo;Learning CFEngine 3&amp;rdquo;, the best book for learning &lt;a href=&#34;http://cfengine.com/&#34;&gt;CFEngine&lt;/a&gt;.&lt;/p&gt;
 
