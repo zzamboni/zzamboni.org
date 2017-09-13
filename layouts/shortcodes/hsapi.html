@@ -1,6 +1,6 @@
 {{- $p := .Params | len -}}
-{{- $mod := .Get 0 -}}
-{{- .Scratch.Set "ext" "" -}}
-{{- if ge $p 2 -}}{{- .Scratch.Set "ext" (.Get 1) -}}{{- end -}}
-{{- $ext := .Scratch.Get "ext" -}}
-<a href="http://www.hammerspoon.org/docs/{{ $mod }}.html{{ with $ext }}#{{.}}{{ end }}">{{ if ge $p 3 }}{{ .Get 2 | markdownify }}{{ else }}<code>{{ $mod }}{{ with $ext }}.{{.}}{{ end }}</code>{{ end }}</a>
+{{- $module := .Get 0 -}}
+{{- .Scratch.Set "symbol" "" -}}
+{{- if ge $p 2 -}}{{- .Scratch.Set "symbol" (.Get 1) -}}{{- end -}}
+{{- $symbol := .Scratch.Get "symbol" -}}
+<a href="http://www.hammerspoon.org/docs/{{ $module }}.html{{ with $symbol }}#{{.}}{{ end }}">{{ if ge $p 3 }}{{ .Get 2 | markdownify }}{{ else }}<code>{{ $module }}{{ with $symbol }}.{{.}}{{ end }}</code>{{ end }}</a>

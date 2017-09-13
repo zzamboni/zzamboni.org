@@ -1,2 +1,6 @@
-{{ $fun := .Get 0 }}
-<a href="https://www.lua.org/manual/5.3/manual.html#pdf-{{ $fun }}"><code>{{ $fun }}()</code></a>
+{{- $p := .Params | len -}}
+{{- $fun := .Get 0 -}}
+{{- .Scratch.Set "sec" $fun -}}
+{{- if ge $p 2 -}}{{- .Scratch.Set "sec" (.Get 1) -}}{{- end -}}
+{{- $sec := .Scratch.Get "sec" -}}
+<a href="https://www.lua.org/manual/5.3/manual.html#{{ $sec }}"><code>{{ $fun }}</code></a>
