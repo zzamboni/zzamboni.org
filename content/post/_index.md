@@ -7,3 +7,5 @@ aliases:
 - /blog
 - /new/blog
 ---
+
+# All posts
