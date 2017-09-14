@@ -13,19 +13,19 @@
     
     <item>
       <title>How to fix &#34;texexpand error: More than one input file specified&#34; in latex2html</title>
-      <link>http://zzamboni.org/post/2011-01-20-how-to-fix-texexpand-error-more-than-one-inpu/</link>
+      <link>http://zzamboni.org/post/how-to-fix-texexpand-error-more-than-one-input-file-specified-in-latex2html/</link>
       <pubDate>Thu, 20 Jan 2011 00:24:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/2011-01-20-how-to-fix-texexpand-error-more-than-one-inpu/</guid>
+      <guid>http://zzamboni.org/post/how-to-fix-texexpand-error-more-than-one-input-file-specified-in-latex2html/</guid>
       <description>There&#39;s a bug that causes problems when running latex2html on files which have spaces in the path. The workaround is to either move things to folders with no spaces, or add appropriate symbolic links.via ubuntuforums.org  This error had me stumped in trying to process a latex file with latex2html:texexpand: Error: More than one input file specified.texexpand failed: No such file or directoryThe fix is simple - make sure the path of the current directory does not have any spaces.</description>
     </item>
     
     <item>
       <title>Installing latex2html under Win7 with cygwin</title>
-      <link>http://zzamboni.org/post/2011-01-19-installing-latex2html-under-win7-with-cygwin/</link>
+      <link>http://zzamboni.org/post/installing-latex2html-under-win7-with-cygwin/</link>
       <pubDate>Wed, 19 Jan 2011 15:28:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/2011-01-19-installing-latex2html-under-win7-with-cygwin/</guid>
+      <guid>http://zzamboni.org/post/installing-latex2html-under-win7-with-cygwin/</guid>
       <description>I got latex2html to install on the latest cygwin, however to get the configure to pass I had to alter the configure to recognize cygwin as a UNIX. via mail-archive.com  Using this patch I was able to properly configure and install latex2html under cygwin in Windows 7.
  </description>
     </item>

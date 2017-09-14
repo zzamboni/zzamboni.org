@@ -13,10 +13,10 @@
     
     <item>
       <title>Installing Windows XP in Vmware ESX - &#34;Setup did not find any hard disk drives installed in your computer.&#34; | TechHead.co.uk</title>
-      <link>http://zzamboni.org/post/2010-04-07-installing-windows-xp-in-vmware-esx-setup-did/</link>
+      <link>http://zzamboni.org/post/installing-windows-xp-in-vmware-esx---setup-did-not-find-any-hard-disk-drives-installed-in-your-computer.--techhead.co.uk/</link>
       <pubDate>Wed, 07 Apr 2010 15:20:18 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/2010-04-07-installing-windows-xp-in-vmware-esx-setup-did/</guid>
+      <guid>http://zzamboni.org/post/installing-windows-xp-in-vmware-esx---setup-did-not-find-any-hard-disk-drives-installed-in-your-computer.--techhead.co.uk/</guid>
       <description>Trying to install Windows XP within VMWare ESX and getting the following error message?
 &#34;Setup did not find any hard disk drives installed in your computer.&#34;
 The reason for this is that the necessary hard disk controller drivers have not been installed.

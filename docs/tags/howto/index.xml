@@ -115,19 +115,19 @@ Instead of using the default value of DOCKER_HOST provided by boot2docker up, es
     
     <item>
       <title>HowTo: Changing the available display formats for Evernote&#39;s &#34;Insert Date&#34; command</title>
-      <link>http://zzamboni.org/post/2012-11-13-howto-changing-the-available-display-formats/</link>
+      <link>http://zzamboni.org/post/howto-changing-the-available-display-formats-for-evernotes-insert-date-command/</link>
       <pubDate>Tue, 13 Nov 2012 23:00:30 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/2012-11-13-howto-changing-the-available-display-formats/</guid>
+      <guid>http://zzamboni.org/post/howto-changing-the-available-display-formats-for-evernotes-insert-date-command/</guid>
       <description>Evernote introduced some time ago an &#34;Insert Date&#34; keyboard shortcut, which is very handy. However, the options for the format of the inserted date seemed limited (only four options). I finally learned how this works, and how to change it on the Mac. The formats offered are those that are configured in the &#34;Languages &amp;amp; Text&#34; preferences panel. If you go to &#34;Region&#34; and then click the &#34;Customize button&#34; in the Dates part of the panel, you will see and be able to customize the formats for short, medium, long and full date representations.</description>
     </item>
     
     <item>
       <title>Installing cfengine on Mac OS X</title>
-      <link>http://zzamboni.org/post/2011-08-05-installing-cfengine-320b3-on-mac-os-x-107/</link>
+      <link>http://zzamboni.org/post/installing-cfengine-on-mac-os-x/</link>
       <pubDate>Fri, 05 Aug 2011 02:31:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/2011-08-05-installing-cfengine-320b3-on-mac-os-x-107/</guid>
+      <guid>http://zzamboni.org/post/installing-cfengine-on-mac-os-x/</guid>
       <description>Cfengine (tested 3.2.0) installs easily on OS X (tested 10.7), given that it&#39;s Unix. One problem I encountered was that it does not compile with the bundled version of Berkeley DB (it recognizes it during configure, but produces compilation errors). The solution is to use some other DB engine. I chose Tokyo Cabinet. Using homebrew, the process is simple
 brew install tokyo-cabinet
 After this, configure --with-tokyocabinet, and then compile and install as usual.</description>
@@ -135,20 +135,20 @@ After this, configure --with-tokyocabinet, and then compile and install as usual
     
     <item>
       <title>Automatically creating tasks from email in Outlook</title>
-      <link>http://zzamboni.org/post/2011-03-16-automatically-creating-tasks-from-email-in-ou/</link>
+      <link>http://zzamboni.org/post/automatically-creating-tasks-from-email-in-outlook/</link>
       <pubDate>Wed, 16 Mar 2011 01:54:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/2011-03-16-automatically-creating-tasks-from-email-in-ou/</guid>
+      <guid>http://zzamboni.org/post/automatically-creating-tasks-from-email-in-outlook/</guid>
       <description>Please note: I am no longer using Windows nor Outlook, so unfortunately I cannot offer any help with problems you encounter using these scripts and techniques.
 Over the last few days I have been redoing my GTD-under-Outlook setup, based on the instructions available in the &#34;GTD and Outlook&#34; guide from DavidCo (I will write more about my setup later). One of the tricks the guide suggest is creating a mail rule on outgoing mail, which scans the message body for a special tag (/wf or *wf* are suggested) and automatically adds the message to the @WAITING FOR email folder.</description>
     </item>
     
     <item>
       <title>Making cygwin, Windows and emacs understand the same symlinks</title>
-      <link>http://zzamboni.org/post/2010-09-28-making-cygwin-windows-and-emacs-understand-th/</link>
+      <link>http://zzamboni.org/post/making-cygwin-windows-and-emacs-understand-the-same-symlinks/</link>
       <pubDate>Tue, 28 Sep 2010 09:39:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/2010-09-28-making-cygwin-windows-and-emacs-understand-th/</guid>
+      <guid>http://zzamboni.org/post/making-cygwin-windows-and-emacs-understand-the-same-symlinks/</guid>
       <description>Today I ran into the problem that symlinks created under cygwin using &#34;ln -s&#34; are not understood by Windows, and of course Windows shortcuts are seen by cygwin as regular files. Happily, this is a (semi-)solved problem. For reference, this is what needs to be done:
 
  Add &#34;winsymlinks&#34; to your CYGWIN environment variable. For example, in my .bashrc I have the following:
@@ -159,20 +159,20 @@ This makes cygwin create symlinks differently, in a form that is understood both
     
     <item>
       <title>Storing CFEngine configuration in CVS</title>
-      <link>http://zzamboni.org/post/2010-09-07-storing-cfengine-configuration-in-cvs/</link>
+      <link>http://zzamboni.org/post/storing-cfengine-configuration-in-cvs/</link>
       <pubDate>Tue, 07 Sep 2010 14:17:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/2010-09-07-storing-cfengine-configuration-in-cvs/</guid>
+      <guid>http://zzamboni.org/post/storing-cfengine-configuration-in-cvs/</guid>
       <description> via sial.org  Useful article about storing both development and production configurations of cfengine using a version control mechanism. I am in the process of developing a similar setup using git, I will share it here when I get it to work properly.
  </description>
     </item>
     
     <item>
       <title>Installing cfengine on Windows 7 under cygwin</title>
-      <link>http://zzamboni.org/post/2010-08-23-installing-cfengine-on-windows-7-under-cygwin/</link>
+      <link>http://zzamboni.org/post/installing-cfengine-on-windows-7-under-cygwin/</link>
       <pubDate>Mon, 23 Aug 2010 00:14:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/2010-08-23-installing-cfengine-on-windows-7-under-cygwin/</guid>
+      <guid>http://zzamboni.org/post/installing-cfengine-on-windows-7-under-cygwin/</guid>
       <description>Update (2011/09/05): Updated the instructions for cfengine 3.2.0, cygwin 1.7.9, and tested them on a clean cygwin install.
 Installing the cfengine community edition under Windows (the commercial version includes native Windows support) is fairly easy under cygwin, you just need to have the appropriate dependencies installed. Here’s how I did it.
 Versions 

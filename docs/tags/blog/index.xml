@@ -13,10 +13,10 @@
     
     <item>
       <title>CFEngine posts moving to cf-learn.info</title>
-      <link>http://zzamboni.org/post/2012-01-04-cfengine-posts-moving-to-cf-learninfo/</link>
+      <link>http://zzamboni.org/post/cfengine-posts-moving-to-cf-learn.info/</link>
       <pubDate>Wed, 04 Jan 2012 13:16:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/2012-01-04-cfengine-posts-moving-to-cf-learninfo/</guid>
+      <guid>http://zzamboni.org/post/cfengine-posts-moving-to-cf-learn.info/</guid>
       <description>I have been blogging about CFEngine here for a while (it&#39;s my most frequent tag). As of now, I&#39;m starting to post all CFEngine-related posts to http://blog.cf-learn.info/, which is part of the web site for my book &#34;Learning CFEngine 3&#34;. In this way, I intend to group all CFEngine-related content over there. I will still cross-post relevant things here, but if you want to stay fully up to date on my CFEngine writings, please subscribe over there as well.</description>
     </item>
     

@@ -13,10 +13,10 @@
     
     <item>
       <title>Installing cfengine on Mac OS X</title>
-      <link>http://zzamboni.org/post/2011-08-05-installing-cfengine-320b3-on-mac-os-x-107/</link>
+      <link>http://zzamboni.org/post/installing-cfengine-on-mac-os-x/</link>
       <pubDate>Fri, 05 Aug 2011 02:31:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/2011-08-05-installing-cfengine-320b3-on-mac-os-x-107/</guid>
+      <guid>http://zzamboni.org/post/installing-cfengine-on-mac-os-x/</guid>
       <description>Cfengine (tested 3.2.0) installs easily on OS X (tested 10.7), given that it&#39;s Unix. One problem I encountered was that it does not compile with the bundled version of Berkeley DB (it recognizes it during configure, but produces compilation errors). The solution is to use some other DB engine. I chose Tokyo Cabinet. Using homebrew, the process is simple
 brew install tokyo-cabinet
 After this, configure --with-tokyocabinet, and then compile and install as usual.</description>

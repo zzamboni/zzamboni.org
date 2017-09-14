@@ -282,6 +282,15 @@
     </item>
     
     <item>
+      <title>Elvish</title>
+      <link>http://zzamboni.org/tags/elvish/</link>
+      <pubDate>Thu, 14 Sep 2017 17:09:38 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/tags/elvish/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Emacs</title>
       <link>http://zzamboni.org/tags/emacs/</link>
       <pubDate>Thu, 25 Feb 2016 00:00:00 +0000</pubDate>
@@ -930,6 +939,15 @@
     </item>
     
     <item>
+      <title>Shell</title>
+      <link>http://zzamboni.org/tags/shell/</link>
+      <pubDate>Thu, 14 Sep 2017 17:09:38 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/tags/shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Sitenews</title>
       <link>http://zzamboni.org/tags/sitenews/</link>
       <pubDate>Tue, 08 Aug 2017 06:56:52 +0200</pubDate>
@@ -1040,7 +1058,7 @@
     <item>
       <title>Tips</title>
       <link>http://zzamboni.org/tags/tips/</link>
-      <pubDate>Mon, 07 Mar 2016 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 14 Sep 2017 17:09:38 +0000</pubDate>
       
       <guid>http://zzamboni.org/tags/tips/</guid>
       <description></description>
@@ -1088,6 +1106,15 @@
       <pubDate>Wed, 22 Sep 2010 12:20:00 -0500</pubDate>
       
       <guid>http://zzamboni.org/tags/unam100/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unix</title>
+      <link>http://zzamboni.org/tags/unix/</link>
+      <pubDate>Thu, 14 Sep 2017 17:09:38 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/tags/unix/</guid>
       <description></description>
     </item>
     

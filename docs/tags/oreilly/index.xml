@@ -13,10 +13,10 @@
     
     <item>
       <title>Learning CFEngine 3 has been released</title>
-      <link>http://zzamboni.org/post/2012-03-24-blog-learning-cfengine-3/</link>
+      <link>http://zzamboni.org/post/learning-cfengine-3-has-been-released/</link>
       <pubDate>Sat, 24 Mar 2012 01:23:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/2012-03-24-blog-learning-cfengine-3/</guid>
+      <guid>http://zzamboni.org/post/learning-cfengine-3-has-been-released/</guid>
       <description>  I am ecstatic to announce that the book is now officially released!
  via blog.cf-learn.info  I am so happy :-)
  </description>
@@ -24,20 +24,20 @@
     
     <item>
       <title>&#34;Learning CFEngine 3&#34; Early Release now available -use AUTHD to get 40-50% off</title>
-      <link>http://zzamboni.org/post/2011-12-06-learning-cfengine-3early-release-now-availabl/</link>
+      <link>http://zzamboni.org/post/learning-cfengine-3early-release-now-available--use-authd-to-get-40-50-off/</link>
       <pubDate>Tue, 06 Dec 2011 15:03:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/2011-12-06-learning-cfengine-3early-release-now-availabl/</guid>
+      <guid>http://zzamboni.org/post/learning-cfengine-3early-release-now-available--use-authd-to-get-40-50-off/</guid>
       <description>Learning CFEngine 3 Automated system administration for sites of any size  By Diego Zamboni    via shop.oreilly.com  My upcoming book &#34;Learning CFEngine 3&#34; is now available as an Early Release, which includes (for now) the first four chapters of the book. You can use the code AUTHD to get 40% off the print book, or 50% off the ebook version.
 Go get yours!</description>
     </item>
     
     <item>
       <title>What&#39;s New in CFEngine 3: Making System Administration Even More Powerful - O&#39;Reilly Radar</title>
-      <link>http://zzamboni.org/post/2011-10-28-whats-new-in-cfengine-3-making-system-adminis/</link>
+      <link>http://zzamboni.org/post/whats-new-in-cfengine-3-making-system-administration-even-more-powerful---oreilly-radar/</link>
       <pubDate>Fri, 28 Oct 2011 16:24:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/2011-10-28-whats-new-in-cfengine-3-making-system-adminis/</guid>
+      <guid>http://zzamboni.org/post/whats-new-in-cfengine-3-making-system-administration-even-more-powerful---oreilly-radar/</guid>
       <description>CFEngine is both the oldest and the newest of the popular tools for automating site administration. Mark Burgess invented it as a free software project in 1993, and years later, as deployments in the field outgrew its original design he gave it a complete rethink and developed the powerful concept of promise theory to make it modular and maintainable.via radar.oreilly.com  I contributed to this article by Andy Oram on CFEngine 3.</description>
     </item>
     

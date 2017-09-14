@@ -13,10 +13,10 @@
     
     <item>
       <title>Storing CFEngine configuration in CVS</title>
-      <link>http://zzamboni.org/post/2010-09-07-storing-cfengine-configuration-in-cvs/</link>
+      <link>http://zzamboni.org/post/storing-cfengine-configuration-in-cvs/</link>
       <pubDate>Tue, 07 Sep 2010 14:17:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/2010-09-07-storing-cfengine-configuration-in-cvs/</guid>
+      <guid>http://zzamboni.org/post/storing-cfengine-configuration-in-cvs/</guid>
       <description> via sial.org  Useful article about storing both development and production configurations of cfengine using a version control mechanism. I am in the process of developing a similar setup using git, I will share it here when I get it to work properly.
  </description>
     </item>
