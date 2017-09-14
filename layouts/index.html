@@ -36,7 +36,7 @@
       <section class="w-100">
         <h1 class="f3">More</h1>
         {{/* Now, range through the next four after the initial 3 items. Nest the requirements, "after" then "first" on the outside */}}
-        {{ range (first 4 (after 3 $section))  }}
+        {{ range (first 5 (after 5 $section))  }}
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="{{ .URL }}" class="link black dim">
               {{ .Title }}
