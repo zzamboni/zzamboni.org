@@ -7,7 +7,7 @@
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      {{ .Summary  }}
+      {{ default .Summary .Params.summary }}
     </div>
   </div>
 </div>
