@@ -13,10 +13,10 @@
     
     <item>
       <title>LogParser, Event Logs, and Vista - Neil Carpenter&#39;s Blog - Site Home - TechNet Blogs</title>
-      <link>http://zzamboni.org/post/2011-01-19-logparser-event-logs-and-vista-neil-carpenter/</link>
+      <link>http://zzamboni.org/post/logparser-event-logs-and-vista---neil-carpenters-blog---site-home---technet-blogs/</link>
       <pubDate>Wed, 19 Jan 2011 12:33:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/2011-01-19-logparser-event-logs-and-vista-neil-carpenter/</guid>
+      <guid>http://zzamboni.org/post/logparser-event-logs-and-vista---neil-carpenters-blog---site-home---technet-blogs/</guid>
       <description>The only workaround to this is to convert the logfile to the new evtx format prior to parsing it. You can do this in the event log viewer GUI by doing a Save As... but I find it easier to do this at the command prompt: wevtutil epl application.evt application.evtx /lf:true
   via blogs.technet.com  I&#39;m trying to process Windows Event Viewer files (.evt) from some servers on my Win7 machine, which kept me giving a &#34;</description>
     </item>

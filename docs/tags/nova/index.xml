@@ -13,19 +13,19 @@
     
     <item>
       <title>What&#39;s New in CFEngine 3: Making System Administration Even More Powerful - O&#39;Reilly Radar</title>
-      <link>http://zzamboni.org/post/2011-10-28-whats-new-in-cfengine-3-making-system-adminis/</link>
+      <link>http://zzamboni.org/post/whats-new-in-cfengine-3-making-system-administration-even-more-powerful---oreilly-radar/</link>
       <pubDate>Fri, 28 Oct 2011 16:24:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/2011-10-28-whats-new-in-cfengine-3-making-system-adminis/</guid>
+      <guid>http://zzamboni.org/post/whats-new-in-cfengine-3-making-system-administration-even-more-powerful---oreilly-radar/</guid>
       <description>CFEngine is both the oldest and the newest of the popular tools for automating site administration. Mark Burgess invented it as a free software project in 1993, and years later, as deployments in the field outgrew its original design he gave it a complete rethink and developed the powerful concept of promise theory to make it modular and maintainable.via radar.oreilly.com  I contributed to this article by Andy Oram on CFEngine 3.</description>
     </item>
     
     <item>
       <title>&#34;Introduction to CFEngine 3 Nova&#34; webinar</title>
-      <link>http://zzamboni.org/post/2011-10-25-introduction-to-cfengine-3-nova-webinar/</link>
+      <link>http://zzamboni.org/post/introduction-to-cfengine-3-nova-webinar/</link>
       <pubDate>Tue, 25 Oct 2011 22:53:13 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/2011-10-25-introduction-to-cfengine-3-nova-webinar/</guid>
+      <guid>http://zzamboni.org/post/introduction-to-cfengine-3-nova-webinar/</guid>
       <description>A new version of CFEngine 3 Nova was released today, and to go with it, there will be a free webinar called &#34;Introduction to CFEngine 3 Nova&#34; on November 2nd. It will be presented by one of the members of the core CFEngine team, and it will be a great opportunity to learn more about the new and improved capabilities in this release. If you are interested in CFEngine and maybe thinking of going the commercial route, or you need more information to decide, make sure to attend!</description>
     </item>
     

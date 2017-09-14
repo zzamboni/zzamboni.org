@@ -13,10 +13,10 @@
     
     <item>
       <title>The State of Open Source System Automation</title>
-      <link>http://zzamboni.org/post/2010-08-26-the-state-of-open-source-system-automation/</link>
+      <link>http://zzamboni.org/post/the-state-of-open-source-system-automation/</link>
       <pubDate>Thu, 26 Aug 2010 01:55:58 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/2010-08-26-the-state-of-open-source-system-automation/</guid>
+      <guid>http://zzamboni.org/post/the-state-of-open-source-system-automation/</guid>
       <description>The days of DIY system administration are rapidly coming to a close. Why? Because the open source tools available are just too good not to use. Presenting Bcfg2, Cfengine, Chef and Puppet. via linux-mag.com  Nice overview of the Usenix 2010 Configuration Management Summit, including descriptions and comparisons of the four major open-source CM systems.
  </description>
     </item>

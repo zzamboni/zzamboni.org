@@ -13,10 +13,10 @@
     
     <item>
       <title>Fix journal in an HFS&#43; file system</title>
-      <link>http://zzamboni.org/post/2011-12-15-fix-journal-in-an-hfs-file-system/</link>
+      <link>http://zzamboni.org/post/fix-journal-in-an-hfs--file-system/</link>
       <pubDate>Thu, 15 Dec 2011 00:07:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/2011-12-15-fix-journal-in-an-hfs-file-system/</guid>
+      <guid>http://zzamboni.org/post/fix-journal-in-an-hfs--file-system/</guid>
       <description>Yesterday my external Western Digital disk (which I use for Time Machine, among other things) stopped mounting automatically when I plug it in. This may *cough*definitely*cough*have something to do with me unmounting it forcefully while it was doing a backup, since I was in a hurry.
 Disk Utility reported everything was OK with the disk, but it still failed to mount. Upon poking a bit deeper, I found these messages in the logs:</description>
     </item>

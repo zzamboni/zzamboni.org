@@ -50,10 +50,10 @@
     
     <item>
       <title>HowTo: Changing the available display formats for Evernote&#39;s &#34;Insert Date&#34; command</title>
-      <link>http://zzamboni.org/post/2012-11-13-howto-changing-the-available-display-formats/</link>
+      <link>http://zzamboni.org/post/howto-changing-the-available-display-formats-for-evernotes-insert-date-command/</link>
       <pubDate>Tue, 13 Nov 2012 23:00:30 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/2012-11-13-howto-changing-the-available-display-formats/</guid>
+      <guid>http://zzamboni.org/post/howto-changing-the-available-display-formats-for-evernotes-insert-date-command/</guid>
       <description>Evernote introduced some time ago an &#34;Insert Date&#34; keyboard shortcut, which is very handy. However, the options for the format of the inserted date seemed limited (only four options). I finally learned how this works, and how to change it on the Mac. The formats offered are those that are configured in the &#34;Languages &amp;amp; Text&#34; preferences panel. If you go to &#34;Region&#34; and then click the &#34;Customize button&#34; in the Dates part of the panel, you will see and be able to customize the formats for short, medium, long and full date representations.</description>
     </item>
     

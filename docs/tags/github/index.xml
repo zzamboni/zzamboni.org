@@ -34,28 +34,28 @@
     
     <item>
       <title>Website redesign and unification</title>
-      <link>http://zzamboni.org/post/2010-09-28-website-redesign-and-unification/</link>
+      <link>http://zzamboni.org/post/website-redesign-and-unification/</link>
       <pubDate>Tue, 28 Sep 2010 02:22:09 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/2010-09-28-website-redesign-and-unification/</guid>
+      <guid>http://zzamboni.org/post/website-redesign-and-unification/</guid>
       <description>There are still some rough edges, but by far the redesign and unification of zzamboni.org is done. With the same design you can now find my blogs (hosted by posterous.com), my project pages (hosted in github.com project repositories) and some static pages (hosted in my personal github.com pages repository, this includes the root, About and Code pages, as well as the static copy of my old blog BrT, which is the only one that retains its original design).</description>
     </item>
     
     <item>
       <title>cfengine Community Open Promise Body Library on GitHub</title>
-      <link>http://zzamboni.org/post/2010-08-25-cfengine-community-open-body-promise-library/</link>
+      <link>http://zzamboni.org/post/cfengine-community-open-promise-body-library-on-github/</link>
       <pubDate>Wed, 25 Aug 2010 01:37:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/2010-08-25-cfengine-community-open-body-promise-library/</guid>
+      <guid>http://zzamboni.org/post/cfengine-community-open-promise-body-library-on-github/</guid>
       <description>I have created a copy of the cfengine COPBL on GitHub , where I will use it as a playground for changes and additions. This is in no way endorsed by cfengine - it is just my personal copy. But if you use GitHub and want to use it, go ahead, I will try to keep it updated with respect to the original subversion repository , although it will include my changes too.</description>
     </item>
     
     <item>
       <title>Updated server and service setup</title>
-      <link>http://zzamboni.org/post/2010-08-16-updated-server-and-service-setup/</link>
+      <link>http://zzamboni.org/post/updated-server-and-service-setup/</link>
       <pubDate>Mon, 16 Aug 2010 14:58:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/2010-08-16-updated-server-and-service-setup/</guid>
+      <guid>http://zzamboni.org/post/updated-server-and-service-setup/</guid>
       <description>(a friend asked me about my online setup, and I wrote the text below. Then I realized it would also make an interesting blog post, and I just copied and pasted it, with minimal editing, into an email to posterous. This is why I love posterous, it makes posting so easy) 
 For my setup, I have a hodgepodge of stuff all aggregated under the zzamboni.org domain. I wrote a blog post about my setup some time ago: http://blog.</description>
     </item>

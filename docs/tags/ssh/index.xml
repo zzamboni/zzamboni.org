@@ -23,10 +23,10 @@
     
     <item>
       <title>Editing sshd configuration files with cfengine3</title>
-      <link>http://zzamboni.org/post/2010-11-24-editing-sshd-configuration-files-with-cfengin/</link>
+      <link>http://zzamboni.org/post/editing-sshd-configuration-files-with-cfengine3/</link>
       <pubDate>Wed, 24 Nov 2010 23:30:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/2010-11-24-editing-sshd-configuration-files-with-cfengin/</guid>
+      <guid>http://zzamboni.org/post/editing-sshd-configuration-files-with-cfengine3/</guid>
       <description>Here&#39;s a cfengine bundle that I wrote for editing the sshd configuration file by passing an array with the parameters. Using an array is a very elegant way of defining the values to set. The bundle also restarts sshd after any changes are made, unless the no_restarts class is defined.
 The first gist contains the edit_sshd bundle itself, together with the set_config_values bundle that actually performs the editing job (this should go into a library file, I have it in my personal version of cfengine_stdlib.</description>
     </item>

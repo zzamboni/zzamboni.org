@@ -13,10 +13,10 @@
     
     <item>
       <title>Starting VirtualCenter automatically when it fails to start</title>
-      <link>http://zzamboni.org/post/2010-05-03-starting-virtualcenter-automatically-when-it/</link>
+      <link>http://zzamboni.org/post/starting-virtualcenter-automatically-when-it-fails-to-start/</link>
       <pubDate>Mon, 03 May 2010 13:13:42 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/2010-05-03-starting-virtualcenter-automatically-when-it/</guid>
+      <guid>http://zzamboni.org/post/starting-virtualcenter-automatically-when-it-fails-to-start/</guid>
       <description>Create a .bat file with following script:net start MSSQL$SQLEXP_VIM
 ping 127.0.0.1 -n 120 -w 1000 &amp;gt; null
 net start vpxd

@@ -33,10 +33,10 @@
     
     <item>
       <title>Remapping Mac modifier keys on Emacs 23.3</title>
-      <link>http://zzamboni.org/post/2011-11-27-remapping-mac-modifier-keys-on-emacs-233/</link>
+      <link>http://zzamboni.org/post/remapping-mac-modifier-keys-on-emacs-23.3/</link>
       <pubDate>Sun, 27 Nov 2011 01:47:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/2011-11-27-remapping-mac-modifier-keys-on-emacs-233/</guid>
+      <guid>http://zzamboni.org/post/remapping-mac-modifier-keys-on-emacs-23.3/</guid>
       <description>I just switched from Carbon Emacs (which is old Emacs 22.x) to Emacs for OS X Modified on my Mac (which is a Cocoa app, and Emacs 23.3).
 
 One of the unwelcome changes was that the Emacs &#39;Meta&#39; modifier is now by default mapped to the Option key and not Command as before. But this gave me the opportunity to learn how to map the Mac keyboard modifier keys arbitrarily.</description>
@@ -44,19 +44,19 @@ One of the unwelcome changes was that the Emacs &#39;Meta&#39; modifier is now b
     
     <item>
       <title>Emulate vi&#39;s % command (jump to matching parenthesis) in Emacs</title>
-      <link>http://zzamboni.org/post/2010-08-18-emulate-vis-command-jump-to-matching-parenthe/</link>
+      <link>http://zzamboni.org/post/emulate-vis--command-jump-to-matching-parenthesis-in-emacs/</link>
       <pubDate>Wed, 18 Aug 2010 16:09:18 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/2010-08-18-emulate-vis-command-jump-to-matching-parenthe/</guid>
+      <guid>http://zzamboni.org/post/emulate-vis--command-jump-to-matching-parenthesis-in-emacs/</guid>
       <description>{% gist 536198 %}</description>
     </item>
     
     <item>
       <title>Installing AucTeX on EmacsW32 on Win7/64bit</title>
-      <link>http://zzamboni.org/post/2010-08-17-installing-auctex-on-emacsw32-on-win764bit/</link>
+      <link>http://zzamboni.org/post/installing-auctex-on-emacsw32-on-win7/64bit/</link>
       <pubDate>Tue, 17 Aug 2010 02:36:05 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/2010-08-17-installing-auctex-on-emacsw32-on-win764bit/</guid>
+      <guid>http://zzamboni.org/post/installing-auctex-on-emacsw32-on-win7/64bit/</guid>
       <description>Today I had to install AucTeX to use on my Win7/64 machine under EmacsW32. I found the basic instructions here: http://www.sturmnet.org/blog/2007/09/01/installing-auctex-in-emacsw32, but I had to modify them a bit (in particular, I am using tetex installed from cygwin instead of MiKTeX). Here are the commands I used:
 $ mkdir -p /usr/local/share/texmf
 $ ./configure --prefix=&#39;c:/Program Files (x86)/Emacs/emacs&#39; --with-texmf-dir=&#39;/usr/local/share/texmf&#39; --with-lispdir=&#39;c:/Program Files (x86)/Emacs/emacs/site-lisp&#39;

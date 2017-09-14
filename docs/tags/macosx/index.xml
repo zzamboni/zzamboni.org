@@ -71,10 +71,10 @@ Instead of using the default value of DOCKER_HOST provided by boot2docker up, es
     
     <item>
       <title>Changing &#34;message:&#34; protocol handler from Sparrow back to Mail.app</title>
-      <link>http://zzamboni.org/post/2012-01-25-changing-message-protocol-handler-from-sparro/</link>
+      <link>http://zzamboni.org/post/changing-message-protocol-handler-from-sparrow-back-to-mail.app/</link>
       <pubDate>Wed, 25 Jan 2012 09:54:07 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/2012-01-25-changing-message-protocol-handler-from-sparro/</guid>
+      <guid>http://zzamboni.org/post/changing-message-protocol-handler-from-sparrow-back-to-mail.app/</guid>
       <description>After using Sparrow for a while, I have decided to switch back to Mail.app. However, even after setting my default email client to Mail.app, all my message: links (for example, from messages dragged from Mail.app into Things) were opening in Sparrow.
 After some experimentation, I figured out what happened: I switched the default email client from Sparrow to Mail using Mail&#39;s preference panel: 
     
@@ -83,10 +83,10 @@ Apparently this switches the application for the mailto: protocol, but not for m
     
     <item>
       <title>Fix journal in an HFS&#43; file system</title>
-      <link>http://zzamboni.org/post/2011-12-15-fix-journal-in-an-hfs-file-system/</link>
+      <link>http://zzamboni.org/post/fix-journal-in-an-hfs--file-system/</link>
       <pubDate>Thu, 15 Dec 2011 00:07:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/2011-12-15-fix-journal-in-an-hfs-file-system/</guid>
+      <guid>http://zzamboni.org/post/fix-journal-in-an-hfs--file-system/</guid>
       <description>Yesterday my external Western Digital disk (which I use for Time Machine, among other things) stopped mounting automatically when I plug it in. This may *cough*definitely*cough*have something to do with me unmounting it forcefully while it was doing a backup, since I was in a hurry.
 Disk Utility reported everything was OK with the disk, but it still failed to mount. Upon poking a bit deeper, I found these messages in the logs:</description>
     </item>

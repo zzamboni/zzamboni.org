@@ -13,10 +13,10 @@
     
     <item>
       <title>Changing &#34;message:&#34; protocol handler from Sparrow back to Mail.app</title>
-      <link>http://zzamboni.org/post/2012-01-25-changing-message-protocol-handler-from-sparro/</link>
+      <link>http://zzamboni.org/post/changing-message-protocol-handler-from-sparrow-back-to-mail.app/</link>
       <pubDate>Wed, 25 Jan 2012 09:54:07 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/2012-01-25-changing-message-protocol-handler-from-sparro/</guid>
+      <guid>http://zzamboni.org/post/changing-message-protocol-handler-from-sparrow-back-to-mail.app/</guid>
       <description>After using Sparrow for a while, I have decided to switch back to Mail.app. However, even after setting my default email client to Mail.app, all my message: links (for example, from messages dragged from Mail.app into Things) were opening in Sparrow.
 After some experimentation, I figured out what happened: I switched the default email client from Sparrow to Mail using Mail&#39;s preference panel: 
     
