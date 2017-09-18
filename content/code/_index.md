@@ -5,6 +5,7 @@ date: 2017-08-03T17:55:47+02:00
 featured_image: "/images/c64-code3.png"
 aliases:
     - /code.html
+weight: "03"
 ---
 
 Here you can find some of the programs I have written over the years,

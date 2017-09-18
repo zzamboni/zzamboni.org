@@ -6,6 +6,7 @@ featured_image: "/images/scrabble-trim1-lowres.jpg"
 aliases:
 - /blog
 - /new/blog
+weight: "01"
 ---
 
 # All posts

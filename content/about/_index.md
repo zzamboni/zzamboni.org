@@ -4,6 +4,7 @@ date: 2017-08-03T12:50:11+02:00
 featured_image: "/images/legoland.jpg"
 aliases:
 - /about.html
+weight: "06"
 ---
 
 **Who:** I am a computer scientist, consultant, programmer, sysadmin,
