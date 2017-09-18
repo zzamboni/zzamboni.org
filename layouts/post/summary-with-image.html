@@ -1,9 +1,13 @@
-{{ $featured_image := .Params.featured_image }}
+{{ $first_image_tag := findRE "<img .*?>" .Content }}
+{{ if $first_image_tag }}
+{{ .Scratch.Set "first_image_url" (replaceRE "^.*src=[\"'](.*?)[\"'].*" "$1" (index $first_image_tag 0)) }}
+{{ end }}
+{{ $featured_image := default (.Scratch.Get "first_image_url") .Params.featured_image }}
 {{ $leftside := (.Scratch.Get "leftside") }}
 <article class="bb b--black-10">
   <a class="db ph3 ph0-l no-underline dark-gray dim" href="{{ default .URL .Params.finalURL }}">
     <div class="flex flex-column flex-row-ns">
-      {{ if and .Params.featured_image $leftside }}
+      {{ if and $featured_image $leftside }}
           {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
         {{ $featured_image := (trim $featured_image "/") | absURL }}
         <div class="pr3-ns mb4 mb3-ns w-30-ns center v-mid">
@@ -21,7 +25,7 @@
         {{/* TODO: add author
         <p class="f6 lh-copy mv0">By {{ .Author }}</p> */}}
       </div>
-      {{ if and .Params.featured_image (not $leftside) }}
+      {{ if and $featured_image (not $leftside) }}
           {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
         {{ $featured_image := (trim $featured_image "/") | absURL }}
         <div class="pr3-ns mb4 mb3-ns w-30-ns center">
