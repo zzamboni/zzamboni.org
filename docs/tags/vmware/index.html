@@ -72,12 +72,6 @@
         <ul class="pl0 mr3">
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white no-underline white-90" href="/about/" title="About page">
-              About
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
             <a class="hover-white no-underline white-90" href="/post/" title="Blog page">
               Blog
             </a>
@@ -96,8 +90,20 @@
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/tags/" title="Tags page">
+              Tags
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
             <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
               Contact
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About page">
+              About
             </a>
           </li>
           
@@ -133,7 +139,7 @@
       
   <article class="cf pa3 pa4-m pa4-l">
     <div class="measure-wide-l center f4 lh-copy nested-copy-line-height nested-links nested-img mid-gray">
-      <p>Below you will find pages that utilize the tag “vmware”</p>
+      <p>Below you will find pages that have the tag “vmware”</p>
     </div>
   </article>
   <div class="mw8 center">
@@ -141,45 +147,71 @@
     <section class="flex-ns flex-wrap justify-around mt5">
       
         <div class="relative w-100  mb4 bg-white">
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Post</span>
-    <h1 class="f3 near-black">
-      <a href="/post/starting-virtualcenter-automatically-when-it-fails-to-start/" class="link black dim">
-        Starting VirtualCenter automatically when it fails to start
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Create a .bat file with following script:net start MSSQL$SQLEXP_VIM
+          
+
+
+
+<article class="bb b--black-10">
+  <a class="db ph3 ph0-l no-underline dark-gray dim" href="/post/starting-virtualcenter-automatically-when-it-fails-to-start/">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">Starting VirtualCenter automatically when it fails to start</h1>
+        <div class="f6 mv2 dib tracked" datetime="2010-05-03T13:13:42-05:00">
+          May 3, 2010
+        </div>
+        <div class="f6 f5-l lh-copy nested-copy-line-height">
+          Create a .bat file with following script:net start MSSQL$SQLEXP_VIM
 ping 127.0.0.1 -n 120 -w 1000 &gt; null
 net start vpxd
 Note: for SQL Server substitute MSSQLSERVER in the above batch file instead of MSSQL$SQLEXP_VIM.
 Set script to run on boot.
 via communities.vmware.com  In one of my VirtualCenter servers, a Windows XP machine, the VirtualCenter Server service often fails to start because it tries to run before the MSSQL server is fully initialized.
+        </div>
+        
+      </div>
+      
     </div>
-  </div>
-</div>
+  </a>
+</article>
 
         </div>
       
         <div class="relative w-100  mb4 bg-white">
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Post</span>
-    <h1 class="f3 near-black">
-      <a href="/post/installing-windows-xp-in-vmware-esx---setup-did-not-find-any-hard-disk-drives-installed-in-your-computer.--techhead.co.uk/" class="link black dim">
-        Installing Windows XP in Vmware ESX - &#34;Setup did not find any hard disk drives installed in your computer.&#34; | TechHead.co.uk
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Trying to install Windows XP within VMWare ESX and getting the following error message?
+          
+
+
+
+
+
+<article class="bb b--black-10">
+  <a class="db ph3 ph0-l no-underline dark-gray dim" href="/post/installing-windows-xp-in-vmware-esx---setup-did-not-find-any-hard-disk-drives-installed-in-your-computer.--techhead.co.uk/">
+    <div class="flex flex-column flex-row-ns">
+      
+          
+        
+        <div class="pr3-ns mb4 mb3-ns w-30-ns center v-mid">
+          <img src="http://www.techhead.co.uk/images/VMWareESXCreatingaWindowsXPVMandgetting_74EA/SetUpCouldNotFind.jpg" class="zz-scaled-img fr" alt="image from Installing Windows XP in Vmware ESX - &#34;Setup did not find any hard disk drives installed in your computer.&#34; | TechHead.co.uk">
+        </div>
+      
+      <div class="w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">Installing Windows XP in Vmware ESX - &#34;Setup did not find any hard disk drives installed in your computer.&#34; | TechHead.co.uk</h1>
+        <div class="f6 mv2 dib tracked" datetime="2010-04-07T15:20:18-05:00">
+          April 7, 2010
+        </div>
+        <div class="f6 f5-l lh-copy nested-copy-line-height">
+          Trying to install Windows XP within VMWare ESX and getting the following error message?
 "Setup did not find any hard disk drives installed in your computer."
 The reason for this is that the necessary hard disk controller drivers have not been installed.
  via techhead.co.uk  Useful information and links for installing XP VMs on a VMware ESX server.
  
+        </div>
+        
+      </div>
+      
     </div>
-  </div>
-</div>
+  </a>
+</article>
 
         </div>
       
