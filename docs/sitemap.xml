@@ -3,6 +3,48 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://zzamboni.org/post/</loc>
+    <lastmod>2017-08-03T23:04:22+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://zzamboni.org/book/</loc>
+    <lastmod>2017-08-03T17:57:03+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://zzamboni.org/code/</loc>
+    <lastmod>2017-08-03T17:55:47+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://zzamboni.org/tags/</loc>
+    <lastmod>2017-09-16T14:22:03+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://zzamboni.org/contact/</loc>
+    <lastmod>2017-08-03T17:55:04+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://zzamboni.org/about/</loc>
+    <lastmod>2017-08-03T12:50:11+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://zzamboni.org/post/elvish-an-awesome-unix-shell/</loc>
     <lastmod>2017-09-14T17:09:38+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -59,22 +101,8 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/</loc>
-    <lastmod>2017-08-03T23:04:22+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>http://zzamboni.org/</loc>
     <lastmod>2017-08-03T22:37:17+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://zzamboni.org/book/</loc>
-    <lastmod>2017-08-03T17:57:03+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -87,29 +115,8 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/code/</loc>
-    <lastmod>2017-08-03T17:55:47+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://zzamboni.org/contact/</loc>
-    <lastmod>2017-08-03T17:55:04+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>http://zzamboni.org/code/grabcartoons/</loc>
     <lastmod>2017-08-03T17:25:50+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://zzamboni.org/about/</loc>
-    <lastmod>2017-08-03T12:50:11+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3371,13 +3378,6 @@
   <url>
     <loc>http://zzamboni.org/tags/sysadmin/</loc>
     <lastmod>2011-11-24T17:56:00-06:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://zzamboni.org/tags/</loc>
-    <lastmod>2012-04-27T08:30:32-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
