@@ -6,10 +6,21 @@
     <description>Recent content in Howto on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Sep 2017 21:11:29 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 20 Sep 2017 18:24:47 +0000</lastBuildDate>
     
 	<atom:link href="http://zzamboni.org/tags/howto/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using Nix&#39;s &#34;Single-user Mode&#34; on macOS</title>
+      <link>http://zzamboni.org/post/using-nixs-single-user-mode-on-macos/</link>
+      <pubDate>Wed, 20 Sep 2017 18:24:47 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/using-nixs-single-user-mode-on-macos/</guid>
+      <description>&lt;p&gt;Here is how to set up Nix in single-user mode on macOS.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Fixing the Outlook-to-OmniFocus Script</title>

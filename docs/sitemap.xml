@@ -45,6 +45,13 @@
   </url>
   
   <url>
+    <loc>http://zzamboni.org/post/using-nixs-single-user-mode-on-macos/</loc>
+    <lastmod>2017-09-20T18:24:47+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://zzamboni.org/post/elvish-an-awesome-unix-shell/</loc>
     <lastmod>2017-09-14T17:09:38+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -2915,7 +2922,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/howto/</loc>
-    <lastmod>2017-09-11T21:11:29+02:00</lastmod>
+    <lastmod>2017-09-20T18:24:47+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -3033,6 +3040,13 @@
   </url>
   
   <url>
+    <loc>http://zzamboni.org/tags/macos/</loc>
+    <lastmod>2017-09-20T18:24:47+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://zzamboni.org/tags/macosx/</loc>
     <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -3077,6 +3091,13 @@
   <url>
     <loc>http://zzamboni.org/tags/networking/</loc>
     <lastmod>2010-04-22T02:01:36-05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://zzamboni.org/tags/nix/</loc>
+    <lastmod>2017-09-20T18:24:47+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -3398,7 +3419,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/tips/</loc>
-    <lastmod>2017-09-14T17:09:38+00:00</lastmod>
+    <lastmod>2017-09-20T18:24:47+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
