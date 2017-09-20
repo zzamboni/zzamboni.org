@@ -491,7 +491,7 @@
     <item>
       <title>Howto</title>
       <link>http://zzamboni.org/tags/howto/</link>
-      <pubDate>Mon, 11 Sep 2017 21:11:29 +0200</pubDate>
+      <pubDate>Wed, 20 Sep 2017 18:24:47 +0000</pubDate>
       
       <guid>http://zzamboni.org/tags/howto/</guid>
       <description></description>
@@ -615,6 +615,15 @@
     </item>
     
     <item>
+      <title>Macos</title>
+      <link>http://zzamboni.org/tags/macos/</link>
+      <pubDate>Wed, 20 Sep 2017 18:24:47 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/tags/macos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Macosx</title>
       <link>http://zzamboni.org/tags/macosx/</link>
       <pubDate>Mon, 07 Mar 2016 00:00:00 +0000</pubDate>
@@ -656,6 +665,15 @@
       <pubDate>Thu, 22 Apr 2010 02:01:36 -0500</pubDate>
       
       <guid>http://zzamboni.org/tags/networking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nix</title>
+      <link>http://zzamboni.org/tags/nix/</link>
+      <pubDate>Wed, 20 Sep 2017 18:24:47 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/tags/nix/</guid>
       <description></description>
     </item>
     
@@ -1058,7 +1076,7 @@
     <item>
       <title>Tips</title>
       <link>http://zzamboni.org/tags/tips/</link>
-      <pubDate>Thu, 14 Sep 2017 17:09:38 +0000</pubDate>
+      <pubDate>Wed, 20 Sep 2017 18:24:47 +0000</pubDate>
       
       <guid>http://zzamboni.org/tags/tips/</guid>
       <description></description>

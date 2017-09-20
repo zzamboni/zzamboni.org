@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nix on zzamboni.org</title>
+    <link>http://zzamboni.org/tags/nix/</link>
+    <description>Recent content in Nix on zzamboni.org</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Sep 2017 18:24:47 +0000</lastBuildDate>
+    
+	<atom:link href="http://zzamboni.org/tags/nix/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using Nix&#39;s &#34;Single-user Mode&#34; on macOS</title>
+      <link>http://zzamboni.org/post/using-nixs-single-user-mode-on-macos/</link>
+      <pubDate>Wed, 20 Sep 2017 18:24:47 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/using-nixs-single-user-mode-on-macos/</guid>
+      <description>&lt;p&gt;Here is how to set up Nix in single-user mode on macOS.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

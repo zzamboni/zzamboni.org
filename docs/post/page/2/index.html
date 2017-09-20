@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:updated_time" content="2014-01-17T00:00:00&#43;00:00"/>
+<meta property="og:updated_time" content="2014-03-04T00:00:00&#43;00:00"/>
 
 
 
@@ -294,6 +294,35 @@
 </ul>
 
     <section class="w-100 mw8">
+      
+          
+          
+          
+        <div class="relative w-100 mb4">
+          
+
+
+
+<article class="bb b--black-10">
+  <a class="db ph3 ph0-l no-underline dark-gray dim" href="/post/how-to-stop-com-apple-dock-extra-from-using-significant-energy/">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">How to stop com.apple.dock.extra from &#34;using significant energy&#34;</h1>
+        <div class="f6 mv2 dib tracked" datetime="2014-03-04T00:00:00Z">
+          March 4, 2014
+        </div>
+        <div class="f6 f5-l lh-copy nested-copy-line-height">
+          I’d been having for some time a problem with `com.apple.dock.extra` appearing in the “Apps using significant energy” section of the battery menu. I just learned the solution (from http://forums.macrumors.com/showthread.php?t=1651662): remove BusyCal 1.6 (I upgraded to BusyCal 2, but left the old version around in case I had to go back to it). After removing it and restarting the Dock, the problem stopped.  From the same thread, it seems the problem was caused by BusyCal’s “animate transitions” preference.
+        </div>
+        
+      </div>
+      
+    </div>
+  </a>
+</article>
+
+        </div>
       
           
           
@@ -1261,38 +1290,6 @@ Diego, we noticed you haven't visited  lately. To help keep your email tidy, we'
 After some experimentation, I figured out what happened: I switched the default email client from Sparrow to Mail using Mail's preference panel: 
     
 Apparently this switches the application for the mailto: protocol, but not for message:, nor for .
-        </div>
-        
-      </div>
-      
-    </div>
-  </a>
-</article>
-
-        </div>
-      
-          
-          
-          
-        <div class="relative w-100 mb4">
-          
-
-
-
-<article class="bb b--black-10">
-  <a class="db ph3 ph0-l no-underline dark-gray dim" href="/post/how-to-remove-a-subproject/submodule-to-a-git-svn-repository/">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">How to remove a subproject/submodule to a git-svn repository</h1>
-        <div class="f6 mv2 dib tracked" datetime="2012-01-25T03:16:00-06:00">
-          January 25, 2012
-        </div>
-        <div class="f6 f5-l lh-copy nested-copy-line-height">
-          To sum up, you delete the offending directory and then run something to the effect of  git filter-branch --index-filter \
-'git rm --cached --ignore-unmatch path/to/the/formerly/misbehaving/module'
- via ignoredbydinosaurs.com  I accidentally added another git repository to a git-svn repository, which makes it die when trying to push the changes. This technique helped me fix it. Documenting mostly so I remember when it happens again sometime.
- 
         </div>
         
       </div>
