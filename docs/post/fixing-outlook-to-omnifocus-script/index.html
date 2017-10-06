@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.27.1" />
+     <meta name="generator" content="Hugo 0.29" />
       
       
         <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
@@ -53,7 +53,7 @@ with my SendToOmniFocus spoon.
 
 
 <meta itemprop="dateModified" content="2017-09-11T21:11:29&#43;02:00" />
-<meta itemprop="wordCount" content="166">
+<meta itemprop="wordCount" content="147">
 
 
 
@@ -193,17 +193,15 @@ properties can be accessed directly on the object.</p>
 fix</a>, but if you want
 to apply it right away, just change the following line in
 <code>~/.hammerspoon/Spoons/SendToOmniFocus.spoon/scripts/outlook-to-omnifocus.applescript</code>:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">theProps</span> <span style="color: #66d9ef">to</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">properties</span> <span style="color: #66d9ef">of</span> <span style="color: #f8f8f2">selectedItem)</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-applescript" data-lang="applescript"><span style="color:#66d9ef">set</span><span style=""> </span><span style="">theProps</span><span style=""> </span><span style="color:#66d9ef">to</span><span style=""> </span><span style="">(</span><span style="color:#a6e22e">properties</span><span style=""> </span><span style="color:#66d9ef">of</span><span style=""> </span><span style="">selectedItem</span><span style="">)</span></code></pre>
+</div>
 <p>to the following:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">try</span>
-        <span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">theProps</span> <span style="color: #66d9ef">to</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">properties</span> <span style="color: #66d9ef">of</span> <span style="color: #f8f8f2">selectedItem)</span>
-<span style="color: #66d9ef">on</span> <span style="color: #66d9ef">error</span>
-        <span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">theProps</span> <span style="color: #66d9ef">to</span> <span style="color: #f8f8f2">selectedItem</span>
-<span style="color: #66d9ef">end</span> <span style="color: #66d9ef">try</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-applescript" data-lang="applescript"><span style="color:#66d9ef">try</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">set</span><span style=""> </span><span style="">theProps</span><span style=""> </span><span style="color:#66d9ef">to</span><span style=""> </span><span style="">(</span><span style="color:#a6e22e">properties</span><span style=""> </span><span style="color:#66d9ef">of</span><span style=""> </span><span style="">selectedItem</span><span style="">)</span><span style="">
+</span><span style=""></span><span style="color:#66d9ef">on</span><span style=""> </span><span style="color:#66d9ef">error</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">set</span><span style=""> </span><span style="">theProps</span><span style=""> </span><span style="color:#66d9ef">to</span><span style=""> </span><span style="">selectedItem</span><span style="">
+</span><span style=""></span><span style="color:#66d9ef">end</span><span style=""> </span><span style="color:#66d9ef">try</span></code></pre>
+</div>
 <p>This tries the old behavior, and upon failure uses the new one.</p>
       </section>
       

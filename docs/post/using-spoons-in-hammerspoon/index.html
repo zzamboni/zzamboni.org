@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.27.1" />
+     <meta name="generator" content="Hugo 0.29" />
       
       
         <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
@@ -57,7 +57,7 @@ share your own work with other users.
 
 
 <meta itemprop="dateModified" content="2017-09-01T20:17:55&#43;02:00" />
-<meta itemprop="wordCount" content="2013">
+<meta itemprop="wordCount" content="1834">
 
 
 
@@ -213,9 +213,8 @@ file. Hammerspoon will install the Spoon under
 <p>Once a Spoon is installed, you need to use the <code>hs.loadSpoon()</code>
 function to load it. Type the following in the Hammerspoon console, or
 add it to your <code>init.lua</code> file and reload the configuration:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">hs.loadSpoon(</span><span style="color: #e6db74">&quot;MouseCircle&quot;</span><span style="color: #f8f8f2">)</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="">hs.loadSpoon</span><span style="">(</span><span style="color:#e6db74">&#34;MouseCircle&#34;</span><span style="">)</span></code></pre>
+</div>
 <p>After a spoon is loaded, and depending on what it does, you may need
 to configure it, assign hotkeys, and start it. A spoon’s API is
 available through the <code>spoon.&lt;SpoonName&gt;</code> namespace. To learn the API
@@ -232,11 +231,10 @@ circle to <kbd>Ctrl</kbd>+<kbd>⌘</kbd>+<kbd>Alt</kbd>+<kbd>d</kbd>
 . According to the MouseCircle
 documentation, the name for this action is <code>show</code>, so we can do the
 following:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">spoon.MouseCircle:bindHotkeys({</span>
-  <span style="color: #f8f8f2">show</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span> <span style="color: #f8f8f2">{</span> <span style="color: #e6db74">&quot;ctrl&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;cmd&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;alt&quot;</span> <span style="color: #f8f8f2">},</span> <span style="color: #e6db74">&quot;d&quot;</span> <span style="color: #f8f8f2">}</span>
-<span style="color: #f8f8f2">})</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="">spoon.MouseCircle</span><span style="">:</span><span style="">bindHotkeys</span><span style="">({</span><span style="">
+</span><span style="">  </span><span style="">show</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">{</span><span style=""> </span><span style="">{</span><span style=""> </span><span style="color:#e6db74">&#34;ctrl&#34;</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#34;cmd&#34;</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#34;alt&#34;</span><span style=""> </span><span style="">},</span><span style=""> </span><span style="color:#e6db74">&#34;d&#34;</span><span style=""> </span><span style="">}</span><span style="">
+</span><span style=""></span><span style="">})</span></code></pre>
+</div>
 <p>Once you do this, press the hotkey and you should see a red circle
 appear around the mouse cursor, and fade away after 3 seconds.</p>
 
@@ -251,10 +249,9 @@ appear around the mouse cursor, and fade away after 3 seconds.</p>
 	
 	
 	<div class="admonition-content"><p>All spoons which offer the possibility of binding hotkeys have to expose it through the same API:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">spoon.SpoonName:bindHotkeys({</span> <span style="color: #f8f8f2">action1</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">keySpec1,</span>
-                              <span style="color: #f8f8f2">action2</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">keySpec2,</span> <span style="color: #f92672">...</span> <span style="color: #f8f8f2">})</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="">spoon.SpoonName</span><span style="">:</span><span style="">bindHotkeys</span><span style="">({</span><span style=""> </span><span style="">action1</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">keySpec1</span><span style="">,</span><span style="">
+</span><span style="">                              </span><span style="">action2</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">keySpec2</span><span style="">,</span><span style=""> </span><span style="">...</span><span style=""> </span><span style="">})</span></code></pre>
+</div>
 <p>Each <code>actionX</code> is a name defined by the spoon, which refers to
 something that can be bound to a hotkey, and each <code>keySpecX</code> is a
 table with two elements: a list of modifiers and the key itself, such
@@ -266,9 +263,8 @@ as <code>{ { &quot;ctrl&quot;, &quot;cmd&quot;, &quot;alt&quot; }, &quot;d&quot;
 <p>The second API call in the MouseCircle spoon is <code>show()</code>, which
 triggers the functionality of showing the locator circle
 directly. Let’s try it &ndash; type the following in the console:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">spoon.MouseCircle:show()</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="">spoon.MouseCircle</span><span style="">:</span><span style="">show</span><span style="">()</span></code></pre>
+</div>
 <p>Most spoons are structured like this: you can set up hotkeys to
 trigger the main functionality, but you can also trigger it via method
 calls. Normally you won’t use these methods, but their availability
@@ -286,30 +282,29 @@ by their name. For example, you can view the
  table, including the color definitions,
 by using the convenient <a href="http://www.hammerspoon.org/docs/hs.inspect.html"><code>hs.inspect</code></a>
  method on the console:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">hs.inspect(hs.drawing.color.hammerspoon)</span>
-<span style="color: #f8f8f2">{</span>
-  <span style="color: #f8f8f2">black</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
-    <span style="color: #f8f8f2">alpha</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>
-    <span style="color: #f8f8f2">blue</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0.0</span><span style="color: #f8f8f2">,</span>
-    <span style="color: #f8f8f2">green</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0.0</span><span style="color: #f8f8f2">,</span>
-    <span style="color: #f8f8f2">red</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0.0</span>
-  <span style="color: #f8f8f2">},</span>
-  <span style="color: #f8f8f2">green</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
-    <span style="color: #f8f8f2">alpha</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>
-    <span style="color: #f8f8f2">blue</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0.0</span><span style="color: #f8f8f2">,</span>
-    <span style="color: #f8f8f2">green</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">1.0</span><span style="color: #f8f8f2">,</span>
-    <span style="color: #f8f8f2">red</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0.0</span>
-  <span style="color: #f8f8f2">},</span>
-  <span style="color: #f8f8f2">osx_red</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
-    <span style="color: #f8f8f2">alpha</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>
-    <span style="color: #f8f8f2">blue</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0.302</span><span style="color: #f8f8f2">,</span>
-    <span style="color: #f8f8f2">green</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0.329</span><span style="color: #f8f8f2">,</span>
-    <span style="color: #f8f8f2">red</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0.996</span>
-  <span style="color: #f8f8f2">},</span>
-  <span style="color: #f8f8f2">osx_green</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
-<span style="color: #f92672">...</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#f92672">&gt;</span><span style=""> </span><span style="">hs.inspect</span><span style="">(</span><span style="">hs.drawing</span><span style="">.</span><span style="">color.hammerspoon</span><span style="">)</span><span style="">
+</span><span style=""></span><span style="">{</span><span style="">
+</span><span style="">  </span><span style="">black</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">{</span><span style="">
+</span><span style="">    </span><span style="">alpha</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">1</span><span style="">,</span><span style="">
+</span><span style="">    </span><span style="">blue</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">0.0</span><span style="">,</span><span style="">
+</span><span style="">    </span><span style="">green</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">0.0</span><span style="">,</span><span style="">
+</span><span style="">    </span><span style="">red</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">0.0</span><span style="">
+</span><span style="">  </span><span style="">},</span><span style="">
+</span><span style="">  </span><span style="">green</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">{</span><span style="">
+</span><span style="">    </span><span style="">alpha</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">1</span><span style="">,</span><span style="">
+</span><span style="">    </span><span style="">blue</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">0.0</span><span style="">,</span><span style="">
+</span><span style="">    </span><span style="">green</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">1.0</span><span style="">,</span><span style="">
+</span><span style="">    </span><span style="">red</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">0.0</span><span style="">
+</span><span style="">  </span><span style="">},</span><span style="">
+</span><span style="">  </span><span style="">osx_red</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">{</span><span style="">
+</span><span style="">    </span><span style="">alpha</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">1</span><span style="">,</span><span style="">
+</span><span style="">    </span><span style="">blue</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">0.302</span><span style="">,</span><span style="">
+</span><span style="">    </span><span style="">green</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">0.329</span><span style="">,</span><span style="">
+</span><span style="">    </span><span style="">red</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#ae81ff">0.996</span><span style="">
+</span><span style="">  </span><span style="">},</span><span style="">
+</span><span style="">  </span><span style="">osx_green</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">{</span><span style="">
+</span><span style=""></span><span style="">...</span></code></pre>
+</div>
 <aside class="admonition tip">
 	<div class="admonition-icon">
 		<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 8 8">
@@ -329,22 +324,20 @@ convenient, but to get just the list of tables and the color names,
 without the color definitions themselves, you can use the following
 code (if you type this in the console you have to type it all in a
 single line &ndash; and beware, the output is a long list):</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">listname,colors</span> <span style="color: #66d9ef">in</span> <span style="color: #f8f8f2">pairs(hs.drawing.color.lists())</span> <span style="color: #66d9ef">do</span>
-  <span style="color: #f8f8f2">print(listname)</span>
-  <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">color,def</span> <span style="color: #66d9ef">in</span> <span style="color: #f8f8f2">pairs(colors)</span> <span style="color: #66d9ef">do</span>
-    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;  &quot;</span> <span style="color: #f92672">..</span> <span style="color: #f8f8f2">color)</span>
-  <span style="color: #66d9ef">end</span>
-<span style="color: #66d9ef">end</span>
-</pre></div>
-</div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#66d9ef">for</span><span style=""> </span><span style="">listname</span><span style="">,</span><span style="">colors</span><span style=""> </span><span style="color:#66d9ef">in</span><span style=""> </span><span style="">pairs</span><span style="">(</span><span style="">hs.drawing</span><span style="">.</span><span style="">color.lists</span><span style="">())</span><span style=""> </span><span style="color:#66d9ef">do</span><span style="">
+</span><span style="">  </span><span style="">print</span><span style="">(</span><span style="">listname</span><span style="">)</span><span style="">
+</span><span style="">  </span><span style="color:#66d9ef">for</span><span style=""> </span><span style="">color</span><span style="">,</span><span style="">def</span><span style=""> </span><span style="color:#66d9ef">in</span><span style=""> </span><span style="">pairs</span><span style="">(</span><span style="">colors</span><span style="">)</span><span style=""> </span><span style="color:#66d9ef">do</span><span style="">
+</span><span style="">    </span><span style="">print</span><span style="">(</span><span style="color:#e6db74">&#34;  &#34;</span><span style=""> </span><span style="color:#f92672">..</span><span style=""> </span><span style="">color</span><span style="">)</span><span style="">
+</span><span style="">  </span><span style="color:#66d9ef">end</span><span style="">
+</span><span style=""></span><span style="color:#66d9ef">end</span></code></pre>
+</div></div>
 </aside>
 
 
 <p>If we wanted to make the circle green, we can assign the configuration
 value like this:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">spoon.MouseCircle.color</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">hs.drawing.color.hammerspoon.green</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="">spoon.MouseCircle</span><span style="">.</span><span style="">color</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">hs.drawing</span><span style="">.</span><span style="">color.hammerspoon</span><span style="">.</span><span style="">green</span></code></pre>
+</div>
 <p>The next time you invoke the <code>show()</code> method, either directly or
 through the hotkey, you will see the circle in the new color.</p>
 
@@ -370,35 +363,31 @@ latter is Lua’s object-method-call notation, and its effect is to
 pass the object on which the method is being called as an implicit
 first argument called <code>self</code>. This is simply a syntactic shortcut,
 i.e. the following two are equivalent:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">spoon.MouseCircle:show()</span>
-<span style="color: #f8f8f2">spoon.MouseCircle.show(spoon.MouseCircle)</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="">spoon.MouseCircle</span><span style="">:</span><span style="">show</span><span style="">()</span><span style="">
+</span><span style=""></span><span style="">spoon.MouseCircle</span><span style="">.</span><span style="">show</span><span style="">(</span><span style="">spoon.MouseCircle</span><span style="">)</span></code></pre>
+</div>
 <p>Note that in the second statement, we are calling the method using
 the dot notation, and explicitly passing the object as the first
 argument. Normally you would use colon notation, but the alternative
 can be useful when constructing function pointers. For example, if
 you wanted to manually bind a second key to show the mouse circle,
 you might initially try to use the following:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">hs.hotkey.bindSpec({</span> <span style="color: #f8f8f2">{</span><span style="color: #e6db74">&quot;ctrl&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;alt&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;cmd&quot;</span> <span style="color: #f8f8f2">},</span> <span style="color: #e6db74">&quot;p&quot;</span> <span style="color: #f8f8f2">},</span>
-                   <span style="color: #f8f8f2">spoon.MouseCircle:show)</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="">hs.hotkey</span><span style="">.</span><span style="">bindSpec</span><span style="">({</span><span style=""> </span><span style="">{</span><span style="color:#e6db74">&#34;ctrl&#34;</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#34;alt&#34;</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#34;cmd&#34;</span><span style=""> </span><span style="">},</span><span style=""> </span><span style="color:#e6db74">&#34;p&#34;</span><span style=""> </span><span style="">},</span><span style="">
+</span><span style="">                   </span><span style="">spoon.MouseCircle</span><span style="">:</span><span style="">show</span><span style="">)</span></code></pre>
+</div>
 <p>But this results in an error. The correct way is to wrap the call in
 an anonymous function:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">hs.hotkey.bindSpec({</span> <span style="color: #f8f8f2">{</span><span style="color: #e6db74">&quot;ctrl&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;alt&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;cmd&quot;</span> <span style="color: #f8f8f2">},</span> <span style="color: #e6db74">&quot;p&quot;</span> <span style="color: #f8f8f2">},</span>
-                   <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">spoon.MouseCircle:show()</span> <span style="color: #66d9ef">end</span><span style="color: #f8f8f2">)</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="">hs.hotkey</span><span style="">.</span><span style="">bindSpec</span><span style="">({</span><span style=""> </span><span style="">{</span><span style="color:#e6db74">&#34;ctrl&#34;</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#34;alt&#34;</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#34;cmd&#34;</span><span style=""> </span><span style="">},</span><span style=""> </span><span style="color:#e6db74">&#34;p&#34;</span><span style=""> </span><span style="">},</span><span style="">
+</span><span style="">                   </span><span style="color:#66d9ef">function</span><span style="">()</span><span style=""> </span><span style="">spoon.MouseCircle</span><span style="">:</span><span style="">show</span><span style="">()</span><span style=""> </span><span style="color:#66d9ef">end</span><span style="">)</span></code></pre>
+</div>
 <p>Alternatively, you can use the <a href="http://www.hammerspoon.org/docs/hs.fnutils.html#partial"><code>hs.fnutils.partial</code></a>
  function to
 construct a function pointer that includes the correct first
 argument:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">hs.hotkey.bindSpec({</span> <span style="color: #f8f8f2">{</span><span style="color: #e6db74">&quot;ctrl&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;alt&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;cmd&quot;</span> <span style="color: #f8f8f2">},</span> <span style="color: #e6db74">&quot;p&quot;</span> <span style="color: #f8f8f2">},</span>
-                   <span style="color: #f8f8f2">hs.fnutils.partial(spoon.MouseCircle.show,</span>
-                                      <span style="color: #f8f8f2">spoon.MouseCircle))</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="">hs.hotkey</span><span style="">.</span><span style="">bindSpec</span><span style="">({</span><span style=""> </span><span style="">{</span><span style="color:#e6db74">&#34;ctrl&#34;</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#34;alt&#34;</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#34;cmd&#34;</span><span style=""> </span><span style="">},</span><span style=""> </span><span style="color:#e6db74">&#34;p&#34;</span><span style=""> </span><span style="">},</span><span style="">
+</span><span style="">                   </span><span style="">hs.fnutils</span><span style="">.</span><span style="">partial</span><span style="">(</span><span style="">spoon.MouseCircle</span><span style="">.</span><span style="">show</span><span style="">,</span><span style="">
+</span><span style="">                                      </span><span style="">spoon.MouseCircle</span><span style="">))</span></code></pre>
+</div>
 <p>This is more verbose than the previous example, but the technique
 can be useful sometimes. Although Lua is not a full functional
 language, it supports using functions as first-class values, and the
@@ -461,16 +450,15 @@ that implements this functionality. You can download it from
 you can use it to declaratively install, configure and run spoons. For
 example, with SpoonInstall you can use the MouseCircle spoon as
 follows:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">hs.loadSpoon(</span><span style="color: #e6db74">&quot;SpoonInstall&quot;</span><span style="color: #f8f8f2">)</span>
-<span style="color: #f8f8f2">spoon.SpoonInstall:andUse(</span><span style="color: #e6db74">&quot;MouseCircle&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">{</span>
-                  <span style="color: #f8f8f2">config</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
-                     <span style="color: #f8f8f2">color</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">hs.drawing.color.osx_red,</span>
-                  <span style="color: #f8f8f2">},</span>
-                  <span style="color: #f8f8f2">hotkeys</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
-                     <span style="color: #f8f8f2">show</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span> <span style="color: #f8f8f2">{</span> <span style="color: #e6db74">&quot;ctrl&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;cmd&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;alt&quot;</span><span style="color: #f8f8f2">},</span> <span style="color: #e6db74">&quot;d&quot;</span> <span style="color: #f8f8f2">}</span>
-                  <span style="color: #f8f8f2">}})</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="">hs.loadSpoon</span><span style="">(</span><span style="color:#e6db74">&#34;SpoonInstall&#34;</span><span style="">)</span><span style="">
+</span><span style=""></span><span style="">spoon.SpoonInstall</span><span style="">:</span><span style="">andUse</span><span style="">(</span><span style="color:#e6db74">&#34;MouseCircle&#34;</span><span style="">,</span><span style=""> </span><span style="">{</span><span style="">
+</span><span style="">                  </span><span style="">config</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">{</span><span style="">
+</span><span style="">                     </span><span style="">color</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">hs.drawing</span><span style="">.</span><span style="">color.osx_red</span><span style="">,</span><span style="">
+</span><span style="">                  </span><span style="">},</span><span style="">
+</span><span style="">                  </span><span style="">hotkeys</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">{</span><span style="">
+</span><span style="">                     </span><span style="">show</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">{</span><span style=""> </span><span style="">{</span><span style=""> </span><span style="color:#e6db74">&#34;ctrl&#34;</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#34;cmd&#34;</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#34;alt&#34;</span><span style="">},</span><span style=""> </span><span style="color:#e6db74">&#34;d&#34;</span><span style=""> </span><span style="">}</span><span style="">
+</span><span style="">                  </span><span style="">}})</span></code></pre>
+</div>
 <p>If the MouseCircle spoon is not yet installed,
 <code>spoon.SpoonInstall:andUse()</code> will automatically download and install
 it, and set its configuration variables and hotkeys according to the
@@ -513,14 +501,14 @@ not covered by the other attributes. For example, if you use the
  spoon (a configurable launcher), you need to call its
 <code>loadPlugins()</code> method to specify which Seal plugins to use. You
 can achieve this with something like this:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">spoon.SpoonInstall:andUse(</span><span style="color: #e6db74">&quot;Seal&quot;</span><span style="color: #f8f8f2">,</span>
-  <span style="color: #f8f8f2">{</span> <span style="color: #f8f8f2">hotkeys</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span> <span style="color: #f8f8f2">show</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span> <span style="color: #f8f8f2">{</span><span style="color: #e6db74">&quot;cmd&quot;</span><span style="color: #f8f8f2">},</span> <span style="color: #e6db74">&quot;space&quot;</span> <span style="color: #f8f8f2">}</span> <span style="color: #f8f8f2">},</span>
-    <span style="color: #f8f8f2">fn</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(s)</span>
-             <span style="color: #f8f8f2">s:loadPlugins({</span><span style="color: #e6db74">&quot;apps&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;calc&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;safari_bookmarks&quot;</span><span style="color: #f8f8f2">})</span>
-         <span style="color: #66d9ef">end</span><span style="color: #f8f8f2">,</span>
-         <span style="color: #f8f8f2">start</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">true</span><span style="color: #f8f8f2">,</span>
-  <span style="color: #f8f8f2">})</span>
-</pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="">spoon.SpoonInstall</span><span style="">:</span><span style="">andUse</span><span style="">(</span><span style="color:#e6db74">&#34;Seal&#34;</span><span style="">,</span><span style="">
+</span><span style="">  </span><span style="">{</span><span style=""> </span><span style="">hotkeys</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">{</span><span style=""> </span><span style="">show</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">{</span><span style=""> </span><span style="">{</span><span style="color:#e6db74">&#34;cmd&#34;</span><span style="">},</span><span style=""> </span><span style="color:#e6db74">&#34;space&#34;</span><span style=""> </span><span style="">}</span><span style=""> </span><span style="">},</span><span style="">
+</span><span style="">    </span><span style="">fn</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#66d9ef">function</span><span style="">(</span><span style="">s</span><span style="">)</span><span style="">
+</span><span style="">             </span><span style="">s</span><span style="">:</span><span style="">loadPlugins</span><span style="">({</span><span style="color:#e6db74">&#34;apps&#34;</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#34;calc&#34;</span><span style="">,</span><span style=""> </span><span style="color:#e6db74">&#34;safari_bookmarks&#34;</span><span style="">})</span><span style="">
+</span><span style="">         </span><span style="color:#66d9ef">end</span><span style="">,</span><span style="">
+</span><span style="">         </span><span style="">start</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#66d9ef">true</span><span style="">,</span><span style="">
+</span><span style="">  </span><span style="">})</span></code></pre>
+</div></li>
 
 <li><p><code>repo</code> indicates the repository from where the Spoon should be
 installed if needed. Defaults to <code>&quot;default&quot;</code>, which indicates the
@@ -547,9 +535,8 @@ your configuration.</p></li>
 	<div class="admonition-content"><p>You can assign functions and modules to variables to improve
 readability of your code. For example, in my <code>init.lua</code> file I make
 the following assignment:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">Install</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">spoon.SpoonInstall</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="">Install</span><span style="color:#f92672">=</span><span style="">spoon.SpoonInstall</span></code></pre>
+</div>
 <p>Which allows me to write <code>Install:andUse(&quot;MouseCircle&quot;, …​ )</code>, which is
 shorter and easier to read.</p>
 </div>
@@ -568,23 +555,21 @@ in-progress Spoons.</p>
 <p>The configuration variable used to specify repositories is
 <code>SpoonInstall.repos</code>. Its default value is the following, which
 configures the official repository identified as &ldquo;default&rdquo;:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">{</span>
-  <span style="color: #f8f8f2">default</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
-      <span style="color: #f8f8f2">url</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;https://github.com/Hammerspoon/Spoons&quot;</span><span style="color: #f8f8f2">,</span>
-      <span style="color: #f8f8f2">desc</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;Main Hammerspoon Spoon repository&quot;</span><span style="color: #f8f8f2">,</span>
-  <span style="color: #f8f8f2">}</span>
-<span style="color: #f8f8f2">}</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="">{</span><span style="">
+</span><span style="">  </span><span style="">default</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">{</span><span style="">
+</span><span style="">      </span><span style="">url</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#34;https://github.com/Hammerspoon/Spoons&#34;</span><span style="">,</span><span style="">
+</span><span style="">      </span><span style="">desc</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#34;Main Hammerspoon Spoon repository&#34;</span><span style="">,</span><span style="">
+</span><span style="">  </span><span style="">}</span><span style="">
+</span><span style=""></span><span style="">}</span></code></pre>
+</div>
 <p>To configure a new repository, you can define an extra entry in this
 variable. The following code creates an entry named &ldquo;zzspoons&rdquo; for my
 Spoon repository:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">spoon.SpoonInstall.repos.zzspoons</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
-   <span style="color: #f8f8f2">url</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;https://github.com/zzamboni/zzSpoons&quot;</span><span style="color: #f8f8f2">,</span>
-   <span style="color: #f8f8f2">desc</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;zzamboni&#39;s spoon repository&quot;</span><span style="color: #f8f8f2">,</span>
-<span style="color: #f8f8f2">}</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="">spoon.SpoonInstall</span><span style="">.</span><span style="">repos.zzspoons</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">{</span><span style="">
+</span><span style="">   </span><span style="">url</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#34;https://github.com/zzamboni/zzSpoons&#34;</span><span style="">,</span><span style="">
+</span><span style="">   </span><span style="">desc</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#34;zzamboni&#39;s spoon repository&#34;</span><span style="">,</span><span style="">
+</span><span style=""></span><span style="">}</span></code></pre>
+</div>
 <p>After this, both &ldquo;zzspoons&rdquo; and &ldquo;default&rdquo; can be used as values to the
 <code>repo</code> attribute in the <code>andUse()</code> method, and in any of the other
 methods that take a repository identifier as a parameter. You can find
