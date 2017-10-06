@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.27.1" />
+     <meta name="generator" content="Hugo 0.29" />
       
       
         <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
@@ -49,7 +49,7 @@
 
 
 <meta itemprop="dateModified" content="2017-08-25T09:00:00&#43;02:00" />
-<meta itemprop="wordCount" content="1591">
+<meta itemprop="wordCount" content="1583">
 
 
 
@@ -192,33 +192,33 @@
 
 <ol>
 <li><p><a href="https://ghost.org/developers/">Download Ghost</a> (version 1.7.1 as of this writing):</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>cd ~/tmp # or some other suitable place
-wget https://github.com/TryGhost/Ghost/releases/download/1.7.1/Ghost-1.7.1.zip
-</pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">cd ~/tmp # or some other suitable place
+</span><span style="">wget https://github.com/TryGhost/Ghost/releases/download/1.7.1/Ghost-1.7.1.zip</span></code></pre>
+</div></li>
 
 <li><p>Unpack it in a suitable directory, initialize it as a GitHub repository and commit the Ghost plain install (to have a baseline with the fresh install):</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>mkdir test-ghost-blog
-cd test-ghost-blog
-unzip ../Ghost-1.7.1.zip
-git init .
-git add .
-git commit -m &#39;Initial commit&#39;
-</pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">mkdir test-ghost-blog
+</span><span style="">cd test-ghost-blog
+</span><span style="">unzip ../Ghost-1.7.1.zip
+</span><span style="">git init .
+</span><span style="">git add .
+</span><span style="">git commit -m &#39;Initial commit&#39;</span></code></pre>
+</div></li>
 
 <li><p>Install the necessary Node modules, update the git repository:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>npm install
-git add .
-git commit -m &#39;Installed Node dependencies&#39;
-</pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">npm install
+</span><span style="">git add .
+</span><span style="">git commit -m &#39;Installed Node dependencies&#39;</span></code></pre>
+</div></li>
 
 <li><p>Install <code>knex-migrator</code>, needed for the DB initialization:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>npm install -g knex-migrator
-</pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">npm install -g knex-migrator</span></code></pre>
+</div></li>
 
 <li><p>Initialize the database and start Ghost (<code>knex-migrator</code> may give a &ldquo;Module version mismatch&rdquo; message, but it seems to work OK anyway):</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>knex-migrator
-npm start
-</pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">knex-migrator
+</span><span style="">npm start</span></code></pre>
+</div></li>
 
 <li><p>Your blog is running! You can visit it at <a href="http://localhost:2368/">http://localhost:2368/</a>: 
 <figure class="shadow">
@@ -264,9 +264,9 @@ npm start
 </p></li>
 
 <li><p>Update the git repository:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>git add .
-git commit -m &#39;Finished local Ghost setup&#39;
-</pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">git add .
+</span><span style="">git commit -m &#39;Finished local Ghost setup&#39;</span></code></pre>
+</div></li>
 </ol>
 
 <h1 id="export-website">Export website</h1>
@@ -275,15 +275,14 @@ git commit -m &#39;Finished local Ghost setup&#39;
 
 <ol>
 <li><p>We will publish the blog from the <code>docs</code> directory of our repository, so that&rsquo;s where we need to store the static copy:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>wget -r -nH -P docs -E -T 2 -np -k http://localhost:2368/
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">wget -r -nH -P docs -E -T 2 -np -k http://localhost:2368/</span></code></pre>
+</div>
 <p>This command will crawl the entire site and create a static copy of it under the <code>docs</code> directory. You can open the file <code>docs/index.html</code> in your web browser to verify.</p></li>
 
 <li><p>Add the generated pages to the git repository:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>git add docs
-git commit -m &#39;Initial commit of static web site&#39;
-</pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">git add docs
+</span><span style="">git commit -m &#39;Initial commit of static web site&#39;</span></code></pre>
+</div></li>
 </ol>
 
 <h1 id="push-to-github">Push to GitHub</h1>
@@ -292,12 +291,12 @@ git commit -m &#39;Initial commit of static web site&#39;
 
 <ol>
 <li><p>Create the repository. I&rsquo;m using here the <a href="https://hub.github.com/"><code>hub</code></a> command, but of course you can also do it by hand in the GitHub website (in this case you need to <a href="https://help.github.com/articles/adding-a-remote/">add the git remote</a> by hand as well):</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>hub create 
-</pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">hub create </span></code></pre>
+</div></li>
 
 <li><p>Push the local repository to GitHub (this includes both the Ghost source and the generated website under <code>docs</code>):</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>git push -u origin master
-</pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">git push -u origin master</span></code></pre>
+</div></li>
 </ol>
 
 <h1 id="publish">Publish!</h1>
@@ -342,35 +341,33 @@ git commit -m &#39;Initial commit of static web site&#39;
 
 <ol>
 <li><p>Start Ghost inside your GitHub repository:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>npm start
-</pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">npm start</span></code></pre>
+</div></li>
 
 <li><p>Connect to <a href="http://localhost:2368/">http://localhost:2368/</a> and update your contents. You can also change the blog settings, themes, etc.</p></li>
 
 <li><p>Re-crawl the site to generate the local copy:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>wget -r -nH -P docs -E -T 2 -np -k http://localhost:2368/
-</pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">wget -r -nH -P docs -E -T 2 -np -k http://localhost:2368/</span></code></pre>
+</div></li>
 
 <li><p>Update and push the whole git repository:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>git add .
-git commit -m &#39;Website update&#39;
-</pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">git add .
+</span><span style="">git commit -m &#39;Website update&#39;</span></code></pre>
+</div></li>
 </ol>
 
 <p>Steps 3 and 4 can be easily automated. I keep the following <a href="https://github.com/zzamboni/test-ghost-blog/blob/master/update_website.sh"><code>update_website.sh</code></a> script in the repository with the name :</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e">#!/bin/bash</span>
-<span style="color: #f8f8f2">OUTDIR</span><span style="color: #f92672">=</span>docs
-<span style="color: #f8f8f2">LOCAL_GHOST</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;http://localhost:2368/&quot;</span>
-wget -r -nH -P <span style="color: #f8f8f2">$OUTDIR</span> -E -T <span style="color: #ae81ff">2</span> -np -k <span style="color: #f8f8f2">$LOCAL_GHOST</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #ae81ff">\</span>
-git add . <span style="color: #f92672">&amp;&amp;</span> <span style="color: #ae81ff">\</span>
-git ci -m <span style="color: #e6db74">&#39;Update website&#39;</span> <span style="color: #f92672">&amp;&amp;</span>  <span style="color: #ae81ff">\</span>
-git push
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span><span style="">OUTDIR</span><span style=""></span><span style="color:#f92672">=</span><span style="">docs
+</span><span style=""></span><span style="">LOCAL_GHOST</span><span style=""></span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://localhost:2368/&#34;</span><span style="">
+</span><span style="">wget -r -nH -P </span><span style="">$OUTDIR</span><span style=""> -E -T </span><span style="color:#ae81ff">2</span><span style=""> -np -k </span><span style="">$LOCAL_GHOST</span><span style=""> </span><span style="color:#f92672">&amp;&amp;</span><span style=""> </span><span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span><span style="">git add . </span><span style="color:#f92672">&amp;&amp;</span><span style=""> </span><span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span><span style="">git ci -m </span><span style="color:#e6db74">&#39;Update website&#39;</span><span style=""> </span><span style="color:#f92672">&amp;&amp;</span><span style="">  </span><span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span><span style="">git push</span></code></pre>
+</div>
 <p>Then you can just run this script from within your repository after making any changes:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>./update_website.sh
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">./update_website.sh</span></code></pre>
+</div>
 <h1 id="variations">Variations</h1>
 
 <p>The method described above is my favorite because it allows me to keep the source data and generated pages in the same repository. However, there are other variations that you might want to use:</p>
@@ -392,9 +389,8 @@ git push
 <p>Sharp-eyed readers may have noticed that with the setup described above, Ghost&rsquo;s entire database file gets checked into your repository. This file contains not only your published blog posts, but also your user definitions (including hashed versions of the user passwords) and draft posts.</p>
 
 <p>The local Ghost install uses a SQLite database, stored at <code>content/data/ghost-dev.db</code>, which you can query using the <code>sqlite3</code> command. For example, to see the user definitions:</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>sqlite3 content/data/ghost-dev.db &#39;select * from users&#39;
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">sqlite3 content/data/ghost-dev.db &#39;select * from users&#39;</span></code></pre>
+</div>
 <p>While this seems scandalous, keep in mind that the active Ghost installation is only running locally on your machine, and is not accessible to anyone from the outside, even when it is running (the server is only bound to <code>localhost</code>). Still, you may want to keep in mind:</p>
 
 <ul>
