@@ -5,7 +5,7 @@ aliases:
 ---
 
 There are two versions of my CV, depending on how much detail you
-want to see. Both were last updated on **March 26th, 2015**.
+want to see. Both were last updated on **October 6th, 2017**.
 
 - Long version: [PDF](/files/vita/cv-full-diego_zamboni.pdf).
 - Short version: [PDF](/files/vita/cv-short-diego_zamboni.pdf).
