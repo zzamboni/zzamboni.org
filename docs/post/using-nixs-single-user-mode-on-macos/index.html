@@ -49,7 +49,7 @@
 
 
 <meta itemprop="dateModified" content="2017-09-20T18:24:47&#43;00:00" />
-<meta itemprop="wordCount" content="429">
+<meta itemprop="wordCount" content="427">
 
 
 
@@ -192,12 +192,12 @@ did, with <code>brew cask install nix</code> (I know&mdash;the irony of using
 Homebrew to install Nix!)</p>
 
 <p>Next, we need to unload and stop the nix daemon:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist 
-</span><span style="">sudo launchctl stop org.nixos.nix-daemon</span></code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="s1f40">sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist
+</span><span class="s1f40">sudo launchctl stop org.nixos.nix-daemon</span></code></pre>
 </div>
 <p>Change the ownership of the entire <code>/nix</code> directory to your
 personal user:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">chown -R yourusername /nix </span></code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="s1f40">chown -R yourusername /nix </span></code></pre>
 </div>
 <p>Change your configuration to unset the <code>NIX_REMOTE</code> environment
 variable. This is set automatically if you use <code>bash</code> because the Nix
@@ -209,14 +209,14 @@ library</a>,
 which I load from my
 <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.elv#L82-L86">rc.elv</a>
 file like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style=""># Set up Nix environment
-</span><span style="">use nix
-</span><span style="">nix:multi-user-setup
-</span><span style=""># Work without the daemon
-</span><span style="">E:NIX_REMOTE = &#34;&#34;</span></code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="s1770"># Set up Nix environment
+</span><span class="s1770"></span><span class="s1f40">use nix
+</span><span class="s1f40">nix:multi-user-setup
+</span><span class="s1f40"></span><span class="s1770"># Work without the daemon
+</span><span class="s1770"></span><span class="s1f40">E:NIX_REMOTE </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sc1c">&#34;&#34;</span></code></pre>
 </div>
 <p>Remove the following line from <code>/etc/nix/nix.conf</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">build-users-group = nixbld</span></code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="s1f40">build-users-group </span><span class="sfa0">=</span><span class="s1f40"> nixbld</span></code></pre>
 </div>
 <p>That&rsquo;s it! You should now be able to run <code>nix-env</code> and all other Nix
 commands and they will operate directly, without going through the
@@ -225,16 +225,16 @@ daemon.</p>
 <p>Once you are convinced that things are working fine, and to fully
 cleanup the multi-user install, you can remove the Nix build group and
 users with these commands:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">sudo dscl . -delete /Users/nixbld1
-</span><span style="">sudo dscl . -delete /Users/nixbld2
-</span><span style="">sudo dscl . -delete /Users/nixbld3
-</span><span style="">sudo dscl . -delete /Users/nixbld4
-</span><span style="">sudo dscl . -delete /Users/nixbld5
-</span><span style="">sudo dscl . -delete /Users/nixbld6
-</span><span style="">sudo dscl . -delete /Users/nixbld7
-</span><span style="">sudo dscl . -delete /Users/nixbld8
-</span><span style="">sudo dscl . -delete /Users/nixbld9
-</span><span style="">sudo dscl . -delete /Groups/nixbld</span></code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="s1f40">sudo dscl . -delete /Users/nixbld1
+</span><span class="s1f40">sudo dscl . -delete /Users/nixbld2
+</span><span class="s1f40">sudo dscl . -delete /Users/nixbld3
+</span><span class="s1f40">sudo dscl . -delete /Users/nixbld4
+</span><span class="s1f40">sudo dscl . -delete /Users/nixbld5
+</span><span class="s1f40">sudo dscl . -delete /Users/nixbld6
+</span><span class="s1f40">sudo dscl . -delete /Users/nixbld7
+</span><span class="s1f40">sudo dscl . -delete /Users/nixbld8
+</span><span class="s1f40">sudo dscl . -delete /Users/nixbld9
+</span><span class="s1f40">sudo dscl . -delete /Groups/nixbld</span></code></pre>
 </div>
 <p>I&rsquo;ll write more about my experiences with Nix in the future. Stay
 tuned.</p>

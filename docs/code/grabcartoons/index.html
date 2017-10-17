@@ -158,7 +158,7 @@ very easy to write modules for new comics.</p>
 
 <p>You can also clone the project with <a href="http://git-scm.com">Git</a> by
 running:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">git clone git://github.com/zzamboni/grabcartoons</span></code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console"><span class="s1f40">git clone git://github.com/zzamboni/grabcartoons</span></code></pre>
 </div>
 <p>From within the source directory, run <code>make install</code>.</p>
 
@@ -247,7 +247,7 @@ running:</p>
 
 <p>Grabcartoons also includes <em>templates</em> that allow you to fetch any comic
 from a given site. At the moment we have the following templates:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">$ grabcartoons.pl --templates
+<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console"><span class="s1f40">$ grabcartoons.pl --templates
 Templates defined:
 	arcamax.com	Comics hosted at arcamax.com
 	comics.com	Comics hosted at gocomics.com
@@ -270,41 +270,41 @@ title of the comic you want.</p>
 
 <p>Full set of options:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="">$ grabcartoons.pl -h
-</span><span style="">GrabCartoons version 2.8.4
-</span><span style="">Usage: ./grabcartoons.pl [ options ] [ comic_id ...]
-</span><span style="">    --all       or -a  generate a page with all the known comics on stdout.
-</span><span style="">    --list [t:] or -l  produce a list of the known comic_id&#39;s on stdout. If
-</span><span style="">                       t: is given, the list of comics from the given template
-</span><span style="">                       is produced.
-</span><span style="">    --htmllist [t:]    produce HTML list of known comic_id&#39;s on stdout. If
-</span><span style="">                       t: is given, the list of comics from the given template
-</span><span style="">                       is produced.
-</span><span style="">    --file     or -f   read list of comics from specified file.
-</span><span style="">    --random n         select n comics at random (they will be output after
-</span><span style="">                       any other comics requested)
-</span><span style="">    --write    or -w   write output to specified file instead of stdout.
-</span><span style="">    --version  or -V   print version number
-</span><span style="">    --verbose  or -v   be verbose
-</span><span style="">    --help     or -h   print this message.
-</span><span style="">    --notitles or -t   do not show comic titles (for those that have them)
-</span><span style="">    --templates        produce a list of defined templates
-</span><span style="">    --genmodules       for any template specifications (template:comictag),
-</span><span style="">                       write a snippet to comictag.pl in the directory
-</span><span style="">                       specified by --genout.
-</span><span style="">    --genout dir       output directory for generated comics.
-</span><span style="">
-</span><span style="">By default, it will produce a page with the given comics on stdout.
-</span><span style="">
-</span><span style="">comic_id can be:
-</span><span style="">  - Any of the predefined modules (e.g. sinfest, adam_at_home)
-</span><span style="">  - Of the form &#39;template:comic title&#39;, including quotes if the title has
-</span><span style="">    spaces (e.g. &#39;gocomis.com:Citizen Dog&#39;, comics.com:Frazz). This will
-</span><span style="">    generate on the fly a module for the given comic.
-</span><span style="">  - Of the form &#39;template:*&#39; or &#39;template:&#39;, which means &#34;all the comics
-</span><span style="">    from the named template&#34;. This can also be passed as argument to
-</span><span style="">    the --list and --htmllist options to produce the listing from the
-</span><span style="">    given template instead of from the built-in modules.</span></code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console"><span class="s1f40">$ grabcartoons.pl -h
+</span><span class="s1f40">GrabCartoons version 2.8.4
+</span><span class="s1f40">Usage: ./grabcartoons.pl [ options ] [ comic_id ...]
+</span><span class="s1f40">    --all       or -a  generate a page with all the known comics on stdout.
+</span><span class="s1f40">    --list [t:] or -l  produce a list of the known comic_id&#39;s on stdout. If
+</span><span class="s1f40">                       t: is given, the list of comics from the given template
+</span><span class="s1f40">                       is produced.
+</span><span class="s1f40">    --htmllist [t:]    produce HTML list of known comic_id&#39;s on stdout. If
+</span><span class="s1f40">                       t: is given, the list of comics from the given template
+</span><span class="s1f40">                       is produced.
+</span><span class="s1f40">    --file     or -f   read list of comics from specified file.
+</span><span class="s1f40">    --random n         select n comics at random (they will be output after
+</span><span class="s1f40">                       any other comics requested)
+</span><span class="s1f40">    --write    or -w   write output to specified file instead of stdout.
+</span><span class="s1f40">    --version  or -V   print version number
+</span><span class="s1f40">    --verbose  or -v   be verbose
+</span><span class="s1f40">    --help     or -h   print this message.
+</span><span class="s1f40">    --notitles or -t   do not show comic titles (for those that have them)
+</span><span class="s1f40">    --templates        produce a list of defined templates
+</span><span class="s1f40">    --genmodules       for any template specifications (template:comictag),
+</span><span class="s1f40">                       write a snippet to comictag.pl in the directory
+</span><span class="s1f40">                       specified by --genout.
+</span><span class="s1f40">    --genout dir       output directory for generated comics.
+</span><span class="s1f40">
+</span><span class="s1f40">By default, it will produce a page with the given comics on stdout.
+</span><span class="s1f40">
+</span><span class="s1f40">comic_id can be:
+</span><span class="s1f40">  - Any of the predefined modules (e.g. sinfest, adam_at_home)
+</span><span class="s1f40">  - Of the form &#39;template:comic title&#39;, including quotes if the title has
+</span><span class="s1f40">    spaces (e.g. &#39;gocomis.com:Citizen Dog&#39;, comics.com:Frazz). This will
+</span><span class="s1f40">    generate on the fly a module for the given comic.
+</span><span class="s1f40">  - Of the form &#39;template:*&#39; or &#39;template:&#39;, which means &#34;all the comics
+</span><span class="s1f40">    from the named template&#34;. This can also be passed as argument to
+</span><span class="s1f40">    the --list and --htmllist options to produce the listing from the
+</span><span class="s1f40">    given template instead of from the built-in modules.</span></code></pre>
 </div>
 
 <h2 id="contributions">Contributions</h2>
