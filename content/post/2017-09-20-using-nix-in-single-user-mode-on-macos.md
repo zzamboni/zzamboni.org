@@ -37,15 +37,15 @@ Homebrew to install Nix!)
 
 Next, we need to unload and stop the nix daemon:
 
-```console
-sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist 
+```shell
+sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist
 sudo launchctl stop org.nixos.nix-daemon
 ```
 
 Change the ownership of the entire `/nix` directory to your
 personal user:
 
-```console
+```shell
 chown -R yourusername /nix 
 ```
 
@@ -60,7 +60,7 @@ which I load from my
 [rc.elv](https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.elv#L82-L86)
 file like this:
 
-```console
+```shell
 # Set up Nix environment
 use nix
 nix:multi-user-setup
@@ -70,7 +70,7 @@ E:NIX_REMOTE = ""
 
 Remove the following line from `/etc/nix/nix.conf`:
 
-```console
+```shell
 build-users-group = nixbld
 ```
 
@@ -82,7 +82,7 @@ Once you are convinced that things are working fine, and to fully
 cleanup the multi-user install, you can remove the Nix build group and
 users with these commands:
 
-```console
+```shell
 sudo dscl . -delete /Users/nixbld1
 sudo dscl . -delete /Users/nixbld2
 sudo dscl . -delete /Users/nixbld3
