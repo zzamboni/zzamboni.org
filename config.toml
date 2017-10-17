@@ -14,6 +14,7 @@ SectionPagesMenu = "main"
 Paginate = 30
 enableRobotsTXT = true
 pygmentsCodeFences = true
+pygmentsUseClasses = true
 
 [permalinks]
   post = "/post/:slug"

@@ -35,13 +35,13 @@ So, without further ado, here are the detailed instructions. I ran these on my M
 # Install Ghost
 
 1. [Download Ghost](https://ghost.org/developers/) (version 1.7.1 as of this writing):
-   ```console
+   ```shell
    cd ~/tmp # or some other suitable place
    wget https://github.com/TryGhost/Ghost/releases/download/1.7.1/Ghost-1.7.1.zip
    ```
    
 2. Unpack it in a suitable directory, initialize it as a GitHub repository and commit the Ghost plain install (to have a baseline with the fresh install):
-   ```console
+   ```shell
    mkdir test-ghost-blog
    cd test-ghost-blog
    unzip ../Ghost-1.7.1.zip
@@ -51,19 +51,19 @@ So, without further ado, here are the detailed instructions. I ran these on my M
    ```
    
 3. Install the necessary Node modules, update the git repository:
-   ```console
+   ```shell
    npm install
    git add .
    git commit -m 'Installed Node dependencies'
    ```
 
 4. Install `knex-migrator`, needed for the DB initialization:
-   ```console
+   ```shell
    npm install -g knex-migrator
    ```
    
 4. Initialize the database and start Ghost (`knex-migrator` may give a "Module version mismatch" message, but it seems to work OK anyway):
-   ```console
+   ```shell
    knex-migrator
    npm start
    ```
@@ -80,7 +80,7 @@ So, without further ado, here are the detailed instructions. I ran these on my M
    {{< figure src="/figures/ghost-admin-screen.png" class="shadow" >}}
 
 8. Update the git repository:
-   ```console
+   ```shell
    git add .
    git commit -m 'Finished local Ghost setup'
    ```
@@ -90,13 +90,13 @@ So, without further ado, here are the detailed instructions. I ran these on my M
 Now that you have your blog set up locally, we need to generate a static copy that can be published to GitHub. For this we will use the wget command. I gathered the correct options from [this blog post by Ilya](http://www.suodatin.com/fathom/How-to-retire-a-wordpress-blog-(make-wordpress-a-static-site)) a few years ago, although it's not too hard to deduct them from the [wget man page](http://www.misc.cl.cam.ac.uk/cgi-bin/manpage?wget).
    
 1. We will publish the blog from the `docs` directory of our repository, so that's where we need to store the static copy:
-   ```console
+   ```shell
    wget -r -nH -P docs -E -T 2 -np -k http://localhost:2368/
    ```
    This command will crawl the entire site and create a static copy of it under the `docs` directory. You can open the file `docs/index.html` in your web browser to verify.
 
 2. Add the generated pages to the git repository:
-   ```console
+   ```shell
    git add docs
    git commit -m 'Initial commit of static web site'
    ```
@@ -106,12 +106,12 @@ Now that you have your blog set up locally, we need to generate a static copy th
 We can finally create our GitHub repo and push the contents to it.
 
 1. Create the repository. I'm using here the [`hub`](https://hub.github.com/) command, but of course you can also do it by hand in the GitHub website (in this case you need to [add the git remote](https://help.github.com/articles/adding-a-remote/) by hand as well):
-   ```console
+   ```shell
    hub create 
    ```
 
 2. Push the local repository to GitHub (this includes both the Ghost source and the generated website under `docs`):
-   ```console
+   ```shell
    git push -u origin master
    ```
 
@@ -133,24 +133,26 @@ We are done! After a few minutes (usually takes 2-5 minutes for the contents to 
 After the initial setup, you need to follow these steps when you want to update your website:
 
 1. Start Ghost inside your GitHub repository:
-   ```console
+   ```shell
    npm start
    ```
 
 2. Connect to [http://localhost:2368/](http://localhost:2368/) and update your contents. You can also change the blog settings, themes, etc.
    
 3. Re-crawl the site to generate the local copy:
-   ```console
+   ```shell
    wget -r -nH -P docs -E -T 2 -np -k http://localhost:2368/
    ```
 
 4. Update and push the whole git repository:
-   ```console
+   ```shell
    git add .
    git commit -m 'Website update'
    ```
 
-Steps 3 and 4 can be easily automated. I keep the following [`update_website.sh`](https://github.com/zzamboni/test-ghost-blog/blob/master/update_website.sh) script in the repository with the name :
+Steps 3 and 4 can be easily automated. I keep the following
+[`update_website.sh`](https://github.com/zzamboni/test-ghost-blog/blob/master/update_website.sh)
+script in the repository:
 
 ```bash
 #!/bin/bash
@@ -164,7 +166,7 @@ git push
 
 Then you can just run this script from within your repository after making any changes:
 
-```console
+```shell
 ./update_website.sh
 ```
 
@@ -188,7 +190,7 @@ Sharp-eyed readers may have noticed that with the setup described above, Ghost's
 
 The local Ghost install uses a SQLite database, stored at `content/data/ghost-dev.db`, which you can query using the `sqlite3` command. For example, to see the user definitions:
 
-```console
+```shell
 sqlite3 content/data/ghost-dev.db 'select * from users'
 ```
 
