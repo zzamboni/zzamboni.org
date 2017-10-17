@@ -193,14 +193,14 @@ properties can be accessed directly on the object.</p>
 fix</a>, but if you want
 to apply it right away, just change the following line in
 <code>~/.hammerspoon/Spoons/SendToOmniFocus.spoon/scripts/outlook-to-omnifocus.applescript</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-applescript" data-lang="applescript"><span style="color:#66d9ef">set</span><span style=""> </span><span style="">theProps</span><span style=""> </span><span style="color:#66d9ef">to</span><span style=""> </span><span style="">(</span><span style="color:#a6e22e">properties</span><span style=""> </span><span style="color:#66d9ef">of</span><span style=""> </span><span style="">selectedItem</span><span style="">)</span></code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-applescript" data-lang="applescript"><span class="s3e8">set</span><span class="s1f40"> </span><span class="s7d0">theProps</span><span class="s1f40"> </span><span class="s3e8">to</span><span class="s1f40"> </span><span class="s1388">(</span><span class="s7d1">properties</span><span class="s1f40"> </span><span class="s3e8">of</span><span class="s1f40"> </span><span class="s7d0">selectedItem</span><span class="s1388">)</span></code></pre>
 </div>
 <p>to the following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-applescript" data-lang="applescript"><span style="color:#66d9ef">try</span><span style="">
-</span><span style="">        </span><span style="color:#66d9ef">set</span><span style=""> </span><span style="">theProps</span><span style=""> </span><span style="color:#66d9ef">to</span><span style=""> </span><span style="">(</span><span style="color:#a6e22e">properties</span><span style=""> </span><span style="color:#66d9ef">of</span><span style=""> </span><span style="">selectedItem</span><span style="">)</span><span style="">
-</span><span style=""></span><span style="color:#66d9ef">on</span><span style=""> </span><span style="color:#66d9ef">error</span><span style="">
-</span><span style="">        </span><span style="color:#66d9ef">set</span><span style=""> </span><span style="">theProps</span><span style=""> </span><span style="color:#66d9ef">to</span><span style=""> </span><span style="">selectedItem</span><span style="">
-</span><span style=""></span><span style="color:#66d9ef">end</span><span style=""> </span><span style="color:#66d9ef">try</span></code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-applescript" data-lang="applescript"><span class="s3e8">try</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s3e8">set</span><span class="s1f40"> </span><span class="s7d0">theProps</span><span class="s1f40"> </span><span class="s3e8">to</span><span class="s1f40"> </span><span class="s1388">(</span><span class="s7d1">properties</span><span class="s1f40"> </span><span class="s3e8">of</span><span class="s1f40"> </span><span class="s7d0">selectedItem</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s3e8">on</span><span class="s1f40"> </span><span class="s3e8">error</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s3e8">set</span><span class="s1f40"> </span><span class="s7d0">theProps</span><span class="s1f40"> </span><span class="s3e8">to</span><span class="s1f40"> </span><span class="s7d0">selectedItem</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s3e8">end</span><span class="s1f40"> </span><span class="s3e8">try</span></code></pre>
 </div>
 <p>This tries the old behavior, and upon failure uses the new one.</p>
       </section>
