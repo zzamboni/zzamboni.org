@@ -12,6 +12,21 @@
     
     
     <item>
+      <title>Just Enough Lua to Be Productive in Hammerspoon, Part 1</title>
+      <link>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</link>
+      <pubDate>Sat, 21 Oct 2017 20:36:28 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</guid>
+      <description>&lt;p&gt;Hammerspoon&amp;rsquo;s configuration files are written in Lua, so a basic
+knowledge of the language is very useful to be an effective user of
+Hammerspoon. In this 2-part article I will show you the basics of Lua
+so you can read and write Hammerspoon configuration. Along the way you
+will discover that Lua is a surprisingly powerful language.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Using Nix&#39;s &#34;Single-user Mode&#34; on macOS</title>
       <link>http://zzamboni.org/post/using-nixs-single-user-mode-on-macos/</link>
       <pubDate>Wed, 20 Sep 2017 18:24:47 +0000</pubDate>

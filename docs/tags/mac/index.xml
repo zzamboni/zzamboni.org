@@ -6,10 +6,25 @@
     <description>Recent content in Mac on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Sep 2017 21:11:29 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 21 Oct 2017 20:36:28 +0000</lastBuildDate>
     
 	<atom:link href="http://zzamboni.org/tags/mac/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Just Enough Lua to Be Productive in Hammerspoon, Part 1</title>
+      <link>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</link>
+      <pubDate>Sat, 21 Oct 2017 20:36:28 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</guid>
+      <description>&lt;p&gt;Hammerspoon&amp;rsquo;s configuration files are written in Lua, so a basic
+knowledge of the language is very useful to be an effective user of
+Hammerspoon. In this 2-part article I will show you the basics of Lua
+so you can read and write Hammerspoon configuration. Along the way you
+will discover that Lua is a surprisingly powerful language.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Fixing the Outlook-to-OmniFocus Script</title>
