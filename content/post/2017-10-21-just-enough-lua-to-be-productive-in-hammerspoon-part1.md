@@ -1,7 +1,6 @@
 ---
 title: "Just Enough Lua to Be Productive in Hammerspoon, Part 1"
-date: 2017-09-08T19:04:40+02:00
-draft: true
+date: 2017-10-21T20:36:28
 tags:
 - hammerspoon
 - lua
@@ -11,10 +10,11 @@ toc: true
 featured_image: '/images/lua-logo.svg'
 ---
 
-Hammerspoon's configuration files are written in Lua, a basic
+Hammerspoon's configuration files are written in Lua, so a basic
 knowledge of the language is very useful to be an effective user of
-Hammerspoon. Along the way you will discover that Lua is a
-surprisingly powerful language.
+Hammerspoon. In this 2-part article I will show you the basics of Lua
+so you can read and write Hammerspoon configuration. Along the way you
+will discover that Lua is a surprisingly powerful language.
 
 <!--more-->
 
@@ -33,10 +33,6 @@ Perl, Javascript or some similar language, picking up Lua should be
 pretty easy. Instead of detailing every structure, I will focus on the
 aspects that are most different or that are most likely to trip you up
 as you learn it.
-
-Please see [Other Places to Learn Lua]({{< ref
-"#other-places-to-learn-lua" >}}) at the end of this article for
-places where you can find full documentation about Lua.
 
 Flow control
 ------------
@@ -70,7 +66,7 @@ can also see in action the following operators:
 
 -   `and` for the logical AND operation (by extension, you can deduct that `or` and `not` are also available).
 
-``` lua
+```lua
 local doReload = false
 for _,file in pairs(files) do
    if file:sub(-4) == ".lua" and (not string.match(file, '/[.]#')) then
@@ -80,10 +76,15 @@ end
 ```
 
 In this example we see the {{< luadoc for "3.3.5" >}} statement in its
-so-called *generic form*: `for <vars> in <expression> do <block> end`,
-which loops the variables over the values returned by the expressions,
-executing the block with each the consecutive value until it becomes
-`nil`.
+so-called *generic form*:
+
+```lua
+for <var> in <expression> do <block> end
+```
+
+This statement loops the variables over the values returned by the
+expressions, executing the block with each the consecutive value until
+it becomes `nil`.
 
 {{% tip %}}
 Strictly speaking, `expression` is executed once and its value must be
@@ -91,10 +92,15 @@ an *iterator function*, which returns one new value from the sequence
 every time it is called, returning `nil` at the end.
 {{% /tip %}}
 
-The `for` statement also has a *numeric form*: `for <var> = <start>,
-<end>, <inc> do <block> end`, which loops the variable from the start
-to the end value, incrementing it by the given increment (defaults to 1)
-at each iteration.
+The `for` statement also has a *numeric form*:
+
+```lua
+for <var> = <first>,<last>,<inc> do <block> end
+```
+
+This form loops the variable from the first to the last value,
+incrementing it by the given increment (defaults to 1) at each
+iteration.
 
 Going back to our example, we can also learn the following:
 
@@ -232,3 +238,16 @@ hs.hotkey.bindSpec({ hyper, "p" }, leftDoubleClick)
 
 {{% /tip %}}
 
+Until next time!
+----------------
+
+In the next installment, we will dive into Lua's types and data
+structures. In the meantime, feel free to explore and learn on your
+own. If you need more information, I can recommend the following
+resources, which I have found useful:
+
+-   [The Lua 5.3 Reference Manual](http://www.lua.org/manual/5.3/),
+    available at the official [Lua website](http://www.lua.org).
+
+-   [The Lua Wiki](http://lua-users.org/wiki/), a community-maintained
+    wiki with many descriptions, tips, examples and tutorials.
