@@ -162,49 +162,49 @@ useful table-manipulation functions, including the following:
     only joins the elements that would be returned by {{< luafun
     ipairs >}}.
 
-``` lua
-> table.concat(people, ", ")
-Chris, Aaron, Diego, John
-```
+    ``` lua
+    > table.concat(people, ", ")
+    Chris, Aaron, Diego, John
+    ```
 
 -   {{< luafun "table.insert" >}} adds an element to a list, by
     default adding it to the end.
 
-``` lua
-> hs.inspect(people)
-{ "Chris", "Aaron", "Diego", "John", "Bill",
-  [7] = "Mike"
-}
-> table.insert(people, "George")
-> hs.inspect(people)
-{ "Chris", "Aaron", "Diego", "John", "Bill", "George", "Mike" }
-```
+    ``` lua
+    > hs.inspect(people)
+    { "Chris", "Aaron", "Diego", "John", "Bill",
+      [7] = "Mike"
+    }
+    > table.insert(people, "George")
+    > hs.inspect(people)
+    { "Chris", "Aaron", "Diego", "John", "Bill", "George", "Mike" }
+    ```
 
-Note how in the last example, the contiguous indices have finally
-caught up to 7, so the last element is no longer shown separately (and
-will now be included by {{< luafun ipairs >}}, {{< luafun
-"table.concat" >}}, etc.
+    Note how in the last example, the contiguous indices have finally
+    caught up to 7, so the last element is no longer shown separately (and
+    will now be included by {{< luafun ipairs >}}, {{< luafun
+    "table.concat" >}}, etc.
 
 -   {{< luafun "table.remove" >}} removes an element from a list, by
     default the last one. It returns the removed element.
 
-``` lua
-> for i=1,4 do print(table.remove(people)) end
-Mike
-George
-Bill
-John
-> hs.inspect(people)
-{ "Chris", "Aaron", "Diego" }
-```
+    ``` lua
+    > for i=1,4 do print(table.remove(people)) end
+    Mike
+    George
+    Bill
+    John
+    > hs.inspect(people)
+    { "Chris", "Aaron", "Diego" }
+    ```
 
 Notable omissions from the language and the {{< luadoc "table" "6.6"
->}} module, at least when starting with Lua, are "keys" and "values"
-functions, common in other languages. This may be explained by the
-flexible nature of Lua tables, so that those functions would need to
-behave differently depending on the contents of the table. If you need
-them, you can easily build your own. For example, if you want to get a
-sorted list of the keys in a table, you can use this function:
+>}} module are "get keys" and "get values" functions, common in other
+languages. This may be explained by the flexible nature of Lua tables,
+so that those functions would need to behave differently depending on
+the contents of the table. If you need them, you can easily build your
+own. For example, if you want to get a sorted list of the keys in a
+table, you can use this function:
 
 ``` lua
 function sortedkeys(tab)
@@ -332,9 +332,9 @@ from the macOS Terminal application?
 > doubleclick.default_modifiers={cmd=true}
 ```
 
-Now try pressing Ctrl-Alt-Cmd-p while your pointer is over a URL
-displayed on your Terminal (you can just type one yourself to test),
-and it will open in your browser.
+Now try pressing {{< keys Ctrl "⌘" Alt p >}} while your pointer is
+over a URL displayed on your Terminal (you can just type one yourself
+to test), and it will open in your browser.
 
 Note that the name `doubleclick` does not have any special meaning -
 it is a regular variable to which you assigned the value returned by
@@ -355,7 +355,7 @@ other default directories in your system. You can view the places
 where Hammerspoon will look for files by examining the `package.path`
 variable. On my machine I get the following:
 
-``` lua
+```console
 > package.path
 /Users/zzamboni/.hammerspoon/?.lua;/Users/zzamboni/.hammerspoon/?/
 init.lua;/Users/zzamboni/.hammerspoon/Spoons/?.spoon/init.lua;/usr/
@@ -369,9 +369,10 @@ Hammerspoon.app/Contents/Resources/extensions/?/init.lua
 
 {{% tip %}}
 
-Hammerspoon does auto-loading of all the modules under the `hs`
-namespace the first time you use them. For example, when you use {{< hsapi
-"hs.application" >}} for the first time, you will see a message in the console:
+Hammerspoon automatically loads any modules under the `hs` namespace
+the first time you use them. For example, when you use {{< hsapi
+"hs.application" >}} for the first time, you will see a message in the
+console:
 
 ```lua
 > hs.application.get("Terminal")
@@ -505,9 +506,12 @@ It can sometimes be convenient to handle multiple values as a table or
 as separate entities, depending on the circumstances. For example, you
 may have a programmatically-constructed pattern with a variable number
 of capture groups, so you cannot know to how many variables you need
-to assign the result. In this case, the {{< luafun "table.pack" >}} and {{< luafun "table.unpack" >}} functions can be useful.
+to assign the result. In this case, the {{< luafun "table.pack" >}}
+and {{< luafun "table.unpack" >}} functions can be useful.
     
-{{< luafun "table.pack" >}} takes a variable number of arguments and returns them in a table which contains an array component containing the values, plus an index `n` containing the total number of elements:
+{{< luafun "table.pack" >}} takes a variable number of arguments and
+returns them in a table which contains an array component containing
+the values, plus an index `n` containing the total number of elements:
     
 ``` lua
 > res = table.pack(string.find("bah", "(b)(ah)"))
@@ -519,7 +523,9 @@ table: 0x608000c76e80
 }
 ```
     
-{{< luafun "table.unpack" >}} does the opposite, expanding an array into separate values which can be assigned to separate values as needed, or passed as arguments to a function:
+{{< luafun "table.unpack" >}} does the opposite, expanding an array
+into separate values which can be assigned to separate values as
+needed, or passed as arguments to a function:
     
 ``` lua
 > args={"bah", "(b)(ah)"}
@@ -531,10 +537,11 @@ table: 0x608000c76e80
 ```
     {{% /tip %}}
     
-- `string.match(str, pat [, pos])` is similar to `string.find`, but it
-  does not return the positions, rather it returns the part of the
-  string matched by the pattern, or if the pattern contains capture
-  groups, returns the captured segments:
+- {{< luafun "string.match" "`string.match(str, pat [, pos])`" >}} is
+  similar to `string.find`, but it does not return the positions,
+  rather it returns the part of the string matched by the pattern, or
+  if the pattern contains capture groups, returns the captured
+  segments:
 
     ```lua
     > string.match("bah", "ah")
@@ -545,70 +552,108 @@ table: 0x608000c76e80
     b   ah
     ```
 
--   `string.gmatch(str, pat)` returns a function that returns the next match of `pat` within `str` every time it is called, returning `nil` when there are no more matches. If `pat` contains capture groups, they are returned on each iteration.
+- {{< luafun "string.gmatch" "`string.gmatch(str, pat)`" >}} returns a
+  function that returns the next match of `pat` within `str` every
+  time it is called, returning `nil` when there are no more
+  matches. If `pat` contains capture groups, they are returned on each
+  iteration.
 
-``` lua
-> a="Hammerspoon is awesome!"
-> f=string.gmatch(a, "(%w+)")
-> f()
-Hammerspoon
-> f()
-is
-> f()
-awesome
-> f()
-```
+    ``` lua
+    > a="Hammerspoon is awesome!"
+    > f=string.gmatch(a, "(%w+)")
+    > f()
+    Hammerspoon
+    > f()
+    is
+    > f()
+    awesome
+    > f()
+    ```
 
-Most commonly, this is used inside a loop:
+    Most commonly, this is used inside a loop:
 
-``` lua
-for cap in string.gmatch(a, "%w+") do print(cap) end
-Hammerspoon
-is
-awesome
-```
+    ``` lua
+    > for cap in string.gmatch(a, "%w+") do print(cap) end
+    Hammerspoon
+    is
+    awesome
+    ```
 
--   `string.format(formatstring, …​)` formats a sequence of values according to the given format string, following the same formatting rules as the ISO C `sprintf()` function. It additionally supports a new format character `%q`, which formats a string value in a way that can be read back by Lua, escaping or quoting characters as needed (for example quotes, newlines, etc.).
+-   {{< luafun "string.format" "`string.format(formatstring, …​)`" >}}
+    formats a sequence of values according to the given format string,
+    following the same formatting rules as the ISO C `sprintf()`
+    function. It additionally supports a new format character `%q`,
+    which formats a string value in a way that can be read back by
+    Lua, escaping or quoting characters as needed (for example quotes,
+    newlines, etc.).
 
--   `string.len(str)` returns the length of the string.
+-   {{< luafun "string.len" "`string.len(str)`" >}} returns the length
+    of the string.
 
--   `string.lower(str)` and `string.upper(str)` convert the string to lower and uppercase, respectively.
+-   {{< luafun "string.lower" "`string.lower(str)`" >}} and {{< luafun
+    "string.upper" "`string.upper(str)`" >}} convert the string to
+    lower and uppercase, respectively.
 
--   `string.gsub(str, pat, rep[, n])` is a very powerful string-replacement function which hides considerably more power than its simple syntax would lead you to believe. In general, it replaces all (or the first `n`) occurrences of `pat` in `str` with the replacement `rep`. However, `rep` can take any of the following values:
+-   {{< luafun "string.gsub" "`string.gsub(str, pat, rep[, n])`" >}}
+    is a very powerful string-replacement function which hides
+    considerably more power than its simple syntax would lead you to
+    believe. In general, it replaces all (or the first `n`)
+    occurrences of `pat` in `str` with the replacement `rep`. However,
+    `rep` can take any of the following values:
 
-    -   A string which is used for the replacement. If the string contains *%m*, where *m* is a number, the it is replaced by the m-th captured group (or the whole match if *m* is zero).
+    -   A string which is used for the replacement. If the string
+        contains *%m*, where *m* is a number, the it is replaced by
+        the m-th captured group (or the whole match if *m* is zero).
 
-    -   A table which is consulted for the replacement values, using the first capture group as a key (or the whole match if there are no captures). For example:
+    -   A table which is consulted for the replacement values, using
+        the first capture group as a key (or the whole match if there
+        are no captures). For example:
 
-``` lua
-> a="Event type codes: leftMouseDown=$leftMouseDown, rightMouseDown=$rightMouseDown, mouseMoved=$mouseMoved"
-> a:gsub("%$(%w+)", hs.eventtap.event.types)
-Event type codes: leftMouseDown=1, rightMouseDown=3, mouseMoved=5   3
-```
+        ``` lua
+        > a="Event type codes: leftMouseDown=$leftMouseDown, rightMouseDown=$rightMouseDown, mouseMoved=$mouseMoved"
+        > a:gsub("%$(%w+)", hs.eventtap.event.types)
+        Event type codes: leftMouseDown=1, rightMouseDown=3, mouseMoved=5   3
+        ```
 
--   A function which is executed with the captured groups (or the whole match) as an argument, and whose return value is used as the replacement. For example, using the `os.getenv` function, we can easily replace environment variables by their values in a string:
+    -   A function which is executed with the captured groups (or the
+        whole match) as an argument, and whose return value is used as
+        the replacement. For example, using the `os.getenv` function,
+        we can easily replace environment variables by their values in
+        a string:
 
-``` lua
-> a="Hello $USER, your home directory is $HOME"
-> a:gsub("%$(%w+)", os.getenv)
-Hello zzamboni, your home directory is /Users/zzamboni  2
-```
+        ``` lua
+        > a="Hello $USER, your home directory is $HOME"
+        > a:gsub("%$(%w+)", os.getenv)
+        Hello zzamboni, your home directory is /Users/zzamboni  2
+        ```
 
-Note that `gsub` returns as the second argument the number of replacements it made. If you don’t need this value, you can simply ignore it. Also note that `gsub` does not modify the original string, only returns a copy with the changes:
+    Note that `gsub` returns the modified string as its first return
+    value, and the number of replacements it made as the second (`2`
+    in the example above). If you don’t need the number, you can
+    simply ignore it (you don't even need to assign it). Also note
+    that `gsub` does not modify the original string, only returns a
+    copy with the changes:
 
-``` lua
-> b=a:gsub("%$(%w+)", os.getenv)
-> b
-Hello zzamboni, your home directory is /Users/zzamboni
-> a
-Hello $USER, your home directory is $HOME
-```
+    ``` lua
+    > b = a:gsub("%$(%w+)", os.getenv)
+    > b
+    Hello zzamboni, your home directory is /Users/zzamboni
+    > a
+    Hello $USER, your home directory is $HOME
+    ```
 
-Other places to learn Lua
--------------------------
+Keep learning!
+--------------
 
-I believe you know now enough Lua to start being productive with Hammerspoon. You’ll pick up more details as we go through more examples. If you need more information, I can recommend the following resources, which I have found useful:
+You know now enough Lua to start being productive with
+Hammerspoon. You’ll pick up more details as you play with it. If you
+need more information, I can recommend the following resources, which
+I have found useful:
 
--   [The Lua 5.3 Reference Manual](http://www.lua.org/manual/5.3/), available at the official [Lua website](http://www.lua.org).
+-   [The Lua 5.3 Reference Manual](http://www.lua.org/manual/5.3/),
+    available at the official [Lua website](http://www.lua.org).
 
--   [The Lua Wiki](http://lua-users.org/wiki/), a community-maintained wiki with many descriptions, tips, examples and tutorials.
+-   [The Lua Wiki](http://lua-users.org/wiki/), a community-maintained
+    wiki with many descriptions, tips, examples and tutorials.
+
+Have fun!
