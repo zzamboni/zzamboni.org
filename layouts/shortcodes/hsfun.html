@@ -3,4 +3,4 @@
 {{- .Scratch.Set "symbol" "" -}}
 {{- if ge $p 2 -}}{{- .Scratch.Set "symbol" (.Get 1) -}}{{- end -}}
 {{- $symbol := .Scratch.Get "symbol" -}}
-<a href="http://www.hammerspoon.org/docs/{{ $module }}.html{{ with $symbol }}#{{.}}{{ end }}">{{ if ge $p 3 }}{{ .Get 2 | markdownify }}{{ else }}<code>{{ $module }}{{ with $symbol }}.{{.}}(){{ end }}</code>{{ end }}</a>
+<a href="http://www.hammerspoon.org/docs/{{ $module }}.html{{ with $symbol }}#{{.}}{{ end }}">{{ if ge $p 3 }}{{ .Get 2 | markdownify }}{{ else }}<code>{{ $module }}{{ with $symbol }}.{{.}}{{ end }}()</code>{{ end }}</a>{{- "" -}}
