@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     
+    <title>zzamboni.org  | Just Enough Lua to Be Productive in Hammerspoon, Part 2</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+     <meta name="generator" content="Hugo 0.29" />
+      
+      
+        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+      
+
+     <link href='http://zzamboni.org/dist/main.css' rel='stylesheet' type="text/css" />
+     <link href='http://zzamboni.org/css/site.css' rel='stylesheet' type="text/css" />
+
+     
+
+      <meta property="og:title" content="Just Enough Lua to Be Productive in Hammerspoon, Part 2" />
+<meta property="og:description" content="In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into
+Lua&rsquo;s types and data structures.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/" />
+
+
+
+<meta property="article:published_time" content="2017-11-01T08:16:15&#43;00:00"/>
+<meta property="article:modified_time" content="2017-11-01T08:16:15&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Just Enough Lua to Be Productive in Hammerspoon, Part 2">
+<meta itemprop="description" content="In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into
+Lua&rsquo;s types and data structures.
+
+">
+
+
+<meta itemprop="dateModified" content="2017-11-01T08:16:15&#43;00:00" />
+<meta itemprop="wordCount" content="2242">
+
+
+
+<meta itemprop="keywords" content="hammerspoon,lua,howto,mac," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Just Enough Lua to Be Productive in Hammerspoon, Part 2"/>
+<meta name="twitter:description" content="In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into
+Lua&rsquo;s types and data structures.
+
+"/>
+
+      <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+      <link rel="manifest" href="/manifest.json">
+      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://zzamboni.org/images/lua-logo.svg');">
+    <div class="pb5-l bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://zzamboni.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      zzamboni.org
+    </a>
+    <div class="flex-l items-center">
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Blog page">
+              Blog
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/book/" title="Books page">
+              Books
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/code/" title="Code page">
+              Code
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/tags/" title="Tags page">
+              Tags
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+  <a href="https://twitter.com/zzamboni" class="link-transition twitter link dib z-999 pt3 pt0-l mr2" title="Twitter link">
+    <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+  </a>
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv4 ph3 ph4-ns">
+        <h1 class="f2 f1-l fw2 white-90 mb0 mt0 lh-title">Just Enough Lua to Be Productive in Hammerspoon, Part 2</h1>
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <div class="flex-l mt2 mw8 center">
+    <article class="center cf pv5 ph3 ph4-ns mw7">
+      <p class="f6 b helvetica tracked">
+        
+        POST
+      </p>
+      <h1 class="f1 athelas">
+        Just Enough Lua to Be Productive in Hammerspoon, Part 2
+      </h1>
+        
+        
+      <time class="f6 mv4 dib tracked" datetime="2017-11-01T08:16:15Z">
+        November 1, 2017
+      </time>
+      <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
+        <p>In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into
+Lua&rsquo;s types and data structures.</p>
+
+<p></p>
+
+<aside class="admonition tip">
+	<div class="admonition-icon">
+		<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 8 8">
+  <path d="M3.41 0a.5.5 0 0 0-.13.06l-3 1.5a.5.5 0 1 0 .44.88l3-1.5a.5.5 0 0 0-.31-.94zm1 1.5a.5.5 0 0 0-.13.06l-4 2a.5.5 0 1 0 .44.88l4-2a.5.5 0 0 0-.31-.94zm0 2a.5.5 0 0 0-.13.06l-3 1.5a.5.5 0 0 0 .22.94h2a.5.5 0 0 0 .16-1l1.06-.56a.5.5 0 0 0-.31-.94zm-2.56 3.5a.5.5 0 0 0 .16 1h1a.5.5 0 1 0 0-1h-1a.5.5 0 0 0-.09 0 .5.5 0 0 0-.06 0z"
+  transform="translate(1)" />
+</svg>
+
+	</div>
+	
+	
+	<div class="admonition-content"><p>If you haven&rsquo;t already, be sure to read <a href="/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/">the first installment of this
+series</a> to learn about the basic Lua concepts.</p>
+</div>
+</aside>
+
+
+<h2 id="tables">Tables</h2>
+
+<p>Table are the only compound data type in Lua, and are used to
+implement arrays, associative arrays (commonly called &ldquo;maps&rdquo; or
+&ldquo;hashes&rdquo; in other languages), modules, objects and namespaces. As you
+can see, it is very important to understand them!</p>
+
+<p>A table in Lua is a collection of values, which can be indexed either
+by numbers or by arbitrary strings (the two types of indices can
+coexist within the same table). Let’s go through a few examples that
+will give you an overview (you can type these in the Hammerspoon
+console as we go, or at the prompt of the <code>hs</code> command - keep in mind
+that some of the statements are broken across multiple lines here for
+formatting, but each statement should be type in a single line in the
+console).</p>
+
+<p>Table literals are declared using curly braces:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">unicorns</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s1388">{}</span><span class="s1f40">  </span><span class="s1770">-- empty table</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">people</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc1c">&#34;Chris&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;Aaron&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;Diego&#34;</span><span class="s1f40"> </span><span class="s1388">}</span><span class="s1f40">  </span><span class="s1770">-- array</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">handles</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="s7d0">Diego</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sc1c">&#34;zzamboni&#34;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">              </span><span class="s7d0">Chris</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sc1c">&#34;cmsj&#34;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">              </span><span class="s7d0">Aaron</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sc1c">&#34;asmagill&#34;</span><span class="s1f40"> </span><span class="s1388">}</span><span class="s1f40"> </span><span class="s1770">-- associative array</span></code></pre>
+</div>
+<p>Indices are indicated using square brackets. Numeric indices start at
+1 (not 0 as in most other languages). For identifier-like string
+indices, you can use the dot shortcut. Requesting a non-existent index
+returns <code>nil</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">unicorns</span><span class="s1388">[</span><span class="sc80">1</span><span class="s1388">]</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s3e8">nil</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">people</span><span class="s1388">[</span><span class="sc80">0</span><span class="s1388">]</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s3e8">nil</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">people</span><span class="s1388">[</span><span class="sc80">1</span><span class="s1388">]</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">Chris</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">handles</span><span class="s1388">[</span><span class="sc1c">&#39;Diego&#39;</span><span class="s1388">]</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">zzamboni</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">handles.Diego</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">zzamboni</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">handles.Michael</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s3e8">nil</span></code></pre>
+</div>
+<p>Within the curly-brace notation, indices that are not identifier-like
+(letters, numbers, underscores) need to be enclosed in quotes and
+square brackets. Values can be tables as well:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s7d0">colors</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="s1388">[</span><span class="sc1c">&#34;U.S.&#34;</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc1c">&#34;red&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;white&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;blue&#34;</span><span class="s1f40"> </span><span class="s1388">},</span><span class="s1f40">
+</span><span class="s1f40">           </span><span class="s7d0">Mexico</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc1c">&#34;green&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;white&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;red&#34;</span><span class="s1f40"> </span><span class="s1388">},</span><span class="s1f40">
+</span><span class="s1f40">           </span><span class="s7d0">Germany</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc1c">&#34;black&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;red&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;yellow&#34;</span><span class="s1f40"> </span><span class="s1388">}</span><span class="s1f40"> </span><span class="s1388">}</span></code></pre>
+</div>
+<p>With non-identifier indices, you cannot use the dot-notation. Also, to
+see a table within the Hammerspoon console, use <a href="http://www.hammerspoon.org/docs/hs.inspect.html"><code>hs.inspect</code></a>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">colors</span><span class="s1388">[</span><span class="sc1c">&#34;U.S.&#34;</span><span class="s1388">]</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">table</span><span class="s1388">:</span><span class="s1f40"> </span><span class="sc80">0x618000470400</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">hs.inspect</span><span class="s1388">(</span><span class="s7d0">colors.Mexico</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc1c">&#34;green&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;white&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;red&#34;</span><span class="s1f40"> </span><span class="s1388">}</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">hs.inspect</span><span class="s1388">(</span><span class="s7d0">colors</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">{</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">Germany</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc1c">&#34;black&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;red&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;yellow&#34;</span><span class="s1f40"> </span><span class="s1388">},</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">Mexico</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc1c">&#34;green&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;white&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;red&#34;</span><span class="s1f40"> </span><span class="s1388">},</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s1388">[</span><span class="sc1c">&#34;U.S.&#34;</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc1c">&#34;red&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;white&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;blue&#34;</span><span class="s1f40"> </span><span class="s1388">}</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">}</span></code></pre>
+</div>
+<p>Iteration through an array is commonly done using the <a href="https://www.lua.org/manual/5.3/manual.html#pdf-ipairs"><code>ipairs()</code></a> functions. Note that it will only iterate through
+contiguous numeric indices starting at 1, so that it does not work
+well with &ldquo;sparse&rdquo; tables.</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s3e8">for</span><span class="s1f40"> </span><span class="s7d0">i</span><span class="s1388">,</span><span class="s7d0">v</span><span class="s1f40"> </span><span class="s3e8">in</span><span class="s1f40"> </span><span class="s7d0">ipairs</span><span class="s1388">(</span><span class="s7d0">people</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">do</span><span class="s1f40"> </span><span class="s7d0">print</span><span class="s1388">(</span><span class="s7d0">i</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">v</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">end</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">1</span><span class="s1f40">   </span><span class="s7d0">Chris</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">2</span><span class="s1f40">   </span><span class="s7d0">Aaron</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">3</span><span class="s1f40">   </span><span class="s7d0">Diego</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">people</span><span class="s1388">[</span><span class="sc80">4</span><span class="s1388">]</span><span class="sfa0">=</span><span class="sc1c">&#39;John&#39;</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s3e8">for</span><span class="s1f40"> </span><span class="s7d0">i</span><span class="s1388">,</span><span class="s7d0">v</span><span class="s1f40"> </span><span class="s3e8">in</span><span class="s1f40"> </span><span class="s7d0">ipairs</span><span class="s1388">(</span><span class="s7d0">people</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">do</span><span class="s1f40"> </span><span class="s7d0">print</span><span class="s1388">(</span><span class="s7d0">i</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">v</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">end</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">1</span><span class="s1f40">   </span><span class="s7d0">Chris</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">2</span><span class="s1f40">   </span><span class="s7d0">Aaron</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">3</span><span class="s1f40">   </span><span class="s7d0">Diego</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">4</span><span class="s1f40">   </span><span class="s7d0">John</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">people</span><span class="s1388">[</span><span class="sc80">7</span><span class="s1388">]</span><span class="sfa0">=</span><span class="sc1c">&#39;Mike&#39;</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s3e8">for</span><span class="s1f40"> </span><span class="s7d0">i</span><span class="s1388">,</span><span class="s7d0">v</span><span class="s1f40"> </span><span class="s3e8">in</span><span class="s1f40"> </span><span class="s7d0">ipairs</span><span class="s1388">(</span><span class="s7d0">people</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">do</span><span class="s1f40"> </span><span class="s7d0">print</span><span class="s1388">(</span><span class="s7d0">i</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">v</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">end</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">1</span><span class="s1f40">   </span><span class="s7d0">Chris</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">2</span><span class="s1f40">   </span><span class="s7d0">Aaron</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">3</span><span class="s1f40">   </span><span class="s7d0">Diego</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">4</span><span class="s1f40">   </span><span class="s7d0">John</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">hs.inspect</span><span class="s1388">(</span><span class="s7d0">people</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc1c">&#34;Chris&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;Aaron&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;Diego&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;John&#34;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s1388">[</span><span class="sc80">7</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sc1c">&#34;Mike&#34;</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">}</span></code></pre>
+</div>
+<p>The <a href="https://www.lua.org/manual/5.3/manual.html#pdf-pairs"><code>pairs()</code></a> function, on the other hand, will iterate through all
+the elements in the table (both numeric and string indices), but does
+not guarantee their order. Both numeric and string indices can be
+mixed in a single table (although this gets confusing quickly unless
+you access everything using <a href="https://www.lua.org/manual/5.3/manual.html#pdf-pairs"><code>pairs()</code></a>).</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s3e8">for</span><span class="s1f40"> </span><span class="s7d0">i</span><span class="s1388">,</span><span class="s7d0">v</span><span class="s1f40"> </span><span class="s3e8">in</span><span class="s1f40"> </span><span class="s7d0">pairs</span><span class="s1388">(</span><span class="s7d0">people</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">do</span><span class="s1f40"> </span><span class="s7d0">print</span><span class="s1388">(</span><span class="s7d0">i</span><span class="s1388">,</span><span class="s7d0">v</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">end</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">1</span><span class="s1f40">   </span><span class="s7d0">Chris</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">2</span><span class="s1f40">   </span><span class="s7d0">Aaron</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">3</span><span class="s1f40">   </span><span class="s7d0">Diego</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">4</span><span class="s1f40">   </span><span class="s7d0">John</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">7</span><span class="s1f40">   </span><span class="s7d0">Mike</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s3e8">for</span><span class="s1f40"> </span><span class="s7d0">i</span><span class="s1388">,</span><span class="s7d0">v</span><span class="s1f40"> </span><span class="s3e8">in</span><span class="s1f40"> </span><span class="s7d0">ipairs</span><span class="s1388">(</span><span class="s7d0">handles</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">do</span><span class="s1f40"> </span><span class="s7d0">print</span><span class="s1388">(</span><span class="s7d0">i</span><span class="s1388">,</span><span class="s7d0">v</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">end</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&lt;</span><span class="s7d0">no</span><span class="s1f40"> </span><span class="s7d0">output</span><span class="sfa0">&gt;</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s3e8">for</span><span class="s1f40"> </span><span class="s7d0">i</span><span class="s1388">,</span><span class="s7d0">v</span><span class="s1f40"> </span><span class="s3e8">in</span><span class="s1f40"> </span><span class="s7d0">pairs</span><span class="s1388">(</span><span class="s7d0">handles</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">do</span><span class="s1f40"> </span><span class="s7d0">print</span><span class="s1388">(</span><span class="s7d0">i</span><span class="s1388">,</span><span class="s7d0">v</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">end</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">Aaron</span><span class="s1f40">   </span><span class="s7d0">asmagill</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">Diego</span><span class="s1f40">   </span><span class="s7d0">zzamboni</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">Chris</span><span class="s1f40">   </span><span class="s7d0">cmsj</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">handles</span><span class="s1388">[</span><span class="sc80">1</span><span class="s1388">]</span><span class="sfa0">=</span><span class="sc1c">&#39;whoa&#39;</span><span class="s1f40">  </span><span class="s1770">-- assign the first numeric index</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">hs.inspect</span><span class="s1388">(</span><span class="s7d0">handles</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc1c">&#34;whoa&#34;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">Aaron</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sc1c">&#34;asmagill&#34;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">Chris</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sc1c">&#34;cmsj&#34;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">Diego</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sc1c">&#34;zzamboni&#34;</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">}</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s3e8">for</span><span class="s1f40"> </span><span class="s7d0">i</span><span class="s1388">,</span><span class="s7d0">v</span><span class="s1f40"> </span><span class="s3e8">in</span><span class="s1f40"> </span><span class="s7d0">ipairs</span><span class="s1388">(</span><span class="s7d0">handles</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">do</span><span class="s1f40"> </span><span class="s7d0">print</span><span class="s1388">(</span><span class="s7d0">i</span><span class="s1388">,</span><span class="s7d0">v</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">end</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">1</span><span class="s1f40">   </span><span class="s7d0">whoa</span></code></pre>
+</div>
+<p>The built-in <a href="https://www.lua.org/manual/5.3/manual.html#6.6"><code>table</code></a> module includes a number of
+useful table-manipulation functions, including the following:</p>
+
+<ul>
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.concat"><code>table.concat()</code></a> for joining the values of a list in
+a single string (equivalent to <code>join</code> in other languages). This
+only joins the elements that would be returned by <a href="https://www.lua.org/manual/5.3/manual.html#pdf-ipairs"><code>ipairs()</code></a>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">table.concat</span><span class="s1388">(</span><span class="s7d0">people</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;, &#34;</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">Chris</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">Aaron</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">Diego</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">John</span></code></pre>
+</div></li>
+
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.insert"><code>table.insert()</code></a> adds an element to a list, by
+default adding it to the end.</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">hs.inspect</span><span class="s1388">(</span><span class="s7d0">people</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc1c">&#34;Chris&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;Aaron&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;Diego&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;John&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;Bill&#34;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s1388">[</span><span class="sc80">7</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sc1c">&#34;Mike&#34;</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">}</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">table.insert</span><span class="s1388">(</span><span class="s7d0">people</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;George&#34;</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">hs.inspect</span><span class="s1388">(</span><span class="s7d0">people</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc1c">&#34;Chris&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;Aaron&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;Diego&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;John&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;Bill&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;George&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;Mike&#34;</span><span class="s1f40"> </span><span class="s1388">}</span></code></pre>
+</div>
+<p>Note how in the last example, the contiguous indices have finally
+caught up to 7, so the last element is no longer shown separately (and
+will now be included by <a href="https://www.lua.org/manual/5.3/manual.html#pdf-ipairs"><code>ipairs()</code></a>, <a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.concat"><code>table.concat()</code></a>, etc.</p></li>
+
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.remove"><code>table.remove()</code></a> removes an element from a list, by
+default the last one. It returns the removed element.</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s3e8">for</span><span class="s1f40"> </span><span class="s7d0">i</span><span class="sfa0">=</span><span class="sc80">1</span><span class="s1388">,</span><span class="sc80">4</span><span class="s1f40"> </span><span class="s3e8">do</span><span class="s1f40"> </span><span class="s7d0">print</span><span class="s1388">(</span><span class="s7d0">table.remove</span><span class="s1388">(</span><span class="s7d0">people</span><span class="s1388">))</span><span class="s1f40"> </span><span class="s3e8">end</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">Mike</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">George</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">Bill</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">John</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">hs.inspect</span><span class="s1388">(</span><span class="s7d0">people</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc1c">&#34;Chris&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;Aaron&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;Diego&#34;</span><span class="s1f40"> </span><span class="s1388">}</span></code></pre>
+</div></li>
+</ul>
+
+<p>Notable omissions from the language and the <a href="https://www.lua.org/manual/5.3/manual.html#6.6"><code>table</code></a> module are &ldquo;get keys&rdquo; and &ldquo;get values&rdquo; functions, common in other
+languages. This may be explained by the flexible nature of Lua tables,
+so that those functions would need to behave differently depending on
+the contents of the table. If you need them, you can easily build your
+own. For example, if you want to get a sorted list of the keys in a
+table, you can use this function:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">sortedkeys</span><span class="s1388">(</span><span class="s7d0">tab</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s3e8">local</span><span class="s1f40"> </span><span class="s7d0">keys</span><span class="sfa0">=</span><span class="s1388">{}</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s3e8">for</span><span class="s1f40"> </span><span class="s7d0">k</span><span class="s1388">,</span><span class="s7d0">v</span><span class="s1f40"> </span><span class="s3e8">in</span><span class="s1f40"> </span><span class="s7d0">pairs</span><span class="s1388">(</span><span class="s7d0">tab</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">do</span><span class="s1f40"> </span><span class="s7d0">table.insert</span><span class="s1388">(</span><span class="s7d0">keys</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">k</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">end</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">table.sort</span><span class="s1388">(</span><span class="s7d0">keys</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s3e8">return</span><span class="s1f40"> </span><span class="s7d0">keys</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s3e8">end</span></code></pre>
+</div>
+<h2 id="tables-as-namespaces">Tables as namespaces</h2>
+
+<p>Functions in Lua are first-class objects, which means they can be used
+like any other value. This means that functions can be stored in
+tables, and this is how namespaces (or &ldquo;modules&rdquo;) are implemented in
+Lua. We can inspect an manipulate them like any other table. Let us
+look at the <a href="https://www.lua.org/manual/5.3/manual.html#6.6"><code>table</code></a> library itself. First, the
+module itself is a table:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">table</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">table</span><span class="s1388">:</span><span class="s1f40"> </span><span class="sc80">0x61800046f740</span></code></pre>
+</div>
+<p>Second, we can inspect its contents using the functions we know:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">hs.inspect</span><span class="s1388">(</span><span class="s7d0">table</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">{</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">concat</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">1</span><span class="sfa0">&gt;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">insert</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">2</span><span class="sfa0">&gt;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">move</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">3</span><span class="sfa0">&gt;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">pack</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">4</span><span class="sfa0">&gt;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">remove</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">5</span><span class="sfa0">&gt;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">sort</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">6</span><span class="sfa0">&gt;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">sortedkeys</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">7</span><span class="sfa0">&gt;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">unpack</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">8</span><span class="sfa0">&gt;</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">}</span></code></pre>
+</div>
+<p>The function values themselves are opaque (we cannot see their code),
+but we can easily extend the module. For example, we could add our
+<code>sortedkeys()</code> function above to the <code>table</code> module for
+consistency. Lua allows us to specify the namespace of a function in
+its declaration:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d4">table</span><span class="s1388">.</span><span class="s7d9">sortedkeys</span><span class="s1388">(</span><span class="s7d0">tab</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s3e8">local</span><span class="s1f40"> </span><span class="s7d0">keys</span><span class="sfa0">=</span><span class="s1388">{}</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s3e8">for</span><span class="s1f40"> </span><span class="s7d0">k</span><span class="s1388">,</span><span class="s7d0">v</span><span class="s1f40"> </span><span class="s3e8">in</span><span class="s1f40"> </span><span class="s7d0">pairs</span><span class="s1388">(</span><span class="s7d0">tab</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">do</span><span class="s1f40"> </span><span class="s7d0">table.insert</span><span class="s1388">(</span><span class="s7d0">keys</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">k</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">end</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">table.sort</span><span class="s1388">(</span><span class="s7d0">keys</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s3e8">return</span><span class="s1f40"> </span><span class="s7d0">keys</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s3e8">end</span></code></pre>
+</div>
+<p>All the Hammerspoon modules are implemented the same way:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">type</span><span class="s1388">(</span><span class="s7d0">hs</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">table</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">type</span><span class="s1388">(</span><span class="s7d0">hs.mouse</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">table</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">hs.inspect</span><span class="s1388">(</span><span class="s7d0">hs.mouse</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">{</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">get</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">1</span><span class="sfa0">&gt;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">getAbsolutePosition</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">2</span><span class="sfa0">&gt;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">getButtons</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">3</span><span class="sfa0">&gt;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">getCurrentScreen</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">4</span><span class="sfa0">&gt;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">getRelativePosition</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">5</span><span class="sfa0">&gt;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">set</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">6</span><span class="sfa0">&gt;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">setAbsolutePosition</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">7</span><span class="sfa0">&gt;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">setRelativePosition</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">8</span><span class="sfa0">&gt;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">trackingSpeed</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">9</span><span class="sfa0">&gt;</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">}</span></code></pre>
+</div>
+<p>The common way of defining a new module in Lua is to create an empty
+table, and populate it with functions or variables as needed. For
+example, let’s put our <a href="/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/#functions">double-click generator</a> in a module. Create the
+file <code>~/.hammerspoon/doubleclick.lua</code> with the following contents:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s3e8">local</span><span class="s1f40"> </span><span class="s7d0">mod</span><span class="sfa0">=</span><span class="s1388">{}</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">mod.default_modifiers</span><span class="sfa0">=</span><span class="s1388">{}</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d4">mod</span><span class="s1388">.</span><span class="s7d9">leftDoubleClick</span><span class="s1388">(</span><span class="s7d0">modifiers</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">modifiers</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s7d0">modifiers</span><span class="s1f40"> </span><span class="sfa0">or</span><span class="s1f40"> </span><span class="s7d0">mod.default_modifiers</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s3e8">local</span><span class="s1f40"> </span><span class="s7d0">pos</span><span class="sfa0">=</span><span class="s7d0">hs.mouse</span><span class="s1388">.</span><span class="s7d0">getAbsolutePosition</span><span class="s1388">()</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">hs.eventtap</span><span class="s1388">.</span><span class="s7d0">event.newMouseEvent</span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s7d0">hs.eventtap</span><span class="s1388">.</span><span class="s7d0">event.types</span><span class="s1388">.</span><span class="s7d0">leftMouseDown</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">pos</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">modifiers</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">:</span><span class="s7d0">setProperty</span><span class="s1388">(</span><span class="s7d0">hs.eventtap</span><span class="s1388">.</span><span class="s7d0">event.properties</span><span class="s1388">.</span><span class="s7d0">mouseEventClickState</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc80">2</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">:</span><span class="s7d0">post</span><span class="s1388">()</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">hs.eventtap</span><span class="s1388">.</span><span class="s7d0">event.newMouseEvent</span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s7d0">hs.eventtap</span><span class="s1388">.</span><span class="s7d0">event.types</span><span class="s1388">.</span><span class="s7d0">leftMouseUp</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">pos</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">modifiers</span><span class="s1388">):</span><span class="s7d0">post</span><span class="s1388">()</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s3e8">end</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d4">mod</span><span class="s1388">.</span><span class="s7d9">bindto</span><span class="s1388">(</span><span class="s7d0">keyspec</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">hs.hotkey</span><span class="s1388">.</span><span class="s7d0">bindSpec</span><span class="s1388">(</span><span class="s7d0">keyspec</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">mod.leftDoubleClick</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s3e8">end</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s3e8">return</span><span class="s1f40"> </span><span class="s7d0">mod</span></code></pre>
+</div>
+<p>You can then, from the console, do the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">doubleclick</span><span class="sfa0">=</span><span class="s7d0">require</span><span class="s1388">(</span><span class="sc1c">&#39;doubleclick&#39;</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">doubleclick.bindto</span><span class="s1388">({</span><span class="s1f40"> </span><span class="s1388">{</span><span class="sc1c">&#34;ctrl&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;alt&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;cmd&#34;</span><span class="s1388">},</span><span class="s1f40"> </span><span class="sc1c">&#34;p&#34;</span><span class="s1f40"> </span><span class="s1388">})</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">19</span><span class="s1388">:</span><span class="sc80">53</span><span class="s1388">:</span><span class="sc80">53</span><span class="s1f40">     </span><span class="s7d0">hotkey</span><span class="s1388">:</span><span class="s1f40"> </span><span class="s7d0">Disabled</span><span class="s1f40"> </span><span class="s7d0">previous</span><span class="s1f40"> </span><span class="s7d0">hotkey</span><span class="s1f40"> </span><span class="ss4">⌘⌃⌥</span><span class="s7d0">P</span><span class="s1f40">
+</span><span class="s1f40">             </span><span class="s7d0">hotkey</span><span class="s1388">:</span><span class="s1f40"> </span><span class="s7d0">Enabled</span><span class="s1f40"> </span><span class="s7d0">hotkey</span><span class="s1f40"> </span><span class="ss4">⌘⌃⌥</span><span class="s7d0">P</span></code></pre>
+</div>
+<p>You have written and loaded your first Lua module. Let’s try it out!
+Press <kbd>Ctrl</kbd>+<kbd>⌘</kbd>+<kbd>Alt</kbd>+<kbd>p</kbd>
+ while your cursor is over a word in
+your terminal or web browser, to select it as if you had
+double-clicked it. You can also change the modifiers used with it. For
+example, did you know that Cmd-double-click can be used to open URLs
+from the macOS Terminal application?</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">doubleclick.default_modifiers</span><span class="sfa0">=</span><span class="s1388">{</span><span class="s7d0">cmd</span><span class="sfa0">=</span><span class="s3e8">true</span><span class="s1388">}</span></code></pre>
+</div>
+<p>Now try pressing <kbd>Ctrl</kbd>+<kbd>⌘</kbd>+<kbd>Alt</kbd>+<kbd>p</kbd>
+ while your pointer is
+over a URL displayed on your Terminal (you can just type one yourself
+to test), and it will open in your browser.</p>
+
+<p>Note that the name <code>doubleclick</code> does not have any special meaning -
+it is a regular variable to which you assigned the value returned by
+<code>require('doubleclick')</code>, which is the value of the <code>mod</code> variable
+created within the module file (note that within the module file you
+use the local variable name to refer to functions and variables within
+itself). You could assign it to any name you want:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">a</span><span class="sfa0">=</span><span class="s7d0">require</span><span class="s1388">(</span><span class="sc1c">&#39;doubleclick&#39;</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">a.leftDoubleClick</span><span class="s1388">()</span></code></pre>
+</div>
+<p>The argument of the <a href="https://www.lua.org/manual/5.3/manual.html#pdf-require"><code>require()</code></a> function is the name of the
+file to load, without the <code>.lua</code> extension. Hammerspoon by default
+adds your <code>~/.hammerspoon/</code> directory to its load path, along with any
+other default directories in your system. You can view the places
+where Hammerspoon will look for files by examining the <code>package.path</code>
+variable. On my machine I get the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console"><span class="s1f40">&gt; package.path
+</span><span class="s1f40">/Users/zzamboni/.hammerspoon/?.lua;/Users/zzamboni/.hammerspoon/?/
+</span><span class="s1f40">init.lua;/Users/zzamboni/.hammerspoon/Spoons/?.spoon/init.lua;/usr/
+</span><span class="s1f40">local/share/lua/5.3/?.lua;/usr/local/share/lua/5.3/?/init.lua;/usr/
+</span><span class="s1f40">local/lib/lua/5.3/?.lua;/usr/local/lib/lua/5.3/?/init.lua;./?.lua;
+</span><span class="s1f40">./?/init.lua;/Users/zzamboni/Dropbox/Personal/devel/hammerspoon/
+</span><span class="s1f40">hammerspoon/build/Hammerspoon.app/Contents/Resources/extensions/?.lua;
+</span><span class="s1f40">/Users/zzamboni/Dropbox/Personal/devel/hammerspoon/hammerspoon/build/
+</span><span class="s1f40">Hammerspoon.app/Contents/Resources/extensions/?/init.lua</span></code></pre>
+</div>
+<aside class="admonition tip">
+	<div class="admonition-icon">
+		<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 8 8">
+  <path d="M3.41 0a.5.5 0 0 0-.13.06l-3 1.5a.5.5 0 1 0 .44.88l3-1.5a.5.5 0 0 0-.31-.94zm1 1.5a.5.5 0 0 0-.13.06l-4 2a.5.5 0 1 0 .44.88l4-2a.5.5 0 0 0-.31-.94zm0 2a.5.5 0 0 0-.13.06l-3 1.5a.5.5 0 0 0 .22.94h2a.5.5 0 0 0 .16-1l1.06-.56a.5.5 0 0 0-.31-.94zm-2.56 3.5a.5.5 0 0 0 .16 1h1a.5.5 0 1 0 0-1h-1a.5.5 0 0 0-.09 0 .5.5 0 0 0-.06 0z"
+  transform="translate(1)" />
+</svg>
+
+	</div>
+	
+	
+	<div class="admonition-content"><p>Hammerspoon automatically loads any modules under the <code>hs</code> namespace
+the first time you use them. For example, when you use <a href="http://www.hammerspoon.org/docs/hs.application.html"><code>hs.application</code></a> for the first time, you will see a message in the
+console:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">hs.application</span><span class="s1388">.</span><span class="s7d0">get</span><span class="s1388">(</span><span class="sc1c">&#34;Terminal&#34;</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">2017</span><span class="sfa0">-</span><span class="sc80">10</span><span class="sfa0">-</span><span class="sc80">31</span><span class="s1f40"> </span><span class="sc80">06</span><span class="s1388">:</span><span class="sc80">47</span><span class="s1388">:</span><span class="sc80">15</span><span class="s1388">:</span><span class="s1f40"> </span><span class="s1770">-- Loading extension: application</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">hs.application</span><span class="s1388">:</span><span class="s1f40"> </span><span class="s7d0">Terminal</span><span class="s1f40"> </span><span class="s1388">(</span><span class="sc80">0x61000044dfd8</span><span class="s1388">)</span></code></pre>
+</div>
+<p>If you want to avoid these messages, you need to explicitly load the
+modules and assign them to variables, as follows:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">app</span><span class="sfa0">=</span><span class="s7d0">require</span><span class="s1388">(</span><span class="sc1c">&#39;hs.application&#39;</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">app.get</span><span class="s1388">(</span><span class="sc1c">&#34;Terminal&#34;</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">hs.application</span><span class="s1388">:</span><span class="s1f40"> </span><span class="s7d0">Terminal</span><span class="s1f40"> </span><span class="s1388">(</span><span class="sc80">0x610000e49118</span><span class="s1388">)</span></code></pre>
+</div>
+<p>This avoids the console message and has the additional benefit of
+allowing you to use <code>app</code> (you can use whatever variable you want)
+instead of typing <code>hs.application</code> in your code. This is a matter of
+taste - I usually prefer to have the full descriptive names (makes the
+code easier to read), but when dealing with some of the longer module
+names (e.g. <a href="http://www.hammerspoon.org/docs/hs.distributednotifications.html"><code>hs.distributednotifications</code></a>), this
+technique can be useful.</p>
+</div>
+</aside>
+
+
+<h2 id="patterns">Patterns</h2>
+
+<p>If you are familiar with regular expressions, you know how powerful
+they are for examining and manipulating strings in any programming
+language. Lua has <a href="https://www.lua.org/manual/5.3/manual.html#6.4.1"><code><em>patterns</em></code></a>, which fulfill
+many of the same functions but have a different syntax and some
+limitations. They are used by many functions in the string library
+like <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.find"><code>string.find()</code></a> and <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.match"><code>string.match()</code></a>.</p>
+
+<p>The following are some differences and similarities you need to be
+aware of when using patterns:</p>
+
+<ul>
+<li><p>The dot (<code>.</code>) represents any character, just like in regexes.</p></li>
+
+<li><p>The asterisk (<code>*</code>), plus sign (<code>+</code>) and question mark (<code>?</code>)
+represent &ldquo;zero or more&rdquo;, &ldquo;one or more&rdquo; and &ldquo;one or none&rdquo; of the
+previous character, just like in regexes. Unlike regexes, these
+characters can only be applied to a single character and not to a
+whole capture group (i.e. the regex <code>(foo)+</code> is not possible).</p></li>
+
+<li><p>Alternations, represented by the vertical bar (<code>|</code>) in regexes, are
+not supported.</p></li>
+
+<li><p>The caret (<code>^</code>) and dollar sign (<code>$</code>) represent &ldquo;beginning of
+string&rdquo; and &ldquo;end of string&rdquo;, just like in regexes.</p></li>
+
+<li><p>The dash (<code>-</code>) represents a non-greedy &ldquo;zero or more&rdquo; (i.e. match
+the shortest possible string instead of the longest one) of the
+previous character, unlike in regexes, in which it’s commonly
+indicate by a question mark following the corresponding <code>*</code> or <code>+</code>
+The regex <code>.*?</code> is equivalent to the Lua pattern <code>.-</code>.</p></li>
+
+<li><p>The escape character is the ampersand (<code>%</code>) instead of the backslash
+(<code>\</code>).</p></li>
+
+<li><p>Most character classes are represented by the same characters, but
+preceded by ampersand. For example <code>%d</code> for digits, <code>%s</code> for spaces,
+<code>%w</code> for alphanumeric characters.</p></li>
+</ul>
+
+<p>For most common use cases, Lua patterns are enough, you just have to
+be aware of their differences. If you encounter something that really
+cannot be done, you can always resort to libraries like
+<a href="http://rrthomas.github.io/lrexlib/">Lrexlib</a>, which provide
+interfaces to real regex libraries. Unfortunately these are not
+included in Lua, so you would need to install them on your own.</p>
+
+<p>Patterns, just like regular expressions, are commonly used for string
+manipulation, using primarily functions from the <a href="https://www.lua.org/manual/5.3/manual.html#6.4"><code>string</code></a> library.</p>
+
+<h2 id="string-manipulation">String manipulation</h2>
+
+<p>Lua includes the <a href="https://www.lua.org/manual/5.3/manual.html#6.4"><code>string</code></a> library to implement
+common string manipulation functions, including pattern matching. All
+of these functions can be called either as regular functions, with the
+string as the first argument, or as method calls on the string itself,
+using the colon syntax (which, as we saw <a href="/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/#dot-vs-colon-method-access-in-lua">before</a>, gets converted to the same call). For example, the following two
+are equivalent:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s7d0">string.find</span><span class="s1388">(</span><span class="s7d0">a</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;^foo&#34;</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">a</span><span class="s1388">:</span><span class="s7d0">find</span><span class="s1388">(</span><span class="sc1c">&#34;^foo&#34;</span><span class="s1388">)</span></code></pre>
+</div>
+<p>You can find the full documentation in the <a href="https://www.lua.org/manual/5.3/manual.html#6.4">Lua reference
+manual</a> and many other
+examples in the <a href="http://lua-users.org/wiki/StringLibraryTutorial">Lua-users wiki String Library
+Tutorial</a>. The
+following is a partial list of some of the functions I have found most
+useful:</p>
+
+<ul>
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.find"><code>string.find(str, pat [, pos [, plain]])</code></a> finds the pattern within the string. By default the search
+starts at the beginning of the string, but can be modified with the
+<code>pos</code> argument (index starts at 1, as with the tables). By default
+<code>pat</code> is intepreted as a Lua pattern, but this can be disabled by
+passing <code>plain</code> as a true value. If the pattern is not found,
+returns <code>nil</code>. If the pattern is found, the function returns the
+start and end position of the pattern within the
+string. Furthermore, if the pattern contains parenthesis capture
+groups, all groups are returned as well. For example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">string.find</span><span class="s1388">(</span><span class="sc1c">&#34;bah&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;ah&#34;</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">2</span><span class="s1f40">   </span><span class="sc80">3</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">string.find</span><span class="s1388">(</span><span class="sc1c">&#34;bah&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;foo&#34;</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s3e8">nil</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">string.find</span><span class="s1388">(</span><span class="sc1c">&#34;bah&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;(ah)&#34;</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">2</span><span class="s1f40">   </span><span class="sc80">3</span><span class="s1f40">   </span><span class="s7d0">ah</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">p1</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">p2</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">g1</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">g2</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s7d0">string.find</span><span class="s1388">(</span><span class="sc1c">&#34;bah&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;(b)(ah)&#34;</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">p1</span><span class="s1388">,</span><span class="s7d0">p2</span><span class="s1388">,</span><span class="s7d0">g1</span><span class="s1388">,</span><span class="s7d0">g2</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">1</span><span class="s1f40">   </span><span class="sc80">3</span><span class="s1f40">   </span><span class="s7d0">b</span><span class="s1f40">   </span><span class="s7d0">ah</span></code></pre>
+</div>
+<p>Note that the return value is not a table, but rather multiple
+values, as shown in the last example.</p>
+
+<aside class="admonition tip">
+	<div class="admonition-icon">
+		<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 8 8">
+  <path d="M3.41 0a.5.5 0 0 0-.13.06l-3 1.5a.5.5 0 1 0 .44.88l3-1.5a.5.5 0 0 0-.31-.94zm1 1.5a.5.5 0 0 0-.13.06l-4 2a.5.5 0 1 0 .44.88l4-2a.5.5 0 0 0-.31-.94zm0 2a.5.5 0 0 0-.13.06l-3 1.5a.5.5 0 0 0 .22.94h2a.5.5 0 0 0 .16-1l1.06-.56a.5.5 0 0 0-.31-.94zm-2.56 3.5a.5.5 0 0 0 .16 1h1a.5.5 0 1 0 0-1h-1a.5.5 0 0 0-.09 0 .5.5 0 0 0-.06 0z"
+  transform="translate(1)" />
+</svg>
+
+	</div>
+	
+	
+	<div class="admonition-content"><p>It can sometimes be convenient to handle multiple values as a table or
+as separate entities, depending on the circumstances. For example, you
+may have a programmatically-constructed pattern with a variable number
+of capture groups, so you cannot know to how many variables you need
+to assign the result. In this case, the <a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.pack"><code>table.pack()</code></a>
+and <a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.unpack"><code>table.unpack()</code></a> functions can be useful.</p>
+
+<p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.pack"><code>table.pack()</code></a> takes a variable number of arguments and
+returns them in a table which contains an array component containing
+the values, plus an index <code>n</code> containing the total number of elements:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">res</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s7d0">table.pack</span><span class="s1388">(</span><span class="s7d0">string.find</span><span class="s1388">(</span><span class="sc1c">&#34;bah&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;(b)(ah)&#34;</span><span class="s1388">))</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">res</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">table</span><span class="s1388">:</span><span class="s1f40"> </span><span class="sc80">0x608000c76e80</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">hs.inspect</span><span class="s1388">(</span><span class="s7d0">res</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc80">1</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc80">3</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;b&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;ah&#34;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">n</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sc80">4</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">}</span></code></pre>
+</div>
+<p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.unpack"><code>table.unpack()</code></a> does the opposite, expanding an array
+into separate values which can be assigned to separate values as
+needed, or passed as arguments to a function:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">args</span><span class="sfa0">=</span><span class="s1388">{</span><span class="sc1c">&#34;bah&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;(b)(ah)&#34;</span><span class="s1388">}</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">string.find</span><span class="s1388">(</span><span class="s7d0">args</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">[</span><span class="s7d0">string</span><span class="s1f40"> </span><span class="sc1c">&#34;return string.find(args)&#34;</span><span class="s1388">]:</span><span class="sc80">1</span><span class="s1388">:</span><span class="s1f40">
+</span><span class="s1f40">  </span><span class="s7d0">bad</span><span class="s1f40"> </span><span class="s7d0">argument</span><span class="s1f40"> </span><span class="sfa0">#</span><span class="sc80">1</span><span class="s1f40"> </span><span class="s7d0">to</span><span class="s1f40"> </span><span class="sc1c">&#39;find&#39;</span><span class="s1f40"> </span><span class="s1388">(</span><span class="s7d0">string</span><span class="s1f40"> </span><span class="s7d0">expected</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">got</span><span class="s1f40"> </span><span class="s7d0">table</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">string.find</span><span class="s1388">(</span><span class="s7d0">table.unpack</span><span class="s1388">(</span><span class="s7d0">args</span><span class="s1388">))</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sc80">1</span><span class="s1f40">   </span><span class="sc80">3</span><span class="s1f40">   </span><span class="s7d0">b</span><span class="s1f40">   </span><span class="s7d0">ah</span></code></pre>
+</div></div>
+</aside>
+</li>
+
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.match"><code>string.match(str, pat [, pos])</code></a> is
+similar to <code>string.find</code>, but it does not return the positions,
+rather it returns the part of the string matched by the pattern, or
+if the pattern contains capture groups, returns the captured
+segments:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">string.match</span><span class="s1388">(</span><span class="sc1c">&#34;bah&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;ah&#34;</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">ah</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">string.match</span><span class="s1388">(</span><span class="sc1c">&#34;bah&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;foo&#34;</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s3e8">nil</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">string.match</span><span class="s1388">(</span><span class="sc1c">&#34;bah&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;(b)(ah)&#34;</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">b</span><span class="s1f40">   </span><span class="s7d0">ah</span></code></pre>
+</div></li>
+
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.gmatch"><code>string.gmatch(str, pat)</code></a> returns a
+function that returns the next match of <code>pat</code> within <code>str</code> every
+time it is called, returning <code>nil</code> when there are no more
+matches. If <code>pat</code> contains capture groups, they are returned on each
+iteration.</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">a</span><span class="sfa0">=</span><span class="sc1c">&#34;Hammerspoon is awesome!&#34;</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">f</span><span class="sfa0">=</span><span class="s7d0">string.gmatch</span><span class="s1388">(</span><span class="s7d0">a</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;(%w+)&#34;</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">f</span><span class="s1388">()</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">Hammerspoon</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">f</span><span class="s1388">()</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">is</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">f</span><span class="s1388">()</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">awesome</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">f</span><span class="s1388">()</span></code></pre>
+</div>
+<p>Most commonly, this is used inside a loop:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s3e8">for</span><span class="s1f40"> </span><span class="s7d0">cap</span><span class="s1f40"> </span><span class="s3e8">in</span><span class="s1f40"> </span><span class="s7d0">string.gmatch</span><span class="s1388">(</span><span class="s7d0">a</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;%w+&#34;</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">do</span><span class="s1f40"> </span><span class="s7d0">print</span><span class="s1388">(</span><span class="s7d0">cap</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">end</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">Hammerspoon</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">is</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">awesome</span></code></pre>
+</div></li>
+
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.format"><code>string.format(formatstring, …​)</code></a>
+formats a sequence of values according to the given format string,
+following the same formatting rules as the ISO C <code>sprintf()</code>
+function. It additionally supports a new format character <code>%q</code>,
+which formats a string value in a way that can be read back by
+Lua, escaping or quoting characters as needed (for example quotes,
+newlines, etc.).</p></li>
+
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.len"><code>string.len(str)</code></a> returns the length
+of the string.</p></li>
+
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.lower"><code>string.lower(str)</code></a> and <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.upper"><code>string.upper(str)</code></a> convert the string to
+lower and uppercase, respectively.</p></li>
+
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.gsub"><code>string.gsub(str, pat, rep[, n])</code></a>
+is a very powerful string-replacement function which hides
+considerably more power than its simple syntax would lead you to
+believe. In general, it replaces all (or the first <code>n</code>)
+occurrences of <code>pat</code> in <code>str</code> with the replacement <code>rep</code>. However,
+<code>rep</code> can take any of the following values:</p>
+
+<ul>
+<li><p>A string which is used for the replacement. If the string
+contains <em>%m</em>, where <em>m</em> is a number, the it is replaced by
+the m-th captured group (or the whole match if <em>m</em> is zero).</p></li>
+
+<li><p>A table which is consulted for the replacement values, using
+the first capture group as a key (or the whole match if there
+are no captures). For example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">a</span><span class="sfa0">=</span><span class="sc1c">&#34;Event type codes: leftMouseDown=$leftMouseDown, rightMouseDown=$rightMouseDown, mouseMoved=$mouseMoved&#34;</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">a</span><span class="s1388">:</span><span class="s7d0">gsub</span><span class="s1388">(</span><span class="sc1c">&#34;%$(%w+)&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">hs.eventtap</span><span class="s1388">.</span><span class="s7d0">event.types</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">Event</span><span class="s1f40"> </span><span class="s7d0">type</span><span class="s1f40"> </span><span class="s7d0">codes</span><span class="s1388">:</span><span class="s1f40"> </span><span class="s7d0">leftMouseDown</span><span class="sfa0">=</span><span class="sc80">1</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">rightMouseDown</span><span class="sfa0">=</span><span class="sc80">3</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">mouseMoved</span><span class="sfa0">=</span><span class="sc80">5</span><span class="s1f40">   </span><span class="sc80">3</span></code></pre>
+</div></li>
+
+<li><p>A function which is executed with the captured groups (or the
+whole match) as an argument, and whose return value is used as
+the replacement. For example, using the <code>os.getenv</code> function,
+we can easily replace environment variables by their values in
+a string:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">a</span><span class="sfa0">=</span><span class="sc1c">&#34;Hello $USER, your home directory is $HOME&#34;</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">a</span><span class="s1388">:</span><span class="s7d0">gsub</span><span class="s1388">(</span><span class="sc1c">&#34;%$(%w+)&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">os.getenv</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">Hello</span><span class="s1f40"> </span><span class="s7d0">zzamboni</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">your</span><span class="s1f40"> </span><span class="s7d0">home</span><span class="s1f40"> </span><span class="s7d0">directory</span><span class="s1f40"> </span><span class="s7d0">is</span><span class="s1f40"> </span><span class="sfa0">/</span><span class="s7d0">Users</span><span class="sfa0">/</span><span class="s7d0">zzamboni</span><span class="s1f40">  </span><span class="sc80">2</span></code></pre>
+</div></li>
+</ul>
+
+<p>Note that <code>gsub</code> returns the modified string as its first return
+value, and the number of replacements it made as the second (<code>2</code>
+in the example above). If you don’t need the number, you can
+simply ignore it (you don&rsquo;t even need to assign it). Also note
+that <code>gsub</code> does not modify the original string, only returns a
+copy with the changes:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">b</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s7d0">a</span><span class="s1388">:</span><span class="s7d0">gsub</span><span class="s1388">(</span><span class="sc1c">&#34;%$(%w+)&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">os.getenv</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">b</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">Hello</span><span class="s1f40"> </span><span class="s7d0">zzamboni</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">your</span><span class="s1f40"> </span><span class="s7d0">home</span><span class="s1f40"> </span><span class="s7d0">directory</span><span class="s1f40"> </span><span class="s7d0">is</span><span class="s1f40"> </span><span class="sfa0">/</span><span class="s7d0">Users</span><span class="sfa0">/</span><span class="s7d0">zzamboni</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">a</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">Hello</span><span class="s1f40"> </span><span class="ss4">$</span><span class="s7d0">USER</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">your</span><span class="s1f40"> </span><span class="s7d0">home</span><span class="s1f40"> </span><span class="s7d0">directory</span><span class="s1f40"> </span><span class="s7d0">is</span><span class="s1f40"> </span><span class="ss4">$</span><span class="s7d0">HOME</span></code></pre>
+</div></li>
+</ul>
+
+<h2 id="keep-learning">Keep learning!</h2>
+
+<p>You know now enough Lua to start being productive with
+Hammerspoon. You’ll pick up more details as you play with it. If you
+need more information, I can recommend the following resources, which
+I have found useful:</p>
+
+<ul>
+<li><p><a href="http://www.lua.org/manual/5.3/">The Lua 5.3 Reference Manual</a>,
+available at the official <a href="http://www.lua.org">Lua website</a>.</p></li>
+
+<li><p><a href="http://lua-users.org/wiki/">The Lua Wiki</a>, a community-maintained
+wiki with many descriptions, tips, examples and tutorials.</p></li>
+</ul>
+
+<p>Have fun!</p>
+      </section>
+      
+
+  <ul class="list dib ml0 pl0" id="tags">
+    <li class="b black dib mb2 mr3">Tags: </li>
+    
+      <li class="black dib mb2 mr2"><a href="/tags/hammerspoon" class="link mid-gray dim">hammerspoon</a> </li>
+    
+      <li class="black dib mb2 mr2"><a href="/tags/lua" class="link mid-gray dim">lua</a> </li>
+    
+      <li class="black dib mb2 mr2"><a href="/tags/howto" class="link mid-gray dim">howto</a> </li>
+    
+      <li class="black dib mb2 mr2"><a href="/tags/mac" class="link mid-gray dim">mac</a> </li>
+    
+  </ul>
+  
+  
+  
+  
+  
+    <div class="mt5 f6 gray nested-lh-copy bg-light-gray ph3 pv2 measure-wide-l">
+      <ul class="list dib ml0 pl0">
+        <li class="black dib mb2 mr2">
+          Related:
+        </li>
+        
+          
+        
+          
+            <li class="mb2 mr3">
+              <a href="/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/" class="link mid-gray dim">
+                 Just Enough Lua to Be Productive in Hammerspoon, Part 1
+              </a>
+            </li>
+          
+        
+          
+            <li class="mb2 mr3">
+              <a href="/post/fixing-outlook-to-omnifocus-script/" class="link mid-gray dim">
+                 Fixing the Outlook-to-OmniFocus Script
+              </a>
+            </li>
+          
+        
+          
+            <li class="mb2 mr3">
+              <a href="/post/using-spoons-in-hammerspoon/" class="link mid-gray dim">
+                 Using Spoons in Hammerspoon
+              </a>
+            </li>
+          
+        
+          
+            <li class="mb2 mr3">
+              <a href="/post/getting-started-with-hammerspoon/" class="link mid-gray dim">
+                 Getting Started With Hammerspoon
+              </a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  
+
+
+      <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zzamboni-org" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+    <div class="ph3 mt2 mt6-ns">
+      <div class="bg-light-gray pa3">
+      <p class="list b mb3">What's in this Post</p>
+      <nav id="TableOfContents">
+<ul>
+<li class="list f5 w-100 hover-bg-white nl1">
+<ul>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#tables">Tables</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#tables-as-namespaces">Tables as namespaces</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#patterns">Patterns</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#string-manipulation">String manipulation</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#keep-learning">Keep learning!</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<br/></div>
+  </div>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://zzamboni.org/" >
+    &copy; 2017 Diego Zamboni
+  </a>
+  
+
+
+
+  <a href="https://twitter.com/zzamboni" class="link-transition twitter link dib z-999 pt3 pt0-l mr2" title="Twitter link">
+    <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+  </a>
+
+
+
+
+  </div>
+</footer>
+
+    <script src="http://zzamboni.org/dist/app.bundle.js" async></script>
+
+  </body>
+</html>

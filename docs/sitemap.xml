@@ -45,6 +45,13 @@
   </url>
   
   <url>
+    <loc>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</loc>
+    <lastmod>2017-11-01T08:16:15+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</loc>
     <lastmod>2017-10-21T20:36:28+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -2901,7 +2908,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/hammerspoon/</loc>
-    <lastmod>2017-10-21T20:36:28+00:00</lastmod>
+    <lastmod>2017-11-01T08:16:15+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -2929,7 +2936,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/howto/</loc>
-    <lastmod>2017-10-21T20:36:28+00:00</lastmod>
+    <lastmod>2017-11-01T08:16:15+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -3041,14 +3048,14 @@
   
   <url>
     <loc>http://zzamboni.org/tags/lua/</loc>
-    <lastmod>2017-10-21T20:36:28+00:00</lastmod>
+    <lastmod>2017-11-01T08:16:15+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://zzamboni.org/tags/mac/</loc>
-    <lastmod>2017-10-21T20:36:28+00:00</lastmod>
+    <lastmod>2017-11-01T08:16:15+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
