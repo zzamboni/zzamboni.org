@@ -1,7 +1,6 @@
 ---
 title: "Just Enough Lua to Be Productive in Hammerspoon, Part 2"
-date: 2017-10-30T08:40:37+02:00
-draft: true
+date: 2017-11-01T08:16:15
 tags:
 - hammerspoon
 - lua
