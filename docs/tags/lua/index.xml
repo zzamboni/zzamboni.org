@@ -6,10 +6,22 @@
     <description>Recent content in Lua on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Oct 2017 20:36:28 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Nov 2017 08:16:15 +0000</lastBuildDate>
     
 	<atom:link href="http://zzamboni.org/tags/lua/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Just Enough Lua to Be Productive in Hammerspoon, Part 2</title>
+      <link>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</link>
+      <pubDate>Wed, 01 Nov 2017 08:16:15 +0000</pubDate>
+      
+      <guid>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</guid>
+      <description>&lt;p&gt;In this second article of the &amp;ldquo;Just Enough Lua&amp;rdquo; series, we dive into
+Lua&amp;rsquo;s types and data structures.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Just Enough Lua to Be Productive in Hammerspoon, Part 1</title>

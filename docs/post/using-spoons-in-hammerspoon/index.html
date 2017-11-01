@@ -57,7 +57,7 @@ share your own work with other users.
 
 
 <meta itemprop="dateModified" content="2017-09-01T20:17:55&#43;02:00" />
-<meta itemprop="wordCount" content="1834">
+<meta itemprop="wordCount" content="1833">
 
 
 
@@ -273,15 +273,12 @@ configuration, or from other spoons, to create further automation.</p>
 
 <p><code>spoon.MouseCircle.color</code> is a public configuration variable exposed
 by the spoon, which specifies the color that will be used to draw the
-circle. Colors are defined according to the documentation for the <a href="http://www.hammerspoon.org/docs/hs.drawing.color.html"><code>hs.drawing.color</code></a>
- module. Several color collections are
+circle. Colors are defined according to the documentation for the <a href="http://www.hammerspoon.org/docs/hs.drawing.color.html"><code>hs.drawing.color</code></a> module. Several color collections are
 supported, including the OS X system collections and a few defined by
 Hammerspoon itself. Color definitions are stored in Lua tables indexed
 by their name. For example, you can view the
-<a href="http://www.hammerspoon.org/docs/hs.drawing.color.html#hammerspoon"><code>hs.drawing.color.hammerspoon</code></a>
- table, including the color definitions,
-by using the convenient <a href="http://www.hammerspoon.org/docs/hs.inspect.html"><code>hs.inspect</code></a>
- method on the console:</p>
+<a href="http://www.hammerspoon.org/docs/hs.drawing.color.html#hammerspoon"><code>hs.drawing.color.hammerspoon</code></a> table, including the color definitions,
+by using the convenient <a href="http://www.hammerspoon.org/docs/hs.inspect.html"><code>hs.inspect</code></a> method on the console:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">hs.inspect</span><span class="s1388">(</span><span class="s7d0">hs.drawing</span><span class="s1388">.</span><span class="s7d0">color.hammerspoon</span><span class="s1388">)</span><span class="s1f40">
 </span><span class="s1f40"></span><span class="s1388">{</span><span class="s1f40">
 </span><span class="s1f40">  </span><span class="s7d0">black</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40">
@@ -316,10 +313,8 @@ by using the convenient <a href="http://www.hammerspoon.org/docs/hs.inspect.html
 	
 	
 	<div class="admonition-content"><p>Lua does not include a function to easily get the keys of a table so
-you have to use the <a href="https://www.lua.org/manual/5.3/manual.html#pairs"><code>pairs</code></a>
- function to loop over the
-key/value pairs of the table. The <a href="http://www.hammerspoon.org/docs/hs.inspect.html"><code>hs.inspect</code></a>
- function is
+you have to use the <a href="https://www.lua.org/manual/5.3/manual.html#pairs"><code>pairs</code></a> function to loop over the
+key/value pairs of the table. The <a href="http://www.hammerspoon.org/docs/hs.inspect.html"><code>hs.inspect</code></a> function is
 convenient, but to get just the list of tables and the color names,
 without the color definitions themselves, you can use the following
 code (if you type this in the console you have to type it all in a
@@ -356,8 +351,7 @@ Lua, but in case you were wondering&hellip;)</p>
 
 <p>You may have noticed that the configuration variable was accessed
 with a dot (<code>spoon.MouseCircle.color</code>), and we also used it for some
-function calls earlier (e.g. <a href="http://www.hammerspoon.org/docs/hs.notify.html#show"><code>hs.notify.show</code></a>
-, whereas for the
+function calls earlier (e.g. <a href="http://www.hammerspoon.org/docs/hs.notify.html#show"><code>hs.notify.show</code></a>, whereas for the
 <code>show()</code> method we used a colon (<code>spoon.MouseCircle:show()</code>). The
 latter is Lua’s object-method-call notation, and its effect is to
 pass the object on which the method is being called as an implicit
@@ -380,8 +374,7 @@ an anonymous function:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s7d0">hs.hotkey</span><span class="s1388">.</span><span class="s7d0">bindSpec</span><span class="s1388">({</span><span class="s1f40"> </span><span class="s1388">{</span><span class="sc1c">&#34;ctrl&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;alt&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;cmd&#34;</span><span class="s1f40"> </span><span class="s1388">},</span><span class="s1f40"> </span><span class="sc1c">&#34;p&#34;</span><span class="s1f40"> </span><span class="s1388">},</span><span class="s1f40">
 </span><span class="s1f40">                   </span><span class="s3e8">function</span><span class="s1388">()</span><span class="s1f40"> </span><span class="s7d0">spoon.MouseCircle</span><span class="s1388">:</span><span class="s7d0">show</span><span class="s1388">()</span><span class="s1f40"> </span><span class="s3e8">end</span><span class="s1388">)</span></code></pre>
 </div>
-<p>Alternatively, you can use the <a href="http://www.hammerspoon.org/docs/hs.fnutils.html#partial"><code>hs.fnutils.partial</code></a>
- function to
+<p>Alternatively, you can use the <a href="http://www.hammerspoon.org/docs/hs.fnutils.html#partial"><code>hs.fnutils.partial</code></a> function to
 construct a function pointer that includes the correct first
 argument:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s7d0">hs.hotkey</span><span class="s1388">.</span><span class="s7d0">bindSpec</span><span class="s1388">({</span><span class="s1f40"> </span><span class="s1388">{</span><span class="sc1c">&#34;ctrl&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;alt&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;cmd&#34;</span><span class="s1f40"> </span><span class="s1388">},</span><span class="s1f40"> </span><span class="sc1c">&#34;p&#34;</span><span class="s1f40"> </span><span class="s1388">},</span><span class="s1f40">
@@ -391,8 +384,7 @@ argument:</p>
 <p>This is more verbose than the previous example, but the technique
 can be useful sometimes. Although Lua is not a full functional
 language, it supports using functions as first-class values, and the
-<a href="http://www.hammerspoon.org/docs/hs.fnutils.html"><code>hs.fnutils</code></a>
- extension includes a number of functions that make it
+<a href="http://www.hammerspoon.org/docs/hs.fnutils.html"><code>hs.fnutils</code></a> extension includes a number of functions that make it
 easy to use them.</p>
 </div>
 </aside>
@@ -417,8 +409,7 @@ standard:</p>
 
 <ul>
 <li><p><code>SPOON:init()</code> is called automatically (if it exists) by
-<a href="http://www.hammerspoon.org/docs/hs.html#loadSpoon"><code>hs.loadSpoon</code></a>
- after loading the spoon, and can be used to
+<a href="http://www.hammerspoon.org/docs/hs.html#loadSpoon"><code>hs.loadSpoon</code></a> after loading the spoon, and can be used to
 initialize variables or anything else needed by the Spoon.</p></li>
 
 <li><p><code>SPOON:start()</code> should exist if the spoon requires any ongoing or
@@ -607,6 +598,14 @@ configuration at <a href="https://github.com/zzamboni/dot-hammerspoon">https://g
         <li class="black dib mb2 mr2">
           Related:
         </li>
+        
+          
+            <li class="mb2 mr3">
+              <a href="/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/" class="link mid-gray dim">
+                 Just Enough Lua to Be Productive in Hammerspoon, Part 2
+              </a>
+            </li>
+          
         
           
             <li class="mb2 mr3">

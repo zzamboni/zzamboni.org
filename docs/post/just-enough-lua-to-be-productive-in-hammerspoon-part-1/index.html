@@ -57,7 +57,7 @@ will discover that Lua is a surprisingly powerful language.
 
 
 <meta itemprop="dateModified" content="2017-10-21T20:36:28&#43;00:00" />
-<meta itemprop="wordCount" content="1224">
+<meta itemprop="wordCount" content="1219">
 
 
 
@@ -214,9 +214,7 @@ expect. Some examples:</p>
 </span><span class="s1f40"></span><span class="s3e8">end</span></code></pre>
 </div>
 <p>In this example, in addition to the <a href="https://www.lua.org/manual/5.3/manual.html#3.3.4"><code>if</code></a>
-
 statement, you can see in the line that runs <a href="http://www.hammerspoon.org/docs/hs.html#execute"><code>hs.execute</code></a>
-
 that Lua functions can return multiple values (which is not the same
 as returning an array, which counts as a single value). Within the
 function, this is implemented simply by separating the values with
@@ -239,8 +237,7 @@ can also see in action the following operators:</p>
 </span><span class="s1f40">   </span><span class="s3e8">end</span><span class="s1f40">
 </span><span class="s1f40"></span><span class="s3e8">end</span></code></pre>
 </div>
-<p>In this example we see the <a href="https://www.lua.org/manual/5.3/manual.html#3.3.5"><code>for</code></a>
- statement in its
+<p>In this example we see the <a href="https://www.lua.org/manual/5.3/manual.html#3.3.5"><code>for</code></a> statement in its
 so-called <em>generic form</em>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s3e8">for</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s7d0">var</span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s3e8">in</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s7d0">expression</span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s3e8">do</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s7d0">block</span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s3e8">end</span></code></pre>
 </div>
@@ -275,9 +272,7 @@ iteration.</p>
 <p>Going back to our example, we can also learn the following:</p>
 
 <ul>
-<li><p>The 
-<a href="https://www.lua.org/manual/5.3/manual.html#pdf-pairs"><code>pairs()</code></a>
- function, which loops over a table. We will
+<li><p>The <a href="https://www.lua.org/manual/5.3/manual.html#pdf-pairs"><code>pairs()</code></a> function, which loops over a table. We will
 learn more about Lua tables below, but they can be used to represent
 both regular and associative arrays. <code>pairs()</code> treats the <code>files</code>
 variable as an associative array, and returns in each iteration a
@@ -288,23 +283,18 @@ Lua for &ldquo;throwaway values&rdquo;. In this case we are not interested in
 the key in each iteration, just the value, so we assign the key to
 <code>_</code>, never to be used again.</p></li>
 
-<li><p>Our first glimpse into the Lua <a href="https://www.lua.org/manual/5.3/manual.html#6.4"><code>string library</code></a>
-,
+<li><p>Our first glimpse into the Lua <a href="https://www.lua.org/manual/5.3/manual.html#6.4"><code>string library</code></a>,
 and the two ways in which it can be used:</p>
 
 <ul>
 <li><p>In <code>file:sub(-4)</code>, the colon indicates the object-oriented
 notation (see &ldquo;Lua dot-vs-colon method access&rdquo; below). This
-invokes the 
-<a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.sub"><code>string.sub()</code></a>
- function, automatically
+invokes the <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.sub"><code>string.sub()</code></a> function, automatically
 passing the <code>file</code> variable as its first argument. This
 statement is equivalent to <code>string.sub(file, -4)</code>.</p></li>
 
 <li><p>In <code>string.match(file, '/')</code>, we see the function notation used
-to call 
-<a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.match"><code>string.match()</code></a>
-. Since the <code>file</code> variable
+to call <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.match"><code>string.match()</code></a>. Since the <code>file</code> variable
 is being passed as the first argument, you could rewrite this
 statement as <code>file:match('/[.]')</code>. In practice, I’ve found
 myself using both notations somewhat exchangeably - feel free to
@@ -342,19 +332,15 @@ function pointer, you need to use the dot notation.</p>
 </span><span class="s1f40"></span><span class="s3e8">end</span></code></pre>
 </div>
 <p>In this example we can also see some examples of the Hammerspoon
-library in action, in particular two extremely powerful libraries: <a href="http://www.hammerspoon.org/docs/hs.mouse.html"><code>hs.mouse</code></a>
- for interacting with the mouse pointer, and <a href="http://www.hammerspoon.org/docs/hs.eventtap.html"><code>hs.eventtap</code></a>
-, which allows you to both intercept and
+library in action, in particular two extremely powerful libraries: <a href="http://www.hammerspoon.org/docs/hs.mouse.html"><code>hs.mouse</code></a> for interacting with the mouse pointer, and <a href="http://www.hammerspoon.org/docs/hs.eventtap.html"><code>hs.eventtap</code></a>, which allows you to both intercept and
 generate arbitrary system events, including key pressed and mouse
 clicks. This function simulates a double click on the current pointer
 position:</p>
 
 <ol>
-<li><p>We first get the current position of the mouse pointer using <a href="http://www.hammerspoon.org/docs/hs.mouse.html#getAbsolutePosition"><code>hs.mouse.getAbsolutePosition()</code></a>
-.</p></li>
+<li><p>We first get the current position of the mouse pointer using <a href="http://www.hammerspoon.org/docs/hs.mouse.html#getAbsolutePosition"><code>hs.mouse.getAbsolutePosition()</code></a>.</p></li>
 
-<li><p>We create a new mouse event of type <a href="http://www.hammerspoon.org/docs/hs.eventtap.event.html#types"><code>leftMouseDown</code></a>
- in the obtained coordinates and with
+<li><p>We create a new mouse event of type <a href="http://www.hammerspoon.org/docs/hs.eventtap.event.html#types"><code>leftMouseDown</code></a> in the obtained coordinates and with
 the given modifiers.</p></li>
 
 <li><p>By convention, most Hammerspoon API methods return the same object
@@ -372,8 +358,7 @@ default to <code>nil</code>, so you need to do proper validation. In this
 example, the function can be called as <code>leftDoubleClick()</code>, without
 any parameters, which means the <code>modifiers</code> parameter might have a
 <code>nil</code> value. Looking at the
-<a href="http://www.hammerspoon.org/docs/hs.eventtap.event.html#newMouseEvent">documentation for <code>newMouseEvent()</code></a>
-,
+<a href="http://www.hammerspoon.org/docs/hs.eventtap.event.html#newMouseEvent">documentation for <code>newMouseEvent()</code></a>,
 we see that the parameter is optional, so for this particular function
 our use is OK.</p>
 
@@ -417,10 +402,10 @@ them as variable. For example, I have the following at the top of my
 
 <h2 id="until-next-time">Until next time!</h2>
 
-<p>In the next installment, we will dive into Lua&rsquo;s types and data
-structures. In the meantime, feel free to explore and learn on your
-own. If you need more information, I can recommend the following
-resources, which I have found useful:</p>
+<p>In the <a href="/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/">next installment</a>, we will dive into Lua&rsquo;s types and data structures. In the
+meantime, feel free to explore and learn on your own. If you need more
+information, I can recommend the following resources, which I have
+found useful:</p>
 
 <ul>
 <li><p><a href="http://www.lua.org/manual/5.3/">The Lua 5.3 Reference Manual</a>,
@@ -454,6 +439,14 @@ wiki with many descriptions, tips, examples and tutorials.</p></li>
         <li class="black dib mb2 mr2">
           Related:
         </li>
+        
+          
+            <li class="mb2 mr3">
+              <a href="/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/" class="link mid-gray dim">
+                 Just Enough Lua to Be Productive in Hammerspoon, Part 2
+              </a>
+            </li>
+          
         
           
         
