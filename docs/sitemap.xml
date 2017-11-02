@@ -3599,4 +3599,10 @@
     <priority>0</priority>
   </url>
   
+  <url>
+    <loc>http://zzamboni.org/enwrite-callback/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
 </urlset>
