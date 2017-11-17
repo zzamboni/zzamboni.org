@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.29" />
+     <meta name="generator" content="Hugo 0.31-DEV" />
       
       
         <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
@@ -34,6 +34,7 @@ will discover that Lua is a surprisingly powerful language.
 
 
 <meta property="article:published_time" content="2017-10-21T20:36:28&#43;00:00"/>
+
 <meta property="article:modified_time" content="2017-10-21T20:36:28&#43;00:00"/>
 
 
@@ -56,8 +57,9 @@ will discover that Lua is a surprisingly powerful language.
 ">
 
 
+<meta itemprop="datePublished" content="2017-10-21T20:36:28&#43;00:00" />
 <meta itemprop="dateModified" content="2017-10-21T20:36:28&#43;00:00" />
-<meta itemprop="wordCount" content="1219">
+<meta itemprop="wordCount" content="1321">
 
 
 
@@ -205,14 +207,13 @@ as you learn it.</p>
 
 <p>Lua includes all the common flow-control structures you might
 expect. Some examples:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s3e8">local</span><span class="s1f40"> </span><span class="s7d0">info</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sc1c">&#34;No package selected&#34;</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s3e8">if</span><span class="s1f40"> </span><span class="s7d0">pkg</span><span class="s1f40"> </span><span class="sfa0">and</span><span class="s1f40"> </span><span class="s7d0">pkg</span><span class="s1f40"> </span><span class="sfa0">~=</span><span class="s1f40"> </span><span class="sc1c">&#34;&#34;</span><span class="s1f40"> </span><span class="s3e8">then</span><span class="s1f40">
-</span><span class="s1f40">   </span><span class="s7d0">info</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">st</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s7d0">hs.execute</span><span class="s1388">(</span><span class="sc1c">&#34;/usr/local/bin/brew info &#34;</span><span class="s1f40"> </span><span class="sfa0">..</span><span class="s1f40"> </span><span class="s7d0">pkg</span><span class="s1388">)</span><span class="s1f40">
-</span><span class="s1f40">   </span><span class="s3e8">if</span><span class="s1f40"> </span><span class="s7d0">st</span><span class="s1f40"> </span><span class="sfa0">==</span><span class="s1f40"> </span><span class="s3e8">nil</span><span class="s1f40"> </span><span class="s3e8">then</span><span class="s1f40">
-</span><span class="s1f40">      </span><span class="s7d0">info</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sc1c">&#34;No information found about formula &#39;&#34;</span><span class="s1f40"> </span><span class="sfa0">..</span><span class="s1f40"> </span><span class="s7d0">pkg</span><span class="s1f40"> </span><span class="sfa0">..</span><span class="s1f40"> </span><span class="sc1c">&#34;&#39;!&#34;</span><span class="s1f40">
-</span><span class="s1f40">   </span><span class="s3e8">end</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s3e8">end</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">info</span> <span class="o">=</span> <span class="s2">&#34;No package selected&#34;</span>
+<span class="kr">if</span> <span class="n">pkg</span> <span class="ow">and</span> <span class="n">pkg</span> <span class="o">~=</span> <span class="s2">&#34;&#34;</span> <span class="kr">then</span>
+   <span class="n">info</span><span class="p">,</span> <span class="n">st</span> <span class="o">=</span> <span class="n">hs.execute</span><span class="p">(</span><span class="s2">&#34;/usr/local/bin/brew info &#34;</span> <span class="o">..</span> <span class="n">pkg</span><span class="p">)</span>
+   <span class="kr">if</span> <span class="n">st</span> <span class="o">==</span> <span class="kc">nil</span> <span class="kr">then</span>
+      <span class="n">info</span> <span class="o">=</span> <span class="s2">&#34;No information found about formula &#39;&#34;</span> <span class="o">..</span> <span class="n">pkg</span> <span class="o">..</span> <span class="s2">&#34;&#39;!&#34;</span>
+   <span class="kr">end</span>
+<span class="kr">end</span></code></pre></div>
 <p>In this example, in addition to the <a href="https://www.lua.org/manual/5.3/manual.html#3.3.4"><code>if</code></a>
 statement, you can see in the line that runs <a href="http://www.hammerspoon.org/docs/hs.html#execute"><code>hs.execute</code></a>
 that Lua functions can return multiple values (which is not the same
@@ -230,17 +231,15 @@ can also see in action the following operators:</p>
 
 <li><p><code>and</code> for the logical AND operation (by extension, you can deduct that <code>or</code> and <code>not</code> are also available).</p></li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s3e8">local</span><span class="s1f40"> </span><span class="s7d0">doReload</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s3e8">false</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s3e8">for</span><span class="s1f40"> </span><span class="s7d0">_</span><span class="s1388">,</span><span class="s7d0">file</span><span class="s1f40"> </span><span class="s3e8">in</span><span class="s1f40"> </span><span class="s7d0">pairs</span><span class="s1388">(</span><span class="s7d0">files</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s3e8">do</span><span class="s1f40">
-</span><span class="s1f40">   </span><span class="s3e8">if</span><span class="s1f40"> </span><span class="s7d0">file</span><span class="s1388">:</span><span class="s7d0">sub</span><span class="s1388">(</span><span class="sfa0">-</span><span class="sc80">4</span><span class="s1388">)</span><span class="s1f40"> </span><span class="sfa0">==</span><span class="s1f40"> </span><span class="sc1c">&#34;.lua&#34;</span><span class="s1f40"> </span><span class="sfa0">and</span><span class="s1f40"> </span><span class="s1388">(</span><span class="sfa0">not</span><span class="s1f40"> </span><span class="s7d0">string.match</span><span class="s1388">(</span><span class="s7d0">file</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#39;/[.]#&#39;</span><span class="s1388">))</span><span class="s1f40"> </span><span class="s3e8">then</span><span class="s1f40">
-</span><span class="s1f40">      </span><span class="s7d0">doReload</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s3e8">true</span><span class="s1f40">
-</span><span class="s1f40">   </span><span class="s3e8">end</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s3e8">end</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">doReload</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="kr">for</span> <span class="n">_</span><span class="p">,</span><span class="n">file</span> <span class="kr">in</span> <span class="n">pairs</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="kr">do</span>
+   <span class="kr">if</span> <span class="n">file</span><span class="p">:</span><span class="n">sub</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&#34;.lua&#34;</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">string.match</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;/[.]#&#39;</span><span class="p">))</span> <span class="kr">then</span>
+      <span class="n">doReload</span> <span class="o">=</span> <span class="kc">true</span>
+   <span class="kr">end</span>
+<span class="kr">end</span></code></pre></div>
 <p>In this example we see the <a href="https://www.lua.org/manual/5.3/manual.html#3.3.5"><code>for</code></a> statement in its
 so-called <em>generic form</em>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s3e8">for</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s7d0">var</span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s3e8">in</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s7d0">expression</span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s3e8">do</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s7d0">block</span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s3e8">end</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">for</span> <span class="o">&lt;</span><span class="n">var</span><span class="o">&gt;</span> <span class="kr">in</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span> <span class="kr">do</span> <span class="o">&lt;</span><span class="n">block</span><span class="o">&gt;</span> <span class="kr">end</span></code></pre></div>
 <p>This statement loops the variables over the values returned by the
 expressions, executing the block with each the consecutive value until
 it becomes <code>nil</code>.</p>
@@ -263,8 +262,7 @@ every time it is called, returning <code>nil</code> at the end.</p>
 
 
 <p>The <code>for</code> statement also has a <em>numeric form</em>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s3e8">for</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s7d0">var</span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s7d0">first</span><span class="sfa0">&gt;</span><span class="s1388">,</span><span class="sfa0">&lt;</span><span class="s7d0">last</span><span class="sfa0">&gt;</span><span class="s1388">,</span><span class="sfa0">&lt;</span><span class="s7d0">inc</span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s3e8">do</span><span class="s1f40"> </span><span class="sfa0">&lt;</span><span class="s7d0">block</span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s3e8">end</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">for</span> <span class="o">&lt;</span><span class="n">var</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">first</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">last</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">inc</span><span class="o">&gt;</span> <span class="kr">do</span> <span class="o">&lt;</span><span class="n">block</span><span class="o">&gt;</span> <span class="kr">end</span></code></pre></div>
 <p>This form loops the variable from the first to the last value,
 incrementing it by the given increment (defaults to 1) at each
 iteration.</p>
@@ -310,9 +308,8 @@ object-method-call notation, and its effect is to pass the object on
 which the method is being called as an implicit first argument called
 <code>self</code>. This is simply a syntactic shortcut, i.e. the following two
 are equivalent:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s7d0">file</span><span class="s1388">:</span><span class="s7d0">match</span><span class="s1388">(</span><span class="sc1c">&#39;/[.]&#39;</span><span class="s1388">)</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s7d0">string.match</span><span class="s1388">(</span><span class="s7d0">file</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#39;/&#39;</span><span class="s1388">)</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">file</span><span class="p">:</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;/[.]&#39;</span><span class="p">)</span>
+<span class="n">string.match</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span></code></pre></div>
 <p>Note that in the second statement, we are calling the method using the
 dot notation, and explicitly passing the object as the first
 argument. Normally you would use colon notation, but when you need a
@@ -321,16 +318,15 @@ function pointer, you need to use the dot notation.</p>
 <h2 id="functions">Functions</h2>
 
 <p>Functions are defined using the <code>function</code> keyword.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s3e8">function</span><span class="s1f40"> </span><span class="s7d9">leftDoubleClick</span><span class="s1388">(</span><span class="s7d0">modifiers</span><span class="s1388">)</span><span class="s1f40">
-</span><span class="s1f40">   </span><span class="s3e8">local</span><span class="s1f40"> </span><span class="s7d0">pos</span><span class="sfa0">=</span><span class="s7d0">hs.mouse</span><span class="s1388">.</span><span class="s7d0">getAbsolutePosition</span><span class="s1388">()</span><span class="s1f40"> </span><span class="s1770">-- &lt;1&gt;</span><span class="s1f40">
-</span><span class="s1f40">   </span><span class="s7d0">hs.eventtap</span><span class="s1388">.</span><span class="s7d0">event.newMouseEvent</span><span class="s1388">(</span><span class="s1f40">
-</span><span class="s1f40">     </span><span class="s7d0">hs.eventtap</span><span class="s1388">.</span><span class="s7d0">event.types</span><span class="s1388">.</span><span class="s7d0">leftMouseDown</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">pos</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">modifiers</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s1770">-- &lt;2&gt;</span><span class="s1f40">
-</span><span class="s1f40">      </span><span class="s1388">:</span><span class="s7d0">setProperty</span><span class="s1388">(</span><span class="s7d0">hs.eventtap</span><span class="s1388">.</span><span class="s7d0">event.properties</span><span class="s1388">.</span><span class="s7d0">mouseEventClickState</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc80">2</span><span class="s1388">)</span><span class="s1f40">
-</span><span class="s1f40">      </span><span class="s1388">:</span><span class="s7d0">post</span><span class="s1388">()</span><span class="s1f40"> </span><span class="s1770">-- &lt;3&gt;</span><span class="s1f40">
-</span><span class="s1f40">   </span><span class="s7d0">hs.eventtap</span><span class="s1388">.</span><span class="s7d0">event.newMouseEvent</span><span class="s1388">(</span><span class="s1f40"> </span><span class="s1770">-- &lt;4&gt;</span><span class="s1f40">
-</span><span class="s1f40">     </span><span class="s7d0">hs.eventtap</span><span class="s1388">.</span><span class="s7d0">event.types</span><span class="s1388">.</span><span class="s7d0">leftMouseUp</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">pos</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">modifiers</span><span class="s1388">):</span><span class="s7d0">post</span><span class="s1388">()</span><span class="s1f40"> 
-</span><span class="s1f40"></span><span class="s3e8">end</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">function</span> <span class="nf">leftDoubleClick</span><span class="p">(</span><span class="n">modifiers</span><span class="p">)</span>
+   <span class="kd">local</span> <span class="n">pos</span><span class="o">=</span><span class="n">hs.mouse</span><span class="p">.</span><span class="n">getAbsolutePosition</span><span class="p">()</span> <span class="c1">-- &lt;1&gt;</span>
+   <span class="n">hs.eventtap</span><span class="p">.</span><span class="n">event.newMouseEvent</span><span class="p">(</span>
+     <span class="n">hs.eventtap</span><span class="p">.</span><span class="n">event.types</span><span class="p">.</span><span class="n">leftMouseDown</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">)</span> <span class="c1">-- &lt;2&gt;</span>
+      <span class="p">:</span><span class="n">setProperty</span><span class="p">(</span><span class="n">hs.eventtap</span><span class="p">.</span><span class="n">event.properties</span><span class="p">.</span><span class="n">mouseEventClickState</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="p">:</span><span class="n">post</span><span class="p">()</span> <span class="c1">-- &lt;3&gt;</span>
+   <span class="n">hs.eventtap</span><span class="p">.</span><span class="n">event.newMouseEvent</span><span class="p">(</span> <span class="c1">-- &lt;4&gt;</span>
+     <span class="n">hs.eventtap</span><span class="p">.</span><span class="n">event.types</span><span class="p">.</span><span class="n">leftMouseUp</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span><span class="n">post</span><span class="p">()</span> 
+<span class="kr">end</span></code></pre></div>
 <p>In this example we can also see some examples of the Hammerspoon
 library in action, in particular two extremely powerful libraries: <a href="http://www.hammerspoon.org/docs/hs.mouse.html"><code>hs.mouse</code></a> for interacting with the mouse pointer, and <a href="http://www.hammerspoon.org/docs/hs.eventtap.html"><code>hs.eventtap</code></a>, which allows you to both intercept and
 generate arbitrary system events, including key pressed and mouse
@@ -367,9 +363,8 @@ our use is OK.</p>
 next time you reload your configuration. You could then try calling it
 from the console, but the easiest is to bind a hotkey that will
 generate a double click. For example:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s7d0">hs.hotkey</span><span class="s1388">.</span><span class="s7d0">bindSpec</span><span class="s1388">({</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc1c">&#34;cmd&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;ctrl&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;alt&#34;</span><span class="s1f40"> </span><span class="s1388">},</span><span class="s1f40"> </span><span class="sc1c">&#34;p&#34;</span><span class="s1f40"> </span><span class="s1388">},</span><span class="s1f40">
-</span><span class="s1f40">                   </span><span class="s7d0">leftDoubleClick</span><span class="s1388">)</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="p">{</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span> <span class="p">},</span> <span class="s2">&#34;p&#34;</span> <span class="p">},</span>
+                   <span class="n">leftDoubleClick</span><span class="p">)</span></code></pre></div>
 <p>Once you reload your config, you can generate a double click by moving
 the cursor where you want it and pressing <kbd>Ctrl</kbd>+<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>p</kbd>
 . While this is a contrived example, the ability to generate
@@ -391,12 +386,10 @@ frequently in our keybindings. To avoid having to type this every
 time, and since the modifiers are defined as an array, you can define
 them as variable. For example, I have the following at the top of my
 <code>init.lua</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s7d0">hyper</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s1388">{</span><span class="sc1c">&#34;cmd&#34;</span><span class="s1388">,</span><span class="sc1c">&#34;alt&#34;</span><span class="s1388">,</span><span class="sc1c">&#34;ctrl&#34;</span><span class="s1388">}</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s7d0">shift_hyper</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s1388">{</span><span class="sc1c">&#34;cmd&#34;</span><span class="s1388">,</span><span class="sc1c">&#34;alt&#34;</span><span class="s1388">,</span><span class="sc1c">&#34;ctrl&#34;</span><span class="s1388">,</span><span class="sc1c">&#34;shift&#34;</span><span class="s1388">}</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hyper</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;cmd&#34;</span><span class="p">,</span><span class="s2">&#34;alt&#34;</span><span class="p">,</span><span class="s2">&#34;ctrl&#34;</span><span class="p">}</span>
+<span class="n">shift_hyper</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;cmd&#34;</span><span class="p">,</span><span class="s2">&#34;alt&#34;</span><span class="p">,</span><span class="s2">&#34;ctrl&#34;</span><span class="p">,</span><span class="s2">&#34;shift&#34;</span><span class="p">}</span></code></pre></div>
 <p>Then I simply use <code>hyper</code> or <code>shift_hyper</code> in my key binding declarations:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s7d0">hs.hotkey</span><span class="s1388">.</span><span class="s7d0">bindSpec</span><span class="s1388">({</span><span class="s1f40"> </span><span class="s7d0">hyper</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;p&#34;</span><span class="s1f40"> </span><span class="s1388">},</span><span class="s1f40"> </span><span class="s7d0">leftDoubleClick</span><span class="s1388">)</span></code></pre>
-</div></div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;p&#34;</span> <span class="p">},</span> <span class="n">leftDoubleClick</span><span class="p">)</span></code></pre></div></div>
 </aside>
 
 

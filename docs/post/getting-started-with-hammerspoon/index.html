@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.29" />
+     <meta name="generator" content="Hugo 0.31-DEV" />
       
       
         <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
@@ -34,6 +34,7 @@ runtime, funtime.
 
 
 <meta property="article:published_time" content="2017-08-21T16:34:00&#43;02:00"/>
+
 <meta property="article:modified_time" content="2017-08-21T16:34:00&#43;02:00"/>
 
 
@@ -56,8 +57,9 @@ runtime, funtime.
 ">
 
 
+<meta itemprop="datePublished" content="2017-08-21T16:34:00&#43;02:00" />
 <meta itemprop="dateModified" content="2017-08-21T16:34:00&#43;02:00" />
-<meta itemprop="wordCount" content="1500">
+<meta itemprop="wordCount" content="1528">
 
 
 
@@ -288,8 +290,7 @@ anywhere else you want).</p>
 <a href="https://brew.sh/">Homebrew</a> and its plugin
 <a href="https://caskroom.github.io/">Cask</a> to manage your applications. In
 this case, you can use Cask to install Hammerspoon:</p>
-<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console"><span class="s1f40">brew cask install hammerspoon</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console">brew cask install hammerspoon</code></pre></div>
 <p>When you run Hammerspoon for the first time, you will see its icon
 appear in the menubar, and a notification telling you that it couldn&rsquo;t
 find a configuration file. Let&rsquo;s fix that!</p>
@@ -328,11 +329,10 @@ will start with a &ldquo;Hello World&rdquo; example. Open
 <code>$HOME/.hammerspoon/init.lua</code> (Hammerspoon will create the directory
 upon first startup, but you need to create the file) in your favorite
 editor, and type the following:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s7d0">hs.hotkey</span><span class="s1388">.</span><span class="s7d0">bindSpec</span><span class="s1388">({</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc1c">&#34;ctrl&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;cmd&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;alt&#34;</span><span class="s1f40"> </span><span class="s1388">},</span><span class="s1f40"> </span><span class="sc1c">&#34;h&#34;</span><span class="s1f40"> </span><span class="s1388">},</span><span class="s1f40"> 
-</span><span class="s1f40">   </span><span class="s3e8">function</span><span class="s1388">()</span><span class="s1f40"> 
-</span><span class="s1f40">      </span><span class="s7d0">hs.notify</span><span class="s1388">.</span><span class="s7d0">show</span><span class="s1388">(</span><span class="sc1c">&#34;Hello World!&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;Welcome to Hammerspoon&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;&#34;</span><span class="s1388">)</span><span class="s1f40"> 
-</span><span class="s1f40">   </span><span class="s3e8">end</span><span class="s1388">)</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="p">{</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span> <span class="p">},</span> <span class="s2">&#34;h&#34;</span> <span class="p">},</span> 
+   <span class="kr">function</span><span class="p">()</span> 
+      <span class="n">hs.notify</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="s2">&#34;Hello World!&#34;</span><span class="p">,</span> <span class="s2">&#34;Welcome to Hammerspoon&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">)</span> 
+   <span class="kr">end</span><span class="p">)</span></code></pre></div>
 <p>Save the file, and from the Hammerspoon icon in the menubar, select
 &ldquo;Reload config&rdquo;. Apparently nothing will happen, but if you then press
 <kbd>Ctrl</kbd>+<kbd>⌘</kbd>+<kbd>Alt</kbd>+<kbd>h</kbd>
@@ -404,9 +404,8 @@ also accessible through its API. In this case, looking at the
 there is an <a href="http://www.hammerspoon.org/docs/hs.html#toggleConsole"><code>hs.toggleConsole</code></a> function. Using the knowledge
 you have acquired so far, you can easily configure a hotkey for
 opening and hiding the console:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s7d0">hs.hotkey</span><span class="s1388">.</span><span class="s7d0">bindSpec</span><span class="s1388">({</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc1c">&#34;ctrl&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;cmd&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;alt&#34;</span><span class="s1f40"> </span><span class="s1388">},</span><span class="s1f40"> </span><span class="sc1c">&#34;y&#34;</span><span class="s1f40"> </span><span class="s1388">},</span><span class="s1f40">
-</span><span class="s1f40">                   </span><span class="s7d0">hs.toggleConsole</span><span class="s1388">)</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="p">{</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span> <span class="p">},</span> <span class="s2">&#34;y&#34;</span> <span class="p">},</span>
+                   <span class="n">hs.toggleConsole</span><span class="p">)</span></code></pre></div>
 <p>Once you reload your configuration, you should be able to use <kbd>Ctrl</kbd>+<kbd>⌘</kbd>+<kbd>Alt</kbd>+<kbd>y</kbd>
  to open and close the console. Any Lua code you
 type in the Console will be evaluated in the main Hammerspoon context,
@@ -419,8 +418,7 @@ Hammerspoon code: reloading the configuration, which you normally have
 to do from the Hammerspoon menu. So why not set up a hotkey to do that
 as well? Again, the <a href="http://www.hammerspoon.org/docs/hs.html"><code>hs</code></a> module comes to our help with the
 <a href="http://www.hammerspoon.org/docs/hs.html#reload"><code>hs.reload</code></a> method:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="s7d0">hs.hotkey</span><span class="s1388">.</span><span class="s7d0">bindSpec</span><span class="s1388">({</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc1c">&#34;ctrl&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;cmd&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;alt&#34;</span><span class="s1f40"> </span><span class="s1388">},</span><span class="s1f40"> </span><span class="sc1c">&#34;r&#34;</span><span class="s1f40"> </span><span class="s1388">},</span><span class="s1f40"> </span><span class="s7d0">hs.reload</span><span class="s1388">)</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="p">{</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span> <span class="p">},</span> <span class="s2">&#34;r&#34;</span> <span class="p">},</span> <span class="n">hs.reload</span><span class="p">)</span></code></pre></div>
 <p>Another useful development tool is the <code>hs</code> command, which you can run
 from your terminal to get a Hammerspoon console. To install it, you
 can use the <a href="http://www.hammerspoon.org/docs/hs.ipc.html#cliInstall"><code>hs.ipc.cliInstall</code></a> function, which you can just
