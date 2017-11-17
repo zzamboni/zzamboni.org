@@ -2,6 +2,7 @@
 #+date: 2017-11-16T20:21:29
 #+featured_image: /images/elvish-logo.svg
 #+tags: elvish shell unix config
+#+summary: In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 
 
 In this blog post I will walk you through my current [[http://elvish.io][Elvish]]
