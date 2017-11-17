@@ -12,7 +12,7 @@
      <meta name="generator" content="Hugo 0.31-DEV" />
       
       
-        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+        <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
       
 
      <link href='http://zzamboni.org/dist/main.css' rel='stylesheet' type="text/css" />
@@ -58,6 +58,15 @@
 <meta name="twitter:description" content="via https://dev.evernote.com/doc/articles/polling_notification.php
  Useful note about how to poll an Evernote account for new content. Also a test of web clipping with Enwrite. Polling If your app wants to know about changes in a user&#39;s Evernote account, you&#39;ll probably consider calling the NoteStore.findNotesMetadata function periodically to search for new notes. findNotes is incredibly powerful, but it&#39;s also expensive for our servers - we need to load the user&#39;s Lucene index, perform the search across all of their notes, hit the database to pull out the results, and send those results over the network to your app."/>
 
+        
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-109878074-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+      
       <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -65,7 +74,7 @@
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   </head>
 
-  <body class="ma0 avenir bg-near-white">
+  <body class="ma0 avenir bg-near-white production">
 
     
    
