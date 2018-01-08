@@ -2,6 +2,7 @@
 #+date: 2017-12-17T20:14:36+01:00
 #+featured_image: /images/emacs-logo.svg
 #+tags: emacs config
+#+summary: I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file.
 
 I have enjoyed slowly converting my configuration files to [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate
 programming]] style style using org-mode in Emacs. I previously posted
