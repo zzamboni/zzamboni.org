@@ -45,6 +45,13 @@
   </url>
   
   <url>
+    <loc>http://zzamboni.org/post/my-hammerspoon-configuration-with-commentary/</loc>
+    <lastmod>2018-01-08T13:31:13+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://zzamboni.org/post/my-emacs-configuration-with-commentary/</loc>
     <lastmod>2017-12-17T20:14:36+01:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -2685,7 +2692,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/config/</loc>
-    <lastmod>2017-12-17T20:14:36+01:00</lastmod>
+    <lastmod>2018-01-08T13:31:13+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -2936,7 +2943,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/hammerspoon/</loc>
-    <lastmod>2017-11-01T08:16:15+00:00</lastmod>
+    <lastmod>2018-01-08T13:31:13+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -2964,7 +2971,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/howto/</loc>
-    <lastmod>2017-11-01T08:16:15+00:00</lastmod>
+    <lastmod>2018-01-08T13:31:13+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
