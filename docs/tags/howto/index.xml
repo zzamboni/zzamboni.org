@@ -6,10 +6,20 @@
     <description>Recent content in Howto on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Nov 2017 08:16:15 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jan 2018 13:31:13 +0100</lastBuildDate>
     
 	<atom:link href="http://zzamboni.org/tags/howto/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>My Hammerspoon Configuration, With Commentary</title>
+      <link>http://zzamboni.org/post/my-hammerspoon-configuration-with-commentary/</link>
+      <pubDate>Mon, 08 Jan 2018 13:31:13 +0100</pubDate>
+      
+      <guid>http://zzamboni.org/post/my-hammerspoon-configuration-with-commentary/</guid>
+      <description>In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at this time, you can see the current version of my configuration in GitHub.
+Table of Contents TOC noexport   General variables and configuration Spoon Management URL Dispatching to site-specific browsers Window and screen manipulation Organization and Productivity System and UI Other applications Seal Network transitions Pop-up translation Miscellaneous stuff End-of-config animation  General variables and configuration Global log level.</description>
+    </item>
     
     <item>
       <title>Just Enough Lua to Be Productive in Hammerspoon, Part 2</title>
