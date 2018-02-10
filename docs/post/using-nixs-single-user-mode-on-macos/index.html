@@ -51,7 +51,7 @@
 
 <meta itemprop="datePublished" content="2017-09-20T18:24:47&#43;00:00" />
 <meta itemprop="dateModified" content="2017-09-20T18:24:47&#43;00:00" />
-<meta itemprop="wordCount" content="429">
+<meta itemprop="wordCount" content="541">
 
 
 
@@ -171,6 +171,42 @@
 
 <p></p>
 
+<aside class="admonition tip">
+	<div class="admonition-icon">
+		<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 8 8">
+  <path d="M3.41 0a.5.5 0 0 0-.13.06l-3 1.5a.5.5 0 1 0 .44.88l3-1.5a.5.5 0 0 0-.31-.94zm1 1.5a.5.5 0 0 0-.13.06l-4 2a.5.5 0 1 0 .44.88l4-2a.5.5 0 0 0-.31-.94zm0 2a.5.5 0 0 0-.13.06l-3 1.5a.5.5 0 0 0 .22.94h2a.5.5 0 0 0 .16-1l1.06-.56a.5.5 0 0 0-.31-.94zm-2.56 3.5a.5.5 0 0 0 .16 1h1a.5.5 0 1 0 0-1h-1a.5.5 0 0 0-.09 0 .5.5 0 0 0-.06 0z"
+  transform="translate(1)" />
+</svg>
+
+	</div>
+	
+	
+	<div class="admonition-content"><p>Thanks to
+<a href="https://disqus.com/by/alexander_vorobiev/">Alexander</a> (see <a href="http://disq.us/p/1q17rj6">his
+comment below</a>), a much easier and cleaner
+alternative (I have not tested it):</p>
+
+<blockquote>
+<p>The original single user setup is still in the install script (so far)
+so it is actually pretty easy to use it. Here are the steps:</p>
+
+<ol>
+<li>Open <a href="https://nixos.org/releases/">https://nixos.org/releases/</a> and find the latest version</li>
+<li>Download the tarball.</li>
+<li>Unpack it somewhere</li>
+<li>Open the install script and comment the lines (the if statement)
+for multiuser Darwin setup. In that particular version the lines
+are 26-35.</li>
+<li>Create the /nix directory (sudo mkdir /nix) and change the
+ownerwhip to yourself (sudo chown youruserid /nix). Those are the
+only commands you need sudo rights for.</li>
+<li>run the install script ./install</li>
+</ol>
+</blockquote>
+</div>
+</aside>
+
+
 <p>I have been playing with the <a href="https://nixos.org/nix/">Nix package
 manager</a> lately (I will write more about it
 some other time). On macOS, Nix mandatorily installs itself in
@@ -198,7 +234,7 @@ Homebrew to install Nix!)</p>
 sudo launchctl stop org.nixos.nix-daemon</code></pre></div>
 <p>Change the ownership of the entire <code>/nix</code> directory to your
 personal user:</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">chown -R yourusername /nix </code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">chown -R yourusername /nix</code></pre></div>
 <p>Change your configuration to unset the <code>NIX_REMOTE</code> environment
 variable. This is set automatically if you use <code>bash</code> because the Nix
 installation adds it to <code>/etc/profile</code>, so you will have to unset it
