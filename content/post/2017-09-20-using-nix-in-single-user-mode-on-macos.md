@@ -13,6 +13,27 @@ Here is how to set up Nix in single-user mode on macOS.
 
 <!--more-->
 
+{{% tip %}} Thanks to
+[Alexander](https://disqus.com/by/alexander_vorobiev/) (see [his
+comment below](http://disq.us/p/1q17rj6)), a much easier and cleaner
+alternative (I have not tested it):
+
+> The original single user setup is still in the install script (so far)
+> so it is actually pretty easy to use it. Here are the steps:
+>
+> 1. Open <https://nixos.org/releases/> and find the latest version
+> 2. Download the tarball.
+> 3. Unpack it somewhere
+> 4. Open the install script and comment the lines (the if statement)
+>    for multiuser Darwin setup. In that particular version the lines
+>    are 26-35.
+> 5. Create the /nix directory (sudo mkdir /nix) and change the
+>    ownerwhip to yourself (sudo chown youruserid /nix). Those are the
+>    only commands you need sudo rights for.
+> 6. run the install script ./install
+
+{{% /tip %}}
+
 I have been playing with the [Nix package
 manager](https://nixos.org/nix/) lately (I will write more about it
 some other time). On macOS, Nix mandatorily installs itself in
@@ -46,7 +67,7 @@ Change the ownership of the entire `/nix` directory to your
 personal user:
 
 ```shell
-chown -R yourusername /nix 
+chown -R yourusername /nix
 ```
 
 Change your configuration to unset the `NIX_REMOTE` environment
