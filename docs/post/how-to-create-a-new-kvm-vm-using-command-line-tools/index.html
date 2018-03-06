@@ -12,7 +12,7 @@
      <meta name="generator" content="Hugo 0.31-DEV" />
       
       
-        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+        <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
       
 
      <link href='http://zzamboni.org/dist/main.css' rel='stylesheet' type="text/css" />
@@ -55,6 +55,22 @@
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="How to create a new KVM VM using command line tools"/>
 <meta name="twitter:description" content=" I got tired of clicking through virt-manager to create new VMs, so I found the command needed to create one from the command line (thanks https://acidborg.wordpress.com/2010/02/18/how-to-create-virtual-machines-using-kvm-kernel-based-virtual-machine/):  virt-install --name=hostname --arch=x86_64 --vcpus=2 --ram=4096 --os-type=linux --os-variant=rhel7 --hvm --connect=qemu:///system --network bridge:br-fabric --cdrom=/var/lib/libvirt/images/CentOS-7.0-1406-x86_64-Minimal.iso --disk path=/var/lib/libvirt/images/hostname.img,size=32 --accelerate --vnc   "/>
 
+        
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-109878074-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2108021418174840",
+    enable_page_level_ads: true
+  });
+</script>
+      
       <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -62,7 +78,7 @@
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   </head>
 
-  <body class="ma0 avenir bg-near-white">
+  <body class="ma0 avenir bg-near-white production">
 
     
    
