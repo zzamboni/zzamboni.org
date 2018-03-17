@@ -235,13 +235,13 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 * Keybindings
 ** Miscellaneous keybindings
 
-- =M-g=: interactively ask for a line number and jump to it (=goto-line)=.
+- =M-g= interactively asks for a line number and jump to it (=goto-line)=.
 
   #+begin_src emacs-lisp
     (global-set-key [(meta g)] 'goto-line)
   #+end_src
 
-- =M-`=: if multiple frames are active, focus the next one (emulate the Mac "next app window" keybinding)
+- =M-`= focuses the next frame, if multiple ones are active (emulate the Mac "next app window" keybinding)
 
   #+begin_src emacs-lisp
     (global-set-key [(meta \`)] 'other-frame)
@@ -264,7 +264,7 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 
 ** Emulating vi's =%= key
 
-One of the few things I missed in Emacs from vi was the =%= key, which jumps to the parenthesis, bracket or brace which matches the one below the cursor. This function implements the functionality. Inspired by http://www.emacswiki.org/emacs/NavigatingParentheses, but modified to use =smartparens= instead of the default commands, and to work on brackets and braces.
+One of the few things I missed in Emacs from vi was the =%= key, which jumps to the parenthesis, bracket or brace which matches the one below the cursor. This function implements the functionality. Inspired by [[http://www.emacswiki.org/emacs/NavigatingParentheses]], but modified to use =smartparens= instead of the default commands, and to work on brackets and braces.
 
 #+begin_src emacs-lisp
   (defun goto-match-paren (arg)
