@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.31-DEV" />
+     <meta name="generator" content="Hugo 0.38-DEV" />
       
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -58,7 +58,8 @@ Paths First we set up the executable paths.">
 
 
 <meta itemprop="keywords" content="elvish,shell,unix,config," />
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="My Elvish Configuration With Commentary"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="My Elvish Configuration With Commentary"/>
 <meta name="twitter:description" content="In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file, from which the rc.elv file is directly generated.
 Without further ado...
@@ -193,7 +194,7 @@ sections.</p>
 <p>This is also my first blog post written using <a href="http://orgmode.org/" title="org-mode">org-mode</a>, which I have
 started using for writing and documenting my code, using <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html" title="literate
 programming">literate
-programming</a>. The content below is included unmodified from my <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.org" title="rc.org
+programming</a>. The content below is included unmodified from my <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc" title="rc.org
 file">rc.org
 file</a>, from which the <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.elv" title="rc.elv">rc.elv</a> file is directly generated.</p>
 
@@ -224,7 +225,7 @@ file</a>, from which the <a href="https://github.com/zzamboni/vcsh_elvish/blob/m
 
 <p>Load the bundled <a href="https://elvish.io/ref/re.html" title="re">re</a> module for regular expression functions.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">    use re</code></pre></div>
-<p>The <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/prompt_hooks.org" title="&lt;code&gt;prompt_hooks&lt;/code&gt;"><code>prompt_hooks</code></a> module provides some functions for manipulating the
+<p>The <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/prompt_hooks" title="&lt;code&gt;prompt_hooks&lt;/code&gt;"><code>prompt_hooks</code></a> module provides some functions for manipulating the
   before/after command hooks.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">    use prompt_hooks</code></pre></div>
 <p>The bundled <a href="https://elvish.io/ref/bundled.html" title="readline-binding">readline-binding</a> module associates some Emacs-like
@@ -238,27 +239,27 @@ file</a>, from which the <a href="https://github.com/zzamboni/vcsh_elvish/blob/m
     edit:insert:binding[Alt-d] = { edit:move-dot-right-word; edit:kill-word-left }</code></pre></div>
 <h1 id="nix-package-manager">Nix package manager</h1>
 
-<p>I use the <a href="https://nixos.org/nix/" title="Nix">Nix</a> package manager on macOS, the <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/nix.org" title="nix">nix</a> module sets up the
+<p>I use the <a href="https://nixos.org/nix/" title="Nix">Nix</a> package manager on macOS, the <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/nix" title="nix">nix</a> module sets up the
   necessary environment variables.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">    use nix
     nix:multi-user-setup</code></pre></div>
 <h1 id="git-related-stuff">Git-related stuff</h1>
 
-<p>The <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/git.org" title="git">git</a> module defines some git-related functionality, including a
+<p>The <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/git" title="git">git</a> module defines some git-related functionality, including a
   wrapper to automatically call <code>vcsh</code> when needed.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">    use git
     fn git [@arg]{ git:git_vcsh $@arg }</code></pre></div>
-<p>We also load the <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/completer/git.org" title="completer:git">completer:git</a> module to provide completions for
+<p>We also load the <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/completer/git" title="completer:git">completer:git</a> module to provide completions for
   git and similar commands. We set the completer to call the =git=
   function defined above, so that it also works when we are in vcsh
   repositories.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">    use completer:git
     edit:arg-completer[git] = [@args]{ completer:git:git-completer $&amp;git (explode $args[1:]) }</code></pre></div>
-<p>The <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/completer/vcsh.org" title="completer:vcsh">completer:vcsh</a> module provides git-like completion for vcsh.</p>
+<p>The <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/completer/vcsh" title="completer:vcsh">completer:vcsh</a> module provides git-like completion for vcsh.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">    use completer:vcsh</code></pre></div>
 <h1 id="prompt-theme">Prompt theme</h1>
 
-<p>I use the <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/theme/chain.org" title="chain">chain</a> prompt theme, ported from the fish theme at
+<p>I use the <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/theme/chain" title="chain">chain</a> prompt theme, ported from the fish theme at
   https://github.com/oh-my-fish/theme-chain.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">    use theme:chain
     edit:-prompts-max-wait = 0.01
@@ -268,7 +269,7 @@ file</a>, from which the <a href="https://github.com/zzamboni/vcsh_elvish/blob/m
 <p>When I am in the office, I need to use a proxy to access the
   Internet. For macOS applications, the proxy is set automatically
   using a company-provided PAC file. For the command line variables,
-  the <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/proxy.org" title="proxy">proxy</a> module allows me to define a test which determines when
+  the <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/proxy" title="proxy">proxy</a> module allows me to define a test which determines when
   the proxy should be set, so that the change is done automatically.</p>
 
 <p>First, we load the module and set the proxy. The
@@ -285,7 +286,7 @@ file</a>, from which the <a href="https://github.com/zzamboni/vcsh_elvish/blob/m
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">    proxy:test = { and ?(test -f /etc/resolv.conf) ?(egrep -q &#39;^(search|domain).*corproot.net&#39; /etc/resolv.conf) }</code></pre></div>
 <h1 id="long-running-command-notifications">Long-running-command notifications</h1>
 
-<p>The <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/long-running-notifications.org" title="long-running-notifications">long-running-notifications</a> module allows for producing a
+<p>The <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/long-running-notifications" title="long-running-notifications">long-running-notifications</a> module allows for producing a
   notification when a command takes longer than a certain time to
   finish (by default the period is 10 seconds). The module
   automatically detects when <a href="https://github.com/julienXX/terminal-notifier" title="terminal-notifier">terminal-notifier</a> is available on macOS
@@ -306,11 +307,11 @@ file</a>, from which the <a href="https://github.com/zzamboni/vcsh_elvish/blob/m
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">    use narrow
     narrow:bind-trigger-keys &amp;location=Alt-l &amp;lastcmd=&#34;&#34;</code></pre></div>
 <p>I have decades of muscle memory using <code>!!</code> and <code>!$</code> to insert the last
-  command and its last argument, respectively. The <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/bang-bang.org" title="bang-bang">bang-bang</a> module
+  command and its last argument, respectively. The <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/bang-bang" title="bang-bang">bang-bang</a> module
   allows me to keep using them.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">    use bang-bang
     bang-bang:bind-trigger-keys</code></pre></div>
-<p>The <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/dir.org" title="dir">dir</a> module implements a directory history and some related
+<p>The <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/dir" title="dir">dir</a> module implements a directory history and some related
   functions. I override the built-in <code>cd</code> command with a function that
   calls <code>dir:cd</code> so that any directory changes are kept in the
   history. I also create a top-level wrapper for the <code>dir:cdb</code> function,
@@ -327,7 +328,7 @@ file</a>, from which the <a href="https://github.com/zzamboni/vcsh_elvish/blob/m
 <h1 id="aliases">Aliases</h1>
 
 <p>Elvish does not have built-in alias functionality, but this is
-  implemented easily using the <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/alias.org" title="alias">alias</a> module, which stores the alias
+  implemented easily using the <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/alias" title="alias">alias</a> module, which stores the alias
   definitions as functions under <code>~/.elvish/aliases/</code> and loads them
   automatically.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">    use alias</code></pre></div>
@@ -347,7 +348,7 @@ file</a>, from which the <a href="https://github.com/zzamboni/vcsh_elvish/blob/m
     }</code></pre></div>
 <h1 id="miscellaneous-stuff">Miscellaneous stuff</h1>
 
-<p>I use the <a href="https://atlas.oreilly.com/" title="O'Reilly Atlas">O'Reilly Atlas</a> publishing platform. The <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/atlas.org" title="atlas">atlas</a> module
+<p>I use the <a href="https://atlas.oreilly.com/" title="O'Reilly Atlas">O'Reilly Atlas</a> publishing platform. The <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/atlas" title="atlas">atlas</a> module
   contains some useful functions for triggering and accessing document
   builds.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">    use atlas</code></pre></div>
@@ -391,8 +392,7 @@ file</a>, from which the <a href="https://github.com/zzamboni/vcsh_elvish/blob/m
     }</code></pre></div>
 <p>Example:</p>
 
-<pre><code>
-    &gt; pipesplit { echo stdout-test; echo stderr-test &gt;&amp;2 } { echo STDOUT: (cat) } { echo STDERR: (cat) }
+<pre><code>    &gt; pipesplit { echo stdout-test; echo stderr-test &gt;&amp;2 } { echo STDOUT: (cat) } { echo STDERR: (cat) }
     STDOUT: stdout-test
     STDERR: stderr-test
 </code></pre>
