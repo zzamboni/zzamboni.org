@@ -49,7 +49,7 @@ I have enjoyed slowly converting my configuration files to literate programming 
 
 <meta itemprop="datePublished" content="2017-12-17T20:14:36&#43;01:00" />
 <meta itemprop="dateModified" content="2017-12-17T20:14:36&#43;01:00" />
-<meta itemprop="wordCount" content="4617">
+<meta itemprop="wordCount" content="4555">
 
 
 
@@ -185,38 +185,17 @@ ga('send', 'pageview');
 
 <p>I have enjoyed slowly converting my configuration files to <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html" title="literate programming">literate programming</a> style style using org-mode in Emacs. I previously posted my <a href="../my-elvish-configuration-with-commentary/" title="Elvish configuration">Elvish configuration</a>, and now it's the turn of my Emacs configuration file. The text below is included directly from my <a href="https://github.com/zzamboni/dot_emacs/blob/master/init" title="init.org">init.org</a> file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the <a href="https://github.com/zzamboni/dot_emacs/blob/master/init" title="init.org file in GitHub">init.org file in GitHub</a> for my current, live configuration, and the generated file at <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.el" title="https://github.com/zzamboni/dot_emacs/blob/master/init.el">https://github.com/zzamboni/dot_emacs/blob/master/init.el</a>.</p>
 
-<h1 id="table-of-contents-toc-noexport">Table of Contents <span class="tags TOC">TOC</span>  <span class="tags noexport">noexport</span> </h1>
+<h1 id="table-of-contents">Table of Contents</h1>
 
 <ul>
 <li><a href="#customized-variables" title="Customized variables">Customized variables</a></li>
 <li><a href="#setting-up-the-package-system" title="Setting up the package system">Setting up the package system</a></li>
 <li><a href="#settings" title="Settings">Settings</a></li>
-<li><a href="#proxy-settings" title="Proxy settings">Proxy settings</a></li>
-<li><a href="#miscellaneous-settings" title="Miscellaneous settings">Miscellaneous settings</a></li>
 <li><a href="#keybindings" title="Keybindings">Keybindings</a></li>
-<li><a href="#miscellaneous-keybindings" title="Miscellaneous keybindings">Miscellaneous keybindings</a></li>
-<li><a href="#emulating-vis--key" title="Emulating vi's &lt;code&gt;%&lt;/code&gt; key">Emulating vi's <code>%</code> key</a></li>
 <li><a href="#org-mode" title="Org mode">Org mode</a></li>
-<li><a href="#keybindings-1" title="Keybindings">Keybindings</a></li>
-<li><a href="#general-org-mode-configuration" title="General org-mode configuration">General org-mode configuration</a></li>
-<li><a href="#building-presentations-with-org-mode" title="Building presentations with org-mode">Building presentations with org-mode</a></li>
-<li><a href="#various-exporters" title="Various exporters">Various exporters</a></li>
-<li><a href="#keeping-a-journal" title="Keeping a Journal">Keeping a Journal</a></li>
-<li><a href="#literate-programming-using-org-babel" title="Literate programming using org-babel">Literate programming using org-babel</a></li>
-<li><a href="#beautifying-org-mode" title="Beautifying org-mode">Beautifying org-mode</a></li>
-<li><a href="#auto-generated-table-of-contents" title="Auto-generated table of contents">Auto-generated table of contents</a></li>
-<li><a href="#grabbing-links-from-different-mac-applications" title="Grabbing links from different Mac applications">Grabbing links from different Mac applications</a></li>
-<li><a href="#reformatting-an-org-buffer" title="Reformatting an org buffer">Reformatting an org buffer</a></li>
-<li><a href="#snippets-and-templates" title="Snippets and templates">Snippets and templates</a></li>
 <li><a href="#system-specific-configuration" title="System-specific configuration">System-specific configuration</a></li>
-<li><a href="#mac" title="Mac">Mac</a></li>
-<li><a href="#linux" title="Linux">Linux</a></li>
-<li><a href="#windows" title="Windows">Windows</a></li>
 <li><a href="#appearance-bufferfile-management-and-theming" title="Appearance, buffer/file management and theming">Appearance, buffer/file management and theming</a></li>
 <li><a href="#coding" title="Coding">Coding</a></li>
-<li><a href="#general-settings-and-modules" title="General settings and modules">General settings and modules</a></li>
-<li><a href="#clojure-and-lisp-coding" title="Clojure and LISP coding">Clojure and LISP coding</a></li>
-<li><a href="#other-programming-languages" title="Other programming languages">Other programming languages</a></li>
 <li><a href="#other-tools" title="Other tools">Other tools</a></li>
 <li><a href="#general-text-editing" title="General text editing">General text editing</a></li>
 <li><a href="#cheatsheet" title="Cheatsheet">Cheatsheet</a></li>
