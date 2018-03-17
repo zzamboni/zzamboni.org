@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.31-DEV" />
+     <meta name="generator" content="Hugo 0.38-DEV" />
       
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -52,7 +52,8 @@
 
 
 <meta itemprop="keywords" content="elvish,shell,unix,config," />
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Bang-Bang (!!, !$) Shell Shortcuts in Elvish"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Bang-Bang (!!, !$) Shell Shortcuts in Elvish"/>
 <meta name="twitter:description" content="The bash shortcuts (maybe older? I&#39;m not sure in which shell these originated) for &#34;last command&#34; (!!) and &#34;last argument of last command&#34; (!$) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in Elvish by default, they are easy to implement. I have written a module called bang-bang which you can readily use as follows:"/>
 
         
@@ -182,7 +183,7 @@ originated) for "last command" (<code>!!</code>) and "last argument of last
 command" (<code>!$</code>) are, for me at least, among the most strongly imprinted
 in my muscle memory, and I use them all the time. Although these
 shortcuts are not available in <a href="/post/elvish-an-awesome-unix-shell/" title="Elvish">Elvish</a> by default, they are easy to
-implement. I have written a module called <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/bang-bang.org" title="bang-bang">bang-bang</a> which you can
+implement. I have written a module called <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/bang-bang" title="bang-bang">bang-bang</a> which you can
 readily use as follows:</p>
 
 <ul>
@@ -195,8 +196,7 @@ readily use as follows:</p>
 the <code>!</code> key. Assuming your last command was <code>ls -l ~/.elvish/rc.elv</code>, when
 you press <code>!</code> you will see the following:</p>
 
-<pre><code>
-  bang-lastcmd [A C] _
+<pre><code>  bang-lastcmd [A C] _
   ! ls -l .elvish/rc.elv
   0 ls
   1 -l
