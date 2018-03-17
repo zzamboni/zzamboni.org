@@ -49,7 +49,7 @@ Over the last few days I have been redoing my GTD-under-Outlook setup, based on 
 
 <meta itemprop="datePublished" content="2011-03-16T01:54:00-06:00" />
 <meta itemprop="dateModified" content="2011-03-16T01:54:00-06:00" />
-<meta itemprop="wordCount" content="1097">
+<meta itemprop="wordCount" content="1092">
 
 
 
@@ -180,13 +180,13 @@ ga('send', 'pageview');
 <p></p> This is a very nice idea, and I am a fan of automating things as much as possible, so it really strikes a cord with me. Unfortunately, I am not using a @WAITING FOR email folder, instead I have just my @WAITING FOR task category. As strange as it sounds, Outlook does not have an email filter rule for automatically creating a task from an outgoing or incoming email message. For incoming messages there is a rule for flagging the message for "Follow up", which creates a "to do" item but not a Task in itself (this is very confusing). This would be fine except that Follow-Up items are not synchronized to <a href="http://toodledo.com/">Toodledo</a> by the <a href="http://www.chromadrake.com/ChromaticDragon/software/ToodledoSyncInfo.aspx">ToodleDoSync application</a>, and hence not synchronized to my iPhone. <p></p> So, evidently I had to solve this, and here is how I did it. <p></p> I noticed that there is an email action for "running a script". It turns out the "script" <a href="http://support.microsoft.com/kb/306108">must be a subroutine written in VisualBasic for Applications</a> (VBA) from inside Outlook. A Google search for "<a href="http://www.google.com/search?sourceid=chrome&amp;ie=UTF-8&amp;q=outlook+automatically+create+task+from+email">outlook create task from email</a>" yielded a few good hits, including <a href="http://www.outlookcode.com/codedetail.aspx?id=959">this one</a>. It does pretty much what I want, except that the text and attachments of the message are copied into the task body, which I don't like because (1) most formatting from the original email is lost, and (2) in my testing, some messages with attachments produced VBA errors. So I modified it to just attach a copy of the original message into the task, which preserves both its formatting and attachments identically. I made the rule it so that the tasks are created based on incoming mail because <a href="http://blog.zzamboni.org/automatically-cc-myself-in-outlook">I copy myself automatically on all messages I send</a> (in fact I have disabled saving messages to the "Sent Items" folder), and this makes it possible to create tasks by emailing my Exchange account from other locations.
 <p>As a bonus, I modified the script so that any text you type after the /wf tag becomes the title of the newly-created task (if you don't type anything, the subject of the email message is used). This makes it easier to give your @WAITING FOR items a good, descriptive title upfront.</p>
 <p>So here are the detailed steps of what you need to do: </p>
-<p></p> (these instructions are based on Outlook 2010 which is what I use, if you use 2007 or prior you'll have to find by yourself where the different options and menus are, which shouldn't be all that difficult) <p></p> 
+<p></p> (these instructions are based on Outlook 2010 which is what I use, if you use 2007 or prior you'll have to find by yourself where the different options and menus are, which shouldn't be all that difficult) <p></p>
 <ol>
 <li>In the Developer tab, click on "Visual Basic", which opens the VBA development environment, and unless you already have other macros installed, should give you a blank window. <br><div class="p_embed p_image_embed">
 <img alt="Vba" height="126" src="/images/2011/03/16/automatically-creating-tasks-from-email-in-ou/23077308-vba.png" width="422">
 </div>
 </li>
-<li>Paste the code:<br>{% gist 868510 outlook_MakeWaitingForTaskWithAttachmentFromCurrentMessage.bas %}</li>
+<li>Paste the code:<br><script src="//gist.github.com/zzamboni/868510.js?file=outlook_MakeWaitingForTaskWithAttachmentFromCurrentMessage.bas"></script></li>
 <li>The code includes both the "script" to use in an email rule (which receives the email message as argument) and a macro (without arguments) so that you can run it manually from the Macros menu (also in the Developer tab). Try it out - select an email message, choose the macro from the Macros menu, and check that a new task in the @WAITING FOR category is created, with the original message as an attachment. </li>
 <li>If needed, modify the category to which the task is assigned (or leave it empty to create an uncategorized task). </li>
 <li>The code by default adds the recipient of the message to the beginning of the task title, separated by a colon (of the form "recipient: subject"). This makes it easier to see pending items per person (and, if you use the 2Do iPhone app, it automatically groups entries by the text before the colon, which makes it even easier to process. If you don't want this, modify the value of addRecipient to "False".</li>
