@@ -4,7 +4,7 @@
 
 #+options: creator:t
 
-* Literate config files                   :config:howto:literate_programming:
+* Literate config files                   :config:howto:literateprogramming:
 ** DONE My Emacs Configuration, With Commentary                      :emacs:
 CLOSED: [2017-12-17 Sun 20:14]
 :properties:
@@ -1762,6 +1762,315 @@ If you don't want to use FadeLogo, you can have a regular notification.
 
 #+begin_src lua
   -- hs.notify.show("Welcome to Hammerspoon", "Have fun!", "")
+#+end_src
+** DONE My Elvish Configuration With Commentary ox-hugo             :elvish:
+CLOSED: [2017-11-16 Thu 20:21]
+:PROPERTIES:
+:export_file_name: 2017-11-16-my-elvish-configuration-with-commentary
+:export_hugo_custom_front_matter: :toc true :featured_image /images/elvish-logo.svg :summary In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
+:END:
+
+Last update: *March 18th, 2018*
+
+In this blog post I will walk you through my current [[http://elvish.io][Elvish]] configuration file, with running commentary about the different sections.
+
+This is also my first blog post written using [[http://orgmode.org/][org-mode]], which I have started using for writing and documenting my code, using [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate programming]]. The content below is included unmodified from my [[https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.org][rc.org file]], from which the [[https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.elv][rc.elv]] file is directly generated.
+
+Without further ado...
+
+*** Paths
+
+First we set up the executable paths. We set the ~GOPATH~ environment variable while we are at it, since we need to use it as part of the path.
+
+#+begin_src elvish
+  E:GOPATH = ~/Personal/devel/go/
+  paths = [
+    ~/bin
+    $E:GOPATH/bin
+    ~/Dropbox/Personal/devel/hammerspoon/spoon/bin
+    ~/.gem/ruby/2.4.0/bin
+    /opt/X11/bin
+    /Library/TeX/texbin
+    /usr/local/bin
+    /usr/local/sbin
+    /usr/sbin
+    /sbin
+    /usr/bin
+    /bin
+  ]
+#+end_src
+
+*** Package installation
+
+The bundled [[https://elvish.io/ref/epm.html][epm]] module allows us to install and manage Elvish packages.
+
+#+begin_src elvish
+  use epm
+#+end_src
+
+For now I use these packages:
+
+- [[https://github.com/zzamboni/elvish-modules][github.com/zzamboni/elvish-modules]] contains all my modules except completions and themes. Maybe these should be separated eventually, but for now this works fine.
+- [[https://github.com/zzamboni/elvish-themes][github.com/zzamboni/elvish-themes]] contains my prompt themes (only [[https://github.com/zzamboni/elvish-themes/blob/master/chain.org][chain]] for now).
+- [[https://github.com/zzamboni/elvish-completions][github.com/zzamboni/elvish-completions]] contains my completer definitions.
+- [[https://github.com/xiaq/edit.elv][github.com/xiaq/edit.elv]], which includes the =smart-matcher= module used below.
+- [[https://github.com/muesli/elvish-libs][github.com/muesli/elvish-libs]] for the git utilities module.
+
+#+begin_src elvish
+  epm:install &silent-if-installed=$true   \
+    github.com/zzamboni/elvish-modules     \
+    github.com/zzamboni/elvish-completions \
+    github.com/zzamboni/elvish-themes      \
+    github.com/xiaq/edit.elv               \
+    github.com/muesli/elvish-libs
+#+end_src
+
+The modules within each package get loaded individually below.
+
+*** Base modules
+
+Load the bundled [[https://elvish.io/ref/re.html][re]] module to have access to regular expression functions.
+
+#+begin_src elvish
+  use re
+#+end_src
+
+The bundled [[https://elvish.io/ref/bundled.html][readline-binding]] module associates some Emacs-like keybindings for manipulation of the command line.
+
+#+begin_src elvish
+  use readline-binding
+#+end_src
+
+I add a couple of keybindings which are missing from the default =readline-binding= module:
+
+- =Alt-backspace= to delete word
+
+  #+begin_src elvish
+    edit:insert:binding[Alt-Backspace] = $edit:kill-small-word-left~
+  #+end_src
+
+- =Alt-d= to delete the word under the cursor
+
+  #+begin_src elvish
+    edit:insert:binding[Alt-d] = { edit:move-dot-right-word; edit:kill-word-left }
+  #+end_src
+
+*** Git utilities
+
+I use muesli's git utilities module.
+
+#+begin_src elvish
+  use github.com/muesli/elvish-libs/git
+#+end_src
+
+*** Aliases
+
+Elvish does not have built-in alias functionality, but this is implemented easily using the [[https://github.com/zzamboni/modules.elv/blob/master/alias.org][alias]] module, which stores the alias definitions as functions under [[https://github.com/zzamboni/dot-elvish/tree/master/aliases][~/.elvish/aliases/]] and loads them automatically.
+
+#+begin_src elvish
+  use github.com/zzamboni/elvish-modules/alias
+#+end_src
+
+For reference, I define here a few of my commonly-used aliases:
+
+#+begin_src elvish
+  alias:new dfc e:dfc -W -l -p -/dev/disk1s4,devfs
+  alias:new ls e:ls --color=auto
+  alias:new more less
+  alias:new v vagrant
+#+end_src
+
+*** Nix package manager
+
+I use the [[https://nixos.org/nix/][Nix]] package manager on macOS, the [[https://github.com/zzamboni/modules.elv/blob/master/nix.org][nix]] module sets up the necessary environment variables.
+
+#+begin_src elvish
+  use github.com/zzamboni/elvish-modules/nix
+  nix:multi-user-setup
+#+end_src
+
+*** Completions
+
+From the  [[https://github.com/zzamboni/elvish-completions][elvish-completions]] package:
+
+For =git=:
+
+#+begin_src elvish
+  use github.com/zzamboni/elvish-completions:git
+#+end_src
+
+For =vcsh= (uses the git completer):
+
+#+begin_src elvish
+  use github.com/zzamboni/elvish-completions:vcsh
+#+end_src
+
+For =cd=:
+
+#+begin_src elvish
+  use github.com/zzamboni/elvish-completions:cd
+#+end_src
+
+*** Prompt theme
+
+I use the [[https://github.com/zzamboni/theme.elv/blob/master/chain.org][chain]] prompt theme, ported from the fish theme at https://github.com/oh-my-fish/theme-chain.
+
+#+begin_src elvish
+  use github.com/zzamboni/elvish-themes/chain
+  chain:bold-prompt = $true
+#+end_src
+
+Elvish has a [[https://elvish.io/ref/edit.html#prompts][comprehensive mechanism]] for displaying prompts with useful information while avoiding getting blocked by prompt functions which take too long to finish. For the most part the defaults work well. One change I like to make is to change the [[https://elvish.io/ref/edit.html#stale-prompt][stale prompt transformer]] function to make the prompt dim when stale:
+
+#+begin_src elvish
+  edit:prompt-stale-transform = { each [x]{ edit:styled $x[text] "gray" } }
+#+end_src
+
+Another possibility is to make the prompt stay the same when stale - useful to avoid distractions (disabled for now):
+
+#+begin_src elvish :tangle no
+  edit:prompt-stale-transform = $all~
+#+end_src
+
+I also like the continuous update of the prompt as I type (by default it only updates on Enter and on =$pwd= changes, but I like also git status changes to be updated automatically), so I increase its eagerness.
+
+#+begin_src elvish
+  edit:-prompt-eagerness = 10
+#+end_src
+
+*** Automatic proxy settings
+
+When I am in the office, I need to use a proxy to access the Internet. For macOS applications, the proxy is set automatically using a company-provided PAC file. For the environment variables =http_proxy= and =https_proxy=, commonly used by command-line programs, the [[https://github.com/zzamboni/modules.elv/blob/master/proxy.org][proxy]] module allows me to define a test which determines when the proxy should be used, so that the change is done automatically.
+
+First, we load the module and set the proxy host.
+
+#+begin_src elvish
+  use github.com/zzamboni/elvish-modules/proxy
+  proxy:host = "http://proxy.corproot.net:8079"
+#+end_src
+
+Next, we set the test function to enable proxy auto-setting. In my case, the =/etc/resolv.conf= file contains the ~corproot.net~ domain (set through DHCP) when I'm in the corporate network, so I can check for that.
+
+#+begin_src elvish
+  proxy:test = {
+    and ?(test -f /etc/resolv.conf) \
+    ?(egrep -q '^(search|domain).*corproot.net' /etc/resolv.conf)
+  }
+#+end_src
+
+*** Long-running-command notifications
+
+The [[https://github.com/zzamboni/modules.elv/blob/master/long-running-notifications.org][long-running-notifications]] module allows for producing a notification when a command takes longer than a certain time to finish (by default the period is 10 seconds). The module automatically detects when [[https://github.com/julienXX/terminal-notifier][terminal-notifier]] is available on macOS and uses it to produce Mac-style notifications, otherwise it prints a notification on the terminal.
+
+#+begin_src elvish
+  use github.com/zzamboni/elvish-modules/long-running-notifications
+#+end_src
+
+*** Directory and command navigation and history
+
+Elvish comes with built-in location and command history modes. I use the =narrow= module, which allow for more customization, including pre- and after- hooks for each of the modes. I use the default binding for history mode (~C-r~), but change the location mode binding to ~Alt-l~ to avoid conflicting with the binding of ~C-l~ to "clear screen" in =readline-binding=. I disable the lastcmd binding because it is taken over by the =bang-bang= module below.
+
+#+begin_src elvish
+  use narrow
+  narrow:bind-trigger-keys &location=Alt-l &lastcmd=""
+#+end_src
+
+I have decades of muscle memory using ~!!~ and ~!$~ to insert the last command and its last argument, respectively. The [[https://github.com/zzamboni/elvish-modules/blob/master/bang-bang.org][bang-bang]] module allows me to keep using them.
+
+#+begin_src elvish
+  use github.com/zzamboni/elvish-modules/bang-bang
+#+end_src
+
+The [[https://github.com/zzamboni/modules.elv/blob/master/dir.org][dir]] module implements a directory history and some related functions. I alias the ~cd~ command to =dir:cd= so that any directory changes are kept in the history. I also alias =cdb= to =dir:cdb= function, which allows changing to the base directory of the argument.
+
+#+begin_src elvish
+  use github.com/zzamboni/elvish-modules/dir
+  alias:new cd "use github.com/zzamboni/elvish-modules/dir; dir:cd"
+  alias:new cdb "use github.com/zzamboni/elvish-modules/dir; dir:cdb"
+#+end_src
+
+=dir= also implements a narrow-based directory history chooser, which I bind to ~Alt-i~ (I have found I don't use this as much as I thought I would - the built-in location mode works nicely).
+
+#+begin_src elvish
+  edit:insert:binding[Alt-i] = $dir:history-chooser~
+#+end_src
+
+I bind =Alt-b/f= to =dir:left-word-or-prev-dir= and =dir:right-word-or-next-dir= respectively, which "do the right thing" depending on the current content of the command prompt: if it's empty, they move back/forward in the directory history, otherwise they move through the words of the current command. In my Terminal.app setup, =Alt-left/right= also produce =Alt-b/f=, so these bindings work for those keys as well.
+
+#+begin_src elvish
+  edit:insert:binding[Alt-b] = $dir:left-word-or-prev-dir~
+  edit:insert:binding[Alt-f] = $dir:right-word-or-next-dir~
+#+end_src
+
+*** Dynamic terminal title
+
+The [[https://github.com/zzamboni/elvish-modules/blob/master/terminal-title.org][terminal-title]] module handles setting the terminal title dynamically according to the current directory or the current command being executed.
+
+#+begin_src elvish
+  use github.com/zzamboni/elvish-modules/terminal-title
+#+end_src
+
+*** Loading private settings
+
+The =private= module sets up some private settings such as authentication tokens. This is not on github :) The =$private-loaded= variable gets set to =$ok= if the module was loaded correctly.
+
+#+begin_src elvish
+  private-loaded = ?(use private)
+#+end_src
+
+*** O'Reilly Atlas
+
+I sometimes use the [[https://atlas.oreilly.com/][O'Reilly Atlas]] publishing platform. The [[https://github.com/zzamboni/modules.elv/blob/master/atlas.org][atlas]] module contains some useful functions for triggering and accessing document builds.
+
+#+begin_src elvish
+  use github.com/zzamboni/elvish-modules/atlas
+#+end_src
+
+*** Smart matching for completion
+
+The [[https://github.com/xiaq/edit.elv/blob/master/smart-matcher.elv][smart-matcher]] module tries prefix match, smart-case prefix match, substring match, smart-case substring match, subsequence match and smart-case subsequence match automatically.
+
+#+begin_src elvish
+  use github.com/xiaq/edit.elv/smart-matcher
+  edit:completion:matcher[''] = $smart-matcher:match~
+#+end_src
+
+Other possible values for =edit:completion:matcher= are =[p]{ edit:match-prefix &smart-case $p }= for smart-case completion (if your pattern is entirely lower case it ignores case, otherwise it's case sensitive).  =&smart-case= can be replaced with =&ignore-case= to make it always case-insensitive.
+
+*** Environment variables
+
+Default options to =less=.
+
+#+begin_src elvish
+  E:LESS = "-i -R"
+#+end_src
+
+Use vim as the editor from the command line (although I am an [[https://github.com/zzamboni/dot-emacs/blob/master/init.org][Emacs]] fan, I still sometimes use vim for quick editing).
+
+#+begin_src elvish
+  E:EDITOR = "vim"
+#+end_src
+
+Locale setting.
+
+#+begin_src elvish
+  E:LC_ALL = "en_US.UTF-8"
+#+end_src
+
+*** Utility functions
+
+The [[https://github.com/zzamboni/elvish-modules/blob/master/util.org][util]] module includes various utility functions.
+
+#+begin_src elvish
+  use github.com/zzamboni/elvish-modules/util
+#+end_src
+
+*** Exporting aliases
+
+We populate =$-exports-= with the alias definitions so that they become available in the interactive namespace.
+
+#+begin_src elvish
+  -exports- = (alias:export)
 #+end_src
 * Emacs                                                               :emacs:
 * Hammerspoon                                                   :hammerspoon:
