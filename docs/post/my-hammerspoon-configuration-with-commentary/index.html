@@ -22,7 +22,8 @@
      
 
       <meta property="og:title" content="My Hammerspoon Configuration, With Commentary" />
-<meta property="og:description" content="In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at this time, you can see the current version of my configuration in GitHub.
+<meta property="og:description" content="Last update: March 18th, 2018
+In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at this time, you can see the current version of my configuration in GitHub.
 General variables and configuration Global log level. Per-spoon log level can be configured in each Install:andUse block below.
 hs.logger.defaultLogLevel=&#34;info&#34; I use hyper and shift_hyper as the modifiers for most of my key bindings, so I define them as variables here for easier referencing." />
 <meta property="og:type" content="article" />
@@ -45,21 +46,23 @@ hs.logger.defaultLogLevel=&#34;info&#34; I use hyper and shift_hyper as the modi
 
 
 <meta itemprop="name" content="My Hammerspoon Configuration, With Commentary">
-<meta itemprop="description" content="In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at this time, you can see the current version of my configuration in GitHub.
+<meta itemprop="description" content="Last update: March 18th, 2018
+In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at this time, you can see the current version of my configuration in GitHub.
 General variables and configuration Global log level. Per-spoon log level can be configured in each Install:andUse block below.
 hs.logger.defaultLogLevel=&#34;info&#34; I use hyper and shift_hyper as the modifiers for most of my key bindings, so I define them as variables here for easier referencing.">
 
 
 <meta itemprop="datePublished" content="2018-01-08T13:31:00&#43;01:00" />
 <meta itemprop="dateModified" content="2018-01-08T13:31:00&#43;01:00" />
-<meta itemprop="wordCount" content="2022">
+<meta itemprop="wordCount" content="2059">
 
 
 
 <meta itemprop="keywords" content="hammerspoon,config,howto," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Hammerspoon Configuration, With Commentary"/>
-<meta name="twitter:description" content="In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at this time, you can see the current version of my configuration in GitHub.
+<meta name="twitter:description" content="Last update: March 18th, 2018
+In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at this time, you can see the current version of my configuration in GitHub.
 General variables and configuration Global log level. Per-spoon log level can be configured in each Install:andUse block below.
 hs.logger.defaultLogLevel=&#34;info&#34; I use hyper and shift_hyper as the modifiers for most of my key bindings, so I define them as variables here for easier referencing."/>
 
@@ -187,46 +190,37 @@ ga('send', 'pageview');
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
+<p>Last update: <strong>March 18th, 2018</strong></p>
+
 <p>In my <a href="../my-elvish-configuration-with-commentary/">ongoing</a> <a href="../my-emacs-configuration-with-commentary">series</a> of <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html">literate</a> config files, I present to you my <a href="http://www.hammerspoon.org/">Hammerspoon</a> configuration file. You can see the generated file at <a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua">https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua</a>. As usual, this is just a snapshot at this time, you can see the current version of my configuration <a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org">in GitHub</a>.</p>
 
 <h2 id="general-variables-and-configuration">General variables and configuration</h2>
 
-<p>Global log level. Per-spoon log level can be configured in each
-<code>Install:andUse</code> block below.</p>
+<p>Global log level. Per-spoon log level can be configured in each <code>Install:andUse</code> block below.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.logger</span><span class="p">.</span><span class="n">defaultLogLevel</span><span class="o">=</span><span class="s2">&#34;info&#34;</span></code></pre></div>
-<p>I use <code>hyper</code> and <code>shift_hyper</code> as the modifiers for most of my key
-bindings, so I define them as variables here for easier referencing.</p>
+<p>I use <code>hyper</code> and <code>shift_hyper</code> as the modifiers for most of my key bindings, so I define them as variables here for easier referencing.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hyper</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;cmd&#34;</span><span class="p">,</span><span class="s2">&#34;alt&#34;</span><span class="p">,</span><span class="s2">&#34;ctrl&#34;</span><span class="p">}</span>
 <span class="n">shift_hyper</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;cmd&#34;</span><span class="p">,</span><span class="s2">&#34;alt&#34;</span><span class="p">,</span><span class="s2">&#34;ctrl&#34;</span><span class="p">,</span><span class="s2">&#34;shift&#34;</span><span class="p">}</span></code></pre></div>
-<p>Set up an abbreviation for <code>hs.drawing.color.x11</code> since I use it
-repeatedly later on.</p>
+<p>Set up an abbreviation for <code>hs.drawing.color.x11</code> since I use it repeatedly later on.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">col</span> <span class="o">=</span> <span class="n">hs.drawing</span><span class="p">.</span><span class="n">color.x11</span></code></pre></div>
 <p>Work&rsquo;s logo, which I use in some of my Seal shortcuts later on.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">swisscom_logo</span> <span class="o">=</span> <span class="n">hs.image</span><span class="p">.</span><span class="n">imageFromPath</span><span class="p">(</span><span class="n">hs.configdir</span> <span class="o">..</span> <span class="s2">&#34;/files/swisscom_logo_2x.png&#34;</span><span class="p">)</span></code></pre></div>
 <h2 id="spoon-management">Spoon Management</h2>
 
-<p>Set up SpoonInstall - this is the only spoon that needs to be manually
-installed (it is already there if you check out this repository), all
-the others are installed and configured automatically.</p>
+<p>Set up SpoonInstall - this is the only spoon that needs to be manually installed (it is already there if you check out this repository), all the others are installed and configured automatically.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.loadSpoon</span><span class="p">(</span><span class="s2">&#34;SpoonInstall&#34;</span><span class="p">)</span></code></pre></div>
-<p>Configuration of my personal spoon repository, which contains Spoons
-that have not been merged in the main repo.  See the descriptions at
-<a href="https://zzamboni.github.io/zzSpoons/">https://zzamboni.github.io/zzSpoons/</a>.</p>
+<p>Configuration of my personal spoon repository, which contains Spoons that have not been merged in the main repo.  See the descriptions at <a href="https://zzamboni.github.io/zzSpoons/">https://zzamboni.github.io/zzSpoons/</a>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">spoon.SpoonInstall</span><span class="p">.</span><span class="n">repos.zzspoons</span> <span class="o">=</span> <span class="p">{</span>
   <span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;https://github.com/zzamboni/zzSpoons&#34;</span><span class="p">,</span>
   <span class="n">desc</span> <span class="o">=</span> <span class="s2">&#34;zzamboni&#39;s spoon repository&#34;</span><span class="p">,</span>
 <span class="p">}</span></code></pre></div>
 <p>I prefer sync notifications, makes them easier to read.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">spoon.SpoonInstall</span><span class="p">.</span><span class="n">use_syncinstall</span> <span class="o">=</span> <span class="kc">true</span></code></pre></div>
-<p>This is just a shortcut to make the declarations below look more
-readable, i.e. <code>Install:andUse</code> instead of <code>spoon.SpoonInstall:andUse</code>.</p>
+<p>This is just a shortcut to make the declarations below look more readable, i.e. <code>Install:andUse</code> instead of <code>spoon.SpoonInstall:andUse</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="o">=</span><span class="n">spoon.SpoonInstall</span></code></pre></div>
 <h2 id="url-dispatching-to-site-specific-browsers">URL Dispatching to site-specific browsers</h2>
 
-<p>The <a href="http://www.hammerspoon.org/Spoons/URLDispatcher.html">URLDispatcher</a> spoon makes it possible to open URLs with different
-browsers. I have created different site-specific browsers using
-<a href="https://github.com/dmarmor/epichrome">Epichrome</a>, which allows me to keep site-specific bookmarks, search
-settings, etc.</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/URLDispatcher.html">URLDispatcher</a> spoon makes it possible to open URLs with different browsers. I have created different site-specific browsers using <a href="https://github.com/dmarmor/epichrome">Epichrome</a>, which allows me to keep site-specific bookmarks, search settings, etc.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;URLDispatcher&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
@@ -247,8 +241,7 @@ settings, etc.</p>
 <span class="p">)</span></code></pre></div>
 <h2 id="window-and-screen-manipulation">Window and screen manipulation</h2>
 
-<p>The <a href="http://www.hammerspoon.org/Spoons/WindowHalfsAndThirds.html">WindowHalfAndThirds</a> spoon sets up multiple key bindings for
-manipulating the size and position of windows.</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/WindowHalfsAndThirds.html">WindowHalfAndThirds</a> spoon sets up multiple key bindings for manipulating the size and position of windows.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;WindowHalfsAndThirds&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
@@ -257,16 +250,13 @@ manipulating the size and position of windows.</p>
                  <span class="n">hotkeys</span> <span class="o">=</span> <span class="s1">&#39;default&#39;</span>
                <span class="p">}</span>
 <span class="p">)</span></code></pre></div>
-<p>The <a href="http://zzamboni.org/zzSpoons/WindowScreenLeftAndRight.html">WindowScreenLeftAndRight</a> spoon sets up key bindings for moving
-windows between multiple screens.</p>
+<p>The <a href="http://zzamboni.org/zzSpoons/WindowScreenLeftAndRight.html">WindowScreenLeftAndRight</a> spoon sets up key bindings for moving windows between multiple screens.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;WindowScreenLeftAndRight&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">hotkeys</span> <span class="o">=</span> <span class="s1">&#39;default&#39;</span>
                <span class="p">}</span>
 <span class="p">)</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/WindowGrid.html">WindowGrid</a> spoon sets up a key binding (<code>Hyper-g</code> here) to overlay a
-grid that allows resizing windows by specifying their opposite
-corners.</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/WindowGrid.html">WindowGrid</a> spoon sets up a key binding (<code>Hyper-g</code> here) to overlay a grid that allows resizing windows by specifying their opposite corners.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;WindowGrid&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">config</span> <span class="o">=</span> <span class="p">{</span> <span class="n">gridGeometries</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span> <span class="s2">&#34;6x4&#34;</span> <span class="p">}</span> <span class="p">}</span> <span class="p">},</span>
@@ -274,9 +264,7 @@ corners.</p>
                  <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
                <span class="p">}</span>
 <span class="p">)</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/ToggleScreenRotation.html">ToggleScreenRotation</a> spoon sets up a key binding to rotate the
-external screen (the spoon can set up keys for multiple screens if
-needed, but by default it rotates the first external screen).</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/ToggleScreenRotation.html">ToggleScreenRotation</a> spoon sets up a key binding to rotate the external screen (the spoon can set up keys for multiple screens if needed, but by default it rotates the first external screen).</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;ToggleScreenRotation&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span> <span class="n">first</span> <span class="o">=</span> <span class="p">{</span><span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;f15&#34;</span><span class="p">}</span> <span class="p">}</span>
@@ -284,8 +272,7 @@ needed, but by default it rotates the first external screen).</p>
 <span class="p">)</span></code></pre></div>
 <h2 id="organization-and-productivity">Organization and Productivity</h2>
 
-<p>The <a href="http://www.hammerspoon.org/Spoons/UniversalArchive.html">UniversalArchive</a> spoon sets up a single key binding (<code>Ctrl-Cmd-a</code>)
-to archive the current item in Evernote, Mail and Outlook.</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/UniversalArchive.html">UniversalArchive</a> spoon sets up a single key binding (<code>Ctrl-Cmd-a</code>) to archive the current item in Evernote, Mail and Outlook.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;UniversalArchive&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
@@ -296,8 +283,7 @@ to archive the current item in Evernote, Mail and Outlook.</p>
                  <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span> <span class="n">archive</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span> <span class="p">},</span> <span class="s2">&#34;a&#34;</span> <span class="p">}</span> <span class="p">}</span>
                <span class="p">}</span>
 <span class="p">)</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/SendToOmniFocus.html">SendToOmniFocus</a> spoon sets up a single key binding (<code>Hyper-t</code>) to
-send the current item to OmniFocus from multiple applications.</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/SendToOmniFocus.html">SendToOmniFocus</a> spoon sets up a single key binding (<code>Hyper-t</code>) to send the current item to OmniFocus from multiple applications.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;SendToOmniFocus&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
@@ -314,8 +300,7 @@ send the current item to OmniFocus from multiple applications.</p>
                  <span class="kr">end</span>
                <span class="p">}</span>
 <span class="p">)</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/EvernoteOpenAndTag.html">EvernoteOpenAndTag</a> spoon sets up some missing key bindings for
-note manipulation in Evernote.</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/EvernoteOpenAndTag.html">EvernoteOpenAndTag</a> spoon sets up some missing key bindings for note manipulation in Evernote.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;EvernoteOpenAndTag&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
@@ -326,8 +311,7 @@ note manipulation in Evernote.</p>
                  <span class="p">}</span>
                <span class="p">}</span>
 <span class="p">)</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/TextClipboardHistory.html">TextClipboardHistory</a> spoon implements a clipboard history, only
-for text items. It is invoked with <code>Cmd-Shift-v</code>.</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/TextClipboardHistory.html">TextClipboardHistory</a> spoon implements a clipboard history, only for text items. It is invoked with <code>Cmd-Shift-v</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;TextClipboardHistory&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
@@ -340,9 +324,7 @@ for text items. It is invoked with <code>Cmd-Shift-v</code>.</p>
 <span class="p">)</span></code></pre></div>
 <h2 id="system-and-ui">System and UI</h2>
 
-<p>The <a href="https://zzamboni.github.io/zzSpoons/Hammer.html">Hammer</a> spoon (get it? hehe) is a simple wrapper around some common
-Hamerspoon configuration variables. Note that this gets loaded from my
-personal repo, since it&rsquo;s not in the official repository.</p>
+<p>The <a href="https://zzamboni.github.io/zzSpoons/Hammer.html">Hammer</a> spoon (get it? hehe) is a simple wrapper around some common Hamerspoon configuration variables. Note that this gets loaded from my personal repo, since it&rsquo;s not in the official repository.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;Hammer&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">repo</span> <span class="o">=</span> <span class="s1">&#39;zzspoons&#39;</span><span class="p">,</span>
@@ -354,19 +336,14 @@ personal repo, since it&rsquo;s not in the official repository.</p>
                  <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
                <span class="p">}</span>
 <span class="p">)</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/Caffeine.html">Caffeine</a> spoon allows preventing the display and the machine from
-sleeping. I use it frequently when playing music from my machine, to
-avoid having to unlock the screen whenever I want to change the music.</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/Caffeine.html">Caffeine</a> spoon allows preventing the display and the machine from sleeping. I use it frequently when playing music from my machine, to avoid having to unlock the screen whenever I want to change the music.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;Caffeine&#34;</span><span class="p">,</span> <span class="p">{</span>
                  <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
                  <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
                    <span class="n">toggle</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;1&#34;</span> <span class="p">}</span>
                  <span class="p">}</span>
 <span class="p">})</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/MenubarFlag.html">MenubarFlag</a> spoon colorizes the menubar according to the selected
-keyboard language or layout (Functionality inspired by <a href="https://pqrs.org/osx/ShowyEdge/index.html.en">ShowyEdge</a>. I
-use English, Spanish and German, so those are the colors I have
-defined.</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/MenubarFlag.html">MenubarFlag</a> spoon colorizes the menubar according to the selected keyboard language or layout (functionality inspired by <a href="https://pqrs.org/osx/ShowyEdge/index.html.en">ShowyEdge</a>). I use English, Spanish and German, so those are the colors I have defined.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;MenubarFlag&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
@@ -379,9 +356,7 @@ defined.</p>
                  <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
                <span class="p">}</span>
 <span class="p">)</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/MouseCircle.html">MouseCircle</a> spoon shows a circle around the mouse pointer when
-triggered. I have it disabled for now because I have the macOS
-<a href="https://support.apple.com/kb/PH25507?locale=en_US&amp;viewlocale=en_US">shake-to-grow feature</a> enabled.</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/MouseCircle.html">MouseCircle</a> spoon shows a circle around the mouse pointer when triggered. I have it disabled for now because I have the macOS <a href="https://support.apple.com/kb/PH25507?locale=en_US&amp;viewlocale=en_US">shake-to-grow feature</a> enabled.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;MouseCircle&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">disable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
@@ -393,12 +368,7 @@ triggered. I have it disabled for now because I have the macOS
                  <span class="p">}</span>
                <span class="p">}</span>
 <span class="p">)</span></code></pre></div>
-<p>One of my original bits of Hammerspoon code, now made into a spoon
-(although I keep it disabled, since I don&rsquo;t really use it). The
-<a href="http://www.hammerspoon.org/Spoons/ColorPicker.html">ColorPicker</a> spoon shows a menu of the available color palettes, and
-when you select one, it draws swatches in all the colors in that
-palette, covering the whole screen. You can click on any of them to
-copy its name to the clipboard, or cmd-click to copy its RGB code.</p>
+<p>One of my original bits of Hammerspoon code, now made into a spoon (although I keep it disabled, since I don&rsquo;t really use it). The <a href="http://www.hammerspoon.org/Spoons/ColorPicker.html">ColorPicker</a> spoon shows a menu of the available color palettes, and when you select one, it draws swatches in all the colors in that palette, covering the whole screen. You can click on any of them to copy its name to the clipboard, or cmd-click to copy its RGB code.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;ColorPicker&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">disable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
@@ -411,12 +381,7 @@ copy its name to the clipboard, or cmd-click to copy its RGB code.</p>
                  <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
                <span class="p">}</span>
 <span class="p">)</span></code></pre></div>
-<p>I use Homebrew, and when I run <code>brew update</code>, I often wonder about what
-some of the formulas shown are (names are not always obvious). The
-<a href="http://www.hammerspoon.org/Spoons/BrewInfo.html">BrewInfo</a> spoon allows me to point at a Formula or Cask name and press
-<code>Hyper-b</code> or <code>Hyper-c</code> (for Casks) to have the output of the <code>info</code> command
-in a popup window, or the same key with <code>Shift-Hyper</code> to open the URL of
-the Formula/Cask.</p>
+<p>I use Homebrew, and when I run <code>brew update</code>, I often wonder about what some of the formulas shown are (names are not always obvious). The <a href="http://www.hammerspoon.org/Spoons/BrewInfo.html">BrewInfo</a> spoon allows me to point at a Formula or Cask name and press <code>Hyper-b</code> or <code>Hyper-c</code> (for Casks) to have the output of the <code>info</code> command in a popup window, or the same key with <code>Shift-Hyper</code> to open the URL of the Formula/Cask.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;BrewInfo&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
@@ -435,21 +400,21 @@ the Formula/Cask.</p>
                  <span class="p">}</span>
                <span class="p">}</span>
 <span class="p">)</span></code></pre></div>
-<p>The KSheet spoon traverses the current application&rsquo;s menus and builds
-a cheatsheet of the keyboard shortcuts, showing it in a nice popup
-window.</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/KSheet.html">KSheet</a> spoon traverses the current application&rsquo;s menus and builds a cheatsheet of the keyboard shortcuts, showing it in a nice popup window.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;KSheet&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
                    <span class="n">toggle</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;/&#34;</span> <span class="p">}</span>
 <span class="p">}})</span></code></pre></div>
+<p>The <a href="http://www.hammerspoon.org/Spoons/TimeMachineProgress.html">TimeMachineProgress</a> spoon shows an indicator about the progress of the ongoing Time Machine backup. The indicator disappears when there is no backup going on.</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;TimeMachineProgress&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
 <h2 id="other-applications">Other applications</h2>
 
-<p>The <a href="http://www.hammerspoon.org/Spoons/ToggleSkypeMute.html">ToggleSkypeMute</a> spoon sets up the missing keyboard bindings for
-toggling the mute button on Skype and Skype for Business. I&rsquo;m not
-fully happy with this spoon - it should auto-detect the application
-instead of having separate keys for each application, and it could be
-extended to more generic use.</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/ToggleSkypeMute.html">ToggleSkypeMute</a> spoon sets up the missing keyboard bindings for toggling the mute button on Skype and Skype for Business. I&rsquo;m not fully happy with this spoon - it should auto-detect the application instead of having separate keys for each application, and it could be extended to more generic use.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;ToggleSkypeMute&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
@@ -458,8 +423,7 @@ extended to more generic use.</p>
                  <span class="p">}</span>
                <span class="p">}</span>
 <span class="p">)</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/HeadphoneAutoPause.html">HeadphoneAutoPause</a> spoon implements auto-pause/resume for iTunes,
-Spotify and others when the headphones are unplugged.</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/HeadphoneAutoPause.html">HeadphoneAutoPause</a> spoon implements auto-pause/resume for iTunes, Spotify and others when the headphones are unplugged.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;HeadphoneAutoPause&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
@@ -467,11 +431,7 @@ Spotify and others when the headphones are unplugged.</p>
 <span class="p">)</span></code></pre></div>
 <h2 id="seal">Seal</h2>
 
-<p>The <a href="http://www.hammerspoon.org/Spoons/Seal.html">Seal</a> spoon is a powerhouse - it implements a Spotlight-like
-launcher, but which allows for infinite configurability of what can be
-done or searched from the launcher window. I use Seal as my default
-launcher, triggered with <code>Cmd-space</code>, although I still keep Spotlight
-around under <code>Hyper-space</code>, mainly for its search capabilities.</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/Seal.html">Seal</a> spoon is a powerhouse - it implements a Spotlight-like launcher, but which allows for infinite configurability of what can be done or searched from the launcher window. I use Seal as my default launcher, triggered with <code>Cmd-space</code>, although I still keep Spotlight around under <code>Hyper-space</code>, mainly for its search capabilities.</p>
 
 <p>We start by loading the spoon, and specifying which plugins we want.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;Seal&#34;</span><span class="p">,</span>
@@ -489,14 +449,12 @@ around under <code>Hyper-space</code>, mainly for its search capabilities.</p>
                  <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
                <span class="p">}</span>
 <span class="p">)</span></code></pre></div>
-<p>The <code>useractions</code> Seal plugin allows me to define my own shortcuts. For
-example, a bookmark to the Hammerspoon documentation page:</p>
+<p>The <code>useractions</code> Seal plugin allows me to define my own shortcuts. For example, a bookmark to the Hammerspoon documentation page:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="p">[</span><span class="s2">&#34;Hammerspoon docs webpage&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
   <span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://hammerspoon.org/docs/&#34;</span><span class="p">,</span>
   <span class="n">icon</span> <span class="o">=</span> <span class="n">hs.image</span><span class="p">.</span><span class="n">imageFromName</span><span class="p">(</span><span class="n">hs.image</span><span class="p">.</span><span class="n">systemImageNames.ApplicationIcon</span><span class="p">),</span>
 <span class="p">},</span></code></pre></div>
-<p>Or to manually trigger my work/non-work transition scripts (see
-below):</p>
+<p>Or to manually trigger my work/non-work transition scripts (see below):</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="p">[</span><span class="s2">&#34;Leave corpnet&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
   <span class="n">fn</span> <span class="o">=</span> <span class="kr">function</span><span class="p">()</span>
     <span class="n">spoon.WiFiTransitions</span><span class="p">:</span><span class="n">processTransition</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;corpnet01&#39;</span><span class="p">)</span>
@@ -509,7 +467,7 @@ below):</p>
   <span class="kr">end</span><span class="p">,</span>
   <span class="n">icon</span> <span class="o">=</span> <span class="n">swisscom_logo</span><span class="p">,</span>
 <span class="p">},</span></code></pre></div>
-<p>Or to translate things using dict.leo.org:</p>
+<p>Or to translate things using <a href="https://dict.leo.org/">dict.leo.org</a>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="p">[</span><span class="s2">&#34;Translate using Leo&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
   <span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://dict.leo.org/ende/index_de.html#/search=${query}&#34;</span><span class="p">,</span>
   <span class="n">icon</span> <span class="o">=</span> <span class="s1">&#39;favicon&#39;</span><span class="p">,</span>
@@ -517,15 +475,9 @@ below):</p>
 <span class="p">}</span></code></pre></div>
 <h2 id="network-transitions">Network transitions</h2>
 
-<p>The <a href="http://www.hammerspoon.org/Spoons/WiFiTransitions.html">WiFiTransitions</a> spoon allows triggering arbitrary actions when the
-SSID changes. I am interested in the change from my work network
-(corpnet01) to other networks, mainly because at work I need a proxy
-for all connections to the Internet. I have two applications which
-don&rsquo;t handle these transitions gracefully on their own: Spotify and
-Adium. So I have written a couple of functions for helping them along.</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/WiFiTransitions.html">WiFiTransitions</a> spoon allows triggering arbitrary actions when the SSID changes. I am interested in the change from my work network (corpnet01) to other networks, mainly because at work I need a proxy for all connections to the Internet. I have two applications which don&rsquo;t handle these transitions gracefully on their own: Spotify and Adium. So I have written a couple of functions for helping them along.</p>
 
-<p>The <code>reconfigSpotifyProxy</code> function quits Spotify, updates the proxy
-settings in its config file, and restarts it.</p>
+<p>The <code>reconfigSpotifyProxy</code> function quits Spotify, updates the proxy settings in its config file, and restarts it.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">function</span> <span class="nf">reconfigSpotifyProxy</span><span class="p">(</span><span class="n">proxy</span><span class="p">)</span>
   <span class="kd">local</span> <span class="n">spotify</span> <span class="o">=</span> <span class="n">hs.appfinder</span><span class="p">.</span><span class="n">appFromName</span><span class="p">(</span><span class="s2">&#34;Spotify&#34;</span><span class="p">)</span>
   <span class="kd">local</span> <span class="n">lastapp</span> <span class="o">=</span> <span class="kc">nil</span>
@@ -550,8 +502,7 @@ settings in its config file, and restarts it.</p>
     <span class="kr">end</span><span class="p">)</span>
   <span class="kr">end</span>
 <span class="kr">end</span></code></pre></div>
-<p>The <code>reconfigAdiumProxy</code> function uses AppleScript to tell Adium about
-the change without having to restart it.</p>
+<p>The <code>reconfigAdiumProxy</code> function uses AppleScript to tell Adium about the change without having to restart it.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">function</span> <span class="nf">reconfigAdiumProxy</span><span class="p">(</span><span class="n">proxy</span><span class="p">)</span>
   <span class="c1">--   hs.notify.show(&#34;Reconfiguring Adium&#34;, string.format(&#34;Proxy %s&#34;, (proxy and &#34;enabled&#34; or &#34;disabled&#34;)), &#34;&#34;)</span>
   <span class="kd">local</span> <span class="n">script</span> <span class="o">=</span> <span class="n">string.format</span><span class="p">(</span><span class="s">[[
@@ -567,8 +518,7 @@ the change without having to restart it.</p>
 </span><span class="s">]]</span><span class="p">,</span> <span class="n">hs.inspect</span><span class="p">(</span><span class="n">proxy</span><span class="p">))</span>
   <span class="n">hs.osascript</span><span class="p">.</span><span class="n">applescript</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
 <span class="kr">end</span></code></pre></div>
-<p>The configuration for the WiFiTransitions spoon invoked these
-functions with the appropriate parameters.</p>
+<p>The configuration for the WiFiTransitions spoon invoked these functions with the appropriate parameters.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;WiFiTransitions&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
@@ -597,14 +547,7 @@ functions with the appropriate parameters.</p>
 <span class="p">)</span></code></pre></div>
 <h2 id="pop-up-translation">Pop-up translation</h2>
 
-<p>I live in Switzerland, and my German is far from perfect, so the
-<a href="http://www.hammerspoon.org/Spoons/PopupTranslateSelection.html">PopupTranslateSelection</a> spoon helps me a lot. It allows me to select
-some text and, with a keystroke, translate it to any of three
-languages using Google Translate. Super useful! Usually, Google&rsquo;s
-auto-detect feature works fine, so the <code>translate_to_&lt;lang&gt;</code> keys are
-sufficient. I have some <code>translate_&lt;from&gt;_&lt;to&gt;</code> keys set up for certain
-language pairs for when this doesn&rsquo;t quite work (I don&rsquo;t think I&rsquo;ve
-ever needed them).</p>
+<p>I live in Switzerland, and my German is far from perfect, so the <a href="http://www.hammerspoon.org/Spoons/PopupTranslateSelection.html">PopupTranslateSelection</a> spoon helps me a lot. It allows me to select some text and, with a keystroke, translate it to any of three languages using Google Translate. Super useful! Usually, Google&rsquo;s auto-detect feature works fine, so the <code>translate_to_&lt;lang&gt;</code> keys are sufficient. I have some <code>translate_&lt;from&gt;_&lt;to&gt;</code> keys set up for certain language pairs for when this doesn&rsquo;t quite work (I don&rsquo;t think I&rsquo;ve ever needed them).</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">wm</span><span class="o">=</span><span class="n">hs.webview</span><span class="p">.</span><span class="n">windowMasks</span>
 <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;PopupTranslateSelection&#34;</span><span class="p">,</span>
                <span class="p">{</span>
@@ -622,16 +565,14 @@ ever needed them).</p>
 <span class="p">)</span></code></pre></div>
 <h2 id="miscellaneous-stuff">Miscellaneous stuff</h2>
 
-<p>In my <code>init-local.lua</code> file I keep some experimental or private stuff
-that I don&rsquo;t want to publish in my main config.</p>
+<p>In my <code>init-local.lua</code> file I keep some experimental or private stuff that I don&rsquo;t want to publish in my main config.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">localstuff</span><span class="o">=</span><span class="n">loadfile</span><span class="p">(</span><span class="n">hs.configdir</span> <span class="o">..</span> <span class="s2">&#34;/init-local.lua&#34;</span><span class="p">)</span>
 <span class="kr">if</span> <span class="n">localstuff</span> <span class="kr">then</span>
   <span class="n">localstuff</span><span class="p">()</span>
 <span class="kr">end</span></code></pre></div>
 <h2 id="end-of-config-animation">End-of-config animation</h2>
 
-<p>The <a href="http://www.hammerspoon.org/Spoons/FadeLogo.html">FadeLogo</a> spoon simply shows an animation of the Hammerspoon logo
-to signal the end of the config load.</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/FadeLogo.html">FadeLogo</a> spoon simply shows an animation of the Hammerspoon logo to signal the end of the config load.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;FadeLogo&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
