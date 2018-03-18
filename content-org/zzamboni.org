@@ -1220,80 +1220,71 @@ CLOSED: [2018-01-08 Mon 13:31]
 :export_hugo_custom_front_matter: :toc true :featured_image /images/hammerspoon.png :summary In my ongoing series of literate config files, I present to you my Hammerspoon configuration file.
 :END:
 
+Last update: *March 18th, 2018*
+
 In my [[../my-elvish-configuration-with-commentary/][ongoing]] [[../my-emacs-configuration-with-commentary][series]] of [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate]] config files, I present to you my [[http://www.hammerspoon.org/][Hammerspoon]] configuration file. You can see the generated file at [[https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua]]. As usual, this is just a snapshot at this time, you can see the current version of my configuration [[https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org][in GitHub]].
 
 *** General variables and configuration
 
-Global log level. Per-spoon log level can be configured in each
-=Install:andUse= block below.
+Global log level. Per-spoon log level can be configured in each =Install:andUse= block below.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   hs.logger.defaultLogLevel="info"
-#+END_SRC
+#+end_src
 
-I use =hyper= and =shift_hyper= as the modifiers for most of my key
-bindings, so I define them as variables here for easier referencing.
+I use =hyper= and =shift_hyper= as the modifiers for most of my key bindings, so I define them as variables here for easier referencing.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   hyper = {"cmd","alt","ctrl"}
   shift_hyper = {"cmd","alt","ctrl","shift"}
-#+END_SRC
+#+end_src
 
-Set up an abbreviation for =hs.drawing.color.x11= since I use it
-repeatedly later on.
+Set up an abbreviation for =hs.drawing.color.x11= since I use it repeatedly later on.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   col = hs.drawing.color.x11
-#+END_SRC
+#+end_src
 
 Work's logo, which I use in some of my Seal shortcuts later on.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   swisscom_logo = hs.image.imageFromPath(hs.configdir .. "/files/swisscom_logo_2x.png")
-#+END_SRC
+#+end_src
 
 *** Spoon Management
 
-Set up SpoonInstall - this is the only spoon that needs to be manually
-installed (it is already there if you check out this repository), all
-the others are installed and configured automatically.
+Set up SpoonInstall - this is the only spoon that needs to be manually installed (it is already there if you check out this repository), all the others are installed and configured automatically.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   hs.loadSpoon("SpoonInstall")
-#+END_SRC
+#+end_src
 
-Configuration of my personal spoon repository, which contains Spoons
-that have not been merged in the main repo.  See the descriptions at
-https://zzamboni.github.io/zzSpoons/.
+Configuration of my personal spoon repository, which contains Spoons that have not been merged in the main repo.  See the descriptions at https://zzamboni.github.io/zzSpoons/.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   spoon.SpoonInstall.repos.zzspoons = {
     url = "https://github.com/zzamboni/zzSpoons",
     desc = "zzamboni's spoon repository",
   }
-#+END_SRC
+#+end_src
 
 I prefer sync notifications, makes them easier to read.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   spoon.SpoonInstall.use_syncinstall = true
-#+END_SRC
+#+end_src
 
-This is just a shortcut to make the declarations below look more
-readable, i.e. =Install:andUse= instead of =spoon.SpoonInstall:andUse=.
+This is just a shortcut to make the declarations below look more readable, i.e. =Install:andUse= instead of =spoon.SpoonInstall:andUse=.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install=spoon.SpoonInstall
-#+END_SRC
+#+end_src
 
 *** URL Dispatching to site-specific browsers
 
-The [[http://www.hammerspoon.org/Spoons/URLDispatcher.html][URLDispatcher]] spoon makes it possible to open URLs with different
-browsers. I have created different site-specific browsers using
-[[https://github.com/dmarmor/epichrome][Epichrome]], which allows me to keep site-specific bookmarks, search
-settings, etc.
+The [[http://www.hammerspoon.org/Spoons/URLDispatcher.html][URLDispatcher]] spoon makes it possible to open URLs with different browsers. I have created different site-specific browsers using [[https://github.com/dmarmor/epichrome][Epichrome]], which allows me to keep site-specific bookmarks, search settings, etc.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("URLDispatcher",
                  {
                    config = {
@@ -1312,14 +1303,13 @@ settings, etc.
                    start = true
                  }
   )
-#+END_SRC
+#+end_src
 
 *** Window and screen manipulation
 
-The [[http://www.hammerspoon.org/Spoons/WindowHalfsAndThirds.html][WindowHalfAndThirds]] spoon sets up multiple key bindings for
-manipulating the size and position of windows.
+The [[http://www.hammerspoon.org/Spoons/WindowHalfsAndThirds.html][WindowHalfAndThirds]] spoon sets up multiple key bindings for manipulating the size and position of windows.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("WindowHalfsAndThirds",
                  {
                    config = {
@@ -1328,24 +1318,21 @@ manipulating the size and position of windows.
                    hotkeys = 'default'
                  }
   )
-#+END_SRC
+#+end_src
 
-The [[http://zzamboni.org/zzSpoons/WindowScreenLeftAndRight.html][WindowScreenLeftAndRight]] spoon sets up key bindings for moving
-windows between multiple screens.
+The [[http://zzamboni.org/zzSpoons/WindowScreenLeftAndRight.html][WindowScreenLeftAndRight]] spoon sets up key bindings for moving windows between multiple screens.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("WindowScreenLeftAndRight",
                  {
                    hotkeys = 'default'
                  }
   )
-#+END_SRC
+#+end_src
 
-The [[http://www.hammerspoon.org/Spoons/WindowGrid.html][WindowGrid]] spoon sets up a key binding (=Hyper-g= here) to overlay a
-grid that allows resizing windows by specifying their opposite
-corners.
+The [[http://www.hammerspoon.org/Spoons/WindowGrid.html][WindowGrid]] spoon sets up a key binding (=Hyper-g= here) to overlay a grid that allows resizing windows by specifying their opposite corners.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("WindowGrid",
                  {
                    config = { gridGeometries = { { "6x4" } } },
@@ -1353,26 +1340,23 @@ corners.
                    start = true
                  }
   )
-#+END_SRC
+#+end_src
 
-The [[http://www.hammerspoon.org/Spoons/ToggleScreenRotation.html][ToggleScreenRotation]] spoon sets up a key binding to rotate the
-external screen (the spoon can set up keys for multiple screens if
-needed, but by default it rotates the first external screen).
+The [[http://www.hammerspoon.org/Spoons/ToggleScreenRotation.html][ToggleScreenRotation]] spoon sets up a key binding to rotate the external screen (the spoon can set up keys for multiple screens if needed, but by default it rotates the first external screen).
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("ToggleScreenRotation",
                  {
                    hotkeys = { first = {hyper, "f15"} }
                  }
   )
-#+END_SRC
+#+end_src
 
 *** Organization and Productivity
 
-The [[http://www.hammerspoon.org/Spoons/UniversalArchive.html][UniversalArchive]] spoon sets up a single key binding (=Ctrl-Cmd-a=)
-to archive the current item in Evernote, Mail and Outlook.
+The [[http://www.hammerspoon.org/Spoons/UniversalArchive.html][UniversalArchive]] spoon sets up a single key binding (=Ctrl-Cmd-a=) to archive the current item in Evernote, Mail and Outlook.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("UniversalArchive",
                  {
                    config = {
@@ -1383,12 +1367,11 @@ to archive the current item in Evernote, Mail and Outlook.
                    hotkeys = { archive = { { "ctrl", "cmd" }, "a" } }
                  }
   )
-#+END_SRC
+#+end_src
 
-The [[http://www.hammerspoon.org/Spoons/SendToOmniFocus.html][SendToOmniFocus]] spoon sets up a single key binding (=Hyper-t=) to
-send the current item to OmniFocus from multiple applications.
+The [[http://www.hammerspoon.org/Spoons/SendToOmniFocus.html][SendToOmniFocus]] spoon sets up a single key binding (=Hyper-t=) to send the current item to OmniFocus from multiple applications.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("SendToOmniFocus",
                  {
                    config = {
@@ -1405,12 +1388,11 @@ send the current item to OmniFocus from multiple applications.
                    end
                  }
   )
-#+END_SRC
+#+end_src
 
-The [[http://www.hammerspoon.org/Spoons/EvernoteOpenAndTag.html][EvernoteOpenAndTag]] spoon sets up some missing key bindings for
-note manipulation in Evernote.
+The [[http://www.hammerspoon.org/Spoons/EvernoteOpenAndTag.html][EvernoteOpenAndTag]] spoon sets up some missing key bindings for note manipulation in Evernote.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("EvernoteOpenAndTag",
                  {
                    hotkeys = {
@@ -1421,12 +1403,11 @@ note manipulation in Evernote.
                    }
                  }
   )
-#+END_SRC
+#+end_src
 
-The [[http://www.hammerspoon.org/Spoons/TextClipboardHistory.html][TextClipboardHistory]] spoon implements a clipboard history, only
-for text items. It is invoked with =Cmd-Shift-v=.
+The [[http://www.hammerspoon.org/Spoons/TextClipboardHistory.html][TextClipboardHistory]] spoon implements a clipboard history, only for text items. It is invoked with =Cmd-Shift-v=.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("TextClipboardHistory",
                  {
                    config = {
@@ -1437,15 +1418,13 @@ for text items. It is invoked with =Cmd-Shift-v=.
                    start = true,
                  }
   )
-#+END_SRC
+#+end_src
 
 *** System and UI
 
-The [[https://zzamboni.github.io/zzSpoons/Hammer.html][Hammer]] spoon (get it? hehe) is a simple wrapper around some common
-Hamerspoon configuration variables. Note that this gets loaded from my
-personal repo, since it's not in the official repository.
+The [[https://zzamboni.github.io/zzSpoons/Hammer.html][Hammer]] spoon (get it? hehe) is a simple wrapper around some common Hamerspoon configuration variables. Note that this gets loaded from my personal repo, since it's not in the official repository.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("Hammer",
                  {
                    repo = 'zzspoons',
@@ -1457,27 +1436,22 @@ personal repo, since it's not in the official repository.
                    start = true
                  }
   )
-#+END_SRC
+#+end_src
 
-The [[http://www.hammerspoon.org/Spoons/Caffeine.html][Caffeine]] spoon allows preventing the display and the machine from
-sleeping. I use it frequently when playing music from my machine, to
-avoid having to unlock the screen whenever I want to change the music.
+The [[http://www.hammerspoon.org/Spoons/Caffeine.html][Caffeine]] spoon allows preventing the display and the machine from sleeping. I use it frequently when playing music from my machine, to avoid having to unlock the screen whenever I want to change the music.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("Caffeine", {
                    start = true,
                    hotkeys = {
                      toggle = { hyper, "1" }
                    }
   })
-#+END_SRC
+#+end_src
 
-The [[http://www.hammerspoon.org/Spoons/MenubarFlag.html][MenubarFlag]] spoon colorizes the menubar according to the selected
-keyboard language or layout (Functionality inspired by [[https://pqrs.org/osx/ShowyEdge/index.html.en][ShowyEdge]]. I
-use English, Spanish and German, so those are the colors I have
-defined.
+The [[http://www.hammerspoon.org/Spoons/MenubarFlag.html][MenubarFlag]] spoon colorizes the menubar according to the selected keyboard language or layout (functionality inspired by [[https://pqrs.org/osx/ShowyEdge/index.html.en][ShowyEdge]]). I use English, Spanish and German, so those are the colors I have defined.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("MenubarFlag",
                  {
                    config = {
@@ -1490,13 +1464,11 @@ defined.
                    start = true
                  }
   )
-#+END_SRC
+#+end_src
 
-The [[http://www.hammerspoon.org/Spoons/MouseCircle.html][MouseCircle]] spoon shows a circle around the mouse pointer when
-triggered. I have it disabled for now because I have the macOS
-[[https://support.apple.com/kb/PH25507?locale=en_US&viewlocale=en_US][shake-to-grow feature]] enabled.
+The [[http://www.hammerspoon.org/Spoons/MouseCircle.html][MouseCircle]] spoon shows a circle around the mouse pointer when triggered. I have it disabled for now because I have the macOS [[https://support.apple.com/kb/PH25507?locale=en_US&viewlocale=en_US][shake-to-grow feature]] enabled.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("MouseCircle",
                  {
                    disable = true,
@@ -1508,16 +1480,11 @@ triggered. I have it disabled for now because I have the macOS
                    }
                  }
   )
-#+END_SRC
+#+end_src
 
-One of my original bits of Hammerspoon code, now made into a spoon
-(although I keep it disabled, since I don't really use it). The
-[[http://www.hammerspoon.org/Spoons/ColorPicker.html][ColorPicker]] spoon shows a menu of the available color palettes, and
-when you select one, it draws swatches in all the colors in that
-palette, covering the whole screen. You can click on any of them to
-copy its name to the clipboard, or cmd-click to copy its RGB code.
+One of my original bits of Hammerspoon code, now made into a spoon (although I keep it disabled, since I don't really use it). The [[http://www.hammerspoon.org/Spoons/ColorPicker.html][ColorPicker]] spoon shows a menu of the available color palettes, and when you select one, it draws swatches in all the colors in that palette, covering the whole screen. You can click on any of them to copy its name to the clipboard, or cmd-click to copy its RGB code.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("ColorPicker",
                  {
                    disable = true,
@@ -1530,16 +1497,11 @@ copy its name to the clipboard, or cmd-click to copy its RGB code.
                    start = true,
                  }
   )
-#+END_SRC
+#+end_src
 
-I use Homebrew, and when I run =brew update=, I often wonder about what
-some of the formulas shown are (names are not always obvious). The
-[[http://www.hammerspoon.org/Spoons/BrewInfo.html][BrewInfo]] spoon allows me to point at a Formula or Cask name and press
-=Hyper-b= or =Hyper-c= (for Casks) to have the output of the =info= command
-in a popup window, or the same key with =Shift-Hyper= to open the URL of
-the Formula/Cask.
+I use Homebrew, and when I run =brew update=, I often wonder about what some of the formulas shown are (names are not always obvious). The [[http://www.hammerspoon.org/Spoons/BrewInfo.html][BrewInfo]] spoon allows me to point at a Formula or Cask name and press =Hyper-b= or =Hyper-c= (for Casks) to have the output of the =info= command in a popup window, or the same key with =Shift-Hyper= to open the URL of the Formula/Cask.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("BrewInfo",
                  {
                    config = {
@@ -1558,29 +1520,33 @@ the Formula/Cask.
                    }
                  }
   )
-#+END_SRC
+#+end_src
 
-The KSheet spoon traverses the current application's menus and builds
-a cheatsheet of the keyboard shortcuts, showing it in a nice popup
-window.
+The [[http://www.hammerspoon.org/Spoons/KSheet.html][KSheet]] spoon traverses the current application's menus and builds a cheatsheet of the keyboard shortcuts, showing it in a nice popup window.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("KSheet",
                  {
                    hotkeys = {
                      toggle = { hyper, "/" }
   }})
-#+END_SRC
+#+end_src
+
+The [[http://www.hammerspoon.org/Spoons/TimeMachineProgress.html][TimeMachineProgress]] spoon shows an indicator about the progress of the ongoing Time Machine backup. The indicator disappears when there is no backup going on.
+
+#+begin_src lua
+  Install:andUse("TimeMachineProgress",
+                 {
+                   start = true
+                 }
+  )
+#+end_src
 
 *** Other applications
 
-The [[http://www.hammerspoon.org/Spoons/ToggleSkypeMute.html][ToggleSkypeMute]] spoon sets up the missing keyboard bindings for
-toggling the mute button on Skype and Skype for Business. I'm not
-fully happy with this spoon - it should auto-detect the application
-instead of having separate keys for each application, and it could be
-extended to more generic use.
+The [[http://www.hammerspoon.org/Spoons/ToggleSkypeMute.html][ToggleSkypeMute]] spoon sets up the missing keyboard bindings for toggling the mute button on Skype and Skype for Business. I'm not fully happy with this spoon - it should auto-detect the application instead of having separate keys for each application, and it could be extended to more generic use.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("ToggleSkypeMute",
                  {
                    hotkeys = {
@@ -1589,30 +1555,25 @@ extended to more generic use.
                    }
                  }
   )
-#+END_SRC
+#+end_src
 
-The [[http://www.hammerspoon.org/Spoons/HeadphoneAutoPause.html][HeadphoneAutoPause]] spoon implements auto-pause/resume for iTunes,
-Spotify and others when the headphones are unplugged.
+The [[http://www.hammerspoon.org/Spoons/HeadphoneAutoPause.html][HeadphoneAutoPause]] spoon implements auto-pause/resume for iTunes, Spotify and others when the headphones are unplugged.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("HeadphoneAutoPause",
                  {
                    start = true
                  }
   )
-#+END_SRC
+#+end_src
 
 *** Seal
 
-The [[http://www.hammerspoon.org/Spoons/Seal.html][Seal]] spoon is a powerhouse - it implements a Spotlight-like
-launcher, but which allows for infinite configurability of what can be
-done or searched from the launcher window. I use Seal as my default
-launcher, triggered with =Cmd-space=, although I still keep Spotlight
-around under =Hyper-space=, mainly for its search capabilities.
+The [[http://www.hammerspoon.org/Spoons/Seal.html][Seal]] spoon is a powerhouse - it implements a Spotlight-like launcher, but which allows for infinite configurability of what can be done or searched from the launcher window. I use Seal as my default launcher, triggered with =Cmd-space=, although I still keep Spotlight around under =Hyper-space=, mainly for its search capabilities.
 
 We start by loading the spoon, and specifying which plugins we want.
 
-#+BEGIN_SRC lua :noweb no-export
+#+begin_src lua :noweb no-export
   Install:andUse("Seal",
                  {
                    hotkeys = { show = { {"cmd"}, "space" } },
@@ -1628,22 +1589,20 @@ We start by loading the spoon, and specifying which plugins we want.
                    start = true,
                  }
   )
-#+END_SRC
+#+end_src
 
-The =useractions= Seal plugin allows me to define my own shortcuts. For
-example, a bookmark to the Hammerspoon documentation page:
+The =useractions= Seal plugin allows me to define my own shortcuts. For example, a bookmark to the Hammerspoon documentation page:
 
-#+BEGIN_SRC lua :tangle no :noweb-ref useraction-definitions
+#+begin_src lua :tangle no :noweb-ref useraction-definitions
   ["Hammerspoon docs webpage"] = {
     url = "http://hammerspoon.org/docs/",
     icon = hs.image.imageFromName(hs.image.systemImageNames.ApplicationIcon),
   },
-#+END_SRC
+#+end_src
 
-Or to manually trigger my work/non-work transition scripts (see
-below):
+Or to manually trigger my work/non-work transition scripts (see below):
 
-#+BEGIN_SRC lua :tangle no :noweb-ref useraction-definitions
+#+begin_src lua :tangle no :noweb-ref useraction-definitions
   ["Leave corpnet"] = {
     fn = function()
       spoon.WiFiTransitions:processTransition('foo', 'corpnet01')
@@ -1656,31 +1615,25 @@ below):
     end,
     icon = swisscom_logo,
   },
-#+END_SRC
+#+end_src
 
-Or to translate things using dict.leo.org:
+Or to translate things using [[https://dict.leo.org/][dict.leo.org]]:
 
-#+BEGIN_SRC lua :tangle no :noweb-ref useraction-definitions
+#+begin_src lua :tangle no :noweb-ref useraction-definitions
   ["Translate using Leo"] = {
     url = "http://dict.leo.org/ende/index_de.html#/search=${query}",
     icon = 'favicon',
     keyword = "leo",
   }
-#+END_SRC
+#+end_src
 
 *** Network transitions
 
-The [[http://www.hammerspoon.org/Spoons/WiFiTransitions.html][WiFiTransitions]] spoon allows triggering arbitrary actions when the
-SSID changes. I am interested in the change from my work network
-(corpnet01) to other networks, mainly because at work I need a proxy
-for all connections to the Internet. I have two applications which
-don't handle these transitions gracefully on their own: Spotify and
-Adium. So I have written a couple of functions for helping them along.
+The [[http://www.hammerspoon.org/Spoons/WiFiTransitions.html][WiFiTransitions]] spoon allows triggering arbitrary actions when the SSID changes. I am interested in the change from my work network (corpnet01) to other networks, mainly because at work I need a proxy for all connections to the Internet. I have two applications which don't handle these transitions gracefully on their own: Spotify and Adium. So I have written a couple of functions for helping them along.
 
-The =reconfigSpotifyProxy= function quits Spotify, updates the proxy
-settings in its config file, and restarts it.
+The =reconfigSpotifyProxy= function quits Spotify, updates the proxy settings in its config file, and restarts it.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   function reconfigSpotifyProxy(proxy)
     local spotify = hs.appfinder.appFromName("Spotify")
     local lastapp = nil
@@ -1705,12 +1658,11 @@ settings in its config file, and restarts it.
       end)
     end
   end
-#+END_SRC
+#+end_src
 
-The =reconfigAdiumProxy= function uses AppleScript to tell Adium about
-the change without having to restart it.
+The =reconfigAdiumProxy= function uses AppleScript to tell Adium about the change without having to restart it.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   function reconfigAdiumProxy(proxy)
     --   hs.notify.show("Reconfiguring Adium", string.format("Proxy %s", (proxy and "enabled" or "disabled")), "")
     local script = string.format([[
@@ -1726,12 +1678,11 @@ the change without having to restart it.
   ]], hs.inspect(proxy))
     hs.osascript.applescript(script)
   end
-#+END_SRC
+#+end_src
 
-The configuration for the WiFiTransitions spoon invoked these
-functions with the appropriate parameters.
+The configuration for the WiFiTransitions spoon invoked these functions with the appropriate parameters.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("WiFiTransitions",
                  {
                    config = {
@@ -1758,20 +1709,13 @@ functions with the appropriate parameters.
                    start = true,
                  }
   )
-#+END_SRC
+#+end_src
 
 *** Pop-up translation
 
-I live in Switzerland, and my German is far from perfect, so the
-[[http://www.hammerspoon.org/Spoons/PopupTranslateSelection.html][PopupTranslateSelection]] spoon helps me a lot. It allows me to select
-some text and, with a keystroke, translate it to any of three
-languages using Google Translate. Super useful! Usually, Google's
-auto-detect feature works fine, so the =translate_to_<lang>= keys are
-sufficient. I have some =translate_<from>_<to>= keys set up for certain
-language pairs for when this doesn't quite work (I don't think I've
-ever needed them).
+I live in Switzerland, and my German is far from perfect, so the [[http://www.hammerspoon.org/Spoons/PopupTranslateSelection.html][PopupTranslateSelection]] spoon helps me a lot. It allows me to select some text and, with a keystroke, translate it to any of three languages using Google Translate. Super useful! Usually, Google's auto-detect feature works fine, so the =translate_to_<lang>= keys are sufficient. I have some =translate_<from>_<to>= keys set up for certain language pairs for when this doesn't quite work (I don't think I've ever needed them).
 
-#+BEGIN_SRC lua
+#+begin_src lua
   local wm=hs.webview.windowMasks
   Install:andUse("PopupTranslateSelection",
                  {
@@ -1787,26 +1731,24 @@ ever needed them).
                    }
                  }
   )
-#+END_SRC
+#+end_src
 
 *** Miscellaneous stuff
 
-In my =init-local.lua= file I keep some experimental or private stuff
-that I don't want to publish in my main config.
+In my =init-local.lua= file I keep some experimental or private stuff that I don't want to publish in my main config.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   local localstuff=loadfile(hs.configdir .. "/init-local.lua")
   if localstuff then
     localstuff()
   end
-#+END_SRC
+#+end_src
 
 *** End-of-config animation
 
-The [[http://www.hammerspoon.org/Spoons/FadeLogo.html][FadeLogo]] spoon simply shows an animation of the Hammerspoon logo
-to signal the end of the config load.
+The [[http://www.hammerspoon.org/Spoons/FadeLogo.html][FadeLogo]] spoon simply shows an animation of the Hammerspoon logo to signal the end of the config load.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   Install:andUse("FadeLogo",
                  {
                    config = {
@@ -1815,11 +1757,11 @@ to signal the end of the config load.
                    start = true
                  }
   )
-#+END_SRC
+#+end_src
 
 If you don't want to use FadeLogo, you can have a regular notification.
 
-#+BEGIN_SRC lua
+#+begin_src lua
   -- hs.notify.show("Welcome to Hammerspoon", "Have fun!", "")
-#+END_SRC
+#+end_src
 * Elvish                                                             :elvish:
