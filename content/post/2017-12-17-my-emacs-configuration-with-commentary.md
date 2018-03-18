@@ -2,7 +2,7 @@
 title = "My Emacs Configuration, With Commentary"
 author = ["Zamboni Diego"]
 date = 2017-12-17T20:14:00+01:00
-tags = ["config", "howto", "literate-programming", "emacs"]
+tags = ["config", "howto", "literateprogramming", "emacs"]
 draft = false
 creator = "Emacs 25.3.2 (Org mode 9.1.7 + ox-hugo)"
 featured_image = "/images/emacs-logo.svg"
@@ -709,7 +709,7 @@ Some settings maybe OS-specific, and this is where we set them. For now I only u
 
 First, we set the key modifiers correctly to my preferences: Make Command (⌘) act as Meta, Option as Alt, right-Option as Super
 
-<a id="org1fd3ac1"></a>
+<a id="org4bb07b9"></a>
 ```emacs-lisp
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'alt)
@@ -718,7 +718,7 @@ First, we set the key modifiers correctly to my preferences: Make Command (⌘) 
 
 We also make it possible to use the familiar `⌘-+` and `⌘--` to increase and decrease the font size. ⌘-= is also bound to "increase" because it's on the same key in an English keyboard.
 
-<a id="org5b43fa3"></a>
+<a id="org209739d"></a>
 ```emacs-lisp
 (global-set-key (kbd "M-+") 'text-scale-increase)
 (global-set-key (kbd "M-=") 'text-scale-increase)
@@ -727,7 +727,7 @@ We also make it possible to use the familiar `⌘-+` and `⌘--` to increase and
 
 Somewhat surprisingly, there seems to be no "reset" function, so I define my own and bind it to `⌘-0`.
 
-<a id="org06e5961"></a>
+<a id="org6b8396f"></a>
 ```emacs-lisp
 (defun text-scale-reset ()
   (interactive)
@@ -737,7 +737,7 @@ Somewhat surprisingly, there seems to be no "reset" function, so I define my own
 
 We also use the `exec-path-from-shell` to make sure the path settings from the shell are loaded into Emacs (usually it starts up with the default system-wide path).
 
-<a id="org0b6e57c"></a>
+<a id="org610f9f2"></a>
 ```emacs-lisp
 (use-package exec-path-from-shell
   :config
