@@ -4,8 +4,8 @@
 
 #+options: creator:t
 
-* Emacs                                                               :emacs:
-** DONE My Emacs Configuration, With Commentary               :config:howto:
+* Literate config files                   :config:howto:literate_programming:
+** DONE My Emacs Configuration, With Commentary                      :emacs:
 CLOSED: [2017-12-17 Sun 20:14]
 :properties:
 :export_file_name: 2017-12-17-my-emacs-configuration-with-commentary
@@ -1212,8 +1212,7 @@ This is how we get a global header property in org-mode
              (org-babel-parse-header-arguments
               (org-entry-get-with-inheritance "header-args")))
 #+end_src
-* Hammerspoon                                                   :hammerspoon:
-** DONE My Hammerspoon Configuration, With Commentary         :config:howto:
+** DONE My Hammerspoon Configuration, With Commentary          :hammerspoon:
 CLOSED: [2018-01-08 Mon 13:31]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 2018-01-08-my-hammerspoon-configuration-with-commentary
@@ -1764,4 +1763,6 @@ If you don't want to use FadeLogo, you can have a regular notification.
 #+begin_src lua
   -- hs.notify.show("Welcome to Hammerspoon", "Have fun!", "")
 #+end_src
+* Emacs                                                               :emacs:
+* Hammerspoon                                                   :hammerspoon:
 * Elvish                                                             :elvish:

@@ -2,7 +2,7 @@
 title = "My Hammerspoon Configuration, With Commentary"
 author = ["Zamboni Diego"]
 date = 2018-01-08T13:31:00+01:00
-tags = ["hammerspoon", "config", "howto"]
+tags = ["config", "howto", "literate-programming", "hammerspoon"]
 draft = false
 creator = "Emacs 25.3.2 (Org mode 9.1.7 + ox-hugo)"
 toc = true
