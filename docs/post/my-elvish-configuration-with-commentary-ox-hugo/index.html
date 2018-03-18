@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     
+    <title>zzamboni.org  | My Elvish Configuration With Commentary ox-hugo</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+     <meta name="generator" content="Hugo 0.38-DEV" />
+      
+      
+        <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      
+
+     <link href='http://zzamboni.org/dist/main.css' rel='stylesheet' type="text/css" />
+     <link href='http://zzamboni.org/css/site.css' rel='stylesheet' type="text/css" />
+     <link href='http://zzamboni.org/css/syntax.css' rel='stylesheet' type="text/css" />
+
+     
+
+      <meta property="og:title" content="My Elvish Configuration With Commentary ox-hugo" />
+<meta property="og:description" content="Last update: March 18th, 2018
+In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
+This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file, from which the rc.elv file is directly generated.
+Without further ado&hellip;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://zzamboni.org/post/my-elvish-configuration-with-commentary-ox-hugo/" />
+
+
+
+<meta property="article:published_time" content="2017-11-16T20:21:00&#43;01:00"/>
+
+<meta property="article:modified_time" content="2017-11-16T20:21:00&#43;01:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="My Elvish Configuration With Commentary ox-hugo">
+<meta itemprop="description" content="Last update: March 18th, 2018
+In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
+This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file, from which the rc.elv file is directly generated.
+Without further ado&hellip;">
+
+
+<meta itemprop="datePublished" content="2017-11-16T20:21:00&#43;01:00" />
+<meta itemprop="dateModified" content="2017-11-16T20:21:00&#43;01:00" />
+<meta itemprop="wordCount" content="1232">
+
+
+
+<meta itemprop="keywords" content="config,howto,literateprogramming,elvish," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="My Elvish Configuration With Commentary ox-hugo"/>
+<meta name="twitter:description" content="Last update: March 18th, 2018
+In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
+This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file, from which the rc.elv file is directly generated.
+Without further ado&hellip;"/>
+
+        
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-109878074-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2108021418174840",
+    enable_page_level_ads: true
+  });
+</script>
+      
+      <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+      <link rel="manifest" href="/manifest.json">
+      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  </head>
+
+  <body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://zzamboni.org/images/elvish-logo.svg');">
+    <div class="pb5-l bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://zzamboni.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      zzamboni.org
+    </a>
+    <div class="flex-l items-center">
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Blog page">
+              Blog
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/book/" title="Books page">
+              Books
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/code/" title="Code page">
+              Code
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/tags/" title="Tags page">
+              Tags
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+  <a href="https://twitter.com/zzamboni" class="link-transition twitter link dib z-999 pt3 pt0-l mr2" title="Twitter link">
+    <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+  </a>
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv4 ph3 ph4-ns">
+        <h1 class="f2 f1-l fw2 white-90 mb0 mt0 lh-title">My Elvish Configuration With Commentary ox-hugo</h1>
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <div class="flex-l mt2 mw8 center">
+    <article class="center cf pv5 ph3 ph4-ns mw7">
+      <p class="f6 b helvetica tracked">
+        
+        POST
+      </p>
+      <h1 class="f1 athelas">
+        My Elvish Configuration With Commentary ox-hugo
+      </h1>
+        
+        
+      <time class="f6 mv4 dib tracked" datetime="2017-11-16T20:21:00&#43;01:00">
+        November 16, 2017
+      </time>
+      <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
+        
+
+<p>Last update: <strong>March 18th, 2018</strong></p>
+
+<p>In this blog post I will walk you through my current <a href="http://elvish.io">Elvish</a> configuration file, with running commentary about the different sections.</p>
+
+<p>This is also my first blog post written using <a href="http://orgmode.org/">org-mode</a>, which I have started using for writing and documenting my code, using <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html">literate programming</a>. The content below is included unmodified from my <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.org">rc.org file</a>, from which the <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.elv">rc.elv</a> file is directly generated.</p>
+
+<p>Without further ado&hellip;</p>
+
+<h2 id="paths">Paths</h2>
+
+<p>First we set up the executable paths. We set the <code>GOPATH</code> environment variable while we are at it, since we need to use it as part of the path.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">E:GOPATH = ~/Personal/devel/go/
+paths = [
+  ~/bin
+  $E:GOPATH/bin
+  ~/Dropbox/Personal/devel/hammerspoon/spoon/bin
+  ~/.gem/ruby/2.4.0/bin
+  /opt/X11/bin
+  /Library/TeX/texbin
+  /usr/local/bin
+  /usr/local/sbin
+  /usr/sbin
+  /sbin
+  /usr/bin
+  /bin
+]</code></pre></div>
+<h2 id="package-installation">Package installation</h2>
+
+<p>The bundled <a href="https://elvish.io/ref/epm.html">epm</a> module allows us to install and manage Elvish packages.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use epm</code></pre></div>
+<p>For now I use these packages:</p>
+
+<ul>
+<li><a href="https://github.com/zzamboni/elvish-modules">github.com/zzamboni/elvish-modules</a> contains all my modules except completions and themes. Maybe these should be separated eventually, but for now this works fine.</li>
+<li><a href="https://github.com/zzamboni/elvish-themes">github.com/zzamboni/elvish-themes</a> contains my prompt themes (only <a href="https://github.com/zzamboni/elvish-themes/blob/master/chain.org">chain</a> for now).</li>
+<li><a href="https://github.com/zzamboni/elvish-completions">github.com/zzamboni/elvish-completions</a> contains my completer definitions.</li>
+<li><a href="https://github.com/xiaq/edit.elv">github.com/xiaq/edit.elv</a>, which includes the <code>smart-matcher</code> module used below.</li>
+<li><a href="https://github.com/muesli/elvish-libs">github.com/muesli/elvish-libs</a> for the git utilities module.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">epm:install &amp;silent-if-installed=$true   \
+  github.com/zzamboni/elvish-modules     \
+  github.com/zzamboni/elvish-completions \
+  github.com/zzamboni/elvish-themes      \
+  github.com/xiaq/edit.elv               \
+  github.com/muesli/elvish-libs</code></pre></div>
+<p>The modules within each package get loaded individually below.</p>
+
+<h2 id="base-modules">Base modules</h2>
+
+<p>Load the bundled <a href="https://elvish.io/ref/re.html">re</a> module to have access to regular expression functions.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use re</code></pre></div>
+<p>The bundled <a href="https://elvish.io/ref/bundled.html">readline-binding</a> module associates some Emacs-like keybindings for manipulation of the command line.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use readline-binding</code></pre></div>
+<p>I add a couple of keybindings which are missing from the default <code>readline-binding</code> module:</p>
+
+<ul>
+<li><p><code>Alt-backspace</code> to delete word</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:insert:binding[Alt-Backspace] = $edit:kill-small-word-left~</code></pre></div></li>
+
+<li><p><code>Alt-d</code> to delete the word under the cursor</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:insert:binding[Alt-d] = { edit:move-dot-right-word; edit:kill-word-left }</code></pre></div></li>
+</ul>
+
+<h2 id="git-utilities">Git utilities</h2>
+
+<p>I use muesli&rsquo;s git utilities module.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/muesli/elvish-libs/git</code></pre></div>
+<h2 id="aliases">Aliases</h2>
+
+<p>Elvish does not have built-in alias functionality, but this is implemented easily using the <a href="https://github.com/zzamboni/modules.elv/blob/master/alias.org">alias</a> module, which stores the alias definitions as functions under <a href="https://github.com/zzamboni/dot-elvish/tree/master/aliases">~/.elvish/aliases/</a> and loads them automatically.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/alias</code></pre></div>
+<p>For reference, I define here a few of my commonly-used aliases:</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">alias:new dfc e:dfc -W -l -p -/dev/disk1s4,devfs
+alias:new ls e:ls --color=auto
+alias:new more less
+alias:new v vagrant</code></pre></div>
+<h2 id="nix-package-manager">Nix package manager</h2>
+
+<p>I use the <a href="https://nixos.org/nix/">Nix</a> package manager on macOS, the <a href="https://github.com/zzamboni/modules.elv/blob/master/nix.org">nix</a> module sets up the necessary environment variables.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/nix
+nix:multi-user-setup</code></pre></div>
+<h2 id="completions">Completions</h2>
+
+<p>From the  <a href="https://github.com/zzamboni/elvish-completions">elvish-completions</a> package:</p>
+
+<p>For <code>git</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-completions:git</code></pre></div>
+<p>For <code>vcsh</code> (uses the git completer):</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-completions:vcsh</code></pre></div>
+<p>For <code>cd</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-completions:cd</code></pre></div>
+<h2 id="prompt-theme">Prompt theme</h2>
+
+<p>I use the <a href="https://github.com/zzamboni/theme.elv/blob/master/chain.org">chain</a> prompt theme, ported from the fish theme at <a href="https://github.com/oh-my-fish/theme-chain">https://github.com/oh-my-fish/theme-chain</a>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-themes/chain
+chain:bold-prompt = $true</code></pre></div>
+<p>Elvish has a <a href="https://elvish.io/ref/edit.html#prompts">comprehensive mechanism</a> for displaying prompts with useful information while avoiding getting blocked by prompt functions which take too long to finish. For the most part the defaults work well. One change I like to make is to change the <a href="https://elvish.io/ref/edit.html#stale-prompt">stale prompt transformer</a> function to make the prompt dim when stale:</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:prompt-stale-transform = { each [x]{ edit:styled $x[text] &#34;gray&#34; } }</code></pre></div>
+<p>Another possibility is to make the prompt stay the same when stale - useful to avoid distractions (disabled for now):</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:prompt-stale-transform = $all~</code></pre></div>
+<p>I also like the continuous update of the prompt as I type (by default it only updates on Enter and on <code>$pwd</code> changes, but I like also git status changes to be updated automatically), so I increase its eagerness.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:-prompt-eagerness = 10</code></pre></div>
+<h2 id="automatic-proxy-settings">Automatic proxy settings</h2>
+
+<p>When I am in the office, I need to use a proxy to access the Internet. For macOS applications, the proxy is set automatically using a company-provided PAC file. For the environment variables <code>http_proxy</code> and <code>https_proxy</code>, commonly used by command-line programs, the <a href="https://github.com/zzamboni/modules.elv/blob/master/proxy.org">proxy</a> module allows me to define a test which determines when the proxy should be used, so that the change is done automatically.</p>
+
+<p>First, we load the module and set the proxy host.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/proxy
+proxy:host = &#34;http://proxy.corproot.net:8079&#34;</code></pre></div>
+<p>Next, we set the test function to enable proxy auto-setting. In my case, the <code>/etc/resolv.conf</code> file contains the <code>corproot.net</code> domain (set through DHCP) when I&rsquo;m in the corporate network, so I can check for that.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">proxy:test = {
+  and ?(test -f /etc/resolv.conf) \
+  ?(egrep -q &#39;^(search|domain).*corproot.net&#39; /etc/resolv.conf)
+}</code></pre></div>
+<h2 id="long-running-command-notifications">Long-running-command notifications</h2>
+
+<p>The <a href="https://github.com/zzamboni/modules.elv/blob/master/long-running-notifications.org">long-running-notifications</a> module allows for producing a notification when a command takes longer than a certain time to finish (by default the period is 10 seconds). The module automatically detects when <a href="https://github.com/julienXX/terminal-notifier">terminal-notifier</a> is available on macOS and uses it to produce Mac-style notifications, otherwise it prints a notification on the terminal.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/long-running-notifications</code></pre></div>
+<h2 id="directory-and-command-navigation-and-history">Directory and command navigation and history</h2>
+
+<p>Elvish comes with built-in location and command history modes. I use the <code>narrow</code> module, which allow for more customization, including pre- and after- hooks for each of the modes. I use the default binding for history mode (<code>C-r</code>), but change the location mode binding to <code>Alt-l</code> to avoid conflicting with the binding of <code>C-l</code> to &ldquo;clear screen&rdquo; in <code>readline-binding</code>. I disable the lastcmd binding because it is taken over by the <code>bang-bang</code> module below.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use narrow
+narrow:bind-trigger-keys &amp;location=Alt-l &amp;lastcmd=&#34;&#34;</code></pre></div>
+<p>I have decades of muscle memory using <code>!!</code> and <code>!$</code> to insert the last command and its last argument, respectively. The <a href="https://github.com/zzamboni/elvish-modules/blob/master/bang-bang.org">bang-bang</a> module allows me to keep using them.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/bang-bang</code></pre></div>
+<p>The <a href="https://github.com/zzamboni/modules.elv/blob/master/dir.org">dir</a> module implements a directory history and some related functions. I alias the <code>cd</code> command to <code>dir:cd</code> so that any directory changes are kept in the history. I also alias <code>cdb</code> to <code>dir:cdb</code> function, which allows changing to the base directory of the argument.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/dir
+alias:new cd &#34;use github.com/zzamboni/elvish-modules/dir; dir:cd&#34;
+alias:new cdb &#34;use github.com/zzamboni/elvish-modules/dir; dir:cdb&#34;</code></pre></div>
+<p><code>dir</code> also implements a narrow-based directory history chooser, which I bind to <code>Alt-i</code> (I have found I don&rsquo;t use this as much as I thought I would - the built-in location mode works nicely).</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:insert:binding[Alt-i] = $dir:history-chooser~</code></pre></div>
+<p>I bind <code>Alt-b/f</code> to <code>dir:left-word-or-prev-dir</code> and <code>dir:right-word-or-next-dir</code> respectively, which &ldquo;do the right thing&rdquo; depending on the current content of the command prompt: if it&rsquo;s empty, they move back/forward in the directory history, otherwise they move through the words of the current command. In my Terminal.app setup, <code>Alt-left/right</code> also produce <code>Alt-b/f</code>, so these bindings work for those keys as well.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:insert:binding[Alt-b] = $dir:left-word-or-prev-dir~
+edit:insert:binding[Alt-f] = $dir:right-word-or-next-dir~</code></pre></div>
+<h2 id="dynamic-terminal-title">Dynamic terminal title</h2>
+
+<p>The <a href="https://github.com/zzamboni/elvish-modules/blob/master/terminal-title.org">terminal-title</a> module handles setting the terminal title dynamically according to the current directory or the current command being executed.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/terminal-title</code></pre></div>
+<h2 id="loading-private-settings">Loading private settings</h2>
+
+<p>The <code>private</code> module sets up some private settings such as authentication tokens. This is not on github :) The <code>$private-loaded</code> variable gets set to <code>$ok</code> if the module was loaded correctly.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">private-loaded = ?(use private)</code></pre></div>
+<h2 id="o-reilly-atlas">O&rsquo;Reilly Atlas</h2>
+
+<p>I sometimes use the <a href="https://atlas.oreilly.com/">O&rsquo;Reilly Atlas</a> publishing platform. The <a href="https://github.com/zzamboni/modules.elv/blob/master/atlas.org">atlas</a> module contains some useful functions for triggering and accessing document builds.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/atlas</code></pre></div>
+<h2 id="smart-matching-for-completion">Smart matching for completion</h2>
+
+<p>The <a href="https://github.com/xiaq/edit.elv/blob/master/smart-matcher.elv">smart-matcher</a> module tries prefix match, smart-case prefix match, substring match, smart-case substring match, subsequence match and smart-case subsequence match automatically.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/xiaq/edit.elv/smart-matcher
+edit:completion:matcher[&#39;&#39;] = $smart-matcher:match~</code></pre></div>
+<p>Other possible values for <code>edit:completion:matcher</code> are <code>[p]{ edit:match-prefix &amp;smart-case $p }</code> for smart-case completion (if your pattern is entirely lower case it ignores case, otherwise it&rsquo;s case sensitive).  <code>&amp;smart-case</code> can be replaced with <code>&amp;ignore-case</code> to make it always case-insensitive.</p>
+
+<h2 id="environment-variables">Environment variables</h2>
+
+<p>Default options to <code>less</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">E:LESS = &#34;-i -R&#34;</code></pre></div>
+<p>Use vim as the editor from the command line (although I am an <a href="https://github.com/zzamboni/dot-emacs/blob/master/init.org">Emacs</a> fan, I still sometimes use vim for quick editing).</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">E:EDITOR = &#34;vim&#34;</code></pre></div>
+<p>Locale setting.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">E:LC_ALL = &#34;en_US.UTF-8&#34;</code></pre></div>
+<h2 id="utility-functions">Utility functions</h2>
+
+<p>The <a href="https://github.com/zzamboni/elvish-modules/blob/master/util.org">util</a> module includes various utility functions.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/util</code></pre></div>
+<h2 id="exporting-aliases">Exporting aliases</h2>
+
+<p>We populate <code>$-exports-</code> with the alias definitions so that they become available in the interactive namespace.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">-exports- = (alias:export)</code></pre></div>
+      </section>
+      
+
+  <ul class="list dib ml0 pl0" id="tags">
+    <li class="b black dib mb2 mr3">Tags: </li>
+    
+      <li class="black dib mb2 mr2"><a href="/tags/config" class="link mid-gray dim">config</a> </li>
+    
+      <li class="black dib mb2 mr2"><a href="/tags/howto" class="link mid-gray dim">howto</a> </li>
+    
+      <li class="black dib mb2 mr2"><a href="/tags/literateprogramming" class="link mid-gray dim">literateprogramming</a> </li>
+    
+      <li class="black dib mb2 mr2"><a href="/tags/elvish" class="link mid-gray dim">elvish</a> </li>
+    
+  </ul>
+  
+  
+  
+  
+  
+    <div class="mt5 f6 gray nested-lh-copy bg-light-gray ph3 pv2 measure-wide-l">
+      <ul class="list dib ml0 pl0">
+        <li class="black dib mb2 mr2">
+          Related:
+        </li>
+        
+          
+            <li class="mb2 mr3">
+              <a href="/post/my-hammerspoon-configuration-with-commentary/" class="link mid-gray dim">
+                 My Hammerspoon Configuration, With Commentary
+              </a>
+            </li>
+          
+        
+          
+            <li class="mb2 mr3">
+              <a href="/post/my-emacs-configuration-with-commentary/" class="link mid-gray dim">
+                 My Emacs Configuration, With Commentary
+              </a>
+            </li>
+          
+        
+          
+            <li class="mb2 mr3">
+              <a href="/post/bang-bang---shell-shortcuts-in-elvish/" class="link mid-gray dim">
+                 Bang-Bang (!!, !$) Shell Shortcuts in Elvish
+              </a>
+            </li>
+          
+        
+          
+        
+      </ul>
+    </div>
+  
+
+
+      <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zzamboni-org" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+    <div class="ph3 mt2 mt6-ns">
+      <div class="bg-light-gray pa3">
+      <p class="list b mb3">What's in this Post</p>
+      <nav id="TableOfContents">
+<ul>
+<li class="list f5 w-100 hover-bg-white nl1">
+<ul>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#paths">Paths</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#package-installation">Package installation</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#base-modules">Base modules</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#git-utilities">Git utilities</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#aliases">Aliases</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#nix-package-manager">Nix package manager</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#completions">Completions</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#prompt-theme">Prompt theme</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#automatic-proxy-settings">Automatic proxy settings</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#long-running-command-notifications">Long-running-command notifications</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#directory-and-command-navigation-and-history">Directory and command navigation and history</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#dynamic-terminal-title">Dynamic terminal title</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#loading-private-settings">Loading private settings</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#o-reilly-atlas">O&rsquo;Reilly Atlas</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#smart-matching-for-completion">Smart matching for completion</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#environment-variables">Environment variables</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#utility-functions">Utility functions</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#exporting-aliases">Exporting aliases</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<br/></div>
+  </div>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://zzamboni.org/" >
+    &copy; 2018 Diego Zamboni
+  </a>
+  
+
+
+
+  <a href="https://twitter.com/zzamboni" class="link-transition twitter link dib z-999 pt3 pt0-l mr2" title="Twitter link">
+    <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+  </a>
+
+
+
+
+  </div>
+</footer>
+
+    <script src="http://zzamboni.org/dist/app.bundle.js" async></script>
+
+  </body>
+</html>
