@@ -655,26 +655,26 @@ ga('send', 'pageview');
 
 <p>First, we set the key modifiers correctly to my preferences: Make Command (⌘) act as Meta, Option as Alt, right-Option as Super</p>
 
-<p><a id="org4bb07b9"></a></p>
+<p><a id="org624aaac"></a></p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">mac-command-modifier</span> <span class="ss">&#39;meta</span><span class="p">)</span>
 <span class="p">(</span><span class="nb">setq</span> <span class="nv">mac-option-modifier</span> <span class="ss">&#39;alt</span><span class="p">)</span>
 <span class="p">(</span><span class="nb">setq</span> <span class="nv">mac-right-option-modifier</span> <span class="ss">&#39;super</span><span class="p">)</span></code></pre></div>
 <p>We also make it possible to use the familiar <code>⌘-+</code> and <code>⌘--</code> to increase and decrease the font size. ⌘-= is also bound to &ldquo;increase&rdquo; because it&rsquo;s on the same key in an English keyboard.</p>
 
-<p><a id="org209739d"></a></p>
+<p><a id="org608c9ba"></a></p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-+&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-increase</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-=&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-increase</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M--&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-decrease</span><span class="p">)</span></code></pre></div>
 <p>Somewhat surprisingly, there seems to be no &ldquo;reset&rdquo; function, so I define my own and bind it to <code>⌘-0</code>.</p>
 
-<p><a id="org6b8396f"></a></p>
+<p><a id="org14d5250"></a></p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">text-scale-reset</span> <span class="p">()</span>
   <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
   <span class="p">(</span><span class="nv">text-scale-set</span> <span class="mi">0</span><span class="p">))</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-0&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-reset</span><span class="p">)</span></code></pre></div>
 <p>We also use the <code>exec-path-from-shell</code> to make sure the path settings from the shell are loaded into Emacs (usually it starts up with the default system-wide path).</p>
 
-<p><a id="org610f9f2"></a></p>
+<p><a id="orgcdad83f"></a></p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">exec-path-from-shell</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nv">exec-path-from-shell-initialize</span><span class="p">))</span></code></pre></div>
@@ -1111,8 +1111,8 @@ ga('send', 'pageview');
         
           
             <li class="mb2 mr3">
-              <a href="/post/my-elvish-configuration-with-commentary-ox-hugo/" class="link mid-gray dim">
-                 My Elvish Configuration With Commentary ox-hugo
+              <a href="/post/my-elvish-configuration-with-commentary/" class="link mid-gray dim">
+                 My Elvish Configuration With Commentary
               </a>
             </li>
           
