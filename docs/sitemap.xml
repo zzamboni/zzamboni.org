@@ -53,7 +53,7 @@
   
   <url>
     <loc>http://zzamboni.org/post/my-emacs-configuration-with-commentary/</loc>
-    <lastmod>2017-12-17T20:14:36+01:00</lastmod>
+    <lastmod>2017-12-17T20:14:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -2775,7 +2775,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/emacs/</loc>
-    <lastmod>2017-12-17T20:14:36+01:00</lastmod>
+    <lastmod>2017-12-17T20:14:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

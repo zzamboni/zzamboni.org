@@ -29,9 +29,9 @@ I have enjoyed slowly converting my configuration files to literate programming 
 
 
 
-<meta property="article:published_time" content="2017-12-17T20:14:36&#43;01:00"/>
+<meta property="article:published_time" content="2017-12-17T20:14:00&#43;01:00"/>
 
-<meta property="article:modified_time" content="2017-12-17T20:14:36&#43;01:00"/>
+<meta property="article:modified_time" content="2017-12-17T20:14:00&#43;01:00"/>
 
 
 
@@ -48,8 +48,8 @@ I have enjoyed slowly converting my configuration files to literate programming 
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving.">
 
 
-<meta itemprop="datePublished" content="2017-12-17T20:14:36&#43;01:00" />
-<meta itemprop="dateModified" content="2017-12-17T20:14:36&#43;01:00" />
+<meta itemprop="datePublished" content="2017-12-17T20:14:00&#43;01:00" />
+<meta itemprop="dateModified" content="2017-12-17T20:14:00&#43;01:00" />
 <meta itemprop="wordCount" content="5100">
 
 
@@ -178,7 +178,7 @@ ga('send', 'pageview');
       </h1>
         
         
-      <time class="f6 mv4 dib tracked" datetime="2017-12-17T20:14:36&#43;01:00">
+      <time class="f6 mv4 dib tracked" datetime="2017-12-17T20:14:00&#43;01:00">
         December 17, 2017
       </time>
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
@@ -655,26 +655,26 @@ ga('send', 'pageview');
 
 <p>First, we set the key modifiers correctly to my preferences: Make Command (⌘) act as Meta, Option as Alt, right-Option as Super</p>
 
-<p><a id="org94e5927"></a></p>
+<p><a id="org1c8692c"></a></p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">mac-command-modifier</span> <span class="ss">&#39;meta</span><span class="p">)</span>
 <span class="p">(</span><span class="nb">setq</span> <span class="nv">mac-option-modifier</span> <span class="ss">&#39;alt</span><span class="p">)</span>
 <span class="p">(</span><span class="nb">setq</span> <span class="nv">mac-right-option-modifier</span> <span class="ss">&#39;super</span><span class="p">)</span></code></pre></div>
 <p>We also make it possible to use the familiar <code>⌘-+</code> and <code>⌘--</code> to increase and decrease the font size. ⌘-= is also bound to &ldquo;increase&rdquo; because it&rsquo;s on the same key in an English keyboard.</p>
 
-<p><a id="org32dc2d1"></a></p>
+<p><a id="orge76fade"></a></p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-+&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-increase</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-=&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-increase</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M--&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-decrease</span><span class="p">)</span></code></pre></div>
 <p>Somewhat surprisingly, there seems to be no &ldquo;reset&rdquo; function, so I define my own and bind it to <code>⌘-0</code>.</p>
 
-<p><a id="orgdf8a18e"></a></p>
+<p><a id="org61389e7"></a></p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">text-scale-reset</span> <span class="p">()</span>
   <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
   <span class="p">(</span><span class="nv">text-scale-set</span> <span class="mi">0</span><span class="p">))</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-0&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-reset</span><span class="p">)</span></code></pre></div>
 <p>We also use the <code>exec-path-from-shell</code> to make sure the path settings from the shell are loaded into Emacs (usually it starts up with the default system-wide path).</p>
 
-<p><a id="orgd6ba60b"></a></p>
+<p><a id="org6ed5076"></a></p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">exec-path-from-shell</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nv">exec-path-from-shell-initialize</span><span class="p">))</span></code></pre></div>
