@@ -54,7 +54,7 @@ I have enjoyed slowly converting my configuration files to literate programming 
 
 
 
-<meta itemprop="keywords" content="emacs,config," />
+<meta itemprop="keywords" content="emacs,config,howto," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Emacs Configuration, With Commentary"/>
 <meta name="twitter:description" content="Last update: March 17th, 2018
@@ -655,26 +655,26 @@ ga('send', 'pageview');
 
 <p>First, we set the key modifiers correctly to my preferences: Make Command (⌘) act as Meta, Option as Alt, right-Option as Super</p>
 
-<p><a id="org1c8692c"></a></p>
+<p><a id="org6391ad4"></a></p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">mac-command-modifier</span> <span class="ss">&#39;meta</span><span class="p">)</span>
 <span class="p">(</span><span class="nb">setq</span> <span class="nv">mac-option-modifier</span> <span class="ss">&#39;alt</span><span class="p">)</span>
 <span class="p">(</span><span class="nb">setq</span> <span class="nv">mac-right-option-modifier</span> <span class="ss">&#39;super</span><span class="p">)</span></code></pre></div>
 <p>We also make it possible to use the familiar <code>⌘-+</code> and <code>⌘--</code> to increase and decrease the font size. ⌘-= is also bound to &ldquo;increase&rdquo; because it&rsquo;s on the same key in an English keyboard.</p>
 
-<p><a id="orge76fade"></a></p>
+<p><a id="orgcc3d3c0"></a></p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-+&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-increase</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-=&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-increase</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M--&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-decrease</span><span class="p">)</span></code></pre></div>
 <p>Somewhat surprisingly, there seems to be no &ldquo;reset&rdquo; function, so I define my own and bind it to <code>⌘-0</code>.</p>
 
-<p><a id="org61389e7"></a></p>
+<p><a id="org06013c6"></a></p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">text-scale-reset</span> <span class="p">()</span>
   <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
   <span class="p">(</span><span class="nv">text-scale-set</span> <span class="mi">0</span><span class="p">))</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-0&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-reset</span><span class="p">)</span></code></pre></div>
 <p>We also use the <code>exec-path-from-shell</code> to make sure the path settings from the shell are loaded into Emacs (usually it starts up with the default system-wide path).</p>
 
-<p><a id="org6ed5076"></a></p>
+<p><a id="orgd65af65"></a></p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">exec-path-from-shell</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nv">exec-path-from-shell-initialize</span><span class="p">))</span></code></pre></div>
@@ -1074,6 +1074,8 @@ ga('send', 'pageview');
       <li class="black dib mb2 mr2"><a href="/tags/emacs" class="link mid-gray dim">emacs</a> </li>
     
       <li class="black dib mb2 mr2"><a href="/tags/config" class="link mid-gray dim">config</a> </li>
+    
+      <li class="black dib mb2 mr2"><a href="/tags/howto" class="link mid-gray dim">howto</a> </li>
     
   </ul>
   
