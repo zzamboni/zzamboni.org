@@ -6,7 +6,7 @@
     <description>Recent content in Emacs on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 Dec 2017 20:14:36 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 17 Dec 2017 20:14:00 +0100</lastBuildDate>
     
 	<atom:link href="http://zzamboni.org/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>My Emacs Configuration, With Commentary</title>
       <link>http://zzamboni.org/post/my-emacs-configuration-with-commentary/</link>
-      <pubDate>Sun, 17 Dec 2017 20:14:36 +0100</pubDate>
+      <pubDate>Sun, 17 Dec 2017 20:14:00 +0100</pubDate>
       
       <guid>http://zzamboni.org/post/my-emacs-configuration-with-commentary/</guid>
       <description>Last update: March 17th, 2018
