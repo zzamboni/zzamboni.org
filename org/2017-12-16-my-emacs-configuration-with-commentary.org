@@ -1,25 +1,16 @@
+#+hugo_base_dir: ../
+#+hugo_section: post
+
 #+title: My Emacs Configuration, With Commentary
 #+date: 2017-12-17T20:14:36+01:00
-#+featured_image: /images/emacs-logo.svg
-#+tags: emacs config
-#+summary: I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file.
+#+hugo_tags: emacs config
+#+hugo_custom_front_matter: :featured_image /images/emacs-logo.svg
+#+hugo_custom_front_matter: :toc true
+#+hugo_custom_front_matter: :summary I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file.
 
 Last update: *March 17th, 2018*
 
 I have enjoyed slowly converting my configuration files to [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate programming]] style style using org-mode in Emacs. I previously posted my [[../my-elvish-configuration-with-commentary/][Elvish configuration]], and now it's the turn of my Emacs configuration file. The text below is included directly from my [[https://github.com/zzamboni/dot_emacs/blob/master/init.org][init.org]] file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [[https://github.com/zzamboni/dot_emacs/blob/master/init.org][init.org file in GitHub]] for my current, live configuration, and the generated file at [[https://github.com/zzamboni/dot_emacs/blob/master/init.el]].
-
-* Table of Contents
-- [[#customized-variables][Customized variables]]
-- [[#setting-up-the-package-system][Setting up the package system]]
-- [[#settings][Settings]]
-- [[#keybindings][Keybindings]]
-- [[#org-mode][Org mode]]
-- [[#system-specific-configuration][System-specific configuration]]
-- [[#appearance-bufferfile-management-and-theming][Appearance, buffer/file management and theming]]
-- [[#coding][Coding]]
-- [[#other-tools][Other tools]]
-- [[#general-text-editing][General text editing]]
-- [[#cheatsheet][Cheatsheet]]
 
 * Customized variables
 
