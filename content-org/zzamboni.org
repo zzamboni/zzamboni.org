@@ -1763,7 +1763,7 @@ If you don't want to use FadeLogo, you can have a regular notification.
 #+begin_src lua
   -- hs.notify.show("Welcome to Hammerspoon", "Have fun!", "")
 #+end_src
-** DONE My Elvish Configuration With Commentary ox-hugo             :elvish:
+** DONE My Elvish Configuration With Commentary             :elvish:
 CLOSED: [2017-11-16 Thu 20:21]
 :PROPERTIES:
 :export_file_name: 2017-11-16-my-elvish-configuration-with-commentary

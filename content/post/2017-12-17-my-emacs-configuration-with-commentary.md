@@ -709,7 +709,7 @@ Some settings maybe OS-specific, and this is where we set them. For now I only u
 
 First, we set the key modifiers correctly to my preferences: Make Command (⌘) act as Meta, Option as Alt, right-Option as Super
 
-<a id="org4bb07b9"></a>
+<a id="org624aaac"></a>
 ```emacs-lisp
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'alt)
@@ -718,7 +718,7 @@ First, we set the key modifiers correctly to my preferences: Make Command (⌘) 
 
 We also make it possible to use the familiar `⌘-+` and `⌘--` to increase and decrease the font size. ⌘-= is also bound to "increase" because it's on the same key in an English keyboard.
 
-<a id="org209739d"></a>
+<a id="org608c9ba"></a>
 ```emacs-lisp
 (global-set-key (kbd "M-+") 'text-scale-increase)
 (global-set-key (kbd "M-=") 'text-scale-increase)
@@ -727,7 +727,7 @@ We also make it possible to use the familiar `⌘-+` and `⌘--` to increase and
 
 Somewhat surprisingly, there seems to be no "reset" function, so I define my own and bind it to `⌘-0`.
 
-<a id="org6b8396f"></a>
+<a id="org14d5250"></a>
 ```emacs-lisp
 (defun text-scale-reset ()
   (interactive)
@@ -737,7 +737,7 @@ Somewhat surprisingly, there seems to be no "reset" function, so I define my own
 
 We also use the `exec-path-from-shell` to make sure the path settings from the shell are loaded into Emacs (usually it starts up with the default system-wide path).
 
-<a id="org610f9f2"></a>
+<a id="orgcdad83f"></a>
 ```emacs-lisp
 (use-package exec-path-from-shell
   :config

@@ -1,5 +1,5 @@
 +++
-title = "My Elvish Configuration With Commentary ox-hugo"
+title = "My Elvish Configuration With Commentary"
 author = ["Zamboni Diego"]
 date = 2017-11-16T20:21:00+01:00
 tags = ["config", "howto", "literateprogramming", "elvish"]
