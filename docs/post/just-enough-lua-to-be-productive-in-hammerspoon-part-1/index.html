@@ -17,6 +17,7 @@
 
      <link href='http://zzamboni.org/dist/main.css' rel='stylesheet' type="text/css" />
      <link href='http://zzamboni.org/css/site.css' rel='stylesheet' type="text/css" />
+     <link href='http://zzamboni.org/css/syntax.css' rel='stylesheet' type="text/css" />
 
      
 
@@ -342,7 +343,7 @@ function pointer, you need to use the dot notation.</p>
       <span class="p">:</span><span class="n">setProperty</span><span class="p">(</span><span class="n">hs.eventtap</span><span class="p">.</span><span class="n">event.properties</span><span class="p">.</span><span class="n">mouseEventClickState</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
       <span class="p">:</span><span class="n">post</span><span class="p">()</span> <span class="c1">-- &lt;3&gt;</span>
    <span class="n">hs.eventtap</span><span class="p">.</span><span class="n">event.newMouseEvent</span><span class="p">(</span> <span class="c1">-- &lt;4&gt;</span>
-     <span class="n">hs.eventtap</span><span class="p">.</span><span class="n">event.types</span><span class="p">.</span><span class="n">leftMouseUp</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span><span class="n">post</span><span class="p">()</span> 
+     <span class="n">hs.eventtap</span><span class="p">.</span><span class="n">event.types</span><span class="p">.</span><span class="n">leftMouseUp</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span><span class="n">post</span><span class="p">()</span>
 <span class="kr">end</span></code></pre></div>
 <p>In this example we can also see some examples of the Hammerspoon
 library in action, in particular two extremely powerful libraries: <a href="http://www.hammerspoon.org/docs/hs.mouse.html"><code>hs.mouse</code></a> for interacting with the mouse pointer, and <a href="http://www.hammerspoon.org/docs/hs.eventtap.html"><code>hs.eventtap</code></a>, which allows you to both intercept and
