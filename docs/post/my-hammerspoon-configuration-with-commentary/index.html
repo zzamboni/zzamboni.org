@@ -23,15 +23,16 @@
 
       <meta property="og:title" content="My Hammerspoon Configuration, With Commentary" />
 <meta property="og:description" content="In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at this time, you can see the current version of my configuration in GitHub.
-Table of Contents TOC noexport   General variables and configuration Spoon Management URL Dispatching to site-specific browsers Window and screen manipulation Organization and Productivity System and UI Other applications Seal Network transitions Pop-up translation Miscellaneous stuff End-of-config animation  General variables and configuration Global log level." />
+General variables and configuration Global log level. Per-spoon log level can be configured in each Install:andUse block below.
+hs.logger.defaultLogLevel=&#34;info&#34; I use hyper and shift_hyper as the modifiers for most of my key bindings, so I define them as variables here for easier referencing." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://zzamboni.org/post/my-hammerspoon-configuration-with-commentary/" />
 
 
 
-<meta property="article:published_time" content="2018-01-08T13:31:13&#43;01:00"/>
+<meta property="article:published_time" content="2018-01-08T13:31:00&#43;01:00"/>
 
-<meta property="article:modified_time" content="2018-01-08T13:31:13&#43;01:00"/>
+<meta property="article:modified_time" content="2018-01-08T13:31:00&#43;01:00"/>
 
 
 
@@ -45,12 +46,13 @@ Table of Contents TOC noexport   General variables and configuration Spoon Manag
 
 <meta itemprop="name" content="My Hammerspoon Configuration, With Commentary">
 <meta itemprop="description" content="In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at this time, you can see the current version of my configuration in GitHub.
-Table of Contents TOC noexport   General variables and configuration Spoon Management URL Dispatching to site-specific browsers Window and screen manipulation Organization and Productivity System and UI Other applications Seal Network transitions Pop-up translation Miscellaneous stuff End-of-config animation  General variables and configuration Global log level.">
+General variables and configuration Global log level. Per-spoon log level can be configured in each Install:andUse block below.
+hs.logger.defaultLogLevel=&#34;info&#34; I use hyper and shift_hyper as the modifiers for most of my key bindings, so I define them as variables here for easier referencing.">
 
 
-<meta itemprop="datePublished" content="2018-01-08T13:31:13&#43;01:00" />
-<meta itemprop="dateModified" content="2018-01-08T13:31:13&#43;01:00" />
-<meta itemprop="wordCount" content="2059">
+<meta itemprop="datePublished" content="2018-01-08T13:31:00&#43;01:00" />
+<meta itemprop="dateModified" content="2018-01-08T13:31:00&#43;01:00" />
+<meta itemprop="wordCount" content="2022">
 
 
 
@@ -58,7 +60,8 @@ Table of Contents TOC noexport   General variables and configuration Spoon Manag
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Hammerspoon Configuration, With Commentary"/>
 <meta name="twitter:description" content="In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at this time, you can see the current version of my configuration in GitHub.
-Table of Contents TOC noexport   General variables and configuration Spoon Management URL Dispatching to site-specific browsers Window and screen manipulation Organization and Productivity System and UI Other applications Seal Network transitions Pop-up translation Miscellaneous stuff End-of-config animation  General variables and configuration Global log level."/>
+General variables and configuration Global log level. Per-spoon log level can be configured in each Install:andUse block below.
+hs.logger.defaultLogLevel=&#34;info&#34; I use hyper and shift_hyper as the modifiers for most of my key bindings, so I define them as variables here for easier referencing."/>
 
         
 <script>
@@ -178,486 +181,467 @@ ga('send', 'pageview');
       </h1>
         
         
-      <time class="f6 mv4 dib tracked" datetime="2018-01-08T13:31:13&#43;01:00">
+      <time class="f6 mv4 dib tracked" datetime="2018-01-08T13:31:00&#43;01:00">
         January 8, 2018
       </time>
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
-        <p>In my <a href="../my-elvish-configuration-with-commentary/" title="ongoing">ongoing</a> <a href="../my-emacs-configuration-with-commentary" title="series">series</a> of <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html" title="literate">literate</a> config files, I present to you my
-<a href="http://www.hammerspoon.org/" title="Hammerspoon">Hammerspoon</a> configuration file. You can see the generated file at
-<a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua" title="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua">https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua</a>. As
-usual, this is just a snapshot at this time, you can see the current
-version of my configuration <a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init" title="in GitHub">in GitHub</a>.</p>
+        
 
-<h1 id="table-of-contents-toc-noexport">Table of Contents <span class="tags TOC">TOC</span>  <span class="tags noexport">noexport</span> </h1>
+<p>In my <a href="../my-elvish-configuration-with-commentary/">ongoing</a> <a href="../my-emacs-configuration-with-commentary">series</a> of <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html">literate</a> config files, I present to you my <a href="http://www.hammerspoon.org/">Hammerspoon</a> configuration file. You can see the generated file at <a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua">https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua</a>. As usual, this is just a snapshot at this time, you can see the current version of my configuration <a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org">in GitHub</a>.</p>
 
-<ul>
-<li><a href="#general-variables-and-configuration" title="General variables and configuration">General variables and configuration</a></li>
-<li><a href="#spoon-management" title="Spoon Management">Spoon Management</a></li>
-<li><a href="#url-dispatching-to-site-specific-browsers" title="URL Dispatching to site-specific browsers">URL Dispatching to site-specific browsers</a></li>
-<li><a href="#window-and-screen-manipulation" title="Window and screen manipulation">Window and screen manipulation</a></li>
-<li><a href="#organization-and-productivity" title="Organization and Productivity">Organization and Productivity</a></li>
-<li><a href="#system-and-ui" title="System and UI">System and UI</a></li>
-<li><a href="#other-applications" title="Other applications">Other applications</a></li>
-<li><a href="#seal" title="Seal">Seal</a></li>
-<li><a href="#network-transitions" title="Network transitions">Network transitions</a></li>
-<li><a href="#pop-up-translation" title="Pop-up translation">Pop-up translation</a></li>
-<li><a href="#miscellaneous-stuff" title="Miscellaneous stuff">Miscellaneous stuff</a></li>
-<li><a href="#end-of-config-animation" title="End-of-config animation">End-of-config animation</a></li>
-</ul>
-
-<h1 id="general-variables-and-configuration">General variables and configuration</h1>
+<h2 id="general-variables-and-configuration">General variables and configuration</h2>
 
 <p>Global log level. Per-spoon log level can be configured in each
-=Install:andUse= block below.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">hs.logger</span><span class="p">.</span><span class="n">defaultLogLevel</span><span class="o">=</span><span class="s2">&#34;info&#34;</span></code></pre></div>
+<code>Install:andUse</code> block below.</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.logger</span><span class="p">.</span><span class="n">defaultLogLevel</span><span class="o">=</span><span class="s2">&#34;info&#34;</span></code></pre></div>
 <p>I use <code>hyper</code> and <code>shift_hyper</code> as the modifiers for most of my key
 bindings, so I define them as variables here for easier referencing.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">hyper</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;cmd&#34;</span><span class="p">,</span><span class="s2">&#34;alt&#34;</span><span class="p">,</span><span class="s2">&#34;ctrl&#34;</span><span class="p">}</span>
-  <span class="n">shift_hyper</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;cmd&#34;</span><span class="p">,</span><span class="s2">&#34;alt&#34;</span><span class="p">,</span><span class="s2">&#34;ctrl&#34;</span><span class="p">,</span><span class="s2">&#34;shift&#34;</span><span class="p">}</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hyper</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;cmd&#34;</span><span class="p">,</span><span class="s2">&#34;alt&#34;</span><span class="p">,</span><span class="s2">&#34;ctrl&#34;</span><span class="p">}</span>
+<span class="n">shift_hyper</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;cmd&#34;</span><span class="p">,</span><span class="s2">&#34;alt&#34;</span><span class="p">,</span><span class="s2">&#34;ctrl&#34;</span><span class="p">,</span><span class="s2">&#34;shift&#34;</span><span class="p">}</span></code></pre></div>
 <p>Set up an abbreviation for <code>hs.drawing.color.x11</code> since I use it
 repeatedly later on.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">col</span> <span class="o">=</span> <span class="n">hs.drawing</span><span class="p">.</span><span class="n">color.x11</span></code></pre></div>
-<p>Work's logo, which I use in some of my Seal shortcuts later on.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">swisscom_logo</span> <span class="o">=</span> <span class="n">hs.image</span><span class="p">.</span><span class="n">imageFromPath</span><span class="p">(</span><span class="n">hs.configdir</span> <span class="o">..</span> <span class="s2">&#34;/files/swisscom_logo_2x.png&#34;</span><span class="p">)</span></code></pre></div>
-<h1 id="spoon-management">Spoon Management</h1>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">col</span> <span class="o">=</span> <span class="n">hs.drawing</span><span class="p">.</span><span class="n">color.x11</span></code></pre></div>
+<p>Work&rsquo;s logo, which I use in some of my Seal shortcuts later on.</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">swisscom_logo</span> <span class="o">=</span> <span class="n">hs.image</span><span class="p">.</span><span class="n">imageFromPath</span><span class="p">(</span><span class="n">hs.configdir</span> <span class="o">..</span> <span class="s2">&#34;/files/swisscom_logo_2x.png&#34;</span><span class="p">)</span></code></pre></div>
+<h2 id="spoon-management">Spoon Management</h2>
 
 <p>Set up SpoonInstall - this is the only spoon that needs to be manually
 installed (it is already there if you check out this repository), all
 the others are installed and configured automatically.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">hs.loadSpoon</span><span class="p">(</span><span class="s2">&#34;SpoonInstall&#34;</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.loadSpoon</span><span class="p">(</span><span class="s2">&#34;SpoonInstall&#34;</span><span class="p">)</span></code></pre></div>
 <p>Configuration of my personal spoon repository, which contains Spoons
 that have not been merged in the main repo.  See the descriptions at
-https://zzamboni.github.io/zzSpoons/.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">spoon.SpoonInstall</span><span class="p">.</span><span class="n">repos.zzspoons</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;https://github.com/zzamboni/zzSpoons&#34;</span><span class="p">,</span>
-    <span class="n">desc</span> <span class="o">=</span> <span class="s2">&#34;zzamboni&#39;s spoon repository&#34;</span><span class="p">,</span>
-  <span class="p">}</span></code></pre></div>
+<a href="https://zzamboni.github.io/zzSpoons/">https://zzamboni.github.io/zzSpoons/</a>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">spoon.SpoonInstall</span><span class="p">.</span><span class="n">repos.zzspoons</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;https://github.com/zzamboni/zzSpoons&#34;</span><span class="p">,</span>
+  <span class="n">desc</span> <span class="o">=</span> <span class="s2">&#34;zzamboni&#39;s spoon repository&#34;</span><span class="p">,</span>
+<span class="p">}</span></code></pre></div>
 <p>I prefer sync notifications, makes them easier to read.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">spoon.SpoonInstall</span><span class="p">.</span><span class="n">use_syncinstall</span> <span class="o">=</span> <span class="kc">true</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">spoon.SpoonInstall</span><span class="p">.</span><span class="n">use_syncinstall</span> <span class="o">=</span> <span class="kc">true</span></code></pre></div>
 <p>This is just a shortcut to make the declarations below look more
 readable, i.e. <code>Install:andUse</code> instead of <code>spoon.SpoonInstall:andUse</code>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="o">=</span><span class="n">spoon.SpoonInstall</span></code></pre></div>
-<h1 id="url-dispatching-to-site-specific-browsers">URL Dispatching to site-specific browsers</h1>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="o">=</span><span class="n">spoon.SpoonInstall</span></code></pre></div>
+<h2 id="url-dispatching-to-site-specific-browsers">URL Dispatching to site-specific browsers</h2>
 
-<p>The <a href="http://www.hammerspoon.org/Spoons/URLDispatcher.html" title="URLDispatcher">URLDispatcher</a> spoon makes it possible to open URLs with different
+<p>The <a href="http://www.hammerspoon.org/Spoons/URLDispatcher.html">URLDispatcher</a> spoon makes it possible to open URLs with different
 browsers. I have created different site-specific browsers using
-<a href="https://github.com/dmarmor/epichrome" title="Epichrome">Epichrome</a>, which allows me to keep site-specific bookmarks, search
+<a href="https://github.com/dmarmor/epichrome">Epichrome</a>, which allows me to keep site-specific bookmarks, search
 settings, etc.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;URLDispatcher&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">url_patterns</span> <span class="o">=</span> <span class="p">{</span>
-                       <span class="p">{</span> <span class="s2">&#34;https?://issue.swisscom.ch&#34;</span><span class="p">,</span> <span class="s2">&#34;org.epichrome.app.SwisscomJira&#34;</span> <span class="p">},</span>
-                       <span class="p">{</span> <span class="s2">&#34;https?://issue.swisscom.com&#34;</span><span class="p">,</span> <span class="s2">&#34;org.epichrome.app.SwisscomJira&#34;</span> <span class="p">},</span>
-                       <span class="p">{</span> <span class="s2">&#34;https?://jira.swisscom.com&#34;</span><span class="p">,</span> <span class="s2">&#34;org.epichrome.app.SwisscomJira&#34;</span> <span class="p">},</span>
-                       <span class="p">{</span> <span class="s2">&#34;https?://wiki.swisscom.com&#34;</span><span class="p">,</span> <span class="s2">&#34;org.epichrome.app.SwisscomWiki&#34;</span> <span class="p">},</span>
-                       <span class="p">{</span> <span class="s2">&#34;https?://collaboration.swisscom.com&#34;</span><span class="p">,</span> <span class="s2">&#34;org.epichrome.app.SwisscomCollab&#34;</span> <span class="p">},</span>
-                       <span class="p">{</span> <span class="s2">&#34;https?://smca.swisscom.com&#34;</span><span class="p">,</span> <span class="s2">&#34;org.epichrome.app.SwisscomTWP&#34;</span> <span class="p">},</span>
-                       <span class="p">{</span> <span class="s2">&#34;https?://portal.corproot.net&#34;</span><span class="p">,</span> <span class="s2">&#34;com.google.Chrome&#34;</span> <span class="p">},</span>
-                       <span class="p">{</span> <span class="s2">&#34;https?://app.opsgenie.com&#34;</span><span class="p">,</span> <span class="s2">&#34;org.epichrome.app.OpsGenie&#34;</span> <span class="p">},</span>
-                     <span class="p">},</span>
-                     <span class="n">default_handler</span> <span class="o">=</span> <span class="s2">&#34;com.google.Chrome&#34;</span>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;URLDispatcher&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">url_patterns</span> <span class="o">=</span> <span class="p">{</span>
+                     <span class="p">{</span> <span class="s2">&#34;https?://issue.swisscom.ch&#34;</span><span class="p">,</span> <span class="s2">&#34;org.epichrome.app.SwisscomJira&#34;</span> <span class="p">},</span>
+                     <span class="p">{</span> <span class="s2">&#34;https?://issue.swisscom.com&#34;</span><span class="p">,</span> <span class="s2">&#34;org.epichrome.app.SwisscomJira&#34;</span> <span class="p">},</span>
+                     <span class="p">{</span> <span class="s2">&#34;https?://jira.swisscom.com&#34;</span><span class="p">,</span> <span class="s2">&#34;org.epichrome.app.SwisscomJira&#34;</span> <span class="p">},</span>
+                     <span class="p">{</span> <span class="s2">&#34;https?://wiki.swisscom.com&#34;</span><span class="p">,</span> <span class="s2">&#34;org.epichrome.app.SwisscomWiki&#34;</span> <span class="p">},</span>
+                     <span class="p">{</span> <span class="s2">&#34;https?://collaboration.swisscom.com&#34;</span><span class="p">,</span> <span class="s2">&#34;org.epichrome.app.SwisscomCollab&#34;</span> <span class="p">},</span>
+                     <span class="p">{</span> <span class="s2">&#34;https?://smca.swisscom.com&#34;</span><span class="p">,</span> <span class="s2">&#34;org.epichrome.app.SwisscomTWP&#34;</span> <span class="p">},</span>
+                     <span class="p">{</span> <span class="s2">&#34;https?://portal.corproot.net&#34;</span><span class="p">,</span> <span class="s2">&#34;com.google.Chrome&#34;</span> <span class="p">},</span>
+                     <span class="p">{</span> <span class="s2">&#34;https?://app.opsgenie.com&#34;</span><span class="p">,</span> <span class="s2">&#34;org.epichrome.app.OpsGenie&#34;</span> <span class="p">},</span>
                    <span class="p">},</span>
-                   <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
-                 <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
-<h1 id="window-and-screen-manipulation">Window and screen manipulation</h1>
+                   <span class="n">default_handler</span> <span class="o">=</span> <span class="s2">&#34;com.google.Chrome&#34;</span>
+                 <span class="p">},</span>
+                 <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<h2 id="window-and-screen-manipulation">Window and screen manipulation</h2>
 
-<p>The <a href="http://www.hammerspoon.org/Spoons/WindowHalfsAndThirds.html" title="WindowHalfAndThirds">WindowHalfAndThirds</a> spoon sets up multiple key bindings for
+<p>The <a href="http://www.hammerspoon.org/Spoons/WindowHalfsAndThirds.html">WindowHalfAndThirds</a> spoon sets up multiple key bindings for
 manipulating the size and position of windows.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;WindowHalfsAndThirds&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">use_frame_correctness</span> <span class="o">=</span> <span class="kc">true</span>
-                   <span class="p">},</span>
-                   <span class="n">hotkeys</span> <span class="o">=</span> <span class="s1">&#39;default&#39;</span>
-                 <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
-<p>The <a href="http://zzamboni.org/zzSpoons/WindowScreenLeftAndRight.html" title="WindowScreenLeftAndRight">WindowScreenLeftAndRight</a> spoon sets up key bindings for moving
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;WindowHalfsAndThirds&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">use_frame_correctness</span> <span class="o">=</span> <span class="kc">true</span>
+                 <span class="p">},</span>
+                 <span class="n">hotkeys</span> <span class="o">=</span> <span class="s1">&#39;default&#39;</span>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<p>The <a href="http://zzamboni.org/zzSpoons/WindowScreenLeftAndRight.html">WindowScreenLeftAndRight</a> spoon sets up key bindings for moving
 windows between multiple screens.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;WindowScreenLeftAndRight&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">hotkeys</span> <span class="o">=</span> <span class="s1">&#39;default&#39;</span>
-                 <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/WindowGrid.html" title="WindowGrid">WindowGrid</a> spoon sets up a key binding (<code>Hyper-g</code> here) to overlay a
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;WindowScreenLeftAndRight&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">hotkeys</span> <span class="o">=</span> <span class="s1">&#39;default&#39;</span>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<p>The <a href="http://www.hammerspoon.org/Spoons/WindowGrid.html">WindowGrid</a> spoon sets up a key binding (<code>Hyper-g</code> here) to overlay a
 grid that allows resizing windows by specifying their opposite
 corners.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;WindowGrid&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">config</span> <span class="o">=</span> <span class="p">{</span> <span class="n">gridGeometries</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span> <span class="s2">&#34;6x4&#34;</span> <span class="p">}</span> <span class="p">}</span> <span class="p">},</span>
-                   <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span><span class="n">show_grid</span> <span class="o">=</span> <span class="p">{</span><span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;g&#34;</span><span class="p">}},</span>
-                   <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
-                 <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/ToggleScreenRotation.html" title="ToggleScreenRotation">ToggleScreenRotation</a> spoon sets up a key binding to rotate the
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;WindowGrid&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span> <span class="n">gridGeometries</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span> <span class="s2">&#34;6x4&#34;</span> <span class="p">}</span> <span class="p">}</span> <span class="p">},</span>
+                 <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span><span class="n">show_grid</span> <span class="o">=</span> <span class="p">{</span><span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;g&#34;</span><span class="p">}},</span>
+                 <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<p>The <a href="http://www.hammerspoon.org/Spoons/ToggleScreenRotation.html">ToggleScreenRotation</a> spoon sets up a key binding to rotate the
 external screen (the spoon can set up keys for multiple screens if
 needed, but by default it rotates the first external screen).</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;ToggleScreenRotation&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span> <span class="n">first</span> <span class="o">=</span> <span class="p">{</span><span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;f15&#34;</span><span class="p">}</span> <span class="p">}</span>
-                 <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
-<h1 id="organization-and-productivity">Organization and Productivity</h1>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;ToggleScreenRotation&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span> <span class="n">first</span> <span class="o">=</span> <span class="p">{</span><span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;f15&#34;</span><span class="p">}</span> <span class="p">}</span>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<h2 id="organization-and-productivity">Organization and Productivity</h2>
 
-<p>The <a href="http://www.hammerspoon.org/Spoons/UniversalArchive.html" title="UniversalArchive">UniversalArchive</a> spoon sets up a single key binding (<code>Ctrl-Cmd-a</code>)
+<p>The <a href="http://www.hammerspoon.org/Spoons/UniversalArchive.html">UniversalArchive</a> spoon sets up a single key binding (<code>Ctrl-Cmd-a</code>)
 to archive the current item in Evernote, Mail and Outlook.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;UniversalArchive&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">evernote_archive_notebook</span> <span class="o">=</span> <span class="s2">&#34;.Archive&#34;</span><span class="p">,</span>
-                     <span class="n">outlook_archive_folder</span> <span class="o">=</span> <span class="s2">&#34;Archive (On My Computer)&#34;</span><span class="p">,</span>
-                     <span class="n">archive_notifications</span> <span class="o">=</span> <span class="kc">false</span>
-                   <span class="p">},</span>
-                   <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span> <span class="n">archive</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span> <span class="p">},</span> <span class="s2">&#34;a&#34;</span> <span class="p">}</span> <span class="p">}</span>
-                 <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/SendToOmniFocus.html" title="SendToOmniFocus">SendToOmniFocus</a> spoon sets up a single key binding (<code>Hyper-t</code>) to
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;UniversalArchive&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">evernote_archive_notebook</span> <span class="o">=</span> <span class="s2">&#34;.Archive&#34;</span><span class="p">,</span>
+                   <span class="n">outlook_archive_folder</span> <span class="o">=</span> <span class="s2">&#34;Archive (On My Computer)&#34;</span><span class="p">,</span>
+                   <span class="n">archive_notifications</span> <span class="o">=</span> <span class="kc">false</span>
+                 <span class="p">},</span>
+                 <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span> <span class="n">archive</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span> <span class="p">},</span> <span class="s2">&#34;a&#34;</span> <span class="p">}</span> <span class="p">}</span>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<p>The <a href="http://www.hammerspoon.org/Spoons/SendToOmniFocus.html">SendToOmniFocus</a> spoon sets up a single key binding (<code>Hyper-t</code>) to
 send the current item to OmniFocus from multiple applications.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;SendToOmniFocus&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">quickentrydialog</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
-                     <span class="n">notifications</span> <span class="o">=</span> <span class="kc">false</span>
-                   <span class="p">},</span>
-                   <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">send_to_omnifocus</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;t&#34;</span> <span class="p">}</span>
-                   <span class="p">},</span>
-                   <span class="n">fn</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-                     <span class="n">s</span><span class="p">:</span><span class="n">registerApplication</span><span class="p">(</span><span class="s2">&#34;Swisscom Collab&#34;</span><span class="p">,</span> <span class="p">{</span> <span class="n">apptype</span> <span class="o">=</span> <span class="s2">&#34;chromeapp&#34;</span><span class="p">,</span> <span class="n">itemname</span> <span class="o">=</span> <span class="s2">&#34;tab&#34;</span> <span class="p">})</span>
-                     <span class="n">s</span><span class="p">:</span><span class="n">registerApplication</span><span class="p">(</span><span class="s2">&#34;Swisscom Wiki&#34;</span><span class="p">,</span> <span class="p">{</span> <span class="n">apptype</span> <span class="o">=</span> <span class="s2">&#34;chromeapp&#34;</span><span class="p">,</span> <span class="n">itemname</span> <span class="o">=</span> <span class="s2">&#34;wiki page&#34;</span> <span class="p">})</span>
-                     <span class="n">s</span><span class="p">:</span><span class="n">registerApplication</span><span class="p">(</span><span class="s2">&#34;Swisscom Jira&#34;</span><span class="p">,</span> <span class="p">{</span> <span class="n">apptype</span> <span class="o">=</span> <span class="s2">&#34;chromeapp&#34;</span><span class="p">,</span> <span class="n">itemname</span> <span class="o">=</span> <span class="s2">&#34;issue&#34;</span> <span class="p">})</span>
-                   <span class="kr">end</span>
-                 <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/EvernoteOpenAndTag.html" title="EvernoteOpenAndTag">EvernoteOpenAndTag</a> spoon sets up some missing key bindings for
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;SendToOmniFocus&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">quickentrydialog</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
+                   <span class="n">notifications</span> <span class="o">=</span> <span class="kc">false</span>
+                 <span class="p">},</span>
+                 <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">send_to_omnifocus</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;t&#34;</span> <span class="p">}</span>
+                 <span class="p">},</span>
+                 <span class="n">fn</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+                   <span class="n">s</span><span class="p">:</span><span class="n">registerApplication</span><span class="p">(</span><span class="s2">&#34;Swisscom Collab&#34;</span><span class="p">,</span> <span class="p">{</span> <span class="n">apptype</span> <span class="o">=</span> <span class="s2">&#34;chromeapp&#34;</span><span class="p">,</span> <span class="n">itemname</span> <span class="o">=</span> <span class="s2">&#34;tab&#34;</span> <span class="p">})</span>
+                   <span class="n">s</span><span class="p">:</span><span class="n">registerApplication</span><span class="p">(</span><span class="s2">&#34;Swisscom Wiki&#34;</span><span class="p">,</span> <span class="p">{</span> <span class="n">apptype</span> <span class="o">=</span> <span class="s2">&#34;chromeapp&#34;</span><span class="p">,</span> <span class="n">itemname</span> <span class="o">=</span> <span class="s2">&#34;wiki page&#34;</span> <span class="p">})</span>
+                   <span class="n">s</span><span class="p">:</span><span class="n">registerApplication</span><span class="p">(</span><span class="s2">&#34;Swisscom Jira&#34;</span><span class="p">,</span> <span class="p">{</span> <span class="n">apptype</span> <span class="o">=</span> <span class="s2">&#34;chromeapp&#34;</span><span class="p">,</span> <span class="n">itemname</span> <span class="o">=</span> <span class="s2">&#34;issue&#34;</span> <span class="p">})</span>
+                 <span class="kr">end</span>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<p>The <a href="http://www.hammerspoon.org/Spoons/EvernoteOpenAndTag.html">EvernoteOpenAndTag</a> spoon sets up some missing key bindings for
 note manipulation in Evernote.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;EvernoteOpenAndTag&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">open_note</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;o&#34;</span> <span class="p">},</span>
-                     <span class="p">[</span><span class="s2">&#34;open_and_tag-+work,+swisscom&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span> <span class="p">},</span>
-                     <span class="p">[</span><span class="s2">&#34;open_and_tag-+personal&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;p&#34;</span> <span class="p">},</span>
-                     <span class="p">[</span><span class="s2">&#34;tag-@zzdone&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;z&#34;</span> <span class="p">}</span>
-                   <span class="p">}</span>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;EvernoteOpenAndTag&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">open_note</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;o&#34;</span> <span class="p">},</span>
+                   <span class="p">[</span><span class="s2">&#34;open_and_tag-+work,+swisscom&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span> <span class="p">},</span>
+                   <span class="p">[</span><span class="s2">&#34;open_and_tag-+personal&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;p&#34;</span> <span class="p">},</span>
+                   <span class="p">[</span><span class="s2">&#34;tag-@zzdone&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;z&#34;</span> <span class="p">}</span>
                  <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/TextClipboardHistory.html" title="TextClipboardHistory">TextClipboardHistory</a> spoon implements a clipboard history, only
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<p>The <a href="http://www.hammerspoon.org/Spoons/TextClipboardHistory.html">TextClipboardHistory</a> spoon implements a clipboard history, only
 for text items. It is invoked with <code>Cmd-Shift-v</code>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;TextClipboardHistory&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">show_in_menubar</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
-                   <span class="p">},</span>
-                   <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">toggle_clipboard</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;shift&#34;</span> <span class="p">},</span> <span class="s2">&#34;v&#34;</span> <span class="p">}</span> <span class="p">},</span>
-                   <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
-                 <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
-<h1 id="system-and-ui">System and UI</h1>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;TextClipboardHistory&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">show_in_menubar</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
+                 <span class="p">},</span>
+                 <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">toggle_clipboard</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;shift&#34;</span> <span class="p">},</span> <span class="s2">&#34;v&#34;</span> <span class="p">}</span> <span class="p">},</span>
+                 <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<h2 id="system-and-ui">System and UI</h2>
 
-<p>The <a href="https://zzamboni.github.io/zzSpoons/Hammer.html" title="Hammer">Hammer</a> spoon (get it? hehe) is a simple wrapper around some common
+<p>The <a href="https://zzamboni.github.io/zzSpoons/Hammer.html">Hammer</a> spoon (get it? hehe) is a simple wrapper around some common
 Hamerspoon configuration variables. Note that this gets loaded from my
-personal repo, since it's not in the official repository.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;Hammer&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">repo</span> <span class="o">=</span> <span class="s1">&#39;zzspoons&#39;</span><span class="p">,</span>
-                   <span class="n">config</span> <span class="o">=</span> <span class="p">{</span> <span class="n">auto_reload_config</span> <span class="o">=</span> <span class="kc">false</span> <span class="p">},</span>
-                   <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">config_reload</span> <span class="o">=</span> <span class="p">{</span><span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">},</span>
-                     <span class="n">toggle_console</span> <span class="o">=</span> <span class="p">{</span><span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;y&#34;</span><span class="p">}</span> 
-                   <span class="p">},</span>
-                   <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
-                 <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/Caffeine.html" title="Caffeine">Caffeine</a> spoon allows preventing the display and the machine from
+personal repo, since it&rsquo;s not in the official repository.</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;Hammer&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">repo</span> <span class="o">=</span> <span class="s1">&#39;zzspoons&#39;</span><span class="p">,</span>
+                 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span> <span class="n">auto_reload_config</span> <span class="o">=</span> <span class="kc">false</span> <span class="p">},</span>
+                 <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">config_reload</span> <span class="o">=</span> <span class="p">{</span><span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">},</span>
+                   <span class="n">toggle_console</span> <span class="o">=</span> <span class="p">{</span><span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;y&#34;</span><span class="p">}</span>
+                 <span class="p">},</span>
+                 <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<p>The <a href="http://www.hammerspoon.org/Spoons/Caffeine.html">Caffeine</a> spoon allows preventing the display and the machine from
 sleeping. I use it frequently when playing music from my machine, to
 avoid having to unlock the screen whenever I want to change the music.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;Caffeine&#34;</span><span class="p">,</span> <span class="p">{</span>
-                   <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
-                   <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">toggle</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;1&#34;</span> <span class="p">}</span>
-                   <span class="p">}</span>
-  <span class="p">})</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/MenubarFlag.html" title="MenubarFlag">MenubarFlag</a> spoon colorizes the menubar according to the selected
-keyboard language or layout (Functionality inspired by <a href="https://pqrs.org/osx/ShowyEdge/index.html.en" title="ShowyEdge">ShowyEdge</a>. I
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;Caffeine&#34;</span><span class="p">,</span> <span class="p">{</span>
+                 <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+                 <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">toggle</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;1&#34;</span> <span class="p">}</span>
+                 <span class="p">}</span>
+<span class="p">})</span></code></pre></div>
+<p>The <a href="http://www.hammerspoon.org/Spoons/MenubarFlag.html">MenubarFlag</a> spoon colorizes the menubar according to the selected
+keyboard language or layout (Functionality inspired by <a href="https://pqrs.org/osx/ShowyEdge/index.html.en">ShowyEdge</a>. I
 use English, Spanish and German, so those are the colors I have
 defined.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;MenubarFlag&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">colors</span> <span class="o">=</span> <span class="p">{</span>
-                       <span class="p">[</span><span class="s2">&#34;U.S.&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="p">},</span>
-                       <span class="n">Spanish</span> <span class="o">=</span> <span class="p">{</span><span class="n">col.green</span><span class="p">,</span> <span class="n">col.white</span><span class="p">,</span> <span class="n">col.red</span><span class="p">},</span>
-                       <span class="n">German</span> <span class="o">=</span> <span class="p">{</span><span class="n">col.black</span><span class="p">,</span> <span class="n">col.red</span><span class="p">,</span> <span class="n">col.yellow</span><span class="p">},</span>
-                     <span class="p">}</span>
-                   <span class="p">},</span>
-                   <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
-                 <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/MouseCircle.html" title="MouseCircle">MouseCircle</a> spoon shows a circle around the mouse pointer when
-triggered. I have it disabled for now because I have the macOS
-<a href="https://support.apple.com/kb/PH25507?locale=en_US&amp;viewlocale=en_US" title="shake-to-grow feature">shake-to-grow feature</a> enabled.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;MouseCircle&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">disable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
-                   <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">color</span> <span class="o">=</span> <span class="n">hs.drawing</span><span class="p">.</span><span class="n">color.x11</span><span class="p">.</span><span class="n">rebeccapurple</span>
-                   <span class="p">},</span>
-                   <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">show</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;m&#34;</span> <span class="p">}</span>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;MenubarFlag&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">colors</span> <span class="o">=</span> <span class="p">{</span>
+                     <span class="p">[</span><span class="s2">&#34;U.S.&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="p">},</span>
+                     <span class="n">Spanish</span> <span class="o">=</span> <span class="p">{</span><span class="n">col.green</span><span class="p">,</span> <span class="n">col.white</span><span class="p">,</span> <span class="n">col.red</span><span class="p">},</span>
+                     <span class="n">German</span> <span class="o">=</span> <span class="p">{</span><span class="n">col.black</span><span class="p">,</span> <span class="n">col.red</span><span class="p">,</span> <span class="n">col.yellow</span><span class="p">},</span>
                    <span class="p">}</span>
+                 <span class="p">},</span>
+                 <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<p>The <a href="http://www.hammerspoon.org/Spoons/MouseCircle.html">MouseCircle</a> spoon shows a circle around the mouse pointer when
+triggered. I have it disabled for now because I have the macOS
+<a href="https://support.apple.com/kb/PH25507?locale=en_US&amp;viewlocale=en_US">shake-to-grow feature</a> enabled.</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;MouseCircle&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">disable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+                 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">color</span> <span class="o">=</span> <span class="n">hs.drawing</span><span class="p">.</span><span class="n">color.x11</span><span class="p">.</span><span class="n">rebeccapurple</span>
+                 <span class="p">},</span>
+                 <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">show</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;m&#34;</span> <span class="p">}</span>
                  <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
 <p>One of my original bits of Hammerspoon code, now made into a spoon
-(although I keep it disabled, since I don't really use it). The
-<a href="http://www.hammerspoon.org/Spoons/ColorPicker.html" title="ColorPicker">ColorPicker</a> spoon shows a menu of the available color palettes, and
+(although I keep it disabled, since I don&rsquo;t really use it). The
+<a href="http://www.hammerspoon.org/Spoons/ColorPicker.html">ColorPicker</a> spoon shows a menu of the available color palettes, and
 when you select one, it draws swatches in all the colors in that
 palette, covering the whole screen. You can click on any of them to
 copy its name to the clipboard, or cmd-click to copy its RGB code.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;ColorPicker&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">disable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
-                   <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">show</span> <span class="o">=</span> <span class="p">{</span> <span class="n">shift_hyper</span><span class="p">,</span> <span class="s2">&#34;c&#34;</span> <span class="p">}</span>
-                   <span class="p">},</span>
-                   <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">show_in_menubar</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
-                   <span class="p">},</span>
-                   <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
-                 <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;ColorPicker&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">disable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+                 <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">show</span> <span class="o">=</span> <span class="p">{</span> <span class="n">shift_hyper</span><span class="p">,</span> <span class="s2">&#34;c&#34;</span> <span class="p">}</span>
+                 <span class="p">},</span>
+                 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">show_in_menubar</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
+                 <span class="p">},</span>
+                 <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
 <p>I use Homebrew, and when I run <code>brew update</code>, I often wonder about what
 some of the formulas shown are (names are not always obvious). The
-<a href="http://www.hammerspoon.org/Spoons/BrewInfo.html" title="BrewInfo">BrewInfo</a> spoon allows me to point at a Formula or Cask name and press
-=Hyper-b= or <code>Hyper-c</code> (for Casks) to have the output of the <code>info</code> command
+<a href="http://www.hammerspoon.org/Spoons/BrewInfo.html">BrewInfo</a> spoon allows me to point at a Formula or Cask name and press
+<code>Hyper-b</code> or <code>Hyper-c</code> (for Casks) to have the output of the <code>info</code> command
 in a popup window, or the same key with <code>Shift-Hyper</code> to open the URL of
 the Formula/Cask.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;BrewInfo&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">brew_info_style</span> <span class="o">=</span> <span class="p">{</span>
-                       <span class="n">textFont</span> <span class="o">=</span> <span class="s2">&#34;Inconsolata&#34;</span><span class="p">,</span>
-                       <span class="n">textSize</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span>
-                       <span class="n">radius</span> <span class="o">=</span> <span class="mi">10</span> <span class="p">}</span>
-                   <span class="p">},</span>
-                   <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="c1">-- brew info</span>
-                     <span class="n">show_brew_info</span> <span class="o">=</span> <span class="p">{</span><span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;b&#34;</span><span class="p">},</span>
-                     <span class="n">open_brew_url</span> <span class="o">=</span> <span class="p">{</span><span class="n">shift_hyper</span><span class="p">,</span> <span class="s2">&#34;b&#34;</span><span class="p">},</span>
-                     <span class="c1">-- brew cask info</span>
-                     <span class="n">show_brew_cask_info</span> <span class="o">=</span> <span class="p">{</span><span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;c&#34;</span><span class="p">},</span>
-                     <span class="n">open_brew_cask_url</span> <span class="o">=</span> <span class="p">{</span><span class="n">shift_hyper</span><span class="p">,</span> <span class="s2">&#34;c&#34;</span><span class="p">},</span>
-                   <span class="p">}</span>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;BrewInfo&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">brew_info_style</span> <span class="o">=</span> <span class="p">{</span>
+                     <span class="n">textFont</span> <span class="o">=</span> <span class="s2">&#34;Inconsolata&#34;</span><span class="p">,</span>
+                     <span class="n">textSize</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span>
+                     <span class="n">radius</span> <span class="o">=</span> <span class="mi">10</span> <span class="p">}</span>
+                 <span class="p">},</span>
+                 <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="c1">-- brew info</span>
+                   <span class="n">show_brew_info</span> <span class="o">=</span> <span class="p">{</span><span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;b&#34;</span><span class="p">},</span>
+                   <span class="n">open_brew_url</span> <span class="o">=</span> <span class="p">{</span><span class="n">shift_hyper</span><span class="p">,</span> <span class="s2">&#34;b&#34;</span><span class="p">},</span>
+                   <span class="c1">-- brew cask info</span>
+                   <span class="n">show_brew_cask_info</span> <span class="o">=</span> <span class="p">{</span><span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;c&#34;</span><span class="p">},</span>
+                   <span class="n">open_brew_cask_url</span> <span class="o">=</span> <span class="p">{</span><span class="n">shift_hyper</span><span class="p">,</span> <span class="s2">&#34;c&#34;</span><span class="p">},</span>
                  <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
-<p>The KSheet spoon traverses the current application's menus and builds
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<p>The KSheet spoon traverses the current application&rsquo;s menus and builds
 a cheatsheet of the keyboard shortcuts, showing it in a nice popup
 window.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;KSheet&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">toggle</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;/&#34;</span> <span class="p">}</span>
-  <span class="p">}})</span></code></pre></div>
-<h1 id="other-applications">Other applications</h1>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;KSheet&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">toggle</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;/&#34;</span> <span class="p">}</span>
+<span class="p">}})</span></code></pre></div>
+<h2 id="other-applications">Other applications</h2>
 
-<p>The <a href="http://www.hammerspoon.org/Spoons/ToggleSkypeMute.html" title="ToggleSkypeMute">ToggleSkypeMute</a> spoon sets up the missing keyboard bindings for
-toggling the mute button on Skype and Skype for Business. I'm not
+<p>The <a href="http://www.hammerspoon.org/Spoons/ToggleSkypeMute.html">ToggleSkypeMute</a> spoon sets up the missing keyboard bindings for
+toggling the mute button on Skype and Skype for Business. I&rsquo;m not
 fully happy with this spoon - it should auto-detect the application
 instead of having separate keys for each application, and it could be
 extended to more generic use.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;ToggleSkypeMute&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">toggle_skype</span> <span class="o">=</span> <span class="p">{</span> <span class="n">shift_hyper</span><span class="p">,</span> <span class="s2">&#34;v&#34;</span> <span class="p">},</span>
-                     <span class="n">toggle_skype_for_business</span> <span class="o">=</span> <span class="p">{</span> <span class="n">shift_hyper</span><span class="p">,</span> <span class="s2">&#34;f&#34;</span> <span class="p">}</span>
-                   <span class="p">}</span>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;ToggleSkypeMute&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">toggle_skype</span> <span class="o">=</span> <span class="p">{</span> <span class="n">shift_hyper</span><span class="p">,</span> <span class="s2">&#34;v&#34;</span> <span class="p">},</span>
+                   <span class="n">toggle_skype_for_business</span> <span class="o">=</span> <span class="p">{</span> <span class="n">shift_hyper</span><span class="p">,</span> <span class="s2">&#34;f&#34;</span> <span class="p">}</span>
                  <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/HeadphoneAutoPause.html" title="HeadphoneAutoPause">HeadphoneAutoPause</a> spoon implements auto-pause/resume for iTunes,
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<p>The <a href="http://www.hammerspoon.org/Spoons/HeadphoneAutoPause.html">HeadphoneAutoPause</a> spoon implements auto-pause/resume for iTunes,
 Spotify and others when the headphones are unplugged.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;HeadphoneAutoPause&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
-                 <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
-<h1 id="seal">Seal</h1>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;HeadphoneAutoPause&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<h2 id="seal">Seal</h2>
 
-<p>The <a href="http://www.hammerspoon.org/Spoons/Seal.html" title="Seal">Seal</a> spoon is a powerhouse - it implements a Spotlight-like
+<p>The <a href="http://www.hammerspoon.org/Spoons/Seal.html">Seal</a> spoon is a powerhouse - it implements a Spotlight-like
 launcher, but which allows for infinite configurability of what can be
 done or searched from the launcher window. I use Seal as my default
 launcher, triggered with <code>Cmd-space</code>, although I still keep Spotlight
 around under <code>Hyper-space</code>, mainly for its search capabilities.</p>
 
 <p>We start by loading the spoon, and specifying which plugins we want.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;Seal&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span> <span class="n">show</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="s2">&#34;cmd&#34;</span><span class="p">},</span> <span class="s2">&#34;space&#34;</span> <span class="p">}</span> <span class="p">},</span>
-                   <span class="n">fn</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-                     <span class="n">s</span><span class="p">:</span><span class="n">loadPlugins</span><span class="p">({</span><span class="s2">&#34;apps&#34;</span><span class="p">,</span> <span class="s2">&#34;calc&#34;</span><span class="p">,</span> <span class="s2">&#34;safari_bookmarks&#34;</span><span class="p">,</span> <span class="s2">&#34;screencapture&#34;</span><span class="p">,</span> <span class="s2">&#34;useractions&#34;</span><span class="p">})</span>
-                     <span class="n">s.plugins</span><span class="p">.</span><span class="n">safari_bookmarks.always_open_with_safari</span> <span class="o">=</span> <span class="kc">false</span>
-                     <span class="n">s.plugins</span><span class="p">.</span><span class="n">useractions.actions</span> <span class="o">=</span>
-                       <span class="p">{</span>
-                        <span class="o">&lt;&lt;</span><span class="n">useraction</span><span class="o">-</span><span class="n">definitions</span><span class="o">&gt;&gt;</span>
-                       <span class="p">}</span>
-                     <span class="n">s</span><span class="p">:</span><span class="n">refreshAllCommands</span><span class="p">()</span>
-                   <span class="kr">end</span><span class="p">,</span>
-                   <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
-                 <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;Seal&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span> <span class="n">show</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="s2">&#34;cmd&#34;</span><span class="p">},</span> <span class="s2">&#34;space&#34;</span> <span class="p">}</span> <span class="p">},</span>
+                 <span class="n">fn</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+                   <span class="n">s</span><span class="p">:</span><span class="n">loadPlugins</span><span class="p">({</span><span class="s2">&#34;apps&#34;</span><span class="p">,</span> <span class="s2">&#34;calc&#34;</span><span class="p">,</span> <span class="s2">&#34;safari_bookmarks&#34;</span><span class="p">,</span> <span class="s2">&#34;screencapture&#34;</span><span class="p">,</span> <span class="s2">&#34;useractions&#34;</span><span class="p">})</span>
+                   <span class="n">s.plugins</span><span class="p">.</span><span class="n">safari_bookmarks.always_open_with_safari</span> <span class="o">=</span> <span class="kc">false</span>
+                   <span class="n">s.plugins</span><span class="p">.</span><span class="n">useractions.actions</span> <span class="o">=</span>
+                     <span class="p">{</span>
+                      <span class="o">&lt;&lt;</span><span class="n">useraction</span><span class="o">-</span><span class="n">definitions</span><span class="o">&gt;&gt;</span>
+                     <span class="p">}</span>
+                   <span class="n">s</span><span class="p">:</span><span class="n">refreshAllCommands</span><span class="p">()</span>
+                 <span class="kr">end</span><span class="p">,</span>
+                 <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
 <p>The <code>useractions</code> Seal plugin allows me to define my own shortcuts. For
 example, a bookmark to the Hammerspoon documentation page:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="p">[</span><span class="s2">&#34;Hammerspoon docs webpage&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://hammerspoon.org/docs/&#34;</span><span class="p">,</span>
-    <span class="n">icon</span> <span class="o">=</span> <span class="n">hs.image</span><span class="p">.</span><span class="n">imageFromName</span><span class="p">(</span><span class="n">hs.image</span><span class="p">.</span><span class="n">systemImageNames.ApplicationIcon</span><span class="p">),</span>
-  <span class="p">},</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="p">[</span><span class="s2">&#34;Hammerspoon docs webpage&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://hammerspoon.org/docs/&#34;</span><span class="p">,</span>
+  <span class="n">icon</span> <span class="o">=</span> <span class="n">hs.image</span><span class="p">.</span><span class="n">imageFromName</span><span class="p">(</span><span class="n">hs.image</span><span class="p">.</span><span class="n">systemImageNames.ApplicationIcon</span><span class="p">),</span>
+<span class="p">},</span></code></pre></div>
 <p>Or to manually trigger my work/non-work transition scripts (see
 below):</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="p">[</span><span class="s2">&#34;Leave corpnet&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">fn</span> <span class="o">=</span> <span class="kr">function</span><span class="p">()</span>
-      <span class="n">spoon.WiFiTransitions</span><span class="p">:</span><span class="n">processTransition</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;corpnet01&#39;</span><span class="p">)</span>
-    <span class="kr">end</span><span class="p">,</span>
-    <span class="n">icon</span> <span class="o">=</span> <span class="n">swisscom_logo</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="p">[</span><span class="s2">&#34;Arrive in corpnet&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">fn</span> <span class="o">=</span> <span class="kr">function</span><span class="p">()</span>
-      <span class="n">spoon.WiFiTransitions</span><span class="p">:</span><span class="n">processTransition</span><span class="p">(</span><span class="s1">&#39;corpnet01&#39;</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
-    <span class="kr">end</span><span class="p">,</span>
-    <span class="n">icon</span> <span class="o">=</span> <span class="n">swisscom_logo</span><span class="p">,</span>
-  <span class="p">},</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="p">[</span><span class="s2">&#34;Leave corpnet&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">fn</span> <span class="o">=</span> <span class="kr">function</span><span class="p">()</span>
+    <span class="n">spoon.WiFiTransitions</span><span class="p">:</span><span class="n">processTransition</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;corpnet01&#39;</span><span class="p">)</span>
+  <span class="kr">end</span><span class="p">,</span>
+  <span class="n">icon</span> <span class="o">=</span> <span class="n">swisscom_logo</span><span class="p">,</span>
+<span class="p">},</span>
+<span class="p">[</span><span class="s2">&#34;Arrive in corpnet&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">fn</span> <span class="o">=</span> <span class="kr">function</span><span class="p">()</span>
+    <span class="n">spoon.WiFiTransitions</span><span class="p">:</span><span class="n">processTransition</span><span class="p">(</span><span class="s1">&#39;corpnet01&#39;</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+  <span class="kr">end</span><span class="p">,</span>
+  <span class="n">icon</span> <span class="o">=</span> <span class="n">swisscom_logo</span><span class="p">,</span>
+<span class="p">},</span></code></pre></div>
 <p>Or to translate things using dict.leo.org:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="p">[</span><span class="s2">&#34;Translate using Leo&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://dict.leo.org/ende/index_de.html#/search=${query}&#34;</span><span class="p">,</span>
-    <span class="n">icon</span> <span class="o">=</span> <span class="s1">&#39;favicon&#39;</span><span class="p">,</span>
-    <span class="n">keyword</span> <span class="o">=</span> <span class="s2">&#34;leo&#34;</span><span class="p">,</span>
-  <span class="p">}</span></code></pre></div>
-<h1 id="network-transitions">Network transitions</h1>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="p">[</span><span class="s2">&#34;Translate using Leo&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://dict.leo.org/ende/index_de.html#/search=${query}&#34;</span><span class="p">,</span>
+  <span class="n">icon</span> <span class="o">=</span> <span class="s1">&#39;favicon&#39;</span><span class="p">,</span>
+  <span class="n">keyword</span> <span class="o">=</span> <span class="s2">&#34;leo&#34;</span><span class="p">,</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="network-transitions">Network transitions</h2>
 
-<p>The <a href="http://www.hammerspoon.org/Spoons/WiFiTransitions.html" title="WiFiTransitions">WiFiTransitions</a> spoon allows triggering arbitrary actions when the
+<p>The <a href="http://www.hammerspoon.org/Spoons/WiFiTransitions.html">WiFiTransitions</a> spoon allows triggering arbitrary actions when the
 SSID changes. I am interested in the change from my work network
 (corpnet01) to other networks, mainly because at work I need a proxy
 for all connections to the Internet. I have two applications which
-don't handle these transitions gracefully on their own: Spotify and
+don&rsquo;t handle these transitions gracefully on their own: Spotify and
 Adium. So I have written a couple of functions for helping them along.</p>
 
 <p>The <code>reconfigSpotifyProxy</code> function quits Spotify, updates the proxy
 settings in its config file, and restarts it.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="kr">function</span> <span class="nf">reconfigSpotifyProxy</span><span class="p">(</span><span class="n">proxy</span><span class="p">)</span>
-    <span class="kd">local</span> <span class="n">spotify</span> <span class="o">=</span> <span class="n">hs.appfinder</span><span class="p">.</span><span class="n">appFromName</span><span class="p">(</span><span class="s2">&#34;Spotify&#34;</span><span class="p">)</span>
-    <span class="kd">local</span> <span class="n">lastapp</span> <span class="o">=</span> <span class="kc">nil</span>
-    <span class="kr">if</span> <span class="n">spotify</span> <span class="kr">then</span>
-      <span class="n">lastapp</span> <span class="o">=</span> <span class="n">hs.application</span><span class="p">.</span><span class="n">frontmostApplication</span><span class="p">()</span> 
-      <span class="n">spotify</span><span class="p">:</span><span class="n">kill</span><span class="p">()</span>
-      <span class="n">hs.timer</span><span class="p">.</span><span class="n">usleep</span><span class="p">(</span><span class="mi">40000</span><span class="p">)</span>
-    <span class="kr">end</span>
-    <span class="c1">--   hs.notify.show(string.format(&#34;Reconfiguring %sSpotify&#34;, ((spotify~=nil) and &#34;and restarting &#34; or &#34;&#34;)), string.format(&#34;Proxy %s&#34;, (proxy and &#34;enabled&#34; or &#34;disabled&#34;)), &#34;&#34;)</span>
-    <span class="c1">-- I use CFEngine to reconfigure the Spotify preferences</span>
-    <span class="n">cmd</span> <span class="o">=</span> <span class="n">string.format</span><span class="p">(</span><span class="s2">&#34;/usr/local/bin/cf-agent -K -f %s/files/spotify-proxymode.cf%s&#34;</span><span class="p">,</span> <span class="n">hs.configdir</span><span class="p">,</span> <span class="p">(</span><span class="n">proxy</span> <span class="ow">and</span> <span class="s2">&#34; -DPROXY&#34;</span> <span class="ow">or</span> <span class="s2">&#34; -DNOPROXY&#34;</span><span class="p">))</span>
-    <span class="n">output</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">hs.execute</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
-    <span class="kr">if</span> <span class="n">spotify</span> <span class="ow">and</span> <span class="n">lastapp</span> <span class="kr">then</span>
-      <span class="n">hs.timer</span><span class="p">.</span><span class="n">doAfter</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
-                       <span class="kr">function</span><span class="p">()</span>
-                         <span class="kr">if</span> <span class="ow">not</span> <span class="n">hs.application</span><span class="p">.</span><span class="n">launchOrFocus</span><span class="p">(</span><span class="s2">&#34;Spotify&#34;</span><span class="p">)</span> <span class="kr">then</span>
-                           <span class="n">hs.notify</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="s2">&#34;Error launching Spotify&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">)</span>
-                         <span class="kr">end</span>
-                         <span class="kr">if</span> <span class="n">lastapp</span> <span class="kr">then</span>
-                           <span class="n">hs.timer</span><span class="p">.</span><span class="n">doAfter</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">hs.fnutils</span><span class="p">.</span><span class="n">partial</span><span class="p">(</span><span class="n">lastapp.activate</span><span class="p">,</span> <span class="n">lastapp</span><span class="p">))</span>
-                         <span class="kr">end</span>
-      <span class="kr">end</span><span class="p">)</span>
-    <span class="kr">end</span>
-  <span class="kr">end</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">function</span> <span class="nf">reconfigSpotifyProxy</span><span class="p">(</span><span class="n">proxy</span><span class="p">)</span>
+  <span class="kd">local</span> <span class="n">spotify</span> <span class="o">=</span> <span class="n">hs.appfinder</span><span class="p">.</span><span class="n">appFromName</span><span class="p">(</span><span class="s2">&#34;Spotify&#34;</span><span class="p">)</span>
+  <span class="kd">local</span> <span class="n">lastapp</span> <span class="o">=</span> <span class="kc">nil</span>
+  <span class="kr">if</span> <span class="n">spotify</span> <span class="kr">then</span>
+    <span class="n">lastapp</span> <span class="o">=</span> <span class="n">hs.application</span><span class="p">.</span><span class="n">frontmostApplication</span><span class="p">()</span>
+    <span class="n">spotify</span><span class="p">:</span><span class="n">kill</span><span class="p">()</span>
+    <span class="n">hs.timer</span><span class="p">.</span><span class="n">usleep</span><span class="p">(</span><span class="mi">40000</span><span class="p">)</span>
+  <span class="kr">end</span>
+  <span class="c1">--   hs.notify.show(string.format(&#34;Reconfiguring %sSpotify&#34;, ((spotify~=nil) and &#34;and restarting &#34; or &#34;&#34;)), string.format(&#34;Proxy %s&#34;, (proxy and &#34;enabled&#34; or &#34;disabled&#34;)), &#34;&#34;)</span>
+  <span class="c1">-- I use CFEngine to reconfigure the Spotify preferences</span>
+  <span class="n">cmd</span> <span class="o">=</span> <span class="n">string.format</span><span class="p">(</span><span class="s2">&#34;/usr/local/bin/cf-agent -K -f %s/files/spotify-proxymode.cf%s&#34;</span><span class="p">,</span> <span class="n">hs.configdir</span><span class="p">,</span> <span class="p">(</span><span class="n">proxy</span> <span class="ow">and</span> <span class="s2">&#34; -DPROXY&#34;</span> <span class="ow">or</span> <span class="s2">&#34; -DNOPROXY&#34;</span><span class="p">))</span>
+  <span class="n">output</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">hs.execute</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+  <span class="kr">if</span> <span class="n">spotify</span> <span class="ow">and</span> <span class="n">lastapp</span> <span class="kr">then</span>
+    <span class="n">hs.timer</span><span class="p">.</span><span class="n">doAfter</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+                     <span class="kr">function</span><span class="p">()</span>
+                       <span class="kr">if</span> <span class="ow">not</span> <span class="n">hs.application</span><span class="p">.</span><span class="n">launchOrFocus</span><span class="p">(</span><span class="s2">&#34;Spotify&#34;</span><span class="p">)</span> <span class="kr">then</span>
+                         <span class="n">hs.notify</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="s2">&#34;Error launching Spotify&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">)</span>
+                       <span class="kr">end</span>
+                       <span class="kr">if</span> <span class="n">lastapp</span> <span class="kr">then</span>
+                         <span class="n">hs.timer</span><span class="p">.</span><span class="n">doAfter</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">hs.fnutils</span><span class="p">.</span><span class="n">partial</span><span class="p">(</span><span class="n">lastapp.activate</span><span class="p">,</span> <span class="n">lastapp</span><span class="p">))</span>
+                       <span class="kr">end</span>
+    <span class="kr">end</span><span class="p">)</span>
+  <span class="kr">end</span>
+<span class="kr">end</span></code></pre></div>
 <p>The <code>reconfigAdiumProxy</code> function uses AppleScript to tell Adium about
 the change without having to restart it.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="kr">function</span> <span class="nf">reconfigAdiumProxy</span><span class="p">(</span><span class="n">proxy</span><span class="p">)</span>
-    <span class="c1">--   hs.notify.show(&#34;Reconfiguring Adium&#34;, string.format(&#34;Proxy %s&#34;, (proxy and &#34;enabled&#34; or &#34;disabled&#34;)), &#34;&#34;)</span>
-    <span class="kd">local</span> <span class="n">script</span> <span class="o">=</span> <span class="n">string.format</span><span class="p">(</span><span class="s">[[
-</span><span class="s">  tell application &#34;Adium&#34;
-</span><span class="s">    repeat with a in accounts
-</span><span class="s">      if (enabled of a) is true then
-</span><span class="s">        set proxy enabled of a to %s
-</span><span class="s">      end if
-</span><span class="s">    end repeat
-</span><span class="s">    go offline
-</span><span class="s">    go online
-</span><span class="s">  end tell
-</span><span class="s">  ]]</span><span class="p">,</span> <span class="n">hs.inspect</span><span class="p">(</span><span class="n">proxy</span><span class="p">))</span>
-    <span class="n">hs.osascript</span><span class="p">.</span><span class="n">applescript</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
-  <span class="kr">end</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">function</span> <span class="nf">reconfigAdiumProxy</span><span class="p">(</span><span class="n">proxy</span><span class="p">)</span>
+  <span class="c1">--   hs.notify.show(&#34;Reconfiguring Adium&#34;, string.format(&#34;Proxy %s&#34;, (proxy and &#34;enabled&#34; or &#34;disabled&#34;)), &#34;&#34;)</span>
+  <span class="kd">local</span> <span class="n">script</span> <span class="o">=</span> <span class="n">string.format</span><span class="p">(</span><span class="s">[[
+</span><span class="s">tell application &#34;Adium&#34;
+</span><span class="s">  repeat with a in accounts
+</span><span class="s">    if (enabled of a) is true then
+</span><span class="s">      set proxy enabled of a to %s
+</span><span class="s">    end if
+</span><span class="s">  end repeat
+</span><span class="s">  go offline
+</span><span class="s">  go online
+</span><span class="s">end tell
+</span><span class="s">]]</span><span class="p">,</span> <span class="n">hs.inspect</span><span class="p">(</span><span class="n">proxy</span><span class="p">))</span>
+  <span class="n">hs.osascript</span><span class="p">.</span><span class="n">applescript</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
+<span class="kr">end</span></code></pre></div>
 <p>The configuration for the WiFiTransitions spoon invoked these
 functions with the appropriate parameters.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;WiFiTransitions&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">actions</span> <span class="o">=</span> <span class="p">{</span>
-                       <span class="c1">-- { -- Test action just to see the SSID transitions</span>
-                       <span class="c1">--    fn = function(_, _, prev_ssid, new_ssid)</span>
-                       <span class="c1">--       hs.notify.show(&#34;SSID change&#34;, string.format(&#34;From &#39;%s&#39; to &#39;%s&#39;&#34;, prev_ssid, new_ssid), &#34;&#34;)</span>
-                       <span class="c1">--    end</span>
-                       <span class="c1">-- },</span>
-                       <span class="p">{</span> <span class="c1">-- Enable proxy in Spotify and Adium config when joining corp network</span>
-                         <span class="n">to</span> <span class="o">=</span> <span class="s2">&#34;corpnet01&#34;</span><span class="p">,</span>
-                         <span class="n">fn</span> <span class="o">=</span> <span class="p">{</span><span class="n">hs.fnutils</span><span class="p">.</span><span class="n">partial</span><span class="p">(</span><span class="n">reconfigSpotifyProxy</span><span class="p">,</span> <span class="kc">true</span><span class="p">),</span>
-                               <span class="n">hs.fnutils</span><span class="p">.</span><span class="n">partial</span><span class="p">(</span><span class="n">reconfigAdiumProxy</span><span class="p">,</span> <span class="kc">true</span><span class="p">),</span>
-                         <span class="p">}</span>
-                       <span class="p">},</span>
-                       <span class="p">{</span> <span class="c1">-- Disable proxy in Spotify and Adium config when leaving corp network</span>
-                         <span class="n">from</span> <span class="o">=</span> <span class="s2">&#34;corpnet01&#34;</span><span class="p">,</span>
-                         <span class="n">fn</span> <span class="o">=</span> <span class="p">{</span><span class="n">hs.fnutils</span><span class="p">.</span><span class="n">partial</span><span class="p">(</span><span class="n">reconfigSpotifyProxy</span><span class="p">,</span> <span class="kc">false</span><span class="p">),</span>
-                               <span class="n">hs.fnutils</span><span class="p">.</span><span class="n">partial</span><span class="p">(</span><span class="n">reconfigAdiumProxy</span><span class="p">,</span> <span class="kc">false</span><span class="p">),</span>
-                         <span class="p">}</span>
-                       <span class="p">},</span>
-                     <span class="p">}</span>
-                   <span class="p">},</span>
-                   <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
-                 <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
-<h1 id="pop-up-translation">Pop-up translation</h1>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;WiFiTransitions&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">actions</span> <span class="o">=</span> <span class="p">{</span>
+                     <span class="c1">-- { -- Test action just to see the SSID transitions</span>
+                     <span class="c1">--    fn = function(_, _, prev_ssid, new_ssid)</span>
+                     <span class="c1">--       hs.notify.show(&#34;SSID change&#34;, string.format(&#34;From &#39;%s&#39; to &#39;%s&#39;&#34;, prev_ssid, new_ssid), &#34;&#34;)</span>
+                     <span class="c1">--    end</span>
+                     <span class="c1">-- },</span>
+                     <span class="p">{</span> <span class="c1">-- Enable proxy in Spotify and Adium config when joining corp network</span>
+                       <span class="n">to</span> <span class="o">=</span> <span class="s2">&#34;corpnet01&#34;</span><span class="p">,</span>
+                       <span class="n">fn</span> <span class="o">=</span> <span class="p">{</span><span class="n">hs.fnutils</span><span class="p">.</span><span class="n">partial</span><span class="p">(</span><span class="n">reconfigSpotifyProxy</span><span class="p">,</span> <span class="kc">true</span><span class="p">),</span>
+                             <span class="n">hs.fnutils</span><span class="p">.</span><span class="n">partial</span><span class="p">(</span><span class="n">reconfigAdiumProxy</span><span class="p">,</span> <span class="kc">true</span><span class="p">),</span>
+                       <span class="p">}</span>
+                     <span class="p">},</span>
+                     <span class="p">{</span> <span class="c1">-- Disable proxy in Spotify and Adium config when leaving corp network</span>
+                       <span class="n">from</span> <span class="o">=</span> <span class="s2">&#34;corpnet01&#34;</span><span class="p">,</span>
+                       <span class="n">fn</span> <span class="o">=</span> <span class="p">{</span><span class="n">hs.fnutils</span><span class="p">.</span><span class="n">partial</span><span class="p">(</span><span class="n">reconfigSpotifyProxy</span><span class="p">,</span> <span class="kc">false</span><span class="p">),</span>
+                             <span class="n">hs.fnutils</span><span class="p">.</span><span class="n">partial</span><span class="p">(</span><span class="n">reconfigAdiumProxy</span><span class="p">,</span> <span class="kc">false</span><span class="p">),</span>
+                       <span class="p">}</span>
+                     <span class="p">},</span>
+                   <span class="p">}</span>
+                 <span class="p">},</span>
+                 <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<h2 id="pop-up-translation">Pop-up translation</h2>
 
 <p>I live in Switzerland, and my German is far from perfect, so the
-<a href="http://www.hammerspoon.org/Spoons/PopupTranslateSelection.html" title="PopupTranslateSelection">PopupTranslateSelection</a> spoon helps me a lot. It allows me to select
+<a href="http://www.hammerspoon.org/Spoons/PopupTranslateSelection.html">PopupTranslateSelection</a> spoon helps me a lot. It allows me to select
 some text and, with a keystroke, translate it to any of three
-languages using Google Translate. Super useful! Usually, Google's
+languages using Google Translate. Super useful! Usually, Google&rsquo;s
 auto-detect feature works fine, so the <code>translate_to_&lt;lang&gt;</code> keys are
 sufficient. I have some <code>translate_&lt;from&gt;_&lt;to&gt;</code> keys set up for certain
-language pairs for when this doesn't quite work (I don't think I've
+language pairs for when this doesn&rsquo;t quite work (I don&rsquo;t think I&rsquo;ve
 ever needed them).</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="kd">local</span> <span class="n">wm</span><span class="o">=</span><span class="n">hs.webview</span><span class="p">.</span><span class="n">windowMasks</span>
-  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;PopupTranslateSelection&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">popup_style</span> <span class="o">=</span> <span class="n">wm.utility</span><span class="o">|</span><span class="n">wm.HUD</span><span class="o">|</span><span class="n">wm.titled</span><span class="o">|</span><span class="n">wm.closable</span><span class="o">|</span><span class="n">wm.resizable</span><span class="p">,</span>
-                   <span class="p">},</span>
-                   <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">translate_to_en</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;e&#34;</span> <span class="p">},</span>
-                     <span class="n">translate_to_de</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;d&#34;</span> <span class="p">},</span>
-                     <span class="n">translate_to_es</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;s&#34;</span> <span class="p">},</span>
-                     <span class="n">translate_de_en</span> <span class="o">=</span> <span class="p">{</span> <span class="n">shift_hyper</span><span class="p">,</span> <span class="s2">&#34;e&#34;</span> <span class="p">},</span>
-                     <span class="n">translate_en_de</span> <span class="o">=</span> <span class="p">{</span> <span class="n">shift_hyper</span><span class="p">,</span> <span class="s2">&#34;d&#34;</span> <span class="p">},</span>
-                   <span class="p">}</span>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">wm</span><span class="o">=</span><span class="n">hs.webview</span><span class="p">.</span><span class="n">windowMasks</span>
+<span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;PopupTranslateSelection&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">popup_style</span> <span class="o">=</span> <span class="n">wm.utility</span><span class="o">|</span><span class="n">wm.HUD</span><span class="o">|</span><span class="n">wm.titled</span><span class="o">|</span><span class="n">wm.closable</span><span class="o">|</span><span class="n">wm.resizable</span><span class="p">,</span>
+                 <span class="p">},</span>
+                 <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">translate_to_en</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;e&#34;</span> <span class="p">},</span>
+                   <span class="n">translate_to_de</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;d&#34;</span> <span class="p">},</span>
+                   <span class="n">translate_to_es</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;s&#34;</span> <span class="p">},</span>
+                   <span class="n">translate_de_en</span> <span class="o">=</span> <span class="p">{</span> <span class="n">shift_hyper</span><span class="p">,</span> <span class="s2">&#34;e&#34;</span> <span class="p">},</span>
+                   <span class="n">translate_en_de</span> <span class="o">=</span> <span class="p">{</span> <span class="n">shift_hyper</span><span class="p">,</span> <span class="s2">&#34;d&#34;</span> <span class="p">},</span>
                  <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
-<h1 id="miscellaneous-stuff">Miscellaneous stuff</h1>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<h2 id="miscellaneous-stuff">Miscellaneous stuff</h2>
 
 <p>In my <code>init-local.lua</code> file I keep some experimental or private stuff
-that I don't want to publish in my main config.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="kd">local</span> <span class="n">localstuff</span><span class="o">=</span><span class="n">loadfile</span><span class="p">(</span><span class="n">hs.configdir</span> <span class="o">..</span> <span class="s2">&#34;/init-local.lua&#34;</span><span class="p">)</span>
-  <span class="kr">if</span> <span class="n">localstuff</span> <span class="kr">then</span>
-    <span class="n">localstuff</span><span class="p">()</span>
-  <span class="kr">end</span></code></pre></div>
-<h1 id="end-of-config-animation">End-of-config animation</h1>
+that I don&rsquo;t want to publish in my main config.</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">localstuff</span><span class="o">=</span><span class="n">loadfile</span><span class="p">(</span><span class="n">hs.configdir</span> <span class="o">..</span> <span class="s2">&#34;/init-local.lua&#34;</span><span class="p">)</span>
+<span class="kr">if</span> <span class="n">localstuff</span> <span class="kr">then</span>
+  <span class="n">localstuff</span><span class="p">()</span>
+<span class="kr">end</span></code></pre></div>
+<h2 id="end-of-config-animation">End-of-config animation</h2>
 
-<p>The <a href="http://www.hammerspoon.org/Spoons/FadeLogo.html" title="FadeLogo">FadeLogo</a> spoon simply shows an animation of the Hammerspoon logo
+<p>The <a href="http://www.hammerspoon.org/Spoons/FadeLogo.html">FadeLogo</a> spoon simply shows an animation of the Hammerspoon logo
 to signal the end of the config load.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;FadeLogo&#34;</span><span class="p">,</span>
-                 <span class="p">{</span>
-                   <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">default_run</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
-                   <span class="p">},</span>
-                   <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
-                 <span class="p">}</span>
-  <span class="p">)</span></code></pre></div>
-<p>If you don't want to use FadeLogo, you can have a regular notification.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua">  <span class="c1">-- hs.notify.show(&#34;Welcome to Hammerspoon&#34;, &#34;Have fun!&#34;, &#34;&#34;)</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;FadeLogo&#34;</span><span class="p">,</span>
+               <span class="p">{</span>
+                 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+                   <span class="n">default_run</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+                 <span class="p">},</span>
+                 <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
+               <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<p>If you don&rsquo;t want to use FadeLogo, you can have a regular notification.</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="c1">-- hs.notify.show(&#34;Welcome to Hammerspoon&#34;, &#34;Have fun!&#34;, &#34;&#34;)</span></code></pre></div>
       </section>
       
 
@@ -751,7 +735,29 @@ to signal the end of the config load.</p>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </article>
     <div class="ph3 mt2 mt6-ns">
-      </div>
+      <div class="bg-light-gray pa3">
+      <p class="list b mb3">What's in this Post</p>
+      <nav id="TableOfContents">
+<ul>
+<li class="list f5 w-100 hover-bg-white nl1">
+<ul>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#general-variables-and-configuration">General variables and configuration</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#spoon-management">Spoon Management</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#url-dispatching-to-site-specific-browsers">URL Dispatching to site-specific browsers</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#window-and-screen-manipulation">Window and screen manipulation</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#organization-and-productivity">Organization and Productivity</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#system-and-ui">System and UI</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#other-applications">Other applications</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#seal">Seal</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#network-transitions">Network transitions</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#pop-up-translation">Pop-up translation</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#miscellaneous-stuff">Miscellaneous stuff</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#end-of-config-animation">End-of-config animation</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<br/></div>
   </div>
 
     </main>
