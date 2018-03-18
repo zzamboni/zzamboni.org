@@ -1,18 +1,23 @@
 #+hugo_base_dir: ../
 #+hugo_section: post
+#+seq_todo: TODO DRAFT DONE
 
-#+title: My Emacs Configuration, With Commentary
-#+date: 2017-12-17T20:14:36+01:00
-#+hugo_tags: emacs config
-#+hugo_custom_front_matter: :featured_image /images/emacs-logo.svg
-#+hugo_custom_front_matter: :toc true
-#+hugo_custom_front_matter: :summary I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file.
+#+options: creator:t
+
+* Emacs                                                              :emacs:
+
+** DONE My Emacs Configuration, With Commentary                     :config:
+CLOSED: [2017-12-17 Sun 20:14]
+:properties:
+:export_file_name: 2017-12-17-my-emacs-configuration-with-commentary
+:export_hugo_custom_front_matter: :featured_image /images/emacs-logo.svg :toc true :summary I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file.
+:end:
 
 Last update: *March 17th, 2018*
 
 I have enjoyed slowly converting my configuration files to [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate programming]] style style using org-mode in Emacs. I previously posted my [[../my-elvish-configuration-with-commentary/][Elvish configuration]], and now it's the turn of my Emacs configuration file. The text below is included directly from my [[https://github.com/zzamboni/dot_emacs/blob/master/init.org][init.org]] file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [[https://github.com/zzamboni/dot_emacs/blob/master/init.org][init.org file in GitHub]] for my current, live configuration, and the generated file at [[https://github.com/zzamboni/dot_emacs/blob/master/init.el]].
 
-* Customized variables
+*** Customized variables
 
 Emacs has its own [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html#Easy-Customization][Customization mechanism]] for easily customizing many parameters. To make it easier to manage, I keep the customized variables and faces in a separate file and load it from the main file.
 
@@ -25,7 +30,7 @@ Here is the current contents of the [[https://github.com/zzamboni/dot-emacs/blob
 
 #+include: "custom.el" src emacs-lisp
 
-* Setting up the package system
+*** Setting up the package system
 
 I use the [[https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-configuration-tool][wonderful =use-package= package]]. As this is not bundled yet with Emacs, the first thing we do is install it by hand. All other packages are then declaratively installed and configured with =use-package=. This makes it possible to fully bootstrap Emacs using only this config file, everything else is downloaded, installed and configured automatically.
 
@@ -87,8 +92,8 @@ Load =org= right away, to avoid any interference with the version of =org= inclu
   (require 'org)
 #+end_src
 
-* Settings
-** Proxy settings
+*** Settings
+**** Proxy settings
 
 These are two short functions I wrote to be able to set/unset proxy settings within Emacs. I haven't bothered to improve or automate this, as I pretty much only need it to be able to install packages sometimes when I'm at work. For now I just call them manually with =M-x set/unset-proxy= when I need to.
 
@@ -102,7 +107,7 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     (setq url-proxy-services nil))
 #+end_src
 
-** Miscellaneous settings
+**** Miscellaneous settings
 
 - This is probably one of my oldest settings - I remember adding it around 1993 when I started learning Emacs, and it has been in my config ever since. When =time-stamp= is run before every save, the string =Time-stamp: <>= in the first 8 lines of the file will be updated with the current timestamp.
 
@@ -202,8 +207,8 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     (add-hook 'before-save-hook 'delete-trailing-whitespace)
   #+end_src
 
-* Keybindings
-** Miscellaneous keybindings
+*** Keybindings
+**** Miscellaneous keybindings
 
 - =M-g= interactively asks for a line number and jump to it (=goto-line)=.
 
@@ -232,7 +237,7 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     (global-set-key (kbd "M-/") 'hippie-expand)
   #+end_src
 
-** Emulating vi's =%= key
+**** Emulating vi's =%= key
 
 One of the few things I missed in Emacs from vi was the =%= key, which jumps to the parenthesis, bracket or brace which matches the one below the cursor. This function implements the functionality. Inspired by [[http://www.emacswiki.org/emacs/NavigatingParentheses]], but modified to use =smartparens= instead of the default commands, and to work on brackets and braces.
 
@@ -289,7 +294,7 @@ We bind this function to the =%= key.
   (global-set-key (kbd "%") 'goto-match-paren)
 #+end_src
 
-* Org mode
+*** Org mode
 :PROPERTIES:
 :header-args: :noweb-ref org-mode-config
 :END:
@@ -313,7 +318,7 @@ I use =use-package= to load the =org= package, and put all its Configuration ins
     <<org-mode-config>>)
 #+end_src
 
-** Keybindings
+**** Keybindings
 
 Set up =C-c l= to store a link to the current org object, in counterpart to the default =C-c C-l= to insert a link.
 
@@ -339,7 +344,7 @@ Load =org-tempo= to enable snippets such as =<s<TAB>= to insert a source block.
   (require 'org-tempo)
 #+end_src
 
-** General org-mode configuration
+**** General org-mode configuration
 
 Set =org-directory= to a directory inside my Dropbox so that my main files get synchronized automatically.
 
@@ -359,7 +364,7 @@ Keep the indentation well structured by. OMG this is a must have. Makes it feel 
   (setq org-startup-indented t)
 #+end_src
 
-** Building presentations with org-mode
+**** Building presentations with org-mode
 
 [[https://github.com/yjwen/org-reveal][org-reveal]] is an awesome package for building presentations with org-mode.
 
@@ -372,7 +377,7 @@ Keep the indentation well structured by. OMG this is a must have. Makes it feel 
     (use-package htmlize))
 #+end_src
 
-** Various exporters
+**** Various exporters
 
 One of the big strengths of org-mode is the ability to export a document in many different formats. Here I load some of the exporters I have found useful.
 
@@ -411,7 +416,7 @@ One of the big strengths of org-mode is the ability to export a document in many
     (require 'ox-texinfo)
   #+end_src
 
-** Keeping a Journal
+**** Keeping a Journal
 
 I use [[http://750words.com/][750words]] for my personal Journal, and I usually write my entries locally using Scrivener. I have been playing with =org-journal= for this, but I am not fully convinced yet.
 
@@ -421,7 +426,7 @@ I use [[http://750words.com/][750words]] for my personal Journal, and I usually 
     (setq org-journal-dir "~/Documents/logbook"))
 #+end_src
 
-** Literate programming using org-babel
+**** Literate programming using org-babel
 
 Org-mode is the first literate programming tool that seems practical and useful, since it's easy to edit, execute and document code from within the same tool (Emacs) using all of its existing capabilities (i.e. each code block can be edited in its native Emacs mode, taking full advantage of indentation, completion, etc.)
 
@@ -478,7 +483,7 @@ This little snippet has revolutionized my literate programming workflow. It auto
                                  'run-at-end 'only-in-org-mode)))
 #+end_src
 
-** Beautifying org-mode
+**** Beautifying org-mode
 
 These settings make org-mode much more readable by using different fonts for headings, hiding some of the markup, etc. This was taken originally from http://www.howardism.org/Technical/Emacs/orgmode-wordprocessor.html and then tweaked by me.
 
@@ -525,7 +530,7 @@ I am experimenting with using proportional fonts in org-mode for the text, while
   (add-hook 'org-mode-hook 'variable-pitch-mode)
 #+end_src
 
-** Auto-generated table of contents
+**** Auto-generated table of contents
 
 The =toc-org= package allows us to insert a table of contents in headings marked with =:TOC:=. This is useful for org files that are to be viewed directly on GitHub, which renders org files correctly, but does not generate a table of contents at the top. For an example, see [[https://github.com/zzamboni/dot-emacs/blob/master/init.org][this file on GitHub]].
 
@@ -537,7 +542,7 @@ Note that this breaks HTML export by default, as the links generated by =toc-org
     (add-hook 'org-mode-hook 'toc-org-enable))
 #+end_src
 
-** Grabbing links from different Mac applications
+**** Grabbing links from different Mac applications
 
 =org-mac-link= (included in contrib) implements the ability to grab links from different Mac apps and insert them in the file. Bind =C-c g= to call =org-mac-grab-link= to choose an application and insert a link.
 
@@ -547,7 +552,7 @@ Note that this breaks HTML export by default, as the links generated by =toc-org
                              (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
 #+end_src
 
-** Reformatting an org buffer
+**** Reformatting an org buffer
 
 I picked up this little gem in the org mailing list. A function that reformats the current buffer by regenerating the text from its internal parsed representation. Quite amazing.
 
@@ -561,7 +566,7 @@ I picked up this little gem in the org mailing list. A function that reformats t
         (goto-char (point-min)))))
 #+end_src
 
-** Snippets and templates
+**** Snippets and templates
 
 The [[https://github.com/Kungsgeten/yankpad][yankpad]] package makes it easy to store snippets that can be inserted at arbitrary points. Together with [[http://joaotavora.github.io/yasnippet/][yasnippet]] it becomes more powerful.
 
@@ -577,7 +582,7 @@ The [[https://github.com/Kungsgeten/yankpad][yankpad]] package makes it easy to 
     (add-to-list 'hippie-expand-try-functions-list #'yankpad-expand))
 #+end_src
 
-* System-specific configuration
+*** System-specific configuration
 
 Some settings maybe OS-specific, and this is where we set them. For now I only use Emacs on my Mac, so only the Mac section is filled out, but there are sections for Linux and Windows as well.
 
@@ -593,7 +598,7 @@ Some settings maybe OS-specific, and this is where we set them. For now I only u
          ))
 #+end_src
 
-** Mac
+**** Mac
 
 First, we set the key modifiers correctly to my preferences: Make Command (⌘) act as Meta, Option as Alt, right-Option as Super
 
@@ -632,19 +637,19 @@ We also use the =exec-path-from-shell= to make sure the path settings from the s
     (exec-path-from-shell-initialize))
 #+end_src
 
-** Linux
+**** Linux
 
 There are no Linux-specific settings for now.
 
 #+name: Linux settings
 
-** Windows
+**** Windows
 
 There are no Windows-specific settings for now.
 
 #+name: Windows settings
 
-* Appearance, buffer/file management and theming
+*** Appearance, buffer/file management and theming
 
 Here we take care of all the visual, UX and desktop-management settings.
 
@@ -809,11 +814,11 @@ The =all-the-icons= package provides a number of useful icons.
   (use-package all-the-icons)
 #+end_src
 
-* Coding
+*** Coding
 
 Coding is my main use for Emacs, so it's understandably the largest section in my Emacs configuration.
 
-** General settings and modules
+**** General settings and modules
 
 When enabled, =subword= allows navigating "sub words" individually in CamelCaseIdentifiers. For now I only enable it in =clojure-mode=.
 
@@ -876,7 +881,7 @@ On-the-fly spell checking. I enable it for all text modes.
     (add-hook 'text-mode-hook   'flyspell-mode))
 #+end_src
 
-** Clojure and LISP coding
+**** Clojure and LISP coding
 
 I dabble in Clojure and Emacs LISP, and Emacs has some fantastic support for them. There's a number of packages and configuration related to this, so I have a whole section for it.
 
@@ -1030,7 +1035,7 @@ I am sometimes trying out [[https://shaunlebron.github.io/parinfer/][parinfer]] 
       (add-hook 'lisp-mode-hook #'parinfer-mode)))
 #+end_src
 
-** Other programming languages
+**** Other programming languages
 
 Many other programming languages are well served by a single mode, without so much setup as Clojure/LISP.
 
@@ -1108,7 +1113,7 @@ Many other programming languages are well served by a single mode, without so mu
     (use-package nix-mode)
   #+end_src
 
-* Other tools
+*** Other tools
 
 - git interface with some simple configuration I picked up somewhere
 
@@ -1171,7 +1176,7 @@ Many other programming languages are well served by a single mode, without so mu
     (add-hook 'find-file-hook 'auto-insert)
   #+end_src
 
-* General text editing
+*** General text editing
 
 
 In addition to coding, I configure some modes that can be used for text editing.
@@ -1197,7 +1202,7 @@ In addition to coding, I configure some modes that can be used for text editing.
       (typopunct-change-language 'english t))
   #+end_src
 
-* Cheatsheet
+*** Cheatsheet
 
 How to do different things, not necessarily used in my Emacs config but useful sometimes.
 
