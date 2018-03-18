@@ -164,7 +164,7 @@ function leftDoubleClick(modifiers)
       :setProperty(hs.eventtap.event.properties.mouseEventClickState, 2)
       :post() -- <3>
    hs.eventtap.event.newMouseEvent( -- <4>
-     hs.eventtap.event.types.leftMouseUp, pos, modifiers):post() 
+     hs.eventtap.event.types.leftMouseUp, pos, modifiers):post()
 end
 ```
 
@@ -217,7 +217,7 @@ the cursor where you want it and pressing {{< keys "Ctrl" "Cmd" "Alt"
 p >}}. While this is a contrived example, the ability to generate
 events like this is immensely powerful in automating your system.
 
-{{% tip %}} 
+{{% tip %}}
 
 By now you have seen that we are using {{< keys "Cmd" "Ctrl" "Alt" >}} very
 frequently in our keybindings. To avoid having to type this every
