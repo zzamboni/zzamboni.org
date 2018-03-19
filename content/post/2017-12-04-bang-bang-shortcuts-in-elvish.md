@@ -11,7 +11,7 @@ summary = "How to set up the bash !! and !$ shortcuts for accessing the previous
 
 (Updated on March 19th, 2018 to use the new [Elvish Package Manager](https://elvish.io/ref/epm.html))
 
-The bash shortcuts (maybe older? I'm not sure in which shell these originated) for "last command" (`!!`) and "last argument of last command" (`!$`) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in [Elvish](/post/elvish-an-awesome-unix-shell/) by default, they are easy to implement. I have written a module called [bang-bang](https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/bang-bang.org) which you can readily use as follows:
+The bash shortcuts (maybe older? I'm not sure in which shell these originated) for "last command" (`!!`) and "last argument of last command" (`!$`) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in [Elvish](/post/elvish-an-awesome-unix-shell/) by default, they are easy to implement. I have written a module called [bang-bang](https://github.com/zzamboni/elvish-modules/blob/master/bang-bang.org) which you can readily use as follows:
 
 -   Use [epm](https://elvish.io/ref/epm.html) to install my elvish-modules package (you can also add this to your `rc.elv` file to have the package installed automatically if needed):
 
@@ -20,7 +20,7 @@ The bash shortcuts (maybe older? I'm not sure in which shell these originated) f
     epm:install github.com/zzamboni/elvish-modules
     ```
 
--   In your `rc.elv` (see [mine](/post/elvish-an-awesome-unix-shell/) as an example), add the following to load the `bang-bang` module and to set up the appropriate keybindings:
+-   In your `rc.elv` (see [mine](/post/my-elvish-configuration-with-commentary/) as an example), add the following to load the `bang-bang` module and to set up the appropriate keybindings:
 
     ```elvish
     use github.com/zzamboni/elvish-modules/bang-bang
