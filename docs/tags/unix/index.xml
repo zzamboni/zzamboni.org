@@ -6,7 +6,7 @@
     <description>Recent content in Unix on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Dec 2017 22:15:04 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 04 Dec 2017 22:15:00 +0100</lastBuildDate>
     
 	<atom:link href="http://zzamboni.org/tags/unix/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,10 +14,10 @@
     <item>
       <title>Bang-Bang (!!, !$) Shell Shortcuts in Elvish</title>
       <link>http://zzamboni.org/post/bang-bang---shell-shortcuts-in-elvish/</link>
-      <pubDate>Mon, 04 Dec 2017 22:15:04 +0100</pubDate>
+      <pubDate>Mon, 04 Dec 2017 22:15:00 +0100</pubDate>
       
       <guid>http://zzamboni.org/post/bang-bang---shell-shortcuts-in-elvish/</guid>
-      <description>The bash shortcuts (maybe older? I&#39;m not sure in which shell these originated) for &#34;last command&#34; (!!) and &#34;last argument of last command&#34; (!$) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in Elvish by default, they are easy to implement. I have written a module called bang-bang which you can readily use as follows:</description>
+      <description>The bash shortcuts (maybe older? I&amp;rsquo;m not sure in which shell these originated) for &amp;ldquo;last command&amp;rdquo; (!!) and &amp;ldquo;last argument of last command&amp;rdquo; (!$) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in Elvish by default, they are easy to implement. I have written a module called bang-bang which you can readily use as follows:</description>
     </item>
     
     <item>

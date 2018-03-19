@@ -22,15 +22,15 @@
      
 
       <meta property="og:title" content="Bang-Bang (!!, !$) Shell Shortcuts in Elvish" />
-<meta property="og:description" content="The bash shortcuts (maybe older? I&#39;m not sure in which shell these originated) for &#34;last command&#34; (!!) and &#34;last argument of last command&#34; (!$) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in Elvish by default, they are easy to implement. I have written a module called bang-bang which you can readily use as follows:" />
+<meta property="og:description" content="The bash shortcuts (maybe older? I&rsquo;m not sure in which shell these originated) for &ldquo;last command&rdquo; (!!) and &ldquo;last argument of last command&rdquo; (!$) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in Elvish by default, they are easy to implement. I have written a module called bang-bang which you can readily use as follows:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://zzamboni.org/post/bang-bang---shell-shortcuts-in-elvish/" />
 
 
 
-<meta property="article:published_time" content="2017-12-04T22:15:04&#43;01:00"/>
+<meta property="article:published_time" content="2017-12-04T22:15:00&#43;01:00"/>
 
-<meta property="article:modified_time" content="2017-12-04T22:15:04&#43;01:00"/>
+<meta property="article:modified_time" content="2017-12-04T22:15:00&#43;01:00"/>
 
 
 
@@ -43,19 +43,19 @@
 
 
 <meta itemprop="name" content="Bang-Bang (!!, !$) Shell Shortcuts in Elvish">
-<meta itemprop="description" content="The bash shortcuts (maybe older? I&#39;m not sure in which shell these originated) for &#34;last command&#34; (!!) and &#34;last argument of last command&#34; (!$) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in Elvish by default, they are easy to implement. I have written a module called bang-bang which you can readily use as follows:">
+<meta itemprop="description" content="The bash shortcuts (maybe older? I&rsquo;m not sure in which shell these originated) for &ldquo;last command&rdquo; (!!) and &ldquo;last argument of last command&rdquo; (!$) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in Elvish by default, they are easy to implement. I have written a module called bang-bang which you can readily use as follows:">
 
 
-<meta itemprop="datePublished" content="2017-12-04T22:15:04&#43;01:00" />
-<meta itemprop="dateModified" content="2017-12-04T22:15:04&#43;01:00" />
-<meta itemprop="wordCount" content="221">
+<meta itemprop="datePublished" content="2017-12-04T22:15:00&#43;01:00" />
+<meta itemprop="dateModified" content="2017-12-04T22:15:00&#43;01:00" />
+<meta itemprop="wordCount" content="259">
 
 
 
 <meta itemprop="keywords" content="elvish,shell,unix,config," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Bang-Bang (!!, !$) Shell Shortcuts in Elvish"/>
-<meta name="twitter:description" content="The bash shortcuts (maybe older? I&#39;m not sure in which shell these originated) for &#34;last command&#34; (!!) and &#34;last argument of last command&#34; (!$) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in Elvish by default, they are easy to implement. I have written a module called bang-bang which you can readily use as follows:"/>
+<meta name="twitter:description" content="The bash shortcuts (maybe older? I&rsquo;m not sure in which shell these originated) for &ldquo;last command&rdquo; (!!) and &ldquo;last argument of last command&rdquo; (!$) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in Elvish by default, they are easy to implement. I have written a module called bang-bang which you can readily use as follows:"/>
 
         
 <script>
@@ -175,44 +175,31 @@ ga('send', 'pageview');
       </h1>
         
         
-      <time class="f6 mv4 dib tracked" datetime="2017-12-04T22:15:04&#43;01:00">
+      <time class="f6 mv4 dib tracked" datetime="2017-12-04T22:15:00&#43;01:00">
         December 4, 2017
       </time>
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
-        <p>The bash shortcuts (maybe older? I'm not sure in which shell these
-originated) for "last command" (<code>!!</code>) and "last argument of last
-command" (<code>!$</code>) are, for me at least, among the most strongly imprinted
-in my muscle memory, and I use them all the time. Although these
-shortcuts are not available in <a href="/post/elvish-an-awesome-unix-shell/" title="Elvish">Elvish</a> by default, they are easy to
-implement. I have written a module called <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/bang-bang" title="bang-bang">bang-bang</a> which you can
-readily use as follows:</p>
+        <p>The bash shortcuts (maybe older? I&rsquo;m not sure in which shell these originated) for &ldquo;last command&rdquo; (<code>!!</code>) and &ldquo;last argument of last command&rdquo; (<code>!$</code>) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in <a href="/post/elvish-an-awesome-unix-shell/">Elvish</a> by default, they are easy to implement. I have written a module called <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/bang-bang.org">bang-bang</a> which you can readily use as follows:</p>
 
 <ul>
-<li>Store <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/bang-bang.elv" title="bang-bang.elv">bang-bang.elv</a> in your <code>~/.elvish/lib/</code>.</li>
-<li>In your <code>rc.elv</code> (see <a href="/post/elvish-an-awesome-unix-shell/" title="mine">mine</a> as an example), add the following:</li>
+<li><p>Use <a href="https://elvish.io/ref/epm.html">epm</a> to install my elvish-modules package (you can also add this to your <code>rc.elv</code> file to have the package installed automatically if needed):</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use epm
+epm:install github.com/zzamboni/elvish-modules</code></pre></div></li>
+
+<li><p>In your <code>rc.elv</code> (see <a href="/post/elvish-an-awesome-unix-shell/">mine</a> as an example), add the following to load the <code>bang-bang</code> module and to set up the appropriate keybindings:</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/bang-bang</code></pre></div></li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">    use bang-bang
-    bang-bang:bind-trigger-keys</code></pre></div>
-<p>That's it! In your new shells, command-history mode will be invoked by
-the <code>!</code> key. Assuming your last command was <code>ls -l ~/.elvish/rc.elv</code>, when
-you press <code>!</code> you will see the following:</p>
 
-<pre><code>  bang-lastcmd [A C] _
-  ! ls -l .elvish/rc.elv
-  0 ls
-  1 -l
-  2/$ .elvish/rc.elv
-  Alt-! !
-</code></pre>
+<p>That&rsquo;s it! Start a new shell window, and test how command-history mode can be invoked by the <code>!</code> key. Assuming your last command was <code>ls -l ~/.elvish/rc.elv</code>, when you press <code>!</code> you will see the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">bang-lastcmd [A C] _
+! ls -l .elvish/rc.elv
+0 ls
+1 -l
+2/$ .elvish/rc.elv
+Alt-! !</code></pre></div>
+<p>If you press <code>!</code> again, the whole last command will be inserted. If you press <code>$</code> (or <code>2</code>), only the last argument will be inserted. You can insert any other component of the previous command using its corresponding number. If you want to insert an exclamation sign, you can press <code>Alt-!</code>.</p>
 
-<p>If you press <code>!</code> again, the whole last command will be inserted. If you
-press <code>$</code> (or <code>2</code>), only the last argument will be inserted. You can
-insert any other component of the previous command using its
-corresponding number. If you want to insert an exclamation sign, you
-can press <code>Alt-!</code>.</p>
-
-<p>Note that by default, <code>Alt-!</code> will also be bound to trigger this mode,
-so you can fully replace the default <a href="https://elvish.io/learn/cookbook.html" title="&quot;last command&quot; mode">"last command" mode</a> in Elvish.</p>
+<p>Note that by default, <code>Alt-!</code> will also be bound to trigger this mode, so you can fully replace the default <a href="https://elvish.io/learn/cookbook.html">&ldquo;last command&rdquo; mode</a> in Elvish.</p>
 
 <p>Have fun with Elvish!</p>
 
