@@ -9,6 +9,8 @@ featured_image = "/images/elvish-logo.svg"
 summary = "How to set up the bash !! and !$ shortcuts for accessing the previous command in Elvish."
 +++
 
+(Updated on March 19th, 2018 to use the new [Elvish Package Manager](https://elvish.io/ref/epm.html))
+
 The bash shortcuts (maybe older? I'm not sure in which shell these originated) for "last command" (`!!`) and "last argument of last command" (`!$`) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in [Elvish](/post/elvish-an-awesome-unix-shell/) by default, they are easy to implement. I have written a module called [bang-bang](https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/bang-bang.org) which you can readily use as follows:
 
 -   Use [epm](https://elvish.io/ref/epm.html) to install my elvish-modules package (you can also add this to your `rc.elv` file to have the package installed automatically if needed):
