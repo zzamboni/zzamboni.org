@@ -4,6 +4,17 @@
 
 #+options: creator:t
 
+* Ideas
+** Hammerspoon
+*** Using and extending Seal
+*** Sending things to OmniFocus
+** Elvish
+** CFEngine
+** Tips and tricks
+*** CryFS
+*** Hosting a Hugo blog in GitHub
+Short guide to setting up Hugo, using /docs to host to avoid branches, and setting up your custom domain.
+*** Using the Nix package manager in macOS
 * Literate config files                   :config:howto:literateprogramming:
 ** DONE My Emacs Configuration, With Commentary                      :emacs:
 CLOSED: [2017-12-17 Sun 20:14]
