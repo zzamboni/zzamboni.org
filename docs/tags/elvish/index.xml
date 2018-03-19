@@ -17,7 +17,8 @@
       <pubDate>Mon, 04 Dec 2017 22:15:00 +0100</pubDate>
       
       <guid>http://zzamboni.org/post/bang-bang---shell-shortcuts-in-elvish/</guid>
-      <description>The bash shortcuts (maybe older? I&amp;rsquo;m not sure in which shell these originated) for &amp;ldquo;last command&amp;rdquo; (!!) and &amp;ldquo;last argument of last command&amp;rdquo; (!$) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in Elvish by default, they are easy to implement. I have written a module called bang-bang which you can readily use as follows:</description>
+      <description>(Updated on March 19th, 2018 to use the new Elvish Package Manager)
+The bash shortcuts (maybe older? I&amp;rsquo;m not sure in which shell these originated) for &amp;ldquo;last command&amp;rdquo; (!!) and &amp;ldquo;last argument of last command&amp;rdquo; (!$) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in Elvish by default, they are easy to implement.</description>
     </item>
     
     <item>
