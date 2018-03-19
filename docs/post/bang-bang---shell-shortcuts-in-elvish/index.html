@@ -184,14 +184,14 @@ ga('send', 'pageview');
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         <p>(Updated on March 19th, 2018 to use the new <a href="https://elvish.io/ref/epm.html">Elvish Package Manager</a>)</p>
 
-<p>The bash shortcuts (maybe older? I&rsquo;m not sure in which shell these originated) for &ldquo;last command&rdquo; (<code>!!</code>) and &ldquo;last argument of last command&rdquo; (<code>!$</code>) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in <a href="/post/elvish-an-awesome-unix-shell/">Elvish</a> by default, they are easy to implement. I have written a module called <a href="https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/lib/bang-bang.org">bang-bang</a> which you can readily use as follows:</p>
+<p>The bash shortcuts (maybe older? I&rsquo;m not sure in which shell these originated) for &ldquo;last command&rdquo; (<code>!!</code>) and &ldquo;last argument of last command&rdquo; (<code>!$</code>) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in <a href="/post/elvish-an-awesome-unix-shell/">Elvish</a> by default, they are easy to implement. I have written a module called <a href="https://github.com/zzamboni/elvish-modules/blob/master/bang-bang.org">bang-bang</a> which you can readily use as follows:</p>
 
 <ul>
 <li><p>Use <a href="https://elvish.io/ref/epm.html">epm</a> to install my elvish-modules package (you can also add this to your <code>rc.elv</code> file to have the package installed automatically if needed):</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use epm
 epm:install github.com/zzamboni/elvish-modules</code></pre></div></li>
 
-<li><p>In your <code>rc.elv</code> (see <a href="/post/elvish-an-awesome-unix-shell/">mine</a> as an example), add the following to load the <code>bang-bang</code> module and to set up the appropriate keybindings:</p>
+<li><p>In your <code>rc.elv</code> (see <a href="/post/my-elvish-configuration-with-commentary/">mine</a> as an example), add the following to load the <code>bang-bang</code> module and to set up the appropriate keybindings:</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/bang-bang</code></pre></div></li>
 </ul>
 
