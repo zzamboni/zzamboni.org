@@ -45,6 +45,13 @@
   </url>
   
   <url>
+    <loc>http://zzamboni.org/post/beautifying-org-mode-in-emacs/</loc>
+    <lastmod>2018-03-21T22:45:00+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://zzamboni.org/post/my-hammerspoon-configuration-with-commentary/</loc>
     <lastmod>2018-01-08T13:31:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -2607,6 +2614,13 @@
   </url>
   
   <url>
+    <loc>http://zzamboni.org/tags/beautifulemacs/</loc>
+    <lastmod>2018-03-21T22:45:00+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://zzamboni.org/tags/bigdata/</loc>
     <lastmod>2015-04-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -2692,7 +2706,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/config/</loc>
-    <lastmod>2018-01-08T13:31:00+01:00</lastmod>
+    <lastmod>2018-03-21T22:45:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -2775,7 +2789,7 @@
   
   <url>
     <loc>http://zzamboni.org/tags/emacs/</loc>
-    <lastmod>2017-12-17T20:14:00+01:00</lastmod>
+    <lastmod>2018-03-21T22:45:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -3203,6 +3217,13 @@
   <url>
     <loc>http://zzamboni.org/tags/oreilly/</loc>
     <lastmod>2012-03-24T01:23:00-06:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://zzamboni.org/tags/orgmode/</loc>
+    <lastmod>2018-03-21T22:45:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
