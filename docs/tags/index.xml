@@ -111,6 +111,15 @@
     </item>
     
     <item>
+      <title>Beautifulemacs</title>
+      <link>http://zzamboni.org/tags/beautifulemacs/</link>
+      <pubDate>Wed, 21 Mar 2018 22:45:00 +0100</pubDate>
+      
+      <guid>http://zzamboni.org/tags/beautifulemacs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Bigdata</title>
       <link>http://zzamboni.org/tags/bigdata/</link>
       <pubDate>Thu, 30 Apr 2015 00:00:00 +0000</pubDate>
@@ -203,7 +212,7 @@
     <item>
       <title>Config</title>
       <link>http://zzamboni.org/tags/config/</link>
-      <pubDate>Mon, 08 Jan 2018 13:31:00 +0100</pubDate>
+      <pubDate>Wed, 21 Mar 2018 22:45:00 +0100</pubDate>
       
       <guid>http://zzamboni.org/tags/config/</guid>
       <description></description>
@@ -302,7 +311,7 @@
     <item>
       <title>Emacs</title>
       <link>http://zzamboni.org/tags/emacs/</link>
-      <pubDate>Sun, 17 Dec 2017 20:14:00 +0100</pubDate>
+      <pubDate>Wed, 21 Mar 2018 22:45:00 +0100</pubDate>
       
       <guid>http://zzamboni.org/tags/emacs/</guid>
       <description></description>
@@ -755,6 +764,15 @@
       <pubDate>Sat, 24 Mar 2012 01:23:00 -0600</pubDate>
       
       <guid>http://zzamboni.org/tags/oreilly/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Orgmode</title>
+      <link>http://zzamboni.org/tags/orgmode/</link>
+      <pubDate>Wed, 21 Mar 2018 22:45:00 +0100</pubDate>
+      
+      <guid>http://zzamboni.org/tags/orgmode/</guid>
       <description></description>
     </item>
     

@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>Beautifying Org Mode in Emacs</title>
+      <link>http://zzamboni.org/post/beautifying-org-mode-in-emacs/</link>
+      <pubDate>Wed, 21 Mar 2018 22:45:00 +0100</pubDate>
+      
+      <guid>http://zzamboni.org/post/beautifying-org-mode-in-emacs/</guid>
+      <description>Over the last few months, I have used org-mode more and more for writing and programming in Emacs. I love its flexibility and power, and it is the first literate programming tool which &amp;ldquo;feels right&amp;rdquo;, and I have been able to stick with it for a longer period of time than in my previous attempts.
+Recently I started thinking about how I could make my editing environment more visually appealing.</description>
+    </item>
+    
+    <item>
       <title>My Hammerspoon Configuration, With Commentary</title>
       <link>http://zzamboni.org/post/my-hammerspoon-configuration-with-commentary/</link>
       <pubDate>Mon, 08 Jan 2018 13:31:00 +0100</pubDate>
