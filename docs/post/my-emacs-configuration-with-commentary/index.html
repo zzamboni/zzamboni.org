@@ -22,7 +22,7 @@
      
 
       <meta property="og:title" content="My Emacs Configuration, With Commentary" />
-<meta property="og:description" content="Last update: March 17th, 2018
+<meta property="og:description" content="Last update: March 22nd, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://zzamboni.org/post/my-emacs-configuration-with-commentary/" />
@@ -44,20 +44,20 @@ I have enjoyed slowly converting my configuration files to literate programming 
 
 
 <meta itemprop="name" content="My Emacs Configuration, With Commentary">
-<meta itemprop="description" content="Last update: March 17th, 2018
+<meta itemprop="description" content="Last update: March 22nd, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving.">
 
 
 <meta itemprop="datePublished" content="2017-12-17T20:14:00&#43;01:00" />
 <meta itemprop="dateModified" content="2017-12-17T20:14:00&#43;01:00" />
-<meta itemprop="wordCount" content="5100">
+<meta itemprop="wordCount" content="5297">
 
 
 
 <meta itemprop="keywords" content="config,howto,literateprogramming,emacs," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Emacs Configuration, With Commentary"/>
-<meta name="twitter:description" content="Last update: March 17th, 2018
+<meta name="twitter:description" content="Last update: March 22nd, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving."/>
 
         
@@ -184,7 +184,7 @@ ga('send', 'pageview');
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
-<p>Last update: <strong>March 17th, 2018</strong></p>
+<p>Last update: <strong>March 22nd, 2018</strong></p>
 
 <p>I have enjoyed slowly converting my configuration files to <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html">literate programming</a> style style using org-mode in Emacs. I previously posted my <a href="../my-elvish-configuration-with-commentary/">Elvish configuration</a>, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.org">init.org</a> file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.org">init.org file in GitHub</a> for my current, live configuration, and the generated file at <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.el">https://github.com/zzamboni/dot_emacs/blob/master/init.el</a>.</p>
 
@@ -208,6 +208,7 @@ ga('send', 'pageview');
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">js-indent-level</span> <span class="mi">2</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">lua-indent-level</span> <span class="mi">2</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-agenda-files</span> <span class="no">nil</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-hugo-use-code-for-kbd</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-mac-grab-Acrobat-app-p</span> <span class="no">nil</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-mac-grab-devonthink-app-p</span> <span class="no">nil</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-structure-template-alist</span>
@@ -490,8 +491,9 @@ ga('send', 'pageview');
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-directory</span> <span class="s">&#34;~/Dropbox/org&#34;</span><span class="p">)</span></code></pre></div>
 <p>Automatically log done times in todo items (I haven&rsquo;t used this much yet).</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-log-done</span> <span class="no">t</span><span class="p">)</span></code></pre></div>
-<p>Keep the indentation well structured by. OMG this is a must have. Makes it feel less like editing a big text file and more like a purpose built editor for org mode that forces the indentation. Thanks <a href="https://github.com/nickanderson/Level-up-your-notes-with-Org/blob/master/Level-up-your-notes-with-Org.org#automatic-visual-indention">Nick</a> for the tip!</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-startup-indented</span> <span class="no">t</span><span class="p">)</span></code></pre></div>
+<p>Keep the indentation well structured by. OMG this is a must have. Makes it feel less like editing a big text file and more like a purpose built editor for org mode that forces the indentation. Thanks <a href="https://github.com/nickanderson/Level-up-your-notes-with-Org/blob/master/Level-up-your-notes-with-Org.org#automatic-visual-indention">Nick</a> for the tip! I added the <code>diminish</code> line, which removes the &ldquo;Ind&rdquo; indicator from the modeline.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-startup-indented</span> <span class="no">t</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">eval-after-load</span> <span class="ss">&#39;org-indent</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">diminish</span> <span class="ss">&#39;org-indent-mode</span><span class="p">))</span></code></pre></div>
 <h3 id="building-presentations-with-org-mode">Building presentations with org-mode</h3>
 
 <p><a href="https://github.com/yjwen/org-reveal">org-reveal</a> is an awesome package for building presentations with org-mode.</p>
@@ -527,6 +529,17 @@ ga('send', 'pageview');
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;ox-texinfo</span><span class="p">)</span></code></pre></div></li>
 </ul>
 
+<h3 id="blogging-with-hugo">Blogging with Hugo</h3>
+
+<p><a href="https://ox-hugo.scripter.co/">ox-hugo</a> is an awesome way to blog from org-mode. It makes it possible for posts in org-mode format to be kept separate, and it generates the Markdown files for Hugo. Hugo <a href="https://gohugo.io/content-management/formats/">supports org files</a>, but using ox-hugo has multiple advantages:</p>
+
+<ul>
+<li>Parsing is done by org-mode natively, not by an external library. Although goorgeous (used by Hugo) is very good, it still lacks in many areas, which leads to text being interpreted differently as by org-mode.</li>
+<li>Hugo is left to parse a native Markdown file, which means that many of its features such as shortcodes, TOC generation, etc., can still be used on the generated file.</li>
+<li>I am intrigued by ox-hugo&rsquo;s &ldquo;one post per org subtree&rdquo; proposed structure. So far I&rsquo;ve always had one file per post, but with org-mode&rsquo;s structuring features, it might make sense to give it a try.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ox-hugo</span>
+  <span class="nb">:after</span> <span class="nv">ox</span><span class="p">)</span></code></pre></div>
 <h3 id="keeping-a-journal">Keeping a Journal</h3>
 
 <p>I use <a href="http://750words.com/">750words</a> for my personal Journal, and I usually write my entries locally using Scrivener. I have been playing with <code>org-journal</code> for this, but I am not fully convinced yet.</p>
@@ -596,13 +609,24 @@ ga('send', 'pageview');
 
 <ul>
 <li>Setting up <code>visual-line-mode</code> and making all my paragraphs one single line, so that the lines wrap around nicely in the window according to their proportional-font size, instead of at a fixed character count, which does not work so nicely when characters have varying widths.</li>
-<li>Setting up the <code>variable-pitch</code> face (I only learned of its existence now while figuring this out) to the proportional font I like to use. I&rsquo;m currently using <a href="https://en.wikipedia.org/wiki/Source_Sans_Pro">Source Sans Pro</a>. Another favorite is <a href="https://en.wikipedia.org/wiki/Avenir_(typeface)">Avenir Next</a>.</li>
-<li>Setting up the <code>fixed-pitch</code> face to be the same as my usual <code>default</code> face. My current one is <a href="https://en.wikipedia.org/wiki/Inconsolata">Inconsolata</a>.</li>
-<li>Configuring the corresponding org-mode faces for blocks, verbatim code, and maybe a couple of other things.</li>
-<li>Setting up a hook that automatically enables <code>visual-line-mode</code> and <code>variable-pitch-mode</code> when entering org-mode.</li>
-</ul>
+
+<li><p>Setting up the <code>variable-pitch</code> face (I only learned of its existence now while figuring this out) to the proportional font I like to use. I&rsquo;m currently using <a href="https://en.wikipedia.org/wiki/Source_Sans_Pro">Source Sans Pro</a>. Another favorite is <a href="https://en.wikipedia.org/wiki/Avenir_(typeface)">Avenir Next</a>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">custom-theme-set-faces</span>
+ <span class="ss">&#39;user</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">variable-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Source Sans Pro&#34;</span> <span class="nb">:height</span> <span class="mi">180</span> <span class="nb">:weight</span> <span class="nv">light</span><span class="p">)))))</span></code></pre></div></li>
+
+<li><p>Setting up the <code>fixed-pitch</code> face to be the same as my usual <code>default</code> face. My current one is <a href="https://en.wikipedia.org/wiki/Inconsolata">Inconsolata</a>.</p></li>
+
+<li><p>Configuring the corresponding org-mode faces for blocks, verbatim code, and maybe a couple of other things.</p></li>
+
+<li><p>Setting up a hook that automatically enables <code>visual-line-mode</code> and <code>variable-pitch-mode</code> when entering org-mode.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;org-mode-hook</span> <span class="ss">&#39;visual-line-mode</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;org-mode-hook</span> <span class="ss">&#39;variable-pitch-mode</span><span class="p">)</span></code></pre></div>
+<p>These two modes produce modeline indicators, which I disable using <code>diminish</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">eval-after-load</span> <span class="ss">&#39;face-remap</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">diminish</span> <span class="ss">&#39;buffer-face-mode</span><span class="p">))</span>
+<span class="p">(</span><span class="nv">eval-after-load</span> <span class="ss">&#39;simple</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">diminish</span> <span class="ss">&#39;visual-line-mode</span><span class="p">))</span></code></pre></div></li>
+</ul>
+
 <h3 id="auto-generated-table-of-contents">Auto-generated table of contents</h3>
 
 <p>The <code>toc-org</code> package allows us to insert a table of contents in headings marked with <code>:TOC:</code>. This is useful for org files that are to be viewed directly on GitHub, which renders org files correctly, but does not generate a table of contents at the top. For an example, see <a href="https://github.com/zzamboni/dot-emacs/blob/master/init.org">this file on GitHub</a>.</p>
@@ -654,27 +678,19 @@ ga('send', 'pageview');
 <h3 id="mac">Mac</h3>
 
 <p>First, we set the key modifiers correctly to my preferences: Make Command (⌘) act as Meta, Option as Alt, right-Option as Super</p>
-
-<p><a id="org624aaac"></a></p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">mac-command-modifier</span> <span class="ss">&#39;meta</span><span class="p">)</span>
 <span class="p">(</span><span class="nb">setq</span> <span class="nv">mac-option-modifier</span> <span class="ss">&#39;alt</span><span class="p">)</span>
 <span class="p">(</span><span class="nb">setq</span> <span class="nv">mac-right-option-modifier</span> <span class="ss">&#39;super</span><span class="p">)</span></code></pre></div>
 <p>We also make it possible to use the familiar <code>⌘-+</code> and <code>⌘--</code> to increase and decrease the font size. ⌘-= is also bound to &ldquo;increase&rdquo; because it&rsquo;s on the same key in an English keyboard.</p>
-
-<p><a id="org608c9ba"></a></p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-+&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-increase</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-=&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-increase</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M--&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-decrease</span><span class="p">)</span></code></pre></div>
 <p>Somewhat surprisingly, there seems to be no &ldquo;reset&rdquo; function, so I define my own and bind it to <code>⌘-0</code>.</p>
-
-<p><a id="org14d5250"></a></p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">text-scale-reset</span> <span class="p">()</span>
   <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
   <span class="p">(</span><span class="nv">text-scale-set</span> <span class="mi">0</span><span class="p">))</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-0&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-reset</span><span class="p">)</span></code></pre></div>
 <p>We also use the <code>exec-path-from-shell</code> to make sure the path settings from the shell are loaded into Emacs (usually it starts up with the default system-wide path).</p>
-
-<p><a id="orgcdad83f"></a></p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">exec-path-from-shell</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nv">exec-path-from-shell-initialize</span><span class="p">))</span></code></pre></div>
@@ -1176,6 +1192,7 @@ ga('send', 'pageview');
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#general-org-mode-configuration">General org-mode configuration</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#building-presentations-with-org-mode">Building presentations with org-mode</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#various-exporters">Various exporters</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#blogging-with-hugo">Blogging with Hugo</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#keeping-a-journal">Keeping a Journal</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#literate-programming-using-org-babel">Literate programming using org-babel</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#beautifying-org-mode">Beautifying org-mode</a></li>
