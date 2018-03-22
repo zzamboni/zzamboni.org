@@ -4,7 +4,7 @@ author = ["Zamboni Diego"]
 date = 2017-12-04T22:15:00+01:00
 tags = ["elvish", "shell", "unix", "config"]
 draft = false
-creator = "Emacs 25.3.2 (Org mode 9.1.7 + ox-hugo)"
+creator = "Emacs 25.3.2 (Org mode 9.1.8 + ox-hugo)"
 featured_image = "/images/elvish-logo.svg"
 summary = "How to set up the bash !! and !$ shortcuts for accessing the previous command in Elvish."
 +++

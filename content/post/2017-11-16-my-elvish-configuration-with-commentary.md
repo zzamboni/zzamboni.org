@@ -4,13 +4,13 @@ author = ["Zamboni Diego"]
 date = 2017-11-16T20:21:00+01:00
 tags = ["config", "howto", "literateprogramming", "elvish"]
 draft = false
-creator = "Emacs 25.3.2 (Org mode 9.1.7 + ox-hugo)"
+creator = "Emacs 25.3.2 (Org mode 9.1.8 + ox-hugo)"
 toc = true
 featured_image = "/images/elvish-logo.svg"
 summary = "In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections."
 +++
 
-Last update: **March 18th, 2018**
+Last update: **March 22nd, 2018**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -219,7 +219,7 @@ use github.com/zzamboni/elvish-modules/long-running-notifications
 
 ## Directory and command navigation and history {#directory-and-command-navigation-and-history}
 
-Elvish comes with built-in location and command history modes. I use the `narrow` module, which allow for more customization, including pre- and after- hooks for each of the modes. I use the default binding for history mode (`C-r`), but change the location mode binding to `Alt-l` to avoid conflicting with the binding of `C-l` to "clear screen" in `readline-binding`. I disable the lastcmd binding because it is taken over by the `bang-bang` module below.
+Elvish comes with built-in location and command history modes. I use the `narrow` module, which allow for more customization, including pre- and after- hooks for each of the modes. I use the default binding for history mode (<kbd>C-r</kbd>), but change the location mode binding to <kbd>Alt-l</kbd> to avoid conflicting with the binding of <kbd>C-l</kbd> to "clear screen" in `readline-binding`. I disable the lastcmd binding because it is taken over by the `bang-bang` module below.
 
 ```elvish
 use narrow
@@ -240,7 +240,7 @@ alias:new cd "use github.com/zzamboni/elvish-modules/dir; dir:cd"
 alias:new cdb "use github.com/zzamboni/elvish-modules/dir; dir:cdb"
 ```
 
-`dir` also implements a narrow-based directory history chooser, which I bind to `Alt-i` (I have found I don't use this as much as I thought I would - the built-in location mode works nicely).
+`dir` also implements a narrow-based directory history chooser, which I bind to <kbd>Alt-i</kbd> (I have found I don't use this as much as I thought I would - the built-in location mode works nicely).
 
 ```elvish
 edit:insert:binding[Alt-i] = $dir:history-chooser~
