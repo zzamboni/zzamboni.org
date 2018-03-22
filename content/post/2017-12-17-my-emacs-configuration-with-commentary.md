@@ -4,13 +4,13 @@ author = ["Zamboni Diego"]
 date = 2017-12-17T20:14:00+01:00
 tags = ["config", "howto", "literateprogramming", "emacs"]
 draft = false
-creator = "Emacs 25.3.2 (Org mode 9.1.7 + ox-hugo)"
+creator = "Emacs 25.3.2 (Org mode 9.1.8 + ox-hugo)"
 featured_image = "/images/emacs-logo.svg"
 toc = true
 summary = "I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file."
 +++
 
-Last update: **March 17th, 2018**
+Last update: **March 22nd, 2018**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot_emacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot_emacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot_emacs/blob/master/init.el>.
 
@@ -41,6 +41,7 @@ Here is the current contents of the [custom.el](https://github.com/zzamboni/dot-
  '(js-indent-level 2)
  '(lua-indent-level 2)
  '(org-agenda-files nil)
+ '(org-hugo-use-code-for-kbd t)
  '(org-mac-grab-Acrobat-app-p nil)
  '(org-mac-grab-devonthink-app-p nil)
  '(org-structure-template-alist
@@ -454,10 +455,11 @@ Automatically log done times in todo items (I haven't used this much yet).
 (setq org-log-done t)
 ```
 
-Keep the indentation well structured by. OMG this is a must have. Makes it feel less like editing a big text file and more like a purpose built editor for org mode that forces the indentation. Thanks [Nick](https://github.com/nickanderson/Level-up-your-notes-with-Org/blob/master/Level-up-your-notes-with-Org.org#automatic-visual-indention) for the tip!
+Keep the indentation well structured by. OMG this is a must have. Makes it feel less like editing a big text file and more like a purpose built editor for org mode that forces the indentation. Thanks [Nick](https://github.com/nickanderson/Level-up-your-notes-with-Org/blob/master/Level-up-your-notes-with-Org.org#automatic-visual-indention) for the tip! I added the `diminish` line, which removes the "Ind" indicator from the modeline.
 
 ```emacs-lisp
 (setq org-startup-indented t)
+(eval-after-load 'org-indent '(diminish 'org-indent-mode))
 ```
 
 
@@ -513,6 +515,20 @@ One of the big strengths of org-mode is the ability to export a document in many
     ```emacs-lisp
     (require 'ox-texinfo)
     ```
+
+
+### Blogging with Hugo {#blogging-with-hugo}
+
+[ox-hugo](https://ox-hugo.scripter.co/) is an awesome way to blog from org-mode. It makes it possible for posts in org-mode format to be kept separate, and it generates the Markdown files for Hugo. Hugo [supports org files](https://gohugo.io/content-management/formats/), but using ox-hugo has multiple advantages:
+
+-   Parsing is done by org-mode natively, not by an external library. Although goorgeous (used by Hugo) is very good, it still lacks in many areas, which leads to text being interpreted differently as by org-mode.
+-   Hugo is left to parse a native Markdown file, which means that many of its features such as shortcodes, TOC generation, etc., can still be used on the generated file.
+-   I am intrigued by ox-hugo's "one post per org subtree" proposed structure. So far I've always had one file per post, but with org-mode's structuring features, it might make sense to give it a try.
+
+```emacs-lisp
+(use-package ox-hugo
+  :after ox)
+```
 
 
 ### Keeping a Journal {#keeping-a-journal}
@@ -622,14 +638,27 @@ I am experimenting with using proportional fonts in org-mode for the text, while
 
 -   Setting up `visual-line-mode` and making all my paragraphs one single line, so that the lines wrap around nicely in the window according to their proportional-font size, instead of at a fixed character count, which does not work so nicely when characters have varying widths.
 -   Setting up the `variable-pitch` face (I only learned of its existence now while figuring this out) to the proportional font I like to use. I'm currently using [Source Sans Pro](https://en.wikipedia.org/wiki/Source_Sans_Pro). Another favorite is [Avenir Next](https://en.wikipedia.org/wiki/Avenir_(typeface)).
+
+    ```emacs-lisp
+    (custom-theme-set-faces
+     'user
+     '(variable-pitch ((t (:family "Source Sans Pro" :height 180 :weight light)))))
+    ```
 -   Setting up the `fixed-pitch` face to be the same as my usual `default` face. My current one is [Inconsolata](https://en.wikipedia.org/wiki/Inconsolata).
 -   Configuring the corresponding org-mode faces for blocks, verbatim code, and maybe a couple of other things.
 -   Setting up a hook that automatically enables `visual-line-mode` and `variable-pitch-mode` when entering org-mode.
 
-```emacs-lisp
-(add-hook 'org-mode-hook 'visual-line-mode)
-(add-hook 'org-mode-hook 'variable-pitch-mode)
-```
+    ```emacs-lisp
+    (add-hook 'org-mode-hook 'visual-line-mode)
+    (add-hook 'org-mode-hook 'variable-pitch-mode)
+    ```
+
+    These two modes produce modeline indicators, which I disable using `diminish`.
+
+    ```emacs-lisp
+    (eval-after-load 'face-remap '(diminish 'buffer-face-mode))
+    (eval-after-load 'simple '(diminish 'visual-line-mode))
+    ```
 
 
 ### Auto-generated table of contents {#auto-generated-table-of-contents}
@@ -709,7 +738,6 @@ Some settings maybe OS-specific, and this is where we set them. For now I only u
 
 First, we set the key modifiers correctly to my preferences: Make Command (⌘) act as Meta, Option as Alt, right-Option as Super
 
-<a id="org624aaac"></a>
 ```emacs-lisp
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'alt)
@@ -718,7 +746,6 @@ First, we set the key modifiers correctly to my preferences: Make Command (⌘) 
 
 We also make it possible to use the familiar `⌘-+` and `⌘--` to increase and decrease the font size. ⌘-= is also bound to "increase" because it's on the same key in an English keyboard.
 
-<a id="org608c9ba"></a>
 ```emacs-lisp
 (global-set-key (kbd "M-+") 'text-scale-increase)
 (global-set-key (kbd "M-=") 'text-scale-increase)
@@ -727,7 +754,6 @@ We also make it possible to use the familiar `⌘-+` and `⌘--` to increase and
 
 Somewhat surprisingly, there seems to be no "reset" function, so I define my own and bind it to `⌘-0`.
 
-<a id="org14d5250"></a>
 ```emacs-lisp
 (defun text-scale-reset ()
   (interactive)
@@ -737,7 +763,6 @@ Somewhat surprisingly, there seems to be no "reset" function, so I define my own
 
 We also use the `exec-path-from-shell` to make sure the path settings from the shell are loaded into Emacs (usually it starts up with the default system-wide path).
 
-<a id="orgcdad83f"></a>
 ```emacs-lisp
 (use-package exec-path-from-shell
   :config
