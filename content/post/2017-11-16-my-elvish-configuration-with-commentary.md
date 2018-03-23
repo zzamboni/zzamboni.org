@@ -14,7 +14,7 @@ Last update: **March 23, 2018**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
-This is also my first blog post written using [org-mode](http://orgmode.org/), which I have started using for writing and documenting my code, using [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html). The content below is included unmodified from my [rc.org file](https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.org) (as of the date shown above), from which the [rc.elv](https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.elv) file is directly generated.
+This is also my first blog post written using [org-mode](http://orgmode.org/), which I have started using for writing and documenting my code, using [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html). The content below is included unmodified from my [rc.org file](https://github.com/zzamboni/dot-elvish/blob/master/rc.org) (as of the date shown above), from which the [rc.elv](https://github.com/zzamboni/dot-elvish/blob/master/rc.elv) file is directly generated.
 
 Without further ado...
 
