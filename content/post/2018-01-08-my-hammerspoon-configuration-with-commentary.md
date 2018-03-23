@@ -1,6 +1,6 @@
 +++
 title = "My Hammerspoon Configuration, With Commentary"
-author = ["Zamboni Diego"]
+author = ["Diego Zamboni"]
 date = 2018-01-08T13:31:00+01:00
 tags = ["config", "howto", "literateprogramming", "hammerspoon"]
 draft = false

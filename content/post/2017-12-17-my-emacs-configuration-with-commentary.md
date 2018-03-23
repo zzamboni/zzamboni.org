@@ -1,6 +1,6 @@
 +++
 title = "My Emacs Configuration, With Commentary"
-author = ["Zamboni Diego"]
+author = ["Diego Zamboni"]
 date = 2017-12-17T20:14:00+01:00
 tags = ["config", "howto", "literateprogramming", "emacs"]
 draft = false
