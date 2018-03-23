@@ -1,13 +1,16 @@
 #+hugo_base_dir: ../
 #+seq_todo: TODO DRAFT DONE
-
 #+options: creator:t
 
 #+macro: updatetime {{{time(%B %e\, %Y)}}}
 
+#+title: zzamboni.org source file
+#+author: Diego Zamboni
+#+email: diego@zzamboni.org
+
 This file is the source for all new content on [[http://zzamboni.org/][my website]] since March 2018. Content here may be in progress or incomplete. This file gets converted to [[http://gohugo.io/][Hugo]] files by the excellent [[https://ox-hugo.scripter.co/][ox-hugo]].
 
-*You really should not read it here but at [[http://zzamboni.org/][zzamboni.org]].*
+*You really should not read it here but at [[http://zzamboni.org/][zzamboni.org]]*.
 
 * Table of Contents                                            :TOC:noexport:
 - [[#pages][Pages]]

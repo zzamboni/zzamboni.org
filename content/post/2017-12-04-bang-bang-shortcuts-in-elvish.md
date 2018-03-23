@@ -1,6 +1,6 @@
 +++
 title = "Bang-Bang (!!, !$) Shell Shortcuts in Elvish"
-author = ["Zamboni Diego"]
+author = ["Diego Zamboni"]
 date = 2017-12-04T22:15:00+01:00
 tags = ["elvish", "shell", "unix", "config"]
 draft = false

@@ -1,6 +1,6 @@
 +++
 title = "Beautifying Org Mode in Emacs"
-author = ["Zamboni Diego"]
+author = ["Diego Zamboni"]
 date = 2018-03-21T22:45:00+01:00
 tags = ["emacs", "orgmode", "beautifulemacs", "config"]
 draft = false

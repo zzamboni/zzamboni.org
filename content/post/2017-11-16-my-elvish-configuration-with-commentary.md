@@ -1,6 +1,6 @@
 +++
 title = "My Elvish Configuration With Commentary"
-author = ["Zamboni Diego"]
+author = ["Diego Zamboni"]
 date = 2017-11-16T20:21:00+01:00
 tags = ["config", "howto", "literateprogramming", "elvish"]
 draft = false
