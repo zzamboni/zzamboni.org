@@ -10,11 +10,11 @@ featured_image = "/images/elvish-logo.svg"
 summary = "In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections."
 +++
 
-Last update: **March 22nd, 2018**
+Last update: **March 23, 2018**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
-This is also my first blog post written using [org-mode](http://orgmode.org/), which I have started using for writing and documenting my code, using [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html). The content below is included unmodified from my [rc.org file](https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.org), from which the [rc.elv](https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.elv) file is directly generated.
+This is also my first blog post written using [org-mode](http://orgmode.org/), which I have started using for writing and documenting my code, using [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html). The content below is included unmodified from my [rc.org file](https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.org) (as of the date shown above), from which the [rc.elv](https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.elv) file is directly generated.
 
 Without further ado...
 
@@ -226,7 +226,7 @@ use narrow
 narrow:bind-trigger-keys &location=Alt-l &lastcmd=""
 ```
 
-I have decades of muscle memory using `!!` and `!$` to insert the last command and its last argument, respectively. The [bang-bang](https://github.com/zzamboni/elvish-modules/blob/master/bang-bang.org) module allows me to keep using them.
+I have decades of muscle memory using <kbd>!!</kbd> and <kbd>!$</kbd> to insert the last command and its last argument, respectively. The [bang-bang](https://github.com/zzamboni/elvish-modules/blob/master/bang-bang.org) module allows me to keep using them.
 
 ```elvish
 use github.com/zzamboni/elvish-modules/bang-bang
