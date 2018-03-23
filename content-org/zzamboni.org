@@ -3,6 +3,8 @@
 
 #+options: creator:t
 
+#+macro: updatetime {{{time(%B %e\, %Y)}}}
+
 This file is the source for all new content on [[http://zzamboni.org/][my website]] since March 2018. Content here may be in progress or incomplete. This file gets converted to [[http://gohugo.io/][Hugo]] files by the excellent [[https://ox-hugo.scripter.co/][ox-hugo]].
 
 *You really should not read it here but at [[http://zzamboni.org/][zzamboni.org]].*
@@ -97,11 +99,11 @@ CLOSED: [2017-12-17 Sun 20:14]
 :export_hugo_custom_front_matter: :featured_image /images/emacs-logo.svg :toc true :summary I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file.
 :end:
 
-Last update: *March 22nd, 2018*
+Last update: *{{{updatetime}}}*
 
 I have enjoyed slowly converting my configuration files to [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate programming]] style style using org-mode in Emacs. I previously posted my [[../my-elvish-configuration-with-commentary/][Elvish configuration]], and now it's the turn of my Emacs configuration file. The text below is included directly from my [[https://github.com/zzamboni/dot_emacs/blob/master/init.org][init.org]] file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [[https://github.com/zzamboni/dot_emacs/blob/master/init.org][init.org file in GitHub]] for my current, live configuration, and the generated file at [[https://github.com/zzamboni/dot_emacs/blob/master/init.el]].
 
-#+include: "~/.emacs.d/init.org" :lines "17-"
+#+include: "~/.emacs.d/init.org" :lines "19-"
 
 *** DONE My Hammerspoon Configuration, With Commentary        :hammerspoon:
 CLOSED: [2018-01-08 Mon 13:31]
@@ -110,11 +112,11 @@ CLOSED: [2018-01-08 Mon 13:31]
 :export_hugo_custom_front_matter: :toc true :featured_image /images/hammerspoon.png :summary In my ongoing series of literate config files, I present to you my Hammerspoon configuration file.
 :END:
 
-Last update: *March 22nd, 2018*
+Last update: *{{{updatetime}}}*
 
-In my [[../my-elvish-configuration-with-commentary/][ongoing]] [[../my-emacs-configuration-with-commentary][series]] of [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate]] config files, I present to you my [[http://www.hammerspoon.org/][Hammerspoon]] configuration file. You can see the generated file at [[https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua]]. As usual, this is just a snapshot at this time, you can see the current version of my configuration [[https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org][in GitHub]].
+In my [[../my-elvish-configuration-with-commentary/][ongoing]] [[../my-emacs-configuration-with-commentary][series]] of [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate]] config files, I present to you my [[http://www.hammerspoon.org/][Hammerspoon]] configuration file. You can see the generated file at [[https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua]]. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [[https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org][in GitHub]].
 
-#+include: "~/.hammerspoon/init.org" :lines "17-"
+#+include: "~/.hammerspoon/init.org" :lines "19-"
 
 *** DONE My Elvish Configuration With Commentary                   :elvish:
 CLOSED: [2017-11-16 Thu 20:21]
@@ -123,11 +125,11 @@ CLOSED: [2017-11-16 Thu 20:21]
 :export_hugo_custom_front_matter: :toc true :featured_image /images/elvish-logo.svg :summary In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 :END:
 
-Last update: *March 22nd, 2018*
+Last update: *{{{updatetime}}}*
 
 In this blog post I will walk you through my current [[http://elvish.io][Elvish]] configuration file, with running commentary about the different sections.
 
-This is also my first blog post written using [[http://orgmode.org/][org-mode]], which I have started using for writing and documenting my code, using [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate programming]]. The content below is included unmodified from my [[https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.org][rc.org file]], from which the [[https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.elv][rc.elv]] file is directly generated.
+This is also my first blog post written using [[http://orgmode.org/][org-mode]], which I have started using for writing and documenting my code, using [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate programming]]. The content below is included unmodified from my [[https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.org][rc.org file]] (as of the date shown above), from which the [[https://github.com/zzamboni/vcsh_elvish/blob/master/.elvish/rc.elv][rc.elv]] file is directly generated.
 
 Without further ado...
 

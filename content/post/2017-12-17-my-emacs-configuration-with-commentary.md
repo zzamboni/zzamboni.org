@@ -10,7 +10,7 @@ toc = true
 summary = "I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file."
 +++
 
-Last update: **March 22nd, 2018**
+Last update: **March 23, 2018**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot_emacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot_emacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot_emacs/blob/master/init.el>.
 
@@ -263,10 +263,11 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     (when (fboundp 'winner-mode) (winner-mode 1))
     ```
 
--   Add "unfill" commands to parallel the "fill" ones.
+-   Add "unfill" commands to parallel the "fill" ones, and bind the `unfill-paragraph` command to <kbd>Alt-q</kbd> (to parallel <kbd>M-q</kbd> for `fill-paragraph`)
 
     ```emacs-lisp
     (use-package unfill)
+    (global-set-key (kbd "A-q") 'unfill-paragraph)
     ```
 
 -   Save the place of the cursor in each file, and restore it upon opening it again.
