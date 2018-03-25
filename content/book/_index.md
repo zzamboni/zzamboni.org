@@ -1,7 +1,9 @@
----
-title: "Books"
-date: 2017-08-03T17:57:03+02:00
-featured_image: "/images/book-box-thin.jpg"
-weight: "02"
----
-
++++
+title = "Books"
+author = ["Diego Zamboni"]
+date = 2018-03-25T20:11:00+02:00
+draft = false
+creator = "Emacs 25.3.2 (Org mode 9.1.8 + ox-hugo)"
+weight = 2
+featured_image = "/images/book-box-thin.jpg"
++++
