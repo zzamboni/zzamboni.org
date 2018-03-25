@@ -11,7 +11,7 @@
   
   <url>
     <loc>http://zzamboni.org/book/</loc>
-    <lastmod>2017-08-03T17:57:03+02:00</lastmod>
+    <lastmod>2018-03-25T20:11:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -32,7 +32,7 @@
   
   <url>
     <loc>http://zzamboni.org/contact/</loc>
-    <lastmod>2017-08-03T17:55:04+02:00</lastmod>
+    <lastmod>2018-03-25T18:34:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -40,6 +40,13 @@
   <url>
     <loc>http://zzamboni.org/about/</loc>
     <lastmod>2018-03-22T19:40:00+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://zzamboni.org/book/cfengine/</loc>
+    <lastmod>2018-03-25T21:05:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -159,13 +166,6 @@
   <url>
     <loc>http://zzamboni.org/</loc>
     <lastmod>2017-08-03T22:37:17+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://zzamboni.org/book/cfengine/</loc>
-    <lastmod>2017-08-03T17:56:58+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
