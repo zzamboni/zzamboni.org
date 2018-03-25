@@ -18,6 +18,9 @@ This file is the source for all new content on [[http://zzamboni.org/][my websit
     - [[#about-this-site][About this site]]
     - [[#image-attributions][Image attributions:]]
   - [[#contact][Contact]]
+  - [[#books][Books]]
+- [[#book-pages][Book pages]]
+  - [[#learning-cfengine-3][Learning CFEngine 3]]
 - [[#ideas][Ideas]]
   - [[#hammerspoon][Hammerspoon]]
     - [[#using-and-extending-seal][Using and extending Seal]]
@@ -100,6 +103,37 @@ If you have any questions, comments or feedback about this site, please use the 
 ----
 
 {{< form-contact action="http://formspree.io/diego@zzamboni.org" >}}
+
+** DONE Books
+CLOSED: [2018-03-25 Sun 20:11]
+:PROPERTIES:
+:export_hugo_section: book
+:export_hugo_custom_front_matter: :featured_image /images/book-box-thin.jpg
+:export_hugo_weight: 02
+:export_file_name: _index
+:END:
+
+* Book pages
+
+The individual pages for each book.
+
+** DONE Learning CFEngine 3
+CLOSED: [2018-03-25 Sun 21:05]
+:PROPERTIES:
+:export_hugo_section: book
+:export_file_name: cfengine
+:export_hugo_custom_front_matter: :finalURL http://cf-learn.info/
+:END:
+
+{{< bookimglink style="float:right" >}}
+
+I am the author of "Learning CFEngine 3", the best book for learning [[http://cfengine.com/][CFEngine]].
+
+The book has its own webpage at http://cf-learn.info, please visit it for more information.
+
+You can buy the book from Amazon by clicking the link on the right.
+
+@@html:<!--more-->
 
 * Ideas
 

@@ -4,7 +4,7 @@ author = ["Diego Zamboni"]
 date = 2018-03-25T18:34:00+02:00
 aliases = ["/contact.html"]
 draft = false
-creator = "Emacs 25.3.1 (Org mode 9.1.8 + ox-hugo)"
+creator = "Emacs 25.3.2 (Org mode 9.1.8 + ox-hugo)"
 weight = 5
 featured_image = "/images/phone-booth-red-trimmed.jpg"
 +++
