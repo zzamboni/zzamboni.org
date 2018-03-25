@@ -12,19 +12,34 @@ This file is the source for all new content on [[http://zzamboni.org/][my websit
 
 *You really should not read it here but at [[http://zzamboni.org/][zzamboni.org]]*.
 
-* Table of Contents                                            :TOC:noexport:
+* Table of Contents                                            :TOC_3:noexport:
 - [[#pages][Pages]]
   - [[#about][About]]
+    - [[#about-this-site][About this site]]
+    - [[#image-attributions][Image attributions:]]
+  - [[#contact][Contact]]
 - [[#ideas][Ideas]]
   - [[#hammerspoon][Hammerspoon]]
+    - [[#using-and-extending-seal][Using and extending Seal]]
+    - [[#sending-things-to-omnifocus][Sending things to OmniFocus]]
   - [[#elvish][Elvish]]
   - [[#cfengine][CFEngine]]
+  - [[#emacs][Emacs]]
+    - [[#ox-hugo][ox-hugo]]
   - [[#tips-and-tricks][Tips and tricks]]
+    - [[#cryfs][CryFS]]
+    - [[#hosting-a-hugo-blog-in-github][Hosting a Hugo blog in GitHub]]
+    - [[#using-the-nix-package-manager-in-macos][Using the Nix package manager in macOS]]
 - [[#posts][Posts]]
   - [[#literate-config-files][Literate config files]]
-  - [[#emacs][Emacs]]
+    - [[#my-emacs-configuration-with-commentary][My Emacs Configuration, With Commentary]]
+    - [[#my-hammerspoon-configuration-with-commentary][My Hammerspoon Configuration, With Commentary]]
+    - [[#my-elvish-configuration-with-commentary][My Elvish Configuration With Commentary]]
+  - [[#emacs-1][Emacs]]
+    - [[#beautifying-org-mode-in-emacs][Beautifying Org Mode in Emacs]]
   - [[#hammerspoon-1][Hammerspoon]]
   - [[#elvish-1][Elvish]]
+    - [[#bang-bang---shell-shortcuts-in-elvish][Bang-Bang (!!, !$) Shell Shortcuts in Elvish]]
 
 * Pages
 
@@ -70,6 +85,22 @@ I think it's incredible that all of this infrastructure is so easy to use and av
 
 If you have any concerns or questions about the images used in this site, please [[../contact][let me know]].
 
+** DONE Contact
+CLOSED: [2018-03-25 Sun 18:34]
+:PROPERTIES:
+:export_hugo_section: contact
+:export_hugo_custom_front_matter: :featured_image /images/phone-booth-red-trimmed.jpg
+:export_hugo_weight: 05
+:export_file_name: _index
+:export_hugo_aliases: /contact.html
+:END:
+
+If you have any questions, comments or feedback about this site, please use the form below to send me a message.
+
+----
+
+{{< form-contact action="http://formspree.io/diego@zzamboni.org" >}}
+
 * Ideas
 
 Ideas for things to write about.
@@ -79,6 +110,8 @@ Ideas for things to write about.
 *** Sending things to OmniFocus
 ** Elvish
 ** CFEngine
+** Emacs
+*** ox-hugo
 ** Tips and tricks
 *** CryFS
 *** Hosting a Hugo blog in GitHub
