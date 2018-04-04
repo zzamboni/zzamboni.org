@@ -22,7 +22,7 @@
      
 
       <meta property="og:title" content="My Emacs Configuration, With Commentary" />
-<meta property="og:description" content="Last update: March 23, 2018
+<meta property="og:description" content="Last update: April 4, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://zzamboni.org/post/my-emacs-configuration-with-commentary/" />
@@ -44,20 +44,20 @@ I have enjoyed slowly converting my configuration files to literate programming 
 
 
 <meta itemprop="name" content="My Emacs Configuration, With Commentary">
-<meta itemprop="description" content="Last update: March 23, 2018
+<meta itemprop="description" content="Last update: April 4, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving.">
 
 
 <meta itemprop="datePublished" content="2017-12-17T20:14:00&#43;01:00" />
 <meta itemprop="dateModified" content="2017-12-17T20:14:00&#43;01:00" />
-<meta itemprop="wordCount" content="5313">
+<meta itemprop="wordCount" content="5881">
 
 
 
 <meta itemprop="keywords" content="config,howto,literateprogramming,emacs," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Emacs Configuration, With Commentary"/>
-<meta name="twitter:description" content="Last update: March 23, 2018
+<meta name="twitter:description" content="Last update: April 4, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving."/>
 
         
@@ -184,9 +184,19 @@ ga('send', 'pageview');
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
-<p>Last update: <strong>March 23, 2018</strong></p>
+<p>Last update: <strong>April  4, 2018</strong></p>
 
 <p>I have enjoyed slowly converting my configuration files to <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html">literate programming</a> style style using org-mode in Emacs. I previously posted my <a href="../my-elvish-configuration-with-commentary/">Elvish configuration</a>, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.org">init.org</a> file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.org">init.org file in GitHub</a> for my current, live configuration, and the generated file at <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.el">https://github.com/zzamboni/dot_emacs/blob/master/init.el</a>.</p>
+
+<h2 id="references">References</h2>
+
+<p>Emacs config is an art, and I have learned a lot by reading through other people&rsquo;s config files. These are some of the best ones (several are also written in org mode)</p>
+
+<ul>
+<li><a href="http://pages.sachachua.com/.emacs.d/Sacha.html">Sacha Chua&rsquo;s Emacs Configuration</a></li>
+<li><a href="https://github.com/daedreth/UncleDavesEmacs#user-content-ido-and-why-i-started-using-helm">Uncle Dave&rsquo;s Emacs config</a></li>
+<li><a href="https://github.com/PythonNut/emacs-config">PythonNut&rsquo;s Emacs config</a></li>
+</ul>
 
 <h2 id="customized-variables">Customized variables</h2>
 
@@ -226,7 +236,7 @@ ga('send', 'pageview');
      <span class="p">(</span><span class="mi">110</span> <span class="o">.</span> <span class="s">&#34;notes&#34;</span><span class="p">))))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">package-selected-packages</span>
    <span class="p">(</span><span class="nb">quote</span>
-    <span class="p">(</span><span class="nv">ox-hugo</span> <span class="nv">adaptive-wrap</span> <span class="nv">yankpad</span> <span class="nv">smart-mode-line</span> <span class="nv">org-plus-contrib</span> <span class="nv">ob-cfengine3</span> <span class="nv">org-journal</span> <span class="nv">ox-asciidoc</span> <span class="nv">org-jira</span> <span class="nv">ox-jira</span> <span class="nv">org-bullets</span> <span class="nv">ox-reveal</span> <span class="nv">lispy</span> <span class="nv">parinfer</span> <span class="nv">uniquify</span> <span class="nv">csv</span> <span class="nv">all-the-icons</span> <span class="nv">toc-org</span> <span class="nv">helm</span> <span class="nv">cider</span> <span class="nv">clojure-mode</span> <span class="nv">ido-completing-read+</span> <span class="nv">writeroom-mode</span> <span class="nv">crosshairs</span> <span class="nv">ox-confluence</span> <span class="nv">ox-md</span> <span class="nv">inf-ruby</span> <span class="nv">ob-plantuml</span> <span class="nv">ob-ruby</span> <span class="nv">darktooth-theme</span> <span class="nv">kaolin-themes</span> <span class="nv">htmlize</span> <span class="nv">ag</span> <span class="nv">col-highlight</span> <span class="nv">nix-mode</span> <span class="nv">easy-hugo</span> <span class="nv">elvish-mode</span> <span class="nv">zen-mode</span> <span class="nv">racket-mode</span> <span class="nv">package-lint</span> <span class="nv">scala-mode</span> <span class="nv">go-mode</span> <span class="nv">wc-mode</span> <span class="nv">neotree</span> <span class="nv">applescript-mode</span> <span class="nv">ack</span> <span class="nv">magit</span> <span class="nv">clj-refactor</span> <span class="nv">yaml-mode</span> <span class="nv">visual-fill-column</span> <span class="nv">visible-mark</span> <span class="nb">use-package</span> <span class="nv">unfill</span> <span class="nv">typopunct</span> <span class="nv">smooth-scrolling</span> <span class="nv">smex</span> <span class="nv">smartparens</span> <span class="nv">rainbow-delimiters</span> <span class="nv">projectile</span> <span class="nv">markdown-mode</span> <span class="nv">magit-popup</span> <span class="nv">lua-mode</span> <span class="nv">keyfreq</span> <span class="nv">imenu-anywhere</span> <span class="nv">iedit</span> <span class="nv">ido-ubiquitous</span> <span class="nv">hl-sexp</span> <span class="nv">gruvbox-theme</span> <span class="nv">git-commit</span> <span class="nv">fish-mode</span> <span class="nv">exec-path-from-shell</span> <span class="nv">company</span> <span class="nv">clojure-mode-extra-font-locking</span> <span class="nv">clojure-cheatsheet</span> <span class="nv">aggressive-indent</span> <span class="nv">adoc-mode</span> <span class="nv">4clojure</span><span class="p">)))</span>
+    <span class="p">(</span><span class="nv">helm-flx</span> <span class="nv">which-key</span> <span class="nv">spaceline</span> <span class="nv">pretty-mode</span> <span class="nv">visual-regexp-steroids</span> <span class="nv">ox-hugo</span> <span class="nv">adaptive-wrap</span> <span class="nv">yankpad</span> <span class="nv">smart-mode-line</span> <span class="nv">org-plus-contrib</span> <span class="nv">ob-cfengine3</span> <span class="nv">org-journal</span> <span class="nv">ox-asciidoc</span> <span class="nv">org-jira</span> <span class="nv">ox-jira</span> <span class="nv">org-bullets</span> <span class="nv">ox-reveal</span> <span class="nv">lispy</span> <span class="nv">parinfer</span> <span class="nv">uniquify</span> <span class="nv">csv</span> <span class="nv">all-the-icons</span> <span class="nv">toc-org</span> <span class="nv">helm</span> <span class="nv">cider</span> <span class="nv">clojure-mode</span> <span class="nv">ido-completing-read+</span> <span class="nv">writeroom-mode</span> <span class="nv">crosshairs</span> <span class="nv">ox-confluence</span> <span class="nv">ox-md</span> <span class="nv">inf-ruby</span> <span class="nv">ob-plantuml</span> <span class="nv">ob-ruby</span> <span class="nv">darktooth-theme</span> <span class="nv">kaolin-themes</span> <span class="nv">htmlize</span> <span class="nv">ag</span> <span class="nv">col-highlight</span> <span class="nv">nix-mode</span> <span class="nv">easy-hugo</span> <span class="nv">elvish-mode</span> <span class="nv">zen-mode</span> <span class="nv">racket-mode</span> <span class="nv">package-lint</span> <span class="nv">scala-mode</span> <span class="nv">go-mode</span> <span class="nv">wc-mode</span> <span class="nv">neotree</span> <span class="nv">applescript-mode</span> <span class="nv">ack</span> <span class="nv">magit</span> <span class="nv">clj-refactor</span> <span class="nv">yaml-mode</span> <span class="nv">visual-fill-column</span> <span class="nv">visible-mark</span> <span class="nb">use-package</span> <span class="nv">unfill</span> <span class="nv">typopunct</span> <span class="nv">smooth-scrolling</span> <span class="nv">smex</span> <span class="nv">smartparens</span> <span class="nv">rainbow-delimiters</span> <span class="nv">projectile</span> <span class="nv">markdown-mode</span> <span class="nv">magit-popup</span> <span class="nv">lua-mode</span> <span class="nv">keyfreq</span> <span class="nv">imenu-anywhere</span> <span class="nv">iedit</span> <span class="nv">ido-ubiquitous</span> <span class="nv">hl-sexp</span> <span class="nv">gruvbox-theme</span> <span class="nv">git-commit</span> <span class="nv">fish-mode</span> <span class="nv">exec-path-from-shell</span> <span class="nv">company</span> <span class="nv">clojure-mode-extra-font-locking</span> <span class="nv">clojure-cheatsheet</span> <span class="nv">aggressive-indent</span> <span class="nv">adoc-mode</span> <span class="nv">4clojure</span><span class="p">)))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">reb-re-syntax</span> <span class="p">(</span><span class="nb">quote</span> <span class="nf">string</span><span class="p">))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">safe-local-variable-values</span>
    <span class="p">(</span><span class="nb">quote</span>
@@ -256,7 +266,7 @@ ga('send', 'pageview');
  <span class="c1">;; If there is more than one, they won&#39;t work right.</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">default</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:inherit</span> <span class="no">nil</span> <span class="nb">:stipple</span> <span class="no">nil</span> <span class="nb">:background</span> <span class="s">&#34;#282828&#34;</span> <span class="nb">:foreground</span> <span class="s">&#34;#FDF4C1&#34;</span> <span class="nb">:inverse-video</span> <span class="no">nil</span> <span class="nb">:box</span> <span class="no">nil</span> <span class="nb">:strike-through</span> <span class="no">nil</span> <span class="nb">:overline</span> <span class="no">nil</span> <span class="nb">:underline</span> <span class="no">nil</span> <span class="nb">:slant</span> <span class="nv">normal</span> <span class="nb">:weight</span> <span class="nv">normal</span> <span class="nb">:height</span> <span class="mi">160</span> <span class="nb">:width</span> <span class="nv">normal</span> <span class="nb">:foundry</span> <span class="s">&#34;nil&#34;</span> <span class="nb">:family</span> <span class="s">&#34;Inconsolata&#34;</span><span class="p">))))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">col-highlight</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:background</span> <span class="s">&#34;#3c3836&#34;</span><span class="p">))))</span>
- <span class="o">&#39;</span><span class="p">(</span><span class="nv">fixed-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:inherit</span> <span class="no">nil</span> <span class="nb">:stipple</span> <span class="no">nil</span> <span class="nb">:background</span> <span class="s">&#34;#282828&#34;</span> <span class="nb">:foreground</span> <span class="s">&#34;#fdf4c1&#34;</span> <span class="nb">:inverse-video</span> <span class="no">nil</span> <span class="nb">:box</span> <span class="no">nil</span> <span class="nb">:strike-through</span> <span class="no">nil</span> <span class="nb">:overline</span> <span class="no">nil</span> <span class="nb">:underline</span> <span class="no">nil</span> <span class="nb">:slant</span> <span class="nv">normal</span> <span class="nb">:weight</span> <span class="nv">normal</span> <span class="nb">:height</span> <span class="mf">1.0</span> <span class="nb">:width</span> <span class="nv">normal</span> <span class="nb">:foundry</span> <span class="s">&#34;nil&#34;</span> <span class="nb">:family</span> <span class="s">&#34;Inconsolata&#34;</span><span class="p">))))</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">fixed-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Inconsolata&#34;</span><span class="p">))))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">linum</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:background</span> <span class="s">&#34;#282828&#34;</span> <span class="nb">:foreground</span> <span class="s">&#34;#504945&#34;</span> <span class="nb">:height</span> <span class="mi">140</span> <span class="nb">:family</span> <span class="s">&#34;Inconsolata&#34;</span><span class="p">))))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">markup-meta-face</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:foreground</span> <span class="s">&#34;gray40&#34;</span> <span class="nb">:height</span> <span class="mi">140</span> <span class="nb">:family</span> <span class="s">&#34;Inconsolata&#34;</span><span class="p">))))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">markup-title-0-face</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:inherit</span> <span class="nv">markup-gen-face</span> <span class="nb">:height</span> <span class="mf">1.6</span><span class="p">))))</span>
@@ -363,8 +373,9 @@ ga('send', 'pageview');
 <li><p><a href="http://emacswiki.org/emacs/WinnerMode">WinnerMode</a> makes it possible to cycle and undo window configuration changes (i.e. arrangement of panels, etc.)</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">fboundp</span> <span class="ss">&#39;winner-mode</span><span class="p">)</span> <span class="p">(</span><span class="nv">winner-mode</span> <span class="mi">1</span><span class="p">))</span></code></pre></div></li>
 
-<li><p>Add &ldquo;unfill&rdquo; commands to parallel the &ldquo;fill&rdquo; ones, and bind the <code>unfill-paragraph</code> command to <kbd>Alt-q</kbd> (to parallel <kbd>M-q</kbd> for <code>fill-paragraph</code>)</p>
+<li><p>Add &ldquo;unfill&rdquo; commands to parallel the &ldquo;fill&rdquo; ones, bind <kbd>A-q</kbd> to <code>unfill-paragraph</code> and rebind <kbd>M-q</kbd> to the <code>unfill-toggle</code> command, which fills/unfills paragraphs alternatively.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">unfill</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-q&#34;</span><span class="p">)</span> <span class="ss">&#39;unfill-toggle</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;A-q&#34;</span><span class="p">)</span> <span class="ss">&#39;unfill-paragraph</span><span class="p">)</span></code></pre></div></li>
 
 <li><p>Save the place of the cursor in each file, and restore it upon opening it again.</p>
@@ -376,7 +387,7 @@ ga('send', 'pageview');
 <li><p>Provide mode-specific &ldquo;bookmarks&rdquo; - press <code>M-i</code> and you will be presented with a list of elements to which you can navigate - they can be headers in org-mode, function names in emacs-lisp, etc.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">imenu-anywhere</span>
   <span class="nb">:config</span>
-  <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-i&#34;</span><span class="p">)</span> <span class="ss">&#39;ido-imenu-anywhere</span><span class="p">))</span></code></pre></div></li>
+  <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-i&#34;</span><span class="p">)</span> <span class="ss">&#39;helm-imenu-anywhere</span><span class="p">))</span></code></pre></div></li>
 
 <li><p>Smooth scrolling (line by line) instead of jumping by half-screens.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">smooth-scrolling</span>
@@ -746,7 +757,15 @@ ga('send', 'pageview');
 <span class="c1">;; (use-package crosshairs</span>
 <span class="c1">;;   :config</span>
 <span class="c1">;;   (crosshairs-mode))</span></code></pre></div>
-<p>I use <a href="https://www.masteringemacs.org/article/introduction-to-ido-mode">IDO mode</a> to get better matching capabilities everywhere in Emacs.</p>
+<h3 id="completion-ido-or-helm">Completion: IDO or Helm?</h3>
+
+<p>The <a href="https://tuhdo.github.io/helm-intro.html">battle</a> <a href="https://news.ycombinator.com/item?id=11100312">rages</a> <a href="https://www.reddit.com/r/emacs/comments/3o36sc/what_do_you_prefer_ido_or_helm/">on</a> - <a href="https://github.com/emacs-helm/helm">helm</a> or <a href="https://www.emacswiki.org/emacs/InteractivelyDoThings">IDO</a>? Both are nice completion frameworks for Emacs, and both integrate nicely with most main Emacs functions, including file opening, command and buffer selection, etc. I was using IDO for some time but are now giving helm a try. Both my configs are shown below, but only Helm is enabled at the moment.</p>
+
+<p>Should I also look at <a href="https://sam217pa.github.io/2016/09/13/from-helm-to-ivy/">ivy</a>?</p>
+
+<h4 id="ido">IDO</h4>
+
+<p>I use <a href="https://www.masteringemacs.org/article/introduction-to-ido-mode">IDO mode</a> to get better matching capabilities everywhere in Emacs (disabled while I give helm a try, see below).</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ido</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nv">ido-mode</span> <span class="no">t</span><span class="p">)</span>
@@ -759,24 +778,71 @@ ga('send', 'pageview');
 <span class="p">(</span><span class="nb">use-package</span> <span class="nv">ido-completing-read+</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nv">ido-ubiquitous-mode</span> <span class="mi">1</span><span class="p">))</span></code></pre></div>
-<p>I also use <code>recentf</code> to keep a list of recently open buffers, and define a function to trigger recentf with IDO integration, using <code>C-x C-r</code> as the keybinding.</p>
+<h4 id="helm">Helm</h4>
+
+<p>This config came originally from <a href="https://github.com/daedreth/UncleDavesEmacs#user-content-ido-and-why-i-started-using-helm">Uncle Dave&rsquo;s Emacs config</a>, thought I have tweaked it a bit.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">helm</span>
+  <span class="nb">:ensure</span> <span class="no">t</span>
+  <span class="nb">:bind</span>
+  <span class="p">(</span><span class="s">&#34;C-x C-f&#34;</span> <span class="o">.</span> <span class="ss">&#39;helm-find-files</span><span class="p">)</span>
+  <span class="p">(</span><span class="s">&#34;C-x C-b&#34;</span> <span class="o">.</span> <span class="ss">&#39;helm-buffers-list</span><span class="p">)</span>
+  <span class="p">(</span><span class="s">&#34;C-x b&#34;</span>   <span class="o">.</span> <span class="ss">&#39;helm-multi-files</span><span class="p">)</span>
+  <span class="p">(</span><span class="s">&#34;M-x&#34;</span>     <span class="o">.</span> <span class="ss">&#39;helm-M-x</span><span class="p">)</span>
+  <span class="nb">:config</span>
+<span class="c1">;;   (defun daedreth/helm-hide-minibuffer ()</span>
+<span class="c1">;;     (when (with-helm-buffer helm-echo-input-in-header-line)</span>
+<span class="c1">;;       (let ((ov (make-overlay (point-min) (point-max) nil nil t)))</span>
+<span class="c1">;;         (overlay-put ov &#39;window (selected-window))</span>
+<span class="c1">;;         (overlay-put ov &#39;face</span>
+<span class="c1">;;                      (let ((bg-color (face-background &#39;default nil)))</span>
+<span class="c1">;;                        `(:background ,bg-color :foreground ,bg-color)))</span>
+<span class="c1">;;         (setq-local cursor-type nil))))</span>
+<span class="c1">;;   (add-hook &#39;helm-minibuffer-set-up-hook &#39;daedreth/helm-hide-minibuffer)</span>
+ <span class="p">(</span><span class="nb">setq</span> <span class="nv">helm-autoresize-max-height</span> <span class="mi">0</span>
+       <span class="nv">helm-autoresize-min-height</span> <span class="mi">40</span>
+       <span class="nv">helm-M-x-fuzzy-match</span> <span class="no">t</span>
+       <span class="nv">helm-buffers-fuzzy-matching</span> <span class="no">t</span>
+       <span class="nv">helm-recentf-fuzzy-match</span> <span class="no">t</span>
+       <span class="nv">helm-semantic-fuzzy-match</span> <span class="no">t</span>
+       <span class="nv">helm-imenu-fuzzy-match</span> <span class="no">t</span>
+       <span class="nv">helm-split-window-in-side-p</span> <span class="no">nil</span>
+       <span class="nv">helm-move-to-line-cycle-in-source</span> <span class="no">nil</span>
+       <span class="nv">helm-ff-search-library-in-sexp</span> <span class="no">t</span>
+       <span class="nv">helm-scroll-amount</span> <span class="mi">8</span>
+       <span class="nv">helm-echo-input-in-header-line</span> <span class="no">nil</span><span class="p">)</span>
+<span class="nb">:init</span>
+<span class="p">(</span><span class="nv">helm-mode</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;helm-config</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">helm-autoresize-mode</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">define-key</span> <span class="nv">helm-find-files-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-b&#34;</span><span class="p">)</span> <span class="ss">&#39;helm-find-files-up-one-level</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">define-key</span> <span class="nv">helm-find-files-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-f&#34;</span><span class="p">)</span> <span class="ss">&#39;helm-execute-persistent-action</span><span class="p">)</span>
+
+<span class="p">(</span><span class="nb">use-package</span> <span class="nv">helm-flx</span>
+  <span class="nb">:config</span>
+  <span class="p">(</span><span class="nv">helm-flx-mode</span> <span class="mi">+1</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">setq</span> <span class="nv">helm-flx-for-helm-find-files</span> <span class="no">t</span> <span class="c1">;; t by default</span>
+        <span class="nv">helm-flx-for-helm-locate</span> <span class="no">t</span><span class="p">)</span> <span class="c1">;; nil by default</span>
+  <span class="p">)</span></code></pre></div>
+<p>I also use <code>recentf</code> to keep a list of recently open buffers, and define a function to trigger recentf with IDO integration, using <code>C-x C-r</code> as the keybinding (disabled while I figure out how to integrate with helm).</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">recentf</span>
   <span class="nb">:init</span>
-  <span class="p">(</span><span class="nb">defun</span> <span class="nv">ido-recentf-open</span> <span class="p">()</span>
-    <span class="s">&#34;Use </span><span class="ss">`ido-completing-read&#39;</span><span class="s"> to \\[find-file] a recent file&#34;</span>
-    <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">find-file</span> <span class="p">(</span><span class="nv">ido-completing-read</span> <span class="s">&#34;Find recent file: &#34;</span> <span class="nv">recentf-list</span><span class="p">))</span>
-        <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;Opening file...&#34;</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;Aborting&#34;</span><span class="p">)))</span>
-  <span class="nb">:config</span>
+  <span class="c1">;; (defun ido-recentf-open ()</span>
+  <span class="c1">;;   &#34;Use `ido-completing-read&#39; to \\[find-file] a recent file&#34;</span>
+  <span class="c1">;;   (interactive)</span>
+  <span class="c1">;;   (if (find-file (ido-completing-read &#34;Find recent file: &#34; recentf-list))</span>
+  <span class="c1">;;       (message &#34;Opening file...&#34;)</span>
+  <span class="c1">;;     (message &#34;Aborting&#34;)))</span>
+  <span class="c1">;; :config</span>
   <span class="p">(</span><span class="nv">recentf-mode</span> <span class="mi">1</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">setq</span> <span class="nv">recentf-max-menu-items</span> <span class="mi">50</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-x C-r&#34;</span><span class="p">)</span> <span class="ss">&#39;ido-recentf-open</span><span class="p">))</span></code></pre></div>
-<p>The <a href="http://martinowen.net/blog/2010/02/03/tips-for-emacs-ibuffer.html">ibuffer</a> package allows all sort of useful operations on the list of open buffers. I haven&rsquo;t customized it yet, but I have a keybinding to open it.</p>
+  <span class="c1">;; (global-set-key (kbd &#34;C-x C-r&#34;) &#39;ido-recentf-open)</span>
+  <span class="p">)</span></code></pre></div>
+<p>The <a href="http://martinowen.net/blog/2010/02/03/tips-for-emacs-ibuffer.html">ibuffer</a> package allows all sort of useful operations on the list of open buffers. I haven&rsquo;t customized it yet, but I have a keybinding to open it. (Disabled for now as I am using helm&rsquo;s <code>helm-buffer-list</code>).</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ibuffer</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-x C-b&#34;</span><span class="p">)</span> <span class="ss">&#39;ibuffer</span><span class="p">))</span></code></pre></div>
-<p>The <a href="https://github.com/nonsequitur/smex">smex</a> package is incredibly useful, adding IDO integration and some other very nice features to <code>M-x</code>, which make it easier to discover and use Emacs commands. Highly recommended.</p>
+<p>The <a href="https://github.com/nonsequitur/smex">smex</a> package is incredibly useful, adding IDO integration and some other very nice features to <code>M-x</code>, which make it easier to discover and use Emacs commands. Highly recommended. (Disabled for now as I&rsquo;m using helm&rsquo;s <code>helm-M-x</code>).</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">smex</span>
   <span class="nb">:bind</span> <span class="p">((</span><span class="s">&#34;M-x&#34;</span> <span class="o">.</span> <span class="nv">smex</span><span class="p">))</span>
   <span class="nb">:config</span> <span class="p">(</span><span class="nv">smex-initialize</span><span class="p">))</span></code></pre></div>
@@ -898,8 +964,7 @@ ga('send', 'pageview');
     <span class="p">(</span><span class="nv">cljr-add-keybindings-with-prefix</span> <span class="s">&#34;C-c C-m&#34;</span><span class="p">))</span>
   <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;clojure-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">my-clojure-mode-hook</span><span class="p">))</span></code></pre></div>
 <p>Make the <a href="https://clojure.org/api/cheatsheet">Clojure cheatsheet</a> available within Emacs when coding in Clojure.</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">helm</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">use-package</span> <span class="nv">clojure-cheatsheet</span>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">clojure-cheatsheet</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nv">eval-after-load</span> <span class="ss">&#39;clojure-mode</span>
     <span class="o">&#39;</span><span class="p">(</span><span class="nb">progn</span>
@@ -1054,6 +1119,17 @@ ga('send', 'pageview');
 <li><p><a href="https://www.gnu.org/software/emacs/manual/html_node/autotype/Autoinserting.html">auto-insert mode</a> for automatically inserting user-defined templates for certain file types. It&rsquo;s included with Emacs, so I just configure its directory to one inside my Dropbox, and set the hook to run it automatically when opening a file.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">auto-insert-directory</span> <span class="s">&#34;~/Dropbox/emacs-auto-insert&#34;</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;find-file-hook</span> <span class="ss">&#39;auto-insert</span><span class="p">)</span></code></pre></div></li>
+
+<li><p><a href="https://github.com/benma/visual-regexp-steroids.el">visual-regexp-steroids</a> provides sane regular expressions and visual incremental search.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">visual-regexp-steroids</span>
+  <span class="nb">:config</span>
+  <span class="p">(</span><span class="nf">define-key</span> <span class="nv">global-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-c r&#34;</span><span class="p">)</span> <span class="ss">&#39;vr/replace</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">define-key</span> <span class="nv">global-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-c q&#34;</span><span class="p">)</span> <span class="ss">&#39;vr/query-replace</span><span class="p">)</span>
+  <span class="c1">;; if you use multiple-cursors, this is for you:</span>
+  <span class="c1">;; (define-key global-map (kbd &#34;C-c m&#34;) &#39;vr/mc-mark)</span>
+  <span class="c1">;; to use visual-regexp-steroids&#39;s isearch instead of the built-in regexp isearch, also include the following lines:</span>
+  <span class="p">(</span><span class="nf">define-key</span> <span class="nv">esc-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-r&#34;</span><span class="p">)</span> <span class="ss">&#39;vr/isearch-backward</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">define-key</span> <span class="nv">esc-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-s&#34;</span><span class="p">)</span> <span class="ss">&#39;vr/isearch-forward</span><span class="p">))</span></code></pre></div></li>
 </ul>
 
 <h2 id="general-text-editing">General text editing</h2>
@@ -1068,12 +1144,35 @@ ga('send', 'pageview');
 <li><p><a href="https://daringfireball.net/projects/markdown/syntax">Markdown</a>, generally useful.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">markdown-mode</span><span class="p">)</span></code></pre></div></li>
 
-<li><p>When <a href="https://www.emacswiki.org/emacs/TypographicalPunctuationMarks">typopunct</a> is enabled (needs to be enable by hand in my config), automatically inserts “pretty” quotes of the appropriate type.</p>
+<li><p>When <a href="https://www.emacswiki.org/emacs/TypographicalPunctuationMarks">typopunct</a> is enabled (needs to be enabled by hand), automatically inserts “pretty” quotes of the appropriate type.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">typopunct</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nv">typopunct-change-language</span> <span class="ss">&#39;english</span> <span class="no">t</span><span class="p">))</span></code></pre></div></li>
 </ul>
 
+<h2 id="snippets-from-uncle-dave-s-config">Snippets from Uncle Dave&rsquo;s Config</h2>
+
+<p>I recently discovered <a href="https://github.com/daedreth/UncleDavesEmacs">Uncle Dave&rsquo;s Emacs config</a>, and have been grabbing some of the many gems available there. It&rsquo;s a great resource. Full credit for these snippets below (including most of the text) goes to him.</p>
+
+<h3 id="which-key-and-why-i-love-emacs">which-key and why I love emacs</h3>
+
+<p>In order to use emacs, you don&rsquo;t need to know how to use emacs.  It&rsquo;s self documenting, and coupled with this insanely useful package, it&rsquo;s even easier.  In short, after you start the input of a command and stop, pondering what key must follow, it will automatically open a non-intrusive buffer at the bottom of the screen offering you suggestions for completing the command, that&rsquo;s it, nothing else.</p>
+
+<p>It&rsquo;s beautiful</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">which-key</span>
+  <span class="nb">:ensure</span> <span class="no">t</span>
+  <span class="nb">:config</span>
+    <span class="p">(</span><span class="nv">which-key-mode</span><span class="p">))</span></code></pre></div>
+<h3 id="close-all-buffers">close-all-buffers</h3>
+
+<p>It&rsquo;s one of those things where I genuinely have to wonder why there is no built in functionality for it.  Once in a blue moon I need to kill all buffers, and having ~150 of them open would mean I&rsquo;d need to spend a few too many seconds doing this than I&rsquo;d like, here&rsquo;s a solution.</p>
+
+<p>This can be invoked using <code>C-M-s-k</code>. This keybinding makes sure you don&rsquo;t hit it unless you really want to.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">close-all-buffers</span> <span class="p">()</span>
+  <span class="s">&#34;Kill all buffers without regard for their origin.&#34;</span>
+  <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">mapc</span> <span class="ss">&#39;kill-buffer</span> <span class="p">(</span><span class="nf">buffer-list</span><span class="p">)))</span>
+<span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-M-s-k&#34;</span><span class="p">)</span> <span class="ss">&#39;close-all-buffers</span><span class="p">)</span></code></pre></div>
 <h2 id="cheatsheet">Cheatsheet</h2>
 
 <p>How to do different things, not necessarily used in my Emacs config but useful sometimes.</p>
@@ -1175,6 +1274,7 @@ ga('send', 'pageview');
 <ul>
 <li class="list f5 w-100 hover-bg-white nl1">
 <ul>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#references">References</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#customized-variables">Customized variables</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#setting-up-the-package-system">Setting up the package system</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#settings">Settings</a>
@@ -1208,7 +1308,14 @@ ga('send', 'pageview');
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#linux">Linux</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#windows">Windows</a></li>
 </ul></li>
-<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#appearance-buffer-file-management-and-theming">Appearance, buffer/file management and theming</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#appearance-buffer-file-management-and-theming">Appearance, buffer/file management and theming</a>
+<ul>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#completion-ido-or-helm">Completion: IDO or Helm?</a>
+<ul>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#ido">IDO</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#helm">Helm</a></li>
+</ul></li>
+</ul></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#coding">Coding</a>
 <ul>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#general-settings-and-modules">General settings and modules</a></li>
@@ -1217,6 +1324,11 @@ ga('send', 'pageview');
 </ul></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#other-tools">Other tools</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#general-text-editing">General text editing</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#snippets-from-uncle-dave-s-config">Snippets from Uncle Dave&rsquo;s Config</a>
+<ul>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#which-key-and-why-i-love-emacs">which-key and why I love emacs</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#close-all-buffers">close-all-buffers</a></li>
+</ul></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#cheatsheet">Cheatsheet</a></li>
 </ul></li>
 </ul>
