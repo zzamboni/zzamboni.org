@@ -10,9 +10,18 @@ toc = true
 summary = "I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file."
 +++
 
-Last update: **March 23, 2018**
+Last update: **April  4, 2018**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot_emacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot_emacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot_emacs/blob/master/init.el>.
+
+
+## References {#references}
+
+Emacs config is an art, and I have learned a lot by reading through other people's config files. These are some of the best ones (several are also written in org mode)
+
+-   [Sacha Chua's Emacs Configuration](http://pages.sachachua.com/.emacs.d/Sacha.html)
+-   [Uncle Dave's Emacs config](https://github.com/daedreth/UncleDavesEmacs#user-content-ido-and-why-i-started-using-helm)
+-   [PythonNut's Emacs config](https://github.com/PythonNut/emacs-config)
 
 
 ## Customized variables {#customized-variables}
@@ -59,7 +68,7 @@ Here is the current contents of the [custom.el](https://github.com/zzamboni/dot-
      (110 . "notes"))))
  '(package-selected-packages
    (quote
-    (ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
+    (helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
  '(reb-re-syntax (quote string))
  '(safe-local-variable-values
    (quote
@@ -89,7 +98,7 @@ Here is the current contents of the [custom.el](https://github.com/zzamboni/dot-
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#282828" :foreground "#FDF4C1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "nil" :family "Inconsolata"))))
  '(col-highlight ((t (:background "#3c3836"))))
- '(fixed-pitch ((t (:inherit nil :stipple nil :background "#282828" :foreground "#fdf4c1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 1.0 :width normal :foundry "nil" :family "Inconsolata"))))
+ '(fixed-pitch ((t (:family "Inconsolata"))))
  '(linum ((t (:background "#282828" :foreground "#504945" :height 140 :family "Inconsolata"))))
  '(markup-meta-face ((t (:foreground "gray40" :height 140 :family "Inconsolata"))))
  '(markup-title-0-face ((t (:inherit markup-gen-face :height 1.6))))
@@ -263,10 +272,11 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     (when (fboundp 'winner-mode) (winner-mode 1))
     ```
 
--   Add "unfill" commands to parallel the "fill" ones, and bind the `unfill-paragraph` command to <kbd>Alt-q</kbd> (to parallel <kbd>M-q</kbd> for `fill-paragraph`)
+-   Add "unfill" commands to parallel the "fill" ones, bind <kbd>A-q</kbd> to `unfill-paragraph` and rebind <kbd>M-q</kbd> to the `unfill-toggle` command, which fills/unfills paragraphs alternatively.
 
     ```emacs-lisp
     (use-package unfill)
+    (global-set-key (kbd "M-q") 'unfill-toggle)
     (global-set-key (kbd "A-q") 'unfill-paragraph)
     ```
 
@@ -284,7 +294,7 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     ```emacs-lisp
     (use-package imenu-anywhere
       :config
-      (global-set-key (kbd "M-i") 'ido-imenu-anywhere))
+      (global-set-key (kbd "M-i") 'helm-imenu-anywhere))
     ```
 
 -   Smooth scrolling (line by line) instead of jumping by half-screens.
@@ -846,7 +856,17 @@ Sometimes I find the always-highlighted column to be distracting, but other time
 ;;   (crosshairs-mode))
 ```
 
-I use [IDO mode](https://www.masteringemacs.org/article/introduction-to-ido-mode) to get better matching capabilities everywhere in Emacs.
+
+### Completion: IDO or Helm? {#completion-ido-or-helm}
+
+The [battle](https://tuhdo.github.io/helm-intro.html) [rages](https://news.ycombinator.com/item?id=11100312) [on](https://www.reddit.com/r/emacs/comments/3o36sc/what_do_you_prefer_ido_or_helm/) - [helm](https://github.com/emacs-helm/helm) or [IDO](https://www.emacswiki.org/emacs/InteractivelyDoThings)? Both are nice completion frameworks for Emacs, and both integrate nicely with most main Emacs functions, including file opening, command and buffer selection, etc. I was using IDO for some time but are now giving helm a try. Both my configs are shown below, but only Helm is enabled at the moment.
+
+Should I also look at [ivy](https://sam217pa.github.io/2016/09/13/from-helm-to-ivy/)?
+
+
+#### IDO {#ido}
+
+I use [IDO mode](https://www.masteringemacs.org/article/introduction-to-ido-mode) to get better matching capabilities everywhere in Emacs (disabled while I give helm a try, see below).
 
 ```emacs-lisp
 (use-package ido
@@ -863,24 +883,76 @@ I use [IDO mode](https://www.masteringemacs.org/article/introduction-to-ido-mode
   (ido-ubiquitous-mode 1))
 ```
 
-I also use `recentf` to keep a list of recently open buffers, and define a function to trigger recentf with IDO integration, using `C-x C-r` as the keybinding.
+
+#### Helm {#helm}
+
+This config came originally from [Uncle Dave's Emacs config](https://github.com/daedreth/UncleDavesEmacs#user-content-ido-and-why-i-started-using-helm), thought I have tweaked it a bit.
+
+```emacs-lisp
+(use-package helm
+  :ensure t
+  :bind
+  ("C-x C-f" . 'helm-find-files)
+  ("C-x C-b" . 'helm-buffers-list)
+  ("C-x b"   . 'helm-multi-files)
+  ("M-x"     . 'helm-M-x)
+  :config
+;;   (defun daedreth/helm-hide-minibuffer ()
+;;     (when (with-helm-buffer helm-echo-input-in-header-line)
+;;       (let ((ov (make-overlay (point-min) (point-max) nil nil t)))
+;;         (overlay-put ov 'window (selected-window))
+;;         (overlay-put ov 'face
+;;                      (let ((bg-color (face-background 'default nil)))
+;;                        `(:background ,bg-color :foreground ,bg-color)))
+;;         (setq-local cursor-type nil))))
+;;   (add-hook 'helm-minibuffer-set-up-hook 'daedreth/helm-hide-minibuffer)
+ (setq helm-autoresize-max-height 0
+       helm-autoresize-min-height 40
+       helm-M-x-fuzzy-match t
+       helm-buffers-fuzzy-matching t
+       helm-recentf-fuzzy-match t
+       helm-semantic-fuzzy-match t
+       helm-imenu-fuzzy-match t
+       helm-split-window-in-side-p nil
+       helm-move-to-line-cycle-in-source nil
+       helm-ff-search-library-in-sexp t
+       helm-scroll-amount 8
+       helm-echo-input-in-header-line nil)
+:init
+(helm-mode 1))
+
+(require 'helm-config)
+(helm-autoresize-mode 1)
+(define-key helm-find-files-map (kbd "C-b") 'helm-find-files-up-one-level)
+(define-key helm-find-files-map (kbd "C-f") 'helm-execute-persistent-action)
+
+(use-package helm-flx
+  :config
+  (helm-flx-mode +1)
+  (setq helm-flx-for-helm-find-files t ;; t by default
+        helm-flx-for-helm-locate t) ;; nil by default
+  )
+```
+
+I also use `recentf` to keep a list of recently open buffers, and define a function to trigger recentf with IDO integration, using `C-x C-r` as the keybinding (disabled while I figure out how to integrate with helm).
 
 ```emacs-lisp
 (use-package recentf
   :init
-  (defun ido-recentf-open ()
-    "Use `ido-completing-read' to \\[find-file] a recent file"
-    (interactive)
-    (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-        (message "Opening file...")
-      (message "Aborting")))
-  :config
+  ;; (defun ido-recentf-open ()
+  ;;   "Use `ido-completing-read' to \\[find-file] a recent file"
+  ;;   (interactive)
+  ;;   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+  ;;       (message "Opening file...")
+  ;;     (message "Aborting")))
+  ;; :config
   (recentf-mode 1)
   (setq recentf-max-menu-items 50)
-  (global-set-key (kbd "C-x C-r") 'ido-recentf-open))
+  ;; (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+  )
 ```
 
-The [ibuffer](http://martinowen.net/blog/2010/02/03/tips-for-emacs-ibuffer.html) package allows all sort of useful operations on the list of open buffers. I haven't customized it yet, but I have a keybinding to open it.
+The [ibuffer](http://martinowen.net/blog/2010/02/03/tips-for-emacs-ibuffer.html) package allows all sort of useful operations on the list of open buffers. I haven't customized it yet, but I have a keybinding to open it. (Disabled for now as I am using helm's `helm-buffer-list`).
 
 ```emacs-lisp
 (use-package ibuffer
@@ -888,7 +960,7 @@ The [ibuffer](http://martinowen.net/blog/2010/02/03/tips-for-emacs-ibuffer.html)
   (global-set-key (kbd "C-x C-b") 'ibuffer))
 ```
 
-The [smex](https://github.com/nonsequitur/smex) package is incredibly useful, adding IDO integration and some other very nice features to `M-x`, which make it easier to discover and use Emacs commands. Highly recommended.
+The [smex](https://github.com/nonsequitur/smex) package is incredibly useful, adding IDO integration and some other very nice features to `M-x`, which make it easier to discover and use Emacs commands. Highly recommended. (Disabled for now as I'm using helm's `helm-M-x`).
 
 ```emacs-lisp
 (use-package smex
@@ -1083,7 +1155,6 @@ We use `clj-refactor` for supporting advanced code refactoring in Clojure.
 Make the [Clojure cheatsheet](https://clojure.org/api/cheatsheet) available within Emacs when coding in Clojure.
 
 ```emacs-lisp
-(use-package helm)
 (use-package clojure-cheatsheet
   :config
   (eval-after-load 'clojure-mode
@@ -1313,6 +1384,20 @@ Many other programming languages are well served by a single mode, without so mu
     (add-hook 'find-file-hook 'auto-insert)
     ```
 
+-   [visual-regexp-steroids](https://github.com/benma/visual-regexp-steroids.el) provides sane regular expressions and visual incremental search.
+
+    ```emacs-lisp
+    (use-package visual-regexp-steroids
+      :config
+      (define-key global-map (kbd "C-c r") 'vr/replace)
+      (define-key global-map (kbd "C-c q") 'vr/query-replace)
+      ;; if you use multiple-cursors, this is for you:
+      ;; (define-key global-map (kbd "C-c m") 'vr/mc-mark)
+      ;; to use visual-regexp-steroids's isearch instead of the built-in regexp isearch, also include the following lines:
+      (define-key esc-map (kbd "C-r") 'vr/isearch-backward)
+      (define-key esc-map (kbd "C-s") 'vr/isearch-forward))
+    ```
+
 
 ## General text editing {#general-text-editing}
 
@@ -1331,13 +1416,47 @@ In addition to coding, I configure some modes that can be used for text editing.
     (use-package markdown-mode)
     ```
 
--   When [typopunct](https://www.emacswiki.org/emacs/TypographicalPunctuationMarks) is enabled (needs to be enable by hand in my config), automatically inserts “pretty” quotes of the appropriate type.
+-   When [typopunct](https://www.emacswiki.org/emacs/TypographicalPunctuationMarks) is enabled (needs to be enabled by hand), automatically inserts “pretty” quotes of the appropriate type.
 
     ```emacs-lisp
     (use-package typopunct
       :config
       (typopunct-change-language 'english t))
     ```
+
+
+## Snippets from Uncle Dave's Config {#snippets-from-uncle-dave-s-config}
+
+I recently discovered [Uncle Dave's Emacs config](https://github.com/daedreth/UncleDavesEmacs), and have been grabbing some of the many gems available there. It's a great resource. Full credit for these snippets below (including most of the text) goes to him.
+
+
+### which-key and why I love emacs {#which-key-and-why-i-love-emacs}
+
+In order to use emacs, you don't need to know how to use emacs.  It's self documenting, and coupled with this insanely useful package, it's even easier.  In short, after you start the input of a command and stop, pondering what key must follow, it will automatically open a non-intrusive buffer at the bottom of the screen offering you suggestions for completing the command, that's it, nothing else.
+
+It's beautiful
+
+```emacs-lisp
+(use-package which-key
+  :ensure t
+  :config
+    (which-key-mode))
+```
+
+
+### close-all-buffers {#close-all-buffers}
+
+It's one of those things where I genuinely have to wonder why there is no built in functionality for it.  Once in a blue moon I need to kill all buffers, and having ~150 of them open would mean I'd need to spend a few too many seconds doing this than I'd like, here's a solution.
+
+This can be invoked using `C-M-s-k`. This keybinding makes sure you don't hit it unless you really want to.
+
+```emacs-lisp
+(defun close-all-buffers ()
+  "Kill all buffers without regard for their origin."
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
+(global-set-key (kbd "C-M-s-k") 'close-all-buffers)
+```
 
 
 ## Cheatsheet {#cheatsheet}

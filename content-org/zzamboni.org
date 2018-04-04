@@ -1,6 +1,7 @@
 #+hugo_base_dir: ../
 #+seq_todo: TODO DRAFT DONE
 #+options: creator:t
+#+property: header-args :eval never-export
 
 #+macro: updatetime {{{time(%B %e\, %Y)}}}
 
