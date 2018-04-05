@@ -4,7 +4,6 @@
 #+property: header-args :eval never-export
 
 #+macro: updatetime {{{time(%B %e\, %Y)}}}
-#+macro: more @@html:<!--more-->@@
 
 #+title: zzamboni.org source file
 #+author: Diego Zamboni
@@ -135,7 +134,7 @@ The book has its own webpage at http://cf-learn.info, please visit it for more i
 
 You can buy the book from Amazon by clicking the link on the right.
 
-{{{more}}}
+#+hugo: more
 
 \nbsp
 
