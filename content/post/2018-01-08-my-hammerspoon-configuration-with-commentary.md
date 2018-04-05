@@ -10,7 +10,7 @@ featured_image = "/images/hammerspoon.png"
 summary = "In my ongoing series of literate config files, I present to you my Hammerspoon configuration file."
 +++
 
-Last update: **March 23, 2018**
+Last update: **April  5, 2018**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 

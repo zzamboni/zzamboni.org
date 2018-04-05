@@ -4,6 +4,7 @@
 #+property: header-args :eval never-export
 
 #+macro: updatetime {{{time(%B %e\, %Y)}}}
+#+macro: more @@html:<!--more-->@@
 
 #+title: zzamboni.org source file
 #+author: Diego Zamboni
@@ -130,11 +131,13 @@ CLOSED: [2018-03-25 Sun 21:05]
 
 I am the author of "Learning CFEngine 3", the best book for learning [[http://cfengine.com/][CFEngine]].
 
-The book has its own webpage at http://cf-learn.info, please visit it for more information.
+The book has its own webpage at http://cf-learn.info, please visit it for more information, code samples, etc.
 
 You can buy the book from Amazon by clicking the link on the right.
 
-@@html:<!--more-->
+{{{more}}}
+
+\nbsp
 
 * Ideas
 
