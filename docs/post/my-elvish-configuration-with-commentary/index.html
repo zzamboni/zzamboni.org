@@ -22,7 +22,7 @@
      
 
       <meta property="og:title" content="My Elvish Configuration With Commentary" />
-<meta property="og:description" content="Last update: March 23, 2018
+<meta property="og:description" content="Last update: April 5, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc." />
 <meta property="og:type" content="article" />
@@ -45,21 +45,21 @@ This is also my first blog post written using org-mode, which I have started usi
 
 
 <meta itemprop="name" content="My Elvish Configuration With Commentary">
-<meta itemprop="description" content="Last update: March 23, 2018
+<meta itemprop="description" content="Last update: April 5, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc.">
 
 
 <meta itemprop="datePublished" content="2017-11-16T20:21:00&#43;01:00" />
 <meta itemprop="dateModified" content="2017-11-16T20:21:00&#43;01:00" />
-<meta itemprop="wordCount" content="1238">
+<meta itemprop="wordCount" content="1231">
 
 
 
 <meta itemprop="keywords" content="config,howto,literateprogramming,elvish," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Elvish Configuration With Commentary"/>
-<meta name="twitter:description" content="Last update: March 23, 2018
+<meta name="twitter:description" content="Last update: April 5, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc."/>
 
@@ -187,7 +187,7 @@ ga('send', 'pageview');
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
-<p>Last update: <strong>March 23, 2018</strong></p>
+<p>Last update: <strong>April  5, 2018</strong></p>
 
 <p>In this blog post I will walk you through my current <a href="http://elvish.io">Elvish</a> configuration file, with running commentary about the different sections.</p>
 
@@ -283,6 +283,14 @@ nix:multi-user-setup</code></pre></div>
 <p>I use the <a href="https://github.com/zzamboni/theme.elv/blob/master/chain.org">chain</a> prompt theme, ported from the fish theme at <a href="https://github.com/oh-my-fish/theme-chain">https://github.com/oh-my-fish/theme-chain</a>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-themes/chain
 chain:bold-prompt = $true</code></pre></div>
+<p>I set the color of the directory segment, the prompt chains and the
+prompt arrow in my prompt to a session-identifying color.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">chain:segment-style = [
+  &amp;dir=          session
+  &amp;chain=        session
+  &amp;arrow=        session
+  &amp;git-combined= session
+]</code></pre></div>
 <p>Elvish has a <a href="https://elvish.io/ref/edit.html#prompts">comprehensive mechanism</a> for displaying prompts with useful information while avoiding getting blocked by prompt functions which take too long to finish. For the most part the defaults work well. One change I like to make is to change the <a href="https://elvish.io/ref/edit.html#stale-prompt">stale prompt transformer</a> function to make the prompt dim when stale:</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:prompt-stale-transform = { each [x]{ edit:styled $x[text] &#34;gray&#34; } }</code></pre></div>
 <p>Another possibility is to make the prompt stay the same when stale - useful to avoid distractions (disabled for now):</p>
@@ -307,15 +315,14 @@ proxy:host = &#34;http://proxy.corproot.net:8079&#34;</code></pre></div>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/long-running-notifications</code></pre></div>
 <h2 id="directory-and-command-navigation-and-history">Directory and command navigation and history</h2>
 
-<p>Elvish comes with built-in location and command history modes. I use the <code>narrow</code> module, which allow for more customization, including pre- and after- hooks for each of the modes. I use the default binding for history mode (<kbd>C-r</kbd>), but change the location mode binding to <kbd>Alt-l</kbd> to avoid conflicting with the binding of <kbd>C-l</kbd> to &ldquo;clear screen&rdquo; in <code>readline-binding</code>. I disable the lastcmd binding because it is taken over by the <code>bang-bang</code> module below.</p>
-<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use narrow
-narrow:bind-trigger-keys &amp;location=Alt-l &amp;lastcmd=&#34;&#34;</code></pre></div>
+<p>Elvish comes with built-in location and command history modes, and these are the main mechanism for accessing prior directories and commands. The weight-keeping in location mode makes the most-used directories automatically raise to the top of the list over time.</p>
+
 <p>I have decades of muscle memory using <kbd>!!</kbd> and <kbd>!$</kbd> to insert the last command and its last argument, respectively. The <a href="https://github.com/zzamboni/elvish-modules/blob/master/bang-bang.org">bang-bang</a> module allows me to keep using them.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/bang-bang</code></pre></div>
 <p>The <a href="https://github.com/zzamboni/modules.elv/blob/master/dir.org">dir</a> module implements a directory history and some related functions. I alias the <code>cd</code> command to <code>dir:cd</code> so that any directory changes are kept in the history. I also alias <code>cdb</code> to <code>dir:cdb</code> function, which allows changing to the base directory of the argument.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/dir
-alias:new cd &#34;use github.com/zzamboni/elvish-modules/dir; dir:cd&#34;
-alias:new cdb &#34;use github.com/zzamboni/elvish-modules/dir; dir:cdb&#34;</code></pre></div>
+alias:new cd &amp;use=[github.com/zzamboni/elvish-modules/dir] dir:cd
+alias:new cdb &amp;use=[github.com/zzamboni/elvish-modules/dir] dir:cdb</code></pre></div>
 <p><code>dir</code> also implements a narrow-based directory history chooser, which I bind to <kbd>Alt-i</kbd> (I have found I don&rsquo;t use this as much as I thought I would - the built-in location mode works nicely).</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:insert:binding[Alt-i] = $dir:history-chooser~</code></pre></div>
 <p>I bind <code>Alt-b/f</code> to <code>dir:left-word-or-prev-dir</code> and <code>dir:right-word-or-next-dir</code> respectively, which &ldquo;do the right thing&rdquo; depending on the current content of the command prompt: if it&rsquo;s empty, they move back/forward in the directory history, otherwise they move through the words of the current command. In my Terminal.app setup, <code>Alt-left/right</code> also produce <code>Alt-b/f</code>, so these bindings work for those keys as well.</p>
