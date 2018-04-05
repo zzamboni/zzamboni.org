@@ -182,7 +182,10 @@ The first gist contains the edit_sshd bundle itself, together with the set_confi
       
       <guid>http://zzamboni.org/post/hierarchical-copying-with-cfengine3/</guid>
       <description>I recently posted a snippet to perform hierarchical copying in cfengine3. As I was attempting to integrate this mechanism into my copy of cfengine&#39;s COPBL, I realized that no additional functions or body components are needed. Thanks to cfengine3&#39;s list expansion, all you need to do is include in the existing copy promise the list containing the desired list of suffixes to try. For example:
-{% gist 552848 %}</description>
+
+Becomes:
+
+ While this looks at first sight even longer than the original (and of course, in this case you could just specify ${sys.</description>
     </item>
     
     <item>
@@ -201,7 +204,7 @@ The first gist contains the edit_sshd bundle itself, together with the set_confi
       <pubDate>Wed, 25 Aug 2010 01:48:41 -0500</pubDate>
       
       <guid>http://zzamboni.org/post/editing-whitespace-separated-config-files-with-cfengine/</guid>
-      <description>{% gist 548981 %}</description>
+      <description> </description>
     </item>
     
     <item>
@@ -220,7 +223,7 @@ The first gist contains the edit_sshd bundle itself, together with the set_confi
       
       <guid>http://zzamboni.org/post/detecting-nics-that-match-certain-ip-addresses/</guid>
       <description>Another cfengine snippet in case anyone finds it useful. This can be used to determine which NICs in the host have a certain IP address assigned to it, or match any pattern. 
-{% gist 547095 %}</description>
+ </description>
     </item>
     
     <item>
