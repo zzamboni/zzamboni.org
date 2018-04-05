@@ -10,7 +10,7 @@ featured_image = "/images/elvish-logo.svg"
 summary = "In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections."
 +++
 
-Last update: **March 23, 2018**
+Last update: **April  5, 2018**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -168,6 +168,18 @@ use github.com/zzamboni/elvish-themes/chain
 chain:bold-prompt = $true
 ```
 
+I set the color of the directory segment, the prompt chains and the
+prompt arrow in my prompt to a session-identifying color.
+
+```elvish
+chain:segment-style = [
+  &dir=          session
+  &chain=        session
+  &arrow=        session
+  &git-combined= session
+]
+```
+
 Elvish has a [comprehensive mechanism](https://elvish.io/ref/edit.html#prompts) for displaying prompts with useful information while avoiding getting blocked by prompt functions which take too long to finish. For the most part the defaults work well. One change I like to make is to change the [stale prompt transformer](https://elvish.io/ref/edit.html#stale-prompt) function to make the prompt dim when stale:
 
 ```elvish
@@ -219,12 +231,7 @@ use github.com/zzamboni/elvish-modules/long-running-notifications
 
 ## Directory and command navigation and history {#directory-and-command-navigation-and-history}
 
-Elvish comes with built-in location and command history modes. I use the `narrow` module, which allow for more customization, including pre- and after- hooks for each of the modes. I use the default binding for history mode (<kbd>C-r</kbd>), but change the location mode binding to <kbd>Alt-l</kbd> to avoid conflicting with the binding of <kbd>C-l</kbd> to "clear screen" in `readline-binding`. I disable the lastcmd binding because it is taken over by the `bang-bang` module below.
-
-```elvish
-use narrow
-narrow:bind-trigger-keys &location=Alt-l &lastcmd=""
-```
+Elvish comes with built-in location and command history modes, and these are the main mechanism for accessing prior directories and commands. The weight-keeping in location mode makes the most-used directories automatically raise to the top of the list over time.
 
 I have decades of muscle memory using <kbd>!!</kbd> and <kbd>!$</kbd> to insert the last command and its last argument, respectively. The [bang-bang](https://github.com/zzamboni/elvish-modules/blob/master/bang-bang.org) module allows me to keep using them.
 
@@ -236,8 +243,8 @@ The [dir](https://github.com/zzamboni/modules.elv/blob/master/dir.org) module im
 
 ```elvish
 use github.com/zzamboni/elvish-modules/dir
-alias:new cd "use github.com/zzamboni/elvish-modules/dir; dir:cd"
-alias:new cdb "use github.com/zzamboni/elvish-modules/dir; dir:cdb"
+alias:new cd &use=[github.com/zzamboni/elvish-modules/dir] dir:cd
+alias:new cdb &use=[github.com/zzamboni/elvish-modules/dir] dir:cdb
 ```
 
 `dir` also implements a narrow-based directory history chooser, which I bind to <kbd>Alt-i</kbd> (I have found I don't use this as much as I thought I would - the built-in location mode works nicely).

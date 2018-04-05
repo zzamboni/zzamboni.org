@@ -3,7 +3,7 @@ title = "Learning CFEngine 3"
 author = ["Diego Zamboni"]
 date = 2018-03-25T21:05:00+02:00
 draft = false
-creator = "Emacs 25.3.1 (Org mode 9.1.8 + ox-hugo)"
+creator = "Emacs 25.3.2 (Org mode 9.1.8 + ox-hugo)"
 finalURL = "http://cf-learn.info/"
 +++
 
@@ -11,8 +11,10 @@ finalURL = "http://cf-learn.info/"
 
 I am the author of "Learning CFEngine 3", the best book for learning [CFEngine](http://cfengine.com/).
 
-The book has its own webpage at <http://cf-learn.info>, please visit it for more information.
+The book has its own webpage at <http://cf-learn.info>, please visit it for more information, code samples, etc.
 
 You can buy the book from Amazon by clicking the link on the right.
 
 <!--more-->
+
+&nbsp;

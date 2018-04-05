@@ -10,7 +10,7 @@ toc = true
 summary = "I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file."
 +++
 
-Last update: **April  4, 2018**
+Last update: **April  5, 2018**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot_emacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot_emacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot_emacs/blob/master/init.el>.
 
@@ -45,7 +45,7 @@ Here is the current contents of the [custom.el](https://github.com/zzamboni/dot-
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
-    ("8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a" "a1a966cf2e87be6a148158c79863440ba2e45aa06cc214341feafe5c6deca4f2" "3eb2b5607b41ad8a6da75fe04d5f92a46d1b9a95a202e3f5369e2cdefb7aac5c" "3d0142352ce19c860047ad7402546944f84c270e84ae479beddbc2608268e0e5" "a33858123d3d3ca10c03c657693881b9f8810c9e242a62f1ad6380adf57b031c" "a40eac965142a2057269f8b2abd546b71a0e58e733c6668a62b1ad1aa7669220" "7be789f201ea16242dab84dd5f225a55370dbecae248d4251edbd286fe879cfa" "94dac4d15d12ba671f77a93d84ad9f799808714d4c5d247d5fd944df951b91d6" "4d8fab23f15347bce54eb7137789ab93007010fa47296c2f36757ff84b5b3c8a" default)))
+    ("6ac7c0f959f0d7853915012e78ff70150bfbe2a69a1b703c3ac4184f9ae3ae02" "8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a" "a1a966cf2e87be6a148158c79863440ba2e45aa06cc214341feafe5c6deca4f2" "3eb2b5607b41ad8a6da75fe04d5f92a46d1b9a95a202e3f5369e2cdefb7aac5c" "3d0142352ce19c860047ad7402546944f84c270e84ae479beddbc2608268e0e5" "a33858123d3d3ca10c03c657693881b9f8810c9e242a62f1ad6380adf57b031c" "a40eac965142a2057269f8b2abd546b71a0e58e733c6668a62b1ad1aa7669220" "7be789f201ea16242dab84dd5f225a55370dbecae248d4251edbd286fe879cfa" "94dac4d15d12ba671f77a93d84ad9f799808714d4c5d247d5fd944df951b91d6" "4d8fab23f15347bce54eb7137789ab93007010fa47296c2f36757ff84b5b3c8a" default)))
  '(global-visible-mark-mode t)
  '(js-indent-level 2)
  '(lua-indent-level 2)
@@ -1152,16 +1152,6 @@ We use `clj-refactor` for supporting advanced code refactoring in Clojure.
   (add-hook 'clojure-mode-hook #'my-clojure-mode-hook))
 ```
 
-Make the [Clojure cheatsheet](https://clojure.org/api/cheatsheet) available within Emacs when coding in Clojure.
-
-```emacs-lisp
-(use-package clojure-cheatsheet
-  :config
-  (eval-after-load 'clojure-mode
-    '(progn
-       (define-key clojure-mode-map (kbd "C-c C-h") #'clojure-cheatsheet))))
-```
-
 When coding in LISP-like languages, `rainbow-delimiters` is a must-have - it marks each concentric pair of parenthesis with different colors, which makes it much easier to understand expressions and spot mistakes.
 
 ```emacs-lisp
@@ -1403,17 +1393,23 @@ Many other programming languages are well served by a single mode, without so mu
 
 In addition to coding, I configure some modes that can be used for text editing.
 
--   [AsciiDoc](http://asciidoctor.org/docs/user-manual/), which I use for [my book](http://cf-learn.info/) and some other text.
+-   [AsciiDoc](http://asciidoctor.org/docs/user-manual/), which I use for [my book](http://cf-learn.info/) and some other text. I also set up `visual-line-mode` and `variable-pitch-mode` here. `adoc-mode` is not so granular as `org-mode` with respect to face assignments, so the variable/fixed distinction does not always work, but it's still pretty good for long-text editing.
 
     ```emacs-lisp
     (use-package adoc-mode
-      :mode "\\.asciidoc\\'")
+      :mode "\\.asciidoc\\'"
+      :config
+      (add-hook 'adoc-mode-hook 'visual-line-mode)
+      (add-hook 'adoc-mode-hook 'variable-pitch-mode))
     ```
 
--   [Markdown](https://daringfireball.net/projects/markdown/syntax), generally useful.
+-   [Markdown](https://daringfireball.net/projects/markdown/syntax), generally useful. I also set up variable pitch and visual line mode.
 
     ```emacs-lisp
-    (use-package markdown-mode)
+    (use-package markdown-mode
+      :config
+      (add-hook 'markdown-mode-hook 'visual-line-mode)
+      (add-hook 'markdown-mode-hook 'variable-pitch-mode))
     ```
 
 -   When [typopunct](https://www.emacswiki.org/emacs/TypographicalPunctuationMarks) is enabled (needs to be enabled by hand), automatically inserts “pretty” quotes of the appropriate type.
