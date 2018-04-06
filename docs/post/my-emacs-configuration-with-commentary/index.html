@@ -22,7 +22,7 @@
      
 
       <meta property="og:title" content="My Emacs Configuration, With Commentary" />
-<meta property="og:description" content="Last update: April 5, 2018
+<meta property="og:description" content="Last update: April 6, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://zzamboni.org/post/my-emacs-configuration-with-commentary/" />
@@ -44,20 +44,20 @@ I have enjoyed slowly converting my configuration files to literate programming 
 
 
 <meta itemprop="name" content="My Emacs Configuration, With Commentary">
-<meta itemprop="description" content="Last update: April 5, 2018
+<meta itemprop="description" content="Last update: April 6, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving.">
 
 
 <meta itemprop="datePublished" content="2017-12-17T20:14:00&#43;01:00" />
 <meta itemprop="dateModified" content="2017-12-17T20:14:00&#43;01:00" />
-<meta itemprop="wordCount" content="5919">
+<meta itemprop="wordCount" content="6096">
 
 
 
 <meta itemprop="keywords" content="config,howto,literateprogramming,emacs," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Emacs Configuration, With Commentary"/>
-<meta name="twitter:description" content="Last update: April 5, 2018
+<meta name="twitter:description" content="Last update: April 6, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving."/>
 
         
@@ -184,7 +184,7 @@ ga('send', 'pageview');
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
-<p>Last update: <strong>April  5, 2018</strong></p>
+<p>Last update: <strong>April  6, 2018</strong></p>
 
 <p>I have enjoyed slowly converting my configuration files to <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html">literate programming</a> style style using org-mode in Emacs. I previously posted my <a href="../my-elvish-configuration-with-commentary/">Elvish configuration</a>, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.org">init.org</a> file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.org">init.org file in GitHub</a> for my current, live configuration, and the generated file at <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.el">https://github.com/zzamboni/dot_emacs/blob/master/init.el</a>.</p>
 
@@ -203,7 +203,7 @@ ga('send', 'pageview');
 <p>Emacs has its own <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html#Easy-Customization">Customization mechanism</a> for easily customizing many parameters. To make it easier to manage, I keep the customized variables and faces in a separate file and load it from the main file.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">custom-file</span> <span class="s">&#34;~/.emacs.d/custom.el&#34;</span><span class="p">)</span>
 <span class="p">(</span><span class="nf">load</span> <span class="nv">custom-file</span><span class="p">)</span></code></pre></div>
-<p>Here is the current contents of the <a href="https://github.com/zzamboni/dot-emacs/blob/master/custom.el">custom.el</a> file.</p>
+<p>Here is the current contents of my <a href="https://github.com/zzamboni/dot-emacs/blob/master/custom.el">custom.el</a> file.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">custom-set-variables</span>
  <span class="c1">;; custom-set-variables was added by Custom.</span>
  <span class="c1">;; If you edit it by hand, you could mess it up, so be careful.</span>
@@ -240,7 +240,11 @@ ga('send', 'pageview');
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">reb-re-syntax</span> <span class="p">(</span><span class="nb">quote</span> <span class="nf">string</span><span class="p">))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">safe-local-variable-values</span>
    <span class="p">(</span><span class="nb">quote</span>
-    <span class="p">((</span><span class="nv">org-adapt-indentation</span><span class="p">)</span>
+    <span class="p">((</span><span class="nf">eval</span> <span class="nv">add-hook</span>
+           <span class="p">(</span><span class="nb">quote</span> <span class="nv">after-save-hook</span><span class="p">)</span>
+           <span class="p">(</span><span class="nb">function</span> <span class="nv">org-hugo-export-wim-to-md-after-save</span><span class="p">)</span>
+           <span class="nb">:append</span> <span class="nb">:local</span><span class="p">)</span>
+     <span class="p">(</span><span class="nv">org-adapt-indentation</span><span class="p">)</span>
      <span class="p">(</span><span class="nv">org-edit-src-content-indentation</span> <span class="o">.</span> <span class="mi">2</span><span class="p">))))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">sml/replacer-regexp-list</span>
    <span class="p">(</span><span class="nb">quote</span>
@@ -295,7 +299,7 @@ ga('send', 'pageview');
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">variable-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:weight</span> <span class="nv">light</span> <span class="nb">:height</span> <span class="mi">180</span> <span class="nb">:family</span> <span class="s">&#34;Source Sans Pro&#34;</span><span class="p">)))))</span></code></pre></div>
 <h2 id="setting-up-the-package-system">Setting up the package system</h2>
 
-<p>I use the <a href="https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-configuration-tool">wonderful <code>use-package</code> package</a>. As this is not bundled yet with Emacs, the first thing we do is install it by hand. All other packages are then declaratively installed and configured with <code>use-package</code>. This makes it possible to fully bootstrap Emacs using only this config file, everything else is downloaded, installed and configured automatically.</p>
+<p>I use the <a href="https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-configuration-tool">wonderful use-package</a> to manage most of the packages in my installation (one exception is <code>org-mode</code>, see below). As this is not bundled yet with Emacs, the first thing we do is install it by hand. All other packages are then declaratively installed and configured with <code>use-package</code>. This makes it possible to fully bootstrap Emacs using only this config file, everything else is downloaded, installed and configured automatically.</p>
 
 <p>First, we declare the package repositories to use.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">package-archives</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;gnu&#34;</span>       <span class="o">.</span> <span class="s">&#34;https://elpa.gnu.org/packages/&#34;</span><span class="p">)</span>
@@ -470,7 +474,7 @@ ga('send', 'pageview');
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;%&#34;</span><span class="p">)</span> <span class="ss">&#39;goto-match-paren</span><span class="p">)</span></code></pre></div>
 <h2 id="org-mode">Org mode</h2>
 
-<p>I have started using <a href="http://orgmode.org/">org-mode</a> to writing, coding, presentations and more, thanks to the hearty recommendations and information from <a href="http://www.cmdln.org/">Nick</a> and many others. I am duly impressed. I have been a fan of the idea of <a href="https://en.wikipedia.org/wiki/Literate_programming">literate programming</a> for many years, and I have tried other tools before (most notably <a href="https://www.cs.tufts.edu/~nr/noweb/">noweb</a>, which I used during grad school for many of my homeworks and projects), but org-mode is the first tool I have encountered which seems to make it practical. Here are some of the resources I have found useful in learning it:</p>
+<p>I have started using <a href="http://orgmode.org/">org-mode</a> to writing, blogging, coding, presentations and more, thanks to the hearty recommendations and information from <a href="http://www.cmdln.org/">Nick</a> and many others. I am duly impressed. I have been a fan of the idea of <a href="https://en.wikipedia.org/wiki/Literate_programming">literate programming</a> for many years, and I have tried other tools before (most notably <a href="https://www.cs.tufts.edu/~nr/noweb/">noweb</a>, which I used during grad school for many of my homeworks and projects), but org-mode is the first tool I have encountered which seems to make it practical. Here are some of the resources I have found useful in learning it:</p>
 
 <ul>
 <li>Howard Abrams&rsquo; <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html">Introduction to Literate Programming</a>, which got me jumpstarted into writing code documented with org-mode.</li>
@@ -552,6 +556,32 @@ ga('send', 'pageview');
 </ul>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ox-hugo</span>
   <span class="nb">:after</span> <span class="nv">ox</span><span class="p">)</span></code></pre></div>
+<p>Configure a capture template for creating new blog posts, from <a href="https://ox-hugo.scripter.co/doc/org-capture-setup">https://ox-hugo.scripter.co/doc/org-capture-setup</a>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">with-eval-after-load</span> <span class="ss">&#39;org-capture</span>
+  <span class="p">(</span><span class="nb">defun</span> <span class="nv">org-hugo-new-subtree-post-capture-template</span> <span class="p">()</span>
+    <span class="s">&#34;Returns </span><span class="ss">`org-capture&#39;</span><span class="s"> template string for new Hugo post.
+</span><span class="s">See </span><span class="ss">`org-capture-templates&#39;</span><span class="s"> for more information.&#34;</span>
+    <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">title</span> <span class="p">(</span><span class="nf">read-from-minibuffer</span> <span class="s">&#34;Post Title: &#34;</span><span class="p">))</span> <span class="c1">;Prompt to enter the post title</span>
+           <span class="p">(</span><span class="nv">fname</span> <span class="p">(</span><span class="nv">org-hugo-slug</span> <span class="nv">title</span><span class="p">)))</span>
+      <span class="p">(</span><span class="nf">mapconcat</span> <span class="nf">#&#39;identity</span>
+                 <span class="o">`</span><span class="p">(</span>
+                   <span class="o">,</span><span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;* TODO &#34;</span> <span class="nv">title</span><span class="p">)</span>
+                   <span class="s">&#34;:PROPERTIES:&#34;</span>
+                   <span class="o">,</span><span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;:EXPORT_HUGO_BUNDLE: &#34;</span> <span class="nv">fname</span><span class="p">)</span>
+                   <span class="s">&#34;:EXPORT_FILE_NAME: index&#34;</span>
+                   <span class="s">&#34;:END:&#34;</span>
+                   <span class="s">&#34;%?\n&#34;</span><span class="p">)</span>                <span class="c1">;Place the cursor here finally</span>
+                 <span class="s">&#34;\n&#34;</span><span class="p">)))</span>
+
+  <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;org-capture-templates</span>
+               <span class="o">&#39;</span><span class="p">(</span><span class="s">&#34;z&#34;</span>                <span class="c1">;`org-capture&#39; binding + h</span>
+                 <span class="s">&#34;zzamboni.org post&#34;</span>
+                 <span class="nv">entry</span>
+                 <span class="c1">;; It is assumed that below file is present in `org-directory&#39;</span>
+                 <span class="c1">;; and that it has a &#34;Blog Ideas&#34; heading. It can even be a</span>
+                 <span class="c1">;; symlink pointing to the actual location of all-posts.org!</span>
+                 <span class="p">(</span><span class="nv">file+olp</span> <span class="s">&#34;zzamboni.org&#34;</span> <span class="s">&#34;Ideas&#34;</span><span class="p">)</span>
+                 <span class="p">(</span><span class="nb">function</span> <span class="nv">org-hugo-new-subtree-post-capture-template</span><span class="p">))))</span></code></pre></div>
 <h3 id="keeping-a-journal">Keeping a Journal</h3>
 
 <p>I use <a href="http://750words.com/">750words</a> for my personal Journal, and I usually write my entries locally using Scrivener. I have been playing with <code>org-journal</code> for this, but I am not fully convinced yet.</p>
@@ -589,7 +619,7 @@ ga('send', 'pageview');
                                <span class="ss">&#39;run-at-end</span> <span class="ss">&#39;only-in-org-mode</span><span class="p">)))</span></code></pre></div>
 <h3 id="beautifying-org-mode">Beautifying org-mode</h3>
 
-<p>These settings make org-mode much more readable by using different fonts for headings, hiding some of the markup, etc. This was taken originally from <a href="http://www.howardism.org/Technical/Emacs/orgmode-wordprocessor.html">http://www.howardism.org/Technical/Emacs/orgmode-wordprocessor.html</a> and then tweaked by me.</p>
+<p>These settings make org-mode much more readable by using different fonts for headings, hiding some of the markup, etc. This was taken originally from Howard Abrams&rsquo; <a href="http://www.howardism.org/Technical/Emacs/orgmode-wordprocessor.html">Org as a Word Processor</a>, and subsequently tweaked by me.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-hide-emphasis-markers</span> <span class="no">t</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">font-lock-add-keywords</span> <span class="ss">&#39;org-mode</span>
                         <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;^ *\\([-]\\) &#34;</span>
@@ -627,9 +657,12 @@ ga('send', 'pageview');
  <span class="ss">&#39;user</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">variable-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Source Sans Pro&#34;</span> <span class="nb">:height</span> <span class="mi">180</span> <span class="nb">:weight</span> <span class="nv">light</span><span class="p">)))))</span></code></pre></div></li>
 
-<li><p>Setting up the <code>fixed-pitch</code> face to be the same as my usual <code>default</code> face. My current one is <a href="https://en.wikipedia.org/wiki/Inconsolata">Inconsolata</a>.</p></li>
+<li><p>Setting up the <code>fixed-pitch</code> face to be the same as my usual <code>default</code> face. My current one is <a href="https://en.wikipedia.org/wiki/Inconsolata">Inconsolata</a>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">custom-theme-set-faces</span>
+ <span class="ss">&#39;user</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">fixed-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Inconsolata&#34;</span><span class="p">)))))</span></code></pre></div></li>
 
-<li><p>Configuring the corresponding org-mode faces for blocks, verbatim code, and maybe a couple of other things.</p></li>
+<li><p>Configuring the corresponding <code>org-mode</code> faces for blocks, verbatim code, and maybe a couple of other things. As these change more frequently, I do them directly from the <code>customize-face</code> interface, you can see their current settings in the <a href="#customized-variables">Customized variables</a> section.</p></li>
 
 <li><p>Setting up a hook that automatically enables <code>visual-line-mode</code> and <code>variable-pitch-mode</code> when entering org-mode.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;org-mode-hook</span> <span class="ss">&#39;visual-line-mode</span><span class="p">)</span>
@@ -783,35 +816,36 @@ ga('send', 'pageview');
 <p>This config came originally from <a href="https://github.com/daedreth/UncleDavesEmacs#user-content-ido-and-why-i-started-using-helm">Uncle Dave&rsquo;s Emacs config</a>, thought I have tweaked it a bit.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">helm</span>
   <span class="nb">:ensure</span> <span class="no">t</span>
+  <span class="nb">:diminish</span> <span class="nv">helm-mode</span>
   <span class="nb">:bind</span>
   <span class="p">(</span><span class="s">&#34;C-x C-f&#34;</span> <span class="o">.</span> <span class="ss">&#39;helm-find-files</span><span class="p">)</span>
   <span class="p">(</span><span class="s">&#34;C-x C-b&#34;</span> <span class="o">.</span> <span class="ss">&#39;helm-buffers-list</span><span class="p">)</span>
   <span class="p">(</span><span class="s">&#34;C-x b&#34;</span>   <span class="o">.</span> <span class="ss">&#39;helm-multi-files</span><span class="p">)</span>
   <span class="p">(</span><span class="s">&#34;M-x&#34;</span>     <span class="o">.</span> <span class="ss">&#39;helm-M-x</span><span class="p">)</span>
   <span class="nb">:config</span>
-<span class="c1">;;   (defun daedreth/helm-hide-minibuffer ()</span>
-<span class="c1">;;     (when (with-helm-buffer helm-echo-input-in-header-line)</span>
-<span class="c1">;;       (let ((ov (make-overlay (point-min) (point-max) nil nil t)))</span>
-<span class="c1">;;         (overlay-put ov &#39;window (selected-window))</span>
-<span class="c1">;;         (overlay-put ov &#39;face</span>
-<span class="c1">;;                      (let ((bg-color (face-background &#39;default nil)))</span>
-<span class="c1">;;                        `(:background ,bg-color :foreground ,bg-color)))</span>
-<span class="c1">;;         (setq-local cursor-type nil))))</span>
-<span class="c1">;;   (add-hook &#39;helm-minibuffer-set-up-hook &#39;daedreth/helm-hide-minibuffer)</span>
- <span class="p">(</span><span class="nb">setq</span> <span class="nv">helm-autoresize-max-height</span> <span class="mi">0</span>
-       <span class="nv">helm-autoresize-min-height</span> <span class="mi">40</span>
-       <span class="nv">helm-M-x-fuzzy-match</span> <span class="no">t</span>
-       <span class="nv">helm-buffers-fuzzy-matching</span> <span class="no">t</span>
-       <span class="nv">helm-recentf-fuzzy-match</span> <span class="no">t</span>
-       <span class="nv">helm-semantic-fuzzy-match</span> <span class="no">t</span>
-       <span class="nv">helm-imenu-fuzzy-match</span> <span class="no">t</span>
-       <span class="nv">helm-split-window-in-side-p</span> <span class="no">nil</span>
-       <span class="nv">helm-move-to-line-cycle-in-source</span> <span class="no">nil</span>
-       <span class="nv">helm-ff-search-library-in-sexp</span> <span class="no">t</span>
-       <span class="nv">helm-scroll-amount</span> <span class="mi">8</span>
-       <span class="nv">helm-echo-input-in-header-line</span> <span class="no">nil</span><span class="p">)</span>
-<span class="nb">:init</span>
-<span class="p">(</span><span class="nv">helm-mode</span> <span class="mi">1</span><span class="p">))</span>
+  <span class="c1">;;   (defun daedreth/helm-hide-minibuffer ()</span>
+  <span class="c1">;;     (when (with-helm-buffer helm-echo-input-in-header-line)</span>
+  <span class="c1">;;       (let ((ov (make-overlay (point-min) (point-max) nil nil t)))</span>
+  <span class="c1">;;         (overlay-put ov &#39;window (selected-window))</span>
+  <span class="c1">;;         (overlay-put ov &#39;face</span>
+  <span class="c1">;;                      (let ((bg-color (face-background &#39;default nil)))</span>
+  <span class="c1">;;                        `(:background ,bg-color :foreground ,bg-color)))</span>
+  <span class="c1">;;         (setq-local cursor-type nil))))</span>
+  <span class="c1">;;   (add-hook &#39;helm-minibuffer-set-up-hook &#39;daedreth/helm-hide-minibuffer)</span>
+  <span class="p">(</span><span class="nb">setq</span> <span class="nv">helm-autoresize-max-height</span> <span class="mi">0</span>
+        <span class="nv">helm-autoresize-min-height</span> <span class="mi">40</span>
+        <span class="nv">helm-M-x-fuzzy-match</span> <span class="no">t</span>
+        <span class="nv">helm-buffers-fuzzy-matching</span> <span class="no">t</span>
+        <span class="nv">helm-recentf-fuzzy-match</span> <span class="no">t</span>
+        <span class="nv">helm-semantic-fuzzy-match</span> <span class="no">t</span>
+        <span class="nv">helm-imenu-fuzzy-match</span> <span class="no">t</span>
+        <span class="nv">helm-split-window-in-side-p</span> <span class="no">nil</span>
+        <span class="nv">helm-move-to-line-cycle-in-source</span> <span class="no">nil</span>
+        <span class="nv">helm-ff-search-library-in-sexp</span> <span class="no">t</span>
+        <span class="nv">helm-scroll-amount</span> <span class="mi">8</span>
+        <span class="nv">helm-echo-input-in-header-line</span> <span class="no">nil</span><span class="p">)</span>
+  <span class="nb">:init</span>
+  <span class="p">(</span><span class="nv">helm-mode</span> <span class="mi">1</span><span class="p">))</span>
 
 <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;helm-config</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">helm-autoresize-mode</span> <span class="mi">1</span><span class="p">)</span>
@@ -1161,8 +1195,9 @@ ga('send', 'pageview');
 <p>It&rsquo;s beautiful</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">which-key</span>
   <span class="nb">:ensure</span> <span class="no">t</span>
+  <span class="nb">:diminish</span> <span class="nv">which-key-mode</span>
   <span class="nb">:config</span>
-    <span class="p">(</span><span class="nv">which-key-mode</span><span class="p">))</span></code></pre></div>
+  <span class="p">(</span><span class="nv">which-key-mode</span><span class="p">))</span></code></pre></div>
 <h3 id="close-all-buffers">close-all-buffers</h3>
 
 <p>It&rsquo;s one of those things where I genuinely have to wonder why there is no built in functionality for it.  Once in a blue moon I need to kill all buffers, and having ~150 of them open would mean I&rsquo;d need to spend a few too many seconds doing this than I&rsquo;d like, here&rsquo;s a solution.</p>
