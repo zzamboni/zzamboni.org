@@ -44,6 +44,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
   - [[#hammerspoon-1][Hammerspoon]]
   - [[#elvish-1][Elvish]]
     - [[#bang-bang---shell-shortcuts-in-elvish][Bang-Bang (!!, !$) Shell Shortcuts in Elvish]]
+- [[#footnotes][Footnotes]]
 
 * Pages
 
@@ -392,3 +393,8 @@ If you press =!= again, the whole last command will be inserted. If you press =$
 Note that by default, =Alt-!= will also be bound to trigger this mode, so you can fully replace the default [[https://elvish.io/learn/cookbook.html]["last command" mode]] in Elvish.
 
 Have fun with Elvish!
+* Footnotes
+* COMMENT Local Variables                                           :ARCHIVE:
+# Local Variables:
+# eval: (add-hook 'after-save-hook #'org-hugo-export-wim-to-md-after-save :append :local)
+# End:
