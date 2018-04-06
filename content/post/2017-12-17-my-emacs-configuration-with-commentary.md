@@ -10,7 +10,7 @@ toc = true
 summary = "I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file."
 +++
 
-Last update: **April  5, 2018**
+Last update: **April  6, 2018**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot_emacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot_emacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot_emacs/blob/master/init.el>.
 
@@ -33,7 +33,7 @@ Emacs has its own [Customization mechanism](https://www.gnu.org/software/emacs/m
 (load custom-file)
 ```
 
-Here is the current contents of the [custom.el](https://github.com/zzamboni/dot-emacs/blob/master/custom.el) file.
+Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-emacs/blob/master/custom.el) file.
 
 ```emacs-lisp
 (custom-set-variables
@@ -72,7 +72,11 @@ Here is the current contents of the [custom.el](https://github.com/zzamboni/dot-
  '(reb-re-syntax (quote string))
  '(safe-local-variable-values
    (quote
-    ((org-adapt-indentation)
+    ((eval add-hook
+           (quote after-save-hook)
+           (function org-hugo-export-wim-to-md-after-save)
+           :append :local)
+     (org-adapt-indentation)
      (org-edit-src-content-indentation . 2))))
  '(sml/replacer-regexp-list
    (quote
@@ -130,7 +134,7 @@ Here is the current contents of the [custom.el](https://github.com/zzamboni/dot-
 
 ## Setting up the package system {#setting-up-the-package-system}
 
-I use the [wonderful `use-package` package](https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-configuration-tool). As this is not bundled yet with Emacs, the first thing we do is install it by hand. All other packages are then declaratively installed and configured with `use-package`. This makes it possible to fully bootstrap Emacs using only this config file, everything else is downloaded, installed and configured automatically.
+I use the [wonderful use-package](https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-configuration-tool) to manage most of the packages in my installation (one exception is `org-mode`, see below). As this is not bundled yet with Emacs, the first thing we do is install it by hand. All other packages are then declaratively installed and configured with `use-package`. This makes it possible to fully bootstrap Emacs using only this config file, everything else is downloaded, installed and configured automatically.
 
 First, we declare the package repositories to use.
 
@@ -405,7 +409,7 @@ We bind this function to the `%` key.
 
 ## Org mode {#org-mode}
 
-I have started using [org-mode](http://orgmode.org/) to writing, coding, presentations and more, thanks to the hearty recommendations and information from [Nick](http://www.cmdln.org/) and many others. I am duly impressed. I have been a fan of the idea of [literate programming](https://en.wikipedia.org/wiki/Literate_programming) for many years, and I have tried other tools before (most notably [noweb](https://www.cs.tufts.edu/~nr/noweb/), which I used during grad school for many of my homeworks and projects), but org-mode is the first tool I have encountered which seems to make it practical. Here are some of the resources I have found useful in learning it:
+I have started using [org-mode](http://orgmode.org/) to writing, blogging, coding, presentations and more, thanks to the hearty recommendations and information from [Nick](http://www.cmdln.org/) and many others. I am duly impressed. I have been a fan of the idea of [literate programming](https://en.wikipedia.org/wiki/Literate_programming) for many years, and I have tried other tools before (most notably [noweb](https://www.cs.tufts.edu/~nr/noweb/), which I used during grad school for many of my homeworks and projects), but org-mode is the first tool I have encountered which seems to make it practical. Here are some of the resources I have found useful in learning it:
 
 -   Howard Abrams' [Introduction to Literate Programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html), which got me jumpstarted into writing code documented with org-mode.
 -   Nick Anderson's [Level up your notes with Org](https://github.com/nickanderson/Level-up-your-notes-with-Org), which contains many useful tips and configuration tricks.
@@ -541,6 +545,36 @@ One of the big strengths of org-mode is the ability to export a document in many
   :after ox)
 ```
 
+Configure a capture template for creating new blog posts, from <https://ox-hugo.scripter.co/doc/org-capture-setup>.
+
+```emacs-lisp
+(with-eval-after-load 'org-capture
+  (defun org-hugo-new-subtree-post-capture-template ()
+    "Returns `org-capture' template string for new Hugo post.
+See `org-capture-templates' for more information."
+    (let* ((title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
+           (fname (org-hugo-slug title)))
+      (mapconcat #'identity
+                 `(
+                   ,(concat "* TODO " title)
+                   ":PROPERTIES:"
+                   ,(concat ":EXPORT_HUGO_BUNDLE: " fname)
+                   ":EXPORT_FILE_NAME: index"
+                   ":END:"
+                   "%?\n")                ;Place the cursor here finally
+                 "\n")))
+
+  (add-to-list 'org-capture-templates
+               '("z"                ;`org-capture' binding + h
+                 "zzamboni.org post"
+                 entry
+                 ;; It is assumed that below file is present in `org-directory'
+                 ;; and that it has a "Blog Ideas" heading. It can even be a
+                 ;; symlink pointing to the actual location of all-posts.org!
+                 (file+olp "zzamboni.org" "Ideas")
+                 (function org-hugo-new-subtree-post-capture-template))))
+```
+
 
 ### Keeping a Journal {#keeping-a-journal}
 
@@ -613,7 +647,7 @@ This little snippet has revolutionized my literate programming workflow. It auto
 
 ### Beautifying org-mode {#beautifying-org-mode}
 
-These settings make org-mode much more readable by using different fonts for headings, hiding some of the markup, etc. This was taken originally from <http://www.howardism.org/Technical/Emacs/orgmode-wordprocessor.html> and then tweaked by me.
+These settings make org-mode much more readable by using different fonts for headings, hiding some of the markup, etc. This was taken originally from Howard Abrams' [Org as a Word Processor](http://www.howardism.org/Technical/Emacs/orgmode-wordprocessor.html), and subsequently tweaked by me.
 
 ```emacs-lisp
 (setq org-hide-emphasis-markers t)
@@ -656,7 +690,13 @@ I am experimenting with using proportional fonts in org-mode for the text, while
      '(variable-pitch ((t (:family "Source Sans Pro" :height 180 :weight light)))))
     ```
 -   Setting up the `fixed-pitch` face to be the same as my usual `default` face. My current one is [Inconsolata](https://en.wikipedia.org/wiki/Inconsolata).
--   Configuring the corresponding org-mode faces for blocks, verbatim code, and maybe a couple of other things.
+
+    ```emacs-lisp
+    (custom-theme-set-faces
+     'user
+     '(fixed-pitch ((t (:family "Inconsolata")))))
+    ```
+-   Configuring the corresponding `org-mode` faces for blocks, verbatim code, and maybe a couple of other things. As these change more frequently, I do them directly from the `customize-face` interface, you can see their current settings in the [Customized variables](#customized-variables) section.
 -   Setting up a hook that automatically enables `visual-line-mode` and `variable-pitch-mode` when entering org-mode.
 
     ```emacs-lisp
@@ -891,35 +931,36 @@ This config came originally from [Uncle Dave's Emacs config](https://github.com/
 ```emacs-lisp
 (use-package helm
   :ensure t
+  :diminish helm-mode
   :bind
   ("C-x C-f" . 'helm-find-files)
   ("C-x C-b" . 'helm-buffers-list)
   ("C-x b"   . 'helm-multi-files)
   ("M-x"     . 'helm-M-x)
   :config
-;;   (defun daedreth/helm-hide-minibuffer ()
-;;     (when (with-helm-buffer helm-echo-input-in-header-line)
-;;       (let ((ov (make-overlay (point-min) (point-max) nil nil t)))
-;;         (overlay-put ov 'window (selected-window))
-;;         (overlay-put ov 'face
-;;                      (let ((bg-color (face-background 'default nil)))
-;;                        `(:background ,bg-color :foreground ,bg-color)))
-;;         (setq-local cursor-type nil))))
-;;   (add-hook 'helm-minibuffer-set-up-hook 'daedreth/helm-hide-minibuffer)
- (setq helm-autoresize-max-height 0
-       helm-autoresize-min-height 40
-       helm-M-x-fuzzy-match t
-       helm-buffers-fuzzy-matching t
-       helm-recentf-fuzzy-match t
-       helm-semantic-fuzzy-match t
-       helm-imenu-fuzzy-match t
-       helm-split-window-in-side-p nil
-       helm-move-to-line-cycle-in-source nil
-       helm-ff-search-library-in-sexp t
-       helm-scroll-amount 8
-       helm-echo-input-in-header-line nil)
-:init
-(helm-mode 1))
+  ;;   (defun daedreth/helm-hide-minibuffer ()
+  ;;     (when (with-helm-buffer helm-echo-input-in-header-line)
+  ;;       (let ((ov (make-overlay (point-min) (point-max) nil nil t)))
+  ;;         (overlay-put ov 'window (selected-window))
+  ;;         (overlay-put ov 'face
+  ;;                      (let ((bg-color (face-background 'default nil)))
+  ;;                        `(:background ,bg-color :foreground ,bg-color)))
+  ;;         (setq-local cursor-type nil))))
+  ;;   (add-hook 'helm-minibuffer-set-up-hook 'daedreth/helm-hide-minibuffer)
+  (setq helm-autoresize-max-height 0
+        helm-autoresize-min-height 40
+        helm-M-x-fuzzy-match t
+        helm-buffers-fuzzy-matching t
+        helm-recentf-fuzzy-match t
+        helm-semantic-fuzzy-match t
+        helm-imenu-fuzzy-match t
+        helm-split-window-in-side-p nil
+        helm-move-to-line-cycle-in-source nil
+        helm-ff-search-library-in-sexp t
+        helm-scroll-amount 8
+        helm-echo-input-in-header-line nil)
+  :init
+  (helm-mode 1))
 
 (require 'helm-config)
 (helm-autoresize-mode 1)
@@ -1435,8 +1476,9 @@ It's beautiful
 ```emacs-lisp
 (use-package which-key
   :ensure t
+  :diminish which-key-mode
   :config
-    (which-key-mode))
+  (which-key-mode))
 ```
 
 
