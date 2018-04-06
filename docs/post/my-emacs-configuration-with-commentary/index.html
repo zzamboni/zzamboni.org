@@ -50,7 +50,7 @@ I have enjoyed slowly converting my configuration files to literate programming 
 
 <meta itemprop="datePublished" content="2017-12-17T20:14:00&#43;01:00" />
 <meta itemprop="dateModified" content="2017-12-17T20:14:00&#43;01:00" />
-<meta itemprop="wordCount" content="6096">
+<meta itemprop="wordCount" content="6145">
 
 
 
@@ -335,12 +335,12 @@ ga('send', 'pageview');
 
 <h3 id="proxy-settings">Proxy settings</h3>
 
-<p>These are two short functions I wrote to be able to set/unset proxy settings within Emacs. I haven&rsquo;t bothered to improve or automate this, as I pretty much only need it to be able to install packages sometimes when I&rsquo;m at work. For now I just call them manually with <code>M-x set/unset-proxy</code> when I need to.</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">set-proxy</span> <span class="p">()</span>
+<p>These are two short functions I wrote to be able to set/unset proxy settings within Emacs. I haven&rsquo;t bothered to improve or automate this, as I pretty much only need it to be able to install packages sometimes when I&rsquo;m at work. For now I just call them manually with <code>M-x zz/(un)set-proxy</code> when I need to.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/set-proxy</span> <span class="p">()</span>
   <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">setq</span> <span class="nv">url-proxy-services</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;http&#34;</span> <span class="o">.</span> <span class="s">&#34;proxy.corproot.net:8079&#34;</span><span class="p">)</span>
                              <span class="p">(</span><span class="s">&#34;https&#34;</span> <span class="o">.</span> <span class="s">&#34;proxy.corproot.net:8079&#34;</span><span class="p">))))</span>
-<span class="p">(</span><span class="nb">defun</span> <span class="nv">unset-proxy</span> <span class="p">()</span>
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/unset-proxy</span> <span class="p">()</span>
   <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">setq</span> <span class="nv">url-proxy-services</span> <span class="no">nil</span><span class="p">))</span></code></pre></div>
 <h3 id="miscellaneous-settings">Miscellaneous settings</h3>
@@ -426,13 +426,13 @@ ga('send', 'pageview');
 <h3 id="emulating-vi-s-key">Emulating vi&rsquo;s <code>%</code> key</h3>
 
 <p>One of the few things I missed in Emacs from vi was the <code>%</code> key, which jumps to the parenthesis, bracket or brace which matches the one below the cursor. This function implements the functionality. Inspired by <a href="http://www.emacswiki.org/emacs/NavigatingParentheses">http://www.emacswiki.org/emacs/NavigatingParentheses</a>, but modified to use <code>smartparens</code> instead of the default commands, and to work on brackets and braces.</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">goto-match-paren</span> <span class="p">(</span><span class="nv">arg</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/goto-match-paren</span> <span class="p">(</span><span class="nv">arg</span><span class="p">)</span>
   <span class="s">&#34;Go to the matching paren/bracket, otherwise (or if ARG is not nil) insert %.
 </span><span class="s">  vi style of % jumping to matching brace.&#34;</span>
   <span class="p">(</span><span class="nb">interactive</span> <span class="s">&#34;p&#34;</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">not</span> <span class="p">(</span><span class="nf">memq</span> <span class="nv">last-command</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">set-mark</span>
                                 <span class="nv">cua-set-mark</span>
-                                <span class="nv">goto-match-paren</span>
+                                <span class="nv">zz/goto-match-paren</span>
                                 <span class="nv">down-list</span>
                                 <span class="nv">up-list</span>
                                 <span class="nv">end-of-defun</span>
@@ -471,7 +471,7 @@ ga('send', 'pageview');
           <span class="p">((</span><span class="nf">looking-at</span> <span class="s">&#34;\\s\)&#34;</span><span class="p">)</span> <span class="p">(</span><span class="nf">forward-char</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nv">sp-backward-sexp</span><span class="p">))</span>
           <span class="p">(</span><span class="no">t</span> <span class="p">(</span><span class="nf">self-insert-command</span> <span class="p">(</span><span class="nb">or</span> <span class="nv">arg</span> <span class="mi">1</span><span class="p">))))))</span></code></pre></div>
 <p>We bind this function to the <code>%</code> key.</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;%&#34;</span><span class="p">)</span> <span class="ss">&#39;goto-match-paren</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;%&#34;</span><span class="p">)</span> <span class="ss">&#39;zz/goto-match-paren</span><span class="p">)</span></code></pre></div>
 <h2 id="org-mode">Org mode</h2>
 
 <p>I have started using <a href="http://orgmode.org/">org-mode</a> to writing, blogging, coding, presentations and more, thanks to the hearty recommendations and information from <a href="http://www.cmdln.org/">Nick</a> and many others. I am duly impressed. I have been a fan of the idea of <a href="https://en.wikipedia.org/wiki/Literate_programming">literate programming</a> for many years, and I have tried other tools before (most notably <a href="https://www.cs.tufts.edu/~nr/noweb/">noweb</a>, which I used during grad school for many of my homeworks and projects), but org-mode is the first tool I have encountered which seems to make it practical. Here are some of the resources I have found useful in learning it:</p>
@@ -582,6 +582,21 @@ ga('send', 'pageview');
                  <span class="c1">;; symlink pointing to the actual location of all-posts.org!</span>
                  <span class="p">(</span><span class="nv">file+olp</span> <span class="s">&#34;zzamboni.org&#34;</span> <span class="s">&#34;Ideas&#34;</span><span class="p">)</span>
                  <span class="p">(</span><span class="nb">function</span> <span class="nv">org-hugo-new-subtree-post-capture-template</span><span class="p">))))</span></code></pre></div>
+<p>Avoid auto-generate-on-save for <code>org-capture</code>&rsquo;d notes, from <a href="https://ox-hugo.scripter.co/doc/auto-export-on-saving/">https://ox-hugo.scripter.co/doc/auto-export-on-saving/</a>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">with-eval-after-load</span> <span class="ss">&#39;org-capture</span>
+  <span class="c1">;; Do not cause auto Org-&gt;Hugo export to happen when saving captures</span>
+  <span class="p">(</span><span class="nb">defun</span> <span class="nv">modi/org-capture--remove-auto-org-to-hugo-export-maybe</span> <span class="p">()</span>
+    <span class="s">&#34;Function for </span><span class="ss">`org-capture-before-finalize-hook&#39;</span><span class="s">.
+</span><span class="s">Disable </span><span class="ss">`org-hugo-export-wim-to-md-after-save&#39;</span><span class="s">.&#34;</span>
+    <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-hugo-allow-export-after-save</span> <span class="no">nil</span><span class="p">))</span>
+
+  <span class="p">(</span><span class="nb">defun</span> <span class="nv">modi/org-capture--add-auto-org-to-hugo-export-maybe</span> <span class="p">()</span>
+    <span class="s">&#34;Function for </span><span class="ss">`org-capture-after-finalize-hook&#39;</span><span class="s">.
+</span><span class="s">Enable </span><span class="ss">`org-hugo-export-wim-to-md-after-save&#39;</span><span class="s">.&#34;</span>
+    <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-hugo-allow-export-after-save</span> <span class="no">t</span><span class="p">))</span>
+
+  <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;org-capture-before-finalize-hook</span> <span class="nf">#&#39;</span><span class="nv">modi/org-capture--remove-auto-org-to-hugo-export-maybe</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;org-capture-after-finalize-hook</span> <span class="nf">#&#39;</span><span class="nv">modi/org-capture--add-auto-org-to-hugo-export-maybe</span><span class="p">))</span></code></pre></div>
 <h3 id="keeping-a-journal">Keeping a Journal</h3>
 
 <p>I use <a href="http://750words.com/">750words</a> for my personal Journal, and I usually write my entries locally using Scrivener. I have been playing with <code>org-journal</code> for this, but I am not fully convinced yet.</p>
@@ -689,7 +704,7 @@ ga('send', 'pageview');
 <h3 id="reformatting-an-org-buffer">Reformatting an org buffer</h3>
 
 <p>I picked up this little gem in the org mailing list. A function that reformats the current buffer by regenerating the text from its internal parsed representation. Quite amazing.</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">org-reformat-buffer</span> <span class="p">()</span>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/org-reformat-buffer</span> <span class="p">()</span>
   <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nv">y-or-n-p</span> <span class="s">&#34;Really format current buffer? &#34;</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">document</span> <span class="p">(</span><span class="nv">org-element-interpret-data</span> <span class="p">(</span><span class="nv">org-element-parse-buffer</span><span class="p">))))</span>
@@ -731,10 +746,10 @@ ga('send', 'pageview');
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-=&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-increase</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M--&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-decrease</span><span class="p">)</span></code></pre></div>
 <p>Somewhat surprisingly, there seems to be no &ldquo;reset&rdquo; function, so I define my own and bind it to <code>⌘-0</code>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">text-scale-reset</span> <span class="p">()</span>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/text-scale-reset</span> <span class="p">()</span>
   <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
   <span class="p">(</span><span class="nv">text-scale-set</span> <span class="mi">0</span><span class="p">))</span>
-<span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-0&#34;</span><span class="p">)</span> <span class="ss">&#39;text-scale-reset</span><span class="p">)</span></code></pre></div>
+<span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-0&#34;</span><span class="p">)</span> <span class="ss">&#39;zz/text-scale-reset</span><span class="p">)</span></code></pre></div>
 <p>We also use the <code>exec-path-from-shell</code> to make sure the path settings from the shell are loaded into Emacs (usually it starts up with the default system-wide path).</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">exec-path-from-shell</span>
   <span class="nb">:config</span>
@@ -1013,9 +1028,9 @@ ga('send', 'pageview');
   <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;lisp-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">smartparens-strict-mode</span><span class="p">)</span>
   <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;cider-repl-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">smartparens-strict-mode</span><span class="p">))</span></code></pre></div>
 <p>Map <code>M-(</code> to enclose the next expression, as in <code>paredit</code>. Prefix argument can be used to indicate how many expressions to enclose instead of just 1. E.g. <code>C-u 3 M-(</code> will enclose the next 3 sexps.</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">sp-enclose-next-sexp</span> <span class="p">(</span><span class="nv">num</span><span class="p">)</span> <span class="p">(</span><span class="nb">interactive</span> <span class="s">&#34;p&#34;</span><span class="p">)</span> <span class="p">(</span><span class="nv">insert-parentheses</span> <span class="p">(</span><span class="nb">or</span> <span class="nv">num</span> <span class="mi">1</span><span class="p">)))</span>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/sp-enclose-next-sexp</span> <span class="p">(</span><span class="nv">num</span><span class="p">)</span> <span class="p">(</span><span class="nb">interactive</span> <span class="s">&#34;p&#34;</span><span class="p">)</span> <span class="p">(</span><span class="nv">insert-parentheses</span> <span class="p">(</span><span class="nb">or</span> <span class="nv">num</span> <span class="mi">1</span><span class="p">)))</span>
 <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;smartparens-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">sp-use-paredit-bindings</span><span class="p">)</span>
-<span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;smartparens-mode-hook</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nv">local-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-(&#34;</span><span class="p">)</span> <span class="ss">&#39;sp-enclose-next-sexp</span><span class="p">)))</span></code></pre></div>
+<span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;smartparens-mode-hook</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nv">local-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-(&#34;</span><span class="p">)</span> <span class="ss">&#39;zz/sp-enclose-next-sexp</span><span class="p">)))</span></code></pre></div>
 <p>Minor mode for highlighting the current sexp in LISP modes.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">hl-sexp</span>
   <span class="nb">:config</span>
