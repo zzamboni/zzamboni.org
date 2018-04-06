@@ -2,6 +2,7 @@
 #+seq_todo: TODO DRAFT DONE
 #+options: creator:t
 #+property: header-args :eval never-export
+#+hugo_front_matter_key_replace: description>summary
 
 #+macro: updatetime {{{time(%B %e\, %Y)}}}
 
@@ -164,8 +165,11 @@ I group here the posts about my documented config files, which include the live 
 CLOSED: [2017-12-17 Sun 20:14]
 :properties:
 :export_file_name: 2017-12-17-my-emacs-configuration-with-commentary
-:export_hugo_custom_front_matter: :featured_image /images/emacs-logo.svg :toc true :summary I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file.
+:export_hugo_custom_front_matter: :featured_image /images/emacs-logo.svg :toc true
 :end:
+#+begin_description
+I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file.
+#+end_description
 
 Last update: *{{{updatetime}}}*
 
@@ -177,8 +181,11 @@ I have enjoyed slowly converting my configuration files to [[http://www.howardis
 CLOSED: [2018-01-08 Mon 13:31]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 2018-01-08-my-hammerspoon-configuration-with-commentary
-:export_hugo_custom_front_matter: :toc true :featured_image /images/hammerspoon.png :summary In my ongoing series of literate config files, I present to you my Hammerspoon configuration file.
+:export_hugo_custom_front_matter: :toc true :featured_image /images/hammerspoon.png
 :END:
+#+begin_description
+In my ongoing series of literate config files, I present to you my Hammerspoon configuration file.
+#+end_description
 
 Last update: *{{{updatetime}}}*
 
@@ -190,8 +197,11 @@ In my [[../my-elvish-configuration-with-commentary/][ongoing]] [[../my-emacs-con
 CLOSED: [2017-11-16 Thu 20:21]
 :PROPERTIES:
 :export_file_name: 2017-11-16-my-elvish-configuration-with-commentary
-:export_hugo_custom_front_matter: :toc true :featured_image /images/elvish-logo.svg :summary In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
+:export_hugo_custom_front_matter: :toc true :featured_image /images/elvish-logo.svg
 :END:
+#+begin_description
+In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
+#+end_description
 
 Last update: *{{{updatetime}}}*
 
@@ -208,8 +218,11 @@ Without further ado...
 CLOSED: [2018-03-21 Wed 22:45]
 :PROPERTIES:
 :export_file_name: 2018-03-21-using-proportional-fonts-in-emacs-with-org-mode
-:export_hugo_custom_front_matter: :toc true :featured_image /images/emacs-logo.svg :summary Configuring Org Mode in Emacs for beautiful typography for both text and code editing.
+:export_hugo_custom_front_matter: :toc true :featured_image /images/emacs-logo.svg
 :END:
+#+begin_description
+Configuring Org Mode in Emacs for beautiful typography for both text and code editing.
+#+end_description
 
 Over the last few months, I have used [[https://orgmode.org/][org-mode]] more and more for writing and programming in Emacs. I love its flexibility and power, and it is the first [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate programming]] tool which "feels right", and I have been able to stick with it for a longer period of time than in my previous attempts.
 
@@ -351,8 +364,11 @@ The setup described above has considerably improved my enjoyment of writing in E
 CLOSED: [2017-12-04 Mon 22:15]
 :PROPERTIES:
 :export_file_name: 2017-12-04-bang-bang-shortcuts-in-elvish
-:export_hugo_custom_front_matter: :featured_image /images/elvish-logo.svg :summary How to set up the bash !! and !$ shortcuts for accessing the previous command in Elvish.
+:export_hugo_custom_front_matter: :featured_image /images/elvish-logo.svg
 :END:
+#+begin_description
+How to set up the bash !! and !$ shortcuts for accessing the previous command in Elvish.
+#+end_description
 
 (Updated on March 19th, 2018 to use the new [[https://elvish.io/ref/epm.html][Elvish Package Manager]])
 

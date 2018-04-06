@@ -1,13 +1,13 @@
 +++
 title = "My Emacs Configuration, With Commentary"
 author = ["Diego Zamboni"]
+summary = "I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file."
 date = 2017-12-17T20:14:00+01:00
 tags = ["config", "howto", "literateprogramming", "emacs"]
 draft = false
 creator = "Emacs 25.3.2 (Org mode 9.1.8 + ox-hugo)"
 featured_image = "/images/emacs-logo.svg"
 toc = true
-summary = "I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file."
 +++
 
 Last update: **April  6, 2018**
@@ -65,7 +65,8 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
      (113 . "quote")
      (115 . "src")
      (118 . "verse")
-     (110 . "notes"))))
+     (110 . "notes")
+     (100 . "description"))))
  '(package-selected-packages
    (quote
     (helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
@@ -447,6 +448,13 @@ The default keybinding for `org-mark-element` is `M-h`, which in macOS hides the
 
 ```emacs-lisp
 (define-key global-map (kbd "A-h") 'org-mark-element)
+```
+
+Default setup and keybinding for `org-capture`.
+
+```emacs-lisp
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(define-key global-map "\C-cc" 'org-capture)
 ```
 
 Load `org-tempo` to enable snippets such as `<s<TAB>` to insert a source block.
