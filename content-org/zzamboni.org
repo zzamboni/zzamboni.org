@@ -23,26 +23,21 @@ This file is the source for all new and updated content on [[http://zzamboni.org
 - [[#book-pages][Book pages]]
   - [[#learning-cfengine-3][Learning CFEngine 3]]
 - [[#ideas][Ideas]]
-  - [[#hammerspoon][Hammerspoon]]
-    - [[#using-and-extending-seal][Using and extending Seal]]
-    - [[#sending-things-to-omnifocus][Sending things to OmniFocus]]
-  - [[#elvish][Elvish]]
-  - [[#cfengine][CFEngine]]
-  - [[#emacs][Emacs]]
-    - [[#ox-hugo][ox-hugo]]
-  - [[#tips-and-tricks][Tips and tricks]]
-    - [[#cryfs][CryFS]]
-    - [[#hosting-a-hugo-blog-in-github][Hosting a Hugo blog in GitHub]]
-    - [[#using-the-nix-package-manager-in-macos][Using the Nix package manager in macOS]]
+  - [[#using-and-extending-seal][Using and extending Seal]]
+  - [[#sending-things-to-omnifocus][Sending things to OmniFocus]]
+  - [[#ox-hugo][ox-hugo]]
+  - [[#cryfs][CryFS]]
+  - [[#hosting-a-hugo-blog-in-github][Hosting a Hugo blog in GitHub]]
+  - [[#using-the-nix-package-manager-in-macos][Using the Nix package manager in macOS]]
 - [[#posts][Posts]]
   - [[#literate-config-files][Literate config files]]
     - [[#my-emacs-configuration-with-commentary][My Emacs Configuration, With Commentary]]
     - [[#my-hammerspoon-configuration-with-commentary][My Hammerspoon Configuration, With Commentary]]
     - [[#my-elvish-configuration-with-commentary][My Elvish Configuration With Commentary]]
-  - [[#emacs-1][Emacs]]
+  - [[#emacs][Emacs]]
     - [[#beautifying-org-mode-in-emacs][Beautifying Org Mode in Emacs]]
-  - [[#hammerspoon-1][Hammerspoon]]
-  - [[#elvish-1][Elvish]]
+  - [[#hammerspoon][Hammerspoon]]
+  - [[#elvish][Elvish]]
     - [[#bang-bang---shell-shortcuts-in-elvish][Bang-Bang (!!, !$) Shell Shortcuts in Elvish]]
 - [[#footnotes][Footnotes]]
 
@@ -140,21 +135,20 @@ You can buy the book from Amazon by clicking the link on the right.
 \nbsp
 
 * Ideas
+:PROPERTIES:
+:export_hugo_section: post
+:END:
 
 Ideas for things to write about.
 
-** Hammerspoon
-*** Using and extending Seal
-*** Sending things to OmniFocus
-** Elvish
-** CFEngine
-** Emacs
-*** ox-hugo
-** Tips and tricks
-*** CryFS
-*** Hosting a Hugo blog in GitHub
+** TODO Using and extending Seal                              :hammerspoons:
+** TODO Sending things to OmniFocus                            :hammerspoon:
+** TODO ox-hugo                                                 :emacs:hugo:
+** TODO CryFS                                                  :cryfs:howto:
+** TODO Hosting a Hugo blog in GitHub           :hugo:github:blogging:howto:
 Short guide to setting up Hugo, using /docs to host to avoid branches, and setting up your custom domain.
-*** Using the Nix package manager in macOS
+** TODO Using the Nix package manager in macOS             :howto:nix:macos:
+
 * Posts
 :PROPERTIES:
 :export_hugo_section: post
