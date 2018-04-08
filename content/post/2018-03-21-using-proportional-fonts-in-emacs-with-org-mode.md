@@ -5,14 +5,14 @@ summary = "Configuring Org Mode in Emacs for beautiful typography for both text 
 date = 2018-03-21T22:45:00+01:00
 tags = ["emacs", "orgmode", "beautifulemacs", "config"]
 draft = false
-creator = "Emacs 25.3.2 (Org mode 9.1.8 + ox-hugo)"
+creator = "Emacs 25.3.2 (Org mode 9.1.9 + ox-hugo)"
 toc = true
 featured_image = "/images/emacs-logo.svg"
 +++
 
 Over the last few months, I have used [org-mode](https://orgmode.org/) more and more for writing and programming in Emacs. I love its flexibility and power, and it is the first [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) tool which "feels right", and I have been able to stick with it for a longer period of time than in my previous attempts.
 
-Recently I started thinking about how I could make my editing environment more visually appealing. I am in general very happy with my Emacs appearance thanks for the [Gruvbox theme](https://github.com/Greduan/emacs-theme-gruvbox), and org-mode has very decent syntax highlighting. But as I write more and more prose in Emacs these days, I started thinking it might be nice to edit text in more visually-appealing fonts, including using a proportional font, which makes regular prose much more readable. I would like to share with you what I learned and my current Emacs configuration.
+Recently I started thinking about how I could make my editing environment more visually appealing. I am in general very happy with my Emacs' appearance. I use the [Gruvbox theme](https://github.com/Greduan/emacs-theme-gruvbox), and org-mode has very decent syntax highlighting. But as I write more and more prose in Emacs these days, I started thinking it might be nice to edit text in more visually-appealing fonts, including using a proportional font, which makes regular prose much more readable. I would like to share with you what I learned and my current Emacs configuration.
 
 In the end, you can have an Emacs setup for editing org documents which looks very nice, with proportional fonts for text and monospaced fonts for code blocks, examples and other elements. To wet your appetite, here is what a fragment of my [init.org](https://github.com/zzamboni/dot-emacs/blob/master/init.org) file looks like:
 
