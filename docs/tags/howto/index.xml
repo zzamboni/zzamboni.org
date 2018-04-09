@@ -17,7 +17,7 @@
       <pubDate>Mon, 08 Jan 2018 13:31:00 +0100</pubDate>
       
       <guid>http://zzamboni.org/post/my-hammerspoon-configuration-with-commentary/</guid>
-      <description>Last update: April 6, 2018
+      <description>Last update: April 9, 2018
 In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration in GitHub.
 General variables and configuration Global log level. Per-spoon log level can be configured in each Install:andUse block below.</description>
     </item>
@@ -38,7 +38,7 @@ I have enjoyed slowly converting my configuration files to literate programming 
       <pubDate>Thu, 16 Nov 2017 20:21:00 +0100</pubDate>
       
       <guid>http://zzamboni.org/post/my-elvish-configuration-with-commentary/</guid>
-      <description>Last update: April 6, 2018
+      <description>Last update: April 9, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc.</description>
     </item>
