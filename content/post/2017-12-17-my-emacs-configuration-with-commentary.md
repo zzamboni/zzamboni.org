@@ -5,23 +5,24 @@ summary = "I have enjoyed slowly converting my configuration files to literate p
 date = 2017-12-17T20:14:00+01:00
 tags = ["config", "howto", "literateprogramming", "emacs"]
 draft = false
-creator = "Emacs 25.3.2 (Org mode 9.1.8 + ox-hugo)"
+creator = "Emacs 25.3.2 (Org mode 9.1.9 + ox-hugo)"
 featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **April  6, 2018**
+Last update: **April  9, 2018**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot_emacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot_emacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot_emacs/blob/master/init.el>.
 
 
 ## References {#references}
 
-Emacs config is an art, and I have learned a lot by reading through other people's config files. These are some of the best ones (several are also written in org mode)
+Emacs config is an art, and I have learned a lot by reading through other people's config files, and from many other resources. These are some of the best ones (several are also written in org mode). You will find snippets from all of these (and possibly others) throughout my config.
 
 -   [Sacha Chua's Emacs Configuration](http://pages.sachachua.com/.emacs.d/Sacha.html)
 -   [Uncle Dave's Emacs config](https://github.com/daedreth/UncleDavesEmacs#user-content-ido-and-why-i-started-using-helm)
 -   [PythonNut's Emacs config](https://github.com/PythonNut/emacs-config)
+-   [Mastering Emacs](https://www.masteringemacs.org/)
 
 
 ## Customized variables {#customized-variables}
@@ -50,23 +51,26 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(js-indent-level 2)
  '(lua-indent-level 2)
  '(org-agenda-files nil)
+ '(org-babel-shell-names
+   (quote
+    ("sh" "bash" "zsh" "fish" "csh" "ash" "dash" "ksh" "mksh" "posh")))
  '(org-hugo-use-code-for-kbd t)
  '(org-mac-grab-Acrobat-app-p nil)
  '(org-mac-grab-devonthink-app-p nil)
  '(org-structure-template-alist
    (quote
-    ((97 . "export ascii")
-     (99 . "center")
-     (67 . "comment")
-     (101 . "example")
-     (69 . "export")
-     (104 . "export html")
-     (108 . "export latex")
-     (113 . "quote")
-     (115 . "src")
-     (118 . "verse")
-     (110 . "notes")
-     (100 . "description"))))
+    (("a" . "export ascii")
+     ("c" . "center")
+     ("C" . "comment")
+     ("e" . "example")
+     ("E" . "export")
+     ("h" . "export html")
+     ("l" . "export latex")
+     ("q" . "quote")
+     ("s" . "src")
+     ("v" . "verse")
+     ("n" . "note")
+     ("d" . "description"))))
  '(package-selected-packages
    (quote
     (helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
@@ -178,6 +182,7 @@ This variable tells Emacs to prefer the `.el` file if it's newer, even if there 
 Set the load path to the directories from where I sometimes load things outside the package system. For now I am loading `org-mode` from a checkout of its git repository, so I load all its packages and the contrib packages from there.
 
 ```emacs-lisp
+(add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/lisp/org-mode/lisp")
 (add-to-list 'load-path "~/.emacs.d/lisp/org-mode/contrib/lisp")
 ```
@@ -347,6 +352,16 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 
     ```emacs-lisp
     (global-set-key (kbd "M-/") 'hippie-expand)
+    ```
+
+-   The [which-key](https://github.com/justbur/emacs-which-key) package makes Emacs functionality much easier to discover and explore: in short, after you start the input of a command and stop, pondering what key must follow, it will automatically open a non-intrusive buffer at the bottom of the screen offering you suggestions for completing the command, that's it, nothing else. It's beautiful.
+
+    ```emacs-lisp
+    (use-package which-key
+      :ensure t
+      :diminish which-key-mode
+      :config
+      (which-key-mode))
     ```
 
 
@@ -622,21 +637,18 @@ Plain literate programming is built-in, but the `ob-*` packages provide the abil
 
 ```emacs-lisp
 (use-package ob-cfengine3)
-(require 'ob-ruby)
-(require 'ob-latex)
-(require 'ob-plantuml)
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((cfengine3 . t)
+   (ruby . t)
+   (latex . t)
+   (plantuml . t)
+   (python . t)
+   (shell . t)
+   (elvish . t)
+   (calc . t)))
 (setq org-plantuml-jar-path
       (expand-file-name "/usr/local/Cellar/plantuml/1.2017.18/libexec/plantuml.jar"))
-(require 'ob-python)
-(require 'ob-shell)
-(require 'ob-calc)
-(require 'ob-elvish)
-```
-
-`inf-ruby` makes `ob-ruby` more powerful by providing a persistent Ruby REPL.
-
-```emacs-lisp
-(use-package inf-ruby)
 ```
 
 This is potentially dangerous: it suppresses the query before executing code from within org-mode. I use it because I am very careful and only press `C-c C-c` on blocks I absolutely understand.
@@ -921,6 +933,18 @@ Sometimes I find the always-highlighted column to be distracting, but other time
 ;; (use-package crosshairs
 ;;   :config
 ;;   (crosshairs-mode))
+```
+
+It's one of those things where I genuinely have to wonder why there is no built in functionality for it.  Once in a blue moon I need to kill all buffers, and having ~150 of them open would mean I'd need to spend a few too many seconds doing this than I'd like, here's a solution.
+
+This can be invoked using `C-M-s-k`. This keybinding makes sure you don't hit it unless you really want to.
+
+```emacs-lisp
+(defun close-all-buffers ()
+  "Kill all buffers without regard for their origin."
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
+(global-set-key (kbd "C-M-s-k") 'close-all-buffers)
 ```
 
 
@@ -1487,41 +1511,6 @@ In addition to coding, I configure some modes that can be used for text editing.
       :config
       (typopunct-change-language 'english t))
     ```
-
-
-## Snippets from Uncle Dave's Config {#snippets-from-uncle-dave-s-config}
-
-I recently discovered [Uncle Dave's Emacs config](https://github.com/daedreth/UncleDavesEmacs), and have been grabbing some of the many gems available there. It's a great resource. Full credit for these snippets below (including most of the text) goes to him.
-
-
-### which-key and why I love emacs {#which-key-and-why-i-love-emacs}
-
-In order to use emacs, you don't need to know how to use emacs.  It's self documenting, and coupled with this insanely useful package, it's even easier.  In short, after you start the input of a command and stop, pondering what key must follow, it will automatically open a non-intrusive buffer at the bottom of the screen offering you suggestions for completing the command, that's it, nothing else.
-
-It's beautiful
-
-```emacs-lisp
-(use-package which-key
-  :ensure t
-  :diminish which-key-mode
-  :config
-  (which-key-mode))
-```
-
-
-### close-all-buffers {#close-all-buffers}
-
-It's one of those things where I genuinely have to wonder why there is no built in functionality for it.  Once in a blue moon I need to kill all buffers, and having ~150 of them open would mean I'd need to spend a few too many seconds doing this than I'd like, here's a solution.
-
-This can be invoked using `C-M-s-k`. This keybinding makes sure you don't hit it unless you really want to.
-
-```emacs-lisp
-(defun close-all-buffers ()
-  "Kill all buffers without regard for their origin."
-  (interactive)
-  (mapc 'kill-buffer (buffer-list)))
-(global-set-key (kbd "C-M-s-k") 'close-all-buffers)
-```
 
 
 ## Cheatsheet {#cheatsheet}
