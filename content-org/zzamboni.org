@@ -157,7 +157,7 @@ Short guide to setting up Hugo, using /docs to host to avoid branches, and setti
 
 Blog posts.
 
-** Literate config files                  :config:howto:literateprogramming:
+** Literate config files   :config:howto:literateprogramming:literateconfig:
 
 I group here the posts about my documented config files, which include the live files from my current configuration.
 
