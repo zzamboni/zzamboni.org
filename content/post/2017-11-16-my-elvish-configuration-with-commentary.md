@@ -3,14 +3,14 @@ title = "My Elvish Configuration With Commentary"
 author = ["Diego Zamboni"]
 summary = "In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections."
 date = 2017-11-16T20:21:00+01:00
-tags = ["config", "howto", "literateprogramming", "elvish"]
+tags = ["config", "howto", "literateprogramming", "literateconfig", "elvish"]
 draft = false
-creator = "Emacs 25.3.2 (Org mode 9.1.8 + ox-hugo)"
+creator = "Emacs 25.3.2 (Org mode 9.1.9 + ox-hugo)"
 toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **April  6, 2018**
+Last update: **April  9, 2018**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
