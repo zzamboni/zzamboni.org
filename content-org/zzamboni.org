@@ -180,7 +180,7 @@ I have enjoyed slowly converting my configuration files to [[http://www.howardis
 *** DONE My Hammerspoon Configuration, With Commentary        :hammerspoon:
 CLOSED: [2018-01-08 Mon 13:31]
 :PROPERTIES:
-:EXPORT_FILE_NAME: 2018-01-08-my-hammerspoon-configuration-with-commentary
+:export_file_name: 2018-01-08-my-hammerspoon-configuration-with-commentary
 :export_hugo_custom_front_matter: :toc true :featured_image /images/hammerspoon.png
 :END:
 #+begin_description
