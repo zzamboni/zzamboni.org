@@ -16,7 +16,7 @@ Recently I started thinking about how I could make my editing environment more v
 
 In the end, you can have an Emacs setup for editing org documents which looks very nice, with proportional fonts for text and monospaced fonts for code blocks, examples and other elements. To wet your appetite, here is what a fragment of my [init.org](https://github.com/zzamboni/dot-emacs/blob/master/init.org) file looks like:
 
-{{< figure src="/ox-hugo/emacs-init-propfonts.png" link="/ox-hugo/emacs-init-propfonts.png" >}}
+{{< figure src="emacs-init-propfonts.png" link="emacs-init-propfonts.png" >}}
 
 
 ## Step 1: Configure faces for Org headlines and lists {#step-1-configure-faces-for-org-headlines-and-lists}
@@ -99,13 +99,13 @@ You can enable `variable-pitch-mode` automatically for org buffers by setting up
 
 One thing you will notice right away with proportional fonts is that filling paragraphs no longer makes sense. This is because `fill-paragraph` works based on the number of characters in a line, but with a proportional font, characters have different widths, so a filled paragraph looks strange:
 
-{{< figure src="/ox-hugo/emacs-filled-paragraph.png" link="/ox-hugo/emacs-filled-paragraph.png" >}}
+{{< figure src="emacs-filled-paragraph.png" link="emacs-filled-paragraph.png" >}}
 
 Of course, you can still do it, but there's a better way. With `visual-line-mode` enabled, long lines will flow and adjust to the width of the window. This is great for writing prose, because you can choose how wide your lines are by just resizing your window.
 
-{{< figure src="/ox-hugo/emacs-narrow-window.png" link="/ox-hugo/emacs-narrow-window.png" >}}
+{{< figure src="emacs-narrow-window.png" link="emacs-narrow-window.png" >}}
 
-{{< figure src="/ox-hugo/emacs-wide-window.png" link="/ox-hugo/emacs-wide-window.png" >}}
+{{< figure src="emacs-wide-window.png" link="emacs-wide-window.png" >}}
 
 There is one habit you have to change for this to work: the instinct (at least for me) of pressing <kbd>M-q</kbd> every once in a while to readjust the current paragraph. I personally think it's worth it.
 
@@ -142,7 +142,7 @@ Here are the faces I have configured so far (there are probably many more to do,
 
 One minor issue I have noticed is that, in `variable-pitch-mode`, the fixed-pitch blocks have a slight increase in inter-line spacing. This is not a deal breaker for me, but it is a noticeable difference. This can be observed in the following screenshot, which shows the block of code above embedded in the org-mode buffer and in the block-editing buffer, which uses the fixed-width font. If you know a way in which this could be fixed, please let me know!
 
-{{< figure src="/ox-hugo/emacs-differing-heights.png" link="/ox-hugo/emacs-differing-heights.png" >}}
+{{< figure src="emacs-differing-heights.png" link="emacs-differing-heights.png" >}}
 
 
 ## Conclusion {#conclusion}
