@@ -217,7 +217,8 @@ Without further ado...
 *** DONE Beautifying Org Mode in Emacs      :orgmode:beautifulemacs:config:
 CLOSED: [2018-03-21 Wed 22:45]
 :PROPERTIES:
-:export_file_name: 2018-03-21-using-proportional-fonts-in-emacs-with-org-mode
+:export_hugo_bundle: 2018-03-21-using-proportional-fonts-in-emacs-with-org-mode
+:export_file_name: index
 :export_hugo_custom_front_matter: :toc true :featured_image /images/emacs-logo.svg
 :END:
 #+begin_description
