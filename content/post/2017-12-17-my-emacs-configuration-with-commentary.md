@@ -5,12 +5,12 @@ summary = "I have enjoyed slowly converting my configuration files to literate p
 date = 2017-12-17T20:14:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs"]
 draft = false
-creator = "Emacs 25.3.1 (Org mode 9.1.9 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.1.11 + ox-hugo)"
 featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **April 19, 2018**
+Last update: **April 26, 2018**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot_emacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot_emacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot_emacs/blob/master/init.el>.
 
@@ -23,6 +23,41 @@ Emacs config is an art, and I have learned a lot by reading through other people
 -   [Uncle Dave's Emacs config](https://github.com/daedreth/UncleDavesEmacs#user-content-ido-and-why-i-started-using-helm)
 -   [PythonNut's Emacs config](https://github.com/PythonNut/emacs-config)
 -   [Mastering Emacs](https://www.masteringemacs.org/)
+
+
+## Performance optimization {#performance-optimization}
+
+Lately I've been playing with optimizing my Emacs load time. I have found a couple of useful resources, including:
+
+-   [Two easy little known steps to speed up Emacs start up time](https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/)
+-   [Advanced Techniques for Reducing Emacs Startup Time](https://blog.d46.us/advanced-emacs-startup/)
+
+Based on these, I have added the code below.
+
+First, a hook that reports how long and how many garbage collections the startup took.
+
+```emacs-lisp
+;; Use a hook so the message doesn't get clobbered by other messages.
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "Emacs ready in %s with %d garbage collections."
+                     (format "%.2f seconds"
+                             (float-time
+                              (time-subtract after-init-time before-init-time)))
+                     gcs-done)))
+```
+
+Next, we wrap the whole init file in a block that sets `file-name-handler-alist` to `nil` to prevent any special-filename parsing of files loaded from the init file (e.g. remote files loaded through tramp, etc.). The `let` block gets closed in the [Epilogue](#epilogue).
+
+```emacs-lisp
+(let ((file-name-handler-alist nil))
+```
+
+We set `gc-cons-threshold` to its maximum value, to prevent any garbage collection from happening during load time. We also reset this value in the [Epilogue](#epilogue).
+
+```emacs-lisp
+(setq gc-cons-threshold most-positive-fixnum)
+```
 
 
 ## Customized variables {#customized-variables}
@@ -49,9 +84,10 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(custom-safe-themes
    (quote
     ("6ac7c0f959f0d7853915012e78ff70150bfbe2a69a1b703c3ac4184f9ae3ae02" "8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a" "a1a966cf2e87be6a148158c79863440ba2e45aa06cc214341feafe5c6deca4f2" "3eb2b5607b41ad8a6da75fe04d5f92a46d1b9a95a202e3f5369e2cdefb7aac5c" "3d0142352ce19c860047ad7402546944f84c270e84ae479beddbc2608268e0e5" "a33858123d3d3ca10c03c657693881b9f8810c9e242a62f1ad6380adf57b031c" "a40eac965142a2057269f8b2abd546b71a0e58e733c6668a62b1ad1aa7669220" "7be789f201ea16242dab84dd5f225a55370dbecae248d4251edbd286fe879cfa" "94dac4d15d12ba671f77a93d84ad9f799808714d4c5d247d5fd944df951b91d6" "4d8fab23f15347bce54eb7137789ab93007010fa47296c2f36757ff84b5b3c8a" default)))
+ '(desktop-restore-eager 1)
  '(global-visible-mark-mode t)
  '(indent-tabs-mode nil)
- '(jiralib-url "https://jira.swisscom.com")
+ '(jiralib-url "https://jira.swisscom.com" t)
  '(js-indent-level 2)
  '(kill-whole-line t)
  '(load-prefer-newer t)
@@ -60,10 +96,10 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(mac-option-modifier (quote alt))
  '(mac-right-option-modifier (quote super))
  '(mouse-yank-at-point t)
+ '(ns-alternate-modifier (quote alt))
+ '(ns-command-modifier (quote meta))
+ '(ns-right-alternate-modifier (quote super))
  '(org-agenda-files nil)
- '(org-babel-shell-names
-   (quote
-    ("sh" "bash" "zsh" "fish" "csh" "ash" "dash" "ksh" "mksh" "posh")))
  '(org-confirm-babel-evaluate nil)
  '(org-default-notes-file "~/Dropbox/org/notes.org")
  '(org-directory "~/Dropbox/org")
@@ -79,6 +115,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(org-mac-grab-Acrobat-app-p nil)
  '(org-mac-grab-devonthink-app-p nil)
  '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2017.18/libexec/plantuml.jar")
+ '(org-reveal-root "file:///Users/taazadi1/Dropbox/org/reveal.js")
  '(org-src-fontify-natively t)
  '(org-src-tab-acts-natively t)
  '(org-startup-indented t)
@@ -103,7 +140,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
      ("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
+    (esup ob-elvish package-build org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(reb-re-syntax (quote string))
@@ -133,8 +170,9 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
      ("^\\[zz.org\\]content/post/" "[zz.org/posts]"))))
  '(tab-width 2)
  '(tool-bar-mode nil)
+ '(use-package-always-defer t)
  '(use-package-always-ensure t)
- '(vr/engine (quote pcre2el)))
+ '(vr/engine (quote pcre2el) t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -204,17 +242,26 @@ Finally, we load `use-package`.
 (require 'use-package)
 ```
 
-We set some configuration for `use-package`. The `use-package-always-ensure` variable indicates that `use-package` should always try to install missing packages. For some libraries this is not appropriate, and in those cases you see the `:ensure nil` declaration as part of the `use-package` statement. This applies mainly to libraries which are installed as part of some other package (happens mostly with some libraries that come with org-mode).
+We set some configuration for `use-package`:
 
-```emacs-lisp
-(customize-set-variable 'use-package-always-ensure t)
-```
+-   The `use-package-always-ensure` variable indicates that `use-package` should always try to install missing packages. For some libraries this is not appropriate, and in those cases you see the `:ensure nil` declaration as part of the `use-package` statement. This applies mainly to libraries which are installed as part of some other package (happens mostly with some libraries that come with org-mode).
+
+    ```emacs-lisp
+    (customize-set-variable 'use-package-always-ensure t)
+    ```
+
+-   The `use-package-always-defer` sets `:defer true` as the default for all package declarations. This makes Emacs startup much faster by preventing packages from being loaded when Emacs starts, and only doing so when they are needed. Some packages don't work well with this, so you'll see some declarations when I explicitly set `:defer nil` to force the package to be loaded at startup, or `:defer n` to load the package, but only `n` seconds after startup.
+
+    ```emacs-lisp
+    (customize-set-variable 'use-package-always-defer t)
+    ```
 
 This variable tells Emacs to prefer the `.el` file if it's newer, even if there is a corresponding `.elc` file. Also, use `auto-compile` to autocompile files as needed.
 
 ```emacs-lisp
 (customize-set-variable 'load-prefer-newer t)
 (use-package auto-compile
+  :defer nil
   :config (auto-compile-on-load-mode))
 ```
 
@@ -271,10 +318,16 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     (customize-set-variable 'read-buffer-completion-ignore-case t)
     ```
 
--   Show line numbers (disabled for now because it causes performance issues in very large buffers).
+-   Show line numbers. I used `linum-mode` before, but it caused severe performance issues on large files. Emacs 26 introduces `display-line-numbers-mode`, which has no perceivable performance impact even on very large files. I still have it disabled by default because I find it a bit distracting.
 
     ```emacs-lisp
-    (global-linum-mode)
+    (when (>= emacs-major-version 26)
+      (use-package display-line-numbers
+        :disabled
+        :defer nil
+        :ensure nil
+        :config
+        (global-display-line-numbers-mode)))
     ```
 
 -   Highlight trailing whitespace in red, so it's easily visible
@@ -320,6 +373,7 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 
     ```emacs-lisp
     (use-package saveplace
+      :defer nil
       :config
       (save-place-mode))
     ```
@@ -404,7 +458,6 @@ The main advantage of using this over `define-key` or `global-set-key` is that y
 
     ```emacs-lisp
     (use-package which-key
-      :ensure t
       :diminish which-key-mode
       :config
       (which-key-mode))
@@ -455,6 +508,7 @@ One of the few things I missed in Emacs from vi was the `%` key, which jumps to 
                                 previous-buffer
                                 previous-line
                                 next-line
+                                back-to-indentation
                                 )))
       (self-insert-command (or arg 1))
     (cond ((looking-at "\\s\(") (sp-forward-sexp) (backward-char 1))
@@ -484,7 +538,6 @@ I use `use-package` to load the `org` package, and put its configuration inside 
 
 ```emacs-lisp
 (use-package org
-  :ensure t
   :pin manual
   :load-path ("lisp/org-mode/lisp" "lisp/org-mode/lisp/contrib/lisp")
   :bind
@@ -503,11 +556,18 @@ I use `use-package` to load the `org` package, and put its configuration inside 
     (org-hide-emphasis-markers t)
   :custom-face
     (variable-pitch ((t (:family "Source Sans Pro" :height 180 :weight light))))
+    ;;(variable-pitch ((t (:family "Avenir Next" :height 180 :weight light))))
     (fixed-pitch ((t (:family "Inconsolata"))))
   :hook
     (org-babel-after-execute . org-redisplay-inline-images)
     (org-mode . (lambda () (add-hook 'after-save-hook 'org-babel-tangle
                                      'run-at-end 'only-in-org-mode)))
+    (org-babel-pre-tangle  . (lambda ()
+                               (setq zz/pre-tangle-time (current-time))))
+    (org-babel-post-tangle . (lambda ()
+                               (message "org-babel-tangle took %s"
+                                               (format "%.2f seconds"
+                                                       (float-time (time-since zz/pre-tangle-time))))))
     (org-mode . visual-line-mode)
     (org-mode . variable-pitch-mode)
   :config
@@ -612,6 +672,7 @@ Load `org-tempo` to enable snippets such as `<s<TAB>` to insert a source block.
 
 ```emacs-lisp
 (use-package org-tempo
+  :defer 5
   :ensure nil
   :after org)
 ```
@@ -619,14 +680,18 @@ Load `org-tempo` to enable snippets such as `<s<TAB>` to insert a source block.
 
 ### Building presentations with org-mode {#building-presentations-with-org-mode}
 
-[org-reveal](https://github.com/yjwen/org-reveal) is an awesome package for building presentations with org-mode.
+[org-reveal](https://github.com/yjwen/org-reveal) is an awesome package for building presentations with org-mode. The MELPA version of the package gives me a conflict with my hand-installed version of org-mode, so I also install it by hand and load it directly from its checked-out repository.
 
 ```emacs-lisp
 (use-package ox-reveal
-  :after ox
+  :load-path ("lisp/org-reveal")
+  :defer 3
+  :after org
   :custom
+  (org-reveal-note-key-char nil)
   (org-reveal-root "file:///Users/taazadi1/Dropbox/org/reveal.js"))
 (use-package htmlize
+  :defer 3
   :after ox-reveal)
 ```
 
@@ -640,15 +705,18 @@ One of the big strengths of org-mode is the ability to export a document in many
     ```emacs-lisp
     (use-package ox-md
       :ensure nil
-      :after ox)
+      :defer 3
+      :after org)
     ```
 
 -   [Jira markup](https://github.com/stig/ox-jira.el). I also load `org-jira`, which provides a full interface to Jira through org-mode.
 
     ```emacs-lisp
     (use-package ox-jira
-      :after ox)
+      :defer 3
+      :after org)
     (use-package org-jira
+      :defer 3
       :after org
       :custom
       (jiralib-url "https://jira.swisscom.com"))
@@ -658,23 +726,27 @@ One of the big strengths of org-mode is the ability to export a document in many
 
     ```emacs-lisp
     (use-package ox-confluence
+      :defer 3
       :ensure nil
-      :after ox)
+      :after org)
     ```
 
 -   AsciiDoc
 
     ```emacs-lisp
     (use-package ox-asciidoc
-      :after ox)
+      :defer 3
+      :after org)
     ```
 
 -   TexInfo. I have found that the best way to produce a PDF from an org file is to export it to a `.texi` file, and then use `texi2pdf` to produce the PDF.
 
     ```emacs-lisp
     (use-package ox-texinfo
+      :load-path "lisp/org-mode/lisp"
+      :defer 3
       :ensure nil
-      :after ox)
+      :after org)
     ```
 
 
@@ -688,7 +760,8 @@ One of the big strengths of org-mode is the ability to export a document in many
 
 ```emacs-lisp
 (use-package ox-hugo
-  :after ox)
+  :defer 3
+  :after org)
 ```
 
 Configure a capture template for creating new ox-hugo blog posts, from [ox-hugo's Org Capture Setup](https://ox-hugo.scripter.co/doc/org-capture-setup).
@@ -772,6 +845,11 @@ Plain literate programming is built-in, but the `ob-*` packages provide the abil
 ```
 
 ```emacs-lisp
+(use-package ob-elvish
+  :after org)
+```
+
+```emacs-lisp
 (use-package ob-plantuml
   :ensure nil
   :after org
@@ -824,6 +902,17 @@ This little snippet has revolutionized my literate programming workflow. It auto
 ```emacs-lisp
 (org-mode . (lambda () (add-hook 'after-save-hook 'org-babel-tangle
                                  'run-at-end 'only-in-org-mode)))
+```
+
+I add hooks to measure and report how long the tangling took.
+
+```emacs-lisp
+(org-babel-pre-tangle  . (lambda ()
+                           (setq zz/pre-tangle-time (current-time))))
+(org-babel-post-tangle . (lambda ()
+                           (message "org-babel-tangle took %s"
+                                           (format "%.2f seconds"
+                                                   (float-time (time-since zz/pre-tangle-time))))))
 ```
 
 
@@ -881,10 +970,11 @@ We choose a nice font for the document title and the section headings. The first
 
 I use proportional fonts in org-mode for the text, while keeping fixed-width fonts for blocks, so that source code, tables, etc. are shown correctly. These settings include:
 
--   Setting up the `variable-pitch` face (I only learned of its existence now while figuring this out) to the proportional font I like to use. I'm currently using [Source Sans Pro](https://en.wikipedia.org/wiki/Source_Sans_Pro). Another favorite is [Avenir Next](https://en.wikipedia.org/wiki/Avenir_(typeface)).
+-   Setting up the `variable-pitch` face to the proportional font I like to use. I'm currently alternating between my two favorites, [Source Sans Pro](https://en.wikipedia.org/wiki/Source_Sans_Pro) and [Avenir Next](https://en.wikipedia.org/wiki/Avenir_(typeface)).
 
     ```emacs-lisp
     (variable-pitch ((t (:family "Source Sans Pro" :height 180 :weight light))))
+    ;;(variable-pitch ((t (:family "Avenir Next" :height 180 :weight light))))
     ```
 -   Setting up the `fixed-pitch` face to be the same as my usual `default` face. My current one is [Inconsolata](https://en.wikipedia.org/wiki/Inconsolata).
 
@@ -928,6 +1018,7 @@ Note that this breaks HTML export by default, as the links generated by `toc-org
 ```emacs-lisp
 (use-package org-mac-link
   :ensure nil
+  :load-path "lisp/org-mode/contrib/lisp"
   :after org
   :bind (:map org-mode-map
               ("C-c g" . org-mac-grab-link)))
@@ -959,7 +1050,7 @@ The [yankpad](https://github.com/Kungsgeten/yankpad) package makes it easy to st
   :init
   (setq yankpad-file (concat org-directory "/yankpad.org"))
   :bind
-  ([f7] . yankpad-map)
+  ([f7]  . yankpad-map)
   ([f12] . yankpad-expand)
   :config
   ;; If you want to expand snippets with hippie-expand
@@ -998,10 +1089,20 @@ There are no Windows-specific settings for now.
 
 Here we take care of all the visual, UX and desktop-management settings.
 
+You'll notice that many of the packages in this section have `:defer nil`. This is because some of these package are never called explicitly because they operate in the background, but I want them loaded when Emacs starts so they can perform their necessary customization.
+
+Emacs 26 (which I am trying now) introduces pixel-level scrolling.
+
+```emacs-lisp
+(when (>= emacs-major-version 26)
+  (pixel-scroll-mode))
+```
+
 The `diminish` package makes it possible to remove clutter from the modeline. Here we just load it, it gets enabled for individual packages in their corresponding declarations.
 
 ```emacs-lisp
-(use-package diminish)
+(use-package diminish
+  :defer 1)
 ```
 
 I have been playing with different themes, and I have settled for now in `gruvbox`. Some of my other favorites are also here so I don't forget about them.
@@ -1018,6 +1119,7 @@ Install [smart-mode-line](https://github.com/Malabarba/smart-mode-line) for mode
 
 ```emacs-lisp
 (use-package smart-mode-line
+  :defer 2
   :config
   (sml/setup))
 ```
@@ -1026,6 +1128,12 @@ Enable desktop-save mode, which saves the current buffer configuration on exit a
 
 ```emacs-lisp
 (use-package desktop
+  :defer nil
+  :custom
+  (desktop-restore-eager   1 "Restore only the first buffer right away")
+  (desktop-lazy-idle-delay 3 "Restore the rest of the buffers 3 seconds later")
+  :bind
+  ("C-M-s-k" . desktop-clear)
   :config
   (desktop-save-mode))
 ```
@@ -1034,6 +1142,7 @@ The `uniquify` package makes it much easier to identify different open files wit
 
 ```emacs-lisp
 (use-package uniquify
+  :defer 1
   :ensure nil
   :custom
   (uniquify-after-kill-buffer-p t)
@@ -1049,30 +1158,29 @@ I like to highlight the current line and column. I'm still deciding between two 
 Sometimes I find the always-highlighted column to be distracting, but other times I find it useful. So I have both pieces of code here, I'm still deciding. Both are disabled for now.
 
 ```emacs-lisp
-(global-hl-line-mode 1)
+(use-package hl-line
+  :disabled
+  :defer nil
+  :config
+  (global-hl-line-mode))
 (use-package col-highlight
+  :disabled
+  :defer nil
   :config
   (col-highlight-toggle-when-idle)
   (col-highlight-set-interval 2))
-;; (use-package crosshairs
-;;   :config
-;;   (crosshairs-mode))
-```
-
-Once in a blue moon I need to kill all buffers. It's one of those things where I genuinely have to wonder why there is no built in functionality for it. This can be invoked using `C-M-s-k`. This keybinding makes sure you don't hit it unless you really want to.
-
-```emacs-lisp
-(defun close-all-buffers ()
-  "Kill all buffers without regard for their origin."
-  (interactive)
-  (mapc 'kill-buffer (buffer-list)))
-(bind-key "C-M-s-k" 'close-all-buffers)
+(use-package crosshairs
+  :disabled
+  :defer nil
+  :config
+  (crosshairs-mode))
 ```
 
 I also use `recentf` to keep a list of recently open buffers. These are visible in helm's open-file mode.
 
 ```emacs-lisp
 (use-package recentf
+  :defer 1
   :custom
   (recentf-max-menu-items 50)
   :init
@@ -1083,6 +1191,7 @@ The [ibuffer](http://martinowen.net/blog/2010/02/03/tips-for-emacs-ibuffer.html)
 
 ```emacs-lisp
 (use-package ibuffer
+  :disabled
   :bind
   ("C-x C-b" . ibuffer))
 ```
@@ -1091,6 +1200,7 @@ The [smex](https://github.com/nonsequitur/smex) package is incredibly useful, ad
 
 ```emacs-lisp
 (use-package smex
+  :disabled
   :bind (("M-x" . smex))
   :config (smex-initialize))
 ```
@@ -1099,6 +1209,7 @@ The [smex](https://github.com/nonsequitur/smex) package is incredibly useful, ad
 
 ```emacs-lisp
 (use-package midnight
+  :defer 3
   :config
   (setq midnight-period 7200)
   (midnight-mode 1))
@@ -1137,13 +1248,15 @@ For distraction-free writing, I'm testing out `writeroom-mode`.
 `wc-mode` allows counting characters and words, both on demand and continuously. It also allows setting up a word/character goal.
 
 ```emacs-lisp
-(use-package wc-mode)
+(use-package wc-mode
+  :defer 3)
 ```
 
 The `all-the-icons` package provides a number of useful icons.
 
 ```emacs-lisp
-(use-package all-the-icons)
+(use-package all-the-icons
+  :defer 3)
 ```
 
 
@@ -1160,6 +1273,7 @@ I use [IDO mode](https://www.masteringemacs.org/article/introduction-to-ido-mode
 
 ```emacs-lisp
 (use-package ido
+  :disabled
   :config
   (ido-mode t)
   (ido-everywhere 1)
@@ -1169,6 +1283,7 @@ I use [IDO mode](https://www.masteringemacs.org/article/introduction-to-ido-mode
   (setq ido-auto-merge-work-directories-length -1))
 
 (use-package ido-completing-read+
+  :disabled
   :config
   (ido-ubiquitous-mode 1))
 ```
@@ -1180,27 +1295,27 @@ This config came originally from [Uncle Dave's Emacs config](https://github.com/
 
 ```emacs-lisp
 (use-package helm
-  :ensure t
+  :defer 1
   :diminish helm-mode
   :bind
-  (("C-x C-f" . helm-find-files)
-   ("C-x C-b" . helm-buffers-list)
-   ("C-x b"   . helm-multi-files)
-   ("M-x"     . helm-M-x)
+  (("C-x C-f"       . helm-find-files)
+   ("C-x C-b"       . helm-buffers-list)
+   ("C-x b"         . helm-multi-files)
+   ("M-x"           . helm-M-x)
    :map helm-find-files-map
-   ("C-b"     . helm-find-files-up-one-level)
-   ("C-f"     . helm-execute-persistent-action)
-   ([tab]     . helm-ff-RET))
+   ("C-<backspace>" . helm-find-files-up-one-level)
+   ("C-f"           . helm-execute-persistent-action)
+   ([tab]           . helm-ff-RET))
   :config
-  ;;   (defun daedreth/helm-hide-minibuffer ()
-  ;;     (when (with-helm-buffer helm-echo-input-in-header-line)
-  ;;       (let ((ov (make-overlay (point-min) (point-max) nil nil t)))
-  ;;         (overlay-put ov 'window (selected-window))
-  ;;         (overlay-put ov 'face
-  ;;                      (let ((bg-color (face-background 'default nil)))
-  ;;                        `(:background ,bg-color :foreground ,bg-color)))
-  ;;         (setq-local cursor-type nil))))
-  ;;   (add-hook 'helm-minibuffer-set-up-hook 'daedreth/helm-hide-minibuffer)
+  (defun daedreth/helm-hide-minibuffer ()
+    (when (with-helm-buffer helm-echo-input-in-header-line)
+      (let ((ov (make-overlay (point-min) (point-max) nil nil t)))
+        (overlay-put ov 'window (selected-window))
+        (overlay-put ov 'face
+                     (let ((bg-color (face-background 'default nil)))
+                       `(:background ,bg-color :foreground ,bg-color)))
+        (setq-local cursor-type nil))))
+  (add-hook 'helm-minibuffer-set-up-hook 'daedreth/helm-hide-minibuffer)
   (setq helm-autoresize-max-height 0
         helm-autoresize-min-height 40
         helm-M-x-fuzzy-match t
@@ -1230,7 +1345,7 @@ This config came originally from [Uncle Dave's Emacs config](https://github.com/
 
 ## Coding {#coding}
 
-Coding is one of my main use for Emacs, although writing has slowly taken over it. This used to be the largest section of my Emacs config until org-mode overtook it :)
+Coding is one of my primary uses for Emacs, although lately it has shifted toward more general writing. This used to be the largest section in my config until [Org mode](#org-mode) overtook it :)
 
 
 ### General settings and modules {#general-settings-and-modules}
@@ -1265,6 +1380,7 @@ With `company-mode`, we get automatic completion - when there are completions av
 
 ```emacs-lisp
 (use-package projectile
+  :defer 2
   :diminish projectile-mode
   :config
   (projectile-global-mode))
@@ -1291,6 +1407,7 @@ On-the-fly spell checking. I enable it for all text modes.
 
 ```emacs-lisp
 (use-package flyspell
+  :defer 1
   :hook (text-mode . flyspell-mode)
   :diminish
   :bind (:map flyspell-mouse-map
@@ -1396,6 +1513,7 @@ Trying out [lispy](https://github.com/abo-abo/lispy) for LISP code editing (disa
 
 ```emacs-lisp
 (use-package lispy
+  :disabled
   :config
   (defun enable-lispy-mode () (lispy-mode 1))
   :hook
@@ -1410,18 +1528,18 @@ I am sometimes trying out [parinfer](https://shaunlebron.github.io/parinfer/) (d
 
 ```emacs-lisp
 (use-package parinfer
-  :ensure t
+  :disabled
   :bind
   (("C-," . parinfer-toggle-mode))
   :init
   (setq parinfer-extensions
         '(defaults       ; should be included.
-          pretty-parens  ; different paren styles for different modes.
-          ;;evil           ; If you use Evil.
-          lispy          ; If you use Lispy. With this extension, you should install Lispy and do not enable lispy-mode directly.
-          paredit        ; Introduce some paredit commands.
-          smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab.
-          smart-yank))   ; Yank behavior depend on mode.
+           pretty-parens  ; different paren styles for different modes.
+           ;;evil           ; If you use Evil.
+           lispy          ; If you use Lispy. With this extension, you should install Lispy and do not enable lispy-mode directly.
+           paredit        ; Introduce some paredit commands.
+           smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab.
+           smart-yank))   ; Yank behavior depend on mode.
   :hook
   ((clojure-mode
     emacs-lisp-mode
@@ -1485,9 +1603,10 @@ Many other programming languages are well served by a single mode, without so mu
     (use-package go-mode)
     ```
 
--   Check MELPA package definitions
+-   Build and check MELPA package definitions
 
     ```emacs-lisp
+    (use-package package-build)
     (use-package package-lint)
     ```
 
@@ -1588,6 +1707,22 @@ Many other programming languages are well served by a single mode, without so mu
       (gist-view-gist t "Automatically open new gists in browser"))
     ```
 
+-   [Emacs Startup Profiler](https://github.com/jschaf/esup), to get detailed stats of what's taking time during initialization.
+
+    ```emacs-lisp
+    (use-package esup)
+    ```
+
+-   Macro to measure how long a command takes, from <https://stackoverflow.com/questions/23622296/emacs-timing-execution-of-function-calls-in-emacs-lisp>
+
+```emacs-lisp
+(defmacro measure-time (&rest body)
+  "Measure the time it takes to evaluate BODY."
+  `(let ((time (current-time)))
+     ,@body
+     (message "%.06f" (float-time (time-since time)))))
+```
+
 
 ## General text editing {#general-text-editing}
 
@@ -1636,7 +1771,43 @@ This is how we get a global header property in org-mode
 Testing formatting org snippets to look like noweb-rendered output.
 
 ```emacs-lisp
+(customize-set-variable 'org-entities-user
+                        '(("llangle" "\\llangle" t "&lang;&lang;" "<<" "<<" "《")
+                          ("rrangle" "\\rrangle" t "&rang;&rang;" ">>" ">>" "》")))
 (setq org-babel-exp-code-template
       (concat "\n@@latex:\\noindent@@\\llangle​//​\\rrangle\\equiv\n"
               org-babel-exp-code-template))
+```
+
+An experiment to reduce file tangle time, from <https://www.wisdomandwonder.com/article/10630/how-fast-can-you-tangle-in-org-mode>. In my tests it doesn't have a noticeable impact.
+
+```emacs-lisp
+(setq help/default-gc-cons-threshold gc-cons-threshold)
+(defun help/set-gc-cons-threshold (&optional multiplier notify)
+  "Set `gc-cons-threshold' either to its default value or a
+   `multiplier' thereof."
+  (let* ((new-multiplier (or multiplier 1))
+         (new-threshold (* help/default-gc-cons-threshold
+                           new-multiplier)))
+    (setq gc-cons-threshold new-threshold)
+    (when notify (message "Setting `gc-cons-threshold' to %s"
+                          new-threshold))))
+(defun help/double-gc-cons-threshold () "Double `gc-cons-threshold'." (help/set-gc-cons-threshold 10))
+(add-hook 'org-babel-pre-tangle-hook #'help/double-gc-cons-threshold)
+(add-hook 'org-babel-post-tangle-hook #'help/set-gc-cons-threshold)
+```
+
+
+## Epilogue {#epilogue}
+
+Here we close the `let` expression from [the preface](#performance-optimization).
+
+```emacs-lisp
+)
+```
+
+We also reset the value of `gc-cons-threshold`, not to its original value, we still leave it larger than default so that GCs don't happen so often.
+
+```emacs-lisp
+(setq gc-cons-threshold (* 2 1000 1000))
 ```

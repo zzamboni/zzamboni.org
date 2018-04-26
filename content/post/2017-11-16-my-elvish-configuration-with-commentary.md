@@ -5,12 +5,12 @@ summary = "In this blog post I will walk you through my current Elvish configura
 date = 2017-11-16T20:21:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "elvish"]
 draft = false
-creator = "Emacs 25.3.2 (Org mode 9.1.9 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.1.11 + ox-hugo)"
 toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **April  9, 2018**
+Last update: **April 26, 2018**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -28,6 +28,7 @@ E:GOPATH = ~/Personal/devel/go/
 paths = [
   ~/bin
   $E:GOPATH/bin
+  /usr/local/opt/coreutils/libexec/gnubin
   ~/Dropbox/Personal/devel/hammerspoon/spoon/bin
   ~/.gem/ruby/2.4.0/bin
   /opt/X11/bin
@@ -126,35 +127,28 @@ alias:new v vagrant
 ```
 
 
-## Nix package manager {#nix-package-manager}
-
-I use the [Nix](https://nixos.org/nix/) package manager on macOS, the [nix](https://github.com/zzamboni/modules.elv/blob/master/nix.org) module sets up the necessary environment variables.
-
-```elvish
-use github.com/zzamboni/elvish-modules/nix
-nix:multi-user-setup
-```
-
-
 ## Completions {#completions}
 
-From the  [elvish-completions](https://github.com/zzamboni/elvish-completions) package:
+The [smart-matcher](https://github.com/xiaq/edit.elv/blob/master/smart-matcher.elv) module tries prefix match, smart-case prefix match, substring match, smart-case substring match, subsequence match and smart-case subsequence match automatically.
 
-For `git`:
+```elvish
+use github.com/xiaq/edit.elv/smart-matcher
+smart-matcher:apply
+```
+
+Other possible values for `edit:completion:matcher` are `[p]{ edit:match-prefix &smart-case $p }` for smart-case completion (if your pattern is entirely lower case it ignores case, otherwise it's case sensitive).  `&smart-case` can be replaced with `&ignore-case` to make it always case-insensitive.
+
+I also configure <kbd>Tab</kbd> to trigger completion mode, but also to automatically enter "filter mode", so I can keep typing the filename I want, without having to use the arrow keys.
+
+```elvish
+edit:insert:binding[Tab] = { edit:completion:smart-start; edit:completion:trigger-filter }
+```
+
+I load some command-specific completions from the  [elvish-completions](https://github.com/zzamboni/elvish-completions) package:
 
 ```elvish
 use github.com/zzamboni/elvish-completions:git
-```
-
-For `vcsh` (uses the git completer):
-
-```elvish
 use github.com/zzamboni/elvish-completions:vcsh
-```
-
-For `cd`:
-
-```elvish
 use github.com/zzamboni/elvish-completions:cd
 ```
 
@@ -286,18 +280,6 @@ I sometimes use the [O'Reilly Atlas](https://atlas.oreilly.com/) publishing plat
 ```elvish
 use github.com/zzamboni/elvish-modules/atlas
 ```
-
-
-## Smart matching for completion {#smart-matching-for-completion}
-
-The [smart-matcher](https://github.com/xiaq/edit.elv/blob/master/smart-matcher.elv) module tries prefix match, smart-case prefix match, substring match, smart-case substring match, subsequence match and smart-case subsequence match automatically.
-
-```elvish
-use github.com/xiaq/edit.elv/smart-matcher
-edit:completion:matcher[''] = $smart-matcher:match~
-```
-
-Other possible values for `edit:completion:matcher` are `[p]{ edit:match-prefix &smart-case $p }` for smart-case completion (if your pattern is entirely lower case it ignores case, otherwise it's case sensitive).  `&smart-case` can be replaced with `&ignore-case` to make it always case-insensitive.
 
 
 ## Environment variables {#environment-variables}
