@@ -22,7 +22,7 @@
      
 
       <meta property="og:title" content="My Emacs Configuration, With Commentary" />
-<meta property="og:description" content="Last update: April 19, 2018
+<meta property="og:description" content="Last update: April 26, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://zzamboni.org/post/my-emacs-configuration-with-commentary/" />
@@ -44,20 +44,20 @@ I have enjoyed slowly converting my configuration files to literate programming 
 
 
 <meta itemprop="name" content="My Emacs Configuration, With Commentary">
-<meta itemprop="description" content="Last update: April 19, 2018
+<meta itemprop="description" content="Last update: April 26, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving.">
 
 
 <meta itemprop="datePublished" content="2017-12-17T20:14:00&#43;01:00" />
 <meta itemprop="dateModified" content="2017-12-17T20:14:00&#43;01:00" />
-<meta itemprop="wordCount" content="6623">
+<meta itemprop="wordCount" content="7266">
 
 
 
 <meta itemprop="keywords" content="config,howto,literateprogramming,literateconfig,emacs," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Emacs Configuration, With Commentary"/>
-<meta name="twitter:description" content="Last update: April 19, 2018
+<meta name="twitter:description" content="Last update: April 26, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving."/>
 
         
@@ -184,7 +184,7 @@ ga('send', 'pageview');
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
-<p>Last update: <strong>April 19, 2018</strong></p>
+<p>Last update: <strong>April 26, 2018</strong></p>
 
 <p>I have enjoyed slowly converting my configuration files to <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html">literate programming</a> style style using org-mode in Emacs. I previously posted my <a href="../my-elvish-configuration-with-commentary/">Elvish configuration</a>, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.org">init.org</a> file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.org">init.org file in GitHub</a> for my current, live configuration, and the generated file at <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.el">https://github.com/zzamboni/dot_emacs/blob/master/init.el</a>.</p>
 
@@ -199,6 +199,30 @@ ga('send', 'pageview');
 <li><a href="https://www.masteringemacs.org/">Mastering Emacs</a></li>
 </ul>
 
+<h2 id="performance-optimization">Performance optimization</h2>
+
+<p>Lately I&rsquo;ve been playing with optimizing my Emacs load time. I have found a couple of useful resources, including:</p>
+
+<ul>
+<li><a href="https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/">Two easy little known steps to speed up Emacs start up time</a></li>
+<li><a href="https://blog.d46.us/advanced-emacs-startup/">Advanced Techniques for Reducing Emacs Startup Time</a></li>
+</ul>
+
+<p>Based on these, I have added the code below.</p>
+
+<p>First, a hook that reports how long and how many garbage collections the startup took.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="c1">;; Use a hook so the message doesn&#39;t get clobbered by other messages.</span>
+<span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;emacs-startup-hook</span>
+          <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span>
+            <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;Emacs ready in %s with %d garbage collections.&#34;</span>
+                     <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;%.2f seconds&#34;</span>
+                             <span class="p">(</span><span class="nf">float-time</span>
+                              <span class="p">(</span><span class="nf">time-subtract</span> <span class="nv">after-init-time</span> <span class="nv">before-init-time</span><span class="p">)))</span>
+                     <span class="nv">gcs-done</span><span class="p">)))</span></code></pre></div>
+<p>Next, we wrap the whole init file in a block that sets <code>file-name-handler-alist</code> to <code>nil</code> to prevent any special-filename parsing of files loaded from the init file (e.g. remote files loaded through tramp, etc.). The <code>let</code> block gets closed in the <a href="#epilogue">Epilogue</a>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">file-name-handler-alist</span> <span class="no">nil</span><span class="p">))</span></code></pre></div>
+<p>We set <code>gc-cons-threshold</code> to its maximum value, to prevent any garbage collection from happening during load time. We also reset this value in the <a href="#epilogue">Epilogue</a>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">gc-cons-threshold</span> <span class="nv">most-positive-fixnum</span><span class="p">)</span></code></pre></div>
 <h2 id="customized-variables">Customized variables</h2>
 
 <p>Emacs has its own <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html#Easy-Customization">Customization mechanism</a> for easily customizing many parameters. To make it easier to manage, I keep the customized variables and faces in a separate file and load it from the main file. A lot of my custom settings are configured from this init file as well, but there are always some which I change by hand for added flexibility.</p>
@@ -217,9 +241,10 @@ ga('send', 'pageview');
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">custom-safe-themes</span>
    <span class="p">(</span><span class="nb">quote</span>
     <span class="p">(</span><span class="s">&#34;6ac7c0f959f0d7853915012e78ff70150bfbe2a69a1b703c3ac4184f9ae3ae02&#34;</span> <span class="s">&#34;8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a&#34;</span> <span class="s">&#34;a1a966cf2e87be6a148158c79863440ba2e45aa06cc214341feafe5c6deca4f2&#34;</span> <span class="s">&#34;3eb2b5607b41ad8a6da75fe04d5f92a46d1b9a95a202e3f5369e2cdefb7aac5c&#34;</span> <span class="s">&#34;3d0142352ce19c860047ad7402546944f84c270e84ae479beddbc2608268e0e5&#34;</span> <span class="s">&#34;a33858123d3d3ca10c03c657693881b9f8810c9e242a62f1ad6380adf57b031c&#34;</span> <span class="s">&#34;a40eac965142a2057269f8b2abd546b71a0e58e733c6668a62b1ad1aa7669220&#34;</span> <span class="s">&#34;7be789f201ea16242dab84dd5f225a55370dbecae248d4251edbd286fe879cfa&#34;</span> <span class="s">&#34;94dac4d15d12ba671f77a93d84ad9f799808714d4c5d247d5fd944df951b91d6&#34;</span> <span class="s">&#34;4d8fab23f15347bce54eb7137789ab93007010fa47296c2f36757ff84b5b3c8a&#34;</span> <span class="nv">default</span><span class="p">)))</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">desktop-restore-eager</span> <span class="mi">1</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">global-visible-mark-mode</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">indent-tabs-mode</span> <span class="no">nil</span><span class="p">)</span>
- <span class="o">&#39;</span><span class="p">(</span><span class="nv">jiralib-url</span> <span class="s">&#34;https://jira.swisscom.com&#34;</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">jiralib-url</span> <span class="s">&#34;https://jira.swisscom.com&#34;</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">js-indent-level</span> <span class="mi">2</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">kill-whole-line</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">load-prefer-newer</span> <span class="no">t</span><span class="p">)</span>
@@ -228,10 +253,10 @@ ga('send', 'pageview');
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">mac-option-modifier</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">alt</span><span class="p">))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">mac-right-option-modifier</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">super</span><span class="p">))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">mouse-yank-at-point</span> <span class="no">t</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">ns-alternate-modifier</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">alt</span><span class="p">))</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">ns-command-modifier</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">meta</span><span class="p">))</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">ns-right-alternate-modifier</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">super</span><span class="p">))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-agenda-files</span> <span class="no">nil</span><span class="p">)</span>
- <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-babel-shell-names</span>
-   <span class="p">(</span><span class="nb">quote</span>
-    <span class="p">(</span><span class="s">&#34;sh&#34;</span> <span class="s">&#34;bash&#34;</span> <span class="s">&#34;zsh&#34;</span> <span class="s">&#34;fish&#34;</span> <span class="s">&#34;csh&#34;</span> <span class="s">&#34;ash&#34;</span> <span class="s">&#34;dash&#34;</span> <span class="s">&#34;ksh&#34;</span> <span class="s">&#34;mksh&#34;</span> <span class="s">&#34;posh&#34;</span><span class="p">)))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-confirm-babel-evaluate</span> <span class="no">nil</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-default-notes-file</span> <span class="s">&#34;~/Dropbox/org/notes.org&#34;</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-directory</span> <span class="s">&#34;~/Dropbox/org&#34;</span><span class="p">)</span>
@@ -247,6 +272,7 @@ ga('send', 'pageview');
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-mac-grab-Acrobat-app-p</span> <span class="no">nil</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-mac-grab-devonthink-app-p</span> <span class="no">nil</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-plantuml-jar-path</span> <span class="s">&#34;/usr/local/Cellar/plantuml/1.2017.18/libexec/plantuml.jar&#34;</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-reveal-root</span> <span class="s">&#34;file:///Users/taazadi1/Dropbox/org/reveal.js&#34;</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-src-fontify-natively</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-src-tab-acts-natively</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-startup-indented</span> <span class="no">t</span><span class="p">)</span>
@@ -271,7 +297,7 @@ ga('send', 'pageview');
      <span class="p">(</span><span class="s">&#34;melpa&#34;</span> <span class="o">.</span> <span class="s">&#34;https://melpa.org/packages/&#34;</span><span class="p">))))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">package-selected-packages</span>
    <span class="p">(</span><span class="nb">quote</span>
-    <span class="p">(</span><span class="nv">org-capture</span> <span class="nv">org-babel</span> <span class="nv">ox-texinfo</span> <span class="nv">gist</span> <span class="nv">helm-flx</span> <span class="nv">which-key</span> <span class="nv">spaceline</span> <span class="nv">pretty-mode</span> <span class="nv">visual-regexp-steroids</span> <span class="nv">ox-hugo</span> <span class="nv">adaptive-wrap</span> <span class="nv">yankpad</span> <span class="nv">smart-mode-line</span> <span class="nv">org-plus-contrib</span> <span class="nv">ob-cfengine3</span> <span class="nv">org-journal</span> <span class="nv">ox-asciidoc</span> <span class="nv">org-jira</span> <span class="nv">ox-jira</span> <span class="nv">org-bullets</span> <span class="nv">ox-reveal</span> <span class="nv">lispy</span> <span class="nv">parinfer</span> <span class="nv">uniquify</span> <span class="nv">csv</span> <span class="nv">all-the-icons</span> <span class="nv">toc-org</span> <span class="nv">helm</span> <span class="nv">cider</span> <span class="nv">clojure-mode</span> <span class="nv">ido-completing-read+</span> <span class="nv">writeroom-mode</span> <span class="nv">crosshairs</span> <span class="nv">ox-confluence</span> <span class="nv">ox-md</span> <span class="nv">inf-ruby</span> <span class="nv">ob-plantuml</span> <span class="nv">ob-ruby</span> <span class="nv">darktooth-theme</span> <span class="nv">kaolin-themes</span> <span class="nv">htmlize</span> <span class="nv">ag</span> <span class="nv">col-highlight</span> <span class="nv">nix-mode</span> <span class="nv">easy-hugo</span> <span class="nv">elvish-mode</span> <span class="nv">zen-mode</span> <span class="nv">racket-mode</span> <span class="nv">package-lint</span> <span class="nv">scala-mode</span> <span class="nv">go-mode</span> <span class="nv">wc-mode</span> <span class="nv">neotree</span> <span class="nv">applescript-mode</span> <span class="nv">ack</span> <span class="nv">magit</span> <span class="nv">clj-refactor</span> <span class="nv">yaml-mode</span> <span class="nv">visual-fill-column</span> <span class="nv">visible-mark</span> <span class="nb">use-package</span> <span class="nv">unfill</span> <span class="nv">typopunct</span> <span class="nv">smooth-scrolling</span> <span class="nv">smex</span> <span class="nv">smartparens</span> <span class="nv">rainbow-delimiters</span> <span class="nv">projectile</span> <span class="nv">markdown-mode</span> <span class="nv">magit-popup</span> <span class="nv">lua-mode</span> <span class="nv">keyfreq</span> <span class="nv">imenu-anywhere</span> <span class="nv">iedit</span> <span class="nv">ido-ubiquitous</span> <span class="nv">hl-sexp</span> <span class="nv">gruvbox-theme</span> <span class="nv">git-commit</span> <span class="nv">fish-mode</span> <span class="nv">exec-path-from-shell</span> <span class="nv">company</span> <span class="nv">clojure-mode-extra-font-locking</span> <span class="nv">clojure-cheatsheet</span> <span class="nv">aggressive-indent</span> <span class="nv">adoc-mode</span> <span class="nv">4clojure</span><span class="p">)))</span>
+    <span class="p">(</span><span class="nv">esup</span> <span class="nv">ob-elvish</span> <span class="nv">package-build</span> <span class="nv">org-capture</span> <span class="nv">org-babel</span> <span class="nv">ox-texinfo</span> <span class="nv">gist</span> <span class="nv">helm-flx</span> <span class="nv">which-key</span> <span class="nv">spaceline</span> <span class="nv">pretty-mode</span> <span class="nv">visual-regexp-steroids</span> <span class="nv">ox-hugo</span> <span class="nv">adaptive-wrap</span> <span class="nv">yankpad</span> <span class="nv">smart-mode-line</span> <span class="nv">org-plus-contrib</span> <span class="nv">ob-cfengine3</span> <span class="nv">org-journal</span> <span class="nv">ox-asciidoc</span> <span class="nv">org-jira</span> <span class="nv">ox-jira</span> <span class="nv">org-bullets</span> <span class="nv">ox-reveal</span> <span class="nv">lispy</span> <span class="nv">parinfer</span> <span class="nv">uniquify</span> <span class="nv">csv</span> <span class="nv">all-the-icons</span> <span class="nv">toc-org</span> <span class="nv">helm</span> <span class="nv">cider</span> <span class="nv">clojure-mode</span> <span class="nv">ido-completing-read+</span> <span class="nv">writeroom-mode</span> <span class="nv">crosshairs</span> <span class="nv">ox-confluence</span> <span class="nv">ox-md</span> <span class="nv">inf-ruby</span> <span class="nv">ob-plantuml</span> <span class="nv">ob-ruby</span> <span class="nv">darktooth-theme</span> <span class="nv">kaolin-themes</span> <span class="nv">htmlize</span> <span class="nv">ag</span> <span class="nv">col-highlight</span> <span class="nv">nix-mode</span> <span class="nv">easy-hugo</span> <span class="nv">elvish-mode</span> <span class="nv">zen-mode</span> <span class="nv">racket-mode</span> <span class="nv">package-lint</span> <span class="nv">scala-mode</span> <span class="nv">go-mode</span> <span class="nv">wc-mode</span> <span class="nv">neotree</span> <span class="nv">applescript-mode</span> <span class="nv">ack</span> <span class="nv">magit</span> <span class="nv">clj-refactor</span> <span class="nv">yaml-mode</span> <span class="nv">visual-fill-column</span> <span class="nv">visible-mark</span> <span class="nb">use-package</span> <span class="nv">unfill</span> <span class="nv">typopunct</span> <span class="nv">smooth-scrolling</span> <span class="nv">smex</span> <span class="nv">smartparens</span> <span class="nv">rainbow-delimiters</span> <span class="nv">projectile</span> <span class="nv">markdown-mode</span> <span class="nv">magit-popup</span> <span class="nv">lua-mode</span> <span class="nv">keyfreq</span> <span class="nv">imenu-anywhere</span> <span class="nv">iedit</span> <span class="nv">ido-ubiquitous</span> <span class="nv">hl-sexp</span> <span class="nv">gruvbox-theme</span> <span class="nv">git-commit</span> <span class="nv">fish-mode</span> <span class="nv">exec-path-from-shell</span> <span class="nv">company</span> <span class="nv">clojure-mode-extra-font-locking</span> <span class="nv">clojure-cheatsheet</span> <span class="nv">aggressive-indent</span> <span class="nv">adoc-mode</span> <span class="nv">4clojure</span><span class="p">)))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">read-buffer-completion-ignore-case</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">read-file-name-completion-ignore-case</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">reb-re-syntax</span> <span class="p">(</span><span class="nb">quote</span> <span class="nf">string</span><span class="p">))</span>
@@ -301,8 +327,9 @@ ga('send', 'pageview');
      <span class="p">(</span><span class="s">&#34;^\\[zz.org\\]content/post/&#34;</span> <span class="s">&#34;[zz.org/posts]&#34;</span><span class="p">))))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">tab-width</span> <span class="mi">2</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">tool-bar-mode</span> <span class="no">nil</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">use-package-always-defer</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">use-package-always-ensure</span> <span class="no">t</span><span class="p">)</span>
- <span class="o">&#39;</span><span class="p">(</span><span class="nv">vr/engine</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">pcre2el</span><span class="p">)))</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">vr/engine</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">pcre2el</span><span class="p">)</span> <span class="no">t</span><span class="p">))</span>
 <span class="p">(</span><span class="nv">custom-set-faces</span>
  <span class="c1">;; custom-set-faces was added by Custom.</span>
  <span class="c1">;; If you edit it by hand, you could mess it up, so be careful.</span>
@@ -357,11 +384,20 @@ ga('send', 'pageview');
   <span class="p">(</span><span class="nv">package-install</span> <span class="ss">&#39;use-package</span><span class="p">))</span></code></pre></div>
 <p>Finally, we load <code>use-package</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;use-package</span><span class="p">)</span></code></pre></div>
-<p>We set some configuration for <code>use-package</code>. The <code>use-package-always-ensure</code> variable indicates that <code>use-package</code> should always try to install missing packages. For some libraries this is not appropriate, and in those cases you see the <code>:ensure nil</code> declaration as part of the <code>use-package</code> statement. This applies mainly to libraries which are installed as part of some other package (happens mostly with some libraries that come with org-mode).</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;use-package-always-ensure</span> <span class="no">t</span><span class="p">)</span></code></pre></div>
+<p>We set some configuration for <code>use-package</code>:</p>
+
+<ul>
+<li><p>The <code>use-package-always-ensure</code> variable indicates that <code>use-package</code> should always try to install missing packages. For some libraries this is not appropriate, and in those cases you see the <code>:ensure nil</code> declaration as part of the <code>use-package</code> statement. This applies mainly to libraries which are installed as part of some other package (happens mostly with some libraries that come with org-mode).</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;use-package-always-ensure</span> <span class="no">t</span><span class="p">)</span></code></pre></div></li>
+
+<li><p>The <code>use-package-always-defer</code> sets <code>:defer true</code> as the default for all package declarations. This makes Emacs startup much faster by preventing packages from being loaded when Emacs starts, and only doing so when they are needed. Some packages don&rsquo;t work well with this, so you&rsquo;ll see some declarations when I explicitly set <code>:defer nil</code> to force the package to be loaded at startup, or <code>:defer n</code> to load the package, but only <code>n</code> seconds after startup.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;use-package-always-defer</span> <span class="no">t</span><span class="p">)</span></code></pre></div></li>
+</ul>
+
 <p>This variable tells Emacs to prefer the <code>.el</code> file if it&rsquo;s newer, even if there is a corresponding <code>.elc</code> file. Also, use <code>auto-compile</code> to autocompile files as needed.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;load-prefer-newer</span> <span class="no">t</span><span class="p">)</span>
 <span class="p">(</span><span class="nb">use-package</span> <span class="nv">auto-compile</span>
+  <span class="nb">:defer</span> <span class="no">nil</span>
   <span class="nb">:config</span> <span class="p">(</span><span class="nv">auto-compile-on-load-mode</span><span class="p">))</span></code></pre></div>
 <p>Set the load path to the directories from where I sometimes load things outside the package system. Note that the path for <code>org-mode</code> (which I load from a checkout of its git repository) is set as part of its <code>use-package</code> declaration, so it doesn&rsquo;t appear here.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;load-path</span> <span class="s">&#34;~/.emacs.d/lisp&#34;</span><span class="p">)</span></code></pre></div>
@@ -394,8 +430,14 @@ ga('send', 'pageview');
 <span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;read-file-name-completion-ignore-case</span> <span class="no">t</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;read-buffer-completion-ignore-case</span> <span class="no">t</span><span class="p">)</span></code></pre></div></li>
 
-<li><p>Show line numbers (disabled for now because it causes performance issues in very large buffers).</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">global-linum-mode</span><span class="p">)</span></code></pre></div></li>
+<li><p>Show line numbers. I used <code>linum-mode</code> before, but it caused severe performance issues on large files. Emacs 26 introduces <code>display-line-numbers-mode</code>, which has no perceivable performance impact even on very large files. I still have it disabled by default because I find it a bit distracting.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">&gt;=</span> <span class="nv">emacs-major-version</span> <span class="mi">26</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">use-package</span> <span class="nv">display-line-numbers</span>
+    <span class="nb">:disabled</span>
+    <span class="nb">:defer</span> <span class="no">nil</span>
+    <span class="nb">:ensure</span> <span class="no">nil</span>
+    <span class="nb">:config</span>
+    <span class="p">(</span><span class="nv">global-display-line-numbers-mode</span><span class="p">)))</span></code></pre></div></li>
 
 <li><p>Highlight trailing whitespace in red, so it&rsquo;s easily visible</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;show-trailing-whitespace</span> <span class="no">t</span><span class="p">)</span></code></pre></div></li>
@@ -420,6 +462,7 @@ ga('send', 'pageview');
 
 <li><p>Save the place of the cursor in each file, and restore it upon opening it again.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">saveplace</span>
+  <span class="nb">:defer</span> <span class="no">nil</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nv">save-place-mode</span><span class="p">))</span></code></pre></div></li>
 
@@ -473,7 +516,6 @@ ga('send', 'pageview');
 
 <li><p>The <a href="https://github.com/justbur/emacs-which-key">which-key</a> package makes Emacs functionality much easier to discover and explore: in short, after you start the input of a command and stop, pondering what key must follow, it will automatically open a non-intrusive buffer at the bottom of the screen offering you suggestions for completing the command, that&rsquo;s it, nothing else. It&rsquo;s beautiful.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">which-key</span>
-  <span class="nb">:ensure</span> <span class="no">t</span>
   <span class="nb">:diminish</span> <span class="nv">which-key-mode</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nv">which-key-mode</span><span class="p">))</span></code></pre></div></li>
@@ -521,6 +563,7 @@ ga('send', 'pageview');
                                 <span class="nv">previous-buffer</span>
                                 <span class="nv">previous-line</span>
                                 <span class="nv">next-line</span>
+                                <span class="nv">back-to-indentation</span>
                                 <span class="p">)))</span>
       <span class="p">(</span><span class="nf">self-insert-command</span> <span class="p">(</span><span class="nb">or</span> <span class="nv">arg</span> <span class="mi">1</span><span class="p">))</span>
     <span class="p">(</span><span class="nb">cond</span> <span class="p">((</span><span class="nf">looking-at</span> <span class="s">&#34;\\s\(&#34;</span><span class="p">)</span> <span class="p">(</span><span class="nv">sp-forward-sexp</span><span class="p">)</span> <span class="p">(</span><span class="nf">backward-char</span> <span class="mi">1</span><span class="p">))</span>
@@ -543,7 +586,6 @@ ga('send', 'pageview');
 
 <p>I use <code>use-package</code> to load the <code>org</code> package, and put its configuration inside the corresponding sections for keybindings (<code>:bind</code>), custom variables (<code>:custom</code>), custom faces (<code>:custom-face</code>), hooks (<code>:hook</code>) and general configuration code (<code>:config</code>), respectively. The contents of each section is populated with the corresponding snippets that follow. You see here the complete <code>use-package</code> declaration for completeness, but see the sections below for the details on where each snippet comes from, and some other configuration code that ends up outside this declaration.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">org</span>
-  <span class="nb">:ensure</span> <span class="no">t</span>
   <span class="nb">:pin</span> <span class="nv">manual</span>
   <span class="nb">:load-path</span> <span class="p">(</span><span class="s">&#34;lisp/org-mode/lisp&#34;</span> <span class="s">&#34;lisp/org-mode/lisp/contrib/lisp&#34;</span><span class="p">)</span>
   <span class="nb">:bind</span>
@@ -562,11 +604,18 @@ ga('send', 'pageview');
     <span class="p">(</span><span class="nv">org-hide-emphasis-markers</span> <span class="no">t</span><span class="p">)</span>
   <span class="nb">:custom-face</span>
     <span class="p">(</span><span class="nv">variable-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Source Sans Pro&#34;</span> <span class="nb">:height</span> <span class="mi">180</span> <span class="nb">:weight</span> <span class="nv">light</span><span class="p">))))</span>
+    <span class="c1">;;(variable-pitch ((t (:family &#34;Avenir Next&#34; :height 180 :weight light))))</span>
     <span class="p">(</span><span class="nv">fixed-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Inconsolata&#34;</span><span class="p">))))</span>
   <span class="nb">:hook</span>
     <span class="p">(</span><span class="nv">org-babel-after-execute</span> <span class="o">.</span> <span class="nv">org-redisplay-inline-images</span><span class="p">)</span>
     <span class="p">(</span><span class="nv">org-mode</span> <span class="o">.</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;after-save-hook</span> <span class="ss">&#39;org-babel-tangle</span>
                                      <span class="ss">&#39;run-at-end</span> <span class="ss">&#39;only-in-org-mode</span><span class="p">)))</span>
+    <span class="p">(</span><span class="nv">org-babel-pre-tangle</span>  <span class="o">.</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span>
+                               <span class="p">(</span><span class="nb">setq</span> <span class="nv">zz/pre-tangle-time</span> <span class="p">(</span><span class="nf">current-time</span><span class="p">))))</span>
+    <span class="p">(</span><span class="nv">org-babel-post-tangle</span> <span class="o">.</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span>
+                               <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;org-babel-tangle took %s&#34;</span>
+                                               <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;%.2f seconds&#34;</span>
+                                                       <span class="p">(</span><span class="nf">float-time</span> <span class="p">(</span><span class="nv">time-since</span> <span class="nv">zz/pre-tangle-time</span><span class="p">))))))</span>
     <span class="p">(</span><span class="nv">org-mode</span> <span class="o">.</span> <span class="nv">visual-line-mode</span><span class="p">)</span>
     <span class="p">(</span><span class="nv">org-mode</span> <span class="o">.</span> <span class="nv">variable-pitch-mode</span><span class="p">)</span>
   <span class="nb">:config</span>
@@ -629,16 +678,21 @@ ga('send', 'pageview');
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">org-default-notes-file</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">org-directory</span> <span class="s">&#34;/notes.org&#34;</span><span class="p">))</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="s">&#34;C-c c&#34;</span> <span class="o">.</span> <span class="nv">org-capture</span><span class="p">)</span></code></pre></div>
 <p>Load <code>org-tempo</code> to enable snippets such as <code>&lt;s&lt;TAB&gt;</code> to insert a source block.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">org-tempo</span>
+  <span class="nb">:defer</span> <span class="mi">5</span>
   <span class="nb">:ensure</span> <span class="no">nil</span>
   <span class="nb">:after</span> <span class="nv">org</span><span class="p">)</span></code></pre></div>
 <h3 id="building-presentations-with-org-mode">Building presentations with org-mode</h3>
 
-<p><a href="https://github.com/yjwen/org-reveal">org-reveal</a> is an awesome package for building presentations with org-mode.</p>
+<p><a href="https://github.com/yjwen/org-reveal">org-reveal</a> is an awesome package for building presentations with org-mode. The MELPA version of the package gives me a conflict with my hand-installed version of org-mode, so I also install it by hand and load it directly from its checked-out repository.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ox-reveal</span>
-  <span class="nb">:after</span> <span class="nv">ox</span>
+  <span class="nb">:load-path</span> <span class="p">(</span><span class="s">&#34;lisp/org-reveal&#34;</span><span class="p">)</span>
+  <span class="nb">:defer</span> <span class="mi">3</span>
+  <span class="nb">:after</span> <span class="nv">org</span>
   <span class="nb">:custom</span>
+  <span class="p">(</span><span class="nv">org-reveal-note-key-char</span> <span class="no">nil</span><span class="p">)</span>
   <span class="p">(</span><span class="nv">org-reveal-root</span> <span class="s">&#34;file:///Users/taazadi1/Dropbox/org/reveal.js&#34;</span><span class="p">))</span>
 <span class="p">(</span><span class="nb">use-package</span> <span class="nv">htmlize</span>
+  <span class="nb">:defer</span> <span class="mi">3</span>
   <span class="nb">:after</span> <span class="nv">ox-reveal</span><span class="p">)</span></code></pre></div>
 <h3 id="various-exporters">Various exporters</h3>
 
@@ -648,29 +702,36 @@ ga('send', 'pageview');
 <li><p>Markdown</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ox-md</span>
   <span class="nb">:ensure</span> <span class="no">nil</span>
-  <span class="nb">:after</span> <span class="nv">ox</span><span class="p">)</span></code></pre></div></li>
+  <span class="nb">:defer</span> <span class="mi">3</span>
+  <span class="nb">:after</span> <span class="nv">org</span><span class="p">)</span></code></pre></div></li>
 
 <li><p><a href="https://github.com/stig/ox-jira.el">Jira markup</a>. I also load <code>org-jira</code>, which provides a full interface to Jira through org-mode.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ox-jira</span>
-  <span class="nb">:after</span> <span class="nv">ox</span><span class="p">)</span>
+  <span class="nb">:defer</span> <span class="mi">3</span>
+  <span class="nb">:after</span> <span class="nv">org</span><span class="p">)</span>
 <span class="p">(</span><span class="nb">use-package</span> <span class="nv">org-jira</span>
+  <span class="nb">:defer</span> <span class="mi">3</span>
   <span class="nb">:after</span> <span class="nv">org</span>
   <span class="nb">:custom</span>
   <span class="p">(</span><span class="nv">jiralib-url</span> <span class="s">&#34;https://jira.swisscom.com&#34;</span><span class="p">))</span></code></pre></div></li>
 
 <li><p>Confluence markup.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ox-confluence</span>
+  <span class="nb">:defer</span> <span class="mi">3</span>
   <span class="nb">:ensure</span> <span class="no">nil</span>
-  <span class="nb">:after</span> <span class="nv">ox</span><span class="p">)</span></code></pre></div></li>
+  <span class="nb">:after</span> <span class="nv">org</span><span class="p">)</span></code></pre></div></li>
 
 <li><p>AsciiDoc</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ox-asciidoc</span>
-  <span class="nb">:after</span> <span class="nv">ox</span><span class="p">)</span></code></pre></div></li>
+  <span class="nb">:defer</span> <span class="mi">3</span>
+  <span class="nb">:after</span> <span class="nv">org</span><span class="p">)</span></code></pre></div></li>
 
 <li><p>TexInfo. I have found that the best way to produce a PDF from an org file is to export it to a <code>.texi</code> file, and then use <code>texi2pdf</code> to produce the PDF.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ox-texinfo</span>
+  <span class="nb">:load-path</span> <span class="s">&#34;lisp/org-mode/lisp&#34;</span>
+  <span class="nb">:defer</span> <span class="mi">3</span>
   <span class="nb">:ensure</span> <span class="no">nil</span>
-  <span class="nb">:after</span> <span class="nv">ox</span><span class="p">)</span></code></pre></div></li>
+  <span class="nb">:after</span> <span class="nv">org</span><span class="p">)</span></code></pre></div></li>
 </ul>
 
 <h3 id="blogging-with-hugo">Blogging with Hugo</h3>
@@ -683,7 +744,8 @@ ga('send', 'pageview');
 <li>I am intrigued by ox-hugo&rsquo;s &ldquo;one post per org subtree&rdquo; proposed structure. So far I&rsquo;ve always had one file per post, but with org-mode&rsquo;s structuring features, it might make sense to give it a try.</li>
 </ul>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ox-hugo</span>
-  <span class="nb">:after</span> <span class="nv">ox</span><span class="p">)</span></code></pre></div>
+  <span class="nb">:defer</span> <span class="mi">3</span>
+  <span class="nb">:after</span> <span class="nv">org</span><span class="p">)</span></code></pre></div>
 <p>Configure a capture template for creating new ox-hugo blog posts, from <a href="https://ox-hugo.scripter.co/doc/org-capture-setup">ox-hugo&rsquo;s Org Capture Setup</a>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">org-capture</span>
   <span class="nb">:ensure</span> <span class="no">nil</span>
@@ -741,6 +803,7 @@ ga('send', 'pageview');
 
 <p>Plain literate programming is built-in, but the <code>ob-*</code> packages provide the ability to execute code in different languages, beyond those included with org-mode.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ob-cfengine3</span>
+  <span class="nb">:after</span> <span class="nv">org</span><span class="p">)</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ob-elvish</span>
   <span class="nb">:after</span> <span class="nv">org</span><span class="p">)</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ob-plantuml</span>
   <span class="nb">:ensure</span> <span class="no">nil</span>
   <span class="nb">:after</span> <span class="nv">org</span>
@@ -769,6 +832,13 @@ ga('send', 'pageview');
 <p>This little snippet has revolutionized my literate programming workflow. It automatically runs <code>org-babel-tangle</code> upon saving any org-mode buffer, which means the resulting files will be automatically kept up to date.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">org-mode</span> <span class="o">.</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;after-save-hook</span> <span class="ss">&#39;org-babel-tangle</span>
                                  <span class="ss">&#39;run-at-end</span> <span class="ss">&#39;only-in-org-mode</span><span class="p">)))</span></code></pre></div>
+<p>I add hooks to measure and report how long the tangling took.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">org-babel-pre-tangle</span>  <span class="o">.</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span>
+                           <span class="p">(</span><span class="nb">setq</span> <span class="nv">zz/pre-tangle-time</span> <span class="p">(</span><span class="nf">current-time</span><span class="p">))))</span>
+<span class="p">(</span><span class="nv">org-babel-post-tangle</span> <span class="o">.</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span>
+                           <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;org-babel-tangle took %s&#34;</span>
+                                           <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;%.2f seconds&#34;</span>
+                                                   <span class="p">(</span><span class="nf">float-time</span> <span class="p">(</span><span class="nv">time-since</span> <span class="nv">zz/pre-tangle-time</span><span class="p">))))))</span></code></pre></div>
 <h3 id="beautifying-org-mode">Beautifying org-mode</h3>
 
 <p>These settings make org-mode much more readable by using different fonts for headings, hiding some of the markup, etc. This was taken originally from Howard Abrams&rsquo; <a href="http://www.howardism.org/Technical/Emacs/orgmode-wordprocessor.html">Org as a Word Processor</a>, and subsequently tweaked and broken up in the different parts of the <code>use-package</code> declaration by me.</p>
@@ -808,8 +878,9 @@ ga('send', 'pageview');
 <p>I use proportional fonts in org-mode for the text, while keeping fixed-width fonts for blocks, so that source code, tables, etc. are shown correctly. These settings include:</p>
 
 <ul>
-<li><p>Setting up the <code>variable-pitch</code> face (I only learned of its existence now while figuring this out) to the proportional font I like to use. I&rsquo;m currently using <a href="https://en.wikipedia.org/wiki/Source_Sans_Pro">Source Sans Pro</a>. Another favorite is <a href="https://en.wikipedia.org/wiki/Avenir_(typeface)">Avenir Next</a>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">variable-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Source Sans Pro&#34;</span> <span class="nb">:height</span> <span class="mi">180</span> <span class="nb">:weight</span> <span class="nv">light</span><span class="p">))))</span></code></pre></div></li>
+<li><p>Setting up the <code>variable-pitch</code> face to the proportional font I like to use. I&rsquo;m currently alternating between my two favorites, <a href="https://en.wikipedia.org/wiki/Source_Sans_Pro">Source Sans Pro</a> and <a href="https://en.wikipedia.org/wiki/Avenir_(typeface)">Avenir Next</a>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">variable-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Source Sans Pro&#34;</span> <span class="nb">:height</span> <span class="mi">180</span> <span class="nb">:weight</span> <span class="nv">light</span><span class="p">))))</span>
+<span class="c1">;;(variable-pitch ((t (:family &#34;Avenir Next&#34; :height 180 :weight light))))</span></code></pre></div></li>
 
 <li><p>Setting up the <code>fixed-pitch</code> face to be the same as my usual <code>default</code> face. My current one is <a href="https://en.wikipedia.org/wiki/Inconsolata">Inconsolata</a>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">fixed-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Inconsolata&#34;</span><span class="p">))))</span></code></pre></div></li>
@@ -838,6 +909,7 @@ ga('send', 'pageview');
 <p><code>org-mac-link</code> (included in contrib) implements the ability to grab links from different Mac apps and insert them in the file. Bind <code>C-c g</code> to call <code>org-mac-grab-link</code> to choose an application and insert a link.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">org-mac-link</span>
   <span class="nb">:ensure</span> <span class="no">nil</span>
+  <span class="nb">:load-path</span> <span class="s">&#34;lisp/org-mode/contrib/lisp&#34;</span>
   <span class="nb">:after</span> <span class="nv">org</span>
   <span class="nb">:bind</span> <span class="p">(</span><span class="nb">:map</span> <span class="nv">org-mode-map</span>
               <span class="p">(</span><span class="s">&#34;C-c g&#34;</span> <span class="o">.</span> <span class="nv">org-mac-grab-link</span><span class="p">)))</span></code></pre></div>
@@ -859,7 +931,7 @@ ga('send', 'pageview');
   <span class="nb">:init</span>
   <span class="p">(</span><span class="nb">setq</span> <span class="nv">yankpad-file</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">org-directory</span> <span class="s">&#34;/yankpad.org&#34;</span><span class="p">))</span>
   <span class="nb">:bind</span>
-  <span class="p">([</span><span class="nv">f7</span><span class="p">]</span> <span class="o">.</span> <span class="nv">yankpad-map</span><span class="p">)</span>
+  <span class="p">([</span><span class="nv">f7</span><span class="p">]</span>  <span class="o">.</span> <span class="nv">yankpad-map</span><span class="p">)</span>
   <span class="p">([</span><span class="nv">f12</span><span class="p">]</span> <span class="o">.</span> <span class="nv">yankpad-expand</span><span class="p">)</span>
   <span class="nb">:config</span>
   <span class="c1">;; If you want to expand snippets with hippie-expand</span>
@@ -888,8 +960,14 @@ ga('send', 'pageview');
 
 <p>Here we take care of all the visual, UX and desktop-management settings.</p>
 
+<p>You&rsquo;ll notice that many of the packages in this section have <code>:defer nil</code>. This is because some of these package are never called explicitly because they operate in the background, but I want them loaded when Emacs starts so they can perform their necessary customization.</p>
+
+<p>Emacs 26 (which I am trying now) introduces pixel-level scrolling.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">&gt;=</span> <span class="nv">emacs-major-version</span> <span class="mi">26</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">pixel-scroll-mode</span><span class="p">))</span></code></pre></div>
 <p>The <code>diminish</code> package makes it possible to remove clutter from the modeline. Here we just load it, it gets enabled for individual packages in their corresponding declarations.</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">diminish</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">diminish</span>
+  <span class="nb">:defer</span> <span class="mi">1</span><span class="p">)</span></code></pre></div>
 <p>I have been playing with different themes, and I have settled for now in <code>gruvbox</code>. Some of my other favorites are also here so I don&rsquo;t forget about them.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="c1">;;(use-package solarized-theme)</span>
 <span class="c1">;;(use-package darktooth-theme)</span>
@@ -898,14 +976,22 @@ ga('send', 'pageview');
 <span class="p">(</span><span class="nv">load-theme</span> <span class="ss">&#39;gruvbox</span><span class="p">)</span></code></pre></div>
 <p>Install <a href="https://github.com/Malabarba/smart-mode-line">smart-mode-line</a> for modeline goodness, including configurable abbreviation of directories, and other things.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">smart-mode-line</span>
+  <span class="nb">:defer</span> <span class="mi">2</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nv">sml/setup</span><span class="p">))</span></code></pre></div>
 <p>Enable desktop-save mode, which saves the current buffer configuration on exit and reloads it on restart.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">desktop</span>
+  <span class="nb">:defer</span> <span class="no">nil</span>
+  <span class="nb">:custom</span>
+  <span class="p">(</span><span class="nv">desktop-restore-eager</span>   <span class="mi">1</span> <span class="s">&#34;Restore only the first buffer right away&#34;</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">desktop-lazy-idle-delay</span> <span class="mi">3</span> <span class="s">&#34;Restore the rest of the buffers 3 seconds later&#34;</span><span class="p">)</span>
+  <span class="nb">:bind</span>
+  <span class="p">(</span><span class="s">&#34;C-M-s-k&#34;</span> <span class="o">.</span> <span class="nv">desktop-clear</span><span class="p">)</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nv">desktop-save-mode</span><span class="p">))</span></code></pre></div>
 <p>The <code>uniquify</code> package makes it much easier to identify different open files with the same name by prepending/appending their directory or some other information to them. I configure it to add the directory name after the filename. <code>uniquify</code> is included with Emacs, so I specify <code>:ensure nil</code> so that <code>use-package</code> doesn&rsquo;t try to install it, and just loads and configures it.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">uniquify</span>
+  <span class="nb">:defer</span> <span class="mi">1</span>
   <span class="nb">:ensure</span> <span class="no">nil</span>
   <span class="nb">:custom</span>
   <span class="p">(</span><span class="nv">uniquify-after-kill-buffer-p</span> <span class="no">t</span><span class="p">)</span>
@@ -919,36 +1005,42 @@ ga('send', 'pageview');
 </ul>
 
 <p>Sometimes I find the always-highlighted column to be distracting, but other times I find it useful. So I have both pieces of code here, I&rsquo;m still deciding. Both are disabled for now.</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">global-hl-line-mode</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">hl-line</span>
+  <span class="nb">:disabled</span>
+  <span class="nb">:defer</span> <span class="no">nil</span>
+  <span class="nb">:config</span>
+  <span class="p">(</span><span class="nv">global-hl-line-mode</span><span class="p">))</span>
 <span class="p">(</span><span class="nb">use-package</span> <span class="nv">col-highlight</span>
+  <span class="nb">:disabled</span>
+  <span class="nb">:defer</span> <span class="no">nil</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nv">col-highlight-toggle-when-idle</span><span class="p">)</span>
   <span class="p">(</span><span class="nv">col-highlight-set-interval</span> <span class="mi">2</span><span class="p">))</span>
-<span class="c1">;; (use-package crosshairs</span>
-<span class="c1">;;   :config</span>
-<span class="c1">;;   (crosshairs-mode))</span></code></pre></div>
-<p>Once in a blue moon I need to kill all buffers. It&rsquo;s one of those things where I genuinely have to wonder why there is no built in functionality for it. This can be invoked using <code>C-M-s-k</code>. This keybinding makes sure you don&rsquo;t hit it unless you really want to.</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">close-all-buffers</span> <span class="p">()</span>
-  <span class="s">&#34;Kill all buffers without regard for their origin.&#34;</span>
-  <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
-  <span class="p">(</span><span class="nf">mapc</span> <span class="ss">&#39;kill-buffer</span> <span class="p">(</span><span class="nf">buffer-list</span><span class="p">)))</span>
-<span class="p">(</span><span class="nv">bind-key</span> <span class="s">&#34;C-M-s-k&#34;</span> <span class="ss">&#39;close-all-buffers</span><span class="p">)</span></code></pre></div>
+<span class="p">(</span><span class="nb">use-package</span> <span class="nv">crosshairs</span>
+  <span class="nb">:disabled</span>
+  <span class="nb">:defer</span> <span class="no">nil</span>
+  <span class="nb">:config</span>
+  <span class="p">(</span><span class="nv">crosshairs-mode</span><span class="p">))</span></code></pre></div>
 <p>I also use <code>recentf</code> to keep a list of recently open buffers. These are visible in helm&rsquo;s open-file mode.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">recentf</span>
+  <span class="nb">:defer</span> <span class="mi">1</span>
   <span class="nb">:custom</span>
   <span class="p">(</span><span class="nv">recentf-max-menu-items</span> <span class="mi">50</span><span class="p">)</span>
   <span class="nb">:init</span>
   <span class="p">(</span><span class="nv">recentf-mode</span><span class="p">))</span></code></pre></div>
 <p>The <a href="http://martinowen.net/blog/2010/02/03/tips-for-emacs-ibuffer.html">ibuffer</a> package allows all sort of useful operations on the list of open buffers. I haven&rsquo;t customized it yet, but I have a keybinding to open it. (Disabled for now as I am using helm&rsquo;s <code>helm-buffer-list</code>).</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ibuffer</span>
+  <span class="nb">:disabled</span>
   <span class="nb">:bind</span>
   <span class="p">(</span><span class="s">&#34;C-x C-b&#34;</span> <span class="o">.</span> <span class="nv">ibuffer</span><span class="p">))</span></code></pre></div>
 <p>The <a href="https://github.com/nonsequitur/smex">smex</a> package is incredibly useful, adding IDO integration and some other very nice features to <code>M-x</code>, which make it easier to discover and use Emacs commands. Highly recommended. (Disabled for now as I&rsquo;m using helm&rsquo;s <code>helm-M-x</code>).</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">smex</span>
+  <span class="nb">:disabled</span>
   <span class="nb">:bind</span> <span class="p">((</span><span class="s">&#34;M-x&#34;</span> <span class="o">.</span> <span class="nv">smex</span><span class="p">))</span>
   <span class="nb">:config</span> <span class="p">(</span><span class="nv">smex-initialize</span><span class="p">))</span></code></pre></div>
 <p><a href="https://www.emacswiki.org/emacs/MidnightMode">midnight-mode</a> purges buffers which haven&rsquo;t been displayed in 3 days. We configure the period so that the cleanup happens every 2 hours (7200 seconds).</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">midnight</span>
+  <span class="nb">:defer</span> <span class="mi">3</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nb">setq</span> <span class="nv">midnight-period</span> <span class="mi">7200</span><span class="p">)</span>
   <span class="p">(</span><span class="nv">midnight-mode</span> <span class="mi">1</span><span class="p">))</span></code></pre></div>
@@ -975,9 +1067,11 @@ ga('send', 'pageview');
   <span class="nb">:bind</span>
   <span class="p">([</span><span class="nv">f8</span><span class="p">]</span> <span class="o">.</span> <span class="nv">neotree-project-dir</span><span class="p">))</span></code></pre></div>
 <p><code>wc-mode</code> allows counting characters and words, both on demand and continuously. It also allows setting up a word/character goal.</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">wc-mode</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">wc-mode</span>
+  <span class="nb">:defer</span> <span class="mi">3</span><span class="p">)</span></code></pre></div>
 <p>The <code>all-the-icons</code> package provides a number of useful icons.</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">all-the-icons</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">all-the-icons</span>
+  <span class="nb">:defer</span> <span class="mi">3</span><span class="p">)</span></code></pre></div>
 <h3 id="completion-ido-or-helm">Completion: IDO or Helm?</h3>
 
 <p>The <a href="https://tuhdo.github.io/helm-intro.html">battle</a> <a href="https://news.ycombinator.com/item?id=11100312">rages</a> <a href="https://www.reddit.com/r/emacs/comments/3o36sc/what_do_you_prefer_ido_or_helm/">on</a> - <a href="https://github.com/emacs-helm/helm">helm</a> or <a href="https://www.emacswiki.org/emacs/InteractivelyDoThings">IDO</a>? Both are nice completion frameworks for Emacs, and both integrate nicely with most main Emacs functions, including file opening, command and buffer selection, etc. I was using IDO for some time but are now giving helm a try. Both my configs are shown below, but only Helm is enabled at the moment.</p>
@@ -988,6 +1082,7 @@ ga('send', 'pageview');
 
 <p>I use <a href="https://www.masteringemacs.org/article/introduction-to-ido-mode">IDO mode</a> to get better matching capabilities everywhere in Emacs (disabled while I give helm a try, see below).</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ido</span>
+  <span class="nb">:disabled</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nv">ido-mode</span> <span class="no">t</span><span class="p">)</span>
   <span class="p">(</span><span class="nv">ido-everywhere</span> <span class="mi">1</span><span class="p">)</span>
@@ -997,33 +1092,34 @@ ga('send', 'pageview');
   <span class="p">(</span><span class="nb">setq</span> <span class="nv">ido-auto-merge-work-directories-length</span> <span class="mi">-1</span><span class="p">))</span>
 
 <span class="p">(</span><span class="nb">use-package</span> <span class="nv">ido-completing-read+</span>
+  <span class="nb">:disabled</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nv">ido-ubiquitous-mode</span> <span class="mi">1</span><span class="p">))</span></code></pre></div>
 <h4 id="helm">Helm</h4>
 
 <p>This config came originally from <a href="https://github.com/daedreth/UncleDavesEmacs#user-content-ido-and-why-i-started-using-helm">Uncle Dave&rsquo;s Emacs config</a>, thought I have tweaked it a bit.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">helm</span>
-  <span class="nb">:ensure</span> <span class="no">t</span>
+  <span class="nb">:defer</span> <span class="mi">1</span>
   <span class="nb">:diminish</span> <span class="nv">helm-mode</span>
   <span class="nb">:bind</span>
-  <span class="p">((</span><span class="s">&#34;C-x C-f&#34;</span> <span class="o">.</span> <span class="nv">helm-find-files</span><span class="p">)</span>
-   <span class="p">(</span><span class="s">&#34;C-x C-b&#34;</span> <span class="o">.</span> <span class="nv">helm-buffers-list</span><span class="p">)</span>
-   <span class="p">(</span><span class="s">&#34;C-x b&#34;</span>   <span class="o">.</span> <span class="nv">helm-multi-files</span><span class="p">)</span>
-   <span class="p">(</span><span class="s">&#34;M-x&#34;</span>     <span class="o">.</span> <span class="nv">helm-M-x</span><span class="p">)</span>
+  <span class="p">((</span><span class="s">&#34;C-x C-f&#34;</span>       <span class="o">.</span> <span class="nv">helm-find-files</span><span class="p">)</span>
+   <span class="p">(</span><span class="s">&#34;C-x C-b&#34;</span>       <span class="o">.</span> <span class="nv">helm-buffers-list</span><span class="p">)</span>
+   <span class="p">(</span><span class="s">&#34;C-x b&#34;</span>         <span class="o">.</span> <span class="nv">helm-multi-files</span><span class="p">)</span>
+   <span class="p">(</span><span class="s">&#34;M-x&#34;</span>           <span class="o">.</span> <span class="nv">helm-M-x</span><span class="p">)</span>
    <span class="nb">:map</span> <span class="nv">helm-find-files-map</span>
-   <span class="p">(</span><span class="s">&#34;C-b&#34;</span>     <span class="o">.</span> <span class="nv">helm-find-files-up-one-level</span><span class="p">)</span>
-   <span class="p">(</span><span class="s">&#34;C-f&#34;</span>     <span class="o">.</span> <span class="nv">helm-execute-persistent-action</span><span class="p">)</span>
-   <span class="p">([</span><span class="nv">tab</span><span class="p">]</span>     <span class="o">.</span> <span class="nv">helm-ff-RET</span><span class="p">))</span>
+   <span class="p">(</span><span class="s">&#34;C-&lt;backspace&gt;&#34;</span> <span class="o">.</span> <span class="nv">helm-find-files-up-one-level</span><span class="p">)</span>
+   <span class="p">(</span><span class="s">&#34;C-f&#34;</span>           <span class="o">.</span> <span class="nv">helm-execute-persistent-action</span><span class="p">)</span>
+   <span class="p">([</span><span class="nv">tab</span><span class="p">]</span>           <span class="o">.</span> <span class="nv">helm-ff-RET</span><span class="p">))</span>
   <span class="nb">:config</span>
-  <span class="c1">;;   (defun daedreth/helm-hide-minibuffer ()</span>
-  <span class="c1">;;     (when (with-helm-buffer helm-echo-input-in-header-line)</span>
-  <span class="c1">;;       (let ((ov (make-overlay (point-min) (point-max) nil nil t)))</span>
-  <span class="c1">;;         (overlay-put ov &#39;window (selected-window))</span>
-  <span class="c1">;;         (overlay-put ov &#39;face</span>
-  <span class="c1">;;                      (let ((bg-color (face-background &#39;default nil)))</span>
-  <span class="c1">;;                        `(:background ,bg-color :foreground ,bg-color)))</span>
-  <span class="c1">;;         (setq-local cursor-type nil))))</span>
-  <span class="c1">;;   (add-hook &#39;helm-minibuffer-set-up-hook &#39;daedreth/helm-hide-minibuffer)</span>
+  <span class="p">(</span><span class="nb">defun</span> <span class="nv">daedreth/helm-hide-minibuffer</span> <span class="p">()</span>
+    <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nv">with-helm-buffer</span> <span class="nv">helm-echo-input-in-header-line</span><span class="p">)</span>
+      <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">ov</span> <span class="p">(</span><span class="nf">make-overlay</span> <span class="p">(</span><span class="nf">point-min</span><span class="p">)</span> <span class="p">(</span><span class="nf">point-max</span><span class="p">)</span> <span class="no">nil</span> <span class="no">nil</span> <span class="no">t</span><span class="p">)))</span>
+        <span class="p">(</span><span class="nf">overlay-put</span> <span class="nv">ov</span> <span class="ss">&#39;window</span> <span class="p">(</span><span class="nf">selected-window</span><span class="p">))</span>
+        <span class="p">(</span><span class="nf">overlay-put</span> <span class="nv">ov</span> <span class="ss">&#39;face</span>
+                     <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">bg-color</span> <span class="p">(</span><span class="nv">face-background</span> <span class="ss">&#39;default</span> <span class="no">nil</span><span class="p">)))</span>
+                       <span class="o">`</span><span class="p">(</span><span class="nb">:background</span> <span class="o">,</span><span class="nv">bg-color</span> <span class="nb">:foreground</span> <span class="o">,</span><span class="nv">bg-color</span><span class="p">)))</span>
+        <span class="p">(</span><span class="nb">setq-local</span> <span class="nv">cursor-type</span> <span class="no">nil</span><span class="p">))))</span>
+  <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;helm-minibuffer-set-up-hook</span> <span class="ss">&#39;daedreth/helm-hide-minibuffer</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">setq</span> <span class="nv">helm-autoresize-max-height</span> <span class="mi">0</span>
         <span class="nv">helm-autoresize-min-height</span> <span class="mi">40</span>
         <span class="nv">helm-M-x-fuzzy-match</span> <span class="no">t</span>
@@ -1050,7 +1146,7 @@ ga('send', 'pageview');
     <span class="p">(</span><span class="nv">helm-flx-mode</span> <span class="mi">+1</span><span class="p">))</span></code></pre></div>
 <h2 id="coding">Coding</h2>
 
-<p>Coding is one of my main use for Emacs, although writing has slowly taken over it. This used to be the largest section of my Emacs config until org-mode overtook it :)</p>
+<p>Coding is one of my primary uses for Emacs, although lately it has shifted toward more general writing. This used to be the largest section in my config until <a href="#org-mode">Org mode</a> overtook it :)</p>
 
 <h3 id="general-settings-and-modules">General settings and modules</h3>
 
@@ -1070,6 +1166,7 @@ ga('send', 'pageview');
   <span class="p">(</span><span class="nv">after-init</span> <span class="o">.</span> <span class="nv">global-company-mode</span><span class="p">))</span></code></pre></div>
 <p><code>projectile-mode</code> allows us to perform project-relative operations such as searches, navigation, etc.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">projectile</span>
+  <span class="nb">:defer</span> <span class="mi">2</span>
   <span class="nb">:diminish</span> <span class="nv">projectile-mode</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nv">projectile-global-mode</span><span class="p">))</span></code></pre></div>
@@ -1084,6 +1181,7 @@ ga('send', 'pageview');
   <span class="p">(</span><span class="nv">cider-repl-mode</span> <span class="o">.</span> <span class="nv">turn-on-eldoc-mode</span><span class="p">))</span></code></pre></div>
 <p>On-the-fly spell checking. I enable it for all text modes.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">flyspell</span>
+  <span class="nb">:defer</span> <span class="mi">1</span>
   <span class="nb">:hook</span> <span class="p">(</span><span class="nv">text-mode</span> <span class="o">.</span> <span class="nv">flyspell-mode</span><span class="p">)</span>
   <span class="nb">:diminish</span>
   <span class="nb">:bind</span> <span class="p">(</span><span class="nb">:map</span> <span class="nv">flyspell-mouse-map</span>
@@ -1156,6 +1254,7 @@ ga('send', 'pageview');
   <span class="p">((</span><span class="nv">clojure-mode</span> <span class="nv">lisp-mode</span> <span class="nv">emacs-lisp-mode</span><span class="p">)</span> <span class="o">.</span> <span class="nv">hl-sexp-mode</span><span class="p">))</span></code></pre></div>
 <p>Trying out <a href="https://github.com/abo-abo/lispy">lispy</a> for LISP code editing (disabled for now).</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">lispy</span>
+  <span class="nb">:disabled</span>
   <span class="nb">:config</span>
   <span class="p">(</span><span class="nb">defun</span> <span class="nv">enable-lispy-mode</span> <span class="p">()</span> <span class="p">(</span><span class="nv">lispy-mode</span> <span class="mi">1</span><span class="p">))</span>
   <span class="nb">:hook</span>
@@ -1166,18 +1265,18 @@ ga('send', 'pageview');
     <span class="nv">lisp-mode</span><span class="p">)</span> <span class="o">.</span> <span class="nv">enable-lispy-mode</span><span class="p">))</span></code></pre></div>
 <p>I am sometimes trying out <a href="https://shaunlebron.github.io/parinfer/">parinfer</a> (disabled for now).</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">parinfer</span>
-  <span class="nb">:ensure</span> <span class="no">t</span>
+  <span class="nb">:disabled</span>
   <span class="nb">:bind</span>
   <span class="p">((</span><span class="s">&#34;C-,&#34;</span> <span class="o">.</span> <span class="nv">parinfer-toggle-mode</span><span class="p">))</span>
   <span class="nb">:init</span>
   <span class="p">(</span><span class="nb">setq</span> <span class="nv">parinfer-extensions</span>
         <span class="o">&#39;</span><span class="p">(</span><span class="nv">defaults</span>       <span class="c1">; should be included.</span>
-          <span class="nv">pretty-parens</span>  <span class="c1">; different paren styles for different modes.</span>
-          <span class="c1">;;evil           ; If you use Evil.</span>
-          <span class="nv">lispy</span>          <span class="c1">; If you use Lispy. With this extension, you should install Lispy and do not enable lispy-mode directly.</span>
-          <span class="nv">paredit</span>        <span class="c1">; Introduce some paredit commands.</span>
-          <span class="nv">smart-tab</span>      <span class="c1">; C-b &amp; C-f jump positions and smart shift with tab &amp; S-tab.</span>
-          <span class="nv">smart-yank</span><span class="p">))</span>   <span class="c1">; Yank behavior depend on mode.</span>
+           <span class="nv">pretty-parens</span>  <span class="c1">; different paren styles for different modes.</span>
+           <span class="c1">;;evil           ; If you use Evil.</span>
+           <span class="nv">lispy</span>          <span class="c1">; If you use Lispy. With this extension, you should install Lispy and do not enable lispy-mode directly.</span>
+           <span class="nv">paredit</span>        <span class="c1">; Introduce some paredit commands.</span>
+           <span class="nv">smart-tab</span>      <span class="c1">; C-b &amp; C-f jump positions and smart shift with tab &amp; S-tab.</span>
+           <span class="nv">smart-yank</span><span class="p">))</span>   <span class="c1">; Yank behavior depend on mode.</span>
   <span class="nb">:hook</span>
   <span class="p">((</span><span class="nv">clojure-mode</span>
     <span class="nv">emacs-lisp-mode</span>
@@ -1218,8 +1317,9 @@ ga('send', 'pageview');
 <li><p>Go</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">go-mode</span><span class="p">)</span></code></pre></div></li>
 
-<li><p>Check MELPA package definitions</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">package-lint</span><span class="p">)</span></code></pre></div></li>
+<li><p>Build and check MELPA package definitions</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">package-build</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">use-package</span> <span class="nv">package-lint</span><span class="p">)</span></code></pre></div></li>
 
 <li><p><a href="http://elvish.io/">Elvish shell</a></p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">elvish-mode</span><span class="p">)</span></code></pre></div></li>
@@ -1291,8 +1391,17 @@ ga('send', 'pageview');
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">gist</span>
   <span class="nb">:custom</span>
   <span class="p">(</span><span class="nv">gist-view-gist</span> <span class="no">t</span> <span class="s">&#34;Automatically open new gists in browser&#34;</span><span class="p">))</span></code></pre></div></li>
-</ul>
 
+<li><p><a href="https://github.com/jschaf/esup">Emacs Startup Profiler</a>, to get detailed stats of what&rsquo;s taking time during initialization.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">esup</span><span class="p">)</span></code></pre></div></li>
+
+<li><p>Macro to measure how long a command takes, from <a href="https://stackoverflow.com/questions/23622296/emacs-timing-execution-of-function-calls-in-emacs-lisp">https://stackoverflow.com/questions/23622296/emacs-timing-execution-of-function-calls-in-emacs-lisp</a></p></li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defmacro</span> <span class="nv">measure-time</span> <span class="p">(</span><span class="kp">&amp;rest</span> <span class="nv">body</span><span class="p">)</span>
+  <span class="s">&#34;Measure the time it takes to evaluate BODY.&#34;</span>
+  <span class="o">`</span><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">time</span> <span class="p">(</span><span class="nf">current-time</span><span class="p">)))</span>
+     <span class="o">,@</span><span class="nv">body</span>
+     <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;%.06f&#34;</span> <span class="p">(</span><span class="nf">float-time</span> <span class="p">(</span><span class="nv">time-since</span> <span class="nv">time</span><span class="p">)))))</span></code></pre></div>
 <h2 id="general-text-editing">General text editing</h2>
 
 <p>In addition to coding, I configure some modes that can be used for text editing.</p>
@@ -1326,9 +1435,32 @@ ga('send', 'pageview');
            <span class="p">(</span><span class="nv">org-babel-parse-header-arguments</span>
             <span class="p">(</span><span class="nv">org-entry-get-with-inheritance</span> <span class="s">&#34;header-args&#34;</span><span class="p">)))</span></code></pre></div>
 <p>Testing formatting org snippets to look like noweb-rendered output.</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-babel-exp-code-template</span>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;org-entities-user</span>
+                        <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;llangle&#34;</span> <span class="s">&#34;\\llangle&#34;</span> <span class="no">t</span> <span class="s">&#34;&amp;lang;&amp;lang;&#34;</span> <span class="s">&#34;&lt;&lt;&#34;</span> <span class="s">&#34;&lt;&lt;&#34;</span> <span class="s">&#34;《&#34;</span><span class="p">)</span>
+                          <span class="p">(</span><span class="s">&#34;rrangle&#34;</span> <span class="s">&#34;\\rrangle&#34;</span> <span class="no">t</span> <span class="s">&#34;&amp;rang;&amp;rang;&#34;</span> <span class="s">&#34;&gt;&gt;&#34;</span> <span class="s">&#34;&gt;&gt;&#34;</span> <span class="s">&#34;》&#34;</span><span class="p">)))</span>
+<span class="p">(</span><span class="nb">setq</span> <span class="nv">org-babel-exp-code-template</span>
       <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;\n@@latex:\\noindent@@\\llangle​//​\\rrangle\\equiv\n&#34;</span>
               <span class="nv">org-babel-exp-code-template</span><span class="p">))</span></code></pre></div>
+<p>An experiment to reduce file tangle time, from <a href="https://www.wisdomandwonder.com/article/10630/how-fast-can-you-tangle-in-org-mode">https://www.wisdomandwonder.com/article/10630/how-fast-can-you-tangle-in-org-mode</a>. In my tests it doesn&rsquo;t have a noticeable impact.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">help/default-gc-cons-threshold</span> <span class="nv">gc-cons-threshold</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">help/set-gc-cons-threshold</span> <span class="p">(</span><span class="kp">&amp;optional</span> <span class="nv">multiplier</span> <span class="nv">notify</span><span class="p">)</span>
+  <span class="s">&#34;Set </span><span class="ss">`gc-cons-threshold&#39;</span><span class="s"> either to its default value or a
+</span><span class="s">   </span><span class="ss">`multiplier&#39;</span><span class="s"> thereof.&#34;</span>
+  <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">new-multiplier</span> <span class="p">(</span><span class="nb">or</span> <span class="nv">multiplier</span> <span class="mi">1</span><span class="p">))</span>
+         <span class="p">(</span><span class="nv">new-threshold</span> <span class="p">(</span><span class="nf">*</span> <span class="nv">help/default-gc-cons-threshold</span>
+                           <span class="nv">new-multiplier</span><span class="p">)))</span>
+    <span class="p">(</span><span class="nb">setq</span> <span class="nv">gc-cons-threshold</span> <span class="nv">new-threshold</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">when</span> <span class="nv">notify</span> <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;Setting </span><span class="ss">`gc-cons-threshold&#39;</span><span class="s"> to %s&#34;</span>
+                          <span class="nv">new-threshold</span><span class="p">))))</span>
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">help/double-gc-cons-threshold</span> <span class="p">()</span> <span class="s">&#34;Double </span><span class="ss">`gc-cons-threshold&#39;</span><span class="s">.&#34;</span> <span class="p">(</span><span class="nv">help/set-gc-cons-threshold</span> <span class="mi">10</span><span class="p">))</span>
+<span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;org-babel-pre-tangle-hook</span> <span class="nf">#&#39;</span><span class="nv">help/double-gc-cons-threshold</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;org-babel-post-tangle-hook</span> <span class="nf">#&#39;</span><span class="nv">help/set-gc-cons-threshold</span><span class="p">)</span></code></pre></div>
+<h2 id="epilogue">Epilogue</h2>
+
+<p>Here we close the <code>let</code> expression from <a href="#performance-optimization">the preface</a>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">)</span></code></pre></div>
+<p>We also reset the value of <code>gc-cons-threshold</code>, not to its original value, we still leave it larger than default so that GCs don&rsquo;t happen so often.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">gc-cons-threshold</span> <span class="p">(</span><span class="nf">*</span> <span class="mi">2</span> <span class="mi">1000</span> <span class="mi">1000</span><span class="p">))</span></code></pre></div>
       </section>
       
 
@@ -1425,6 +1557,7 @@ ga('send', 'pageview');
 <li class="list f5 w-100 hover-bg-white nl1">
 <ul>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#references">References</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#performance-optimization">Performance optimization</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#customized-variables">Customized variables</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#setting-up-the-package-system">Setting up the package system</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#settings">Settings</a>
@@ -1474,6 +1607,7 @@ ga('send', 'pageview');
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#other-tools">Other tools</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#general-text-editing">General text editing</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#cheatsheet-and-experiments">Cheatsheet and experiments</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#epilogue">Epilogue</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -1484,10 +1618,14 @@ ga('send', 'pageview');
     </main>
     <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://zzamboni.org/" >
-    &copy; 2018 Diego Zamboni
-  </a>
-  
+    <a class="f5 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://zzamboni.org/" >
+      &copy; 2018 Diego Zamboni
+    </a>
+    <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;<a class="no-underline hover-white white-70" href="https://www.gnu.org/software/emacs/">Emacs 26.1 </a> &plus;
+                <a class="no-underline hover-white white-70" href="https://orgmode.org/">Org mode 9.1.11 </a> &plus;
+                <a class="no-underline hover-white white-70" href="https://ox-hugo.scripter.co/">ox-hugo</a>&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.40</a>
+            &plus; <a class="no-underline hover-white white-70" href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a></div>
+    
 
 
 

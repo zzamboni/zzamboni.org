@@ -22,7 +22,7 @@
      
 
       <meta property="og:title" content="My Elvish Configuration With Commentary" />
-<meta property="og:description" content="Last update: April 9, 2018
+<meta property="og:description" content="Last update: April 26, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc." />
 <meta property="og:type" content="article" />
@@ -45,21 +45,21 @@ This is also my first blog post written using org-mode, which I have started usi
 
 
 <meta itemprop="name" content="My Elvish Configuration With Commentary">
-<meta itemprop="description" content="Last update: April 9, 2018
+<meta itemprop="description" content="Last update: April 26, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc.">
 
 
 <meta itemprop="datePublished" content="2017-11-16T20:21:00&#43;01:00" />
 <meta itemprop="dateModified" content="2017-11-16T20:21:00&#43;01:00" />
-<meta itemprop="wordCount" content="1231">
+<meta itemprop="wordCount" content="1235">
 
 
 
 <meta itemprop="keywords" content="config,howto,literateprogramming,literateconfig,elvish," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Elvish Configuration With Commentary"/>
-<meta name="twitter:description" content="Last update: April 9, 2018
+<meta name="twitter:description" content="Last update: April 26, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc."/>
 
@@ -187,7 +187,7 @@ ga('send', 'pageview');
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
-<p>Last update: <strong>April  9, 2018</strong></p>
+<p>Last update: <strong>April 26, 2018</strong></p>
 
 <p>In this blog post I will walk you through my current <a href="http://elvish.io">Elvish</a> configuration file, with running commentary about the different sections.</p>
 
@@ -202,6 +202,7 @@ ga('send', 'pageview');
 paths = [
   ~/bin
   $E:GOPATH/bin
+  /usr/local/opt/coreutils/libexec/gnubin
   ~/Dropbox/Personal/devel/hammerspoon/spoon/bin
   ~/.gem/ruby/2.4.0/bin
   /opt/X11/bin
@@ -263,21 +264,19 @@ paths = [
 alias:new ls e:ls --color=auto
 alias:new more less
 alias:new v vagrant</code></pre></div>
-<h2 id="nix-package-manager">Nix package manager</h2>
-
-<p>I use the <a href="https://nixos.org/nix/">Nix</a> package manager on macOS, the <a href="https://github.com/zzamboni/modules.elv/blob/master/nix.org">nix</a> module sets up the necessary environment variables.</p>
-<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/nix
-nix:multi-user-setup</code></pre></div>
 <h2 id="completions">Completions</h2>
 
-<p>From the  <a href="https://github.com/zzamboni/elvish-completions">elvish-completions</a> package:</p>
+<p>The <a href="https://github.com/xiaq/edit.elv/blob/master/smart-matcher.elv">smart-matcher</a> module tries prefix match, smart-case prefix match, substring match, smart-case substring match, subsequence match and smart-case subsequence match automatically.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/xiaq/edit.elv/smart-matcher
+smart-matcher:apply</code></pre></div>
+<p>Other possible values for <code>edit:completion:matcher</code> are <code>[p]{ edit:match-prefix &amp;smart-case $p }</code> for smart-case completion (if your pattern is entirely lower case it ignores case, otherwise it&rsquo;s case sensitive).  <code>&amp;smart-case</code> can be replaced with <code>&amp;ignore-case</code> to make it always case-insensitive.</p>
 
-<p>For <code>git</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-completions:git</code></pre></div>
-<p>For <code>vcsh</code> (uses the git completer):</p>
-<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-completions:vcsh</code></pre></div>
-<p>For <code>cd</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-completions:cd</code></pre></div>
+<p>I also configure <kbd>Tab</kbd> to trigger completion mode, but also to automatically enter &ldquo;filter mode&rdquo;, so I can keep typing the filename I want, without having to use the arrow keys.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:insert:binding[Tab] = { edit:completion:smart-start; edit:completion:trigger-filter }</code></pre></div>
+<p>I load some command-specific completions from the  <a href="https://github.com/zzamboni/elvish-completions">elvish-completions</a> package:</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-completions:git
+use github.com/zzamboni/elvish-completions:vcsh
+use github.com/zzamboni/elvish-completions:cd</code></pre></div>
 <h2 id="prompt-theme">Prompt theme</h2>
 
 <p>I use the <a href="https://github.com/zzamboni/theme.elv/blob/master/chain.org">chain</a> prompt theme, ported from the fish theme at <a href="https://github.com/oh-my-fish/theme-chain">https://github.com/oh-my-fish/theme-chain</a>.</p>
@@ -340,13 +339,6 @@ edit:insert:binding[Alt-f] = $dir:right-word-or-next-dir~</code></pre></div>
 
 <p>I sometimes use the <a href="https://atlas.oreilly.com/">O&rsquo;Reilly Atlas</a> publishing platform. The <a href="https://github.com/zzamboni/modules.elv/blob/master/atlas.org">atlas</a> module contains some useful functions for triggering and accessing document builds.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/atlas</code></pre></div>
-<h2 id="smart-matching-for-completion">Smart matching for completion</h2>
-
-<p>The <a href="https://github.com/xiaq/edit.elv/blob/master/smart-matcher.elv">smart-matcher</a> module tries prefix match, smart-case prefix match, substring match, smart-case substring match, subsequence match and smart-case subsequence match automatically.</p>
-<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/xiaq/edit.elv/smart-matcher
-edit:completion:matcher[&#39;&#39;] = $smart-matcher:match~</code></pre></div>
-<p>Other possible values for <code>edit:completion:matcher</code> are <code>[p]{ edit:match-prefix &amp;smart-case $p }</code> for smart-case completion (if your pattern is entirely lower case it ignores case, otherwise it&rsquo;s case sensitive).  <code>&amp;smart-case</code> can be replaced with <code>&amp;ignore-case</code> to make it always case-insensitive.</p>
-
 <h2 id="environment-variables">Environment variables</h2>
 
 <p>Default options to <code>less</code>.</p>
@@ -463,7 +455,6 @@ edit:completion:matcher[&#39;&#39;] = $smart-matcher:match~</code></pre></div>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#base-modules">Base modules</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#git-utilities">Git utilities</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#aliases">Aliases</a></li>
-<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#nix-package-manager">Nix package manager</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#completions">Completions</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#prompt-theme">Prompt theme</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#automatic-proxy-settings">Automatic proxy settings</a></li>
@@ -472,7 +463,6 @@ edit:completion:matcher[&#39;&#39;] = $smart-matcher:match~</code></pre></div>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#dynamic-terminal-title">Dynamic terminal title</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#loading-private-settings">Loading private settings</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#o-reilly-atlas">O&rsquo;Reilly Atlas</a></li>
-<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#smart-matching-for-completion">Smart matching for completion</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#environment-variables">Environment variables</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#utility-functions">Utility functions</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#exporting-aliases">Exporting aliases</a></li>
@@ -486,10 +476,14 @@ edit:completion:matcher[&#39;&#39;] = $smart-matcher:match~</code></pre></div>
     </main>
     <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://zzamboni.org/" >
-    &copy; 2018 Diego Zamboni
-  </a>
-  
+    <a class="f5 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://zzamboni.org/" >
+      &copy; 2018 Diego Zamboni
+    </a>
+    <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;<a class="no-underline hover-white white-70" href="https://www.gnu.org/software/emacs/">Emacs 26.1 </a> &plus;
+                <a class="no-underline hover-white white-70" href="https://orgmode.org/">Org mode 9.1.11 </a> &plus;
+                <a class="no-underline hover-white white-70" href="https://ox-hugo.scripter.co/">ox-hugo</a>&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.40</a>
+            &plus; <a class="no-underline hover-white white-70" href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a></div>
+    
 
 
 
