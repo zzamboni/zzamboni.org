@@ -2530,13 +2530,6 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/apple/</loc>
-    <lastmod>2015-04-17T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://zzamboni.org/categories/apple/</loc>
     <lastmod>2015-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -2544,8 +2537,8 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/applescript/</loc>
-    <lastmod>2017-09-11T21:11:29+02:00</lastmod>
+    <loc>http://zzamboni.org/tags/apple/</loc>
+    <lastmod>2015-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -2553,6 +2546,13 @@
   <url>
     <loc>http://zzamboni.org/categories/applescript/</loc>
     <lastmod>2015-01-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://zzamboni.org/tags/applescript/</loc>
+    <lastmod>2017-09-11T21:11:29+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -2593,14 +2593,14 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/automator/</loc>
+    <loc>http://zzamboni.org/categories/automator/</loc>
     <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/automator/</loc>
+    <loc>http://zzamboni.org/tags/automator/</loc>
     <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -2621,14 +2621,14 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/bigdata/</loc>
+    <loc>http://zzamboni.org/categories/bigdata/</loc>
     <lastmod>2015-04-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/bigdata/</loc>
+    <loc>http://zzamboni.org/tags/bigdata/</loc>
     <lastmod>2015-04-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -2788,13 +2788,6 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/emacs/</loc>
-    <lastmod>2018-03-21T22:45:00+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://zzamboni.org/categories/emacs/</loc>
     <lastmod>2016-02-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -2802,14 +2795,21 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/enwrite/</loc>
-    <lastmod>2016-02-26T00:00:00+00:00</lastmod>
+    <loc>http://zzamboni.org/tags/emacs/</loc>
+    <lastmod>2018-03-21T22:45:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://zzamboni.org/categories/enwrite/</loc>
+    <lastmod>2016-02-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://zzamboni.org/tags/enwrite/</loc>
     <lastmod>2016-02-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -2830,14 +2830,14 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/evernote/</loc>
+    <loc>http://zzamboni.org/categories/evernote/</loc>
     <lastmod>2015-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/evernote/</loc>
+    <loc>http://zzamboni.org/tags/evernote/</loc>
     <lastmod>2015-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -2858,14 +2858,14 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/fonts/</loc>
+    <loc>http://zzamboni.org/categories/fonts/</loc>
     <lastmod>2013-12-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/fonts/</loc>
+    <loc>http://zzamboni.org/tags/fonts/</loc>
     <lastmod>2013-12-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -2900,6 +2900,13 @@
   </url>
   
   <url>
+    <loc>http://zzamboni.org/categories/git/</loc>
+    <lastmod>2015-05-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://zzamboni.org/tags/git/</loc>
     <lastmod>2015-05-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -2907,7 +2914,7 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/git/</loc>
+    <loc>http://zzamboni.org/categories/github/</loc>
     <lastmod>2015-05-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -2916,13 +2923,6 @@
   <url>
     <loc>http://zzamboni.org/tags/github/</loc>
     <lastmod>2017-08-25T09:00:00+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://zzamboni.org/categories/github/</loc>
-    <lastmod>2015-05-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -2984,15 +2984,15 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/howto/</loc>
-    <lastmod>2018-01-08T13:31:00+01:00</lastmod>
+    <loc>http://zzamboni.org/categories/howto/</loc>
+    <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/howto/</loc>
-    <lastmod>2016-03-07T00:00:00+00:00</lastmod>
+    <loc>http://zzamboni.org/tags/howto/</loc>
+    <lastmod>2018-01-08T13:31:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -3033,14 +3033,14 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/kvm/</loc>
+    <loc>http://zzamboni.org/categories/kvm/</loc>
     <lastmod>2015-04-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/kvm/</loc>
+    <loc>http://zzamboni.org/tags/kvm/</loc>
     <lastmod>2015-04-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -3089,14 +3089,14 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/logging/</loc>
+    <loc>http://zzamboni.org/categories/logging/</loc>
     <lastmod>2015-04-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/logging/</loc>
+    <loc>http://zzamboni.org/tags/logging/</loc>
     <lastmod>2015-04-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -3131,14 +3131,14 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/macosx/</loc>
+    <loc>http://zzamboni.org/categories/macosx/</loc>
     <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/macosx/</loc>
+    <loc>http://zzamboni.org/tags/macosx/</loc>
     <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -3159,14 +3159,14 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/mosaic/</loc>
+    <loc>http://zzamboni.org/categories/mosaic/</loc>
     <lastmod>2015-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/mosaic/</loc>
+    <loc>http://zzamboni.org/tags/mosaic/</loc>
     <lastmod>2015-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -3446,14 +3446,14 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/ssh/</loc>
+    <loc>http://zzamboni.org/categories/ssh/</loc>
     <lastmod>2015-05-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/ssh/</loc>
+    <loc>http://zzamboni.org/tags/ssh/</loc>
     <lastmod>2015-05-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -3509,15 +3509,15 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/tips/</loc>
-    <lastmod>2017-09-20T18:24:47+00:00</lastmod>
+    <loc>http://zzamboni.org/categories/tips/</loc>
+    <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/tips/</loc>
-    <lastmod>2016-03-07T00:00:00+00:00</lastmod>
+    <loc>http://zzamboni.org/tags/tips/</loc>
+    <lastmod>2017-09-20T18:24:47+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -3530,13 +3530,6 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/trackpad/</loc>
-    <lastmod>2015-10-13T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://zzamboni.org/categories/trackpad/</loc>
     <lastmod>2015-10-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -3544,14 +3537,21 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/translation/</loc>
-    <lastmod>2016-03-07T00:00:00+00:00</lastmod>
+    <loc>http://zzamboni.org/tags/trackpad/</loc>
+    <lastmod>2015-10-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://zzamboni.org/categories/translation/</loc>
+    <lastmod>2016-03-07T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://zzamboni.org/tags/translation/</loc>
     <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -3607,13 +3607,6 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/web/</loc>
-    <lastmod>2015-04-17T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://zzamboni.org/categories/web/</loc>
     <lastmod>2015-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -3621,14 +3614,21 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/whisky/</loc>
-    <lastmod>2015-04-18T00:00:00+00:00</lastmod>
+    <loc>http://zzamboni.org/tags/web/</loc>
+    <lastmod>2015-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://zzamboni.org/categories/whisky/</loc>
+    <lastmod>2015-04-18T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://zzamboni.org/tags/whisky/</loc>
     <lastmod>2015-04-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -3656,14 +3656,14 @@
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/zznippets/</loc>
+    <loc>http://zzamboni.org/categories/zznippets/</loc>
     <lastmod>2015-06-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/zznippets/</loc>
+    <loc>http://zzamboni.org/tags/zznippets/</loc>
     <lastmod>2015-06-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
