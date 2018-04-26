@@ -5,7 +5,7 @@ summary = "Configuring Org Mode in Emacs for beautiful typography for both text 
 date = 2018-03-21T22:45:00+01:00
 tags = ["emacs", "orgmode", "beautifulemacs", "config"]
 draft = false
-creator = "Emacs 25.3.2 (Org mode 9.1.9 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.1.11 + ox-hugo)"
 toc = true
 featured_image = "/images/emacs-logo.svg"
 +++
