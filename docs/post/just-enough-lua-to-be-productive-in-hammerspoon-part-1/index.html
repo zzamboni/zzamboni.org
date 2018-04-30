@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.40" />
+     <meta name="generator" content="Hugo 0.40.2" />
       
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -22,13 +22,9 @@
      
 
       <meta property="og:title" content="Just Enough Lua to Be Productive in Hammerspoon, Part 1" />
-<meta property="og:description" content="Hammerspoon&rsquo;s configuration files are written in Lua, so a basic
-knowledge of the language is very useful to be an effective user of
-Hammerspoon. In this 2-part article I will show you the basics of Lua
-so you can read and write Hammerspoon configuration. Along the way you
-will discover that Lua is a surprisingly powerful language.
+<meta property="og:description" content="Hammerspoon&rsquo;s configuration files are written in Lua, so a basic knowledge of the language is very useful to be an effective user of Hammerspoon. In this 2-part article I will show you the basics of Lua so you can read and write Hammerspoon configuration. Along the way you will discover that Lua is a surprisingly powerful language.
 
-" />
+Lua is a scripting language created in 1993, and focused from the beginning in being an embedded language for extending other applications." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/" />
 
@@ -49,31 +45,23 @@ will discover that Lua is a surprisingly powerful language.
 
 
 <meta itemprop="name" content="Just Enough Lua to Be Productive in Hammerspoon, Part 1">
-<meta itemprop="description" content="Hammerspoon&rsquo;s configuration files are written in Lua, so a basic
-knowledge of the language is very useful to be an effective user of
-Hammerspoon. In this 2-part article I will show you the basics of Lua
-so you can read and write Hammerspoon configuration. Along the way you
-will discover that Lua is a surprisingly powerful language.
+<meta itemprop="description" content="Hammerspoon&rsquo;s configuration files are written in Lua, so a basic knowledge of the language is very useful to be an effective user of Hammerspoon. In this 2-part article I will show you the basics of Lua so you can read and write Hammerspoon configuration. Along the way you will discover that Lua is a surprisingly powerful language.
 
-">
+Lua is a scripting language created in 1993, and focused from the beginning in being an embedded language for extending other applications.">
 
 
 <meta itemprop="datePublished" content="2017-10-21T20:36:28&#43;00:00" />
 <meta itemprop="dateModified" content="2017-10-21T20:36:28&#43;00:00" />
-<meta itemprop="wordCount" content="0">
+<meta itemprop="wordCount" content="1129">
 
 
 
 <meta itemprop="keywords" content="hammerspoon,lua,howto,mac," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Just Enough Lua to Be Productive in Hammerspoon, Part 1"/>
-<meta name="twitter:description" content="Hammerspoon&rsquo;s configuration files are written in Lua, so a basic
-knowledge of the language is very useful to be an effective user of
-Hammerspoon. In this 2-part article I will show you the basics of Lua
-so you can read and write Hammerspoon configuration. Along the way you
-will discover that Lua is a surprisingly powerful language.
+<meta name="twitter:description" content="Hammerspoon&rsquo;s configuration files are written in Lua, so a basic knowledge of the language is very useful to be an effective user of Hammerspoon. In this 2-part article I will show you the basics of Lua so you can read and write Hammerspoon configuration. Along the way you will discover that Lua is a surprisingly powerful language.
 
-"/>
+Lua is a scripting language created in 1993, and focused from the beginning in being an embedded language for extending other applications."/>
 
         
 <script>
@@ -197,7 +185,9 @@ ga('send', 'pageview');
         October 21, 2017
       </time>
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
-        <p>Hammerspoon&rsquo;s configuration files are written in Lua, so a basic
+        
+
+<p>Hammerspoon&rsquo;s configuration files are written in Lua, so a basic
 knowledge of the language is very useful to be an effective user of
 Hammerspoon. In this 2-part article I will show you the basics of Lua
 so you can read and write Hammerspoon configuration. Along the way you
@@ -381,50 +371,7 @@ our use is OK.</p>
 next time you reload your configuration. You could then try calling it
 from the console, but the easiest is to bind a hotkey that will
 generate a double click. For example:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="p">{</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span> <span class="p">},</span> <span class="s2">&#34;p&#34;</span> <span class="p">},</span>
-                   <span class="n">leftDoubleClick</span><span class="p">)</span></code></pre></div>
-<p>Once you reload your config, you can generate a double click by moving
-the cursor where you want it and pressing <kbd>Ctrl</kbd>+<kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>p</kbd>
-. While this is a contrived example, the ability to generate
-events like this is immensely powerful in automating your system.</p>
-
-<aside class="admonition tip">
-	<div class="admonition-icon">
-		<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 8 8">
-  <path d="M3.41 0a.5.5 0 0 0-.13.06l-3 1.5a.5.5 0 1 0 .44.88l3-1.5a.5.5 0 0 0-.31-.94zm1 1.5a.5.5 0 0 0-.13.06l-4 2a.5.5 0 1 0 .44.88l4-2a.5.5 0 0 0-.31-.94zm0 2a.5.5 0 0 0-.13.06l-3 1.5a.5.5 0 0 0 .22.94h2a.5.5 0 0 0 .16-1l1.06-.56a.5.5 0 0 0-.31-.94zm-2.56 3.5a.5.5 0 0 0 .16 1h1a.5.5 0 1 0 0-1h-1a.5.5 0 0 0-.09 0 .5.5 0 0 0-.06 0z"
-  transform="translate(1)" />
-</svg>
-
-	</div>
-	
-	
-	<div class="admonition-content"><p>By now you have seen that we are using <kbd>Cmd</kbd>+<kbd>Ctrl</kbd>+<kbd>Alt</kbd>
- very
-frequently in our keybindings. To avoid having to type this every
-time, and since the modifiers are defined as an array, you can define
-them as variable. For example, I have the following at the top of my
-<code>init.lua</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hyper</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;cmd&#34;</span><span class="p">,</span><span class="s2">&#34;alt&#34;</span><span class="p">,</span><span class="s2">&#34;ctrl&#34;</span><span class="p">}</span>
-<span class="n">shift_hyper</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;cmd&#34;</span><span class="p">,</span><span class="s2">&#34;alt&#34;</span><span class="p">,</span><span class="s2">&#34;ctrl&#34;</span><span class="p">,</span><span class="s2">&#34;shift&#34;</span><span class="p">}</span></code></pre></div>
-<p>Then I simply use <code>hyper</code> or <code>shift_hyper</code> in my key binding declarations:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;p&#34;</span> <span class="p">},</span> <span class="n">leftDoubleClick</span><span class="p">)</span></code></pre></div></div>
-</aside>
-
-
-<h2 id="until-next-time">Until next time!</h2>
-
-<p>In the <a href="/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/">next installment</a>, we will dive into Lua&rsquo;s types and data structures. In the
-meantime, feel free to explore and learn on your own. If you need more
-information, I can recommend the following resources, which I have
-found useful:</p>
-
-<ul>
-<li><p><a href="http://www.lua.org/manual/5.3/">The Lua 5.3 Reference Manual</a>,
-available at the official <a href="http://www.lua.org">Lua website</a>.</p></li>
-
-<li><p><a href="http://lua-users.org/wiki/">The Lua Wiki</a>, a community-maintained
-wiki with many descriptions, tips, examples and tutorials.</p></li>
-</ul>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</
       </section>
       
 
@@ -543,7 +490,7 @@ wiki with many descriptions, tips, examples and tutorials.</p></li>
     <a class="f5 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://zzamboni.org/" >
       &copy; 2018 Diego Zamboni
     </a>
-    <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.40</a>
+    <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.40.2</a>
             &plus; <a class="no-underline hover-white white-70" href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a></div>
     
 
