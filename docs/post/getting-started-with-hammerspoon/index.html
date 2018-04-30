@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.40" />
+     <meta name="generator" content="Hugo 0.40.2" />
       
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -22,13 +22,9 @@
      
 
       <meta property="og:title" content="Getting Started With Hammerspoon" />
-<meta property="og:description" content="This is the first installment of a series of posts about Hammerspoon,
-a staggeringly powerful automation utility which gives you an amazing
-degree of control over your Mac, allowing you to automate and control
-almost anything. In the word of Hammerspoon&rsquo;s motto: Making the
-runtime, funtime.
+<meta property="og:description" content="This is the first installment of a series of posts about Hammerspoon, a staggeringly powerful automation utility which gives you an amazing degree of control over your Mac, allowing you to automate and control almost anything. In the word of Hammerspoon&rsquo;s motto: Making the runtime, funtime.
 
-" />
+Why Hammerspoon? Hammerspoon is a Mac application that allows you to achieve an unprecedented level of control over your Mac. Hammerspoon enables interaction with the system at multiple layers&ndash;from low-level file system or network access, mouse or keyboard event capture and generation, all the way to manipulating applications or windows, processing URLs and drawing on the screen." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://zzamboni.org/post/getting-started-with-hammerspoon/" />
 
@@ -49,31 +45,23 @@ runtime, funtime.
 
 
 <meta itemprop="name" content="Getting Started With Hammerspoon">
-<meta itemprop="description" content="This is the first installment of a series of posts about Hammerspoon,
-a staggeringly powerful automation utility which gives you an amazing
-degree of control over your Mac, allowing you to automate and control
-almost anything. In the word of Hammerspoon&rsquo;s motto: Making the
-runtime, funtime.
+<meta itemprop="description" content="This is the first installment of a series of posts about Hammerspoon, a staggeringly powerful automation utility which gives you an amazing degree of control over your Mac, allowing you to automate and control almost anything. In the word of Hammerspoon&rsquo;s motto: Making the runtime, funtime.
 
-">
+Why Hammerspoon? Hammerspoon is a Mac application that allows you to achieve an unprecedented level of control over your Mac. Hammerspoon enables interaction with the system at multiple layers&ndash;from low-level file system or network access, mouse or keyboard event capture and generation, all the way to manipulating applications or windows, processing URLs and drawing on the screen.">
 
 
 <meta itemprop="datePublished" content="2017-08-21T16:34:00&#43;02:00" />
 <meta itemprop="dateModified" content="2017-08-21T16:34:00&#43;02:00" />
-<meta itemprop="wordCount" content="0">
+<meta itemprop="wordCount" content="1341">
 
 
 
 <meta itemprop="keywords" content="hammerspoon,howto,mac," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Getting Started With Hammerspoon"/>
-<meta name="twitter:description" content="This is the first installment of a series of posts about Hammerspoon,
-a staggeringly powerful automation utility which gives you an amazing
-degree of control over your Mac, allowing you to automate and control
-almost anything. In the word of Hammerspoon&rsquo;s motto: Making the
-runtime, funtime.
+<meta name="twitter:description" content="This is the first installment of a series of posts about Hammerspoon, a staggeringly powerful automation utility which gives you an amazing degree of control over your Mac, allowing you to automate and control almost anything. In the word of Hammerspoon&rsquo;s motto: Making the runtime, funtime.
 
-"/>
+Why Hammerspoon? Hammerspoon is a Mac application that allows you to achieve an unprecedented level of control over your Mac. Hammerspoon enables interaction with the system at multiple layers&ndash;from low-level file system or network access, mouse or keyboard event capture and generation, all the way to manipulating applications or windows, processing URLs and drawing on the screen."/>
 
         
 <script>
@@ -197,7 +185,9 @@ ga('send', 'pageview');
         August 21, 2017
       </time>
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
-        <p>This is the first installment of a series of posts about Hammerspoon,
+        
+
+<p>This is the first installment of a series of posts about Hammerspoon,
 a staggeringly powerful automation utility which gives you an amazing
 degree of control over your Mac, allowing you to automate and control
 almost anything. In the word of Hammerspoon&rsquo;s motto: <em>Making the
@@ -434,41 +424,7 @@ the <code>init.lua</code> file.</p>
 <p>You may have noticed by now another common operation while developing
 Hammerspoon code: reloading the configuration, which you normally have
 to do from the Hammerspoon menu. So why not set up a hotkey to do that
-as well? Again, the <a href="http://www.hammerspoon.org/docs/hs.html"><code>hs</code></a> module comes to our help with the
-<a href="http://www.hammerspoon.org/docs/hs.html#reload"><code>hs.reload</code></a> method:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="p">{</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span> <span class="p">},</span> <span class="s2">&#34;r&#34;</span> <span class="p">},</span> <span class="n">hs.reload</span><span class="p">)</span></code></pre></div>
-<p>Another useful development tool is the <code>hs</code> command, which you can run
-from your terminal to get a Hammerspoon console. To install it, you
-can use the <a href="http://www.hammerspoon.org/docs/hs.ipc.html#cliInstall"><code>hs.ipc.cliInstall</code></a> function, which you can just
-add to your <code>init.lua</code> file to check and install the command every
-time Hammerspoon runs.</p>
-
-<aside class="admonition warning">
-	<div class="admonition-icon">
-		<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 8 8">
-  <path d="M3.09 0c-.06 0-.1.04-.13.09l-2.94 6.81c-.02.05-.03.13-.03.19v.81c0 .05.04.09.09.09h6.81c.05 0 .09-.04.09-.09v-.81c0-.05-.01-.14-.03-.19l-2.94-6.81c-.02-.05-.07-.09-.13-.09h-.81zm-.09 3h1v2h-1v-2zm0 3h1v1h-1v-1z" />
-</svg>
-
-	</div>
-	
-	
-	<div class="admonition-content"><p><a href="http://www.hammerspoon.org/docs/hs.ipc.html#cliInstall"><code>hs.ipc.cliInstall</code></a> creates symlinks under
-<code>/usr/local/</code> to the <code>hs</code> command and its manual page file, located
-inside the Hammerspoon application bundle. Under some circumstances
-(particularly if you build Hammerspoon from source, or if you
-install different versions of it), you may end up with broken
-symlinks. If the <code>hs</code> command stops working and
-<code>hs.ipc.cliInstall()</code> doesn&rsquo;t fix it, look for broken symlinks left
-behind from old versions of Hammerspoon. Remove them and things
-should work again.</p>
-</div>
-</aside>
-
-
-<p>Now you have all the tools for developing your Hammerspoon
-configuration. In the next installment we will look at how you can
-save yourself a lot of coding by using pre-made modules. In the
-meantime, please let me know your thoughts in the comments!</p>
+as w
       </section>
       
 
@@ -583,7 +539,7 @@ meantime, please let me know your thoughts in the comments!</p>
     <a class="f5 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://zzamboni.org/" >
       &copy; 2018 Diego Zamboni
     </a>
-    <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.40</a>
+    <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.40.2</a>
             &plus; <a class="no-underline hover-white white-70" href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a></div>
     
 

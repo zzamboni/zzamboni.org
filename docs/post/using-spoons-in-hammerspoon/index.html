@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.40" />
+     <meta name="generator" content="Hugo 0.40.2" />
       
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -22,13 +22,10 @@
      
 
       <meta property="og:title" content="Using Spoons in Hammerspoon" />
-<meta property="og:description" content="In this second article about Hammerspoon, we look into Spoons,
-modules written in Lua which can be easily installed and loaded into
-Hammerspoon to provide ready-to-use functionality. Spoons provide a
-predefined API to configure and use them. They are also a good way to
-share your own work with other users.
+<meta property="og:description" content="In this second article about Hammerspoon, we look into Spoons, modules written in Lua which can be easily installed and loaded into Hammerspoon to provide ready-to-use functionality. Spoons provide a predefined API to configure and use them. They are also a good way to share your own work with other users.
 
-" />
+See also the first article in this series.
+Using a Spoon to locate your mouse As a first example, we will use the MouseCircle spoon, which allows us to set up a hotkey that displays a color circle around the current location of the mouse pointer for a few seconds, to help you locate it." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://zzamboni.org/post/using-spoons-in-hammerspoon/" />
 
@@ -49,31 +46,25 @@ share your own work with other users.
 
 
 <meta itemprop="name" content="Using Spoons in Hammerspoon">
-<meta itemprop="description" content="In this second article about Hammerspoon, we look into Spoons,
-modules written in Lua which can be easily installed and loaded into
-Hammerspoon to provide ready-to-use functionality. Spoons provide a
-predefined API to configure and use them. They are also a good way to
-share your own work with other users.
+<meta itemprop="description" content="In this second article about Hammerspoon, we look into Spoons, modules written in Lua which can be easily installed and loaded into Hammerspoon to provide ready-to-use functionality. Spoons provide a predefined API to configure and use them. They are also a good way to share your own work with other users.
 
-">
+See also the first article in this series.
+Using a Spoon to locate your mouse As a first example, we will use the MouseCircle spoon, which allows us to set up a hotkey that displays a color circle around the current location of the mouse pointer for a few seconds, to help you locate it.">
 
 
 <meta itemprop="datePublished" content="2017-09-01T20:17:55&#43;02:00" />
 <meta itemprop="dateModified" content="2017-09-01T20:17:55&#43;02:00" />
-<meta itemprop="wordCount" content="0">
+<meta itemprop="wordCount" content="1341">
 
 
 
 <meta itemprop="keywords" content="hammerspoon,spoons,howto,mac," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Using Spoons in Hammerspoon"/>
-<meta name="twitter:description" content="In this second article about Hammerspoon, we look into Spoons,
-modules written in Lua which can be easily installed and loaded into
-Hammerspoon to provide ready-to-use functionality. Spoons provide a
-predefined API to configure and use them. They are also a good way to
-share your own work with other users.
+<meta name="twitter:description" content="In this second article about Hammerspoon, we look into Spoons, modules written in Lua which can be easily installed and loaded into Hammerspoon to provide ready-to-use functionality. Spoons provide a predefined API to configure and use them. They are also a good way to share your own work with other users.
 
-"/>
+See also the first article in this series.
+Using a Spoon to locate your mouse As a first example, we will use the MouseCircle spoon, which allows us to set up a hotkey that displays a color circle around the current location of the mouse pointer for a few seconds, to help you locate it."/>
 
         
 <script>
@@ -197,7 +188,9 @@ ga('send', 'pageview');
         September 1, 2017
       </time>
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
-        <p>In this second article about Hammerspoon, we look into <em>Spoons</em>,
+        
+
+<p>In this second article about Hammerspoon, we look into <em>Spoons</em>,
 modules written in Lua which can be easily installed and loaded into
 Hammerspoon to provide ready-to-use functionality. Spoons provide a
 predefined API to configure and use them. They are also a good way to
@@ -443,140 +436,7 @@ documentation.</p></li>
 <p>Once you develop a complex Hammerspoon configuration using spoons, you
 may start wondering if there is an easy way to manage them. There are
 no built-in mechanisms for automatically installing spoons, but you
-can use a spoon called
-<a href="http://www.hammerspoon.org/Spoons/SpoonInstall.html">SpoonInstall</a>
-that implements this functionality. You can download it from
-<a href="http://www.hammerspoon.org/Spoons/SpoonInstall.html">http://www.hammerspoon.org/Spoons/SpoonInstall.html</a>. Once installed,
-you can use it to declaratively install, configure and run spoons. For
-example, with SpoonInstall you can use the MouseCircle spoon as
-follows:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.loadSpoon</span><span class="p">(</span><span class="s2">&#34;SpoonInstall&#34;</span><span class="p">)</span>
-<span class="n">spoon.SpoonInstall</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;MouseCircle&#34;</span><span class="p">,</span> <span class="p">{</span>
-                  <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">color</span> <span class="o">=</span> <span class="n">hs.drawing</span><span class="p">.</span><span class="n">color.osx_red</span><span class="p">,</span>
-                  <span class="p">},</span>
-                  <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span>
-                     <span class="n">show</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span><span class="p">},</span> <span class="s2">&#34;d&#34;</span> <span class="p">}</span>
-                  <span class="p">}})</span></code></pre></div>
-<p>If the MouseCircle spoon is not yet installed,
-<code>spoon.SpoonInstall:andUse()</code> will automatically download and install
-it, and set its configuration variables and hotkeys according to the
-declaration.</p>
-
-<p>If there is nothing to configure in the spoon,
-<code>spoon.SpoonInstall:andUse(&quot;SomeSpoon&quot;)</code> does exactly the same as
-<code>hs.loadSpoon(&quot;SomeSpoon&quot;)</code>. But if you want to set configuration
-variables, hotkey bindings or other parameters, the following keys are
-recognized in the map provided as a second parameter:</p>
-
-<ul>
-<li><p><code>config</code> is a Lua table containing keys corresponding to
-configuration variables in the spoon. In the example above,
-<code>config = { color = hs.drawing.color.osx_red }</code> has the same
-effect as setting <code>spoon.MouseCircle.color =
-hs.drawing.color.osx_red</code></p></li>
-
-<li><p><code>hotkeys</code> is a Lua table with the same structure as the mapping
-parameter passed to the <code>bindHotkeys</code> method of the spoon. In our
-example above, <code>hotkeys = { show = { { &quot;ctrl&quot;, &quot;cmd&quot;, &quot;alt&quot;}, &quot;d&quot;
-} }</code> automatically triggers a call to
-<code>spoon.MouseCircle:bindHotkeys({ show = { { &quot;ctrl&quot;, &quot;cmd&quot;, &quot;alt&quot;},
-&quot;d&quot; } })</code>.</p></li>
-
-<li><p><code>loglevel</code> sets the log level of the <code>logger</code> attribute within the
-spoon, if it exists. The valid values for this attribute are
-&lsquo;nothing&rsquo;, &lsquo;error&rsquo;, &lsquo;warning&rsquo;, &lsquo;info&rsquo;, &lsquo;debug&rsquo;, or &lsquo;verbose&rsquo;.</p></li>
-
-<li><p><code>start</code> is a boolean value which indicates whether to call the
-Spoon’s <code>start()</code> method (if it has one) after configuring
-everything else.</p></li>
-
-<li><p><code>fn</code> specifies a function which will be called with the
-freshly-loaded Spoon object as its first argument. This can be
-used to execute other startup or configuration actions that are
-not covered by the other attributes. For example, if you use the
-
-<a href="http://www.hammerspoon.org/Spoons/Seal.html">Seal</a>
- spoon (a configurable launcher), you need to call its
-<code>loadPlugins()</code> method to specify which Seal plugins to use. You
-can achieve this with something like this:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">spoon.SpoonInstall</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;Seal&#34;</span><span class="p">,</span>
-  <span class="p">{</span> <span class="n">hotkeys</span> <span class="o">=</span> <span class="p">{</span> <span class="n">show</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="s2">&#34;cmd&#34;</span><span class="p">},</span> <span class="s2">&#34;space&#34;</span> <span class="p">}</span> <span class="p">},</span>
-    <span class="n">fn</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-             <span class="n">s</span><span class="p">:</span><span class="n">loadPlugins</span><span class="p">({</span><span class="s2">&#34;apps&#34;</span><span class="p">,</span> <span class="s2">&#34;calc&#34;</span><span class="p">,</span> <span class="s2">&#34;safari_bookmarks&#34;</span><span class="p">})</span>
-         <span class="kr">end</span><span class="p">,</span>
-         <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="p">})</span></code></pre></div></li>
-
-<li><p><code>repo</code> indicates the repository from where the Spoon should be
-installed if needed. Defaults to <code>&quot;default&quot;</code>, which indicates the
-official Spoon repository at
-<a href="http://www.hammerspoon.org/Spoons/">http://www.hammerspoon.org/Spoons/</a>. I keep a repository of
-unofficial Spoons at <a href="http://zzamboni.org/zzSpoons/">http://zzamboni.org/zzSpoons/</a>, and others
-may be available by the time you read this.</p></li>
-
-<li><p><code>disable</code> can be set to <code>true</code> to disable the Spoon (easier than
-commenting it out when you want to temporarily disable a spoon) in
-your configuration.</p></li>
-</ul>
-
-<aside class="admonition tip">
-	<div class="admonition-icon">
-		<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 8 8">
-  <path d="M3.41 0a.5.5 0 0 0-.13.06l-3 1.5a.5.5 0 1 0 .44.88l3-1.5a.5.5 0 0 0-.31-.94zm1 1.5a.5.5 0 0 0-.13.06l-4 2a.5.5 0 1 0 .44.88l4-2a.5.5 0 0 0-.31-.94zm0 2a.5.5 0 0 0-.13.06l-3 1.5a.5.5 0 0 0 .22.94h2a.5.5 0 0 0 .16-1l1.06-.56a.5.5 0 0 0-.31-.94zm-2.56 3.5a.5.5 0 0 0 .16 1h1a.5.5 0 1 0 0-1h-1a.5.5 0 0 0-.09 0 .5.5 0 0 0-.06 0z"
-  transform="translate(1)" />
-</svg>
-
-	</div>
-	
-	
-	<div class="admonition-content"><p>You can assign functions and modules to variables to improve
-readability of your code. For example, in my <code>init.lua</code> file I make
-the following assignment:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="o">=</span><span class="n">spoon.SpoonInstall</span></code></pre></div>
-<p>Which allows me to write <code>Install:andUse(&quot;MouseCircle&quot;, …​ )</code>, which is
-shorter and easier to read.</p>
-</div>
-</aside>
-
-
-<h2 id="managing-repositories-and-spoons-using-spooninstall">Managing repositories and spoons using SpoonInstall</h2>
-
-<p>Apart from the <code>andUse()</code> &ldquo;all-in-one&rdquo; method, SpoonInstall has
-methods for specific repository- and spoon-maintenance operations. As
-of this writing, there are two Spoon repositories: the official one at
-<a href="http://www.hammerspoon.org/Spoons/">http://www.hammerspoon.org/Spoons/</a>, and my own at
-<a href="http://zzamboni.org/zzSpoons/">http://zzamboni.org/zzSpoons/</a>, where I host some unofficial and
-in-progress Spoons.</p>
-
-<p>The configuration variable used to specify repositories is
-<code>SpoonInstall.repos</code>. Its default value is the following, which
-configures the official repository identified as &ldquo;default&rdquo;:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="p">{</span>
-  <span class="n">default</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;https://github.com/Hammerspoon/Spoons&#34;</span><span class="p">,</span>
-      <span class="n">desc</span> <span class="o">=</span> <span class="s2">&#34;Main Hammerspoon Spoon repository&#34;</span><span class="p">,</span>
-  <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
-<p>To configure a new repository, you can define an extra entry in this
-variable. The following code creates an entry named &ldquo;zzspoons&rdquo; for my
-Spoon repository:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">spoon.SpoonInstall</span><span class="p">.</span><span class="n">repos.zzspoons</span> <span class="o">=</span> <span class="p">{</span>
-   <span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;https://github.com/zzamboni/zzSpoons&#34;</span><span class="p">,</span>
-   <span class="n">desc</span> <span class="o">=</span> <span class="s2">&#34;zzamboni&#39;s spoon repository&#34;</span><span class="p">,</span>
-<span class="p">}</span></code></pre></div>
-<p>After this, both &ldquo;zzspoons&rdquo; and &ldquo;default&rdquo; can be used as values to the
-<code>repo</code> attribute in the <code>andUse()</code> method, and in any of the other
-methods that take a repository identifier as a parameter. You can find
-the full API documentation at
-<a href="http://www.hammerspoon.org/Spoons/SpoonInstall.html">http://www.hammerspoon.org/Spoons/SpoonInstall.html</a>.</p>
-
-<h1 id="conclusion">Conclusion</h1>
-
-<p>Spoons are a great mechanism for structuring your Hammerspoon
-configuration. If you want an example of a working configuration based
-almost exclusively on Spoons, you can view my own Hammerspoon
-configuration at <a href="https://github.com/zzamboni/dot-hammerspoon">https://github.com/zzamboni/dot-hammerspoon</a>.</p>
+can use a spoon 
       </section>
       
 
@@ -695,7 +555,7 @@ configuration at <a href="https://github.com/zzamboni/dot-hammerspoon">https://g
     <a class="f5 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://zzamboni.org/" >
       &copy; 2018 Diego Zamboni
     </a>
-    <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.40</a>
+    <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.40.2</a>
             &plus; <a class="no-underline hover-white white-70" href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a></div>
     
 

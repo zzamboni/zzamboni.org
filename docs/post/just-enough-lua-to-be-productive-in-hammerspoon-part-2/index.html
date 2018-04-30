@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.40" />
+     <meta name="generator" content="Hugo 0.40.2" />
       
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -22,10 +22,10 @@
      
 
       <meta property="og:title" content="Just Enough Lua to Be Productive in Hammerspoon, Part 2" />
-<meta property="og:description" content="In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into
-Lua&rsquo;s types and data structures.
+<meta property="og:description" content="In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into Lua&rsquo;s types and data structures.
 
-" />
+  If you haven&rsquo;t already, be sure to read the first installment of this series to learn about the basic Lua concepts.
+  Tables Table are the only compound data type in Lua, and are used to implement arrays, associative arrays (commonly called &ldquo;maps&rdquo; or &ldquo;hashes&rdquo; in other languages), modules, objects and namespaces." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/" />
 
@@ -46,25 +46,25 @@ Lua&rsquo;s types and data structures.
 
 
 <meta itemprop="name" content="Just Enough Lua to Be Productive in Hammerspoon, Part 2">
-<meta itemprop="description" content="In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into
-Lua&rsquo;s types and data structures.
+<meta itemprop="description" content="In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into Lua&rsquo;s types and data structures.
 
-">
+  If you haven&rsquo;t already, be sure to read the first installment of this series to learn about the basic Lua concepts.
+  Tables Table are the only compound data type in Lua, and are used to implement arrays, associative arrays (commonly called &ldquo;maps&rdquo; or &ldquo;hashes&rdquo; in other languages), modules, objects and namespaces.">
 
 
 <meta itemprop="datePublished" content="2017-11-01T08:16:15&#43;00:00" />
 <meta itemprop="dateModified" content="2017-11-01T08:16:15&#43;00:00" />
-<meta itemprop="wordCount" content="0">
+<meta itemprop="wordCount" content="2305">
 
 
 
 <meta itemprop="keywords" content="hammerspoon,lua,howto,mac," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Just Enough Lua to Be Productive in Hammerspoon, Part 2"/>
-<meta name="twitter:description" content="In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into
-Lua&rsquo;s types and data structures.
+<meta name="twitter:description" content="In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into Lua&rsquo;s types and data structures.
 
-"/>
+  If you haven&rsquo;t already, be sure to read the first installment of this series to learn about the basic Lua concepts.
+  Tables Table are the only compound data type in Lua, and are used to implement arrays, associative arrays (commonly called &ldquo;maps&rdquo; or &ldquo;hashes&rdquo; in other languages), modules, objects and namespaces."/>
 
         
 <script>
@@ -188,7 +188,9 @@ ga('send', 'pageview');
         November 1, 2017
       </time>
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
-        <p>In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into
+        
+
+<p>In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into
 Lua&rsquo;s types and data structures.</p>
 
 <p></p>
@@ -631,115 +633,7 @@ needed, or passed as arguments to a function:</p>
 <span class="o">&gt;</span> <span class="n">string.find</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
 <span class="p">[</span><span class="n">string</span> <span class="s2">&#34;return string.find(args)&#34;</span><span class="p">]:</span><span class="mi">1</span><span class="p">:</span>
   <span class="n">bad</span> <span class="n">argument</span> <span class="o">#</span><span class="mi">1</span> <span class="n">to</span> <span class="s1">&#39;find&#39;</span> <span class="p">(</span><span class="n">string</span> <span class="n">expected</span><span class="p">,</span> <span class="n">got</span> <span class="n">table</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">string.find</span><span class="p">(</span><span class="n">table.unpack</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
-<span class="mi">1</span>   <span class="mi">3</span>   <span class="n">b</span>   <span class="n">ah</span></code></pre></div></div>
-</aside>
-</li>
-
-<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.match"><code>string.match(str, pat [, pos])</code></a> is
-similar to <code>string.find</code>, but it does not return the positions,
-rather it returns the part of the string matched by the pattern, or
-if the pattern contains capture groups, returns the captured
-segments:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">string.match</span><span class="p">(</span><span class="s2">&#34;bah&#34;</span><span class="p">,</span> <span class="s2">&#34;ah&#34;</span><span class="p">)</span>
-<span class="n">ah</span>
-<span class="o">&gt;</span> <span class="n">string.match</span><span class="p">(</span><span class="s2">&#34;bah&#34;</span><span class="p">,</span> <span class="s2">&#34;foo&#34;</span><span class="p">)</span>
-<span class="kc">nil</span>
-<span class="o">&gt;</span> <span class="n">string.match</span><span class="p">(</span><span class="s2">&#34;bah&#34;</span><span class="p">,</span> <span class="s2">&#34;(b)(ah)&#34;</span><span class="p">)</span>
-<span class="n">b</span>   <span class="n">ah</span></code></pre></div></li>
-
-<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.gmatch"><code>string.gmatch(str, pat)</code></a> returns a
-function that returns the next match of <code>pat</code> within <code>str</code> every
-time it is called, returning <code>nil</code> when there are no more
-matches. If <code>pat</code> contains capture groups, they are returned on each
-iteration.</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">a</span><span class="o">=</span><span class="s2">&#34;Hammerspoon is awesome!&#34;</span>
-<span class="o">&gt;</span> <span class="n">f</span><span class="o">=</span><span class="n">string.gmatch</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s2">&#34;(%w+)&#34;</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">f</span><span class="p">()</span>
-<span class="n">Hammerspoon</span>
-<span class="o">&gt;</span> <span class="n">f</span><span class="p">()</span>
-<span class="n">is</span>
-<span class="o">&gt;</span> <span class="n">f</span><span class="p">()</span>
-<span class="n">awesome</span>
-<span class="o">&gt;</span> <span class="n">f</span><span class="p">()</span></code></pre></div>
-<p>Most commonly, this is used inside a loop:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="kr">for</span> <span class="n">cap</span> <span class="kr">in</span> <span class="n">string.gmatch</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s2">&#34;%w+&#34;</span><span class="p">)</span> <span class="kr">do</span> <span class="n">print</span><span class="p">(</span><span class="n">cap</span><span class="p">)</span> <span class="kr">end</span>
-<span class="n">Hammerspoon</span>
-<span class="n">is</span>
-<span class="n">awesome</span></code></pre></div></li>
-
-<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.format"><code>string.format(formatstring, …​)</code></a>
-formats a sequence of values according to the given format string,
-following the same formatting rules as the ISO C <code>sprintf()</code>
-function. It additionally supports a new format character <code>%q</code>,
-which formats a string value in a way that can be read back by
-Lua, escaping or quoting characters as needed (for example quotes,
-newlines, etc.).</p></li>
-
-<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.len"><code>string.len(str)</code></a> returns the length
-of the string.</p></li>
-
-<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.lower"><code>string.lower(str)</code></a> and <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.upper"><code>string.upper(str)</code></a> convert the string to
-lower and uppercase, respectively.</p></li>
-
-<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.gsub"><code>string.gsub(str, pat, rep[, n])</code></a>
-is a very powerful string-replacement function which hides
-considerably more power than its simple syntax would lead you to
-believe. In general, it replaces all (or the first <code>n</code>)
-occurrences of <code>pat</code> in <code>str</code> with the replacement <code>rep</code>. However,
-<code>rep</code> can take any of the following values:</p>
-
-<ul>
-<li><p>A string which is used for the replacement. If the string
-contains <em>%m</em>, where <em>m</em> is a number, the it is replaced by
-the m-th captured group (or the whole match if <em>m</em> is zero).</p></li>
-
-<li><p>A table which is consulted for the replacement values, using
-the first capture group as a key (or the whole match if there
-are no captures). For example:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">a</span><span class="o">=</span><span class="s2">&#34;Event type codes: leftMouseDown=$leftMouseDown, rightMouseDown=$rightMouseDown, mouseMoved=$mouseMoved&#34;</span>
-<span class="o">&gt;</span> <span class="n">a</span><span class="p">:</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&#34;%$(%w+)&#34;</span><span class="p">,</span> <span class="n">hs.eventtap</span><span class="p">.</span><span class="n">event.types</span><span class="p">)</span>
-<span class="n">Event</span> <span class="n">type</span> <span class="n">codes</span><span class="p">:</span> <span class="n">leftMouseDown</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rightMouseDown</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">mouseMoved</span><span class="o">=</span><span class="mi">5</span>   <span class="mi">3</span></code></pre></div></li>
-
-<li><p>A function which is executed with the captured groups (or the
-whole match) as an argument, and whose return value is used as
-the replacement. For example, using the <code>os.getenv</code> function,
-we can easily replace environment variables by their values in
-a string:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">a</span><span class="o">=</span><span class="s2">&#34;Hello $USER, your home directory is $HOME&#34;</span>
-<span class="o">&gt;</span> <span class="n">a</span><span class="p">:</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&#34;%$(%w+)&#34;</span><span class="p">,</span> <span class="n">os.getenv</span><span class="p">)</span>
-<span class="n">Hello</span> <span class="n">zzamboni</span><span class="p">,</span> <span class="n">your</span> <span class="n">home</span> <span class="n">directory</span> <span class="n">is</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">zzamboni</span>  <span class="mi">2</span></code></pre></div></li>
-</ul>
-
-<p>Note that <code>gsub</code> returns the modified string as its first return
-value, and the number of replacements it made as the second (<code>2</code>
-in the example above). If you don’t need the number, you can
-simply ignore it (you don&rsquo;t even need to assign it). Also note
-that <code>gsub</code> does not modify the original string, only returns a
-copy with the changes:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">:</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&#34;%$(%w+)&#34;</span><span class="p">,</span> <span class="n">os.getenv</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">b</span>
-<span class="n">Hello</span> <span class="n">zzamboni</span><span class="p">,</span> <span class="n">your</span> <span class="n">home</span> <span class="n">directory</span> <span class="n">is</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">zzamboni</span>
-<span class="o">&gt;</span> <span class="n">a</span>
-<span class="n">Hello</span> <span class="err">$</span><span class="n">USER</span><span class="p">,</span> <span class="n">your</span> <span class="n">home</span> <span class="n">directory</span> <span class="n">is</span> <span class="err">$</span><span class="n">HOME</span></code></pre></div></li>
-</ul>
-
-<h2 id="keep-learning">Keep learning!</h2>
-
-<p>You know now enough Lua to start being productive with
-Hammerspoon. You’ll pick up more details as you play with it. If you
-need more information, I can recommend the following resources, which
-I have found useful:</p>
-
-<ul>
-<li><p><a href="http://www.lua.org/manual/5.3/">The Lua 5.3 Reference Manual</a>,
-available at the official <a href="http://www.lua.org">Lua website</a>.</p></li>
-
-<li><p><a href="http://lua-users.org/wiki/">The Lua Wiki</a>, a community-maintained
-wiki with many descriptions, tips, examples and tutorials.</p></li>
-</ul>
-
-<p>Have fun!</p>
+<span class="o">&gt;</span> <span class="n">string.find</span><span class="p">(</span><span class="n">table.unpack</span><span class="p">(</span><span class="n"
       </section>
       
 
@@ -859,7 +753,7 @@ wiki with many descriptions, tips, examples and tutorials.</p></li>
     <a class="f5 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://zzamboni.org/" >
       &copy; 2018 Diego Zamboni
     </a>
-    <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.40</a>
+    <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.40.2</a>
             &plus; <a class="no-underline hover-white white-70" href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a></div>
     
 
