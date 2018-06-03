@@ -22,7 +22,7 @@
      
 
       <meta property="og:title" content="My Elvish Configuration With Commentary" />
-<meta property="og:description" content="Last update: April 26, 2018
+<meta property="og:description" content="Last update: June 3, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc." />
 <meta property="og:type" content="article" />
@@ -45,21 +45,21 @@ This is also my first blog post written using org-mode, which I have started usi
 
 
 <meta itemprop="name" content="My Elvish Configuration With Commentary">
-<meta itemprop="description" content="Last update: April 26, 2018
+<meta itemprop="description" content="Last update: June 3, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc.">
 
 
 <meta itemprop="datePublished" content="2017-11-16T20:21:00&#43;01:00" />
 <meta itemprop="dateModified" content="2017-11-16T20:21:00&#43;01:00" />
-<meta itemprop="wordCount" content="1235">
+<meta itemprop="wordCount" content="1264">
 
 
 
 <meta itemprop="keywords" content="config,howto,literateprogramming,literateconfig,elvish," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Elvish Configuration With Commentary"/>
-<meta name="twitter:description" content="Last update: April 26, 2018
+<meta name="twitter:description" content="Last update: June 3, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc."/>
 
@@ -187,7 +187,7 @@ ga('send', 'pageview');
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
-<p>Last update: <strong>April 26, 2018</strong></p>
+<p>Last update: <strong>June  3, 2018</strong></p>
 
 <p>In this blog post I will walk you through my current <a href="http://elvish.io">Elvish</a> configuration file, with running commentary about the different sections.</p>
 
@@ -203,6 +203,7 @@ paths = [
   ~/bin
   $E:GOPATH/bin
   /usr/local/opt/coreutils/libexec/gnubin
+  /usr/local/opt/python/libexec/bin
   ~/Dropbox/Personal/devel/hammerspoon/spoon/bin
   ~/.gem/ruby/2.4.0/bin
   /opt/X11/bin
@@ -226,13 +227,15 @@ paths = [
 <li><a href="https://github.com/zzamboni/elvish-completions">github.com/zzamboni/elvish-completions</a> contains my completer definitions.</li>
 <li><a href="https://github.com/xiaq/edit.elv">github.com/xiaq/edit.elv</a>, which includes the <code>smart-matcher</code> module used below.</li>
 <li><a href="https://github.com/muesli/elvish-libs">github.com/muesli/elvish-libs</a> for the git utilities module.</li>
+<li><a href="https://github.com/iwoloschin/elvish-packages">github.com/iwoloschin/elvish-packages</a> for the update.elv package.</li>
 </ul>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">epm:install &amp;silent-if-installed=$true   \
   github.com/zzamboni/elvish-modules     \
   github.com/zzamboni/elvish-completions \
   github.com/zzamboni/elvish-themes      \
   github.com/xiaq/edit.elv               \
-  github.com/muesli/elvish-libs</code></pre></div>
+  github.com/muesli/elvish-libs          \
+  github.com/iwoloschin/elvish-packages</code></pre></div>
 <p>The modules within each package get loaded individually below.</p>
 
 <h2 id="base-modules">Base modules</h2>
@@ -251,10 +254,6 @@ paths = [
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:insert:binding[Alt-d] = { edit:move-dot-right-word; edit:kill-word-left }</code></pre></div></li>
 </ul>
 
-<h2 id="git-utilities">Git utilities</h2>
-
-<p>I use muesli&rsquo;s git utilities module.</p>
-<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/muesli/elvish-libs/git</code></pre></div>
 <h2 id="aliases">Aliases</h2>
 
 <p>Elvish does not have built-in alias functionality, but this is implemented easily using the <a href="https://github.com/zzamboni/modules.elv/blob/master/alias.org">alias</a> module, which stores the alias definitions as functions under <a href="https://github.com/zzamboni/dot-elvish/tree/master/aliases">~/.elvish/aliases/</a> and loads them automatically.</p>
@@ -274,9 +273,11 @@ smart-matcher:apply</code></pre></div>
 <p>I also configure <kbd>Tab</kbd> to trigger completion mode, but also to automatically enter &ldquo;filter mode&rdquo;, so I can keep typing the filename I want, without having to use the arrow keys.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:insert:binding[Tab] = { edit:completion:smart-start; edit:completion:trigger-filter }</code></pre></div>
 <p>I load some command-specific completions from the  <a href="https://github.com/zzamboni/elvish-completions">elvish-completions</a> package:</p>
-<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-completions:git
-use github.com/zzamboni/elvish-completions:vcsh
-use github.com/zzamboni/elvish-completions:cd</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-completions/git
+use github.com/zzamboni/elvish-completions/vcsh
+use github.com/zzamboni/elvish-completions/cd
+use github.com/zzamboni/elvish-completions/ssh
+use github.com/zzamboni/elvish-completions/builtins</code></pre></div>
 <h2 id="prompt-theme">Prompt theme</h2>
 
 <p>I use the <a href="https://github.com/zzamboni/theme.elv/blob/master/chain.org">chain</a> prompt theme, ported from the fish theme at <a href="https://github.com/oh-my-fish/theme-chain">https://github.com/oh-my-fish/theme-chain</a>.</p>
@@ -291,7 +292,7 @@ prompt arrow in my prompt to a session-identifying color.</p>
   &amp;git-combined= session
 ]</code></pre></div>
 <p>Elvish has a <a href="https://elvish.io/ref/edit.html#prompts">comprehensive mechanism</a> for displaying prompts with useful information while avoiding getting blocked by prompt functions which take too long to finish. For the most part the defaults work well. One change I like to make is to change the <a href="https://elvish.io/ref/edit.html#stale-prompt">stale prompt transformer</a> function to make the prompt dim when stale:</p>
-<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:prompt-stale-transform = { each [x]{ edit:styled $x[text] &#34;gray&#34; } }</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:prompt-stale-transform = { each [x]{ styled $x[text] &#34;gray&#34; } }</code></pre></div>
 <p>Another possibility is to make the prompt stay the same when stale - useful to avoid distractions (disabled for now):</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:prompt-stale-transform = $all~</code></pre></div>
 <p>I also like the continuous update of the prompt as I type (by default it only updates on Enter and on <code>$pwd</code> changes, but I like also git status changes to be updated automatically), so I increase its eagerness.</p>
@@ -351,6 +352,10 @@ edit:insert:binding[Alt-f] = $dir:right-word-or-next-dir~</code></pre></div>
 
 <p>The <a href="https://github.com/zzamboni/elvish-modules/blob/master/util.org">util</a> module includes various utility functions.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/util</code></pre></div>
+<p>I use muesli&rsquo;s git utilities module.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/muesli/elvish-libs/git</code></pre></div>
+<p>The <a href="https://github.com/iwoloschin/elvish-packages/blob/master/update.elv">update.elv</a> package prints a message if there are new commits in Elvish after the running version.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/iwoloschin/elvish-packages/update</code></pre></div>
 <h2 id="exporting-aliases">Exporting aliases</h2>
 
 <p>We populate <code>$-exports-</code> with the alias definitions so that they become available in the interactive namespace.</p>
@@ -453,7 +458,6 @@ edit:insert:binding[Alt-f] = $dir:right-word-or-next-dir~</code></pre></div>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#paths">Paths</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#package-installation">Package installation</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#base-modules">Base modules</a></li>
-<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#git-utilities">Git utilities</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#aliases">Aliases</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#completions">Completions</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#prompt-theme">Prompt theme</a></li>
@@ -480,7 +484,7 @@ edit:insert:binding[Alt-f] = $dir:right-word-or-next-dir~</code></pre></div>
       &copy; 2018 Diego Zamboni
     </a>
     <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;<a class="no-underline hover-white white-70" href="https://www.gnu.org/software/emacs/">Emacs 26.1 </a> &plus;
-                <a class="no-underline hover-white white-70" href="https://orgmode.org/">Org mode 9.1.11 </a> &plus;
+                <a class="no-underline hover-white white-70" href="https://orgmode.org/">Org mode 9.1.13 </a> &plus;
                 <a class="no-underline hover-white white-70" href="https://ox-hugo.scripter.co/">ox-hugo</a>&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.40.2</a>
             &plus; <a class="no-underline hover-white white-70" href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a></div>
     
