@@ -5,12 +5,12 @@ summary = "In my ongoing series of literate config files, I present to you my Ha
 date = 2018-01-08T13:31:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "hammerspoon"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.1.11 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.1.13 + ox-hugo)"
 toc = true
 featured_image = "/images/hammerspoon.png"
 +++
 
-Last update: **April 26, 2018**
+Last update: **June  3, 2018**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -170,7 +170,7 @@ The [SendToOmniFocus](http://www.hammerspoon.org/Spoons/SendToOmniFocus.html) sp
 Install:andUse("SendToOmniFocus",
                {
                  config = {
-                   quickentrydialog = false,
+                   quickentrydialog = true,
                    notifications = false
                  },
                  hotkeys = {

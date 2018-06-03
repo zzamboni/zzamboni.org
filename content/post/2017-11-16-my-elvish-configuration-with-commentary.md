@@ -5,12 +5,12 @@ summary = "In this blog post I will walk you through my current Elvish configura
 date = 2017-11-16T20:21:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "elvish"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.1.11 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.1.13 + ox-hugo)"
 toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **April 26, 2018**
+Last update: **June  3, 2018**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -29,6 +29,7 @@ paths = [
   ~/bin
   $E:GOPATH/bin
   /usr/local/opt/coreutils/libexec/gnubin
+  /usr/local/opt/python/libexec/bin
   ~/Dropbox/Personal/devel/hammerspoon/spoon/bin
   ~/.gem/ruby/2.4.0/bin
   /opt/X11/bin
@@ -58,6 +59,7 @@ For now I use these packages:
 -   [github.com/zzamboni/elvish-completions](https://github.com/zzamboni/elvish-completions) contains my completer definitions.
 -   [github.com/xiaq/edit.elv](https://github.com/xiaq/edit.elv), which includes the `smart-matcher` module used below.
 -   [github.com/muesli/elvish-libs](https://github.com/muesli/elvish-libs) for the git utilities module.
+-   [github.com/iwoloschin/elvish-packages](https://github.com/iwoloschin/elvish-packages) for the update.elv package.
 
 ```elvish
 epm:install &silent-if-installed=$true   \
@@ -65,7 +67,8 @@ epm:install &silent-if-installed=$true   \
   github.com/zzamboni/elvish-completions \
   github.com/zzamboni/elvish-themes      \
   github.com/xiaq/edit.elv               \
-  github.com/muesli/elvish-libs
+  github.com/muesli/elvish-libs          \
+  github.com/iwoloschin/elvish-packages
 ```
 
 The modules within each package get loaded individually below.
@@ -98,15 +101,6 @@ I add a couple of keybindings which are missing from the default `readline-bindi
     ```elvish
     edit:insert:binding[Alt-d] = { edit:move-dot-right-word; edit:kill-word-left }
     ```
-
-
-## Git utilities {#git-utilities}
-
-I use muesli's git utilities module.
-
-```elvish
-use github.com/muesli/elvish-libs/git
-```
 
 
 ## Aliases {#aliases}
@@ -147,9 +141,11 @@ edit:insert:binding[Tab] = { edit:completion:smart-start; edit:completion:trigge
 I load some command-specific completions from the  [elvish-completions](https://github.com/zzamboni/elvish-completions) package:
 
 ```elvish
-use github.com/zzamboni/elvish-completions:git
-use github.com/zzamboni/elvish-completions:vcsh
-use github.com/zzamboni/elvish-completions:cd
+use github.com/zzamboni/elvish-completions/git
+use github.com/zzamboni/elvish-completions/vcsh
+use github.com/zzamboni/elvish-completions/cd
+use github.com/zzamboni/elvish-completions/ssh
+use github.com/zzamboni/elvish-completions/builtins
 ```
 
 
@@ -177,7 +173,7 @@ chain:segment-style = [
 Elvish has a [comprehensive mechanism](https://elvish.io/ref/edit.html#prompts) for displaying prompts with useful information while avoiding getting blocked by prompt functions which take too long to finish. For the most part the defaults work well. One change I like to make is to change the [stale prompt transformer](https://elvish.io/ref/edit.html#stale-prompt) function to make the prompt dim when stale:
 
 ```elvish
-edit:prompt-stale-transform = { each [x]{ edit:styled $x[text] "gray" } }
+edit:prompt-stale-transform = { each [x]{ styled $x[text] "gray" } }
 ```
 
 Another possibility is to make the prompt stay the same when stale - useful to avoid distractions (disabled for now):
@@ -309,6 +305,18 @@ The [util](https://github.com/zzamboni/elvish-modules/blob/master/util.org) modu
 
 ```elvish
 use github.com/zzamboni/elvish-modules/util
+```
+
+I use muesli's git utilities module.
+
+```elvish
+use github.com/muesli/elvish-libs/git
+```
+
+The [update.elv](https://github.com/iwoloschin/elvish-packages/blob/master/update.elv) package prints a message if there are new commits in Elvish after the running version.
+
+```elvish
+use github.com/iwoloschin/elvish-packages/update
 ```
 
 
