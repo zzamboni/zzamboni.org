@@ -5,12 +5,12 @@ summary = "I have enjoyed slowly converting my configuration files to literate p
 date = 2017-12-17T20:14:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.1.11 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.1.13 + ox-hugo)"
 featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **April 26, 2018**
+Last update: **June  3, 2018**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot_emacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot_emacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot_emacs/blob/master/init.el>.
 
@@ -78,16 +78,33 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ad-redefinition-action (quote accept))
+ '(auto-insert-directory "~/.emacs.d/auto-insert/")
  '(backup-directory-alist (quote (("." . "~/.emacs.d/backups"))))
  '(cfengine-indent 1)
+ '(cider-repl-history-file "~/.emacs.d/cider-history" t)
+ '(cider-repl-history-size 5000 t)
+ '(cider-repl-pop-to-buffer-on-connect t t)
+ '(cider-repl-result-prefix "; => " t)
+ '(cider-repl-use-clojure-font-lock t t)
+ '(cider-repl-use-pretty-printing nil t)
+ '(cider-repl-wrap-history t t)
+ '(cider-show-error-buffer nil t)
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
-    ("6ac7c0f959f0d7853915012e78ff70150bfbe2a69a1b703c3ac4184f9ae3ae02" "8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a" "a1a966cf2e87be6a148158c79863440ba2e45aa06cc214341feafe5c6deca4f2" "3eb2b5607b41ad8a6da75fe04d5f92a46d1b9a95a202e3f5369e2cdefb7aac5c" "3d0142352ce19c860047ad7402546944f84c270e84ae479beddbc2608268e0e5" "a33858123d3d3ca10c03c657693881b9f8810c9e242a62f1ad6380adf57b031c" "a40eac965142a2057269f8b2abd546b71a0e58e733c6668a62b1ad1aa7669220" "7be789f201ea16242dab84dd5f225a55370dbecae248d4251edbd286fe879cfa" "94dac4d15d12ba671f77a93d84ad9f799808714d4c5d247d5fd944df951b91d6" "4d8fab23f15347bce54eb7137789ab93007010fa47296c2f36757ff84b5b3c8a" default)))
+    ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "6ac7c0f959f0d7853915012e78ff70150bfbe2a69a1b703c3ac4184f9ae3ae02" "8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a" "a1a966cf2e87be6a148158c79863440ba2e45aa06cc214341feafe5c6deca4f2" "3eb2b5607b41ad8a6da75fe04d5f92a46d1b9a95a202e3f5369e2cdefb7aac5c" "3d0142352ce19c860047ad7402546944f84c270e84ae479beddbc2608268e0e5" "a33858123d3d3ca10c03c657693881b9f8810c9e242a62f1ad6380adf57b031c" "a40eac965142a2057269f8b2abd546b71a0e58e733c6668a62b1ad1aa7669220" "7be789f201ea16242dab84dd5f225a55370dbecae248d4251edbd286fe879cfa" "94dac4d15d12ba671f77a93d84ad9f799808714d4c5d247d5fd944df951b91d6" "4d8fab23f15347bce54eb7137789ab93007010fa47296c2f36757ff84b5b3c8a" default)))
+ '(desktop-lazy-idle-delay 3)
+ '(desktop-lazy-verbose nil)
  '(desktop-restore-eager 1)
+ '(easy-hugo-basedir "~/Personal/devel/zzamboni.org/zzamboni.org/" t)
+ '(easy-hugo-previewtime "300" t)
+ '(easy-hugo-url "http://zzamboni.org/" t)
+ '(gist-view-gist t t)
  '(global-visible-mark-mode t)
+ '(helm-flx-for-helm-find-files t t)
+ '(helm-flx-for-helm-locate t t)
  '(indent-tabs-mode nil)
- '(jiralib-url "https://jira.swisscom.com" t)
+ '(jiralib-url "https://jira.swisscom.com")
  '(js-indent-level 2)
  '(kill-whole-line t)
  '(load-prefer-newer t)
@@ -99,7 +116,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(ns-alternate-modifier (quote alt))
  '(ns-command-modifier (quote meta))
  '(ns-right-alternate-modifier (quote super))
- '(org-agenda-files nil)
+ '(org-agenda-files (quote ("~/tmp/20180522-oce-capability-review.org")))
  '(org-confirm-babel-evaluate nil)
  '(org-default-notes-file "~/Dropbox/org/notes.org")
  '(org-directory "~/Dropbox/org")
@@ -115,6 +132,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(org-mac-grab-Acrobat-app-p nil)
  '(org-mac-grab-devonthink-app-p nil)
  '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2017.18/libexec/plantuml.jar")
+ '(org-reveal-note-key-char nil)
  '(org-reveal-root "file:///Users/taazadi1/Dropbox/org/reveal.js")
  '(org-src-fontify-natively t)
  '(org-src-tab-acts-natively t)
@@ -140,10 +158,11 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
      ("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (esup ob-elvish package-build org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
+    (esup package-build org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(reb-re-syntax (quote string))
+ '(recentf-max-menu-items 50)
  '(safe-local-variable-values
    (quote
     ((eval add-hook
@@ -155,24 +174,29 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(show-trailing-whitespace t)
  '(sml/replacer-regexp-list
    (quote
-    (("^~/org" ":Org:")
-     ("^~/\\.emacs\\.d/elpa/" ":ELPA:")
+    (("^~/\\.emacs\\.d/elpa/" ":ELPA:")
      ("^~/\\.emacs\\.d/" ":ED:")
      ("^/sudo:.*:" ":SU:")
      ("^~/Documents/" ":Doc:")
-     ("^~/Dropbox/" ":DB:")
      ("^:\\([^:]*\\):Documento?s/" ":\\1/Doc:")
-     ("^~/[Gg]it/" ":Git:")
-     ("^~/[Gg]it[Hh]ub/" ":Git:")
-     ("^~/[Gg]it\\([Hh]ub\\|\\)-?[Pp]rojects/" ":Git:")
-     ("^:DB:Personal/writing/learning-cfengine-3/learning-cfengine-3/" "[cf-learn]")
-     ("^:DB:Personal/devel/zzamboni.org/zzamboni.org/" "[zz.org]")
-     ("^\\[zz.org\\]content/post/" "[zz.org/posts]"))))
+     ("^~/Dropbox/" ":DB:")
+     ("^:DB:org" ":Org:")
+     ("^:DB:Personal/" ":P:")
+     ("^:DB:Personal/writing/" ":Write:")
+     ("^:P:devel/" ":Dev:")
+     ("^:Write:learning-cfengine-3/learning-cfengine-3/" ":cf-learn:")
+     ("^:Dev:go/src/github.com/elves/elvish/" ":elvish:")
+     ("^:Dev:zzamboni.org/zzamboni.org/" ":zz.org:"))))
+ '(sml/theme (quote dark))
+ '(sp-base-key-bindings (quote paredit))
  '(tab-width 2)
  '(tool-bar-mode nil)
+ '(uniquify-after-kill-buffer-p t)
+ '(uniquify-buffer-name-style (quote post-forward) nil (uniquify))
+ '(uniquify-strip-common-suffix t)
  '(use-package-always-defer t)
  '(use-package-always-ensure t)
- '(vr/engine (quote pcre2el) t))
+ '(vr/engine (quote pcre2el)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -282,11 +306,12 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 ```emacs-lisp
 (defun zz/set-proxy ()
   (interactive)
-  (customize-set-variable url-proxy-services '(("http" . "proxy.corproot.net:8079")
-                                               ("https" . "proxy.corproot.net:8079"))))
+  (let ((zz/proxy "proxy.corproot.net:8079"))
+    (customize-set-variable 'url-proxy-services '(("http"  . zz/proxy)
+                                                  ("https" . zz/proxy)))))
 (defun zz/unset-proxy ()
   (interactive)
-  (customize-set-variable url-proxy-services nil))
+  (customize-set-variable 'url-proxy-services nil))
 ```
 
 
@@ -555,8 +580,8 @@ I use `use-package` to load the `org` package, and put its configuration inside 
     (org-src-tab-acts-natively t)
     (org-hide-emphasis-markers t)
   :custom-face
-    (variable-pitch ((t (:family "Source Sans Pro" :height 180 :weight light))))
-    ;;(variable-pitch ((t (:family "Avenir Next" :height 180 :weight light))))
+    (variable-pitch ((t (:family "Source Sans Pro" :height 160 :weight light))))
+    ;;(variable-pitch ((t (:family "Avenir Next" :height 160 :weight light))))
     (fixed-pitch ((t (:family "Inconsolata"))))
   :hook
     (org-babel-after-execute . org-redisplay-inline-images)
@@ -574,35 +599,35 @@ I use `use-package` to load the `org` package, and put its configuration inside 
     (org-babel-do-load-languages
      'org-babel-load-languages
      '((cfengine3 . t)
-       (ruby . t)
-       (latex . t)
-       (plantuml . t)
-       (python . t)
-       (shell . t)
-       (elvish . t)
-       (calc . t)))
+       (ruby      . t)
+       (latex     . t)
+       (plantuml  . t)
+       (python    . t)
+       (shell     . t)
+       (elvish    . t)
+       (calc      . t)))
     (font-lock-add-keywords 'org-mode
                             '(("^ *\\([-]\\) "
                                (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
     (let* ((variable-tuple
-            (cond ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
-                  ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
-                  ((x-list-fonts "Verdana")         '(:font "Verdana"))
-                  ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
+            (cond ((x-list-fonts   "Source Sans Pro") '(:font   "Source Sans Pro"))
+                  ((x-list-fonts   "Lucida Grande")   '(:font   "Lucida Grande"))
+                  ((x-list-fonts   "Verdana")         '(:font   "Verdana"))
+                  ((x-family-fonts "Sans Serif")      '(:family "Sans Serif"))
                   (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
-           (base-font-color     (face-foreground 'default nil 'default))
-           (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+           (base-font-color (face-foreground 'default nil 'default))
+           (headline       `(:inherit default :weight bold :foreground ,base-font-color)))
 
       (custom-theme-set-faces
        'user
-       `(org-level-8 ((t (,@headline ,@variable-tuple))))
-       `(org-level-7 ((t (,@headline ,@variable-tuple))))
-       `(org-level-6 ((t (,@headline ,@variable-tuple))))
-       `(org-level-5 ((t (,@headline ,@variable-tuple))))
-       `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
-       `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.25))))
-       `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
-       `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.75))))
+       `(org-level-8        ((t (,@headline ,@variable-tuple))))
+       `(org-level-7        ((t (,@headline ,@variable-tuple))))
+       `(org-level-6        ((t (,@headline ,@variable-tuple))))
+       `(org-level-5        ((t (,@headline ,@variable-tuple))))
+       `(org-level-4        ((t (,@headline ,@variable-tuple :height 1.1))))
+       `(org-level-3        ((t (,@headline ,@variable-tuple :height 1.25))))
+       `(org-level-2        ((t (,@headline ,@variable-tuple :height 1.5))))
+       `(org-level-1        ((t (,@headline ,@variable-tuple :height 1.75))))
        `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
     (eval-after-load 'face-remap '(diminish 'buffer-face-mode))
     (eval-after-load 'simple '(diminish 'visual-line-mode)))
@@ -668,10 +693,11 @@ Default setup and keybinding for `org-capture`.
 ("C-c c" . org-capture)
 ```
 
-Load `org-tempo` to enable snippets such as `<s<TAB>` to insert a source block.
+Load `org-tempo` to enable snippets such as `<s<TAB>` to insert a source block. Disabled for now as I try to get used to the new <kbd>C-c C-,</kbd> shortcut recently introduced. See the loooong discussion starting at <https://lists.gnu.org/archive/html/emacs-orgmode/2018-04/msg00600.html>.
 
 ```emacs-lisp
 (use-package org-tempo
+  :disabled yes
   :defer 5
   :ensure nil
   :after org)
@@ -864,13 +890,13 @@ We configure the languages for which to load org-babel support.
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((cfengine3 . t)
-   (ruby . t)
-   (latex . t)
-   (plantuml . t)
-   (python . t)
-   (shell . t)
-   (elvish . t)
-   (calc . t)))
+   (ruby      . t)
+   (latex     . t)
+   (plantuml  . t)
+   (python    . t)
+   (shell     . t)
+   (elvish    . t)
+   (calc      . t)))
 ```
 
 This is potentially dangerous: it suppresses the query before executing code from within org-mode. I use it because I am very careful and only press `C-c C-c` on blocks I absolutely understand.
@@ -947,24 +973,24 @@ We choose a nice font for the document title and the section headings. The first
 
 ```emacs-lisp
 (let* ((variable-tuple
-        (cond ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
-              ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
-              ((x-list-fonts "Verdana")         '(:font "Verdana"))
-              ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
+        (cond ((x-list-fonts   "Source Sans Pro") '(:font   "Source Sans Pro"))
+              ((x-list-fonts   "Lucida Grande")   '(:font   "Lucida Grande"))
+              ((x-list-fonts   "Verdana")         '(:font   "Verdana"))
+              ((x-family-fonts "Sans Serif")      '(:family "Sans Serif"))
               (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
-       (base-font-color     (face-foreground 'default nil 'default))
-       (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+       (base-font-color (face-foreground 'default nil 'default))
+       (headline       `(:inherit default :weight bold :foreground ,base-font-color)))
 
   (custom-theme-set-faces
    'user
-   `(org-level-8 ((t (,@headline ,@variable-tuple))))
-   `(org-level-7 ((t (,@headline ,@variable-tuple))))
-   `(org-level-6 ((t (,@headline ,@variable-tuple))))
-   `(org-level-5 ((t (,@headline ,@variable-tuple))))
-   `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
-   `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.25))))
-   `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
-   `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.75))))
+   `(org-level-8        ((t (,@headline ,@variable-tuple))))
+   `(org-level-7        ((t (,@headline ,@variable-tuple))))
+   `(org-level-6        ((t (,@headline ,@variable-tuple))))
+   `(org-level-5        ((t (,@headline ,@variable-tuple))))
+   `(org-level-4        ((t (,@headline ,@variable-tuple :height 1.1))))
+   `(org-level-3        ((t (,@headline ,@variable-tuple :height 1.25))))
+   `(org-level-2        ((t (,@headline ,@variable-tuple :height 1.5))))
+   `(org-level-1        ((t (,@headline ,@variable-tuple :height 1.75))))
    `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
 ```
 
@@ -973,15 +999,18 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
 -   Setting up the `variable-pitch` face to the proportional font I like to use. I'm currently alternating between my two favorites, [Source Sans Pro](https://en.wikipedia.org/wiki/Source_Sans_Pro) and [Avenir Next](https://en.wikipedia.org/wiki/Avenir_(typeface)).
 
     ```emacs-lisp
-    (variable-pitch ((t (:family "Source Sans Pro" :height 180 :weight light))))
-    ;;(variable-pitch ((t (:family "Avenir Next" :height 180 :weight light))))
+    (variable-pitch ((t (:family "Source Sans Pro" :height 160 :weight light))))
+    ;;(variable-pitch ((t (:family "Avenir Next" :height 160 :weight light))))
     ```
+
 -   Setting up the `fixed-pitch` face to be the same as my usual `default` face. My current one is [Inconsolata](https://en.wikipedia.org/wiki/Inconsolata).
 
     ```emacs-lisp
     (fixed-pitch ((t (:family "Inconsolata"))))
     ```
+
 -   Configuring the corresponding `org-mode` faces for blocks, verbatim code, and maybe a couple of other things. As these change more frequently, I do them directly from the `customize-face` interface, you can see their current settings in the [Customized variables](#customized-variables) section.
+
 -   Setting up `visual-line-mode` and making all my paragraphs one single line, so that the lines wrap around nicely in the window according to their proportional-font size, instead of at a fixed character count, which does not work so nicely when characters have varying widths. I set up a hook that automatically enables `visual-line-mode` and `variable-pitch-mode` when entering org-mode.
 
     ```emacs-lisp
@@ -1075,14 +1104,59 @@ Some settings maybe OS-specific, and this is where we set them. For now I only u
 ```
 
 
+### Mac {#mac}
+
+First, we set the key modifiers correctly to my preferences: Make Command (⌘) act as Meta, Option as Alt, right-Option as Super
+
+```emacs-lisp
+(customize-set-variable 'mac-command-modifier 'meta)
+(customize-set-variable 'mac-option-modifier 'alt)
+(customize-set-variable 'mac-right-option-modifier 'super)
+```
+
+We also make it possible to use the familiar <kbd>⌘-+</kbd> and <kbd>⌘--</kbd> to increase and decrease the font size. <kbd>⌘-=</kbd> is also bound to "increase" because it's on the same key in an English keyboard.
+
+```emacs-lisp
+(bind-key "M-+" 'text-scale-increase)
+(bind-key "M-=" 'text-scale-increase)
+(bind-key "M--" 'text-scale-decrease)
+```
+
+Somewhat surprisingly, there seems to be no "reset" function, so I define my own and bind it to `⌘-0`.
+
+```emacs-lisp
+(defun zz/text-scale-reset ()
+  (interactive)
+  (text-scale-set 0))
+(bind-key "M-0" 'zz/text-scale-reset)
+```
+
+We also use the `exec-path-from-shell` to make sure the path settings from the shell are loaded into Emacs (usually it starts up with the default system-wide path).
+
+```emacs-lisp
+(use-package exec-path-from-shell
+  :defer nil
+  :config
+  (exec-path-from-shell-initialize))
+```
+
+
 ### Linux {#linux}
 
 There are no Linux-specific settings for now.
+
+```emacs-lisp
+;;
+```
 
 
 ### Windows {#windows}
 
 There are no Windows-specific settings for now.
+
+```emacs-lisp
+;;
+```
 
 
 ## Appearance, buffer/file management and theming {#appearance-buffer-file-management-and-theming}
@@ -1121,7 +1195,23 @@ Install [smart-mode-line](https://github.com/Malabarba/smart-mode-line) for mode
 (use-package smart-mode-line
   :defer 2
   :config
-  (sml/setup))
+  (sml/setup)
+  :custom
+  (sml/theme 'dark)
+  (sml/replacer-regexp-list
+   '(("^~/\\.emacs\\.d/elpa/"                            ":ELPA:")
+     ("^~/\\.emacs\\.d/"                                 ":ED:")
+     ("^/sudo:.*:"                                       ":SU:")
+     ("^~/Documents/"                                    ":Doc:")
+     ("^:\\([^:]*\\):Documento?s/"                       ":\\1/Doc:")
+     ("^~/Dropbox/"                                      ":DB:")
+     ("^:DB:org"                                         ":Org:")
+     ("^:DB:Personal/"                                   ":P:")
+     ("^:DB:Personal/writing/"                           ":Write:")
+     ("^:P:devel/"                                       ":Dev:")
+     ("^:Write:learning-cfengine-3/learning-cfengine-3/" ":cf-learn:")
+     ("^:Dev:go/src/github.com/elves/elvish/"            ":elvish:")
+     ("^:Dev:zzamboni.org/zzamboni.org/"                 ":zz.org:"))))
 ```
 
 Enable desktop-save mode, which saves the current buffer configuration on exit and reloads it on restart.
@@ -1130,8 +1220,9 @@ Enable desktop-save mode, which saves the current buffer configuration on exit a
 (use-package desktop
   :defer nil
   :custom
-  (desktop-restore-eager   1 "Restore only the first buffer right away")
-  (desktop-lazy-idle-delay 3 "Restore the rest of the buffers 3 seconds later")
+  (desktop-restore-eager   1   "Restore only the first buffer right away")
+  (desktop-lazy-idle-delay 3   "Restore the rest of the buffers 3 seconds later")
+  (desktop-lazy-verbose    nil "Be silent about lazily opening buffers")
   :bind
   ("C-M-s-k" . desktop-clear)
   :config
