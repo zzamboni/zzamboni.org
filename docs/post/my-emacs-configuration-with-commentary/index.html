@@ -22,7 +22,7 @@
      
 
       <meta property="og:title" content="My Emacs Configuration, With Commentary" />
-<meta property="og:description" content="Last update: April 26, 2018
+<meta property="og:description" content="Last update: June 3, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://zzamboni.org/post/my-emacs-configuration-with-commentary/" />
@@ -44,20 +44,20 @@ I have enjoyed slowly converting my configuration files to literate programming 
 
 
 <meta itemprop="name" content="My Emacs Configuration, With Commentary">
-<meta itemprop="description" content="Last update: April 26, 2018
+<meta itemprop="description" content="Last update: June 3, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving.">
 
 
 <meta itemprop="datePublished" content="2017-12-17T20:14:00&#43;01:00" />
 <meta itemprop="dateModified" content="2017-12-17T20:14:00&#43;01:00" />
-<meta itemprop="wordCount" content="7266">
+<meta itemprop="wordCount" content="7542">
 
 
 
 <meta itemprop="keywords" content="config,howto,literateprogramming,literateconfig,emacs," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Emacs Configuration, With Commentary"/>
-<meta name="twitter:description" content="Last update: April 26, 2018
+<meta name="twitter:description" content="Last update: June 3, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving."/>
 
         
@@ -184,7 +184,7 @@ ga('send', 'pageview');
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
-<p>Last update: <strong>April 26, 2018</strong></p>
+<p>Last update: <strong>June  3, 2018</strong></p>
 
 <p>I have enjoyed slowly converting my configuration files to <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html">literate programming</a> style style using org-mode in Emacs. I previously posted my <a href="../my-elvish-configuration-with-commentary/">Elvish configuration</a>, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.org">init.org</a> file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.org">init.org file in GitHub</a> for my current, live configuration, and the generated file at <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.el">https://github.com/zzamboni/dot_emacs/blob/master/init.el</a>.</p>
 
@@ -235,16 +235,33 @@ ga('send', 'pageview');
  <span class="c1">;; Your init file should contain only one such instance.</span>
  <span class="c1">;; If there is more than one, they won&#39;t work right.</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">ad-redefinition-action</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">accept</span><span class="p">))</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">auto-insert-directory</span> <span class="s">&#34;~/.emacs.d/auto-insert/&#34;</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">backup-directory-alist</span> <span class="p">(</span><span class="nb">quote</span> <span class="p">((</span><span class="s">&#34;.&#34;</span> <span class="o">.</span> <span class="s">&#34;~/.emacs.d/backups&#34;</span><span class="p">))))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">cfengine-indent</span> <span class="mi">1</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">cider-repl-history-file</span> <span class="s">&#34;~/.emacs.d/cider-history&#34;</span> <span class="no">t</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">cider-repl-history-size</span> <span class="mi">5000</span> <span class="no">t</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">cider-repl-pop-to-buffer-on-connect</span> <span class="no">t</span> <span class="no">t</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">cider-repl-result-prefix</span> <span class="s">&#34;; =&gt; &#34;</span> <span class="no">t</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">cider-repl-use-clojure-font-lock</span> <span class="no">t</span> <span class="no">t</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">cider-repl-use-pretty-printing</span> <span class="no">nil</span> <span class="no">t</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">cider-repl-wrap-history</span> <span class="no">t</span> <span class="no">t</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">cider-show-error-buffer</span> <span class="no">nil</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">column-number-mode</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">custom-safe-themes</span>
    <span class="p">(</span><span class="nb">quote</span>
-    <span class="p">(</span><span class="s">&#34;6ac7c0f959f0d7853915012e78ff70150bfbe2a69a1b703c3ac4184f9ae3ae02&#34;</span> <span class="s">&#34;8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a&#34;</span> <span class="s">&#34;a1a966cf2e87be6a148158c79863440ba2e45aa06cc214341feafe5c6deca4f2&#34;</span> <span class="s">&#34;3eb2b5607b41ad8a6da75fe04d5f92a46d1b9a95a202e3f5369e2cdefb7aac5c&#34;</span> <span class="s">&#34;3d0142352ce19c860047ad7402546944f84c270e84ae479beddbc2608268e0e5&#34;</span> <span class="s">&#34;a33858123d3d3ca10c03c657693881b9f8810c9e242a62f1ad6380adf57b031c&#34;</span> <span class="s">&#34;a40eac965142a2057269f8b2abd546b71a0e58e733c6668a62b1ad1aa7669220&#34;</span> <span class="s">&#34;7be789f201ea16242dab84dd5f225a55370dbecae248d4251edbd286fe879cfa&#34;</span> <span class="s">&#34;94dac4d15d12ba671f77a93d84ad9f799808714d4c5d247d5fd944df951b91d6&#34;</span> <span class="s">&#34;4d8fab23f15347bce54eb7137789ab93007010fa47296c2f36757ff84b5b3c8a&#34;</span> <span class="nv">default</span><span class="p">)))</span>
+    <span class="p">(</span><span class="s">&#34;c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223&#34;</span> <span class="s">&#34;a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e&#34;</span> <span class="s">&#34;3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa&#34;</span> <span class="s">&#34;6ac7c0f959f0d7853915012e78ff70150bfbe2a69a1b703c3ac4184f9ae3ae02&#34;</span> <span class="s">&#34;8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a&#34;</span> <span class="s">&#34;a1a966cf2e87be6a148158c79863440ba2e45aa06cc214341feafe5c6deca4f2&#34;</span> <span class="s">&#34;3eb2b5607b41ad8a6da75fe04d5f92a46d1b9a95a202e3f5369e2cdefb7aac5c&#34;</span> <span class="s">&#34;3d0142352ce19c860047ad7402546944f84c270e84ae479beddbc2608268e0e5&#34;</span> <span class="s">&#34;a33858123d3d3ca10c03c657693881b9f8810c9e242a62f1ad6380adf57b031c&#34;</span> <span class="s">&#34;a40eac965142a2057269f8b2abd546b71a0e58e733c6668a62b1ad1aa7669220&#34;</span> <span class="s">&#34;7be789f201ea16242dab84dd5f225a55370dbecae248d4251edbd286fe879cfa&#34;</span> <span class="s">&#34;94dac4d15d12ba671f77a93d84ad9f799808714d4c5d247d5fd944df951b91d6&#34;</span> <span class="s">&#34;4d8fab23f15347bce54eb7137789ab93007010fa47296c2f36757ff84b5b3c8a&#34;</span> <span class="nv">default</span><span class="p">)))</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">desktop-lazy-idle-delay</span> <span class="mi">3</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">desktop-lazy-verbose</span> <span class="no">nil</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">desktop-restore-eager</span> <span class="mi">1</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">easy-hugo-basedir</span> <span class="s">&#34;~/Personal/devel/zzamboni.org/zzamboni.org/&#34;</span> <span class="no">t</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">easy-hugo-previewtime</span> <span class="s">&#34;300&#34;</span> <span class="no">t</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">easy-hugo-url</span> <span class="s">&#34;http://zzamboni.org/&#34;</span> <span class="no">t</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">gist-view-gist</span> <span class="no">t</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">global-visible-mark-mode</span> <span class="no">t</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">helm-flx-for-helm-find-files</span> <span class="no">t</span> <span class="no">t</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">helm-flx-for-helm-locate</span> <span class="no">t</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">indent-tabs-mode</span> <span class="no">nil</span><span class="p">)</span>
- <span class="o">&#39;</span><span class="p">(</span><span class="nv">jiralib-url</span> <span class="s">&#34;https://jira.swisscom.com&#34;</span> <span class="no">t</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">jiralib-url</span> <span class="s">&#34;https://jira.swisscom.com&#34;</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">js-indent-level</span> <span class="mi">2</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">kill-whole-line</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">load-prefer-newer</span> <span class="no">t</span><span class="p">)</span>
@@ -256,7 +273,7 @@ ga('send', 'pageview');
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">ns-alternate-modifier</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">alt</span><span class="p">))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">ns-command-modifier</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">meta</span><span class="p">))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">ns-right-alternate-modifier</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">super</span><span class="p">))</span>
- <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-agenda-files</span> <span class="no">nil</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-agenda-files</span> <span class="p">(</span><span class="nb">quote</span> <span class="p">(</span><span class="s">&#34;~/tmp/20180522-oce-capability-review.org&#34;</span><span class="p">)))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-confirm-babel-evaluate</span> <span class="no">nil</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-default-notes-file</span> <span class="s">&#34;~/Dropbox/org/notes.org&#34;</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-directory</span> <span class="s">&#34;~/Dropbox/org&#34;</span><span class="p">)</span>
@@ -272,6 +289,7 @@ ga('send', 'pageview');
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-mac-grab-Acrobat-app-p</span> <span class="no">nil</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-mac-grab-devonthink-app-p</span> <span class="no">nil</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-plantuml-jar-path</span> <span class="s">&#34;/usr/local/Cellar/plantuml/1.2017.18/libexec/plantuml.jar&#34;</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-reveal-note-key-char</span> <span class="no">nil</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-reveal-root</span> <span class="s">&#34;file:///Users/taazadi1/Dropbox/org/reveal.js&#34;</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-src-fontify-natively</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-src-tab-acts-natively</span> <span class="no">t</span><span class="p">)</span>
@@ -297,10 +315,11 @@ ga('send', 'pageview');
      <span class="p">(</span><span class="s">&#34;melpa&#34;</span> <span class="o">.</span> <span class="s">&#34;https://melpa.org/packages/&#34;</span><span class="p">))))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">package-selected-packages</span>
    <span class="p">(</span><span class="nb">quote</span>
-    <span class="p">(</span><span class="nv">esup</span> <span class="nv">ob-elvish</span> <span class="nv">package-build</span> <span class="nv">org-capture</span> <span class="nv">org-babel</span> <span class="nv">ox-texinfo</span> <span class="nv">gist</span> <span class="nv">helm-flx</span> <span class="nv">which-key</span> <span class="nv">spaceline</span> <span class="nv">pretty-mode</span> <span class="nv">visual-regexp-steroids</span> <span class="nv">ox-hugo</span> <span class="nv">adaptive-wrap</span> <span class="nv">yankpad</span> <span class="nv">smart-mode-line</span> <span class="nv">org-plus-contrib</span> <span class="nv">ob-cfengine3</span> <span class="nv">org-journal</span> <span class="nv">ox-asciidoc</span> <span class="nv">org-jira</span> <span class="nv">ox-jira</span> <span class="nv">org-bullets</span> <span class="nv">ox-reveal</span> <span class="nv">lispy</span> <span class="nv">parinfer</span> <span class="nv">uniquify</span> <span class="nv">csv</span> <span class="nv">all-the-icons</span> <span class="nv">toc-org</span> <span class="nv">helm</span> <span class="nv">cider</span> <span class="nv">clojure-mode</span> <span class="nv">ido-completing-read+</span> <span class="nv">writeroom-mode</span> <span class="nv">crosshairs</span> <span class="nv">ox-confluence</span> <span class="nv">ox-md</span> <span class="nv">inf-ruby</span> <span class="nv">ob-plantuml</span> <span class="nv">ob-ruby</span> <span class="nv">darktooth-theme</span> <span class="nv">kaolin-themes</span> <span class="nv">htmlize</span> <span class="nv">ag</span> <span class="nv">col-highlight</span> <span class="nv">nix-mode</span> <span class="nv">easy-hugo</span> <span class="nv">elvish-mode</span> <span class="nv">zen-mode</span> <span class="nv">racket-mode</span> <span class="nv">package-lint</span> <span class="nv">scala-mode</span> <span class="nv">go-mode</span> <span class="nv">wc-mode</span> <span class="nv">neotree</span> <span class="nv">applescript-mode</span> <span class="nv">ack</span> <span class="nv">magit</span> <span class="nv">clj-refactor</span> <span class="nv">yaml-mode</span> <span class="nv">visual-fill-column</span> <span class="nv">visible-mark</span> <span class="nb">use-package</span> <span class="nv">unfill</span> <span class="nv">typopunct</span> <span class="nv">smooth-scrolling</span> <span class="nv">smex</span> <span class="nv">smartparens</span> <span class="nv">rainbow-delimiters</span> <span class="nv">projectile</span> <span class="nv">markdown-mode</span> <span class="nv">magit-popup</span> <span class="nv">lua-mode</span> <span class="nv">keyfreq</span> <span class="nv">imenu-anywhere</span> <span class="nv">iedit</span> <span class="nv">ido-ubiquitous</span> <span class="nv">hl-sexp</span> <span class="nv">gruvbox-theme</span> <span class="nv">git-commit</span> <span class="nv">fish-mode</span> <span class="nv">exec-path-from-shell</span> <span class="nv">company</span> <span class="nv">clojure-mode-extra-font-locking</span> <span class="nv">clojure-cheatsheet</span> <span class="nv">aggressive-indent</span> <span class="nv">adoc-mode</span> <span class="nv">4clojure</span><span class="p">)))</span>
+    <span class="p">(</span><span class="nv">esup</span> <span class="nv">package-build</span> <span class="nv">org-capture</span> <span class="nv">org-babel</span> <span class="nv">ox-texinfo</span> <span class="nv">gist</span> <span class="nv">helm-flx</span> <span class="nv">which-key</span> <span class="nv">spaceline</span> <span class="nv">pretty-mode</span> <span class="nv">visual-regexp-steroids</span> <span class="nv">ox-hugo</span> <span class="nv">adaptive-wrap</span> <span class="nv">yankpad</span> <span class="nv">smart-mode-line</span> <span class="nv">org-plus-contrib</span> <span class="nv">ob-cfengine3</span> <span class="nv">org-journal</span> <span class="nv">ox-asciidoc</span> <span class="nv">org-jira</span> <span class="nv">ox-jira</span> <span class="nv">org-bullets</span> <span class="nv">ox-reveal</span> <span class="nv">lispy</span> <span class="nv">parinfer</span> <span class="nv">uniquify</span> <span class="nv">csv</span> <span class="nv">all-the-icons</span> <span class="nv">toc-org</span> <span class="nv">helm</span> <span class="nv">cider</span> <span class="nv">clojure-mode</span> <span class="nv">ido-completing-read+</span> <span class="nv">writeroom-mode</span> <span class="nv">crosshairs</span> <span class="nv">ox-confluence</span> <span class="nv">ox-md</span> <span class="nv">inf-ruby</span> <span class="nv">ob-plantuml</span> <span class="nv">ob-ruby</span> <span class="nv">darktooth-theme</span> <span class="nv">kaolin-themes</span> <span class="nv">htmlize</span> <span class="nv">ag</span> <span class="nv">col-highlight</span> <span class="nv">nix-mode</span> <span class="nv">easy-hugo</span> <span class="nv">elvish-mode</span> <span class="nv">zen-mode</span> <span class="nv">racket-mode</span> <span class="nv">package-lint</span> <span class="nv">scala-mode</span> <span class="nv">go-mode</span> <span class="nv">wc-mode</span> <span class="nv">neotree</span> <span class="nv">applescript-mode</span> <span class="nv">ack</span> <span class="nv">magit</span> <span class="nv">clj-refactor</span> <span class="nv">yaml-mode</span> <span class="nv">visual-fill-column</span> <span class="nv">visible-mark</span> <span class="nb">use-package</span> <span class="nv">unfill</span> <span class="nv">typopunct</span> <span class="nv">smooth-scrolling</span> <span class="nv">smex</span> <span class="nv">smartparens</span> <span class="nv">rainbow-delimiters</span> <span class="nv">projectile</span> <span class="nv">markdown-mode</span> <span class="nv">magit-popup</span> <span class="nv">lua-mode</span> <span class="nv">keyfreq</span> <span class="nv">imenu-anywhere</span> <span class="nv">iedit</span> <span class="nv">ido-ubiquitous</span> <span class="nv">hl-sexp</span> <span class="nv">gruvbox-theme</span> <span class="nv">git-commit</span> <span class="nv">fish-mode</span> <span class="nv">exec-path-from-shell</span> <span class="nv">company</span> <span class="nv">clojure-mode-extra-font-locking</span> <span class="nv">clojure-cheatsheet</span> <span class="nv">aggressive-indent</span> <span class="nv">adoc-mode</span> <span class="nv">4clojure</span><span class="p">)))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">read-buffer-completion-ignore-case</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">read-file-name-completion-ignore-case</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">reb-re-syntax</span> <span class="p">(</span><span class="nb">quote</span> <span class="nf">string</span><span class="p">))</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">recentf-max-menu-items</span> <span class="mi">50</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">safe-local-variable-values</span>
    <span class="p">(</span><span class="nb">quote</span>
     <span class="p">((</span><span class="nf">eval</span> <span class="nv">add-hook</span>
@@ -312,24 +331,29 @@ ga('send', 'pageview');
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">show-trailing-whitespace</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">sml/replacer-regexp-list</span>
    <span class="p">(</span><span class="nb">quote</span>
-    <span class="p">((</span><span class="s">&#34;^~/org&#34;</span> <span class="s">&#34;:Org:&#34;</span><span class="p">)</span>
-     <span class="p">(</span><span class="s">&#34;^~/\\.emacs\\.d/elpa/&#34;</span> <span class="s">&#34;:ELPA:&#34;</span><span class="p">)</span>
+    <span class="p">((</span><span class="s">&#34;^~/\\.emacs\\.d/elpa/&#34;</span> <span class="s">&#34;:ELPA:&#34;</span><span class="p">)</span>
      <span class="p">(</span><span class="s">&#34;^~/\\.emacs\\.d/&#34;</span> <span class="s">&#34;:ED:&#34;</span><span class="p">)</span>
      <span class="p">(</span><span class="s">&#34;^/sudo:.*:&#34;</span> <span class="s">&#34;:SU:&#34;</span><span class="p">)</span>
      <span class="p">(</span><span class="s">&#34;^~/Documents/&#34;</span> <span class="s">&#34;:Doc:&#34;</span><span class="p">)</span>
-     <span class="p">(</span><span class="s">&#34;^~/Dropbox/&#34;</span> <span class="s">&#34;:DB:&#34;</span><span class="p">)</span>
      <span class="p">(</span><span class="s">&#34;^:\\([^:]*\\):Documento?s/&#34;</span> <span class="s">&#34;:\\1/Doc:&#34;</span><span class="p">)</span>
-     <span class="p">(</span><span class="s">&#34;^~/[Gg]it/&#34;</span> <span class="s">&#34;:Git:&#34;</span><span class="p">)</span>
-     <span class="p">(</span><span class="s">&#34;^~/[Gg]it[Hh]ub/&#34;</span> <span class="s">&#34;:Git:&#34;</span><span class="p">)</span>
-     <span class="p">(</span><span class="s">&#34;^~/[Gg]it\\([Hh]ub\\|\\)-?[Pp]rojects/&#34;</span> <span class="s">&#34;:Git:&#34;</span><span class="p">)</span>
-     <span class="p">(</span><span class="s">&#34;^:DB:Personal/writing/learning-cfengine-3/learning-cfengine-3/&#34;</span> <span class="s">&#34;[cf-learn]&#34;</span><span class="p">)</span>
-     <span class="p">(</span><span class="s">&#34;^:DB:Personal/devel/zzamboni.org/zzamboni.org/&#34;</span> <span class="s">&#34;[zz.org]&#34;</span><span class="p">)</span>
-     <span class="p">(</span><span class="s">&#34;^\\[zz.org\\]content/post/&#34;</span> <span class="s">&#34;[zz.org/posts]&#34;</span><span class="p">))))</span>
+     <span class="p">(</span><span class="s">&#34;^~/Dropbox/&#34;</span> <span class="s">&#34;:DB:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^:DB:org&#34;</span> <span class="s">&#34;:Org:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^:DB:Personal/&#34;</span> <span class="s">&#34;:P:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^:DB:Personal/writing/&#34;</span> <span class="s">&#34;:Write:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^:P:devel/&#34;</span> <span class="s">&#34;:Dev:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^:Write:learning-cfengine-3/learning-cfengine-3/&#34;</span> <span class="s">&#34;:cf-learn:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^:Dev:go/src/github.com/elves/elvish/&#34;</span> <span class="s">&#34;:elvish:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^:Dev:zzamboni.org/zzamboni.org/&#34;</span> <span class="s">&#34;:zz.org:&#34;</span><span class="p">))))</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">sml/theme</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">dark</span><span class="p">))</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">sp-base-key-bindings</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">paredit</span><span class="p">))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">tab-width</span> <span class="mi">2</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">tool-bar-mode</span> <span class="no">nil</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">uniquify-after-kill-buffer-p</span> <span class="no">t</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">uniquify-buffer-name-style</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">post-forward</span><span class="p">)</span> <span class="no">nil</span> <span class="p">(</span><span class="nv">uniquify</span><span class="p">))</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">uniquify-strip-common-suffix</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">use-package-always-defer</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">use-package-always-ensure</span> <span class="no">t</span><span class="p">)</span>
- <span class="o">&#39;</span><span class="p">(</span><span class="nv">vr/engine</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">pcre2el</span><span class="p">)</span> <span class="no">t</span><span class="p">))</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">vr/engine</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">pcre2el</span><span class="p">)))</span>
 <span class="p">(</span><span class="nv">custom-set-faces</span>
  <span class="c1">;; custom-set-faces was added by Custom.</span>
  <span class="c1">;; If you edit it by hand, you could mess it up, so be careful.</span>
@@ -408,11 +432,12 @@ ga('send', 'pageview');
 <p>These are two short functions I wrote to be able to set/unset proxy settings within Emacs. I haven&rsquo;t bothered to improve or automate this, as I pretty much only need it to be able to install packages sometimes when I&rsquo;m at work. For now I just call them manually with <code>M-x zz/(un)set-proxy</code> when I need to.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/set-proxy</span> <span class="p">()</span>
   <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">customize-set-variable</span> <span class="nv">url-proxy-services</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;http&#34;</span> <span class="o">.</span> <span class="s">&#34;proxy.corproot.net:8079&#34;</span><span class="p">)</span>
-                                               <span class="p">(</span><span class="s">&#34;https&#34;</span> <span class="o">.</span> <span class="s">&#34;proxy.corproot.net:8079&#34;</span><span class="p">))))</span>
+  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">zz/proxy</span> <span class="s">&#34;proxy.corproot.net:8079&#34;</span><span class="p">))</span>
+    <span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;url-proxy-services</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;http&#34;</span>  <span class="o">.</span> <span class="nv">zz/proxy</span><span class="p">)</span>
+                                                  <span class="p">(</span><span class="s">&#34;https&#34;</span> <span class="o">.</span> <span class="nv">zz/proxy</span><span class="p">)))))</span>
 <span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/unset-proxy</span> <span class="p">()</span>
   <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">customize-set-variable</span> <span class="nv">url-proxy-services</span> <span class="no">nil</span><span class="p">))</span></code></pre></div>
+  <span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;url-proxy-services</span> <span class="no">nil</span><span class="p">))</span></code></pre></div>
 <h3 id="miscellaneous-settings">Miscellaneous settings</h3>
 
 <ul>
@@ -603,8 +628,8 @@ ga('send', 'pageview');
     <span class="p">(</span><span class="nv">org-src-tab-acts-natively</span> <span class="no">t</span><span class="p">)</span>
     <span class="p">(</span><span class="nv">org-hide-emphasis-markers</span> <span class="no">t</span><span class="p">)</span>
   <span class="nb">:custom-face</span>
-    <span class="p">(</span><span class="nv">variable-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Source Sans Pro&#34;</span> <span class="nb">:height</span> <span class="mi">180</span> <span class="nb">:weight</span> <span class="nv">light</span><span class="p">))))</span>
-    <span class="c1">;;(variable-pitch ((t (:family &#34;Avenir Next&#34; :height 180 :weight light))))</span>
+    <span class="p">(</span><span class="nv">variable-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Source Sans Pro&#34;</span> <span class="nb">:height</span> <span class="mi">160</span> <span class="nb">:weight</span> <span class="nv">light</span><span class="p">))))</span>
+    <span class="c1">;;(variable-pitch ((t (:family &#34;Avenir Next&#34; :height 160 :weight light))))</span>
     <span class="p">(</span><span class="nv">fixed-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Inconsolata&#34;</span><span class="p">))))</span>
   <span class="nb">:hook</span>
     <span class="p">(</span><span class="nv">org-babel-after-execute</span> <span class="o">.</span> <span class="nv">org-redisplay-inline-images</span><span class="p">)</span>
@@ -622,35 +647,35 @@ ga('send', 'pageview');
     <span class="p">(</span><span class="nv">org-babel-do-load-languages</span>
      <span class="ss">&#39;org-babel-load-languages</span>
      <span class="o">&#39;</span><span class="p">((</span><span class="nv">cfengine3</span> <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
-       <span class="p">(</span><span class="nv">ruby</span> <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
-       <span class="p">(</span><span class="nv">latex</span> <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
-       <span class="p">(</span><span class="nv">plantuml</span> <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
-       <span class="p">(</span><span class="nv">python</span> <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
-       <span class="p">(</span><span class="nv">shell</span> <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
-       <span class="p">(</span><span class="nv">elvish</span> <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
-       <span class="p">(</span><span class="nv">calc</span> <span class="o">.</span> <span class="no">t</span><span class="p">)))</span>
+       <span class="p">(</span><span class="nv">ruby</span>      <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
+       <span class="p">(</span><span class="nv">latex</span>     <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
+       <span class="p">(</span><span class="nv">plantuml</span>  <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
+       <span class="p">(</span><span class="nv">python</span>    <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
+       <span class="p">(</span><span class="nv">shell</span>     <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
+       <span class="p">(</span><span class="nv">elvish</span>    <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
+       <span class="p">(</span><span class="nv">calc</span>      <span class="o">.</span> <span class="no">t</span><span class="p">)))</span>
     <span class="p">(</span><span class="nv">font-lock-add-keywords</span> <span class="ss">&#39;org-mode</span>
                             <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;^ *\\([-]\\) &#34;</span>
                                <span class="p">(</span><span class="mi">0</span> <span class="p">(</span><span class="nb">prog1</span> <span class="p">()</span> <span class="p">(</span><span class="nv">compose-region</span> <span class="p">(</span><span class="nf">match-beginning</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nf">match-end</span> <span class="mi">1</span><span class="p">)</span> <span class="s">&#34;•&#34;</span><span class="p">))))))</span>
     <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">variable-tuple</span>
-            <span class="p">(</span><span class="nb">cond</span> <span class="p">((</span><span class="nf">x-list-fonts</span> <span class="s">&#34;Source Sans Pro&#34;</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">:font</span> <span class="s">&#34;Source Sans Pro&#34;</span><span class="p">))</span>
-                  <span class="p">((</span><span class="nf">x-list-fonts</span> <span class="s">&#34;Lucida Grande&#34;</span><span class="p">)</span>   <span class="o">&#39;</span><span class="p">(</span><span class="nb">:font</span> <span class="s">&#34;Lucida Grande&#34;</span><span class="p">))</span>
-                  <span class="p">((</span><span class="nf">x-list-fonts</span> <span class="s">&#34;Verdana&#34;</span><span class="p">)</span>         <span class="o">&#39;</span><span class="p">(</span><span class="nb">:font</span> <span class="s">&#34;Verdana&#34;</span><span class="p">))</span>
-                  <span class="p">((</span><span class="nf">x-family-fonts</span> <span class="s">&#34;Sans Serif&#34;</span><span class="p">)</span>    <span class="o">&#39;</span><span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Sans Serif&#34;</span><span class="p">))</span>
+            <span class="p">(</span><span class="nb">cond</span> <span class="p">((</span><span class="nf">x-list-fonts</span>   <span class="s">&#34;Source Sans Pro&#34;</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">:font</span>   <span class="s">&#34;Source Sans Pro&#34;</span><span class="p">))</span>
+                  <span class="p">((</span><span class="nf">x-list-fonts</span>   <span class="s">&#34;Lucida Grande&#34;</span><span class="p">)</span>   <span class="o">&#39;</span><span class="p">(</span><span class="nb">:font</span>   <span class="s">&#34;Lucida Grande&#34;</span><span class="p">))</span>
+                  <span class="p">((</span><span class="nf">x-list-fonts</span>   <span class="s">&#34;Verdana&#34;</span><span class="p">)</span>         <span class="o">&#39;</span><span class="p">(</span><span class="nb">:font</span>   <span class="s">&#34;Verdana&#34;</span><span class="p">))</span>
+                  <span class="p">((</span><span class="nf">x-family-fonts</span> <span class="s">&#34;Sans Serif&#34;</span><span class="p">)</span>      <span class="o">&#39;</span><span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Sans Serif&#34;</span><span class="p">))</span>
                   <span class="p">(</span><span class="no">nil</span> <span class="p">(</span><span class="ne">warn</span> <span class="s">&#34;Cannot find a Sans Serif Font.  Install Source Sans Pro.&#34;</span><span class="p">))))</span>
-           <span class="p">(</span><span class="nv">base-font-color</span>     <span class="p">(</span><span class="nv">face-foreground</span> <span class="ss">&#39;default</span> <span class="no">nil</span> <span class="ss">&#39;default</span><span class="p">))</span>
-           <span class="p">(</span><span class="nv">headline</span>           <span class="o">`</span><span class="p">(</span><span class="nb">:inherit</span> <span class="nv">default</span> <span class="nb">:weight</span> <span class="nv">bold</span> <span class="nb">:foreground</span> <span class="o">,</span><span class="nv">base-font-color</span><span class="p">)))</span>
+           <span class="p">(</span><span class="nv">base-font-color</span> <span class="p">(</span><span class="nv">face-foreground</span> <span class="ss">&#39;default</span> <span class="no">nil</span> <span class="ss">&#39;default</span><span class="p">))</span>
+           <span class="p">(</span><span class="nv">headline</span>       <span class="o">`</span><span class="p">(</span><span class="nb">:inherit</span> <span class="nv">default</span> <span class="nb">:weight</span> <span class="nv">bold</span> <span class="nb">:foreground</span> <span class="o">,</span><span class="nv">base-font-color</span><span class="p">)))</span>
 
       <span class="p">(</span><span class="nv">custom-theme-set-faces</span>
        <span class="ss">&#39;user</span>
-       <span class="o">`</span><span class="p">(</span><span class="nv">org-level-8</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span><span class="p">))))</span>
-       <span class="o">`</span><span class="p">(</span><span class="nv">org-level-7</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span><span class="p">))))</span>
-       <span class="o">`</span><span class="p">(</span><span class="nv">org-level-6</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span><span class="p">))))</span>
-       <span class="o">`</span><span class="p">(</span><span class="nv">org-level-5</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span><span class="p">))))</span>
-       <span class="o">`</span><span class="p">(</span><span class="nv">org-level-4</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">1.1</span><span class="p">))))</span>
-       <span class="o">`</span><span class="p">(</span><span class="nv">org-level-3</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">1.25</span><span class="p">))))</span>
-       <span class="o">`</span><span class="p">(</span><span class="nv">org-level-2</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">1.5</span><span class="p">))))</span>
-       <span class="o">`</span><span class="p">(</span><span class="nv">org-level-1</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">1.75</span><span class="p">))))</span>
+       <span class="o">`</span><span class="p">(</span><span class="nv">org-level-8</span>        <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span><span class="p">))))</span>
+       <span class="o">`</span><span class="p">(</span><span class="nv">org-level-7</span>        <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span><span class="p">))))</span>
+       <span class="o">`</span><span class="p">(</span><span class="nv">org-level-6</span>        <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span><span class="p">))))</span>
+       <span class="o">`</span><span class="p">(</span><span class="nv">org-level-5</span>        <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span><span class="p">))))</span>
+       <span class="o">`</span><span class="p">(</span><span class="nv">org-level-4</span>        <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">1.1</span><span class="p">))))</span>
+       <span class="o">`</span><span class="p">(</span><span class="nv">org-level-3</span>        <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">1.25</span><span class="p">))))</span>
+       <span class="o">`</span><span class="p">(</span><span class="nv">org-level-2</span>        <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">1.5</span><span class="p">))))</span>
+       <span class="o">`</span><span class="p">(</span><span class="nv">org-level-1</span>        <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">1.75</span><span class="p">))))</span>
        <span class="o">`</span><span class="p">(</span><span class="nv">org-document-title</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">2.0</span> <span class="nb">:underline</span> <span class="no">nil</span><span class="p">))))))</span>
     <span class="p">(</span><span class="nv">eval-after-load</span> <span class="ss">&#39;face-remap</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">diminish</span> <span class="ss">&#39;buffer-face-mode</span><span class="p">))</span>
     <span class="p">(</span><span class="nv">eval-after-load</span> <span class="ss">&#39;simple</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">diminish</span> <span class="ss">&#39;visual-line-mode</span><span class="p">)))</span></code></pre></div>
@@ -676,8 +701,9 @@ ga('send', 'pageview');
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="s">&#34;A-h&#34;</span> <span class="o">.</span> <span class="nv">org-mark-element</span><span class="p">)</span></code></pre></div>
 <p>Default setup and keybinding for <code>org-capture</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">org-default-notes-file</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">org-directory</span> <span class="s">&#34;/notes.org&#34;</span><span class="p">))</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="s">&#34;C-c c&#34;</span> <span class="o">.</span> <span class="nv">org-capture</span><span class="p">)</span></code></pre></div>
-<p>Load <code>org-tempo</code> to enable snippets such as <code>&lt;s&lt;TAB&gt;</code> to insert a source block.</p>
+<p>Load <code>org-tempo</code> to enable snippets such as <code>&lt;s&lt;TAB&gt;</code> to insert a source block. Disabled for now as I try to get used to the new <kbd>C-c C-,</kbd> shortcut recently introduced. See the loooong discussion starting at <a href="https://lists.gnu.org/archive/html/emacs-orgmode/2018-04/msg00600.html">https://lists.gnu.org/archive/html/emacs-orgmode/2018-04/msg00600.html</a>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">org-tempo</span>
+  <span class="nb">:disabled</span> <span class="nv">yes</span>
   <span class="nb">:defer</span> <span class="mi">5</span>
   <span class="nb">:ensure</span> <span class="no">nil</span>
   <span class="nb">:after</span> <span class="nv">org</span><span class="p">)</span></code></pre></div>
@@ -814,13 +840,13 @@ ga('send', 'pageview');
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">org-babel-do-load-languages</span>
  <span class="ss">&#39;org-babel-load-languages</span>
  <span class="o">&#39;</span><span class="p">((</span><span class="nv">cfengine3</span> <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
-   <span class="p">(</span><span class="nv">ruby</span> <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
-   <span class="p">(</span><span class="nv">latex</span> <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
-   <span class="p">(</span><span class="nv">plantuml</span> <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
-   <span class="p">(</span><span class="nv">python</span> <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
-   <span class="p">(</span><span class="nv">shell</span> <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
-   <span class="p">(</span><span class="nv">elvish</span> <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
-   <span class="p">(</span><span class="nv">calc</span> <span class="o">.</span> <span class="no">t</span><span class="p">)))</span></code></pre></div>
+   <span class="p">(</span><span class="nv">ruby</span>      <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
+   <span class="p">(</span><span class="nv">latex</span>     <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
+   <span class="p">(</span><span class="nv">plantuml</span>  <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
+   <span class="p">(</span><span class="nv">python</span>    <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
+   <span class="p">(</span><span class="nv">shell</span>     <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
+   <span class="p">(</span><span class="nv">elvish</span>    <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
+   <span class="p">(</span><span class="nv">calc</span>      <span class="o">.</span> <span class="no">t</span><span class="p">)))</span></code></pre></div>
 <p>This is potentially dangerous: it suppresses the query before executing code from within org-mode. I use it because I am very careful and only press <code>C-c C-c</code> on blocks I absolutely understand.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">org-confirm-babel-evaluate</span> <span class="no">nil</span><span class="p">)</span></code></pre></div>
 <p>This makes it so that code within <code>src</code> blocks is fontified according to their corresponding Emacs mode, making the file much more readable.</p>
@@ -856,31 +882,31 @@ ga('send', 'pageview');
   <span class="p">(</span><span class="nv">org-mode</span> <span class="o">.</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nv">org-bullets-mode</span> <span class="mi">1</span><span class="p">))))</span></code></pre></div>
 <p>We choose a nice font for the document title and the section headings. The first one found in the system from the list below is used, and the same font is used for the different levels, in varying sizes.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">variable-tuple</span>
-        <span class="p">(</span><span class="nb">cond</span> <span class="p">((</span><span class="nf">x-list-fonts</span> <span class="s">&#34;Source Sans Pro&#34;</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">:font</span> <span class="s">&#34;Source Sans Pro&#34;</span><span class="p">))</span>
-              <span class="p">((</span><span class="nf">x-list-fonts</span> <span class="s">&#34;Lucida Grande&#34;</span><span class="p">)</span>   <span class="o">&#39;</span><span class="p">(</span><span class="nb">:font</span> <span class="s">&#34;Lucida Grande&#34;</span><span class="p">))</span>
-              <span class="p">((</span><span class="nf">x-list-fonts</span> <span class="s">&#34;Verdana&#34;</span><span class="p">)</span>         <span class="o">&#39;</span><span class="p">(</span><span class="nb">:font</span> <span class="s">&#34;Verdana&#34;</span><span class="p">))</span>
-              <span class="p">((</span><span class="nf">x-family-fonts</span> <span class="s">&#34;Sans Serif&#34;</span><span class="p">)</span>    <span class="o">&#39;</span><span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Sans Serif&#34;</span><span class="p">))</span>
+        <span class="p">(</span><span class="nb">cond</span> <span class="p">((</span><span class="nf">x-list-fonts</span>   <span class="s">&#34;Source Sans Pro&#34;</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">:font</span>   <span class="s">&#34;Source Sans Pro&#34;</span><span class="p">))</span>
+              <span class="p">((</span><span class="nf">x-list-fonts</span>   <span class="s">&#34;Lucida Grande&#34;</span><span class="p">)</span>   <span class="o">&#39;</span><span class="p">(</span><span class="nb">:font</span>   <span class="s">&#34;Lucida Grande&#34;</span><span class="p">))</span>
+              <span class="p">((</span><span class="nf">x-list-fonts</span>   <span class="s">&#34;Verdana&#34;</span><span class="p">)</span>         <span class="o">&#39;</span><span class="p">(</span><span class="nb">:font</span>   <span class="s">&#34;Verdana&#34;</span><span class="p">))</span>
+              <span class="p">((</span><span class="nf">x-family-fonts</span> <span class="s">&#34;Sans Serif&#34;</span><span class="p">)</span>      <span class="o">&#39;</span><span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Sans Serif&#34;</span><span class="p">))</span>
               <span class="p">(</span><span class="no">nil</span> <span class="p">(</span><span class="ne">warn</span> <span class="s">&#34;Cannot find a Sans Serif Font.  Install Source Sans Pro.&#34;</span><span class="p">))))</span>
-       <span class="p">(</span><span class="nv">base-font-color</span>     <span class="p">(</span><span class="nv">face-foreground</span> <span class="ss">&#39;default</span> <span class="no">nil</span> <span class="ss">&#39;default</span><span class="p">))</span>
-       <span class="p">(</span><span class="nv">headline</span>           <span class="o">`</span><span class="p">(</span><span class="nb">:inherit</span> <span class="nv">default</span> <span class="nb">:weight</span> <span class="nv">bold</span> <span class="nb">:foreground</span> <span class="o">,</span><span class="nv">base-font-color</span><span class="p">)))</span>
+       <span class="p">(</span><span class="nv">base-font-color</span> <span class="p">(</span><span class="nv">face-foreground</span> <span class="ss">&#39;default</span> <span class="no">nil</span> <span class="ss">&#39;default</span><span class="p">))</span>
+       <span class="p">(</span><span class="nv">headline</span>       <span class="o">`</span><span class="p">(</span><span class="nb">:inherit</span> <span class="nv">default</span> <span class="nb">:weight</span> <span class="nv">bold</span> <span class="nb">:foreground</span> <span class="o">,</span><span class="nv">base-font-color</span><span class="p">)))</span>
 
   <span class="p">(</span><span class="nv">custom-theme-set-faces</span>
    <span class="ss">&#39;user</span>
-   <span class="o">`</span><span class="p">(</span><span class="nv">org-level-8</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span><span class="p">))))</span>
-   <span class="o">`</span><span class="p">(</span><span class="nv">org-level-7</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span><span class="p">))))</span>
-   <span class="o">`</span><span class="p">(</span><span class="nv">org-level-6</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span><span class="p">))))</span>
-   <span class="o">`</span><span class="p">(</span><span class="nv">org-level-5</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span><span class="p">))))</span>
-   <span class="o">`</span><span class="p">(</span><span class="nv">org-level-4</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">1.1</span><span class="p">))))</span>
-   <span class="o">`</span><span class="p">(</span><span class="nv">org-level-3</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">1.25</span><span class="p">))))</span>
-   <span class="o">`</span><span class="p">(</span><span class="nv">org-level-2</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">1.5</span><span class="p">))))</span>
-   <span class="o">`</span><span class="p">(</span><span class="nv">org-level-1</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">1.75</span><span class="p">))))</span>
+   <span class="o">`</span><span class="p">(</span><span class="nv">org-level-8</span>        <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span><span class="p">))))</span>
+   <span class="o">`</span><span class="p">(</span><span class="nv">org-level-7</span>        <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span><span class="p">))))</span>
+   <span class="o">`</span><span class="p">(</span><span class="nv">org-level-6</span>        <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span><span class="p">))))</span>
+   <span class="o">`</span><span class="p">(</span><span class="nv">org-level-5</span>        <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span><span class="p">))))</span>
+   <span class="o">`</span><span class="p">(</span><span class="nv">org-level-4</span>        <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">1.1</span><span class="p">))))</span>
+   <span class="o">`</span><span class="p">(</span><span class="nv">org-level-3</span>        <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">1.25</span><span class="p">))))</span>
+   <span class="o">`</span><span class="p">(</span><span class="nv">org-level-2</span>        <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">1.5</span><span class="p">))))</span>
+   <span class="o">`</span><span class="p">(</span><span class="nv">org-level-1</span>        <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">1.75</span><span class="p">))))</span>
    <span class="o">`</span><span class="p">(</span><span class="nv">org-document-title</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="o">,@</span><span class="nv">headline</span> <span class="o">,@</span><span class="nv">variable-tuple</span> <span class="nb">:height</span> <span class="mf">2.0</span> <span class="nb">:underline</span> <span class="no">nil</span><span class="p">))))))</span></code></pre></div>
 <p>I use proportional fonts in org-mode for the text, while keeping fixed-width fonts for blocks, so that source code, tables, etc. are shown correctly. These settings include:</p>
 
 <ul>
 <li><p>Setting up the <code>variable-pitch</code> face to the proportional font I like to use. I&rsquo;m currently alternating between my two favorites, <a href="https://en.wikipedia.org/wiki/Source_Sans_Pro">Source Sans Pro</a> and <a href="https://en.wikipedia.org/wiki/Avenir_(typeface)">Avenir Next</a>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">variable-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Source Sans Pro&#34;</span> <span class="nb">:height</span> <span class="mi">180</span> <span class="nb">:weight</span> <span class="nv">light</span><span class="p">))))</span>
-<span class="c1">;;(variable-pitch ((t (:family &#34;Avenir Next&#34; :height 180 :weight light))))</span></code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">variable-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Source Sans Pro&#34;</span> <span class="nb">:height</span> <span class="mi">160</span> <span class="nb">:weight</span> <span class="nv">light</span><span class="p">))))</span>
+<span class="c1">;;(variable-pitch ((t (:family &#34;Avenir Next&#34; :height 160 :weight light))))</span></code></pre></div></li>
 
 <li><p>Setting up the <code>fixed-pitch</code> face to be the same as my usual <code>default</code> face. My current one is <a href="https://en.wikipedia.org/wiki/Inconsolata">Inconsolata</a>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">fixed-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Inconsolata&#34;</span><span class="p">))))</span></code></pre></div></li>
@@ -948,14 +974,34 @@ ga('send', 'pageview');
       <span class="p">((</span><span class="nf">eq</span> <span class="nv">system-type</span> <span class="ss">&#39;gnu/linux</span><span class="p">)</span>
        <span class="nv">&lt;&lt;Linux</span> <span class="nv">settings&gt;&gt;</span>
        <span class="p">))</span></code></pre></div>
+<h3 id="mac">Mac</h3>
+
+<p>First, we set the key modifiers correctly to my preferences: Make Command (⌘) act as Meta, Option as Alt, right-Option as Super</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;mac-command-modifier</span> <span class="ss">&#39;meta</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;mac-option-modifier</span> <span class="ss">&#39;alt</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;mac-right-option-modifier</span> <span class="ss">&#39;super</span><span class="p">)</span></code></pre></div>
+<p>We also make it possible to use the familiar <kbd>⌘-+</kbd> and <kbd>⌘&ndash;</kbd> to increase and decrease the font size. <kbd>⌘-=</kbd> is also bound to &ldquo;increase&rdquo; because it&rsquo;s on the same key in an English keyboard.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">bind-key</span> <span class="s">&#34;M-+&#34;</span> <span class="ss">&#39;text-scale-increase</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">bind-key</span> <span class="s">&#34;M-=&#34;</span> <span class="ss">&#39;text-scale-increase</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">bind-key</span> <span class="s">&#34;M--&#34;</span> <span class="ss">&#39;text-scale-decrease</span><span class="p">)</span></code></pre></div>
+<p>Somewhat surprisingly, there seems to be no &ldquo;reset&rdquo; function, so I define my own and bind it to <code>⌘-0</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/text-scale-reset</span> <span class="p">()</span>
+  <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">text-scale-set</span> <span class="mi">0</span><span class="p">))</span>
+<span class="p">(</span><span class="nv">bind-key</span> <span class="s">&#34;M-0&#34;</span> <span class="ss">&#39;zz/text-scale-reset</span><span class="p">)</span></code></pre></div>
+<p>We also use the <code>exec-path-from-shell</code> to make sure the path settings from the shell are loaded into Emacs (usually it starts up with the default system-wide path).</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">exec-path-from-shell</span>
+  <span class="nb">:defer</span> <span class="no">nil</span>
+  <span class="nb">:config</span>
+  <span class="p">(</span><span class="nv">exec-path-from-shell-initialize</span><span class="p">))</span></code></pre></div>
 <h3 id="linux">Linux</h3>
 
 <p>There are no Linux-specific settings for now.</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="c1">;;</span></code></pre></div>
 <h3 id="windows">Windows</h3>
 
 <p>There are no Windows-specific settings for now.</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="c1">;;</span></code></pre></div>
 <h2 id="appearance-buffer-file-management-and-theming">Appearance, buffer/file management and theming</h2>
 
 <p>Here we take care of all the visual, UX and desktop-management settings.</p>
@@ -978,13 +1024,30 @@ ga('send', 'pageview');
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">smart-mode-line</span>
   <span class="nb">:defer</span> <span class="mi">2</span>
   <span class="nb">:config</span>
-  <span class="p">(</span><span class="nv">sml/setup</span><span class="p">))</span></code></pre></div>
+  <span class="p">(</span><span class="nv">sml/setup</span><span class="p">)</span>
+  <span class="nb">:custom</span>
+  <span class="p">(</span><span class="nv">sml/theme</span> <span class="ss">&#39;dark</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">sml/replacer-regexp-list</span>
+   <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;^~/\\.emacs\\.d/elpa/&#34;</span>                            <span class="s">&#34;:ELPA:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^~/\\.emacs\\.d/&#34;</span>                                 <span class="s">&#34;:ED:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^/sudo:.*:&#34;</span>                                       <span class="s">&#34;:SU:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^~/Documents/&#34;</span>                                    <span class="s">&#34;:Doc:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^:\\([^:]*\\):Documento?s/&#34;</span>                       <span class="s">&#34;:\\1/Doc:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^~/Dropbox/&#34;</span>                                      <span class="s">&#34;:DB:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^:DB:org&#34;</span>                                         <span class="s">&#34;:Org:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^:DB:Personal/&#34;</span>                                   <span class="s">&#34;:P:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^:DB:Personal/writing/&#34;</span>                           <span class="s">&#34;:Write:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^:P:devel/&#34;</span>                                       <span class="s">&#34;:Dev:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^:Write:learning-cfengine-3/learning-cfengine-3/&#34;</span> <span class="s">&#34;:cf-learn:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^:Dev:go/src/github.com/elves/elvish/&#34;</span>            <span class="s">&#34;:elvish:&#34;</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">&#34;^:Dev:zzamboni.org/zzamboni.org/&#34;</span>                 <span class="s">&#34;:zz.org:&#34;</span><span class="p">))))</span></code></pre></div>
 <p>Enable desktop-save mode, which saves the current buffer configuration on exit and reloads it on restart.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">desktop</span>
   <span class="nb">:defer</span> <span class="no">nil</span>
   <span class="nb">:custom</span>
-  <span class="p">(</span><span class="nv">desktop-restore-eager</span>   <span class="mi">1</span> <span class="s">&#34;Restore only the first buffer right away&#34;</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">desktop-lazy-idle-delay</span> <span class="mi">3</span> <span class="s">&#34;Restore the rest of the buffers 3 seconds later&#34;</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">desktop-restore-eager</span>   <span class="mi">1</span>   <span class="s">&#34;Restore only the first buffer right away&#34;</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">desktop-lazy-idle-delay</span> <span class="mi">3</span>   <span class="s">&#34;Restore the rest of the buffers 3 seconds later&#34;</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">desktop-lazy-verbose</span>    <span class="no">nil</span> <span class="s">&#34;Be silent about lazily opening buffers&#34;</span><span class="p">)</span>
   <span class="nb">:bind</span>
   <span class="p">(</span><span class="s">&#34;C-M-s-k&#34;</span> <span class="o">.</span> <span class="nv">desktop-clear</span><span class="p">)</span>
   <span class="nb">:config</span>
@@ -1587,6 +1650,7 @@ ga('send', 'pageview');
 </ul></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#system-specific-configuration">System-specific configuration</a>
 <ul>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#mac">Mac</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#linux">Linux</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#windows">Windows</a></li>
 </ul></li>
@@ -1622,7 +1686,7 @@ ga('send', 'pageview');
       &copy; 2018 Diego Zamboni
     </a>
     <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;<a class="no-underline hover-white white-70" href="https://www.gnu.org/software/emacs/">Emacs 26.1 </a> &plus;
-                <a class="no-underline hover-white white-70" href="https://orgmode.org/">Org mode 9.1.11 </a> &plus;
+                <a class="no-underline hover-white white-70" href="https://orgmode.org/">Org mode 9.1.13 </a> &plus;
                 <a class="no-underline hover-white white-70" href="https://ox-hugo.scripter.co/">ox-hugo</a>&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.40.2</a>
             &plus; <a class="no-underline hover-white white-70" href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a></div>
     
