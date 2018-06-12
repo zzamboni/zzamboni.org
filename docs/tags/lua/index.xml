@@ -17,10 +17,10 @@
       <pubDate>Wed, 01 Nov 2017 08:16:15 +0000</pubDate>
       
       <guid>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</guid>
-      <description>In this second article of the &amp;ldquo;Just Enough Lua&amp;rdquo; series, we dive into Lua&amp;rsquo;s types and data structures.
+      <description>&lt;p&gt;In this second article of the &amp;ldquo;Just Enough Lua&amp;rdquo; series, we dive into
+Lua&amp;rsquo;s types and data structures.&lt;/p&gt;
 
-  If you haven&amp;rsquo;t already, be sure to read the first installment of this series to learn about the basic Lua concepts.
-  Tables Table are the only compound data type in Lua, and are used to implement arrays, associative arrays (commonly called &amp;ldquo;maps&amp;rdquo; or &amp;ldquo;hashes&amp;rdquo; in other languages), modules, objects and namespaces.</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -29,9 +29,13 @@
       <pubDate>Sat, 21 Oct 2017 20:36:28 +0000</pubDate>
       
       <guid>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</guid>
-      <description>Hammerspoon&amp;rsquo;s configuration files are written in Lua, so a basic knowledge of the language is very useful to be an effective user of Hammerspoon. In this 2-part article I will show you the basics of Lua so you can read and write Hammerspoon configuration. Along the way you will discover that Lua is a surprisingly powerful language.
+      <description>&lt;p&gt;Hammerspoon&amp;rsquo;s configuration files are written in Lua, so a basic
+knowledge of the language is very useful to be an effective user of
+Hammerspoon. In this 2-part article I will show you the basics of Lua
+so you can read and write Hammerspoon configuration. Along the way you
+will discover that Lua is a surprisingly powerful language.&lt;/p&gt;
 
-Lua is a scripting language created in 1993, and focused from the beginning in being an embedded language for extending other applications.</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
