@@ -69,10 +69,10 @@ This is also my first blog post written using org-mode, which I have started usi
       <pubDate>Wed, 01 Nov 2017 08:16:15 +0000</pubDate>
       
       <guid>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</guid>
-      <description>In this second article of the &amp;ldquo;Just Enough Lua&amp;rdquo; series, we dive into Lua&amp;rsquo;s types and data structures.
+      <description>&lt;p&gt;In this second article of the &amp;ldquo;Just Enough Lua&amp;rdquo; series, we dive into
+Lua&amp;rsquo;s types and data structures.&lt;/p&gt;
 
-  If you haven&amp;rsquo;t already, be sure to read the first installment of this series to learn about the basic Lua concepts.
-  Tables Table are the only compound data type in Lua, and are used to implement arrays, associative arrays (commonly called &amp;ldquo;maps&amp;rdquo; or &amp;ldquo;hashes&amp;rdquo; in other languages), modules, objects and namespaces.</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -81,9 +81,13 @@ This is also my first blog post written using org-mode, which I have started usi
       <pubDate>Sat, 21 Oct 2017 20:36:28 +0000</pubDate>
       
       <guid>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</guid>
-      <description>Hammerspoon&amp;rsquo;s configuration files are written in Lua, so a basic knowledge of the language is very useful to be an effective user of Hammerspoon. In this 2-part article I will show you the basics of Lua so you can read and write Hammerspoon configuration. Along the way you will discover that Lua is a surprisingly powerful language.
+      <description>&lt;p&gt;Hammerspoon&amp;rsquo;s configuration files are written in Lua, so a basic
+knowledge of the language is very useful to be an effective user of
+Hammerspoon. In this 2-part article I will show you the basics of Lua
+so you can read and write Hammerspoon configuration. Along the way you
+will discover that Lua is a surprisingly powerful language.&lt;/p&gt;
 
-Lua is a scripting language created in 1993, and focused from the beginning in being an embedded language for extending other applications.</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -140,10 +144,13 @@ with my SendToOmniFocus spoon.&lt;/p&gt;
       <pubDate>Fri, 01 Sep 2017 20:17:55 +0200</pubDate>
       
       <guid>http://zzamboni.org/post/using-spoons-in-hammerspoon/</guid>
-      <description>In this second article about Hammerspoon, we look into Spoons, modules written in Lua which can be easily installed and loaded into Hammerspoon to provide ready-to-use functionality. Spoons provide a predefined API to configure and use them. They are also a good way to share your own work with other users.
+      <description>&lt;p&gt;In this second article about Hammerspoon, we look into &lt;em&gt;Spoons&lt;/em&gt;,
+modules written in Lua which can be easily installed and loaded into
+Hammerspoon to provide ready-to-use functionality. Spoons provide a
+predefined API to configure and use them. They are also a good way to
+share your own work with other users.&lt;/p&gt;
 
-See also the first article in this series.
-Using a Spoon to locate your mouse As a first example, we will use the MouseCircle spoon, which allows us to set up a hotkey that displays a color circle around the current location of the mouse pointer for a few seconds, to help you locate it.</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -174,9 +181,13 @@ Using a Spoon to locate your mouse As a first example, we will use the MouseCirc
       <pubDate>Mon, 21 Aug 2017 16:34:00 +0200</pubDate>
       
       <guid>http://zzamboni.org/post/getting-started-with-hammerspoon/</guid>
-      <description>This is the first installment of a series of posts about Hammerspoon, a staggeringly powerful automation utility which gives you an amazing degree of control over your Mac, allowing you to automate and control almost anything. In the word of Hammerspoon&amp;rsquo;s motto: Making the runtime, funtime.
+      <description>&lt;p&gt;This is the first installment of a series of posts about Hammerspoon,
+a staggeringly powerful automation utility which gives you an amazing
+degree of control over your Mac, allowing you to automate and control
+almost anything. In the word of Hammerspoon&amp;rsquo;s motto: &lt;em&gt;Making the
+runtime, funtime&lt;/em&gt;.&lt;/p&gt;
 
-Why Hammerspoon? Hammerspoon is a Mac application that allows you to achieve an unprecedented level of control over your Mac. Hammerspoon enables interaction with the system at multiple layers&amp;ndash;from low-level file system or network access, mouse or keyboard event capture and generation, all the way to manipulating applications or windows, processing URLs and drawing on the screen.</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -185,10 +196,9 @@ Why Hammerspoon? Hammerspoon is a Mac application that allows you to achieve an 
       <pubDate>Tue, 08 Aug 2017 06:56:52 +0200</pubDate>
       
       <guid>http://zzamboni.org/post/the-big-website-reboot/</guid>
-      <description>Welcome to the new zzamboni.org.
+      <description>&lt;p&gt;Welcome to the new zzamboni.org.&lt;/p&gt;
 
-Over the years, my website has seen its fair share of transformations, change and breakage. For a few years now, it had stagnated - me with not having much time to update, and its accumulated technological cruft piling high enough to keep me from even touching it, lest I break something.
-So, the time has come to do a reboot. With this post, I&amp;rsquo;m launching the new and reinvented zzamboni.</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
