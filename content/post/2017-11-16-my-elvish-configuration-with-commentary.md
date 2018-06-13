@@ -10,7 +10,7 @@ toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **June  3, 2018**
+Last update: **June 13, 2018**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -72,6 +72,33 @@ epm:install &silent-if-installed=$true   \
 ```
 
 The modules within each package get loaded individually below.
+
+
+## Automatic proxy settings {#automatic-proxy-settings}
+
+When I am in the office, I need to use a proxy to access the Internet. For macOS applications, the proxy is set automatically using a company-provided PAC file. For the environment variables `http_proxy` and `https_proxy`, commonly used by command-line programs, the [proxy](https://github.com/zzamboni/modules.elv/blob/master/proxy.org) module allows me to define a test which determines when the proxy should be used, so that the change is done automatically. We load this early on so that other modules which need to access the network get the correct settings already.
+
+First, we load the module and set the proxy host.
+
+```elvish
+use github.com/zzamboni/elvish-modules/proxy
+proxy:host = "http://proxy.corproot.net:8079"
+```
+
+Next, we set the test function to enable proxy auto-setting. In my case, the `/etc/resolv.conf` file contains the `corproot.net` domain (set through DHCP) when I'm in the corporate network, so I can check for that.
+
+```elvish
+proxy:test = {
+  and ?(test -f /etc/resolv.conf) \
+  ?(egrep -q '^(search|domain).*corproot.net' /etc/resolv.conf)
+}
+```
+
+We run an initial check so that other commands in rc.org get the correctd settings already, even before the first prompt.
+
+```elvish
+proxy:autoset
+```
 
 
 ## Base modules {#base-modules}
@@ -141,11 +168,24 @@ edit:insert:binding[Tab] = { edit:completion:smart-start; edit:completion:trigge
 I load some command-specific completions from the  [elvish-completions](https://github.com/zzamboni/elvish-completions) package:
 
 ```elvish
-use github.com/zzamboni/elvish-completions/git
 use github.com/zzamboni/elvish-completions/vcsh
 use github.com/zzamboni/elvish-completions/cd
 use github.com/zzamboni/elvish-completions/ssh
 use github.com/zzamboni/elvish-completions/builtins
+```
+
+I configure the git completer to use `hub` instead of `git` (if you use plain git, you don't need to call `git:init`)
+
+```elvish
+use github.com/zzamboni/elvish-completions/git
+git:git-command = hub
+git:init
+```
+
+This is not usually necessary, but I load the `comp` library specifically since I do a lot of tests and development of completions.
+
+```elvish
+use github.com/zzamboni/elvish-completions/comp
 ```
 
 
@@ -186,27 +226,6 @@ I also like the continuous update of the prompt as I type (by default it only up
 
 ```elvish
 edit:-prompt-eagerness = 10
-```
-
-
-## Automatic proxy settings {#automatic-proxy-settings}
-
-When I am in the office, I need to use a proxy to access the Internet. For macOS applications, the proxy is set automatically using a company-provided PAC file. For the environment variables `http_proxy` and `https_proxy`, commonly used by command-line programs, the [proxy](https://github.com/zzamboni/modules.elv/blob/master/proxy.org) module allows me to define a test which determines when the proxy should be used, so that the change is done automatically.
-
-First, we load the module and set the proxy host.
-
-```elvish
-use github.com/zzamboni/elvish-modules/proxy
-proxy:host = "http://proxy.corproot.net:8079"
-```
-
-Next, we set the test function to enable proxy auto-setting. In my case, the `/etc/resolv.conf` file contains the `corproot.net` domain (set through DHCP) when I'm in the corporate network, so I can check for that.
-
-```elvish
-proxy:test = {
-  and ?(test -f /etc/resolv.conf) \
-  ?(egrep -q '^(search|domain).*corproot.net' /etc/resolv.conf)
-}
 ```
 
 
@@ -317,6 +336,7 @@ The [update.elv](https://github.com/iwoloschin/elvish-packages/blob/master/updat
 
 ```elvish
 use github.com/iwoloschin/elvish-packages/update
+update:check-commit &verbose
 ```
 
 
