@@ -256,18 +256,25 @@ edit:completion:arg-completer[ls] = (comp:sequence &opts=$ls-opts [ $comp:files~
 
 Finally, completion sequences can be aggregated into _subcommand structures_ using the `comp:subcommands` function, to provide completion for commands such as `git`, which accept multiple subcommands, each with their own options and completions. In this case, the definition is a map indexed by subcommand names. The value of each element can be a `comp:item`,  a `comp:sequence` or another `comp:subcommands` (to provide completion for sub-sub-commands, see the example below for `vagrant`). The `comp:subcommands` function can also receive the `&opts` option to generate any available top-level options.
 
-**Example #7:** let us reimplement our completer for the `brew` package manager, but now with support for the `install`, `uninstall` and `cat` commands. `install` and `cat` gets as completions all available packages (the output of the `brew search` command), while `uninstall` only completes installed packages (the output of `brew list`). Note that for `install` and `uninstall` we automatically extract command-line options from their help messages using the `comp:extract-opts` function (wrapped into the `-brew-opts` function), and pass them as the `&opts` option in the corresponding sequence functions. Also note that all `&opts` elements get initialized at definition time (they are arrays), whereas the sequence completions get evaluated at runtime (they are lambdas), to automatically update according to the current packages. The `cat` command sequence allows only one option. The load-time initialization of the options incurs a small delay, and you could replace these with lambdas as well so that the options are computed at runtime.
+**Example #7:** let us reimplement our completer for the `brew` package manager, but now with support for the `install`, `uninstall` and `cat` commands. `install` and `cat` gets as completions all available packages (the output of the `brew search` command), while `uninstall` only completes installed packages (the output of `brew list`). Note that for `install` and `uninstall` we automatically extract command-line options from their help messages using the `comp:extract-opts` function (wrapped into the `-brew-opts` function), and pass them as the `&opts` option in the corresponding sequence functions. Also note that all `&opts` elements get initialized at definition time (they are arrays), whereas the sequence completions get evaluated at runtime (they are lambdas), to automatically update according to the current packages. The `cat` command sequence allows only one option. The load-time initialization of the options incurs a small delay, and you could replace these with lambdas as well so that the options are computed at runtime. Note also the usage of the `comp:decorate` function to colorize the package names in different colors for each command.
 
 ```elvish
 fn -brew-opts [cmd]{
-  brew $cmd -h | take 1 | comp:extract-opts &regex='--(\w[\w-]*)' &regex-map=[&long= 1]
+  brew $cmd -h | take 1 | \
+  comp:extract-opts &regex='--(\w[\w-]*)' &regex-map=[&long= 1]
 }
 brew-completions = [
-  &install=   (comp:sequence &opts= [ (-brew-opts install)   ] [ { brew search } ... ])
-  &uninstall= (comp:sequence &opts= [ (-brew-opts uninstall) ] [ { brew list }   ... ])
-  &cat=       (comp:sequence [{ brew search }])
+  &install= (comp:sequence &opts= [ (-brew-opts install) ] \
+    [ { brew search | comp:decorate &style=green } ... ]
+  )
+  &uninstall= (comp:sequence &opts= [ (-brew-opts uninstall) ] \
+    [ { brew list | comp:decorate &style=red }   ... ]
+  )
+  &cat= (comp:sequence [{ brew search | comp:decorate &style=blue }])
 ]
-edit:completion:arg-completer[brew] = (comp:subcommands &opts= [ version verbose ] $brew-completions)
+edit:completion:arg-completer[brew] = (comp:subcommands \
+  &opts= [ version verbose ] $brew-completions
+)
 ```
 
 Note that in contrast to our previous `brew` completer, this definition is much more expressive, accurate, and much easier to extend.
@@ -285,12 +292,16 @@ vagrant-completions = [
       &add= (comp:sequence [] \
         &opts= { vagrant box add -h | comp:extract-opts }
       )
-      &remove= (comp:sequence [ { vagrant box list | eawk [_ @f]{ put $f[0] } } ... ] \
+      &remove= (comp:sequence [ { \
+            vagrant box list | eawk [_ @f]{ put $f[0] } \
+        } ... ] \
         &opts= { vagrant box remove -h | comp:extract-opts }
       )
 ])]
 
-edit:completion:arg-completer[vagrant] = (comp:subcommands &opts= [ version help ] $vagrant-completions)
+edit:completion:arg-completer[vagrant] = (comp:subcommands \
+  &opts= [ version help ] $vagrant-completions
+)
 ```
 
 **Example #9:** See the [git completer](https://github.com/zzamboni/elvish-completions/blob/master/git.org) for a real-world subcommand completion example, which also shows how extensively auto-population of subcommands and options can be done by extracting information from help messages.
