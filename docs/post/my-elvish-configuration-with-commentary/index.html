@@ -22,7 +22,7 @@
      
 
       <meta property="og:title" content="My Elvish Configuration With Commentary" />
-<meta property="og:description" content="Last update: June 3, 2018
+<meta property="og:description" content="Last update: June 13, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc." />
 <meta property="og:type" content="article" />
@@ -45,21 +45,21 @@ This is also my first blog post written using org-mode, which I have started usi
 
 
 <meta itemprop="name" content="My Elvish Configuration With Commentary">
-<meta itemprop="description" content="Last update: June 3, 2018
+<meta itemprop="description" content="Last update: June 13, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc.">
 
 
 <meta itemprop="datePublished" content="2017-11-16T20:21:00&#43;01:00" />
 <meta itemprop="dateModified" content="2017-11-16T20:21:00&#43;01:00" />
-<meta itemprop="wordCount" content="1264">
+<meta itemprop="wordCount" content="1359">
 
 
 
 <meta itemprop="keywords" content="config,howto,literateprogramming,literateconfig,elvish," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Elvish Configuration With Commentary"/>
-<meta name="twitter:description" content="Last update: June 3, 2018
+<meta name="twitter:description" content="Last update: June 13, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc."/>
 
@@ -191,7 +191,7 @@ if (!doNotTrack) {
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
-<p>Last update: <strong>June  3, 2018</strong></p>
+<p>Last update: <strong>June 13, 2018</strong></p>
 
 <p>In this blog post I will walk you through my current <a href="http://elvish.io">Elvish</a> configuration file, with running commentary about the different sections.</p>
 
@@ -242,6 +242,20 @@ paths = [
   github.com/iwoloschin/elvish-packages</code></pre></div>
 <p>The modules within each package get loaded individually below.</p>
 
+<h2 id="automatic-proxy-settings">Automatic proxy settings</h2>
+
+<p>When I am in the office, I need to use a proxy to access the Internet. For macOS applications, the proxy is set automatically using a company-provided PAC file. For the environment variables <code>http_proxy</code> and <code>https_proxy</code>, commonly used by command-line programs, the <a href="https://github.com/zzamboni/modules.elv/blob/master/proxy.org">proxy</a> module allows me to define a test which determines when the proxy should be used, so that the change is done automatically. We load this early on so that other modules which need to access the network get the correct settings already.</p>
+
+<p>First, we load the module and set the proxy host.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/proxy
+proxy:host = &#34;http://proxy.corproot.net:8079&#34;</code></pre></div>
+<p>Next, we set the test function to enable proxy auto-setting. In my case, the <code>/etc/resolv.conf</code> file contains the <code>corproot.net</code> domain (set through DHCP) when I&rsquo;m in the corporate network, so I can check for that.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">proxy:test = {
+  and ?(test -f /etc/resolv.conf) \
+  ?(egrep -q &#39;^(search|domain).*corproot.net&#39; /etc/resolv.conf)
+}</code></pre></div>
+<p>We run an initial check so that other commands in rc.org get the correctd settings already, even before the first prompt.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">proxy:autoset</code></pre></div>
 <h2 id="base-modules">Base modules</h2>
 
 <p>Load the bundled <a href="https://elvish.io/ref/re.html">re</a> module to have access to regular expression functions.</p>
@@ -277,11 +291,16 @@ smart-matcher:apply</code></pre></div>
 <p>I also configure <kbd>Tab</kbd> to trigger completion mode, but also to automatically enter &ldquo;filter mode&rdquo;, so I can keep typing the filename I want, without having to use the arrow keys.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:insert:binding[Tab] = { edit:completion:smart-start; edit:completion:trigger-filter }</code></pre></div>
 <p>I load some command-specific completions from the  <a href="https://github.com/zzamboni/elvish-completions">elvish-completions</a> package:</p>
-<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-completions/git
-use github.com/zzamboni/elvish-completions/vcsh
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-completions/vcsh
 use github.com/zzamboni/elvish-completions/cd
 use github.com/zzamboni/elvish-completions/ssh
 use github.com/zzamboni/elvish-completions/builtins</code></pre></div>
+<p>I configure the git completer to use <code>hub</code> instead of <code>git</code> (if you use plain git, you don&rsquo;t need to call <code>git:init</code>)</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-completions/git
+git:git-command = hub
+git:init</code></pre></div>
+<p>This is not usually necessary, but I load the <code>comp</code> library specifically since I do a lot of tests and development of completions.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-completions/comp</code></pre></div>
 <h2 id="prompt-theme">Prompt theme</h2>
 
 <p>I use the <a href="https://github.com/zzamboni/theme.elv/blob/master/chain.org">chain</a> prompt theme, ported from the fish theme at <a href="https://github.com/oh-my-fish/theme-chain">https://github.com/oh-my-fish/theme-chain</a>.</p>
@@ -301,18 +320,6 @@ prompt arrow in my prompt to a session-identifying color.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:prompt-stale-transform = $all~</code></pre></div>
 <p>I also like the continuous update of the prompt as I type (by default it only updates on Enter and on <code>$pwd</code> changes, but I like also git status changes to be updated automatically), so I increase its eagerness.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:-prompt-eagerness = 10</code></pre></div>
-<h2 id="automatic-proxy-settings">Automatic proxy settings</h2>
-
-<p>When I am in the office, I need to use a proxy to access the Internet. For macOS applications, the proxy is set automatically using a company-provided PAC file. For the environment variables <code>http_proxy</code> and <code>https_proxy</code>, commonly used by command-line programs, the <a href="https://github.com/zzamboni/modules.elv/blob/master/proxy.org">proxy</a> module allows me to define a test which determines when the proxy should be used, so that the change is done automatically.</p>
-
-<p>First, we load the module and set the proxy host.</p>
-<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/proxy
-proxy:host = &#34;http://proxy.corproot.net:8079&#34;</code></pre></div>
-<p>Next, we set the test function to enable proxy auto-setting. In my case, the <code>/etc/resolv.conf</code> file contains the <code>corproot.net</code> domain (set through DHCP) when I&rsquo;m in the corporate network, so I can check for that.</p>
-<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">proxy:test = {
-  and ?(test -f /etc/resolv.conf) \
-  ?(egrep -q &#39;^(search|domain).*corproot.net&#39; /etc/resolv.conf)
-}</code></pre></div>
 <h2 id="long-running-command-notifications">Long-running-command notifications</h2>
 
 <p>The <a href="https://github.com/zzamboni/modules.elv/blob/master/long-running-notifications.org">long-running-notifications</a> module allows for producing a notification when a command takes longer than a certain time to finish (by default the period is 10 seconds). The module automatically detects when <a href="https://github.com/julienXX/terminal-notifier">terminal-notifier</a> is available on macOS and uses it to produce Mac-style notifications, otherwise it prints a notification on the terminal.</p>
@@ -359,7 +366,8 @@ edit:insert:binding[Alt-f] = $dir:right-word-or-next-dir~</code></pre></div>
 <p>I use muesli&rsquo;s git utilities module.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/muesli/elvish-libs/git</code></pre></div>
 <p>The <a href="https://github.com/iwoloschin/elvish-packages/blob/master/update.elv">update.elv</a> package prints a message if there are new commits in Elvish after the running version.</p>
-<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/iwoloschin/elvish-packages/update</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/iwoloschin/elvish-packages/update
+update:check-commit &amp;verbose</code></pre></div>
 <h2 id="exporting-aliases">Exporting aliases</h2>
 
 <p>We populate <code>$-exports-</code> with the alias definitions so that they become available in the interactive namespace.</p>
@@ -461,11 +469,11 @@ edit:insert:binding[Alt-f] = $dir:right-word-or-next-dir~</code></pre></div>
 <ul>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#paths">Paths</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#package-installation">Package installation</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#automatic-proxy-settings">Automatic proxy settings</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#base-modules">Base modules</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#aliases">Aliases</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#completions">Completions</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#prompt-theme">Prompt theme</a></li>
-<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#automatic-proxy-settings">Automatic proxy settings</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#long-running-command-notifications">Long-running-command notifications</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#directory-and-command-navigation-and-history">Directory and command navigation and history</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#dynamic-terminal-title">Dynamic terminal title</a></li>
