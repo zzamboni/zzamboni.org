@@ -210,9 +210,18 @@
     </item>
     
     <item>
+      <title>Completions</title>
+      <link>http://zzamboni.org/tags/completions/</link>
+      <pubDate>Wed, 13 Jun 2018 20:25:00 +0200</pubDate>
+      
+      <guid>http://zzamboni.org/tags/completions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Config</title>
       <link>http://zzamboni.org/tags/config/</link>
-      <pubDate>Wed, 21 Mar 2018 22:45:00 +0100</pubDate>
+      <pubDate>Wed, 13 Jun 2018 20:25:00 +0200</pubDate>
       
       <guid>http://zzamboni.org/tags/config/</guid>
       <description></description>
@@ -302,7 +311,7 @@
     <item>
       <title>Elvish</title>
       <link>http://zzamboni.org/tags/elvish/</link>
-      <pubDate>Mon, 04 Dec 2017 22:15:00 +0100</pubDate>
+      <pubDate>Wed, 13 Jun 2018 20:25:00 +0200</pubDate>
       
       <guid>http://zzamboni.org/tags/elvish/</guid>
       <description></description>
@@ -1013,7 +1022,7 @@
     <item>
       <title>Shell</title>
       <link>http://zzamboni.org/tags/shell/</link>
-      <pubDate>Mon, 04 Dec 2017 22:15:00 +0100</pubDate>
+      <pubDate>Wed, 13 Jun 2018 20:25:00 +0200</pubDate>
       
       <guid>http://zzamboni.org/tags/shell/</guid>
       <description></description>
@@ -1184,7 +1193,7 @@
     <item>
       <title>Unix</title>
       <link>http://zzamboni.org/tags/unix/</link>
-      <pubDate>Mon, 04 Dec 2017 22:15:00 +0100</pubDate>
+      <pubDate>Wed, 13 Jun 2018 20:25:00 +0200</pubDate>
       
       <guid>http://zzamboni.org/tags/unix/</guid>
       <description></description>

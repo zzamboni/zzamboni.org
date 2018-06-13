@@ -6,10 +6,21 @@
     <description>Recent content in Shell on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Dec 2017 22:15:00 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 13 Jun 2018 20:25:00 +0200</lastBuildDate>
     
 	<atom:link href="http://zzamboni.org/tags/shell/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using and writing completions in Elvish</title>
+      <link>http://zzamboni.org/post/using-and-writing-completions-in-elvish/</link>
+      <pubDate>Wed, 13 Jun 2018 20:25:00 +0200</pubDate>
+      
+      <guid>http://zzamboni.org/post/using-and-writing-completions-in-elvish/</guid>
+      <description>Like other Unix shells, Elvish has advanced command-argument completion capabilities. In this article I will explore the existing completions, and show you how you can create your own (and contribute them back to the community).
+Using existing completions There is a growing body of shell completions that you can simply load and use.
+Elvish has a still-small but growing collection of completions that have been created by its users. These are a few that I know of (let me know if you know others!</description>
+    </item>
     
     <item>
       <title>Bang-Bang (!!, !$) Shell Shortcuts in Elvish</title>
