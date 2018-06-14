@@ -84,7 +84,7 @@ Keep in mind that the options returned by the completion function are additional
 edit:completion:arg-completer[brew] = [@cmd]{
   len = (count $cmd)
   if (eq $len 2) {
-    if (re:match '^-' $cmd[-1]) {
+    if (has-prefix $cmd[-1] -) {
       put '--version' '--verbose'
     } else {
       put install uninstall
