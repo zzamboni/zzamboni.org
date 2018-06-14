@@ -251,7 +251,7 @@ go:apply</code></pre></div></li>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:completion:arg-completer[brew] = [@cmd]{
   len = (count $cmd)
   if (eq $len 2) {
-    if (re:match &#39;^-&#39; $cmd[-1]) {
+    if (has-prefix $cmd[-1] -) {
       put &#39;--version&#39; &#39;--verbose&#39;
     } else {
       put install uninstall
