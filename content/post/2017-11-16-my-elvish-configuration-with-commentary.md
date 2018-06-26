@@ -10,7 +10,7 @@ toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **June 13, 2018**
+Last update: **June 26, 2018**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -24,7 +24,7 @@ Without further ado...
 First we set up the executable paths. We set the `GOPATH` environment variable while we are at it, since we need to use it as part of the path.
 
 ```elvish
-E:GOPATH = ~/Personal/devel/go/
+E:GOPATH = ~/Dropbox/Personal/devel/go
 paths = [
   ~/bin
   $E:GOPATH/bin
