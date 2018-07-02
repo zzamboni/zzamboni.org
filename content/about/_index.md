@@ -17,11 +17,12 @@ featured_image = "/images/legoland.jpg"
 
 **Long version:** If you are interested, here's my [curriculum vitae](/vita.html). For other useless trivia about me, see [here](http://www.zzamboni.org/brt/2007/03/07/blog-tagged/index.html).
 
-**My online past:**
 
--   2009-2016: All old blog entries have been incorporated onto [this blog](/post);
--   2005-2009: My blog titled [BrT](/brt) (static archive copy);
--   1997-2001: My [web page at Purdue University](http://homes.cerias.purdue.edu/~zamboni/).
+## My online past {#my-online-past}
+
+-   2009-2016: During this time my blog went through several iterations, hosted/powered by [Posterous](http://www.posterous.com/), [Jekyll](https://jekyllrb.com/), [Octopress](http://octopress.org/), [Postach.io](https://postach.io/site) and [Enwrite](https://github.com/zzamboni/enwrite). All blog entries from this period have been merged into [my current blog](/post);
+-   2005-2009: My blog titled [BrT](/brt), powered mainly by a self-hosted [Wordpress](https://wordpress.org/), with some intermixed use of Posterous. What you find at the link is a static archive copy;
+-   1997-2001: My hand-maintained [web page at Purdue University](http://homes.cerias.purdue.edu/~zamboni/).
 
 
 ## About this site {#about-this-site}
