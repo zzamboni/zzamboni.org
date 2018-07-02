@@ -17,6 +17,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
 * Table of Contents                                          :TOC_3:noexport:
 - [[#pages][Pages]]
   - [[#about][About]]
+    - [[#my-online-past][My online past]]
     - [[#about-this-site][About this site]]
     - [[#image-attributions][Image attributions:]]
   - [[#contact][Contact]]
@@ -29,7 +30,6 @@ This file is the source for all new and updated content on [[http://zzamboni.org
   - [[#ox-hugo][ox-hugo]]
   - [[#cryfs][CryFS]]
   - [[#hosting-a-hugo-blog-in-github][Hosting a Hugo blog in GitHub]]
-  - [[#using-the-nix-package-manager-in-macos][Using the Nix package manager in macOS]]
 - [[#posts][Posts]]
   - [[#literate-config-files][Literate config files]]
     - [[#my-emacs-configuration-with-commentary][My Emacs Configuration, With Commentary]]
@@ -41,6 +41,8 @@ This file is the source for all new and updated content on [[http://zzamboni.org
   - [[#elvish][Elvish]]
     - [[#bang-bang---shell-shortcuts-in-elvish][Bang-Bang (!!, !$) Shell Shortcuts in Elvish]]
     - [[#using-and-writing-completions-in-elvish][Using and writing completions in Elvish]]
+  - [[#other][Other]]
+    - [[#my-blogging-workflow-with-emacs-org-modeox-hugo-hugo-and-github][My blogging workflow with Emacs, org-mode+ox-hugo, Hugo and GitHub]]
 - [[#footnotes][Footnotes]]
 
 * Pages
@@ -65,11 +67,11 @@ CLOSED: [2018-03-22 Thu 19:40]
 
 *Long version:* If you are interested, here's my [[file:/vita.html][curriculum vitae]]. For other useless trivia about me, see [[http://www.zzamboni.org/brt/2007/03/07/blog-tagged/index.html][here]].
 
-*My online past:*
+*** My online past
 
-- 2009-2016: All old blog entries have been incorporated onto [[file:/post][this blog]];
-- 2005-2009: My blog titled [[file:/brt][BrT]] (static archive copy);
-- 1997-2001: My [[http://homes.cerias.purdue.edu/~zamboni/][web page at Purdue University]].
+- 2009-2016: During this time my blog went through several iterations, hosted/powered by [[http://www.posterous.com/][Posterous]], [[https://jekyllrb.com/][Jekyll]], [[http://octopress.org/][Octopress]], [[https://postach.io/site][Postach.io]] and [[https://github.com/zzamboni/enwrite][Enwrite]]. All blog entries from this period have been merged into [[file:/post][my current blog]];
+- 2005-2009: My blog titled [[file:/brt][BrT]], powered mainly by a self-hosted [[https://wordpress.org/][Wordpress]], with some intermixed use of Posterous. What you find at the link is a static archive copy;
+- 1997-2001: My hand-maintained [[http://homes.cerias.purdue.edu/~zamboni/][web page at Purdue University]].
 
 *** About this site
 
@@ -149,8 +151,6 @@ Ideas for things to write about.
 ** TODO CryFS                                                   :cryfs:howto:
 ** TODO Hosting a Hugo blog in GitHub            :hugo:github:blogging:howto:
 Short guide to setting up Hugo, using /docs to host to avoid branches, and setting up your custom domain.
-** TODO Using the Nix package manager in macOS              :howto:nix:macos:
-
 * Posts
 :PROPERTIES:
 :export_hugo_section: post
@@ -757,6 +757,11 @@ So you have created a brand-new completion function and would like to share it w
 I hope you have found this tutorial useful. Please let me know in the comments if you have any questions, feedback or if you find something that is incorrect.
 
 Now, go have fun with Elvish!
+
+** Other
+
+*** TODO My blogging workflow with Emacs, org-mode+ox-hugo, Hugo and GitHub :blogging:howto:emacs:hugo:orgmode:github:
+
 
 * Footnotes
 * COMMENT Local Variables                                           :ARCHIVE:
