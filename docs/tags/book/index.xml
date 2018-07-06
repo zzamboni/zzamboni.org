@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Book on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/book/</link>
+    <link>https://zzamboni.org/tags/book/</link>
     <description>Recent content in Book on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 24 Mar 2012 01:23:00 -0600</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/book/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/book/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Learning CFEngine 3 has been released</title>
-      <link>http://zzamboni.org/post/learning-cfengine-3-has-been-released/</link>
+      <link>https://zzamboni.org/post/learning-cfengine-3-has-been-released/</link>
       <pubDate>Sat, 24 Mar 2012 01:23:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/learning-cfengine-3-has-been-released/</guid>
+      <guid>https://zzamboni.org/post/learning-cfengine-3-has-been-released/</guid>
       <description>  I am ecstatic to announce that the book is now officially released!
  via blog.cf-learn.info  I am so happy :-)
  </description>
@@ -24,30 +24,30 @@
     
     <item>
       <title>New website for &#34;Learning CFEngine 3&#34;</title>
-      <link>http://zzamboni.org/post/new-website-for-learning-cfengine-3/</link>
+      <link>https://zzamboni.org/post/new-website-for-learning-cfengine-3/</link>
       <pubDate>Thu, 15 Dec 2011 02:22:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/new-website-for-learning-cfengine-3/</guid>
+      <guid>https://zzamboni.org/post/new-website-for-learning-cfengine-3/</guid>
       <description>I&#39;m happy to announce that the website for my book is now live at http://cf-learn.info/. 
 In this website you will find:  General information about the book.  A discussion forum for any type of questions, feedback or suggestions about the book.  Downloadable code examples from the book, plus (over time) many other new examples.  List of Errata, and access to the Errata system at O&#39;Reilly  A blog devoted to the book and to CFEngine.</description>
     </item>
     
     <item>
       <title>&#34;Learning CFEngine 3&#34; Early Release now available -use AUTHD to get 40-50% off</title>
-      <link>http://zzamboni.org/post/learning-cfengine-3early-release-now-available--use-authd-to-get-40-50-off/</link>
+      <link>https://zzamboni.org/post/learning-cfengine-3early-release-now-available--use-authd-to-get-40-50-off/</link>
       <pubDate>Tue, 06 Dec 2011 15:03:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/learning-cfengine-3early-release-now-available--use-authd-to-get-40-50-off/</guid>
+      <guid>https://zzamboni.org/post/learning-cfengine-3early-release-now-available--use-authd-to-get-40-50-off/</guid>
       <description>Learning CFEngine 3 Automated system administration for sites of any size  By Diego Zamboni    via shop.oreilly.com  My upcoming book &#34;Learning CFEngine 3&#34; is now available as an Early Release, which includes (for now) the first four chapters of the book. You can use the code AUTHD to get 40% off the print book, or 50% off the ebook version.
 Go get yours!</description>
     </item>
     
     <item>
       <title>New job, new book</title>
-      <link>http://zzamboni.org/post/new-job-new-book/</link>
+      <link>https://zzamboni.org/post/new-job-new-book/</link>
       <pubDate>Wed, 19 Oct 2011 00:21:07 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/new-job-new-book/</guid>
+      <guid>https://zzamboni.org/post/new-job-new-book/</guid>
       <description>Today I have two big announcements to make.
 First, as of this week I have a new job, I am now working with CFEngine AS, the company that develops and maintains cfengine. As you know if you read my blog, I am a big fan of cfengine. It is a mature and able tool that provides extreme flexibility and power to system administrators. The company is full of energy and with very interesting projects to make cfengine even better and more popular than it is today.</description>
     </item>

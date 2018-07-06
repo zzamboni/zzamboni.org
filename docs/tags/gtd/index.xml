@@ -2,79 +2,79 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gtd on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/gtd/</link>
+    <link>https://zzamboni.org/tags/gtd/</link>
     <description>Recent content in Gtd on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 16 Mar 2011 01:54:00 -0600</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/gtd/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/gtd/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Automatically creating tasks from email in Outlook</title>
-      <link>http://zzamboni.org/post/automatically-creating-tasks-from-email-in-outlook/</link>
+      <link>https://zzamboni.org/post/automatically-creating-tasks-from-email-in-outlook/</link>
       <pubDate>Wed, 16 Mar 2011 01:54:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/automatically-creating-tasks-from-email-in-outlook/</guid>
+      <guid>https://zzamboni.org/post/automatically-creating-tasks-from-email-in-outlook/</guid>
       <description>Please note: I am no longer using Windows nor Outlook, so unfortunately I cannot offer any help with problems you encounter using these scripts and techniques.
 Over the last few days I have been redoing my GTD-under-Outlook setup, based on the instructions available in the &#34;GTD and Outlook&#34; guide from DavidCo (I will write more about my setup later). One of the tricks the guide suggest is creating a mail rule on outgoing mail, which scans the message body for a special tag (/wf or *wf* are suggested) and automatically adds the message to the @WAITING FOR email folder.</description>
     </item>
     
     <item>
       <title>Overhauling my GTD system under Windows</title>
-      <link>http://zzamboni.org/post/overhauling-my-gtd-system-under-windows/</link>
+      <link>https://zzamboni.org/post/overhauling-my-gtd-system-under-windows/</link>
       <pubDate>Mon, 14 Mar 2011 00:09:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/overhauling-my-gtd-system-under-windows/</guid>
+      <guid>https://zzamboni.org/post/overhauling-my-gtd-system-under-windows/</guid>
       <description>As you may know, I&#39;m a reluctant switcher from Mac to Windows. I am also a fan of GTD. I had been using Jello Dashboard (JD) to implement GTD under Outlook. JD is a very nice system, the developer is friendly and responsive, and I had even written several patches to adapt it to my way of working. I was even in the process of drafting a series of blog posts titled &#34;</description>
     </item>
     
     <item>
       <title>Setting up a global hotkey to add tasks to Outlook</title>
-      <link>http://zzamboni.org/post/setting-up-a-global-hotkey-to-add-tasks-to-outlook/</link>
+      <link>https://zzamboni.org/post/setting-up-a-global-hotkey-to-add-tasks-to-outlook/</link>
       <pubDate>Thu, 23 Dec 2010 12:14:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/setting-up-a-global-hotkey-to-add-tasks-to-outlook/</guid>
+      <guid>https://zzamboni.org/post/setting-up-a-global-hotkey-to-add-tasks-to-outlook/</guid>
       <description>One thing I missed since I moved from a Mac (using The Hit List for GTD) to Outlook (using Jello Dashboard for GTD) was the availability of a global hot key that I could use to bring up a text entry box which I could use to quickly add things into my electronic Inbox, for later processing.
 I have found a way to achieve this, and here is the setup I am using now:</description>
     </item>
     
     <item>
       <title>GTD tip: clean up physical clutter using ziploc bags</title>
-      <link>http://zzamboni.org/post/gtd-tip-clean-up-physical-clutter-using-ziploc-bags/</link>
+      <link>https://zzamboni.org/post/gtd-tip-clean-up-physical-clutter-using-ziploc-bags/</link>
       <pubDate>Mon, 20 Dec 2010 17:46:34 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/gtd-tip-clean-up-physical-clutter-using-ziploc-bags/</guid>
+      <guid>https://zzamboni.org/post/gtd-tip-clean-up-physical-clutter-using-ziploc-bags/</guid>
       <description>If you are like me, you carry in your backpack, bag or briefcase all sorts of physical stuff, other than documents, papers or magazines. You know the type: phone chargers, USB cables, power adapters, network cables, USB sticks and other small gadgets or accessories. Over time these things accumulate and it becomes harder and harder to find them and to keep them organized. 
 I have been using a low-tech tool for organizing these things: ziploc bags.</description>
     </item>
     
     <item>
       <title>GTD Tip: one-key opening of INBOX notebook in OneNote</title>
-      <link>http://zzamboni.org/post/gtd-tip-one-key-opening-of-inbox-notebook-in-onenote/</link>
+      <link>https://zzamboni.org/post/gtd-tip-one-key-opening-of-inbox-notebook-in-onenote/</link>
       <pubDate>Sun, 05 Sep 2010 17:15:13 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/gtd-tip-one-key-opening-of-inbox-notebook-in-onenote/</guid>
+      <guid>https://zzamboni.org/post/gtd-tip-one-key-opening-of-inbox-notebook-in-onenote/</guid>
       <description>One of the most useful applications I have discovered since I had to switch to Windows as my main OS is OneNote, a really great note-taking application which I use for pretty much every data-storing and note-taking need. I use a OneNote notebook as part of my GTD inbox. Today&#39;s very simple tip is how to assign a keystroke for opening my Inbox notebook from anywhere in the system. Here are the steps:</description>
     </item>
     
     <item>
       <title>How important are the tools you use with GTD?</title>
-      <link>http://zzamboni.org/post/how-important-are-the-tools-you-use-with-gtd/</link>
+      <link>https://zzamboni.org/post/how-important-are-the-tools-you-use-with-gtd/</link>
       <pubDate>Thu, 22 Apr 2010 09:24:46 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/how-important-are-the-tools-you-use-with-gtd/</guid>
+      <guid>https://zzamboni.org/post/how-important-are-the-tools-you-use-with-gtd/</guid>
       <description>via gtdtimes.com  Short video of David Allen talking about the importance of the GTD tools you choose. Conclusion: the most important thing is that you choose a tool you actually use, because the moment you stop putting your stuff in it, it will stop working.Timely for me as I rebuild my GTD toolbox and system this week.
  </description>
     </item>
     
     <item>
       <title>Setting up my GTD system in Windows - links </title>
-      <link>http://zzamboni.org/post/setting-up-my-gtd-system-in-windows---links/</link>
+      <link>https://zzamboni.org/post/setting-up-my-gtd-system-in-windows---links/</link>
       <pubDate>Fri, 09 Apr 2010 17:54:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/setting-up-my-gtd-system-in-windows---links/</guid>
+      <guid>https://zzamboni.org/post/setting-up-my-gtd-system-in-windows---links/</guid>
       <description>Since I started at my new job and moved to a new machine and OS, my old GTD setup has fallen by the wayside and I have found myself at a loss trying to keep track of things. I have found OneNote to be a very useful tool for keeping notes and reference material, and Outlook 2010 is actually not that bad as a task/calendar/email management tool.
  So, as a first step, here are some links I have found and which I am in the process of reading and digesting for creating my own setup:</description>
     </item>

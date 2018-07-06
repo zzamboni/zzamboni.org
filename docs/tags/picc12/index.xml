@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Picc12 on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/picc12/</link>
+    <link>https://zzamboni.org/tags/picc12/</link>
     <description>Recent content in Picc12 on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 27 Apr 2012 08:30:32 -0500</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/picc12/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/picc12/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>CFEngine talks at PICC&#39;12 conference</title>
-      <link>http://zzamboni.org/post/cfengine-talks-at-picc12-conference/</link>
+      <link>https://zzamboni.org/post/cfengine-talks-at-picc12-conference/</link>
       <pubDate>Fri, 27 Apr 2012 08:30:32 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/cfengine-talks-at-picc12-conference/</guid>
+      <guid>https://zzamboni.org/post/cfengine-talks-at-picc12-conference/</guid>
       <description>There will be several CFEngine-related classes and talks at the PICC&#39;12 conference (Professional IT Community Conference) on May 11-12th, in New Jersey. I will be talking about using CFEngine as part of your security infrastructure. My colleague Joe Netzel will be talking about migration from CFEngine 2 to CFEngine 3, so if you are using CF2 and have been considering (or dreading) the migration, make sure to come by! Aleksey Tsalolikhin will give an introductory class to CFEngine.</description>
     </item>
     

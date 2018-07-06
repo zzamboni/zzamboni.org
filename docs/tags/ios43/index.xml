@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ios43 on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/ios43/</link>
+    <link>https://zzamboni.org/tags/ios43/</link>
     <description>Recent content in Ios43 on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 12 Mar 2011 17:03:00 -0600</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/ios43/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/ios43/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Single-tap conference dialing in iOS 4.3</title>
-      <link>http://zzamboni.org/post/single-tap-conference-dialing-in-ios-4.3/</link>
+      <link>https://zzamboni.org/post/single-tap-conference-dialing-in-ios-4.3/</link>
       <pubDate>Sat, 12 Mar 2011 17:03:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/single-tap-conference-dialing-in-ios-4.3/</guid>
+      <guid>https://zzamboni.org/post/single-tap-conference-dialing-in-ios-4.3/</guid>
       <description>Apple released iOS 4.3 a few days ago, and if you follow this topic at all, you have probably already heard all about the Personal Hotspot feature, AirPlay enhancements, and whatnot. But buried in the notes for this release was a new feature that caught my attention:
 Single tap conference call dialing with a pause to send a passcode
  I have found almost no mentions of this new feature online (most reviews focus on the &#34;</description>

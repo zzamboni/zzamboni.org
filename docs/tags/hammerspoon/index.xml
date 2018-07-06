@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hammerspoon on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/hammerspoon/</link>
+    <link>https://zzamboni.org/tags/hammerspoon/</link>
     <description>Recent content in Hammerspoon on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 08 Jan 2018 13:31:00 +0100</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/hammerspoon/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/hammerspoon/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>My Hammerspoon Configuration, With Commentary</title>
-      <link>http://zzamboni.org/post/my-hammerspoon-configuration-with-commentary/</link>
+      <link>https://zzamboni.org/post/my-hammerspoon-configuration-with-commentary/</link>
       <pubDate>Mon, 08 Jan 2018 13:31:00 +0100</pubDate>
       
-      <guid>http://zzamboni.org/post/my-hammerspoon-configuration-with-commentary/</guid>
+      <guid>https://zzamboni.org/post/my-hammerspoon-configuration-with-commentary/</guid>
       <description>Last update: June 26, 2018
 In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration in GitHub.
 General variables and configuration Global log level. Per-spoon log level can be configured in each Install:andUse block below.</description>
@@ -24,10 +24,10 @@ General variables and configuration Global log level. Per-spoon log level can be
     
     <item>
       <title>Just Enough Lua to Be Productive in Hammerspoon, Part 2</title>
-      <link>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</link>
+      <link>https://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</link>
       <pubDate>Wed, 01 Nov 2017 08:16:15 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</guid>
+      <guid>https://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</guid>
       <description>&lt;p&gt;In this second article of the &amp;ldquo;Just Enough Lua&amp;rdquo; series, we dive into
 Lua&amp;rsquo;s types and data structures.&lt;/p&gt;
 
@@ -36,10 +36,10 @@ Lua&amp;rsquo;s types and data structures.&lt;/p&gt;
     
     <item>
       <title>Just Enough Lua to Be Productive in Hammerspoon, Part 1</title>
-      <link>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</link>
+      <link>https://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</link>
       <pubDate>Sat, 21 Oct 2017 20:36:28 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</guid>
+      <guid>https://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</guid>
       <description>&lt;p&gt;Hammerspoon&amp;rsquo;s configuration files are written in Lua, so a basic
 knowledge of the language is very useful to be an effective user of
 Hammerspoon. In this 2-part article I will show you the basics of Lua
@@ -51,10 +51,10 @@ will discover that Lua is a surprisingly powerful language.&lt;/p&gt;
     
     <item>
       <title>Fixing the Outlook-to-OmniFocus Script</title>
-      <link>http://zzamboni.org/post/fixing-outlook-to-omnifocus-script/</link>
+      <link>https://zzamboni.org/post/fixing-outlook-to-omnifocus-script/</link>
       <pubDate>Mon, 11 Sep 2017 21:11:29 +0200</pubDate>
       
-      <guid>http://zzamboni.org/post/fixing-outlook-to-omnifocus-script/</guid>
+      <guid>https://zzamboni.org/post/fixing-outlook-to-omnifocus-script/</guid>
       <description>&lt;p&gt;Here&amp;rsquo;s how to fix the breakage caused by one of the recent updates to
 Microsoft Outlook in the Outlook-to-OmniFocus AppleScript included
 with my SendToOmniFocus spoon.&lt;/p&gt;
@@ -64,10 +64,10 @@ with my SendToOmniFocus spoon.&lt;/p&gt;
     
     <item>
       <title>Using Spoons in Hammerspoon</title>
-      <link>http://zzamboni.org/post/using-spoons-in-hammerspoon/</link>
+      <link>https://zzamboni.org/post/using-spoons-in-hammerspoon/</link>
       <pubDate>Fri, 01 Sep 2017 20:17:55 +0200</pubDate>
       
-      <guid>http://zzamboni.org/post/using-spoons-in-hammerspoon/</guid>
+      <guid>https://zzamboni.org/post/using-spoons-in-hammerspoon/</guid>
       <description>&lt;p&gt;In this second article about Hammerspoon, we look into &lt;em&gt;Spoons&lt;/em&gt;,
 modules written in Lua which can be easily installed and loaded into
 Hammerspoon to provide ready-to-use functionality. Spoons provide a
@@ -79,10 +79,10 @@ share your own work with other users.&lt;/p&gt;
     
     <item>
       <title>Getting Started With Hammerspoon</title>
-      <link>http://zzamboni.org/post/getting-started-with-hammerspoon/</link>
+      <link>https://zzamboni.org/post/getting-started-with-hammerspoon/</link>
       <pubDate>Mon, 21 Aug 2017 16:34:00 +0200</pubDate>
       
-      <guid>http://zzamboni.org/post/getting-started-with-hammerspoon/</guid>
+      <guid>https://zzamboni.org/post/getting-started-with-hammerspoon/</guid>
       <description>&lt;p&gt;This is the first installment of a series of posts about Hammerspoon,
 a staggeringly powerful automation utility which gives you an amazing
 degree of control over your Mac, allowing you to automate and control

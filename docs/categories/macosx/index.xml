@@ -2,70 +2,70 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Macosx on zzamboni.org</title>
-    <link>http://zzamboni.org/categories/macosx/</link>
+    <link>https://zzamboni.org/categories/macosx/</link>
     <description>Recent content in Macosx on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 07 Mar 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/categories/macosx/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/categories/macosx/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Fast translation with Google Translator</title>
-      <link>http://zzamboni.org/post/fast-translation-with-google-translator/</link>
+      <link>https://zzamboni.org/post/fast-translation-with-google-translator/</link>
       <pubDate>Mon, 07 Mar 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/fast-translation-with-google-translator/</guid>
+      <guid>https://zzamboni.org/post/fast-translation-with-google-translator/</guid>
       <description>via https://medium.com/@mrdoro/fast-translation-with-google-translator-and-mac-osx-817e32233b7a
  https://medium.com/@mrdoro/fast-translation-with-google-translator-and-mac-osx-817e32233b7a  Nice article about how to create a service to automatically translate selected text from any application. I use this all the time, I have a “German-to-English” service bound to Command-Alt-Ctrl-Shift-E, so I can just select text off the screen, press the shortcut, and a window with the translation will pop up. Very handy.   </description>
     </item>
     
     <item>
       <title>Clicking on the MacBook Pro is entirely artificial</title>
-      <link>http://zzamboni.org/post/clicking-on-the-macbook-pro-is-entirely-artificial/</link>
+      <link>https://zzamboni.org/post/clicking-on-the-macbook-pro-is-entirely-artificial/</link>
       <pubDate>Tue, 13 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/clicking-on-the-macbook-pro-is-entirely-artificial/</guid>
+      <guid>https://zzamboni.org/post/clicking-on-the-macbook-pro-is-entirely-artificial/</guid>
       <description>via http://sixcolors.com/post/2015/10/apple-magic-trackpad-2-review/
  This is probably old news for most, but it still blew my mind: only now I realized that the clicking feeling and sound on my MacBook Pro’s trackpad is artificially generated. I did the experiment of turning on “Silent clicking” and turning off “Force click and haptic feedback” on the trackpad preferences panel and, indeed, the clicking is gone. Wow (/ht @jsnell)  To aid in the process, the Magic Trackpad apparently even generates its own artificial clicking noise (as the Force Touch trackpads in the MacBook and MacBook Pro do).</description>
     </item>
     
     <item>
       <title>Fixing Emacs problems with the fish shell</title>
-      <link>http://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</link>
+      <link>https://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</link>
       <pubDate>Thu, 14 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</guid>
+      <guid>https://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</guid>
       <description>I started getting errors from the TRAMP Emacs package because I was using fish as my default shell, and it does not recognize certain standard syntax elements (such as &amp;amp;&amp;amp; to separate commands), and Emacs runs subcommands under the default shell. I fixed this by:
  Changing my account&#39;s default shell back to `/bin/bash` Changing my Terminal.app preferences to run `/usr/local/bin/fish` when a shell opens, instead of the default login shell:  Log out and back in to have everything reloaded properly.</description>
     </item>
     
     <item>
       <title>Find all single-note tags in Evernote</title>
-      <link>http://zzamboni.org/post/find-all-single-note-tags-in-evernote/</link>
+      <link>https://zzamboni.org/post/find-all-single-note-tags-in-evernote/</link>
       <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/find-all-single-note-tags-in-evernote/</guid>
+      <guid>https://zzamboni.org/post/find-all-single-note-tags-in-evernote/</guid>
       <description>I’ve been working on cleaning up my Evernote, and noticed that I have a lot of tags assigned to a single note. I had successfully used Veritrope’s excellent Evernote empty tag remover applescript, so I made some small changes to write the attached script, which will find all single-note tags in your Evernote and list them in a new note, including links to each note. This makes it much easier to go through them and see which of those tags could be removed.</description>
     </item>
     
     <item>
       <title>How to solve truncated docker output in Mac OS X using boot2docker</title>
-      <link>http://zzamboni.org/post/how-to-solve-truncated-docker-output-in-mac-os-x-using-boot2docker/</link>
+      <link>https://zzamboni.org/post/how-to-solve-truncated-docker-output-in-mac-os-x-using-boot2docker/</link>
       <pubDate>Mon, 12 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/how-to-solve-truncated-docker-output-in-mac-os-x-using-boot2docker/</guid>
+      <guid>https://zzamboni.org/post/how-to-solve-truncated-docker-output-in-mac-os-x-using-boot2docker/</guid>
       <description>If you are using docker on Mac OS X using boot2docker (http://docs.docker.io/installation/mac/), you may see truncated output from docker run, and also may have noticed that docker attach does not work properly, producing only some output and then exiting. This bug is documented here: https://github.com/boot2docker/boot2docker/issues/150, where I also found the following workaround. Documenting it here in case anyone finds it useful:
 Instead of using the default value of DOCKER_HOST provided by boot2docker up, establish the docker connection through an ssh tunnel:</description>
     </item>
     
     <item>
       <title>How to stop com.apple.dock.extra from &#34;using significant energy&#34;</title>
-      <link>http://zzamboni.org/post/how-to-stop-com-apple-dock-extra-from-using-significant-energy/</link>
+      <link>https://zzamboni.org/post/how-to-stop-com-apple-dock-extra-from-using-significant-energy/</link>
       <pubDate>Tue, 04 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/how-to-stop-com-apple-dock-extra-from-using-significant-energy/</guid>
+      <guid>https://zzamboni.org/post/how-to-stop-com-apple-dock-extra-from-using-significant-energy/</guid>
       <description>I’d been having for some time a problem with `com.apple.dock.extra` appearing in the “Apps using significant energy” section of the battery menu. I just learned the solution (from http://forums.macrumors.com/showthread.php?t=1651662): remove BusyCal 1.6 (I upgraded to BusyCal 2, but left the old version around in case I had to go back to it). After removing it and restarting the Dock, the problem stopped.  From the same thread, it seems the problem was caused by BusyCal’s “animate transitions” preference.</description>
     </item>
     

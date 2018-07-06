@@ -2,210 +2,210 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on zzamboni.org</title>
-    <link>http://zzamboni.org/categories/</link>
+    <link>https://zzamboni.org/categories/</link>
     <description>Recent content in Categories on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 17 Apr 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Apple</title>
-      <link>http://zzamboni.org/categories/apple/</link>
+      <link>https://zzamboni.org/categories/apple/</link>
       <pubDate>Fri, 17 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/apple/</guid>
+      <guid>https://zzamboni.org/categories/apple/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Applescript</title>
-      <link>http://zzamboni.org/categories/applescript/</link>
+      <link>https://zzamboni.org/categories/applescript/</link>
       <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/applescript/</guid>
+      <guid>https://zzamboni.org/categories/applescript/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Automator</title>
-      <link>http://zzamboni.org/categories/automator/</link>
+      <link>https://zzamboni.org/categories/automator/</link>
       <pubDate>Mon, 07 Mar 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/automator/</guid>
+      <guid>https://zzamboni.org/categories/automator/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Bigdata</title>
-      <link>http://zzamboni.org/categories/bigdata/</link>
+      <link>https://zzamboni.org/categories/bigdata/</link>
       <pubDate>Thu, 30 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/bigdata/</guid>
+      <guid>https://zzamboni.org/categories/bigdata/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Emacs</title>
-      <link>http://zzamboni.org/categories/emacs/</link>
+      <link>https://zzamboni.org/categories/emacs/</link>
       <pubDate>Thu, 25 Feb 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/emacs/</guid>
+      <guid>https://zzamboni.org/categories/emacs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Enwrite</title>
-      <link>http://zzamboni.org/categories/enwrite/</link>
+      <link>https://zzamboni.org/categories/enwrite/</link>
       <pubDate>Fri, 26 Feb 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/enwrite/</guid>
+      <guid>https://zzamboni.org/categories/enwrite/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Evernote</title>
-      <link>http://zzamboni.org/categories/evernote/</link>
+      <link>https://zzamboni.org/categories/evernote/</link>
       <pubDate>Thu, 16 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/evernote/</guid>
+      <guid>https://zzamboni.org/categories/evernote/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Fonts</title>
-      <link>http://zzamboni.org/categories/fonts/</link>
+      <link>https://zzamboni.org/categories/fonts/</link>
       <pubDate>Sun, 15 Dec 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/fonts/</guid>
+      <guid>https://zzamboni.org/categories/fonts/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git</title>
-      <link>http://zzamboni.org/categories/git/</link>
+      <link>https://zzamboni.org/categories/git/</link>
       <pubDate>Wed, 20 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/git/</guid>
+      <guid>https://zzamboni.org/categories/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Github</title>
-      <link>http://zzamboni.org/categories/github/</link>
+      <link>https://zzamboni.org/categories/github/</link>
       <pubDate>Wed, 20 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/github/</guid>
+      <guid>https://zzamboni.org/categories/github/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Howto</title>
-      <link>http://zzamboni.org/categories/howto/</link>
+      <link>https://zzamboni.org/categories/howto/</link>
       <pubDate>Mon, 07 Mar 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/howto/</guid>
+      <guid>https://zzamboni.org/categories/howto/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kvm</title>
-      <link>http://zzamboni.org/categories/kvm/</link>
+      <link>https://zzamboni.org/categories/kvm/</link>
       <pubDate>Tue, 14 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/kvm/</guid>
+      <guid>https://zzamboni.org/categories/kvm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Logging</title>
-      <link>http://zzamboni.org/categories/logging/</link>
+      <link>https://zzamboni.org/categories/logging/</link>
       <pubDate>Thu, 30 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/logging/</guid>
+      <guid>https://zzamboni.org/categories/logging/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Macosx</title>
-      <link>http://zzamboni.org/categories/macosx/</link>
+      <link>https://zzamboni.org/categories/macosx/</link>
       <pubDate>Mon, 07 Mar 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/macosx/</guid>
+      <guid>https://zzamboni.org/categories/macosx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mosaic</title>
-      <link>http://zzamboni.org/categories/mosaic/</link>
+      <link>https://zzamboni.org/categories/mosaic/</link>
       <pubDate>Fri, 17 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/mosaic/</guid>
+      <guid>https://zzamboni.org/categories/mosaic/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ssh</title>
-      <link>http://zzamboni.org/categories/ssh/</link>
+      <link>https://zzamboni.org/categories/ssh/</link>
       <pubDate>Wed, 20 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/ssh/</guid>
+      <guid>https://zzamboni.org/categories/ssh/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tips</title>
-      <link>http://zzamboni.org/categories/tips/</link>
+      <link>https://zzamboni.org/categories/tips/</link>
       <pubDate>Mon, 07 Mar 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/tips/</guid>
+      <guid>https://zzamboni.org/categories/tips/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Trackpad</title>
-      <link>http://zzamboni.org/categories/trackpad/</link>
+      <link>https://zzamboni.org/categories/trackpad/</link>
       <pubDate>Tue, 13 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/trackpad/</guid>
+      <guid>https://zzamboni.org/categories/trackpad/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Translation</title>
-      <link>http://zzamboni.org/categories/translation/</link>
+      <link>https://zzamboni.org/categories/translation/</link>
       <pubDate>Mon, 07 Mar 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/translation/</guid>
+      <guid>https://zzamboni.org/categories/translation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Web</title>
-      <link>http://zzamboni.org/categories/web/</link>
+      <link>https://zzamboni.org/categories/web/</link>
       <pubDate>Fri, 17 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/web/</guid>
+      <guid>https://zzamboni.org/categories/web/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Whisky</title>
-      <link>http://zzamboni.org/categories/whisky/</link>
+      <link>https://zzamboni.org/categories/whisky/</link>
       <pubDate>Sat, 18 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/whisky/</guid>
+      <guid>https://zzamboni.org/categories/whisky/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Zznippets</title>
-      <link>http://zzamboni.org/categories/zznippets/</link>
+      <link>https://zzamboni.org/categories/zznippets/</link>
       <pubDate>Wed, 17 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/categories/zznippets/</guid>
+      <guid>https://zzamboni.org/categories/zznippets/</guid>
       <description></description>
     </item>
     

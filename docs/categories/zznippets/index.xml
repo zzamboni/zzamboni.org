@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Zznippets on zzamboni.org</title>
-    <link>http://zzamboni.org/categories/zznippets/</link>
+    <link>https://zzamboni.org/categories/zznippets/</link>
     <description>Recent content in Zznippets on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 17 Jun 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/categories/zznippets/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/categories/zznippets/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>4-year-old’s first aerobatic flight</title>
-      <link>http://zzamboni.org/post/4-year-old-s-first-aerobatic-flight/</link>
+      <link>https://zzamboni.org/post/4-year-old-s-first-aerobatic-flight/</link>
       <pubDate>Wed, 17 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/4-year-old-s-first-aerobatic-flight/</guid>
+      <guid>https://zzamboni.org/post/4-year-old-s-first-aerobatic-flight/</guid>
       <description>via http://kottke.org/15/06/airplane-aerobatics-are-hilarious
 What a fun video. Encore!
  </description>
@@ -24,76 +24,76 @@ What a fun video. Encore!
     
     <item>
       <title>The log: The lifeblood of your data pipeline - O&#39;Reilly Radar</title>
-      <link>http://zzamboni.org/post/the-log-the-lifeblood-of-your-data-pipeline-o-reilly-radar/</link>
+      <link>https://zzamboni.org/post/the-log-the-lifeblood-of-your-data-pipeline-o-reilly-radar/</link>
       <pubDate>Thu, 30 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/the-log-the-lifeblood-of-your-data-pipeline-o-reilly-radar/</guid>
+      <guid>https://zzamboni.org/post/the-log-the-lifeblood-of-your-data-pipeline-o-reilly-radar/</guid>
       <description>via http://radar.oreilly.com/2015/04/the-log-the-lifeblood-of-your-data-pipeline.html
  Interesting article. I hadn’t heard of Fluentd, looks useful.   The old paradigm — machines to humans, and the new — machines to machines. Image courtesy of Kiyoto Tamura.   Over the last decade, the primary consumer of log data shifted from humans to machines.  Software engineers still read logs, especially when their software behaves in an unexpected manner. However, in terms of “bytes processed,” humans account for a tiny fraction of the total consumption.</description>
     </item>
     
     <item>
       <title>Whisky - Matt Gemmell</title>
-      <link>http://zzamboni.org/post/whisky-matt-gemmell/</link>
+      <link>https://zzamboni.org/post/whisky-matt-gemmell/</link>
       <pubDate>Sat, 18 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/whisky-matt-gemmell/</guid>
+      <guid>https://zzamboni.org/post/whisky-matt-gemmell/</guid>
       <description>via http://mattgemmell.com/whisky/
 Nice essay.But then, finally, with one last branch hacked from your way, you set eyes upon it, and stand there. Silent and still. Perhaps you raise a hand, feeling time-worn stone beneath your fingertips. A dream, finally made solid. You’ve come so far, and now, at last, you’re here. </description>
     </item>
     
     <item>
       <title>The First Apple Homepage</title>
-      <link>http://zzamboni.org/post/the-first-apple-homepage/</link>
+      <link>https://zzamboni.org/post/the-first-apple-homepage/</link>
       <pubDate>Fri, 17 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/the-first-apple-homepage/</guid>
+      <guid>https://zzamboni.org/post/the-first-apple-homepage/</guid>
       <description>via http://kfury.com/the-first-apple-homepage
  Looks positively old-fashioned now, but the memories! I don’t remember this particular page, but I do remember compiling and using Mosaic as my first web browser on an old DECstation 5000, my first Unix workstation.    </description>
     </item>
     
     <item>
       <title>You’re probably using the wrong dictionary</title>
-      <link>http://zzamboni.org/post/you-re-probably-using-the-wrong-dictionary/</link>
+      <link>https://zzamboni.org/post/you-re-probably-using-the-wrong-dictionary/</link>
       <pubDate>Wed, 23 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/you-re-probably-using-the-wrong-dictionary/</guid>
+      <guid>https://zzamboni.org/post/you-re-probably-using-the-wrong-dictionary/</guid>
       <description> You’re probably using the wrong dictionary « the jsomers.net blog  &amp;gt; Which is to say you get a feeling about English that Calvin once got with his pet tiger on a day of fresh-fallen snow: “It’s a magical world, Hobbes. Let’s go exploring!”  Very nice article. I ended up using the package from this page, which has slightly-better formatting in my opinion.  </description>
     </item>
     
     <item>
       <title>Mac keyboard shortcuts by Matt Gemmell</title>
-      <link>http://zzamboni.org/post/mac-keyboard-shortcuts-by-matt-gemmell/</link>
+      <link>https://zzamboni.org/post/mac-keyboard-shortcuts-by-matt-gemmell/</link>
       <pubDate>Fri, 16 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/mac-keyboard-shortcuts-by-matt-gemmell/</guid>
+      <guid>https://zzamboni.org/post/mac-keyboard-shortcuts-by-matt-gemmell/</guid>
       <description>Another great article by Matt Gemmell. I knew most of them, but learned a few things. The golden part for me were the third-party utilities, in particular Shortcat, which I didn’t know and is amazing:  &amp;gt; It’s basically Spotlight but for all visible controls and objects on the screen: it’s type-to-select for *everything you can see*.   The whole article is worth a read.  </description>
     </item>
     
     <item>
       <title>Working from home - Matt Gemmell</title>
-      <link>http://zzamboni.org/post/working-from-home-matt-gemmell/</link>
+      <link>https://zzamboni.org/post/working-from-home-matt-gemmell/</link>
       <pubDate>Wed, 07 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/working-from-home-matt-gemmell/</guid>
+      <guid>https://zzamboni.org/post/working-from-home-matt-gemmell/</guid>
       <description>Great article.  I’ve been working from home full-time for more than seven years, and running my own business for the same amount of time. Many of us at least have the opportunity to occasionally work from home, and I daresay that many people would like the chance to do so permanently. It’s not just as straightforward as pulling out a laptop in the living room, though. Working from home has a number of difficulties and challenges.</description>
     </item>
     
     <item>
       <title>Explanation of temperature scales</title>
-      <link>http://zzamboni.org/post/explanation-of-temperature-scales/</link>
+      <link>https://zzamboni.org/post/explanation-of-temperature-scales/</link>
       <pubDate>Fri, 17 Jan 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/explanation-of-temperature-scales/</guid>
+      <guid>https://zzamboni.org/post/explanation-of-temperature-scales/</guid>
       <description>Interesting explanation, via http://ralfmaximus.tumblr.com/post/73635353732/spinningyarns-doctorbee-xwidep-scales   This is because Fahrenheit is based on a brine scale and the human body. The scale is basically how cold does it have to be to freeze saltwater (zero Fahrenheit) to what temperature is the human body (100-ish Fahrenheit, although now we know that’s not exactly accurate). Fahrenheit was designed around humans.  Celsius and Kelvin are designed around the natural world.  Celsius is a scale based on water.</description>
     </item>
     
     <item>
       <title>Honest trailer: Man of Steel</title>
-      <link>http://zzamboni.org/post/honest-trailer-man-of-steel/</link>
+      <link>https://zzamboni.org/post/honest-trailer-man-of-steel/</link>
       <pubDate>Wed, 20 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/honest-trailer-man-of-steel/</guid>
+      <guid>https://zzamboni.org/post/honest-trailer-man-of-steel/</guid>
       <description>   </description>
     </item>
     

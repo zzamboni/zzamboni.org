@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Languages on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/languages/</link>
+    <link>https://zzamboni.org/tags/languages/</link>
     <description>Recent content in Languages on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 07 Apr 2010 15:16:13 -0500</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/languages/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/languages/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Tiobe Index: C back at #1</title>
-      <link>http://zzamboni.org/post/tiobe-index-c-back-at-#1/</link>
+      <link>https://zzamboni.org/post/tiobe-index-c-back-at-#1/</link>
       <pubDate>Wed, 07 Apr 2010 15:16:13 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/tiobe-index-c-back-at-#1/</guid>
+      <guid>https://zzamboni.org/post/tiobe-index-c-back-at-#1/</guid>
       <description>Position
 Apr 2010 Position
 Apr 2009 Delta in Position Programming Language Ratings

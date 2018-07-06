@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cfengine on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/cfengine/</link>
+    <link>https://zzamboni.org/tags/cfengine/</link>
     <description>Recent content in Cfengine on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 13 Sep 2017 13:45:54 +0000</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/cfengine/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/cfengine/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Limited Time Promotion! 50% off &#34;Learning CFEngine 3&#34;</title>
-      <link>http://zzamboni.org/post/limited-time-sale-learncf3/</link>
+      <link>https://zzamboni.org/post/limited-time-sale-learncf3/</link>
       <pubDate>Wed, 13 Sep 2017 13:45:54 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/limited-time-sale-learncf3/</guid>
+      <guid>https://zzamboni.org/post/limited-time-sale-learncf3/</guid>
       <description>&lt;p&gt;For one week only, until September 20th, 2017, you can buy the new
 ebook release of &amp;ldquo;Learning CFEngine 3&amp;rdquo; on Amazon at 50% off its list
 price, US$4.98 instead of the regular US$9.99.&lt;/p&gt;
@@ -26,10 +26,10 @@ price, US$4.98 instead of the regular US$9.99.&lt;/p&gt;
     
     <item>
       <title>New Release of &#34;Learning CFEngine 3&#34;</title>
-      <link>http://zzamboni.org/post/new-release-of-learning-cfengine-3/</link>
+      <link>https://zzamboni.org/post/new-release-of-learning-cfengine-3/</link>
       <pubDate>Wed, 30 Aug 2017 11:16:26 +0200</pubDate>
       
-      <guid>http://zzamboni.org/post/new-release-of-learning-cfengine-3/</guid>
+      <guid>https://zzamboni.org/post/new-release-of-learning-cfengine-3/</guid>
       <description>&lt;p&gt;A new release of my book &amp;ldquo;Learning CFEngine 3&amp;rdquo; is now available!&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -37,19 +37,19 @@ price, US$4.98 instead of the regular US$9.99.&lt;/p&gt;
     
     <item>
       <title>CFEngine talks at PICC&#39;12 conference</title>
-      <link>http://zzamboni.org/post/cfengine-talks-at-picc12-conference/</link>
+      <link>https://zzamboni.org/post/cfengine-talks-at-picc12-conference/</link>
       <pubDate>Fri, 27 Apr 2012 08:30:32 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/cfengine-talks-at-picc12-conference/</guid>
+      <guid>https://zzamboni.org/post/cfengine-talks-at-picc12-conference/</guid>
       <description>There will be several CFEngine-related classes and talks at the PICC&#39;12 conference (Professional IT Community Conference) on May 11-12th, in New Jersey. I will be talking about using CFEngine as part of your security infrastructure. My colleague Joe Netzel will be talking about migration from CFEngine 2 to CFEngine 3, so if you are using CF2 and have been considering (or dreading) the migration, make sure to come by! Aleksey Tsalolikhin will give an introductory class to CFEngine.</description>
     </item>
     
     <item>
       <title>Learning CFEngine 3 has been released</title>
-      <link>http://zzamboni.org/post/learning-cfengine-3-has-been-released/</link>
+      <link>https://zzamboni.org/post/learning-cfengine-3-has-been-released/</link>
       <pubDate>Sat, 24 Mar 2012 01:23:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/learning-cfengine-3-has-been-released/</guid>
+      <guid>https://zzamboni.org/post/learning-cfengine-3-has-been-released/</guid>
       <description>  I am ecstatic to announce that the book is now officially released!
  via blog.cf-learn.info  I am so happy :-)
  </description>
@@ -57,49 +57,49 @@ price, US$4.98 instead of the regular US$9.99.&lt;/p&gt;
     
     <item>
       <title>CFEngine posts moving to cf-learn.info</title>
-      <link>http://zzamboni.org/post/cfengine-posts-moving-to-cf-learn.info/</link>
+      <link>https://zzamboni.org/post/cfengine-posts-moving-to-cf-learn.info/</link>
       <pubDate>Wed, 04 Jan 2012 13:16:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/cfengine-posts-moving-to-cf-learn.info/</guid>
+      <guid>https://zzamboni.org/post/cfengine-posts-moving-to-cf-learn.info/</guid>
       <description>I have been blogging about CFEngine here for a while (it&#39;s my most frequent tag). As of now, I&#39;m starting to post all CFEngine-related posts to http://blog.cf-learn.info/, which is part of the web site for my book &#34;Learning CFEngine 3&#34;. In this way, I intend to group all CFEngine-related content over there. I will still cross-post relevant things here, but if you want to stay fully up to date on my CFEngine writings, please subscribe over there as well.</description>
     </item>
     
     <item>
       <title>cf-cmd: A command-line tool for running CFEngine snippets</title>
-      <link>http://zzamboni.org/post/cf-cmd-a-command-line-tool-for-running-cfengine-snippets/</link>
+      <link>https://zzamboni.org/post/cf-cmd-a-command-line-tool-for-running-cfengine-snippets/</link>
       <pubDate>Tue, 27 Dec 2011 19:41:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/cf-cmd-a-command-line-tool-for-running-cfengine-snippets/</guid>
+      <guid>https://zzamboni.org/post/cf-cmd-a-command-line-tool-for-running-cfengine-snippets/</guid>
       <description>After building the typical &#34;test bundle&#34; scaffolding in an editor for the hundredth time, I decided to do something about it. The result is the cf-cmd command. via blog.cf-learn.info  A little useful script I wrote for making it easier to test CFEngine code snippets. Follow the link to see the full details.
  </description>
     </item>
     
     <item>
       <title>New website for &#34;Learning CFEngine 3&#34;</title>
-      <link>http://zzamboni.org/post/new-website-for-learning-cfengine-3/</link>
+      <link>https://zzamboni.org/post/new-website-for-learning-cfengine-3/</link>
       <pubDate>Thu, 15 Dec 2011 02:22:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/new-website-for-learning-cfengine-3/</guid>
+      <guid>https://zzamboni.org/post/new-website-for-learning-cfengine-3/</guid>
       <description>I&#39;m happy to announce that the website for my book is now live at http://cf-learn.info/. 
 In this website you will find:  General information about the book.  A discussion forum for any type of questions, feedback or suggestions about the book.  Downloadable code examples from the book, plus (over time) many other new examples.  List of Errata, and access to the Errata system at O&#39;Reilly  A blog devoted to the book and to CFEngine.</description>
     </item>
     
     <item>
       <title>&#34;Learning CFEngine 3&#34; Early Release now available -use AUTHD to get 40-50% off</title>
-      <link>http://zzamboni.org/post/learning-cfengine-3early-release-now-available--use-authd-to-get-40-50-off/</link>
+      <link>https://zzamboni.org/post/learning-cfengine-3early-release-now-available--use-authd-to-get-40-50-off/</link>
       <pubDate>Tue, 06 Dec 2011 15:03:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/learning-cfengine-3early-release-now-available--use-authd-to-get-40-50-off/</guid>
+      <guid>https://zzamboni.org/post/learning-cfengine-3early-release-now-available--use-authd-to-get-40-50-off/</guid>
       <description>Learning CFEngine 3 Automated system administration for sites of any size  By Diego Zamboni    via shop.oreilly.com  My upcoming book &#34;Learning CFEngine 3&#34; is now available as an Early Release, which includes (for now) the first four chapters of the book. You can use the code AUTHD to get 40% off the print book, or 50% off the ebook version.
 Go get yours!</description>
     </item>
     
     <item>
       <title>&#34;Security in the Third Wave of IT Engineering&#34;</title>
-      <link>http://zzamboni.org/post/security-in-the-third-wave-of-it-engineering/</link>
+      <link>https://zzamboni.org/post/security-in-the-third-wave-of-it-engineering/</link>
       <pubDate>Thu, 24 Nov 2011 17:56:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/security-in-the-third-wave-of-it-engineering/</guid>
+      <guid>https://zzamboni.org/post/security-in-the-third-wave-of-it-engineering/</guid>
       <description>Today I gave a presentation at UNAM&#39;s 2011 Computer Security Conference in Mexico City. Below you will find my presentation (done using prezi.com, follow this link if you can&#39;t see it below). You can also get the PDF version.
   Security in the Third Wave of IT Engineering on Prezi
    Related blog posts from cfengine.com:
@@ -109,38 +109,38 @@ CFEngine, SysAdmin 3.0 and the Third Wave of IT Engineering</description>
     
     <item>
       <title>What&#39;s New in CFEngine 3: Making System Administration Even More Powerful - O&#39;Reilly Radar</title>
-      <link>http://zzamboni.org/post/whats-new-in-cfengine-3-making-system-administration-even-more-powerful---oreilly-radar/</link>
+      <link>https://zzamboni.org/post/whats-new-in-cfengine-3-making-system-administration-even-more-powerful---oreilly-radar/</link>
       <pubDate>Fri, 28 Oct 2011 16:24:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/whats-new-in-cfengine-3-making-system-administration-even-more-powerful---oreilly-radar/</guid>
+      <guid>https://zzamboni.org/post/whats-new-in-cfengine-3-making-system-administration-even-more-powerful---oreilly-radar/</guid>
       <description>CFEngine is both the oldest and the newest of the popular tools for automating site administration. Mark Burgess invented it as a free software project in 1993, and years later, as deployments in the field outgrew its original design he gave it a complete rethink and developed the powerful concept of promise theory to make it modular and maintainable.via radar.oreilly.com  I contributed to this article by Andy Oram on CFEngine 3.</description>
     </item>
     
     <item>
       <title>&#34;Introduction to CFEngine 3 Nova&#34; webinar</title>
-      <link>http://zzamboni.org/post/introduction-to-cfengine-3-nova-webinar/</link>
+      <link>https://zzamboni.org/post/introduction-to-cfengine-3-nova-webinar/</link>
       <pubDate>Tue, 25 Oct 2011 22:53:13 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/introduction-to-cfengine-3-nova-webinar/</guid>
+      <guid>https://zzamboni.org/post/introduction-to-cfengine-3-nova-webinar/</guid>
       <description>A new version of CFEngine 3 Nova was released today, and to go with it, there will be a free webinar called &#34;Introduction to CFEngine 3 Nova&#34; on November 2nd. It will be presented by one of the members of the core CFEngine team, and it will be a great opportunity to learn more about the new and improved capabilities in this release. If you are interested in CFEngine and maybe thinking of going the commercial route, or you need more information to decide, make sure to attend!</description>
     </item>
     
     <item>
       <title>New job, new book</title>
-      <link>http://zzamboni.org/post/new-job-new-book/</link>
+      <link>https://zzamboni.org/post/new-job-new-book/</link>
       <pubDate>Wed, 19 Oct 2011 00:21:07 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/new-job-new-book/</guid>
+      <guid>https://zzamboni.org/post/new-job-new-book/</guid>
       <description>Today I have two big announcements to make.
 First, as of this week I have a new job, I am now working with CFEngine AS, the company that develops and maintains cfengine. As you know if you read my blog, I am a big fan of cfengine. It is a mature and able tool that provides extreme flexibility and power to system administrators. The company is full of energy and with very interesting projects to make cfengine even better and more popular than it is today.</description>
     </item>
     
     <item>
       <title>Installing cfengine on Mac OS X</title>
-      <link>http://zzamboni.org/post/installing-cfengine-on-mac-os-x/</link>
+      <link>https://zzamboni.org/post/installing-cfengine-on-mac-os-x/</link>
       <pubDate>Fri, 05 Aug 2011 02:31:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/installing-cfengine-on-mac-os-x/</guid>
+      <guid>https://zzamboni.org/post/installing-cfengine-on-mac-os-x/</guid>
       <description>Cfengine (tested 3.2.0) installs easily on OS X (tested 10.7), given that it&#39;s Unix. One problem I encountered was that it does not compile with the bundled version of Berkeley DB (it recognizes it during configure, but produces compilation errors). The solution is to use some other DB engine. I chose Tokyo Cabinet. Using homebrew, the process is simple
 brew install tokyo-cabinet
 After this, configure --with-tokyocabinet, and then compile and install as usual.</description>
@@ -148,39 +148,39 @@ After this, configure --with-tokyocabinet, and then compile and install as usual
     
     <item>
       <title>Editing sshd configuration files with cfengine3</title>
-      <link>http://zzamboni.org/post/editing-sshd-configuration-files-with-cfengine3/</link>
+      <link>https://zzamboni.org/post/editing-sshd-configuration-files-with-cfengine3/</link>
       <pubDate>Wed, 24 Nov 2010 23:30:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/editing-sshd-configuration-files-with-cfengine3/</guid>
+      <guid>https://zzamboni.org/post/editing-sshd-configuration-files-with-cfengine3/</guid>
       <description>Here&#39;s a cfengine bundle that I wrote for editing the sshd configuration file by passing an array with the parameters. Using an array is a very elegant way of defining the values to set. The bundle also restarts sshd after any changes are made, unless the no_restarts class is defined.
 The first gist contains the edit_sshd bundle itself, together with the set_config_values bundle that actually performs the editing job (this should go into a library file, I have it in my personal version of cfengine_stdlib.</description>
     </item>
     
     <item>
       <title>Cfengine3 lexer for Pygments</title>
-      <link>http://zzamboni.org/post/cfengine3-lexer-for-pygments/</link>
+      <link>https://zzamboni.org/post/cfengine3-lexer-for-pygments/</link>
       <pubDate>Wed, 08 Sep 2010 21:16:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/cfengine3-lexer-for-pygments/</guid>
+      <guid>https://zzamboni.org/post/cfengine3-lexer-for-pygments/</guid>
       <description>I have written a Cfengine3 lexer for Pygments, the open source syntax-highlighter used by Gist and many other sites. It seems to work fine on all the cfengine policy files I have tested, but if you find anything that doesn&#39;t quite work as expected, please let me know. This is my first-ever Pygments lexer, so if you are an expert and can advise me on better ways of doing things, I&#39;d very much appreciate the feedback too.</description>
     </item>
     
     <item>
       <title>Storing CFEngine configuration in CVS</title>
-      <link>http://zzamboni.org/post/storing-cfengine-configuration-in-cvs/</link>
+      <link>https://zzamboni.org/post/storing-cfengine-configuration-in-cvs/</link>
       <pubDate>Tue, 07 Sep 2010 14:17:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/storing-cfengine-configuration-in-cvs/</guid>
+      <guid>https://zzamboni.org/post/storing-cfengine-configuration-in-cvs/</guid>
       <description> via sial.org  Useful article about storing both development and production configurations of cfengine using a version control mechanism. I am in the process of developing a similar setup using git, I will share it here when I get it to work properly.
  </description>
     </item>
     
     <item>
       <title>Hierarchical copying with cfengine3</title>
-      <link>http://zzamboni.org/post/hierarchical-copying-with-cfengine3/</link>
+      <link>https://zzamboni.org/post/hierarchical-copying-with-cfengine3/</link>
       <pubDate>Fri, 27 Aug 2010 00:28:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/hierarchical-copying-with-cfengine3/</guid>
+      <guid>https://zzamboni.org/post/hierarchical-copying-with-cfengine3/</guid>
       <description>I recently posted a snippet to perform hierarchical copying in cfengine3. As I was attempting to integrate this mechanism into my copy of cfengine&#39;s COPBL, I realized that no additional functions or body components are needed. Thanks to cfengine3&#39;s list expansion, all you need to do is include in the existing copy promise the list containing the desired list of suffixes to try. For example:
 
 Becomes:
@@ -190,57 +190,57 @@ Becomes:
     
     <item>
       <title>The State of Open Source System Automation</title>
-      <link>http://zzamboni.org/post/the-state-of-open-source-system-automation/</link>
+      <link>https://zzamboni.org/post/the-state-of-open-source-system-automation/</link>
       <pubDate>Thu, 26 Aug 2010 01:55:58 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/the-state-of-open-source-system-automation/</guid>
+      <guid>https://zzamboni.org/post/the-state-of-open-source-system-automation/</guid>
       <description>The days of DIY system administration are rapidly coming to a close. Why? Because the open source tools available are just too good not to use. Presenting Bcfg2, Cfengine, Chef and Puppet. via linux-mag.com  Nice overview of the Usenix 2010 Configuration Management Summit, including descriptions and comparisons of the four major open-source CM systems.
  </description>
     </item>
     
     <item>
       <title>Editing whitespace-separated config files with cfengine</title>
-      <link>http://zzamboni.org/post/editing-whitespace-separated-config-files-with-cfengine/</link>
+      <link>https://zzamboni.org/post/editing-whitespace-separated-config-files-with-cfengine/</link>
       <pubDate>Wed, 25 Aug 2010 01:48:41 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/editing-whitespace-separated-config-files-with-cfengine/</guid>
+      <guid>https://zzamboni.org/post/editing-whitespace-separated-config-files-with-cfengine/</guid>
       <description> </description>
     </item>
     
     <item>
       <title>cfengine Community Open Promise Body Library on GitHub</title>
-      <link>http://zzamboni.org/post/cfengine-community-open-promise-body-library-on-github/</link>
+      <link>https://zzamboni.org/post/cfengine-community-open-promise-body-library-on-github/</link>
       <pubDate>Wed, 25 Aug 2010 01:37:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/cfengine-community-open-promise-body-library-on-github/</guid>
+      <guid>https://zzamboni.org/post/cfengine-community-open-promise-body-library-on-github/</guid>
       <description>I have created a copy of the cfengine COPBL on GitHub , where I will use it as a playground for changes and additions. This is in no way endorsed by cfengine - it is just my personal copy. But if you use GitHub and want to use it, go ahead, I will try to keep it updated with respect to the original subversion repository , although it will include my changes too.</description>
     </item>
     
     <item>
       <title>Detecting NICs that match certain IP addresses</title>
-      <link>http://zzamboni.org/post/detecting-nics-that-match-certain-ip-addresses/</link>
+      <link>https://zzamboni.org/post/detecting-nics-that-match-certain-ip-addresses/</link>
       <pubDate>Tue, 24 Aug 2010 02:01:03 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/detecting-nics-that-match-certain-ip-addresses/</guid>
+      <guid>https://zzamboni.org/post/detecting-nics-that-match-certain-ip-addresses/</guid>
       <description>Another cfengine snippet in case anyone finds it useful. This can be used to determine which NICs in the host have a certain IP address assigned to it, or match any pattern. 
  </description>
     </item>
     
     <item>
       <title>Implementing &#34;single-copy nirvana&#34; in cfengine3</title>
-      <link>http://zzamboni.org/post/implementing-single-copy-nirvana-in-cfengine3/</link>
+      <link>https://zzamboni.org/post/implementing-single-copy-nirvana-in-cfengine3/</link>
       <pubDate>Mon, 23 Aug 2010 01:56:35 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/implementing-single-copy-nirvana-in-cfengine3/</guid>
+      <guid>https://zzamboni.org/post/implementing-single-copy-nirvana-in-cfengine3/</guid>
       <description>Here is a sample implementation in cfengine3 of the technique described in the cfengine wiki as &#34;Singlecopy Nirvana&#34; for cfengine2. Cfengine3 makes the technique more powerful by allowing modularization, so that you can specify both the suffixes to try, and the files to copy using those suffixes, as variables. Also, cf3&#39;s automatic list expansion allows us to write a single copy statement that will be automatically expanded into all the different values to try.</description>
     </item>
     
     <item>
       <title>Installing cfengine on Windows 7 under cygwin</title>
-      <link>http://zzamboni.org/post/installing-cfengine-on-windows-7-under-cygwin/</link>
+      <link>https://zzamboni.org/post/installing-cfengine-on-windows-7-under-cygwin/</link>
       <pubDate>Mon, 23 Aug 2010 00:14:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/installing-cfengine-on-windows-7-under-cygwin/</guid>
+      <guid>https://zzamboni.org/post/installing-cfengine-on-windows-7-under-cygwin/</guid>
       <description>Update (2011/09/05): Updated the instructions for cfengine 3.2.0, cygwin 1.7.9, and tested them on a clean cygwin install.
 Installing the cfengine community edition under Windows (the commercial version includes native Windows support) is fairly easy under cygwin, you just need to have the appropriate dependencies installed. Here’s how I did it.
 Versions 

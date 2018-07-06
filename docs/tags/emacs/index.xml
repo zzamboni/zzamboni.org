@@ -2,61 +2,61 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Emacs on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/emacs/</link>
+    <link>https://zzamboni.org/tags/emacs/</link>
     <description>Recent content in Emacs on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 21 Mar 2018 22:45:00 +0100</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Beautifying Org Mode in Emacs</title>
-      <link>http://zzamboni.org/post/beautifying-org-mode-in-emacs/</link>
+      <link>https://zzamboni.org/post/beautifying-org-mode-in-emacs/</link>
       <pubDate>Wed, 21 Mar 2018 22:45:00 +0100</pubDate>
       
-      <guid>http://zzamboni.org/post/beautifying-org-mode-in-emacs/</guid>
+      <guid>https://zzamboni.org/post/beautifying-org-mode-in-emacs/</guid>
       <description>Over the last few months, I have used org-mode more and more for writing and programming in Emacs. I love its flexibility and power, and it is the first literate programming tool which &amp;ldquo;feels right&amp;rdquo;, and I have been able to stick with it for a longer period of time than in my previous attempts.
 Recently I started thinking about how I could make my editing environment more visually appealing.</description>
     </item>
     
     <item>
       <title>My Emacs Configuration, With Commentary</title>
-      <link>http://zzamboni.org/post/my-emacs-configuration-with-commentary/</link>
+      <link>https://zzamboni.org/post/my-emacs-configuration-with-commentary/</link>
       <pubDate>Sun, 17 Dec 2017 20:14:00 +0100</pubDate>
       
-      <guid>http://zzamboni.org/post/my-emacs-configuration-with-commentary/</guid>
+      <guid>https://zzamboni.org/post/my-emacs-configuration-with-commentary/</guid>
       <description>Last update: June 26, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&amp;rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving.</description>
     </item>
     
     <item>
       <title>Spotlight: use-package, a declarative configuration tool - Mastering Emacs</title>
-      <link>http://zzamboni.org/post/spotlight-use-package-a-declarative-configuration-tool-mastering-emacs/</link>
+      <link>https://zzamboni.org/post/spotlight-use-package-a-declarative-configuration-tool-mastering-emacs/</link>
       <pubDate>Thu, 25 Feb 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/spotlight-use-package-a-declarative-configuration-tool-mastering-emacs/</guid>
+      <guid>https://zzamboni.org/post/spotlight-use-package-a-declarative-configuration-tool-mastering-emacs/</guid>
       <description>via https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-configuration-tool
  Have you ever heard of use-package? It’s a declarative way of expressing package configuration in Emacs but without the tears.  This looks amazingly useful. I need to start migrating my Emacs config to use-package ASAP.   </description>
     </item>
     
     <item>
       <title>Fixing Emacs problems with the fish shell</title>
-      <link>http://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</link>
+      <link>https://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</link>
       <pubDate>Thu, 14 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</guid>
+      <guid>https://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</guid>
       <description>I started getting errors from the TRAMP Emacs package because I was using fish as my default shell, and it does not recognize certain standard syntax elements (such as &amp;amp;&amp;amp; to separate commands), and Emacs runs subcommands under the default shell. I fixed this by:
  Changing my account&#39;s default shell back to `/bin/bash` Changing my Terminal.app preferences to run `/usr/local/bin/fish` when a shell opens, instead of the default login shell:  Log out and back in to have everything reloaded properly.</description>
     </item>
     
     <item>
       <title>Remapping Mac modifier keys on Emacs 23.3</title>
-      <link>http://zzamboni.org/post/remapping-mac-modifier-keys-on-emacs-23.3/</link>
+      <link>https://zzamboni.org/post/remapping-mac-modifier-keys-on-emacs-23.3/</link>
       <pubDate>Sun, 27 Nov 2011 01:47:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/remapping-mac-modifier-keys-on-emacs-23.3/</guid>
+      <guid>https://zzamboni.org/post/remapping-mac-modifier-keys-on-emacs-23.3/</guid>
       <description>I just switched from Carbon Emacs (which is old Emacs 22.x) to Emacs for OS X Modified on my Mac (which is a Cocoa app, and Emacs 23.3).
 
 One of the unwelcome changes was that the Emacs &#39;Meta&#39; modifier is now by default mapped to the Option key and not Command as before. But this gave me the opportunity to learn how to map the Mac keyboard modifier keys arbitrarily.</description>
@@ -64,19 +64,19 @@ One of the unwelcome changes was that the Emacs &#39;Meta&#39; modifier is now b
     
     <item>
       <title>Emulate vi&#39;s % command (jump to matching parenthesis) in Emacs</title>
-      <link>http://zzamboni.org/post/emulate-vis--command-jump-to-matching-parenthesis-in-emacs/</link>
+      <link>https://zzamboni.org/post/emulate-vis--command-jump-to-matching-parenthesis-in-emacs/</link>
       <pubDate>Wed, 18 Aug 2010 16:09:18 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/emulate-vis--command-jump-to-matching-parenthesis-in-emacs/</guid>
+      <guid>https://zzamboni.org/post/emulate-vis--command-jump-to-matching-parenthesis-in-emacs/</guid>
       <description> </description>
     </item>
     
     <item>
       <title>Installing AucTeX on EmacsW32 on Win7/64bit</title>
-      <link>http://zzamboni.org/post/installing-auctex-on-emacsw32-on-win7/64bit/</link>
+      <link>https://zzamboni.org/post/installing-auctex-on-emacsw32-on-win7/64bit/</link>
       <pubDate>Tue, 17 Aug 2010 02:36:05 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/installing-auctex-on-emacsw32-on-win7/64bit/</guid>
+      <guid>https://zzamboni.org/post/installing-auctex-on-emacsw32-on-win7/64bit/</guid>
       <description>Today I had to install AucTeX to use on my Win7/64 machine under EmacsW32. I found the basic instructions here: http://www.sturmnet.org/blog/2007/09/01/installing-auctex-in-emacsw32, but I had to modify them a bit (in particular, I am using tetex installed from cygwin instead of MiKTeX). Here are the commands I used:
 $ mkdir -p /usr/local/share/texmf
 $ ./configure --prefix=&#39;c:/Program Files (x86)/Emacs/emacs&#39; --with-texmf-dir=&#39;/usr/local/share/texmf&#39; --with-lispdir=&#39;c:/Program Files (x86)/Emacs/emacs/site-lisp&#39;

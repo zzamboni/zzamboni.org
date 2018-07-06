@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mac on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/mac/</link>
+    <link>https://zzamboni.org/tags/mac/</link>
     <description>Recent content in Mac on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 01 Nov 2017 08:16:15 +0000</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/mac/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/mac/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Just Enough Lua to Be Productive in Hammerspoon, Part 2</title>
-      <link>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</link>
+      <link>https://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</link>
       <pubDate>Wed, 01 Nov 2017 08:16:15 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</guid>
+      <guid>https://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</guid>
       <description>&lt;p&gt;In this second article of the &amp;ldquo;Just Enough Lua&amp;rdquo; series, we dive into
 Lua&amp;rsquo;s types and data structures.&lt;/p&gt;
 
@@ -25,10 +25,10 @@ Lua&amp;rsquo;s types and data structures.&lt;/p&gt;
     
     <item>
       <title>Just Enough Lua to Be Productive in Hammerspoon, Part 1</title>
-      <link>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</link>
+      <link>https://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</link>
       <pubDate>Sat, 21 Oct 2017 20:36:28 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</guid>
+      <guid>https://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</guid>
       <description>&lt;p&gt;Hammerspoon&amp;rsquo;s configuration files are written in Lua, so a basic
 knowledge of the language is very useful to be an effective user of
 Hammerspoon. In this 2-part article I will show you the basics of Lua
@@ -40,10 +40,10 @@ will discover that Lua is a surprisingly powerful language.&lt;/p&gt;
     
     <item>
       <title>Fixing the Outlook-to-OmniFocus Script</title>
-      <link>http://zzamboni.org/post/fixing-outlook-to-omnifocus-script/</link>
+      <link>https://zzamboni.org/post/fixing-outlook-to-omnifocus-script/</link>
       <pubDate>Mon, 11 Sep 2017 21:11:29 +0200</pubDate>
       
-      <guid>http://zzamboni.org/post/fixing-outlook-to-omnifocus-script/</guid>
+      <guid>https://zzamboni.org/post/fixing-outlook-to-omnifocus-script/</guid>
       <description>&lt;p&gt;Here&amp;rsquo;s how to fix the breakage caused by one of the recent updates to
 Microsoft Outlook in the Outlook-to-OmniFocus AppleScript included
 with my SendToOmniFocus spoon.&lt;/p&gt;
@@ -53,10 +53,10 @@ with my SendToOmniFocus spoon.&lt;/p&gt;
     
     <item>
       <title>Using Spoons in Hammerspoon</title>
-      <link>http://zzamboni.org/post/using-spoons-in-hammerspoon/</link>
+      <link>https://zzamboni.org/post/using-spoons-in-hammerspoon/</link>
       <pubDate>Fri, 01 Sep 2017 20:17:55 +0200</pubDate>
       
-      <guid>http://zzamboni.org/post/using-spoons-in-hammerspoon/</guid>
+      <guid>https://zzamboni.org/post/using-spoons-in-hammerspoon/</guid>
       <description>&lt;p&gt;In this second article about Hammerspoon, we look into &lt;em&gt;Spoons&lt;/em&gt;,
 modules written in Lua which can be easily installed and loaded into
 Hammerspoon to provide ready-to-use functionality. Spoons provide a
@@ -68,10 +68,10 @@ share your own work with other users.&lt;/p&gt;
     
     <item>
       <title>Getting Started With Hammerspoon</title>
-      <link>http://zzamboni.org/post/getting-started-with-hammerspoon/</link>
+      <link>https://zzamboni.org/post/getting-started-with-hammerspoon/</link>
       <pubDate>Mon, 21 Aug 2017 16:34:00 +0200</pubDate>
       
-      <guid>http://zzamboni.org/post/getting-started-with-hammerspoon/</guid>
+      <guid>https://zzamboni.org/post/getting-started-with-hammerspoon/</guid>
       <description>&lt;p&gt;This is the first installment of a series of posts about Hammerspoon,
 a staggeringly powerful automation utility which gives you an amazing
 degree of control over your Mac, allowing you to automate and control
@@ -83,19 +83,19 @@ runtime, funtime&lt;/em&gt;.&lt;/p&gt;
     
     <item>
       <title>HowTo: Changing the available display formats for Evernote&#39;s &#34;Insert Date&#34; command</title>
-      <link>http://zzamboni.org/post/howto-changing-the-available-display-formats-for-evernotes-insert-date-command/</link>
+      <link>https://zzamboni.org/post/howto-changing-the-available-display-formats-for-evernotes-insert-date-command/</link>
       <pubDate>Tue, 13 Nov 2012 23:00:30 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/howto-changing-the-available-display-formats-for-evernotes-insert-date-command/</guid>
+      <guid>https://zzamboni.org/post/howto-changing-the-available-display-formats-for-evernotes-insert-date-command/</guid>
       <description>Evernote introduced some time ago an &#34;Insert Date&#34; keyboard shortcut, which is very handy. However, the options for the format of the inserted date seemed limited (only four options). I finally learned how this works, and how to change it on the Mac. The formats offered are those that are configured in the &#34;Languages &amp;amp; Text&#34; preferences panel. If you go to &#34;Region&#34; and then click the &#34;Customize button&#34; in the Dates part of the panel, you will see and be able to customize the formats for short, medium, long and full date representations.</description>
     </item>
     
     <item>
       <title>Remapping Mac modifier keys on Emacs 23.3</title>
-      <link>http://zzamboni.org/post/remapping-mac-modifier-keys-on-emacs-23.3/</link>
+      <link>https://zzamboni.org/post/remapping-mac-modifier-keys-on-emacs-23.3/</link>
       <pubDate>Sun, 27 Nov 2011 01:47:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/remapping-mac-modifier-keys-on-emacs-23.3/</guid>
+      <guid>https://zzamboni.org/post/remapping-mac-modifier-keys-on-emacs-23.3/</guid>
       <description>I just switched from Carbon Emacs (which is old Emacs 22.x) to Emacs for OS X Modified on my Mac (which is a Cocoa app, and Emacs 23.3).
 
 One of the unwelcome changes was that the Emacs &#39;Meta&#39; modifier is now by default mapped to the Option key and not Command as before. But this gave me the opportunity to learn how to map the Mac keyboard modifier keys arbitrarily.</description>
@@ -103,10 +103,10 @@ One of the unwelcome changes was that the Emacs &#39;Meta&#39; modifier is now b
     
     <item>
       <title>Installing cfengine on Mac OS X</title>
-      <link>http://zzamboni.org/post/installing-cfengine-on-mac-os-x/</link>
+      <link>https://zzamboni.org/post/installing-cfengine-on-mac-os-x/</link>
       <pubDate>Fri, 05 Aug 2011 02:31:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/installing-cfengine-on-mac-os-x/</guid>
+      <guid>https://zzamboni.org/post/installing-cfengine-on-mac-os-x/</guid>
       <description>Cfengine (tested 3.2.0) installs easily on OS X (tested 10.7), given that it&#39;s Unix. One problem I encountered was that it does not compile with the bundled version of Berkeley DB (it recognizes it during configure, but produces compilation errors). The solution is to use some other DB engine. I chose Tokyo Cabinet. Using homebrew, the process is simple
 brew install tokyo-cabinet
 After this, configure --with-tokyocabinet, and then compile and install as usual.</description>
@@ -114,10 +114,10 @@ After this, configure --with-tokyocabinet, and then compile and install as usual
     
     <item>
       <title>CopperExport development paused </title>
-      <link>http://zzamboni.org/post/copperexport-development-paused/</link>
+      <link>https://zzamboni.org/post/copperexport-development-paused/</link>
       <pubDate>Fri, 11 Dec 2009 06:44:02 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/copperexport-development-paused/</guid>
+      <guid>https://zzamboni.org/post/copperexport-development-paused/</guid>
       <description>I want to post a short update aimed at users of my iPhoto plugin CopperExport. I have received multiple reports of it failing in recent updates of Snow Leopard, and I have also verified personally that it does not work properly in iPhoto&#39;09.
 Unfortunately, since the big move, I find myself without easy access to a Mac for development (I had a Mac at my previous job, and I use Windows at my new job), which pretty much makes fixing these bugs impossible.</description>
     </item>

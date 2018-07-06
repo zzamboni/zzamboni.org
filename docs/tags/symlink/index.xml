@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Symlink on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/symlink/</link>
+    <link>https://zzamboni.org/tags/symlink/</link>
     <description>Recent content in Symlink on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 28 Sep 2010 09:39:00 -0500</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/symlink/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/symlink/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Making cygwin, Windows and emacs understand the same symlinks</title>
-      <link>http://zzamboni.org/post/making-cygwin-windows-and-emacs-understand-the-same-symlinks/</link>
+      <link>https://zzamboni.org/post/making-cygwin-windows-and-emacs-understand-the-same-symlinks/</link>
       <pubDate>Tue, 28 Sep 2010 09:39:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/making-cygwin-windows-and-emacs-understand-the-same-symlinks/</guid>
+      <guid>https://zzamboni.org/post/making-cygwin-windows-and-emacs-understand-the-same-symlinks/</guid>
       <description>Today I ran into the problem that symlinks created under cygwin using &#34;ln -s&#34; are not understood by Windows, and of course Windows shortcuts are seen by cygwin as regular files. Happily, this is a (semi-)solved problem. For reference, this is what needs to be done:
 
  Add &#34;winsymlinks&#34; to your CYGWIN environment variable. For example, in my .bashrc I have the following:

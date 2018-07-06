@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on zzamboni.org</title>
-    <link>http://zzamboni.org/categories/git/</link>
+    <link>https://zzamboni.org/categories/git/</link>
     <description>Recent content in Git on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 20 May 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/categories/git/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/categories/git/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Using Multiple SSH Keys with Github</title>
-      <link>http://zzamboni.org/post/using-multiple-ssh-keys-with-github/</link>
+      <link>https://zzamboni.org/post/using-multiple-ssh-keys-with-github/</link>
       <pubDate>Wed, 20 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/using-multiple-ssh-keys-with-github/</guid>
+      <guid>https://zzamboni.org/post/using-multiple-ssh-keys-with-github/</guid>
       <description>via http://www.freshblurbs.com/blog/2013/06/22/github-multiple-ssh-keys.html#tldr
  Since Github doesn&#39;t allow us to reuse an SSH Key, the only sane solution is to jump through some hoops and generate + use multiple keys on the server itself. Let&#39;s look at some effective approaches of doing that.  Short version: define multiple hosts in the SSH config file for each repository, which use different SSH keys, then you can assign different deploy keys to each repo.</description>
     </item>
     
     <item>
       <title>Moving files between git repositories, preserving history</title>
-      <link>http://zzamboni.org/post/moving-files-between-git-repositories-preserving-history/</link>
+      <link>https://zzamboni.org/post/moving-files-between-git-repositories-preserving-history/</link>
       <pubDate>Fri, 17 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/moving-files-between-git-repositories-preserving-history/</guid>
+      <guid>https://zzamboni.org/post/moving-files-between-git-repositories-preserving-history/</guid>
       <description>I needed to copy a directory between two git repositories while preserving its history. I found some good instructions at http://gbayer.com/development/moving-files-from-one-git-repository-to-another-preserving-history/, which got me started, but I figured out a way to avoid having to move all the files into their directory again (lines 5-6 in Greg&amp;rsquo;s instructions) by reversing the filter to remove everything I don&amp;rsquo;t want instead of only including the directory I want. Here are the steps (the idea is the same as in Greg&amp;rsquo;s post, so please read that to get the explanation, I&amp;rsquo;m only listing the commands here for reference):</description>
     </item>
     
     <item>
       <title>Three levels of GIT config</title>
-      <link>http://zzamboni.org/post/three-levels-of-git-config/</link>
+      <link>https://zzamboni.org/post/three-levels-of-git-config/</link>
       <pubDate>Fri, 17 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/three-levels-of-git-config/</guid>
+      <guid>https://zzamboni.org/post/three-levels-of-git-config/</guid>
       <description>via http://www.codinginahurry.com/2011/02/05/three-levels-of-git-config/
  Very nice explanation, via coding in a hurry There are 3 levels of git config; project, global and system.    project: Project configs are only available for the current project and stored in .git/config in the project&#39;s directory. global: Global configs are available for all projects for the current user and stored in ~/.gitconfig. system: System configs are available for all the users/projects and stored in /etc/gitconfig.</description>
     </item>

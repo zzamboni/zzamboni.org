@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posterous on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/posterous/</link>
+    <link>https://zzamboni.org/tags/posterous/</link>
     <description>Recent content in Posterous on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 28 Sep 2010 02:22:09 -0500</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/posterous/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/posterous/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Website redesign and unification</title>
-      <link>http://zzamboni.org/post/website-redesign-and-unification/</link>
+      <link>https://zzamboni.org/post/website-redesign-and-unification/</link>
       <pubDate>Tue, 28 Sep 2010 02:22:09 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/website-redesign-and-unification/</guid>
+      <guid>https://zzamboni.org/post/website-redesign-and-unification/</guid>
       <description>There are still some rough edges, but by far the redesign and unification of zzamboni.org is done. With the same design you can now find my blogs (hosted by posterous.com), my project pages (hosted in github.com project repositories) and some static pages (hosted in my personal github.com pages repository, this includes the root, About and Code pages, as well as the static copy of my old blog BrT, which is the only one that retains its original design).</description>
     </item>
     
