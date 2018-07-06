@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Grabcartoons on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/grabcartoons/</link>
+    <link>https://zzamboni.org/tags/grabcartoons/</link>
     <description>Recent content in Grabcartoons on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 19 Aug 2010 15:22:28 -0500</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/grabcartoons/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/grabcartoons/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Grabcartoons v2.7</title>
-      <link>http://zzamboni.org/post/grabcartoons-v2.7/</link>
+      <link>https://zzamboni.org/post/grabcartoons-v2.7/</link>
       <pubDate>Thu, 19 Aug 2010 15:22:28 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/grabcartoons-v2.7/</guid>
+      <guid>https://zzamboni.org/post/grabcartoons-v2.7/</guid>
       <description>Last night I made a new release of my comic aggregator script, grabcartoons. You can fetch it from it brand new web page, now hosted by github.com instead of sourceforge.net. </description>
     </item>
     

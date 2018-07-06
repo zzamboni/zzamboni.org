@@ -2,144 +2,144 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tips on zzamboni.org</title>
-    <link>http://zzamboni.org/categories/tips/</link>
+    <link>https://zzamboni.org/categories/tips/</link>
     <description>Recent content in Tips on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 07 Mar 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/categories/tips/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/categories/tips/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Fast translation with Google Translator</title>
-      <link>http://zzamboni.org/post/fast-translation-with-google-translator/</link>
+      <link>https://zzamboni.org/post/fast-translation-with-google-translator/</link>
       <pubDate>Mon, 07 Mar 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/fast-translation-with-google-translator/</guid>
+      <guid>https://zzamboni.org/post/fast-translation-with-google-translator/</guid>
       <description>via https://medium.com/@mrdoro/fast-translation-with-google-translator-and-mac-osx-817e32233b7a
  https://medium.com/@mrdoro/fast-translation-with-google-translator-and-mac-osx-817e32233b7a  Nice article about how to create a service to automatically translate selected text from any application. I use this all the time, I have a “German-to-English” service bound to Command-Alt-Ctrl-Shift-E, so I can just select text off the screen, press the shortcut, and a window with the translation will pop up. Very handy.   </description>
     </item>
     
     <item>
       <title>Spotlight: use-package, a declarative configuration tool - Mastering Emacs</title>
-      <link>http://zzamboni.org/post/spotlight-use-package-a-declarative-configuration-tool-mastering-emacs/</link>
+      <link>https://zzamboni.org/post/spotlight-use-package-a-declarative-configuration-tool-mastering-emacs/</link>
       <pubDate>Thu, 25 Feb 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/spotlight-use-package-a-declarative-configuration-tool-mastering-emacs/</guid>
+      <guid>https://zzamboni.org/post/spotlight-use-package-a-declarative-configuration-tool-mastering-emacs/</guid>
       <description>via https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-configuration-tool
  Have you ever heard of use-package? It’s a declarative way of expressing package configuration in Emacs but without the tears.  This looks amazingly useful. I need to start migrating my Emacs config to use-package ASAP.   </description>
     </item>
     
     <item>
       <title>Using Multiple SSH Keys with Github</title>
-      <link>http://zzamboni.org/post/using-multiple-ssh-keys-with-github/</link>
+      <link>https://zzamboni.org/post/using-multiple-ssh-keys-with-github/</link>
       <pubDate>Wed, 20 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/using-multiple-ssh-keys-with-github/</guid>
+      <guid>https://zzamboni.org/post/using-multiple-ssh-keys-with-github/</guid>
       <description>via http://www.freshblurbs.com/blog/2013/06/22/github-multiple-ssh-keys.html#tldr
  Since Github doesn&#39;t allow us to reuse an SSH Key, the only sane solution is to jump through some hoops and generate + use multiple keys on the server itself. Let&#39;s look at some effective approaches of doing that.  Short version: define multiple hosts in the SSH config file for each repository, which use different SSH keys, then you can assign different deploy keys to each repo.</description>
     </item>
     
     <item>
       <title>Fixing Emacs problems with the fish shell</title>
-      <link>http://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</link>
+      <link>https://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</link>
       <pubDate>Thu, 14 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</guid>
+      <guid>https://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</guid>
       <description>I started getting errors from the TRAMP Emacs package because I was using fish as my default shell, and it does not recognize certain standard syntax elements (such as &amp;amp;&amp;amp; to separate commands), and Emacs runs subcommands under the default shell. I fixed this by:
  Changing my account&#39;s default shell back to `/bin/bash` Changing my Terminal.app preferences to run `/usr/local/bin/fish` when a shell opens, instead of the default login shell:  Log out and back in to have everything reloaded properly.</description>
     </item>
     
     <item>
       <title>Moving files between git repositories, preserving history</title>
-      <link>http://zzamboni.org/post/moving-files-between-git-repositories-preserving-history/</link>
+      <link>https://zzamboni.org/post/moving-files-between-git-repositories-preserving-history/</link>
       <pubDate>Fri, 17 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/moving-files-between-git-repositories-preserving-history/</guid>
+      <guid>https://zzamboni.org/post/moving-files-between-git-repositories-preserving-history/</guid>
       <description>I needed to copy a directory between two git repositories while preserving its history. I found some good instructions at http://gbayer.com/development/moving-files-from-one-git-repository-to-another-preserving-history/, which got me started, but I figured out a way to avoid having to move all the files into their directory again (lines 5-6 in Greg&amp;rsquo;s instructions) by reversing the filter to remove everything I don&amp;rsquo;t want instead of only including the directory I want. Here are the steps (the idea is the same as in Greg&amp;rsquo;s post, so please read that to get the explanation, I&amp;rsquo;m only listing the commands here for reference):</description>
     </item>
     
     <item>
       <title>Three levels of GIT config</title>
-      <link>http://zzamboni.org/post/three-levels-of-git-config/</link>
+      <link>https://zzamboni.org/post/three-levels-of-git-config/</link>
       <pubDate>Fri, 17 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/three-levels-of-git-config/</guid>
+      <guid>https://zzamboni.org/post/three-levels-of-git-config/</guid>
       <description>via http://www.codinginahurry.com/2011/02/05/three-levels-of-git-config/
  Very nice explanation, via coding in a hurry There are 3 levels of git config; project, global and system.    project: Project configs are only available for the current project and stored in .git/config in the project&#39;s directory. global: Global configs are available for all projects for the current user and stored in ~/.gitconfig. system: System configs are available for all the users/projects and stored in /etc/gitconfig.</description>
     </item>
     
     <item>
       <title>Watching for changes (Polling notifications) in Evernote</title>
-      <link>http://zzamboni.org/post/watching-for-changes-polling-notifications-in-evernote/</link>
+      <link>https://zzamboni.org/post/watching-for-changes-polling-notifications-in-evernote/</link>
       <pubDate>Thu, 16 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/watching-for-changes-polling-notifications-in-evernote/</guid>
+      <guid>https://zzamboni.org/post/watching-for-changes-polling-notifications-in-evernote/</guid>
       <description>via https://dev.evernote.com/doc/articles/polling_notification.php
  Useful note about how to poll an Evernote account for new content. Also a test of web clipping with Enwrite. Polling If your app wants to know about changes in a user&#39;s Evernote account, you&#39;ll probably consider calling the NoteStore.findNotesMetadata function periodically to search for new notes. findNotes is incredibly powerful, but it&#39;s also expensive for our servers - we need to load the user&#39;s Lucene index, perform the search across all of their notes, hit the database to pull out the results, and send those results over the network to your app.</description>
     </item>
     
     <item>
       <title>How to create a new KVM VM using command line tools</title>
-      <link>http://zzamboni.org/post/how-to-create-a-new-kvm-vm-using-command-line-tools/</link>
+      <link>https://zzamboni.org/post/how-to-create-a-new-kvm-vm-using-command-line-tools/</link>
       <pubDate>Tue, 14 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/how-to-create-a-new-kvm-vm-using-command-line-tools/</guid>
+      <guid>https://zzamboni.org/post/how-to-create-a-new-kvm-vm-using-command-line-tools/</guid>
       <description> I got tired of clicking through virt-manager to create new VMs, so I found the command needed to create one from the command line (thanks https://acidborg.wordpress.com/2010/02/18/how-to-create-virtual-machines-using-kvm-kernel-based-virtual-machine/):  virt-install --name=hostname --arch=x86_64 --vcpus=2 --ram=4096 --os-type=linux --os-variant=rhel7 --hvm --connect=qemu:///system --network bridge:br-fabric --cdrom=/var/lib/libvirt/images/CentOS-7.0-1406-x86_64-Minimal.iso --disk path=/var/lib/libvirt/images/hostname.img,size=32 --accelerate --vnc   </description>
     </item>
     
     <item>
       <title>Find all single-note tags in Evernote</title>
-      <link>http://zzamboni.org/post/find-all-single-note-tags-in-evernote/</link>
+      <link>https://zzamboni.org/post/find-all-single-note-tags-in-evernote/</link>
       <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/find-all-single-note-tags-in-evernote/</guid>
+      <guid>https://zzamboni.org/post/find-all-single-note-tags-in-evernote/</guid>
       <description>I’ve been working on cleaning up my Evernote, and noticed that I have a lot of tags assigned to a single note. I had successfully used Veritrope’s excellent Evernote empty tag remover applescript, so I made some small changes to write the attached script, which will find all single-note tags in your Evernote and list them in a new note, including links to each note. This makes it much easier to go through them and see which of those tags could be removed.</description>
     </item>
     
     <item>
       <title>How to turn off &#34;sort by relevance&#34; in Evernote 5.6.0 Beta</title>
-      <link>http://zzamboni.org/post/how-to-turn-off-sort-by-relevance-in-evernote-5-6-0-beta/</link>
+      <link>https://zzamboni.org/post/how-to-turn-off-sort-by-relevance-in-evernote-5-6-0-beta/</link>
       <pubDate>Tue, 09 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/how-to-turn-off-sort-by-relevance-in-evernote-5-6-0-beta/</guid>
+      <guid>https://zzamboni.org/post/how-to-turn-off-sort-by-relevance-in-evernote-5-6-0-beta/</guid>
       <description> This was driving me crazy, but the fix is really easy (Source: https://discussion.evernote.com/topic/62259-evernote-for-mac-56-public-beta-1/?p=287015)    </description>
     </item>
     
     <item>
       <title>Mac keyboard shortcuts by Matt Gemmell</title>
-      <link>http://zzamboni.org/post/mac-keyboard-shortcuts-by-matt-gemmell/</link>
+      <link>https://zzamboni.org/post/mac-keyboard-shortcuts-by-matt-gemmell/</link>
       <pubDate>Fri, 16 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/mac-keyboard-shortcuts-by-matt-gemmell/</guid>
+      <guid>https://zzamboni.org/post/mac-keyboard-shortcuts-by-matt-gemmell/</guid>
       <description>Another great article by Matt Gemmell. I knew most of them, but learned a few things. The golden part for me were the third-party utilities, in particular Shortcat, which I didn’t know and is amazing:  &amp;gt; It’s basically Spotlight but for all visible controls and objects on the screen: it’s type-to-select for *everything you can see*.   The whole article is worth a read.  </description>
     </item>
     
     <item>
       <title>Airmail tip: prevent &#34;Save to Evernote&#34; action from opening the created note</title>
-      <link>http://zzamboni.org/post/airmail-tip-prevent-save-to-evernote-action-from-opening-the-created-note/</link>
+      <link>https://zzamboni.org/post/airmail-tip-prevent-save-to-evernote-action-from-opening-the-created-note/</link>
       <pubDate>Thu, 06 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/airmail-tip-prevent-save-to-evernote-action-from-opening-the-created-note/</guid>
+      <guid>https://zzamboni.org/post/airmail-tip-prevent-save-to-evernote-action-from-opening-the-created-note/</guid>
       <description>I’ve been trying out Airmail as my main email app. It’s quite nice, I like the built-in integrations, particularly with Evernote. By default, when you use the “Save to Evernote” action, it saves the current message to Evernote and opens the newly-created note. I went spelunking into the Airmail application directory, and found the way to disable the note-opening. Follow these steps:   Quit Airmail (don’t know if this is necessary, but it can’t hurt) Open the Terminal app Run the following command in the terminal (all in a single line): sudo /Applications/Utilities/AppleScript\ Editor.</description>
     </item>
     
     <item>
       <title>How to stop com.apple.dock.extra from &#34;using significant energy&#34;</title>
-      <link>http://zzamboni.org/post/how-to-stop-com-apple-dock-extra-from-using-significant-energy/</link>
+      <link>https://zzamboni.org/post/how-to-stop-com-apple-dock-extra-from-using-significant-energy/</link>
       <pubDate>Tue, 04 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/how-to-stop-com-apple-dock-extra-from-using-significant-energy/</guid>
+      <guid>https://zzamboni.org/post/how-to-stop-com-apple-dock-extra-from-using-significant-energy/</guid>
       <description>I’d been having for some time a problem with `com.apple.dock.extra` appearing in the “Apps using significant energy” section of the battery menu. I just learned the solution (from http://forums.macrumors.com/showthread.php?t=1651662): remove BusyCal 1.6 (I upgraded to BusyCal 2, but left the old version around in case I had to go back to it). After removing it and restarting the Dock, the problem stopped.  From the same thread, it seems the problem was caused by BusyCal’s “animate transitions” preference.</description>
     </item>
     
     <item>
       <title>Top 5 Recommended Google Font Combinations</title>
-      <link>http://zzamboni.org/post/top-5-recommended-google-font-combinations/</link>
+      <link>https://zzamboni.org/post/top-5-recommended-google-font-combinations/</link>
       <pubDate>Sun, 15 Dec 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/top-5-recommended-google-font-combinations/</guid>
+      <guid>https://zzamboni.org/post/top-5-recommended-google-font-combinations/</guid>
       <description>via http://www.studiopress.com/design/google-font-combinations.htm
 Nice suggestions.   </description>
     </item>

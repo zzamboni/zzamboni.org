@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Outlook on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/outlook/</link>
+    <link>https://zzamboni.org/tags/outlook/</link>
     <description>Recent content in Outlook on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 11 Sep 2017 21:11:29 +0200</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/outlook/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/outlook/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Fixing the Outlook-to-OmniFocus Script</title>
-      <link>http://zzamboni.org/post/fixing-outlook-to-omnifocus-script/</link>
+      <link>https://zzamboni.org/post/fixing-outlook-to-omnifocus-script/</link>
       <pubDate>Mon, 11 Sep 2017 21:11:29 +0200</pubDate>
       
-      <guid>http://zzamboni.org/post/fixing-outlook-to-omnifocus-script/</guid>
+      <guid>https://zzamboni.org/post/fixing-outlook-to-omnifocus-script/</guid>
       <description>&lt;p&gt;Here&amp;rsquo;s how to fix the breakage caused by one of the recent updates to
 Microsoft Outlook in the Outlook-to-OmniFocus AppleScript included
 with my SendToOmniFocus spoon.&lt;/p&gt;
@@ -26,49 +26,49 @@ with my SendToOmniFocus spoon.&lt;/p&gt;
     
     <item>
       <title>Automatically creating tasks from email in Outlook</title>
-      <link>http://zzamboni.org/post/automatically-creating-tasks-from-email-in-outlook/</link>
+      <link>https://zzamboni.org/post/automatically-creating-tasks-from-email-in-outlook/</link>
       <pubDate>Wed, 16 Mar 2011 01:54:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/automatically-creating-tasks-from-email-in-outlook/</guid>
+      <guid>https://zzamboni.org/post/automatically-creating-tasks-from-email-in-outlook/</guid>
       <description>Please note: I am no longer using Windows nor Outlook, so unfortunately I cannot offer any help with problems you encounter using these scripts and techniques.
 Over the last few days I have been redoing my GTD-under-Outlook setup, based on the instructions available in the &#34;GTD and Outlook&#34; guide from DavidCo (I will write more about my setup later). One of the tricks the guide suggest is creating a mail rule on outgoing mail, which scans the message body for a special tag (/wf or *wf* are suggested) and automatically adds the message to the @WAITING FOR email folder.</description>
     </item>
     
     <item>
       <title>Overhauling my GTD system under Windows</title>
-      <link>http://zzamboni.org/post/overhauling-my-gtd-system-under-windows/</link>
+      <link>https://zzamboni.org/post/overhauling-my-gtd-system-under-windows/</link>
       <pubDate>Mon, 14 Mar 2011 00:09:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/overhauling-my-gtd-system-under-windows/</guid>
+      <guid>https://zzamboni.org/post/overhauling-my-gtd-system-under-windows/</guid>
       <description>As you may know, I&#39;m a reluctant switcher from Mac to Windows. I am also a fan of GTD. I had been using Jello Dashboard (JD) to implement GTD under Outlook. JD is a very nice system, the developer is friendly and responsive, and I had even written several patches to adapt it to my way of working. I was even in the process of drafting a series of blog posts titled &#34;</description>
     </item>
     
     <item>
       <title>How to digitally sign a macro project - Outlook</title>
-      <link>http://zzamboni.org/post/how-to-digitally-sign-a-macro-project---outlook/</link>
+      <link>https://zzamboni.org/post/how-to-digitally-sign-a-macro-project---outlook/</link>
       <pubDate>Sun, 13 Mar 2011 00:16:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/how-to-digitally-sign-a-macro-project---outlook/</guid>
+      <guid>https://zzamboni.org/post/how-to-digitally-sign-a-macro-project---outlook/</guid>
       <description>This article explains how you can digitally sign a file or a macro project by using a certificate. If you don&#39;t already have a digital certificate, you must obtain one. To test macro projects on your own computer, you can create your own self-signing certificate by using the Selfcert.exe tool.
  via office.microsoft.com  Useful for future reference. I&#39;m playing with a bit of VBA in Outlook, and found that my code would work fine right after writing it, but if I restart Outlook, the macros will be disabled unless I first sign them as described in this article.</description>
     </item>
     
     <item>
       <title>Setting up a global hotkey to add tasks to Outlook</title>
-      <link>http://zzamboni.org/post/setting-up-a-global-hotkey-to-add-tasks-to-outlook/</link>
+      <link>https://zzamboni.org/post/setting-up-a-global-hotkey-to-add-tasks-to-outlook/</link>
       <pubDate>Thu, 23 Dec 2010 12:14:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/setting-up-a-global-hotkey-to-add-tasks-to-outlook/</guid>
+      <guid>https://zzamboni.org/post/setting-up-a-global-hotkey-to-add-tasks-to-outlook/</guid>
       <description>One thing I missed since I moved from a Mac (using The Hit List for GTD) to Outlook (using Jello Dashboard for GTD) was the availability of a global hot key that I could use to bring up a text entry box which I could use to quickly add things into my electronic Inbox, for later processing.
 I have found a way to achieve this, and here is the setup I am using now:</description>
     </item>
     
     <item>
       <title>Setting up my GTD system in Windows - links </title>
-      <link>http://zzamboni.org/post/setting-up-my-gtd-system-in-windows---links/</link>
+      <link>https://zzamboni.org/post/setting-up-my-gtd-system-in-windows---links/</link>
       <pubDate>Fri, 09 Apr 2010 17:54:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/setting-up-my-gtd-system-in-windows---links/</guid>
+      <guid>https://zzamboni.org/post/setting-up-my-gtd-system-in-windows---links/</guid>
       <description>Since I started at my new job and moved to a new machine and OS, my old GTD setup has fallen by the wayside and I have found myself at a loss trying to keep track of things. I have found OneNote to be a very useful tool for keeping notes and reference material, and Outlook 2010 is actually not that bad as a task/calendar/email management tool.
  So, as a first step, here are some links I have found and which I am in the process of reading and digesting for creating my own setup:</description>
     </item>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Networking on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/networking/</link>
+    <link>https://zzamboni.org/tags/networking/</link>
     <description>Recent content in Networking on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 22 Apr 2010 02:01:36 -0500</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/networking/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/networking/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Know your tools </title>
-      <link>http://zzamboni.org/post/know-your-tools/</link>
+      <link>https://zzamboni.org/post/know-your-tools/</link>
       <pubDate>Thu, 22 Apr 2010 02:01:36 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/know-your-tools/</guid>
+      <guid>https://zzamboni.org/post/know-your-tools/</guid>
       <description>I recently had to copy a very large file (&amp;gt;4GB) from a remote Windows share to my Windows 7 machine, over a very finicky connection (frequently-failing VPN over a slow Internet connection). A GUI copy didn&#39;t work because the connection dropped frequently. I tried Free Download Manager, which was the recommended tool for the download, but surprisingly, it wasn&#39;t always able to restart the download after connectivity dropped.
 Then a colleague pointed me to the &#34;</description>
     </item>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Development on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/development/</link>
+    <link>https://zzamboni.org/tags/development/</link>
     <description>Recent content in Development on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 07 Apr 2010 15:16:13 -0500</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/development/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/development/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Tiobe Index: C back at #1</title>
-      <link>http://zzamboni.org/post/tiobe-index-c-back-at-#1/</link>
+      <link>https://zzamboni.org/post/tiobe-index-c-back-at-#1/</link>
       <pubDate>Wed, 07 Apr 2010 15:16:13 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/tiobe-index-c-back-at-#1/</guid>
+      <guid>https://zzamboni.org/post/tiobe-index-c-back-at-#1/</guid>
       <description>Position
 Apr 2010 Position
 Apr 2009 Delta in Position Programming Language Ratings
@@ -25,10 +25,10 @@ Apr 2010 Delta Apr 2009 Status  1 2  C 18.058% +2.59% A  2 1  Java 18.051% -1.29
     
     <item>
       <title>Rugged software</title>
-      <link>http://zzamboni.org/post/rugged-software/</link>
+      <link>https://zzamboni.org/post/rugged-software/</link>
       <pubDate>Wed, 17 Feb 2010 10:03:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/rugged-software/</guid>
+      <guid>https://zzamboni.org/post/rugged-software/</guid>
       <description>I am rugged - and more importantly, my code is rugged.  I recognize that software has become a foundation of our modern world.
 I recognize the awesome responsibility that comes with this foundational role.
 I recognize that my code will be used in ways I cannot anticipate, in ways it was not designed, and for longer than it was ever intended.
@@ -37,10 +37,10 @@ I recognize that my code will be attacked by talented and persistent adversaries
     
     <item>
       <title>CopperExport development paused </title>
-      <link>http://zzamboni.org/post/copperexport-development-paused/</link>
+      <link>https://zzamboni.org/post/copperexport-development-paused/</link>
       <pubDate>Fri, 11 Dec 2009 06:44:02 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/copperexport-development-paused/</guid>
+      <guid>https://zzamboni.org/post/copperexport-development-paused/</guid>
       <description>I want to post a short update aimed at users of my iPhoto plugin CopperExport. I have received multiple reports of it failing in recent updates of Snow Leopard, and I have also verified personally that it does not work properly in iPhoto&#39;09.
 Unfortunately, since the big move, I find myself without easy access to a Mac for development (I had a Mac at my previous job, and I use Windows at my new job), which pretty much makes fixing these bugs impossible.</description>
     </item>

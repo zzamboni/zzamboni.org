@@ -3,3688 +3,3688 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://zzamboni.org/post/</loc>
+    <loc>https://zzamboni.org/post/</loc>
     <lastmod>2017-08-03T23:04:22+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/book/</loc>
+    <loc>https://zzamboni.org/book/</loc>
     <lastmod>2018-03-25T20:11:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/code/</loc>
+    <loc>https://zzamboni.org/code/</loc>
     <lastmod>2017-08-03T17:55:47+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/</loc>
+    <loc>https://zzamboni.org/tags/</loc>
     <lastmod>2017-09-16T14:22:03+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/contact/</loc>
+    <loc>https://zzamboni.org/contact/</loc>
     <lastmod>2018-03-25T18:34:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/about/</loc>
+    <loc>https://zzamboni.org/about/</loc>
     <lastmod>2018-03-22T19:40:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/using-and-writing-completions-in-elvish/</loc>
+    <loc>https://zzamboni.org/post/using-and-writing-completions-in-elvish/</loc>
     <lastmod>2018-06-13T20:25:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/book/cfengine/</loc>
+    <loc>https://zzamboni.org/book/cfengine/</loc>
     <lastmod>2018-03-25T21:05:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/beautifying-org-mode-in-emacs/</loc>
+    <loc>https://zzamboni.org/post/beautifying-org-mode-in-emacs/</loc>
     <lastmod>2018-03-21T22:45:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/my-hammerspoon-configuration-with-commentary/</loc>
+    <loc>https://zzamboni.org/post/my-hammerspoon-configuration-with-commentary/</loc>
     <lastmod>2018-01-08T13:31:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/my-emacs-configuration-with-commentary/</loc>
+    <loc>https://zzamboni.org/post/my-emacs-configuration-with-commentary/</loc>
     <lastmod>2017-12-17T20:14:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/bang-bang---shell-shortcuts-in-elvish/</loc>
+    <loc>https://zzamboni.org/post/bang-bang---shell-shortcuts-in-elvish/</loc>
     <lastmod>2017-12-04T22:15:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/my-elvish-configuration-with-commentary/</loc>
+    <loc>https://zzamboni.org/post/my-elvish-configuration-with-commentary/</loc>
     <lastmod>2017-11-16T20:21:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</loc>
+    <loc>https://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</loc>
     <lastmod>2017-11-01T08:16:15+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</loc>
+    <loc>https://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</loc>
     <lastmod>2017-10-21T20:36:28+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/using-nixs-single-user-mode-on-macos/</loc>
+    <loc>https://zzamboni.org/post/using-nixs-single-user-mode-on-macos/</loc>
     <lastmod>2017-09-20T18:24:47+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/elvish-an-awesome-unix-shell/</loc>
+    <loc>https://zzamboni.org/post/elvish-an-awesome-unix-shell/</loc>
     <lastmod>2017-09-14T17:09:38+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/limited-time-sale-learncf3/</loc>
+    <loc>https://zzamboni.org/post/limited-time-sale-learncf3/</loc>
     <lastmod>2017-09-13T13:45:54+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/fixing-outlook-to-omnifocus-script/</loc>
+    <loc>https://zzamboni.org/post/fixing-outlook-to-omnifocus-script/</loc>
     <lastmod>2017-09-11T21:11:29+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/using-spoons-in-hammerspoon/</loc>
+    <loc>https://zzamboni.org/post/using-spoons-in-hammerspoon/</loc>
     <lastmod>2017-09-01T20:17:55+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/new-release-of-learning-cfengine-3/</loc>
+    <loc>https://zzamboni.org/post/new-release-of-learning-cfengine-3/</loc>
     <lastmod>2017-08-30T11:16:26+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/hosting-a-ghost-blog-in-github/</loc>
+    <loc>https://zzamboni.org/post/hosting-a-ghost-blog-in-github/</loc>
     <lastmod>2017-08-25T09:00:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/getting-started-with-hammerspoon/</loc>
+    <loc>https://zzamboni.org/post/getting-started-with-hammerspoon/</loc>
     <lastmod>2017-08-21T16:34:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-big-website-reboot/</loc>
+    <loc>https://zzamboni.org/post/the-big-website-reboot/</loc>
     <lastmod>2017-08-08T06:56:52+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/</loc>
+    <loc>https://zzamboni.org/</loc>
     <lastmod>2017-08-03T22:37:17+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/code/grabcartoons/</loc>
+    <loc>https://zzamboni.org/code/grabcartoons/</loc>
     <lastmod>2017-08-03T17:25:50+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/fast-translation-with-google-translator/</loc>
+    <loc>https://zzamboni.org/post/fast-translation-with-google-translator/</loc>
     <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/enwrite-featured-in-onethingwell-org/</loc>
+    <loc>https://zzamboni.org/post/enwrite-featured-in-onethingwell-org/</loc>
     <lastmod>2016-02-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/spotlight-use-package-a-declarative-configuration-tool-mastering-emacs/</loc>
+    <loc>https://zzamboni.org/post/spotlight-use-package-a-declarative-configuration-tool-mastering-emacs/</loc>
     <lastmod>2016-02-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/clicking-on-the-macbook-pro-is-entirely-artificial/</loc>
+    <loc>https://zzamboni.org/post/clicking-on-the-macbook-pro-is-entirely-artificial/</loc>
     <lastmod>2015-10-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/4-year-old-s-first-aerobatic-flight/</loc>
+    <loc>https://zzamboni.org/post/4-year-old-s-first-aerobatic-flight/</loc>
     <lastmod>2015-06-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/using-multiple-ssh-keys-with-github/</loc>
+    <loc>https://zzamboni.org/post/using-multiple-ssh-keys-with-github/</loc>
     <lastmod>2015-05-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</loc>
+    <loc>https://zzamboni.org/post/fixing-emacs-problems-with-the-fish-shell/</loc>
     <lastmod>2015-05-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-log-the-lifeblood-of-your-data-pipeline-o-reilly-radar/</loc>
+    <loc>https://zzamboni.org/post/the-log-the-lifeblood-of-your-data-pipeline-o-reilly-radar/</loc>
     <lastmod>2015-04-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/whisky-matt-gemmell/</loc>
+    <loc>https://zzamboni.org/post/whisky-matt-gemmell/</loc>
     <lastmod>2015-04-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/moving-files-between-git-repositories-preserving-history/</loc>
+    <loc>https://zzamboni.org/post/moving-files-between-git-repositories-preserving-history/</loc>
     <lastmod>2015-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-first-apple-homepage/</loc>
+    <loc>https://zzamboni.org/post/the-first-apple-homepage/</loc>
     <lastmod>2015-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/three-levels-of-git-config/</loc>
+    <loc>https://zzamboni.org/post/three-levels-of-git-config/</loc>
     <lastmod>2015-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/watching-for-changes-polling-notifications-in-evernote/</loc>
+    <loc>https://zzamboni.org/post/watching-for-changes-polling-notifications-in-evernote/</loc>
     <lastmod>2015-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/how-to-create-a-new-kvm-vm-using-command-line-tools/</loc>
+    <loc>https://zzamboni.org/post/how-to-create-a-new-kvm-vm-using-command-line-tools/</loc>
     <lastmod>2015-04-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/find-all-single-note-tags-in-evernote/</loc>
+    <loc>https://zzamboni.org/post/find-all-single-note-tags-in-evernote/</loc>
     <lastmod>2015-01-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/how-to-turn-off-sort-by-relevance-in-evernote-5-6-0-beta/</loc>
+    <loc>https://zzamboni.org/post/how-to-turn-off-sort-by-relevance-in-evernote-5-6-0-beta/</loc>
     <lastmod>2014-09-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/you-re-probably-using-the-wrong-dictionary/</loc>
+    <loc>https://zzamboni.org/post/you-re-probably-using-the-wrong-dictionary/</loc>
     <lastmod>2014-07-23T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/mac-keyboard-shortcuts-by-matt-gemmell/</loc>
+    <loc>https://zzamboni.org/post/mac-keyboard-shortcuts-by-matt-gemmell/</loc>
     <lastmod>2014-05-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/how-to-solve-truncated-docker-output-in-mac-os-x-using-boot2docker/</loc>
+    <loc>https://zzamboni.org/post/how-to-solve-truncated-docker-output-in-mac-os-x-using-boot2docker/</loc>
     <lastmod>2014-05-12T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/working-from-home-matt-gemmell/</loc>
+    <loc>https://zzamboni.org/post/working-from-home-matt-gemmell/</loc>
     <lastmod>2014-05-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/airmail-tip-prevent-save-to-evernote-action-from-opening-the-created-note/</loc>
+    <loc>https://zzamboni.org/post/airmail-tip-prevent-save-to-evernote-action-from-opening-the-created-note/</loc>
     <lastmod>2014-03-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/how-to-stop-com-apple-dock-extra-from-using-significant-energy/</loc>
+    <loc>https://zzamboni.org/post/how-to-stop-com-apple-dock-extra-from-using-significant-energy/</loc>
     <lastmod>2014-03-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/explanation-of-temperature-scales/</loc>
+    <loc>https://zzamboni.org/post/explanation-of-temperature-scales/</loc>
     <lastmod>2014-01-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/testing-markdown-support/</loc>
+    <loc>https://zzamboni.org/post/testing-markdown-support/</loc>
     <lastmod>2013-12-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/top-5-recommended-google-font-combinations/</loc>
+    <loc>https://zzamboni.org/post/top-5-recommended-google-font-combinations/</loc>
     <lastmod>2013-12-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/honest-trailer-man-of-steel/</loc>
+    <loc>https://zzamboni.org/post/honest-trailer-man-of-steel/</loc>
     <lastmod>2013-11-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/ellen-on-password-security/</loc>
+    <loc>https://zzamboni.org/post/ellen-on-password-security/</loc>
     <lastmod>2013-04-25T14:46:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/ignite-talks/</loc>
+    <loc>https://zzamboni.org/post/ignite-talks/</loc>
     <lastmod>2013-04-14T12:13:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/on-the-other-side/</loc>
+    <loc>https://zzamboni.org/post/on-the-other-side/</loc>
     <lastmod>2013-03-25T15:57:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/howto-changing-the-available-display-formats-for-evernotes-insert-date-command/</loc>
+    <loc>https://zzamboni.org/post/howto-changing-the-available-display-formats-for-evernotes-insert-date-command/</loc>
     <lastmod>2012-11-13T23:00:30-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/included-in-the-#linuxcon-registration-packet-a-skateboard%23/</loc>
+    <loc>https://zzamboni.org/post/included-in-the-#linuxcon-registration-packet-a-skateboard%23/</loc>
     <lastmod>2012-08-27T23:46:49-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/letters-of-note-regarding-your-dam-complaint/</loc>
+    <loc>https://zzamboni.org/post/letters-of-note-regarding-your-dam-complaint/</loc>
     <lastmod>2012-07-12T12:59:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-cfengine-agent-as-drawn-by-my-6-year-old-daughter-/</loc>
+    <loc>https://zzamboni.org/post/the-cfengine-agent-as-drawn-by-my-6-year-old-daughter-/</loc>
     <lastmod>2012-07-04T15:30:13-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/when-a-dragon-mated-the-space-station-/ht-badastronomer/</loc>
+    <loc>https://zzamboni.org/post/when-a-dragon-mated-the-space-station-/ht-badastronomer/</loc>
     <lastmod>2012-05-25T11:21:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/cfengine-talks-at-picc12-conference/</loc>
+    <loc>https://zzamboni.org/post/cfengine-talks-at-picc12-conference/</loc>
     <lastmod>2012-04-27T08:30:32-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/earth-day-from-40000-km-up--bad-astronomy--discover-magazine/</loc>
+    <loc>https://zzamboni.org/post/earth-day-from-40000-km-up--bad-astronomy--discover-magazine/</loc>
     <lastmod>2012-04-22T20:13:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/publishing-with-ibooks-author-oreilly-media/</loc>
+    <loc>https://zzamboni.org/post/publishing-with-ibooks-author-oreilly-media/</loc>
     <lastmod>2012-04-16T17:05:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/bezos-expeditions--f-1-engine-recovery/</loc>
+    <loc>https://zzamboni.org/post/bezos-expeditions--f-1-engine-recovery/</loc>
     <lastmod>2012-04-03T23:30:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/github-instantly-beautiful-project-pages/</loc>
+    <loc>https://zzamboni.org/post/github-instantly-beautiful-project-pages/</loc>
     <lastmod>2012-04-03T23:15:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/purdue-at-night/</loc>
+    <loc>https://zzamboni.org/post/purdue-at-night/</loc>
     <lastmod>2012-03-26T00:01:14-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/learning-cfengine-3-has-been-released/</loc>
+    <loc>https://zzamboni.org/post/learning-cfengine-3-has-been-released/</loc>
     <lastmod>2012-03-24T01:23:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/analytics-put-to-a-good-cause/</loc>
+    <loc>https://zzamboni.org/post/analytics-put-to-a-good-cause/</loc>
     <lastmod>2012-03-15T17:05:57-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/a-dogs-gotta-do-what-a-dogs-gotta-doo-doo--the-sun-news/</loc>
+    <loc>https://zzamboni.org/post/a-dogs-gotta-do-what-a-dogs-gotta-doo-doo--the-sun-news/</loc>
     <lastmod>2012-03-13T17:29:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/github/gitignore/</loc>
+    <loc>https://zzamboni.org/post/github/gitignore/</loc>
     <lastmod>2012-03-12T09:10:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/heart-stop-beating--jeremiah-zagar-on-vimeo/</loc>
+    <loc>https://zzamboni.org/post/heart-stop-beating--jeremiah-zagar-on-vimeo/</loc>
     <lastmod>2012-03-02T13:03:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/six-legged-giant-finds-secret-hideaway-hides-for-80-years--krulwich-wonders...--npr/</loc>
+    <loc>https://zzamboni.org/post/six-legged-giant-finds-secret-hideaway-hides-for-80-years--krulwich-wonders...--npr/</loc>
     <lastmod>2012-03-02T00:11:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/a-punto-de-comenzar.-torneo-de-#taekwondo-en-quer%C3%A9taro/</loc>
+    <loc>https://zzamboni.org/post/a-punto-de-comenzar.-torneo-de-#taekwondo-en-quer%C3%A9taro/</loc>
     <lastmod>2012-02-18T09:50:08-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-fantastic-flying-books-of-mr.-morris-lessmore-2011---youtube/</loc>
+    <loc>https://zzamboni.org/post/the-fantastic-flying-books-of-mr.-morris-lessmore-2011---youtube/</loc>
     <lastmod>2012-02-17T23:50:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/lists-of-note-henry-millers-11-commandments/</loc>
+    <loc>https://zzamboni.org/post/lists-of-note-henry-millers-11-commandments/</loc>
     <lastmod>2012-01-31T09:41:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/our-new-popcorn-machine-/</loc>
+    <loc>https://zzamboni.org/post/our-new-popcorn-machine-/</loc>
     <lastmod>2012-01-28T17:15:40-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/changing-message-protocol-handler-from-sparrow-back-to-mail.app/</loc>
+    <loc>https://zzamboni.org/post/changing-message-protocol-handler-from-sparrow-back-to-mail.app/</loc>
     <lastmod>2012-01-25T09:54:07-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/how-to-remove-a-subproject/submodule-to-a-git-svn-repository/</loc>
+    <loc>https://zzamboni.org/post/how-to-remove-a-subproject/submodule-to-a-git-svn-repository/</loc>
     <lastmod>2012-01-25T03:16:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/nwdiag---simple-network-diagram-image-generators--blockdiag-1.0-documentation/</loc>
+    <loc>https://zzamboni.org/post/nwdiag---simple-network-diagram-image-generators--blockdiag-1.0-documentation/</loc>
     <lastmod>2012-01-23T22:06:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/harbin-international-ice-and-snow-festival-2012---the-big-picture/</loc>
+    <loc>https://zzamboni.org/post/harbin-international-ice-and-snow-festival-2012---the-big-picture/</loc>
     <lastmod>2012-01-22T01:37:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-joy-of-books---youtube/</loc>
+    <loc>https://zzamboni.org/post/the-joy-of-books---youtube/</loc>
     <lastmod>2012-01-18T19:08:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/every-presentation-ever/</loc>
+    <loc>https://zzamboni.org/post/every-presentation-ever/</loc>
     <lastmod>2012-01-18T15:41:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/i-broke-my-zagg-smartbuds-/</loc>
+    <loc>https://zzamboni.org/post/i-broke-my-zagg-smartbuds-/</loc>
     <lastmod>2012-01-13T20:36:33-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/how-one-bit-of-stupidity-could-have-brought-down-a-multi-million-dollar-media-companypeter-shankman/</loc>
+    <loc>https://zzamboni.org/post/how-one-bit-of-stupidity-could-have-brought-down-a-multi-million-dollar-media-companypeter-shankman/</loc>
     <lastmod>2012-01-13T13:14:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-restart-page---free-unlimited-rebooting-experience-from-vintage-operating-systems/</loc>
+    <loc>https://zzamboni.org/post/the-restart-page---free-unlimited-rebooting-experience-from-vintage-operating-systems/</loc>
     <lastmod>2012-01-08T00:29:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/national-geographic-photography-contest-winners-2011---the-big-picture/</loc>
+    <loc>https://zzamboni.org/post/national-geographic-photography-contest-winners-2011---the-big-picture/</loc>
     <lastmod>2012-01-06T11:43:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/font-squirrel/</loc>
+    <loc>https://zzamboni.org/post/font-squirrel/</loc>
     <lastmod>2012-01-04T20:14:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/fraser-speirs---blog---misconceptions-about-iosmultitasking/</loc>
+    <loc>https://zzamboni.org/post/fraser-speirs---blog---misconceptions-about-iosmultitasking/</loc>
     <lastmod>2012-01-04T15:27:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/cfengine-posts-moving-to-cf-learn.info/</loc>
+    <loc>https://zzamboni.org/post/cfengine-posts-moving-to-cf-learn.info/</loc>
     <lastmod>2012-01-04T13:16:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/pile-still-left-to-process-in-my-year-start-#gtd-review.-trying-to-start-the-yr-with-a-clean-slate/desk.-the-wine-helps/</loc>
+    <loc>https://zzamboni.org/post/pile-still-left-to-process-in-my-year-start-#gtd-review.-trying-to-start-the-yr-with-a-clean-slate/desk.-the-wine-helps/</loc>
     <lastmod>2012-01-02T14:35:32-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/cf-cmd-a-command-line-tool-for-running-cfengine-snippets/</loc>
+    <loc>https://zzamboni.org/post/cf-cmd-a-command-line-tool-for-running-cfengine-snippets/</loc>
     <lastmod>2011-12-27T19:41:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/15-years-ago-today/</loc>
+    <loc>https://zzamboni.org/post/15-years-ago-today/</loc>
     <lastmod>2011-12-22T01:49:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/reading-on-multiple-media/</loc>
+    <loc>https://zzamboni.org/post/reading-on-multiple-media/</loc>
     <lastmod>2011-12-20T02:17:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/new-website-for-learning-cfengine-3/</loc>
+    <loc>https://zzamboni.org/post/new-website-for-learning-cfengine-3/</loc>
     <lastmod>2011-12-15T02:22:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/fix-journal-in-an-hfs--file-system/</loc>
+    <loc>https://zzamboni.org/post/fix-journal-in-an-hfs--file-system/</loc>
     <lastmod>2011-12-15T00:07:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/learning-cfengine-3early-release-now-available--use-authd-to-get-40-50-off/</loc>
+    <loc>https://zzamboni.org/post/learning-cfengine-3early-release-now-available--use-authd-to-get-40-50-off/</loc>
     <lastmod>2011-12-06T15:03:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/linux-kernel-panic-on-train-station-screen-at-boston-airport/</loc>
+    <loc>https://zzamboni.org/post/linux-kernel-panic-on-train-station-screen-at-boston-airport/</loc>
     <lastmod>2011-12-05T16:56:19-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/want-topbrewer---scanomat/</loc>
+    <loc>https://zzamboni.org/post/want-topbrewer---scanomat/</loc>
     <lastmod>2011-12-02T23:43:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/remapping-mac-modifier-keys-on-emacs-23.3/</loc>
+    <loc>https://zzamboni.org/post/remapping-mac-modifier-keys-on-emacs-23.3/</loc>
     <lastmod>2011-11-27T01:47:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/security-in-the-third-wave-of-it-engineering/</loc>
+    <loc>https://zzamboni.org/post/security-in-the-third-wave-of-it-engineering/</loc>
     <lastmod>2011-11-24T17:56:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/congreso-de-seguridad-en-computo-2011/</loc>
+    <loc>https://zzamboni.org/post/congreso-de-seguridad-en-computo-2011/</loc>
     <lastmod>2011-11-24T10:53:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/jaw-dropping-space-station-time-lapse--bad-astronomy/</loc>
+    <loc>https://zzamboni.org/post/jaw-dropping-space-station-time-lapse--bad-astronomy/</loc>
     <lastmod>2011-11-13T16:24:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/symphony-of-science-onward-to-the-edge/</loc>
+    <loc>https://zzamboni.org/post/symphony-of-science-onward-to-the-edge/</loc>
     <lastmod>2011-11-11T00:20:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/new-volcano-pictures-monstrous-eruption-in-the-congo/</loc>
+    <loc>https://zzamboni.org/post/new-volcano-pictures-monstrous-eruption-in-the-congo/</loc>
     <lastmod>2011-11-07T19:33:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/foxtrots-homage-to-steve-jobs/</loc>
+    <loc>https://zzamboni.org/post/foxtrots-homage-to-steve-jobs/</loc>
     <lastmod>2011-11-07T18:45:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/cinema-stunt-by-carlsberg--theinspiration.com-l-this-is-wht-inspires-us/</loc>
+    <loc>https://zzamboni.org/post/cinema-stunt-by-carlsberg--theinspiration.com-l-this-is-wht-inspires-us/</loc>
     <lastmod>2011-11-07T11:35:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/quadrocopters/</loc>
+    <loc>https://zzamboni.org/post/quadrocopters/</loc>
     <lastmod>2011-11-06T21:54:49-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/video-a-murmuration-of-starlings---alexis-madrigal---technology---the-atlantic/</loc>
+    <loc>https://zzamboni.org/post/video-a-murmuration-of-starlings---alexis-madrigal---technology---the-atlantic/</loc>
     <lastmod>2011-11-04T17:52:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/2011-pan-american-games---alan-taylor---in-focus---the-atlantic/</loc>
+    <loc>https://zzamboni.org/post/2011-pan-american-games---alan-taylor---in-focus---the-atlantic/</loc>
     <lastmod>2011-11-03T00:31:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/all-the-apps-on-my-iphone/</loc>
+    <loc>https://zzamboni.org/post/all-the-apps-on-my-iphone/</loc>
     <lastmod>2011-10-31T10:19:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/a-new-invention-on-30-rock-02/03/11/</loc>
+    <loc>https://zzamboni.org/post/a-new-invention-on-30-rock-02/03/11/</loc>
     <lastmod>2011-10-30T11:54:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/whats-new-in-cfengine-3-making-system-administration-even-more-powerful---oreilly-radar/</loc>
+    <loc>https://zzamboni.org/post/whats-new-in-cfengine-3-making-system-administration-even-more-powerful---oreilly-radar/</loc>
     <lastmod>2011-10-28T16:24:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/github-secrets/</loc>
+    <loc>https://zzamboni.org/post/github-secrets/</loc>
     <lastmod>2011-10-26T01:06:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/introduction-to-cfengine-3-nova-webinar/</loc>
+    <loc>https://zzamboni.org/post/introduction-to-cfengine-3-nova-webinar/</loc>
     <lastmod>2011-10-25T22:53:13-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/dennis-ritchie-70-dies-programming-trailblazer---nytimes.com/</loc>
+    <loc>https://zzamboni.org/post/dennis-ritchie-70-dies-programming-trailblazer---nytimes.com/</loc>
     <lastmod>2011-10-24T13:21:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/michael-winslow-gets-the-led-out/</loc>
+    <loc>https://zzamboni.org/post/michael-winslow-gets-the-led-out/</loc>
     <lastmod>2011-10-19T23:51:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/cnet-uk-presents-history-of-the-iphone-dedicated-to-the-memory-of-steve-jobs-on-vimeo/</loc>
+    <loc>https://zzamboni.org/post/cnet-uk-presents-history-of-the-iphone-dedicated-to-the-memory-of-steve-jobs-on-vimeo/</loc>
     <lastmod>2011-10-19T15:42:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/new-job-new-book/</loc>
+    <loc>https://zzamboni.org/post/new-job-new-book/</loc>
     <lastmod>2011-10-19T00:21:07-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-llama-song/</loc>
+    <loc>https://zzamboni.org/post/the-llama-song/</loc>
     <lastmod>2011-10-18T15:51:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/quantum-locking-demo/</loc>
+    <loc>https://zzamboni.org/post/quantum-locking-demo/</loc>
     <lastmod>2011-10-18T08:57:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/dennis-m.-ritchie-r.i.p./</loc>
+    <loc>https://zzamboni.org/post/dennis-m.-ritchie-r.i.p./</loc>
     <lastmod>2011-10-13T00:36:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/steve-jobs-r.i.p./</loc>
+    <loc>https://zzamboni.org/post/steve-jobs-r.i.p./</loc>
     <lastmod>2011-10-06T00:26:24-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/gene-schultz-r.i.p./</loc>
+    <loc>https://zzamboni.org/post/gene-schultz-r.i.p./</loc>
     <lastmod>2011-10-03T23:08:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/rc-helicopter-flight-test-gone-bad/</loc>
+    <loc>https://zzamboni.org/post/rc-helicopter-flight-test-gone-bad/</loc>
     <lastmod>2011-09-28T07:40:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/scientists-reconstruct-brains-visions-into-digital-video-in-historic-experiment--gizmodo/</loc>
+    <loc>https://zzamboni.org/post/scientists-reconstruct-brains-visions-into-digital-video-in-historic-experiment--gizmodo/</loc>
     <lastmod>2011-09-23T01:34:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/samuel-l-ipsum--alternative-lorem-ipsum-generator/</loc>
+    <loc>https://zzamboni.org/post/samuel-l-ipsum--alternative-lorem-ipsum-generator/</loc>
     <lastmod>2011-09-21T00:10:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/ba-fa--bad-astronomy/</loc>
+    <loc>https://zzamboni.org/post/ba-fa--bad-astronomy/</loc>
     <lastmod>2011-09-19T16:23:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/osaka-station-city-fountain/</loc>
+    <loc>https://zzamboni.org/post/osaka-station-city-fountain/</loc>
     <lastmod>2011-09-14T23:25:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/go-for-launch--airspacemag.com/</loc>
+    <loc>https://zzamboni.org/post/go-for-launch--airspacemag.com/</loc>
     <lastmod>2011-09-13T12:03:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/installing-cfengine-on-mac-os-x/</loc>
+    <loc>https://zzamboni.org/post/installing-cfengine-on-mac-os-x/</loc>
     <lastmod>2011-08-05T02:31:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/emacs---multiple-columns-one-buffer---stack-overflow/</loc>
+    <loc>https://zzamboni.org/post/emacs---multiple-columns-one-buffer---stack-overflow/</loc>
     <lastmod>2011-07-23T18:05:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/space-shuttle-the-complete-missions----by-nature-video---youtube/</loc>
+    <loc>https://zzamboni.org/post/space-shuttle-the-complete-missions----by-nature-video---youtube/</loc>
     <lastmod>2011-07-22T16:28:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/my-thoughts-about-the-lion-upgrade-process/</loc>
+    <loc>https://zzamboni.org/post/my-thoughts-about-the-lion-upgrade-process/</loc>
     <lastmod>2011-07-22T10:30:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/karate-exam/</loc>
+    <loc>https://zzamboni.org/post/karate-exam/</loc>
     <lastmod>2011-07-02T19:03:27-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/my-money-making-setup-in-pvz.-just-let-it-run-and-it-collects-coins-for-the-longest-time-/</loc>
+    <loc>https://zzamboni.org/post/my-money-making-setup-in-pvz.-just-let-it-run-and-it-collects-coins-for-the-longest-time-/</loc>
     <lastmod>2011-06-23T22:12:22-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/little-useful-feature-in-outlook-you-are-not-responding-to-the-latest-message-in-this-conversation/</loc>
+    <loc>https://zzamboni.org/post/little-useful-feature-in-outlook-you-are-not-responding-to-the-latest-message-in-this-conversation/</loc>
     <lastmod>2011-06-20T13:18:33-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-stark-beauty-of-cassinis-saturn--bad-astronomy/</loc>
+    <loc>https://zzamboni.org/post/the-stark-beauty-of-cassinis-saturn--bad-astronomy/</loc>
     <lastmod>2011-06-02T13:21:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/swingin-physics--bad-astronomy--discover-magazine/</loc>
+    <loc>https://zzamboni.org/post/swingin-physics--bad-astronomy--discover-magazine/</loc>
     <lastmod>2011-06-01T16:30:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/tiny-wings-review/</loc>
+    <loc>https://zzamboni.org/post/tiny-wings-review/</loc>
     <lastmod>2011-05-02T09:41:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/back-from-vacation/</loc>
+    <loc>https://zzamboni.org/post/back-from-vacation/</loc>
     <lastmod>2011-04-28T09:32:26-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/getting-closer-to-the-beach/</loc>
+    <loc>https://zzamboni.org/post/getting-closer-to-the-beach/</loc>
     <lastmod>2011-04-25T11:10:28-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/cleaning-the-cobra-pit/</loc>
+    <loc>https://zzamboni.org/post/cleaning-the-cobra-pit/</loc>
     <lastmod>2011-04-14T01:46:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/physics-engines-for-dummies--pauls-blogwildbunny/</loc>
+    <loc>https://zzamboni.org/post/physics-engines-for-dummies--pauls-blogwildbunny/</loc>
     <lastmod>2011-04-08T11:12:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-new-commodore-64/</loc>
+    <loc>https://zzamboni.org/post/the-new-commodore-64/</loc>
     <lastmod>2011-04-04T23:57:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-baboons-guide-to-the-internet-michael-jordan/</loc>
+    <loc>https://zzamboni.org/post/the-baboons-guide-to-the-internet-michael-jordan/</loc>
     <lastmod>2011-03-30T10:20:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/dog-sledding-season---coming-to-a-close---the-big-picture/</loc>
+    <loc>https://zzamboni.org/post/dog-sledding-season---coming-to-a-close---the-big-picture/</loc>
     <lastmod>2011-03-25T12:43:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/concrete-poured-into-ant-colony-reveals-insect-megalopolis/</loc>
+    <loc>https://zzamboni.org/post/concrete-poured-into-ant-colony-reveals-insect-megalopolis/</loc>
     <lastmod>2011-03-16T15:46:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/automatically-creating-tasks-from-email-in-outlook/</loc>
+    <loc>https://zzamboni.org/post/automatically-creating-tasks-from-email-in-outlook/</loc>
     <lastmod>2011-03-16T01:54:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/open-penetration-testing-bookmarks-collection/</loc>
+    <loc>https://zzamboni.org/post/open-penetration-testing-bookmarks-collection/</loc>
     <lastmod>2011-03-16T00:24:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-flight-of-the-airjelly-/via-biz/</loc>
+    <loc>https://zzamboni.org/post/the-flight-of-the-airjelly-/via-biz/</loc>
     <lastmod>2011-03-15T22:07:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/overhauling-my-gtd-system-under-windows/</loc>
+    <loc>https://zzamboni.org/post/overhauling-my-gtd-system-under-windows/</loc>
     <lastmod>2011-03-14T00:09:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/how-to-digitally-sign-a-macro-project---outlook/</loc>
+    <loc>https://zzamboni.org/post/how-to-digitally-sign-a-macro-project---outlook/</loc>
     <lastmod>2011-03-13T00:16:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/single-tap-conference-dialing-in-ios-4.3/</loc>
+    <loc>https://zzamboni.org/post/single-tap-conference-dialing-in-ios-4.3/</loc>
     <lastmod>2011-03-12T17:03:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/terrifying-japan-tsunami-video-via-bad-astronomy/</loc>
+    <loc>https://zzamboni.org/post/terrifying-japan-tsunami-video-via-bad-astronomy/</loc>
     <lastmod>2011-03-12T01:06:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/nyiragongo-crater-journey-to-the-center-of-the-world---the-big-picture/</loc>
+    <loc>https://zzamboni.org/post/nyiragongo-crater-journey-to-the-center-of-the-world---the-big-picture/</loc>
     <lastmod>2011-02-28T10:59:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/et-sequel-et-x-extended-trailer/</loc>
+    <loc>https://zzamboni.org/post/et-sequel-et-x-extended-trailer/</loc>
     <lastmod>2011-02-28T10:45:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/ridiculously-awesome-pic-of-discovery-and-the-iss-taken-from-the-ground--bad-astronomy/</loc>
+    <loc>https://zzamboni.org/post/ridiculously-awesome-pic-of-discovery-and-the-iss-taken-from-the-ground--bad-astronomy/</loc>
     <lastmod>2011-02-28T10:37:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/amazing-shuttle-launch-video-from-an-airplane-window/</loc>
+    <loc>https://zzamboni.org/post/amazing-shuttle-launch-video-from-an-airplane-window/</loc>
     <lastmod>2011-02-26T22:43:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/ken-jennings-describes-what-its-like-to-play-against-a-machine---slate-magazine/</loc>
+    <loc>https://zzamboni.org/post/ken-jennings-describes-what-its-like-to-play-against-a-machine---slate-magazine/</loc>
     <lastmod>2011-02-17T21:47:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/calling-on-robocop-to-help-detroit---nytimes.com/</loc>
+    <loc>https://zzamboni.org/post/calling-on-robocop-to-help-detroit---nytimes.com/</loc>
     <lastmod>2011-02-17T21:38:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/ibm-watson-final-jeopardy-and-the-future-of-watson/</loc>
+    <loc>https://zzamboni.org/post/ibm-watson-final-jeopardy-and-the-future-of-watson/</loc>
     <lastmod>2011-02-17T11:48:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/this-thing-isnt-going-to-park-itse.oh---there-i-fixed-it---redneck-repairs/</loc>
+    <loc>https://zzamboni.org/post/this-thing-isnt-going-to-park-itse.oh---there-i-fixed-it---redneck-repairs/</loc>
     <lastmod>2011-02-15T10:05:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/untitled-4/</loc>
+    <loc>https://zzamboni.org/post/untitled-4/</loc>
     <lastmod>2011-02-13T16:54:46-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/games-on/</loc>
+    <loc>https://zzamboni.org/post/games-on/</loc>
     <lastmod>2011-02-11T14:42:47-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/impact--bad-astronomy/</loc>
+    <loc>https://zzamboni.org/post/impact--bad-astronomy/</loc>
     <lastmod>2011-02-10T17:24:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/pakistan-daily-life---the-big-picture/</loc>
+    <loc>https://zzamboni.org/post/pakistan-daily-life---the-big-picture/</loc>
     <lastmod>2011-02-10T14:05:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-real-star-wars---reflectionof.me/</loc>
+    <loc>https://zzamboni.org/post/the-real-star-wars---reflectionof.me/</loc>
     <lastmod>2011-02-07T22:34:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/sagan-destroys-astrology/</loc>
+    <loc>https://zzamboni.org/post/sagan-destroys-astrology/</loc>
     <lastmod>2011-02-06T15:34:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/zheng-lab---bad-project-lady-gaga-parody/</loc>
+    <loc>https://zzamboni.org/post/zheng-lab---bad-project-lady-gaga-parody/</loc>
     <lastmod>2011-02-03T01:14:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/100-years-of-ibm---reflectionof.me/</loc>
+    <loc>https://zzamboni.org/post/100-years-of-ibm---reflectionof.me/</loc>
     <lastmod>2011-02-02T10:09:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/how-to-fix-texexpand-error-more-than-one-input-file-specified-in-latex2html/</loc>
+    <loc>https://zzamboni.org/post/how-to-fix-texexpand-error-more-than-one-input-file-specified-in-latex2html/</loc>
     <lastmod>2011-01-20T00:24:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/installing-latex2html-under-win7-with-cygwin/</loc>
+    <loc>https://zzamboni.org/post/installing-latex2html-under-win7-with-cygwin/</loc>
     <lastmod>2011-01-19T15:28:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/logparser-event-logs-and-vista---neil-carpenters-blog---site-home---technet-blogs/</loc>
+    <loc>https://zzamboni.org/post/logparser-event-logs-and-vista---neil-carpenters-blog---site-home---technet-blogs/</loc>
     <lastmod>2011-01-19T12:33:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/canadian-tv-slams-homeopathy--bad-astronomy--discover-magazine/</loc>
+    <loc>https://zzamboni.org/post/canadian-tv-slams-homeopathy--bad-astronomy--discover-magazine/</loc>
     <lastmod>2011-01-17T09:55:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/annals-of-commerce--the-reality-based-community/</loc>
+    <loc>https://zzamboni.org/post/annals-of-commerce--the-reality-based-community/</loc>
     <lastmod>2010-12-30T11:44:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/dinner-for-one/</loc>
+    <loc>https://zzamboni.org/post/dinner-for-one/</loc>
     <lastmod>2010-12-29T00:31:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/december-2010-blizzard-timelapse-on-vimeo/</loc>
+    <loc>https://zzamboni.org/post/december-2010-blizzard-timelapse-on-vimeo/</loc>
     <lastmod>2010-12-28T23:54:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/detexify-latex-handwritten-symbol-recognition/</loc>
+    <loc>https://zzamboni.org/post/detexify-latex-handwritten-symbol-recognition/</loc>
     <lastmod>2010-12-28T12:34:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/setting-up-a-global-hotkey-to-add-tasks-to-outlook/</loc>
+    <loc>https://zzamboni.org/post/setting-up-a-global-hotkey-to-add-tasks-to-outlook/</loc>
     <lastmod>2010-12-23T12:14:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/gtd-tip-clean-up-physical-clutter-using-ziploc-bags/</loc>
+    <loc>https://zzamboni.org/post/gtd-tip-clean-up-physical-clutter-using-ziploc-bags/</loc>
     <lastmod>2010-12-20T17:46:34-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/translation-on-the-fly/</loc>
+    <loc>https://zzamboni.org/post/translation-on-the-fly/</loc>
     <lastmod>2010-12-16T21:57:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/untitled-3/</loc>
+    <loc>https://zzamboni.org/post/untitled-3/</loc>
     <lastmod>2010-12-16T17:35:30-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/filmography-2010-compilation/</loc>
+    <loc>https://zzamboni.org/post/filmography-2010-compilation/</loc>
     <lastmod>2010-12-16T12:52:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/nice-day-also-my-first-instagr.am-shot/</loc>
+    <loc>https://zzamboni.org/post/nice-day-also-my-first-instagr.am-shot/</loc>
     <lastmod>2010-12-13T21:04:05-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/day-at-the-park-with-the-girls/</loc>
+    <loc>https://zzamboni.org/post/day-at-the-park-with-the-girls/</loc>
     <lastmod>2010-12-11T12:16:32-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/my-home-office-right-now/</loc>
+    <loc>https://zzamboni.org/post/my-home-office-right-now/</loc>
     <lastmod>2010-12-10T09:53:50-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/testing-picposterous/</loc>
+    <loc>https://zzamboni.org/post/testing-picposterous/</loc>
     <lastmod>2010-12-08T08:03:49-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/let-it-snow---the-big-picture/</loc>
+    <loc>https://zzamboni.org/post/let-it-snow---the-big-picture/</loc>
     <lastmod>2010-12-06T11:08:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/editing-sshd-configuration-files-with-cfengine3/</loc>
+    <loc>https://zzamboni.org/post/editing-sshd-configuration-files-with-cfengine3/</loc>
     <lastmod>2010-11-24T23:30:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/symphony-of-science/</loc>
+    <loc>https://zzamboni.org/post/symphony-of-science/</loc>
     <lastmod>2010-11-24T00:59:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/docco.coffee-rocco-etc./</loc>
+    <loc>https://zzamboni.org/post/docco.coffee-rocco-etc./</loc>
     <lastmod>2010-11-22T23:56:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/want-gtd-managing-projects-set/</loc>
+    <loc>https://zzamboni.org/post/want-gtd-managing-projects-set/</loc>
     <lastmod>2010-11-22T21:06:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/pidgin-cannot-connect-to-msn-the-certificate-chain-presented-is-invalid/</loc>
+    <loc>https://zzamboni.org/post/pidgin-cannot-connect-to-msn-the-certificate-chain-presented-is-invalid/</loc>
     <lastmod>2010-11-18T10:47:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/running-shells-in-emacs-an-overview--mastering-emacs/</loc>
+    <loc>https://zzamboni.org/post/running-shells-in-emacs-an-overview--mastering-emacs/</loc>
     <lastmod>2010-11-15T00:52:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/2010-world-fencing-championships---the-big-picture/</loc>
+    <loc>https://zzamboni.org/post/2010-world-fencing-championships---the-big-picture/</loc>
     <lastmod>2010-11-11T02:26:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/knight-arts--random-acts-of-culture/</loc>
+    <loc>https://zzamboni.org/post/knight-arts--random-acts-of-culture/</loc>
     <lastmod>2010-11-07T23:38:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-boiling-erupting-sun--bad-astronomy/</loc>
+    <loc>https://zzamboni.org/post/the-boiling-erupting-sun--bad-astronomy/</loc>
     <lastmod>2010-10-28T09:41:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-most-amazing-wwf-play-i-have-ever-seen/</loc>
+    <loc>https://zzamboni.org/post/the-most-amazing-wwf-play-i-have-ever-seen/</loc>
     <lastmod>2010-10-21T00:47:56-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/how-high-is-space/</loc>
+    <loc>https://zzamboni.org/post/how-high-is-space/</loc>
     <lastmod>2010-10-19T02:18:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/science-reason-and-critical-thinking-a-handy-alternative-therapy-flowchart/</loc>
+    <loc>https://zzamboni.org/post/science-reason-and-critical-thinking-a-handy-alternative-therapy-flowchart/</loc>
     <lastmod>2010-10-19T00:52:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/edward-horsford-creates-amazing-bursting-balloons-photographs/</loc>
+    <loc>https://zzamboni.org/post/edward-horsford-creates-amazing-bursting-balloons-photographs/</loc>
     <lastmod>2010-10-18T01:10:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/its-just-eating-somebodys-tree-----10-4/</loc>
+    <loc>https://zzamboni.org/post/its-just-eating-somebodys-tree-----10-4/</loc>
     <lastmod>2010-10-11T13:17:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/homemade-spacecraft/</loc>
+    <loc>https://zzamboni.org/post/homemade-spacecraft/</loc>
     <lastmod>2010-10-06T13:22:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/pac-man-spotted-in-the-wild/</loc>
+    <loc>https://zzamboni.org/post/pac-man-spotted-in-the-wild/</loc>
     <lastmod>2010-10-02T21:09:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/making-cygwin-windows-and-emacs-understand-the-same-symlinks/</loc>
+    <loc>https://zzamboni.org/post/making-cygwin-windows-and-emacs-understand-the-same-symlinks/</loc>
     <lastmod>2010-09-28T09:39:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/website-redesign-and-unification/</loc>
+    <loc>https://zzamboni.org/post/website-redesign-and-unification/</loc>
     <lastmod>2010-09-28T02:22:09-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/fall-is-in-the-air---the-big-picture/</loc>
+    <loc>https://zzamboni.org/post/fall-is-in-the-air---the-big-picture/</loc>
     <lastmod>2010-09-28T00:09:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/this-is-a-news-website-article-about-a-scientific-finding/</loc>
+    <loc>https://zzamboni.org/post/this-is-a-news-website-article-about-a-scientific-finding/</loc>
     <lastmod>2010-09-27T22:10:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/dgsca-se-convierte-en-tic/</loc>
+    <loc>https://zzamboni.org/post/dgsca-se-convierte-en-tic/</loc>
     <lastmod>2010-09-27T10:04:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/la-unam-cumple-100-a%C3%B1os/</loc>
+    <loc>https://zzamboni.org/post/la-unam-cumple-100-a%C3%B1os/</loc>
     <lastmod>2010-09-22T12:20:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/cool---googles-logo-today-is-about-mexicos-independence-bicentenary/</loc>
+    <loc>https://zzamboni.org/post/cool---googles-logo-today-is-about-mexicos-independence-bicentenary/</loc>
     <lastmod>2010-09-15T09:55:22-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-texas-sharpshooter-fallacy--you-are-not-so-smart/</loc>
+    <loc>https://zzamboni.org/post/the-texas-sharpshooter-fallacy--you-are-not-so-smart/</loc>
     <lastmod>2010-09-14T02:44:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/woot-refurbished-coffeenaker---ewww/</loc>
+    <loc>https://zzamboni.org/post/woot-refurbished-coffeenaker---ewww/</loc>
     <lastmod>2010-09-10T13:17:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/cfengine3-lexer-for-pygments/</loc>
+    <loc>https://zzamboni.org/post/cfengine3-lexer-for-pygments/</loc>
     <lastmod>2010-09-08T21:16:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/google-scribe-generated-prose-aka-google-scribe-channels-kanye-west/</loc>
+    <loc>https://zzamboni.org/post/google-scribe-generated-prose-aka-google-scribe-channels-kanye-west/</loc>
     <lastmod>2010-09-07T17:21:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/pacific-sun-cruise-liner-in-very-heavy-seas.-internal-cctv-footage./</loc>
+    <loc>https://zzamboni.org/post/pacific-sun-cruise-liner-in-very-heavy-seas.-internal-cctv-footage./</loc>
     <lastmod>2010-09-07T16:12:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-7-habits-of-highly-effective-writers/</loc>
+    <loc>https://zzamboni.org/post/the-7-habits-of-highly-effective-writers/</loc>
     <lastmod>2010-09-07T14:24:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/storing-cfengine-configuration-in-cvs/</loc>
+    <loc>https://zzamboni.org/post/storing-cfengine-configuration-in-cvs/</loc>
     <lastmod>2010-09-07T14:17:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/gtd-tip-one-key-opening-of-inbox-notebook-in-onenote/</loc>
+    <loc>https://zzamboni.org/post/gtd-tip-one-key-opening-of-inbox-notebook-in-onenote/</loc>
     <lastmod>2010-09-05T17:15:13-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/badastronomer-the-irony-is-killing-me--/</loc>
+    <loc>https://zzamboni.org/post/badastronomer-the-irony-is-killing-me--/</loc>
     <lastmod>2010-09-03T15:44:38-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/pocketful-of-dough---tips-on-tipping/</loc>
+    <loc>https://zzamboni.org/post/pocketful-of-dough---tips-on-tipping/</loc>
     <lastmod>2010-09-03T03:15:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/on-remembering-and-dealing-with-peoples-names/</loc>
+    <loc>https://zzamboni.org/post/on-remembering-and-dealing-with-peoples-names/</loc>
     <lastmod>2010-09-03T02:20:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/science-reason-and-critical-thinking-modern-science-map/</loc>
+    <loc>https://zzamboni.org/post/science-reason-and-critical-thinking-modern-science-map/</loc>
     <lastmod>2010-08-31T08:51:26-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/geektyrant---news---fan-made-superman-doomsdaytrailer/</loc>
+    <loc>https://zzamboni.org/post/geektyrant---news---fan-made-superman-doomsdaytrailer/</loc>
     <lastmod>2010-08-30T09:00:16-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/hierarchical-copying-with-cfengine3/</loc>
+    <loc>https://zzamboni.org/post/hierarchical-copying-with-cfengine3/</loc>
     <lastmod>2010-08-27T00:28:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/trying-out-the-pomodoro-technique/</loc>
+    <loc>https://zzamboni.org/post/trying-out-the-pomodoro-technique/</loc>
     <lastmod>2010-08-26T10:09:44-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-state-of-open-source-system-automation/</loc>
+    <loc>https://zzamboni.org/post/the-state-of-open-source-system-automation/</loc>
     <lastmod>2010-08-26T01:55:58-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/editing-whitespace-separated-config-files-with-cfengine/</loc>
+    <loc>https://zzamboni.org/post/editing-whitespace-separated-config-files-with-cfengine/</loc>
     <lastmod>2010-08-25T01:48:41-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/cfengine-community-open-promise-body-library-on-github/</loc>
+    <loc>https://zzamboni.org/post/cfengine-community-open-promise-body-library-on-github/</loc>
     <lastmod>2010-08-25T01:37:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/a-sample-cfengine-policy/</loc>
+    <loc>https://zzamboni.org/post/a-sample-cfengine-policy/</loc>
     <lastmod>2010-08-25T01:11:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/detecting-nics-that-match-certain-ip-addresses/</loc>
+    <loc>https://zzamboni.org/post/detecting-nics-that-match-certain-ip-addresses/</loc>
     <lastmod>2010-08-24T02:01:03-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/implementing-single-copy-nirvana-in-cfengine3/</loc>
+    <loc>https://zzamboni.org/post/implementing-single-copy-nirvana-in-cfengine3/</loc>
     <lastmod>2010-08-23T01:56:35-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/installing-cfengine-on-windows-7-under-cygwin/</loc>
+    <loc>https://zzamboni.org/post/installing-cfengine-on-windows-7-under-cygwin/</loc>
     <lastmod>2010-08-23T00:14:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/pixar-how-we-do-it/</loc>
+    <loc>https://zzamboni.org/post/pixar-how-we-do-it/</loc>
     <lastmod>2010-08-22T23:48:09-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/us-chamber-equal-pay-a-fetish-for-money-women-should-choose-the-right-partner-at-home/</loc>
+    <loc>https://zzamboni.org/post/us-chamber-equal-pay-a-fetish-for-money-women-should-choose-the-right-partner-at-home/</loc>
     <lastmod>2010-08-20T10:53:58-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/west-wing---biblical-quotes/</loc>
+    <loc>https://zzamboni.org/post/west-wing---biblical-quotes/</loc>
     <lastmod>2010-08-19T23:07:02-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/grabcartoons-v2.7/</loc>
+    <loc>https://zzamboni.org/post/grabcartoons-v2.7/</loc>
     <lastmod>2010-08-19T15:22:28-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/emulate-vis--command-jump-to-matching-parenthesis-in-emacs/</loc>
+    <loc>https://zzamboni.org/post/emulate-vis--command-jump-to-matching-parenthesis-in-emacs/</loc>
     <lastmod>2010-08-18T16:09:18-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/installing-auctex-on-emacsw32-on-win7/64bit/</loc>
+    <loc>https://zzamboni.org/post/installing-auctex-on-emacsw32-on-win7/64bit/</loc>
     <lastmod>2010-08-17T02:36:05-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/public-apis-availability---uptime-and-down-time---slow-performance/</loc>
+    <loc>https://zzamboni.org/post/public-apis-availability---uptime-and-down-time---slow-performance/</loc>
     <lastmod>2010-08-16T16:12:10-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/updated-server-and-service-setup/</loc>
+    <loc>https://zzamboni.org/post/updated-server-and-service-setup/</loc>
     <lastmod>2010-08-16T14:58:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/deploying-multiple-environments-on-heroku-while-still-hosting-code-on-github/</loc>
+    <loc>https://zzamboni.org/post/deploying-multiple-environments-on-heroku-while-still-hosting-code-on-github/</loc>
     <lastmod>2010-08-13T16:55:21-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/catharsis/</loc>
+    <loc>https://zzamboni.org/post/catharsis/</loc>
     <lastmod>2010-08-11T16:39:25-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/west-lafayette-on-failblog/</loc>
+    <loc>https://zzamboni.org/post/west-lafayette-on-failblog/</loc>
     <lastmod>2010-08-11T01:01:29-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/10-big-ideas-from-gtd/</loc>
+    <loc>https://zzamboni.org/post/10-big-ideas-from-gtd/</loc>
     <lastmod>2010-07-30T14:04:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/anchoring-effect--you-are-not-so-smart/</loc>
+    <loc>https://zzamboni.org/post/anchoring-effect--you-are-not-so-smart/</loc>
     <lastmod>2010-07-30T13:56:41-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/layer-8-the-exception-is-the-rule/</loc>
+    <loc>https://zzamboni.org/post/layer-8-the-exception-is-the-rule/</loc>
     <lastmod>2010-07-09T10:55:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/drowning-doesnt-look-like-drowning/</loc>
+    <loc>https://zzamboni.org/post/drowning-doesnt-look-like-drowning/</loc>
     <lastmod>2010-07-07T13:47:45-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/rands-in-repose-how-to-write-a-book/</loc>
+    <loc>https://zzamboni.org/post/rands-in-repose-how-to-write-a-book/</loc>
     <lastmod>2010-06-29T12:54:58-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/patent-pending.-new-iphone-4-antenna-booster.../</loc>
+    <loc>https://zzamboni.org/post/patent-pending.-new-iphone-4-antenna-booster.../</loc>
     <lastmod>2010-06-25T12:09:43-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/folders-in-ios4/</loc>
+    <loc>https://zzamboni.org/post/folders-in-ios4/</loc>
     <lastmod>2010-06-21T16:31:50-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/site-improvements/</loc>
+    <loc>https://zzamboni.org/post/site-improvements/</loc>
     <lastmod>2010-06-19T02:15:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-just-world-fallacy/</loc>
+    <loc>https://zzamboni.org/post/the-just-world-fallacy/</loc>
     <lastmod>2010-06-08T11:41:51-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/a-services-menu-for-iphone/</loc>
+    <loc>https://zzamboni.org/post/a-services-menu-for-iphone/</loc>
     <lastmod>2010-06-04T15:34:59-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/d8-video-apple-ceo-steve-jobs-on-adobe-flash/</loc>
+    <loc>https://zzamboni.org/post/d8-video-apple-ceo-steve-jobs-on-adobe-flash/</loc>
     <lastmod>2010-06-03T13:11:05-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-ibm-muppet-show/</loc>
+    <loc>https://zzamboni.org/post/the-ibm-muppet-show/</loc>
     <lastmod>2010-06-03T02:40:07-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/deleting-my-facebook-account/</loc>
+    <loc>https://zzamboni.org/post/deleting-my-facebook-account/</loc>
     <lastmod>2010-05-18T16:16:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/hail-storm-oklahoma-city/</loc>
+    <loc>https://zzamboni.org/post/hail-storm-oklahoma-city/</loc>
     <lastmod>2010-05-18T15:57:56-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/a-moment-in-time---interactive-feature/</loc>
+    <loc>https://zzamboni.org/post/a-moment-in-time---interactive-feature/</loc>
     <lastmod>2010-05-12T12:38:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/my-latest-speedtest-results/</loc>
+    <loc>https://zzamboni.org/post/my-latest-speedtest-results/</loc>
     <lastmod>2010-05-11T16:47:29-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-evolution-of-privacy-on-facebook-and-why-im-dropping-off/</loc>
+    <loc>https://zzamboni.org/post/the-evolution-of-privacy-on-facebook-and-why-im-dropping-off/</loc>
     <lastmod>2010-05-11T10:42:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/cory-doctorow-persistence-pays-parasites/</loc>
+    <loc>https://zzamboni.org/post/cory-doctorow-persistence-pays-parasites/</loc>
     <lastmod>2010-05-07T10:08:24-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-zomboni/</loc>
+    <loc>https://zzamboni.org/post/the-zomboni/</loc>
     <lastmod>2010-05-06T15:11:18-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/avatar-blu-ray-dvd-on-lg-bd370-player/</loc>
+    <loc>https://zzamboni.org/post/avatar-blu-ray-dvd-on-lg-bd370-player/</loc>
     <lastmod>2010-05-05T01:32:59-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/starting-virtualcenter-automatically-when-it-fails-to-start/</loc>
+    <loc>https://zzamboni.org/post/starting-virtualcenter-automatically-when-it-fails-to-start/</loc>
     <lastmod>2010-05-03T13:13:42-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/thoughts-on-flash/</loc>
+    <loc>https://zzamboni.org/post/thoughts-on-flash/</loc>
     <lastmod>2010-04-29T12:10:41-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/david-allen-getting-things-done--dcgtd/</loc>
+    <loc>https://zzamboni.org/post/david-allen-getting-things-done--dcgtd/</loc>
     <lastmod>2010-04-23T11:35:58-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/how-important-are-the-tools-you-use-with-gtd/</loc>
+    <loc>https://zzamboni.org/post/how-important-are-the-tools-you-use-with-gtd/</loc>
     <lastmod>2010-04-22T09:24:46-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/know-your-tools/</loc>
+    <loc>https://zzamboni.org/post/know-your-tools/</loc>
     <lastmod>2010-04-22T02:01:36-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/gorgeous-nightscape-timelapse--bad-astronomy/</loc>
+    <loc>https://zzamboni.org/post/gorgeous-nightscape-timelapse--bad-astronomy/</loc>
     <lastmod>2010-04-21T01:22:46-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/html5-presentation/</loc>
+    <loc>https://zzamboni.org/post/html5-presentation/</loc>
     <lastmod>2010-04-20T01:29:07-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/planes-or-volcano/</loc>
+    <loc>https://zzamboni.org/post/planes-or-volcano/</loc>
     <lastmod>2010-04-19T14:30:14-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/octopus-steals-my-video-camera-and-swims-off-with-it-while-its-recording/</loc>
+    <loc>https://zzamboni.org/post/octopus-steals-my-video-camera-and-swims-off-with-it-while-its-recording/</loc>
     <lastmod>2010-04-19T13:57:08-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/army-creates-fleet-of-robots-on-segways--singularity-hub/</loc>
+    <loc>https://zzamboni.org/post/army-creates-fleet-of-robots-on-segways--singularity-hub/</loc>
     <lastmod>2010-04-13T14:47:10-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/meet-the-ipad-developers---message-to-mac-customers/</loc>
+    <loc>https://zzamboni.org/post/meet-the-ipad-developers---message-to-mac-customers/</loc>
     <lastmod>2010-04-13T12:47:35-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/setting-up-my-gtd-system-in-windows---links/</loc>
+    <loc>https://zzamboni.org/post/setting-up-my-gtd-system-in-windows---links/</loc>
     <lastmod>2010-04-09T17:54:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/ross-sisters---solid-potato-salad-vhs-quality/</loc>
+    <loc>https://zzamboni.org/post/ross-sisters---solid-potato-salad-vhs-quality/</loc>
     <lastmod>2010-04-09T00:07:42-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/queretaro-internet-cerca-de-todos/</loc>
+    <loc>https://zzamboni.org/post/queretaro-internet-cerca-de-todos/</loc>
     <lastmod>2010-04-08T23:59:40-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/sachins-guide-to-buying-an-ipad/</loc>
+    <loc>https://zzamboni.org/post/sachins-guide-to-buying-an-ipad/</loc>
     <lastmod>2010-04-07T15:32:12-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/installing-windows-xp-in-vmware-esx---setup-did-not-find-any-hard-disk-drives-installed-in-your-computer.--techhead.co.uk/</loc>
+    <loc>https://zzamboni.org/post/installing-windows-xp-in-vmware-esx---setup-did-not-find-any-hard-disk-drives-installed-in-your-computer.--techhead.co.uk/</loc>
     <lastmod>2010-04-07T15:20:18-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/tiobe-index-c-back-at-#1/</loc>
+    <loc>https://zzamboni.org/post/tiobe-index-c-back-at-#1/</loc>
     <lastmod>2010-04-07T15:16:13-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/capturing-multiple-matches-in-ruby/</loc>
+    <loc>https://zzamboni.org/post/capturing-multiple-matches-in-ruby/</loc>
     <lastmod>2010-03-31T01:03:52-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/expose-for-windows-vista/7-clone--divide-by-zero/</loc>
+    <loc>https://zzamboni.org/post/expose-for-windows-vista/7-clone--divide-by-zero/</loc>
     <lastmod>2010-03-30T15:27:56-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-virtual-choir-how-we-did-it--soaringleap.com/</loc>
+    <loc>https://zzamboni.org/post/the-virtual-choir-how-we-did-it--soaringleap.com/</loc>
     <lastmod>2010-03-26T12:00:25-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/nasa-space-shuttle-missions-get-hollywood-style-movie-posters----------------------------------------------telegraph/</loc>
+    <loc>https://zzamboni.org/post/nasa-space-shuttle-missions-get-hollywood-style-movie-posters----------------------------------------------telegraph/</loc>
     <lastmod>2010-03-25T01:03:38-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/el-auto-de-google-maps-street-view--paola-villarreal/</loc>
+    <loc>https://zzamboni.org/post/el-auto-de-google-maps-street-view--paola-villarreal/</loc>
     <lastmod>2010-03-25T00:42:28-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/solving-hangs-in-emacs-on-windows/</loc>
+    <loc>https://zzamboni.org/post/solving-hangs-in-emacs-on-windows/</loc>
     <lastmod>2010-03-23T11:22:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/solarbeat/</loc>
+    <loc>https://zzamboni.org/post/solarbeat/</loc>
     <lastmod>2010-03-20T23:05:40-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/government-agency-apologizes-for-evicting-british-jedi---lowering-the-bar/</loc>
+    <loc>https://zzamboni.org/post/government-agency-apologizes-for-evicting-british-jedi---lowering-the-bar/</loc>
     <lastmod>2010-03-18T22:06:25-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/my-head-is-in-the-cloud/</loc>
+    <loc>https://zzamboni.org/post/my-head-is-in-the-cloud/</loc>
     <lastmod>2010-03-18T15:27:18-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/hows-that-for-a-low-price-guarantee/</loc>
+    <loc>https://zzamboni.org/post/hows-that-for-a-low-price-guarantee/</loc>
     <lastmod>2010-03-17T12:26:31-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/shooting-stars-explained/</loc>
+    <loc>https://zzamboni.org/post/shooting-stars-explained/</loc>
     <lastmod>2010-03-08T12:27:44-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/how-to-suck-at-facebook---the-oatmeal/</loc>
+    <loc>https://zzamboni.org/post/how-to-suck-at-facebook---the-oatmeal/</loc>
     <lastmod>2010-02-23T15:05:36-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/how-to-make-the-lg-bd370-region-free/</loc>
+    <loc>https://zzamboni.org/post/how-to-make-the-lg-bd370-region-free/</loc>
     <lastmod>2010-02-23T11:33:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/shadyurl/</loc>
+    <loc>https://zzamboni.org/post/shadyurl/</loc>
     <lastmod>2010-02-19T09:42:36-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/trying-out-google-buzz---posterous/</loc>
+    <loc>https://zzamboni.org/post/trying-out-google-buzz---posterous/</loc>
     <lastmod>2010-02-17T16:56:29-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/must-have-windows-software-or-windows-programs-that-i-use---good-coders-code-great-reuse/</loc>
+    <loc>https://zzamboni.org/post/must-have-windows-software-or-windows-programs-that-i-use---good-coders-code-great-reuse/</loc>
     <lastmod>2010-02-17T10:12:38-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/rugged-software/</loc>
+    <loc>https://zzamboni.org/post/rugged-software/</loc>
     <lastmod>2010-02-17T10:03:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/fraser-speirs---futureshock/</loc>
+    <loc>https://zzamboni.org/post/fraser-speirs---futureshock/</loc>
     <lastmod>2010-02-10T22:15:48-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/googles-first-super-bowl-ad.-awesome.-google-search-influences-so-many-decisions-we-make-in-life---sachins-web-archive/</loc>
+    <loc>https://zzamboni.org/post/googles-first-super-bowl-ad.-awesome.-google-search-influences-so-many-decisions-we-make-in-life---sachins-web-archive/</loc>
     <lastmod>2010-02-08T14:45:53-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/procrastination/</loc>
+    <loc>https://zzamboni.org/post/procrastination/</loc>
     <lastmod>2010-02-03T23:42:02-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-israelification-of-airports-high-security-little-bother---thestar.com/</loc>
+    <loc>https://zzamboni.org/post/the-israelification-of-airports-high-security-little-bother---thestar.com/</loc>
     <lastmod>2010-01-28T14:13:16-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/i-like-the-twittelator-splash-screen.-reminds-me-of-the-original-alien-posters./</loc>
+    <loc>https://zzamboni.org/post/i-like-the-twittelator-splash-screen.-reminds-me-of-the-original-alien-posters./</loc>
     <lastmod>2010-01-27T22:11:26-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/trying-out-post.ly.-i-dont-yet-fully-get-what-the-difference-is-with-just-posting-to-my-posterous-blog./</loc>
+    <loc>https://zzamboni.org/post/trying-out-post.ly.-i-dont-yet-fully-get-what-the-difference-is-with-just-posting-to-my-posterous-blog./</loc>
     <lastmod>2010-01-22T10:04:55-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/automatically-cc-myself-in-outlook/</loc>
+    <loc>https://zzamboni.org/post/automatically-cc-myself-in-outlook/</loc>
     <lastmod>2010-01-08T12:18:51-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/keep-being-awesome/</loc>
+    <loc>https://zzamboni.org/post/keep-being-awesome/</loc>
     <lastmod>2009-12-23T22:12:13-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/sumerians-look-on-in-confusion-as-god-creates-world--the-onion/</loc>
+    <loc>https://zzamboni.org/post/sumerians-look-on-in-confusion-as-god-creates-world--the-onion/</loc>
     <lastmod>2009-12-23T00:08:39-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-known-universe-scientifically-rendered-for-all-to-see/</loc>
+    <loc>https://zzamboni.org/post/the-known-universe-scientifically-rendered-for-all-to-see/</loc>
     <lastmod>2009-12-22T23:59:47-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/nieve-en-coyoacan/</loc>
+    <loc>https://zzamboni.org/post/nieve-en-coyoacan/</loc>
     <lastmod>2009-12-19T23:16:03-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/musical-dna/</loc>
+    <loc>https://zzamboni.org/post/musical-dna/</loc>
     <lastmod>2009-12-17T23:48:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/israeli-security-opens-fire-on-a-macbook.-thrice.---toms-hardware/</loc>
+    <loc>https://zzamboni.org/post/israeli-security-opens-fire-on-a-macbook.-thrice.---toms-hardware/</loc>
     <lastmod>2009-12-15T16:15:22-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/one-more-reason-im-happy-to-be-back-in-mexico/</loc>
+    <loc>https://zzamboni.org/post/one-more-reason-im-happy-to-be-back-in-mexico/</loc>
     <lastmod>2009-12-15T13:06:34-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/2009-in-photos-part-1-of-3---the-big-picture/</loc>
+    <loc>https://zzamboni.org/post/2009-in-photos-part-1-of-3---the-big-picture/</loc>
     <lastmod>2009-12-15T01:21:42-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/change-blindness-experiment/</loc>
+    <loc>https://zzamboni.org/post/change-blindness-experiment/</loc>
     <lastmod>2009-12-15T00:54:02-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/my-new-business-card/</loc>
+    <loc>https://zzamboni.org/post/my-new-business-card/</loc>
     <lastmod>2009-12-14T14:14:32-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-passenger/</loc>
+    <loc>https://zzamboni.org/post/the-passenger/</loc>
     <lastmod>2009-12-13T00:01:15-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/copperexport-development-paused/</loc>
+    <loc>https://zzamboni.org/post/copperexport-development-paused/</loc>
     <lastmod>2009-12-11T06:44:02-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/national-geographics-international-photography-contest-2009---the-big-picture/</loc>
+    <loc>https://zzamboni.org/post/national-geographics-international-photography-contest-2009---the-big-picture/</loc>
     <lastmod>2009-11-29T00:59:31-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/after-the-move/</loc>
+    <loc>https://zzamboni.org/post/after-the-move/</loc>
     <lastmod>2009-11-16T23:29:08-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/server-less-does-not-mean-service-less/</loc>
+    <loc>https://zzamboni.org/post/server-less-does-not-mean-service-less/</loc>
     <lastmod>2009-11-16T23:01:22-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/character-interactions-charts-xkcd/</loc>
+    <loc>https://zzamboni.org/post/character-interactions-charts-xkcd/</loc>
     <lastmod>2009-11-02T21:27:20-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/walking-to-work/</loc>
+    <loc>https://zzamboni.org/post/walking-to-work/</loc>
     <lastmod>2009-10-21T03:25:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/packed-and-ready-to-go/</loc>
+    <loc>https://zzamboni.org/post/packed-and-ready-to-go/</loc>
     <lastmod>2009-10-19T07:57:06-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/drives-on-what-side/</loc>
+    <loc>https://zzamboni.org/post/drives-on-what-side/</loc>
     <lastmod>2009-10-12T06:38:04-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/xkcd---a-webcomic---scary/</loc>
+    <loc>https://zzamboni.org/post/xkcd---a-webcomic---scary/</loc>
     <lastmod>2009-10-09T05:44:08-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/terminator---how-it-should-end/</loc>
+    <loc>https://zzamboni.org/post/terminator---how-it-should-end/</loc>
     <lastmod>2009-10-06T06:07:15-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/tango---the-big-picture/</loc>
+    <loc>https://zzamboni.org/post/tango---the-big-picture/</loc>
     <lastmod>2009-10-06T03:18:21-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/gyrowheel-by-gyrobike-interbike-2009/</loc>
+    <loc>https://zzamboni.org/post/gyrowheel-by-gyrobike-interbike-2009/</loc>
     <lastmod>2009-10-05T15:45:46-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/barack-obamas-amazingly-consistent-smile/</loc>
+    <loc>https://zzamboni.org/post/barack-obamas-amazingly-consistent-smile/</loc>
     <lastmod>2009-09-28T08:01:27-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/crash-test-1959-bel-air-vs-2009-malibu/</loc>
+    <loc>https://zzamboni.org/post/crash-test-1959-bel-air-vs-2009-malibu/</loc>
     <lastmod>2009-09-28T06:26:07-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/carl-sagan---a-glorious-dawn--ft-stephen-hawking-cosmos-remixed/</loc>
+    <loc>https://zzamboni.org/post/carl-sagan---a-glorious-dawn--ft-stephen-hawking-cosmos-remixed/</loc>
     <lastmod>2009-09-28T06:03:22-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/a-fresh-start/</loc>
+    <loc>https://zzamboni.org/post/a-fresh-start/</loc>
     <lastmod>2009-09-27T17:50:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/brau-huus-cheeseburger/</loc>
+    <loc>https://zzamboni.org/post/brau-huus-cheeseburger/</loc>
     <lastmod>2009-09-26T07:55:45-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/waedenswiler-beer./</loc>
+    <loc>https://zzamboni.org/post/waedenswiler-beer./</loc>
     <lastmod>2009-09-26T05:01:15-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/the-webcycle--tom-scott/</loc>
+    <loc>https://zzamboni.org/post/the-webcycle--tom-scott/</loc>
     <lastmod>2009-09-25T07:10:22-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/10-useful-usability-findings-and-guidelines---smashing-magazine/</loc>
+    <loc>https://zzamboni.org/post/10-useful-usability-findings-and-guidelines---smashing-magazine/</loc>
     <lastmod>2009-09-24T06:45:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/windows-7-party/</loc>
+    <loc>https://zzamboni.org/post/windows-7-party/</loc>
     <lastmod>2009-09-24T03:11:38-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/30-bad-practices-of-web-designers/</loc>
+    <loc>https://zzamboni.org/post/30-bad-practices-of-web-designers/</loc>
     <lastmod>2009-09-24T02:57:40-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/huge-dust-storm-in-sidney/</loc>
+    <loc>https://zzamboni.org/post/huge-dust-storm-in-sidney/</loc>
     <lastmod>2009-09-24T00:59:23-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/fix-macfusion-on-snow-leopard--racker-hacker/</loc>
+    <loc>https://zzamboni.org/post/fix-macfusion-on-snow-leopard--racker-hacker/</loc>
     <lastmod>2009-09-23T07:20:17-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/sts-128-burritos-in-space/</loc>
+    <loc>https://zzamboni.org/post/sts-128-burritos-in-space/</loc>
     <lastmod>2009-09-22T01:42:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/at-the-tufi-fest-in-adliswil/</loc>
+    <loc>https://zzamboni.org/post/at-the-tufi-fest-in-adliswil/</loc>
     <lastmod>2009-09-20T08:26:34-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/going-home/</loc>
+    <loc>https://zzamboni.org/post/going-home/</loc>
     <lastmod>2009-09-07T18:09:05-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/send-to-posterous-directly-from-google-reader/</loc>
+    <loc>https://zzamboni.org/post/send-to-posterous-directly-from-google-reader/</loc>
     <lastmod>2009-08-14T00:52:24-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/hiroshima-64-years-ago---the-big-picture/</loc>
+    <loc>https://zzamboni.org/post/hiroshima-64-years-ago---the-big-picture/</loc>
     <lastmod>2009-08-06T04:34:09-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/untitled-2/</loc>
+    <loc>https://zzamboni.org/post/untitled-2/</loc>
     <lastmod>2009-07-24T13:18:34-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/kuroshio-sea---2nd-largest-aquarium-tank-in-the-world---song-is-please-dont-go-by-barcelona/</loc>
+    <loc>https://zzamboni.org/post/kuroshio-sea---2nd-largest-aquarium-tank-in-the-world---song-is-please-dont-go-by-barcelona/</loc>
     <lastmod>2009-07-23T15:59:59-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/toothpaste-for-dinner---antidextrous/</loc>
+    <loc>https://zzamboni.org/post/toothpaste-for-dinner---antidextrous/</loc>
     <lastmod>2009-07-22T05:58:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/posterous-keeps-getting-better/</loc>
+    <loc>https://zzamboni.org/post/posterous-keeps-getting-better/</loc>
     <lastmod>2009-07-12T05:56:59-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/mate/</loc>
+    <loc>https://zzamboni.org/post/mate/</loc>
     <lastmod>2009-06-30T08:19:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/untitled-1/</loc>
+    <loc>https://zzamboni.org/post/untitled-1/</loc>
     <lastmod>2009-05-08T04:28:23-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/how-to-trick-an-rhel5-client-install-to-use-server-rpms/</loc>
+    <loc>https://zzamboni.org/post/how-to-trick-an-rhel5-client-install-to-use-server-rpms/</loc>
     <lastmod>2008-10-22T04:09:12-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/easy-video-conversion-in-mac-os-x/</loc>
+    <loc>https://zzamboni.org/post/easy-video-conversion-in-mac-os-x/</loc>
     <lastmod>2008-10-10T16:15:49-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/synchronizing-1password-data-between-two-local-accounts-howto/</loc>
+    <loc>https://zzamboni.org/post/synchronizing-1password-data-between-two-local-accounts-howto/</loc>
     <lastmod>2008-09-29T05:06:09-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/adding-growl-notification-to-raymond-pages-bash-prompt-code/</loc>
+    <loc>https://zzamboni.org/post/adding-growl-notification-to-raymond-pages-bash-prompt-code/</loc>
     <lastmod>2008-09-08T16:05:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/updated-script-for-defining-a-new-wallet-item-in-1password/</loc>
+    <loc>https://zzamboni.org/post/updated-script-for-defining-a-new-wallet-item-in-1password/</loc>
     <lastmod>2008-09-08T08:53:35-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/fixing-mail.apps-recent-mail-addresses-problem/</loc>
+    <loc>https://zzamboni.org/post/fixing-mail.apps-recent-mail-addresses-problem/</loc>
     <lastmod>2008-09-02T07:47:52-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/markdown-support/</loc>
+    <loc>https://zzamboni.org/post/markdown-support/</loc>
     <lastmod>2008-09-01T09:15:21-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/my-gtd-system/</loc>
+    <loc>https://zzamboni.org/post/my-gtd-system/</loc>
     <lastmod>2008-09-01T04:10:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/post/testing-posterous/</loc>
+    <loc>https://zzamboni.org/post/testing-posterous/</loc>
     <lastmod>2008-08-28T05:03:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/announcements/</loc>
+    <loc>https://zzamboni.org/tags/announcements/</loc>
     <lastmod>2012-04-27T08:30:32-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/annoyances/</loc>
+    <loc>https://zzamboni.org/tags/annoyances/</loc>
     <lastmod>2010-09-28T09:39:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/apple/</loc>
+    <loc>https://zzamboni.org/tags/apple/</loc>
     <lastmod>2015-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/apple/</loc>
+    <loc>https://zzamboni.org/categories/apple/</loc>
     <lastmod>2015-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/applescript/</loc>
+    <loc>https://zzamboni.org/tags/applescript/</loc>
     <lastmod>2017-09-11T21:11:29+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/applescript/</loc>
+    <loc>https://zzamboni.org/categories/applescript/</loc>
     <lastmod>2015-01-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/apps/</loc>
+    <loc>https://zzamboni.org/tags/apps/</loc>
     <lastmod>2011-10-31T10:19:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/audible/</loc>
+    <loc>https://zzamboni.org/tags/audible/</loc>
     <lastmod>2011-12-20T02:17:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/audioconference/</loc>
+    <loc>https://zzamboni.org/tags/audioconference/</loc>
     <lastmod>2011-03-12T17:03:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/autocompletion/</loc>
+    <loc>https://zzamboni.org/tags/autocompletion/</loc>
     <lastmod>2010-09-07T17:21:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/autohotkey/</loc>
+    <loc>https://zzamboni.org/tags/autohotkey/</loc>
     <lastmod>2010-12-23T12:14:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/automator/</loc>
+    <loc>https://zzamboni.org/tags/automator/</loc>
     <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/automator/</loc>
+    <loc>https://zzamboni.org/categories/automator/</loc>
     <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/bcfg2/</loc>
+    <loc>https://zzamboni.org/tags/bcfg2/</loc>
     <lastmod>2010-08-26T01:55:58-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/beautifulemacs/</loc>
+    <loc>https://zzamboni.org/tags/beautifulemacs/</loc>
     <lastmod>2018-03-21T22:45:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/bigdata/</loc>
+    <loc>https://zzamboni.org/tags/bigdata/</loc>
     <lastmod>2015-04-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/bigdata/</loc>
+    <loc>https://zzamboni.org/categories/bigdata/</loc>
     <lastmod>2015-04-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/blog/</loc>
+    <loc>https://zzamboni.org/tags/blog/</loc>
     <lastmod>2012-01-04T13:16:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/blogging/</loc>
+    <loc>https://zzamboni.org/tags/blogging/</loc>
     <lastmod>2017-08-25T09:00:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/book/</loc>
+    <loc>https://zzamboni.org/tags/book/</loc>
     <lastmod>2012-03-24T01:23:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/books/</loc>
+    <loc>https://zzamboni.org/tags/books/</loc>
     <lastmod>2017-09-13T13:45:54+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/career/</loc>
+    <loc>https://zzamboni.org/tags/career/</loc>
     <lastmod>2011-10-19T00:21:07-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/</loc>
+    <loc>https://zzamboni.org/categories/</loc>
     <lastmod>2015-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/cfengine/</loc>
+    <loc>https://zzamboni.org/tags/cfengine/</loc>
     <lastmod>2017-09-13T13:45:54+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/cflearn/</loc>
+    <loc>https://zzamboni.org/tags/cflearn/</loc>
     <lastmod>2012-01-04T13:16:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/chef/</loc>
+    <loc>https://zzamboni.org/tags/chef/</loc>
     <lastmod>2010-08-26T01:55:58-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/coding/</loc>
+    <loc>https://zzamboni.org/tags/coding/</loc>
     <lastmod>2010-03-31T01:03:52-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/completions/</loc>
+    <loc>https://zzamboni.org/tags/completions/</loc>
     <lastmod>2018-06-13T20:25:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/config/</loc>
+    <loc>https://zzamboni.org/tags/config/</loc>
     <lastmod>2018-06-13T20:25:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/configurationmanagement/</loc>
+    <loc>https://zzamboni.org/tags/configurationmanagement/</loc>
     <lastmod>2010-08-26T01:55:58-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/copbl/</loc>
+    <loc>https://zzamboni.org/tags/copbl/</loc>
     <lastmod>2010-08-25T01:48:41-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/copperexport/</loc>
+    <loc>https://zzamboni.org/tags/copperexport/</loc>
     <lastmod>2009-12-11T06:44:02-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/csc11/</loc>
+    <loc>https://zzamboni.org/tags/csc11/</loc>
     <lastmod>2011-11-24T17:56:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/vita/</loc>
+    <loc>https://zzamboni.org/vita/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/cvs/</loc>
+    <loc>https://zzamboni.org/tags/cvs/</loc>
     <lastmod>2010-09-07T14:17:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/cygwin/</loc>
+    <loc>https://zzamboni.org/tags/cygwin/</loc>
     <lastmod>2011-01-19T15:28:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/dennisritchie/</loc>
+    <loc>https://zzamboni.org/tags/dennisritchie/</loc>
     <lastmod>2011-10-13T00:36:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/development/</loc>
+    <loc>https://zzamboni.org/tags/development/</loc>
     <lastmod>2010-04-07T15:16:13-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/diskutil/</loc>
+    <loc>https://zzamboni.org/tags/diskutil/</loc>
     <lastmod>2011-12-15T00:07:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/elvish/</loc>
+    <loc>https://zzamboni.org/tags/elvish/</loc>
     <lastmod>2018-06-13T20:25:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/emacs/</loc>
+    <loc>https://zzamboni.org/tags/emacs/</loc>
     <lastmod>2018-03-21T22:45:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/emacs/</loc>
+    <loc>https://zzamboni.org/categories/emacs/</loc>
     <lastmod>2016-02-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/enwrite/</loc>
+    <loc>https://zzamboni.org/tags/enwrite/</loc>
     <lastmod>2016-02-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/enwrite/</loc>
+    <loc>https://zzamboni.org/categories/enwrite/</loc>
     <lastmod>2016-02-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/esx/</loc>
+    <loc>https://zzamboni.org/tags/esx/</loc>
     <lastmod>2010-04-07T15:20:18-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/eventviewer/</loc>
+    <loc>https://zzamboni.org/tags/eventviewer/</loc>
     <lastmod>2011-01-19T12:33:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/evernote/</loc>
+    <loc>https://zzamboni.org/tags/evernote/</loc>
     <lastmod>2015-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/evernote/</loc>
+    <loc>https://zzamboni.org/categories/evernote/</loc>
     <lastmod>2015-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/facebook/</loc>
+    <loc>https://zzamboni.org/tags/facebook/</loc>
     <lastmod>2010-05-18T16:16:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/filter/</loc>
+    <loc>https://zzamboni.org/tags/filter/</loc>
     <lastmod>2011-03-16T01:54:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/fonts/</loc>
+    <loc>https://zzamboni.org/tags/fonts/</loc>
     <lastmod>2013-12-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/fonts/</loc>
+    <loc>https://zzamboni.org/categories/fonts/</loc>
     <lastmod>2013-12-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/friction/</loc>
+    <loc>https://zzamboni.org/tags/friction/</loc>
     <lastmod>2011-03-14T00:09:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/fun/</loc>
+    <loc>https://zzamboni.org/tags/fun/</loc>
     <lastmod>2010-09-07T17:21:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/geneschultz/</loc>
+    <loc>https://zzamboni.org/tags/geneschultz/</loc>
     <lastmod>2011-10-13T00:36:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/ghost/</loc>
+    <loc>https://zzamboni.org/tags/ghost/</loc>
     <lastmod>2017-08-25T09:00:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/git/</loc>
+    <loc>https://zzamboni.org/tags/git/</loc>
     <lastmod>2015-05-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/git/</loc>
+    <loc>https://zzamboni.org/categories/git/</loc>
     <lastmod>2015-05-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/github/</loc>
+    <loc>https://zzamboni.org/tags/github/</loc>
     <lastmod>2017-08-25T09:00:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/github/</loc>
+    <loc>https://zzamboni.org/categories/github/</loc>
     <lastmod>2015-05-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/google/</loc>
+    <loc>https://zzamboni.org/tags/google/</loc>
     <lastmod>2010-09-07T17:21:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/goya/</loc>
+    <loc>https://zzamboni.org/tags/goya/</loc>
     <lastmod>2010-09-22T12:20:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/grabcartoons/</loc>
+    <loc>https://zzamboni.org/tags/grabcartoons/</loc>
     <lastmod>2010-08-19T15:22:28-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/gtd/</loc>
+    <loc>https://zzamboni.org/tags/gtd/</loc>
     <lastmod>2011-03-16T01:54:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/hammerspoon/</loc>
+    <loc>https://zzamboni.org/tags/hammerspoon/</loc>
     <lastmod>2018-01-08T13:31:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/hfs/</loc>
+    <loc>https://zzamboni.org/tags/hfs/</loc>
     <lastmod>2011-12-15T00:07:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/hierarchicalcopy/</loc>
+    <loc>https://zzamboni.org/tags/hierarchicalcopy/</loc>
     <lastmod>2010-08-27T00:28:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/homebrew/</loc>
+    <loc>https://zzamboni.org/tags/homebrew/</loc>
     <lastmod>2011-08-05T02:31:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/howto/</loc>
+    <loc>https://zzamboni.org/tags/howto/</loc>
     <lastmod>2018-01-08T13:31:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/howto/</loc>
+    <loc>https://zzamboni.org/categories/howto/</loc>
     <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/ios43/</loc>
+    <loc>https://zzamboni.org/tags/ios43/</loc>
     <lastmod>2011-03-12T17:03:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/iphone/</loc>
+    <loc>https://zzamboni.org/tags/iphone/</loc>
     <lastmod>2011-10-31T10:19:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/jello/</loc>
+    <loc>https://zzamboni.org/tags/jello/</loc>
     <lastmod>2011-03-14T00:09:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/keyboard/</loc>
+    <loc>https://zzamboni.org/tags/keyboard/</loc>
     <lastmod>2011-11-27T01:47:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/kindle/</loc>
+    <loc>https://zzamboni.org/tags/kindle/</loc>
     <lastmod>2011-12-20T02:17:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/kvm/</loc>
+    <loc>https://zzamboni.org/tags/kvm/</loc>
     <lastmod>2015-04-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/kvm/</loc>
+    <loc>https://zzamboni.org/categories/kvm/</loc>
     <lastmod>2015-04-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/languages/</loc>
+    <loc>https://zzamboni.org/tags/languages/</loc>
     <lastmod>2010-04-07T15:16:13-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/latex/</loc>
+    <loc>https://zzamboni.org/tags/latex/</loc>
     <lastmod>2011-01-19T15:28:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/latex2html/</loc>
+    <loc>https://zzamboni.org/tags/latex2html/</loc>
     <lastmod>2011-01-20T00:24:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/lion/</loc>
+    <loc>https://zzamboni.org/tags/lion/</loc>
     <lastmod>2011-07-22T10:30:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/literateconfig/</loc>
+    <loc>https://zzamboni.org/tags/literateconfig/</loc>
     <lastmod>2018-01-08T13:31:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/literateprogramming/</loc>
+    <loc>https://zzamboni.org/tags/literateprogramming/</loc>
     <lastmod>2018-01-08T13:31:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/logging/</loc>
+    <loc>https://zzamboni.org/tags/logging/</loc>
     <lastmod>2015-04-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/logging/</loc>
+    <loc>https://zzamboni.org/categories/logging/</loc>
     <lastmod>2015-04-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/logparser/</loc>
+    <loc>https://zzamboni.org/tags/logparser/</loc>
     <lastmod>2011-01-19T12:33:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/lua/</loc>
+    <loc>https://zzamboni.org/tags/lua/</loc>
     <lastmod>2017-11-01T08:16:15+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/mac/</loc>
+    <loc>https://zzamboni.org/tags/mac/</loc>
     <lastmod>2017-11-01T08:16:15+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/macos/</loc>
+    <loc>https://zzamboni.org/tags/macos/</loc>
     <lastmod>2017-09-20T18:24:47+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/macosx/</loc>
+    <loc>https://zzamboni.org/tags/macosx/</loc>
     <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/macosx/</loc>
+    <loc>https://zzamboni.org/categories/macosx/</loc>
     <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/macros/</loc>
+    <loc>https://zzamboni.org/tags/macros/</loc>
     <lastmod>2011-03-13T00:16:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/mail/</loc>
+    <loc>https://zzamboni.org/tags/mail/</loc>
     <lastmod>2012-01-25T09:54:07-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/mosaic/</loc>
+    <loc>https://zzamboni.org/tags/mosaic/</loc>
     <lastmod>2015-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/mosaic/</loc>
+    <loc>https://zzamboni.org/categories/mosaic/</loc>
     <lastmod>2015-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/networking/</loc>
+    <loc>https://zzamboni.org/tags/networking/</loc>
     <lastmod>2010-04-22T02:01:36-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/nix/</loc>
+    <loc>https://zzamboni.org/tags/nix/</loc>
     <lastmod>2017-09-20T18:24:47+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/nova/</loc>
+    <loc>https://zzamboni.org/tags/nova/</loc>
     <lastmod>2011-10-28T16:24:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/obituary/</loc>
+    <loc>https://zzamboni.org/tags/obituary/</loc>
     <lastmod>2011-10-13T00:36:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/objc/</loc>
+    <loc>https://zzamboni.org/tags/objc/</loc>
     <lastmod>2010-04-07T15:16:13-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/onenote/</loc>
+    <loc>https://zzamboni.org/tags/onenote/</loc>
     <lastmod>2010-09-05T17:15:13-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/oreillly/</loc>
+    <loc>https://zzamboni.org/tags/oreillly/</loc>
     <lastmod>2011-10-19T00:21:07-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/oreilly/</loc>
+    <loc>https://zzamboni.org/tags/oreilly/</loc>
     <lastmod>2012-03-24T01:23:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/orgmode/</loc>
+    <loc>https://zzamboni.org/tags/orgmode/</loc>
     <lastmod>2018-03-21T22:45:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/osx/</loc>
+    <loc>https://zzamboni.org/tags/osx/</loc>
     <lastmod>2011-08-05T02:31:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/outlook/</loc>
+    <loc>https://zzamboni.org/tags/outlook/</loc>
     <lastmod>2017-09-11T21:11:29+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/people/</loc>
+    <loc>https://zzamboni.org/tags/people/</loc>
     <lastmod>2011-10-13T00:36:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/perl/</loc>
+    <loc>https://zzamboni.org/tags/perl/</loc>
     <lastmod>2010-03-31T01:03:52-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/personal/</loc>
+    <loc>https://zzamboni.org/tags/personal/</loc>
     <lastmod>2011-10-19T00:21:07-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/photos/</loc>
+    <loc>https://zzamboni.org/tags/photos/</loc>
     <lastmod>2012-03-26T00:01:14-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/picc12/</loc>
+    <loc>https://zzamboni.org/tags/picc12/</loc>
     <lastmod>2012-04-27T08:30:32-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/posterous/</loc>
+    <loc>https://zzamboni.org/tags/posterous/</loc>
     <lastmod>2010-09-28T02:22:09-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/prezi/</loc>
+    <loc>https://zzamboni.org/tags/prezi/</loc>
     <lastmod>2011-11-24T17:56:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/privacy/</loc>
+    <loc>https://zzamboni.org/tags/privacy/</loc>
     <lastmod>2010-05-18T16:16:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/productivity/</loc>
+    <loc>https://zzamboni.org/tags/productivity/</loc>
     <lastmod>2011-03-14T00:09:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/programming/</loc>
+    <loc>https://zzamboni.org/tags/programming/</loc>
     <lastmod>2010-04-07T15:16:13-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/puppet/</loc>
+    <loc>https://zzamboni.org/tags/puppet/</loc>
     <lastmod>2010-08-26T01:55:58-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/purdue/</loc>
+    <loc>https://zzamboni.org/tags/purdue/</loc>
     <lastmod>2012-03-26T00:01:14-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/pygments/</loc>
+    <loc>https://zzamboni.org/tags/pygments/</loc>
     <lastmod>2010-09-08T21:16:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/python/</loc>
+    <loc>https://zzamboni.org/tags/python/</loc>
     <lastmod>2010-09-08T21:16:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/reading/</loc>
+    <loc>https://zzamboni.org/tags/reading/</loc>
     <lastmod>2011-12-20T02:17:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/reference/</loc>
+    <loc>https://zzamboni.org/tags/reference/</loc>
     <lastmod>2010-02-17T10:12:38-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/regex/</loc>
+    <loc>https://zzamboni.org/tags/regex/</loc>
     <lastmod>2010-03-31T01:03:52-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/review/</loc>
+    <loc>https://zzamboni.org/tags/review/</loc>
     <lastmod>2011-03-12T17:03:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/ruby/</loc>
+    <loc>https://zzamboni.org/tags/ruby/</loc>
     <lastmod>2010-03-31T01:03:52-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/screenshots/</loc>
+    <loc>https://zzamboni.org/tags/screenshots/</loc>
     <lastmod>2011-10-31T10:19:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/scribe/</loc>
+    <loc>https://zzamboni.org/tags/scribe/</loc>
     <lastmod>2010-09-07T17:21:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/script/</loc>
+    <loc>https://zzamboni.org/tags/script/</loc>
     <lastmod>2011-03-16T01:54:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/security/</loc>
+    <loc>https://zzamboni.org/tags/security/</loc>
     <lastmod>2011-11-24T17:56:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/shell/</loc>
+    <loc>https://zzamboni.org/tags/shell/</loc>
     <lastmod>2018-06-13T20:25:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/sitenews/</loc>
+    <loc>https://zzamboni.org/tags/sitenews/</loc>
     <lastmod>2017-08-08T06:56:52+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/software/</loc>
+    <loc>https://zzamboni.org/tags/software/</loc>
     <lastmod>2010-08-19T15:22:28-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/sparrow/</loc>
+    <loc>https://zzamboni.org/tags/sparrow/</loc>
     <lastmod>2012-01-25T09:54:07-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/spoons/</loc>
+    <loc>https://zzamboni.org/tags/spoons/</loc>
     <lastmod>2017-09-01T20:17:55+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/ssh/</loc>
+    <loc>https://zzamboni.org/tags/ssh/</loc>
     <lastmod>2015-05-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/ssh/</loc>
+    <loc>https://zzamboni.org/categories/ssh/</loc>
     <lastmod>2015-05-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/statistics/</loc>
+    <loc>https://zzamboni.org/tags/statistics/</loc>
     <lastmod>2010-04-07T15:16:13-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/stevejobs/</loc>
+    <loc>https://zzamboni.org/tags/stevejobs/</loc>
     <lastmod>2011-12-20T02:17:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/subversion/</loc>
+    <loc>https://zzamboni.org/tags/subversion/</loc>
     <lastmod>2010-09-07T14:17:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/symlink/</loc>
+    <loc>https://zzamboni.org/tags/symlink/</loc>
     <lastmod>2010-09-28T09:39:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/sysadmin/</loc>
+    <loc>https://zzamboni.org/tags/sysadmin/</loc>
     <lastmod>2011-11-24T17:56:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/talks/</loc>
+    <loc>https://zzamboni.org/tags/talks/</loc>
     <lastmod>2012-04-27T08:30:32-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/technology/</loc>
+    <loc>https://zzamboni.org/tags/technology/</loc>
     <lastmod>2010-12-16T21:57:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/tips/</loc>
+    <loc>https://zzamboni.org/tags/tips/</loc>
     <lastmod>2017-09-20T18:24:47+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/tips/</loc>
+    <loc>https://zzamboni.org/categories/tips/</loc>
     <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/tools/</loc>
+    <loc>https://zzamboni.org/tags/tools/</loc>
     <lastmod>2011-12-27T19:41:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/trackpad/</loc>
+    <loc>https://zzamboni.org/tags/trackpad/</loc>
     <lastmod>2015-10-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/trackpad/</loc>
+    <loc>https://zzamboni.org/categories/trackpad/</loc>
     <lastmod>2015-10-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/translation/</loc>
+    <loc>https://zzamboni.org/tags/translation/</loc>
     <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/translation/</loc>
+    <loc>https://zzamboni.org/categories/translation/</loc>
     <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/tribute/</loc>
+    <loc>https://zzamboni.org/tags/tribute/</loc>
     <lastmod>2011-10-03T23:08:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/unam100/</loc>
+    <loc>https://zzamboni.org/tags/unam100/</loc>
     <lastmod>2010-09-22T12:20:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/unix/</loc>
+    <loc>https://zzamboni.org/tags/unix/</loc>
     <lastmod>2018-06-13T20:25:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/utilities/</loc>
+    <loc>https://zzamboni.org/tags/utilities/</loc>
     <lastmod>2010-02-17T10:12:38-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/vba/</loc>
+    <loc>https://zzamboni.org/tags/vba/</loc>
     <lastmod>2011-03-16T01:54:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/virtualcenter/</loc>
+    <loc>https://zzamboni.org/tags/virtualcenter/</loc>
     <lastmod>2010-05-03T13:13:42-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/vmware/</loc>
+    <loc>https://zzamboni.org/tags/vmware/</loc>
     <lastmod>2010-05-03T13:13:42-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/web/</loc>
+    <loc>https://zzamboni.org/tags/web/</loc>
     <lastmod>2015-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/web/</loc>
+    <loc>https://zzamboni.org/categories/web/</loc>
     <lastmod>2015-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/whisky/</loc>
+    <loc>https://zzamboni.org/tags/whisky/</loc>
     <lastmod>2015-04-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/whisky/</loc>
+    <loc>https://zzamboni.org/categories/whisky/</loc>
     <lastmod>2015-04-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/windows/</loc>
+    <loc>https://zzamboni.org/tags/windows/</loc>
     <lastmod>2011-03-14T00:09:00-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/windowsxp/</loc>
+    <loc>https://zzamboni.org/tags/windowsxp/</loc>
     <lastmod>2010-05-03T13:13:42-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/yam/</loc>
+    <loc>https://zzamboni.org/tags/yam/</loc>
     <lastmod>2010-09-07T14:17:00-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/tags/zznippets/</loc>
+    <loc>https://zzamboni.org/tags/zznippets/</loc>
     <lastmod>2015-06-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/categories/zznippets/</loc>
+    <loc>https://zzamboni.org/categories/zznippets/</loc>
     <lastmod>2015-06-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://zzamboni.org/enwrite-callback.html</loc>
+    <loc>https://zzamboni.org/enwrite-callback.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

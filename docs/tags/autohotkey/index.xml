@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Autohotkey on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/autohotkey/</link>
+    <link>https://zzamboni.org/tags/autohotkey/</link>
     <description>Recent content in Autohotkey on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 23 Dec 2010 12:14:00 -0600</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/autohotkey/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/autohotkey/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Setting up a global hotkey to add tasks to Outlook</title>
-      <link>http://zzamboni.org/post/setting-up-a-global-hotkey-to-add-tasks-to-outlook/</link>
+      <link>https://zzamboni.org/post/setting-up-a-global-hotkey-to-add-tasks-to-outlook/</link>
       <pubDate>Thu, 23 Dec 2010 12:14:00 -0600</pubDate>
       
-      <guid>http://zzamboni.org/post/setting-up-a-global-hotkey-to-add-tasks-to-outlook/</guid>
+      <guid>https://zzamboni.org/post/setting-up-a-global-hotkey-to-add-tasks-to-outlook/</guid>
       <description>One thing I missed since I moved from a Mac (using The Hit List for GTD) to Outlook (using Jello Dashboard for GTD) was the availability of a global hot key that I could use to bring up a text entry box which I could use to quickly add things into my electronic Inbox, for later processing.
 I have found a way to achieve this, and here is the setup I am using now:</description>
     </item>
     
     <item>
       <title>GTD Tip: one-key opening of INBOX notebook in OneNote</title>
-      <link>http://zzamboni.org/post/gtd-tip-one-key-opening-of-inbox-notebook-in-onenote/</link>
+      <link>https://zzamboni.org/post/gtd-tip-one-key-opening-of-inbox-notebook-in-onenote/</link>
       <pubDate>Sun, 05 Sep 2010 17:15:13 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/gtd-tip-one-key-opening-of-inbox-notebook-in-onenote/</guid>
+      <guid>https://zzamboni.org/post/gtd-tip-one-key-opening-of-inbox-notebook-in-onenote/</guid>
       <description>One of the most useful applications I have discovered since I had to switch to Windows as my main OS is OneNote, a really great note-taking application which I use for pretty much every data-storing and note-taking need. I use a OneNote notebook as part of my GTD inbox. Today&#39;s very simple tip is how to assign a keystroke for opening my Inbox notebook from anywhere in the system. Here are the steps:</description>
     </item>
     

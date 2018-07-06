@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lion on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/lion/</link>
+    <link>https://zzamboni.org/tags/lion/</link>
     <description>Recent content in Lion on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 22 Jul 2011 10:30:00 -0500</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/lion/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/lion/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>My thoughts about the Lion upgrade process</title>
-      <link>http://zzamboni.org/post/my-thoughts-about-the-lion-upgrade-process/</link>
+      <link>https://zzamboni.org/post/my-thoughts-about-the-lion-upgrade-process/</link>
       <pubDate>Fri, 22 Jul 2011 10:30:00 -0500</pubDate>
       
-      <guid>http://zzamboni.org/post/my-thoughts-about-the-lion-upgrade-process/</guid>
+      <guid>https://zzamboni.org/post/my-thoughts-about-the-lion-upgrade-process/</guid>
       <description>I just finished upgrading our Mac (my wife and I share it) to Lion. It looks very nice. This has been the OS X upgrade to which I have given less thought: purchase, download, backup, install, done.
  I think a lot of this has to do with the online distribution. We are used to installing things downloaded from the Internet without much thought (of course there are security considerations, but that&#39;s another topic).</description>
     </item>

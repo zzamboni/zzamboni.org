@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Unix on zzamboni.org</title>
-    <link>http://zzamboni.org/tags/unix/</link>
+    <link>https://zzamboni.org/tags/unix/</link>
     <description>Recent content in Unix on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 13 Jun 2018 20:25:00 +0200</lastBuildDate>
     
-	<atom:link href="http://zzamboni.org/tags/unix/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zzamboni.org/tags/unix/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Using and writing completions in Elvish</title>
-      <link>http://zzamboni.org/post/using-and-writing-completions-in-elvish/</link>
+      <link>https://zzamboni.org/post/using-and-writing-completions-in-elvish/</link>
       <pubDate>Wed, 13 Jun 2018 20:25:00 +0200</pubDate>
       
-      <guid>http://zzamboni.org/post/using-and-writing-completions-in-elvish/</guid>
+      <guid>https://zzamboni.org/post/using-and-writing-completions-in-elvish/</guid>
       <description>Like other Unix shells, Elvish has advanced command-argument completion capabilities. In this article I will explore the existing completions, and show you how you can create your own (and contribute them back to the community).
 Using existing completions There is a growing body of shell completions that you can simply load and use.
 Elvish has a still-small but growing collection of completions that have been created by its users. These are a few that I know of (let me know if you know others!</description>
@@ -24,20 +24,20 @@ Elvish has a still-small but growing collection of completions that have been cr
     
     <item>
       <title>Bang-Bang (!!, !$) Shell Shortcuts in Elvish</title>
-      <link>http://zzamboni.org/post/bang-bang---shell-shortcuts-in-elvish/</link>
+      <link>https://zzamboni.org/post/bang-bang---shell-shortcuts-in-elvish/</link>
       <pubDate>Mon, 04 Dec 2017 22:15:00 +0100</pubDate>
       
-      <guid>http://zzamboni.org/post/bang-bang---shell-shortcuts-in-elvish/</guid>
+      <guid>https://zzamboni.org/post/bang-bang---shell-shortcuts-in-elvish/</guid>
       <description>(Updated on March 19th, 2018 to use the new Elvish Package Manager)
 The bash shortcuts (maybe older? I&amp;rsquo;m not sure in which shell these originated) for &amp;ldquo;last command&amp;rdquo; (!!) and &amp;ldquo;last argument of last command&amp;rdquo; (!$) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in Elvish by default, they are easy to implement.</description>
     </item>
     
     <item>
       <title>Elvish, an awesome Unix shell</title>
-      <link>http://zzamboni.org/post/elvish-an-awesome-unix-shell/</link>
+      <link>https://zzamboni.org/post/elvish-an-awesome-unix-shell/</link>
       <pubDate>Thu, 14 Sep 2017 17:09:38 +0000</pubDate>
       
-      <guid>http://zzamboni.org/post/elvish-an-awesome-unix-shell/</guid>
+      <guid>https://zzamboni.org/post/elvish-an-awesome-unix-shell/</guid>
       <description>I&amp;rsquo;m always on the lookout for new toys, particularly if they make my work more productive or enjoyable. For a couple of months now I have been using a new Unix shell called Elvish as my default login shell on macOS, and I love it. It’s a young project but very usable and with some very nice features.
 Here are a few of the things I like about it:
  The Elvish language is clean and powerful, with clear syntax.</description>
