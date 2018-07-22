@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.42.2" />
+     <meta name="generator" content="Hugo 0.45" />
       
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -22,7 +22,7 @@
      
 
       <meta property="og:title" content="My Emacs Configuration, With Commentary" />
-<meta property="og:description" content="Last update: June 26, 2018
+<meta property="og:description" content="Last update: July 22, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zzamboni.org/post/my-emacs-configuration-with-commentary/" />
@@ -44,20 +44,20 @@ I have enjoyed slowly converting my configuration files to literate programming 
 
 
 <meta itemprop="name" content="My Emacs Configuration, With Commentary">
-<meta itemprop="description" content="Last update: June 26, 2018
+<meta itemprop="description" content="Last update: July 22, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving.">
 
 
 <meta itemprop="datePublished" content="2017-12-17T20:14:00&#43;01:00" />
 <meta itemprop="dateModified" content="2017-12-17T20:14:00&#43;01:00" />
-<meta itemprop="wordCount" content="7544">
+<meta itemprop="wordCount" content="7551">
 
 
 
 <meta itemprop="keywords" content="config,howto,literateprogramming,literateconfig,emacs," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Emacs Configuration, With Commentary"/>
-<meta name="twitter:description" content="Last update: June 26, 2018
+<meta name="twitter:description" content="Last update: July 22, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving."/>
 
         
@@ -188,9 +188,9 @@ if (!doNotTrack) {
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
-<p>Last update: <strong>June 26, 2018</strong></p>
+<p>Last update: <strong>July 22, 2018</strong></p>
 
-<p>I have enjoyed slowly converting my configuration files to <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html">literate programming</a> style style using org-mode in Emacs. I previously posted my <a href="../my-elvish-configuration-with-commentary/">Elvish configuration</a>, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.org">init.org</a> file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.org">init.org file in GitHub</a> for my current, live configuration, and the generated file at <a href="https://github.com/zzamboni/dot_emacs/blob/master/init.el">https://github.com/zzamboni/dot_emacs/blob/master/init.el</a>.</p>
+<p>I have enjoyed slowly converting my configuration files to <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html">literate programming</a> style style using org-mode in Emacs. I previously posted my <a href="../my-elvish-configuration-with-commentary/">Elvish configuration</a>, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my <a href="https://github.com/zzamboni/dot%5Femacs/blob/master/init.org">init.org</a> file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the <a href="https://github.com/zzamboni/dot%5Femacs/blob/master/init.org">init.org file in GitHub</a> for my current, live configuration, and the generated file at <a href="https://github.com/zzamboni/dot%5Femacs/blob/master/init.el">https://github.com/zzamboni/dot%5Femacs/blob/master/init.el</a>.</p>
 
 <h2 id="references">References</h2>
 
@@ -208,7 +208,7 @@ if (!doNotTrack) {
 <p>Lately I&rsquo;ve been playing with optimizing my Emacs load time. I have found a couple of useful resources, including:</p>
 
 <ul>
-<li><a href="https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/">Two easy little known steps to speed up Emacs start up time</a></li>
+<li><a href="https://www.reddit.com/r/emacs/comments/3kqt6e/2%5Feasy%5Flittle%5Fknown%5Fsteps%5Fto%5Fspeed%5Fup%5Femacs%5Fstart/">Two easy little known steps to speed up Emacs start up time</a></li>
 <li><a href="https://blog.d46.us/advanced-emacs-startup/">Advanced Techniques for Reducing Emacs Startup Time</a></li>
 </ul>
 
@@ -229,7 +229,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">gc-cons-threshold</span> <span class="nv">most-positive-fixnum</span><span class="p">)</span></code></pre></div>
 <h2 id="customized-variables">Customized variables</h2>
 
-<p>Emacs has its own <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html#Easy-Customization">Customization mechanism</a> for easily customizing many parameters. To make it easier to manage, I keep the customized variables and faces in a separate file and load it from the main file. A lot of my custom settings are configured from this init file as well, but there are always some which I change by hand for added flexibility.</p>
+<p>Emacs has its own <a href="https://www.gnu.org/software/emacs/manual/html%5Fnode/emacs/Easy-Customization.html#Easy-Customization">Customization mechanism</a> for easily customizing many parameters. To make it easier to manage, I keep the customized variables and faces in a separate file and load it from the main file. A lot of my custom settings are configured from this init file as well, but there are always some which I change by hand for added flexibility.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">custom-file</span> <span class="s">&#34;~/.emacs.d/custom.el&#34;</span><span class="p">)</span>
 <span class="p">(</span><span class="nf">load</span> <span class="nv">custom-file</span><span class="p">)</span></code></pre></div>
 <p>Here is the current contents of my <a href="https://github.com/zzamboni/dot-emacs/blob/master/custom.el">custom.el</a> file.</p>
@@ -253,7 +253,7 @@ if (!doNotTrack) {
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">column-number-mode</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">custom-safe-themes</span>
    <span class="p">(</span><span class="nb">quote</span>
-    <span class="p">(</span><span class="s">&#34;c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223&#34;</span> <span class="s">&#34;a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e&#34;</span> <span class="s">&#34;3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa&#34;</span> <span class="s">&#34;6ac7c0f959f0d7853915012e78ff70150bfbe2a69a1b703c3ac4184f9ae3ae02&#34;</span> <span class="s">&#34;8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a&#34;</span> <span class="s">&#34;a1a966cf2e87be6a148158c79863440ba2e45aa06cc214341feafe5c6deca4f2&#34;</span> <span class="s">&#34;3eb2b5607b41ad8a6da75fe04d5f92a46d1b9a95a202e3f5369e2cdefb7aac5c&#34;</span> <span class="s">&#34;3d0142352ce19c860047ad7402546944f84c270e84ae479beddbc2608268e0e5&#34;</span> <span class="s">&#34;a33858123d3d3ca10c03c657693881b9f8810c9e242a62f1ad6380adf57b031c&#34;</span> <span class="s">&#34;a40eac965142a2057269f8b2abd546b71a0e58e733c6668a62b1ad1aa7669220&#34;</span> <span class="s">&#34;7be789f201ea16242dab84dd5f225a55370dbecae248d4251edbd286fe879cfa&#34;</span> <span class="s">&#34;94dac4d15d12ba671f77a93d84ad9f799808714d4c5d247d5fd944df951b91d6&#34;</span> <span class="s">&#34;4d8fab23f15347bce54eb7137789ab93007010fa47296c2f36757ff84b5b3c8a&#34;</span> <span class="nv">default</span><span class="p">)))</span>
+    <span class="p">(</span><span class="s">&#34;cd4d1a0656fee24dc062b997f54d6f9b7da8f6dc8053ac858f15820f9a04a679&#34;</span> <span class="s">&#34;c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223&#34;</span> <span class="s">&#34;a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e&#34;</span> <span class="s">&#34;3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa&#34;</span> <span class="s">&#34;6ac7c0f959f0d7853915012e78ff70150bfbe2a69a1b703c3ac4184f9ae3ae02&#34;</span> <span class="s">&#34;8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a&#34;</span> <span class="s">&#34;a1a966cf2e87be6a148158c79863440ba2e45aa06cc214341feafe5c6deca4f2&#34;</span> <span class="s">&#34;3eb2b5607b41ad8a6da75fe04d5f92a46d1b9a95a202e3f5369e2cdefb7aac5c&#34;</span> <span class="s">&#34;3d0142352ce19c860047ad7402546944f84c270e84ae479beddbc2608268e0e5&#34;</span> <span class="s">&#34;a33858123d3d3ca10c03c657693881b9f8810c9e242a62f1ad6380adf57b031c&#34;</span> <span class="s">&#34;a40eac965142a2057269f8b2abd546b71a0e58e733c6668a62b1ad1aa7669220&#34;</span> <span class="s">&#34;7be789f201ea16242dab84dd5f225a55370dbecae248d4251edbd286fe879cfa&#34;</span> <span class="s">&#34;94dac4d15d12ba671f77a93d84ad9f799808714d4c5d247d5fd944df951b91d6&#34;</span> <span class="s">&#34;4d8fab23f15347bce54eb7137789ab93007010fa47296c2f36757ff84b5b3c8a&#34;</span> <span class="nv">default</span><span class="p">)))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">desktop-lazy-idle-delay</span> <span class="mi">3</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">desktop-lazy-verbose</span> <span class="no">nil</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">desktop-restore-eager</span> <span class="mi">1</span><span class="p">)</span>
@@ -265,7 +265,7 @@ if (!doNotTrack) {
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">helm-flx-for-helm-find-files</span> <span class="no">t</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">helm-flx-for-helm-locate</span> <span class="no">t</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">indent-tabs-mode</span> <span class="no">nil</span><span class="p">)</span>
- <span class="o">&#39;</span><span class="p">(</span><span class="nv">jiralib-url</span> <span class="s">&#34;https://jira.swisscom.com&#34;</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">jiralib-url</span> <span class="s">&#34;https://jira.swisscom.com&#34;</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">js-indent-level</span> <span class="mi">2</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">kill-whole-line</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">load-prefer-newer</span> <span class="no">t</span><span class="p">)</span>
@@ -293,8 +293,8 @@ if (!doNotTrack) {
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-mac-grab-Acrobat-app-p</span> <span class="no">nil</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-mac-grab-devonthink-app-p</span> <span class="no">nil</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-plantuml-jar-path</span> <span class="s">&#34;/usr/local/Cellar/plantuml/1.2017.18/libexec/plantuml.jar&#34;</span><span class="p">)</span>
- <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-reveal-note-key-char</span> <span class="no">nil</span><span class="p">)</span>
- <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-reveal-root</span> <span class="s">&#34;file:///Users/taazadi1/Dropbox/org/reveal.js&#34;</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-reveal-note-key-char</span> <span class="no">nil</span> <span class="no">t</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-reveal-root</span> <span class="s">&#34;file:///Users/taazadi1/Dropbox/org/reveal.js&#34;</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-src-fontify-natively</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-src-tab-acts-natively</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-startup-indented</span> <span class="no">t</span><span class="p">)</span>
@@ -319,11 +319,12 @@ if (!doNotTrack) {
      <span class="p">(</span><span class="s">&#34;melpa&#34;</span> <span class="o">.</span> <span class="s">&#34;https://melpa.org/packages/&#34;</span><span class="p">))))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">package-selected-packages</span>
    <span class="p">(</span><span class="nb">quote</span>
-    <span class="p">(</span><span class="nv">esup</span> <span class="nv">package-build</span> <span class="nv">org-capture</span> <span class="nv">org-babel</span> <span class="nv">ox-texinfo</span> <span class="nv">gist</span> <span class="nv">helm-flx</span> <span class="nv">which-key</span> <span class="nv">spaceline</span> <span class="nv">pretty-mode</span> <span class="nv">visual-regexp-steroids</span> <span class="nv">ox-hugo</span> <span class="nv">adaptive-wrap</span> <span class="nv">yankpad</span> <span class="nv">smart-mode-line</span> <span class="nv">org-plus-contrib</span> <span class="nv">ob-cfengine3</span> <span class="nv">org-journal</span> <span class="nv">ox-asciidoc</span> <span class="nv">org-jira</span> <span class="nv">ox-jira</span> <span class="nv">org-bullets</span> <span class="nv">ox-reveal</span> <span class="nv">lispy</span> <span class="nv">parinfer</span> <span class="nv">uniquify</span> <span class="nv">csv</span> <span class="nv">all-the-icons</span> <span class="nv">toc-org</span> <span class="nv">helm</span> <span class="nv">cider</span> <span class="nv">clojure-mode</span> <span class="nv">ido-completing-read+</span> <span class="nv">writeroom-mode</span> <span class="nv">crosshairs</span> <span class="nv">ox-confluence</span> <span class="nv">ox-md</span> <span class="nv">inf-ruby</span> <span class="nv">ob-plantuml</span> <span class="nv">ob-ruby</span> <span class="nv">darktooth-theme</span> <span class="nv">kaolin-themes</span> <span class="nv">htmlize</span> <span class="nv">ag</span> <span class="nv">col-highlight</span> <span class="nv">nix-mode</span> <span class="nv">easy-hugo</span> <span class="nv">elvish-mode</span> <span class="nv">zen-mode</span> <span class="nv">racket-mode</span> <span class="nv">package-lint</span> <span class="nv">scala-mode</span> <span class="nv">go-mode</span> <span class="nv">wc-mode</span> <span class="nv">neotree</span> <span class="nv">applescript-mode</span> <span class="nv">ack</span> <span class="nv">magit</span> <span class="nv">clj-refactor</span> <span class="nv">yaml-mode</span> <span class="nv">visual-fill-column</span> <span class="nv">visible-mark</span> <span class="nb">use-package</span> <span class="nv">unfill</span> <span class="nv">typopunct</span> <span class="nv">smooth-scrolling</span> <span class="nv">smex</span> <span class="nv">smartparens</span> <span class="nv">rainbow-delimiters</span> <span class="nv">projectile</span> <span class="nv">markdown-mode</span> <span class="nv">magit-popup</span> <span class="nv">lua-mode</span> <span class="nv">keyfreq</span> <span class="nv">imenu-anywhere</span> <span class="nv">iedit</span> <span class="nv">ido-ubiquitous</span> <span class="nv">hl-sexp</span> <span class="nv">gruvbox-theme</span> <span class="nv">git-commit</span> <span class="nv">fish-mode</span> <span class="nv">exec-path-from-shell</span> <span class="nv">company</span> <span class="nv">clojure-mode-extra-font-locking</span> <span class="nv">clojure-cheatsheet</span> <span class="nv">aggressive-indent</span> <span class="nv">adoc-mode</span> <span class="nv">4clojure</span><span class="p">)))</span>
+    <span class="p">(</span><span class="nv">org-fstree</span> <span class="nv">esup</span> <span class="nv">package-build</span> <span class="nv">org-capture</span> <span class="nv">org-babel</span> <span class="nv">ox-texinfo</span> <span class="nv">gist</span> <span class="nv">helm-flx</span> <span class="nv">which-key</span> <span class="nv">spaceline</span> <span class="nv">pretty-mode</span> <span class="nv">visual-regexp-steroids</span> <span class="nv">ox-hugo</span> <span class="nv">adaptive-wrap</span> <span class="nv">yankpad</span> <span class="nv">smart-mode-line</span> <span class="nv">org-plus-contrib</span> <span class="nv">ob-cfengine3</span> <span class="nv">org-journal</span> <span class="nv">ox-asciidoc</span> <span class="nv">org-jira</span> <span class="nv">ox-jira</span> <span class="nv">org-bullets</span> <span class="nv">ox-reveal</span> <span class="nv">lispy</span> <span class="nv">parinfer</span> <span class="nv">uniquify</span> <span class="nv">csv</span> <span class="nv">all-the-icons</span> <span class="nv">toc-org</span> <span class="nv">helm</span> <span class="nv">cider</span> <span class="nv">clojure-mode</span> <span class="nv">ido-completing-read+</span> <span class="nv">writeroom-mode</span> <span class="nv">crosshairs</span> <span class="nv">ox-confluence</span> <span class="nv">ox-md</span> <span class="nv">inf-ruby</span> <span class="nv">ob-plantuml</span> <span class="nv">ob-ruby</span> <span class="nv">darktooth-theme</span> <span class="nv">kaolin-themes</span> <span class="nv">htmlize</span> <span class="nv">ag</span> <span class="nv">col-highlight</span> <span class="nv">nix-mode</span> <span class="nv">easy-hugo</span> <span class="nv">elvish-mode</span> <span class="nv">zen-mode</span> <span class="nv">racket-mode</span> <span class="nv">package-lint</span> <span class="nv">scala-mode</span> <span class="nv">go-mode</span> <span class="nv">wc-mode</span> <span class="nv">neotree</span> <span class="nv">applescript-mode</span> <span class="nv">ack</span> <span class="nv">magit</span> <span class="nv">clj-refactor</span> <span class="nv">yaml-mode</span> <span class="nv">visual-fill-column</span> <span class="nv">visible-mark</span> <span class="nb">use-package</span> <span class="nv">unfill</span> <span class="nv">typopunct</span> <span class="nv">smooth-scrolling</span> <span class="nv">smex</span> <span class="nv">smartparens</span> <span class="nv">rainbow-delimiters</span> <span class="nv">projectile</span> <span class="nv">markdown-mode</span> <span class="nv">magit-popup</span> <span class="nv">lua-mode</span> <span class="nv">keyfreq</span> <span class="nv">imenu-anywhere</span> <span class="nv">iedit</span> <span class="nv">ido-ubiquitous</span> <span class="nv">hl-sexp</span> <span class="nv">gruvbox-theme</span> <span class="nv">git-commit</span> <span class="nv">fish-mode</span> <span class="nv">exec-path-from-shell</span> <span class="nv">company</span> <span class="nv">clojure-mode-extra-font-locking</span> <span class="nv">clojure-cheatsheet</span> <span class="nv">aggressive-indent</span> <span class="nv">adoc-mode</span> <span class="nv">4clojure</span><span class="p">)))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">read-buffer-completion-ignore-case</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">read-file-name-completion-ignore-case</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">reb-re-syntax</span> <span class="p">(</span><span class="nb">quote</span> <span class="nf">string</span><span class="p">))</span>
- <span class="o">&#39;</span><span class="p">(</span><span class="nv">recentf-max-menu-items</span> <span class="mi">50</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">recentf-max-menu-items</span> <span class="mi">100</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">recentf-max-saved-items</span> <span class="mi">100</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">safe-local-variable-values</span>
    <span class="p">(</span><span class="nb">quote</span>
     <span class="p">((</span><span class="nf">eval</span> <span class="nv">add-hook</span>
@@ -347,8 +348,8 @@ if (!doNotTrack) {
      <span class="p">(</span><span class="s">&#34;^:P:devel/&#34;</span> <span class="s">&#34;:Dev:&#34;</span><span class="p">)</span>
      <span class="p">(</span><span class="s">&#34;^:Write:learning-cfengine-3/learning-cfengine-3/&#34;</span> <span class="s">&#34;:cf-learn:&#34;</span><span class="p">)</span>
      <span class="p">(</span><span class="s">&#34;^:Dev:go/src/github.com/elves/elvish/&#34;</span> <span class="s">&#34;:elvish:&#34;</span><span class="p">)</span>
-     <span class="p">(</span><span class="s">&#34;^:Dev:zzamboni.org/zzamboni.org/&#34;</span> <span class="s">&#34;:zz.org:&#34;</span><span class="p">))))</span>
- <span class="o">&#39;</span><span class="p">(</span><span class="nv">sml/theme</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">dark</span><span class="p">))</span>
+     <span class="p">(</span><span class="s">&#34;^:Dev:zzamboni.org/zzamboni.org/&#34;</span> <span class="s">&#34;:zz.org:&#34;</span><span class="p">)))</span> <span class="no">t</span><span class="p">)</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">sml/theme</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">dark</span><span class="p">)</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">sp-base-key-bindings</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">paredit</span><span class="p">))</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">tab-width</span> <span class="mi">2</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">tool-bar-mode</span> <span class="no">nil</span><span class="p">)</span>
@@ -357,7 +358,7 @@ if (!doNotTrack) {
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">uniquify-strip-common-suffix</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">use-package-always-defer</span> <span class="no">t</span><span class="p">)</span>
  <span class="o">&#39;</span><span class="p">(</span><span class="nv">use-package-always-ensure</span> <span class="no">t</span><span class="p">)</span>
- <span class="o">&#39;</span><span class="p">(</span><span class="nv">vr/engine</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">pcre2el</span><span class="p">)))</span>
+ <span class="o">&#39;</span><span class="p">(</span><span class="nv">vr/engine</span> <span class="p">(</span><span class="nb">quote</span> <span class="nv">pcre2el</span><span class="p">)</span> <span class="no">t</span><span class="p">))</span>
 <span class="p">(</span><span class="nv">custom-set-faces</span>
  <span class="c1">;; custom-set-faces was added by Custom.</span>
  <span class="c1">;; If you edit it by hand, you could mess it up, so be careful.</span>
@@ -436,9 +437,8 @@ if (!doNotTrack) {
 <p>These are two short functions I wrote to be able to set/unset proxy settings within Emacs. I haven&rsquo;t bothered to improve or automate this, as I pretty much only need it to be able to install packages sometimes when I&rsquo;m at work. For now I just call them manually with <code>M-x zz/(un)set-proxy</code> when I need to.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/set-proxy</span> <span class="p">()</span>
   <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">zz/proxy</span> <span class="s">&#34;proxy.corproot.net:8079&#34;</span><span class="p">))</span>
-    <span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;url-proxy-services</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;http&#34;</span>  <span class="o">.</span> <span class="nv">zz/proxy</span><span class="p">)</span>
-                                                  <span class="p">(</span><span class="s">&#34;https&#34;</span> <span class="o">.</span> <span class="nv">zz/proxy</span><span class="p">)))))</span>
+  <span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;url-proxy-services</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;http&#34;</span>  <span class="o">.</span> <span class="s">&#34;proxy.corproot.net:8079&#34;</span><span class="p">)</span>
+                                                <span class="p">(</span><span class="s">&#34;https&#34;</span> <span class="o">.</span> <span class="s">&#34;proxy.corproot.net:8079&#34;</span><span class="p">))))</span>
 <span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/unset-proxy</span> <span class="p">()</span>
   <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
   <span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;url-proxy-services</span> <span class="no">nil</span><span class="p">))</span></code></pre></div>
@@ -477,7 +477,7 @@ if (!doNotTrack) {
 <li><p>Don&rsquo;t use hard tabs</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;indent-tabs-mode</span> <span class="no">nil</span><span class="p">)</span></code></pre></div></li>
 
-<li><p>Emacs automatically creates backup files, by default in the same folder as the original file, which often leaves backup files behind. This tells Emacs to <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Backup-Files.html">put all backups in ~/.emacs.d/backups</a>.</p>
+<li><p>Emacs automatically creates backup files, by default in the same folder as the original file, which often leaves backup files behind. This tells Emacs to <a href="http://www.gnu.org/software/emacs/manual/html%5Fnode/elisp/Backup-Files.html">put all backups in ~/.emacs.d/backups</a>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">customize-set-variable</span> <span class="ss">&#39;backup-directory-alist</span> <span class="o">`</span><span class="p">((</span><span class="s">&#34;.&#34;</span> <span class="o">.</span> <span class="o">,</span><span class="p">(</span><span class="nf">concat</span> <span class="nv">user-emacs-directory</span> <span class="s">&#34;backups&#34;</span><span class="p">))))</span></code></pre></div></li>
 
 <li><p><a href="http://emacswiki.org/emacs/WinnerMode">WinnerMode</a> makes it possible to cycle and undo window configuration changes (i.e. arrangement of panels, etc.)</p>
@@ -602,13 +602,13 @@ if (!doNotTrack) {
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">bind-key</span> <span class="s">&#34;%&#34;</span> <span class="ss">&#39;zz/goto-match-paren</span><span class="p">)</span></code></pre></div>
 <h2 id="org-mode">Org mode</h2>
 
-<p>I have started using <a href="http://orgmode.org/">org-mode</a> to writing, blogging, coding, presentations and more, thanks to the hearty recommendations and information from <a href="http://www.cmdln.org/">Nick</a> and many others. I am duly impressed. I have been a fan of the idea of <a href="https://en.wikipedia.org/wiki/Literate_programming">literate programming</a> for many years, and I have tried other tools before (most notably <a href="https://www.cs.tufts.edu/~nr/noweb/">noweb</a>, which I used during grad school for many of my homeworks and projects), but org-mode is the first tool I have encountered which seems to make it practical. Here are some of the resources I have found useful in learning it:</p>
+<p>I have started using <a href="http://orgmode.org/">org-mode</a> to writing, blogging, coding, presentations and more, thanks to the hearty recommendations and information from <a href="http://www.cmdln.org/">Nick</a> and many others. I am duly impressed. I have been a fan of the idea of <a href="https://en.wikipedia.org/wiki/Literate%5Fprogramming">literate programming</a> for many years, and I have tried other tools before (most notably <a href="https://www.cs.tufts.edu/~nr/noweb/">noweb</a>, which I used during grad school for many of my homeworks and projects), but org-mode is the first tool I have encountered which seems to make it practical. Here are some of the resources I have found useful in learning it:</p>
 
 <ul>
 <li>Howard Abrams&rsquo; <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html">Introduction to Literate Programming</a>, which got me jumpstarted into writing code documented with org-mode.</li>
 <li>Nick Anderson&rsquo;s <a href="https://github.com/nickanderson/Level-up-your-notes-with-Org">Level up your notes with Org</a>, which contains many useful tips and configuration tricks.</li>
 <li>Sacha Chua&rsquo;s <a href="http://sachachua.com/blog/2014/01/tips-learning-org-mode-emacs/">Some tips for learning Org Mode for Emacs</a>, her <a href="http://pages.sachachua.com/.emacs.d/Sacha.html">Emacs configuration</a> and many of her <a href="http://sachachua.com/blog/category/emacs/">other articles</a>.</li>
-<li>Rainer König&rsquo;s <a href="https://www.youtube.com/playlist?list=PLVtKhBrRV_ZkPnBtt_TD1Cs9PJlU0IIdE">OrgMode Tutorial</a> video series.</li>
+<li>Rainer König&rsquo;s <a href="https://www.youtube.com/playlist?list=PLVtKhBrRV%5FZkPnBtt%5FTD1Cs9PJlU0IIdE">OrgMode Tutorial</a> video series.</li>
 </ul>
 
 <p>This is the newest and most-in-flux section of my Emacs config, since I&rsquo;m still learning org-mode myself.</p>
@@ -908,7 +908,7 @@ if (!doNotTrack) {
 <p>I use proportional fonts in org-mode for the text, while keeping fixed-width fonts for blocks, so that source code, tables, etc. are shown correctly. These settings include:</p>
 
 <ul>
-<li><p>Setting up the <code>variable-pitch</code> face to the proportional font I like to use. I&rsquo;m currently alternating between my two favorites, <a href="https://en.wikipedia.org/wiki/Source_Sans_Pro">Source Sans Pro</a> and <a href="https://en.wikipedia.org/wiki/Avenir_(typeface)">Avenir Next</a>.</p>
+<li><p>Setting up the <code>variable-pitch</code> face to the proportional font I like to use. I&rsquo;m currently alternating between my two favorites, <a href="https://en.wikipedia.org/wiki/Source%5FSans%5FPro">Source Sans Pro</a> and <a href="https://en.wikipedia.org/wiki/Avenir%5F(typeface)">Avenir Next</a>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">variable-pitch</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:family</span> <span class="s">&#34;Source Sans Pro&#34;</span> <span class="nb">:height</span> <span class="mi">160</span> <span class="nb">:weight</span> <span class="nv">light</span><span class="p">))))</span>
 <span class="c1">;;(variable-pitch ((t (:family &#34;Avenir Next&#34; :height 160 :weight light))))</span></code></pre></div></li>
 
@@ -1142,7 +1142,7 @@ if (!doNotTrack) {
   <span class="nb">:defer</span> <span class="mi">3</span><span class="p">)</span></code></pre></div>
 <h3 id="completion-ido-or-helm">Completion: IDO or Helm?</h3>
 
-<p>The <a href="https://tuhdo.github.io/helm-intro.html">battle</a> <a href="https://news.ycombinator.com/item?id=11100312">rages</a> <a href="https://www.reddit.com/r/emacs/comments/3o36sc/what_do_you_prefer_ido_or_helm/">on</a> - <a href="https://github.com/emacs-helm/helm">helm</a> or <a href="https://www.emacswiki.org/emacs/InteractivelyDoThings">IDO</a>? Both are nice completion frameworks for Emacs, and both integrate nicely with most main Emacs functions, including file opening, command and buffer selection, etc. I was using IDO for some time but are now giving helm a try. Both my configs are shown below, but only Helm is enabled at the moment.</p>
+<p>The <a href="https://tuhdo.github.io/helm-intro.html">battle</a> <a href="https://news.ycombinator.com/item?id=11100312">rages</a> <a href="https://www.reddit.com/r/emacs/comments/3o36sc/what%5Fdo%5Fyou%5Fprefer%5Fido%5For%5Fhelm/">on</a> - <a href="https://github.com/emacs-helm/helm">helm</a> or <a href="https://www.emacswiki.org/emacs/InteractivelyDoThings">IDO</a>? Both are nice completion frameworks for Emacs, and both integrate nicely with most main Emacs functions, including file opening, command and buffer selection, etc. I was using IDO for some time but are now giving helm a try. Both my configs are shown below, but only Helm is enabled at the moment.</p>
 
 <p>Should I also look at <a href="https://sam217pa.github.io/2016/09/13/from-helm-to-ivy/">ivy</a>?</p>
 
@@ -1447,7 +1447,7 @@ if (!doNotTrack) {
                    <span class="p">(</span><span class="nf">sort</span> <span class="p">(</span><span class="nf">mapcar</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nf">cons</span> <span class="p">(</span><span class="nf">random</span><span class="p">)</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">x</span> <span class="s">&#34;\n&#34;</span><span class="p">)))</span> <span class="nv">lines</span><span class="p">)</span>
                          <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">a</span> <span class="nv">b</span><span class="p">)</span> <span class="p">(</span><span class="nf">&lt;</span> <span class="p">(</span><span class="nf">car</span> <span class="nv">a</span><span class="p">)</span> <span class="p">(</span><span class="nf">car</span> <span class="nv">b</span><span class="p">))))))))</span></code></pre></div></li>
 
-<li><p><a href="https://www.gnu.org/software/emacs/manual/html_node/autotype/Autoinserting.html">auto-insert mode</a> for automatically inserting user-defined templates for certain file types. It&rsquo;s included with Emacs, so I just configure its directory to one inside my Dropbox, and set the hook to run it automatically when opening a file.</p>
+<li><p><a href="https://www.gnu.org/software/emacs/manual/html%5Fnode/autotype/Autoinserting.html">auto-insert mode</a> for automatically inserting user-defined templates for certain file types. It&rsquo;s included with Emacs, so I just configure its directory to one inside my Dropbox, and set the hook to run it automatically when opening a file.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">autoinsert</span>
   <span class="nb">:ensure</span> <span class="no">nil</span>
   <span class="nb">:custom</span>
@@ -1700,7 +1700,7 @@ if (!doNotTrack) {
     </a>
     <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;<a class="no-underline hover-white white-70" href="https://www.gnu.org/software/emacs/">Emacs 26.1 </a> &plus;
                 <a class="no-underline hover-white white-70" href="https://orgmode.org/">Org mode 9.1.13 </a> &plus;
-                <a class="no-underline hover-white white-70" href="https://ox-hugo.scripter.co/">ox-hugo</a>&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.42.2</a>
+                <a class="no-underline hover-white white-70" href="https://ox-hugo.scripter.co/">ox-hugo</a>&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.45</a>
             &plus; <a class="no-underline hover-white white-70" href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a></div>
     
 

@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.42.2" />
+     <meta name="generator" content="Hugo 0.45" />
       
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -22,7 +22,7 @@
      
 
       <meta property="og:title" content="My Hammerspoon Configuration, With Commentary" />
-<meta property="og:description" content="Last update: June 26, 2018
+<meta property="og:description" content="Last update: July 22, 2018
 In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration in GitHub.
 General variables and configuration Global log level. Per-spoon log level can be configured in each Install:andUse block below." />
 <meta property="og:type" content="article" />
@@ -45,7 +45,7 @@ General variables and configuration Global log level. Per-spoon log level can be
 
 
 <meta itemprop="name" content="My Hammerspoon Configuration, With Commentary">
-<meta itemprop="description" content="Last update: June 26, 2018
+<meta itemprop="description" content="Last update: July 22, 2018
 In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration in GitHub.
 General variables and configuration Global log level. Per-spoon log level can be configured in each Install:andUse block below.">
 
@@ -59,7 +59,7 @@ General variables and configuration Global log level. Per-spoon log level can be
 <meta itemprop="keywords" content="config,howto,literateprogramming,literateconfig,hammerspoon," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Hammerspoon Configuration, With Commentary"/>
-<meta name="twitter:description" content="Last update: June 26, 2018
+<meta name="twitter:description" content="Last update: July 22, 2018
 In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration in GitHub.
 General variables and configuration Global log level. Per-spoon log level can be configured in each Install:andUse block below."/>
 
@@ -191,7 +191,7 @@ if (!doNotTrack) {
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
-<p>Last update: <strong>June 26, 2018</strong></p>
+<p>Last update: <strong>July 22, 2018</strong></p>
 
 <p>In my <a href="../my-elvish-configuration-with-commentary/">ongoing</a> <a href="../my-emacs-configuration-with-commentary">series</a> of <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html">literate</a> config files, I present to you my <a href="http://www.hammerspoon.org/">Hammerspoon</a> configuration file. You can see the generated file at <a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua">https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua</a>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration <a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org">in GitHub</a>.</p>
 
@@ -357,7 +357,7 @@ if (!doNotTrack) {
                  <span class="n">start</span> <span class="o">=</span> <span class="kc">true</span>
                <span class="p">}</span>
 <span class="p">)</span></code></pre></div>
-<p>The <a href="http://www.hammerspoon.org/Spoons/MouseCircle.html">MouseCircle</a> spoon shows a circle around the mouse pointer when triggered. I have it disabled for now because I have the macOS <a href="https://support.apple.com/kb/PH25507?locale=en_US&amp;viewlocale=en_US">shake-to-grow feature</a> enabled.</p>
+<p>The <a href="http://www.hammerspoon.org/Spoons/MouseCircle.html">MouseCircle</a> spoon shows a circle around the mouse pointer when triggered. I have it disabled for now because I have the macOS <a href="https://support.apple.com/kb/PH25507?locale=en%5FUS&amp;viewlocale=en%5FUS">shake-to-grow feature</a> enabled.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">Install</span><span class="p">:</span><span class="n">andUse</span><span class="p">(</span><span class="s2">&#34;MouseCircle&#34;</span><span class="p">,</span>
                <span class="p">{</span>
                  <span class="n">disable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
@@ -470,7 +470,7 @@ if (!doNotTrack) {
 <span class="p">},</span></code></pre></div>
 <p>Or to translate things using <a href="https://dict.leo.org/">dict.leo.org</a>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="p">[</span><span class="s2">&#34;Translate using Leo&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://dict.leo.org/ende/index_de.html#/search=${query}&#34;</span><span class="p">,</span>
+  <span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://dict.leo.org/englisch-deutsch/${query}&#34;</span><span class="p">,</span>
   <span class="n">icon</span> <span class="o">=</span> <span class="s1">&#39;favicon&#39;</span><span class="p">,</span>
   <span class="n">keyword</span> <span class="o">=</span> <span class="s2">&#34;leo&#34;</span><span class="p">,</span>
 <span class="p">}</span></code></pre></div>
@@ -714,7 +714,7 @@ if (!doNotTrack) {
     </a>
     <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;<a class="no-underline hover-white white-70" href="https://www.gnu.org/software/emacs/">Emacs 26.1 </a> &plus;
                 <a class="no-underline hover-white white-70" href="https://orgmode.org/">Org mode 9.1.13 </a> &plus;
-                <a class="no-underline hover-white white-70" href="https://ox-hugo.scripter.co/">ox-hugo</a>&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.42.2</a>
+                <a class="no-underline hover-white white-70" href="https://ox-hugo.scripter.co/">ox-hugo</a>&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.45</a>
             &plus; <a class="no-underline hover-white white-70" href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a></div>
     
 
