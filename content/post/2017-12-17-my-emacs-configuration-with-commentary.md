@@ -10,9 +10,9 @@ featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **June 26, 2018**
+Last update: **July 22, 2018**
 
-I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot_emacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot_emacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot_emacs/blob/master/init.el>.
+I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
 
 ## References {#references}
@@ -29,7 +29,7 @@ Emacs config is an art, and I have learned a lot by reading through other people
 
 Lately I've been playing with optimizing my Emacs load time. I have found a couple of useful resources, including:
 
--   [Two easy little known steps to speed up Emacs start up time](https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/)
+-   [Two easy little known steps to speed up Emacs start up time](https://www.reddit.com/r/emacs/comments/3kqt6e/2%5Feasy%5Flittle%5Fknown%5Fsteps%5Fto%5Fspeed%5Fup%5Femacs%5Fstart/)
 -   [Advanced Techniques for Reducing Emacs Startup Time](https://blog.d46.us/advanced-emacs-startup/)
 
 Based on these, I have added the code below.
@@ -62,7 +62,7 @@ We set `gc-cons-threshold` to its maximum value, to prevent any garbage collecti
 
 ## Customized variables {#customized-variables}
 
-Emacs has its own [Customization mechanism](https://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html#Easy-Customization) for easily customizing many parameters. To make it easier to manage, I keep the customized variables and faces in a separate file and load it from the main file. A lot of my custom settings are configured from this init file as well, but there are always some which I change by hand for added flexibility.
+Emacs has its own [Customization mechanism](https://www.gnu.org/software/emacs/manual/html%5Fnode/emacs/Easy-Customization.html#Easy-Customization) for easily customizing many parameters. To make it easier to manage, I keep the customized variables and faces in a separate file and load it from the main file. A lot of my custom settings are configured from this init file as well, but there are always some which I change by hand for added flexibility.
 
 ```emacs-lisp
 (setq custom-file "~/.emacs.d/custom.el")
@@ -92,7 +92,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
-    ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "6ac7c0f959f0d7853915012e78ff70150bfbe2a69a1b703c3ac4184f9ae3ae02" "8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a" "a1a966cf2e87be6a148158c79863440ba2e45aa06cc214341feafe5c6deca4f2" "3eb2b5607b41ad8a6da75fe04d5f92a46d1b9a95a202e3f5369e2cdefb7aac5c" "3d0142352ce19c860047ad7402546944f84c270e84ae479beddbc2608268e0e5" "a33858123d3d3ca10c03c657693881b9f8810c9e242a62f1ad6380adf57b031c" "a40eac965142a2057269f8b2abd546b71a0e58e733c6668a62b1ad1aa7669220" "7be789f201ea16242dab84dd5f225a55370dbecae248d4251edbd286fe879cfa" "94dac4d15d12ba671f77a93d84ad9f799808714d4c5d247d5fd944df951b91d6" "4d8fab23f15347bce54eb7137789ab93007010fa47296c2f36757ff84b5b3c8a" default)))
+    ("cd4d1a0656fee24dc062b997f54d6f9b7da8f6dc8053ac858f15820f9a04a679" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "6ac7c0f959f0d7853915012e78ff70150bfbe2a69a1b703c3ac4184f9ae3ae02" "8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a" "a1a966cf2e87be6a148158c79863440ba2e45aa06cc214341feafe5c6deca4f2" "3eb2b5607b41ad8a6da75fe04d5f92a46d1b9a95a202e3f5369e2cdefb7aac5c" "3d0142352ce19c860047ad7402546944f84c270e84ae479beddbc2608268e0e5" "a33858123d3d3ca10c03c657693881b9f8810c9e242a62f1ad6380adf57b031c" "a40eac965142a2057269f8b2abd546b71a0e58e733c6668a62b1ad1aa7669220" "7be789f201ea16242dab84dd5f225a55370dbecae248d4251edbd286fe879cfa" "94dac4d15d12ba671f77a93d84ad9f799808714d4c5d247d5fd944df951b91d6" "4d8fab23f15347bce54eb7137789ab93007010fa47296c2f36757ff84b5b3c8a" default)))
  '(desktop-lazy-idle-delay 3)
  '(desktop-lazy-verbose nil)
  '(desktop-restore-eager 1)
@@ -104,7 +104,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(helm-flx-for-helm-find-files t t)
  '(helm-flx-for-helm-locate t t)
  '(indent-tabs-mode nil)
- '(jiralib-url "https://jira.swisscom.com")
+ '(jiralib-url "https://jira.swisscom.com" t)
  '(js-indent-level 2)
  '(kill-whole-line t)
  '(load-prefer-newer t)
@@ -132,8 +132,8 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(org-mac-grab-Acrobat-app-p nil)
  '(org-mac-grab-devonthink-app-p nil)
  '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2017.18/libexec/plantuml.jar")
- '(org-reveal-note-key-char nil)
- '(org-reveal-root "file:///Users/taazadi1/Dropbox/org/reveal.js")
+ '(org-reveal-note-key-char nil t)
+ '(org-reveal-root "file:///Users/taazadi1/Dropbox/org/reveal.js" t)
  '(org-src-fontify-natively t)
  '(org-src-tab-acts-natively t)
  '(org-startup-indented t)
@@ -158,11 +158,12 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
      ("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (esup package-build org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
+    (org-fstree esup package-build org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(reb-re-syntax (quote string))
- '(recentf-max-menu-items 50)
+ '(recentf-max-menu-items 100)
+ '(recentf-max-saved-items 100)
  '(safe-local-variable-values
    (quote
     ((eval add-hook
@@ -186,8 +187,8 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
      ("^:P:devel/" ":Dev:")
      ("^:Write:learning-cfengine-3/learning-cfengine-3/" ":cf-learn:")
      ("^:Dev:go/src/github.com/elves/elvish/" ":elvish:")
-     ("^:Dev:zzamboni.org/zzamboni.org/" ":zz.org:"))))
- '(sml/theme (quote dark))
+     ("^:Dev:zzamboni.org/zzamboni.org/" ":zz.org:"))) t)
+ '(sml/theme (quote dark) t)
  '(sp-base-key-bindings (quote paredit))
  '(tab-width 2)
  '(tool-bar-mode nil)
@@ -196,7 +197,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(uniquify-strip-common-suffix t)
  '(use-package-always-defer t)
  '(use-package-always-ensure t)
- '(vr/engine (quote pcre2el)))
+ '(vr/engine (quote pcre2el) t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -306,9 +307,8 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 ```emacs-lisp
 (defun zz/set-proxy ()
   (interactive)
-  (let ((zz/proxy "proxy.corproot.net:8079"))
-    (customize-set-variable 'url-proxy-services '(("http"  . zz/proxy)
-                                                  ("https" . zz/proxy)))))
+  (customize-set-variable 'url-proxy-services '(("http"  . "proxy.corproot.net:8079")
+                                                ("https" . "proxy.corproot.net:8079"))))
 (defun zz/unset-proxy ()
   (interactive)
   (customize-set-variable 'url-proxy-services nil))
@@ -373,7 +373,7 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     (customize-set-variable 'indent-tabs-mode nil)
     ```
 
--   Emacs automatically creates backup files, by default in the same folder as the original file, which often leaves backup files behind. This tells Emacs to [put all backups in ~/.emacs.d/backups](http://www.gnu.org/software/emacs/manual/html_node/elisp/Backup-Files.html).
+-   Emacs automatically creates backup files, by default in the same folder as the original file, which often leaves backup files behind. This tells Emacs to [put all backups in ~/.emacs.d/backups](http://www.gnu.org/software/emacs/manual/html%5Fnode/elisp/Backup-Files.html).
 
     ```emacs-lisp
     (customize-set-variable 'backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
@@ -550,12 +550,12 @@ We bind this function to the `%` key.
 
 ## Org mode {#org-mode}
 
-I have started using [org-mode](http://orgmode.org/) to writing, blogging, coding, presentations and more, thanks to the hearty recommendations and information from [Nick](http://www.cmdln.org/) and many others. I am duly impressed. I have been a fan of the idea of [literate programming](https://en.wikipedia.org/wiki/Literate_programming) for many years, and I have tried other tools before (most notably [noweb](https://www.cs.tufts.edu/~nr/noweb/), which I used during grad school for many of my homeworks and projects), but org-mode is the first tool I have encountered which seems to make it practical. Here are some of the resources I have found useful in learning it:
+I have started using [org-mode](http://orgmode.org/) to writing, blogging, coding, presentations and more, thanks to the hearty recommendations and information from [Nick](http://www.cmdln.org/) and many others. I am duly impressed. I have been a fan of the idea of [literate programming](https://en.wikipedia.org/wiki/Literate%5Fprogramming) for many years, and I have tried other tools before (most notably [noweb](https://www.cs.tufts.edu/~nr/noweb/), which I used during grad school for many of my homeworks and projects), but org-mode is the first tool I have encountered which seems to make it practical. Here are some of the resources I have found useful in learning it:
 
 -   Howard Abrams' [Introduction to Literate Programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html), which got me jumpstarted into writing code documented with org-mode.
 -   Nick Anderson's [Level up your notes with Org](https://github.com/nickanderson/Level-up-your-notes-with-Org), which contains many useful tips and configuration tricks.
 -   Sacha Chua's [Some tips for learning Org Mode for Emacs](http://sachachua.com/blog/2014/01/tips-learning-org-mode-emacs/), her [Emacs configuration](http://pages.sachachua.com/.emacs.d/Sacha.html) and many of her [other articles](http://sachachua.com/blog/category/emacs/).
--   Rainer König's [OrgMode Tutorial](https://www.youtube.com/playlist?list=PLVtKhBrRV_ZkPnBtt_TD1Cs9PJlU0IIdE) video series.
+-   Rainer König's [OrgMode Tutorial](https://www.youtube.com/playlist?list=PLVtKhBrRV%5FZkPnBtt%5FTD1Cs9PJlU0IIdE) video series.
 
 This is the newest and most-in-flux section of my Emacs config, since I'm still learning org-mode myself.
 
@@ -996,7 +996,7 @@ We choose a nice font for the document title and the section headings. The first
 
 I use proportional fonts in org-mode for the text, while keeping fixed-width fonts for blocks, so that source code, tables, etc. are shown correctly. These settings include:
 
--   Setting up the `variable-pitch` face to the proportional font I like to use. I'm currently alternating between my two favorites, [Source Sans Pro](https://en.wikipedia.org/wiki/Source_Sans_Pro) and [Avenir Next](https://en.wikipedia.org/wiki/Avenir_(typeface)).
+-   Setting up the `variable-pitch` face to the proportional font I like to use. I'm currently alternating between my two favorites, [Source Sans Pro](https://en.wikipedia.org/wiki/Source%5FSans%5FPro) and [Avenir Next](https://en.wikipedia.org/wiki/Avenir%5F(typeface)).
 
     ```emacs-lisp
     (variable-pitch ((t (:family "Source Sans Pro" :height 160 :weight light))))
@@ -1354,7 +1354,7 @@ The `all-the-icons` package provides a number of useful icons.
 
 ### Completion: IDO or Helm? {#completion-ido-or-helm}
 
-The [battle](https://tuhdo.github.io/helm-intro.html) [rages](https://news.ycombinator.com/item?id=11100312) [on](https://www.reddit.com/r/emacs/comments/3o36sc/what_do_you_prefer_ido_or_helm/) - [helm](https://github.com/emacs-helm/helm) or [IDO](https://www.emacswiki.org/emacs/InteractivelyDoThings)? Both are nice completion frameworks for Emacs, and both integrate nicely with most main Emacs functions, including file opening, command and buffer selection, etc. I was using IDO for some time but are now giving helm a try. Both my configs are shown below, but only Helm is enabled at the moment.
+The [battle](https://tuhdo.github.io/helm-intro.html) [rages](https://news.ycombinator.com/item?id=11100312) [on](https://www.reddit.com/r/emacs/comments/3o36sc/what%5Fdo%5Fyou%5Fprefer%5Fido%5For%5Fhelm/) - [helm](https://github.com/emacs-helm/helm) or [IDO](https://www.emacswiki.org/emacs/InteractivelyDoThings)? Both are nice completion frameworks for Emacs, and both integrate nicely with most main Emacs functions, including file opening, command and buffer selection, etc. I was using IDO for some time but are now giving helm a try. Both my configs are shown below, but only Helm is enabled at the moment.
 
 Should I also look at [ivy](https://sam217pa.github.io/2016/09/13/from-helm-to-ivy/)?
 
@@ -1780,7 +1780,7 @@ Many other programming languages are well served by a single mode, without so mu
                              (lambda (a b) (< (car a) (car b))))))))
     ```
 
--   [auto-insert mode](https://www.gnu.org/software/emacs/manual/html_node/autotype/Autoinserting.html) for automatically inserting user-defined templates for certain file types. It's included with Emacs, so I just configure its directory to one inside my Dropbox, and set the hook to run it automatically when opening a file.
+-   [auto-insert mode](https://www.gnu.org/software/emacs/manual/html%5Fnode/autotype/Autoinserting.html) for automatically inserting user-defined templates for certain file types. It's included with Emacs, so I just configure its directory to one inside my Dropbox, and set the hook to run it automatically when opening a file.
 
     ```emacs-lisp
     (use-package autoinsert

@@ -10,7 +10,7 @@ toc = true
 featured_image = "/images/hammerspoon.png"
 +++
 
-Last update: **June 26, 2018**
+Last update: **July 22, 2018**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -262,7 +262,7 @@ Install:andUse("MenubarFlag",
 )
 ```
 
-The [MouseCircle](http://www.hammerspoon.org/Spoons/MouseCircle.html) spoon shows a circle around the mouse pointer when triggered. I have it disabled for now because I have the macOS [shake-to-grow feature](https://support.apple.com/kb/PH25507?locale=en_US&viewlocale=en_US) enabled.
+The [MouseCircle](http://www.hammerspoon.org/Spoons/MouseCircle.html) spoon shows a circle around the mouse pointer when triggered. I have it disabled for now because I have the macOS [shake-to-grow feature](https://support.apple.com/kb/PH25507?locale=en%5FUS&viewlocale=en%5FUS) enabled.
 
 ```lua
 Install:andUse("MouseCircle",
@@ -419,7 +419,7 @@ Or to translate things using [dict.leo.org](https://dict.leo.org/):
 
 ```lua
 ["Translate using Leo"] = {
-  url = "http://dict.leo.org/ende/index_de.html#/search=${query}",
+  url = "http://dict.leo.org/englisch-deutsch/${query}",
   icon = 'favicon',
   keyword = "leo",
 }
