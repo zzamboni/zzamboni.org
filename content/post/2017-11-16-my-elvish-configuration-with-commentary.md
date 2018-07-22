@@ -10,7 +10,7 @@ toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **June 26, 2018**
+Last update: **July 22, 2018**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -159,7 +159,7 @@ smart-matcher:apply
 
 Other possible values for `edit:completion:matcher` are `[p]{ edit:match-prefix &smart-case $p }` for smart-case completion (if your pattern is entirely lower case it ignores case, otherwise it's case sensitive).  `&smart-case` can be replaced with `&ignore-case` to make it always case-insensitive.
 
-I also configure <kbd>Tab</kbd> to trigger completion mode, but also to automatically enter "filter mode", so I can keep typing the filename I want, without having to use the arrow keys.
+I also configure <kbd>Tab</kbd> to trigger completion mode, but also to automatically enter "filter mode", so I can keep typing the filename I want, without having to use the arrow keys. Disabled as this is the default behavior starting with commit [b24e4a7](https://github.com/elves/elvish/commit/b24e4a73ccd948b8c08d4081c2bcfb7cf603a02b), but you may need it if you are running an older version for any reason and want this behavior.
 
 ```elvish
 edit:insert:binding[Tab] = { edit:completion:smart-start; edit:completion:trigger-filter }
