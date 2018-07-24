@@ -19,8 +19,7 @@ share your own work with other users.
 
 <!--more-->
 
-See also the [first article in this series]({{< relref
-"post/2017-08-21-getting-started-with-hammerspoon.md" >}}).
+See also the [first article in this series]({{< ref "/post/2017-08-21-getting-started-with-hammerspoon" >}}).
 
 # Using a Spoon to locate your mouse
 
