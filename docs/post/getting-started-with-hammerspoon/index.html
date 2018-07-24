@@ -22,13 +22,8 @@
      
 
       <meta property="og:title" content="Getting Started With Hammerspoon" />
-<meta property="og:description" content="This is the first installment of a series of posts about Hammerspoon,
-a staggeringly powerful automation utility which gives you an amazing
-degree of control over your Mac, allowing you to automate and control
-almost anything. In the word of Hammerspoon&rsquo;s motto: Making the
-runtime, funtime.
-
-" />
+<meta property="og:description" content="This is the first installment of a series of posts about Hammerspoon, a staggeringly powerful automation utility which gives you an amazing degree of control over your Mac, allowing you to automate and control almost anything. In the word of Hammerspoon&rsquo;s motto: Making the runtime, funtime.
+Why Hammerspoon? Hammerspoon is a Mac application that allows you to achieve an unprecedented level of control over your Mac. Hammerspoon enables interaction with the system at multiple layers&ndash;from low-level file system or network access, mouse or keyboard event capture and generation, all the way to manipulating applications or windows, processing URLs and drawing on the screen." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zzamboni.org/post/getting-started-with-hammerspoon/" />
 
@@ -49,31 +44,21 @@ runtime, funtime.
 
 
 <meta itemprop="name" content="Getting Started With Hammerspoon">
-<meta itemprop="description" content="This is the first installment of a series of posts about Hammerspoon,
-a staggeringly powerful automation utility which gives you an amazing
-degree of control over your Mac, allowing you to automate and control
-almost anything. In the word of Hammerspoon&rsquo;s motto: Making the
-runtime, funtime.
-
-">
+<meta itemprop="description" content="This is the first installment of a series of posts about Hammerspoon, a staggeringly powerful automation utility which gives you an amazing degree of control over your Mac, allowing you to automate and control almost anything. In the word of Hammerspoon&rsquo;s motto: Making the runtime, funtime.
+Why Hammerspoon? Hammerspoon is a Mac application that allows you to achieve an unprecedented level of control over your Mac. Hammerspoon enables interaction with the system at multiple layers&ndash;from low-level file system or network access, mouse or keyboard event capture and generation, all the way to manipulating applications or windows, processing URLs and drawing on the screen.">
 
 
 <meta itemprop="datePublished" content="2017-08-21T16:34:00&#43;02:00" />
 <meta itemprop="dateModified" content="2017-08-21T16:34:00&#43;02:00" />
-<meta itemprop="wordCount" content="1528">
+<meta itemprop="wordCount" content="1549">
 
 
 
 <meta itemprop="keywords" content="hammerspoon,howto,mac," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Getting Started With Hammerspoon"/>
-<meta name="twitter:description" content="This is the first installment of a series of posts about Hammerspoon,
-a staggeringly powerful automation utility which gives you an amazing
-degree of control over your Mac, allowing you to automate and control
-almost anything. In the word of Hammerspoon&rsquo;s motto: Making the
-runtime, funtime.
-
-"/>
+<meta name="twitter:description" content="This is the first installment of a series of posts about Hammerspoon, a staggeringly powerful automation utility which gives you an amazing degree of control over your Mac, allowing you to automate and control almost anything. In the word of Hammerspoon&rsquo;s motto: Making the runtime, funtime.
+Why Hammerspoon? Hammerspoon is a Mac application that allows you to achieve an unprecedented level of control over your Mac. Hammerspoon enables interaction with the system at multiple layers&ndash;from low-level file system or network access, mouse or keyboard event capture and generation, all the way to manipulating applications or windows, processing URLs and drawing on the screen."/>
 
         
 <script>
@@ -201,126 +186,49 @@ if (!doNotTrack) {
         August 21, 2017
       </time>
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
-        <p>This is the first installment of a series of posts about Hammerspoon,
-a staggeringly powerful automation utility which gives you an amazing
-degree of control over your Mac, allowing you to automate and control
-almost anything. In the word of Hammerspoon&rsquo;s motto: <em>Making the
-runtime, funtime</em>.</p>
+        
 
-<p></p>
+<p>This is the first installment of a series of posts about Hammerspoon, a staggeringly powerful automation utility which gives you an amazing degree of control over your Mac, allowing you to automate and control almost anything. In the word of Hammerspoon&rsquo;s motto: <em>Making the runtime, funtime</em>.</p>
 
-<h1 id="why-hammerspoon">Why Hammerspoon?</h1>
+<h2 id="why-hammerspoon">Why Hammerspoon?</h2>
 
-<p><a href="http://www.hammerspoon.org/">Hammerspoon</a> is a Mac application that
-allows you to achieve an unprecedented level of control over your
-Mac. Hammerspoon enables interaction with the system at multiple
-layers&ndash;from low-level file system or network access, mouse or
-keyboard event capture and generation, all the way to manipulating
-applications or windows, processing URLs and drawing on the screen. It
-also allows interfacing with
-<a href="https://www.macosxautomation.com/applescript/">AppleScript</a>, Unix
-commands and scripts, and other applications. Hammerspoon
-configuration is written in <a href="https://www.lua.org/about.html">Lua</a>, a
-popular embedded programming language.</p>
+<p><a href="http://www.hammerspoon.org/">Hammerspoon</a> is a Mac application that allows you to achieve an unprecedented level of control over your Mac.  Hammerspoon enables interaction with the system at multiple layers&ndash;from low-level file system or network access, mouse or keyboard event capture and generation, all the way to manipulating applications or windows, processing URLs and drawing on the screen. It also allows interfacing with <a href="https://www.macosxautomation.com/applescript/">AppleScript</a>, Unix commands and scripts, and other applications. Hammerspoon configuration is written in <a href="https://www.lua.org/about.html">Lua</a>, a popular embedded programming language.</p>
 
-<p>Using Hammerspoon, you can replace many stand-alone Mac utilities for
-controlling or customizing specific aspects of your Mac (the kind that
-tends to overcrowd the menubar). For example, the following are doable
-using Hammerspoon (these are all things I do with it on my machine -
-each paragraph links to the corresponding lines in my <a href="https://github.com/zzamboni/dot-hammerspoon">config
-file</a>):</p>
+<p>Using Hammerspoon, you can replace many stand-alone Mac utilities for controlling or customizing specific aspects of your Mac (the kind that tends to overcrowd the menubar). For example, the following are doable using Hammerspoon (these are all things I do with it on my machine - each paragraph links to the corresponding sections in my <a href="/post/my-hammerspoon-configuration-with-commentary/">config file</a>):</p>
 
 <ul>
-<li>Add missing or more convenient keyboard shortcuts to applications,
-even for complex multi-step actions. For example: <a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L250-L259">automated tagging
-and filing in
-Evernote</a>,
-<a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L170-L179">mail/note archival in Mail, Outlook and
-Evernote</a>,
-<a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L184-L199">filing items from multiple applications to
-OmniFocus</a>
-using consistent keyboard shortcuts, or <a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L219-L226">muting/unmuting a
-conversation in
-Skype</a>.</li>
-<li><a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L84-L102">Open URLs in different browsers based on regular expression
-patterns</a>. When
-combined with Site-specific Browsers (I use
-<a href="https://github.com/dmarmor/epichrome">Epichrome</a>), this allows for
-highly flexible management of bookmarks, plugins and search
-configurations.</li>
-<li>Replace Spotlight, Lacona and other launchers with a <a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L264-L303">fully
-configurable, extensible
-launcher</a>,
-which allows not only to open applications, files and bookmarks, but
-to trigger arbitrary Lua functions.</li>
-<li><a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L128-L156">Manipulate
-windows</a>
-using keyboard shortcuts to resize, move and arrange them.</li>
-<li><a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L375-L400">Set up actions to happen automatically when switching between WiFi
-networks</a>&ndash;for
-example for reconfiguring proxies in some applications.</li>
-<li><a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L405-L418">Keyboard-triggered
-translation</a>
-of selected text between arbitrary human languages.</li>
-<li>Keep a configurable and persistent <a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L308-L317">clipboard
-history</a>.</li>
-<li><a href="https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua#L241-L245">Automatically pause audio
-playback</a>
-when headphones are unplugged.</li>
+<li>Add missing or more convenient keyboard shortcuts to applications, even for complex multi-step actions. For example: <a href="/post/my-hammerspoon-configuration-with-commentary/#organization-and-productivity">automated tagging and filing in Evernote, mail/note archival in Mail, Outlook and Evernote, filing items from multiple applications to OmniFocus using consistent keyboard shortcuts</a>, or <a href="/post/my-hammerspoon-configuration-with-commentary/#other-applications">muting/unmuting a conversation in Skype</a>.</li>
+<li><a href="/post/my-hammerspoon-configuration-with-commentary/#url-dispatching-to-site-specific-browsers">Open URLs in different browsers based on regular expression patterns</a>.  When combined with Site-specific Browsers (I use <a href="https://github.com/dmarmor/epichrome">Epichrome</a>), this allows for highly flexible management of bookmarks, plugins and search configurations.</li>
+<li>Replace Spotlight, Lacona and other launchers with a <a href="/post/my-hammerspoon-configuration-with-commentary/#seal">fully configurable, extensible launcher</a>, which allows not only to open applications, files and bookmarks, but to trigger arbitrary Lua functions.</li>
+<li><a href="/post/my-hammerspoon-configuration-with-commentary/#window-and-screen-manipulation">Manipulate windows</a> using keyboard shortcuts to resize, move and arrange them.</li>
+<li><a href="/post/my-hammerspoon-configuration-with-commentary/#network-transitions">Set up actions to happen automatically when switching between WiFi networks</a>&ndash;for example for reconfiguring proxies in some applications.</li>
+<li><a href="/post/my-hammerspoon-configuration-with-commentary/#pop-up-translation">Keyboard-triggered translation</a> of selected text between arbitrary human languages.</li>
+<li>Keep a configurable and persistent <a href="/post/my-hammerspoon-configuration-with-commentary/#organization-and-productivity">clipboard history</a>.</li>
+<li><a href="/post/my-hammerspoon-configuration-with-commentary/#other-applications">Automatically pause audio playback</a> when headphones are unplugged.</li>
 </ul>
 
-<p>Hammerspoon is the most powerful Mac automation utility I have ever
-used. If you are a programmer, it can make using your Mac vastly more
-fun and productive.</p>
+<p>Hammerspoon is the most powerful Mac automation utility I have ever used. If you are a programmer, it can make using your Mac vastly more fun and productive.</p>
 
-<h1 id="how-does-hammerspoon-work">How does Hammerspoon work?</h1>
+<h2 id="how-does-hammerspoon-work">How does Hammerspoon work?</h2>
 
-<p>Hammerspoon acts as a thin layer between the operating system and a
-Lua-based configuration language. It includes extensions for querying
-and controlling many aspects of the system. Some of the lower-level
-extensions are written in Objective-C, but all of them expose a Lua
-API, and it is trivial to write your own extensions or modules to
-extend its functionality.</p>
+<p>Hammerspoon acts as a thin layer between the operating system and a Lua-based configuration language. It includes extensions for querying and controlling many aspects of the system. Some of the lower-level extensions are written in Objective-C, but all of them expose a Lua API, and it is trivial to write your own extensions or modules to extend its functionality.</p>
 
-<p>From the Hammerspoon configuration you can also execute external
-commands, run AppleScript or JavaScript code using the OSA scripting
-framework, establish network connections and even run network servers;
-you can capture and generate keyboard events, detect network changes,
-USB or audio devices being plugged in or out, changes in screen or
-keyboard language configuration; you can draw directly on the screen
-to display whatever you want; and many other things. Take a quick look
-at the <a href="http://www.hammerspoon.org/docs/index.html">Hammerspoon API index
-page</a> to get a feeling of
-its extensive capabilities. And that is only the libraries that are
-built into Hammerspoon. There is an extensive and growing collection
-of <a href="http://www.hammerspoon.org/Spoons/">Spoons</a>, modules written in
-pure Lua that provide additional functionality and integration. And of
-course, the configuration is simply Lua code, so you can write your
-own code to do whatever you want.</p>
+<p>From the Hammerspoon configuration you can also execute external commands, run AppleScript or JavaScript code using the OSA scripting framework, establish network connections and even run network servers; you can capture and generate keyboard events, detect network changes, USB or audio devices being plugged in or out, changes in screen or keyboard language configuration; you can draw directly on the screen to display whatever you want; and many other things. Take a quick look at the <a href="http://www.hammerspoon.org/docs/index.html">Hammerspoon API index page</a> to get a feeling of its extensive capabilities. And that is only the libraries that are built into Hammerspoon. There is an extensive and growing collection of <a href="http://www.hammerspoon.org/Spoons/">Spoons</a>, modules written in pure Lua that provide additional functionality and integration. And of course, the configuration is simply Lua code, so you can write your own code to do whatever you want.</p>
 
 <p>Interested? Let&rsquo;s get started!</p>
 
-<h1 id="installing-hammerspoon">Installing Hammerspoon</h1>
+<h2 id="installing-hammerspoon">Installing Hammerspoon</h2>
 
-<p>Hammerspoon is a regular Mac application. To install it by hand, you
-just need to download it from
-<a href="https://github.com/Hammerspoon/hammerspoon/releases/latest">https://github.com/Hammerspoon/hammerspoon/releases/latest</a>, unzip
-the downloaded file and drag it to your /Applications folder (or
-anywhere else you want).</p>
+<p>Hammerspoon is a regular Mac application. To install it by hand, you just need to download it from <a href="https://github.com/Hammerspoon/hammerspoon/releases/latest">https://github.com/Hammerspoon/hammerspoon/releases/latest</a>, unzip the downloaded file and drag it to your /Applications folder (or anywhere else you want).</p>
 
-<p>If you are automation-minded like me, you probably use
-<a href="https://brew.sh/">Homebrew</a> and its plugin
-<a href="https://caskroom.github.io/">Cask</a> to manage your applications. In
-this case, you can use Cask to install Hammerspoon:</p>
-<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console">brew cask install hammerspoon</code></pre></div>
-<p>When you run Hammerspoon for the first time, you will see its icon
-appear in the menubar, and a notification telling you that it couldn&rsquo;t
-find a configuration file. Let&rsquo;s fix that!</p>
+<p>If you are automation-minded like me, you probably use <a href="https://brew.sh/">Homebrew</a> and its plugin <a href="https://caskroom.github.io/">Cask</a> to manage your applications. In this case, you can use Cask to install Hammerspoon:</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">brew cask install hammerspoon</code></pre></div>
+<p>When you run Hammerspoon for the first time, you will see its icon appear in the menubar, and a notification telling you that it couldn&rsquo;t find a configuration file. Let&rsquo;s fix that!</p>
 
 
-<figure class="shadow">
+<figure>
     
-        <img src="/figures/hammerspoon-startup.png" />
+        <img src="hammerspoon-startup.png" />
     
     
 </figure>
@@ -336,116 +244,55 @@ find a configuration file. Let&rsquo;s fix that!</p>
 	</div>
 	
 	
-	<div class="admonition-content"><p>If you click on the initial notification, your web browser will open
-to the excellent <a href="http://www.hammerspoon.org/go/">Getting Started with
-Hammerspoon</a> page, which I highly
-recommend you read for more examples.</p>
+	<div class="admonition-content"><p>If you click on the initial notification, your web browser will open to the excellent <a href="http://www.hammerspoon.org/go/">Getting Started with Hammerspoon</a> page, which I highly recommend you read for more examples.</p>
 </div>
 </aside>
 
 
-<h1 id="your-first-hammerspoon-configuration">Your first Hammerspoon configuration</h1>
+<h2 id="your-first-hammerspoon-configuration">Your first Hammerspoon configuration</h2>
 
-<p>Let us start with a few simple examples. As tradition mandates, we
-will start with a &ldquo;Hello World&rdquo; example. Open
-<code>$HOME/.hammerspoon/init.lua</code> (Hammerspoon will create the directory
-upon first startup, but you need to create the file) in your favorite
-editor, and type the following:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="p">{</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span> <span class="p">},</span> <span class="s2">&#34;h&#34;</span> <span class="p">},</span> 
-   <span class="kr">function</span><span class="p">()</span> 
-      <span class="n">hs.notify</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="s2">&#34;Hello World!&#34;</span><span class="p">,</span> <span class="s2">&#34;Welcome to Hammerspoon&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">)</span> 
-   <span class="kr">end</span><span class="p">)</span></code></pre></div>
-<p>Save the file, and from the Hammerspoon icon in the menubar, select
-&ldquo;Reload config&rdquo;. Apparently nothing will happen, but if you then press
-<kbd>Ctrl</kbd>+<kbd>⌘</kbd>+<kbd>Alt</kbd>+<kbd>h</kbd>
- on your keyboard, you will see a
-notification on your screen welcoming you to the world of Hammerspoon.</p>
+<p>Let us start with a few simple examples. As tradition mandates, we will start with a &ldquo;Hello World&rdquo; example. Open <code>$HOME/.hammerspoon/init.lua</code> (Hammerspoon will create the directory upon first startup, but you need to create the file) in your favorite editor, and type the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="p">{</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span> <span class="p">},</span> <span class="s2">&#34;h&#34;</span> <span class="p">},</span>
+  <span class="kr">function</span><span class="p">()</span>
+    <span class="n">hs.notify</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="s2">&#34;Hello World!&#34;</span><span class="p">,</span> <span class="s2">&#34;Welcome to Hammerspoon&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">)</span>
+  <span class="kr">end</span>
+<span class="p">)</span></code></pre></div>
+<p>Save the file, and from the Hammerspoon icon in the menubar, select &ldquo;Reload config&rdquo;. Apparently nothing will happen, but if you then press <kbd>Ctrl</kbd> <kbd>⌘</kbd> <kbd>Alt</kbd> <kbd>h</kbd> on your keyboard, you will see a notification on your screen welcoming you to the world of Hammerspoon.</p>
 
 
-<figure class="shadow">
+<figure>
     
-        <img src="/figures/hammerspoon-hello-world.png" />
+        <img src="hammerspoon-hello-world.png" />
     
     
 </figure>
 
 
-<p>Although it should be fairly self-explanatory, let us dissect this
-example to give you a clearer understanding of its components:</p>
+<p>Although it should be fairly self-explanatory, let us dissect this example to give you a clearer understanding of its components:</p>
 
 <ul>
-<li><p>All Hammerspoon built-in extensions start with <code>hs.</code> In this case,
-<a href="http://www.hammerspoon.org/docs/hs.hotkey.html"><code>hs.hotkey</code></a> is the extension that handles keyboard
-bindings. It allows us to easily define which functions will be
-called in response to different keyboard combinations. You can even
-differentiate between the keys being pressed, released or held down
-if you need to. The other extension used in this example is
-<a href="http://www.hammerspoon.org/docs/hs.notify.html"><code>hs.notify</code></a>, which allows us to interact with the macOS
-Notification Center to display, react and interact with
-notifications.</p></li>
+<li><p>All Hammerspoon built-in extensions start with <code>hs.</code> In this case, <a href="http://www.hammerspoon.org/docs/hs.hotkey.html"><code>hs.hotkey</code></a> is the extension that handles keyboard bindings. It allows us to easily define which functions will be called in response to different keyboard combinations. You can even differentiate between the keys being pressed, released or held down if you need to. The other extension used in this example is <a href="http://www.hammerspoon.org/docs/hs.notify.html"><code>hs.notify</code></a>, which allows us to interact with the macOS Notification Center to display, react and interact with notifications.</p></li>
 
-<li><p>Within <code>hs.hotkey</code>, the <a href="http://www.hammerspoon.org/docs/hs.hotkey.html#bindSpec"><code>hs.hotkey.bindSpec</code></a> function
-allows you to bind a function to a pressed key. Its first argument
-is a key specification which consists of a list (Lua lists and table
-literals are represented using curly braces) with two elements: a
-list of the key modifiers, and the key itself. In this example, <code>{ {
-&quot;ctrl&quot;, &quot;cmd&quot;, &quot;alt&quot; }, &quot;h&quot; }</code> represents pressing <kbd>Ctrl</kbd>+<kbd>⌘</kbd>+<kbd>Alt</kbd>+<kbd>h</kbd>
-.</p></li>
+<li><p>Within <code>hs.hotkey</code>, the <a href="http://www.hammerspoon.org/docs/hs.hotkey.html#bindSpec"><code>hs.hotkey.bindSpec</code></a> function allows you to bind a function to a pressed key. Its first argument is a key specification which consists of a list (Lua lists and table literals are represented using curly braces) with two elements: a list of the key modifiers, and the key itself. In this example, <code>{ { &quot;ctrl&quot;, &quot;cmd&quot;, &quot;alt&quot; }, &quot;h&quot; }</code> represents pressing <kbd>Ctrl</kbd> <kbd>⌘</kbd> <kbd>Alt</kbd> <kbd>h</kbd>.</p></li>
 
-<li><p>The second argument to <code>bindSpec</code> is the function to call when the
-key is pressed. Here we are defining an inline anonymous function
-using <code>function() ... end</code>.</p></li>
+<li><p>The second argument to <code>bindSpec</code> is the function to call when the key is pressed. Here we are defining an inline anonymous function using <code>function() ... end</code>.</p></li>
 
-<li><p>The callback function uses <a href="http://www.hammerspoon.org/docs/hs.notify.html#show"><code>hs.notify.show</code></a> to display
-the message. Take a quick look at the <a href="http://www.hammerspoon.org/docs/hs.notify.html"><code>hs.notify</code></a>
-documentation to get an idea of its extensive capabilities,
-including configuration of all aspects of a notification&rsquo;s
-appearance and buttons, and the functions to call upon different
-user actions.</p></li>
+<li><p>The callback function uses <a href="http://www.hammerspoon.org/docs/hs.notify.html#show"><code>hs.notify.show</code></a> to display the message. Take a quick look at the <a href="http://www.hammerspoon.org/docs/hs.notify.html"><code>hs.notify</code></a> documentation to get an idea of its extensive capabilities, including configuration of all aspects of a notification&rsquo;s appearance and buttons, and the functions to call upon different user actions.</p></li>
 </ul>
 
-<p>Try changing the configuration to display a different message or use a
-different key. After every change, you need to instruct Hammerspoon to
-reload its configuration, which you can do through its menubar item.</p>
+<p>Try changing the configuration to display a different message or use a different key. After every change, you need to instruct Hammerspoon to reload its configuration, which you can do through its menubar item.</p>
 
-<h1 id="debugging-tools-and-the-hammerspoon-console">Debugging tools and the Hammerspoon console</h1>
+<h2 id="debugging-tools-and-the-hammerspoon-console">Debugging tools and the Hammerspoon console</h2>
 
-<p>As you start modifying your configuration, errors will happen, as they
-always do when coding. To help in development and debugging,
-Hammerspoon offers a console window where you can see any errors and
-messages printed by your Lua code as it executes, and also type code
-to be evaluated. It is a very useful tool while developing your
-Hammerspoon configuration.</p>
+<p>As you start modifying your configuration, errors will happen, as they always do when coding. To help in development and debugging, Hammerspoon offers a console window where you can see any errors and messages printed by your Lua code as it executes, and also type code to be evaluated. It is a very useful tool while developing your Hammerspoon configuration.</p>
 
-<p>To invoke the console, you normally choose &ldquo;Console…​&rdquo; from the
-Hammerspoon menubar item. However, this is such a common operation,
-that you might find it useful to also set a key combination for
-showing the console. Most of Hammerspoon&rsquo;s internal functionality is
-also accessible through its API. In this case, looking at the
-<a href="http://www.hammerspoon.org/docs/hs.html">documentation for the main <code>hs</code> module</a> reveals that
-there is an <a href="http://www.hammerspoon.org/docs/hs.html#toggleConsole"><code>hs.toggleConsole</code></a> function. Using the knowledge
-you have acquired so far, you can easily configure a hotkey for
-opening and hiding the console:</p>
-<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="p">{</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span> <span class="p">},</span> <span class="s2">&#34;y&#34;</span> <span class="p">},</span>
-                   <span class="n">hs.toggleConsole</span><span class="p">)</span></code></pre></div>
-<p>Once you reload your configuration, you should be able to use <kbd>Ctrl</kbd>+<kbd>⌘</kbd>+<kbd>Alt</kbd>+<kbd>y</kbd>
- to open and close the console. Any Lua code you
-type in the Console will be evaluated in the main Hammerspoon context,
-so you can add to your configuration directly from there. This is a
-good way to incrementally develop your code before committing it to
-the <code>init.lua</code> file.</p>
+<p>To invoke the console, you normally choose &ldquo;Console&hellip;​&rdquo; from the Hammerspoon menubar item. However, this is such a common operation, that you might find it useful to also set a key combination for showing the console. Most of Hammerspoon&rsquo;s internal functionality is also accessible through its API. In this case, looking at the <a href="http://www.hammerspoon.org/docs/hs.html">documentation for the main <code>hs</code> module</a> reveals that there is an {{}} function. Using the knowledge you have acquired so far, you can easily configure a hotkey for opening and hiding the console:</p>
+<div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="p">{</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span> <span class="p">},</span> <span class="s2">&#34;y&#34;</span> <span class="p">},</span> <span class="n">hs.toggleConsole</span><span class="p">)</span></code></pre></div>
+<p>Once you reload your configuration, you should be able to use <kbd>Ctrl</kbd> <kbd>⌘</kbd> <kbd>Alt</kbd> <kbd>y</kbd> to open and close the console. Any Lua code you type in the Console will be evaluated in the main Hammerspoon context, so you can add to your configuration directly from there. This is a good way to incrementally develop your code before committing it to the <code>init.lua</code> file.</p>
 
-<p>You may have noticed by now another common operation while developing
-Hammerspoon code: reloading the configuration, which you normally have
-to do from the Hammerspoon menu. So why not set up a hotkey to do that
-as well? Again, the <a href="http://www.hammerspoon.org/docs/hs.html"><code>hs</code></a> module comes to our help with the
-<a href="http://www.hammerspoon.org/docs/hs.html#reload"><code>hs.reload</code></a> method:</p>
+<p>You may have noticed by now another common operation while developing Hammerspoon code: reloading the configuration, which you normally have to do from the Hammerspoon menu. So why not set up a hotkey to do that as well? Again, the <a href="http://www.hammerspoon.org/docs/hs.html"><code>hs</code></a> module comes to our help with the <a href="http://www.hammerspoon.org/docs/hs.html#reload"><code>hs.reload</code></a> method:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="p">{</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span> <span class="p">},</span> <span class="s2">&#34;r&#34;</span> <span class="p">},</span> <span class="n">hs.reload</span><span class="p">)</span></code></pre></div>
-<p>Another useful development tool is the <code>hs</code> command, which you can run
-from your terminal to get a Hammerspoon console. To install it, you
-can use the <a href="http://www.hammerspoon.org/docs/hs.ipc.html#cliInstall"><code>hs.ipc.cliInstall</code></a> function, which you can just
-add to your <code>init.lua</code> file to check and install the command every
-time Hammerspoon runs.</p>
+<p>Another useful development tool is the <code>hs</code> command, which you can run from your terminal to get a Hammerspoon console. To install it, you can use the <a href="http://www.hammerspoon.org/docs/hs.ipc.html#cliInstall"><code>hs.ipc.cliInstall</code></a> function, which you can just add to your <code>init.lua</code> file to check and install the command every time Hammerspoon runs.</p>
 
 <aside class="admonition warning">
 	<div class="admonition-icon">
@@ -456,23 +303,13 @@ time Hammerspoon runs.</p>
 	</div>
 	
 	
-	<div class="admonition-content"><p><a href="http://www.hammerspoon.org/docs/hs.ipc.html#cliInstall"><code>hs.ipc.cliInstall</code></a> creates symlinks under
-<code>/usr/local/</code> to the <code>hs</code> command and its manual page file, located
-inside the Hammerspoon application bundle. Under some circumstances
-(particularly if you build Hammerspoon from source, or if you
-install different versions of it), you may end up with broken
-symlinks. If the <code>hs</code> command stops working and
-<code>hs.ipc.cliInstall()</code> doesn&rsquo;t fix it, look for broken symlinks left
-behind from old versions of Hammerspoon. Remove them and things
-should work again.</p>
+	<div class="admonition-content"><p><a href="http://www.hammerspoon.org/docs/hs.ipc.html#cliInstall"><code>hs.ipc.cliInstall</code></a> creates symlinks under <code>/usr/local/</code> to the <code>hs</code> command and its manual page file, located inside the Hammerspoon application bundle. Under some circumstances (particularly if you build Hammerspoon from source, or if you install different versions of it), you may end up with broken symlinks. If the <code>hs</code> command stops working and <code>hs.ipc.cliInstall()</code> doesn&rsquo;t fix it, look for broken symlinks left behind from old versions of Hammerspoon.  Remove them and things should work again.</p>
 </div>
 </aside>
 
 
-<p>Now you have all the tools for developing your Hammerspoon
-configuration. In the next installment we will look at how you can
-save yourself a lot of coding by using pre-made modules. In the
-meantime, please let me know your thoughts in the comments!</p>
+<p>Now you have all the tools for developing your Hammerspoon configuration. In the next installment we will look at how you can save yourself a lot of coding by using pre-made modules. In the meantime, feel free to look through my <a href="/post/my-hammerspoon-configuration-with-commentary/#organization-and-productivity">Hammerspoon configuration file</a> for ideas, and please let me know your thoughts in the comments!</p>
+
       </section>
       
 
@@ -570,11 +407,14 @@ meantime, please let me know your thoughts in the comments!</p>
       <p class="list b mb3">What's in this Post</p>
       <nav id="TableOfContents">
 <ul>
+<li class="list f5 w-100 hover-bg-white nl1">
+<ul>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#why-hammerspoon">Why Hammerspoon?</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#how-does-hammerspoon-work">How does Hammerspoon work?</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#installing-hammerspoon">Installing Hammerspoon</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#your-first-hammerspoon-configuration">Your first Hammerspoon configuration</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#debugging-tools-and-the-hammerspoon-console">Debugging tools and the Hammerspoon console</a></li>
+</ul></li>
 </ul>
 </nav>
 </div>
@@ -587,7 +427,9 @@ meantime, please let me know your thoughts in the comments!</p>
     <a class="f5 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://zzamboni.org/" >
       &copy; 2018 Diego Zamboni
     </a>
-    <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.45</a>
+    <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;<a class="no-underline hover-white white-70" href="https://www.gnu.org/software/emacs/">Emacs 26.1 </a> &plus;
+                <a class="no-underline hover-white white-70" href="https://orgmode.org/">Org mode 9.1.13 </a> &plus;
+                <a class="no-underline hover-white white-70" href="https://ox-hugo.scripter.co/">ox-hugo</a>&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.45</a>
             &plus; <a class="no-underline hover-white white-70" href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a></div>
     
 
