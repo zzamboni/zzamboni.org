@@ -72,13 +72,8 @@ share your own work with other users.&lt;/p&gt;
       <pubDate>Mon, 21 Aug 2017 16:34:00 +0200</pubDate>
       
       <guid>https://zzamboni.org/post/getting-started-with-hammerspoon/</guid>
-      <description>&lt;p&gt;This is the first installment of a series of posts about Hammerspoon,
-a staggeringly powerful automation utility which gives you an amazing
-degree of control over your Mac, allowing you to automate and control
-almost anything. In the word of Hammerspoon&amp;rsquo;s motto: &lt;em&gt;Making the
-runtime, funtime&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>This is the first installment of a series of posts about Hammerspoon, a staggeringly powerful automation utility which gives you an amazing degree of control over your Mac, allowing you to automate and control almost anything. In the word of Hammerspoon&amp;rsquo;s motto: Making the runtime, funtime.
+Why Hammerspoon? Hammerspoon is a Mac application that allows you to achieve an unprecedented level of control over your Mac. Hammerspoon enables interaction with the system at multiple layers&amp;ndash;from low-level file system or network access, mouse or keyboard event capture and generation, all the way to manipulating applications or windows, processing URLs and drawing on the screen.</description>
     </item>
     
     <item>
