@@ -473,7 +473,7 @@ Another useful development tool is the =hs= command, which you can run from your
  {{<hsapi "hs.ipc" cliInstall >}} creates symlinks under =/usr/local/= to the =hs= command and its manual page file, located inside the Hammerspoon application bundle. Under some circumstances (particularly if you build Hammerspoon from source, or if you install different versions of it), you may end up with broken symlinks. If the =hs= command stops working and =hs.ipc.cliInstall()= doesn't fix it, look for broken symlinks left behind from old versions of Hammerspoon.  Remove them and things should work again.
 {{% /warning %}}
 
-Now you have all the tools for developing your Hammerspoon configuration. In the next installment we will look at how you can save yourself a lot of coding by using pre-made modules. In the meantime, feel free to look through my [[/post/my-hammerspoon-configuration-with-commentary/#organization-and-productivity][Hammerspoon configuration file]] for ideas, and please let me know your thoughts in the comments!
+Now you have all the tools for developing your Hammerspoon configuration. In the next installment we will look at how you can save yourself a lot of coding by using pre-made modules. In the meantime, feel free to look through my [[/post/my-hammerspoon-configuration-with-commentary/][Hammerspoon configuration file]] for ideas, and please let me know your thoughts in the comments!
 
 ** Elvish                                                            :elvish:
 :PROPERTIES:
