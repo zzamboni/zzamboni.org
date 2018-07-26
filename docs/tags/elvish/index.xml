@@ -38,7 +38,7 @@ The bash shortcuts (maybe older? I&amp;rsquo;m not sure in which shell these ori
       <pubDate>Thu, 16 Nov 2017 20:21:00 +0100</pubDate>
       
       <guid>https://zzamboni.org/post/my-elvish-configuration-with-commentary/</guid>
-      <description>Last update: July 22, 2018
+      <description>Last update: July 26, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc.</description>
     </item>
