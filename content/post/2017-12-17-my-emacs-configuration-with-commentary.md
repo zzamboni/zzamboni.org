@@ -10,7 +10,7 @@ featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **July 22, 2018**
+Last update: **July 26, 2018**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -483,6 +483,7 @@ The main advantage of using this over `define-key` or `global-set-key` is that y
 
     ```emacs-lisp
     (use-package which-key
+      :defer nil
       :diminish which-key-mode
       :config
       (which-key-mode))
@@ -1066,6 +1067,22 @@ I picked up this little gem in the org mailing list. A function that reformats t
       (erase-buffer)
       (insert document)
       (goto-char (point-min)))))
+```
+
+Removing a link. For some reason this is not part of org-mode. From <https://emacs.stackexchange.com/a/10714/11843>, I bind it to <kbd>C-c C-M-u</kbd>.
+
+```emacs-lisp
+(defun afs/org-replace-link-by-link-description ()
+    "Replace an org link by its description or if empty its address"
+  (interactive)
+  (if (org-in-regexp org-bracket-link-regexp 1)
+      (let ((remove (list (match-beginning 0) (match-end 0)))
+        (description (if (match-end 3)
+                 (org-match-string-no-properties 3)
+                 (org-match-string-no-properties 1))))
+    (apply 'delete-region remove)
+    (insert description))))
+(bind-key "C-c C-M-u" 'afs/org-replace-link-by-link-description)
 ```
 
 
