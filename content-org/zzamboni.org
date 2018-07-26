@@ -7,6 +7,7 @@
 #+macro: updatetime {{{time(%B %e\, %Y)}}}
 #+macro: hsapi (eval (let ((link (concat $1 (if (= (length $2) 0) "" (concat "#" $2)))) (desc (if (= (length $3) 0) (concat $1 (if (= (length $2) 0) "" (concat "." $2))) $3))) (concat "[[http://www.hammerspoon.org/docs/" link "][" desc "]]")))
 
+#+name: hsapi-macro-code
 #+begin_src emacs-lisp :export none
   (eval (let ((link (concat "$1" (if (= (length "$2") 0) "" "#$2")))
               (desc (if (= (length "$3") 0) (concat "$1" (if (= (length "$2") 0) "" ".$2")) "$3")))
