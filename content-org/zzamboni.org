@@ -6,12 +6,17 @@
 
 #+macro: updatetime {{{time(%B %e\, %Y)}}}
 #+macro: hsapi (eval (let ((link (concat $1 (if (= (length $2) 0) "" (concat "#" $2)))) (desc (if (= (length $3) 0) (concat $1 (if (= (length $2) 0) "" (concat "." $2))) $3))) (concat "[[http://www.hammerspoon.org/docs/" link "][" desc "]]")))
-
 #+name: hsapi-macro-code
 #+begin_src emacs-lisp :export none
   (eval (let ((link (concat "$1" (if (= (length "$2") 0) "" "#$2")))
               (desc (if (= (length "$3") 0) (concat "$1" (if (= (length "$2") 0) "" ".$2")) "$3")))
           (concat "[[http://www.hammerspoon.org/docs/" link "][" desc "]]")))
+#+end_src
+
+#+macro: keys (eval (mapconcat (lambda (s) (concat "~" s "~")) (split-string $1) (concat (string ?\u200B) "+" (string ?\u200B))))
+#+begin_src emacs-lisp :export none
+  (eval (mapconcat (lambda (s) (concat "~" s "~")) (split-string $1)
+                   (concat (string ?\u200B) "+" (string ?\u200B))))
 #+end_src
 
 #+title: zzamboni.org source file
@@ -441,7 +446,7 @@ Let us start with a few simple examples. As tradition mandates, we will start wi
   )
 #+end_src
 
-Save the file, and from the Hammerspoon icon in the menubar, select "Reload config". Apparently nothing will happen, but if you then press ~Ctrl~ ~⌘~ ~Alt~ ~h~ on your keyboard, you will see a notification on your screen welcoming you to the world of Hammerspoon.
+Save the file, and from the Hammerspoon icon in the menubar, select "Reload config". Apparently nothing will happen, but if you then press {{{keys(Ctrl ⌘ Alt h)}}} on your keyboard, you will see a notification on your screen welcoming you to the world of Hammerspoon.
 
 [[file:images/hammerspoon-hello-world.png]]
 
@@ -449,7 +454,7 @@ Although it should be fairly self-explanatory, let us dissect this example to gi
 
 - All Hammerspoon built-in extensions start with =hs.= In this case, {{{hsapi(hs.hotkey)}}} is the extension that handles keyboard bindings. It allows us to easily define which functions will be called in response to different keyboard combinations. You can even differentiate between the keys being pressed, released or held down if you need to. The other extension used in this example is {{{hsapi(hs.notify)}}}, which allows us to interact with the macOS Notification Center to display, react and interact with notifications.
 
-- Within =hs.hotkey=, the {{{hsapi(hs.hotkey,bindSpec)}}} function allows you to bind a function to a pressed key. Its first argument is a key specification which consists of a list (Lua lists and table literals are represented using curly braces) with two elements: a list of the key modifiers, and the key itself. In this example, ={ { "ctrl", "cmd", "alt" }, "h" }= represents pressing ~Ctrl~ ~⌘~ ~Alt~ ~h~.
+- Within =hs.hotkey=, the {{{hsapi(hs.hotkey,bindSpec)}}} function allows you to bind a function to a pressed key. Its first argument is a key specification which consists of a list (Lua lists and table literals are represented using curly braces) with two elements: a list of the key modifiers, and the key itself. In this example, ={ { "ctrl", "cmd", "alt" }, "h" }= represents pressing {{{keys(Ctrl ⌘ Alt h)}}}.
 
 - The second argument to =bindSpec= is the function to call when the key is pressed. Here we are defining an inline anonymous function using =function() ... end=.
 
@@ -467,7 +472,7 @@ To invoke the console, you normally choose "Console..." from the Hammerspoon men
   hs.hotkey.bindSpec({ { "ctrl", "cmd", "alt" }, "y" }, hs.toggleConsole)
 #+end_src
 
-Once you reload your configuration, you should be able to use ~Ctrl~ ~⌘~ ~Alt~ ~y~ to open and close the console. Any Lua code you type in the Console will be evaluated in the main Hammerspoon context, so you can add to your configuration directly from there. This is a good way to incrementally develop your code before committing it to the =init.lua= file.
+Once you reload your configuration, you should be able to use {{{keys(Ctrl ⌘ Alt y)}}} to open and close the console. Any Lua code you type in the Console will be evaluated in the main Hammerspoon context, so you can add to your configuration directly from there. This is a good way to incrementally develop your code before committing it to the =init.lua= file.
 
 You may have noticed by now another common operation while developing Hammerspoon code: reloading the configuration, which you normally have to do from the Hammerspoon menu. So why not set up a hotkey to do that as well? Again, the {{{hsapi(hs)}}} module comes to our help with the {{{hsapi(hs,reload)}}} method:
 
