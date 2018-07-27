@@ -5,22 +5,11 @@
 #+hugo_front_matter_key_replace: description>summary
 
 #+macro: updatetime {{{time(%B %e\, %Y)}}}
-#+macro: hsapi (eval (let ((link (concat $1 (if (= (length $2) 0) "" (concat "#" $2)))) (desc (if (= (length $3) 0) (concat $1 (if (= (length $2) 0) "" (concat "." $2))) $3))) (concat "[[http://www.hammerspoon.org/docs/" link "][" desc "]]")))
 
-#+name: hsapi-macro-code
-#+begin_src emacs-lisp :export none
-  (eval (let ((link (concat "$1" (if (= (length "$2") 0) "" "#$2")))
-              (desc (if (= (length "$3") 0) (concat "$1" (if (= (length "$2") 0) "" ".$2")) "$3")))
-          (concat "[[http://www.hammerspoon.org/docs/" link "][" desc "]]")))
-#+end_src
-
-#+macro: keys (eval (mapconcat (lambda (s) (concat "~" s "~")) (split-string $1) (concat (string ?\u200B) "+" (string ?\u200B))))
-
-#+name: keys-macro-code
-#+begin_src emacs-lisp :export none
-  (eval (mapconcat (lambda (s) (concat "~" s "~")) (split-string $1)
-                   (concat (string ?\u200B) "+" (string ?\u200B))))
-#+end_src
+# The zz/* functions used in the macros are defined in my Emacs configuration:
+# https://github.com/zzamboni/dot-emacs/blob/master/init.org
+#+macro: hsapi (eval (zz/org-macro-hsapi-code $1 $2 $3))
+#+macro: keys (eval (zz/org-macro-keys-code $1))
 
 #+title: zzamboni.org source file
 #+author: Diego Zamboni
