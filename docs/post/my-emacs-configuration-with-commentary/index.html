@@ -22,7 +22,7 @@
      
 
       <meta property="og:title" content="My Emacs Configuration, With Commentary" />
-<meta property="og:description" content="Last update: July 26, 2018
+<meta property="og:description" content="Last update: July 27, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zzamboni.org/post/my-emacs-configuration-with-commentary/" />
@@ -44,20 +44,20 @@ I have enjoyed slowly converting my configuration files to literate programming 
 
 
 <meta itemprop="name" content="My Emacs Configuration, With Commentary">
-<meta itemprop="description" content="Last update: July 26, 2018
+<meta itemprop="description" content="Last update: July 27, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving.">
 
 
 <meta itemprop="datePublished" content="2017-12-17T20:14:00&#43;01:00" />
 <meta itemprop="dateModified" content="2017-12-17T20:14:00&#43;01:00" />
-<meta itemprop="wordCount" content="7617">
+<meta itemprop="wordCount" content="7769">
 
 
 
 <meta itemprop="keywords" content="config,howto,literateprogramming,literateconfig,emacs," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Emacs Configuration, With Commentary"/>
-<meta name="twitter:description" content="Last update: July 26, 2018
+<meta name="twitter:description" content="Last update: July 27, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving."/>
 
         
@@ -188,7 +188,7 @@ if (!doNotTrack) {
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
-<p>Last update: <strong>July 26, 2018</strong></p>
+<p>Last update: <strong>July 27, 2018</strong></p>
 
 <p>I have enjoyed slowly converting my configuration files to <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html">literate programming</a> style style using org-mode in Emacs. I previously posted my <a href="../my-elvish-configuration-with-commentary/">Elvish configuration</a>, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my <a href="https://github.com/zzamboni/dot%5Femacs/blob/master/init.org">init.org</a> file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the <a href="https://github.com/zzamboni/dot%5Femacs/blob/master/init.org">init.org file in GitHub</a> for my current, live configuration, and the generated file at <a href="https://github.com/zzamboni/dot%5Femacs/blob/master/init.el">https://github.com/zzamboni/dot%5Femacs/blob/master/init.el</a>.</p>
 
@@ -979,6 +979,22 @@ if (!doNotTrack) {
   <span class="nb">:config</span>
   <span class="c1">;; If you want to expand snippets with hippie-expand</span>
   <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;hippie-expand-try-functions-list</span> <span class="nf">#&#39;</span><span class="nv">yankpad-expand</span><span class="p">))</span></code></pre></div>
+<h3 id="code-for-org-mode-macros">Code for org-mode macros</h3>
+
+<p>Here I define functions which get used in some of my org-mode macros, particularly within ox-hugo files such as <a href="https://github.com/zzamboni/zzamboni.org/blob/master/content-org/zzamboni.org">my blog&rsquo;s source file</a>.</p>
+
+<p>This function receives three arguments, and returns the org-mode code for a link to the Hammerspoon API documentation for the <code>link</code> module, optionally to a specific <code>function</code>. If <code>desc</code> is passed, it is used as the display text, otherwise <code>section.function</code> is used.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/org-macro-hsapi-code</span> <span class="p">(</span><span class="nv">link</span> <span class="nb">function</span> <span class="nv">desc</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">link-1</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">link</span> <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">org-string-nw-p</span> <span class="nb">function</span><span class="p">)</span> <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;#&#34;</span> <span class="nb">function</span><span class="p">)</span> <span class="s">&#34;&#34;</span><span class="p">)))</span>
+         <span class="p">(</span><span class="nv">link-2</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">link</span> <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">org-string-nw-p</span> <span class="nb">function</span><span class="p">)</span> <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;.&#34;</span> <span class="nb">function</span><span class="p">)</span> <span class="s">&#34;&#34;</span><span class="p">)))</span>
+         <span class="p">(</span><span class="nv">desc-1</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">org-string-nw-p</span> <span class="nv">desc</span><span class="p">)</span> <span class="nv">link-2</span><span class="p">)))</span>
+    <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;[[http://www.hammerspoon.org/docs/&#34;</span> <span class="nv">link-1</span> <span class="s">&#34;][&#34;</span> <span class="nv">desc-1</span> <span class="s">&#34;]]&#34;</span><span class="p">)))</span></code></pre></div>
+<p>Split STR at spaces and wrap each element with <code>~</code> char, separated by <code>+</code>. Zero-width spaces are inserted around the plus signs so that they get formatted correctly.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/org-macro-keys-code</span> <span class="p">(</span><span class="nv">str</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">mapconcat</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">s</span><span class="p">)</span>
+               <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;~&#34;</span> <span class="nv">s</span> <span class="s">&#34;~&#34;</span><span class="p">))</span>
+             <span class="p">(</span><span class="nv">split-string</span> <span class="nv">str</span><span class="p">)</span>
+             <span class="p">(</span><span class="nf">concat</span> <span class="p">(</span><span class="nf">string</span> <span class="sc">?\u</span><span class="nv">200B</span><span class="p">)</span> <span class="s">&#34;+&#34;</span> <span class="p">(</span><span class="nf">string</span> <span class="sc">?\u</span><span class="nv">200B</span><span class="p">))))</span></code></pre></div>
 <h2 id="system-specific-configuration">System-specific configuration</h2>
 
 <p>Some settings maybe OS-specific, and this is where we set them. For now I only use Emacs on my Mac, so only the Mac section is filled out, but there are sections for Linux and Windows as well.</p>
@@ -1673,6 +1689,7 @@ if (!doNotTrack) {
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#grabbing-links-from-different-mac-applications">Grabbing links from different Mac applications</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#reformatting-an-org-buffer">Reformatting an org buffer</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#snippets-and-templates">Snippets and templates</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#code-for-org-mode-macros">Code for org-mode macros</a></li>
 </ul></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#system-specific-configuration">System-specific configuration</a>
 <ul>
