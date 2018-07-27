@@ -10,7 +10,7 @@ featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **July 26, 2018**
+Last update: **July 27, 2018**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -1101,6 +1101,31 @@ The [yankpad](https://github.com/Kungsgeten/yankpad) package makes it easy to st
   :config
   ;; If you want to expand snippets with hippie-expand
   (add-to-list 'hippie-expand-try-functions-list #'yankpad-expand))
+```
+
+
+### Code for org-mode macros {#code-for-org-mode-macros}
+
+Here I define functions which get used in some of my org-mode macros, particularly within ox-hugo files such as [my blog's source file](https://github.com/zzamboni/zzamboni.org/blob/master/content-org/zzamboni.org).
+
+This function receives three arguments, and returns the org-mode code for a link to the Hammerspoon API documentation for the `link` module, optionally to a specific `function`. If `desc` is passed, it is used as the display text, otherwise `section.function` is used.
+
+```emacs-lisp
+(defun zz/org-macro-hsapi-code (link function desc)
+  (let* ((link-1 (concat link (if (org-string-nw-p function) (concat "#" function) "")))
+         (link-2 (concat link (if (org-string-nw-p function) (concat "." function) "")))
+         (desc-1 (or (org-string-nw-p desc) link-2)))
+    (concat "[[http://www.hammerspoon.org/docs/" link-1 "][" desc-1 "]]")))
+```
+
+Split STR at spaces and wrap each element with `~` char, separated by `+`. Zero-width spaces are inserted around the plus signs so that they get formatted correctly.
+
+```emacs-lisp
+(defun zz/org-macro-keys-code (str)
+  (mapconcat (lambda (s)
+               (concat "~" s "~"))
+             (split-string str)
+             (concat (string ?\u200B) "+" (string ?\u200B))))
 ```
 
 
