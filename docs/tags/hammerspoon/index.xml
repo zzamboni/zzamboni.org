@@ -17,7 +17,7 @@
       <pubDate>Mon, 08 Jan 2018 13:31:00 +0100</pubDate>
       
       <guid>https://zzamboni.org/post/my-hammerspoon-configuration-with-commentary/</guid>
-      <description>Last update: July 26, 2018
+      <description>Last update: July 27, 2018
 In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration in GitHub.
 General variables and configuration Global log level. Per-spoon log level can be configured in each Install:andUse block below.</description>
     </item>
