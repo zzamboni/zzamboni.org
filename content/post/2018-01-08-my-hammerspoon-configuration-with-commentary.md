@@ -10,7 +10,7 @@ toc = true
 featured_image = "/images/hammerspoon.png"
 +++
 
-Last update: **July 27, 2018**
+Last update: **July 30, 2018**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -82,16 +82,17 @@ Install:andUse("URLDispatcher",
                {
                  config = {
                    url_patterns = {
-                     { "https?://issue.swisscom.ch", "org.epichrome.app.SwisscomJira" },
-                     { "https?://issue.swisscom.com", "org.epichrome.app.SwisscomJira" },
-                     { "https?://jira.swisscom.com", "org.epichrome.app.SwisscomJira" },
-                     { "https?://wiki.swisscom.com", "org.epichrome.app.SwisscomWiki" },
-                     { "https?://collaboration.swisscom.com", "org.epichrome.app.SwisscomCollab" },
-                     { "https?://smca.swisscom.com", "org.epichrome.app.SwisscomTWP" },
-                     { "https?://portal.corproot.net", "com.apple.Safari" },
-                     { "https?://app.opsgenie.com", "org.epichrome.app.OpsGenie" },
-                     { "https?://fiori.swisscom.com", "com.apple.Safari" },
-                     { "https?://https://pmpgwd.apps.swisscom.com/fiori", "com.apple.Safari" },
+                     { "https?://issue.swisscom.ch",                       "org.epichrome.app.SwisscomJira" },
+                     { "https?://issue.swisscom.com",                      "org.epichrome.app.SwisscomJira" },
+                     { "https?://jira.swisscom.com",                       "org.epichrome.app.SwisscomJira" },
+                     { "https?://wiki.swisscom.com",                       "org.epichrome.app.SwisscomWiki" },
+                     { "https?://collaboration.swisscom.com",              "org.epichrome.app.SwisscomCollab" },
+                     { "https?://smca.swisscom.com",                       "org.epichrome.app.SwisscomTWP" },
+                     { "https?://portal.corproot.net",                     "com.apple.Safari" },
+                     { "https?://app.opsgenie.com",                        "org.epichrome.app.OpsGenie" },
+                     { "https?://app.eu.opsgenie.com",                     "org.epichrome.app.OpsGenie" },
+                     { "https?://fiori.swisscom.com",                      "com.apple.Safari" },
+                     { "https?://https://pmpgwd.apps.swisscom.com/fiori",  "com.apple.Safari" },
                    },
                    -- default_handler = "com.google.Chrome"
                    default_handler = "com.electron.brave"

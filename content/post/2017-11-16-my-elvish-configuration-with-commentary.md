@@ -10,7 +10,7 @@ toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **July 27, 2018**
+Last update: **July 30, 2018**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -262,11 +262,11 @@ alias:new cdb &use=[github.com/zzamboni/elvish-modules/dir] dir:cdb
 edit:insert:binding[Alt-i] = $dir:history-chooser~
 ```
 
-I bind `Alt-b/f` to `dir:left-word-or-prev-dir` and `dir:right-word-or-next-dir` respectively, which "do the right thing" depending on the current content of the command prompt: if it's empty, they move back/forward in the directory history, otherwise they move through the words of the current command. In my Terminal.app setup, `Alt-left/right` also produce `Alt-b/f`, so these bindings work for those keys as well.
+I bind `Alt-b/f` to `dir:left-small-word-or-prev-dir` and `dir:right-small-word-or-next-dir` respectively, which "do the right thing" depending on the current content of the command prompt: if it's empty, they move back/forward in the directory history, otherwise they move through the words of the current command. In my Terminal.app setup, `Alt-left/right` also produce `Alt-b/f`, so these bindings work for those keys as well.
 
 ```elvish
-edit:insert:binding[Alt-b] = $dir:left-word-or-prev-dir~
-edit:insert:binding[Alt-f] = $dir:right-word-or-next-dir~
+edit:insert:binding[Alt-b] = $dir:left-small-word-or-prev-dir~
+edit:insert:binding[Alt-f] = $dir:right-small-word-or-next-dir~
 ```
 
 
