@@ -22,7 +22,7 @@
      
 
       <meta property="og:title" content="My Elvish Configuration With Commentary" />
-<meta property="og:description" content="Last update: July 27, 2018
+<meta property="og:description" content="Last update: July 30, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc." />
 <meta property="og:type" content="article" />
@@ -45,7 +45,7 @@ This is also my first blog post written using org-mode, which I have started usi
 
 
 <meta itemprop="name" content="My Elvish Configuration With Commentary">
-<meta itemprop="description" content="Last update: July 27, 2018
+<meta itemprop="description" content="Last update: July 30, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc.">
 
@@ -59,7 +59,7 @@ This is also my first blog post written using org-mode, which I have started usi
 <meta itemprop="keywords" content="config,howto,literateprogramming,literateconfig,elvish," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Elvish Configuration With Commentary"/>
-<meta name="twitter:description" content="Last update: July 27, 2018
+<meta name="twitter:description" content="Last update: July 30, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc."/>
 
@@ -191,7 +191,7 @@ if (!doNotTrack) {
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
-<p>Last update: <strong>July 27, 2018</strong></p>
+<p>Last update: <strong>July 30, 2018</strong></p>
 
 <p>In this blog post I will walk you through my current <a href="http://elvish.io">Elvish</a> configuration file, with running commentary about the different sections.</p>
 
@@ -336,9 +336,9 @@ alias:new cd &amp;use=[github.com/zzamboni/elvish-modules/dir] dir:cd
 alias:new cdb &amp;use=[github.com/zzamboni/elvish-modules/dir] dir:cdb</code></pre></div>
 <p><code>dir</code> also implements a narrow-based directory history chooser, which I bind to <kbd>Alt-i</kbd> (I have found I don&rsquo;t use this as much as I thought I would - the built-in location mode works nicely).</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:insert:binding[Alt-i] = $dir:history-chooser~</code></pre></div>
-<p>I bind <code>Alt-b/f</code> to <code>dir:left-word-or-prev-dir</code> and <code>dir:right-word-or-next-dir</code> respectively, which &ldquo;do the right thing&rdquo; depending on the current content of the command prompt: if it&rsquo;s empty, they move back/forward in the directory history, otherwise they move through the words of the current command. In my Terminal.app setup, <code>Alt-left/right</code> also produce <code>Alt-b/f</code>, so these bindings work for those keys as well.</p>
-<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:insert:binding[Alt-b] = $dir:left-word-or-prev-dir~
-edit:insert:binding[Alt-f] = $dir:right-word-or-next-dir~</code></pre></div>
+<p>I bind <code>Alt-b/f</code> to <code>dir:left-small-word-or-prev-dir</code> and <code>dir:right-small-word-or-next-dir</code> respectively, which &ldquo;do the right thing&rdquo; depending on the current content of the command prompt: if it&rsquo;s empty, they move back/forward in the directory history, otherwise they move through the words of the current command. In my Terminal.app setup, <code>Alt-left/right</code> also produce <code>Alt-b/f</code>, so these bindings work for those keys as well.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">edit:insert:binding[Alt-b] = $dir:left-small-word-or-prev-dir~
+edit:insert:binding[Alt-f] = $dir:right-small-word-or-next-dir~</code></pre></div>
 <h2 id="dynamic-terminal-title">Dynamic terminal title</h2>
 
 <p>The <a href="https://github.com/zzamboni/elvish-modules/blob/master/terminal-title.org">terminal-title</a> module handles setting the terminal title dynamically according to the current directory or the current command being executed.</p>
