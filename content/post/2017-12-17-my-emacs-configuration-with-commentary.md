@@ -10,7 +10,7 @@ featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **July 30, 2018**
+Last update: **August  3, 2018**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -698,7 +698,7 @@ Load `org-tempo` to enable snippets such as `<s<TAB>` to insert a source block. 
 
 ```emacs-lisp
 (use-package org-tempo
-  :disabled yes
+  :disabled
   :defer 5
   :ensure nil
   :after org)
@@ -1484,13 +1484,17 @@ When enabled, `subword` allows navigating "sub words" individually in CamelCaseI
   (clojure-mode . subword-mode))
 ```
 
-With `aggressive-indent`, indentation is always kept up to date in the whole buffer. Sometimes it gets in the way, but in general it's nice and saves a lot of work, so I enable it for all programming modes.
+With `aggressive-indent`, indentation is always kept up to date in the whole buffer. Sometimes it gets in the way, but in general it's nice and saves a lot of work, so I enable it for all programming modes except for Python mode, where I explicitly disable as it often gets the indentation wrong and messes up existing code.
+
+Disabled for now while I test how much I miss it (I often find it gets in the way, but I'm not sure how often it helps and I don't even notice it)
 
 ```emacs-lisp
 (use-package aggressive-indent
+  :disabled
   :diminish aggressive-indent-mode
   :hook
-  (prog-mode . aggressive-indent-mode))
+  (prog-mode . aggressive-indent-mode)
+  (python-mode . (lambda () (aggressive-indent-mode -1))))
 ```
 
 With `company-mode`, we get automatic completion - when there are completions available, a popup menu will appear when you stop typing for a moment, and you can either continue typing or accept the completion using the Enter key. I enable it globally.
