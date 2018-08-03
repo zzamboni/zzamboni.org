@@ -10,6 +10,9 @@
 # https://github.com/zzamboni/dot-emacs/blob/master/init.org
 #+macro: hsapi (eval (zz/org-macro-hsapi-code $1 $2 $3))
 #+macro: keys (eval (zz/org-macro-keys-code $1))
+#+macro: luadoc (eval (zz/org-macro-luadoc-code $1 $2 $3))
+#+macro: luafun (eval (zz/org-macro-luafun-code $1 $2))
+#+macro: spoon [[http://www.hammerspoon.org/Spoons/$1][$1]]
 
 #+title: zzamboni.org source file
 #+author: Diego Zamboni
@@ -572,7 +575,7 @@ Most spoons are structured like this: you can set up hotkeys to trigger the main
 
 {{% tip %}}
 
-Lua does not include a function to easily get the keys of a table so you have to use the {{< luadoc pairs >}} function to loop over the key/value pairs of the table. The {{{hsapi(hs.inspect)}}} function is convenient, but to get just the list of tables and the color names, without the color definitions themselves, you can use the following code (if you type this in the console you have to type it all in a single line -- and beware, the output is a long list):
+Lua does not include a function to easily get the keys of a table so you have to use the {{{luafun(pairs)}}} function to loop over the key/value pairs of the table. The {{{hsapi(hs.inspect)}}} function is convenient, but to get just the list of tables and the color names, without the color definitions themselves, you can use the following code (if you type this in the console you have to type it all in a single line -- and beware, the output is a long list):
 
 #+begin_src lua
   for listname,colors in pairs(hs.drawing.color.lists()) do
@@ -677,7 +680,7 @@ If there is nothing to configure in the spoon, =spoon.SpoonInstall:andUse("SomeS
 
 - =start= is a boolean value which indicates whether to call the Spoon's =start()= method (if it has one) after configuring everything else.
 
-- =fn= specifies a function which will be called with the freshly-loaded Spoon object as its first argument. This can be used to execute other startup or configuration actions that are not covered by the other attributes. For example, if you use the {{}} spoon (a configurable launcher), you need to call its =loadPlugins()= method to specify which Seal plugins to use. You can achieve this with something like this:
+- =fn= specifies a function which will be called with the freshly-loaded Spoon object as its first argument. This can be used to execute other startup or configuration actions that are not covered by the other attributes. For example, if you use the {{{spoon(Seal)}}} spoon (a configurable launcher), you need to call its =loadPlugins()= method to specify which Seal plugins to use. You can achieve this with something like this:
 
   #+begin_src lua
     spoon.SpoonInstall:andUse("Seal",
