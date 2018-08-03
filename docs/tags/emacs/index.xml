@@ -27,7 +27,7 @@ Recently I started thinking about how I could make my editing environment more v
       <pubDate>Sun, 17 Dec 2017 20:14:00 +0100</pubDate>
       
       <guid>https://zzamboni.org/post/my-emacs-configuration-with-commentary/</guid>
-      <description>Last update: July 30, 2018
+      <description>Last update: August 3, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&amp;rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving.</description>
     </item>
     
