@@ -50,7 +50,7 @@ I have enjoyed slowly converting my configuration files to literate programming 
 
 <meta itemprop="datePublished" content="2017-12-17T20:14:00&#43;01:00" />
 <meta itemprop="dateModified" content="2017-12-17T20:14:00&#43;01:00" />
-<meta itemprop="wordCount" content="7826">
+<meta itemprop="wordCount" content="7883">
 
 
 
@@ -995,6 +995,16 @@ if (!doNotTrack) {
                <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;~&#34;</span> <span class="nv">s</span> <span class="s">&#34;~&#34;</span><span class="p">))</span>
              <span class="p">(</span><span class="nv">split-string</span> <span class="nv">str</span><span class="p">)</span>
              <span class="p">(</span><span class="nf">concat</span> <span class="p">(</span><span class="nf">string</span> <span class="sc">?\u</span><span class="nv">200B</span><span class="p">)</span> <span class="s">&#34;+&#34;</span> <span class="p">(</span><span class="nf">string</span> <span class="sc">?\u</span><span class="nv">200B</span><span class="p">))))</span></code></pre></div>
+<p>Links to a specific section/function of the Lua manual.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/org-macro-luadoc-code</span> <span class="p">(</span><span class="nv">func</span> <span class="nv">section</span> <span class="nv">desc</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">anchor</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">org-string-nw-p</span> <span class="nv">section</span><span class="p">)</span> <span class="nv">func</span><span class="p">))</span>
+         <span class="p">(</span><span class="nv">desc-1</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">org-string-nw-p</span> <span class="nv">desc</span><span class="p">)</span> <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;=&#34;</span> <span class="nv">func</span> <span class="s">&#34;=&#34;</span><span class="p">))))</span>
+    <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;[[https://www.lua.org/manual/5.3/manual.html#&#34;</span> <span class="nv">anchor</span> <span class="s">&#34;][&#34;</span> <span class="nv">desc-1</span> <span class="s">&#34;]]&#34;</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/org-macro-luafun-code</span> <span class="p">(</span><span class="nv">func</span> <span class="nv">desc</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">anchor</span> <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;pdf-&#34;</span> <span class="nv">func</span><span class="p">))</span>
+         <span class="p">(</span><span class="nv">desc-1</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">org-string-nw-p</span> <span class="nv">desc</span><span class="p">)</span> <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;=&#34;</span> <span class="nv">func</span> <span class="s">&#34;=&#34;</span><span class="p">))))</span>
+    <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;[[https://www.lua.org/manual/5.3/manual.html#&#34;</span> <span class="nv">anchor</span> <span class="s">&#34;][&#34;</span> <span class="nv">desc-1</span> <span class="s">&#34;]]&#34;</span><span class="p">)))</span></code></pre></div>
 <h2 id="system-specific-configuration">System-specific configuration</h2>
 
 <p>Some settings maybe OS-specific, and this is where we set them. For now I only use Emacs on my Mac, so only the Mac section is filled out, but there are sections for Linux and Windows as well.</p>
