@@ -89,7 +89,7 @@ Most spoons are structured like this: you can set up hotkeys to trigger the main
 
 {{% tip %}}
 
-Lua does not include a function to easily get the keys of a table so you have to use the {{< luadoc pairs >}} function to loop over the key/value pairs of the table. The [hs.inspect](http://www.hammerspoon.org/docs/hs.inspect) function is convenient, but to get just the list of tables and the color names, without the color definitions themselves, you can use the following code (if you type this in the console you have to type it all in a single line -- and beware, the output is a long list):
+Lua does not include a function to easily get the keys of a table so you have to use the [`pairs`](https://www.lua.org/manual/5.3/manual.html#pdf-pairs) function to loop over the key/value pairs of the table. The [hs.inspect](http://www.hammerspoon.org/docs/hs.inspect) function is convenient, but to get just the list of tables and the color names, without the color definitions themselves, you can use the following code (if you type this in the console you have to type it all in a single line -- and beware, the output is a long list):
 
 ```lua
 for listname,colors in pairs(hs.drawing.color.lists()) do
@@ -190,7 +190,7 @@ If there is nothing to configure in the spoon, `spoon.SpoonInstall:andUse("SomeS
 
 -   `start` is a boolean value which indicates whether to call the Spoon's `start()` method (if it has one) after configuring everything else.
 
--   `fn` specifies a function which will be called with the freshly-loaded Spoon object as its first argument. This can be used to execute other startup or configuration actions that are not covered by the other attributes. For example, if you use the {{}} spoon (a configurable launcher), you need to call its `loadPlugins()` method to specify which Seal plugins to use. You can achieve this with something like this:
+-   `fn` specifies a function which will be called with the freshly-loaded Spoon object as its first argument. This can be used to execute other startup or configuration actions that are not covered by the other attributes. For example, if you use the [Seal](http://www.hammerspoon.org/Spoons/Seal) spoon (a configurable launcher), you need to call its `loadPlugins()` method to specify which Seal plugins to use. You can achieve this with something like this:
 
     ```lua
     spoon.SpoonInstall:andUse("Seal",

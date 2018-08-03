@@ -1128,6 +1128,21 @@ Split STR at spaces and wrap each element with `~` char, separated by `+`. Zero-
              (concat (string ?\u200B) "+" (string ?\u200B))))
 ```
 
+Links to a specific section/function of the Lua manual.
+
+```emacs-lisp
+(defun zz/org-macro-luadoc-code (func section desc)
+  (let* ((anchor (or (org-string-nw-p section) func))
+         (desc-1 (or (org-string-nw-p desc) (concat "=" func "="))))
+    (concat "[[https://www.lua.org/manual/5.3/manual.html#" anchor "][" desc-1 "]]")))
+
+(defun zz/org-macro-luafun-code (func desc)
+  (let* ((anchor (concat "pdf-" func))
+         (desc-1 (or (org-string-nw-p desc) (concat "=" func "="))))
+    (concat "[[https://www.lua.org/manual/5.3/manual.html#" anchor "][" desc-1 "]]")))
+
+```
+
 
 ## System-specific configuration {#system-specific-configuration}
 
