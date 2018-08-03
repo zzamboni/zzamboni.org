@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.45.1" />
+     <meta name="generator" content="Hugo 0.46" />
       
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -22,7 +22,7 @@
      
 
       <meta property="og:title" content="My Emacs Configuration, With Commentary" />
-<meta property="og:description" content="Last update: July 30, 2018
+<meta property="og:description" content="Last update: August 3, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zzamboni.org/post/my-emacs-configuration-with-commentary/" />
@@ -44,20 +44,20 @@ I have enjoyed slowly converting my configuration files to literate programming 
 
 
 <meta itemprop="name" content="My Emacs Configuration, With Commentary">
-<meta itemprop="description" content="Last update: July 30, 2018
+<meta itemprop="description" content="Last update: August 3, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving.">
 
 
 <meta itemprop="datePublished" content="2017-12-17T20:14:00&#43;01:00" />
 <meta itemprop="dateModified" content="2017-12-17T20:14:00&#43;01:00" />
-<meta itemprop="wordCount" content="7767">
+<meta itemprop="wordCount" content="7826">
 
 
 
 <meta itemprop="keywords" content="config,howto,literateprogramming,literateconfig,emacs," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Emacs Configuration, With Commentary"/>
-<meta name="twitter:description" content="Last update: July 30, 2018
+<meta name="twitter:description" content="Last update: August 3, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving."/>
 
         
@@ -188,7 +188,7 @@ if (!doNotTrack) {
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
-<p>Last update: <strong>July 30, 2018</strong></p>
+<p>Last update: <strong>August  3, 2018</strong></p>
 
 <p>I have enjoyed slowly converting my configuration files to <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html">literate programming</a> style style using org-mode in Emacs. I previously posted my <a href="../my-elvish-configuration-with-commentary/">Elvish configuration</a>, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my <a href="https://github.com/zzamboni/dot%5Femacs/blob/master/init.org">init.org</a> file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the <a href="https://github.com/zzamboni/dot%5Femacs/blob/master/init.org">init.org file in GitHub</a> for my current, live configuration, and the generated file at <a href="https://github.com/zzamboni/dot%5Femacs/blob/master/init.el">https://github.com/zzamboni/dot%5Femacs/blob/master/init.el</a>.</p>
 
@@ -708,7 +708,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">org-default-notes-file</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">org-directory</span> <span class="s">&#34;/notes.org&#34;</span><span class="p">))</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="s">&#34;C-c c&#34;</span> <span class="o">.</span> <span class="nv">org-capture</span><span class="p">)</span></code></pre></div>
 <p>Load <code>org-tempo</code> to enable snippets such as <code>&lt;s&lt;TAB&gt;</code> to insert a source block. Disabled for now as I try to get used to the new <kbd>C-c C-,</kbd> shortcut recently introduced. See the loooong discussion starting at <a href="https://lists.gnu.org/archive/html/emacs-orgmode/2018-04/msg00600.html">https://lists.gnu.org/archive/html/emacs-orgmode/2018-04/msg00600.html</a>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">org-tempo</span>
-  <span class="nb">:disabled</span> <span class="nv">yes</span>
+  <span class="nb">:disabled</span>
   <span class="nb">:defer</span> <span class="mi">5</span>
   <span class="nb">:ensure</span> <span class="no">nil</span>
   <span class="nb">:after</span> <span class="nv">org</span><span class="p">)</span></code></pre></div>
@@ -1251,11 +1251,15 @@ if (!doNotTrack) {
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">subword</span>
   <span class="nb">:hook</span>
   <span class="p">(</span><span class="nv">clojure-mode</span> <span class="o">.</span> <span class="nv">subword-mode</span><span class="p">))</span></code></pre></div>
-<p>With <code>aggressive-indent</code>, indentation is always kept up to date in the whole buffer. Sometimes it gets in the way, but in general it&rsquo;s nice and saves a lot of work, so I enable it for all programming modes.</p>
+<p>With <code>aggressive-indent</code>, indentation is always kept up to date in the whole buffer. Sometimes it gets in the way, but in general it&rsquo;s nice and saves a lot of work, so I enable it for all programming modes except for Python mode, where I explicitly disable as it often gets the indentation wrong and messes up existing code.</p>
+
+<p>Disabled for now while I test how much I miss it (I often find it gets in the way, but I&rsquo;m not sure how often it helps and I don&rsquo;t even notice it)</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">aggressive-indent</span>
+  <span class="nb">:disabled</span>
   <span class="nb">:diminish</span> <span class="nv">aggressive-indent-mode</span>
   <span class="nb">:hook</span>
-  <span class="p">(</span><span class="nv">prog-mode</span> <span class="o">.</span> <span class="nv">aggressive-indent-mode</span><span class="p">))</span></code></pre></div>
+  <span class="p">(</span><span class="nv">prog-mode</span> <span class="o">.</span> <span class="nv">aggressive-indent-mode</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">python-mode</span> <span class="o">.</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nv">aggressive-indent-mode</span> <span class="mi">-1</span><span class="p">))))</span></code></pre></div>
 <p>With <code>company-mode</code>, we get automatic completion - when there are completions available, a popup menu will appear when you stop typing for a moment, and you can either continue typing or accept the completion using the Enter key. I enable it globally.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">company</span>
   <span class="nb">:diminish</span> <span class="nv">company-mode</span>
@@ -1730,7 +1734,7 @@ if (!doNotTrack) {
     </a>
     <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;<a class="no-underline hover-white white-70" href="https://www.gnu.org/software/emacs/">Emacs 26.1 </a> &plus;
                 <a class="no-underline hover-white white-70" href="https://orgmode.org/">Org mode 9.1.13 </a> &plus;
-                <a class="no-underline hover-white white-70" href="https://ox-hugo.scripter.co/">ox-hugo</a>&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.45.1</a>
+                <a class="no-underline hover-white white-70" href="https://ox-hugo.scripter.co/">ox-hugo</a>&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.46</a>
             &plus; <a class="no-underline hover-white white-70" href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a></div>
     
 
