@@ -10,7 +10,7 @@ toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **July 30, 2018**
+Last update: **August  3, 2018**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -126,7 +126,7 @@ I add a couple of keybindings which are missing from the default `readline-bindi
 -   `Alt-d` to delete the word under the cursor
 
     ```elvish
-    edit:insert:binding[Alt-d] = { edit:move-dot-right-word; edit:kill-word-left }
+    edit:insert:binding[Alt-d] = { edit:move-dot-right-small-word; edit:kill-small-word-left }
     ```
 
 
@@ -336,6 +336,7 @@ The [update.elv](https://github.com/iwoloschin/elvish-packages/blob/master/updat
 
 ```elvish
 use github.com/iwoloschin/elvish-packages/update
+update:curl-timeout = 3
 update:check-commit &verbose
 ```
 
