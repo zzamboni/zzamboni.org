@@ -184,6 +184,17 @@ share your own work with other users.&lt;/p&gt;
     </item>
     
     <item>
+      <title>Using Spoons in Hammerspoon</title>
+      <link>https://zzamboni.org/post/using-spoons-in-hammerspoon/</link>
+      <pubDate>Fri, 01 Sep 2017 17:55:00 +0200</pubDate>
+      
+      <guid>https://zzamboni.org/post/using-spoons-in-hammerspoon/</guid>
+      <description>In this second article about Hammerspoon, we look into Spoons, modules written in Lua which can be easily installed and loaded into Hammerspoon to provide ready-to-use functionality. Spoons provide a predefined API to configure and use them. They are also a good way to share your own work with other users.
+See also the first article in this series.
+Using a Spoon to locate your mouse As a first example, we will use the MouseCircle spoon, which allows us to set up a hotkey that displays a color circle around the current location of the mouse pointer for a few seconds, to help you locate it.</description>
+    </item>
+    
+    <item>
       <title>New Release of &#34;Learning CFEngine 3&#34;</title>
       <link>https://zzamboni.org/post/new-release-of-learning-cfengine-3/</link>
       <pubDate>Wed, 30 Aug 2017 11:16:26 +0200</pubDate>
