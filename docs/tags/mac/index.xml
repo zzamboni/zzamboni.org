@@ -26,16 +26,11 @@ Lua&amp;rsquo;s types and data structures.&lt;/p&gt;
     <item>
       <title>Just Enough Lua to Be Productive in Hammerspoon, Part 1</title>
       <link>https://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</link>
-      <pubDate>Sat, 21 Oct 2017 20:36:28 +0000</pubDate>
+      <pubDate>Sat, 21 Oct 2017 20:36:00 +0200</pubDate>
       
       <guid>https://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/</guid>
-      <description>&lt;p&gt;Hammerspoon&amp;rsquo;s configuration files are written in Lua, so a basic
-knowledge of the language is very useful to be an effective user of
-Hammerspoon. In this 2-part article I will show you the basics of Lua
-so you can read and write Hammerspoon configuration. Along the way you
-will discover that Lua is a surprisingly powerful language.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>Hammerspoon&amp;rsquo;s configuration files are written in Lua, so a basic knowledge of the language is very useful to be an effective user of Hammerspoon. In this 2-part article I will show you the basics of Lua so you can read and write Hammerspoon configuration. Along the way you will discover that Lua is a surprisingly powerful language.
+Lua is a scripting language created in 1993, and focused from the beginning in being an embedded language for extending other applications.</description>
     </item>
     
     <item>
