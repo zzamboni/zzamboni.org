@@ -196,8 +196,7 @@ if (!doNotTrack) {
 
 <h2 id="flow-control">Flow control</h2>
 
-<p>Lua includes all the common flow-control structures you might expect.
-Some examples:</p>
+<p>Lua includes all the common flow-control structures you might expect.  Some examples:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">info</span> <span class="o">=</span> <span class="s2">&#34;No package selected&#34;</span>
 <span class="kr">if</span> <span class="n">pkg</span> <span class="ow">and</span> <span class="n">pkg</span> <span class="o">~=</span> <span class="s2">&#34;&#34;</span> <span class="kr">then</span>
    <span class="n">info</span><span class="p">,</span> <span class="n">st</span> <span class="o">=</span> <span class="n">hs.execute</span><span class="p">(</span><span class="s2">&#34;/usr/local/bin/brew info &#34;</span> <span class="o">..</span> <span class="n">pkg</span><span class="p">)</span>
@@ -205,24 +204,16 @@ Some examples:</p>
       <span class="n">info</span> <span class="o">=</span> <span class="s2">&#34;No information found about formula &#39;&#34;</span> <span class="o">..</span> <span class="n">pkg</span> <span class="o">..</span> <span class="s2">&#34;&#39;!&#34;</span>
    <span class="kr">end</span>
 <span class="kr">end</span></code></pre></div>
-<p>In this example, in addition to the <a href="https://www.lua.org/manual/5.3/manual.html#3.3.4"><code>if</code></a> statement,
-you can see in the line that runs <a href="http://www.hammerspoon.org/docs/hs#execute">hs.execute</a> that Lua
-functions can return multiple values (which is not the same as returning
-an array, which counts as a single value). Within the function, this is
-implemented simply by separating the values with commas in the <code>return</code>
-statement, like this: <code>return val1, val2</code>. You can also see in action
-the following operators:</p>
+<p>In this example, in addition to the <a href="https://www.lua.org/manual/5.3/manual.html#3.3.4"><code>if</code></a> statement, you can see in the line that runs <a href="http://www.hammerspoon.org/docs/hs#execute">hs.execute</a> that Lua functions can return multiple values (which is not the same as returning an array, which counts as a single value). Within the function, this is implemented simply by separating the values with commas in the <code>return</code> statement, like this: <code>return val1, val2</code>. You can also see in action the following operators:</p>
 
 <ul>
 <li><p><code>==</code> for equality;</p></li>
 
-<li><p><code>~=</code> for inequality (in this respect it differs from most C-like
-languages, which use <code>!=</code>);</p></li>
+<li><p><code>~=</code> for inequality (in this respect it differs from most C-like languages, which use <code>!=</code>);</p></li>
 
 <li><p><code>..</code> for string concatenation;</p></li>
 
-<li><p><code>and</code> for the logical AND operation (by extension, you can deduct that
-<code>or</code> and <code>not</code> are also available).</p></li>
+<li><p><code>and</code> for the logical AND operation (by extension, you can deduct that <code>or</code> and <code>not</code> are also available).</p></li>
 </ul>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">doReload</span> <span class="o">=</span> <span class="kc">false</span>
 <span class="kr">for</span> <span class="n">_</span><span class="p">,</span><span class="n">file</span> <span class="kr">in</span> <span class="n">pairs</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="kr">do</span>
@@ -230,12 +221,9 @@ languages, which use <code>!=</code>);</p></li>
       <span class="n">doReload</span> <span class="o">=</span> <span class="kc">true</span>
    <span class="kr">end</span>
 <span class="kr">end</span></code></pre></div>
-<p>In this example we see the <a href="https://www.lua.org/manual/5.3/manual.html#3.3.5"><code>for</code></a> statement in its
-so-called <em>generic form</em>:</p>
+<p>In this example we see the <a href="https://www.lua.org/manual/5.3/manual.html#3.3.5"><code>for</code></a> statement in its so-called <em>generic form</em>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">for</span> <span class="o">&lt;</span><span class="n">var</span><span class="o">&gt;</span> <span class="kr">in</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span> <span class="kr">do</span> <span class="o">&lt;</span><span class="n">block</span><span class="o">&gt;</span> <span class="kr">end</span></code></pre></div>
-<p>This statement loops the variables over the values returned by the
-expressions, executing the block with each the consecutive value until
-it becomes <code>nil</code>.</p>
+<p>This statement loops the variables over the values returned by the expressions, executing the block with each the consecutive value until it becomes <code>nil</code>.</p>
 
 <aside class="admonition tip">
 	<div class="admonition-icon">
@@ -247,65 +235,37 @@ it becomes <code>nil</code>.</p>
 	</div>
 	
 	
-	<div class="admonition-content"><p>Strictly speaking, <code>expression</code> is executed once and its
-value must be an <em>iterator function</em>, which returns one new value from
-the sequence every time it is called, returning <code>nil</code> at the end.</p>
+	<div class="admonition-content"><p>Strictly speaking, <code>expression</code> is executed once and its value must be an <em>iterator function</em>, which returns one new value from the sequence every time it is called, returning <code>nil</code> at the end.</p>
 </div>
 </aside>
 
 
 <p>The <code>for</code> statement also has a <em>numeric form</em>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">for</span> <span class="o">&lt;</span><span class="n">var</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">first</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">last</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">inc</span><span class="o">&gt;</span> <span class="kr">do</span> <span class="o">&lt;</span><span class="n">block</span><span class="o">&gt;</span> <span class="kr">end</span></code></pre></div>
-<p>This form loops the variable from the first to the last value,
-incrementing it by the given increment (defaults to 1) at each
-iteration.</p>
+<p>This form loops the variable from the first to the last value, incrementing it by the given increment (defaults to 1) at each iteration.</p>
 
 <p>Going back to our example, we can also learn the following:</p>
 
 <ul>
-<li><p>The <a href="https://www.lua.org/manual/5.3/manual.html#pdf-pairs"><code>pairs</code></a> function, which loops over a table. We will
-learn more about Lua tables below, but they can be used to represent
-both regular and associative arrays. <code>pairs()</code> treats the <code>files</code>
-variable as an associative array, and returns in each iteration a
-key/value pair of its contents.</p></li>
+<li><p>The <a href="https://www.lua.org/manual/5.3/manual.html#pdf-pairs"><code>pairs</code></a> function, which loops over a table. We will learn more about Lua tables below, but they can be used to represent both regular and associative arrays. <code>pairs()</code> treats the <code>files</code> variable as an associative array, and returns in each iteration a key/value pair of its contents.</p></li>
 
-<li><p>The <code>_</code> variable, while not special per se, is used by convention in
-Lua for &ldquo;throwaway values&rdquo;. In this case we are not interested in the
-key in each iteration, just the value, so we assign the key to <code>_</code>,
-never to be used again.</p></li>
+<li><p>The <code>_</code> variable, while not special per se, is used by convention in Lua for &ldquo;throwaway values&rdquo;. In this case we are not interested in the key in each iteration, just the value, so we assign the key to <code>_</code>, never to be used again.</p></li>
 
-<li><p>Our first glimpse into the Lua <a href="https://www.lua.org/manual/5.3/manual.html#6.4"><code>string library</code></a>,
-and the two ways in which it can be used:</p>
+<li><p>Our first glimpse into the Lua <a href="https://www.lua.org/manual/5.3/manual.html#6.4"><code>string library</code></a>, and the two ways in which it can be used:</p>
 
 <ul>
-<li><p>In <code>file:sub(-4)</code>, the colon indicates the object-oriented notation
-(see &ldquo;Lua dot-vs-colon method access&rdquo; below). This invokes the <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.sub"><code>string.sub</code></a> function, automatically passing the <code>file</code>
-variable as its first argument. This statement is equivalent to
-<code>string.sub(file, -4)</code>.</p></li>
+<li><p>In <code>file:sub(-4)</code>, the colon indicates the object-oriented notation (see &ldquo;Lua dot-vs-colon method access&rdquo; below). This invokes the <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.sub"><code>string.sub</code></a> function, automatically passing the <code>file</code> variable as its first argument. This statement is equivalent to <code>string.sub(file, -4)</code>.</p></li>
 
-<li><p>In <code>string.match(file, '/')</code>, we see the function notation used to
-call <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.match"><code>string.match</code></a>. Since the <code>file</code> variable is
-being passed as the first argument, you could rewrite this statement
-as <code>file:match('/[.]')</code>. In practice, I&rsquo;ve found myself using both
-notations somewhat exchangeably - feel free to use whichever you
-find most comfortable.</p></li>
+<li><p>In <code>string.match(file, '/')</code>, we see the function notation used to call <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.match"><code>string.match</code></a>. Since the <code>file</code> variable is being passed as the first argument, you could rewrite this statement as <code>file:match('/[.]')</code>. In practice, I&rsquo;ve found myself using both notations somewhat exchangeably - feel free to use whichever you find most comfortable.</p></li>
 </ul></li>
 </ul>
 
 <h2 id="dot-vs-colon-method-access-in-lua">Dot-vs-colon method access in Lua</h2>
 
-<p>You will notice that sometimes, functions contained within a module are
-called with a dot, and others with a colon. The latter is Lua&rsquo;s
-object-method-call notation, and its effect is to pass the object on
-which the method is being called as an implicit first argument called
-<code>self</code>. This is simply a syntactic shortcut, i.e. the following two are
-equivalent:</p>
+<p>You will notice that sometimes, functions contained within a module are called with a dot, and others with a colon. The latter is Lua&rsquo;s object-method-call notation, and its effect is to pass the object on which the method is being called as an implicit first argument called <code>self</code>. This is simply a syntactic shortcut, i.e. the following two are equivalent:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">file</span><span class="p">:</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;/[.]&#39;</span><span class="p">)</span>
 <span class="n">string.match</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span></code></pre></div>
-<p>Note that in the second statement, we are calling the method using the
-dot notation, and explicitly passing the object as the first argument.
-Normally you would use colon notation, but when you need a function
-pointer, you need to use the dot notation.</p>
+<p>Note that in the second statement, we are calling the method using the dot notation, and explicitly passing the object as the first argument.  Normally you would use colon notation, but when you need a function pointer, you need to use the dot notation.</p>
 
 <h2 id="functions">Functions</h2>
 
@@ -319,44 +279,24 @@ pointer, you need to use the dot notation.</p>
    <span class="n">hs.eventtap</span><span class="p">.</span><span class="n">event.newMouseEvent</span><span class="p">(</span> <span class="c1">-- &lt;4&gt;</span>
      <span class="n">hs.eventtap</span><span class="p">.</span><span class="n">event.types</span><span class="p">.</span><span class="n">leftMouseUp</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span><span class="n">post</span><span class="p">()</span>
 <span class="kr">end</span></code></pre></div>
-<p>In this example we can also see some examples of the Hammerspoon library
-in action, in particular two extremely powerful libraries: <a href="http://www.hammerspoon.org/docs/hs.mouse">hs.mouse</a> for interacting with the mouse pointer, and <a href="http://www.hammerspoon.org/docs/hs.eventtap">hs.eventtap</a>, which allows you to both intercept and generate
-arbitrary system events, including key pressed and mouse clicks. This
-function simulates a double click on the current pointer position:</p>
+<p>In this example we can also see some examples of the Hammerspoon library in action, in particular two extremely powerful libraries: <a href="http://www.hammerspoon.org/docs/hs.mouse">hs.mouse</a> for interacting with the mouse pointer, and <a href="http://www.hammerspoon.org/docs/hs.eventtap">hs.eventtap</a>, which allows you to both intercept and generate arbitrary system events, including key pressed and mouse clicks. This function simulates a double click on the current pointer position:</p>
 
 <ol>
 <li><p>We first get the current position of the mouse pointer using <a href="http://www.hammerspoon.org/docs/hs.mouse#getAbsolutePosition">hs.mouse.getAbsolutePosition</a>.</p></li>
 
-<li><p>We create a new mouse event of type <a href="http://www.hammerspoon.org/docs/hs.eventtap.event#types"><code>leftMouseDown</code></a> in the obtained coordinates and with
-the given modifiers.</p></li>
+<li><p>We create a new mouse event of type <a href="http://www.hammerspoon.org/docs/hs.eventtap.event#types"><code>leftMouseDown</code></a> in the obtained coordinates and with the given modifiers.</p></li>
 
-<li><p>By convention, most Hammerspoon API methods return the same object on
-which they operate. This allows us to chain the calls as shown:
-<code>setProperty()</code> is called on the <code>hs.eventtap</code> object returned by
-<code>newMouseEvent</code> to set its type to a double click, and <code>post()</code> is
-called on the result to issue the event.</p></li>
+<li><p>By convention, most Hammerspoon API methods return the same object on which they operate. This allows us to chain the calls as shown: <code>setProperty()</code> is called on the <code>hs.eventtap</code> object returned by <code>newMouseEvent</code> to set its type to a double click, and <code>post()</code> is called on the result to issue the event.</p></li>
 
-<li><p>Since we are generating system events directly, we also need to take
-care of generating a &ldquo;mouse up&rdquo; event at the end.</p></li>
+<li><p>Since we are generating system events directly, we also need to take care of generating a &ldquo;mouse up&rdquo; event at the end.</p></li>
 </ol>
 
-<p>Function parameters are always optional, and those not passed will
-default to <code>nil</code>, so you need to do proper validation. In this example,
-the function can be called as <code>leftDoubleClick()</code>, without any
-parameters, which means the <code>modifiers</code> parameter might have a <code>nil</code>
-value. Looking at the <a href="http://www.hammerspoon.org/docs/hs.eventtap.event#newMouseEvent">documentation for <code>newMouseEvent()</code></a>, we see that the parameter is
-optional, so for this particular function our use is OK.</p>
+<p>Function parameters are always optional, and those not passed will default to <code>nil</code>, so you need to do proper validation. In this example, the function can be called as <code>leftDoubleClick()</code>, without any parameters, which means the <code>modifiers</code> parameter might have a <code>nil</code> value. Looking at the <a href="http://www.hammerspoon.org/docs/hs.eventtap.event#newMouseEvent">documentation for <code>newMouseEvent()</code></a>, we see that the parameter is optional, so for this particular function our use is OK.</p>
 
-<p>You should try this function to see that it works. Adding it to you
-<code>~/.hammerspoon/init.lua</code> function will make Hammerspoon define it the
-next time you reload your configuration. You could then try calling it
-from the console, but the easiest is to bind a hotkey that will generate
-a double click. For example:</p>
+<p>You should try this function to see that it works. Adding it to you <code>~/.hammerspoon/init.lua</code> function will make Hammerspoon define it the next time you reload your configuration. You could then try calling it from the console, but the easiest is to bind a hotkey that will generate a double click. For example:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="p">{</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span> <span class="p">},</span> <span class="s2">&#34;p&#34;</span> <span class="p">},</span>
                    <span class="n">leftDoubleClick</span><span class="p">)</span></code></pre></div>
-<p>Once you reload your config, you can generate a double click by moving
-the cursor where you want it and pressing <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>p</kbd>. While this is a contrived example, the ability to generate events
-like this is immensely powerful in automating your system.</p>
+<p>Once you reload your config, you can generate a double click by moving the cursor where you want it and pressing <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>p</kbd>. While this is a contrived example, the ability to generate events like this is immensely powerful in automating your system.</p>
 
 <aside class="admonition tip">
 	<div class="admonition-icon">
@@ -368,34 +308,22 @@ like this is immensely powerful in automating your system.</p>
 	</div>
 	
 	
-	<div class="admonition-content"><p>By now you have seen that we are using <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>
-very frequently in our keybindings. To avoid having to type this every
-time, and since the modifiers are defined as an array, you can define
-them as variable. For example, I have the following at the top of my
-<code>init.lua</code>:</p>
+	<div class="admonition-content"><p>By now you have seen that we are using <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd> very frequently in our keybindings. To avoid having to type this every time, and since the modifiers are defined as an array, you can define them as variable. For example, I have the following at the top of my <code>init.lua</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hyper</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;cmd&#34;</span><span class="p">,</span><span class="s2">&#34;alt&#34;</span><span class="p">,</span><span class="s2">&#34;ctrl&#34;</span><span class="p">}</span>
 <span class="n">shift_hyper</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;cmd&#34;</span><span class="p">,</span><span class="s2">&#34;alt&#34;</span><span class="p">,</span><span class="s2">&#34;ctrl&#34;</span><span class="p">,</span><span class="s2">&#34;shift&#34;</span><span class="p">}</span></code></pre></div>
-<p>Then I simply use <code>hyper</code> or <code>shift_hyper</code> in my key binding
-declarations:</p>
+<p>Then I simply use <code>hyper</code> or <code>shift_hyper</code> in my key binding declarations:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="n">hyper</span><span class="p">,</span> <span class="s2">&#34;p&#34;</span> <span class="p">},</span> <span class="n">leftDoubleClick</span><span class="p">)</span></code></pre></div></div>
 </aside>
 
 
 <h2 id="until-next-time">Until next time!</h2>
 
-<p>In the
-<a href="%7B%7B%3C%20relref%20%222017-11-01-just-enough-lua-to-be-productive-in-hammerspoon-part2.md%22%20%3E%7D%7D">next
-installment</a>, we will dive into Lua&rsquo;s types and data structures. In the
-meantime, feel free to explore and learn on your own. If you need more
-information, I can recommend the following resources, which I have found
-useful:</p>
+<p>In the <a href="%7B%7B%3C%20relref%20%222017-11-01-just-enough-lua-to-be-productive-in-hammerspoon-part2.md%22%20%3E%7D%7D">next installment</a>, we will dive into Lua&rsquo;s types and data structures. In the meantime, feel free to explore and learn on your own. If you need more information, I can recommend the following resources, which I have found useful:</p>
 
 <ul>
-<li><p><a href="http://www.lua.org/manual/5.3/">The Lua 5.3 Reference Manual</a>,
-available at the official <a href="http://www.lua.org">Lua website</a>.</p></li>
+<li><p><a href="http://www.lua.org/manual/5.3/">The Lua 5.3 Reference Manual</a>, available at the official <a href="http://www.lua.org">Lua website</a>.</p></li>
 
-<li><p><a href="http://lua-users.org/wiki/">The Lua Wiki</a>, a community-maintained
-wiki with many descriptions, tips, examples and tutorials.</p></li>
+<li><p><a href="http://lua-users.org/wiki/">The Lua Wiki</a>, a community-maintained wiki with many descriptions, tips, examples and tutorials.</p></li>
 </ul>
 
       </section>
