@@ -207,8 +207,8 @@ Lua&rsquo;s types and data structures.</p>
 	</div>
 	
 	
-	<div class="admonition-content"><p>If you haven&rsquo;t already, be sure to read <a href="/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/">the first installment of this
-series</a> to learn about the basic Lua concepts.</p>
+	<div class="admonition-content"><p>If you haven&rsquo;t already, be sure to read [the first installment of this
+series]() to learn about the basic Lua concepts.</p>
 </div>
 </aside>
 
@@ -416,7 +416,7 @@ its declaration:</p>
 <span class="p">}</span></code></pre></div>
 <p>The common way of defining a new module in Lua is to create an empty
 table, and populate it with functions or variables as needed. For
-example, let’s put our <a href="/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/#functions">double-click generator</a> in a module. Create the
+example, let’s put our <a href="">double-click generator</a> in a module. Create the
 file <code>~/.hammerspoon/doubleclick.lua</code> with the following contents:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">mod</span><span class="o">=</span><span class="p">{}</span>
 
@@ -568,7 +568,7 @@ manipulation, using primarily functions from the <a href="https://www.lua.org/ma
 common string manipulation functions, including pattern matching. All
 of these functions can be called either as regular functions, with the
 string as the first argument, or as method calls on the string itself,
-using the colon syntax (which, as we saw <a href="/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/#dot-vs-colon-method-access-in-lua">before</a>, gets converted to the same call). For example, the following two
+using the colon syntax (which, as we saw <a href="">before</a>, gets converted to the same call). For example, the following two
 are equivalent:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">string.find</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s2">&#34;^foo&#34;</span><span class="p">)</span>
 <span class="n">a</span><span class="p">:</span><span class="n">find</span><span class="p">(</span><span class="s2">&#34;^foo&#34;</span><span class="p">)</span></code></pre></div>
