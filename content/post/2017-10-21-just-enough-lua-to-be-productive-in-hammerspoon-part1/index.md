@@ -151,7 +151,7 @@ hs.hotkey.bindSpec({ hyper, "p" }, leftDoubleClick)
 
 ## Until next time! {#until-next-time}
 
-In the [next installment](%7B%7B%3C%20relref%20%222017-11-01-just-enough-lua-to-be-productive-in-hammerspoon-part2.md%22%20%3E%7D%7D), we will dive into Lua's types and data structures. In the meantime, feel free to explore and learn on your own. If you need more information, I can recommend the following resources, which I have found useful:
+In the [next installment](/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/), we will dive into Lua's types and data structures. In the meantime, feel free to explore and learn on your own. If you need more information, I can recommend the following resources, which I have found useful:
 
 -   [The Lua 5.3 Reference Manual](http://www.lua.org/manual/5.3/), available at the official [Lua website](http://www.lua.org).
 
