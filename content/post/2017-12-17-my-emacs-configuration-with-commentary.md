@@ -695,7 +695,7 @@ Default setup and keybinding for `org-capture`.
 ("C-c c" . org-capture)
 ```
 
-Load `org-tempo` to enable snippets such as `<s<TAB>` to insert a source block. Disabled for now as I try to get used to the new <kbd>C-c C-,</kbd> shortcut recently introduced. See the loooong discussion starting at <https://lists.gnu.org/archive/html/emacs-orgmode/2018-04/msg00600.html>.
+Load `org-tempo` to enable snippets such as `<s<TAB>` to insert a source block. Disabled for now as I try to get used to the new <kbd>C-c</kbd> <kbd>C-,</kbd> shortcut recently introduced. See the loooong discussion starting at <https://lists.gnu.org/archive/html/emacs-orgmode/2018-04/msg00600.html>.
 
 ```emacs-lisp
 (use-package org-tempo
@@ -1076,7 +1076,7 @@ I picked up this little gem in the org mailing list. A function that reformats t
       (goto-char (point-min)))))
 ```
 
-Remove a link. For some reason this is not part of org-mode. From <https://emacs.stackexchange.com/a/10714/11843>, I bind it to <kbd>C-c C-M-u</kbd>.
+Remove a link. For some reason this is not part of org-mode. From <https://emacs.stackexchange.com/a/10714/11843>, I bind it to <kbd>C-c</kbd> <kbd>C-M-u</kbd>.
 
 ```emacs-lisp
 (defun afs/org-replace-link-by-link-description ()
