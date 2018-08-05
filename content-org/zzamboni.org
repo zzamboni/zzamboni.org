@@ -372,13 +372,13 @@ One minor issue I have noticed is that, in =variable-pitch-mode=, the fixed-pitc
 
 The setup described above has considerably improved my enjoyment of writing in Emacs. I hope you find it useful. If you have any feedback, suggestions or questions, please let me know in the comments.
 
-** Hammerspoon                                       :hammerspoon:mac:howto:
+** Hammerspoon                                        :hammerspoon:mac:howto:
 :PROPERTIES:
 :export_hugo_custom_front_matter: :toc true :featured_image /images/hammerspoon.png
 :END:
 
 *** DONE Getting Started With Hammerspoon
-CLOSED: [2017-08-21 16:34]
+CLOSED: [2017-08-21 Mon 16:34]
 :PROPERTIES:
 :export_hugo_bundle: 2017-08-21-getting-started-with-hammerspoon
 :export_file_name: index
@@ -393,16 +393,16 @@ This is the first installment of a series of posts about Hammerspoon, a staggeri
 
 [[http://www.hammerspoon.org/][Hammerspoon]] is a Mac application that allows you to achieve an unprecedented level of control over your Mac.  Hammerspoon enables interaction with the system at multiple layers--from low-level file system or network access, mouse or keyboard event capture and generation, all the way to manipulating applications or windows, processing URLs and drawing on the screen. It also allows interfacing with [[https://www.macosxautomation.com/applescript/][AppleScript]], Unix commands and scripts, and other applications. Hammerspoon configuration is written in [[https://www.lua.org/about.html][Lua]], a popular embedded programming language.
 
-Using Hammerspoon, you can replace many stand-alone Mac utilities for controlling or customizing specific aspects of your Mac (the kind that tends to overcrowd the menubar). For example, the following are doable using Hammerspoon (these are all things I do with it on my machine - each paragraph links to the corresponding sections in my [[/post/my-hammerspoon-configuration-with-commentary/][config file]]):
+Using Hammerspoon, you can replace many stand-alone Mac utilities for controlling or customizing specific aspects of your Mac (the kind that tends to overcrowd the menubar). For example, the following are doable using Hammerspoon (these are all things I do with it on my machine - each paragraph links to the corresponding sections in my [[file:/post/my-hammerspoon-configuration-with-commentary/][config file]]):
 
-- Add missing or more convenient keyboard shortcuts to applications, even for complex multi-step actions. For example: [[/post/my-hammerspoon-configuration-with-commentary/#organization-and-productivity][automated tagging and filing in Evernote, mail/note archival in Mail, Outlook and Evernote, filing items from multiple applications to OmniFocus using consistent keyboard shortcuts]], or [[/post/my-hammerspoon-configuration-with-commentary/#other-applications][muting/unmuting a conversation in Skype]].
-- [[/post/my-hammerspoon-configuration-with-commentary/#url-dispatching-to-site-specific-browsers][Open URLs in different browsers based on regular expression patterns]].  When combined with Site-specific Browsers (I use [[https://github.com/dmarmor/epichrome][Epichrome]]), this allows for highly flexible management of bookmarks, plugins and search configurations.
-- Replace Spotlight, Lacona and other launchers with a [[/post/my-hammerspoon-configuration-with-commentary/#seal][fully configurable, extensible launcher]], which allows not only to open applications, files and bookmarks, but to trigger arbitrary Lua functions.
-- [[/post/my-hammerspoon-configuration-with-commentary/#window-and-screen-manipulation][Manipulate windows]] using keyboard shortcuts to resize, move and arrange them.
-- [[/post/my-hammerspoon-configuration-with-commentary/#network-transitions][Set up actions to happen automatically when switching between WiFi networks]]--for example for reconfiguring proxies in some applications.
-- [[/post/my-hammerspoon-configuration-with-commentary/#pop-up-translation][Keyboard-triggered translation]] of selected text between arbitrary human languages.
-- Keep a configurable and persistent [[/post/my-hammerspoon-configuration-with-commentary/#organization-and-productivity][clipboard history]].
-- [[/post/my-hammerspoon-configuration-with-commentary/#other-applications][Automatically pause audio playback]] when headphones are unplugged.
+- Add missing or more convenient keyboard shortcuts to applications, even for complex multi-step actions. For example: [[file:/post/my-hammerspoon-configuration-with-commentary/#organization-and-productivity][automated tagging and filing in Evernote, mail/note archival in Mail, Outlook and Evernote, filing items from multiple applications to OmniFocus using consistent keyboard shortcuts]], or [[file:/post/my-hammerspoon-configuration-with-commentary/#other-applications][muting/unmuting a conversation in Skype]].
+- [[file:/post/my-hammerspoon-configuration-with-commentary/#url-dispatching-to-site-specific-browsers][Open URLs in different browsers based on regular expression patterns]].  When combined with Site-specific Browsers (I use [[https://github.com/dmarmor/epichrome][Epichrome]]), this allows for highly flexible management of bookmarks, plugins and search configurations.
+- Replace Spotlight, Lacona and other launchers with a [[file:/post/my-hammerspoon-configuration-with-commentary/#seal][fully configurable, extensible launcher]], which allows not only to open applications, files and bookmarks, but to trigger arbitrary Lua functions.
+- [[file:/post/my-hammerspoon-configuration-with-commentary/#window-and-screen-manipulation][Manipulate windows]] using keyboard shortcuts to resize, move and arrange them.
+- [[file:/post/my-hammerspoon-configuration-with-commentary/#network-transitions][Set up actions to happen automatically when switching between WiFi networks]]--for example for reconfiguring proxies in some applications.
+- [[file:/post/my-hammerspoon-configuration-with-commentary/#pop-up-translation][Keyboard-triggered translation]] of selected text between arbitrary human languages.
+- Keep a configurable and persistent [[file:/post/my-hammerspoon-configuration-with-commentary/#organization-and-productivity][clipboard history]].
+- [[file:/post/my-hammerspoon-configuration-with-commentary/#other-applications][Automatically pause audio playback]] when headphones are unplugged.
 
 Hammerspoon is the most powerful Mac automation utility I have ever used. If you are a programmer, it can make using your Mac vastly more fun and productive.
 
@@ -484,10 +484,10 @@ Another useful development tool is the =hs= command, which you can run from your
  {{{hsapi(hs.ipc,cliInstall)}}} creates symlinks under =/usr/local/= to the =hs= command and its manual page file, located inside the Hammerspoon application bundle. Under some circumstances (particularly if you build Hammerspoon from source, or if you install different versions of it), you may end up with broken symlinks. If the =hs= command stops working and =hs.ipc.cliInstall()= doesn't fix it, look for broken symlinks left behind from old versions of Hammerspoon.  Remove them and things should work again.
 {{% /warning %}}
 
-Now you have all the tools for developing your Hammerspoon configuration. In the next installment we will look at how you can save yourself a lot of coding by using pre-made modules. In the meantime, feel free to look through my [[/post/my-hammerspoon-configuration-with-commentary/][Hammerspoon configuration file]] for ideas, and please let me know your thoughts in the comments!
+Now you have all the tools for developing your Hammerspoon configuration. In the next installment we will look at how you can save yourself a lot of coding by using pre-made modules. In the meantime, feel free to look through my [[file:/post/my-hammerspoon-configuration-with-commentary/][Hammerspoon configuration file]] for ideas, and please let me know your thoughts in the comments!
 
-*** DONE Using Spoons in Hammerspoon                               :spoons:
-CLOSED: [2017-09-01 17:55]
+*** DONE Using Spoons in Hammerspoon                                 :spoons:
+CLOSED: [2017-09-01 Fri 17:55]
 :PROPERTIES:
 :export_hugo_bundle: 2017-09-01-using-spoons-in-hammerspoon
 :export_file_name: index
@@ -498,12 +498,12 @@ In this second article about Hammerspoon, we look into /Spoons/, modules written
 
 In this second article about Hammerspoon, we look into /Spoons/, modules written in Lua which can be easily installed and loaded into Hammerspoon to provide ready-to-use functionality. Spoons provide a predefined API to configure and use them. They are also a good way to share your own work with other users.
 
-See also the [[/post/getting-started-with-hammerspoon/][first article in this series]].
+See also the [[file:/post/getting-started-with-hammerspoon/][first article in this series]].
 
 **** Using a Spoon to locate your mouse
-  :PROPERTIES:
-  :CUSTOM_ID: using-a-spoon-to-locate-your-mouse
-  :END:
+:PROPERTIES:
+:CUSTOM_ID: using-a-spoon-to-locate-your-mouse
+:END:
 
 As a first example, we will use the [[http://www.hammerspoon.org/Spoons/MouseCircle.html][MouseCircle]] spoon, which allows us to set up a hotkey that displays a color circle around the current location of the mouse pointer for a few seconds, to help you locate it.
 
@@ -638,9 +638,9 @@ This is more verbose than the previous example, but the technique can be useful 
 By now you know enough to use spoons with Hammerspoon's native capabilities: [[http://www.hammerspoon.org/Spoons/][look for the ones you want]], download and install them by hand, and configure them in your =init.lua= using their configuration variables and API. In the next sections you will learn more about the minimum API of spoons, and how to install and configure spoons in a more automated way.
 
 **** The Spoon API
-  :PROPERTIES:
-  :CUSTOM_ID: the-spoon-api
-  :END:
+:PROPERTIES:
+:CUSTOM_ID: the-spoon-api
+:END:
 
 The advantage of using spoons is that you can count on them to adhere to a [[https://github.com/Hammerspoon/hammerspoon/blob/master/SPOONS.md#api-conventions][defined API]], which makes it easier to automate their use. Although each spoon is free to define additional variable and methods, the following are standard:
 
@@ -653,9 +653,9 @@ The advantage of using spoons is that you can count on them to adhere to a [[htt
 - =SPOON:bindHotkeys(map)= is exposed by spoons which allow binding hotkeys to certain actions. Its =map= argument is a Lua table with key/value entries of the following form: =ACTION = { MODS, KEY }=, where ACTION is a string defined by the spoon (multiple such actions can be defined), MODS is a list of key modifiers (valid values are ="cmd"=, ="alt"=, ="ctrl"= and ="shift"=), and KEY is the key to be bound, as shown in our previous example. All available actions for a spoon should be listed in its documentation.
 
 **** Automated Spoon installation and configuration
-  :PROPERTIES:
-  :CUSTOM_ID: automated-spoon-installation-and-configuration
-  :END:
+:PROPERTIES:
+:CUSTOM_ID: automated-spoon-installation-and-configuration
+:END:
 
 Once you develop a complex Hammerspoon configuration using spoons, you may start wondering if there is an easy way to manage them. There are no built-in mechanisms for automatically installing spoons, but you can use a spoon called [[http://www.hammerspoon.org/Spoons/SpoonInstall.html][SpoonInstall]] that implements this functionality. You can download it from [[http://www.hammerspoon.org/Spoons/SpoonInstall.html]]. Once installed, you can use it to declaratively install, configure and run spoons. For example, with SpoonInstall you can use the MouseCircle spoon as follows:
 
@@ -711,9 +711,9 @@ Which allows me to write =Install:andUse("MouseCircle", …​ )=, which is shor
 {{% /tip %}}
 
 ***** Managing repositories and spoons using SpoonInstall
-   :PROPERTIES:
-   :CUSTOM_ID: managing-repositories-and-spoons-using-spooninstall
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: managing-repositories-and-spoons-using-spooninstall
+:END:
 
 Apart from the =andUse()= "all-in-one" method, SpoonInstall has methods for specific repository- and spoon-maintenance operations. As of this writing, there are two Spoon repositories: the official one at [[http://www.hammerspoon.org/Spoons/]], and my own at [[http://zzamboni.org/zzSpoons/]], where I host some unofficial and in-progress Spoons.
 
@@ -740,14 +740,14 @@ To configure a new repository, you can define an extra entry in this variable. T
 After this, both "zzspoons" and "default" can be used as values to the =repo= attribute in the =andUse()= method, and in any of the other methods that take a repository identifier as a parameter. You can find the full API documentation at [[http://www.hammerspoon.org/Spoons/SpoonInstall.html]].
 
 **** Conclusion
-  :PROPERTIES:
-  :CUSTOM_ID: conclusion
-  :END:
+:PROPERTIES:
+:CUSTOM_ID: conclusion
+:END:
 
 Spoons are a great mechanism for structuring your Hammerspoon configuration. If you want an example of a working configuration based almost exclusively on Spoons, you can view my own Hammerspoon configuration at https://github.com/zzamboni/dot-hammerspoon.
 
-*** DONE Just Enough Lua to Be Productive in Hammerspoon, Part 1      :lua:
-CLOSED: [2017-10-21 20:36]
+*** DONE Just Enough Lua to Be Productive in Hammerspoon, Part 1        :lua:
+CLOSED: [2017-10-21 Sat 20:36]
 :PROPERTIES:
 :export_hugo_bundle: 2017-10-21-just-enough-lua-to-be-productive-in-hammerspoon-part1
 :export_file_name: index
@@ -764,20 +764,20 @@ Lua is a scripting language created in 1993, and focused from the beginning in b
 The purpose of this section is to give you a quick overview of the Lua features and peculiarities you may find most useful for developing Hammerspoon policies. I assume you are a programmer who knows some other C-like language--if you already know C, Java, Ruby, Python, Perl, Javascript or some similar language, picking up Lua should be pretty easy. Instead of detailing every structure, I will focus on the aspects that are most different or that are most likely to trip you up as you learn it.
 
 **** Flow control
-   :PROPERTIES:
-   :CUSTOM_ID: flow-control
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: flow-control
+:END:
 
 Lua includes all the common flow-control structures you might expect.  Some examples:
 
 #+begin_src lua
-    local info = "No package selected"
-    if pkg and pkg ~= "" then
-       info, st = hs.execute("/usr/local/bin/brew info " .. pkg)
-       if st == nil then
-          info = "No information found about formula '" .. pkg .. "'!"
-       end
-    end
+  local info = "No package selected"
+  if pkg and pkg ~= "" then
+     info, st = hs.execute("/usr/local/bin/brew info " .. pkg)
+     if st == nil then
+        info = "No information found about formula '" .. pkg .. "'!"
+     end
+  end
 #+end_src
 
 In this example, in addition to the {{{luadoc(if,3.3.4,)}}} statement, you can see in the line that runs {{{hsapi(hs,execute)}}} that Lua functions can return multiple values (which is not the same as returning an array, which counts as a single value). Within the function, this is implemented simply by separating the values with commas in the =return= statement, like this: =return val1, val2=. You can also see in action the following operators:
@@ -791,18 +791,18 @@ In this example, in addition to the {{{luadoc(if,3.3.4,)}}} statement, you can s
 - =and= for the logical AND operation (by extension, you can deduct that =or= and =not= are also available).
 
 #+begin_src lua
-    local doReload = false
-    for _,file in pairs(files) do
-       if file:sub(-4) == ".lua" and (not string.match(file, '/[.]#')) then
-          doReload = true
-       end
-    end
+  local doReload = false
+  for _,file in pairs(files) do
+     if file:sub(-4) == ".lua" and (not string.match(file, '/[.]#')) then
+        doReload = true
+     end
+  end
 #+end_src
 
 In this example we see the {{{luadoc(for,3.3.5)}}} statement in its so-called /generic form/:
 
 #+begin_src lua
-    for <var> in <expression> do <block> end
+  for <var> in <expression> do <block> end
 #+end_src
 
 This statement loops the variables over the values returned by the expressions, executing the block with each the consecutive value until it becomes =nil=.
@@ -814,7 +814,7 @@ Strictly speaking, =expression= is executed once and its value must be an /itera
 The =for= statement also has a /numeric form/:
 
 #+begin_src lua
-    for <var> = <first>,<last>,<inc> do <block> end
+  for <var> = <first>,<last>,<inc> do <block> end
 #+end_src
 
 This form loops the variable from the first to the last value, incrementing it by the given increment (defaults to 1) at each iteration.
@@ -832,36 +832,36 @@ Going back to our example, we can also learn the following:
   - In =string.match(file, '/')=, we see the function notation used to call {{{luafun(string.match)}}}. Since the =file= variable is being passed as the first argument, you could rewrite this statement as =file:match('/[.]')=. In practice, I've found myself using both notations somewhat exchangeably - feel free to use whichever you find most comfortable.
 
 **** Dot-vs-colon method access in Lua
-   :PROPERTIES:
-   :CUSTOM_ID: dot-vs-colon-method-access-in-lua
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: dot-vs-colon-method-access-in-lua
+:END:
 
 You will notice that sometimes, functions contained within a module are called with a dot, and others with a colon. The latter is Lua's object-method-call notation, and its effect is to pass the object on which the method is being called as an implicit first argument called =self=. This is simply a syntactic shortcut, i.e. the following two are equivalent:
 
 #+begin_src lua
-    file:match('/[.]')
-    string.match(file, '/')
+  file:match('/[.]')
+  string.match(file, '/')
 #+end_src
 
 Note that in the second statement, we are calling the method using the dot notation, and explicitly passing the object as the first argument.  Normally you would use colon notation, but when you need a function pointer, you need to use the dot notation.
 
 **** Functions
-   :PROPERTIES:
-   :CUSTOM_ID: functions
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: functions
+:END:
 
 Functions are defined using the =function= keyword.
 
 #+begin_src lua
-    function leftDoubleClick(modifiers)
-       local pos=hs.mouse.getAbsolutePosition() -- <1>
-       hs.eventtap.event.newMouseEvent(
-         hs.eventtap.event.types.leftMouseDown, pos, modifiers) -- <2>
-          :setProperty(hs.eventtap.event.properties.mouseEventClickState, 2)
-          :post() -- <3>
-       hs.eventtap.event.newMouseEvent( -- <4>
-         hs.eventtap.event.types.leftMouseUp, pos, modifiers):post()
-    end
+  function leftDoubleClick(modifiers)
+     local pos=hs.mouse.getAbsolutePosition() -- <1>
+     hs.eventtap.event.newMouseEvent(
+       hs.eventtap.event.types.leftMouseDown, pos, modifiers) -- <2>
+        :setProperty(hs.eventtap.event.properties.mouseEventClickState, 2)
+        :post() -- <3>
+     hs.eventtap.event.newMouseEvent( -- <4>
+       hs.eventtap.event.types.leftMouseUp, pos, modifiers):post()
+  end
 #+end_src
 
 In this example we can also see some examples of the Hammerspoon library in action, in particular two extremely powerful libraries: {{{hsapi(hs.mouse)}}} for interacting with the mouse pointer, and {{{hsapi(hs.eventtap)}}}, which allows you to both intercept and generate arbitrary system events, including key pressed and mouse clicks. This function simulates a double click on the current pointer position:
@@ -879,8 +879,8 @@ Function parameters are always optional, and those not passed will default to =n
 You should try this function to see that it works. Adding it to you =~/.hammerspoon/init.lua= function will make Hammerspoon define it the next time you reload your configuration. You could then try calling it from the console, but the easiest is to bind a hotkey that will generate a double click. For example:
 
 #+begin_src lua
-    hs.hotkey.bindSpec({ { "cmd", "ctrl", "alt" }, "p" },
-                       leftDoubleClick)
+  hs.hotkey.bindSpec({ { "cmd", "ctrl", "alt" }, "p" },
+                     leftDoubleClick)
 #+end_src
 
 Once you reload your config, you can generate a double click by moving the cursor where you want it and pressing {{{keys(Ctrl ⌘ Alt p)}}}. While this is a contrived example, the ability to generate events like this is immensely powerful in automating your system.
@@ -890,31 +890,31 @@ Once you reload your config, you can generate a double click by moving the curso
 By now you have seen that we are using {{{keys(Ctrl ⌘ Alt)}}} very frequently in our keybindings. To avoid having to type this every time, and since the modifiers are defined as an array, you can define them as variable. For example, I have the following at the top of my =init.lua=:
 
 #+begin_src lua
-    hyper = {"cmd","alt","ctrl"}
-    shift_hyper = {"cmd","alt","ctrl","shift"}
+  hyper = {"cmd","alt","ctrl"}
+  shift_hyper = {"cmd","alt","ctrl","shift"}
 #+end_src
 
 Then I simply use =hyper= or =shift_hyper= in my key binding declarations:
 
 #+begin_src lua
-    hs.hotkey.bindSpec({ hyper, "p" }, leftDoubleClick)
+  hs.hotkey.bindSpec({ hyper, "p" }, leftDoubleClick)
 #+end_src
 
 {{% /tip %}}
 
 **** Until next time!
-   :PROPERTIES:
-   :CUSTOM_ID: until-next-time
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: until-next-time
+:END:
 
-In the [[/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/][next installment]], we will dive into Lua's types and data structures. In the meantime, feel free to explore and learn on your own. If you need more information, I can recommend the following resources, which I have found useful:
+In the [[file:/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/][next installment]], we will dive into Lua's types and data structures. In the meantime, feel free to explore and learn on your own. If you need more information, I can recommend the following resources, which I have found useful:
 
 - [[http://www.lua.org/manual/5.3/][The Lua 5.3 Reference Manual]], available at the official [[http://www.lua.org][Lua website]].
 
 - [[http://lua-users.org/wiki/][The Lua Wiki]], a community-maintained wiki with many descriptions, tips, examples and tutorials.
 
-*** DONE Just Enough Lua to Be Productive in Hammerspoon, Part 2      :lua:
-CLOSED: [2017-11-01 08:16]
+*** DONE Just Enough Lua to Be Productive in Hammerspoon, Part 2        :lua:
+CLOSED: [2017-11-01 Wed 08:16]
 :PROPERTIES:
 :export_hugo_bundle: 2017-10-21-just-enough-lua-to-be-productive-in-hammerspoon-part2
 :export_file_name: index
@@ -927,13 +927,13 @@ In this second article of the "Just Enough Lua" series, we dive into Lua's types
 In this second article of the "Just Enough Lua" series, we dive into Lua's types and data structures.
 
 {{% tip %}}
-If you haven't already, be sure to read [[/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/][the first installment of this series]] to learn about the basic Lua concepts.
+If you haven't already, be sure to read [[file:/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/][the first installment of this series]] to learn about the basic Lua concepts.
 {{% /tip %}}
 
 **** Tables
-   :PROPERTIES:
-   :CUSTOM_ID: tables
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: tables
+:END:
 
 Table are the only compound data type in Lua, and are used to implement arrays, associative arrays (commonly called "maps" or "hashes" in other languages), modules, objects and namespaces. As you can see, it is very important to understand them!
 
@@ -942,102 +942,102 @@ A table in Lua is a collection of values, which can be indexed either by numbers
 Table literals are declared using curly braces:
 
 #+begin_src lua
-    > unicorns = {}  -- empty table
-    > people = { "Chris", "Aaron", "Diego" }  -- array
-    > handles = { Diego = "zzamboni",
-                  Chris = "cmsj",
-                  Aaron = "asmagill" } -- associative array
+  > unicorns = {}  -- empty table
+  > people = { "Chris", "Aaron", "Diego" }  -- array
+  > handles = { Diego = "zzamboni",
+                Chris = "cmsj",
+                Aaron = "asmagill" } -- associative array
 #+end_src
 
 Indices are indicated using square brackets. Numeric indices start at 1 (not 0 as in most other languages). For identifier-like string indices, you can use the dot shortcut. Requesting a non-existent index returns =nil=:
 
 #+begin_src lua
-    > unicorns[1]
-    nil
-    > people[0]
-    nil
-    > people[1]
-    Chris
-    > handles['Diego']
-    zzamboni
-    > handles.Diego
-    zzamboni
-    > handles.Michael
-    nil
+  > unicorns[1]
+  nil
+  > people[0]
+  nil
+  > people[1]
+  Chris
+  > handles['Diego']
+  zzamboni
+  > handles.Diego
+  zzamboni
+  > handles.Michael
+  nil
 #+end_src
 
 Within the curly-brace notation, indices that are not identifier-like (letters, numbers, underscores) need to be enclosed in quotes and square brackets. Values can be tables as well:
 
 #+begin_src lua
-    colors = { ["U.S."] = { "red", "white", "blue" },
-               Mexico = { "green", "white", "red" },
-               Germany = { "black", "red", "yellow" } }
+  colors = { ["U.S."] = { "red", "white", "blue" },
+             Mexico = { "green", "white", "red" },
+             Germany = { "black", "red", "yellow" } }
 #+end_src
 
 With non-identifier indices, you cannot use the dot-notation. Also, to see a table within the Hammerspoon console, use {{{hsapi(hs.inspect)}}}:
 
 #+begin_src lua
-    > colors["U.S."]
-    table: 0x618000470400
-    > hs.inspect(colors.Mexico)
-    { "green", "white", "red" }
-    > hs.inspect(colors)
-    {
-      Germany = { "black", "red", "yellow" },
-      Mexico = { "green", "white", "red" },
-      ["U.S."] = { "red", "white", "blue" }
-    }
+  > colors["U.S."]
+  table: 0x618000470400
+  > hs.inspect(colors.Mexico)
+  { "green", "white", "red" }
+  > hs.inspect(colors)
+  {
+    Germany = { "black", "red", "yellow" },
+    Mexico = { "green", "white", "red" },
+    ["U.S."] = { "red", "white", "blue" }
+  }
 #+end_src
 
 Iteration through an array is commonly done using the {{{luafun(ipairs)}}} functions. Note that it will only iterate through contiguous numeric indices starting at 1, so that it does not work well with "sparse" tables.
 
 #+begin_src lua
-    > for i,v in ipairs(people) do print(i, v) end
-    1   Chris
-    2   Aaron
-    3   Diego
-    > people[4]='John'
-    > for i,v in ipairs(people) do print(i, v) end
-    1   Chris
-    2   Aaron
-    3   Diego
-    4   John
-    > people[7]='Mike'
-    > for i,v in ipairs(people) do print(i, v) end
-    1   Chris
-    2   Aaron
-    3   Diego
-    4   John
-    > hs.inspect(people)
-    { "Chris", "Aaron", "Diego", "John",
-      [7] = "Mike"
-    }
+  > for i,v in ipairs(people) do print(i, v) end
+  1   Chris
+  2   Aaron
+  3   Diego
+  > people[4]='John'
+  > for i,v in ipairs(people) do print(i, v) end
+  1   Chris
+  2   Aaron
+  3   Diego
+  4   John
+  > people[7]='Mike'
+  > for i,v in ipairs(people) do print(i, v) end
+  1   Chris
+  2   Aaron
+  3   Diego
+  4   John
+  > hs.inspect(people)
+  { "Chris", "Aaron", "Diego", "John",
+    [7] = "Mike"
+  }
 #+end_src
 
 The {{{luafun(pairs)}}} function, on the other hand, will iterate through all the elements in the table (both numeric and string indices), but does not guarantee their order. Both numeric and string indices can be mixed in a single table (although this gets confusing quickly unless you access everything using {{{luafun(pairs)}}}).
 
 #+begin_src lua
-    > for i,v in pairs(people) do print(i,v) end
-    1   Chris
-    2   Aaron
-    3   Diego
-    4   John
-    7   Mike
-    > for i,v in ipairs(handles) do print(i,v) end
-    <no output>
-    > for i,v in pairs(handles) do print(i,v) end
-    Aaron   asmagill
-    Diego   zzamboni
-    Chris   cmsj
-    > handles[1]='whoa'  -- assign the first numeric index
-    > hs.inspect(handles)
-    { "whoa",
-      Aaron = "asmagill",
-      Chris = "cmsj",
-      Diego = "zzamboni"
-    }
-    > for i,v in ipairs(handles) do print(i,v) end
-    1   whoa
+  > for i,v in pairs(people) do print(i,v) end
+  1   Chris
+  2   Aaron
+  3   Diego
+  4   John
+  7   Mike
+  > for i,v in ipairs(handles) do print(i,v) end
+  <no output>
+  > for i,v in pairs(handles) do print(i,v) end
+  Aaron   asmagill
+  Diego   zzamboni
+  Chris   cmsj
+  > handles[1]='whoa'  -- assign the first numeric index
+  > hs.inspect(handles)
+  { "whoa",
+    Aaron = "asmagill",
+    Chris = "cmsj",
+    Diego = "zzamboni"
+  }
+  > for i,v in ipairs(handles) do print(i,v) end
+  1   whoa
 #+end_src
 
 The built-in {{{luadoc(table,6.6)}}} module includes a number of useful table-manipulation functions, including the following:
@@ -1045,20 +1045,20 @@ The built-in {{{luadoc(table,6.6)}}} module includes a number of useful table-ma
 - {{{luafun(table.concat)}}} for joining the values of a list in a single string (equivalent to =join= in other languages). This only joins the elements that would be returned by {{{luafun(ipairs)}}}.
 
   #+begin_src lua
-      > table.concat(people, ", ")
-      Chris, Aaron, Diego, John
+    > table.concat(people, ", ")
+    Chris, Aaron, Diego, John
   #+end_src
 
 - {{{luafun(table.insert)}}} adds an element to a list, by default adding it to the end.
 
   #+begin_src lua
-      > hs.inspect(people)
-      { "Chris", "Aaron", "Diego", "John", "Bill",
-        [7] = "Mike"
-      }
-      > table.insert(people, "George")
-      > hs.inspect(people)
-      { "Chris", "Aaron", "Diego", "John", "Bill", "George", "Mike" }
+    > hs.inspect(people)
+    { "Chris", "Aaron", "Diego", "John", "Bill",
+      [7] = "Mike"
+    }
+    > table.insert(people, "George")
+    > hs.inspect(people)
+    { "Chris", "Aaron", "Diego", "John", "Bill", "George", "Mike" }
   #+end_src
 
   Note how in the last example, the contiguous indices have finally caught up to 7, so the last element is no longer shown separately (and will now be included by {{{luafun(ipairs)}}}, {{{luafun(table.concat)}}}, etc.
@@ -1066,124 +1066,124 @@ The built-in {{{luadoc(table,6.6)}}} module includes a number of useful table-ma
 - {{{luafun(table.remove)}}} removes an element from a list, by default the last one. It returns the removed element.
 
   #+begin_src lua
-      > for i=1,4 do print(table.remove(people)) end
-      Mike
-      George
-      Bill
-      John
-      > hs.inspect(people)
-      { "Chris", "Aaron", "Diego" }
+    > for i=1,4 do print(table.remove(people)) end
+    Mike
+    George
+    Bill
+    John
+    > hs.inspect(people)
+    { "Chris", "Aaron", "Diego" }
   #+end_src
 
 Notable omissions from the language and the {{{luadoc(table,6.6)}}} module are "get keys" and "get values" functions, common in other languages. This may be explained by the flexible nature of Lua tables, so that those functions would need to behave differently depending on the contents of the table. If you need them, you can easily build your own. For example, if you want to get a sorted list of the keys in a table, you can use this function:
 
 #+begin_src lua
-    function sortedkeys(tab)
-      local keys={}
-      for k,v in pairs(tab) do table.insert(keys, k) end
-      table.sort(keys)
-      return keys
-    end
+  function sortedkeys(tab)
+    local keys={}
+    for k,v in pairs(tab) do table.insert(keys, k) end
+    table.sort(keys)
+    return keys
+  end
 #+end_src
 
 **** Tables as namespaces
-   :PROPERTIES:
-   :CUSTOM_ID: tables-as-namespaces
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: tables-as-namespaces
+:END:
 
 Functions in Lua are first-class objects, which means they can be used like any other value. This means that functions can be stored in tables, and this is how namespaces (or "modules") are implemented in Lua. We can inspect an manipulate them like any other table. Let us look at the {{{luadoc(table,6.6)}}} library itself. First, the module itself is a table:
 
 #+begin_src lua
-    > table
-    table: 0x61800046f740
+  > table
+  table: 0x61800046f740
 #+end_src
 
 Second, we can inspect its contents using the functions we know:
 
 #+begin_src lua
-    > hs.inspect(table)
-    {
-      concat = <function 1>,
-      insert = <function 2>,
-      move = <function 3>,
-      pack = <function 4>,
-      remove = <function 5>,
-      sort = <function 6>,
-      sortedkeys = <function 7>,
-      unpack = <function 8>
-    }
+  > hs.inspect(table)
+  {
+    concat = <function 1>,
+    insert = <function 2>,
+    move = <function 3>,
+    pack = <function 4>,
+    remove = <function 5>,
+    sort = <function 6>,
+    sortedkeys = <function 7>,
+    unpack = <function 8>
+  }
 #+end_src
 
 The function values themselves are opaque (we cannot see their code), but we can easily extend the module. For example, we could add our =sortedkeys()= function above to the =table= module for consistency. Lua allows us to specify the namespace of a function in its declaration:
 
 #+begin_src lua
-    function table.sortedkeys(tab)
-      local keys={}
-      for k,v in pairs(tab) do table.insert(keys, k) end
-      table.sort(keys)
-      return keys
-    end
+  function table.sortedkeys(tab)
+    local keys={}
+    for k,v in pairs(tab) do table.insert(keys, k) end
+    table.sort(keys)
+    return keys
+  end
 #+end_src
 
 All the Hammerspoon modules are implemented the same way:
 
 #+begin_src lua
-    > type(hs)
-    table
-    > type(hs.mouse)
-    table
-    > hs.inspect(hs.mouse)
-    {
-      get = <function 1>,
-      getAbsolutePosition = <function 2>,
-      getButtons = <function 3>,
-      getCurrentScreen = <function 4>,
-      getRelativePosition = <function 5>,
-      set = <function 6>,
-      setAbsolutePosition = <function 7>,
-      setRelativePosition = <function 8>,
-      trackingSpeed = <function 9>
-    }
+  > type(hs)
+  table
+  > type(hs.mouse)
+  table
+  > hs.inspect(hs.mouse)
+  {
+    get = <function 1>,
+    getAbsolutePosition = <function 2>,
+    getButtons = <function 3>,
+    getCurrentScreen = <function 4>,
+    getRelativePosition = <function 5>,
+    set = <function 6>,
+    setAbsolutePosition = <function 7>,
+    setRelativePosition = <function 8>,
+    trackingSpeed = <function 9>
+  }
 #+end_src
 
-The common way of defining a new module in Lua is to create an empty table, and populate it with functions or variables as needed. For example, let's put our [[/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/#functions][double-click generator]] in a module. Create the file =~/.hammerspoon/doubleclick.lua= with the following contents:
+The common way of defining a new module in Lua is to create an empty table, and populate it with functions or variables as needed. For example, let's put our [[file:/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/#functions][double-click generator]] in a module. Create the file =~/.hammerspoon/doubleclick.lua= with the following contents:
 
 #+begin_src lua
-    local mod={}
+  local mod={}
 
-    mod.default_modifiers={}
+  mod.default_modifiers={}
 
-    function mod.leftDoubleClick(modifiers)
-      modifiers = modifiers or mod.default_modifiers
-      local pos=hs.mouse.getAbsolutePosition()
-      hs.eventtap.event.newMouseEvent(
-        hs.eventtap.event.types.leftMouseDown, pos, modifiers)
-        :setProperty(hs.eventtap.event.properties.mouseEventClickState, 2)
-        :post()
-      hs.eventtap.event.newMouseEvent(
-        hs.eventtap.event.types.leftMouseUp, pos, modifiers):post()
-    end
+  function mod.leftDoubleClick(modifiers)
+    modifiers = modifiers or mod.default_modifiers
+    local pos=hs.mouse.getAbsolutePosition()
+    hs.eventtap.event.newMouseEvent(
+      hs.eventtap.event.types.leftMouseDown, pos, modifiers)
+      :setProperty(hs.eventtap.event.properties.mouseEventClickState, 2)
+      :post()
+    hs.eventtap.event.newMouseEvent(
+      hs.eventtap.event.types.leftMouseUp, pos, modifiers):post()
+  end
 
-    function mod.bindto(keyspec)
-      hs.hotkey.bindSpec(keyspec, mod.leftDoubleClick)
-    end
+  function mod.bindto(keyspec)
+    hs.hotkey.bindSpec(keyspec, mod.leftDoubleClick)
+  end
 
-    return mod
+  return mod
 #+end_src
 
 You can then, from the console, do the following:
 
 #+begin_src lua
-    > doubleclick=require('doubleclick')
-    > doubleclick.bindto({ {"ctrl", "alt", "cmd"}, "p" })
-    19:53:53     hotkey: Disabled previous hotkey ⌘⌃⌥P
-                 hotkey: Enabled hotkey ⌘⌃⌥P
+  > doubleclick=require('doubleclick')
+  > doubleclick.bindto({ {"ctrl", "alt", "cmd"}, "p" })
+  19:53:53     hotkey: Disabled previous hotkey ⌘⌃⌥P
+               hotkey: Enabled hotkey ⌘⌃⌥P
 #+end_src
 
 You have written and loaded your first Lua module. Let's try it out!  Press {{{keys(Ctrl ⌘ Alt p)}}} while your cursor is over a word in your terminal or web browser, to select it as if you had double-clicked it. You can also change the modifiers used with it. For example, did you know that Cmd-double-click can be used to open URLs from the macOS Terminal application?
 
 #+begin_src lua
-    > doubleclick.default_modifiers={cmd=true}
+  > doubleclick.default_modifiers={cmd=true}
 #+end_src
 
 Now try pressing {{{keys(Ctrl ⌘ Alt p)}}} while your pointer is over a URL displayed on your Terminal (you can just type one yourself to test), and it will open in your browser.
@@ -1191,22 +1191,22 @@ Now try pressing {{{keys(Ctrl ⌘ Alt p)}}} while your pointer is over a URL dis
 Note that the name =doubleclick= does not have any special meaning---it is a regular variable to which you assigned the value returned by =require('doubleclick')=, which is the value of the =mod= variable created within the module file (note that within the module file you use the local variable name to refer to functions and variables within itself). You could assign it to any name you want:
 
 #+begin_src lua
-    > a=require('doubleclick')
-    > a.leftDoubleClick()
+  > a=require('doubleclick')
+  > a.leftDoubleClick()
 #+end_src
 
 The argument of the {{{luafun(require)}}} function is the name of the file to load, without the =.lua= extension. Hammerspoon by default adds your =~/.hammerspoon/= directory to its load path, along with any other default directories in your system. You can view the places where Hammerspoon will look for files by examining the =package.path= variable. On my machine I get the following:
 
 #+begin_example
-    > package.path
-    /Users/zzamboni/.hammerspoon/?.lua;/Users/zzamboni/.hammerspoon/?/
-    init.lua;/Users/zzamboni/.hammerspoon/Spoons/?.spoon/init.lua;/usr/
-    local/share/lua/5.3/?.lua;/usr/local/share/lua/5.3/?/init.lua;/usr/
-    local/lib/lua/5.3/?.lua;/usr/local/lib/lua/5.3/?/init.lua;./?.lua;
-    ./?/init.lua;/Users/zzamboni/Dropbox/Personal/devel/hammerspoon/
-    hammerspoon/build/Hammerspoon.app/Contents/Resources/extensions/?.lua;
-    /Users/zzamboni/Dropbox/Personal/devel/hammerspoon/hammerspoon/build/
-    Hammerspoon.app/Contents/Resources/extensions/?/init.lua
+  > package.path
+  /Users/zzamboni/.hammerspoon/?.lua;/Users/zzamboni/.hammerspoon/?/
+  init.lua;/Users/zzamboni/.hammerspoon/Spoons/?.spoon/init.lua;/usr/
+  local/share/lua/5.3/?.lua;/usr/local/share/lua/5.3/?/init.lua;/usr/
+  local/lib/lua/5.3/?.lua;/usr/local/lib/lua/5.3/?/init.lua;./?.lua;
+  ./?/init.lua;/Users/zzamboni/Dropbox/Personal/devel/hammerspoon/
+  hammerspoon/build/Hammerspoon.app/Contents/Resources/extensions/?.lua;
+  /Users/zzamboni/Dropbox/Personal/devel/hammerspoon/hammerspoon/build/
+  Hammerspoon.app/Contents/Resources/extensions/?/init.lua
 #+end_example
 
 {{% tip %}}
@@ -1214,17 +1214,17 @@ The argument of the {{{luafun(require)}}} function is the name of the file to lo
 Hammerspoon automatically loads any modules under the =hs= namespace the first time you use them. For example, when you use {{{hsapi(hs.application)}}} for the first time, you will see a message in the console:
 
 #+begin_src lua
-    > hs.application.get("Terminal")
-    2017-10-31 06:47:15: -- Loading extension: application
-    hs.application: Terminal (0x61000044dfd8)
+  > hs.application.get("Terminal")
+  2017-10-31 06:47:15: -- Loading extension: application
+  hs.application: Terminal (0x61000044dfd8)
 #+end_src
 
 If you want to avoid these messages, you need to explicitly load the modules and assign them to variables, as follows:
 
 #+begin_src lua
-    > app=require('hs.application')
-    > app.get("Terminal")
-    hs.application: Terminal (0x610000e49118)
+  > app=require('hs.application')
+  > app.get("Terminal")
+  hs.application: Terminal (0x610000e49118)
 #+end_src
 
 This avoids the console message and has the additional benefit of allowing you to use =app= (you can use whatever variable you want) instead of typing =hs.application= in your code. This is a matter of taste---I usually prefer to have the full descriptive names (makes the code easier to read), but when dealing with some of the longer module names (e.g. {{{hsapi(hs.distributednotifications)}}}), this technique can be useful.
@@ -1232,9 +1232,9 @@ This avoids the console message and has the additional benefit of allowing you t
 {{% /tip %}}
 
 **** Patterns
-   :PROPERTIES:
-   :CUSTOM_ID: patterns
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: patterns
+:END:
 
 If you are familiar with regular expressions, you know how powerful they are for examining and manipulating strings in any programming language.  Lua has {{{luadoc(patterns,6.4.1)}}}, which fulfill many of the same functions but have a different syntax and some limitations. They are used by many functions in the string library like {{{luafun(string.find)}}} and {{{luafun(string.match)}}}.
 
@@ -1259,15 +1259,15 @@ For most common use cases, Lua patterns are enough, you just have to be aware of
 Patterns, just like regular expressions, are commonly used for string manipulation, using primarily functions from the {{{luadoc(string,6.4)}}} library.
 
 **** String manipulation
-   :PROPERTIES:
-   :CUSTOM_ID: string-manipulation
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: string-manipulation
+:END:
 
-Lua includes the {{{luadoc(string,6.4)}}} library to implement common string manipulation functions, including pattern matching. All of these functions can be called either as regular functions, with the string as the first argument, or as method calls on the string itself, using the colon syntax (which, as we saw [[/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/#dot-vs-colon-method-access-in-lua][before]], gets converted to the same call). For example, the following two are equivalent:
+Lua includes the {{{luadoc(string,6.4)}}} library to implement common string manipulation functions, including pattern matching. All of these functions can be called either as regular functions, with the string as the first argument, or as method calls on the string itself, using the colon syntax (which, as we saw [[file:/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/#dot-vs-colon-method-access-in-lua][before]], gets converted to the same call). For example, the following two are equivalent:
 
 #+begin_src lua
-    string.find(a, "^foo")
-    a:find("^foo")
+  string.find(a, "^foo")
+  a:find("^foo")
 #+end_src
 
 You can find the full documentation in the [[https://www.lua.org/manual/5.3/manual.html#6.4][Lua reference manual]] and many other examples in the [[http://lua-users.org/wiki/StringLibraryTutorial][Lua-users wiki String Library Tutorial]]. The following is a partial list of some of the functions I have found most useful:
@@ -1275,15 +1275,15 @@ You can find the full documentation in the [[https://www.lua.org/manual/5.3/manu
 - {{{luafun(string.find,=string.find(str\, pat\, pos\, plain)=)}}} finds the pattern within the string. By default the search starts at the beginning of the string, but can be modified with the =pos= argument (index starts at 1, as with the tables). By default =pat= is intepreted as a Lua pattern, but this can be disabled by passing =plain= as a true value. If the pattern is not found, returns =nil=.  If the pattern is found, the function returns the start and end position of the pattern within the string. Furthermore, if the pattern contains parenthesis capture groups, all groups are returned as well.  For example:
 
   #+begin_src lua
-      > string.find("bah", "ah")
-      2   3
-      > string.find("bah", "foo")
-      nil
-      > string.find("bah", "(ah)")
-      2   3   ah
-      > p1, p2, g1, g2 = string.find("bah", "(b)(ah)")
-      > p1,p2,g1,g2
-      1   3   b   ah
+    > string.find("bah", "ah")
+    2   3
+    > string.find("bah", "foo")
+    nil
+    > string.find("bah", "(ah)")
+    2   3   ah
+    > p1, p2, g1, g2 = string.find("bah", "(b)(ah)")
+    > p1,p2,g1,g2
+    1   3   b   ah
   #+end_src
 
   Note that the return value is not a table, but rather multiple values, as shown in the last example.
@@ -1295,24 +1295,24 @@ It can sometimes be convenient to handle multiple values as a table or as separa
 {{{luafun(table.pack)}}} takes a variable number of arguments and returns them in a table which contains an array component containing the values, plus an index =n= containing the total number of elements:
 
 #+begin_src lua
-    > res = table.pack(string.find("bah", "(b)(ah)"))
-    > res
-    table: 0x608000c76e80
-    > hs.inspect(res)
-    { 1, 3, "b", "ah",
-      n = 4
-    }
+  > res = table.pack(string.find("bah", "(b)(ah)"))
+  > res
+  table: 0x608000c76e80
+  > hs.inspect(res)
+  { 1, 3, "b", "ah",
+    n = 4
+  }
 #+end_src
 
 {{{luafun(table.unpack)}}} does the opposite, expanding an array into separate values which can be assigned to separate values as needed, or passed as arguments to a function:
 
 #+begin_src lua
-    > args={"bah", "(b)(ah)"}
-    > string.find(args)
-    [string "return string.find(args)"]:1:
-      bad argument #1 to 'find' (string expected, got table)
-    > string.find(table.unpack(args))
-    1   3   b   ah
+  > args={"bah", "(b)(ah)"}
+  > string.find(args)
+  [string "return string.find(args)"]:1:
+    bad argument #1 to 'find' (string expected, got table)
+  > string.find(table.unpack(args))
+  1   3   b   ah
 #+end_src
 
 {{% /tip %}}
@@ -1320,35 +1320,35 @@ It can sometimes be convenient to handle multiple values as a table or as separa
 - {{{luafun(string.match,=string.match(str\, pat\, pos)=)}}} is similar to =string.find=, but it does not return the positions, rather it returns the part of the string matched by the pattern, or if the pattern contains capture groups, returns the captured segments:
 
   #+begin_src lua
-      > string.match("bah", "ah")
-      ah
-      > string.match("bah", "foo")
-      nil
-      > string.match("bah", "(b)(ah)")
-      b   ah
+    > string.match("bah", "ah")
+    ah
+    > string.match("bah", "foo")
+    nil
+    > string.match("bah", "(b)(ah)")
+    b   ah
   #+end_src
 
 - {{{luafun(string.gmatch,=string.gmatch(str\, pat)=)}}} returns a function that returns the next match of =pat= within =str= every time it is called, returning =nil= when there are no more matches. If =pat= contains capture groups, they are returned on each iteration.
 
   #+begin_src lua
-      > a="Hammerspoon is awesome!"
-      > f=string.gmatch(a, "(%w+)")
-      > f()
-      Hammerspoon
-      > f()
-      is
-      > f()
-      awesome
-      > f()
+    > a="Hammerspoon is awesome!"
+    > f=string.gmatch(a, "(%w+)")
+    > f()
+    Hammerspoon
+    > f()
+    is
+    > f()
+    awesome
+    > f()
   #+end_src
 
   Most commonly, this is used inside a loop:
 
   #+begin_src lua
-      > for cap in string.gmatch(a, "%w+") do print(cap) end
-      Hammerspoon
-      is
-      awesome
+    > for cap in string.gmatch(a, "%w+") do print(cap) end
+    Hammerspoon
+    is
+    awesome
   #+end_src
 
 - {{{luafun(string.format,=string.format(formatstring\, …​)=)}}} formats a sequence of values according to the given format string, following the same formatting rules as the ISO C =sprintf()= function.  It additionally supports a new format character =%q=, which formats a string value in a way that can be read back by Lua, escaping or quoting characters as needed (for example quotes, newlines, etc.).
@@ -1364,33 +1364,33 @@ It can sometimes be convenient to handle multiple values as a table or as separa
   - A table which is consulted for the replacement values, using the first capture group as a key (or the whole match if there are no captures). For example:
 
     #+begin_src lua
-        > a="Event type codes: leftMouseDown=$leftMouseDown, rightMouseDown=$rightMouseDown, mouseMoved=$mouseMoved"
-        > a:gsub("%$(%w+)", hs.eventtap.event.types)
-        Event type codes: leftMouseDown=1, rightMouseDown=3, mouseMoved=5   3
+      > a="Event type codes: leftMouseDown=$leftMouseDown, rightMouseDown=$rightMouseDown, mouseMoved=$mouseMoved"
+      > a:gsub("%$(%w+)", hs.eventtap.event.types)
+      Event type codes: leftMouseDown=1, rightMouseDown=3, mouseMoved=5   3
     #+end_src
 
   - A function which is executed with the captured groups (or the whole match) as an argument, and whose return value is used as the replacement. For example, using the =os.getenv= function, we can easily replace environment variables by their values in a string:
 
     #+begin_src lua
-        > a="Hello $USER, your home directory is $HOME"
-        > a:gsub("%$(%w+)", os.getenv)
-        Hello zzamboni, your home directory is /Users/zzamboni  2
+      > a="Hello $USER, your home directory is $HOME"
+      > a:gsub("%$(%w+)", os.getenv)
+      Hello zzamboni, your home directory is /Users/zzamboni  2
     #+end_src
 
   Note that =gsub= returns the modified string as its first return value, and the number of replacements it made as the second (=2= in the example above). If you don't need the number, you can simply ignore it (you don't even need to assign it). Also note that =gsub= does not modify the original string, only returns a copy with the changes:
 
   #+begin_src lua
-      > b = a:gsub("%$(%w+)", os.getenv)
-      > b
-      Hello zzamboni, your home directory is /Users/zzamboni
-      > a
-      Hello $USER, your home directory is $HOME
+    > b = a:gsub("%$(%w+)", os.getenv)
+    > b
+    Hello zzamboni, your home directory is /Users/zzamboni
+    > a
+    Hello $USER, your home directory is $HOME
   #+end_src
 
 **** Keep learning!
-   :PROPERTIES:
-   :CUSTOM_ID: keep-learning
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: keep-learning
+:END:
 
 You know now enough Lua to start being productive with Hammerspoon.  You'll pick up more details as you play with it. If you need more information, I can recommend the following resources, which I have found useful:
 
@@ -1400,12 +1400,12 @@ You know now enough Lua to start being productive with Hammerspoon.  You'll pick
 
 Have fun!
 
-** Elvish                                                           :elvish:
+** Elvish                                                            :elvish:
 :PROPERTIES:
 :export_hugo_custom_front_matter: :featured_image /images/elvish-logo.svg
 :END:
 
-*** DONE Bang-Bang (!!, !$) Shell Shortcuts in Elvish   :shell:unix:config:
+*** DONE Bang-Bang (!!, !$) Shell Shortcuts in Elvish     :shell:unix:config:
 CLOSED: [2017-12-04 Mon 22:15]
 :PROPERTIES:
 :export_file_name: 2017-12-04-bang-bang-shortcuts-in-elvish
@@ -1804,7 +1804,7 @@ Now, go have fun with Elvish!
 :export_file_name: my-blogging-workflow
 :END:
 
-My blogging has seen [[/about/#my-online-past][multiple iterations]] over the years, and with it, the tools I use have changed. At the moment I use a set of tools and workflows which make it very easy to keep my blog updated, and I will describe them in this post. In short, they are:
+My blogging has seen [[file:/about/#my-online-past][multiple iterations]] over the years, and with it, the tools I use have changed. At the moment I use a set of tools and workflows which make it very easy to keep my blog updated, and I will describe them in this post. In short, they are:
 
 - *Writing:* Emacs, org-mode
 - *Exporting:* ox-hugo
@@ -1822,13 +1822,13 @@ I have been using Emacs for almost 30 years, so its use for me is second nature.
 - Sacha Chua's [[http://sachachua.com/blog/2014/01/tips-learning-org-mode-emacs/][Some tips for learning Org Mode for Emacs]], her [[http://pages.sachachua.com/.emacs.d/Sacha.html][Emacs configuration]] and many of her [[http://sachachua.com/blog/category/emacs/][other articles]].
 - Rainer König's [[https://www.youtube.com/playlist?list=PLVtKhBrRV_ZkPnBtt_TD1Cs9PJlU0IIdE][OrgMode Tutorial]] video series.
 
-You can see some examples in [[/tags/literateconfig/][my "literate config files" series]], and all recent posts in this blog are written using org-mode (you can find the [[https://github.com/zzamboni/zzamboni.org/blob/master/content-org/zzamboni.org][source file]] in GitHub).
+You can see some examples in [[file:/tags/literateconfig/][my "literate config files" series]], and all recent posts in this blog are written using org-mode (you can find the [[https://github.com/zzamboni/zzamboni.org/blob/master/content-org/zzamboni.org][source file]] in GitHub).
 
-Over time I have tweaked my Emacs configuration to make writing with org-mode more pleasant. You can see my tutorial on [[/post/beautifying-org-mode-in-emacs/][Beautifying org-mode in Emacs]], and also see the full [[/post/my-emacs-configuration-with-commentary/#org-mode][org-mode section of my Emacs config]] for reference.
+Over time I have tweaked my Emacs configuration to make writing with org-mode more pleasant. You can see my tutorial on [[file:/post/beautifying-org-mode-in-emacs/][Beautifying org-mode in Emacs]], and also see the full [[file:/post/my-emacs-configuration-with-commentary/#org-mode][org-mode section of my Emacs config]] for reference.
 
 So, I write posts using Emacs, in org-mode markup. What's next?
 
-****  Exporting
+**** Exporting
 
 When I first started writing my blog posts in org-mode, I relied on Hugo's [[https://gohugo.io/content-management/formats/][built-in support for it]], which allows you to simply create posts in =.org= files instead of =.md= and have them parse in org-mode format. Unfortunately, the support is not perfect. Hugo relies on the [[https://github.com/chaseadamsio/goorgeous][goorgeous]] library which, while quite powerful, does not support the full org-mode markup capabilities, so many elements are not rendered or processed properly.
 
@@ -1838,7 +1838,7 @@ Ox-hugo supports [[https://ox-hugo.scripter.co/#screenshot-one-post-per-subtree]
 
 Note that ox-hugo is not limited to exporting blog posts, but any content processed by Hugo. For example, my org source file also includes all the static pages in my web site - they are differentiated from blog posts simply by the Hugo [[https://gohugo.io/content-management/sections/][section]] to which they belong, which is defined using the [[https://ox-hugo.scripter.co/doc/usage/#before-you-export][HUGO_SECTION property]], which is interpreted accordingly by ox-hugo.
 
-Since the full power of org markup is available when using ox-hugo, you can do very interesting things. For example, all posts in my [[/tags/literateconfig/][Literate Config Files]] category are automatically updated every time I export them with the actual, real content of the corresponding config files, which I also keep in org format. There is a lot of hidden power in org-mode and ox-hugo. My recommendation is to go through the source files for some of the websites listed in ox-hugo's [[https://ox-hugo.scripter.co/doc/examples/][Real World Examples]] section. For example, I have learned a lot by reading through the source files for the [[https://github.com/kaushalmodi/ox-hugo/tree/master/doc][ox-hugo website]] itself.
+Since the full power of org markup is available when using ox-hugo, you can do very interesting things. For example, all posts in my [[file:/tags/literateconfig/][Literate Config Files]] category are automatically updated every time I export them with the actual, real content of the corresponding config files, which I also keep in org format. There is a lot of hidden power in org-mode and ox-hugo. My recommendation is to go through the source files for some of the websites listed in ox-hugo's [[https://ox-hugo.scripter.co/doc/examples/][Real World Examples]] section. For example, I have learned a lot by reading through the source files for the [[https://github.com/kaushalmodi/ox-hugo/tree/master/doc][ox-hugo website]] itself.
 
 **** Publishing
 
