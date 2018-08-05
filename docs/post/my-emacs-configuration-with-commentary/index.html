@@ -22,7 +22,7 @@
      
 
       <meta property="og:title" content="My Emacs Configuration, With Commentary" />
-<meta property="og:description" content="Last update: August 3, 2018
+<meta property="og:description" content="Last update: August 4, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zzamboni.org/post/my-emacs-configuration-with-commentary/" />
@@ -44,20 +44,20 @@ I have enjoyed slowly converting my configuration files to literate programming 
 
 
 <meta itemprop="name" content="My Emacs Configuration, With Commentary">
-<meta itemprop="description" content="Last update: August 3, 2018
+<meta itemprop="description" content="Last update: August 4, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving.">
 
 
 <meta itemprop="datePublished" content="2017-12-17T20:14:00&#43;01:00" />
 <meta itemprop="dateModified" content="2017-12-17T20:14:00&#43;01:00" />
-<meta itemprop="wordCount" content="7883">
+<meta itemprop="wordCount" content="7914">
 
 
 
 <meta itemprop="keywords" content="config,howto,literateprogramming,literateconfig,emacs," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Emacs Configuration, With Commentary"/>
-<meta name="twitter:description" content="Last update: August 3, 2018
+<meta name="twitter:description" content="Last update: August 4, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving."/>
 
         
@@ -188,7 +188,7 @@ if (!doNotTrack) {
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
-<p>Last update: <strong>August  3, 2018</strong></p>
+<p>Last update: <strong>August  4, 2018</strong></p>
 
 <p>I have enjoyed slowly converting my configuration files to <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html">literate programming</a> style style using org-mode in Emacs. I previously posted my <a href="../my-elvish-configuration-with-commentary/">Elvish configuration</a>, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my <a href="https://github.com/zzamboni/dot%5Femacs/blob/master/init.org">init.org</a> file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the <a href="https://github.com/zzamboni/dot%5Femacs/blob/master/init.org">init.org file in GitHub</a> for my current, live configuration, and the generated file at <a href="https://github.com/zzamboni/dot%5Femacs/blob/master/init.el">https://github.com/zzamboni/dot%5Femacs/blob/master/init.el</a>.</p>
 
@@ -628,6 +628,7 @@ if (!doNotTrack) {
     <span class="p">(</span><span class="nv">org-log-done</span> <span class="no">t</span><span class="p">)</span>
     <span class="p">(</span><span class="nv">org-startup-indented</span> <span class="no">t</span><span class="p">)</span>
     <span class="p">(</span><span class="nv">org-default-notes-file</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">org-directory</span> <span class="s">&#34;/notes.org&#34;</span><span class="p">))</span>
+    <span class="p">(</span><span class="nv">org-use-speed-commands</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nf">looking-at</span> <span class="nv">org-outline-regexp</span><span class="p">)</span> <span class="p">(</span><span class="nv">looking-back</span> <span class="s">&#34;^\**&#34;</span><span class="p">))))</span>
     <span class="p">(</span><span class="nv">org-confirm-babel-evaluate</span> <span class="no">nil</span><span class="p">)</span>
     <span class="p">(</span><span class="nv">org-src-fontify-natively</span> <span class="no">t</span><span class="p">)</span>
     <span class="p">(</span><span class="nv">org-src-tab-acts-natively</span> <span class="no">t</span><span class="p">)</span>
@@ -712,6 +713,8 @@ if (!doNotTrack) {
   <span class="nb">:defer</span> <span class="mi">5</span>
   <span class="nb">:ensure</span> <span class="no">nil</span>
   <span class="nb">:after</span> <span class="nv">org</span><span class="p">)</span></code></pre></div>
+<p>Enable <code>org-speed-commands</code>, which allows quick single-key commands when the cursor is placed on a heading.</p>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">org-use-speed-commands</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nf">looking-at</span> <span class="nv">org-outline-regexp</span><span class="p">)</span> <span class="p">(</span><span class="nv">looking-back</span> <span class="s">&#34;^\**&#34;</span><span class="p">))))</span></code></pre></div>
 <h3 id="building-presentations-with-org-mode">Building presentations with org-mode</h3>
 
 <p><a href="https://github.com/yjwen/org-reveal">org-reveal</a> is an awesome package for building presentations with org-mode. The MELPA version of the package gives me a conflict with my hand-installed version of org-mode, so I also install it by hand and load it directly from its checked-out repository.</p>

@@ -6,7 +6,7 @@
     <description>Recent content in Lua on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Nov 2017 08:16:15 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Nov 2017 08:16:00 +0100</lastBuildDate>
     
 	<atom:link href="https://zzamboni.org/tags/lua/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,13 +14,12 @@
     <item>
       <title>Just Enough Lua to Be Productive in Hammerspoon, Part 2</title>
       <link>https://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</link>
-      <pubDate>Wed, 01 Nov 2017 08:16:15 +0000</pubDate>
+      <pubDate>Wed, 01 Nov 2017 08:16:00 +0100</pubDate>
       
       <guid>https://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</guid>
-      <description>&lt;p&gt;In this second article of the &amp;ldquo;Just Enough Lua&amp;rdquo; series, we dive into
-Lua&amp;rsquo;s types and data structures.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>In this second article of the &amp;ldquo;Just Enough Lua&amp;rdquo; series, we dive into Lua&amp;rsquo;s types and data structures.
+  If you haven&amp;rsquo;t already, be sure to read the first installment of this series to learn about the basic Lua concepts.
+  Tables Table are the only compound data type in Lua, and are used to implement arrays, associative arrays (commonly called &amp;ldquo;maps&amp;rdquo; or &amp;ldquo;hashes&amp;rdquo; in other languages), modules, objects and namespaces.</description>
     </item>
     
     <item>

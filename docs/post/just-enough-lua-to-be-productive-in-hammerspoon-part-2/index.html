@@ -22,18 +22,17 @@
      
 
       <meta property="og:title" content="Just Enough Lua to Be Productive in Hammerspoon, Part 2" />
-<meta property="og:description" content="In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into
-Lua&rsquo;s types and data structures.
-
-" />
+<meta property="og:description" content="In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into Lua&rsquo;s types and data structures.
+  If you haven&rsquo;t already, be sure to read the first installment of this series to learn about the basic Lua concepts.
+  Tables Table are the only compound data type in Lua, and are used to implement arrays, associative arrays (commonly called &ldquo;maps&rdquo; or &ldquo;hashes&rdquo; in other languages), modules, objects and namespaces." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/" />
 
 
 
-<meta property="article:published_time" content="2017-11-01T08:16:15&#43;00:00"/>
+<meta property="article:published_time" content="2017-11-01T08:16:00&#43;01:00"/>
 
-<meta property="article:modified_time" content="2017-11-01T08:16:15&#43;00:00"/>
+<meta property="article:modified_time" content="2017-11-01T08:16:00&#43;01:00"/>
 
 
 
@@ -46,25 +45,23 @@ Lua&rsquo;s types and data structures.
 
 
 <meta itemprop="name" content="Just Enough Lua to Be Productive in Hammerspoon, Part 2">
-<meta itemprop="description" content="In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into
-Lua&rsquo;s types and data structures.
-
-">
-
-
-<meta itemprop="datePublished" content="2017-11-01T08:16:15&#43;00:00" />
-<meta itemprop="dateModified" content="2017-11-01T08:16:15&#43;00:00" />
-<meta itemprop="wordCount" content="2855">
+<meta itemprop="description" content="In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into Lua&rsquo;s types and data structures.
+  If you haven&rsquo;t already, be sure to read the first installment of this series to learn about the basic Lua concepts.
+  Tables Table are the only compound data type in Lua, and are used to implement arrays, associative arrays (commonly called &ldquo;maps&rdquo; or &ldquo;hashes&rdquo; in other languages), modules, objects and namespaces.">
 
 
+<meta itemprop="datePublished" content="2017-11-01T08:16:00&#43;01:00" />
+<meta itemprop="dateModified" content="2017-11-01T08:16:00&#43;01:00" />
+<meta itemprop="wordCount" content="2848">
 
-<meta itemprop="keywords" content="hammerspoon,lua,howto,mac," />
+
+
+<meta itemprop="keywords" content="hammerspoon,mac,howto,lua," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Just Enough Lua to Be Productive in Hammerspoon, Part 2"/>
-<meta name="twitter:description" content="In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into
-Lua&rsquo;s types and data structures.
-
-"/>
+<meta name="twitter:description" content="In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into Lua&rsquo;s types and data structures.
+  If you haven&rsquo;t already, be sure to read the first installment of this series to learn about the basic Lua concepts.
+  Tables Table are the only compound data type in Lua, and are used to implement arrays, associative arrays (commonly called &ldquo;maps&rdquo; or &ldquo;hashes&rdquo; in other languages), modules, objects and namespaces."/>
 
         
 <script>
@@ -188,14 +185,13 @@ if (!doNotTrack) {
       </h1>
         
         
-      <time class="f6 mv4 dib tracked" datetime="2017-11-01T08:16:15Z">
+      <time class="f6 mv4 dib tracked" datetime="2017-11-01T08:16:00&#43;01:00">
         November 1, 2017
       </time>
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
-        <p>In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into
-Lua&rsquo;s types and data structures.</p>
+        
 
-<p></p>
+<p>In this second article of the &ldquo;Just Enough Lua&rdquo; series, we dive into Lua&rsquo;s types and data structures.</p>
 
 <aside class="admonition tip">
 	<div class="admonition-icon">
@@ -207,27 +203,16 @@ Lua&rsquo;s types and data structures.</p>
 	</div>
 	
 	
-	<div class="admonition-content"><p>If you haven&rsquo;t already, be sure to read [the first installment of this
-series]() to learn about the basic Lua concepts.</p>
+	<div class="admonition-content"><p>If you haven&rsquo;t already, be sure to read <a href="/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/">the first installment of this series</a> to learn about the basic Lua concepts.</p>
 </div>
 </aside>
 
 
 <h2 id="tables">Tables</h2>
 
-<p>Table are the only compound data type in Lua, and are used to
-implement arrays, associative arrays (commonly called &ldquo;maps&rdquo; or
-&ldquo;hashes&rdquo; in other languages), modules, objects and namespaces. As you
-can see, it is very important to understand them!</p>
+<p>Table are the only compound data type in Lua, and are used to implement arrays, associative arrays (commonly called &ldquo;maps&rdquo; or &ldquo;hashes&rdquo; in other languages), modules, objects and namespaces. As you can see, it is very important to understand them!</p>
 
-<p>A table in Lua is a collection of values, which can be indexed either
-by numbers or by arbitrary strings (the two types of indices can
-coexist within the same table). Let’s go through a few examples that
-will give you an overview (you can type these in the Hammerspoon
-console as we go, or at the prompt of the <code>hs</code> command - keep in mind
-that some of the statements are broken across multiple lines here for
-formatting, but each statement should be type in a single line in the
-console).</p>
+<p>A table in Lua is a collection of values, which can be indexed either by numbers or by arbitrary strings (the two types of indices can coexist within the same table). Let&rsquo;s go through a few examples that will give you an overview (you can type these in the Hammerspoon console as we go, or at the prompt of the <code>hs</code> command - keep in mind that some of the statements are broken across multiple lines here for formatting, but each statement should be type in a single line in the console).</p>
 
 <p>Table literals are declared using curly braces:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">unicorns</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1">-- empty table</span>
@@ -235,10 +220,7 @@ console).</p>
 <span class="o">&gt;</span> <span class="n">handles</span> <span class="o">=</span> <span class="p">{</span> <span class="n">Diego</span> <span class="o">=</span> <span class="s2">&#34;zzamboni&#34;</span><span class="p">,</span>
               <span class="n">Chris</span> <span class="o">=</span> <span class="s2">&#34;cmsj&#34;</span><span class="p">,</span>
               <span class="n">Aaron</span> <span class="o">=</span> <span class="s2">&#34;asmagill&#34;</span> <span class="p">}</span> <span class="c1">-- associative array</span></code></pre></div>
-<p>Indices are indicated using square brackets. Numeric indices start at
-1 (not 0 as in most other languages). For identifier-like string
-indices, you can use the dot shortcut. Requesting a non-existent index
-returns <code>nil</code>:</p>
+<p>Indices are indicated using square brackets. Numeric indices start at 1 (not 0 as in most other languages). For identifier-like string indices, you can use the dot shortcut. Requesting a non-existent index returns <code>nil</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">unicorns</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="kc">nil</span>
 <span class="o">&gt;</span> <span class="n">people</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -251,14 +233,11 @@ returns <code>nil</code>:</p>
 <span class="n">zzamboni</span>
 <span class="o">&gt;</span> <span class="n">handles.Michael</span>
 <span class="kc">nil</span></code></pre></div>
-<p>Within the curly-brace notation, indices that are not identifier-like
-(letters, numbers, underscores) need to be enclosed in quotes and
-square brackets. Values can be tables as well:</p>
+<p>Within the curly-brace notation, indices that are not identifier-like (letters, numbers, underscores) need to be enclosed in quotes and square brackets. Values can be tables as well:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">colors</span> <span class="o">=</span> <span class="p">{</span> <span class="p">[</span><span class="s2">&#34;U.S.&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&#34;red&#34;</span><span class="p">,</span> <span class="s2">&#34;white&#34;</span><span class="p">,</span> <span class="s2">&#34;blue&#34;</span> <span class="p">},</span>
            <span class="n">Mexico</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&#34;green&#34;</span><span class="p">,</span> <span class="s2">&#34;white&#34;</span><span class="p">,</span> <span class="s2">&#34;red&#34;</span> <span class="p">},</span>
            <span class="n">Germany</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&#34;black&#34;</span><span class="p">,</span> <span class="s2">&#34;red&#34;</span><span class="p">,</span> <span class="s2">&#34;yellow&#34;</span> <span class="p">}</span> <span class="p">}</span></code></pre></div>
-<p>With non-identifier indices, you cannot use the dot-notation. Also, to
-see a table within the Hammerspoon console, use <a href="http://www.hammerspoon.org/docs/hs.inspect.html"><code>hs.inspect</code></a>:</p>
+<p>With non-identifier indices, you cannot use the dot-notation. Also, to see a table within the Hammerspoon console, use <a href="http://www.hammerspoon.org/docs/hs.inspect"><code>hs.inspect</code></a>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">colors</span><span class="p">[</span><span class="s2">&#34;U.S.&#34;</span><span class="p">]</span>
 <span class="n">table</span><span class="p">:</span> <span class="mh">0x618000470400</span>
 <span class="o">&gt;</span> <span class="n">hs.inspect</span><span class="p">(</span><span class="n">colors.Mexico</span><span class="p">)</span>
@@ -269,9 +248,7 @@ see a table within the Hammerspoon console, use <a href="http://www.hammerspoon.
   <span class="n">Mexico</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&#34;green&#34;</span><span class="p">,</span> <span class="s2">&#34;white&#34;</span><span class="p">,</span> <span class="s2">&#34;red&#34;</span> <span class="p">},</span>
   <span class="p">[</span><span class="s2">&#34;U.S.&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&#34;red&#34;</span><span class="p">,</span> <span class="s2">&#34;white&#34;</span><span class="p">,</span> <span class="s2">&#34;blue&#34;</span> <span class="p">}</span>
 <span class="p">}</span></code></pre></div>
-<p>Iteration through an array is commonly done using the <a href="https://www.lua.org/manual/5.3/manual.html#pdf-ipairs"><code>ipairs()</code></a> functions. Note that it will only iterate through
-contiguous numeric indices starting at 1, so that it does not work
-well with &ldquo;sparse&rdquo; tables.</p>
+<p>Iteration through an array is commonly done using the <a href="https://www.lua.org/manual/5.3/manual.html#pdf-ipairs"><code>ipairs()</code></a> functions. Note that it will only iterate through contiguous numeric indices starting at 1, so that it does not work well with &ldquo;sparse&rdquo; tables.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="kr">for</span> <span class="n">i</span><span class="p">,</span><span class="n">v</span> <span class="kr">in</span> <span class="n">ipairs</span><span class="p">(</span><span class="n">people</span><span class="p">)</span> <span class="kr">do</span> <span class="n">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="kr">end</span>
 <span class="mi">1</span>   <span class="n">Chris</span>
 <span class="mi">2</span>   <span class="n">Aaron</span>
@@ -292,11 +269,7 @@ well with &ldquo;sparse&rdquo; tables.</p>
 <span class="p">{</span> <span class="s2">&#34;Chris&#34;</span><span class="p">,</span> <span class="s2">&#34;Aaron&#34;</span><span class="p">,</span> <span class="s2">&#34;Diego&#34;</span><span class="p">,</span> <span class="s2">&#34;John&#34;</span><span class="p">,</span>
   <span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;Mike&#34;</span>
 <span class="p">}</span></code></pre></div>
-<p>The <a href="https://www.lua.org/manual/5.3/manual.html#pdf-pairs"><code>pairs()</code></a> function, on the other hand, will iterate through all
-the elements in the table (both numeric and string indices), but does
-not guarantee their order. Both numeric and string indices can be
-mixed in a single table (although this gets confusing quickly unless
-you access everything using <a href="https://www.lua.org/manual/5.3/manual.html#pdf-pairs"><code>pairs()</code></a>).</p>
+<p>The <a href="https://www.lua.org/manual/5.3/manual.html#pdf-pairs"><code>pairs()</code></a> function, on the other hand, will iterate through all the elements in the table (both numeric and string indices), but does not guarantee their order. Both numeric and string indices can be mixed in a single table (although this gets confusing quickly unless you access everything using <a href="https://www.lua.org/manual/5.3/manual.html#pdf-pairs"><code>pairs()</code></a>).</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="kr">for</span> <span class="n">i</span><span class="p">,</span><span class="n">v</span> <span class="kr">in</span> <span class="n">pairs</span><span class="p">(</span><span class="n">people</span><span class="p">)</span> <span class="kr">do</span> <span class="n">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="kr">end</span>
 <span class="mi">1</span>   <span class="n">Chris</span>
 <span class="mi">2</span>   <span class="n">Aaron</span>
@@ -318,18 +291,14 @@ you access everything using <a href="https://www.lua.org/manual/5.3/manual.html#
 <span class="p">}</span>
 <span class="o">&gt;</span> <span class="kr">for</span> <span class="n">i</span><span class="p">,</span><span class="n">v</span> <span class="kr">in</span> <span class="n">ipairs</span><span class="p">(</span><span class="n">handles</span><span class="p">)</span> <span class="kr">do</span> <span class="n">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="kr">end</span>
 <span class="mi">1</span>   <span class="n">whoa</span></code></pre></div>
-<p>The built-in <a href="https://www.lua.org/manual/5.3/manual.html#6.6"><code>table</code></a> module includes a number of
-useful table-manipulation functions, including the following:</p>
+<p>The built-in <a href="https://www.lua.org/manual/5.3/manual.html#6.6">table</a> module includes a number of useful table-manipulation functions, including the following:</p>
 
 <ul>
-<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.concat"><code>table.concat()</code></a> for joining the values of a list in
-a single string (equivalent to <code>join</code> in other languages). This
-only joins the elements that would be returned by <a href="https://www.lua.org/manual/5.3/manual.html#pdf-ipairs"><code>ipairs()</code></a>.</p>
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.concat"><code>table.concat()</code></a> for joining the values of a list in a single string (equivalent to <code>join</code> in other languages). This only joins the elements that would be returned by <a href="https://www.lua.org/manual/5.3/manual.html#pdf-ipairs"><code>ipairs()</code></a>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">table.concat</span><span class="p">(</span><span class="n">people</span><span class="p">,</span> <span class="s2">&#34;, &#34;</span><span class="p">)</span>
 <span class="n">Chris</span><span class="p">,</span> <span class="n">Aaron</span><span class="p">,</span> <span class="n">Diego</span><span class="p">,</span> <span class="n">John</span></code></pre></div></li>
 
-<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.insert"><code>table.insert()</code></a> adds an element to a list, by
-default adding it to the end.</p>
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.insert"><code>table.insert()</code></a> adds an element to a list, by default adding it to the end.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">hs.inspect</span><span class="p">(</span><span class="n">people</span><span class="p">)</span>
 <span class="p">{</span> <span class="s2">&#34;Chris&#34;</span><span class="p">,</span> <span class="s2">&#34;Aaron&#34;</span><span class="p">,</span> <span class="s2">&#34;Diego&#34;</span><span class="p">,</span> <span class="s2">&#34;John&#34;</span><span class="p">,</span> <span class="s2">&#34;Bill&#34;</span><span class="p">,</span>
   <span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;Mike&#34;</span>
@@ -337,12 +306,9 @@ default adding it to the end.</p>
 <span class="o">&gt;</span> <span class="n">table.insert</span><span class="p">(</span><span class="n">people</span><span class="p">,</span> <span class="s2">&#34;George&#34;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">hs.inspect</span><span class="p">(</span><span class="n">people</span><span class="p">)</span>
 <span class="p">{</span> <span class="s2">&#34;Chris&#34;</span><span class="p">,</span> <span class="s2">&#34;Aaron&#34;</span><span class="p">,</span> <span class="s2">&#34;Diego&#34;</span><span class="p">,</span> <span class="s2">&#34;John&#34;</span><span class="p">,</span> <span class="s2">&#34;Bill&#34;</span><span class="p">,</span> <span class="s2">&#34;George&#34;</span><span class="p">,</span> <span class="s2">&#34;Mike&#34;</span> <span class="p">}</span></code></pre></div>
-<p>Note how in the last example, the contiguous indices have finally
-caught up to 7, so the last element is no longer shown separately (and
-will now be included by <a href="https://www.lua.org/manual/5.3/manual.html#pdf-ipairs"><code>ipairs()</code></a>, <a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.concat"><code>table.concat()</code></a>, etc.</p></li>
+<p>Note how in the last example, the contiguous indices have finally caught up to 7, so the last element is no longer shown separately (and will now be included by <a href="https://www.lua.org/manual/5.3/manual.html#pdf-ipairs"><code>ipairs()</code></a>, <a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.concat"><code>table.concat()</code></a>, etc.</p></li>
 
-<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.remove"><code>table.remove()</code></a> removes an element from a list, by
-default the last one. It returns the removed element.</p>
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.remove"><code>table.remove()</code></a> removes an element from a list, by default the last one. It returns the removed element.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="kr">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span> <span class="kr">do</span> <span class="n">print</span><span class="p">(</span><span class="n">table.remove</span><span class="p">(</span><span class="n">people</span><span class="p">))</span> <span class="kr">end</span>
 <span class="n">Mike</span>
 <span class="n">George</span>
@@ -352,12 +318,7 @@ default the last one. It returns the removed element.</p>
 <span class="p">{</span> <span class="s2">&#34;Chris&#34;</span><span class="p">,</span> <span class="s2">&#34;Aaron&#34;</span><span class="p">,</span> <span class="s2">&#34;Diego&#34;</span> <span class="p">}</span></code></pre></div></li>
 </ul>
 
-<p>Notable omissions from the language and the <a href="https://www.lua.org/manual/5.3/manual.html#6.6"><code>table</code></a> module are &ldquo;get keys&rdquo; and &ldquo;get values&rdquo; functions, common in other
-languages. This may be explained by the flexible nature of Lua tables,
-so that those functions would need to behave differently depending on
-the contents of the table. If you need them, you can easily build your
-own. For example, if you want to get a sorted list of the keys in a
-table, you can use this function:</p>
+<p>Notable omissions from the language and the <a href="https://www.lua.org/manual/5.3/manual.html#6.6">table</a> module are &ldquo;get keys&rdquo; and &ldquo;get values&rdquo; functions, common in other languages. This may be explained by the flexible nature of Lua tables, so that those functions would need to behave differently depending on the contents of the table. If you need them, you can easily build your own. For example, if you want to get a sorted list of the keys in a table, you can use this function:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">function</span> <span class="nf">sortedkeys</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
   <span class="kd">local</span> <span class="n">keys</span><span class="o">=</span><span class="p">{}</span>
   <span class="kr">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="kr">in</span> <span class="n">pairs</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="kr">do</span> <span class="n">table.insert</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="kr">end</span>
@@ -366,12 +327,7 @@ table, you can use this function:</p>
 <span class="kr">end</span></code></pre></div>
 <h2 id="tables-as-namespaces">Tables as namespaces</h2>
 
-<p>Functions in Lua are first-class objects, which means they can be used
-like any other value. This means that functions can be stored in
-tables, and this is how namespaces (or &ldquo;modules&rdquo;) are implemented in
-Lua. We can inspect an manipulate them like any other table. Let us
-look at the <a href="https://www.lua.org/manual/5.3/manual.html#6.6"><code>table</code></a> library itself. First, the
-module itself is a table:</p>
+<p>Functions in Lua are first-class objects, which means they can be used like any other value. This means that functions can be stored in tables, and this is how namespaces (or &ldquo;modules&rdquo;) are implemented in Lua. We can inspect an manipulate them like any other table. Let us look at the <a href="https://www.lua.org/manual/5.3/manual.html#6.6">table</a> library itself. First, the module itself is a table:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">table</span>
 <span class="n">table</span><span class="p">:</span> <span class="mh">0x61800046f740</span></code></pre></div>
 <p>Second, we can inspect its contents using the functions we know:</p>
@@ -386,11 +342,7 @@ module itself is a table:</p>
   <span class="n">sortedkeys</span> <span class="o">=</span> <span class="o">&lt;</span><span class="kr">function</span> <span class="nf">7</span><span class="o">&gt;</span><span class="p">,</span>
   <span class="n">unpack</span> <span class="o">=</span> <span class="o">&lt;</span><span class="kr">function</span> <span class="nf">8</span><span class="o">&gt;</span>
 <span class="p">}</span></code></pre></div>
-<p>The function values themselves are opaque (we cannot see their code),
-but we can easily extend the module. For example, we could add our
-<code>sortedkeys()</code> function above to the <code>table</code> module for
-consistency. Lua allows us to specify the namespace of a function in
-its declaration:</p>
+<p>The function values themselves are opaque (we cannot see their code), but we can easily extend the module. For example, we could add our <code>sortedkeys()</code> function above to the <code>table</code> module for consistency. Lua allows us to specify the namespace of a function in its declaration:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">function</span> <span class="nc">table</span><span class="p">.</span><span class="nf">sortedkeys</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
   <span class="kd">local</span> <span class="n">keys</span><span class="o">=</span><span class="p">{}</span>
   <span class="kr">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="kr">in</span> <span class="n">pairs</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="kr">do</span> <span class="n">table.insert</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="kr">end</span>
@@ -414,10 +366,7 @@ its declaration:</p>
   <span class="n">setRelativePosition</span> <span class="o">=</span> <span class="o">&lt;</span><span class="kr">function</span> <span class="nf">8</span><span class="o">&gt;</span><span class="p">,</span>
   <span class="n">trackingSpeed</span> <span class="o">=</span> <span class="o">&lt;</span><span class="kr">function</span> <span class="nf">9</span><span class="o">&gt;</span>
 <span class="p">}</span></code></pre></div>
-<p>The common way of defining a new module in Lua is to create an empty
-table, and populate it with functions or variables as needed. For
-example, let’s put our <a href="">double-click generator</a> in a module. Create the
-file <code>~/.hammerspoon/doubleclick.lua</code> with the following contents:</p>
+<p>The common way of defining a new module in Lua is to create an empty table, and populate it with functions or variables as needed. For example, let&rsquo;s put our <a href="%7B%7B%3C%20relref%20%222017-10-21-just-enough-lua-to-be-productive-in-hammerspoon-part1.md#functions%22%20%3E%7D%7D">double-click generator</a> in a module. Create the file <code>~/.hammerspoon/doubleclick.lua</code> with the following contents:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">mod</span><span class="o">=</span><span class="p">{}</span>
 
 <span class="n">mod.default_modifiers</span><span class="o">=</span><span class="p">{}</span>
@@ -443,34 +392,15 @@ file <code>~/.hammerspoon/doubleclick.lua</code> with the following contents:</p
 <span class="o">&gt;</span> <span class="n">doubleclick.bindto</span><span class="p">({</span> <span class="p">{</span><span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span><span class="p">},</span> <span class="s2">&#34;p&#34;</span> <span class="p">})</span>
 <span class="mi">19</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mi">53</span>     <span class="n">hotkey</span><span class="p">:</span> <span class="n">Disabled</span> <span class="n">previous</span> <span class="n">hotkey</span> <span class="err">⌘⌃⌥</span><span class="n">P</span>
              <span class="n">hotkey</span><span class="p">:</span> <span class="n">Enabled</span> <span class="n">hotkey</span> <span class="err">⌘⌃⌥</span><span class="n">P</span></code></pre></div>
-<p>You have written and loaded your first Lua module. Let’s try it out!
-Press <kbd>Ctrl</kbd>+<kbd>⌘</kbd>+<kbd>Alt</kbd>+<kbd>p</kbd>
- while your cursor is over a word in
-your terminal or web browser, to select it as if you had
-double-clicked it. You can also change the modifiers used with it. For
-example, did you know that Cmd-double-click can be used to open URLs
-from the macOS Terminal application?</p>
+<p>You have written and loaded your first Lua module. Let&rsquo;s try it out!  Press <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>p</kbd> while your cursor is over a word in your terminal or web browser, to select it as if you had double-clicked it. You can also change the modifiers used with it. For example, did you know that Cmd-double-click can be used to open URLs from the macOS Terminal application?</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">doubleclick.default_modifiers</span><span class="o">=</span><span class="p">{</span><span class="n">cmd</span><span class="o">=</span><span class="kc">true</span><span class="p">}</span></code></pre></div>
-<p>Now try pressing <kbd>Ctrl</kbd>+<kbd>⌘</kbd>+<kbd>Alt</kbd>+<kbd>p</kbd>
- while your pointer is
-over a URL displayed on your Terminal (you can just type one yourself
-to test), and it will open in your browser.</p>
+<p>Now try pressing <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>p</kbd> while your pointer is over a URL displayed on your Terminal (you can just type one yourself to test), and it will open in your browser.</p>
 
-<p>Note that the name <code>doubleclick</code> does not have any special meaning -
-it is a regular variable to which you assigned the value returned by
-<code>require('doubleclick')</code>, which is the value of the <code>mod</code> variable
-created within the module file (note that within the module file you
-use the local variable name to refer to functions and variables within
-itself). You could assign it to any name you want:</p>
+<p>Note that the name <code>doubleclick</code> does not have any special meaning&mdash;it is a regular variable to which you assigned the value returned by <code>require('doubleclick')</code>, which is the value of the <code>mod</code> variable created within the module file (note that within the module file you use the local variable name to refer to functions and variables within itself). You could assign it to any name you want:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">a</span><span class="o">=</span><span class="n">require</span><span class="p">(</span><span class="s1">&#39;doubleclick&#39;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">a.leftDoubleClick</span><span class="p">()</span></code></pre></div>
-<p>The argument of the <a href="https://www.lua.org/manual/5.3/manual.html#pdf-require"><code>require()</code></a> function is the name of the
-file to load, without the <code>.lua</code> extension. Hammerspoon by default
-adds your <code>~/.hammerspoon/</code> directory to its load path, along with any
-other default directories in your system. You can view the places
-where Hammerspoon will look for files by examining the <code>package.path</code>
-variable. On my machine I get the following:</p>
-<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console">&gt; package.path
+<p>The argument of the <a href="https://www.lua.org/manual/5.3/manual.html#pdf-require"><code>require()</code></a> function is the name of the file to load, without the <code>.lua</code> extension. Hammerspoon by default adds your <code>~/.hammerspoon/</code> directory to its load path, along with any other default directories in your system. You can view the places where Hammerspoon will look for files by examining the <code>package.path</code> variable. On my machine I get the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">&gt; package.path
 /Users/zzamboni/.hammerspoon/?.lua;/Users/zzamboni/.hammerspoon/?/
 init.lua;/Users/zzamboni/.hammerspoon/Spoons/?.spoon/init.lua;/usr/
 local/share/lua/5.3/?.lua;/usr/local/share/lua/5.3/?/init.lua;/usr/
@@ -489,106 +419,54 @@ Hammerspoon.app/Contents/Resources/extensions/?/init.lua</code></pre></div>
 	</div>
 	
 	
-	<div class="admonition-content"><p>Hammerspoon automatically loads any modules under the <code>hs</code> namespace
-the first time you use them. For example, when you use <a href="http://www.hammerspoon.org/docs/hs.application.html"><code>hs.application</code></a> for the first time, you will see a message in the
-console:</p>
+	<div class="admonition-content"><p>Hammerspoon automatically loads any modules under the <code>hs</code> namespace the first time you use them. For example, when you use <a href="http://www.hammerspoon.org/docs/hs.application"><code>hs.application</code></a> for the first time, you will see a message in the console:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">hs.application</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;Terminal&#34;</span><span class="p">)</span>
 <span class="mi">2017</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">31</span> <span class="mi">06</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span> <span class="c1">-- Loading extension: application</span>
 <span class="n">hs.application</span><span class="p">:</span> <span class="n">Terminal</span> <span class="p">(</span><span class="mh">0x61000044dfd8</span><span class="p">)</span></code></pre></div>
-<p>If you want to avoid these messages, you need to explicitly load the
-modules and assign them to variables, as follows:</p>
+<p>If you want to avoid these messages, you need to explicitly load the modules and assign them to variables, as follows:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">app</span><span class="o">=</span><span class="n">require</span><span class="p">(</span><span class="s1">&#39;hs.application&#39;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">app.get</span><span class="p">(</span><span class="s2">&#34;Terminal&#34;</span><span class="p">)</span>
 <span class="n">hs.application</span><span class="p">:</span> <span class="n">Terminal</span> <span class="p">(</span><span class="mh">0x610000e49118</span><span class="p">)</span></code></pre></div>
-<p>This avoids the console message and has the additional benefit of
-allowing you to use <code>app</code> (you can use whatever variable you want)
-instead of typing <code>hs.application</code> in your code. This is a matter of
-taste - I usually prefer to have the full descriptive names (makes the
-code easier to read), but when dealing with some of the longer module
-names (e.g. <a href="http://www.hammerspoon.org/docs/hs.distributednotifications.html"><code>hs.distributednotifications</code></a>), this
-technique can be useful.</p>
+<p>This avoids the console message and has the additional benefit of allowing you to use <code>app</code> (you can use whatever variable you want) instead of typing <code>hs.application</code> in your code. This is a matter of taste&mdash;I usually prefer to have the full descriptive names (makes the code easier to read), but when dealing with some of the longer module names (e.g. <a href="http://www.hammerspoon.org/docs/hs.distributednotifications"><code>hs.distributednotifications</code></a>), this technique can be useful.</p>
 </div>
 </aside>
 
 
 <h2 id="patterns">Patterns</h2>
 
-<p>If you are familiar with regular expressions, you know how powerful
-they are for examining and manipulating strings in any programming
-language. Lua has <a href="https://www.lua.org/manual/5.3/manual.html#6.4.1"><code><em>patterns</em></code></a>, which fulfill
-many of the same functions but have a different syntax and some
-limitations. They are used by many functions in the string library
-like <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.find"><code>string.find()</code></a> and <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.match"><code>string.match()</code></a>.</p>
+<p>If you are familiar with regular expressions, you know how powerful they are for examining and manipulating strings in any programming language.  Lua has <a href="https://www.lua.org/manual/5.3/manual.html#6.4.1">patterns</a>, which fulfill many of the same functions but have a different syntax and some limitations. They are used by many functions in the string library like <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.find"><code>string.find()</code></a> and <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.match"><code>string.match()</code></a>.</p>
 
-<p>The following are some differences and similarities you need to be
-aware of when using patterns:</p>
+<p>The following are some differences and similarities you need to be aware of when using patterns:</p>
 
 <ul>
 <li><p>The dot (<code>.</code>) represents any character, just like in regexes.</p></li>
 
-<li><p>The asterisk (<code>*</code>), plus sign (<code>+</code>) and question mark (<code>?</code>)
-represent &ldquo;zero or more&rdquo;, &ldquo;one or more&rdquo; and &ldquo;one or none&rdquo; of the
-previous character, just like in regexes. Unlike regexes, these
-characters can only be applied to a single character and not to a
-whole capture group (i.e. the regex <code>(foo)+</code> is not possible).</p></li>
+<li><p>The asterisk (<code>*</code>), plus sign (<code>+</code>) and question mark (<code>?</code>) represent &ldquo;zero or more&rdquo;, &ldquo;one or more&rdquo; and &ldquo;one or none&rdquo; of the previous character, just like in regexes. Unlike regexes, these characters can only be applied to a single character and not to a whole capture group (i.e. the regex <code>(foo)+</code> is not possible).</p></li>
 
-<li><p>Alternations, represented by the vertical bar (<code>|</code>) in regexes, are
-not supported.</p></li>
+<li><p>Alternations, represented by the vertical bar (<code>|</code>) in regexes, are not supported.</p></li>
 
-<li><p>The caret (<code>^</code>) and dollar sign (<code>$</code>) represent &ldquo;beginning of
-string&rdquo; and &ldquo;end of string&rdquo;, just like in regexes.</p></li>
+<li><p>The caret (<code>^</code>) and dollar sign (<code>$</code>) represent &ldquo;beginning of string&rdquo; and &ldquo;end of string&rdquo;, just like in regexes.</p></li>
 
-<li><p>The dash (<code>-</code>) represents a non-greedy &ldquo;zero or more&rdquo; (i.e. match
-the shortest possible string instead of the longest one) of the
-previous character, unlike in regexes, in which it’s commonly
-indicate by a question mark following the corresponding <code>*</code> or <code>+</code>
-The regex <code>.*?</code> is equivalent to the Lua pattern <code>.-</code>.</p></li>
+<li><p>The dash (<code>-</code>) represents a non-greedy &ldquo;zero or more&rdquo; (i.e. match the shortest possible string instead of the longest one) of the previous character, unlike in regexes, in which it&rsquo;s commonly indicate by a question mark following the corresponding <code>*</code> or <code>+</code> The regex <code>.*?</code> is equivalent to the Lua pattern <code>.-</code>.</p></li>
 
-<li><p>The escape character is the ampersand (<code>%</code>) instead of the backslash
-(<code>\</code>).</p></li>
+<li><p>The escape character is the ampersand (<code>%</code>) instead of the backslash (<code>\</code>).</p></li>
 
-<li><p>Most character classes are represented by the same characters, but
-preceded by ampersand. For example <code>%d</code> for digits, <code>%s</code> for spaces,
-<code>%w</code> for alphanumeric characters.</p></li>
+<li><p>Most character classes are represented by the same characters, but preceded by ampersand. For example <code>%d</code> for digits, <code>%s</code> for spaces, <code>%w</code> for alphanumeric characters.</p></li>
 </ul>
 
-<p>For most common use cases, Lua patterns are enough, you just have to
-be aware of their differences. If you encounter something that really
-cannot be done, you can always resort to libraries like
-<a href="http://rrthomas.github.io/lrexlib/">Lrexlib</a>, which provide
-interfaces to real regex libraries. Unfortunately these are not
-included in Lua, so you would need to install them on your own.</p>
+<p>For most common use cases, Lua patterns are enough, you just have to be aware of their differences. If you encounter something that really cannot be done, you can always resort to libraries like <a href="http://rrthomas.github.io/lrexlib/">Lrexlib</a>, which provide interfaces to real regex libraries. Unfortunately these are not included in Lua, so you would need to install them on your own.</p>
 
-<p>Patterns, just like regular expressions, are commonly used for string
-manipulation, using primarily functions from the <a href="https://www.lua.org/manual/5.3/manual.html#6.4"><code>string</code></a> library.</p>
+<p>Patterns, just like regular expressions, are commonly used for string manipulation, using primarily functions from the <a href="https://www.lua.org/manual/5.3/manual.html#6.4">string</a> library.</p>
 
 <h2 id="string-manipulation">String manipulation</h2>
 
-<p>Lua includes the <a href="https://www.lua.org/manual/5.3/manual.html#6.4"><code>string</code></a> library to implement
-common string manipulation functions, including pattern matching. All
-of these functions can be called either as regular functions, with the
-string as the first argument, or as method calls on the string itself,
-using the colon syntax (which, as we saw <a href="">before</a>, gets converted to the same call). For example, the following two
-are equivalent:</p>
+<p>Lua includes the <a href="https://www.lua.org/manual/5.3/manual.html#6.4">string</a> library to implement common string manipulation functions, including pattern matching. All of these functions can be called either as regular functions, with the string as the first argument, or as method calls on the string itself, using the colon syntax (which, as we saw <a href="%7B%7B%3C%20relref%20%222017-10-21-just-enough-lua-to-be-productive-in-hammerspoon-part1.md#dot-vs-colon-method-access-in-lua%22%20%3E%7D%7D">before</a>, gets converted to the same call). For example, the following two are equivalent:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">string.find</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s2">&#34;^foo&#34;</span><span class="p">)</span>
 <span class="n">a</span><span class="p">:</span><span class="n">find</span><span class="p">(</span><span class="s2">&#34;^foo&#34;</span><span class="p">)</span></code></pre></div>
-<p>You can find the full documentation in the <a href="https://www.lua.org/manual/5.3/manual.html#6.4">Lua reference
-manual</a> and many other
-examples in the <a href="http://lua-users.org/wiki/StringLibraryTutorial">Lua-users wiki String Library
-Tutorial</a>. The
-following is a partial list of some of the functions I have found most
-useful:</p>
+<p>You can find the full documentation in the <a href="https://www.lua.org/manual/5.3/manual.html#6.4">Lua reference manual</a> and many other examples in the <a href="http://lua-users.org/wiki/StringLibraryTutorial">Lua-users wiki String Library Tutorial</a>. The following is a partial list of some of the functions I have found most useful:</p>
 
 <ul>
-<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.find"><code>string.find(str, pat [, pos [, plain]])</code></a> finds the pattern within the string. By default the search
-starts at the beginning of the string, but can be modified with the
-<code>pos</code> argument (index starts at 1, as with the tables). By default
-<code>pat</code> is intepreted as a Lua pattern, but this can be disabled by
-passing <code>plain</code> as a true value. If the pattern is not found,
-returns <code>nil</code>. If the pattern is found, the function returns the
-start and end position of the pattern within the
-string. Furthermore, if the pattern contains parenthesis capture
-groups, all groups are returned as well. For example:</p>
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.find"><code>string.find(str, pat, pos, plain)</code></a> finds the pattern within the string. By default the search starts at the beginning of the string, but can be modified with the <code>pos</code> argument (index starts at 1, as with the tables). By default <code>pat</code> is intepreted as a Lua pattern, but this can be disabled by passing <code>plain</code> as a true value. If the pattern is not found, returns <code>nil</code>.  If the pattern is found, the function returns the start and end position of the pattern within the string. Furthermore, if the pattern contains parenthesis capture groups, all groups are returned as well.  For example:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">string.find</span><span class="p">(</span><span class="s2">&#34;bah&#34;</span><span class="p">,</span> <span class="s2">&#34;ah&#34;</span><span class="p">)</span>
 <span class="mi">2</span>   <span class="mi">3</span>
 <span class="o">&gt;</span> <span class="n">string.find</span><span class="p">(</span><span class="s2">&#34;bah&#34;</span><span class="p">,</span> <span class="s2">&#34;foo&#34;</span><span class="p">)</span>
@@ -598,8 +476,7 @@ groups, all groups are returned as well. For example:</p>
 <span class="o">&gt;</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">g1</span><span class="p">,</span> <span class="n">g2</span> <span class="o">=</span> <span class="n">string.find</span><span class="p">(</span><span class="s2">&#34;bah&#34;</span><span class="p">,</span> <span class="s2">&#34;(b)(ah)&#34;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">,</span><span class="n">g1</span><span class="p">,</span><span class="n">g2</span>
 <span class="mi">1</span>   <span class="mi">3</span>   <span class="n">b</span>   <span class="n">ah</span></code></pre></div>
-<p>Note that the return value is not a table, but rather multiple
-values, as shown in the last example.</p>
+<p>Note that the return value is not a table, but rather multiple values, as shown in the last example.</p>
 
 <aside class="admonition tip">
 	<div class="admonition-icon">
@@ -611,16 +488,9 @@ values, as shown in the last example.</p>
 	</div>
 	
 	
-	<div class="admonition-content"><p>It can sometimes be convenient to handle multiple values as a table or
-as separate entities, depending on the circumstances. For example, you
-may have a programmatically-constructed pattern with a variable number
-of capture groups, so you cannot know to how many variables you need
-to assign the result. In this case, the <a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.pack"><code>table.pack()</code></a>
-and <a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.unpack"><code>table.unpack()</code></a> functions can be useful.</p>
+	<div class="admonition-content"><p>It can sometimes be convenient to handle multiple values as a table or as separate entities, depending on the circumstances. For example, you may have a programmatically-constructed pattern with a variable number of capture groups, so you cannot know to how many variables you need to assign the result. In this case, the <a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.pack"><code>table.pack()</code></a> and <a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.unpack"><code>table.unpack()</code></a> functions can be useful.</p>
 
-<p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.pack"><code>table.pack()</code></a> takes a variable number of arguments and
-returns them in a table which contains an array component containing
-the values, plus an index <code>n</code> containing the total number of elements:</p>
+<p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.pack"><code>table.pack()</code></a> takes a variable number of arguments and returns them in a table which contains an array component containing the values, plus an index <code>n</code> containing the total number of elements:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">table.pack</span><span class="p">(</span><span class="n">string.find</span><span class="p">(</span><span class="s2">&#34;bah&#34;</span><span class="p">,</span> <span class="s2">&#34;(b)(ah)&#34;</span><span class="p">))</span>
 <span class="o">&gt;</span> <span class="n">res</span>
 <span class="n">table</span><span class="p">:</span> <span class="mh">0x608000c76e80</span>
@@ -628,9 +498,7 @@ the values, plus an index <code>n</code> containing the total number of elements
 <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&#34;b&#34;</span><span class="p">,</span> <span class="s2">&#34;ah&#34;</span><span class="p">,</span>
   <span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="p">}</span></code></pre></div>
-<p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.unpack"><code>table.unpack()</code></a> does the opposite, expanding an array
-into separate values which can be assigned to separate values as
-needed, or passed as arguments to a function:</p>
+<p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-table.unpack"><code>table.unpack()</code></a> does the opposite, expanding an array into separate values which can be assigned to separate values as needed, or passed as arguments to a function:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">args</span><span class="o">=</span><span class="p">{</span><span class="s2">&#34;bah&#34;</span><span class="p">,</span> <span class="s2">&#34;(b)(ah)&#34;</span><span class="p">}</span>
 <span class="o">&gt;</span> <span class="n">string.find</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
 <span class="p">[</span><span class="n">string</span> <span class="s2">&#34;return string.find(args)&#34;</span><span class="p">]:</span><span class="mi">1</span><span class="p">:</span>
@@ -640,11 +508,7 @@ needed, or passed as arguments to a function:</p>
 </aside>
 </li>
 
-<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.match"><code>string.match(str, pat [, pos])</code></a> is
-similar to <code>string.find</code>, but it does not return the positions,
-rather it returns the part of the string matched by the pattern, or
-if the pattern contains capture groups, returns the captured
-segments:</p>
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.match"><code>string.match(str, pat, pos)</code></a> is similar to <code>string.find</code>, but it does not return the positions, rather it returns the part of the string matched by the pattern, or if the pattern contains capture groups, returns the captured segments:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">string.match</span><span class="p">(</span><span class="s2">&#34;bah&#34;</span><span class="p">,</span> <span class="s2">&#34;ah&#34;</span><span class="p">)</span>
 <span class="n">ah</span>
 <span class="o">&gt;</span> <span class="n">string.match</span><span class="p">(</span><span class="s2">&#34;bah&#34;</span><span class="p">,</span> <span class="s2">&#34;foo&#34;</span><span class="p">)</span>
@@ -652,11 +516,7 @@ segments:</p>
 <span class="o">&gt;</span> <span class="n">string.match</span><span class="p">(</span><span class="s2">&#34;bah&#34;</span><span class="p">,</span> <span class="s2">&#34;(b)(ah)&#34;</span><span class="p">)</span>
 <span class="n">b</span>   <span class="n">ah</span></code></pre></div></li>
 
-<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.gmatch"><code>string.gmatch(str, pat)</code></a> returns a
-function that returns the next match of <code>pat</code> within <code>str</code> every
-time it is called, returning <code>nil</code> when there are no more
-matches. If <code>pat</code> contains capture groups, they are returned on each
-iteration.</p>
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.gmatch"><code>string.gmatch(str, pat)</code></a> returns a function that returns the next match of <code>pat</code> within <code>str</code> every time it is called, returning <code>nil</code> when there are no more matches. If <code>pat</code> contains capture groups, they are returned on each iteration.</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">a</span><span class="o">=</span><span class="s2">&#34;Hammerspoon is awesome!&#34;</span>
 <span class="o">&gt;</span> <span class="n">f</span><span class="o">=</span><span class="n">string.gmatch</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s2">&#34;(%w+)&#34;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">f</span><span class="p">()</span>
@@ -672,55 +532,29 @@ iteration.</p>
 <span class="n">is</span>
 <span class="n">awesome</span></code></pre></div></li>
 
-<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.format"><code>string.format(formatstring, …​)</code></a>
-formats a sequence of values according to the given format string,
-following the same formatting rules as the ISO C <code>sprintf()</code>
-function. It additionally supports a new format character <code>%q</code>,
-which formats a string value in a way that can be read back by
-Lua, escaping or quoting characters as needed (for example quotes,
-newlines, etc.).</p></li>
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.format"><code>string.format(formatstring, …​)</code></a> formats a sequence of values according to the given format string, following the same formatting rules as the ISO C <code>sprintf()</code> function.  It additionally supports a new format character <code>%q</code>, which formats a string value in a way that can be read back by Lua, escaping or quoting characters as needed (for example quotes, newlines, etc.).</p></li>
 
-<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.len"><code>string.len(str)</code></a> returns the length
-of the string.</p></li>
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.len"><code>string.len(str)</code></a> returns the length of the string.</p></li>
 
-<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.lower"><code>string.lower(str)</code></a> and <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.upper"><code>string.upper(str)</code></a> convert the string to
-lower and uppercase, respectively.</p></li>
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.lower"><code>string.lower(str)</code></a> and <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.upper"><code>string.upper(str)</code></a> convert the string to lower and uppercase, respectively.</p></li>
 
-<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.gsub"><code>string.gsub(str, pat, rep[, n])</code></a>
-is a very powerful string-replacement function which hides
-considerably more power than its simple syntax would lead you to
-believe. In general, it replaces all (or the first <code>n</code>)
-occurrences of <code>pat</code> in <code>str</code> with the replacement <code>rep</code>. However,
-<code>rep</code> can take any of the following values:</p>
+<li><p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.gsub"><code>string.gsub(str, pat, rep, n)</code></a> is a very powerful string-replacement function which hides considerably more power than its simple syntax would lead you to believe. In general, it replaces all (or the first <code>n</code>) occurrences of <code>pat</code> in <code>str</code> with the replacement <code>rep</code>. However, <code>rep</code> can take any of the following values:</p>
 
 <ul>
-<li><p>A string which is used for the replacement. If the string
-contains <em>%m</em>, where <em>m</em> is a number, the it is replaced by
-the m-th captured group (or the whole match if <em>m</em> is zero).</p></li>
+<li><p>A string which is used for the replacement. If the string contains <em>%m</em>, where <em>m</em> is a number, the it is replaced by the m-th captured group (or the whole match if <em>m</em> is zero).</p></li>
 
-<li><p>A table which is consulted for the replacement values, using
-the first capture group as a key (or the whole match if there
-are no captures). For example:</p>
+<li><p>A table which is consulted for the replacement values, using the first capture group as a key (or the whole match if there are no captures). For example:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">a</span><span class="o">=</span><span class="s2">&#34;Event type codes: leftMouseDown=$leftMouseDown, rightMouseDown=$rightMouseDown, mouseMoved=$mouseMoved&#34;</span>
 <span class="o">&gt;</span> <span class="n">a</span><span class="p">:</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&#34;%$(%w+)&#34;</span><span class="p">,</span> <span class="n">hs.eventtap</span><span class="p">.</span><span class="n">event.types</span><span class="p">)</span>
 <span class="n">Event</span> <span class="n">type</span> <span class="n">codes</span><span class="p">:</span> <span class="n">leftMouseDown</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rightMouseDown</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">mouseMoved</span><span class="o">=</span><span class="mi">5</span>   <span class="mi">3</span></code></pre></div></li>
 
-<li><p>A function which is executed with the captured groups (or the
-whole match) as an argument, and whose return value is used as
-the replacement. For example, using the <code>os.getenv</code> function,
-we can easily replace environment variables by their values in
-a string:</p>
+<li><p>A function which is executed with the captured groups (or the whole match) as an argument, and whose return value is used as the replacement. For example, using the <code>os.getenv</code> function, we can easily replace environment variables by their values in a string:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">a</span><span class="o">=</span><span class="s2">&#34;Hello $USER, your home directory is $HOME&#34;</span>
 <span class="o">&gt;</span> <span class="n">a</span><span class="p">:</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&#34;%$(%w+)&#34;</span><span class="p">,</span> <span class="n">os.getenv</span><span class="p">)</span>
 <span class="n">Hello</span> <span class="n">zzamboni</span><span class="p">,</span> <span class="n">your</span> <span class="n">home</span> <span class="n">directory</span> <span class="n">is</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">zzamboni</span>  <span class="mi">2</span></code></pre></div></li>
 </ul>
 
-<p>Note that <code>gsub</code> returns the modified string as its first return
-value, and the number of replacements it made as the second (<code>2</code>
-in the example above). If you don’t need the number, you can
-simply ignore it (you don&rsquo;t even need to assign it). Also note
-that <code>gsub</code> does not modify the original string, only returns a
-copy with the changes:</p>
+<p>Note that <code>gsub</code> returns the modified string as its first return value, and the number of replacements it made as the second (<code>2</code> in the example above). If you don&rsquo;t need the number, you can simply ignore it (you don&rsquo;t even need to assign it). Also note that <code>gsub</code> does not modify the original string, only returns a copy with the changes:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">:</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&#34;%$(%w+)&#34;</span><span class="p">,</span> <span class="n">os.getenv</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">b</span>
 <span class="n">Hello</span> <span class="n">zzamboni</span><span class="p">,</span> <span class="n">your</span> <span class="n">home</span> <span class="n">directory</span> <span class="n">is</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">zzamboni</span>
@@ -730,20 +564,16 @@ copy with the changes:</p>
 
 <h2 id="keep-learning">Keep learning!</h2>
 
-<p>You know now enough Lua to start being productive with
-Hammerspoon. You’ll pick up more details as you play with it. If you
-need more information, I can recommend the following resources, which
-I have found useful:</p>
+<p>You know now enough Lua to start being productive with Hammerspoon.  You&rsquo;ll pick up more details as you play with it. If you need more information, I can recommend the following resources, which I have found useful:</p>
 
 <ul>
-<li><p><a href="http://www.lua.org/manual/5.3/">The Lua 5.3 Reference Manual</a>,
-available at the official <a href="http://www.lua.org">Lua website</a>.</p></li>
+<li><p><a href="http://www.lua.org/manual/5.3/">The Lua 5.3 Reference Manual</a>, available at the official <a href="http://www.lua.org">Lua website</a>.</p></li>
 
-<li><p><a href="http://lua-users.org/wiki/">The Lua Wiki</a>, a community-maintained
-wiki with many descriptions, tips, examples and tutorials.</p></li>
+<li><p><a href="http://lua-users.org/wiki/">The Lua Wiki</a>, a community-maintained wiki with many descriptions, tips, examples and tutorials.</p></li>
 </ul>
 
 <p>Have fun!</p>
+
       </section>
       
 
@@ -752,11 +582,11 @@ wiki with many descriptions, tips, examples and tutorials.</p></li>
     
       <li class="black dib mb2 mr2"><a href="/tags/hammerspoon" class="link mid-gray dim">hammerspoon</a> </li>
     
-      <li class="black dib mb2 mr2"><a href="/tags/lua" class="link mid-gray dim">lua</a> </li>
+      <li class="black dib mb2 mr2"><a href="/tags/mac" class="link mid-gray dim">mac</a> </li>
     
       <li class="black dib mb2 mr2"><a href="/tags/howto" class="link mid-gray dim">howto</a> </li>
     
-      <li class="black dib mb2 mr2"><a href="/tags/mac" class="link mid-gray dim">mac</a> </li>
+      <li class="black dib mb2 mr2"><a href="/tags/lua" class="link mid-gray dim">lua</a> </li>
     
   </ul>
   
@@ -871,7 +701,9 @@ wiki with many descriptions, tips, examples and tutorials.</p></li>
     <a class="f5 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://zzamboni.org/" >
       &copy; 2018 Diego Zamboni
     </a>
-    <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.46</a>
+    <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >Made with love, coffee,&nbsp;<a class="no-underline hover-white white-70" href="https://www.gnu.org/software/emacs/">Emacs 26.1 </a> &plus;
+                <a class="no-underline hover-white white-70" href="https://orgmode.org/">Org mode 9.1.13 </a> &plus;
+                <a class="no-underline hover-white white-70" href="https://ox-hugo.scripter.co/">ox-hugo</a>&nbsp;and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo 0.46</a>
             &plus; <a class="no-underline hover-white white-70" href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a></div>
     
 
