@@ -707,7 +707,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="s">&#34;A-h&#34;</span> <span class="o">.</span> <span class="nv">org-mark-element</span><span class="p">)</span></code></pre></div>
 <p>Default setup and keybinding for <code>org-capture</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">org-default-notes-file</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">org-directory</span> <span class="s">&#34;/notes.org&#34;</span><span class="p">))</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="s">&#34;C-c c&#34;</span> <span class="o">.</span> <span class="nv">org-capture</span><span class="p">)</span></code></pre></div>
-<p>Load <code>org-tempo</code> to enable snippets such as <code>&lt;s&lt;TAB&gt;</code> to insert a source block. Disabled for now as I try to get used to the new <kbd>C-c C-,</kbd> shortcut recently introduced. See the loooong discussion starting at <a href="https://lists.gnu.org/archive/html/emacs-orgmode/2018-04/msg00600.html">https://lists.gnu.org/archive/html/emacs-orgmode/2018-04/msg00600.html</a>.</p>
+<p>Load <code>org-tempo</code> to enable snippets such as <code>&lt;s&lt;TAB&gt;</code> to insert a source block. Disabled for now as I try to get used to the new <kbd>C-c</kbd> <kbd>C-,</kbd> shortcut recently introduced. See the loooong discussion starting at <a href="https://lists.gnu.org/archive/html/emacs-orgmode/2018-04/msg00600.html">https://lists.gnu.org/archive/html/emacs-orgmode/2018-04/msg00600.html</a>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">org-tempo</span>
   <span class="nb">:disabled</span>
   <span class="nb">:defer</span> <span class="mi">5</span>
@@ -957,7 +957,7 @@ if (!doNotTrack) {
       <span class="p">(</span><span class="nf">erase-buffer</span><span class="p">)</span>
       <span class="p">(</span><span class="nf">insert</span> <span class="nv">document</span><span class="p">)</span>
       <span class="p">(</span><span class="nf">goto-char</span> <span class="p">(</span><span class="nf">point-min</span><span class="p">)))))</span></code></pre></div>
-<p>Remove a link. For some reason this is not part of org-mode. From <a href="https://emacs.stackexchange.com/a/10714/11843">https://emacs.stackexchange.com/a/10714/11843</a>, I bind it to <kbd>C-c C-M-u</kbd>.</p>
+<p>Remove a link. For some reason this is not part of org-mode. From <a href="https://emacs.stackexchange.com/a/10714/11843">https://emacs.stackexchange.com/a/10714/11843</a>, I bind it to <kbd>C-c</kbd> <kbd>C-M-u</kbd>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">afs/org-replace-link-by-link-description</span> <span class="p">()</span>
     <span class="s">&#34;Replace an org link by its description or if empty its address&#34;</span>
   <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
