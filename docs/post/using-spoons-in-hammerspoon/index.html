@@ -193,7 +193,7 @@ if (!doNotTrack) {
 
 <p>In this second article about Hammerspoon, we look into <em>Spoons</em>, modules written in Lua which can be easily installed and loaded into Hammerspoon to provide ready-to-use functionality. Spoons provide a predefined API to configure and use them. They are also a good way to share your own work with other users.</p>
 
-<p>See also the <a href="https://zzamboni.org/post/getting-started-with-hammerspoon/">first article in this series</a>.</p>
+<p>See also the <a href="/post/getting-started-with-hammerspoon/">first article in this series</a>.</p>
 
 <h2 id="using-a-spoon-to-locate-your-mouse">Using a Spoon to locate your mouse</h2>
 
@@ -242,7 +242,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">spoon.MouseCircle</span><span class="p">:</span><span class="n">show</span><span class="p">()</span></code></pre></div>
 <p>Most spoons are structured like this: you can set up hotkeys to trigger the main functionality, but you can also trigger it via method calls.  Normally you won&rsquo;t use these methods, but their availability makes it possible for you to use spoon functionality from our own configuration, or from other spoons, to create further automation.</p>
 
-<p><code>spoon.MouseCircle.color</code> is a public configuration variable exposed by the spoon, which specifies the color that will be used to draw the circle. Colors are defined according to the documentation for the <a href="http://www.hammerspoon.org/docs/hs.drawing.color">hs.drawing.color</a> module. Several color collections are supported, including the OS X system collections and a few defined by Hammerspoon itself. Color definitions are stored in Lua tables indexed by their name. For example, you can view the <a href="http://www.hammerspoon.org/docs/hs.drawing.color#hammerspoon">hs.drawing.color.hammerspoon</a> table, including the color definitions, by using the convenient <a href="http://www.hammerspoon.org/docs/hs.inspect">hs.inspect</a> method on the console:</p>
+<p><code>spoon.MouseCircle.color</code> is a public configuration variable exposed by the spoon, which specifies the color that will be used to draw the circle. Colors are defined according to the documentation for the <a href="http://www.hammerspoon.org/docs/hs.drawing.color"><code>hs.drawing.color</code></a> module. Several color collections are supported, including the OS X system collections and a few defined by Hammerspoon itself. Color definitions are stored in Lua tables indexed by their name. For example, you can view the <a href="http://www.hammerspoon.org/docs/hs.drawing.color#hammerspoon"><code>hs.drawing.color.hammerspoon</code></a> table, including the color definitions, by using the convenient <a href="http://www.hammerspoon.org/docs/hs.inspect"><code>hs.inspect</code></a> method on the console:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">&gt;</span> <span class="n">hs.inspect</span><span class="p">(</span><span class="n">hs.drawing</span><span class="p">.</span><span class="n">color.hammerspoon</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">black</span> <span class="o">=</span> <span class="p">{</span>
@@ -275,7 +275,7 @@ if (!doNotTrack) {
 	</div>
 	
 	
-	<div class="admonition-content"><p>Lua does not include a function to easily get the keys of a table so you have to use the <a href="https://www.lua.org/manual/5.3/manual.html#pdf-pairs"><code>pairs</code></a> function to loop over the key/value pairs of the table. The <a href="http://www.hammerspoon.org/docs/hs.inspect">hs.inspect</a> function is convenient, but to get just the list of tables and the color names, without the color definitions themselves, you can use the following code (if you type this in the console you have to type it all in a single line &ndash; and beware, the output is a long list):</p>
+	<div class="admonition-content"><p>Lua does not include a function to easily get the keys of a table so you have to use the <a href="https://www.lua.org/manual/5.3/manual.html#pdf-pairs"><code>pairs()</code></a> function to loop over the key/value pairs of the table. The <a href="http://www.hammerspoon.org/docs/hs.inspect"><code>hs.inspect</code></a> function is convenient, but to get just the list of tables and the color names, without the color definitions themselves, you can use the following code (if you type this in the console you have to type it all in a single line &ndash; and beware, the output is a long list):</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">for</span> <span class="n">listname</span><span class="p">,</span><span class="n">colors</span> <span class="kr">in</span> <span class="n">pairs</span><span class="p">(</span><span class="n">hs.drawing</span><span class="p">.</span><span class="n">color.lists</span><span class="p">())</span> <span class="kr">do</span>
   <span class="n">print</span><span class="p">(</span><span class="n">listname</span><span class="p">)</span>
   <span class="kr">for</span> <span class="n">color</span><span class="p">,</span><span class="n">def</span> <span class="kr">in</span> <span class="n">pairs</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span> <span class="kr">do</span>
@@ -301,7 +301,7 @@ if (!doNotTrack) {
 	
 	<div class="admonition-content"><p>(We will look at this in more detail in a future installment about Lua, but in case you were wondering&hellip;)</p>
 
-<p>You may have noticed that the configuration variable was accessed with a dot (<code>spoon.MouseCircle.color</code>), and we also used it for some function calls earlier (e.g. <a href="http://www.hammerspoon.org/docs/hs.notify#show">hs.notify.show</a>, whereas for the <code>show()</code> method we used a colon (<code>spoon.MouseCircle:show()</code>). The latter is Lua&rsquo;s object-method-call notation, and its effect is to pass the object on which the method is being called as an implicit first argument called <code>self</code>. This is simply a syntactic shortcut, i.e. the following two are equivalent:</p>
+<p>You may have noticed that the configuration variable was accessed with a dot (<code>spoon.MouseCircle.color</code>), and we also used it for some function calls earlier (e.g. <a href="http://www.hammerspoon.org/docs/hs.notify#show"><code>hs.notify.show</code></a>, whereas for the <code>show()</code> method we used a colon (<code>spoon.MouseCircle:show()</code>). The latter is Lua&rsquo;s object-method-call notation, and its effect is to pass the object on which the method is being called as an implicit first argument called <code>self</code>. This is simply a syntactic shortcut, i.e. the following two are equivalent:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">spoon.MouseCircle</span><span class="p">:</span><span class="n">show</span><span class="p">()</span>
 <span class="n">spoon.MouseCircle</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">spoon.MouseCircle</span><span class="p">)</span></code></pre></div>
 <p>Note that in the second statement, we are calling the method using the dot notation, and explicitly passing the object as the first argument.  Normally you would use colon notation, but the alternative can be useful when constructing function pointers. For example, if you wanted to manually bind a second key to show the mouse circle, you might initially try to use the following:</p>
@@ -310,11 +310,11 @@ if (!doNotTrack) {
 <p>But this results in an error. The correct way is to wrap the call in an anonymous function:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="p">{</span><span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span> <span class="p">},</span> <span class="s2">&#34;p&#34;</span> <span class="p">},</span>
                    <span class="kr">function</span><span class="p">()</span> <span class="n">spoon.MouseCircle</span><span class="p">:</span><span class="n">show</span><span class="p">()</span> <span class="kr">end</span><span class="p">)</span></code></pre></div>
-<p>Alternatively, you can use the <a href="http://www.hammerspoon.org/docs/hs.fnutils#partial">hs.fnutils.partial</a> function to construct a function pointer that includes the correct first argument:</p>
+<p>Alternatively, you can use the <a href="http://www.hammerspoon.org/docs/hs.fnutils#partial"><code>hs.fnutils.partial</code></a> function to construct a function pointer that includes the correct first argument:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="p">{</span><span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span> <span class="p">},</span> <span class="s2">&#34;p&#34;</span> <span class="p">},</span>
                    <span class="n">hs.fnutils</span><span class="p">.</span><span class="n">partial</span><span class="p">(</span><span class="n">spoon.MouseCircle</span><span class="p">.</span><span class="n">show</span><span class="p">,</span>
                                       <span class="n">spoon.MouseCircle</span><span class="p">))</span></code></pre></div>
-<p>This is more verbose than the previous example, but the technique can be useful sometimes. Although Lua is not a full functional language, it supports using functions as first-class values, and the <a href="http://www.hammerspoon.org/docs/hs.fnutils">hs.fnutils</a> extension includes a number of functions that make it easy to use them.</p>
+<p>This is more verbose than the previous example, but the technique can be useful sometimes. Although Lua is not a full functional language, it supports using functions as first-class values, and the <a href="http://www.hammerspoon.org/docs/hs.fnutils"><code>hs.fnutils</code></a> extension includes a number of functions that make it easy to use them.</p>
 </div>
 </aside>
 
@@ -326,7 +326,7 @@ if (!doNotTrack) {
 <p>The advantage of using spoons is that you can count on them to adhere to a <a href="https://github.com/Hammerspoon/hammerspoon/blob/master/SPOONS.md#api-conventions">defined API</a>, which makes it easier to automate their use. Although each spoon is free to define additional variable and methods, the following are standard:</p>
 
 <ul>
-<li><p><code>SPOON:init()</code> is called automatically (if it exists) by <a href="http://www.hammerspoon.org/docs/hs#loadSpoon">hs.loadSpoon</a> after loading the spoon, and can be used to initialize variables or anything else needed by the Spoon.</p></li>
+<li><p><code>SPOON:init()</code> is called automatically (if it exists) by <a href="http://www.hammerspoon.org/docs/hs#loadSpoon"><code>hs.loadSpoon</code></a> after loading the spoon, and can be used to initialize variables or anything else needed by the Spoon.</p></li>
 
 <li><p><code>SPOON:start()</code> should exist if the spoon requires any ongoing or background processes such as timers or watchers of any kind.</p></li>
 
@@ -468,8 +468,6 @@ if (!doNotTrack) {
                  Fixing the Outlook-to-OmniFocus Script
               </a>
             </li>
-          
-        
           
         
           
