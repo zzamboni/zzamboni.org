@@ -77,13 +77,13 @@ Save the file, and from the Hammerspoon icon in the menubar, select "Reload conf
 
 Although it should be fairly self-explanatory, let us dissect this example to give you a clearer understanding of its components:
 
--   All Hammerspoon built-in extensions start with `hs.` In this case, [hs.hotkey](http://www.hammerspoon.org/docs/hs.hotkey) is the extension that handles keyboard bindings. It allows us to easily define which functions will be called in response to different keyboard combinations. You can even differentiate between the keys being pressed, released or held down if you need to. The other extension used in this example is [hs.notify](http://www.hammerspoon.org/docs/hs.notify), which allows us to interact with the macOS Notification Center to display, react and interact with notifications.
+-   All Hammerspoon built-in extensions start with `hs.` In this case, [`hs.hotkey`](http://www.hammerspoon.org/docs/hs.hotkey) is the extension that handles keyboard bindings. It allows us to easily define which functions will be called in response to different keyboard combinations. You can even differentiate between the keys being pressed, released or held down if you need to. The other extension used in this example is [`hs.notify`](http://www.hammerspoon.org/docs/hs.notify), which allows us to interact with the macOS Notification Center to display, react and interact with notifications.
 
--   Within `hs.hotkey`, the [hs.hotkey.bindSpec](http://www.hammerspoon.org/docs/hs.hotkey#bindSpec) function allows you to bind a function to a pressed key. Its first argument is a key specification which consists of a list (Lua lists and table literals are represented using curly braces) with two elements: a list of the key modifiers, and the key itself. In this example, `{ { "ctrl", "cmd", "alt" }, "h" }` represents pressing <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>h</kbd>.
+-   Within `hs.hotkey`, the [`hs.hotkey.bindSpec`](http://www.hammerspoon.org/docs/hs.hotkey#bindSpec) function allows you to bind a function to a pressed key. Its first argument is a key specification which consists of a list (Lua lists and table literals are represented using curly braces) with two elements: a list of the key modifiers, and the key itself. In this example, `{ { "ctrl", "cmd", "alt" }, "h" }` represents pressing <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>h</kbd>.
 
 -   The second argument to `bindSpec` is the function to call when the key is pressed. Here we are defining an inline anonymous function using `function() ... end`.
 
--   The callback function uses [hs.notify.show](http://www.hammerspoon.org/docs/hs.notify#show) to display the message. Take a quick look at the [hs.notify](http://www.hammerspoon.org/docs/hs.notify) documentation to get an idea of its extensive capabilities, including configuration of all aspects of a notification's appearance and buttons, and the functions to call upon different user actions.
+-   The callback function uses [`hs.notify.show`](http://www.hammerspoon.org/docs/hs.notify#show) to display the message. Take a quick look at the [`hs.notify`](http://www.hammerspoon.org/docs/hs.notify) documentation to get an idea of its extensive capabilities, including configuration of all aspects of a notification's appearance and buttons, and the functions to call upon different user actions.
 
 Try changing the configuration to display a different message or use a different key. After every change, you need to instruct Hammerspoon to reload its configuration, which you can do through its menubar item.
 
@@ -92,7 +92,7 @@ Try changing the configuration to display a different message or use a different
 
 As you start modifying your configuration, errors will happen, as they always do when coding. To help in development and debugging, Hammerspoon offers a console window where you can see any errors and messages printed by your Lua code as it executes, and also type code to be evaluated. It is a very useful tool while developing your Hammerspoon configuration.
 
-To invoke the console, you normally choose "Console..." from the Hammerspoon menubar item. However, this is such a common operation, that you might find it useful to also set a key combination for showing the console. Most of Hammerspoon's internal functionality is also accessible through its API. In this case, looking at the [documentation for the main `hs` module](http://www.hammerspoon.org/docs/hs) reveals that there is an [hs.toggleConsole](http://www.hammerspoon.org/docs/hs#toggleConsole) function. Using the knowledge you have acquired so far, you can easily configure a hotkey for opening and hiding the console:
+To invoke the console, you normally choose "Console..." from the Hammerspoon menubar item. However, this is such a common operation, that you might find it useful to also set a key combination for showing the console. Most of Hammerspoon's internal functionality is also accessible through its API. In this case, looking at the [documentation for the main `hs` module](http://www.hammerspoon.org/docs/hs) reveals that there is an [`hs.toggleConsole`](http://www.hammerspoon.org/docs/hs#toggleConsole) function. Using the knowledge you have acquired so far, you can easily configure a hotkey for opening and hiding the console:
 
 ```lua
 hs.hotkey.bindSpec({ { "ctrl", "cmd", "alt" }, "y" }, hs.toggleConsole)
@@ -100,16 +100,16 @@ hs.hotkey.bindSpec({ { "ctrl", "cmd", "alt" }, "y" }, hs.toggleConsole)
 
 Once you reload your configuration, you should be able to use <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>y</kbd> to open and close the console. Any Lua code you type in the Console will be evaluated in the main Hammerspoon context, so you can add to your configuration directly from there. This is a good way to incrementally develop your code before committing it to the `init.lua` file.
 
-You may have noticed by now another common operation while developing Hammerspoon code: reloading the configuration, which you normally have to do from the Hammerspoon menu. So why not set up a hotkey to do that as well? Again, the [hs](http://www.hammerspoon.org/docs/hs) module comes to our help with the [hs.reload](http://www.hammerspoon.org/docs/hs#reload) method:
+You may have noticed by now another common operation while developing Hammerspoon code: reloading the configuration, which you normally have to do from the Hammerspoon menu. So why not set up a hotkey to do that as well? Again, the [`hs`](http://www.hammerspoon.org/docs/hs) module comes to our help with the [`hs.reload`](http://www.hammerspoon.org/docs/hs#reload) method:
 
 ```lua
 hs.hotkey.bindSpec({ { "ctrl", "cmd", "alt" }, "r" }, hs.reload)
 ```
 
-Another useful development tool is the `hs` command, which you can run from your terminal to get a Hammerspoon console. To install it, you can use the [hs.ipc".cliInstall](http://www.hammerspoon.org/docs/hs.ipc"#cliInstall) function, which you can just add to your `init.lua` file to check and install the command every time Hammerspoon runs.
+Another useful development tool is the `hs` command, which you can run from your terminal to get a Hammerspoon console. To install it, you can use the [`hs.ipc".cliInstall`](http://www.hammerspoon.org/docs/hs.ipc"#cliInstall) function, which you can just add to your `init.lua` file to check and install the command every time Hammerspoon runs.
 
 {{% warning %}}
- [hs.ipc.cliInstall](http://www.hammerspoon.org/docs/hs.ipc#cliInstall) creates symlinks under `/usr/local/` to the `hs` command and its manual page file, located inside the Hammerspoon application bundle. Under some circumstances (particularly if you build Hammerspoon from source, or if you install different versions of it), you may end up with broken symlinks. If the `hs` command stops working and `hs.ipc.cliInstall()` doesn't fix it, look for broken symlinks left behind from old versions of Hammerspoon.  Remove them and things should work again.
+ [`hs.ipc.cliInstall`](http://www.hammerspoon.org/docs/hs.ipc#cliInstall) creates symlinks under `/usr/local/` to the `hs` command and its manual page file, located inside the Hammerspoon application bundle. Under some circumstances (particularly if you build Hammerspoon from source, or if you install different versions of it), you may end up with broken symlinks. If the `hs` command stops working and `hs.ipc.cliInstall()` doesn't fix it, look for broken symlinks left behind from old versions of Hammerspoon.  Remove them and things should work again.
 {{% /warning %}}
 
 Now you have all the tools for developing your Hammerspoon configuration. In the next installment we will look at how you can save yourself a lot of coding by using pre-made modules. In the meantime, feel free to look through my [Hammerspoon configuration file](/post/my-hammerspoon-configuration-with-commentary/) for ideas, and please let me know your thoughts in the comments!

@@ -498,7 +498,7 @@ In this second article about Hammerspoon, we look into /Spoons/, modules written
 
 In this second article about Hammerspoon, we look into /Spoons/, modules written in Lua which can be easily installed and loaded into Hammerspoon to provide ready-to-use functionality. Spoons provide a predefined API to configure and use them. They are also a good way to share your own work with other users.
 
-See also the [first article in this series]({{< ref "/post/2017-08-21-getting-started-with-hammerspoon" >}}).
+See also the [[/post/getting-started-with-hammerspoon/][first article in this series]].
 
 **** Using a Spoon to locate your mouse
   :PROPERTIES:
@@ -1146,7 +1146,7 @@ All the Hammerspoon modules are implemented the same way:
     }
 #+end_src
 
-The common way of defining a new module in Lua is to create an empty table, and populate it with functions or variables as needed. For example, let's put our [[file:%7B%7B%3C%20relref%20%222017-10-21-just-enough-lua-to-be-productive-in-hammerspoon-part1.md#functions%22%20%3E%7D%7D][double-click generator]] in a module. Create the file =~/.hammerspoon/doubleclick.lua= with the following contents:
+The common way of defining a new module in Lua is to create an empty table, and populate it with functions or variables as needed. For example, let's put our [[/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/#functions][double-click generator]] in a module. Create the file =~/.hammerspoon/doubleclick.lua= with the following contents:
 
 #+begin_src lua
     local mod={}
@@ -1263,7 +1263,7 @@ Patterns, just like regular expressions, are commonly used for string manipulati
    :CUSTOM_ID: string-manipulation
    :END:
 
-Lua includes the {{{luadoc(string,6.4)}}} library to implement common string manipulation functions, including pattern matching. All of these functions can be called either as regular functions, with the string as the first argument, or as method calls on the string itself, using the colon syntax (which, as we saw [[file:%7B%7B%3C%20relref%20%222017-10-21-just-enough-lua-to-be-productive-in-hammerspoon-part1.md#dot-vs-colon-method-access-in-lua%22%20%3E%7D%7D][before]], gets converted to the same call). For example, the following two are equivalent:
+Lua includes the {{{luadoc(string,6.4)}}} library to implement common string manipulation functions, including pattern matching. All of these functions can be called either as regular functions, with the string as the first argument, or as method calls on the string itself, using the colon syntax (which, as we saw [[/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/#dot-vs-colon-method-access-in-lua][before]], gets converted to the same call). For example, the following two are equivalent:
 
 #+begin_src lua
     string.find(a, "^foo")
