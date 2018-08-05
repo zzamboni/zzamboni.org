@@ -6,7 +6,7 @@
     <description>Recent content in Mac on zzamboni.org</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Nov 2017 08:16:15 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Nov 2017 08:16:00 +0100</lastBuildDate>
     
 	<atom:link href="https://zzamboni.org/tags/mac/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,13 +14,12 @@
     <item>
       <title>Just Enough Lua to Be Productive in Hammerspoon, Part 2</title>
       <link>https://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</link>
-      <pubDate>Wed, 01 Nov 2017 08:16:15 +0000</pubDate>
+      <pubDate>Wed, 01 Nov 2017 08:16:00 +0100</pubDate>
       
       <guid>https://zzamboni.org/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/</guid>
-      <description>&lt;p&gt;In this second article of the &amp;ldquo;Just Enough Lua&amp;rdquo; series, we dive into
-Lua&amp;rsquo;s types and data structures.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>In this second article of the &amp;ldquo;Just Enough Lua&amp;rdquo; series, we dive into Lua&amp;rsquo;s types and data structures.
+  If you haven&amp;rsquo;t already, be sure to read the first installment of this series to learn about the basic Lua concepts.
+  Tables Table are the only compound data type in Lua, and are used to implement arrays, associative arrays (commonly called &amp;ldquo;maps&amp;rdquo; or &amp;ldquo;hashes&amp;rdquo; in other languages), modules, objects and namespaces.</description>
     </item>
     
     <item>
@@ -59,6 +58,17 @@ predefined API to configure and use them. They are also a good way to
 share your own work with other users.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using Spoons in Hammerspoon</title>
+      <link>https://zzamboni.org/post/using-spoons-in-hammerspoon/</link>
+      <pubDate>Fri, 01 Sep 2017 17:55:00 +0200</pubDate>
+      
+      <guid>https://zzamboni.org/post/using-spoons-in-hammerspoon/</guid>
+      <description>In this second article about Hammerspoon, we look into Spoons, modules written in Lua which can be easily installed and loaded into Hammerspoon to provide ready-to-use functionality. Spoons provide a predefined API to configure and use them. They are also a good way to share your own work with other users.
+See also the first article in this series.
+Using a Spoon to locate your mouse As a first example, we will use the MouseCircle spoon, which allows us to set up a hotkey that displays a color circle around the current location of the mouse pointer for a few seconds, to help you locate it.</description>
     </item>
     
     <item>
