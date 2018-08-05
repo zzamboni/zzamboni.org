@@ -10,7 +10,7 @@ featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **August  3, 2018**
+Last update: **August  4, 2018**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -576,6 +576,7 @@ I use `use-package` to load the `org` package, and put its configuration inside 
     (org-log-done t)
     (org-startup-indented t)
     (org-default-notes-file (concat org-directory "/notes.org"))
+    (org-use-speed-commands (lambda () (and (looking-at org-outline-regexp) (looking-back "^\**"))))
     (org-confirm-babel-evaluate nil)
     (org-src-fontify-natively t)
     (org-src-tab-acts-natively t)
@@ -702,6 +703,12 @@ Load `org-tempo` to enable snippets such as `<s<TAB>` to insert a source block. 
   :defer 5
   :ensure nil
   :after org)
+```
+
+Enable `org-speed-commands`, which allows quick single-key commands when the cursor is placed on a heading.
+
+```emacs-lisp
+(org-use-speed-commands (lambda () (and (looking-at org-outline-regexp) (looking-back "^\**"))))
 ```
 
 
