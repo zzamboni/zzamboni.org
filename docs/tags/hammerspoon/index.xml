@@ -17,7 +17,7 @@
       <pubDate>Mon, 08 Jan 2018 13:31:00 +0100</pubDate>
       
       <guid>https://zzamboni.org/post/my-hammerspoon-configuration-with-commentary/</guid>
-      <description>Last update: August 4, 2018
+      <description>Last update: August 5, 2018
 In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration in GitHub.
 General variables and configuration Global log level. Per-spoon log level can be configured in each Install:andUse block below.</description>
     </item>
@@ -52,21 +52,6 @@ Lua is a scripting language created in 1993, and focused from the beginning in b
       <description>&lt;p&gt;Here&amp;rsquo;s how to fix the breakage caused by one of the recent updates to
 Microsoft Outlook in the Outlook-to-OmniFocus AppleScript included
 with my SendToOmniFocus spoon.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Using Spoons in Hammerspoon</title>
-      <link>https://zzamboni.org/post/using-spoons-in-hammerspoon/</link>
-      <pubDate>Fri, 01 Sep 2017 20:17:55 +0200</pubDate>
-      
-      <guid>https://zzamboni.org/post/using-spoons-in-hammerspoon/</guid>
-      <description>&lt;p&gt;In this second article about Hammerspoon, we look into &lt;em&gt;Spoons&lt;/em&gt;,
-modules written in Lua which can be easily installed and loaded into
-Hammerspoon to provide ready-to-use functionality. Spoons provide a
-predefined API to configure and use them. They are also a good way to
-share your own work with other users.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

@@ -204,7 +204,7 @@ if (!doNotTrack) {
       <span class="n">info</span> <span class="o">=</span> <span class="s2">&#34;No information found about formula &#39;&#34;</span> <span class="o">..</span> <span class="n">pkg</span> <span class="o">..</span> <span class="s2">&#34;&#39;!&#34;</span>
    <span class="kr">end</span>
 <span class="kr">end</span></code></pre></div>
-<p>In this example, in addition to the <a href="https://www.lua.org/manual/5.3/manual.html#3.3.4"><code>if</code></a> statement, you can see in the line that runs <a href="http://www.hammerspoon.org/docs/hs#execute">hs.execute</a> that Lua functions can return multiple values (which is not the same as returning an array, which counts as a single value). Within the function, this is implemented simply by separating the values with commas in the <code>return</code> statement, like this: <code>return val1, val2</code>. You can also see in action the following operators:</p>
+<p>In this example, in addition to the <a href="https://www.lua.org/manual/5.3/manual.html#3.3.4">if</a> statement, you can see in the line that runs <a href="http://www.hammerspoon.org/docs/hs#execute"><code>hs.execute</code></a> that Lua functions can return multiple values (which is not the same as returning an array, which counts as a single value). Within the function, this is implemented simply by separating the values with commas in the <code>return</code> statement, like this: <code>return val1, val2</code>. You can also see in action the following operators:</p>
 
 <ul>
 <li><p><code>==</code> for equality;</p></li>
@@ -221,7 +221,7 @@ if (!doNotTrack) {
       <span class="n">doReload</span> <span class="o">=</span> <span class="kc">true</span>
    <span class="kr">end</span>
 <span class="kr">end</span></code></pre></div>
-<p>In this example we see the <a href="https://www.lua.org/manual/5.3/manual.html#3.3.5"><code>for</code></a> statement in its so-called <em>generic form</em>:</p>
+<p>In this example we see the <a href="https://www.lua.org/manual/5.3/manual.html#3.3.5">for</a> statement in its so-called <em>generic form</em>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">for</span> <span class="o">&lt;</span><span class="n">var</span><span class="o">&gt;</span> <span class="kr">in</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span> <span class="kr">do</span> <span class="o">&lt;</span><span class="n">block</span><span class="o">&gt;</span> <span class="kr">end</span></code></pre></div>
 <p>This statement loops the variables over the values returned by the expressions, executing the block with each the consecutive value until it becomes <code>nil</code>.</p>
 
@@ -247,16 +247,16 @@ if (!doNotTrack) {
 <p>Going back to our example, we can also learn the following:</p>
 
 <ul>
-<li><p>The <a href="https://www.lua.org/manual/5.3/manual.html#pdf-pairs"><code>pairs</code></a> function, which loops over a table. We will learn more about Lua tables below, but they can be used to represent both regular and associative arrays. <code>pairs()</code> treats the <code>files</code> variable as an associative array, and returns in each iteration a key/value pair of its contents.</p></li>
+<li><p>The <a href="https://www.lua.org/manual/5.3/manual.html#pdf-pairs"><code>pairs()</code></a> function, which loops over a table. We will learn more about Lua tables below, but they can be used to represent both regular and associative arrays. <code>pairs()</code> treats the <code>files</code> variable as an associative array, and returns in each iteration a key/value pair of its contents.</p></li>
 
 <li><p>The <code>_</code> variable, while not special per se, is used by convention in Lua for &ldquo;throwaway values&rdquo;. In this case we are not interested in the key in each iteration, just the value, so we assign the key to <code>_</code>, never to be used again.</p></li>
 
-<li><p>Our first glimpse into the Lua <a href="https://www.lua.org/manual/5.3/manual.html#6.4"><code>string library</code></a>, and the two ways in which it can be used:</p>
+<li><p>Our first glimpse into the Lua <a href="https://www.lua.org/manual/5.3/manual.html#6.4">string library</a>, and the two ways in which it can be used:</p>
 
 <ul>
-<li><p>In <code>file:sub(-4)</code>, the colon indicates the object-oriented notation (see &ldquo;Lua dot-vs-colon method access&rdquo; below). This invokes the <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.sub"><code>string.sub</code></a> function, automatically passing the <code>file</code> variable as its first argument. This statement is equivalent to <code>string.sub(file, -4)</code>.</p></li>
+<li><p>In <code>file:sub(-4)</code>, the colon indicates the object-oriented notation (see &ldquo;Lua dot-vs-colon method access&rdquo; below). This invokes the <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.sub"><code>string.sub()</code></a> function, automatically passing the <code>file</code> variable as its first argument. This statement is equivalent to <code>string.sub(file, -4)</code>.</p></li>
 
-<li><p>In <code>string.match(file, '/')</code>, we see the function notation used to call <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.match"><code>string.match</code></a>. Since the <code>file</code> variable is being passed as the first argument, you could rewrite this statement as <code>file:match('/[.]')</code>. In practice, I&rsquo;ve found myself using both notations somewhat exchangeably - feel free to use whichever you find most comfortable.</p></li>
+<li><p>In <code>string.match(file, '/')</code>, we see the function notation used to call <a href="https://www.lua.org/manual/5.3/manual.html#pdf-string.match"><code>string.match()</code></a>. Since the <code>file</code> variable is being passed as the first argument, you could rewrite this statement as <code>file:match('/[.]')</code>. In practice, I&rsquo;ve found myself using both notations somewhat exchangeably - feel free to use whichever you find most comfortable.</p></li>
 </ul></li>
 </ul>
 
@@ -279,10 +279,10 @@ if (!doNotTrack) {
    <span class="n">hs.eventtap</span><span class="p">.</span><span class="n">event.newMouseEvent</span><span class="p">(</span> <span class="c1">-- &lt;4&gt;</span>
      <span class="n">hs.eventtap</span><span class="p">.</span><span class="n">event.types</span><span class="p">.</span><span class="n">leftMouseUp</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span><span class="n">post</span><span class="p">()</span>
 <span class="kr">end</span></code></pre></div>
-<p>In this example we can also see some examples of the Hammerspoon library in action, in particular two extremely powerful libraries: <a href="http://www.hammerspoon.org/docs/hs.mouse">hs.mouse</a> for interacting with the mouse pointer, and <a href="http://www.hammerspoon.org/docs/hs.eventtap">hs.eventtap</a>, which allows you to both intercept and generate arbitrary system events, including key pressed and mouse clicks. This function simulates a double click on the current pointer position:</p>
+<p>In this example we can also see some examples of the Hammerspoon library in action, in particular two extremely powerful libraries: <a href="http://www.hammerspoon.org/docs/hs.mouse"><code>hs.mouse</code></a> for interacting with the mouse pointer, and <a href="http://www.hammerspoon.org/docs/hs.eventtap"><code>hs.eventtap</code></a>, which allows you to both intercept and generate arbitrary system events, including key pressed and mouse clicks. This function simulates a double click on the current pointer position:</p>
 
 <ol>
-<li><p>We first get the current position of the mouse pointer using <a href="http://www.hammerspoon.org/docs/hs.mouse#getAbsolutePosition">hs.mouse.getAbsolutePosition</a>.</p></li>
+<li><p>We first get the current position of the mouse pointer using <a href="http://www.hammerspoon.org/docs/hs.mouse#getAbsolutePosition"><code>hs.mouse.getAbsolutePosition</code></a>.</p></li>
 
 <li><p>We create a new mouse event of type <a href="http://www.hammerspoon.org/docs/hs.eventtap.event#types"><code>leftMouseDown</code></a> in the obtained coordinates and with the given modifiers.</p></li>
 
@@ -374,14 +374,6 @@ if (!doNotTrack) {
             <li class="mb2 mr3">
               <a href="/post/fixing-outlook-to-omnifocus-script/" class="link mid-gray dim">
                  Fixing the Outlook-to-OmniFocus Script
-              </a>
-            </li>
-          
-        
-          
-            <li class="mb2 mr3">
-              <a href="/post/using-spoons-in-hammerspoon/" class="link mid-gray dim">
-                 Using Spoons in Hammerspoon
               </a>
             </li>
           

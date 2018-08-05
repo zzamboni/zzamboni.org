@@ -22,7 +22,7 @@
      
 
       <meta property="og:title" content="My Emacs Configuration, With Commentary" />
-<meta property="og:description" content="Last update: August 4, 2018
+<meta property="og:description" content="Last update: August 5, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zzamboni.org/post/my-emacs-configuration-with-commentary/" />
@@ -44,20 +44,20 @@ I have enjoyed slowly converting my configuration files to literate programming 
 
 
 <meta itemprop="name" content="My Emacs Configuration, With Commentary">
-<meta itemprop="description" content="Last update: August 4, 2018
+<meta itemprop="description" content="Last update: August 5, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving.">
 
 
 <meta itemprop="datePublished" content="2017-12-17T20:14:00&#43;01:00" />
 <meta itemprop="dateModified" content="2017-12-17T20:14:00&#43;01:00" />
-<meta itemprop="wordCount" content="7914">
+<meta itemprop="wordCount" content="7965">
 
 
 
 <meta itemprop="keywords" content="config,howto,literateprogramming,literateconfig,emacs," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Emacs Configuration, With Commentary"/>
-<meta name="twitter:description" content="Last update: August 4, 2018
+<meta name="twitter:description" content="Last update: August 5, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving."/>
 
         
@@ -188,7 +188,7 @@ if (!doNotTrack) {
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
-<p>Last update: <strong>August  4, 2018</strong></p>
+<p>Last update: <strong>August  5, 2018</strong></p>
 
 <p>I have enjoyed slowly converting my configuration files to <a href="http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html">literate programming</a> style style using org-mode in Emacs. I previously posted my <a href="../my-elvish-configuration-with-commentary/">Elvish configuration</a>, and now it&rsquo;s the turn of my Emacs configuration file. The text below is included directly from my <a href="https://github.com/zzamboni/dot%5Femacs/blob/master/init.org">init.org</a> file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the <a href="https://github.com/zzamboni/dot%5Femacs/blob/master/init.org">init.org file in GitHub</a> for my current, live configuration, and the generated file at <a href="https://github.com/zzamboni/dot%5Femacs/blob/master/init.el">https://github.com/zzamboni/dot%5Femacs/blob/master/init.el</a>.</p>
 
@@ -713,7 +713,7 @@ if (!doNotTrack) {
   <span class="nb">:defer</span> <span class="mi">5</span>
   <span class="nb">:ensure</span> <span class="no">nil</span>
   <span class="nb">:after</span> <span class="nv">org</span><span class="p">)</span></code></pre></div>
-<p>Enable <code>org-speed-commands</code>, which allows quick single-key commands when the cursor is placed on a heading.</p>
+<p>Enable <a href="https://orgmode.org/manual/Speed-keys.html">Speed Keys</a>, which allows quick single-key commands when the cursor is placed on a heading. Usually the cursor needs to be at the beginning of a headline line, but defining it with this function makes them active on any of the asterisks at the beginning of the line (useful with the font highlighting I use, as all but the last asterisk are sometimes not visible).</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">org-use-speed-commands</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nf">looking-at</span> <span class="nv">org-outline-regexp</span><span class="p">)</span> <span class="p">(</span><span class="nv">looking-back</span> <span class="s">&#34;^\**&#34;</span><span class="p">))))</span></code></pre></div>
 <h3 id="building-presentations-with-org-mode">Building presentations with org-mode</h3>
 
@@ -957,7 +957,7 @@ if (!doNotTrack) {
       <span class="p">(</span><span class="nf">erase-buffer</span><span class="p">)</span>
       <span class="p">(</span><span class="nf">insert</span> <span class="nv">document</span><span class="p">)</span>
       <span class="p">(</span><span class="nf">goto-char</span> <span class="p">(</span><span class="nf">point-min</span><span class="p">)))))</span></code></pre></div>
-<p>Removing a link. For some reason this is not part of org-mode. From <a href="https://emacs.stackexchange.com/a/10714/11843">https://emacs.stackexchange.com/a/10714/11843</a>, I bind it to <kbd>C-c C-M-u</kbd>.</p>
+<p>Remove a link. For some reason this is not part of org-mode. From <a href="https://emacs.stackexchange.com/a/10714/11843">https://emacs.stackexchange.com/a/10714/11843</a>, I bind it to <kbd>C-c C-M-u</kbd>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">afs/org-replace-link-by-link-description</span> <span class="p">()</span>
     <span class="s">&#34;Replace an org link by its description or if empty its address&#34;</span>
   <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
@@ -990,7 +990,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/org-macro-hsapi-code</span> <span class="p">(</span><span class="nv">link</span> <span class="nb">function</span> <span class="nv">desc</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">link-1</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">link</span> <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">org-string-nw-p</span> <span class="nb">function</span><span class="p">)</span> <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;#&#34;</span> <span class="nb">function</span><span class="p">)</span> <span class="s">&#34;&#34;</span><span class="p">)))</span>
          <span class="p">(</span><span class="nv">link-2</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">link</span> <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">org-string-nw-p</span> <span class="nb">function</span><span class="p">)</span> <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;.&#34;</span> <span class="nb">function</span><span class="p">)</span> <span class="s">&#34;&#34;</span><span class="p">)))</span>
-         <span class="p">(</span><span class="nv">desc-1</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">org-string-nw-p</span> <span class="nv">desc</span><span class="p">)</span> <span class="nv">link-2</span><span class="p">)))</span>
+         <span class="p">(</span><span class="nv">desc-1</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">org-string-nw-p</span> <span class="nv">desc</span><span class="p">)</span> <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;=&#34;</span> <span class="nv">link-2</span> <span class="s">&#34;=&#34;</span><span class="p">))))</span>
     <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;[[http://www.hammerspoon.org/docs/&#34;</span> <span class="nv">link-1</span> <span class="s">&#34;][&#34;</span> <span class="nv">desc-1</span> <span class="s">&#34;]]&#34;</span><span class="p">)))</span></code></pre></div>
 <p>Split STR at spaces and wrap each element with <code>~</code> char, separated by <code>+</code>. Zero-width spaces are inserted around the plus signs so that they get formatted correctly.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/org-macro-keys-code</span> <span class="p">(</span><span class="nv">str</span><span class="p">)</span>
@@ -1001,12 +1001,12 @@ if (!doNotTrack) {
 <p>Links to a specific section/function of the Lua manual.</p>
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/org-macro-luadoc-code</span> <span class="p">(</span><span class="nv">func</span> <span class="nv">section</span> <span class="nv">desc</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">anchor</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">org-string-nw-p</span> <span class="nv">section</span><span class="p">)</span> <span class="nv">func</span><span class="p">))</span>
-         <span class="p">(</span><span class="nv">desc-1</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">org-string-nw-p</span> <span class="nv">desc</span><span class="p">)</span> <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;=&#34;</span> <span class="nv">func</span> <span class="s">&#34;=&#34;</span><span class="p">))))</span>
+         <span class="p">(</span><span class="nv">desc-1</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">org-string-nw-p</span> <span class="nv">desc</span><span class="p">)</span> <span class="nv">func</span><span class="p">)))</span>
     <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;[[https://www.lua.org/manual/5.3/manual.html#&#34;</span> <span class="nv">anchor</span> <span class="s">&#34;][&#34;</span> <span class="nv">desc-1</span> <span class="s">&#34;]]&#34;</span><span class="p">)))</span>
 
 <span class="p">(</span><span class="nb">defun</span> <span class="nv">zz/org-macro-luafun-code</span> <span class="p">(</span><span class="nv">func</span> <span class="nv">desc</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">anchor</span> <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;pdf-&#34;</span> <span class="nv">func</span><span class="p">))</span>
-         <span class="p">(</span><span class="nv">desc-1</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">org-string-nw-p</span> <span class="nv">desc</span><span class="p">)</span> <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;=&#34;</span> <span class="nv">func</span> <span class="s">&#34;=&#34;</span><span class="p">))))</span>
+         <span class="p">(</span><span class="nv">desc-1</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">org-string-nw-p</span> <span class="nv">desc</span><span class="p">)</span> <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;=&#34;</span> <span class="nv">func</span> <span class="s">&#34;()=&#34;</span><span class="p">))))</span>
     <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;[[https://www.lua.org/manual/5.3/manual.html#&#34;</span> <span class="nv">anchor</span> <span class="s">&#34;][&#34;</span> <span class="nv">desc-1</span> <span class="s">&#34;]]&#34;</span><span class="p">)))</span></code></pre></div>
 <h2 id="system-specific-configuration">System-specific configuration</h2>
 

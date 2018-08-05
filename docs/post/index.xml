@@ -38,7 +38,7 @@ Recently I started thinking about how I could make my editing environment more v
       <pubDate>Mon, 08 Jan 2018 13:31:00 +0100</pubDate>
       
       <guid>https://zzamboni.org/post/my-hammerspoon-configuration-with-commentary/</guid>
-      <description>Last update: August 4, 2018
+      <description>Last update: August 5, 2018
 In my ongoing series of literate config files, I present to you my Hammerspoon configuration file. You can see the generated file at https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration in GitHub.
 General variables and configuration Global log level. Per-spoon log level can be configured in each Install:andUse block below.</description>
     </item>
@@ -49,7 +49,7 @@ General variables and configuration Global log level. Per-spoon log level can be
       <pubDate>Sun, 17 Dec 2017 20:14:00 +0100</pubDate>
       
       <guid>https://zzamboni.org/post/my-emacs-configuration-with-commentary/</guid>
-      <description>Last update: August 4, 2018
+      <description>Last update: August 5, 2018
 I have enjoyed slowly converting my configuration files to literate programming style style using org-mode in Emacs. I previously posted my Elvish configuration, and now it&amp;rsquo;s the turn of my Emacs configuration file. The text below is included directly from my init.org file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving.</description>
     </item>
     
@@ -69,7 +69,7 @@ The bash shortcuts (maybe older? I&amp;rsquo;m not sure in which shell these ori
       <pubDate>Thu, 16 Nov 2017 20:21:00 +0100</pubDate>
       
       <guid>https://zzamboni.org/post/my-elvish-configuration-with-commentary/</guid>
-      <description>Last update: August 4, 2018
+      <description>Last update: August 5, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc.</description>
     </item>
@@ -139,21 +139,6 @@ price, US$4.98 instead of the regular US$9.99.&lt;/p&gt;
       <description>&lt;p&gt;Here&amp;rsquo;s how to fix the breakage caused by one of the recent updates to
 Microsoft Outlook in the Outlook-to-OmniFocus AppleScript included
 with my SendToOmniFocus spoon.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Using Spoons in Hammerspoon</title>
-      <link>https://zzamboni.org/post/using-spoons-in-hammerspoon/</link>
-      <pubDate>Fri, 01 Sep 2017 20:17:55 +0200</pubDate>
-      
-      <guid>https://zzamboni.org/post/using-spoons-in-hammerspoon/</guid>
-      <description>&lt;p&gt;In this second article about Hammerspoon, we look into &lt;em&gt;Spoons&lt;/em&gt;,
-modules written in Lua which can be easily installed and loaded into
-Hammerspoon to provide ready-to-use functionality. Spoons provide a
-predefined API to configure and use them. They are also a good way to
-share your own work with other users.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

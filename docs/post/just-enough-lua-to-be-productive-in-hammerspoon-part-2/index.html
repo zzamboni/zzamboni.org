@@ -366,7 +366,7 @@ if (!doNotTrack) {
   <span class="n">setRelativePosition</span> <span class="o">=</span> <span class="o">&lt;</span><span class="kr">function</span> <span class="nf">8</span><span class="o">&gt;</span><span class="p">,</span>
   <span class="n">trackingSpeed</span> <span class="o">=</span> <span class="o">&lt;</span><span class="kr">function</span> <span class="nf">9</span><span class="o">&gt;</span>
 <span class="p">}</span></code></pre></div>
-<p>The common way of defining a new module in Lua is to create an empty table, and populate it with functions or variables as needed. For example, let&rsquo;s put our <a href="%7B%7B%3C%20relref%20%222017-10-21-just-enough-lua-to-be-productive-in-hammerspoon-part1.md#functions%22%20%3E%7D%7D">double-click generator</a> in a module. Create the file <code>~/.hammerspoon/doubleclick.lua</code> with the following contents:</p>
+<p>The common way of defining a new module in Lua is to create an empty table, and populate it with functions or variables as needed. For example, let&rsquo;s put our <a href="/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/#functions">double-click generator</a> in a module. Create the file <code>~/.hammerspoon/doubleclick.lua</code> with the following contents:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">mod</span><span class="o">=</span><span class="p">{}</span>
 
 <span class="n">mod.default_modifiers</span><span class="o">=</span><span class="p">{}</span>
@@ -460,7 +460,7 @@ Hammerspoon.app/Contents/Resources/extensions/?/init.lua</code></pre></div>
 
 <h2 id="string-manipulation">String manipulation</h2>
 
-<p>Lua includes the <a href="https://www.lua.org/manual/5.3/manual.html#6.4">string</a> library to implement common string manipulation functions, including pattern matching. All of these functions can be called either as regular functions, with the string as the first argument, or as method calls on the string itself, using the colon syntax (which, as we saw <a href="%7B%7B%3C%20relref%20%222017-10-21-just-enough-lua-to-be-productive-in-hammerspoon-part1.md#dot-vs-colon-method-access-in-lua%22%20%3E%7D%7D">before</a>, gets converted to the same call). For example, the following two are equivalent:</p>
+<p>Lua includes the <a href="https://www.lua.org/manual/5.3/manual.html#6.4">string</a> library to implement common string manipulation functions, including pattern matching. All of these functions can be called either as regular functions, with the string as the first argument, or as method calls on the string itself, using the colon syntax (which, as we saw <a href="/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/#dot-vs-colon-method-access-in-lua">before</a>, gets converted to the same call). For example, the following two are equivalent:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">string.find</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s2">&#34;^foo&#34;</span><span class="p">)</span>
 <span class="n">a</span><span class="p">:</span><span class="n">find</span><span class="p">(</span><span class="s2">&#34;^foo&#34;</span><span class="p">)</span></code></pre></div>
 <p>You can find the full documentation in the <a href="https://www.lua.org/manual/5.3/manual.html#6.4">Lua reference manual</a> and many other examples in the <a href="http://lua-users.org/wiki/StringLibraryTutorial">Lua-users wiki String Library Tutorial</a>. The following is a partial list of some of the functions I have found most useful:</p>
@@ -622,14 +622,6 @@ Hammerspoon.app/Contents/Resources/extensions/?/init.lua</code></pre></div>
             <li class="mb2 mr3">
               <a href="/post/fixing-outlook-to-omnifocus-script/" class="link mid-gray dim">
                  Fixing the Outlook-to-OmniFocus Script
-              </a>
-            </li>
-          
-        
-          
-            <li class="mb2 mr3">
-              <a href="/post/using-spoons-in-hammerspoon/" class="link mid-gray dim">
-                 Using Spoons in Hammerspoon
               </a>
             </li>
           

@@ -271,13 +271,13 @@ if (!doNotTrack) {
 <p>Although it should be fairly self-explanatory, let us dissect this example to give you a clearer understanding of its components:</p>
 
 <ul>
-<li><p>All Hammerspoon built-in extensions start with <code>hs.</code> In this case, <a href="http://www.hammerspoon.org/docs/hs.hotkey">hs.hotkey</a> is the extension that handles keyboard bindings. It allows us to easily define which functions will be called in response to different keyboard combinations. You can even differentiate between the keys being pressed, released or held down if you need to. The other extension used in this example is <a href="http://www.hammerspoon.org/docs/hs.notify">hs.notify</a>, which allows us to interact with the macOS Notification Center to display, react and interact with notifications.</p></li>
+<li><p>All Hammerspoon built-in extensions start with <code>hs.</code> In this case, <a href="http://www.hammerspoon.org/docs/hs.hotkey"><code>hs.hotkey</code></a> is the extension that handles keyboard bindings. It allows us to easily define which functions will be called in response to different keyboard combinations. You can even differentiate between the keys being pressed, released or held down if you need to. The other extension used in this example is <a href="http://www.hammerspoon.org/docs/hs.notify"><code>hs.notify</code></a>, which allows us to interact with the macOS Notification Center to display, react and interact with notifications.</p></li>
 
-<li><p>Within <code>hs.hotkey</code>, the <a href="http://www.hammerspoon.org/docs/hs.hotkey#bindSpec">hs.hotkey.bindSpec</a> function allows you to bind a function to a pressed key. Its first argument is a key specification which consists of a list (Lua lists and table literals are represented using curly braces) with two elements: a list of the key modifiers, and the key itself. In this example, <code>{ { &quot;ctrl&quot;, &quot;cmd&quot;, &quot;alt&quot; }, &quot;h&quot; }</code> represents pressing <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>h</kbd>.</p></li>
+<li><p>Within <code>hs.hotkey</code>, the <a href="http://www.hammerspoon.org/docs/hs.hotkey#bindSpec"><code>hs.hotkey.bindSpec</code></a> function allows you to bind a function to a pressed key. Its first argument is a key specification which consists of a list (Lua lists and table literals are represented using curly braces) with two elements: a list of the key modifiers, and the key itself. In this example, <code>{ { &quot;ctrl&quot;, &quot;cmd&quot;, &quot;alt&quot; }, &quot;h&quot; }</code> represents pressing <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>h</kbd>.</p></li>
 
 <li><p>The second argument to <code>bindSpec</code> is the function to call when the key is pressed. Here we are defining an inline anonymous function using <code>function() ... end</code>.</p></li>
 
-<li><p>The callback function uses <a href="http://www.hammerspoon.org/docs/hs.notify#show">hs.notify.show</a> to display the message. Take a quick look at the <a href="http://www.hammerspoon.org/docs/hs.notify">hs.notify</a> documentation to get an idea of its extensive capabilities, including configuration of all aspects of a notification&rsquo;s appearance and buttons, and the functions to call upon different user actions.</p></li>
+<li><p>The callback function uses <a href="http://www.hammerspoon.org/docs/hs.notify#show"><code>hs.notify.show</code></a> to display the message. Take a quick look at the <a href="http://www.hammerspoon.org/docs/hs.notify"><code>hs.notify</code></a> documentation to get an idea of its extensive capabilities, including configuration of all aspects of a notification&rsquo;s appearance and buttons, and the functions to call upon different user actions.</p></li>
 </ul>
 
 <p>Try changing the configuration to display a different message or use a different key. After every change, you need to instruct Hammerspoon to reload its configuration, which you can do through its menubar item.</p>
@@ -286,13 +286,13 @@ if (!doNotTrack) {
 
 <p>As you start modifying your configuration, errors will happen, as they always do when coding. To help in development and debugging, Hammerspoon offers a console window where you can see any errors and messages printed by your Lua code as it executes, and also type code to be evaluated. It is a very useful tool while developing your Hammerspoon configuration.</p>
 
-<p>To invoke the console, you normally choose &ldquo;Console&hellip;&rdquo; from the Hammerspoon menubar item. However, this is such a common operation, that you might find it useful to also set a key combination for showing the console. Most of Hammerspoon&rsquo;s internal functionality is also accessible through its API. In this case, looking at the <a href="http://www.hammerspoon.org/docs/hs">documentation for the main <code>hs</code> module</a> reveals that there is an <a href="http://www.hammerspoon.org/docs/hs#toggleConsole">hs.toggleConsole</a> function. Using the knowledge you have acquired so far, you can easily configure a hotkey for opening and hiding the console:</p>
+<p>To invoke the console, you normally choose &ldquo;Console&hellip;&rdquo; from the Hammerspoon menubar item. However, this is such a common operation, that you might find it useful to also set a key combination for showing the console. Most of Hammerspoon&rsquo;s internal functionality is also accessible through its API. In this case, looking at the <a href="http://www.hammerspoon.org/docs/hs">documentation for the main <code>hs</code> module</a> reveals that there is an <a href="http://www.hammerspoon.org/docs/hs#toggleConsole"><code>hs.toggleConsole</code></a> function. Using the knowledge you have acquired so far, you can easily configure a hotkey for opening and hiding the console:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="p">{</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span> <span class="p">},</span> <span class="s2">&#34;y&#34;</span> <span class="p">},</span> <span class="n">hs.toggleConsole</span><span class="p">)</span></code></pre></div>
 <p>Once you reload your configuration, you should be able to use <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>y</kbd> to open and close the console. Any Lua code you type in the Console will be evaluated in the main Hammerspoon context, so you can add to your configuration directly from there. This is a good way to incrementally develop your code before committing it to the <code>init.lua</code> file.</p>
 
-<p>You may have noticed by now another common operation while developing Hammerspoon code: reloading the configuration, which you normally have to do from the Hammerspoon menu. So why not set up a hotkey to do that as well? Again, the <a href="http://www.hammerspoon.org/docs/hs">hs</a> module comes to our help with the <a href="http://www.hammerspoon.org/docs/hs#reload">hs.reload</a> method:</p>
+<p>You may have noticed by now another common operation while developing Hammerspoon code: reloading the configuration, which you normally have to do from the Hammerspoon menu. So why not set up a hotkey to do that as well? Again, the <a href="http://www.hammerspoon.org/docs/hs"><code>hs</code></a> module comes to our help with the <a href="http://www.hammerspoon.org/docs/hs#reload"><code>hs.reload</code></a> method:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="p">{</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span> <span class="p">},</span> <span class="s2">&#34;r&#34;</span> <span class="p">},</span> <span class="n">hs.reload</span><span class="p">)</span></code></pre></div>
-<p>Another useful development tool is the <code>hs</code> command, which you can run from your terminal to get a Hammerspoon console. To install it, you can use the <a href="http://www.hammerspoon.org/docs/hs.ipc&quot;#cliInstall">hs.ipc&rdquo;.cliInstall</a> function, which you can just add to your <code>init.lua</code> file to check and install the command every time Hammerspoon runs.</p>
+<p>Another useful development tool is the <code>hs</code> command, which you can run from your terminal to get a Hammerspoon console. To install it, you can use the <a href="http://www.hammerspoon.org/docs/hs.ipc&quot;#cliInstall"><code>hs.ipc&quot;.cliInstall</code></a> function, which you can just add to your <code>init.lua</code> file to check and install the command every time Hammerspoon runs.</p>
 
 <aside class="admonition warning">
 	<div class="admonition-icon">
@@ -303,7 +303,7 @@ if (!doNotTrack) {
 	</div>
 	
 	
-	<div class="admonition-content"><p><a href="http://www.hammerspoon.org/docs/hs.ipc#cliInstall">hs.ipc.cliInstall</a> creates symlinks under <code>/usr/local/</code> to the <code>hs</code> command and its manual page file, located inside the Hammerspoon application bundle. Under some circumstances (particularly if you build Hammerspoon from source, or if you install different versions of it), you may end up with broken symlinks. If the <code>hs</code> command stops working and <code>hs.ipc.cliInstall()</code> doesn&rsquo;t fix it, look for broken symlinks left behind from old versions of Hammerspoon.  Remove them and things should work again.</p>
+	<div class="admonition-content"><p><a href="http://www.hammerspoon.org/docs/hs.ipc#cliInstall"><code>hs.ipc.cliInstall</code></a> creates symlinks under <code>/usr/local/</code> to the <code>hs</code> command and its manual page file, located inside the Hammerspoon application bundle. Under some circumstances (particularly if you build Hammerspoon from source, or if you install different versions of it), you may end up with broken symlinks. If the <code>hs</code> command stops working and <code>hs.ipc.cliInstall()</code> doesn&rsquo;t fix it, look for broken symlinks left behind from old versions of Hammerspoon.  Remove them and things should work again.</p>
 </div>
 </aside>
 
@@ -362,14 +362,6 @@ if (!doNotTrack) {
             <li class="mb2 mr3">
               <a href="/post/fixing-outlook-to-omnifocus-script/" class="link mid-gray dim">
                  Fixing the Outlook-to-OmniFocus Script
-              </a>
-            </li>
-          
-        
-          
-            <li class="mb2 mr3">
-              <a href="/post/using-spoons-in-hammerspoon/" class="link mid-gray dim">
-                 Using Spoons in Hammerspoon
               </a>
             </li>
           
