@@ -228,7 +228,7 @@ table
 }
 ```
 
-The common way of defining a new module in Lua is to create an empty table, and populate it with functions or variables as needed. For example, let's put our [double-click generator](%7B%7B%3C%20relref%20%222017-10-21-just-enough-lua-to-be-productive-in-hammerspoon-part1.md#functions%22%20%3E%7D%7D) in a module. Create the file `~/.hammerspoon/doubleclick.lua` with the following contents:
+The common way of defining a new module in Lua is to create an empty table, and populate it with functions or variables as needed. For example, let's put our [double-click generator](/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/#functions) in a module. Create the file `~/.hammerspoon/doubleclick.lua` with the following contents:
 
 ```lua
 local mod={}
@@ -341,7 +341,7 @@ Patterns, just like regular expressions, are commonly used for string manipulati
 
 ## String manipulation {#string-manipulation}
 
-Lua includes the [string](https://www.lua.org/manual/5.3/manual.html#6.4) library to implement common string manipulation functions, including pattern matching. All of these functions can be called either as regular functions, with the string as the first argument, or as method calls on the string itself, using the colon syntax (which, as we saw [before](%7B%7B%3C%20relref%20%222017-10-21-just-enough-lua-to-be-productive-in-hammerspoon-part1.md#dot-vs-colon-method-access-in-lua%22%20%3E%7D%7D), gets converted to the same call). For example, the following two are equivalent:
+Lua includes the [string](https://www.lua.org/manual/5.3/manual.html#6.4) library to implement common string manipulation functions, including pattern matching. All of these functions can be called either as regular functions, with the string as the first argument, or as method calls on the string itself, using the colon syntax (which, as we saw [before](/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/#dot-vs-colon-method-access-in-lua), gets converted to the same call). For example, the following two are equivalent:
 
 ```lua
 string.find(a, "^foo")

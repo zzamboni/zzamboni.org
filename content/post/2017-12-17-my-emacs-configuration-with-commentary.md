@@ -10,7 +10,7 @@ featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **August  4, 2018**
+Last update: **August  5, 2018**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -705,7 +705,7 @@ Load `org-tempo` to enable snippets such as `<s<TAB>` to insert a source block. 
   :after org)
 ```
 
-Enable `org-speed-commands`, which allows quick single-key commands when the cursor is placed on a heading.
+Enable [Speed Keys](https://orgmode.org/manual/Speed-keys.html), which allows quick single-key commands when the cursor is placed on a heading. Usually the cursor needs to be at the beginning of a headline line, but defining it with this function makes them active on any of the asterisks at the beginning of the line (useful with the font highlighting I use, as all but the last asterisk are sometimes not visible).
 
 ```emacs-lisp
 (org-use-speed-commands (lambda () (and (looking-at org-outline-regexp) (looking-back "^\**"))))
@@ -1076,7 +1076,7 @@ I picked up this little gem in the org mailing list. A function that reformats t
       (goto-char (point-min)))))
 ```
 
-Removing a link. For some reason this is not part of org-mode. From <https://emacs.stackexchange.com/a/10714/11843>, I bind it to <kbd>C-c C-M-u</kbd>.
+Remove a link. For some reason this is not part of org-mode. From <https://emacs.stackexchange.com/a/10714/11843>, I bind it to <kbd>C-c C-M-u</kbd>.
 
 ```emacs-lisp
 (defun afs/org-replace-link-by-link-description ()
@@ -1121,7 +1121,7 @@ This function receives three arguments, and returns the org-mode code for a link
 (defun zz/org-macro-hsapi-code (link function desc)
   (let* ((link-1 (concat link (if (org-string-nw-p function) (concat "#" function) "")))
          (link-2 (concat link (if (org-string-nw-p function) (concat "." function) "")))
-         (desc-1 (or (org-string-nw-p desc) link-2)))
+         (desc-1 (or (org-string-nw-p desc) (concat "=" link-2 "="))))
     (concat "[[http://www.hammerspoon.org/docs/" link-1 "][" desc-1 "]]")))
 ```
 
@@ -1140,12 +1140,12 @@ Links to a specific section/function of the Lua manual.
 ```emacs-lisp
 (defun zz/org-macro-luadoc-code (func section desc)
   (let* ((anchor (or (org-string-nw-p section) func))
-         (desc-1 (or (org-string-nw-p desc) (concat "=" func "="))))
+         (desc-1 (or (org-string-nw-p desc) func)))
     (concat "[[https://www.lua.org/manual/5.3/manual.html#" anchor "][" desc-1 "]]")))
 
 (defun zz/org-macro-luafun-code (func desc)
   (let* ((anchor (concat "pdf-" func))
-         (desc-1 (or (org-string-nw-p desc) (concat "=" func "="))))
+         (desc-1 (or (org-string-nw-p desc) (concat "=" func "()="))))
     (concat "[[https://www.lua.org/manual/5.3/manual.html#" anchor "][" desc-1 "]]")))
 
 ```

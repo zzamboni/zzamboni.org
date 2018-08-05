@@ -31,7 +31,7 @@ if pkg and pkg ~= "" then
 end
 ```
 
-In this example, in addition to the [`if`](https://www.lua.org/manual/5.3/manual.html#3.3.4) statement, you can see in the line that runs [hs.execute](http://www.hammerspoon.org/docs/hs#execute) that Lua functions can return multiple values (which is not the same as returning an array, which counts as a single value). Within the function, this is implemented simply by separating the values with commas in the `return` statement, like this: `return val1, val2`. You can also see in action the following operators:
+In this example, in addition to the [if](https://www.lua.org/manual/5.3/manual.html#3.3.4) statement, you can see in the line that runs [`hs.execute`](http://www.hammerspoon.org/docs/hs#execute) that Lua functions can return multiple values (which is not the same as returning an array, which counts as a single value). Within the function, this is implemented simply by separating the values with commas in the `return` statement, like this: `return val1, val2`. You can also see in action the following operators:
 
 -   `==` for equality;
 
@@ -50,7 +50,7 @@ for _,file in pairs(files) do
 end
 ```
 
-In this example we see the [`for`](https://www.lua.org/manual/5.3/manual.html#3.3.5) statement in its so-called _generic form_:
+In this example we see the [for](https://www.lua.org/manual/5.3/manual.html#3.3.5) statement in its so-called _generic form_:
 
 ```lua
 for <var> in <expression> do <block> end
@@ -72,14 +72,14 @@ This form loops the variable from the first to the last value, incrementing it b
 
 Going back to our example, we can also learn the following:
 
--   The [`pairs`](https://www.lua.org/manual/5.3/manual.html#pdf-pairs) function, which loops over a table. We will learn more about Lua tables below, but they can be used to represent both regular and associative arrays. `pairs()` treats the `files` variable as an associative array, and returns in each iteration a key/value pair of its contents.
+-   The [`pairs()`](https://www.lua.org/manual/5.3/manual.html#pdf-pairs) function, which loops over a table. We will learn more about Lua tables below, but they can be used to represent both regular and associative arrays. `pairs()` treats the `files` variable as an associative array, and returns in each iteration a key/value pair of its contents.
 
 -   The `_` variable, while not special per se, is used by convention in Lua for "throwaway values". In this case we are not interested in the key in each iteration, just the value, so we assign the key to `_`, never to be used again.
 
--   Our first glimpse into the Lua [`string library`](https://www.lua.org/manual/5.3/manual.html#6.4), and the two ways in which it can be used:
-    -   In `file:sub(-4)`, the colon indicates the object-oriented notation (see "Lua dot-vs-colon method access" below). This invokes the [`string.sub`](https://www.lua.org/manual/5.3/manual.html#pdf-string.sub) function, automatically passing the `file` variable as its first argument. This statement is equivalent to `string.sub(file, -4)`.
+-   Our first glimpse into the Lua [string library](https://www.lua.org/manual/5.3/manual.html#6.4), and the two ways in which it can be used:
+    -   In `file:sub(-4)`, the colon indicates the object-oriented notation (see "Lua dot-vs-colon method access" below). This invokes the [`string.sub()`](https://www.lua.org/manual/5.3/manual.html#pdf-string.sub) function, automatically passing the `file` variable as its first argument. This statement is equivalent to `string.sub(file, -4)`.
 
-    -   In `string.match(file, '/')`, we see the function notation used to call [`string.match`](https://www.lua.org/manual/5.3/manual.html#pdf-string.match). Since the `file` variable is being passed as the first argument, you could rewrite this statement as `file:match('/[.]')`. In practice, I've found myself using both notations somewhat exchangeably - feel free to use whichever you find most comfortable.
+    -   In `string.match(file, '/')`, we see the function notation used to call [`string.match()`](https://www.lua.org/manual/5.3/manual.html#pdf-string.match). Since the `file` variable is being passed as the first argument, you could rewrite this statement as `file:match('/[.]')`. In practice, I've found myself using both notations somewhat exchangeably - feel free to use whichever you find most comfortable.
 
 
 ## Dot-vs-colon method access in Lua {#dot-vs-colon-method-access-in-lua}
@@ -110,9 +110,9 @@ function leftDoubleClick(modifiers)
 end
 ```
 
-In this example we can also see some examples of the Hammerspoon library in action, in particular two extremely powerful libraries: [hs.mouse](http://www.hammerspoon.org/docs/hs.mouse) for interacting with the mouse pointer, and [hs.eventtap](http://www.hammerspoon.org/docs/hs.eventtap), which allows you to both intercept and generate arbitrary system events, including key pressed and mouse clicks. This function simulates a double click on the current pointer position:
+In this example we can also see some examples of the Hammerspoon library in action, in particular two extremely powerful libraries: [`hs.mouse`](http://www.hammerspoon.org/docs/hs.mouse) for interacting with the mouse pointer, and [`hs.eventtap`](http://www.hammerspoon.org/docs/hs.eventtap), which allows you to both intercept and generate arbitrary system events, including key pressed and mouse clicks. This function simulates a double click on the current pointer position:
 
-1.  We first get the current position of the mouse pointer using [hs.mouse.getAbsolutePosition](http://www.hammerspoon.org/docs/hs.mouse#getAbsolutePosition).
+1.  We first get the current position of the mouse pointer using [`hs.mouse.getAbsolutePosition`](http://www.hammerspoon.org/docs/hs.mouse#getAbsolutePosition).
 
 2.  We create a new mouse event of type [`leftMouseDown`](http://www.hammerspoon.org/docs/hs.eventtap.event#types) in the obtained coordinates and with the given modifiers.
 
