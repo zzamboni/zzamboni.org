@@ -71,7 +71,7 @@ hs.hotkey.bindSpec({ { "ctrl", "cmd", "alt" }, "h" },
 )
 ```
 
-Save the file, and from the Hammerspoon icon in the menubar, select "Reload config". Apparently nothing will happen, but if you then press <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>h</kbd> on your keyboard, you will see a notification on your screen welcoming you to the world of Hammerspoon.
+Save the file, and from the Hammerspoon icon in the menubar, select "Reload config". Apparently nothing will happen, but if you then press <kbd>Ctrl​-​⌘​-​Alt​-​h</kbd> on your keyboard, you will see a notification on your screen welcoming you to the world of Hammerspoon.
 
 {{< figure src="hammerspoon-hello-world.png" >}}
 
@@ -79,7 +79,7 @@ Although it should be fairly self-explanatory, let us dissect this example to gi
 
 -   All Hammerspoon built-in extensions start with `hs.` In this case, [`hs.hotkey`](http://www.hammerspoon.org/docs/hs.hotkey) is the extension that handles keyboard bindings. It allows us to easily define which functions will be called in response to different keyboard combinations. You can even differentiate between the keys being pressed, released or held down if you need to. The other extension used in this example is [`hs.notify`](http://www.hammerspoon.org/docs/hs.notify), which allows us to interact with the macOS Notification Center to display, react and interact with notifications.
 
--   Within `hs.hotkey`, the [`hs.hotkey.bindSpec`](http://www.hammerspoon.org/docs/hs.hotkey#bindSpec) function allows you to bind a function to a pressed key. Its first argument is a key specification which consists of a list (Lua lists and table literals are represented using curly braces) with two elements: a list of the key modifiers, and the key itself. In this example, `{ { "ctrl", "cmd", "alt" }, "h" }` represents pressing <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>h</kbd>.
+-   Within `hs.hotkey`, the [`hs.hotkey.bindSpec`](http://www.hammerspoon.org/docs/hs.hotkey#bindSpec) function allows you to bind a function to a pressed key. Its first argument is a key specification which consists of a list (Lua lists and table literals are represented using curly braces) with two elements: a list of the key modifiers, and the key itself. In this example, `{ { "ctrl", "cmd", "alt" }, "h" }` represents pressing <kbd>Ctrl​-​⌘​-​Alt​-​h</kbd>.
 
 -   The second argument to `bindSpec` is the function to call when the key is pressed. Here we are defining an inline anonymous function using `function() ... end`.
 
@@ -98,7 +98,7 @@ To invoke the console, you normally choose "Console..." from the Hammerspoon men
 hs.hotkey.bindSpec({ { "ctrl", "cmd", "alt" }, "y" }, hs.toggleConsole)
 ```
 
-Once you reload your configuration, you should be able to use <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>y</kbd> to open and close the console. Any Lua code you type in the Console will be evaluated in the main Hammerspoon context, so you can add to your configuration directly from there. This is a good way to incrementally develop your code before committing it to the `init.lua` file.
+Once you reload your configuration, you should be able to use <kbd>Ctrl​-​⌘​-​Alt​-​y</kbd> to open and close the console. Any Lua code you type in the Console will be evaluated in the main Hammerspoon context, so you can add to your configuration directly from there. This is a good way to incrementally develop your code before committing it to the `init.lua` file.
 
 You may have noticed by now another common operation while developing Hammerspoon code: reloading the configuration, which you normally have to do from the Hammerspoon menu. So why not set up a hotkey to do that as well? Again, the [`hs`](http://www.hammerspoon.org/docs/hs) module comes to our help with the [`hs.reload`](http://www.hammerspoon.org/docs/hs#reload) method:
 

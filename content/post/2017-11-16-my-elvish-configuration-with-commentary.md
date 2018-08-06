@@ -10,7 +10,7 @@ toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **August  5, 2018**
+Last update: **August  6, 2018**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -297,6 +297,15 @@ use github.com/zzamboni/elvish-modules/atlas
 ```
 
 
+## OpsGenie {#opsgenie}
+
+I use OpsGenie at work, so I have put together the [opsgenie](https://github.com/zzamboni/elvish-modules/blob/master/opsgenie.org) library to make API operations easier.
+
+```elvish
+use github.com/zzamboni/elvish-modules/opsgenie
+```
+
+
 ## Environment variables {#environment-variables}
 
 Default options to `less`.
@@ -338,6 +347,15 @@ The [update.elv](https://github.com/iwoloschin/elvish-packages/blob/master/updat
 use github.com/iwoloschin/elvish-packages/update
 update:curl-timeout = 3
 update:check-commit &verbose
+```
+
+
+## Work-specific stuff {#work-specific-stuff}
+
+I have a private library which contains some work-specific functions.
+
+```elvish
+use swisscom
 ```
 
 

@@ -262,13 +262,13 @@ You can then, from the console, do the following:
              hotkey: Enabled hotkey ⌘⌃⌥P
 ```
 
-You have written and loaded your first Lua module. Let's try it out!  Press <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>p</kbd> while your cursor is over a word in your terminal or web browser, to select it as if you had double-clicked it. You can also change the modifiers used with it. For example, did you know that Cmd-double-click can be used to open URLs from the macOS Terminal application?
+You have written and loaded your first Lua module. Let's try it out!  Press <kbd>Ctrl​-​⌘​-​Alt​-​p</kbd> while your cursor is over a word in your terminal or web browser, to select it as if you had double-clicked it. You can also change the modifiers used with it. For example, did you know that Cmd-double-click can be used to open URLs from the macOS Terminal application?
 
 ```lua
 > doubleclick.default_modifiers={cmd=true}
 ```
 
-Now try pressing <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>p</kbd> while your pointer is over a URL displayed on your Terminal (you can just type one yourself to test), and it will open in your browser.
+Now try pressing <kbd>Ctrl​-​⌘​-​Alt​-​p</kbd> while your pointer is over a URL displayed on your Terminal (you can just type one yourself to test), and it will open in your browser.
 
 Note that the name `doubleclick` does not have any special meaning---it is a regular variable to which you assigned the value returned by `require('doubleclick')`, which is the value of the `mod` variable created within the module file (note that within the module file you use the local variable name to refer to functions and variables within itself). You could assign it to any name you want:
 

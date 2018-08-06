@@ -10,7 +10,7 @@ featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **August  5, 2018**
+Last update: **August  6, 2018**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -1128,11 +1128,18 @@ This function receives three arguments, and returns the org-mode code for a link
 Split STR at spaces and wrap each element with `~` char, separated by `+`. Zero-width spaces are inserted around the plus signs so that they get formatted correctly.
 
 ```emacs-lisp
-(defun zz/org-macro-keys-code (str)
+(defun zz/org-macro-keys-code-outer (str)
   (mapconcat (lambda (s)
                (concat "~" s "~"))
              (split-string str)
              (concat (string ?\u200B) "+" (string ?\u200B))))
+(defun zz/org-macro-keys-code-inner (str)
+  (concat "~" (mapconcat (lambda (s)
+                           (concat s))
+                         (split-string str)
+                         (concat (string ?\u200B) "-" (string ?\u200B)))
+          "~"))
+(defun zz/org-macro-keys-code (str) (zz/org-macro-keys-code-inner str))
 ```
 
 Links to a specific section/function of the Lua manual.

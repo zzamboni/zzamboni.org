@@ -129,11 +129,11 @@ hs.hotkey.bindSpec({ { "cmd", "ctrl", "alt" }, "p" },
                    leftDoubleClick)
 ```
 
-Once you reload your config, you can generate a double click by moving the cursor where you want it and pressing <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>p</kbd>. While this is a contrived example, the ability to generate events like this is immensely powerful in automating your system.
+Once you reload your config, you can generate a double click by moving the cursor where you want it and pressing <kbd>Ctrl​-​⌘​-​Alt​-​p</kbd>. While this is a contrived example, the ability to generate events like this is immensely powerful in automating your system.
 
 {{% tip %}}
 
-By now you have seen that we are using <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd> very frequently in our keybindings. To avoid having to type this every time, and since the modifiers are defined as an array, you can define them as variable. For example, I have the following at the top of my `init.lua`:
+By now you have seen that we are using <kbd>Ctrl​-​⌘​-​Alt</kbd> very frequently in our keybindings. To avoid having to type this every time, and since the modifiers are defined as an array, you can define them as variable. For example, I have the following at the top of my `init.lua`:
 
 ```lua
 hyper = {"cmd","alt","ctrl"}
