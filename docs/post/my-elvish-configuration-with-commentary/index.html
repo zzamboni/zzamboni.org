@@ -22,7 +22,7 @@
      
 
       <meta property="og:title" content="My Elvish Configuration With Commentary" />
-<meta property="og:description" content="Last update: August 5, 2018
+<meta property="og:description" content="Last update: August 6, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc." />
 <meta property="og:type" content="article" />
@@ -45,21 +45,21 @@ This is also my first blog post written using org-mode, which I have started usi
 
 
 <meta itemprop="name" content="My Elvish Configuration With Commentary">
-<meta itemprop="description" content="Last update: August 5, 2018
+<meta itemprop="description" content="Last update: August 6, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc.">
 
 
 <meta itemprop="datePublished" content="2017-11-16T20:21:00&#43;01:00" />
 <meta itemprop="dateModified" content="2017-11-16T20:21:00&#43;01:00" />
-<meta itemprop="wordCount" content="1392">
+<meta itemprop="wordCount" content="1427">
 
 
 
 <meta itemprop="keywords" content="config,howto,literateprogramming,literateconfig,elvish," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Elvish Configuration With Commentary"/>
-<meta name="twitter:description" content="Last update: August 5, 2018
+<meta name="twitter:description" content="Last update: August 6, 2018
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 This is also my first blog post written using org-mode, which I have started using for writing and documenting my code, using literate programming. The content below is included unmodified from my rc.org file (as of the date shown above), from which the rc."/>
 
@@ -191,7 +191,7 @@ if (!doNotTrack) {
       <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray">
         
 
-<p>Last update: <strong>August  5, 2018</strong></p>
+<p>Last update: <strong>August  6, 2018</strong></p>
 
 <p>In this blog post I will walk you through my current <a href="http://elvish.io">Elvish</a> configuration file, with running commentary about the different sections.</p>
 
@@ -351,6 +351,10 @@ edit:insert:binding[Alt-f] = $dir:right-small-word-or-next-dir~</code></pre></di
 
 <p>I sometimes use the <a href="https://atlas.oreilly.com/">O&rsquo;Reilly Atlas</a> publishing platform. The <a href="https://github.com/zzamboni/modules.elv/blob/master/atlas.org">atlas</a> module contains some useful functions for triggering and accessing document builds.</p>
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/atlas</code></pre></div>
+<h2 id="opsgenie">OpsGenie</h2>
+
+<p>I use OpsGenie at work, so I have put together the <a href="https://github.com/zzamboni/elvish-modules/blob/master/opsgenie.org">opsgenie</a> library to make API operations easier.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/zzamboni/elvish-modules/opsgenie</code></pre></div>
 <h2 id="environment-variables">Environment variables</h2>
 
 <p>Default options to <code>less</code>.</p>
@@ -369,6 +373,10 @@ edit:insert:binding[Alt-f] = $dir:right-small-word-or-next-dir~</code></pre></di
 <div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use github.com/iwoloschin/elvish-packages/update
 update:curl-timeout = 3
 update:check-commit &amp;verbose</code></pre></div>
+<h2 id="work-specific-stuff">Work-specific stuff</h2>
+
+<p>I have a private library which contains some work-specific functions.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elvish" data-lang="elvish">use swisscom</code></pre></div>
 <h2 id="exporting-aliases">Exporting aliases</h2>
 
 <p>We populate <code>$-exports-</code> with the alias definitions so that they become available in the interactive namespace.</p>
@@ -488,8 +496,10 @@ update:check-commit &amp;verbose</code></pre></div>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#dynamic-terminal-title">Dynamic terminal title</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#loading-private-settings">Loading private settings</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#o-reilly-atlas">O&rsquo;Reilly Atlas</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#opsgenie">OpsGenie</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#environment-variables">Environment variables</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#utility-functions">Utility functions</a></li>
+<li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#work-specific-stuff">Work-specific stuff</a></li>
 <li class="list f5 w-100 hover-bg-white nl1"><a class="link ph2 pv2 db black"href="#exporting-aliases">Exporting aliases</a></li>
 </ul></li>
 </ul>

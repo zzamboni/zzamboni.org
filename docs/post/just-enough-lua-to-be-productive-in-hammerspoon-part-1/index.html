@@ -296,7 +296,7 @@ if (!doNotTrack) {
 <p>You should try this function to see that it works. Adding it to you <code>~/.hammerspoon/init.lua</code> function will make Hammerspoon define it the next time you reload your configuration. You could then try calling it from the console, but the easiest is to bind a hotkey that will generate a double click. For example:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hs.hotkey</span><span class="p">.</span><span class="n">bindSpec</span><span class="p">({</span> <span class="p">{</span> <span class="s2">&#34;cmd&#34;</span><span class="p">,</span> <span class="s2">&#34;ctrl&#34;</span><span class="p">,</span> <span class="s2">&#34;alt&#34;</span> <span class="p">},</span> <span class="s2">&#34;p&#34;</span> <span class="p">},</span>
                    <span class="n">leftDoubleClick</span><span class="p">)</span></code></pre></div>
-<p>Once you reload your config, you can generate a double click by moving the cursor where you want it and pressing <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>p</kbd>. While this is a contrived example, the ability to generate events like this is immensely powerful in automating your system.</p>
+<p>Once you reload your config, you can generate a double click by moving the cursor where you want it and pressing <kbd>Ctrl​-​⌘​-​Alt​-​p</kbd>. While this is a contrived example, the ability to generate events like this is immensely powerful in automating your system.</p>
 
 <aside class="admonition tip">
 	<div class="admonition-icon">
@@ -308,7 +308,7 @@ if (!doNotTrack) {
 	</div>
 	
 	
-	<div class="admonition-content"><p>By now you have seen that we are using <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd> very frequently in our keybindings. To avoid having to type this every time, and since the modifiers are defined as an array, you can define them as variable. For example, I have the following at the top of my <code>init.lua</code>:</p>
+	<div class="admonition-content"><p>By now you have seen that we are using <kbd>Ctrl​-​⌘​-​Alt</kbd> very frequently in our keybindings. To avoid having to type this every time, and since the modifiers are defined as an array, you can define them as variable. For example, I have the following at the top of my <code>init.lua</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">hyper</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;cmd&#34;</span><span class="p">,</span><span class="s2">&#34;alt&#34;</span><span class="p">,</span><span class="s2">&#34;ctrl&#34;</span><span class="p">}</span>
 <span class="n">shift_hyper</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;cmd&#34;</span><span class="p">,</span><span class="s2">&#34;alt&#34;</span><span class="p">,</span><span class="s2">&#34;ctrl&#34;</span><span class="p">,</span><span class="s2">&#34;shift&#34;</span><span class="p">}</span></code></pre></div>
 <p>Then I simply use <code>hyper</code> or <code>shift_hyper</code> in my key binding declarations:</p>
