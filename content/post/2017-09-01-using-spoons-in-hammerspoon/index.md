@@ -31,7 +31,7 @@ hs.loadSpoon("MouseCircle")
 
 After a spoon is loaded, and depending on what it does, you may need to configure it, assign hotkeys, and start it. A spoon's API is available through the `spoon.<SpoonName>` namespace. To learn the API you need to look at the spoon documentation page. In the case of MouseCircle, a look at <http://www.hammerspoon.org/Spoons/MouseCircle.html> reveals that it has two methods (`bindHotkeys()` and `show()`) and one configuration variable (`color`) available under `spoon.MouseCircle`.
 
-The first API call is `spoon.MouseCircle:bindHotkeys()`, which allows us to set up a hotkey that shows the mouse locator circle around the location of the mouse pointer. Let's say we wanted to bind the mouse circle to <kbd>Ctrl</kbd>​+​<kbd>⌘</kbd>​+​<kbd>Alt</kbd>​+​<kbd>d</kbd>. According to the MouseCircle documentation, the name for this action is `show`, so we can do the following:
+The first API call is `spoon.MouseCircle:bindHotkeys()`, which allows us to set up a hotkey that shows the mouse locator circle around the location of the mouse pointer. Let's say we wanted to bind the mouse circle to <kbd>Ctrl​-​⌘​-​Alt​-​d</kbd>. According to the MouseCircle documentation, the name for this action is `show`, so we can do the following:
 
 ```lua
 spoon.MouseCircle:bindHotkeys({
