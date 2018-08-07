@@ -68,6 +68,7 @@ CLOSED: [2018-03-22 Thu 19:40]
 :export_hugo_custom_front_matter: :featured_image /images/legoland.jpg
 :export_hugo_weight: 06
 :export_file_name: _index
+:export_hugo_aliases: /about.html
 :END:
 
 *Who:* I am a computer scientist, consultant, programmer, sysadmin, author and overall geek, now turned project leader and engineering team manager. I am from Mexico but live in Switzerland with my awesome wife and our two beautiful daughters.
@@ -107,6 +108,7 @@ CLOSED: [2018-03-25 Sun 18:34]
 :export_hugo_custom_front_matter: :featured_image /images/phone-booth-red-trimmed.jpg
 :export_hugo_weight: 05
 :export_file_name: _index
+:export_hugo_aliases: /contact.html
 :END:
 
 If you have any questions, comments or feedback about this site, please use the form below to send me a message.
