@@ -1,4 +1,4 @@
-baseurl = "https://zzamboni.org/"
+baseurl = "https://www.zzamboni.org/"
 title = "zzamboni.org"
 theme = "gohugo-theme-ananke"
 languageCode = "en-us"
