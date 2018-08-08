@@ -12,4 +12,4 @@ If you have any questions, comments or feedback about this site, please use the 
 
 ----
 
-{{< form-contact action="http://formspree.io/diego@zzamboni.org" >}}
+{{< form-contact-netlify >}}
