@@ -113,7 +113,7 @@ If you have any questions, comments or feedback about this site, please use the 
 
 ----
 
-@@html:{{< form-contact action="http://formspree.io/diego@zzamboni.org" >}}@@
+@@html:{{< form-contact-netlify >}}@@
 
 ** DONE Books
 CLOSED: [2018-03-25 Sun 20:11]
