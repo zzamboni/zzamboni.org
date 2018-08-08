@@ -47,6 +47,11 @@ Since the full power of org markup is available when using ox-hugo, you can do v
 
 ## Publishing {#publishing}
 
+Using Netlify. Caveats:
+
+-   Take care of invalid characters in filenames.
+-   Disable Hugo redirects and implement aliases using Netlify aliases: <https://gohugo.io/news/http2-server-push-in-hugo/>
+
 Once ox-hugo has generated the Markdown files for my posts, it is Hugo's turn to convert them into HTML files that can be published as a website. Ox-hugo knows the default structure expected by Hugo (a top-level `content/` directory in which you have directories for each section), so there's usually not much to do other than point ox-hugo to where your top-level Hugo directory is, using the [HUGO\_BASE\_DIR](https://ox-hugo.scripter.co/doc/usage/#before-you-export) property. Of course, this presumes you already have a Hugo site. If you have never used Hugo before, I would suggest you go through the [Quick Start](http://gohugo.io/getting-started/quick-start/) guide, which shows how to set up a basic website using the [Ananke](https://github.com/budparr/gohugo-theme-ananke) theme. This is the same theme I use for my website.
 
 One particular piece of configuration I use to make publishing with GitHub pages easier: I change Hugo's `publishDir` parameter from its default value of `public` to `docs`, to make it easier to publish my final website from within the same repository (more below in the [Hosting](#hosting) section). This is done by specifying the parameter in Hugo's [`config.toml`](https://github.com/zzamboni/zzamboni.org/blob/master/config.toml#L9) file:
