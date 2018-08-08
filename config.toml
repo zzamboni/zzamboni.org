@@ -20,7 +20,7 @@ pygmentsUseClasses = true
 disableAliases = true
 
 [outputs]
-home = [ "HTML", "RSS", "REDIR" ]
+home = [ "HTML", "RSS", "REDIR", "HEADERS" ]
 section = [ "HTML", "RSS"]
 
 [mediaTypes]
