@@ -15,6 +15,6 @@ I'm giving an Ignite talk for the first time at [DevOps days Paris](http://devop
 an interesting format: a 5-minute talk with 20 auto-advancing slides, every 15 seconds. I found [How to Give a great Ignite Talk](http://scottberkun.com/2009/how-to-give-a-great-ignite-talk/) by Scott Berkun very useful, including the accompanying video.
 
 
-<iframe src="http://www.youtube.com/embed/rRa1IPkBFbg" frameborder="0" allowfullscreen="1"></iframe>
+<iframe src="https://www.youtube.com/embed/rRa1IPkBFbg" frameborder="0" allowfullscreen="1"></iframe>
 
 
