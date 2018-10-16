@@ -12,7 +12,7 @@ featured_image = "/images/hammerspoon.png"
 
 I am happy to announce the first release of my new book "Learning Hammerspoon", a book devoted to using [Hammerspoon](http://www.hammerspoon.org/) to make using your Mac easier, faster and more fun.
 
-You can find more information, read a free sample, and purchase it at [LeanPub](https://leanpub.com/learning-hammerspoon/):
+You can find more information, read a free sample, and purchase it at [LeanPub](https://leanpub.com/learning-hammerspoon/).
 
 {{< hsbookimglink >}}
 

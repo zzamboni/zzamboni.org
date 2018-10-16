@@ -1429,7 +1429,7 @@ I am happy to announce the first release of my new book "Learning Hammerspoon", 
 
 I am happy to announce the first release of my new book "Learning Hammerspoon", a book devoted to using [[http://www.hammerspoon.org/][Hammerspoon]] to make using your Mac easier, faster and more fun.
 
-You can find more information, read a free sample, and purchase it at [[https://leanpub.com/learning-hammerspoon/][LeanPub]]:
+You can find more information, read a free sample, and purchase it at [[https://leanpub.com/learning-hammerspoon/][LeanPub]].
 
 {{< hsbookimglink >}}
 
