@@ -32,6 +32,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
   - [[#books][Books]]
 - [[#book-pages][Book pages]]
   - [[#learning-cfengine-3][Learning CFEngine 3]]
+  - [[#learning-hammerspoon][Learning Hammerspoon]]
 - [[#ideas][Ideas]]
   - [[#using-and-extending-seal][Using and extending Seal]]
   - [[#sending-things-to-omnifocus][Sending things to OmniFocus]]
@@ -50,6 +51,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#using-spoons-in-hammerspoon][Using Spoons in Hammerspoon]]
     - [[#just-enough-lua-to-be-productive-in-hammerspoon-part-1][Just Enough Lua to Be Productive in Hammerspoon, Part 1]]
     - [[#just-enough-lua-to-be-productive-in-hammerspoon-part-2][Just Enough Lua to Be Productive in Hammerspoon, Part 2]]
+    - [[#first-release-of-learning-hammerspoon][First release of "Learning Hammerspoon"]]
   - [[#elvish][Elvish]]
     - [[#bang-bang---shell-shortcuts-in-elvish][Bang-Bang (!!, !$) Shell Shortcuts in Elvish]]
     - [[#using-and-writing-completions-in-elvish][Using and writing completions in Elvish]]
@@ -147,6 +149,22 @@ You can buy the book from Amazon by clicking the link on the right.
 #+hugo: more
 
 \nbsp
+
+** DONE Learning Hammerspoon
+CLOSED: [2018-10-16 Tue 20:54]
+:PROPERTIES:
+:export_hugo_section: book
+:export_file_name: hammerspoon
+:export_hugo_custom_front_matter: :finalURL https://leanpub.com/learning-hammerspoon/
+:END:
+
+{{< hsbookimglink style="float:right" >}}
+
+*Automate all the things!* From window manipulation to automated system settings depending on your current location, [[http://www.hammerspoon.org/][Hammerspoon]] makes it possible. In this book you will learn how to get started with Hammerspoon, how to use pre-made modules, and how to write your own, to achieve an unprecedented level of control over your Mac.
+
+#+hugo: more
+
+Learn more, read a free sample and get the book (you choose how much you pay!) at https://leanpub.com/learning-hammerspoon/, or click on the banner on the right.
 
 * Ideas
 :PROPERTIES:
@@ -1398,6 +1416,34 @@ You know now enough Lua to start being productive with Hammerspoon.  You'll pick
 
 Have fun!
 
+*** DONE First release of "Learning Hammerspoon"    :book:announcement:
+CLOSED: [2018-10-16 Tue 21:22]
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: 2018-10-16-first-release-of-learning-hammerspoon
+:EXPORT_FILE_NAME: index
+:export_hugo_custom_front_matter: :toc false :featured_image /images/hammerspoon.png
+:END:
+#+begin_description
+I am happy to announce the first release of my new book "Learning Hammerspoon", a book devoted to using Hammerspoon to make using your Mac easier, faster and more fun.
+#+end_description
+
+I am happy to announce the first release of my new book "Learning Hammerspoon", a book devoted to using [[http://www.hammerspoon.org/][Hammerspoon]] to make using your Mac easier, faster and more fun.
+
+You can find more information, read a free sample, and purchase it at [[https://leanpub.com/learning-hammerspoon/][LeanPub]]:
+
+{{< hsbookimglink >}}
+
+This book is based partly on blog posts published in [[https://zzamboni.org/tags/hammerspoon/][my blog]], but with a lot of new material. In this first release, the following chapters are finished:
+
+- Getting started with Hammerspoon
+- Using Spoons in Hammerspoon
+- Just enough Lua to be productive with Hammerspoon
+- Using and extending Seal
+
+It is not complete yet, but already includes a lot of useful information. I will be updating it frequently, and of course you get all updates for free.
+
+I look forward to your feedback! Feel free to message me through the [[https://leanpub.com/learning-hammerspoon/email_author/new][/Email the author/]] page at LeanPub.
+
 ** Elvish                                                            :elvish:
 :PROPERTIES:
 :export_hugo_custom_front_matter: :featured_image /images/elvish-logo.svg
@@ -1866,8 +1912,5 @@ Hugo has extensive capabilities and it is beyond the scope of this article to sh
 - Maybe migrate to GitLab pages?
 
 
+
 * Footnotes
-* COMMENT Local Variables                                           :ARCHIVE:
-# Local Variables:
-# eval: (add-hook 'after-save-hook #'org-hugo-export-wim-to-md-after-save :append :local)
-# End:
