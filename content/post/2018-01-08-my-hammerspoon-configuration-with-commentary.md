@@ -5,12 +5,12 @@ summary = "In my ongoing series of literate config files, I present to you my Ha
 date = 2018-01-08T13:31:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "hammerspoon"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.1.13 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.1.14 + ox-hugo)"
 toc = true
 featured_image = "/images/hammerspoon.png"
 +++
 
-Last update: **August  6, 2018**
+Last update: **November 27, 2018**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -73,6 +73,16 @@ Install=spoon.SpoonInstall
 ```
 
 
+## BetterTouchTool {#bettertouchtool}
+
+I'm currently working on a new [BetterTouchTool.spoon](https://github.com/zzamboni/Spoons/tree/spoon/BetterTouchTool/Source/BetterTouchTool.spoon) which provides integration with the [BetterTouchTool AppleScript API](https://docs.bettertouchtool.net/docs/apple%5Fscript.html). This is in heavy development! See the configuration for the Hammer spoon in for an example of how to use it.
+
+```lua
+Install:andUse("BetterTouchTool", { loglevel = 'debug' })
+BTT = spoon.BetterTouchTool
+```
+
+
 ## URL Dispatching to site-specific browsers {#url-dispatching-to-site-specific-browsers}
 
 The [URLDispatcher](http://www.hammerspoon.org/Spoons/URLDispatcher.html) spoon makes it possible to open URLs with different browsers. I have created different site-specific browsers using [Epichrome](https://github.com/dmarmor/epichrome), which allows me to keep site-specific bookmarks, search settings, etc.
@@ -85,17 +95,19 @@ Install:andUse("URLDispatcher",
                      { "https?://issue.swisscom.ch",                       "org.epichrome.app.SwisscomJira" },
                      { "https?://issue.swisscom.com",                      "org.epichrome.app.SwisscomJira" },
                      { "https?://jira.swisscom.com",                       "org.epichrome.app.SwisscomJira" },
-                     { "https?://wiki.swisscom.com",                       "org.epichrome.app.SwisscomWiki" },
+                     { "https?://wiki.swisscom.com",                       "org.epichrome.app.SwisscomW408" },
                      { "https?://collaboration.swisscom.com",              "org.epichrome.app.SwisscomCollab" },
                      { "https?://smca.swisscom.com",                       "org.epichrome.app.SwisscomTWP" },
                      { "https?://portal.corproot.net",                     "com.apple.Safari" },
                      { "https?://app.opsgenie.com",                        "org.epichrome.app.OpsGenie" },
                      { "https?://app.eu.opsgenie.com",                     "org.epichrome.app.OpsGenie" },
                      { "https?://fiori.swisscom.com",                      "com.apple.Safari" },
-                     { "https?://https://pmpgwd.apps.swisscom.com/fiori",  "com.apple.Safari" },
+                     { "https?://pmpgwd.apps.swisscom.com/fiori",  "com.apple.Safari" },
+                     { "https?://.*webex.com",  "com.google.Chrome" },
                    },
                    -- default_handler = "com.google.Chrome"
-                   default_handler = "com.electron.brave"
+                   -- default_handler = "com.electron.brave"
+                   default_handler = "com.brave.Browser.dev"
                  },
                  start = true
                }
@@ -118,7 +130,7 @@ Install:andUse("WindowHalfsAndThirds",
 )
 ```
 
-The [WindowScreenLeftAndRight](http://zzamboni.org/zzSpoons/WindowScreenLeftAndRight.html) spoon sets up key bindings for moving windows between multiple screens.
+The [WindowScreenLeftAndRight](http://www.hammerspoon.org/Spoons/WindowScreenLeftAndRight.html) spoon sets up key bindings for moving windows between multiple screens.
 
 ```lua
 Install:andUse("WindowScreenLeftAndRight",
@@ -160,7 +172,7 @@ Install:andUse("UniversalArchive",
                {
                  config = {
                    evernote_archive_notebook = ".Archive",
-                   outlook_archive_folder = "Archive (On My Computer)",
+                   outlook_archive_folder = "Archive (diego.zamboni@swisscom.com)",
                    archive_notifications = false
                  },
                  hotkeys = { archive = { { "ctrl", "cmd" }, "a" } }
@@ -174,7 +186,7 @@ The [SendToOmniFocus](http://www.hammerspoon.org/Spoons/SendToOmniFocus.html) sp
 Install:andUse("SendToOmniFocus",
                {
                  config = {
-                   quickentrydialog = true,
+                   quickentrydialog = false,
                    notifications = false
                  },
                  hotkeys = {
@@ -184,6 +196,7 @@ Install:andUse("SendToOmniFocus",
                    s:registerApplication("Swisscom Collab", { apptype = "chromeapp", itemname = "tab" })
                    s:registerApplication("Swisscom Wiki", { apptype = "chromeapp", itemname = "wiki page" })
                    s:registerApplication("Swisscom Jira", { apptype = "chromeapp", itemname = "issue" })
+                   s:registerApplication("Brave Browser Dev", { apptype = "chromeapp", itemname = "page" })
                  end
                }
 )
@@ -206,9 +219,12 @@ Install:andUse("EvernoteOpenAndTag",
 
 The [TextClipboardHistory](http://www.hammerspoon.org/Spoons/TextClipboardHistory.html) spoon implements a clipboard history, only for text items. It is invoked with `Cmd-Shift-v`.
 
+This is disabled for the moment as I experiment with BetterTouchTool's built-in clipboard history, which I have bound to the same key combination for consistency in my workflow.
+
 ```lua
 Install:andUse("TextClipboardHistory",
                {
+                 disable = true,
                  config = {
                    show_in_menubar = false,
                  },
@@ -233,6 +249,17 @@ Install:andUse("Hammer",
                    config_reload = {hyper, "r"},
                    toggle_console = {hyper, "y"}
                  },
+                 fn = function(s)
+                   BTT:bindSpoonActions(s,
+                                        { config_reload = {
+                                            kind = 'touchbarButton',
+                                            uuid = "FF8DA717-737F-4C42-BF91-E8826E586FA1",
+                                            name = "Restart",
+                                            icon = hs.image.imageFromName(hs.image.systemImageNames.ApplicationIcon),
+                                            color = hs.drawing.color.x11.orange,
+                                        }
+                   })
+                 end,
                  start = true
                }
 )
@@ -245,7 +272,35 @@ Install:andUse("Caffeine", {
                  start = true,
                  hotkeys = {
                    toggle = { hyper, "1" }
-                 }
+                 },
+                 fn = function(s)
+                   BTT:bindSpoonActions(s, {
+                                          toggle = {
+                                            kind = 'touchbarWidget',
+                                            uuid = '72A96332-E908-4872-A6B4-8A6ED2E3586F',
+                                            name = 'Caffeine',
+                                            widget_code = [[
+do
+  title = " "
+  icon = hs.image.imageFromPath(spoon.Caffeine.spoonPath.."/caffeine-off.pdf")
+  if (hs.caffeinate.get('displayIdle')) then
+    icon = hs.image.imageFromPath(spoon.Caffeine.spoonPath.."/caffeine-on.pdf")
+  end
+  print(hs.json.encode({ text = title, icon_data = BTT:hsimageToBTTIconData(icon) }))
+end
+  ]],
+                                            code = "spoon.Caffeine.clicked()",
+                                            widget_interval = 1,
+                                            color = hs.drawing.color.x11.black,
+                                            icon_only = true,
+                                            icon_size = hs.geometry.size(15,15),
+                                            BTTTriggerConfig = {
+                                              BTTTouchBarFreeSpaceAfterButton = 0,
+                                              BTTTouchBarItemPadding = -6,
+                                            },
+                                          }
+                   })
+                 end
 })
 ```
 
@@ -523,6 +578,7 @@ I live in Switzerland, and my German is far from perfect, so the [PopupTranslate
 local wm=hs.webview.windowMasks
 Install:andUse("PopupTranslateSelection",
                {
+                 disable = true,
                  config = {
                    popup_style = wm.utility|wm.HUD|wm.titled|wm.closable|wm.resizable,
                  },
@@ -532,6 +588,21 @@ Install:andUse("PopupTranslateSelection",
                    translate_to_es = { hyper, "s" },
                    translate_de_en = { shift_hyper, "e" },
                    translate_en_de = { shift_hyper, "d" },
+                 }
+               }
+)
+```
+
+I am now testing [DeepLTranslate](http://www.hammerspoon.org/Spoons/DeepLTranslate.html), based on PopupTranslateSelection but which uses the [DeepL translator](https://www.deepl.com/en/translator).
+
+```lua
+Install:andUse("DeepLTranslate",
+               {
+                 config = {
+                   popup_style = wm.utility|wm.HUD|wm.titled|wm.closable|wm.resizable,
+                 },
+                 hotkeys = {
+                   translate = { hyper, "e" },
                  }
                }
 )

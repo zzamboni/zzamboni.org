@@ -5,12 +5,12 @@ summary = "In this blog post I will walk you through my current Elvish configura
 date = 2017-11-16T20:21:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "elvish"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.1.13 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.1.14 + ox-hugo)"
 toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **August  6, 2018**
+Last update: **November 27, 2018**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -25,9 +25,11 @@ First we set up the executable paths. We set the `GOPATH` environment variable w
 
 ```elvish
 E:GOPATH = ~/Dropbox/Personal/devel/go
+E:RACKETPATH = ~/Library/Racket/7.1
 paths = [
   ~/bin
   $E:GOPATH/bin
+  $E:RACKETPATH/bin
   /usr/local/opt/coreutils/libexec/gnubin
   /usr/local/opt/python/libexec/bin
   ~/Dropbox/Personal/devel/hammerspoon/spoon/bin
@@ -90,7 +92,7 @@ Next, we set the test function to enable proxy auto-setting. In my case, the `/e
 ```elvish
 proxy:test = {
   and ?(test -f /etc/resolv.conf) \
-  ?(egrep -q '^(search|domain).*corproot.net' /etc/resolv.conf)
+  ?(egrep -q '^(search|domain).*(corproot.net|swissptt.ch)' /etc/resolv.conf)
 }
 ```
 
@@ -117,16 +119,16 @@ use readline-binding
 
 I add a couple of keybindings which are missing from the default `readline-binding` module:
 
--   `Alt-backspace` to delete word
+-   `Alt-backspace` to delete small-word
 
     ```elvish
     edit:insert:binding[Alt-Backspace] = $edit:kill-small-word-left~
     ```
 
--   `Alt-d` to delete the word under the cursor
+-   `Alt-d` to delete the small-word under the cursor
 
     ```elvish
-    edit:insert:binding[Alt-d] = { edit:move-dot-right-small-word; edit:kill-small-word-left }
+    edit:insert:binding[Alt-d] = $edit:kill-small-word-right~
     ```
 
 
@@ -303,6 +305,15 @@ I use OpsGenie at work, so I have put together the [opsgenie](https://github.com
 
 ```elvish
 use github.com/zzamboni/elvish-modules/opsgenie
+```
+
+
+## LeanPub {#leanpub}
+
+I use [LeanPub](https://leanpub.com/help/api) for publishing my books, so I have written a few utility functions.
+
+```elvish
+use github.com/zzamboni/elvish-modules/leanpub
 ```
 
 

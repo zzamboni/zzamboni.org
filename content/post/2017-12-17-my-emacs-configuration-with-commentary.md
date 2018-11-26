@@ -5,12 +5,12 @@ summary = "I have enjoyed slowly converting my configuration files to literate p
 date = 2017-12-17T20:14:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.1.13 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.1.14 + ox-hugo)"
 featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **August  6, 2018**
+Last update: **November 27, 2018**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -78,33 +78,32 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ad-redefinition-action (quote accept))
- '(auto-insert-directory "~/.emacs.d/auto-insert/")
+ '(auto-insert-directory "~/.emacs.d/auto-insert/" nil nil "Customized with use-package autoinsert")
  '(backup-directory-alist (quote (("." . "~/.emacs.d/backups"))))
- '(cfengine-indent 1)
- '(cider-repl-history-file "~/.emacs.d/cider-history" t)
- '(cider-repl-history-size 5000 t)
- '(cider-repl-pop-to-buffer-on-connect t t)
- '(cider-repl-result-prefix "; => " t)
- '(cider-repl-use-clojure-font-lock t t)
- '(cider-repl-use-pretty-printing nil t)
- '(cider-repl-wrap-history t t)
- '(cider-show-error-buffer nil t)
+ '(cider-repl-history-file "~/.emacs.d/cider-history" t nil "Customized with use-package cider")
+ '(cider-repl-history-size 5000 t nil "Customized with use-package cider")
+ '(cider-repl-pop-to-buffer-on-connect t t nil "Customized with use-package cider")
+ '(cider-repl-result-prefix "; => " t nil "Customized with use-package cider")
+ '(cider-repl-use-clojure-font-lock t t nil "Customized with use-package cider")
+ '(cider-repl-use-pretty-printing nil t nil "Customized with use-package cider")
+ '(cider-repl-wrap-history t t nil "Customized with use-package cider")
+ '(cider-show-error-buffer nil t nil "Customized with use-package cider")
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
-    ("cd4d1a0656fee24dc062b997f54d6f9b7da8f6dc8053ac858f15820f9a04a679" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "6ac7c0f959f0d7853915012e78ff70150bfbe2a69a1b703c3ac4184f9ae3ae02" "8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a" "a1a966cf2e87be6a148158c79863440ba2e45aa06cc214341feafe5c6deca4f2" "3eb2b5607b41ad8a6da75fe04d5f92a46d1b9a95a202e3f5369e2cdefb7aac5c" "3d0142352ce19c860047ad7402546944f84c270e84ae479beddbc2608268e0e5" "a33858123d3d3ca10c03c657693881b9f8810c9e242a62f1ad6380adf57b031c" "a40eac965142a2057269f8b2abd546b71a0e58e733c6668a62b1ad1aa7669220" "7be789f201ea16242dab84dd5f225a55370dbecae248d4251edbd286fe879cfa" "94dac4d15d12ba671f77a93d84ad9f799808714d4c5d247d5fd944df951b91d6" "4d8fab23f15347bce54eb7137789ab93007010fa47296c2f36757ff84b5b3c8a" default)))
- '(desktop-lazy-idle-delay 3)
- '(desktop-lazy-verbose nil)
- '(desktop-restore-eager 1)
- '(easy-hugo-basedir "~/Personal/devel/zzamboni.org/zzamboni.org/" t)
- '(easy-hugo-previewtime "300" t)
- '(easy-hugo-url "http://zzamboni.org/" t)
- '(gist-view-gist t t)
+    ("e08cf6a643018ccf990a099bcf82903d64f02e64798d13a1859e79e47c45616e" "7f89ec3c988c398b88f7304a75ed225eaac64efa8df3638c815acc563dfd3b55" "cd4d1a0656fee24dc062b997f54d6f9b7da8f6dc8053ac858f15820f9a04a679" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "6ac7c0f959f0d7853915012e78ff70150bfbe2a69a1b703c3ac4184f9ae3ae02" "8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a" "a1a966cf2e87be6a148158c79863440ba2e45aa06cc214341feafe5c6deca4f2" "3eb2b5607b41ad8a6da75fe04d5f92a46d1b9a95a202e3f5369e2cdefb7aac5c" "3d0142352ce19c860047ad7402546944f84c270e84ae479beddbc2608268e0e5" "a33858123d3d3ca10c03c657693881b9f8810c9e242a62f1ad6380adf57b031c" "a40eac965142a2057269f8b2abd546b71a0e58e733c6668a62b1ad1aa7669220" "7be789f201ea16242dab84dd5f225a55370dbecae248d4251edbd286fe879cfa" "94dac4d15d12ba671f77a93d84ad9f799808714d4c5d247d5fd944df951b91d6" "4d8fab23f15347bce54eb7137789ab93007010fa47296c2f36757ff84b5b3c8a" default)))
+ '(desktop-lazy-idle-delay 1 nil nil "Restore the rest of the buffers 1 seconds later")
+ '(desktop-lazy-verbose nil nil nil "Be silent about lazily opening buffers")
+ '(desktop-restore-eager 1 nil nil "Restore only the first buffer right away")
+ '(easy-hugo-basedir "~/Personal/devel/zzamboni.org/zzamboni.org/" t nil "Customized with use-package easy-hugo")
+ '(easy-hugo-previewtime "300" t nil "Customized with use-package easy-hugo")
+ '(easy-hugo-url "http://zzamboni.org/" t nil "Customized with use-package easy-hugo")
+ '(gist-view-gist t t nil "Automatically open new gists in browser")
  '(global-visible-mark-mode t)
- '(helm-flx-for-helm-find-files t t)
- '(helm-flx-for-helm-locate t t)
+ '(helm-flx-for-helm-find-files t t nil "Customized with use-package helm-flx")
+ '(helm-flx-for-helm-locate t t nil "Customized with use-package helm-flx")
  '(indent-tabs-mode nil)
- '(jiralib-url "https://jira.swisscom.com" t)
+ '(jiralib-url "https://jira.swisscom.com" nil nil "Customized with use-package org-jira")
  '(js-indent-level 2)
  '(kill-whole-line t)
  '(load-prefer-newer t)
@@ -117,26 +116,30 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(ns-command-modifier (quote meta))
  '(ns-right-alternate-modifier (quote super))
  '(org-agenda-files (quote ("~/tmp/20180522-oce-capability-review.org")))
- '(org-confirm-babel-evaluate nil)
- '(org-default-notes-file "~/Dropbox/org/notes.org")
- '(org-directory "~/Dropbox/org")
+ '(org-confirm-babel-evaluate nil nil nil "Customized with use-package org")
+ '(org-default-notes-file "~/Dropbox/org/notes.org" nil nil "Customized with use-package org")
+ '(org-directory "~/Dropbox/org" nil nil "Customized with use-package org")
  '(org-entities-user
    (quote
     (("llangle" "\\llangle" t "&lang;&lang;" "<<" "<<" "《")
      ("rrangle" "\\rrangle" t "&rang;&rang;" ">>" ">>" "》"))))
- '(org-hide-emphasis-markers t)
+ '(org-export-with-broken-links t)
+ '(org-hide-emphasis-markers t nil nil "Customized with use-package org")
  '(org-hugo-use-code-for-kbd t)
- '(org-journal-dir "~/Documents/logbook")
- '(org-latex-packages-alist (quote (("" "MnSymbol" t))))
- '(org-log-done t)
+ '(org-journal-dir "~/Documents/logbook" nil nil "Customized with use-package org-journal")
+ '(org-latex-compiler "xelatex" nil nil "Customized with use-package ox-latex")
+ '(org-latex-pdf-process
+   (quote
+    ("%latex -shell-escape -interaction nonstopmode -output-directory %o %f" "%latex -interaction nonstopmode -output-directory %o %f" "%latex -interaction nonstopmode -output-directory %o %f")) nil nil "Customized with use-package ox-latex")
+ '(org-log-done t nil nil "Customized with use-package org")
  '(org-mac-grab-Acrobat-app-p nil)
  '(org-mac-grab-devonthink-app-p nil)
- '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2017.18/libexec/plantuml.jar")
- '(org-reveal-note-key-char nil t)
- '(org-reveal-root "file:///Users/taazadi1/Dropbox/org/reveal.js" t)
- '(org-src-fontify-natively t)
- '(org-src-tab-acts-natively t)
- '(org-startup-indented t)
+ '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.11/libexec/plantuml.jar" nil nil "Customized with use-package ob-plantuml")
+ '(org-reveal-note-key-char nil nil nil "Customized with use-package ox-reveal")
+ '(org-reveal-root "file:///Users/taazadi1/Dropbox/org/reveal.js" nil nil "Customized with use-package ox-reveal")
+ '(org-src-fontify-natively t nil nil "Customized with use-package org")
+ '(org-src-tab-acts-natively t nil nil "Customized with use-package org")
+ '(org-startup-indented t nil nil "Customized with use-package org")
  '(org-structure-template-alist
    (quote
     (("a" . "export ascii")
@@ -151,22 +154,100 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
      ("v" . "verse")
      ("n" . "note")
      ("d" . "description"))))
+ '(org-use-speed-commands
+   (lambda nil
+     (and
+      (looking-at org-outline-regexp)
+      (looking-back "^**"))) nil nil "Customized with use-package org")
  '(package-archives
    (quote
-    (("gnu" . "https://elpa.gnu.org/packages/")
-     ("marmalade" . "https://marmalade-repo.org/packages/")
+    (("marmalade" . "https://marmalade-repo.org/packages/")
      ("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (org-fstree esup package-build org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
+    (auth-sources plantuml-mode org-fstree esup package-build org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
+ '(paradox-automatically-star t nil nil "Customized with use-package paradox")
+ '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.11/libexec/plantuml.jar" t nil "Customized with use-package plantuml-mode")
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(reb-re-syntax (quote string))
- '(recentf-max-menu-items 100)
- '(recentf-max-saved-items 100)
+ '(recentf-max-menu-items 100 nil nil "Customized with use-package recentf")
+ '(recentf-max-saved-items 100 nil nil "Customized with use-package recentf")
  '(safe-local-variable-values
    (quote
-    ((eval add-hook
+    ((org-hugo-auto-export-on-save . t)
+     (org-latex-image-default-width . "0.5\\textwidth")
+     (eval progn
+           (defun zz/org-macro-hsapi-code
+               (link function desc)
+             (let*
+                 ((link-1
+                   (concat link
+                           (if
+                               (org-string-nw-p function)
+                               (concat "#" function)
+                             "")))
+                  (link-2
+                   (concat link
+                           (if
+                               (org-string-nw-p function)
+                               (concat "." function)
+                             "")))
+                  (desc-1
+                   (or
+                    (org-string-nw-p desc)
+                    (concat "=" link-2 "="))))
+               (concat "[[http://www.hammerspoon.org/docs/" link-1 "][" desc-1 "]]")))
+           (defun zz/org-macro-keys-code-outer
+               (str)
+             (mapconcat
+              (lambda
+                (s)
+                (concat "~" s "~"))
+              (split-string str)
+              (concat
+               (string 8203)
+               "+"
+               (string 8203))))
+           (defun zz/org-macro-keys-code-inner
+               (str)
+             (concat "~"
+                     (mapconcat
+                      (lambda
+                        (s)
+                        (concat s))
+                      (split-string str)
+                      (concat
+                       (string 8203)
+                       "-"
+                       (string 8203)))
+                     "~"))
+           (defun zz/org-macro-keys-code
+               (str)
+             (zz/org-macro-keys-code-inner str))
+           (defun zz/org-macro-luadoc-code
+               (func section desc)
+             (let*
+                 ((anchor
+                   (or
+                    (org-string-nw-p section)
+                    func))
+                  (desc-1
+                   (or
+                    (org-string-nw-p desc)
+                    func)))
+               (concat "[[https://www.lua.org/manual/5.3/manual.html#" anchor "][" desc-1 "]]")))
+           (defun zz/org-macro-luafun-code
+               (func desc)
+             (let*
+                 ((anchor
+                   (concat "pdf-" func))
+                  (desc-1
+                   (or
+                    (org-string-nw-p desc)
+                    (concat "=" func "()="))))
+               (concat "[[https://www.lua.org/manual/5.3/manual.html#" anchor "][" desc-1 "]]"))))
+     (eval add-hook
            (quote after-save-hook)
            (function org-hugo-export-wim-to-md-after-save)
            :append :local)
@@ -187,17 +268,17 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
      ("^:P:devel/" ":Dev:")
      ("^:Write:learning-cfengine-3/learning-cfengine-3/" ":cf-learn:")
      ("^:Dev:go/src/github.com/elves/elvish/" ":elvish:")
-     ("^:Dev:zzamboni.org/zzamboni.org/" ":zz.org:"))) t)
- '(sml/theme (quote dark) t)
- '(sp-base-key-bindings (quote paredit))
+     ("^:Dev:zzamboni.org/zzamboni.org/" ":zz.org:"))) nil nil "Customized with use-package smart-mode-line")
+ '(sml/theme (quote dark) nil nil "Customized with use-package smart-mode-line")
+ '(sp-base-key-bindings (quote paredit) nil nil "Customized with use-package smartparens")
  '(tab-width 2)
  '(tool-bar-mode nil)
- '(uniquify-after-kill-buffer-p t)
- '(uniquify-buffer-name-style (quote post-forward) nil (uniquify))
- '(uniquify-strip-common-suffix t)
+ '(uniquify-after-kill-buffer-p t nil nil "Customized with use-package uniquify")
+ '(uniquify-buffer-name-style (quote post-forward) nil (uniquify) "Customized with use-package uniquify")
+ '(uniquify-strip-common-suffix t nil nil "Customized with use-package uniquify")
  '(use-package-always-defer t)
  '(use-package-always-ensure t)
- '(vr/engine (quote pcre2el) t))
+ '(vr/engine (quote pcre2el) nil nil "Use PCRE regular expressions"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -206,6 +287,9 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(default ((t (:inherit nil :stipple nil :background "#282828" :foreground "#FDF4C1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "nil" :family "Inconsolata"))))
  '(col-highlight ((t (:background "#3c3836"))))
  '(fixed-pitch ((t (:family "Inconsolata"))))
+ '(font-latex-sedate-face ((t (:inherit fixed-pitch :foreground "#a89984"))))
+ '(font-lock-comment-face ((t (:inherit fixed-pitch :foreground "#7c6f64"))))
+ '(font-lock-function-name-face ((t (:inherit fixed-pitch :foreground "#fabd2f"))))
  '(linum ((t (:background "#282828" :foreground "#504945" :height 140 :family "Inconsolata"))))
  '(markup-meta-face ((t (:foreground "gray40" :height 140 :family "Inconsolata"))))
  '(markup-title-0-face ((t (:inherit markup-gen-face :height 1.6))))
@@ -230,13 +314,25 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
  '(org-property-value ((t (:inherit fixed-pitch))) t)
  '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
  '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
  '(org-verbatim ((t (:inherit (shadow fixed-pitch)))))
  '(variable-pitch ((t (:weight light :height 180 :family "Source Sans Pro")))))
 ```
 
 
-## Setting up the package system {#setting-up-the-package-system}
+## Password management {#password-management}
+
+Password management using `auth-sources` and `pass` (I normally use 1Password, but I have not found a good command-line/Emacs interface for it, so I am using `pass` for now for some items I need to add to my Emacs config file).
+
+```emacs-lisp
+(require 'auth-source)
+(require 'auth-source-pass)
+(auth-source-pass-enable)
+```
+
+
+## Package management {#package-management}
 
 I use the [wonderful use-package](https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-configuration-tool) to manage most of the packages in my installation (one exception is `org-mode`, see below). As this is not bundled yet with Emacs, the first thing we do is install it by hand. All other packages are then declaratively installed and configured with `use-package`. This makes it possible to fully bootstrap Emacs using only this config file, everything else is downloaded, installed and configured automatically.
 
@@ -244,7 +340,7 @@ First, we declare the package repositories to use.
 
 ```emacs-lisp
 (customize-set-variable 'package-archives
-                        '(("gnu"       . "https://elpa.gnu.org/packages/")
+                        '(;;("gnu"       . "https://elpa.gnu.org/packages/")
                           ("marmalade" . "https://marmalade-repo.org/packages/")
                           ("melpa"     . "https://melpa.org/packages/")))
 ```
@@ -296,6 +392,23 @@ Set the load path to the directories from where I sometimes load things outside 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 ```
 
+Giving a try to [Paradox](https://github.com/Malabarba/paradox) for an enhanced package management interface. We use `auth-sources` to fetch the GitHub token from the `password-store` password manager.
+
+One weirdness: if I set `:defer nil` so that Paradox is loaded right away, the `paradox-github-token` variable gets set with garbage - not sure if this is a bug in `auth-source`, maybe it needs some time to initialize? Setting `:defer 1` (or omitting it, but then Paradox does not get installed as a replacement for `list-packages` until you run `paradox-list-packages` by hand for the first time) results in the correct value being fetched.
+
+(disabled for now)
+
+```emacs-lisp
+(use-package paradox
+  :defer 1
+  :after auth-source-pass
+  :config
+  (paradox-enable)
+  (setq paradox-github-token (auth-source-pass-get 'secret "paradox-github-token"))
+  :custom
+  (paradox-automatically-star t))
+```
+
 
 ## Settings {#settings}
 
@@ -316,6 +429,12 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 
 
 ### Miscellaneous settings {#miscellaneous-settings}
+
+-   Start the Emacs server
+
+```emacs-lisp
+(server-start)
+```
 
 -   This is probably one of my oldest settings - I remember adding it around 1993 when I started learning Emacs, and it has been in my config ever since. When `time-stamp` is run before every save, the string `Time-stamp: <>` in the first 8 lines of the file will be updated with the current timestamp.
 
@@ -430,6 +549,70 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     ```emacs-lisp
     (customize-set-variable 'ad-redefinition-action 'accept)
     ```
+
+
+## System-specific configuration {#system-specific-configuration}
+
+Some settings maybe OS-specific, and this is where we set them. For now I only use Emacs on my Mac, so only the Mac section is filled out, but there are sections for Linux and Windows as well.
+
+```emacs-lisp
+(cond ((eq system-type 'darwin)
+       <<Mac settings>>
+       )
+      ((eq system-type 'windows-nt)
+       <<Windows settings>>
+       )
+      ((eq system-type 'gnu/linux)
+       <<Linux settings>>
+       ))
+```
+
+
+### Mac {#mac}
+
+First, we set the key modifiers correctly to my preferences: Make Command (⌘) act as Meta, Option as Alt, right-Option as Super
+
+```emacs-lisp
+(customize-set-variable 'mac-command-modifier 'meta)
+(customize-set-variable 'mac-option-modifier 'alt)
+(customize-set-variable 'mac-right-option-modifier 'super)
+```
+
+We also make it possible to use the familiar <kbd>⌘-+</kbd> and <kbd>⌘--</kbd> to increase and decrease the font size. <kbd>⌘-=</kbd> is also bound to "increase" because it's on the same key in an English keyboard.
+
+```emacs-lisp
+(bind-key "M-+" 'text-scale-increase)
+(bind-key "M-=" 'text-scale-increase)
+(bind-key "M--" 'text-scale-decrease)
+```
+
+Somewhat surprisingly, there seems to be no "reset" function, so I define my own and bind it to `⌘-0`.
+
+```emacs-lisp
+(defun zz/text-scale-reset ()
+  (interactive)
+  (text-scale-set 0))
+(bind-key "M-0" 'zz/text-scale-reset)
+```
+
+We also use the `exec-path-from-shell` to make sure the path settings from the shell are loaded into Emacs (usually it starts up with the default system-wide path).
+
+```emacs-lisp
+(use-package exec-path-from-shell
+  :defer nil
+  :config
+  (exec-path-from-shell-initialize))
+```
+
+
+### Linux {#linux}
+
+There are no Linux-specific settings for now.
+
+
+### Windows {#windows}
+
+There are no Windows-specific settings for now.
 
 
 ## Keybindings {#keybindings}
@@ -572,10 +755,8 @@ I use `use-package` to load the `org` package, and put its configuration inside 
     ("A-h" . org-mark-element)
     ("C-c c" . org-capture)
   :custom
-    (org-directory "~/Dropbox/org")
     (org-log-done t)
     (org-startup-indented t)
-    (org-default-notes-file (concat org-directory "/notes.org"))
     (org-use-speed-commands (lambda () (and (looking-at org-outline-regexp) (looking-back "^\**"))))
     (org-confirm-babel-evaluate nil)
     (org-src-fontify-natively t)
@@ -638,12 +819,6 @@ I use `use-package` to load the `org` package, and put its configuration inside 
 
 ### General org-mode configuration {#general-org-mode-configuration}
 
-Set `org-directory` to a directory inside my Dropbox so that my main files get synchronized automatically.
-
-```emacs-lisp
-(org-directory "~/Dropbox/org")
-```
-
 Automatically log done times in todo items.
 
 ```emacs-lisp
@@ -662,6 +837,20 @@ By default, `org-indent` produces an indicator `"Ind"` in the modeline. We use d
 (use-package org-indent
   :ensure nil
   :diminish)
+```
+
+
+### Miscellaneous org functions {#miscellaneous-org-functions}
+
+Utility `org-get-keyword` function (from the org-mode mailing list) to get the value of file-level properties.
+
+```emacs-lisp
+(defun org-get-keyword (key)
+  (org-element-map (org-element-parse-buffer 'element) 'keyword
+    (lambda (k)
+      (when (string= key (org-element-property :key k))
+        (org-element-property :value k)))
+    nil t))
 ```
 
 
@@ -686,10 +875,6 @@ The default keybinding for `org-mark-element` is `M-h`, which in macOS hides the
 ```
 
 Default setup and keybinding for `org-capture`.
-
-```emacs-lisp
-(org-default-notes-file (concat org-directory "/notes.org"))
-```
 
 ```emacs-lisp
 ("C-c c" . org-capture)
@@ -783,6 +968,38 @@ One of the big strengths of org-mode is the ability to export a document in many
       :after org)
     ```
 
+-   Some customizations for the LaTeX exporter. `ox-latex` gets loaded automatically, but we use `use-package` anyway so that the config code is only executed after the package is loaded. I add a pseudo-class which uses the document class `book` but without parts (only chapters at the top level).
+
+    ```emacs-lisp
+    (use-package ox-latex
+      :load-path "lisp/org-mode/lisp"
+      :ensure nil
+      :demand
+      :after org
+      :custom
+      (org-latex-compiler "xelatex")
+      (org-latex-pdf-process '("%latex -shell-escape -interaction nonstopmode -output-directory %o %f" "%latex -interaction nonstopmode -output-directory %o %f" "%latex -interaction nonstopmode -output-directory %o %f"))
+      :config
+      (setq org-latex-listings 'minted)
+      (add-to-list 'org-latex-packages-alist '("newfloat" "minted"))
+      (add-to-list 'org-latex-minted-langs '(lua "lua"))
+      (add-to-list 'org-latex-minted-langs '(shell "shell"))
+      (add-to-list 'org-latex-classes '("book-no-parts" "\\documentclass[11pt,letterpaper]{book}"
+                                        ("\\chapter{%s}" . "\\chapter*{%s}")
+                                        ("\\section{%s}" . "\\section*{%s}")
+                                        ("\\subsection{%s}" . "\\subsection*{%s}")
+                                        ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                                        ("\\paragraph{%s}" . "\\paragraph*{%s}")))
+      (add-to-list 'org-latex-classes '("awesome-cv" "\\documentclass{awesome-cv}"
+                                        ("\\cvsection{%s}" . "\\cvsection{%s}")
+                                        ("\\cvsubsection{%s}" . "\\cvsubsection{%s}")
+                                        ("\\subsection{%s}" . "\\subsection*{%s}")
+                                        ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                                        ("\\cvparagraph{%s}" . "\\cvparagraph{%s}")))
+      ;; Necessary for LuaLaTeX to work - see https://tex.stackexchange.com/a/374391/10680
+      (setenv "LANG" "en_US.UTF-8"))
+    ```
+
 
 ### Blogging with Hugo {#blogging-with-hugo}
 
@@ -792,10 +1009,14 @@ One of the big strengths of org-mode is the ability to export a document in many
 -   Hugo is left to parse a native Markdown file, which means that many of its features such as shortcodes, TOC generation, etc., can still be used on the generated file.
 -   I am intrigued by ox-hugo's "one post per org subtree" proposed structure. So far I've always had one file per post, but with org-mode's structuring features, it might make sense to give it a try.
 
+We load `ox-hugo` followed by `ox-hugo-auto-export`, to set up [Auto-export on saving](https://ox-hugo.scripter.co/doc/auto-export-on-saving/).
+
 ```emacs-lisp
 (use-package ox-hugo
   :defer 3
-  :after org)
+  :after org
+  :config
+  (require 'ox-hugo-auto-export))
 ```
 
 Configure a capture template for creating new ox-hugo blog posts, from [ox-hugo's Org Capture Setup](https://ox-hugo.scripter.co/doc/org-capture-setup).
@@ -828,32 +1049,6 @@ Configure a capture template for creating new ox-hugo blog posts, from [ox-hugo'
                  (function org-hugo-new-subtree-post-capture-template))))
 ```
 
-The following code needs to be added at the end of org-files you use with ox-hugo, to set up a hook to [automatically export the current post on saving](https://ox-hugo.scripter.co/doc/auto-export-on-saving/). The code is shown here but only for reference. For an example of how this is used see the bottom of the [zzamboni.org file](https://raw.githubusercontent.com/zzamboni/zzamboni.org/master/content-org/zzamboni.org) which contains the source for [my website](http://zzamboni.org/).
-
-```emacs-lisp
-# Local Variables:
-# eval: (add-hook 'after-save-hook #'org-hugo-export-wim-to-md-after-save :append :local)
-# End:
-```
-
-Omit auto-saving [for `org-capture`'d notes](https://ox-hugo.scripter.co/doc/auto-export-on-saving/#step-1b-prevent-auto-export-during-org-capture).
-
-```emacs-lisp
-(use-package org-capture
-  :ensure nil
-  :config
-  (defun modi/org-capture--remove-auto-org-to-hugo-export-maybe ()
-    "Function for `org-capture-before-finalize-hook'.
-  Disable `org-hugo-export-wim-to-md-after-save'."
-    (setq org-hugo-allow-export-after-save nil))
-  (defun modi/org-capture--add-auto-org-to-hugo-export-maybe ()
-    "Function for `org-capture-after-finalize-hook'.
-  Enable `org-hugo-export-wim-to-md-after-save'."
-    (setq org-hugo-allow-export-after-save t))
-  (add-hook 'org-capture-before-finalize-hook #'modi/org-capture--remove-auto-org-to-hugo-export-maybe)
-  (add-hook 'org-capture-after-finalize-hook #'modi/org-capture--add-auto-org-to-hugo-export-maybe))
-```
-
 
 ### Keeping a Journal {#keeping-a-journal}
 
@@ -883,13 +1078,28 @@ Plain literate programming is built-in, but the `ob-*` packages provide the abil
   :after org)
 ```
 
+For [PlantUML](http://plantuml.com/) graph language, we install first the general `plantuml-mode` and the associated `org-babel` mode. We determine the location of the PlantUML jar file automatically from the installed Homebrew formula, and use it to configure both `ob-plantuml` and `plantuml-mode`.
+
 ```emacs-lisp
+(require 'subr-x)
+(setq homebrew-plantuml-jar-path
+      (expand-file-name (string-trim (shell-command-to-string "brew list plantuml | grep jar"))))
+
+(use-package plantuml-mode
+  :custom
+  (plantuml-jar-path homebrew-plantuml-jar-path))
+
 (use-package ob-plantuml
   :ensure nil
   :after org
   :custom
-  (org-plantuml-jar-path
-   (expand-file-name "/usr/local/Cellar/plantuml/1.2017.18/libexec/plantuml.jar")))
+  (org-plantuml-jar-path homebrew-plantuml-jar-path))
+```
+
+Define `shell-script-mode` as an alias for `console-mode`, so that `console` src blocks can be edited and are fontified correctly.
+
+```emacs-lisp
+(defalias 'console-mode 'shell-script-mode)
 ```
 
 We configure the languages for which to load org-babel support.
@@ -1093,27 +1303,9 @@ Remove a link. For some reason this is not part of org-mode. From <https://emacs
 ```
 
 
-### Snippets and templates {#snippets-and-templates}
-
-The [yankpad](https://github.com/Kungsgeten/yankpad) package makes it easy to store snippets that can be inserted at arbitrary points. Together with [yasnippet](http://joaotavora.github.io/yasnippet/) it becomes more powerful.
-
-```emacs-lisp
-(use-package yasnippet)
-(use-package yankpad
-  :init
-  (setq yankpad-file (concat org-directory "/yankpad.org"))
-  :bind
-  ([f7]  . yankpad-map)
-  ([f12] . yankpad-expand)
-  :config
-  ;; If you want to expand snippets with hippie-expand
-  (add-to-list 'hippie-expand-try-functions-list #'yankpad-expand))
-```
-
-
 ### Code for org-mode macros {#code-for-org-mode-macros}
 
-Here I define functions which get used in some of my org-mode macros, particularly within ox-hugo files such as [my blog's source file](https://github.com/zzamboni/zzamboni.org/blob/master/content-org/zzamboni.org).
+Here I define functions which get used in some of my org-mode macros
 
 This function receives three arguments, and returns the org-mode code for a link to the Hammerspoon API documentation for the `link` module, optionally to a specific `function`. If `desc` is passed, it is used as the display text, otherwise `section.function` is used.
 
@@ -1139,7 +1331,8 @@ Split STR at spaces and wrap each element with `~` char, separated by `+`. Zero-
                          (split-string str)
                          (concat (string ?\u200B) "-" (string ?\u200B)))
           "~"))
-(defun zz/org-macro-keys-code (str) (zz/org-macro-keys-code-inner str))
+(defun zz/org-macro-keys-code (str)
+  (zz/org-macro-keys-code-inner str))
 ```
 
 Links to a specific section/function of the Lua manual.
@@ -1149,77 +1342,188 @@ Links to a specific section/function of the Lua manual.
   (let* ((anchor (or (org-string-nw-p section) func))
          (desc-1 (or (org-string-nw-p desc) func)))
     (concat "[[https://www.lua.org/manual/5.3/manual.html#" anchor "][" desc-1 "]]")))
+```
 
+```emacs-lisp
 (defun zz/org-macro-luafun-code (func desc)
   (let* ((anchor (concat "pdf-" func))
          (desc-1 (or (org-string-nw-p desc) (concat "=" func "()="))))
     (concat "[[https://www.lua.org/manual/5.3/manual.html#" anchor "][" desc-1 "]]")))
-
 ```
 
 
-## System-specific configuration {#system-specific-configuration}
+### Publishing project configuration {#publishing-project-configuration}
 
-Some settings maybe OS-specific, and this is where we set them. For now I only use Emacs on my Mac, so only the Mac section is filled out, but there are sections for Linux and Windows as well.
+Define a publishing function based on `org-latex-publish-to-pdf` but which opens the resulting file at the end.
 
 ```emacs-lisp
-(cond ((eq system-type 'darwin)
-       <<Mac settings>>
-       )
-      ((eq system-type 'windows-nt)
-       <<Windows settings>>
-       )
-      ((eq system-type 'gnu/linux)
-       <<Linux settings>>
-       ))
+(defun org-latex-publish-to-latex-and-open (plist file pub-dir)
+  (org-open-file (org-latex-publish-to-pdf plist file pub-dir)))
+```
+
+Sample project configuration - disabled for now because this configuration has been incorporated into the `structure.tex` file and in the general `ox-latex` configuration, but kept here as a sample.
+
+```emacs-lisp
+(org-publish-project-alist
+ '(("mac-automation"
+    :base-directory "~/Personal/writing/mac-automation/"
+    :publishing-directory "~/Personal/writing/mac-automation/build/"
+    :base-extension "org"
+    :publishing-function org-latex-publish-to-latex-and-open
+    :latex-compiler "xelatex"
+    :latex-classes '("book-no-parts" "\\documentclass[11pt]{book}"
+                      ("\\chapter{%s}" . "\\chapter*{%s}")
+                      ("\\section{%s}" . "\\section*{%s}")
+                      ("\\subsection{%s}" . "\\subsection*{%s}")
+                      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                      ("\\paragraph{%s}" . "\\paragraph*{%s}"))
+    :latex-class "book-no-parts"
+    :latex-title-command "\\makeatletter\\begingroup
+  \\thispagestyle{empty}
+  \\begin{tikzpicture}[remember picture,overlay]
+  \\node[inner sep=0pt] (background) at (current page.center) {\\includegraphics[width=\\paperwidth]{background}};
+  \\draw (current page.center) node [fill=ocre!30!white,fill opacity=0.6,text opacity=1,inner sep=1cm]{\\Huge\\centering\\bfseries\\sffamily\\parbox[c][][t]{\\paperwidth}{\\centering \\@title \\\\[15pt]
+  {\\Large \\@subtitle }\\\\[20pt]
+  {\\huge \\@author }}};
+  \\end{tikzpicture}
+  \\vfill
+  \\endgroup\\makeatother
+  \\chapterimage{chapter_head_1.pdf}"
+    :latex-toc-command "\\pagestyle{empty}
+\\tableofcontents
+\\cleardoublepage
+\\pagestyle{fancy}"
+    )))
 ```
 
 
-### Mac {#mac}
+### Publishing to LeanPub {#publishing-to-leanpub}
 
-First, we set the key modifiers correctly to my preferences: Make Command (⌘) act as Meta, Option as Alt, right-Option as Super
+I use [LeanPub](https://leanpub.com/) for self-publishing my books [Learning Hammerspoon](https://leanpub.com/learning-hammerspoon/) and [Learning CFEngine](https://leanpub.com/learning-cfengine/). Fortunately, it is possible to export from org-mode to LeanPub-flavored Markdown.
+
+Some references:
+
+-   [Description of ox-leanpub.el](http://juanreyero.com/open/ox-leanpub/index.html) ([GitHub repo](https://github.com/juanre/ox-leanpub)) by [Juan Reyero](http://juanreyero.com/about/)
+-   [Publishing a book using org-mode](https://medium.com/@lakshminp/publishing-a-book-using-org-mode-9e817a56d144) by [Lakshmi Narasimhan](https://medium.com/@lakshminp/publishing-a-book-using-org-mode-9e817a56d144)
+-   [Writing a book with emacs org-mode and Leanpub](https://web.archive.org/web/20170816044305/http://anbasile.github.io/writing/2017/04/08/orgleanpub.html) by Angelo Basile (the link goes to an archive copy of the post, as it is not live on his website anymore)
+-   [Publishing a Book with Leanpub and Org Mode](http://irreal.org/blog/?p=5313) by Jon Snader (from where I found the links to the above)
+
+First, load `ox-leanpub`. As part of its configuration, I define a new export backend called `leanpub-multifile`, which adds three additional items in the LeanPub export section:
+
+-   "Multifile Export", which calls `leanpub-export` (defined below) with its default settings, to export the whole book as one-file-per-chapter;
+-   "Multifile Export (subset)", which calls `leanpub-export` with the `subset-only` flag set, which means only the `Subset.txt` file is exported. I use this together with `#+LEANPUB_WRITE_SUBSET: current` in my files to quickly export only the current chapter, to be able to quickly preview it using [LeanPub's subset-preview feature](https://leanpub.com/help/manual#subsetpreview);
+-   "Export current chapter" to explicitly export only the current chapter to its own file. This also updates `Subset.txt`, so it can be used to preview the current chapter without having to set `#+LEANPUB_WRITE_SUBSET: current`.
 
 ```emacs-lisp
-(customize-set-variable 'mac-command-modifier 'meta)
-(customize-set-variable 'mac-option-modifier 'alt)
-(customize-set-variable 'mac-right-option-modifier 'super)
+(use-package ox-leanpub
+  :ensure nil
+  :defer 3
+  :after org
+  :load-path ("lisp/ox-leanpub")
+  :config (org-export-define-derived-backend 'leanpub-multifile 'leanpub
+            :menu-entry
+            '(?L 1
+                 ((?p "Multifile Export" (lambda (a s v b) (leanpub-export a s v b)))
+                  (?s "Multifile Export (subset)" (lambda (a s v b) (leanpub-export a s v b t)))
+                  (?c "Export current chapter" (lambda (a s v b) (leanpub-export a s v b t "current")))))
+            :options-alist
+            '((:leanpub-output-dir "LEANPUB_OUTPUT_DIR" nil "manuscript" t)
+              (:leanpub-write-subset "LEANPUB_WRITE_SUBSET" nil nil t))
+            ))
 ```
 
-We also make it possible to use the familiar <kbd>⌘-+</kbd> and <kbd>⌘--</kbd> to increase and decrease the font size. <kbd>⌘-=</kbd> is also bound to "increase" because it's on the same key in an English keyboard.
+Next, the `leanpub-export` function, which does the work of splitting chapters into files, and to automatically populate the `Book.txt`, `Sample.txt` and `Subset.txt` files used by LeanPub. Based on the code from [Lakshmi's post](https://medium.com/@lakshminp/publishing-a-book-using-org-mode-9e817a56d144), but with the following additions:
+
+-   The exported files are written to the `manuscript/` subdirectory by default, which is what LeanPub expects. This default allows me to keep my book's main `org` file in the top-level directory of my repository, and to automatically write the output files to `manuscript/` so that LeanPub can process them. However, the output directory can be changed using the `#+LEANPUB_OUTPUT_DIR` file property, for example if you want to export to the current directory, you can use:
+
+    ```text
+    #+LEANPUB_OUTPUT_DIR: .
+    ```
+-   The book files are populated as follows:
+    -   `Book.txt` with all chapters, except those tagged with `noexport`.
+    -   `Sample.txt` with all chapters tagged with `sample`.
+    -   `Subset.txt` with chapters depending on the value of the `#+LEANPUB_WRITE_SUBSET` file property (if set):
+        -   Default: not created.
+        -   `tagged`: use all chapters tagged `subset`.
+        -   `all`: use the same chapters as `Book.txt`.
+        -   `sample`: use same chapters as `Sample.txt`.
+        -   `current`: export the current chapter (where the cursor is at the moment of the export) as the contents of `Subset.txt`.
+-   If a heading has the `frontmatter`, `mainmatter` or `backmatter` tags, the corresponding markup is inserted in the output, before the headline. This way, you only need to tag the first chapter of the front, main, and backmatter, respectively.
+-   Each section's headline is exported as part of the output (it is not in the original code)
 
 ```emacs-lisp
-(bind-key "M-+" 'text-scale-increase)
-(bind-key "M-=" 'text-scale-increase)
-(bind-key "M--" 'text-scale-decrease)
-```
-
-Somewhat surprisingly, there seems to be no "reset" function, so I define my own and bind it to `⌘-0`.
-
-```emacs-lisp
-(defun zz/text-scale-reset ()
+(defun leanpub-export (&optional async subtreep visible-only body-only only-subset subset-type)
+  "Export buffer to a Leanpub book."
   (interactive)
-  (text-scale-set 0))
-(bind-key "M-0" 'zz/text-scale-reset)
+  (let* ((info (org-combine-plists
+                (org-export--get-export-attributes
+                 'leanpub-multifile subtreep visible-only)
+                (org-export--get-buffer-attributes)
+                (org-export-get-environment 'leanpub-multifile subtreep)))
+         (outdir (plist-get info :leanpub-output-dir))
+         (do-subset (or subset-type (plist-get info :leanpub-write-subset)))
+         (matter-tags '("frontmatter" "mainmatter" "backmatter"))
+         (original-point (point)))
+    ;; Relative pathname given the basename of a file, including the correct output dir
+    (fset 'outfile (lambda (f) (concat outdir "/" f)))
+    ;; delete all these files, they get recreated as needed
+    (dolist (fname (mapcar (lambda (s) (concat s ".txt"))
+                           (append (if only-subset '("Subset") '("Book" "Sample" "Subset"))
+                                   matter-tags)))
+      (delete-file (outfile fname)))
+    (save-mark-and-excursion
+      (org-map-entries
+       (lambda ()
+         (when (org-at-heading-p)
+           (let* ((current-subtree (org-element-at-point))
+                  (id (or (org-element-property :name      current-subtree)
+                          (org-element-property :ID        current-subtree)
+                          (org-element-property :CUSTOM_ID current-subtree)))
+                  (level (nth 1 (org-heading-components)))
+                  (tags (org-get-tags))
+                  (title (or (nth 4 (org-heading-components)) ""))
+                  (basename (concat (replace-regexp-in-string " " "-" (downcase (or id title)))
+                                    ".md"))
+                  (filename (outfile basename))
+                  (stored-filename (org-entry-get (point) "EXPORT_FILE_NAME"))
+                  (point-in-subtree (<= (org-element-property :begin current-subtree)
+                                        original-point
+                                        (org-element-property :end current-subtree)))
+                  (is-subset (or (equal do-subset "all")
+                                 (and (equal do-subset "tagged") (member "subset" tags))
+                                 (and (equal do-subset "sample") (member "sample" tags))
+                                 (and (equal do-subset "current") point-in-subtree))))
+             (fset 'add-to-bookfiles
+                   (lambda (line &optional always)
+                     (let ((line-n (concat line "\n")))
+                       (unless only-subset
+                         (append-to-file line-n nil (outfile "Book.txt")))
+                       (when (and (not only-subset) (or (member "sample" tags) always))
+                         (append-to-file line-n nil (outfile "Sample.txt")))
+                       (when (or is-subset always)
+                         (append-to-file line-n nil (outfile "Subset.txt"))))))
+             (when (= level 1) ;; export only first level entries
+               ;; add appropriate tag for front/main/backmatter for tagged headlines
+               (dolist (tag matter-tags)
+                 (when (member tag tags)
+                   (let* ((fname (concat tag ".txt")))
+                     (append-to-file (concat "{" tag "}\n") nil (outfile fname))
+                     (add-to-bookfiles fname t))))
+               ;; add to the filename to Book.txt and to Sample.txt "sample" tag is found.
+               (add-to-bookfiles (file-name-nondirectory filename))
+               (when (or (not only-subset)
+                         is-subset)
+                 ;; set filename only if the property is missing or if its value is
+                 ;; different from the correct one
+                 (or (string= stored-filename filename)
+                     (org-entry-put (point) "EXPORT_FILE_NAME" filename))
+                 ;; select the subtree so that its headline is also exported
+                 ;; (otherwise we get just the body)
+                 (org-mark-subtree)
+                 (message (format "Exporting %s (%s)" filename title))
+                 (org-leanpub-export-to-markdown nil t)))))) "-noexport"))
+    (message (format "LeanPub export to %s/ finished" outdir))))
 ```
-
-We also use the `exec-path-from-shell` to make sure the path settings from the shell are loaded into Emacs (usually it starts up with the default system-wide path).
-
-```emacs-lisp
-(use-package exec-path-from-shell
-  :defer nil
-  :config
-  (exec-path-from-shell-initialize))
-```
-
-
-### Linux {#linux}
-
-There are no Linux-specific settings for now.
-
-
-### Windows {#windows}
-
-There are no Windows-specific settings for now.
 
 
 ## Appearance, buffer/file management and theming {#appearance-buffer-file-management-and-theming}
@@ -1284,7 +1588,7 @@ Enable desktop-save mode, which saves the current buffer configuration on exit a
   :defer nil
   :custom
   (desktop-restore-eager   1   "Restore only the first buffer right away")
-  (desktop-lazy-idle-delay 3   "Restore the rest of the buffers 3 seconds later")
+  (desktop-lazy-idle-delay 1   "Restore the rest of the buffers 1 seconds later")
   (desktop-lazy-verbose    nil "Be silent about lazily opening buffers")
   :bind
   ("C-M-s-k" . desktop-clear)
@@ -1549,7 +1853,10 @@ I find `iedit` absolutely indispensable when coding. In short: when you hit `Ctr
 
 ```emacs-lisp
 (use-package iedit
-  :config (set-face-background 'iedit-occurrence "Magenta"))
+  :custom
+  (iedit-toggle-key-default (kbd "C-;"))
+  :config
+  (set-face-background 'iedit-occurrence "Magenta"))
 ```
 
 Turn on the online documentation mode for all programming modes (not all of them support it) and for the Clojure REPL `cider` mode.
@@ -1655,7 +1962,9 @@ Another useful addition for LISP coding - `smartparens` enforces parenthesis to 
   ((clojure-mode
     emacs-lisp-mode
     lisp-mode
-    cider-repl-mode) . smartparens-strict-mode)
+    cider-repl-mode
+    racket-mode
+    racket-repl-mode) . smartparens-strict-mode)
   (smartparens-mode  . sp-use-paredit-bindings)
   (smartparens-mode  . (lambda () (local-set-key (kbd "M-(") 'zz/sp-enclose-next-sexp))))
 ```
@@ -1789,6 +2098,12 @@ Many other programming languages are well served by a single mode, without so mu
 
 
 ## Other tools {#other-tools}
+
+-   Use `helm-pass` as an interface to `pass`.
+
+    ```emacs-lisp
+    (use-package helm-pass)
+    ```
 
 -   git interface with some simple configuration I picked up somewhere. When you press <kbd>C-c C-g</kbd>, `magit-status` runs full-screen, but when you press <kbd>q</kbd>, it restores your previous window setup. Very handy.
 
