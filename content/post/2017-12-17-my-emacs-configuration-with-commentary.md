@@ -5,12 +5,12 @@ summary = "I have enjoyed slowly converting my configuration files to literate p
 date = 2017-12-17T20:14:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.1.14 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.2 + ox-hugo)"
 featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **November 27, 2018**
+Last update: **January  8, 2019**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -968,6 +968,8 @@ One of the big strengths of org-mode is the ability to export a document in many
       :after org)
     ```
 
+<!--listend-->
+
 -   Some customizations for the LaTeX exporter. `ox-latex` gets loaded automatically, but we use `use-package` anyway so that the config code is only executed after the package is loaded. I add a pseudo-class which uses the document class `book` but without parts (only chapters at the top level).
 
     ```emacs-lisp
@@ -1009,14 +1011,10 @@ One of the big strengths of org-mode is the ability to export a document in many
 -   Hugo is left to parse a native Markdown file, which means that many of its features such as shortcodes, TOC generation, etc., can still be used on the generated file.
 -   I am intrigued by ox-hugo's "one post per org subtree" proposed structure. So far I've always had one file per post, but with org-mode's structuring features, it might make sense to give it a try.
 
-We load `ox-hugo` followed by `ox-hugo-auto-export`, to set up [Auto-export on saving](https://ox-hugo.scripter.co/doc/auto-export-on-saving/).
-
 ```emacs-lisp
 (use-package ox-hugo
   :defer 3
-  :after org
-  :config
-  (require 'ox-hugo-auto-export))
+  :after org)
 ```
 
 Configure a capture template for creating new ox-hugo blog posts, from [ox-hugo's Org Capture Setup](https://ox-hugo.scripter.co/doc/org-capture-setup).

@@ -5,12 +5,12 @@ summary = "In this blog post I will walk you through my current Elvish configura
 date = 2017-11-16T20:21:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "elvish"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.1.14 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.2 + ox-hugo)"
 toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **November 27, 2018**
+Last update: **January  8, 2019**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
