@@ -10,7 +10,7 @@ featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **January  8, 2019**
+Last update: **January 24, 2019**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -102,6 +102,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(global-visible-mark-mode t)
  '(helm-flx-for-helm-find-files t t nil "Customized with use-package helm-flx")
  '(helm-flx-for-helm-locate t t nil "Customized with use-package helm-flx")
+ '(iedit-toggle-key-default [67108923] t)
  '(indent-tabs-mode nil)
  '(jiralib-url "https://jira.swisscom.com" nil nil "Customized with use-package org-jira")
  '(js-indent-level 2)
@@ -134,7 +135,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(org-log-done t nil nil "Customized with use-package org")
  '(org-mac-grab-Acrobat-app-p nil)
  '(org-mac-grab-devonthink-app-p nil)
- '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.11/libexec/plantuml.jar" nil nil "Customized with use-package ob-plantuml")
+ '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.14/libexec/plantuml.jar" nil nil "Customized with use-package ob-plantuml")
  '(org-reveal-note-key-char nil nil nil "Customized with use-package ox-reveal")
  '(org-reveal-root "file:///Users/taazadi1/Dropbox/org/reveal.js" nil nil "Customized with use-package ox-reveal")
  '(org-src-fontify-natively t nil nil "Customized with use-package org")
@@ -165,9 +166,9 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
      ("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (auth-sources plantuml-mode org-fstree esup package-build org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
+    (swiper-helm auth-sources plantuml-mode org-fstree esup package-build org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
  '(paradox-automatically-star t nil nil "Customized with use-package paradox")
- '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.11/libexec/plantuml.jar" t nil "Customized with use-package plantuml-mode")
+ '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.14/libexec/plantuml.jar" t nil "Customized with use-package plantuml-mode")
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(reb-re-syntax (quote string))
@@ -278,6 +279,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(uniquify-strip-common-suffix t nil nil "Customized with use-package uniquify")
  '(use-package-always-defer t)
  '(use-package-always-ensure t)
+ '(use-package-verbose nil)
  '(vr/engine (quote pcre2el) nil nil "Use PCRE regular expressions"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -375,6 +377,12 @@ We set some configuration for `use-package`:
 
     ```emacs-lisp
     (customize-set-variable 'use-package-always-defer t)
+    ```
+
+-   The `use-package-verbose` variable enables verbose loading of packages, useful for debugging. I set/unset this according to need.
+
+    ```emacs-lisp
+    (customize-set-variable 'use-package-verbose nil)
     ```
 
 This variable tells Emacs to prefer the `.el` file if it's newer, even if there is a corresponding `.elc` file. Also, use `auto-compile` to autocompile files as needed.
@@ -651,7 +659,7 @@ The main advantage of using this over `define-key` or `global-set-key` is that y
       ("C-c r" . vr/replace)
       ("C-c q" . vr/query-replace)
       ("C-r"   . vr/isearch-backward)
-      ("C-s"   . vr/isearch-forward)
+      ("C-S-s" . vr/isearch-forward)
       ("C-M-s" . isearch-forward)
       ("C-M-r" . isearch-backward))
     ```
@@ -762,6 +770,7 @@ I use `use-package` to load the `org` package, and put its configuration inside 
     (org-src-fontify-natively t)
     (org-src-tab-acts-natively t)
     (org-hide-emphasis-markers t)
+    (org-tags-column 0)
   :custom-face
     (variable-pitch ((t (:family "Source Sans Pro" :height 160 :weight light))))
     ;;(variable-pitch ((t (:family "Avenir Next" :height 160 :weight light))))
@@ -1234,6 +1243,12 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
     (org-mode . variable-pitch-mode)
     ```
 
+-   In `variable-pitch` mode, the default right-alignment for headline tags doesn't work, and results in the tags being misaligned (as it uses character positions to do the alignment). This setting positions the tags right after the last character of the headline, so at least they are more consistent.
+
+    ```emacs-lisp
+    (org-tags-column 0)
+    ```
+
     These two modes produce modeline indicators, which I disable using `diminish`.
 
     ```emacs-lisp
@@ -1406,121 +1421,43 @@ Some references:
 -   [Writing a book with emacs org-mode and Leanpub](https://web.archive.org/web/20170816044305/http://anbasile.github.io/writing/2017/04/08/orgleanpub.html) by Angelo Basile (the link goes to an archive copy of the post, as it is not live on his website anymore)
 -   [Publishing a Book with Leanpub and Org Mode](http://irreal.org/blog/?p=5313) by Jon Snader (from where I found the links to the above)
 
-First, load `ox-leanpub`. As part of its configuration, I define a new export backend called `leanpub-multifile`, which adds three additional items in the LeanPub export section:
-
--   "Multifile Export", which calls `leanpub-export` (defined below) with its default settings, to export the whole book as one-file-per-chapter;
--   "Multifile Export (subset)", which calls `leanpub-export` with the `subset-only` flag set, which means only the `Subset.txt` file is exported. I use this together with `#+LEANPUB_WRITE_SUBSET: current` in my files to quickly export only the current chapter, to be able to quickly preview it using [LeanPub's subset-preview feature](https://leanpub.com/help/manual#subsetpreview);
--   "Export current chapter" to explicitly export only the current chapter to its own file. This also updates `Subset.txt`, so it can be used to preview the current chapter without having to set `#+LEANPUB_WRITE_SUBSET: current`.
+First, load `ox-leanpub-markdown`. This is based on Juan's `ox-leanpub`, but with many changes of my own, including a rename.  You can get it from my fork at <https://github.com/zzamboni/ox-leanpub/tree/book-and-markua>.
 
 ```emacs-lisp
-(use-package ox-leanpub
-  :ensure nil
-  :defer 3
+(use-package ox-leanpub-markdown
+  :defer 1
   :after org
-  :load-path ("lisp/ox-leanpub")
-  :config (org-export-define-derived-backend 'leanpub-multifile 'leanpub
-            :menu-entry
-            '(?L 1
-                 ((?p "Multifile Export" (lambda (a s v b) (leanpub-export a s v b)))
-                  (?s "Multifile Export (subset)" (lambda (a s v b) (leanpub-export a s v b t)))
-                  (?c "Export current chapter" (lambda (a s v b) (leanpub-export a s v b t "current")))))
-            :options-alist
-            '((:leanpub-output-dir "LEANPUB_OUTPUT_DIR" nil "manuscript" t)
-              (:leanpub-write-subset "LEANPUB_WRITE_SUBSET" nil nil t))
-            ))
+  :load-path "lisp/ox-leanpub")
 ```
 
-Next, the `leanpub-export` function, which does the work of splitting chapters into files, and to automatically populate the `Book.txt`, `Sample.txt` and `Subset.txt` files used by LeanPub. Based on the code from [Lakshmi's post](https://medium.com/@lakshminp/publishing-a-book-using-org-mode-9e817a56d144), but with the following additions:
+Next, load my `ox-leanpub-book` module (also available at  <https://github.com/zzamboni/ox-leanpub/tree/book-and-markua>). It defines a new export backend called `leanpub-book`, which adds three additional items in the LeanPub export section:
 
--   The exported files are written to the `manuscript/` subdirectory by default, which is what LeanPub expects. This default allows me to keep my book's main `org` file in the top-level directory of my repository, and to automatically write the output files to `manuscript/` so that LeanPub can process them. However, the output directory can be changed using the `#+LEANPUB_OUTPUT_DIR` file property, for example if you want to export to the current directory, you can use:
+-   "Multifile: Whole book", which exports the whole book as one-file-per-chapter;
+-   "Multifile: Subset", which exports only the chapters that should be included in `Subset.txt` (if any), according to the rules listed below. I use this together with `#+LEANPUB_WRITE_SUBSET: current` in my files to quickly export only the current chapter, to be able to quickly preview it using [LeanPub's subset-preview feature](https://leanpub.com/help/manual#subsetpreview);
+-   "Multifile: Current chapter" to explicitly export only the current chapter to its own file. This also updates `Subset.txt`, so it can be used to preview the current chapter without having to set `#+LEANPUB_WRITE_SUBSET: current`.
 
-    ```text
-    #+LEANPUB_OUTPUT_DIR: .
-    ```
--   The book files are populated as follows:
-    -   `Book.txt` with all chapters, except those tagged with `noexport`.
-    -   `Sample.txt` with all chapters tagged with `sample`.
-    -   `Subset.txt` with chapters depending on the value of the `#+LEANPUB_WRITE_SUBSET` file property (if set):
-        -   Default: not created.
-        -   `tagged`: use all chapters tagged `subset`.
-        -   `all`: use the same chapters as `Book.txt`.
-        -   `sample`: use same chapters as `Sample.txt`.
-        -   `current`: export the current chapter (where the cursor is at the moment of the export) as the contents of `Subset.txt`.
--   If a heading has the `frontmatter`, `mainmatter` or `backmatter` tags, the corresponding markup is inserted in the output, before the headline. This way, you only need to tag the first chapter of the front, main, and backmatter, respectively.
--   Each section's headline is exported as part of the output (it is not in the original code)
+The book files are populated as follows:
+
+-   `Book.txt` with all chapters, except those tagged with `noexport`.
+-   `Sample.txt` with all chapters tagged with `sample`.
+-   `Subset.txt` with chapters depending on the value of the `#+LEANPUB_WRITE_SUBSET` file property (if set):
+    -   Default or `none`: not created.
+    -   `tagged`: use all chapters tagged `subset`.
+    -   `all`: use the same chapters as `Book.txt`.
+    -   `sample`: use same chapters as `Sample.txt`.
+    -   `current`: export the current chapter (where the cursor is at the moment of the export) as the contents of `Subset.txt`.
+
+If a heading has the `frontmatter`, `mainmatter` or `backmatter` tags, the corresponding markup is inserted in the output, before the headline. This way, you only need to tag the first chapter of the front, main, and backmatter, respectively.
+
+Note that the `org-leanpub-book-setup-menu-markdown` function gets called in the `:config` section. This is because I am working on `ox-markua` to export Leanpub's new [Markua](https://leanpub.com/markua/read) format, and I plan for `ox-leanpub-book` to also support it.
 
 ```emacs-lisp
-(defun leanpub-export (&optional async subtreep visible-only body-only only-subset subset-type)
-  "Export buffer to a Leanpub book."
-  (interactive)
-  (let* ((info (org-combine-plists
-                (org-export--get-export-attributes
-                 'leanpub-multifile subtreep visible-only)
-                (org-export--get-buffer-attributes)
-                (org-export-get-environment 'leanpub-multifile subtreep)))
-         (outdir (plist-get info :leanpub-output-dir))
-         (do-subset (or subset-type (plist-get info :leanpub-write-subset)))
-         (matter-tags '("frontmatter" "mainmatter" "backmatter"))
-         (original-point (point)))
-    ;; Relative pathname given the basename of a file, including the correct output dir
-    (fset 'outfile (lambda (f) (concat outdir "/" f)))
-    ;; delete all these files, they get recreated as needed
-    (dolist (fname (mapcar (lambda (s) (concat s ".txt"))
-                           (append (if only-subset '("Subset") '("Book" "Sample" "Subset"))
-                                   matter-tags)))
-      (delete-file (outfile fname)))
-    (save-mark-and-excursion
-      (org-map-entries
-       (lambda ()
-         (when (org-at-heading-p)
-           (let* ((current-subtree (org-element-at-point))
-                  (id (or (org-element-property :name      current-subtree)
-                          (org-element-property :ID        current-subtree)
-                          (org-element-property :CUSTOM_ID current-subtree)))
-                  (level (nth 1 (org-heading-components)))
-                  (tags (org-get-tags))
-                  (title (or (nth 4 (org-heading-components)) ""))
-                  (basename (concat (replace-regexp-in-string " " "-" (downcase (or id title)))
-                                    ".md"))
-                  (filename (outfile basename))
-                  (stored-filename (org-entry-get (point) "EXPORT_FILE_NAME"))
-                  (point-in-subtree (<= (org-element-property :begin current-subtree)
-                                        original-point
-                                        (org-element-property :end current-subtree)))
-                  (is-subset (or (equal do-subset "all")
-                                 (and (equal do-subset "tagged") (member "subset" tags))
-                                 (and (equal do-subset "sample") (member "sample" tags))
-                                 (and (equal do-subset "current") point-in-subtree))))
-             (fset 'add-to-bookfiles
-                   (lambda (line &optional always)
-                     (let ((line-n (concat line "\n")))
-                       (unless only-subset
-                         (append-to-file line-n nil (outfile "Book.txt")))
-                       (when (and (not only-subset) (or (member "sample" tags) always))
-                         (append-to-file line-n nil (outfile "Sample.txt")))
-                       (when (or is-subset always)
-                         (append-to-file line-n nil (outfile "Subset.txt"))))))
-             (when (= level 1) ;; export only first level entries
-               ;; add appropriate tag for front/main/backmatter for tagged headlines
-               (dolist (tag matter-tags)
-                 (when (member tag tags)
-                   (let* ((fname (concat tag ".txt")))
-                     (append-to-file (concat "{" tag "}\n") nil (outfile fname))
-                     (add-to-bookfiles fname t))))
-               ;; add to the filename to Book.txt and to Sample.txt "sample" tag is found.
-               (add-to-bookfiles (file-name-nondirectory filename))
-               (when (or (not only-subset)
-                         is-subset)
-                 ;; set filename only if the property is missing or if its value is
-                 ;; different from the correct one
-                 (or (string= stored-filename filename)
-                     (org-entry-put (point) "EXPORT_FILE_NAME" filename))
-                 ;; select the subtree so that its headline is also exported
-                 ;; (otherwise we get just the body)
-                 (org-mark-subtree)
-                 (message (format "Exporting %s (%s)" filename title))
-                 (org-leanpub-export-to-markdown nil t)))))) "-noexport"))
-    (message (format "LeanPub export to %s/ finished" outdir))))
+(use-package ox-leanpub-book
+  :defer 1
+  :after ox-leanpub-markdown
+  :load-path "lisp/ox-leanpub"
+  :config
+  (org-leanpub-book-setup-menu-markdown))
 ```
 
 
@@ -1788,15 +1725,19 @@ This config came originally from [Uncle Dave's Emacs config](https://github.com/
   :init
   (helm-mode 1))
 
-  (require 'helm-config)
-  (helm-autoresize-mode 1)
+(require 'helm-config)
+(helm-autoresize-mode 1)
 
-  (use-package helm-flx
-    :custom
-    (helm-flx-for-helm-find-files t)
-    (helm-flx-for-helm-locate t)
-    :config
-    (helm-flx-mode +1))
+(use-package helm-flx
+  :custom
+  (helm-flx-for-helm-find-files t)
+  (helm-flx-for-helm-locate t)
+  :config
+  (helm-flx-mode +1))
+
+(use-package swiper-helm
+  :bind
+  ("C-s" . swiper))
 ```
 
 
