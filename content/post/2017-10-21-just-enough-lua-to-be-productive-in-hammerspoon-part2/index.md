@@ -5,7 +5,7 @@ summary = "In this second article of the \"Just Enough Lua\" series, we dive int
 date = 2017-11-01T08:16:00+01:00
 tags = ["hammerspoon", "mac", "howto", "lua"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.2 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.2.1 + ox-hugo)"
 toc = true
 featured_image = "/images/lua-logo.svg"
 +++

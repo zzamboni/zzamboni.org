@@ -5,12 +5,12 @@ summary = "I have enjoyed slowly converting my configuration files to literate p
 date = 2017-12-17T20:14:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.2 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.2.1 + ox-hugo)"
 featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **January 24, 2019**
+Last update: **February 12, 2019**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -91,7 +91,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
-    ("e08cf6a643018ccf990a099bcf82903d64f02e64798d13a1859e79e47c45616e" "7f89ec3c988c398b88f7304a75ed225eaac64efa8df3638c815acc563dfd3b55" "cd4d1a0656fee24dc062b997f54d6f9b7da8f6dc8053ac858f15820f9a04a679" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "6ac7c0f959f0d7853915012e78ff70150bfbe2a69a1b703c3ac4184f9ae3ae02" "8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a" "a1a966cf2e87be6a148158c79863440ba2e45aa06cc214341feafe5c6deca4f2" "3eb2b5607b41ad8a6da75fe04d5f92a46d1b9a95a202e3f5369e2cdefb7aac5c" "3d0142352ce19c860047ad7402546944f84c270e84ae479beddbc2608268e0e5" "a33858123d3d3ca10c03c657693881b9f8810c9e242a62f1ad6380adf57b031c" "a40eac965142a2057269f8b2abd546b71a0e58e733c6668a62b1ad1aa7669220" "7be789f201ea16242dab84dd5f225a55370dbecae248d4251edbd286fe879cfa" "94dac4d15d12ba671f77a93d84ad9f799808714d4c5d247d5fd944df951b91d6" "4d8fab23f15347bce54eb7137789ab93007010fa47296c2f36757ff84b5b3c8a" default)))
+    ("1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" "e08cf6a643018ccf990a099bcf82903d64f02e64798d13a1859e79e47c45616e" "7f89ec3c988c398b88f7304a75ed225eaac64efa8df3638c815acc563dfd3b55" "cd4d1a0656fee24dc062b997f54d6f9b7da8f6dc8053ac858f15820f9a04a679" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "6ac7c0f959f0d7853915012e78ff70150bfbe2a69a1b703c3ac4184f9ae3ae02" "8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a" "a1a966cf2e87be6a148158c79863440ba2e45aa06cc214341feafe5c6deca4f2" "3eb2b5607b41ad8a6da75fe04d5f92a46d1b9a95a202e3f5369e2cdefb7aac5c" "3d0142352ce19c860047ad7402546944f84c270e84ae479beddbc2608268e0e5" "a33858123d3d3ca10c03c657693881b9f8810c9e242a62f1ad6380adf57b031c" "a40eac965142a2057269f8b2abd546b71a0e58e733c6668a62b1ad1aa7669220" "7be789f201ea16242dab84dd5f225a55370dbecae248d4251edbd286fe879cfa" "94dac4d15d12ba671f77a93d84ad9f799808714d4c5d247d5fd944df951b91d6" "4d8fab23f15347bce54eb7137789ab93007010fa47296c2f36757ff84b5b3c8a" default)))
  '(desktop-lazy-idle-delay 1 nil nil "Restore the rest of the buffers 1 seconds later")
  '(desktop-lazy-verbose nil nil nil "Be silent about lazily opening buffers")
  '(desktop-restore-eager 1 nil nil "Restore only the first buffer right away")
@@ -117,7 +117,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(ns-command-modifier (quote meta))
  '(ns-right-alternate-modifier (quote super))
  '(org-agenda-files (quote ("~/tmp/20180522-oce-capability-review.org")))
- '(org-confirm-babel-evaluate nil nil nil "Customized with use-package org")
+ '(org-confirm-babel-evaluate nil t nil "Customized with use-package org")
  '(org-default-notes-file "~/Dropbox/org/notes.org" nil nil "Customized with use-package org")
  '(org-directory "~/Dropbox/org" nil nil "Customized with use-package org")
  '(org-entities-user
@@ -125,22 +125,22 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
     (("llangle" "\\llangle" t "&lang;&lang;" "<<" "<<" "《")
      ("rrangle" "\\rrangle" t "&rang;&rang;" ">>" ">>" "》"))))
  '(org-export-with-broken-links t)
- '(org-hide-emphasis-markers t nil nil "Customized with use-package org")
+ '(org-hide-emphasis-markers t t nil "Customized with use-package org")
  '(org-hugo-use-code-for-kbd t)
  '(org-journal-dir "~/Documents/logbook" nil nil "Customized with use-package org-journal")
  '(org-latex-compiler "xelatex" nil nil "Customized with use-package ox-latex")
  '(org-latex-pdf-process
    (quote
     ("%latex -shell-escape -interaction nonstopmode -output-directory %o %f" "%latex -interaction nonstopmode -output-directory %o %f" "%latex -interaction nonstopmode -output-directory %o %f")) nil nil "Customized with use-package ox-latex")
- '(org-log-done t nil nil "Customized with use-package org")
+ '(org-log-done t t nil "Customized with use-package org")
  '(org-mac-grab-Acrobat-app-p nil)
  '(org-mac-grab-devonthink-app-p nil)
  '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.14/libexec/plantuml.jar" nil nil "Customized with use-package ob-plantuml")
  '(org-reveal-note-key-char nil nil nil "Customized with use-package ox-reveal")
  '(org-reveal-root "file:///Users/taazadi1/Dropbox/org/reveal.js" nil nil "Customized with use-package ox-reveal")
- '(org-src-fontify-natively t nil nil "Customized with use-package org")
- '(org-src-tab-acts-natively t nil nil "Customized with use-package org")
- '(org-startup-indented t nil nil "Customized with use-package org")
+ '(org-src-fontify-natively t t nil "Customized with use-package org")
+ '(org-src-tab-acts-natively t t nil "Customized with use-package org")
+ '(org-startup-indented t t nil "Customized with use-package org")
  '(org-structure-template-alist
    (quote
     (("a" . "export ascii")
@@ -155,20 +155,21 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
      ("v" . "verse")
      ("n" . "note")
      ("d" . "description"))))
+ '(org-tags-column 0 t)
  '(org-use-speed-commands
    (lambda nil
      (and
       (looking-at org-outline-regexp)
-      (looking-back "^**"))) nil nil "Customized with use-package org")
+      (looking-back "^**"))) t nil "Customized with use-package org")
  '(package-archives
    (quote
     (("marmalade" . "https://marmalade-repo.org/packages/")
      ("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (swiper-helm auth-sources plantuml-mode org-fstree esup package-build org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
+    (ox-gfm swiper-helm auth-sources plantuml-mode org-fstree esup package-build org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
  '(paradox-automatically-star t nil nil "Customized with use-package paradox")
- '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.14/libexec/plantuml.jar" t nil "Customized with use-package plantuml-mode")
+ '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.0/libexec/plantuml.jar" t nil "Customized with use-package plantuml-mode")
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(reb-re-syntax (quote string))
@@ -269,8 +270,8 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
      ("^:P:devel/" ":Dev:")
      ("^:Write:learning-cfengine-3/learning-cfengine-3/" ":cf-learn:")
      ("^:Dev:go/src/github.com/elves/elvish/" ":elvish:")
-     ("^:Dev:zzamboni.org/zzamboni.org/" ":zz.org:"))) nil nil "Customized with use-package smart-mode-line")
- '(sml/theme (quote dark) nil nil "Customized with use-package smart-mode-line")
+     ("^:Dev:zzamboni.org/zzamboni.org/" ":zz.org:"))) t nil "Customized with use-package smart-mode-line")
+ '(sml/theme (quote dark) t nil "Customized with use-package smart-mode-line")
  '(sp-base-key-bindings (quote paredit) nil nil "Customized with use-package smartparens")
  '(tab-width 2)
  '(tool-bar-mode nil)
@@ -280,7 +281,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(use-package-always-defer t)
  '(use-package-always-ensure t)
  '(use-package-verbose nil)
- '(vr/engine (quote pcre2el) nil nil "Use PCRE regular expressions"))
+ '(vr/engine (quote pcre2el) t nil "Use PCRE regular expressions"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -937,6 +938,14 @@ One of the big strengths of org-mode is the ability to export a document in many
       :after org)
     ```
 
+-   [GitHub Flavored Markdown](https://help.github.com/categories/writing-on-github/)
+
+    ```emacs-lisp
+    (use-package ox-gfm
+      :defer 3
+      :after org)
+    ```
+
 -   [Jira markup](https://github.com/stig/ox-jira.el). I also load `org-jira`, which provides a full interface to Jira through org-mode.
 
     ```emacs-lisp
@@ -1430,6 +1439,13 @@ First, load `ox-leanpub-markdown`. This is based on Juan's `ox-leanpub`, but wit
   :load-path "lisp/ox-leanpub")
 ```
 
+```emacs-lisp
+(use-package ox-leanpub-markua
+  :defer 1
+  :after org
+  :load-path "lisp/ox-leanpub")
+```
+
 Next, load my `ox-leanpub-book` module (also available at  <https://github.com/zzamboni/ox-leanpub/tree/book-and-markua>). It defines a new export backend called `leanpub-book`, which adds three additional items in the LeanPub export section:
 
 -   "Multifile: Whole book", which exports the whole book as one-file-per-chapter;
@@ -1457,7 +1473,8 @@ Note that the `org-leanpub-book-setup-menu-markdown` function gets called in the
   :after ox-leanpub-markdown
   :load-path "lisp/ox-leanpub"
   :config
-  (org-leanpub-book-setup-menu-markdown))
+  (progn (org-leanpub-book-setup-menu-markdown)
+         (org-leanpub-book-setup-menu-markua)))
 ```
 
 

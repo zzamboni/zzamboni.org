@@ -5,12 +5,12 @@ summary = "In this blog post I will walk you through my current Elvish configura
 date = 2017-11-16T20:21:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "elvish"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.2 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.2.1 + ox-hugo)"
 toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **January 24, 2019**
+Last update: **February 12, 2019**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -144,7 +144,7 @@ For reference, I define here a few of my commonly-used aliases:
 
 ```elvish
 alias:new dfc e:dfc -W -l -p -/dev/disk1s4,devfs
-alias:new ls e:ls --color=auto
+alias:new ls e:lsd
 alias:new more less
 alias:new v vagrant
 ```
@@ -210,6 +210,13 @@ chain:segment-style = [
   &arrow=        session
   &git-combined= session
 ]
+```
+
+Customize some of the glyphs for the font I use in my terminal.
+
+```elvish
+chain:glyph[git-ahead]  = "⬆ "
+chain:glyph[git-staged] = "✔ "
 ```
 
 Elvish has a [comprehensive mechanism](https://elvish.io/ref/edit.html#prompts) for displaying prompts with useful information while avoiding getting blocked by prompt functions which take too long to finish. For the most part the defaults work well. One change I like to make is to change the [stale prompt transformer](https://elvish.io/ref/edit.html#stale-prompt) function to make the prompt dim when stale:

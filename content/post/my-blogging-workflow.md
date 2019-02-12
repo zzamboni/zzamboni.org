@@ -3,7 +3,7 @@ title = "My blogging workflow with Emacs, org-mode+ox-hugo, Hugo and GitHub"
 author = ["Diego Zamboni"]
 tags = ["blogging", "howto", "emacs", "hugo", "orgmode", "github"]
 draft = true
-creator = "Emacs 26.1 (Org mode 9.2 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.2.1 + ox-hugo)"
 +++
 
 My blogging has seen [multiple iterations](/about/#my-online-past) over the years, and with it, the tools I use have changed. At the moment I use a set of tools and workflows which make it very easy to keep my blog updated, and I will describe them in this post. In short, they are:

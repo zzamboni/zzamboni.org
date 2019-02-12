@@ -5,7 +5,7 @@ summary = "How to set up the bash !! and !$ shortcuts for accessing the previous
 date = 2017-12-04T22:15:00+01:00
 tags = ["elvish", "shell", "unix", "config"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.2 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.2.1 + ox-hugo)"
 featured_image = "/images/elvish-logo.svg"
 +++
 
