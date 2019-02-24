@@ -315,6 +315,7 @@ One weirdness: if I set `:defer nil` so that Paradox is loaded right away, the `
 
 ```emacs-lisp
 (use-package paradox
+  :disabled
   :defer 1
   :after auth-source-pass
   :config
@@ -377,12 +378,11 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     (customize-set-variable 'read-buffer-completion-ignore-case t)
     ```
 
--   Show line numbers. I used `linum-mode` before, but it caused severe performance issues on large files. Emacs 26 introduces `display-line-numbers-mode`, which has no perceivable performance impact even on very large files. I still have it disabled by default because I find it a bit distracting.
+-   Show line numbers. I used `linum-mode` before, but it caused severe performance issues on large files. Emacs 26 introduces `display-line-numbers-mode`, which has no perceivable performance impact even on very large files.
 
     ```emacs-lisp
     (when (>= emacs-major-version 26)
       (use-package display-line-numbers
-        :disabled
         :defer nil
         :ensure nil
         :config
@@ -795,16 +795,6 @@ Default setup and keybinding for `org-capture`.
 
 ```emacs-lisp
 ("C-c c" . org-capture)
-```
-
-Load `org-tempo` to enable snippets such as `<s<TAB>` to insert a source block. Disabled for now as I try to get used to the new <kbd>C-c</kbd> <kbd>C-,</kbd> shortcut recently introduced. See the loooong discussion starting at <https://lists.gnu.org/archive/html/emacs-orgmode/2018-04/msg00600.html>.
-
-```emacs-lisp
-(use-package org-tempo
-  :disabled
-  :defer 5
-  :ensure nil
-  :after org)
 ```
 
 Enable [Speed Keys](https://orgmode.org/manual/Speed-keys.html), which allows quick single-key commands when the cursor is placed on a heading. Usually the cursor needs to be at the beginning of a headline line, but defining it with this function makes them active on any of the asterisks at the beginning of the line (useful with the font highlighting I use, as all but the last asterisk are sometimes not visible).
@@ -1347,7 +1337,7 @@ First, load `ox-leanpub-markdown`. This is based on Juan's `ox-leanpub`, but wit
 
 ```emacs-lisp
 (use-package ox-leanpub-markdown
-  :defer 1
+  :defer nil
   :after org
   :load-path "lisp/ox-leanpub")
 ```
@@ -1478,11 +1468,10 @@ I like to highlight the current line and column. I'm still deciding between two 
 -   Using the built-in `global-hl-mode` to always highlight the current line, together with the `col-highlight` package, which highlights the column only after a defined interval has passed
 -   Using the `crosshairs` package, which combines both but always highlights both the column and the line. It also has a "highlight crosshairs when idle" mode, but I prefer to have the current line always highlighted, I'm only undecided about the always-on column highlighting.
 
-Sometimes I find the always-highlighted column to be distracting, but other times I find it useful. So I have both pieces of code here, I'm still deciding. Both are disabled for now.
+Sometimes I find the always-highlighted column to be distracting, but other times I find it useful. So I have both pieces of code here, I'm still deciding. For now only `hl-line` is enabled.
 
 ```emacs-lisp
 (use-package hl-line
-  :disabled
   :defer nil
   :config
   (global-hl-line-mode))
