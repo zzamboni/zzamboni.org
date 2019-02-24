@@ -10,7 +10,7 @@ featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **February 12, 2019**
+Last update: **February 24, 2019**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -117,7 +117,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(ns-command-modifier (quote meta))
  '(ns-right-alternate-modifier (quote super))
  '(org-agenda-files (quote ("~/tmp/20180522-oce-capability-review.org")))
- '(org-confirm-babel-evaluate nil t nil "Customized with use-package org")
+ '(org-confirm-babel-evaluate nil nil nil "Customized with use-package org")
  '(org-default-notes-file "~/Dropbox/org/notes.org" nil nil "Customized with use-package org")
  '(org-directory "~/Dropbox/org" nil nil "Customized with use-package org")
  '(org-entities-user
@@ -125,22 +125,22 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
     (("llangle" "\\llangle" t "&lang;&lang;" "<<" "<<" "《")
      ("rrangle" "\\rrangle" t "&rang;&rang;" ">>" ">>" "》"))))
  '(org-export-with-broken-links t)
- '(org-hide-emphasis-markers t t nil "Customized with use-package org")
+ '(org-hide-emphasis-markers t nil nil "Customized with use-package org")
  '(org-hugo-use-code-for-kbd t)
  '(org-journal-dir "~/Documents/logbook" nil nil "Customized with use-package org-journal")
  '(org-latex-compiler "xelatex" nil nil "Customized with use-package ox-latex")
  '(org-latex-pdf-process
    (quote
     ("%latex -shell-escape -interaction nonstopmode -output-directory %o %f" "%latex -interaction nonstopmode -output-directory %o %f" "%latex -interaction nonstopmode -output-directory %o %f")) nil nil "Customized with use-package ox-latex")
- '(org-log-done t t nil "Customized with use-package org")
+ '(org-log-done t nil nil "Customized with use-package org")
  '(org-mac-grab-Acrobat-app-p nil)
  '(org-mac-grab-devonthink-app-p nil)
- '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.14/libexec/plantuml.jar" nil nil "Customized with use-package ob-plantuml")
+ '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.1/libexec/plantuml.jar" nil nil "Customized with use-package ob-plantuml")
  '(org-reveal-note-key-char nil nil nil "Customized with use-package ox-reveal")
  '(org-reveal-root "file:///Users/taazadi1/Dropbox/org/reveal.js" nil nil "Customized with use-package ox-reveal")
- '(org-src-fontify-natively t t nil "Customized with use-package org")
- '(org-src-tab-acts-natively t t nil "Customized with use-package org")
- '(org-startup-indented t t nil "Customized with use-package org")
+ '(org-src-fontify-natively t nil nil "Customized with use-package org")
+ '(org-src-tab-acts-natively t nil nil "Customized with use-package org")
+ '(org-startup-indented t nil nil "Customized with use-package org")
  '(org-structure-template-alist
    (quote
     (("a" . "export ascii")
@@ -155,12 +155,12 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
      ("v" . "verse")
      ("n" . "note")
      ("d" . "description"))))
- '(org-tags-column 0 t)
+ '(org-tags-column 0)
  '(org-use-speed-commands
    (lambda nil
      (and
       (looking-at org-outline-regexp)
-      (looking-back "^**"))) t nil "Customized with use-package org")
+      (looking-back "^**"))) nil nil "Customized with use-package org")
  '(package-archives
    (quote
     (("marmalade" . "https://marmalade-repo.org/packages/")
@@ -169,7 +169,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
    (quote
     (ox-gfm swiper-helm auth-sources plantuml-mode org-fstree esup package-build org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
  '(paradox-automatically-star t nil nil "Customized with use-package paradox")
- '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.0/libexec/plantuml.jar" t nil "Customized with use-package plantuml-mode")
+ '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.1/libexec/plantuml.jar" t nil "Customized with use-package plantuml-mode")
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(reb-re-syntax (quote string))
@@ -270,8 +270,8 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
      ("^:P:devel/" ":Dev:")
      ("^:Write:learning-cfengine-3/learning-cfengine-3/" ":cf-learn:")
      ("^:Dev:go/src/github.com/elves/elvish/" ":elvish:")
-     ("^:Dev:zzamboni.org/zzamboni.org/" ":zz.org:"))) t nil "Customized with use-package smart-mode-line")
- '(sml/theme (quote dark) t nil "Customized with use-package smart-mode-line")
+     ("^:Dev:zzamboni.org/zzamboni.org/" ":zz.org:"))) nil nil "Customized with use-package smart-mode-line")
+ '(sml/theme (quote dark) nil nil "Customized with use-package smart-mode-line")
  '(sp-base-key-bindings (quote paredit) nil nil "Customized with use-package smartparens")
  '(tab-width 2)
  '(tool-bar-mode nil)
@@ -305,6 +305,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(org-document-info ((t (:foreground "dark orange"))))
  '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
  '(org-document-title ((((class color) (min-colors 16777215)) (:foreground "#3FD7E5" :weight bold)) (((class color) (min-colors 255)) (:foreground "#00d7ff" :weight bold))))
+ '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
  '(org-level-1 ((((class color) (min-colors 16777215)) (:foreground "#FE8019")) (((class color) (min-colors 255)) (:foreground "#ff8700"))))
  '(org-level-2 ((((class color) (min-colors 16777215)) (:foreground "#B8BB26")) (((class color) (min-colors 255)) (:foreground "#afaf00"))))
  '(org-level-3 ((((class color) (min-colors 16777215)) (:foreground "#83A598")) (((class color) (min-colors 255)) (:foreground "#87afaf"))))
@@ -776,6 +777,7 @@ I use `use-package` to load the `org` package, and put its configuration inside 
     (variable-pitch ((t (:family "Source Sans Pro" :height 160 :weight light))))
     ;;(variable-pitch ((t (:family "Avenir Next" :height 160 :weight light))))
     (fixed-pitch ((t (:family "Inconsolata"))))
+    (org-indent ((t (:inherit (org-hide fixed-pitch)))))
   :hook
     (org-babel-after-execute . org-redisplay-inline-images)
     (org-mode . (lambda () (add-hook 'after-save-hook 'org-babel-tangle
@@ -1241,6 +1243,12 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
 
     ```emacs-lisp
     (fixed-pitch ((t (:family "Inconsolata"))))
+    ```
+
+-   Configure `org-indent` to inherit from `fixed-pitch` to fix the vertical spacing in code blocks. Thanks to Ben for the tip!
+
+    ```emacs-lisp
+    (org-indent ((t (:inherit (org-hide fixed-pitch)))))
     ```
 
 -   Configuring the corresponding `org-mode` faces for blocks, verbatim code, and maybe a couple of other things. As these change more frequently, I do them directly from the `customize-face` interface, you can see their current settings in the [Customized variables](#customized-variables) section.

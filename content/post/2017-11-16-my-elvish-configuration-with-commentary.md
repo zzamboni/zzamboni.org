@@ -10,7 +10,7 @@ toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **February 12, 2019**
+Last update: **February 24, 2019**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -25,7 +25,7 @@ First we set up the executable paths. We set the `GOPATH` environment variable w
 
 ```elvish
 E:GOPATH = ~/Dropbox/Personal/devel/go
-E:RACKETPATH = ~/Library/Racket/7.1
+E:RACKETPATH = ~/Library/Racket/7.2
 paths = [
   ~/bin
   $E:GOPATH/bin
@@ -65,12 +65,12 @@ For now I use these packages:
 
 ```elvish
 epm:install &silent-if-installed=$true   \
-  github.com/zzamboni/elvish-modules     \
-  github.com/zzamboni/elvish-completions \
-  github.com/zzamboni/elvish-themes      \
-  github.com/xiaq/edit.elv               \
-  github.com/muesli/elvish-libs          \
-  github.com/iwoloschin/elvish-packages
+github.com/zzamboni/elvish-modules     \
+github.com/zzamboni/elvish-completions \
+github.com/zzamboni/elvish-themes      \
+github.com/xiaq/edit.elv               \
+github.com/muesli/elvish-libs          \
+github.com/iwoloschin/elvish-packages
 ```
 
 The modules within each package get loaded individually below.

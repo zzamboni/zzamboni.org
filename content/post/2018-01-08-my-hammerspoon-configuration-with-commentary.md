@@ -10,7 +10,7 @@ toc = true
 featured_image = "/images/hammerspoon.png"
 +++
 
-Last update: **February 12, 2019**
+Last update: **February 24, 2019**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -77,7 +77,7 @@ Install=spoon.SpoonInstall
 
 ## BetterTouchTool {#bettertouchtool}
 
-I'm currently working on a new [BetterTouchTool.spoon](https://github.com/zzamboni/Spoons/tree/spoon/BetterTouchTool/Source/BetterTouchTool.spoon) which provides integration with the [BetterTouchTool AppleScript API](https://docs.bettertouchtool.net/docs/apple%5Fscript.html). This is in heavy development! See the configuration for the Hammer spoon in for an example of how to use it.
+I'm currently working on a new [BetterTouchTool.spoon](https://github.com/zzamboni/Spoons/tree/spoon/BetterTouchTool/Source/BetterTouchTool.spoon) which provides integration with the [BetterTouchTool AppleScript API](https://docs.bettertouchtool.net/docs/apple%5Fscript.html). This is in heavy development! See the configuration for the Hammer spoon in [System and UI](#system-and-ui) for an example of how to use it.
 
 ```lua
 Install:andUse("BetterTouchTool", { loglevel = 'debug' })
@@ -520,12 +520,14 @@ function reconfigSpotifyProxy(proxy)
 end
 ```
 
-The `reconfigAdiumProxy` function uses AppleScript to tell Adium about the change without having to restart it.
+The `reconfigAdiumProxy` function uses AppleScript to tell Adium about the change without having to restart it - only if Adium is already running.
 
 ```lua
 function reconfigAdiumProxy(proxy)
   --   hs.notify.show("Reconfiguring Adium", string.format("Proxy %s", (proxy and "enabled" or "disabled")), "")
-  local script = string.format([[
+  app = hs.application.find("Adium")
+  if app and app:isRunning() then
+    local script = string.format([[
 tell application "Adium"
   repeat with a in accounts
     if (enabled of a) is true then
@@ -536,7 +538,8 @@ tell application "Adium"
   go online
 end tell
 ]], hs.inspect(proxy))
-  hs.osascript.applescript(script)
+    hs.osascript.applescript(script)
+  end
 end
 ```
 

@@ -137,12 +137,13 @@ Here are the faces I have configured so far (there are probably many more to do,
  '(org-property-value        ((t (:inherit fixed-pitch))) t)
  '(org-special-keyword       ((t (:inherit (font-lock-comment-face fixed-pitch)))))
  '(org-tag                   ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
- '(org-verbatim              ((t (:inherit (shadow fixed-pitch))))))
+ '(org-verbatim              ((t (:inherit (shadow fixed-pitch)))))
+ '(org-indent                ((t (:inherit (org-hide fixed-pitch))))))
 ```
 
-One minor issue I have noticed is that, in `variable-pitch-mode`, the fixed-pitch blocks have a slight increase in inter-line spacing. This is not a deal breaker for me, but it is a noticeable difference. This can be observed in the following screenshot, which shows the block of code above embedded in the org-mode buffer and in the block-editing buffer, which uses the fixed-width font. If you know a way in which this could be fixed, please let me know!
+**Update (2019/02/24):** thanks to Ben for figuring out the fix to the vertical spacing issue noted below. The trick is to set the `org-indent` face (see above) to inherit from `fixed-pitch` as well.
 
-{{< figure src="emacs-differing-heights.png" link="emacs-differing-heights.png" >}}
+~~One minor issue I have noticed is that, in `variable-pitch-mode`, the fixed-pitch blocks have a slight increase in inter-line spacing. This is not a deal breaker for me, but it is a noticeable difference. This can be observed in the following screenshot, which shows the block of code above embedded in the org-mode buffer and in the block-editing buffer, which uses the fixed-width font. If you know a way in which this could be fixed, please let me know!~~
 
 
 ## Conclusion {#conclusion}
