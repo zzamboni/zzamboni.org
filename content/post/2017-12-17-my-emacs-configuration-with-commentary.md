@@ -10,7 +10,7 @@ featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **February 24, 2019**
+Last update: **February 27, 2019**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -51,6 +51,10 @@ Next, we wrap the whole init file in a block that sets `file-name-handler-alist`
 
 ```emacs-lisp
 (let ((file-name-handler-alist nil))
+```
+
+```emacs-lisp
+;;(setq debug-on-error t)
 ```
 
 We set `gc-cons-threshold` to its maximum value, to prevent any garbage collection from happening during load time. We also reset this value in the [Epilogue](#epilogue).
@@ -1337,7 +1341,7 @@ First, load `ox-leanpub-markdown`. This is based on Juan's `ox-leanpub`, but wit
 
 ```emacs-lisp
 (use-package ox-leanpub-markdown
-  :defer nil
+  :defer 1
   :after org
   :load-path "lisp/ox-leanpub")
 ```

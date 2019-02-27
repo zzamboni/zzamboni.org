@@ -1913,6 +1913,4 @@ Hugo has extensive capabilities and it is beyond the scope of this article to sh
 - Automatic publishing using GitHub CI
 - Maybe migrate to GitLab pages?
 
-
-
 * Footnotes
