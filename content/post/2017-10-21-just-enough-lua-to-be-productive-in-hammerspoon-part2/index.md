@@ -5,7 +5,7 @@ summary = "In this second article of the \"Just Enough Lua\" series, we dive int
 date = 2017-11-01T08:16:00+01:00
 tags = ["hammerspoon", "mac", "howto", "lua"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.2.1 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.2.3 + ox-hugo)"
 toc = true
 featured_image = "/images/lua-logo.svg"
 +++
@@ -58,7 +58,7 @@ colors = { ["U.S."] = { "red", "white", "blue" },
            Germany = { "black", "red", "yellow" } }
 ```
 
-With non-identifier indices, you cannot use the dot-notation. Also, to see a table within the Hammerspoon console, use [`hs.inspect`](http://www.hammerspoon.org/docs/hs.inspect):
+With non-identifier indices, you cannot use the dot-notation. Also, to see a table within the Hammerspoon console, use [`hs.inspect`](https://www.hammerspoon.org/docs/hs.inspect):
 
 ```lua
 > colors["U.S."]
@@ -293,7 +293,7 @@ Hammerspoon.app/Contents/Resources/extensions/?/init.lua
 
 {{% tip %}}
 
-Hammerspoon automatically loads any modules under the `hs` namespace the first time you use them. For example, when you use [`hs.application`](http://www.hammerspoon.org/docs/hs.application) for the first time, you will see a message in the console:
+Hammerspoon automatically loads any modules under the `hs` namespace the first time you use them. For example, when you use [`hs.application`](https://www.hammerspoon.org/docs/hs.application) for the first time, you will see a message in the console:
 
 ```lua
 > hs.application.get("Terminal")
@@ -309,7 +309,7 @@ If you want to avoid these messages, you need to explicitly load the modules and
 hs.application: Terminal (0x610000e49118)
 ```
 
-This avoids the console message and has the additional benefit of allowing you to use `app` (you can use whatever variable you want) instead of typing `hs.application` in your code. This is a matter of taste---I usually prefer to have the full descriptive names (makes the code easier to read), but when dealing with some of the longer module names (e.g. [`hs.distributednotifications`](http://www.hammerspoon.org/docs/hs.distributednotifications)), this technique can be useful.
+This avoids the console message and has the additional benefit of allowing you to use `app` (you can use whatever variable you want) instead of typing `hs.application` in your code. This is a matter of taste---I usually prefer to have the full descriptive names (makes the code easier to read), but when dealing with some of the longer module names (e.g. [`hs.distributednotifications`](https://www.hammerspoon.org/docs/hs.distributednotifications)), this technique can be useful.
 
 {{% /tip %}}
 

@@ -5,12 +5,12 @@ summary = "I have enjoyed slowly converting my configuration files to literate p
 date = 2017-12-17T20:14:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.2.1 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.2.3 + ox-hugo)"
 featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **February 27, 2019**
+Last update: **April  8, 2019**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -52,6 +52,8 @@ Next, we wrap the whole init file in a block that sets `file-name-handler-alist`
 ```emacs-lisp
 (let ((file-name-handler-alist nil))
 ```
+
+Optionally enable `debug-on-error` - I do this only when I'm trying to figure out some problem in my config.
 
 ```emacs-lisp
 ;;(setq debug-on-error t)
@@ -682,6 +684,15 @@ I use `use-package` to load the `org` package, and put its configuration inside 
     (org-src-tab-acts-natively t)
     (org-hide-emphasis-markers t)
     (org-tags-column 0)
+    (org-todo-keyword-faces
+     '(("TODO" . "red")
+       ("[TODO]" . "red")
+       ("DRAFT" . "yellow")
+       ("[DRAFT]" . "yellow")
+       ("DONE" . "green")
+       ("[DONE]" . "green")
+       ("CANCELED" . "blue")
+       ("[CANCELED]" . "blue")))
   :custom-face
     (variable-pitch ((t (:family "Source Sans Pro" :height 160 :weight light))))
     ;;(variable-pitch ((t (:family "Avenir Next" :height 160 :weight light))))
@@ -1165,6 +1176,20 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
     (org-tags-column 0)
     ```
 
+-   I also set `org-todo-keyword-faces` to highlight DRAFT items with yellow instead of red.
+
+    ```emacs-lisp
+    (org-todo-keyword-faces
+     '(("TODO" . "red")
+       ("[TODO]" . "red")
+       ("DRAFT" . "yellow")
+       ("[DRAFT]" . "yellow")
+       ("DONE" . "green")
+       ("[DONE]" . "green")
+       ("CANCELED" . "blue")
+       ("[CANCELED]" . "blue")))
+    ```
+
     These two modes produce modeline indicators, which I disable using `diminish`.
 
     ```emacs-lisp
@@ -1218,7 +1243,7 @@ I picked up this little gem in the org mailing list. A function that reformats t
 Remove a link. For some reason this is not part of org-mode. From <https://emacs.stackexchange.com/a/10714/11843>, I bind it to <kbd>C-c</kbd> <kbd>C-M-u</kbd>.
 
 ```emacs-lisp
-(defun afs/org-replace-link-by-link-description ()
+(defun afs/org-remove-link ()
     "Replace an org link by its description or if empty its address"
   (interactive)
   (if (org-in-regexp org-bracket-link-regexp 1)
@@ -1228,7 +1253,7 @@ Remove a link. For some reason this is not part of org-mode. From <https://emacs
                  (org-match-string-no-properties 1))))
     (apply 'delete-region remove)
     (insert description))))
-(bind-key "C-c C-M-u" 'afs/org-replace-link-by-link-description)
+(bind-key "C-c C-M-u" 'afs/org-remove-link)
 ```
 
 
@@ -1243,7 +1268,7 @@ This function receives three arguments, and returns the org-mode code for a link
   (let* ((link-1 (concat link (if (org-string-nw-p function) (concat "#" function) "")))
          (link-2 (concat link (if (org-string-nw-p function) (concat "." function) "")))
          (desc-1 (or (org-string-nw-p desc) (concat "=" link-2 "="))))
-    (concat "[[http://www.hammerspoon.org/docs/" link-1 "][" desc-1 "]]")))
+    (concat "[[https://www.hammerspoon.org/docs/" link-1 "][" desc-1 "]]")))
 ```
 
 Split STR at spaces and wrap each element with `~` char, separated by `+`. Zero-width spaces are inserted around the plus signs so that they get formatted correctly.
@@ -1441,6 +1466,8 @@ Install [smart-mode-line](https://github.com/Malabarba/smart-mode-line) for mode
 ```
 
 Enable desktop-save mode, which saves the current buffer configuration on exit and reloads it on restart.
+
+Desktop mode also includes the `desktop-clear` function, which can be used to kill all open buffers. I bind it to <kbd>Control-Meta-super-k</kbd>.
 
 ```emacs-lisp
 (use-package desktop

@@ -5,7 +5,7 @@ summary = "In this second article about Hammerspoon, we look into _Spoons_, modu
 date = 2017-09-01T17:55:00+02:00
 tags = ["hammerspoon", "mac", "howto", "spoons"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.2.1 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.2.3 + ox-hugo)"
 toc = true
 featured_image = "/images/hammerspoon.png"
 +++
@@ -60,7 +60,7 @@ spoon.MouseCircle:show()
 
 Most spoons are structured like this: you can set up hotkeys to trigger the main functionality, but you can also trigger it via method calls.  Normally you won't use these methods, but their availability makes it possible for you to use spoon functionality from our own configuration, or from other spoons, to create further automation.
 
-`spoon.MouseCircle.color` is a public configuration variable exposed by the spoon, which specifies the color that will be used to draw the circle. Colors are defined according to the documentation for the [`hs.drawing.color`](http://www.hammerspoon.org/docs/hs.drawing.color) module. Several color collections are supported, including the OS X system collections and a few defined by Hammerspoon itself. Color definitions are stored in Lua tables indexed by their name. For example, you can view the [`hs.drawing.color.hammerspoon`](http://www.hammerspoon.org/docs/hs.drawing.color#hammerspoon) table, including the color definitions, by using the convenient [`hs.inspect`](http://www.hammerspoon.org/docs/hs.inspect) method on the console:
+`spoon.MouseCircle.color` is a public configuration variable exposed by the spoon, which specifies the color that will be used to draw the circle. Colors are defined according to the documentation for the [`hs.drawing.color`](https://www.hammerspoon.org/docs/hs.drawing.color) module. Several color collections are supported, including the OS X system collections and a few defined by Hammerspoon itself. Color definitions are stored in Lua tables indexed by their name. For example, you can view the [`hs.drawing.color.hammerspoon`](https://www.hammerspoon.org/docs/hs.drawing.color#hammerspoon) table, including the color definitions, by using the convenient [`hs.inspect`](https://www.hammerspoon.org/docs/hs.inspect) method on the console:
 
 ```lua
 > hs.inspect(hs.drawing.color.hammerspoon)
@@ -89,7 +89,7 @@ Most spoons are structured like this: you can set up hotkeys to trigger the main
 
 {{% tip %}}
 
-Lua does not include a function to easily get the keys of a table so you have to use the [`pairs()`](https://www.lua.org/manual/5.3/manual.html#pdf-pairs) function to loop over the key/value pairs of the table. The [`hs.inspect`](http://www.hammerspoon.org/docs/hs.inspect) function is convenient, but to get just the list of tables and the color names, without the color definitions themselves, you can use the following code (if you type this in the console you have to type it all in a single line -- and beware, the output is a long list):
+Lua does not include a function to easily get the keys of a table so you have to use the [`pairs()`](https://www.lua.org/manual/5.3/manual.html#pdf-pairs) function to loop over the key/value pairs of the table. The [`hs.inspect`](https://www.hammerspoon.org/docs/hs.inspect) function is convenient, but to get just the list of tables and the color names, without the color definitions themselves, you can use the following code (if you type this in the console you have to type it all in a single line -- and beware, the output is a long list):
 
 ```lua
 for listname,colors in pairs(hs.drawing.color.lists()) do
@@ -114,7 +114,7 @@ The next time you invoke the `show()` method, either directly or through the hot
 
 (We will look at this in more detail in a future installment about Lua, but in case you were wondering...)
 
-You may have noticed that the configuration variable was accessed with a dot (`spoon.MouseCircle.color`), and we also used it for some function calls earlier (e.g. [`hs.notify.show`](http://www.hammerspoon.org/docs/hs.notify#show), whereas for the `show()` method we used a colon (`spoon.MouseCircle:show()`). The latter is Lua's object-method-call notation, and its effect is to pass the object on which the method is being called as an implicit first argument called `self`. This is simply a syntactic shortcut, i.e. the following two are equivalent:
+You may have noticed that the configuration variable was accessed with a dot (`spoon.MouseCircle.color`), and we also used it for some function calls earlier (e.g. [`hs.notify.show`](https://www.hammerspoon.org/docs/hs.notify#show), whereas for the `show()` method we used a colon (`spoon.MouseCircle:show()`). The latter is Lua's object-method-call notation, and its effect is to pass the object on which the method is being called as an implicit first argument called `self`. This is simply a syntactic shortcut, i.e. the following two are equivalent:
 
 ```lua
 spoon.MouseCircle:show()
@@ -135,7 +135,7 @@ hs.hotkey.bindSpec({ {"ctrl", "alt", "cmd" }, "p" },
                    function() spoon.MouseCircle:show() end)
 ```
 
-Alternatively, you can use the [`hs.fnutils.partial`](http://www.hammerspoon.org/docs/hs.fnutils#partial) function to construct a function pointer that includes the correct first argument:
+Alternatively, you can use the [`hs.fnutils.partial`](https://www.hammerspoon.org/docs/hs.fnutils#partial) function to construct a function pointer that includes the correct first argument:
 
 ```lua
 hs.hotkey.bindSpec({ {"ctrl", "alt", "cmd" }, "p" },
@@ -143,7 +143,7 @@ hs.hotkey.bindSpec({ {"ctrl", "alt", "cmd" }, "p" },
                                       spoon.MouseCircle))
 ```
 
-This is more verbose than the previous example, but the technique can be useful sometimes. Although Lua is not a full functional language, it supports using functions as first-class values, and the [`hs.fnutils`](http://www.hammerspoon.org/docs/hs.fnutils) extension includes a number of functions that make it easy to use them.
+This is more verbose than the previous example, but the technique can be useful sometimes. Although Lua is not a full functional language, it supports using functions as first-class values, and the [`hs.fnutils`](https://www.hammerspoon.org/docs/hs.fnutils) extension includes a number of functions that make it easy to use them.
 
 {{% /tip %}}
 
@@ -154,7 +154,7 @@ By now you know enough to use spoons with Hammerspoon's native capabilities: [lo
 
 The advantage of using spoons is that you can count on them to adhere to a [defined API](https://github.com/Hammerspoon/hammerspoon/blob/master/SPOONS.md#api-conventions), which makes it easier to automate their use. Although each spoon is free to define additional variable and methods, the following are standard:
 
--   `SPOON:init()` is called automatically (if it exists) by [`hs.loadSpoon`](http://www.hammerspoon.org/docs/hs#loadSpoon) after loading the spoon, and can be used to initialize variables or anything else needed by the Spoon.
+-   `SPOON:init()` is called automatically (if it exists) by [`hs.loadSpoon`](https://www.hammerspoon.org/docs/hs#loadSpoon) after loading the spoon, and can be used to initialize variables or anything else needed by the Spoon.
 
 -   `SPOON:start()` should exist if the spoon requires any ongoing or background processes such as timers or watchers of any kind.
 

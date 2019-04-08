@@ -5,7 +5,7 @@ summary = "Hammerspoon's configuration files are written in Lua, so a basic know
 date = 2017-10-21T20:36:00+02:00
 tags = ["hammerspoon", "mac", "howto", "lua"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.2.1 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.2.3 + ox-hugo)"
 toc = true
 featured_image = "/images/lua-logo.svg"
 +++
@@ -31,7 +31,7 @@ if pkg and pkg ~= "" then
 end
 ```
 
-In this example, in addition to the [if](https://www.lua.org/manual/5.3/manual.html#3.3.4) statement, you can see in the line that runs [`hs.execute`](http://www.hammerspoon.org/docs/hs#execute) that Lua functions can return multiple values (which is not the same as returning an array, which counts as a single value). Within the function, this is implemented simply by separating the values with commas in the `return` statement, like this: `return val1, val2`. You can also see in action the following operators:
+In this example, in addition to the [if](https://www.lua.org/manual/5.3/manual.html#3.3.4) statement, you can see in the line that runs [`hs.execute`](https://www.hammerspoon.org/docs/hs#execute) that Lua functions can return multiple values (which is not the same as returning an array, which counts as a single value). Within the function, this is implemented simply by separating the values with commas in the `return` statement, like this: `return val1, val2`. You can also see in action the following operators:
 
 -   `==` for equality;
 
@@ -110,17 +110,17 @@ function leftDoubleClick(modifiers)
 end
 ```
 
-In this example we can also see some examples of the Hammerspoon library in action, in particular two extremely powerful libraries: [`hs.mouse`](http://www.hammerspoon.org/docs/hs.mouse) for interacting with the mouse pointer, and [`hs.eventtap`](http://www.hammerspoon.org/docs/hs.eventtap), which allows you to both intercept and generate arbitrary system events, including key pressed and mouse clicks. This function simulates a double click on the current pointer position:
+In this example we can also see some examples of the Hammerspoon library in action, in particular two extremely powerful libraries: [`hs.mouse`](https://www.hammerspoon.org/docs/hs.mouse) for interacting with the mouse pointer, and [`hs.eventtap`](https://www.hammerspoon.org/docs/hs.eventtap), which allows you to both intercept and generate arbitrary system events, including key pressed and mouse clicks. This function simulates a double click on the current pointer position:
 
-1.  We first get the current position of the mouse pointer using [`hs.mouse.getAbsolutePosition`](http://www.hammerspoon.org/docs/hs.mouse#getAbsolutePosition).
+1.  We first get the current position of the mouse pointer using [`hs.mouse.getAbsolutePosition`](https://www.hammerspoon.org/docs/hs.mouse#getAbsolutePosition).
 
-2.  We create a new mouse event of type [`leftMouseDown`](http://www.hammerspoon.org/docs/hs.eventtap.event#types) in the obtained coordinates and with the given modifiers.
+2.  We create a new mouse event of type [`leftMouseDown`](https://www.hammerspoon.org/docs/hs.eventtap.event#types) in the obtained coordinates and with the given modifiers.
 
 3.  By convention, most Hammerspoon API methods return the same object on which they operate. This allows us to chain the calls as shown: `setProperty()` is called on the `hs.eventtap` object returned by `newMouseEvent` to set its type to a double click, and `post()` is called on the result to issue the event.
 
 4.  Since we are generating system events directly, we also need to take care of generating a "mouse up" event at the end.
 
-Function parameters are always optional, and those not passed will default to `nil`, so you need to do proper validation. In this example, the function can be called as `leftDoubleClick()`, without any parameters, which means the `modifiers` parameter might have a `nil` value. Looking at the [documentation for `newMouseEvent()`](http://www.hammerspoon.org/docs/hs.eventtap.event#newMouseEvent), we see that the parameter is optional, so for this particular function our use is OK.
+Function parameters are always optional, and those not passed will default to `nil`, so you need to do proper validation. In this example, the function can be called as `leftDoubleClick()`, without any parameters, which means the `modifiers` parameter might have a `nil` value. Looking at the [documentation for `newMouseEvent()`](https://www.hammerspoon.org/docs/hs.eventtap.event#newMouseEvent), we see that the parameter is optional, so for this particular function our use is OK.
 
 You should try this function to see that it works. Adding it to you `~/.hammerspoon/init.lua` function will make Hammerspoon define it the next time you reload your configuration. You could then try calling it from the console, but the easiest is to bind a hotkey that will generate a double click. For example:
 

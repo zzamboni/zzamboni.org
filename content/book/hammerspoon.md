@@ -3,7 +3,7 @@ title = "Learning Hammerspoon"
 author = ["Diego Zamboni"]
 date = 2018-10-16T20:54:00+02:00
 draft = false
-creator = "Emacs 26.1 (Org mode 9.2.1 + ox-hugo)"
+creator = "Emacs 26.1 (Org mode 9.2.3 + ox-hugo)"
 finalURL = "https://leanpub.com/learning-hammerspoon/"
 +++
 
