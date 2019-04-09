@@ -58,6 +58,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#using-and-writing-completions-in-elvish][Using and writing completions in Elvish]]
   - [[#other][Other]]
     - [[#my-blogging-workflow-with-emacs-org-modeox-hugo-hugo-and-github][My blogging workflow with Emacs, org-mode+ox-hugo, Hugo and GitHub]]
+    - [[#automating-leanpub-book-publishing-with-hammerspoon-and-circleci][Automating Leanpub book publishing with Hammerspoon and CircleCI]]
 - [[#footnotes][Footnotes]]
 
 * Pages
@@ -1935,5 +1936,27 @@ Hugo has extensive capabilities and it is beyond the scope of this article to sh
 
 - Automatic publishing using GitHub CI
 - Maybe migrate to GitLab pages?
+
+*** DRAFT Automating Leanpub book publishing with Hammerspoon and CircleCI :writing:hammerspoon:circleci:automation:
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: leanpub-publishing-with-hammerspoon-circleci
+:EXPORT_FILE_NAME: index
+:export_hugo_custom_front_matter: :toc false :featured_image /images/learning-hs-cover.png
+:END:
+
+I am the author of two books: [[https://leanpub.com/learning-cfengine][Learning CFEngine]] and [[https://leanpub.com/learning-hammerspoon][Learning Hammerspoon]], both self-published using Leanpub. In this post I  would like to show you how I use [[https://www.hammerspoon.org/Spoons/][Hammerspoon]]  and [[https://circleci.com][CircleCI]] as part  of my book publishing workflow.
+
+I chose Leanpub for several reasons, including its reasonable and clear pricing scheme, its nice rendering abilities, and its API, which allows easy automation of most operations relevant to the publication of a book. I am going to show you how I use the Leanpub API to automate and monitor the building, previewing and publishing of my books.
+
+**** Leanpub API basics
+
+First, some basic concepts about the Leanpub API. See the [[https://leanpub.com/help/api#getting-book-info][documentation]] for the full details, I'm only mentioning clear some t hings you need to know to understand the rest of this post.
+
+- *Book slug*: Each Leanpub book is identified by a /slug/, which is basically an unique author-chosen identifier for the book. The book slug is included in the book's Leanpub URL. For example, the URL for /Learning Hammerspoon/ is https://leanpub.com/learning-hammerspoon, therefore its slug is =learning-hammerspoon=. The slug can be changed by the author as part of the book configuration, and is used in all the API calls to identify the book for which an operation should be performed.
+- *API key*: every Leanpub author gets an /API key/, which is a randomly-generated string of characters which is used as an authentication token. The API key needs to be provided on most Leanpub API  calls (some query operations are allowed without a key).
+- *Build types*: The Leanpub API allows you to trigger three main build operations on a book:
+  - /Subset preview/ builds only the PDF version of a book, from a subset of files defined in the =Subset.txt= file in your repository (which can include the whole book).
+  - /Regular preview/ builds all the formats supported by Leanpub, using the whole book as defined in the =Book.txt= file.
+  - /File preview/
 
 * Footnotes
