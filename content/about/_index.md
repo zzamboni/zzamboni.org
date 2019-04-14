@@ -8,7 +8,7 @@ weight = 6
 featured_image = "/images/legoland.jpg"
 +++
 
-**Who:** My name is Diego Zamboni. I am a computer scientist, security expert, consultant, project and team leader, programmer, sysadmin, author and overall geek. I am from Mexico but live in Switzerland with my awesome wife and our two beautiful daughters.
+**Who:** My name is Diego Zamboni. I am a computer scientist, security expert, consultant, project and team leader, programmer, sysadmin, author and overall geek. I am from Mexico but live in Switzerland with my beautiful wife and our two awesome daughters.
 
 **What:** I work as Enterprise Security Architect in the IT Clouds Division of [Swisscom](http://swisscom.com/). I am also the author of ["Learning CFEngine 3"](http://cf-learn.info) and ["Learning Hammerspoon"](https://leanpub.com/learning-hammerspoon).
 

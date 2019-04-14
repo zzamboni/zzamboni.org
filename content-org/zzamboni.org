@@ -74,7 +74,7 @@ CLOSED: [2018-03-22 Thu 19:40]
 :export_file_name: _index
 :END:
 
-*Who:* My name is Diego Zamboni. I am a computer scientist, security expert, consultant, project and team leader, programmer, sysadmin, author and overall geek. I am from Mexico but live in Switzerland with my awesome wife and our two beautiful daughters.
+*Who:* My name is Diego Zamboni. I am a computer scientist, security expert, consultant, project and team leader, programmer, sysadmin, author and overall geek. I am from Mexico but live in Switzerland with my beautiful wife and our two awesome daughters.
 
 *What:* I work as Enterprise Security Architect in the IT Clouds Division of [[http://swisscom.com/][Swisscom]]. I am also the author of [[http://cf-learn.info]["Learning CFEngine 3"]] and [[https://leanpub.com/learning-hammerspoon]["Learning Hammerspoon"]].
 
