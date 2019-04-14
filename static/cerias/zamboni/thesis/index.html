@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Diego Zamboni's thesis work</title>
+  </head>
+
+  <body bgcolor="white" text="black">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-3029003434032114";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+    <h1>Diego Zamboni's thesis work</h1>
+
+    <p>My Ph.D. dissertation is called <em>Using Internal Sensors for
+    Computer Intrusion Detection</em> (
+    <a href="../pubs/thesis-techreport.ps">PostScript</a>: 1.1MB,
+    <a href="../pubs/thesis-techreport.pdf">PDF</a>:
+    519KB), and is the basis for the <a
+    href="http://projects.cerias.purdue.edu/esp/">ESP project</a> at <a href="https://www.cerias.purdue.edu">CERIAS</a>. Read
+    on for a more detailed description (of course, read the dissertation
+    for the full details).</p>
+
+    <hr>
+    <h2>Background</h2>
+
+    <p>Most of my research at <a href="https://www.cerias.purdue.edu">CERIAS</a> has been in the
+    area of intrusion detection. I worked in the <a
+    href="http://www.cerias.purdue.edu/homes/aafid/">AAFID</a> project, which showed the
+    feasibility of using small independent components (called
+    "autonomous agents" in AAFID) for performing intrusion
+    detection.</p>
+
+    <p>However, AAFID also exposed some of the problems of the
+    approach. One particularly limiting problem, shared by virtually
+    every existing intrusion detection system, is that of using
+    separate processes for the intrusion detection components. The use
+    of separate processes means that the intrusion detection sytem
+    imposes a constant overhead on the systems where the components
+    are running (because of the overhead caused by the extra
+    process(es)), that it is vulnerable to tampering or disabling by
+    an attacker (if he manages to kill or otherwise disable the
+    intrusion detection processes) and in some cases, that is
+    scalability is limited (in the current implementation of AAFID
+    each agent is implemented as a separate process, which limits the
+    maximum number of agents that can be running on a single host).</p>
+
+    <p>This caused my work to shift towards lower-level components,
+    which I now call <em>internal sensors</em> and <em>embedded
+    detectors</em>. Briefly, they are defined as follows:</p>
+
+    <dl>
+      <dt><b>Internal sensor:</b>
+      <dd> A piece of software (potentially aided by a hardware
+      component) that monitors a specific variable, activity or
+      condition of a program and that is an integral part of the
+      program being monitored.<p>
+      <dt><b>Embedded detector:</b>
+      <dd> An internal sensor that has added logic for detecting
+      conditions that indicate a specific attack or intrusion.
+    </dl>
+
+    <p>Internal sensors and embedded detectors have a number of
+    advantages, including:</p>
+
+    <ul>
+      <li> They are much more resistent to tampering or disabling,
+	because they are part of the program they monitor. If the
+	sensor/detector is properly implemented, disabling it would mean
+	killing the program!
+      
+      <li> They impose a very low CPU overhead on the system, because they 
+	are not executing continuously, only when the section of code
+	they are monitoring is executed.
+
+      <li> They perform <em>direct monitoring</em> because they have
+      access to the internal data of the program they are
+      monitoring. The data does not have to traverse through an
+      external path (a log file, for example) between its generation
+      and its use. This reduces the chances that the data will be
+      modified (either by accident, by system failure, or by malicious
+      action) before an intrusion detection component gets it.
+
+    </ul>
+
+    <p>They also have some disadvantages, mainly that their
+    implementation is completely dependent on the program in which
+    they are implemented.</p>
+
+    <hr>
+    <h2>My research</h2>
+
+    <p>My thesis research is on showing that it is possible to build
+    an intrusion detection system based on internal sensors and
+    embedded detectors, on investigating the characteristics and
+    limitations of such a system, and on the possibility that such a
+    system could be used to detect new attacks without the need to
+    constantly implement new sensors and detectors.</p>
+
+    <hr>
+    <h2>The ESP project</h2>
+
+    <p>My thesis research is the base for the <a href="http://projects.cerias.purdue.edu/esp/">ESP
+    project</a> at CERIAS. ESP stands for "Embedded Sensors Project",
+    because it was named before I developed the concept of embedded
+    detectors as a different thing from internal sensors.</p>
+
+    <p>The ESP project is currently working in the implementation of
+    sensors and detectors for a number of different attacks and
+    intrusions, using OpenBSD as an implementation platform. We are
+    also using this project as a platform for some other research
+    ideas based on the concept of internal sensors.</p>
+
+    <p>We have currently around 50 detectors implemented. My goal is
+      to reach approximately 100 detectors for the purposes of
+      analysis in my thesis.</p>
+
+    <hr>
+    <h2>Documentation</h2>
+
+    <UL>
+      <LI>Diego Zamboni.
+	<BR> Using Internal Sensors for Computer Intrusion Detection
+	(<A
+	  HREF="../pubs/thesis-techreport.ps">Postscript</A>,
+	  <A HREF="../pubs/thesis-techreport.pdf">PDF</A>).
+	<BR> CERIAS Technical Report 2001-42, CERIAS, Purdue University, West
+	Lafayette, IN, August 2001.
+	<P>
+	  This is my final Ph.D. dissertation, defended on
+	  July 13, 2001.</p>
+      </LI>
+    
+      <LI>Diego Zamboni.
+	<BR> Doing intrusion detection using embedded sensors-- thesis
+	proposal (<A
+	  HREF="http://www.cerias.purdue.edu/homes/zamboni/pubs/prelim.ps">Postscript</A>, <A HREF="http://www.cerias.purdue.edu/homes/zamboni/pubs/prelim.pdf">PDF</A>).
+	<BR> CERIAS Technical Report 2000-21, CERIAS, Purdue University, West
+	Lafayette, IN, October 2000.
+	<P>
+	  This is my original thesis proposal, as defended before my
+	  committee on January, 2000. A few changes have occurred
+	  after I defended it, particularly the distinction between
+	  internal sensors and embedded detectors, which is not made
+	  in the original proposal.</p>
+      </LI>
+    
+      <LI>Eugene Spafford and Diego Zamboni.
+	<BR> Data collection mechanisms for intrusion detection systems (<A HREF="http://www.cerias.purdue.edu/homes/zamboni/pubs/2000-08.ps">Postscript</A>, <A HREF="http://www.cerias.purdue.edu/homes/zamboni/pubs/2000-08.pdf">PDF</A>).
+	<BR> CERIAS Technical Report 2000-08, CERIAS, Purdue University, 1315
+	Recitation Building, West Lafayette, IN, June 2000.
+	<P>
+	  This paper explores the different types of data collection
+	  methods for intrusion detection systems, and discusses their
+	  advantages and disadvantages. This is where we introduced
+	  the concepts of direct and indirect monitoring, internal and
+	  external sensors, and some others.</p>
+      </LI>
+
+      <LI>Florian Kerschbaum, Eugene&nbsp;H. Spafford, and Diego Zamboni.
+	<BR> Using embedded sensors for detecting network attacks (<A HREF="http://www.cerias.purdue.edu/homes/zamboni/pubs/wids2000.ps">Postscript</A>, <A HREF="http://www.cerias.purdue.edu/homes/zamboni/pubs/wids2000.pdf">PDF</A>).
+	<BR> In Deborah Frincke and Dimitris Gritzalis, editors, <EM> Proceedings
+	  of the 1st ACM Workshop on Intrusion Detection
+	  Systems</EM>. ACM SIGSAC, November 2000.
+	<P>
+	  This paper describes the implementation of internal sensors
+	  and embedded detectors for detecting network attacks. It
+	  shows representative code for most of the sensors and
+	  discusses some of the issues encountered while implementing
+	  them.</p>
+      </LI>
+
+      <LI>Eugene&nbsp;H. Spafford and Diego Zamboni.
+	<BR> Design and implementation issues for embedded sensors in intrusion
+	detection (<A HREF="http://www.cerias.purdue.edu/homes/zamboni/pubs/sensors-raid2000.ps">Postscript</A>, <A HREF="http://www.cerias.purdue.edu/homes/zamboni/pubs/sensors-raid2000.pdf">PDF</A>).
+	<BR> Presented at the Third International Workshop on Recent Advances in
+	Intrusion Detection (RAID2000), October 2000.
+	<P>
+	  This talk discussed some of the design and implementation
+	  issues for the network detectors described in the paper
+	  above.
+	</p>
+      </LI>
+
+      <LI>Florian Kerschbaum, Eugene&nbsp;H. Spafford, and Diego Zamboni.
+	<BR> Embedded sensors and detectors for intrusion detection.
+	<BR> <EM> Journal of Computer Security</EM>, 2001.
+	<BR> Submitted.
+	<P>
+	  This paper (under review right now, so no link, sorry)
+	  describes in detail the idea of internal sensors and
+	  embedded detectors, discusses their advantages and
+	  disadvantages, and presents two case studies and some
+	  performance results based on our current implementation.</p>
+      </LI>
+    </ul>
+
+    <hr>
+    <h2>Contact</h2>
+    
+    <p>If you have any question, comments, or simply want to talk about
+    this work, feel free to drop me an email.</p>
+
+    <hr>
+
+    <address><a href="mailto:zamboni@cerias.purdue.edu">Diego Zamboni</a></address>
+<!-- Created: Tue Feb 20 20:00:26 EST 2001 -->
+<!-- hhmts start -->
+Last modified: Tue Feb 20 20:49:22 EST 2001
+<!-- hhmts end -->
+    <hr>
+    <a href="../">Back to my home page</a>
+  </body>
+</html>

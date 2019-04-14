@@ -1,0 +1,307 @@
+<Html>
+<Head>
+<Title>Using your Pilot with Unix</Title>
+<!-- Author: zamboni -->
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+</Head>
+<Body>
+
+<h1>Using your Pilot with Unix</h1>
+
+    <table width="100%"><tr><td bgcolor="red">This page is hopelessly outdated. Please do not use it!</td></tr></table><p>
+
+<p>
+All the documentation included with the Pilot for connecting it to
+a desktop computer refers to PCs and Macs. Unix users are dutifully
+ignored. So a wonderful bunch of people has set to develop all the
+software necessary to use their Pilots without having to connect or
+use inferior computing platforms. 
+<p>
+However, as the software is still under development, the documentation
+is sparse, and the procedure to make things work is sometimes not very
+clear. Since I have been asked a lot of times how to do it, I put together
+this page, which contains instructions based on my experience. 
+<p>
+Please note that I use Solaris 2.5.1 on a Sparc machine, so my instructions
+are specific to this platform. The instructions should be general enough
+to work on almost any Unix platform, but you may have to discover some
+details by yourself. Of course, if you do, please send them to me!
+Then we can make this page better by adding system-specific details.
+<p><hr>
+<b>Note:</b> All the information in this page is based on my direct
+experience. If you discover any inaccuracies, omissions or blatant
+mistakes, please let me know. If you are the author of one of the tools
+described and think I don't have described it correctly, please let
+me know, sending me what you would like me to put here. 
+<hr>
+<ul>
+<li><a HREF="#hardware">On the hardware side</a> 
+<li><a HREF="#software">On the software side</a> 
+</ul>
+<hr>
+
+<h2><a NAME="hardware">On the hardware side</a></h2>
+<ol>
+<li>Find which one is the serial port in your machine. 
+<p>
+<b>In Sparc[5,10,20] and Ultra machines:</b> you have two serial ports,
+which are labeled "A" and "B" in the back of your machine, and they
+are 25-pin female connectors. 
+<p>
+<b>In a Sun IPC</b> (maybe IPX and Classic also, if someone has access
+to one of those please confirm) the serial ports are labeled "1" and
+"2" (if memory serves me correctly, that is my home machine) and they
+are 8-pin female mini-DIN connectors, such as those found in Macs.
+
+<li>Get an appropriate converter for connecting the Pilot cradle to
+your machine. 
+<p>
+<b>For a Sparc/Ultra</b>, you can get a 9-pin-male to 25-pin male converter,
+or use the 9-pin-male to 25-pin-female one included with your Pilot,
+and get a 25-pin-male to 25-pin-male gender changer. 
+<li>Find out which device file your operating system uses to communicate
+with the physical port you have selected. 
+<p>
+<b>For Solaris</b>, they will usually be <tt>/dev/ttya</tt> or <tt>/dev/ttyb</tt>.
+
+<p>
+<b>For Linux</b>, they may be <tt>/dev/cua0</tt> or <tt>/dev/cua1</tt>.
+
+<li>Plug the cradle to the appropriate port in your machine. <b>Remember
+to turn off the machine before plugging or unplugging anything.</b>
+Nasty things can happen to serial ports (or to any port, for that matter)
+if the wrong pins accidentally touch or short-circuit. 
+<br>
+
+
+</ol>
+<hr>
+
+<h2><a NAME="software">On the software side</a></h2>
+<ol>
+<li>Go to <a HREF="ftp://ryeham.ee.ryerson.ca/pub/PalmOS/">ftp://ryeham.ee.ryerson.ca/pub/PalmOS/</a>
+and get the latest version of pilot-link, which will be named something
+like <tt>pilot-link.x.y.z.tar.gz</tt>, where <tt>x.y.z</tt> is the
+version number. Pilot-link is the package developed by Kenneth Albanowski
+(<a HREF="mailto:kjahds@kjahds.com">kjahds@kjahds.com</a>) that contains
+the libraries for communicating with your Pilot from a Unix workstation.
+It also includes several programs that make use of the libraries (and
+that are useful in various degrees), and bindings for being able to
+use the libraries from Java, Perl, Tcl, and Python programs. 
+<p>
+To compile and install pilot-link: 
+<ol type="a">
+<li>Uncompress and untar the package: 
+<pre>gunzip -c pilot-link.x.y.z.tar.gz | tar xvf -</pre>
+<li>Cd to the resulting directory. 
+<li>If you have a C compiler (better if it is gcc) installed, normally
+the following will work: 
+<pre>./configure
+make</pre>
+<p>
+You can give options to <tt>configure</tt> to change parameters such
+as the base directory where things will be installed (<tt>/usr/local</tt>
+by default) and others. Do a <tt>./configure --help</tt> for all the
+options. 
+<li>Test that it works by doing: 
+<pre>./pilot-xfer port -l</pre>
+<p>
+where <tt>port</tt> is the device to which your Pilot cradle is connected.
+Put the Pilot in the cradle, press the HotSync button, and if things
+are ok, you will see a listing in the screen of all the databases installed
+in your Pilot. 
+<li>Install everything by doing 
+<pre>make install</pre>
+<li>Optionally, you can install the Perl, Tcl, Java, and/or Python
+bindings by doing: 
+<pre>
+make Perl
+make Java
+make Tcl
+make Python
+</pre>
+<p>
+You can also cd to each directory, <tt>make</tt> and <tt>make test</tt>.
+Usually the test program will ask you to put your Pilot in the cradle
+and press the HotSync button, and will read some databases or something
+like that. 
+<p>
+I have only been successful with the Perl and Java bindings. The Tcl
+keeps crashing when I run the test, and I haven't tried Python. 
+</ol>
+<li>Play around with the programs. Some of them have man pages, but
+most don't. The main programs you will likely use are: 
+<dl>
+<dt><b>pilot-xfer</b> 
+<dd>This is the most evolved program of them all. It allows you to
+read, write, and delete databases from the Pilot, list its contents,
+backup and restore the Pilot, etc. Run it without arguments to get
+a help screen. For example, for installing a <tt>.prc</tt> file you
+get from the net, you would do: 
+<pre>
+pilot-xfer port -i file.prc</pre>
+<p>
+
+Where <tt>port</tt> is the device file for the port where your cradle
+is connected. 
+<p>
+Most programs in the pilot-link package understand the following environment
+variables, so if you set them, you can usually leave the arguments
+out when invoking the commands: 
+<p>
+<b>PILOTPORT</b> for specifying the port where the cradle is connected.
+
+<p>
+<b>PILOTRATE</b> for specifying the rate at which to transfer data.
+The default is 9600 baud, which can be slow. I normally use 38400,
+which is the higher with which most people report success. 
+<dt><b>pilot-mail</b> 
+<dd>Allows you to send and receive email from the Mail application
+if you have a PalmPilot Professional. Run it with option <tt>-h</tt>
+to get a help screen. By default, it tries to access a POP server to
+get your new email, downloads it to the Pilot, and sends any email
+you have composed in the Pilot. By using the <tt>-m</tt> option, you
+can get email from an MH folder instead. What I do is that I have an
+MH folder called "topilot" and as I go through my email, I link to
+that folder messages that I want to take off-line. At the end of the
+day, I do: 
+<pre>pilot-mail /dev/ttya -m ~/Mail/topilot -d delete -k delete</pre>
+<p>
+Actually, I specify all the information in the appropriate environment
+variables, which are given in the help screen. 
+<p>
+I know of no easy way of downloading email from a standard Unix mailbox
+to the Pilot. A temporary workaround could be, if you have the MH software
+installed, to use the <tt>inc</tt> command to convert the mailbox to
+an MH mailbox and use pilot-mail as described above. 
+<dt><b>pilot-addresses</b> 
+<dd>Can be used to download and upload the AddressBook database, storing
+it in a text format in the Unix side. The format is: 
+<pre>
+"last","first","title","company","work","home","fax","other",
+"email","address","city","state","zip","country","custom1",
+"custom2","custom3","custom4","note","0"
+</pre>
+<p>
+this is, the order in which the fields appear in the PhoneBook application,
+each value in double quotes, separated by commas. The "note" is the
+optional note you can add to each record. The "0" at the end, I suppose,
+is for marking it as non-private. Every record has to be in a single
+line, but you can have as many records per file as you want. 
+<p>
+You can use this, for example, if you already have an address book
+in some other format, to put it all in your Pilot. 
+<p>
+There is one slightly non-intuitive thing with this program, and it
+is that the <tt>-r</tt> option is used to "read from the file, and
+<b>write</b> to the Pilot", while the <tt>-w</tt> option means to "read
+from the Pilot, and write to the file". I found it confusing, you may
+not, but be careful not to wipe out things inadvertently. 
+<dt><b>install-datebook, install-memo, install-todos</b> 
+<dd>Allow you to install items in the corresponding databases. 
+<dt><b>read-expenses, read-todos, read-ical, addresses, memos</b> 
+<dd>Allow you to read different items to files in your Unix machine.
+<tt>read-ical</tt> reads the DateBook database and writes it in <a HREF="http://www.research.digital.com/SRC/personal/Sanjay_Ghemawat/ical/home.html">ical</a>
+format. 
+<dt><b>pilot-file</b> 
+<dd>Dumps a .prc or .pdb file (which must be already in your Unix machine)
+in a hex-and-ASCII format. 
+<dt><b>install-user</b> 
+<dd>Allows you to set the user name that the Pilot keeps in its memory,
+and that appears when you start the HotSync application. 
+</dl>
+<li>Now, pilot-link provides you with the basic command-line tools
+for accessing your Pilot, and the libraries for writing your own programs
+for doing so. However, The existing applications do not do much in
+terms of actually "HotSync'ing" the data, this is, incorporating changes
+from the Pilot to the desktop and vice versa, so that you have updated
+copies on both sides of the world. 
+<p>
+This is where <a
+HREF="http://www.moshpit.org/pilotmgr/">PilotManager</a> comes in. It
+is a graphical application (written in Perl/Tk) developed by <a
+HREF="http://www.menalto.com/">Bharat Mediratta</a>, that provides a
+framework for running conduits that synchronize different types of
+data. Currently, conduits exist for backing up the contents of your
+Pilot, for installing new files, and for synchronizing the Date Book
+(transferring data in format of Sun's calendar manager) and Memo Pad
+(storing the files as ASCII files in a specified directory).
+<p>
+One problem with PilotManager is that currently it runs only under
+Solaris. Sources are provided, but you are mostly on your own if you
+want to port it to other system. In the latest version (1.100-BETA-6),
+the SyncCM conduit requires the CSA library and rpc.csmd server
+included Solaris 2.6, and which is optional in Solaris 2.5.1. So you
+may have to install it first if you haven't.
+<p>
+However, if you have a Solaris machine, good news! PilotManager is
+very easy to install and run:
+<ol>
+<li>Go to <a href="http://www.moshpit.org/pilotmgr/binaries/">http://www.moshpit.org/pilotmgr/binaries/</a>
+and download the latest appropriate version for your machine (it comes
+in versions for both Sparc and x86 architectures).
+<li>Make sure you have Perl 5.003 or later installed. Really. I tried
+with Perl 5.002 and it doesn't run.
+<li> As I said before, make sure you have the libcsa library
+installed, if you want to successfully use SyncCM.
+<li>Unpack the PilotManager tar file.
+<li>Edit the <code>PilotManager</code> file, and change the first line
+to reflect the location of your Perl interpreter.
+<li> If you have version 1.100-B-5 or later and you are not using
+precisely Perl 5.003 (this is, you are using something latter, such as
+5.004), do the following:
+	    <ol>
+	      <li><code>cd</code> to the directory where you unpacked
+	      PilotManager.</li>
+	      <li><code>cd lib/perl5/[arch]</code>, where [arch] will
+	      be <code>sun4-solaris</code> or something similar,
+	      depending on your architecture.</li>
+	      <li><code>mv 5.003 `perl -e 'print $]'`</code></li>
+	    </ol>
+  This will make PilotManager find the directories it needs
+  adequately.
+<li>Run <code>PilotManager</code>. If everything is ok, you should
+see the main window. Select the "Properties" menu item, select the
+appropriate port and speed you want to use, select and configure the
+conduits you want to run.
+<li>Finally, put your Pilot in the cradle, press the HotSync icon in
+PilotManager, press the HotSync button in the cradle, and your Pilot
+should start synchronizing.
+<li>If you need help, go to the PilotManager home page. There is not
+much documentation, but you may find what you need. Also, there is
+a mailing list. Help is also included in the program.
+</ol>
+A few tips regarding PilotManager may be useful:
+<ul>
+<li>The Backup conduit only learns about the databases you have in
+your Pilot every time it executes. So the first time, I recommend running
+only the Backup conduit, and then reconfiguring it with the databases
+you want to back up, and add any other conduits you want.
+<li>If you have a lot of things in your Pilot, and you have all databases
+selected for backup, the HotSync may take a long time. I still do not
+have a perfect way of dealing with this. What I do is that I periodically
+do a full backup of my Pilot with pilot-xfer, and have selected for
+backup only the frequently changing databases, such as AddressBookDB,
+DateBookDB, etc.
+<li> <b>News:</b> the latest version of PilotManager (1.100-BETA-5 and
+up) correct the first problem above by reading the database listing at
+each sync. Also, the Backup module now includes an option to
+automatically back up any new databases that have been added to your
+Pilot. A definite welcome addition! Also, now you have the capability
+of cancelling a HotSync in progress.
+</ul>
+</ol>
+<hr>
+<a href="pilotpage.html">Go back to my Pilot Page</a>
+<hr>
+<p>
+<a HREF="mailto:zamboni@cs.purdue.edu"><address>
+Diego Zamboni</address></a> 
+<p>
+<!-- hhmts start -->
+Last modified: Mon Aug  2 14:51:44 EST 1999
+<!-- hhmts end -->
+<!-- Accesses since Sep 8, 1997 -->
+<!--<p align="right"><img src="http://www-cgi.cs.purdue.edu/cgi-bin/zamboni/counter.pl/counter-pilot-settingup.xbm" align="absmiddle" alt="[ Counter ]"> -->
+</Body>
+</Html>

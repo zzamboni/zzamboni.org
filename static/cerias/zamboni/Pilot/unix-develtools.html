@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Setting up developer tools for Pilot under Unix</title>
+  </head>
+
+  <body>
+    <h1>Setting up developer tools for Pilot under Unix</h1>
+
+    <table width="100%"><tr><td bgcolor="red">This page is hopelessly outdated. Please do not use it!</td></tr></table><p>
+
+
+    <h2>What do you need?</h2>
+
+    Setting up the appropriate tools for doing Pilot development in
+    your Unix box is no more difficult than compiling the user
+    tools. The components that you need are:
+
+    <ul>
+      <li>The <a href="#tools">compiler (<code>gcc</code>), loader,
+      (<code>ld</code>), debugger (<code>gdb</code>), etc.</a>, that
+      support cross-compiling to Motorola 68K machine code, which is
+      what the Pilot runs.</li>
+
+      <li>A <a href="#tools">resource editor</a> for the Pilot, for
+      designing your application's GUI.</li>
+
+      <li>A <a href="#xcopilot">Pilot emulator</a>, so that you can
+      test your applications without continuously crashing your real
+      Pilot.</li>
+
+      <li>The documentation for getting you started, in case you have
+      not previously developed for the Pilot.</li>
+    </ul>
+
+    Fortunately, all of these components are readily available under
+    Unix.<p>
+
+    <hr>
+
+    <h2><a name="tools">The compiler, resource editor and related tools</a></h2>
+
+    <ol>
+      <li>Go to <a
+      href="ftp://ryeham.ee.ryerson.ca/pub/PalmOS/">ftp://ryeham.ee.ryerson.ca/pub/PalmOS/</a> and get the following:
+
+	<ul>
+	  <li><code><a href="ftp://ryeham.ee.ryerson.ca/pub/PalmOS/prc-tools.0.5.0.tar.gz">prc-tools-0.5.0.tar.gz</a></code></li>
+	</ul>
+      <p></li>
+
+      <li>Go to <a
+      href="ftp://prep.ai.mit.edu/pub/gnu/">ftp://prep.ai.mit.edu/pub/gnu/</a>
+      (or other suitable <a
+      href="http://www.gnu.ai.mit.edu/order/ftp.html">GNU mirror</a>)
+      and grab the following:
+	<ul>
+	  <li><code><a href="ftp://prep.ai.mit.edu/pub/gnu/binutils-2.7.tar.gz">binutils-2.7.tar.gz</a></code></li>
+	  <li><code><a href="ftp://prep.ai.mit.edu/pub/gnu/gcc-2.7.2.2.tar.gz">gcc-2.7.2.2.tar.gz</a></code></li>
+	  <li><code><a href="ftp://prep.ai.mit.edu/pub/gnu/gdb-4.16.tar.gz">gdb-4.16.tar.gz</a></code></li>
+	</ul>
+      <p></li>
+      <li>Untar all of the above files under the same directory, so
+	you should end up with directories called
+	<code>prc-tools-0.5.0</code>, <code>binutils-2.7</code>,
+	<code>gcc-2.7.2.2</code> and <code>gdb-4.16</code> <b>in the
+	same level</b>.<p></li>
+      <li><code>cd</code> to <code>prc-tools-0.5.0</code>.<p></li>
+      <li>Edit the <code>Makefile</code> and make the following
+      changes:<ul>
+	  <li>Change the <code>HOST</code> variable to the
+	    correct type for your machine. Or better yet, apply <a
+	    href="prc-tools.Makefile-patch.txt">this patch</a>, which
+	    deletes all references to the HOST variable, and lets
+	    <code>configure</code> figure out by itself what machine
+	    you are running on.</li>
+	  <li>Change the <code>PREFIX</code> variable to where you
+	    want to install things. Under this directory,
+	    <code>bin</code>, <code>lib</code>, etc. will be
+	    created. I would recommend using a place for
+	    Pilot-specific stuff, such as
+	    <code>/usr/local/pilot</code>.</li>
+	  <li>If you wish, change <code>CC</code> and
+	    <code>CFLAGS</code> to suit your taste or needs.</li>
+	</ul>
+      <p></li>
+      <li>Do 
+	<pre>make patch</pre>
+        This will apply some patches to the gcc, gdb and binutils
+        directories, that are needed to support Pilot.<p></li>
+      <li>Do
+	<pre>make gnutools</pre>
+        This will compile <b>and install</b> the contents of the gcc,
+        gdb and binutils directories. So you have to do this with the
+        appropriate privileges for the files to be installed (it is
+        not a good idea to compile things as root, but oh well...)<p></li>
+      <li>Do
+	<pre>make</pre>
+        This will build the stuff in prc-tools, and leave you with a
+        bunch of tools for manipulating resources, building
+        <code>.prc</code> files, etc.<p></li>
+      <li>Do
+	<pre>make install</pre>
+        This will install everything where you specified.<p></li>
+      <li>Read the <code>README</code> file in prc-tools. It contains
+	these same instructions, plus some additional information that
+	you may find useful.<p></li>
+    </ol>
+
+    <hr>
+
+    <h2><a name="xcopilot">The emulator</a></h2>
+
+    <ol>
+      <li>If you do not have <code>libXpm</code> installed, go and get
+	it. I will not cover that process here.<p></li>
+
+      <li>Go to <a
+	  href="ftp://ryeham.ee.ryerson.ca/pub/PalmOS/">ftp://ryeham.ee.ryerson.ca/pub/PalmOS/</a> and get the following:<ul>
+	  <li><a href="ftp://ryeham.ee.ryerson.ca/pub/PalmOS/xcopilot-v0.4.tar.gz">xcopilot-v0.4.tar.gz</a></li>
+	</ul>
+      <p></li>
+
+      <li>Go to <a
+	  href="http://www.isaac.cs.berkeley.edu/pilot/">http://www.isaac.cs.berkeley.edu/pilot/</a>
+	  and grab the latest version of
+	  <code>xcopilot-0.4-iang</code>.<p></li>
+
+      <li>Untar <code>xcopilot-v0.4</code>, and apply the patch.<p></li>
+
+      <li>Edit <code>Makefile</code>, <code>mc68k/Makefile</code> and
+	<code>mx/Makefile</code>, and do the following changes (not
+	all are applicable to all files):<ul>
+	  <li>Edit <code>BINDIR</code> and <code>LIBDIR</code> to
+	    where you want to put things. In <code>LIBDIR</code>, only
+	    the icons for the program are put.</li>
+	  <li>Edit <code>CC</code> to whatever you find appropriate,
+	    but I wouldn't recommend changing it from gcc.</li>
+	  <li>Change <code>CFLAGS</code>, <code>IFLAGS</code> and
+	    <code>LFLAGS</code> to adequate values so that the
+	    compiler and loader find the appropriate include files and
+	    libraries.</li>
+	</ul>
+      <p></li>
+
+      <li>Do
+	<pre>make xcopilot</pre>
+        And the magic should be done. Now do
+	<pre>make install</pre>
+        And the binary and icon files will be put where you
+        indicated.<p></li>
+
+      <li>To run it, you have to first get a copy of your Pilot's
+	ROM. To do this, put it in the cradle, and run the
+	<code>pi-getrom</code> program from pilot-link. The syntax is:
+	<pre>pi-getrom &lt;port&gt;</pre>
+        It should crank away for a while, and you end up with a file
+        called <code>pilot.rom.x.y</code>, where x.y is the ROM
+        version of your Pilot.<p></li>
+
+      <li>Put the ROM file in some suitable place (I use
+	<code>~/.xcopilot/</code>, and set the
+	<code>XCOPILOTDIR</code> environment variable to point to that
+	place. In the same directory, create <code>pilot.rom</code> as
+	a link to the file you just created.<p></li>
+
+      <li>You should be all set. Try running <code>xcopilot</code> and
+	you should get a running Pilot on your screen.<p></li>
+
+      <li>Latest news tell me that pilot-link 0.8.6 has a program
+	called <code>pi-getram</code> for fetching a copy of your
+	Pilot's RAM. Then you can have an identical copy of your Pilot
+	in your desktop!</li>
+    </ol>
+
+    <hr>
+    <a href="pilotpage.html">Go back to my Pilot Page</a>
+    <hr>
+    <p>
+    <address><a href="mailto:zamboni@cs.purdue.edu">Diego Zamboni</a></address>
+<!-- Created: Sun Sep 14 19:36:06 EST 1997 -->
+<!-- hhmts start -->
+Last modified: Mon Jun 22 11:24:17 EST 1998
+<!-- hhmts end -->
+<!-- Accesses since Sep 15, 1997 -->
+<!-- <p align="right"><img src="http://www-cgi.cs.purdue.edu/cgi-bin/zamboni/counter.pl/counter-pilot-develtools.xbm" align="absmiddle" alt="[ Counter ]"> -->
+  </body>
+</html>

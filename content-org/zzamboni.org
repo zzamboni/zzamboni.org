@@ -74,9 +74,9 @@ CLOSED: [2018-03-22 Thu 19:40]
 :export_file_name: _index
 :END:
 
-*Who:* I am a computer scientist, consultant, programmer, sysadmin, author and overall geek, now turned project leader and engineering team manager. I am from Mexico but live in Switzerland with my awesome wife and our two beautiful daughters.
+*Who:* My name is Diego Zamboni. I am a computer scientist, security expert, consultant, project and team leader, programmer, sysadmin, author and overall geek. I am from Mexico but live in Switzerland with my awesome wife and our two beautiful daughters.
 
-*What:* I work as the lead of a development team in the Cloud Platform Division of [[http://swisscom.com/][Swisscom]], where I am applying my experience and background in security, configuration management, cloud computing and automation to build the next-generation cloud infrastructure for Swisscom and its customers. I am also the author of [[http://cf-learn.info]["Learning CFEngine 3"]].
+*What:* I work as Enterprise Security Architect in the IT Clouds Division of [[http://swisscom.com/][Swisscom]]. I am also the author of [[http://cf-learn.info]["Learning CFEngine 3"]] and [[https://leanpub.com/learning-hammerspoon]["Learning Hammerspoon"]].
 
 *Where:* I was born in Argentina, but have moved around all my life.  When I was very young I moved to Mexico, where I lived in four different cities before moving to the U.S. to pursue my Ph.D. at [[http://www.cerias.purdue.edu/][Purdue University]] under the direction of [[http://spaf.cerias.purdue.edu/][Gene Spafford]]. Upon finishing my studies, my wife and I decided to go to Switzerland, where I worked at the [[http://www.zurich.ibm.com/][IBM Zurich Research Lab]]. Eight years and two kids later, we [[file:/brt/2009/09/08/going-home/index.html][moved to Mexico]] in late 2009. In 2015, we moved back to Switzerland.
 
@@ -84,9 +84,9 @@ CLOSED: [2018-03-22 Thu 19:40]
 
 *** My online past
 
-- 2009-2016: During this time my blog went through several iterations, hosted/powered by [[http://www.posterous.com/][Posterous]], [[https://jekyllrb.com/][Jekyll]], [[http://octopress.org/][Octopress]], [[https://postach.io/site][Postach.io]] and [[https://github.com/zzamboni/enwrite][Enwrite]]. All blog entries from this period have been merged into [[file:/post][my current blog]];
-- 2005-2009: My blog titled [[file:/brt][BrT]], powered mainly by a self-hosted [[https://wordpress.org/][Wordpress]], with some intermixed use of Posterous. What you find at the link is a static archive copy;
-- 1997-2001: My hand-maintained [[http://homes.cerias.purdue.edu/~zamboni/][web page at Purdue University]].
+- 2009-2016: During this time my blog went through several iterations, hosted/powered by [[http://www.posterous.com/][Posterous]], [[https://jekyllrb.com/][Jekyll]], [[http://octopress.org/][Octopress]], [[https://postach.io/site][Postach.io]] and [[https://github.com/zzamboni/enwrite][Enwrite]]. Most blog entries from this period have been merged into [[file:/post][my current blog]];
+- 2005-2009: My blog titled [[file:/brt][BrT]], powered mainly by a self-hosted Wordpress installation, with some intermixed use of Posterous. What you find at the link is a static archive copy;
+- 1997-2001: My hand-maintained [[http://homes.cerias.purdue.edu/~zamboni/][web page at Purdue University]] ([[/cerias/zamboni/][here's a mirror]] in case the original ever disappears).
 
 *** About this site
 

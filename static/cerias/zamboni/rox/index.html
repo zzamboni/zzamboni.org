@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Diego's ROX page</title>
+  </head>
+
+  <body bgcolor="white">
+    <h1><img src="../images/filer.gif" border=0 align=middle> Diego's ROX page</h1>
+
+    I discovered a project called <a
+    href="http://rox.sourceforge.net/">ROX</a>, which includes a very
+    nice desktop-and-file manager (ROX-Filer), a nice MIME-association
+    mechanism, and some other applications. ROX-Filer is the first
+    desktop manager I have actually been using on my Unix desktop (I'm
+    accustomed to it on my Mac at home, but no other desktop manager
+    had felt "right" on Unix without using enormous amounts of
+    memory).<p>
+
+      I have written several patches for ROX-Filer that you can find
+      at the <a
+      href="http://sourceforge.net/patch/?group_id=7023">project's
+      patch page</a>. Some of them have already been incorporated into 
+      the CVS tree, so please check before applying them.<p>
+
+      I have written a number of things for ROX-Filer:
+
+      <ul>
+
+      <li> A patch for supporting application-specific menus. This
+      patch has been incorporated into CVS, so if you get the latest
+      version from CVS, you'll have it. <b>NOTE: On March 8, 2001, the
+      CVS was updated, converting AppMenu to XML format. I have
+      updated all the applications in this page to use the new format.</b><p>
+
+	  <li> A <a href="../files/rox/appmenu_convert.pl">program</a>
+	  for converting the old AppMenu format into the new XML
+	  format.<p>
+
+      <li> A <a
+	  href="../files/rox/Trashcan.tar.gz">Trashcan application</a>
+	for ROX-Filer, originally inspired by
+	dfm-trashcan.tcl (from <a
+	  href="http://www.cs.columbia.edu/~etgold/software/mycode.html">Ethan's
+	  Code Kitchen</a>), but rewritten in Perl and now with very
+	different functionality, and specifically tailored for
+	ROX-Filer (<i>last update: April 8, 2002 - see the <a
+	href="../files/rox/Trashcan-ChangeLog">ChangeLog</a></i>).<p>
+      
+      <li> A <a href="../files/rox/XEmacs.tar.gz">wrapper for XEmacs</a>,
+	which tries to use a client instead of starting a new xemacs
+	if possible, and keeps a cache of recently opened files using
+	the app-specific menus mechanism (see the patches page
+	above) (<i>last update: March 8, 2001</i>).<p>
+
+      <li> A <a href="../files/rox/LaTeX.tar.gz">wrapper for LaTeX</a>,
+      which tries to be somewhat intelligent about how to process its
+      arguments, and also uses the app-specific menus mechanism if you 
+      have it installed (<i>last udpate: March 8, 2001</i>).<p>
+
+      <li> A <a href="../files/rox/xTerminal.tar.gz">terminal
+      wrapper</a> which is able to execute different terminal programs 
+      by using its arguments (to be used with the app-specific menus
+      mechanism) (<i>last update: March 8, 2001</i>).<p>
+
+      <li> A <a href="../files/rox/Utils.tar.gz">miscellaneous utility 
+      application</a>, which provides some useful functions through
+      its app-specific menu (<i>last update: March 8, 2001</i>).<p>
+
+      <li> Simple wrappers for <a href="../files/rox/XDvi.tar.gz">xdvi</a>,
+	<a href="../files/rox/XFig.tar.gz">xfig</a>, <a
+	href="../files/rox/XV.tar.gz">XV</a>, <a
+	href="../files/rox/Display.tar.gz">display</a>.<p>
+
+    </ul>
+
+      As I write more things for ROX, I will post them here.
+
+    <hr>
+    <address><a href="mailto:zamboni@cerias.purdue.edu">Diego Zamboni</a></address>
+<!-- Created: Fri Dec 15 10:01:06 EST 2000 -->
+<!-- hhmts start -->
+Last modified: Thu Mar  8 22:57:34 EST 2001
+<!-- hhmts end -->
+  </body>
+</html>
+
+

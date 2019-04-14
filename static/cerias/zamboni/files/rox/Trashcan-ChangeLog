@@ -1,0 +1,54 @@
+2002-04-08  Diego Zamboni  <zamboni@cerias.purdue.edu>
+
+	* AppInfo.xml: Renamed AppMenu to AppInfo.xml, to comply with the
+	newest versions of Rox-Filer. AppInfo.xml. Change suggested almost 
+	simultaneously by Renato Ramonda and K.M. Klingsporn.
+	
+2001-02-08  Diego Zamboni  <zamboni@cerias.purdue.edu>
+
+	* AppRun: Made it use link instead of symlink to set AppIcon.xpm,
+	because the latest version of ROX-Filer disallows AppIcons to be
+	symlinks.
+	Now that AppMenus are a standard part of ROX-Filer, I have
+	disabled by default the generation of an "Empty trashcan" script
+	whenever there is something in the trashcan. It can be reenabled
+	by setting $UseEmptyProgram to 1 in the configuration section.
+
+2001-01-13  Diego Zamboni  <zamboni@cerias.purdue.edu>
+
+	* AppRun: Made it strip the hostname from the beginning of the
+	filenames if it is included. For now we just assume all the files
+	are local.
+
+2001-01-10  Diego Zamboni  <zamboni@cerias.purdue.edu>
+
+	* AppRun: Added a configuration hash for icons, where they can be
+	accessed by name (%TrashIcons).
+	Modularized things a little more, adding subroutines set_icon(),
+	flip_icons(), roxupdate() and roxupdate_cmd().
+	(empty_trash): Added an experimental feature for periodically
+ 	(every 5 seconds by default) blinking the trash icon while it is
+ 	being emptied. This allows the user to see that something is going 
+	on for operations that take too long. This mechanism for now uses
+	signals, so it may not work correctly or produce weird behavior
+	sometimes, because I'm not being particularly careful about the
+	signals. For this reason this feature is disabled by default
+	(controlled by the $BlinkTrashcan variable). Using signals is not
+	really necessary, but is more convenient for now because I'm using 
+	File::Path to remove the trash directory, and it has no way of
+	periodically calling a subroutine.
+	Made it try the mv command if File::Copy::move fails. That
+	subroutine does not handle cross-filesystem moves, whereas the mv
+	command usually does.
+	The icon blinking also happens while moving files to the trashcan, 
+	in case that operation takes long.
+
+2000-12-28  Diego Zamboni  <zamboni@cerias.purdue.edu>
+
+	* Version 0.2
+	
+	* AppRun: Made it use the -x option instead of -i and -W. Also
+	made the trashcan directory by default be $AppRun/Trashcan instead
+	of $HOME/.trashcan.
+	
+

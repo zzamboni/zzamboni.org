@@ -1,0 +1,53 @@
+*** Makefile.orig	Mon Sep 15 09:48:19 1997
+--- Makefile	Mon Sep 15 09:51:50 1997
+***************
+*** 3,9 ****
+  # -g -DDEBUG
+  
+  PREFIX = /usr/local/gnu
+- HOST = i386-slackware-linux
+  TARGET-NAME = m68k-palmos-coff
+  
+  EXEEXT = 
+--- 3,8 ----
+***************
+*** 156,174 ****
+  gnutools: stamp.binutils stamp.gcc stamp.gdb
+  
+  stamp.binutils:
+! 	cd $(BINUTILSDIR) ; ./configure --host=$(HOST) --prefix=$(PREFIX) --target=$(TARGET-NAME)
+  	cd $(BINUTILSDIR) ; make
+  	cd $(BINUTILSDIR) ; make install
+  	touch $@
+  
+  stamp.gcc:
+! 	cd $(GCCDIR) ; ./configure --host=$(HOST) --prefix=$(PREFIX) --target=$(TARGET-NAME)
+  	cd $(GCCDIR) ; make LANGUAGES=c
+  	cd $(GCCDIR) ; make LANGUAGES=c install
+  	touch $@
+  
+  stamp.gdb:
+! 	cd $(GDBDIR) ; ./configure --host=$(HOST) --prefix=$(PREFIX) --target=$(TARGET-NAME)
+  	cd $(GDBDIR) ; make
+  	cd $(GDBDIR) ; make install
+  	touch $@
+--- 155,173 ----
+  gnutools: stamp.binutils stamp.gcc stamp.gdb
+  
+  stamp.binutils:
+! 	cd $(BINUTILSDIR) ; ./configure --prefix=$(PREFIX) --target=$(TARGET-NAME)
+  	cd $(BINUTILSDIR) ; make
+  	cd $(BINUTILSDIR) ; make install
+  	touch $@
+  
+  stamp.gcc:
+! 	cd $(GCCDIR) ; ./configure --prefix=$(PREFIX) --target=$(TARGET-NAME)
+  	cd $(GCCDIR) ; make LANGUAGES=c
+  	cd $(GCCDIR) ; make LANGUAGES=c install
+  	touch $@
+  
+  stamp.gdb:
+! 	cd $(GDBDIR) ; ./configure --prefix=$(PREFIX) --target=$(TARGET-NAME)
+  	cd $(GDBDIR) ; make
+  	cd $(GDBDIR) ; make install
+  	touch $@
