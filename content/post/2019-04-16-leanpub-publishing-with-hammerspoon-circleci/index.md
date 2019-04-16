@@ -81,7 +81,13 @@ The first step is to get rid of the need to run those "watch" scripts, which pro
 ![](build-step15.png)
 ![](build-step30.png)
 
-These are produced by a [Spoon](/post/using-spoons-in-hammerspoon/) I wrote called [Leanpub](https://www.hammerspoon.org/Spoons/Leanpub.html). You can install, load and configure it using the [SpoonInstall](/post/using-spoons-in-hammerspoon/#automated-spoon-installation-and-configuration) spoon. For example, in my configuration I have [the following code](/post/my-hammerspoon-configuration-with-commentary/#leanpub-integration) to configure the spoon to watch for both of my books:
+These are produced by a [Spoon](/post/using-spoons-in-hammerspoon/) I wrote called [Leanpub](https://www.hammerspoon.org/Spoons/Leanpub.html). You can install, load and configure it using the [SpoonInstall](/post/using-spoons-in-hammerspoon/#automated-spoon-installation-and-configuration) spoon.
+
+{{% tip %}}
+If you want to learn how this Spoon is implemented, please check out the "Writing your own extensions and Spoons" chapter in [_Learning Hammerspoon_](https://leanpub.com/learning-hammerspoon).
+{{% /tip %}}
+
+For example, in my configuration I have [the following code](/post/my-hammerspoon-configuration-with-commentary/#leanpub-integration) to configure the spoon to watch for both of my books:
 
 ```lua
 Install:andUse("Leanpub",
