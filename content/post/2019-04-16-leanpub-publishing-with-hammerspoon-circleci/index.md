@@ -211,6 +211,7 @@ Once you have committed this file, you can enable CircleCI on it as follows:
 -   To fix this, you need to define an environment variable called `LEANPUB_API_KEY` within your CircleCI project. Click on the project name, and then on the settings button at the top-left of the screen. Once there, select the "Environment Variables" section and enter the environment variable:
     ![](circleci-add-leanpub-api-key.png)
 -   Now you can go to the "Workflows" screen and click on "Rerun" for your book's workflow (alternatively, make a new commit on your git repository). Assuming you have the Leanpub Spoon installed as described before, you should see the notifications for your book's build within a few seconds.
+    ![](circleci-successful-job.png)
 
 
 ## Conclusion {#conclusion}
