@@ -5,12 +5,12 @@ summary = "In this blog post I will walk you through my current Elvish configura
 date = 2017-11-16T20:21:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "elvish"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.2.3 + ox-hugo)"
+creator = "Emacs 26.2 (Org mode 9.2.3 + ox-hugo)"
 toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **April  8, 2019**
+Last update: **April 16, 2019**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -34,6 +34,7 @@ paths = [
   /usr/local/opt/coreutils/libexec/gnubin
   /usr/local/opt/texinfo/bin
   /usr/local/opt/python/libexec/bin
+  /usr/local/opt/ruby/bin
   ~/Dropbox/Personal/devel/hammerspoon/spoon/bin
   ~/.gem/ruby/2.4.0/bin
   /opt/X11/bin
@@ -146,7 +147,7 @@ For reference, I define here a few of my commonly-used aliases:
 
 ```elvish
 alias:new dfc e:dfc -W -l -p -/dev/disk1s4,devfs
-alias:new ls e:lsd
+alias:new ls e:exa --color-scale --git --group-directories-first
 alias:new more less
 alias:new v vagrant
 ```

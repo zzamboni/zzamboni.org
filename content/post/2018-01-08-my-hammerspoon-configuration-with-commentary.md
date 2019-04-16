@@ -5,12 +5,12 @@ summary = "In my ongoing series of literate config files, I present to you my Ha
 date = 2018-01-08T13:31:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "hammerspoon"]
 draft = false
-creator = "Emacs 26.1 (Org mode 9.2.3 + ox-hugo)"
+creator = "Emacs 26.2 (Org mode 9.2.3 + ox-hugo)"
 toc = true
 featured_image = "/images/hammerspoon.png"
 +++
 
-Last update: **April  8, 2019**
+Last update: **April 16, 2019**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -119,7 +119,7 @@ Install:andUse("URLDispatcher",
 
 ## Window and screen manipulation {#window-and-screen-manipulation}
 
-The [WindowHalfAndThirds](http://www.hammerspoon.org/Spoons/WindowHalfsAndThirds.html) spoon sets up multiple key bindings for manipulating the size and position of windows.
+The [WindowHalfsAndThirds](http://www.hammerspoon.org/Spoons/WindowHalfsAndThirds.html) spoon sets up multiple key bindings for manipulating the size and position of windows.
 
 ```lua
 Install:andUse("WindowHalfsAndThirds",
@@ -635,9 +635,9 @@ Install:andUse("Leanpub",
 ```
 
 
-## Miscellaneous stuff {#miscellaneous-stuff}
+## Loading private configuration {#loading-private-configuration}
 
-In my `init-local.lua` file I keep some experimental or private stuff that I don't want to publish in my main config.
+In `init-local.lua` I keep experimental or private stuff (like API tokens) that I don't want to publish in my main config. This file is not committed to any publicly-accessible git repositories.
 
 ```lua
 local localfile = hs.configdir .. "/init-local.lua"
