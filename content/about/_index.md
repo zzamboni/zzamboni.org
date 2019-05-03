@@ -10,7 +10,7 @@ featured_image = "/images/legoland.jpg"
 
 **Who:** My name is Diego Zamboni. I am a computer scientist, security expert, consultant, project and team leader, programmer, sysadmin, author and overall geek. I am from Mexico but live in Switzerland with my beautiful wife and our two awesome daughters.
 
-**What:** I work as Enterprise Security Architect in the IT Clouds Division of [Swisscom](http://swisscom.com/). I am also the author of ["Learning CFEngine 3"](http://cf-learn.info) and ["Learning Hammerspoon"](https://leanpub.com/learning-hammerspoon).
+**What:** I work as Enterprise Security Architect in the IT Clouds Division of [Swisscom](http://swisscom.com/). I am also the author of ["Learning CFEngine"](http://cf-learn.info) and ["Learning Hammerspoon"](https://leanpub.com/learning-hammerspoon).
 
 **Where:** I was born in Argentina, but have moved around all my life.  When I was very young I moved to Mexico, where I lived in four different cities before moving to the U.S. to pursue my Ph.D. at [Purdue University](http://www.cerias.purdue.edu/) under the direction of [Gene Spafford](http://spaf.cerias.purdue.edu/). Upon finishing my studies, my wife and I decided to go to Switzerland, where I worked at the [IBM Zurich Research Lab](http://www.zurich.ibm.com/). Eight years and two kids later, we [moved to Mexico](/brt/2009/09/08/going-home/index.html) in late 2009. In 2015, we moved back to Switzerland.
 
