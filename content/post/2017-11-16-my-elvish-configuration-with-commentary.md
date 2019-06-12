@@ -5,12 +5,12 @@ summary = "In this blog post I will walk you through my current Elvish configura
 date = 2017-11-16T20:21:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "elvish"]
 draft = false
-creator = "Emacs 26.2 (Org mode 9.2.3 + ox-hugo)"
+creator = "Emacs 26.2 (Org mode 9.2.4 + ox-hugo)"
 toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **May 16, 2019**
+Last update: **June 12, 2019**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -148,7 +148,8 @@ For reference, I define here a few of my commonly-used aliases:
 ```elvish
 alias:new dfc e:dfc -W -l -p -/dev/disk1s4,devfs
 alias:new ls e:exa --color-scale --git --group-directories-first
-alias:new more less
+alias:new cat bat
+alias:new more bat --paging always
 alias:new v vagrant
 ```
 
@@ -279,6 +280,12 @@ I bind `Alt-b/f` to `dir:left-small-word-or-prev-dir` and `dir:right-small-word-
 ```elvish
 edit:insert:binding[Alt-b] = $dir:left-small-word-or-prev-dir~
 edit:insert:binding[Alt-f] = $dir:right-small-word-or-next-dir~
+```
+
+The following makes the location mode filter be case-insensitive by default:
+
+```elvish
+edit:location:matcher = [@a]{ edit:location:match-dir-pattern &ignore-case $@a }
 ```
 
 

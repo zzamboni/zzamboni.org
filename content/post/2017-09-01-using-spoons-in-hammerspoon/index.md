@@ -5,7 +5,7 @@ summary = "In this second article about Hammerspoon, we look into _Spoons_, modu
 date = 2017-09-01T17:55:00+02:00
 tags = ["hammerspoon", "mac", "howto", "spoons"]
 draft = false
-creator = "Emacs 26.2 (Org mode 9.2.3 + ox-hugo)"
+creator = "Emacs 26.2 (Org mode 9.2.4 + ox-hugo)"
 toc = true
 featured_image = "/images/hammerspoon.png"
 +++

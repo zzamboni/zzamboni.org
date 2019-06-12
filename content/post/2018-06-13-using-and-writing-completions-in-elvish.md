@@ -3,9 +3,9 @@ title = "Using and writing completions in Elvish"
 author = ["Diego Zamboni"]
 summary = "Like other Unix shells, Elvish has advanced command-argument completion capabilities. In this article I will explore the existing completions, and show you how you can create your own (and contribute them back to the community!)"
 date = 2018-06-13T20:25:00+02:00
-tags = ["elvish", "shell", "completions", "unix", "config"]
+tags = ["elvish", "shell", "unix", "config"]
 draft = false
-creator = "Emacs 26.2 (Org mode 9.2.3 + ox-hugo)"
+creator = "Emacs 26.2 (Org mode 9.2.4 + ox-hugo)"
 toc = true
 featured_image = "/images/elvish-logo.svg"
 +++

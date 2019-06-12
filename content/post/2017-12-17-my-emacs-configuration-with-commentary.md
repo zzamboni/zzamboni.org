@@ -5,12 +5,12 @@ summary = "I have enjoyed slowly converting my configuration files to literate p
 date = 2017-12-17T20:14:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs"]
 draft = false
-creator = "Emacs 26.2 (Org mode 9.2.3 + ox-hugo)"
+creator = "Emacs 26.2 (Org mode 9.2.4 + ox-hugo)"
 featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **May 16, 2019**
+Last update: **June 12, 2019**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -141,7 +141,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(org-log-done t nil nil "Customized with use-package org")
  '(org-mac-grab-Acrobat-app-p nil)
  '(org-mac-grab-devonthink-app-p nil)
- '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.3/libexec/plantuml.jar" nil nil "Customized with use-package ob-plantuml")
+ '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.5/libexec/plantuml.jar" nil nil "Customized with use-package ob-plantuml")
  '(org-reveal-note-key-char nil nil nil "Customized with use-package ox-reveal")
  '(org-reveal-root "file:///Users/taazadi1/Dropbox/org/reveal.js" nil nil "Customized with use-package ox-reveal")
  '(org-src-fontify-natively t nil nil "Customized with use-package org")
@@ -169,8 +169,8 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
      ("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (dockerfile-mode ox-gfm swiper-helm auth-sources plantuml-mode org-fstree esup package-build org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
- '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.3/libexec/plantuml.jar" t nil "Customized with use-package plantuml-mode")
+    (deft dockerfile-mode ox-gfm swiper-helm auth-sources plantuml-mode org-fstree esup package-build org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
+ '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.5/libexec/plantuml.jar" t nil "Customized with use-package plantuml-mode")
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(reb-re-syntax (quote string))
@@ -202,7 +202,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(use-package-always-defer t)
  '(use-package-always-ensure t)
  '(use-package-verbose nil)
- '(vr/engine (quote pcre2el) nil nil "Use PCRE regular expressions"))
+ '(vr/engine (quote pcre2el) t nil "Use PCRE regular expressions"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -394,7 +394,7 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     (customize-set-variable 'read-buffer-completion-ignore-case t)
     ```
 
--   Show line numbers. I used `linum-mode` before, but it caused severe performance issues on large files. Emacs 26 introduces `display-line-numbers-mode`, which has no perceivable performance impact even on very large files.
+-   Show line numbers. I used `linum-mode` before, but it caused severe performance issues on large files. Emacs 26 introduces `display-line-numbers-mode`, which has no perceivable performance impact even on very large files. Disabled for now.
 
     ```emacs-lisp
     (when (>= emacs-major-version 26)
@@ -2103,6 +2103,21 @@ Many other programming languages are well served by a single mode, without so mu
      ,@body
      (message "%.06f" (float-time (time-since time)))))
 ```
+
+-   Trying out [Deft](https://github.com/jrblevin/deft)
+
+    ```emacs-lisp
+    (use-package deft
+      :custom
+      (deft-use-filename-as-title nil)
+      (deft-use-filter-string-for-filename t)
+      (deft-file-naming-rules '((noslash . "-")
+                                (nospace . "-")
+                                (case-fn . downcase)))
+      (deft-org-mode-title-prefix t)
+      (deft-extensions '("org" "txt" "text" "md" "markdown"))
+      (deft-default-extension "org"))
+    ```
 
 
 ## General text editing {#general-text-editing}
