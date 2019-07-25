@@ -2187,7 +2187,8 @@ Once you have committed this file, you can enable CircleCI on it as follows:
 
 Using the techniques described above has made my book building and publishing much easier. I have been using them for a few weeks, and the [[https://zzamboni.org/post/new-release-of-learning-hammerspoon-is-out/][latest release of /Learning Hammerspoon/]] was published using this workflow already. I hope you find it useful as well! Please let me know  in the comments if you have any questions or feedback.
 
-*** Hosting a Ghost Blog in GitHub - the easier way :howto:ghost:github:blogging:
+*** DONE Hosting a Ghost Blog in GitHub - the easier way :howto:ghost:github:blogging:
+CLOSED: [2017-08-25 Fri 09:00]
 :PROPERTIES:
 :export_hugo_bundle: 2017-08-25-hosting-a-ghost-blog-in-github
 :export_file_name: index
