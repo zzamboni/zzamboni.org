@@ -61,8 +61,7 @@ leanpub:preview-and-watch
 leanpub:subset-and-watch
 ```
 
-{{% note %}}
-If your current directory name is not the same as your book slug, you can pass the book slug as an argument. For example:
+{{% note %}}If your current directory name is not the same as your book slug, you can pass the book slug as an argument. For example:
 
 ```elvish
 leanpub:preview-and-watch my_book
