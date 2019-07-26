@@ -10,7 +10,7 @@ toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **June 12, 2019**
+Last update: **July 26, 2019**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -168,7 +168,7 @@ Other possible values for `edit:completion:matcher` are `[p]{ edit:match-prefix 
 I also configure <kbd>Tab</kbd> to trigger completion mode, but also to automatically enter "filter mode", so I can keep typing the filename I want, without having to use the arrow keys. Disabled as this is the default behavior starting with commit [b24e4a7](https://github.com/elves/elvish/commit/b24e4a73ccd948b8c08d4081c2bcfb7cf603a02b), but you may need it if you are running an older version for any reason and want this behavior.
 
 ```elvish
-edit:insert:binding[Tab] = { edit:completion:smart-start; edit:completion:trigger-filter }
+#  edit:insert:binding[Tab] = { edit:completion:smart-start; edit:completion:trigger-filter }
 ```
 
 I load some command-specific completions from the  [elvish-completions](https://github.com/zzamboni/elvish-completions) package:
@@ -232,7 +232,7 @@ edit:prompt-stale-transform = { each [x]{ styled $x[text] "gray" } }
 Another possibility is to make the prompt stay the same when stale - useful to avoid distractions (disabled for now):
 
 ```elvish
-edit:prompt-stale-transform = $all~
+#  edit:prompt-stale-transform = $all~
 ```
 
 I also like the continuous update of the prompt as I type (by default it only updates on Enter and on `$pwd` changes, but I like also git status changes to be updated automatically), so I increase its eagerness.
