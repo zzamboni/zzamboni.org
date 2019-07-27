@@ -61,6 +61,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#my-blogging-workflow-with-emacs-org-modeox-hugo-hugo-and-github][My blogging workflow with Emacs, org-mode+ox-hugo, Hugo and GitHub]]
     - [[#automating-leanpub-book-publishing-with-hammerspoon-and-circleci][Automating Leanpub book publishing with Hammerspoon and CircleCI]]
     - [[#hosting-a-ghost-blog-in-github---the-easier-way][Hosting a Ghost Blog in GitHub - the easier way]]
+    - [[#the-big-website-reboot][The Big Website Reboot]]
 - [[#footnotes][Footnotes]]
 
 * Pages
@@ -2424,5 +2425,28 @@ While this seems scandalous, keep in mind that the active Ghost installation is 
 I followed the steps described above to create a test Ghost install, which you can access at [[https://zzamboni.github.io/test-ghost-blog/]], and its corresponding GitHub repository at [[https://github.com/zzamboni/test-ghost-blog/]]. You can also find this article [[https://zzamboni.github.io/test-ghost-blog/hosting-a-ghost-blog-in-github-the-easier-way/][published there]].
 
 I hope you've found it useful. I'd love to hear your comments!
+
+*** DONE The Big Website Reboot :sitenews:
+CLOSED: [2017-08-08 Tue 06:56]
+:PROPERTIES:
+:export_file_name: 2017-08-08-the-big-website-reboot
+:export_hugo_custom_front_matter: :featured_image /images/z-favicon-src.png
+:END:
+#+begin_description
+Welcome to the new zzamboni.org.
+#+end_description
+
+Welcome to the new zzamboni.org.
+
+Over the years, my website has seen its fair share of transformations, change and breakage. For a few years now, it had stagnated - me with not having much time to update, and its accumulated technological cruft piling high enough to keep me from even touching it, lest I break something.
+
+So, the time has come to do a reboot. With this post, I'm launching the new and reinvented [[http://zzamboni.org/][zzamboni.org]]. Through previous incarnations I had always tried to preserve backwards compatibility in my URLs so people could still find my old stuff, but this has become too big a burden. I may add some things under their old location, and I may add over time some tools to make it easier to find the old stuff, but in general this won't be a concern and I will not let it stop me from adding new content.
+
+Over the years, the underlying technologies have changed (Wordpress, Posterous, Jekyll, Octopress, Enwrite). As a tech guy, I always enjoy playing with new toys. For now I have settled on using [[http://gohugo.io/][Hugo]], a great static-website generator, using its [[https://themes.gohugo.io/gohugo-theme-ananke/][Ananke]] theme. Hugo and Ananke are powerful and flexible to satisfy my needs, both current and future, as far as I can foresee them. +The website continues to be hosted through the fantastic [[https://pages.github.com/][Github Pages]].+ My website was hosted on Github  Pages for many years,  but it is now served by [[https://www.netlify.com/][Netlify]].
+
+So this is it. +For now the site is mostly empty, but new content will be appearing shortly, both new and ported from my old website.+ I have started adding posts from my previous blogs. Thanks to Hugo's =aliases= feature, most of them should be accessible still through their old URLs.
+
+Please take a look around, and [[/contact][let me know]] if you find anything broken.
+
 
 * Footnotes
