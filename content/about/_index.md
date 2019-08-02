@@ -3,7 +3,7 @@ title = "About"
 author = ["Diego Zamboni"]
 date = 2018-03-22T19:40:00+01:00
 draft = false
-creator = "Emacs 26.2 (Org mode 9.2.4 + ox-hugo)"
+creator = "Emacs 26.2 (Org mode 9.2.5 + ox-hugo)"
 weight = 6
 featured_image = "/images/legoland.jpg"
 +++
