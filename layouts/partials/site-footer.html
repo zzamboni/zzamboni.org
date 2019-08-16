@@ -11,7 +11,7 @@
                 <a class="no-underline hover-white white-70" href="https://orgmode.org/">{{ . | replaceRE "Emacs.*\\(" "" | replaceRE "\\+ ox-.*" "" }}</a> &plus;
                 <a class="no-underline hover-white white-70" href="https://ox-hugo.scripter.co/">ox-hugo</a>&nbsp;
             {{- end -}}
-            and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo {{ .Hugo.Version }}</a>
+            and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo {{ hugo.Version }}</a>
             &plus; <a class="no-underline hover-white white-70" href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a>
       {{- end -}}
     </div>
