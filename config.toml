@@ -47,18 +47,19 @@ notAlternative = true
   priority = 0.5
   filename = "sitemap.xml"
 
-[Params]
+[params]
   description = "Musings, ramblings and code"
   twitter = "https://twitter.com/zzamboni"
   # choose a background color from any on this page: http://tachyons.io/docs/themes/skins/ and preface it with "bg-"
   background_color_class = "bg-black"
   featured_image = "/images/tram-zurich.jpg"
   copyright_author = "Diego Zamboni"
+  custom_css = ["css/site.css", "css/syntax.css"]
 
-[Params.source]
+[params.source]
   url = "https://github.com/zzamboni/zzamboni.org"
   org_dir = "content-org"
   org_file = "content-org/zzamboni.org"
 
-[Params.footer]
+[params.footer]
   show_powered_by = true
