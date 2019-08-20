@@ -55,6 +55,7 @@ notAlternative = true
   featured_image = "/images/tram-zurich.jpg"
   copyright_author = "Diego Zamboni"
   custom_css = ["css/site.css", "css/syntax.css"]
+  show_reading_time = true
 
 [params.source]
   url = "https://github.com/zzamboni/zzamboni.org"
