@@ -13,7 +13,7 @@ I am the author of "Learning CFEngine", the best book for learning [CFEngine](ht
 
 The book has its own webpage at <http://cf-learn.info>, please visit it for more information, code samples, etc.
 
-You can buy the book from Amazon by clicking the link on the right.
+You can buy the book at <https://leanpub.com/learning-cfengine> or by clicking the link on the right.
 
 <!--more-->
 

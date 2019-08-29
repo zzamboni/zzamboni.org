@@ -10,7 +10,7 @@ toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **August  2, 2019**
+Last update: **August 30, 2019**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -65,6 +65,8 @@ For now I use these packages:
 -   [github.com/xiaq/edit.elv](https://github.com/xiaq/edit.elv), which includes the `smart-matcher` module used below.
 -   [github.com/muesli/elvish-libs](https://github.com/muesli/elvish-libs) for the git utilities module.
 -   [github.com/iwoloschin/elvish-packages](https://github.com/iwoloschin/elvish-packages) for the update.elv package.
+
+<!--listend-->
 
 ```elvish
 epm:install &silent-if-installed=$true   \
@@ -146,7 +148,7 @@ use github.com/zzamboni/elvish-modules/alias
 For reference, I define here a few of my commonly-used aliases:
 
 ```elvish
-alias:new dfc e:dfc -W -l -p -/dev/disk1s4,devfs
+alias:new dfc e:dfc -W -p -/dev/disk1s4,devfs,map
 alias:new ls e:exa --color-scale --git --group-directories-first
 alias:new cat bat
 alias:new more bat --paging always
@@ -282,10 +284,11 @@ edit:insert:binding[Alt-b] = $dir:left-small-word-or-prev-dir~
 edit:insert:binding[Alt-f] = $dir:right-small-word-or-next-dir~
 ```
 
-The following makes the location mode filter be case-insensitive by default:
+The following makes the location and history modes be case-insensitive by default:
 
 ```elvish
 edit:location:matcher = [@a]{ edit:location:match-dir-pattern &ignore-case $@a }
+edit:insert:binding[Ctrl-R] = { edit:histlist:start; edit:histlist:toggle-case-sensitivity }
 ```
 
 
@@ -318,7 +321,7 @@ use github.com/zzamboni/elvish-modules/atlas
 
 ## OpsGenie {#opsgenie}
 
-I use OpsGenie at work, so I have put together the [opsgenie](https://github.com/zzamboni/elvish-modules/blob/master/opsgenie.org) library to make API operations easier.
+I used OpsGenie at work for a while, so I put together the [opsgenie](https://github.com/zzamboni/elvish-modules/blob/master/opsgenie.org) library to make API operations easier. I don't actively use or maintain this anymore.
 
 ```elvish
 use github.com/zzamboni/elvish-modules/opsgenie
@@ -327,7 +330,7 @@ use github.com/zzamboni/elvish-modules/opsgenie
 
 ## LeanPub {#leanpub}
 
-I use [LeanPub](https://leanpub.com/help/api) for publishing my books, so I have written a few utility functions.
+I use [LeanPub](https://leanpub.com/help/api) for publishing my books, so I have written a few utility functions. I don't use this regularly, I have much better integration using Hammerspoon and CircleCI, I wrote about it in my blog: [Automating Leanpub book publishing with Hammerspoon and CircleCI](https://zzamboni.org/post/automating-leanpub-book-publishing-with-hammerspoon-and-circleci/).
 
 ```elvish
 use github.com/zzamboni/elvish-modules/leanpub

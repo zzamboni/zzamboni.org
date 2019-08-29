@@ -33,6 +33,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
 - [[#book-pages][Book pages]]
   - [[#learning-cfengine][Learning CFEngine]]
   - [[#learning-hammerspoon][Learning Hammerspoon]]
+  - [[#utilerías-de-unix][Utilerías de Unix]]
 - [[#ideas][Ideas]]
   - [[#using-and-extending-seal][Using and extending Seal]]
   - [[#sending-things-to-omnifocus][Sending things to OmniFocus]]
@@ -58,6 +59,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#using-and-writing-completions-in-elvish][Using and writing completions in Elvish]]
     - [[#elvish-an-awesome-unix-shell][Elvish, an awesome Unix shell]]
   - [[#other][Other]]
+    - [[#nuevo-libro-utilerías-de-unix][Nuevo libro "Utilerías de Unix"]]
     - [[#my-blogging-workflow-with-emacs-org-modeox-hugo-hugo-and-github][My blogging workflow with Emacs, org-mode+ox-hugo, Hugo and GitHub]]
     - [[#automating-leanpub-book-publishing-with-hammerspoon-and-circleci][Automating Leanpub book publishing with Hammerspoon and CircleCI]]
     - [[#hosting-a-ghost-blog-in-github---the-easier-way][Hosting a Ghost Blog in GitHub - the easier way]]
@@ -149,7 +151,7 @@ I am the author of "Learning CFEngine", the best book for learning [[http://cfen
 
 The book has its own webpage at http://cf-learn.info, please visit it for more information, code samples, etc.
 
-You can buy the book from Amazon by clicking the link on the right.
+You can buy the book at https://leanpub.com/learning-cfengine or by clicking the link on the right.
 
 #+hugo: more
 
@@ -167,9 +169,31 @@ CLOSED: [2018-10-16 Tue 20:54]
 
 *Automate all the things!* From window manipulation to automated system settings depending on your current location, [[http://www.hammerspoon.org/][Hammerspoon]] makes it possible. In this book you will learn how to get started with Hammerspoon, how to use pre-made modules, and how to write your own, to achieve an unprecedented level of control over your Mac.
 
+Learn more, read a free sample and get the book (you choose how much you pay!) at https://leanpub.com/learning-hammerspoon/, or click on the banner on the right.
+
 #+hugo: more
 
-Learn more, read a free sample and get the book (you choose how much you pay!) at https://leanpub.com/learning-hammerspoon/, or click on the banner on the right.
+\nbsp
+
+** DONE Utilerías de Unix
+CLOSED: [2019-08-30 Tue 00:05]
+:PROPERTIES:
+:export_hugo_section: book
+:export_file_name: utilerias-unix
+:export_hugo_custom_front_matter: :finalURL https://leanpub.com/utileras-unix
+:END:
+
+{{< utileriasbookimglink style="float:right" >}}
+
+(this book is in Spanish)
+
+*¡Automatiza tus tareas e incrementa tu eficiencia!* Este libro proporciona una introducción a algunos de los comandos más útiles en un sistema Unix/Linux, que te permiten realizar fácilmente tareas de todo tipo, desde la búsqueda de texto en un archivo hasta complejas operaciones de procesamiento, cálculo y extracción de datos.
+
+Puedes obtener una muestra gratis y comprar el libro (¡tu eliges  cuánto pagas!) en https://leanpub.com/utileras-unix, o haz click  en la imágen de la derecha.
+
+#+hugo: more
+
+\nbsp
 
 * Ideas
 :PROPERTIES:
@@ -1906,6 +1930,27 @@ I am very happy with Elvish, and if you are interested in this sort of thing, I 
 I will post more Elvish tips and tricks over time.
 
 ** Other
+
+*** DONE Nuevo libro "Utilerías de Unix" :book:announcement:spanish:unix:linux:leanpub:
+CLOSED: [2019-08-30 Fri 00:23]
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: 2019-08-30-primera-edicion-utilerias-unix
+:EXPORT_FILE_NAME: index
+:export_hugo_custom_front_matter: :toc false :featured_image /images/utilerias-cover.png
+:END:
+#+begin_description
+Me complace anunciar  la primera edición de mi nuevo libro, y mi primer libro en  Español, "Utilerías de Unix".
+#+end_description
+
+/(I usually write in English, but this new book  is  in  Spanish, so the announcement is also in Spanish. An English version of this book is in the works)/
+
+Me complace anunciar  la primera edición de mi nuevo libro, y mi primer libro en  Español, "Utilerías de Unix", en el que podrás aprender a utilizar algunas de  las herramientas más útiles que se encuentran en un sistema Unix/Linux para automatizar y hacer más eficientemente todo tipo de tareas.
+
+Puedes obtener más información, leer una muestra gratuita y comprarlo  en  [[https://leanpub.com/utileras-unix][LeanPub]].
+
+{{< utileriasbookimglink >}}
+
+¡Espero lo disfrutes!  Favor de enviarme tus comentarios a través de  la  página  [[https://leanpub.com/utileras-unix/email_author/new][/Escribe al Autor/]] en LeanPub.
 
 *** TODO My blogging workflow with Emacs, org-mode+ox-hugo, Hugo and GitHub :blogging:howto:emacs:hugo:orgmode:github:
 :PROPERTIES:

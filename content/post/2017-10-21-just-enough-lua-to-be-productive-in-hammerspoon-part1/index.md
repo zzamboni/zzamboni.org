@@ -41,6 +41,8 @@ In this example, in addition to the [if](https://www.lua.org/manual/5.3/manual.h
 
 -   `and` for the logical AND operation (by extension, you can deduct that `or` and `not` are also available).
 
+<!--listend-->
+
 ```lua
 local doReload = false
 for _,file in pairs(files) do

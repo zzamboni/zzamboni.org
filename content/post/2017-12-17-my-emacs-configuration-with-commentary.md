@@ -10,7 +10,7 @@ featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **August  2, 2019**
+Last update: **August 30, 2019**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -135,7 +135,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(org-agenda-files (quote ("~/tmp/20180522-oce-capability-review.org")))
  '(org-confirm-babel-evaluate nil nil nil "Customized with use-package org")
  '(org-default-notes-file "~/Dropbox/org/notes.org" nil nil "Customized with use-package org")
- '(org-directory "~/Dropbox/org" nil nil "Customized with use-package org")
+ '(org-directory "~/Dropbox/Personal/org" nil nil "Customized with use-package org")
  '(org-entities-user
    (quote
     (("llangle" "\\llangle" t "&lang;&lang;" "<<" "<<" "《")
@@ -151,7 +151,7 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(org-log-done t nil nil "Customized with use-package org")
  '(org-mac-grab-Acrobat-app-p nil)
  '(org-mac-grab-devonthink-app-p nil)
- '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.6/libexec/plantuml.jar" nil nil "Customized with use-package ob-plantuml")
+ '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.8/libexec/plantuml.jar" nil nil "Customized with use-package ob-plantuml")
  '(org-reveal-note-key-char nil nil nil "Customized with use-package ox-reveal")
  '(org-reveal-root "file:///Users/taazadi1/Dropbox/org/reveal.js" nil nil "Customized with use-package ox-reveal")
  '(org-src-fontify-natively t nil nil "Customized with use-package org")
@@ -179,8 +179,9 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
      ("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (dhall-mode ox-clip deft dockerfile-mode ox-gfm swiper-helm auth-sources plantuml-mode org-fstree esup package-build org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
- '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.6/libexec/plantuml.jar" t nil "Customized with use-package plantuml-mode")
+    (paradox restart-emacs dhall-mode ox-clip deft dockerfile-mode ox-gfm swiper-helm auth-sources plantuml-mode org-fstree esup package-build org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
+ '(paradox-github-token t)
+ '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.8/libexec/plantuml.jar" t nil "Customized with use-package plantuml-mode")
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(reb-re-syntax (quote string))
@@ -333,22 +334,15 @@ Set the load path to the directories from where I sometimes load things outside 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 ```
 
-Giving a try to [Paradox](https://github.com/Malabarba/paradox) for an enhanced package management interface. We use `auth-sources` to fetch the GitHub token from the `password-store` password manager.
-
-One weirdness: if I set `:defer nil` so that Paradox is loaded right away, the `paradox-github-token` variable gets set with garbage - not sure if this is a bug in `auth-source`, maybe it needs some time to initialize? Setting `:defer 1` (or omitting it, but then Paradox does not get installed as a replacement for `list-packages` until you run `paradox-list-packages` by hand for the first time) results in the correct value being fetched.
-
-(disabled for now)
+Giving a try to [Paradox](https://github.com/Malabarba/paradox) for an enhanced package management interface. We set `paradox-github-token` to `t` to disable GitHub integration (I don't want to star  repos).
 
 ```emacs-lisp
 (use-package paradox
-  :disabled
-  :defer 1
-  :after auth-source-pass
-  :config
-  (paradox-enable)
-  (setq paradox-github-token (auth-source-pass-get 'secret "paradox-github-token"))
+  :defer nil
   :custom
-  (paradox-automatically-star t))
+  (paradox-github-token t)
+  :config
+  (paradox-enable))
 ```
 
 
@@ -373,6 +367,8 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 ### Miscellaneous settings {#miscellaneous-settings}
 
 -   Start the Emacs server
+
+<!--listend-->
 
 ```emacs-lisp
 (server-start)
@@ -696,6 +692,7 @@ I use `use-package` to load the `org` package, and put its configuration inside 
     ("A-h" . org-mark-element)
     ("C-c c" . org-capture)
   :custom
+    (org-directory "~/Dropbox/Personal/org")
     (org-log-done t)
     (org-startup-indented t)
     (org-use-speed-commands (lambda () (and (looking-at org-outline-regexp) (looking-back "^\**"))))
@@ -771,6 +768,12 @@ I use `use-package` to load the `org` package, and put its configuration inside 
 
 
 ### General org-mode configuration {#general-org-mode-configuration}
+
+Default directory for org files (not all are stored here).
+
+```emacs-lisp
+(org-directory "~/Dropbox/Personal/org")
+```
 
 Automatically log done times in todo items.
 
@@ -851,7 +854,7 @@ Enable [Speed Keys](https://orgmode.org/manual/Speed-keys.html), which allows qu
   :after org
   :custom
   (org-reveal-note-key-char nil)
-  (org-reveal-root "file:///Users/taazadi1/Dropbox/org/reveal.js"))
+  (org-reveal-root "file:///Users/taazadi1/.emacs.d/lisp/reveal.js"))
 (use-package htmlize
   :defer 3
   :after ox-reveal)
@@ -970,6 +973,8 @@ One of the big strengths of org-mode is the ability to export a document in many
 -   Hugo is left to parse a native Markdown file, which means that many of its features such as shortcodes, TOC generation, etc., can still be used on the generated file.
 -   I am intrigued by ox-hugo's "one post per org subtree" proposed structure. So far I've always had one file per post, but with org-mode's structuring features, it might make sense to give it a try.
 
+<!--listend-->
+
 ```emacs-lisp
 (use-package ox-hugo
   :defer 3
@@ -1015,7 +1020,7 @@ I use [750words](http://750words.com/) for my personal Journal, and I usually wr
 (use-package org-journal
   :after org
   :custom
-  (org-journal-dir "~/Documents/logbook"))
+  (org-journal-dir "~/Desktop/logbook"))
 ```
 
 
@@ -1623,7 +1628,9 @@ For distraction-free writing, I'm testing out `writeroom-mode`.
 
 ```emacs-lisp
 (use-package wc-mode
-  :defer 3)
+  :defer 3
+  :hook
+  (org-journal-mode . wc-mode))
 ```
 
 The `all-the-icons` package provides a number of useful icons.
@@ -2122,6 +2129,8 @@ Many other programming languages are well served by a single mode, without so mu
 
 -   Macro to measure how long a command takes, from <https://stackoverflow.com/questions/23622296/emacs-timing-execution-of-function-calls-in-emacs-lisp>
 
+<!--listend-->
+
 ```emacs-lisp
 (defmacro measure-time (&rest body)
   "Measure the time it takes to evaluate BODY."
@@ -2143,6 +2152,23 @@ Many other programming languages are well served by a single mode, without so mu
       (deft-org-mode-title-prefix t)
       (deft-extensions '("org" "txt" "text" "md" "markdown"))
       (deft-default-extension "org"))
+    ```
+
+-   Ability to [restart Emacs from within Emacs](https://github.com/iqbalansari/restart-emacs):
+
+    ```emacs-lisp
+    (use-package restart-emacs)
+    ```
+
+-   [Multiple cursors](https://github.com/magnars/multiple-cursors.el)
+
+    ```emacs-lisp
+    (use-package multiple-cursors
+      :bind
+      ("C-c m c"   . mc/edit-lines)
+      ("C-c m <"   . mc/mark-next-like-this)
+      ("C-c m >"   . mc/mark-previous-like-this)
+      ("C-c m C-<" . mc/mark-all-like-this))
     ```
 
 

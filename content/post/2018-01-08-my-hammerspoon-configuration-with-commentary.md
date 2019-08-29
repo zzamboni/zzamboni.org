@@ -10,7 +10,7 @@ toc = true
 featured_image = "/images/hammerspoon.png"
 +++
 
-Last update: **August  2, 2019**
+Last update: **August 30, 2019**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -90,14 +90,16 @@ BTT = spoon.BetterTouchTool
 The [URLDispatcher](http://www.hammerspoon.org/Spoons/URLDispatcher.html) spoon makes it possible to open URLs with different browsers. I have created different site-specific browsers using [Epichrome](https://github.com/dmarmor/epichrome), which allows me to keep site-specific bookmarks, search settings, etc.
 
 ```lua
+JiraApp = "org.epichrome.app.SwisscomJ995"
+WikiApp = "org.epichrome.app.SwisscomWiki"
 Install:andUse("URLDispatcher",
                {
                  config = {
                    url_patterns = {
-                     { "https?://issue.swisscom.ch",                       "org.epichrome.app.SwisscomJira" },
-                     { "https?://issue.swisscom.com",                      "org.epichrome.app.SwisscomJira" },
-                     { "https?://jira.swisscom.com",                       "org.epichrome.app.SwisscomJira" },
-                     { "https?://wiki.swisscom.com",                       "org.epichrome.app.SwisscomW408" },
+                     { "https?://issue.swisscom.ch",                       JiraApp },
+                     { "https?://issue.swisscom.com",                      JiraApp },
+                     { "https?://jira.swisscom.com",                       JiraApp },
+                     { "https?://wiki.swisscom.com",                       WikiApp },
                      { "https?://collaboration.swisscom.com",              "org.epichrome.app.SwisscomCollab" },
                      { "https?://smca.swisscom.com",                       "org.epichrome.app.SwisscomTWP" },
                      { "https?://portal.corproot.net",                     "com.apple.Safari" },
