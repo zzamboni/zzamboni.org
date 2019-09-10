@@ -10,7 +10,7 @@ featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **August 30, 2019**
+Last update: **September 10, 2019**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -143,7 +143,6 @@ Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-e
  '(org-export-with-broken-links t)
  '(org-hide-emphasis-markers t nil nil "Customized with use-package org")
  '(org-hugo-use-code-for-kbd t)
- '(org-journal-dir "~/Documents/logbook" nil nil "Customized with use-package org-journal")
  '(org-latex-compiler "xelatex" nil nil "Customized with use-package ox-latex")
  '(org-latex-pdf-process
    (quote
@@ -411,10 +410,10 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
         (global-display-line-numbers-mode)))
     ```
 
--   Highlight trailing whitespace in red, so it's easily visible
+-   Highlight trailing whitespace in red, so it's easily visible (disabled  for now)
 
     ```emacs-lisp
-    (customize-set-variable 'show-trailing-whitespace t)
+    (customize-set-variable 'show-trailing-whitespace nil)
     ```
 
 -   Highlight matching parenthesis
@@ -1012,15 +1011,48 @@ Configure a capture template for creating new ox-hugo blog posts, from [ox-hugo'
 ```
 
 
+### Encryption {#encryption}
+
+First, load the built-in EasyPG support.
+
+```emacs-lisp
+(require 'epa-file)
+(epa-file-enable)
+```
+
+Then, load [org-crypt](https://orgmode.org/worg/org-tutorials/encrypting-files.html) to enable selective  encryption/decryption using GPG within org-mode.
+
+```emacs-lisp
+(use-package org-crypt
+  :ensure nil
+  :config
+  (org-crypt-use-before-save-magic)
+  (setq org-tags-exclude-from-inheritance (quote ("crypt")))
+  :custom
+  (org-crypt-key "diego@zzamboni.org"))
+```
+
+
 ### Keeping a Journal {#keeping-a-journal}
 
-I use [750words](http://750words.com/) for my personal Journal, and I usually write my entries locally using Scrivener. I have been playing with `org-journal` for this, but I am not fully convinced yet.
+I use [750words](http://750words.com/) for my personal Journal, and I used  to write my entries locally using Scrivener. Now I am using  `org-journal` for this, works quite well  together with `wc-mode` to keep  a count of how many words I have written.
+
+In order to keep my journal entries encrypted there are two separate but confusingly named mechanisms:
+
+-   `org-journal-encrypt-journal`, if set to `t` has the effect of transparently encrypting/decrypting the journal files as they are written to disk. This is what  I use.
+-   `org-journal-enable-encryption`, if set to `t`, enables integration with `org-crypt` (see above),  so it automatically adds a `:crypt:` tag to new journal entries. This has the effect of automatically encrypting those entries upon save, replacing them with a blob of gpg-encrypted text which has to be further decrypted with `org-decrypt-entry` in order to read or edit them again. I have disabled it for now to make it more transparent to  work with my journal entries while   I am editing them.
+
+<!--listend-->
 
 ```emacs-lisp
 (use-package org-journal
   :after org
   :custom
-  (org-journal-dir "~/Desktop/logbook"))
+  (org-journal-dir (concat (file-name-as-directory org-directory) "journal"))
+  (org-journal-file-format "%Y/%m/%Y%m%d")
+  (org-journal-date-format "%A, %Y-%m-%d")
+  (org-journal-encrypt-journal t)
+  (org-journal-enable-encryption nil))
 ```
 
 
