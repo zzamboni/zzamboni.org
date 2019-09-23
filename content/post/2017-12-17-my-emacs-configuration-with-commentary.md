@@ -10,7 +10,7 @@ featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **September 10, 2019**
+Last update: **September 23, 2019**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -75,185 +75,7 @@ Emacs has its own [Customization mechanism](https://www.gnu.org/software/emacs/m
 (load custom-file)
 ```
 
-Here is the current contents of my [custom.el](https://github.com/zzamboni/dot-emacs/blob/master/custom.el) file.
-
-```emacs-lisp
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ad-redefinition-action (quote accept))
- '(auto-insert-directory "~/.emacs.d/auto-insert/" nil nil "Customized with use-package autoinsert")
- '(backup-directory-alist (quote (("." . "~/.emacs.d/backups"))))
- '(cider-repl-history-file "~/.emacs.d/cider-history" t nil "Customized with use-package cider")
- '(cider-repl-history-size 5000 t nil "Customized with use-package cider")
- '(cider-repl-pop-to-buffer-on-connect t t nil "Customized with use-package cider")
- '(cider-repl-result-prefix "; => " t nil "Customized with use-package cider")
- '(cider-repl-use-clojure-font-lock t t nil "Customized with use-package cider")
- '(cider-repl-use-pretty-printing nil t nil "Customized with use-package cider")
- '(cider-repl-wrap-history t t nil "Customized with use-package cider")
- '(cider-show-error-buffer nil t nil "Customized with use-package cider")
- '(column-number-mode t)
- '(custom-safe-themes
-   (quote
-    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" default)))
- '(deft-default-extension "org" t)
- '(deft-extensions (quote ("org" "txt" "text" "md" "markdown")) t)
- '(deft-file-naming-rules
-    (quote
-     ((noslash . "-")
-      (nospace . "-")
-      (case-fn . downcase))) t)
- '(deft-org-mode-title-prefix t t)
- '(deft-use-filename-as-title nil t)
- '(deft-use-filter-string-for-filename t t)
- '(desktop-lazy-idle-delay 1 nil nil "Restore the rest of the buffers 1 seconds later")
- '(desktop-lazy-verbose nil nil nil "Be silent about lazily opening buffers")
- '(desktop-restore-eager 1 nil nil "Restore only the first buffer right away")
- '(easy-hugo-basedir "~/Personal/devel/zzamboni.org/zzamboni.org/" t nil "Customized with use-package easy-hugo")
- '(easy-hugo-previewtime "300" t nil "Customized with use-package easy-hugo")
- '(easy-hugo-url "http://zzamboni.org/" t nil "Customized with use-package easy-hugo")
- '(gist-view-gist t t nil "Automatically open new gists in browser")
- '(global-visible-mark-mode t)
- '(helm-flx-for-helm-find-files t t nil "Customized with use-package helm-flx")
- '(helm-flx-for-helm-locate t t nil "Customized with use-package helm-flx")
- '(iedit-toggle-key-default [67108923] t)
- '(indent-tabs-mode nil)
- '(jiralib-url "https://jira.swisscom.com" nil nil "Customized with use-package org-jira")
- '(js-indent-level 2)
- '(kill-whole-line t)
- '(load-prefer-newer t)
- '(lua-indent-level 2)
- '(mac-command-modifier (quote meta))
- '(mac-option-modifier (quote alt))
- '(mac-right-option-modifier (quote super))
- '(mouse-yank-at-point t)
- '(ns-alternate-modifier (quote alt))
- '(ns-command-modifier (quote meta))
- '(ns-right-alternate-modifier (quote super))
- '(org-agenda-files (quote ("~/tmp/20180522-oce-capability-review.org")))
- '(org-confirm-babel-evaluate nil nil nil "Customized with use-package org")
- '(org-default-notes-file "~/Dropbox/org/notes.org" nil nil "Customized with use-package org")
- '(org-directory "~/Dropbox/Personal/org" nil nil "Customized with use-package org")
- '(org-entities-user
-   (quote
-    (("llangle" "\\llangle" t "&lang;&lang;" "<<" "<<" "《")
-     ("rrangle" "\\rrangle" t "&rang;&rang;" ">>" ">>" "》"))))
- '(org-export-with-broken-links t)
- '(org-hide-emphasis-markers t nil nil "Customized with use-package org")
- '(org-hugo-use-code-for-kbd t)
- '(org-latex-compiler "xelatex" nil nil "Customized with use-package ox-latex")
- '(org-latex-pdf-process
-   (quote
-    ("%latex -shell-escape -interaction nonstopmode -output-directory %o %f" "%latex -interaction nonstopmode -output-directory %o %f" "%latex -interaction nonstopmode -output-directory %o %f")) nil nil "Customized with use-package ox-latex")
- '(org-log-done t nil nil "Customized with use-package org")
- '(org-mac-grab-Acrobat-app-p nil)
- '(org-mac-grab-devonthink-app-p nil)
- '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.8/libexec/plantuml.jar" nil nil "Customized with use-package ob-plantuml")
- '(org-reveal-note-key-char nil nil nil "Customized with use-package ox-reveal")
- '(org-reveal-root "file:///Users/taazadi1/Dropbox/org/reveal.js" nil nil "Customized with use-package ox-reveal")
- '(org-src-fontify-natively t nil nil "Customized with use-package org")
- '(org-src-tab-acts-natively t nil nil "Customized with use-package org")
- '(org-startup-indented t nil nil "Customized with use-package org")
- '(org-tags-column 0)
- '(org-todo-keyword-faces
-   (quote
-    (("TODO" . "red")
-     ("[TODO]" . "red")
-     ("DRAFT" . "yellow")
-     ("[DRAFT]" . "yellow")
-     ("DONE" . "green")
-     ("[DONE]" . "green")
-     ("CANCELED" . "blue")
-     ("[CANCELED]" . "blue"))))
- '(org-use-speed-commands
-   (lambda nil
-     (and
-      (looking-at org-outline-regexp)
-      (looking-back "^**"))) nil nil "Customized with use-package org")
- '(package-archives
-   (quote
-    (("marmalade" . "https://marmalade-repo.org/packages/")
-     ("melpa" . "https://melpa.org/packages/"))))
- '(package-selected-packages
-   (quote
-    (paradox restart-emacs dhall-mode ox-clip deft dockerfile-mode ox-gfm swiper-helm auth-sources plantuml-mode org-fstree esup package-build org-capture org-babel ox-texinfo gist helm-flx which-key spaceline pretty-mode visual-regexp-steroids ox-hugo adaptive-wrap yankpad smart-mode-line org-plus-contrib ob-cfengine3 org-journal ox-asciidoc org-jira ox-jira org-bullets ox-reveal lispy parinfer uniquify csv all-the-icons toc-org helm cider clojure-mode ido-completing-read+ writeroom-mode crosshairs ox-confluence ox-md inf-ruby ob-plantuml ob-ruby darktooth-theme kaolin-themes htmlize ag col-highlight nix-mode easy-hugo elvish-mode zen-mode racket-mode package-lint scala-mode go-mode wc-mode neotree applescript-mode ack magit clj-refactor yaml-mode visual-fill-column visible-mark use-package unfill typopunct smooth-scrolling smex smartparens rainbow-delimiters projectile markdown-mode magit-popup lua-mode keyfreq imenu-anywhere iedit ido-ubiquitous hl-sexp gruvbox-theme git-commit fish-mode exec-path-from-shell company clojure-mode-extra-font-locking clojure-cheatsheet aggressive-indent adoc-mode 4clojure)))
- '(paradox-github-token t)
- '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.8/libexec/plantuml.jar" t nil "Customized with use-package plantuml-mode")
- '(read-buffer-completion-ignore-case t)
- '(read-file-name-completion-ignore-case t)
- '(reb-re-syntax (quote string))
- '(recentf-max-menu-items 100 nil nil "Customized with use-package recentf")
- '(recentf-max-saved-items 100 nil nil "Customized with use-package recentf")
- '(show-trailing-whitespace t)
- '(sml/replacer-regexp-list
-   (quote
-    (("^~/\\.emacs\\.d/elpa/" ":ELPA:")
-     ("^~/\\.emacs\\.d/" ":ED:")
-     ("^/sudo:.*:" ":SU:")
-     ("^~/Documents/" ":Doc:")
-     ("^:\\([^:]*\\):Documento?s/" ":\\1/Doc:")
-     ("^~/Dropbox/" ":DB:")
-     ("^:DB:org" ":Org:")
-     ("^:DB:Personal/" ":P:")
-     ("^:DB:Personal/writing/" ":Write:")
-     ("^:P:devel/" ":Dev:")
-     ("^:Write:learning-cfengine-3/learning-cfengine-3/" ":cf-learn:")
-     ("^:Dev:go/src/github.com/elves/elvish/" ":elvish:")
-     ("^:Dev:zzamboni.org/zzamboni.org/" ":zz.org:"))) nil nil "Customized with use-package smart-mode-line")
- '(sml/theme (quote dark) nil nil "Customized with use-package smart-mode-line")
- '(sp-base-key-bindings (quote paredit) nil nil "Customized with use-package smartparens")
- '(tab-width 2)
- '(tool-bar-mode nil)
- '(uniquify-after-kill-buffer-p t nil nil "Customized with use-package uniquify")
- '(uniquify-buffer-name-style (quote post-forward) nil (uniquify) "Customized with use-package uniquify")
- '(uniquify-strip-common-suffix t nil nil "Customized with use-package uniquify")
- '(use-package-always-defer t)
- '(use-package-always-ensure t)
- '(use-package-verbose nil)
- '(vr/engine (quote pcre2el) t nil "Use PCRE regular expressions"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#282828" :foreground "#FDF4C1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "nil" :family "Inconsolata"))))
- '(col-highlight ((t (:background "#3c3836"))))
- '(fixed-pitch ((t (:family "Inconsolata"))))
- '(font-latex-sedate-face ((t (:inherit fixed-pitch :foreground "#a89984"))))
- '(font-lock-comment-face ((t (:inherit fixed-pitch :foreground "#7c6f64"))))
- '(font-lock-function-name-face ((t (:inherit fixed-pitch :foreground "#fabd2f"))))
- '(linum ((t (:background "#282828" :foreground "#504945" :height 140 :family "Inconsolata"))))
- '(markup-meta-face ((t (:foreground "gray40" :height 140 :family "Inconsolata"))))
- '(markup-title-0-face ((t (:inherit markup-gen-face :height 1.6))))
- '(markup-title-1-face ((t (:inherit markup-gen-face :height 1.5))))
- '(markup-title-2-face ((t (:inherit markup-gen-face :height 1.4))))
- '(markup-title-3-face ((t (:inherit markup-gen-face :weight bold :height 1.3))))
- '(markup-title-5-face ((t (:inherit markup-gen-face :underline t :height 1.1))))
- '(org-block ((t (:inherit fixed-pitch))))
- '(org-code ((t (:inherit (shadow fixed-pitch)))))
- '(org-document-info ((t (:foreground "dark orange"))))
- '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
- '(org-document-title ((((class color) (min-colors 16777215)) (:foreground "#3FD7E5" :weight bold)) (((class color) (min-colors 255)) (:foreground "#00d7ff" :weight bold))))
- '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
- '(org-level-1 ((((class color) (min-colors 16777215)) (:foreground "#FE8019")) (((class color) (min-colors 255)) (:foreground "#ff8700"))))
- '(org-level-2 ((((class color) (min-colors 16777215)) (:foreground "#B8BB26")) (((class color) (min-colors 255)) (:foreground "#afaf00"))))
- '(org-level-3 ((((class color) (min-colors 16777215)) (:foreground "#83A598")) (((class color) (min-colors 255)) (:foreground "#87afaf"))))
- '(org-level-4 ((((class color) (min-colors 16777215)) (:foreground "#FABD2F")) (((class color) (min-colors 255)) (:foreground "#ffaf00"))))
- '(org-level-5 ((((class color) (min-colors 16777215)) (:foreground "#427B58")) (((class color) (min-colors 255)) (:foreground "#5f8787"))))
- '(org-level-6 ((((class color) (min-colors 16777215)) (:foreground "#B8BB26")) (((class color) (min-colors 255)) (:foreground "#afaf00"))))
- '(org-level-7 ((((class color) (min-colors 16777215)) (:foreground "#FB4933")) (((class color) (min-colors 255)) (:foreground "#d75f5f"))))
- '(org-level-8 ((((class color) (min-colors 16777215)) (:foreground "#83A598")) (((class color) (min-colors 255)) (:foreground "#87afaf"))))
- '(org-link ((t (:foreground "royal blue" :underline t))))
- '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
- '(org-property-value ((t (:inherit fixed-pitch))) t)
- '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
- '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
- '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
- '(org-verbatim ((t (:inherit (shadow fixed-pitch)))))
- '(variable-pitch ((t (:weight light :height 180 :family "Source Sans Pro")))))
-```
+My current `custom.el` file can be  found  at <https://github.com/zzamboni/dot-emacs/blob/master/custom.el>.
 
 
 ## Password management {#password-management}
@@ -275,8 +97,7 @@ First, we declare the package repositories to use.
 
 ```emacs-lisp
 (customize-set-variable 'package-archives
-                        '(;;("gnu"       . "https://elpa.gnu.org/packages/")
-                          ("marmalade" . "https://marmalade-repo.org/packages/")
+                        '(("marmalade" . "https://marmalade-repo.org/packages/")
                           ("melpa"     . "https://melpa.org/packages/")))
 ```
 
@@ -317,6 +138,17 @@ We set some configuration for `use-package`:
     ```emacs-lisp
     (customize-set-variable 'use-package-verbose nil)
     ```
+
+Testing [`quelpa`](https://framagit.org/steckerhalter/quelpa) and to install packages directly from their github repositories (and other places). I install `quelpa` using `use-package` first, and then install [`quelpa-use-package`](https://framagit.org/steckerhalter/quelpa-use-package) to allow using `quelpa` from  within `use-package` declarations. Very recursive.
+
+```emacs-lisp
+(use-package quelpa
+  :defer nil)
+
+(use-package quelpa-use-package
+  :defer nil
+  :after quelpa)
+```
 
 This variable tells Emacs to prefer the `.el` file if it's newer, even if there is a corresponding `.elc` file. Also, use `auto-compile` to autocompile files as needed.
 
@@ -687,13 +519,12 @@ I use `use-package` to load the `org` package, and put its configuration inside 
   :load-path ("lisp/org-mode/lisp" "lisp/org-mode/lisp/contrib/lisp")
   :bind
     ("C-c l" . org-store-link)
-    ("C-c a" . org-agenda)
     ("A-h" . org-mark-element)
-    ("C-c c" . org-capture)
   :custom
     (org-directory "~/Dropbox/Personal/org")
     (org-log-done t)
     (org-startup-indented t)
+    (org-log-into-drawer t)
     (org-use-speed-commands (lambda () (and (looking-at org-outline-regexp) (looking-back "^\**"))))
     (org-confirm-babel-evaluate nil)
     (org-src-fontify-natively t)
@@ -701,14 +532,18 @@ I use `use-package` to load the `org` package, and put its configuration inside 
     (org-hide-emphasis-markers t)
     (org-tags-column 0)
     (org-todo-keyword-faces
-     '(("TODO" . "red")
-       ("[TODO]" . "red")
-       ("DRAFT" . "yellow")
-       ("[DRAFT]" . "yellow")
-       ("DONE" . "green")
-       ("[DONE]" . "green")
-       ("CANCELED" . "blue")
-       ("[CANCELED]" . "blue")))
+     '(("INBOX"        . "cyan")
+       ("[INBOX]"      . "cyan")
+       ("PROPOSAL"     . "orange")
+       ("[PROPOSAL]"   . "orange")
+       ("DRAFT"        . "yellow")
+       ("[DRAFT]"      . "yellow")
+       ("INPROGRESS"   . "yellow")
+       ("[INPROGRESS]" . "yellow")
+       ("MEETING"      . "purple")
+       ("[MEETING]"    . "purple")
+       ("CANCELED"     . "blue")
+       ("[CANCELED]"   . "blue")))
   :custom-face
     (variable-pitch ((t (:family "Source Sans Pro" :height 160 :weight light))))
     ;;(variable-pitch ((t (:family "Avenir Next" :height 160 :weight light))))
@@ -726,6 +561,12 @@ I use `use-package` to load the `org` package, and put its configuration inside 
                                                        (float-time (time-since zz/pre-tangle-time))))))
     (org-mode . visual-line-mode)
     (org-mode . variable-pitch-mode)
+    (org-mode . (lambda ()
+                  "Beautify Org Checkbox Symbol"
+                  (push '("[ ]" .  "☐") prettify-symbols-alist)
+                  (push '("[X]" . "☑" ) prettify-symbols-alist)
+                  (push '("[-]" . "❍" ) prettify-symbols-alist)
+                  (prettify-symbols-mode)))
   :config
     (org-babel-do-load-languages
      'org-babel-load-languages
@@ -762,87 +603,185 @@ I use `use-package` to load the `org` package, and put its configuration inside 
        `(org-level-1        ((t (,@headline ,@variable-tuple :height 1.75))))
        `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
     (eval-after-load 'face-remap '(diminish 'buffer-face-mode))
-    (eval-after-load 'simple '(diminish 'visual-line-mode)))
+    (eval-after-load 'simple '(diminish 'visual-line-mode))
+    (defface org-checkbox-done-text
+      '((t (:foreground "#71696A" :strike-through t)))
+      "Face for the text part of a checked org-mode checkbox.")
+
+    (font-lock-add-keywords
+     'org-mode
+     `(("^[ \t]*\\(?:[-+*]\\|[0-9]+[).]\\)[ \t]+\\(\\(?:\\[@\\(?:start:\\)?[0-9]+\\][ \t]*\\)?\\[\\(?:X\\|\\([0-9]+\\)/\\2\\)\\][^\n]*\n\\)"
+        1 'org-checkbox-done-text prepend))
+     'append))
 ```
 
 
-### General org-mode configuration {#general-org-mode-configuration}
+### General Org Configuration {#general-org-configuration}
 
-Default directory for org files (not all are stored here).
+Note that mode-specific configuration variables are defined under  their corresponding packages, this  section defines only global org-mode configuration variables, which are inserted in the main `use-package` declaration for `org-mode`.
 
-```emacs-lisp
-(org-directory "~/Dropbox/Personal/org")
-```
+-   Default directory for org files (not all are stored here).
 
-Automatically log done times in todo items.
+    ```emacs-lisp
+    (org-directory "~/Dropbox/Personal/org")
+    ```
 
-```emacs-lisp
-(org-log-done t)
-```
+-   Automatically log done times in todo items.
 
-Keep the indentation well structured by setting `org-startup-indented` to `t`. This is a must have. Makes it feel less like editing a big text file and more like a purpose built editor for org-mode that forces the indentation. Thanks [Nick](https://github.com/nickanderson/Level-up-your-notes-with-Org/blob/master/Level-up-your-notes-with-Org.org#automatic-visual-indention) for the tip!
+    ```emacs-lisp
+    (org-log-done t)
+    ```
 
-```emacs-lisp
-(org-startup-indented t)
-```
+-   Keep the indentation well structured by setting `org-startup-indented` to `t`. This is a must have. Makes it feel less like editing a big text file and more like a purpose built editor for org-mode that forces the indentation. Thanks [Nick](https://github.com/nickanderson/Level-up-your-notes-with-Org/blob/master/Level-up-your-notes-with-Org.org#automatic-visual-indention) for the tip!
 
-By default, `org-indent` produces an indicator `"Ind"` in the modeline. We use diminish to hide it.
+    ```emacs-lisp
+    (org-startup-indented t)
+    ```
 
-```emacs-lisp
-(use-package org-indent
-  :ensure nil
-  :diminish)
-```
+    By default, `org-indent` produces an indicator `"Ind"` in the modeline. We use diminish to hide it.
 
+    ```emacs-lisp
+    (use-package org-indent
+      :ensure nil
+      :diminish)
+    ```
 
-### Miscellaneous org functions {#miscellaneous-org-functions}
+-   Log stuff into the LOGBOOK drawer by default
 
-Utility `org-get-keyword` function (from the org-mode mailing list) to get the value of file-level properties.
-
-```emacs-lisp
-(defun org-get-keyword (key)
-  (org-element-map (org-element-parse-buffer 'element) 'keyword
-    (lambda (k)
-      (when (string= key (org-element-property :key k))
-        (org-element-property :value k)))
-    nil t))
-```
+    ```emacs-lisp
+    (org-log-into-drawer t)
+    ```
 
 
-### Keybindings {#keybindings}
+### General Org  Keybindings {#general-org-keybindings}
 
-Set up `C-c l` to store a link to the current org object, in counterpart to the default `C-c C-l` to insert a link.
+Note that other keybindings are configured under their corresponding packages, this section defines only global org-mode keybindings, which are inserted in the main `use-package` declaration for `org-mode`.
 
-```emacs-lisp
-("C-c l" . org-store-link)
-```
+-   Set up `C-c l` to store a link to the current org object, in counterpart to the default `C-c C-l` to insert a link.
 
-Set up `C-c a` to call up agenda mode.
+    ```emacs-lisp
+    ("C-c l" . org-store-link)
+    ```
 
-```emacs-lisp
-("C-c a" . org-agenda)
-```
+-   The default keybinding for `org-mark-element` is `M-h`, which in macOS hides the current application, so I bind it to `A-h`.
 
-The default keybinding for `org-mark-element` is `M-h`, which in macOS hides the current application, so I bind it to `A-h`.
+    ```emacs-lisp
+    ("A-h" . org-mark-element)
+    ```
 
-```emacs-lisp
-("A-h" . org-mark-element)
-```
-
-Default setup and keybinding for `org-capture`.
-
-```emacs-lisp
-("C-c c" . org-capture)
-```
-
-Enable [Speed Keys](https://orgmode.org/manual/Speed-keys.html), which allows quick single-key commands when the cursor is placed on a heading. Usually the cursor needs to be at the beginning of a headline line, but defining it with this function makes them active on any of the asterisks at the beginning of the line (useful with the font highlighting I use, as all but the last asterisk are sometimes not visible).
+Enable [Speed Keys](https://orgmode.org/manual/Speed-keys.html), which allows quick single-key commands when the cursor is placed on a heading. Usually the cursor needs to be at the beginning of a headline line, but defining it with this function makes them active on any of the asterisks at the beginning of the line (useful with the [font highlighting I use](#beautifying-org-mode), as all but the last asterisk are sometimes not visible).
 
 ```emacs-lisp
 (org-use-speed-commands (lambda () (and (looking-at org-outline-regexp) (looking-back "^\**"))))
 ```
 
 
-### Building presentations with org-mode {#building-presentations-with-org-mode}
+### Agenda and Holidays {#agenda-and-holidays}
+
+Org-Agenda is the umbrella for all todo, journal, calendar, and other views. I set up `C-c a` to call up agenda mode.
+
+```emacs-lisp
+(use-package org-agenda
+  :ensure nil
+  :after org
+  :bind
+  ("C-c a" . org-agenda)
+  :custom
+  (org-agenda-include-diary t)
+  (org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t% s")
+                              ;; Indent todo items by level to show nesting
+                              (todo . " %i %-12:c%l")
+                              (tags . " %i %-12:c")
+                              (search . " %i %-12:c")))
+  (org-agenda-start-on-weekday nil))
+```
+
+I also provide some customization for the `holidays` package, since its entries are included in the Org Agenda through the `org-agenda-include-diary` integration.
+
+```emacs-lisp
+(use-package mexican-holidays
+  :defer nil)
+```
+
+```emacs-lisp
+(quelpa '(swiss-holidays :fetcher github :repo "egli/swiss-holidays"))
+(require 'swiss-holidays)
+```
+
+```emacs-lisp
+(use-package holidays
+  :defer nil
+  :ensure nil
+  :init
+  (require 'mexican-holidays)
+  :config
+  (setq calendar-holidays
+        (append '((holiday-fixed 1 1 "New Year's Day")
+                  (holiday-fixed 2 14 "Valentine's Day")
+                  (holiday-fixed 4 1 "April Fools' Day")
+                  (holiday-fixed 10 31 "Halloween")
+                  (holiday-easter-etc)
+                  (holiday-fixed 12 25 "Christmas")
+                  (solar-equinoxes-solstices))
+                swiss-holidays
+                swiss-holidays-catholic
+                swiss-holidays-zh-city-holidays
+                holiday-mexican-holidays)))
+```
+
+
+### Capturing  stuff {#capturing-stuff}
+
+Some global keybindings  to open my frequently-used org files (tip from [Learn how to take notes more efficiently in Org Mode](https://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/)).
+
+```emacs-lisp
+(global-set-key (kbd "C-c w")
+                (lambda () (interactive) (find-file "~/Work/work.org.gpg")))
+(global-set-key (kbd "C-c p")
+                (lambda () (interactive) (find-file "~/org/projects.org")))
+(global-set-key (kbd "C-c i")
+                (lambda () (interactive) (find-file "~/org/ideas.org")))
+(global-set-key (kbd "C-c d")
+                (lambda () (interactive) (find-file "~/org/diary.org")))
+```
+
+`org-capture` provides  a generic and extensible interface  to capturing things  into org-mode in  different formats. I set up <kbd>C-c c</kbd>  as the default  keybinding for triggering `org-capture`. Usually setting up a new capture template requires  some custom code,  which  gets defined in  the corresponding package config sections and included in the `:config` section below.
+
+```emacs-lisp
+(use-package org-capture
+  :ensure nil
+  :after org
+  :defer 1
+  :bind
+  ("C-c c" . org-capture)
+  :config
+  (defun org-hugo-new-subtree-post-capture-template ()
+    "Returns `org-capture' template string for new Hugo post.
+  See `org-capture-templates' for more information."
+    (let* ((title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
+           (fname (org-hugo-slug title)))
+      (mapconcat #'identity
+                 `(,(concat "* TODO " title)
+                   ":PROPERTIES:"
+                   ,(concat ":EXPORT_HUGO_BUNDLE: " fname)
+                   ":EXPORT_FILE_NAME: index"
+                   ":END:"
+                   "%?\n")                ;Place the cursor here finally
+                 "\n")))
+  (add-to-list 'org-capture-templates
+               '("z"                ;`org-capture' binding + z
+                 "zzamboni.org post"
+                 entry
+                 ;; It is assumed that below file is present in `org-directory'
+                 ;; and that it has an "Ideas" heading. It can even be a
+                 ;; symlink pointing to the actual location of all-posts.org!
+                 (file+olp "zzamboni.org" "Ideas")
+                 (function org-hugo-new-subtree-post-capture-template)))
+  )
+```
+
+
+### Building presentations {#building-presentations}
 
 [org-reveal](https://github.com/yjwen/org-reveal) is an awesome package for building presentations with org-mode. The MELPA version of the package gives me a conflict with my hand-installed version of org-mode, so I also install it by hand and load it directly from its checked-out repository.
 
@@ -863,6 +802,17 @@ Enable [Speed Keys](https://orgmode.org/manual/Speed-keys.html), which allows qu
 ### Various exporters {#various-exporters}
 
 One of the big strengths of org-mode is the ability to export a document in many different formats. Here I load some of the exporters I have found useful.
+
+-   HTML
+
+    ```emacs-lisp
+    (use-package ox-html
+      :ensure nil
+      :defer 3
+      :after org
+      :custom
+      (org-html-checkbox-type 'unicode))
+    ```
 
 -   Markdown
 
@@ -983,31 +933,28 @@ One of the big strengths of org-mode is the ability to export a document in many
 Configure a capture template for creating new ox-hugo blog posts, from [ox-hugo's Org Capture Setup](https://ox-hugo.scripter.co/doc/org-capture-setup).
 
 ```emacs-lisp
-(use-package org-capture
-  :ensure nil
-  :config
-  (defun org-hugo-new-subtree-post-capture-template ()
-    "Returns `org-capture' template string for new Hugo post.
-  See `org-capture-templates' for more information."
-    (let* ((title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
-           (fname (org-hugo-slug title)))
-      (mapconcat #'identity
-                 `(,(concat "* TODO " title)
-                   ":PROPERTIES:"
-                   ,(concat ":EXPORT_HUGO_BUNDLE: " fname)
-                   ":EXPORT_FILE_NAME: index"
-                   ":END:"
-                   "%?\n")                ;Place the cursor here finally
-                 "\n")))
-  (add-to-list 'org-capture-templates
-               '("z"                ;`org-capture' binding + z
-                 "zzamboni.org post"
-                 entry
-                 ;; It is assumed that below file is present in `org-directory'
-                 ;; and that it has an "Ideas" heading. It can even be a
-                 ;; symlink pointing to the actual location of all-posts.org!
-                 (file+olp "zzamboni.org" "Ideas")
-                 (function org-hugo-new-subtree-post-capture-template))))
+(defun org-hugo-new-subtree-post-capture-template ()
+  "Returns `org-capture' template string for new Hugo post.
+See `org-capture-templates' for more information."
+  (let* ((title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
+         (fname (org-hugo-slug title)))
+    (mapconcat #'identity
+               `(,(concat "* TODO " title)
+                 ":PROPERTIES:"
+                 ,(concat ":EXPORT_HUGO_BUNDLE: " fname)
+                 ":EXPORT_FILE_NAME: index"
+                 ":END:"
+                 "%?\n")                ;Place the cursor here finally
+               "\n")))
+(add-to-list 'org-capture-templates
+             '("z"                ;`org-capture' binding + z
+               "zzamboni.org post"
+               entry
+               ;; It is assumed that below file is present in `org-directory'
+               ;; and that it has an "Ideas" heading. It can even be a
+               ;; symlink pointing to the actual location of all-posts.org!
+               (file+olp "zzamboni.org" "Ideas")
+               (function org-hugo-new-subtree-post-capture-template)))
 ```
 
 
@@ -1016,15 +963,21 @@ Configure a capture template for creating new ox-hugo blog posts, from [ox-hugo'
 First, load the built-in EasyPG support.
 
 ```emacs-lisp
-(require 'epa-file)
-(epa-file-enable)
+(use-package epa-file
+  :ensure nil ;; included with Emacs
+  :config
+  (setq epa-file-encrypt-to '("diego@zzamboni.org"))
+  (epa-file-enable)
+  :custom
+  (epa-file-select-keys 'silent))
 ```
 
 Then, load [org-crypt](https://orgmode.org/worg/org-tutorials/encrypting-files.html) to enable selective  encryption/decryption using GPG within org-mode.
 
 ```emacs-lisp
 (use-package org-crypt
-  :ensure nil
+  :ensure nil  ;; included with org-mode
+  :after org
   :config
   (org-crypt-use-before-save-magic)
   (setq org-tags-exclude-from-inheritance (quote ("crypt")))
@@ -1052,11 +1005,14 @@ In order to keep my journal entries encrypted there are two separate but confusi
   (org-journal-file-format "%Y/%m/%Y%m%d")
   (org-journal-date-format "%A, %Y-%m-%d")
   (org-journal-encrypt-journal t)
-  (org-journal-enable-encryption nil))
+  (org-journal-enable-encryption nil)
+  (org-journal-enable-agenda-integration t)
+  :bind
+  ("C-c j" . org-journal-new-entry))
 ```
 
 
-### Literate programming using org-babel {#literate-programming-using-org-babel}
+### Literate programming {#literate-programming}
 
 Org-mode is the first literate programming tool that seems practical and useful, since it's easy to edit, execute and document code from within the same tool (Emacs) using all of its existing capabilities (i.e. each code block can be edited in its native Emacs mode, taking full advantage of indentation, completion, etc.)
 
@@ -1243,18 +1199,22 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
     (org-tags-column 0)
     ```
 
--   I also set `org-todo-keyword-faces` to highlight DRAFT items with yellow instead of red.
+-   I also set `org-todo-keyword-faces` to highlight different  types of org-mode TODO items with different colors.
 
     ```emacs-lisp
     (org-todo-keyword-faces
-     '(("TODO" . "red")
-       ("[TODO]" . "red")
-       ("DRAFT" . "yellow")
-       ("[DRAFT]" . "yellow")
-       ("DONE" . "green")
-       ("[DONE]" . "green")
-       ("CANCELED" . "blue")
-       ("[CANCELED]" . "blue")))
+     '(("INBOX"        . "cyan")
+       ("[INBOX]"      . "cyan")
+       ("PROPOSAL"     . "orange")
+       ("[PROPOSAL]"   . "orange")
+       ("DRAFT"        . "yellow")
+       ("[DRAFT]"      . "yellow")
+       ("INPROGRESS"   . "yellow")
+       ("[INPROGRESS]" . "yellow")
+       ("MEETING"      . "purple")
+       ("[MEETING]"    . "purple")
+       ("CANCELED"     . "blue")
+       ("[CANCELED]"   . "blue")))
     ```
 
     These two modes produce modeline indicators, which I disable using `diminish`.
@@ -1262,6 +1222,31 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
     ```emacs-lisp
     (eval-after-load 'face-remap '(diminish 'buffer-face-mode))
     (eval-after-load 'simple '(diminish 'visual-line-mode))
+    ```
+
+-   Prettify checkbox lists - courtesy of <https://blog.jft.rocks/emacs/unicode-for-orgmode-checkboxes.html>. First, we add special characters for checkboxes:
+
+    ```emacs-lisp
+    (org-mode . (lambda ()
+                  "Beautify Org Checkbox Symbol"
+                  (push '("[ ]" .  "☐") prettify-symbols-alist)
+                  (push '("[X]" . "☑" ) prettify-symbols-alist)
+                  (push '("[-]" . "❍" ) prettify-symbols-alist)
+                  (prettify-symbols-mode)))
+    ```
+
+    Second, we define a special face for checked items.
+
+    ```emacs-lisp
+    (defface org-checkbox-done-text
+      '((t (:foreground "#71696A" :strike-through t)))
+      "Face for the text part of a checked org-mode checkbox.")
+
+    (font-lock-add-keywords
+     'org-mode
+     `(("^[ \t]*\\(?:[-+*]\\|[0-9]+[).]\\)[ \t]+\\(\\(?:\\[@\\(?:start:\\)?[0-9]+\\][ \t]*\\)?\\[\\(?:X\\|\\([0-9]+\\)/\\2\\)\\][^\n]*\n\\)"
+        1 'org-checkbox-done-text prepend))
+     'append)
     ```
 
 
@@ -1293,7 +1278,7 @@ Note that this breaks HTML export by default, as the links generated by `toc-org
 ```
 
 
-### Reformatting an org buffer {#reformatting-an-org-buffer}
+### Reformatting an Org buffer {#reformatting-an-org-buffer}
 
 I picked up this little gem in the org mailing list. A function that reformats the current buffer by regenerating the text from its internal parsed representation. Quite amazing.
 
@@ -1434,6 +1419,7 @@ First, load `ox-leanpub-markdown`. This is based on Juan's `ox-leanpub`, but wit
 ```emacs-lisp
 (use-package ox-leanpub-markdown
   :defer 1
+  :ensure nil
   :after org
   :load-path "lisp/ox-leanpub")
 ```
@@ -1441,6 +1427,7 @@ First, load `ox-leanpub-markdown`. This is based on Juan's `ox-leanpub`, but wit
 ```emacs-lisp
 (use-package ox-leanpub-markua
   :defer 1
+  :ensure nil
   :after org
   :load-path "lisp/ox-leanpub")
 ```
@@ -1469,11 +1456,26 @@ Note that the `org-leanpub-book-setup-menu-markdown` function gets called in the
 ```emacs-lisp
 (use-package ox-leanpub-book
   :defer 1
+  :ensure nil
   :after ox-leanpub-markdown
   :load-path "lisp/ox-leanpub"
   :config
   (progn (org-leanpub-book-setup-menu-markdown)
          (org-leanpub-book-setup-menu-markua)))
+```
+
+
+### Miscellaneous org functions {#miscellaneous-org-functions}
+
+Utility `org-get-keyword` function (from the org-mode mailing list) to get the value of file-level properties.
+
+```emacs-lisp
+(defun org-get-keyword (key)
+  (org-element-map (org-element-parse-buffer 'element) 'keyword
+    (lambda (k)
+      (when (string= key (org-element-property :key k))
+        (org-element-property :value k)))
+    nil t))
 ```
 
 
@@ -1807,14 +1809,14 @@ With `company-mode`, we get automatic completion - when there are completions av
   (projectile-global-mode))
 ```
 
-I find `iedit` absolutely indispensable when coding. In short: when you hit `Ctrl-:`, all occurrences of the symbol under the cursor (or the current selection) are highlighted, and any changes you make on one of them will be automatically applied to all others. It's great for renaming variables in code.
+I find `iedit` absolutely indispensable when coding. In short: when you hit `Ctrl-:`, all occurrences of the symbol under the cursor (or the current selection) are highlighted, and any changes you make on one of them will be automatically applied to all others. It's great for renaming variables in code, but it needs to be used with care, as it has no idea of semantics, it's  a plain string replacement, so it can inadvertently modify unintended parts of the code.
 
 ```emacs-lisp
 (use-package iedit
-  :custom
-  (iedit-toggle-key-default (kbd "C-;"))
   :config
-  (set-face-background 'iedit-occurrence "Magenta"))
+  (set-face-background 'iedit-occurrence "Magenta")
+  :bind
+  ("C-;" . iedit-mode))
 ```
 
 Turn on the online documentation mode for all programming modes (not all of them support it) and for the Clojure REPL `cider` mode.
@@ -1832,11 +1834,7 @@ On-the-fly spell checking. I enable it for all text modes.
 ```emacs-lisp
 (use-package flyspell
   :defer 1
-  :hook (text-mode . flyspell-mode)
-  :diminish
-  :bind (:map flyspell-mouse-map
-              ([down-mouse-3] . #'flyspell-correct-word)
-              ([mouse-3]      . #'undefined)))
+  :diminish)
 ```
 
 
@@ -2233,6 +2231,16 @@ In addition to coding, I configure some modes that can be used for text editing.
     (use-package typopunct
       :config
       (typopunct-change-language 'english t))
+    ```
+
+-   `undo-tree` visualises undo history as a tree for easy navigation (found about this from [Jamie's config](https://jamiecollinson.com/blog/my-emacs-config/#better-undo))
+
+    ```emacs-lisp
+    (use-package undo-tree
+      :ensure t
+      :diminish undo-tree-mode
+      :config
+      (global-undo-tree-mode 1))
     ```
 
 

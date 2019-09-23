@@ -10,7 +10,7 @@ toc = true
 featured_image = "/images/hammerspoon.png"
 +++
 
-Last update: **September 10, 2019**
+Last update: **September 23, 2019**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -545,6 +545,21 @@ end tell
 end
 ```
 
+Functions to stop applications that  are disallowed in the work network.
+
+```lua
+function stopApp(name)
+  app = hs.application.get(name)
+  if app and app:isRunning() then
+    app:kill()
+  end
+end
+
+function startApp(name)
+  hs.application.open(name)
+end
+```
+
 The configuration for the WiFiTransitions spoon invoked these functions with the appropriate parameters.
 
 ```lua
@@ -561,12 +576,15 @@ Install:andUse("WiFiTransitions",
                        to = "corpnet01",
                        fn = {hs.fnutils.partial(reconfigSpotifyProxy, true),
                              hs.fnutils.partial(reconfigAdiumProxy, true),
+                             hs.fnutils.partial(stopApp, "Dropbox"),
+                             hs.fnutils.partial(stopApp, "Evernote"),
                        }
                      },
                      { -- Disable proxy in Spotify and Adium config when leaving corp network
                        from = "corpnet01",
                        fn = {hs.fnutils.partial(reconfigSpotifyProxy, false),
                              hs.fnutils.partial(reconfigAdiumProxy, false),
+                             hs.fnutils.partial(startApp, "Dropbox"),
                        }
                      },
                    }
@@ -629,6 +647,7 @@ Install:andUse("Leanpub",
                      -- spoon.Leanpub.api_key = "my-api-key"
                      { slug = "learning-hammerspoon" },
                      { slug = "learning-cfengine" },
+                     { slug = "lit-config"  },
                      { slug = "zztestbook" },
                    }
                  },
