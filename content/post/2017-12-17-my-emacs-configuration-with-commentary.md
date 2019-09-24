@@ -10,7 +10,7 @@ featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **September 23, 2019**
+Last update: **September 24, 2019**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -530,6 +530,7 @@ I use `use-package` to load the `org` package, and put its configuration inside 
     (org-src-fontify-natively t)
     (org-src-tab-acts-natively t)
     (org-hide-emphasis-markers t)
+    (org-fontify-done-headline t)
     (org-tags-column 0)
     (org-todo-keyword-faces
      '(("INBOX"        . "cyan")
@@ -549,6 +550,8 @@ I use `use-package` to load the `org` package, and put its configuration inside 
     ;;(variable-pitch ((t (:family "Avenir Next" :height 160 :weight light))))
     (fixed-pitch ((t (:family "Inconsolata"))))
     (org-indent ((t (:inherit (org-hide fixed-pitch)))))
+    (org-done ((t (:foreground "PaleGreen"
+                                :strike-through t))))
   :hook
     (org-babel-after-execute . org-redisplay-inline-images)
     (org-mode . (lambda () (add-hook 'after-save-hook 'org-babel-tangle
@@ -601,6 +604,7 @@ I use `use-package` to load the `org` package, and put its configuration inside 
        `(org-level-3        ((t (,@headline ,@variable-tuple :height 1.25))))
        `(org-level-2        ((t (,@headline ,@variable-tuple :height 1.5))))
        `(org-level-1        ((t (,@headline ,@variable-tuple :height 1.75))))
+       `(org-headline-done  ((t (,@headline ,@variable-tuple :strike-through t))))
        `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
     (eval-after-load 'face-remap '(diminish 'buffer-face-mode))
     (eval-after-load 'simple '(diminish 'visual-line-mode))
@@ -1160,6 +1164,7 @@ We choose a nice font for the document title and the section headings. The first
    `(org-level-3        ((t (,@headline ,@variable-tuple :height 1.25))))
    `(org-level-2        ((t (,@headline ,@variable-tuple :height 1.5))))
    `(org-level-1        ((t (,@headline ,@variable-tuple :height 1.75))))
+   `(org-headline-done  ((t (,@headline ,@variable-tuple :strike-through t))))
    `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
 ```
 
@@ -1183,6 +1188,19 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
     ```emacs-lisp
     (org-indent ((t (:inherit (org-hide fixed-pitch)))))
     ```
+
+-   Configure `org-fontify-done-headline` to apply a special face to DONE items in org-mode, and configure the `org-done` face to be used.  Note that  `org-done` only applies to the "DONE" keyword itself, the face for the rest of a "done" headline is defined above as the `org-headline-done` face.
+
+    ```emacs-lisp
+    (org-fontify-done-headline t)
+    ```
+
+<!--listend-->
+
+```emacs-lisp
+(org-done ((t (:foreground "PaleGreen"
+                            :strike-through t))))
+```
 
 -   Configuring the corresponding `org-mode` faces for blocks, verbatim code, and maybe a couple of other things. As these change more frequently, I do them directly from the `customize-face` interface, you can see their current settings in the [Customized variables](#customized-variables) section.
 
@@ -2256,15 +2274,16 @@ This is how we get a global header property in org-mode
             (org-entry-get-with-inheritance "header-args")))
 ```
 
-Testing formatting org snippets to look like noweb-rendered output.
+Testing formatting org snippets to look like noweb-rendered output (disabled for now).
 
 ```emacs-lisp
-(customize-set-variable 'org-entities-user
-                        '(("llangle" "\\llangle" t "&lang;&lang;" "<<" "<<" "《")
-                          ("rrangle" "\\rrangle" t "&rang;&rang;" ">>" ">>" "》")))
-(setq org-babel-exp-code-template
-      (concat "\n@@latex:\\noindent@@\\llangle​//​\\rrangle\\equiv\n"
-              org-babel-exp-code-template))
+(eval-after-load 'ob
+  (customize-set-variable 'org-entities-user
+                          '(("llangle" "\\llangle" t "&lang;&lang;" "<<" "<<" "《")
+                            ("rrangle" "\\rrangle" t "&rang;&rang;" ">>" ">>" "》")))
+  (setq org-babel-exp-code-template
+        (concat "\n@@latex:\\noindent@@\\llangle​//​\\rrangle\\equiv\n"
+                org-babel-exp-code-template)))
 ```
 
 An experiment to reduce file tangle time, from <https://www.wisdomandwonder.com/article/10630/how-fast-can-you-tangle-in-org-mode>. In my tests it doesn't have a noticeable impact.
