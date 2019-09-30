@@ -5,7 +5,7 @@ summary = "Configuring Org Mode in Emacs for beautiful typography for both text 
 date = 2018-03-21T22:45:00+01:00
 tags = ["emacs", "orgmode", "beautifulemacs", "config"]
 draft = false
-creator = "Emacs 26.2 (Org mode 9.2.5 + ox-hugo)"
+creator = "Emacs 26.3 (Org mode 9.2.6 + ox-hugo)"
 toc = true
 featured_image = "/images/emacs-logo.svg"
 +++
@@ -95,7 +95,7 @@ You can enable `variable-pitch-mode` automatically for org buffers by setting up
 ```
 
 
-## Step 2: Use long lines and `visual-line-mode` {#step-2-use-long-lines-and-visual-line-mode}
+## Step 3: Use long lines and `visual-line-mode` {#step-3-use-long-lines-and-visual-line-mode}
 
 One thing you will notice right away with proportional fonts is that filling paragraphs no longer makes sense. This is because `fill-paragraph` works based on the number of characters in a line, but with a proportional font, characters have different widths, so a filled paragraph looks strange:
 

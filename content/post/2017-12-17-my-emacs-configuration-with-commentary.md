@@ -5,12 +5,12 @@ summary = "I have enjoyed slowly converting my configuration files to literate p
 date = 2017-12-17T20:14:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs"]
 draft = false
-creator = "Emacs 26.2 (Org mode 9.2.5 + ox-hugo)"
+creator = "Emacs 26.3 (Org mode 9.2.6 + ox-hugo)"
 featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **September 24, 2019**
+Last update: **September 30, 2019**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -34,10 +34,9 @@ Lately I've been playing with optimizing my Emacs load time. I have found a coup
 
 Based on these, I have added the code below.
 
-First, a hook that reports how long and how many garbage collections the startup took.
+First, a hook that reports how long and how many garbage collections the startup took. We use a hook to run it at the very end, so the message doesn't get clobbered by other messages during startup.
 
 ```emacs-lisp
-;; Use a hook so the message doesn't get clobbered by other messages.
 (add-hook 'emacs-startup-hook
           (lambda ()
             (message "Emacs ready in %s with %d garbage collections."
@@ -642,12 +641,14 @@ Note that mode-specific configuration variables are defined under  their corresp
     (org-startup-indented t)
     ```
 
-    By default, `org-indent` produces an indicator `"Ind"` in the modeline. We use diminish to hide it.
+    By default, `org-indent` produces an indicator `"Ind"` in the modeline. We use diminish to hide it. I also like to increase  the indentation a bit so that  the levels are more visible.
 
     ```emacs-lisp
     (use-package org-indent
       :ensure nil
-      :diminish)
+      :diminish
+      :custom
+      (org-indent-indentation-per-level 4))
     ```
 
 -   Log stuff into the LOGBOOK drawer by default
@@ -680,7 +681,7 @@ Enable [Speed Keys](https://orgmode.org/manual/Speed-keys.html), which allows qu
 ```
 
 
-### Agenda and Holidays {#agenda-and-holidays}
+### Task tracking {#task-tracking}
 
 Org-Agenda is the umbrella for all todo, journal, calendar, and other views. I set up `C-c a` to call up agenda mode.
 
@@ -731,6 +732,24 @@ I also provide some customization for the `holidays` package, since its entries 
                 swiss-holidays-catholic
                 swiss-holidays-zh-city-holidays
                 holiday-mexican-holidays)))
+```
+
+[`org-super-agenda`](https://github.com/alphapapa/org-super-agenda) provides great grouping and customization features to make agenda mode easier to use.
+
+```emacs-lisp
+(require 'org-habit)
+(use-package org-super-agenda
+  :custom
+  (org-super-agenda-groups '((:auto-dir-name t))))
+```
+
+I configure `org-archive` to archive completed TODOs by default to the `archive.org` file in the same directory as the source file, under the "date tree" corresponding to the task's CLOSED date - this allows me to easily separate work from non-work stuff. Note that this can be overridden for specific files by specifying the desired value of `org-archive-location` in the `#+archive:` property at the top of the file.
+
+```emacs-lisp
+(use-package org-archive
+  :ensure nil
+  :custom
+  (org-archive-location "archive.org::datetree/"))
 ```
 
 
@@ -887,7 +906,9 @@ One of the big strengths of org-mode is the ability to export a document in many
       :after org
       :custom
       (org-latex-compiler "xelatex")
-      (org-latex-pdf-process '("%latex -shell-escape -interaction nonstopmode -output-directory %o %f" "%latex -interaction nonstopmode -output-directory %o %f" "%latex -interaction nonstopmode -output-directory %o %f"))
+      (org-latex-pdf-process '("%latex -shell-escape -interaction nonstopmode -output-directory %o %f"
+                               "%latex -interaction nonstopmode -output-directory %o %f"
+                               "%latex -interaction nonstopmode -output-directory %o %f"))
       :config
       (setq org-latex-listings 'minted)
       (add-to-list 'org-latex-packages-alist '("newfloat" "minted"))
