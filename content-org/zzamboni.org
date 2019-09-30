@@ -365,7 +365,7 @@ You can enable =variable-pitch-mode= automatically for org buffers by setting up
   (add-hook 'org-mode-hook 'variable-pitch-mode)
 #+end_src
 
-**** Step 2: Use long lines and =visual-line-mode=
+**** Step 3: Use long lines and =visual-line-mode=
 
 One thing you will notice right away with proportional fonts is that filling paragraphs no longer makes sense. This is because =fill-paragraph= works based on the number of characters in a line, but with a proportional font, characters have different widths, so a filled paragraph looks strange:
 
@@ -413,7 +413,6 @@ Here are the faces I have configured so far (there are probably many more to do,
 *Update (2019/02/24):* thanks to Ben for figuring out the fix to the vertical spacing issue noted below. The trick is to set the =org-indent= face (see above) to inherit from =fixed-pitch= as well.
 
 +One minor issue I have noticed is that, in =variable-pitch-mode=, the fixed-pitch blocks have a slight increase in inter-line spacing. This is not a deal breaker for me, but it is a noticeable difference. This can be observed in the following screenshot, which shows the block of code above embedded in the org-mode buffer and in the block-editing buffer, which uses the fixed-width font. If you know a way in which this could be fixed, please let me know!+
-
 
 **** Conclusion
 
