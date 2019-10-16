@@ -2492,5 +2492,4 @@ So this is it. +For now the site is mostly empty, but new content will be appear
 
 Please take a look around, and [[/contact][let me know]] if you find anything broken.
 
-
 * Footnotes

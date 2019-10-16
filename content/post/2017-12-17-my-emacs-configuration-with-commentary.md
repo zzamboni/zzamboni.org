@@ -10,7 +10,7 @@ featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **September 30, 2019**
+Last update: **October 16, 2019**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -196,13 +196,17 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 
 ### Miscellaneous settings {#miscellaneous-settings}
 
+-   Load the `cl` library to enable some additional macros (e.g. `lexical-let`).
+
+    ```emacs-lisp
+    (require 'cl)
+    ```
+
 -   Start the Emacs server
 
-<!--listend-->
-
-```emacs-lisp
-(server-start)
-```
+    ```emacs-lisp
+    (server-start)
+    ```
 
 -   This is probably one of my oldest settings - I remember adding it around 1993 when I started learning Emacs, and it has been in my config ever since. When `time-stamp` is run before every save, the string `Time-stamp: <>` in the first 8 lines of the file will be updated with the current timestamp.
 
@@ -241,7 +245,7 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
         (global-display-line-numbers-mode)))
     ```
 
--   Highlight trailing whitespace in red, so it's easily visible (disabled  for now)
+-   Highlight trailing whitespace in red, so it's easily visible (disabled  for now as it created a lot of noise in some modes, e.g. the org-mode export screen)
 
     ```emacs-lisp
     (customize-set-variable 'show-trailing-whitespace nil)
@@ -384,6 +388,16 @@ There are no Windows-specific settings for now.
 
 ## Keybindings {#keybindings}
 
+The [which-key](https://github.com/justbur/emacs-which-key) package makes Emacs functionality much easier to discover and explore: in short, after you start the input of a command and stop, pondering what key must follow, it will automatically open a non-intrusive buffer at the bottom of the screen offering you suggestions for completing the command. Extremely useful.
+
+```emacs-lisp
+(use-package which-key
+  :defer nil
+  :diminish which-key-mode
+  :config
+  (which-key-mode))
+```
+
 I use the `bind-key` package to more easily keep track and manage user keybindings. `bind-key` comes with `use-package` so we just load it.
 
 The main advantage of using this over `define-key` or `global-set-key` is that you can use <kbd>M-x</kbd> `describe-personal-keybindings` to see a list of all the customized keybindings you have defined.
@@ -427,16 +441,6 @@ The main advantage of using this over `define-key` or `global-set-key` is that y
 
     ```emacs-lisp
     (bind-key "M-/" 'hippie-expand)
-    ```
-
--   The [which-key](https://github.com/justbur/emacs-which-key) package makes Emacs functionality much easier to discover and explore: in short, after you start the input of a command and stop, pondering what key must follow, it will automatically open a non-intrusive buffer at the bottom of the screen offering you suggestions for completing the command, that's it, nothing else. It's beautiful.
-
-    ```emacs-lisp
-    (use-package which-key
-      :defer nil
-      :diminish which-key-mode
-      :config
-      (which-key-mode))
     ```
 
 
@@ -517,105 +521,15 @@ I use `use-package` to load the `org` package, and put its configuration inside 
   :pin manual
   :load-path ("lisp/org-mode/lisp" "lisp/org-mode/lisp/contrib/lisp")
   :bind
-    ("C-c l" . org-store-link)
-    ("A-h" . org-mark-element)
+    <<org-mode-keybindings>>
   :custom
-    (org-directory "~/Dropbox/Personal/org")
-    (org-log-done t)
-    (org-startup-indented t)
-    (org-log-into-drawer t)
-    (org-use-speed-commands (lambda () (and (looking-at org-outline-regexp) (looking-back "^\**"))))
-    (org-confirm-babel-evaluate nil)
-    (org-src-fontify-natively t)
-    (org-src-tab-acts-natively t)
-    (org-hide-emphasis-markers t)
-    (org-fontify-done-headline t)
-    (org-tags-column 0)
-    (org-todo-keyword-faces
-     '(("INBOX"        . "cyan")
-       ("[INBOX]"      . "cyan")
-       ("PROPOSAL"     . "orange")
-       ("[PROPOSAL]"   . "orange")
-       ("DRAFT"        . "yellow")
-       ("[DRAFT]"      . "yellow")
-       ("INPROGRESS"   . "yellow")
-       ("[INPROGRESS]" . "yellow")
-       ("MEETING"      . "purple")
-       ("[MEETING]"    . "purple")
-       ("CANCELED"     . "blue")
-       ("[CANCELED]"   . "blue")))
+    <<org-mode-custom-vars>>
   :custom-face
-    (variable-pitch ((t (:family "Source Sans Pro" :height 160 :weight light))))
-    ;;(variable-pitch ((t (:family "Avenir Next" :height 160 :weight light))))
-    (fixed-pitch ((t (:family "Inconsolata"))))
-    (org-indent ((t (:inherit (org-hide fixed-pitch)))))
-    (org-done ((t (:foreground "PaleGreen"
-                                :strike-through t))))
+    <<org-mode-faces>>
   :hook
-    (org-babel-after-execute . org-redisplay-inline-images)
-    (org-mode . (lambda () (add-hook 'after-save-hook 'org-babel-tangle
-                                     'run-at-end 'only-in-org-mode)))
-    (org-babel-pre-tangle  . (lambda ()
-                               (setq zz/pre-tangle-time (current-time))))
-    (org-babel-post-tangle . (lambda ()
-                               (message "org-babel-tangle took %s"
-                                               (format "%.2f seconds"
-                                                       (float-time (time-since zz/pre-tangle-time))))))
-    (org-mode . visual-line-mode)
-    (org-mode . variable-pitch-mode)
-    (org-mode . (lambda ()
-                  "Beautify Org Checkbox Symbol"
-                  (push '("[ ]" .  "☐") prettify-symbols-alist)
-                  (push '("[X]" . "☑" ) prettify-symbols-alist)
-                  (push '("[-]" . "❍" ) prettify-symbols-alist)
-                  (prettify-symbols-mode)))
+    <<org-mode-hooks>>
   :config
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((cfengine3 . t)
-       (ruby      . t)
-       (latex     . t)
-       (plantuml  . t)
-       (python    . t)
-       (shell     . t)
-       (elvish    . t)
-       (calc      . t)
-       (dot       . t)))
-    (font-lock-add-keywords 'org-mode
-                            '(("^ *\\([-]\\) "
-                               (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-    (let* ((variable-tuple
-            (cond ((x-list-fonts   "Source Sans Pro") '(:font   "Source Sans Pro"))
-                  ((x-list-fonts   "Lucida Grande")   '(:font   "Lucida Grande"))
-                  ((x-list-fonts   "Verdana")         '(:font   "Verdana"))
-                  ((x-family-fonts "Sans Serif")      '(:family "Sans Serif"))
-                  (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
-           (base-font-color (face-foreground 'default nil 'default))
-           (headline       `(:inherit default :weight bold :foreground ,base-font-color)))
-
-      (custom-theme-set-faces
-       'user
-       `(org-level-8        ((t (,@headline ,@variable-tuple))))
-       `(org-level-7        ((t (,@headline ,@variable-tuple))))
-       `(org-level-6        ((t (,@headline ,@variable-tuple))))
-       `(org-level-5        ((t (,@headline ,@variable-tuple))))
-       `(org-level-4        ((t (,@headline ,@variable-tuple :height 1.1))))
-       `(org-level-3        ((t (,@headline ,@variable-tuple :height 1.25))))
-       `(org-level-2        ((t (,@headline ,@variable-tuple :height 1.5))))
-       `(org-level-1        ((t (,@headline ,@variable-tuple :height 1.75))))
-       `(org-headline-done  ((t (,@headline ,@variable-tuple :strike-through t))))
-       `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
-    (eval-after-load 'face-remap '(diminish 'buffer-face-mode))
-    (eval-after-load 'simple '(diminish 'visual-line-mode))
-    (defface org-checkbox-done-text
-      '((t (:foreground "#71696A" :strike-through t)))
-      "Face for the text part of a checked org-mode checkbox.")
-
-    (font-lock-add-keywords
-     'org-mode
-     `(("^[ \t]*\\(?:[-+*]\\|[0-9]+[).]\\)[ \t]+\\(\\(?:\\[@\\(?:start:\\)?[0-9]+\\][ \t]*\\)?\\[\\(?:X\\|\\([0-9]+\\)/\\2\\)\\][^\n]*\n\\)"
-        1 'org-checkbox-done-text prepend))
-     'append))
+    <<org-mode-config>>)
 ```
 
 
@@ -755,17 +669,26 @@ I configure `org-archive` to archive completed TODOs by default to the `archive.
 
 ### Capturing  stuff {#capturing-stuff}
 
-Some global keybindings  to open my frequently-used org files (tip from [Learn how to take notes more efficiently in Org Mode](https://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/)).
+First, I define some global keybindings  to open my frequently-used org files (original tip from [Learn how to take notes more efficiently in Org Mode](https://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/)).
+
+I define a helper function to define keybindings that open files. Since I use the `which-key` package, it also defines the description of the key that will appear in the `which-key` menu. Note the use of `lexical-let` so that  the `lambda` creates a closure, otherwise the keybindings don't work.
 
 ```emacs-lisp
-(global-set-key (kbd "C-c w")
-                (lambda () (interactive) (find-file "~/Work/work.org.gpg")))
-(global-set-key (kbd "C-c p")
-                (lambda () (interactive) (find-file "~/org/projects.org")))
-(global-set-key (kbd "C-c i")
-                (lambda () (interactive) (find-file "~/org/ideas.org")))
-(global-set-key (kbd "C-c d")
-                (lambda () (interactive) (find-file "~/org/diary.org")))
+(defun zz/add-file-keybinding (key file &optional desc)
+  (lexical-let ((key key)
+                (file file)
+                (desc desc))
+    (global-set-key (kbd key) (lambda () (interactive) (find-file file)))
+    (which-key-add-key-based-replacements key (or desc file))))
+```
+
+Now I define keybindings to access my commonly-used org files.
+
+```emacs-lisp
+(zz/add-file-keybinding "C-c f w" "~/Work/work.org.gpg" "work.org")
+(zz/add-file-keybinding "C-c f p" "~/org/projects.org" "projects.org")
+(zz/add-file-keybinding "C-c f i" "~/org/ideas.org" "ideas.org")
+(zz/add-file-keybinding "C-c f d" "~/org/diary.org" "diary.org")
 ```
 
 `org-capture` provides  a generic and extensible interface  to capturing things  into org-mode in  different formats. I set up <kbd>C-c c</kbd>  as the default  keybinding for triggering `org-capture`. Usually setting up a new capture template requires  some custom code,  which  gets defined in  the corresponding package config sections and included in the `:config` section below.
@@ -778,28 +701,7 @@ Some global keybindings  to open my frequently-used org files (tip from [Learn h
   :bind
   ("C-c c" . org-capture)
   :config
-  (defun org-hugo-new-subtree-post-capture-template ()
-    "Returns `org-capture' template string for new Hugo post.
-  See `org-capture-templates' for more information."
-    (let* ((title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
-           (fname (org-hugo-slug title)))
-      (mapconcat #'identity
-                 `(,(concat "* TODO " title)
-                   ":PROPERTIES:"
-                   ,(concat ":EXPORT_HUGO_BUNDLE: " fname)
-                   ":EXPORT_FILE_NAME: index"
-                   ":END:"
-                   "%?\n")                ;Place the cursor here finally
-                 "\n")))
-  (add-to-list 'org-capture-templates
-               '("z"                ;`org-capture' binding + z
-                 "zzamboni.org post"
-                 entry
-                 ;; It is assumed that below file is present in `org-directory'
-                 ;; and that it has an "Ideas" heading. It can even be a
-                 ;; symlink pointing to the actual location of all-posts.org!
-                 (file+olp "zzamboni.org" "Ideas")
-                 (function org-hugo-new-subtree-post-capture-template)))
+  <<org-capture-config>>
   )
 ```
 
@@ -952,7 +854,16 @@ One of the big strengths of org-mode is the ability to export a document in many
 ```emacs-lisp
 (use-package ox-hugo
   :defer 3
-  :after org)
+  :after org
+  ;; Testing hooks to automatically set the filename on an ox-hugo blog entry when it gets marked as DONE
+  ;; :hook
+  ;; (org-mode . (lambda () (add-hook 'org-after-todo-state-change-hook
+  ;;                                  (lambda ()
+  ;;                                    (org-set-property "testprop"
+  ;;                                                      (concat "org-state: " org-state
+  ;;                                                              " prev-state: " (org-get-todo-state))))
+  ;;                                  'run-at-end 'only-in-org-mode)))
+  )
 ```
 
 Configure a capture template for creating new ox-hugo blog posts, from [ox-hugo's Org Capture Setup](https://ox-hugo.scripter.co/doc/org-capture-setup).
@@ -1504,7 +1415,7 @@ Note that the `org-leanpub-book-setup-menu-markdown` function gets called in the
 ```
 
 
-### Miscellaneous org functions {#miscellaneous-org-functions}
+### Miscellaneous org functions and configuration {#miscellaneous-org-functions-and-configuration}
 
 Utility `org-get-keyword` function (from the org-mode mailing list) to get the value of file-level properties.
 
@@ -1515,6 +1426,12 @@ Utility `org-get-keyword` function (from the org-mode mailing list) to get the v
       (when (string= key (org-element-property :key k))
         (org-element-property :value k)))
     nil t))
+```
+
+[org-sidebar](https://github.com/alphapapa/org-sidebar) provides a configurable sidebar  to org buffers, showing the agenda, headlines, etc.
+
+```emacs-lisp
+(use-package org-sidebar)
 ```
 
 
