@@ -10,7 +10,7 @@ featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **October 16, 2019**
+Last update: **October 22, 2019**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -186,8 +186,9 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 ```emacs-lisp
 (defun zz/set-proxy ()
   (interactive)
-  (customize-set-variable 'url-proxy-services '(("http"  . "proxy.corproot.net:8079")
-                                                ("https" . "proxy.corproot.net:8079"))))
+  (customize-set-variable 'url-proxy-services
+                          '(("http"  . "proxy.corproot.net:8079")
+                            ("https" . "proxy.corproot.net:8079"))))
 (defun zz/unset-proxy ()
   (interactive)
   (customize-set-variable 'url-proxy-services nil))
@@ -266,7 +267,8 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 -   Emacs automatically creates backup files, by default in the same folder as the original file, which often leaves backup files behind. This tells Emacs to [put all backups in ~/.emacs.d/backups](http://www.gnu.org/software/emacs/manual/html%5Fnode/elisp/Backup-Files.html).
 
     ```emacs-lisp
-    (customize-set-variable 'backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
+    (customize-set-variable 'backup-directory-alist
+                            `(("." . ,(concat user-emacs-directory "backups"))))
     ```
 
 -   [WinnerMode](http://emacswiki.org/emacs/WinnerMode) makes it possible to cycle and undo window configuration changes (i.e. arrangement of panels, etc.)
@@ -450,8 +452,8 @@ One of the few things I missed in Emacs from vi was the `%` key, which jumps to 
 
 ```emacs-lisp
 (defun zz/goto-match-paren (arg)
-  "Go to the matching paren/bracket, otherwise (or if ARG is not nil) insert %.
-  vi style of % jumping to matching brace."
+  "Go to the matching paren/bracket, otherwise (or if ARG is not
+  nil) insert %.  vi style of % jumping to matching brace."
   (interactive "p")
   (if (not (memq last-command '(set-mark
                                 cua-set-mark
@@ -514,7 +516,7 @@ I have started using [org-mode](http://orgmode.org/) to writing, blogging, codin
 
 This is the newest and most-in-flux section of my Emacs config, since I'm still learning org-mode myself.
 
-I use `use-package` to load the `org` package, and put its configuration inside the corresponding sections for keybindings (`:bind`), custom variables (`:custom`), custom faces (`:custom-face`), hooks (`:hook`) and general configuration code (`:config`), respectively. The contents of each section is populated with the corresponding snippets that follow. You see here the complete `use-package` declaration for completeness, but see the sections below for the details on where each snippet comes from, and some other configuration code that ends up outside this declaration.
+I use `use-package` to load the `org` package, and put its configuration inside the corresponding sections for keybindings (`:bind`), custom variables (`:custom`), custom faces (`:custom-face`), hooks (`:hook`) and general configuration code (`:config`), respectively. The contents of each section is populated with the corresponding snippets that follow. See the sections below for the details on what goes into each configuration section, and some other configuration code that ends up outside this declaration.
 
 ```emacs-lisp
 (use-package org
@@ -591,7 +593,10 @@ Note that other keybindings are configured under their corresponding packages, t
 Enable [Speed Keys](https://orgmode.org/manual/Speed-keys.html), which allows quick single-key commands when the cursor is placed on a heading. Usually the cursor needs to be at the beginning of a headline line, but defining it with this function makes them active on any of the asterisks at the beginning of the line (useful with the [font highlighting I use](#beautifying-org-mode), as all but the last asterisk are sometimes not visible).
 
 ```emacs-lisp
-(org-use-speed-commands (lambda () (and (looking-at org-outline-regexp) (looking-back "^\**"))))
+(org-use-speed-commands
+ (lambda ()
+   (and (looking-at org-outline-regexp)
+        (looking-back "^\**"))))
 ```
 
 
@@ -808,27 +813,31 @@ One of the big strengths of org-mode is the ability to export a document in many
       :after org
       :custom
       (org-latex-compiler "xelatex")
-      (org-latex-pdf-process '("%latex -shell-escape -interaction nonstopmode -output-directory %o %f"
-                               "%latex -interaction nonstopmode -output-directory %o %f"
-                               "%latex -interaction nonstopmode -output-directory %o %f"))
+      (org-latex-pdf-process
+       '("%latex -shell-escape -interaction nonstopmode -output-directory %o %f"
+         "%latex -interaction nonstopmode -output-directory %o %f"
+         "%latex -interaction nonstopmode -output-directory %o %f"))
       :config
       (setq org-latex-listings 'minted)
       (add-to-list 'org-latex-packages-alist '("newfloat" "minted"))
       (add-to-list 'org-latex-minted-langs '(lua "lua"))
       (add-to-list 'org-latex-minted-langs '(shell "shell"))
-      (add-to-list 'org-latex-classes '("book-no-parts" "\\documentclass[11pt,letterpaper]{book}"
-                                        ("\\chapter{%s}" . "\\chapter*{%s}")
-                                        ("\\section{%s}" . "\\section*{%s}")
-                                        ("\\subsection{%s}" . "\\subsection*{%s}")
-                                        ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                                        ("\\paragraph{%s}" . "\\paragraph*{%s}")))
-      (add-to-list 'org-latex-classes '("awesome-cv" "\\documentclass{awesome-cv}"
-                                        ("\\cvsection{%s}" . "\\cvsection{%s}")
-                                        ("\\cvsubsection{%s}" . "\\cvsubsection{%s}")
-                                        ("\\subsection{%s}" . "\\subsection*{%s}")
-                                        ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                                        ("\\cvparagraph{%s}" . "\\cvparagraph{%s}")))
-      ;; Necessary for LuaLaTeX to work - see https://tex.stackexchange.com/a/374391/10680
+      (add-to-list 'org-latex-classes
+                   '("book-no-parts" "\\documentclass[11pt,letterpaper]{book}"
+                     ("\\chapter{%s}" . "\\chapter*{%s}")
+                     ("\\section{%s}" . "\\section*{%s}")
+                     ("\\subsection{%s}" . "\\subsection*{%s}")
+                     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                     ("\\paragraph{%s}" . "\\paragraph*{%s}")))
+      (add-to-list 'org-latex-classes
+                   '("awesome-cv" "\\documentclass{awesome-cv}"
+                     ("\\cvsection{%s}" . "\\cvsection{%s}")
+                     ("\\cvsubsection{%s}" . "\\cvsubsection{%s}")
+                     ("\\subsection{%s}" . "\\subsection*{%s}")
+                     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                     ("\\cvparagraph{%s}" . "\\cvparagraph{%s}")))
+      ;; Necessary for LuaLaTeX to work - see
+      ;; https://tex.stackexchange.com/a/374391/10680
       (setenv "LANG" "en_US.UTF-8"))
     ```
 
@@ -872,7 +881,7 @@ Configure a capture template for creating new ox-hugo blog posts, from [ox-hugo'
 (defun org-hugo-new-subtree-post-capture-template ()
   "Returns `org-capture' template string for new Hugo post.
 See `org-capture-templates' for more information."
-  (let* ((title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
+  (let* ((title (read-from-minibuffer "Post Title: "))
          (fname (org-hugo-slug title)))
     (mapconcat #'identity
                `(,(concat "* TODO " title)
@@ -880,10 +889,10 @@ See `org-capture-templates' for more information."
                  ,(concat ":EXPORT_HUGO_BUNDLE: " fname)
                  ":EXPORT_FILE_NAME: index"
                  ":END:"
-                 "%?\n")                ;Place the cursor here finally
+                 "%?\n") ; Place the cursor here finally
                "\n")))
 (add-to-list 'org-capture-templates
-             '("z"                ;`org-capture' binding + z
+             '("z"       ;`org-capture' binding + z
                "zzamboni.org post"
                entry
                ;; It is assumed that below file is present in `org-directory'
@@ -952,99 +961,125 @@ In order to keep my journal entries encrypted there are two separate but confusi
 
 Org-mode is the first literate programming tool that seems practical and useful, since it's easy to edit, execute and document code from within the same tool (Emacs) using all of its existing capabilities (i.e. each code block can be edited in its native Emacs mode, taking full advantage of indentation, completion, etc.)
 
-Plain literate programming is built-in, but the `ob-*` packages provide the ability to execute code in different languages, beyond those included with org-mode.
+First, we load the necessary programming language support. The base features and literate programming for Emacs LISP is built-in, but the `ob-*` packages provide the ability to execute code in different languages directly from within the Org buffer, beyond those included with org-mode. I load the modules for some of the languages I use frequently:
 
-```emacs-lisp
-(use-package ob-cfengine3
-  :after org)
-```
+-   CFEngine, used extensively for my book [_Learning CFEngine_](https://cf-learn.info).
 
-```emacs-lisp
-(use-package ob-elvish
-  :after org)
-```
+    ```emacs-lisp
+    (use-package ob-cfengine3
+      :after org)
+    ```
 
-For [PlantUML](http://plantuml.com/) graph language, we install first the general `plantuml-mode` and the associated `org-babel` mode. We determine the location of the PlantUML jar file automatically from the installed Homebrew formula, and use it to configure both `ob-plantuml` and `plantuml-mode`.
+-   Elvish, my favorite shell.
 
-```emacs-lisp
-(require 'subr-x)
-(setq homebrew-plantuml-jar-path
-      (expand-file-name (string-trim (shell-command-to-string "brew list plantuml | grep jar"))))
+    ```emacs-lisp
+    (use-package ob-elvish
+      :after org)
+    ```
 
-(use-package plantuml-mode
-  :custom
-  (plantuml-jar-path homebrew-plantuml-jar-path))
+-   The [PlantUML](http://plantuml.com/) graph language.
 
-(use-package ob-plantuml
-  :ensure nil
-  :after org
-  :custom
-  (org-plantuml-jar-path homebrew-plantuml-jar-path))
-```
+    We determine the location of the PlantUML jar file automatically from the installed Homebrew formula.
 
-Define `shell-script-mode` as an alias for `console-mode`, so that `console` src blocks can be edited and are fontified correctly.
+    ```shell
+    brew list plantuml | grep jar
+    ```
 
-```emacs-lisp
-(defalias 'console-mode 'shell-script-mode)
-```
+    The command defined above is used to define the value of the `homebrew-plantuml-jar-path` variable. If you don't use Homebrew of have installed PlantUML some other way, you need to modify this command, or hard-code the path.
 
-We configure the languages for which to load org-babel support.
+    ```emacs-lisp
+    (require 'subr-x)
+    (setq homebrew-plantuml-jar-path
+          (expand-file-name (string-trim
+                             (shell-command-to-string "brew list plantuml | grep jar"))))
+    ```
 
-```emacs-lisp
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((cfengine3 . t)
-   (ruby      . t)
-   (latex     . t)
-   (plantuml  . t)
-   (python    . t)
-   (shell     . t)
-   (elvish    . t)
-   (calc      . t)
-   (dot       . t)))
-```
+    Finally, we use this value to configure both `plantuml-mode` (for syntax highlighting) and `ob-plantuml` (for evaluating PlantUML code and inserting the results in exported Org documents).
 
-This is potentially dangerous: it suppresses the query before executing code from within org-mode. I use it because I am very careful and only press `C-c C-c` on blocks I absolutely understand.
+    ```emacs-lisp
+    (use-package plantuml-mode
+      :custom
+      (plantuml-jar-path homebrew-plantuml-jar-path))
 
-```emacs-lisp
-(org-confirm-babel-evaluate nil)
-```
+    (use-package ob-plantuml
+      :ensure nil
+      :after org
+      :custom
+      (org-plantuml-jar-path homebrew-plantuml-jar-path))
+    ```
 
-This makes it so that code within `src` blocks is fontified according to their corresponding Emacs mode, making the file much more readable.
+-   Define `shell-script-mode` as an alias for `console-mode`, so that `console` src blocks can be edited and are fontified correctly.
 
-```emacs-lisp
-(org-src-fontify-natively t)
-```
+    ```emacs-lisp
+    (defalias 'console-mode 'shell-script-mode)
+    ```
 
-In principle this makes it so that indentation in `src` blocks works as in their native mode, but in my experience it does not always work reliably. For full proper indentation, always edit the code in a native buffer by pressing `C-c '`.
+-   Finally, from all  the available languages, we configure the  ones for which to load `org-babel` support.
 
-```emacs-lisp
-(org-src-tab-acts-natively t)
-```
+    ```emacs-lisp
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((cfengine3 . t)
+       (ruby      . t)
+       (latex     . t)
+       (plantuml  . t)
+       (python    . t)
+       (shell     . t)
+       (elvish    . t)
+       (calc      . t)
+       (dot       . t)))
+    ```
 
-Automatically show inline images, useful when executing code that produces them, such as PlantUML or Graphviz.
+Now, we configure some other `org-babel` settings:
 
-```emacs-lisp
-(org-babel-after-execute . org-redisplay-inline-images)
-```
+-   This little snippet has revolutionized my literate programming workflow. It automatically runs `org-babel-tangle` upon saving any org-mode buffer, which means the resulting files will be automatically kept up to date.
 
-This little snippet has revolutionized my literate programming workflow. It automatically runs `org-babel-tangle` upon saving any org-mode buffer, which means the resulting files will be automatically kept up to date.
+    ```emacs-lisp
+    (org-mode . (lambda () (add-hook 'after-save-hook 'org-babel-tangle
+                                     'run-at-end 'only-in-org-mode)))
+    ```
 
-```emacs-lisp
-(org-mode . (lambda () (add-hook 'after-save-hook 'org-babel-tangle
-                                 'run-at-end 'only-in-org-mode)))
-```
+-   This is potentially dangerous: it suppresses the query before executing code from within org-mode. I use it because I am very careful and only press `C-c C-c` on blocks I absolutely understand.
 
-I add hooks to measure and report how long the tangling took.
+    ```emacs-lisp
+    (org-confirm-babel-evaluate nil)
+    ```
 
-```emacs-lisp
-(org-babel-pre-tangle  . (lambda ()
-                           (setq zz/pre-tangle-time (current-time))))
-(org-babel-post-tangle . (lambda ()
-                           (message "org-babel-tangle took %s"
-                                           (format "%.2f seconds"
-                                                   (float-time (time-since zz/pre-tangle-time))))))
-```
+-   This makes it so that code within `src` blocks is fontified according to their corresponding Emacs mode, making the file much more readable.
+
+    ```emacs-lisp
+    (org-src-fontify-natively t)
+    ```
+
+-   In principle this makes it so that indentation in `src` blocks works as in their native mode, but in my experience it does not always work reliably. For full proper indentation, always edit the code in a native buffer by pressing `C-c '`.
+
+    ```emacs-lisp
+    (org-src-tab-acts-natively t)
+    ```
+
+-   Automatically show inline images, useful when executing code that produces them, such as PlantUML or Graphviz.
+
+    ```emacs-lisp
+    (org-babel-after-execute . org-redisplay-inline-images)
+    ```
+
+-   I add hooks to measure and report how long the tangling took. I first define a function to compute and report the elapsed time:
+
+    ```emacs-lisp
+    (defun zz/report-tangle-time (start-time)
+      (message "org-babel-tangle took %s"
+               (format "%.2f seconds"
+                       (float-time (time-since start-time)))))
+    ```
+
+    And this function is used in the corresponding hooks before and after `org-babel-tangle`:
+
+    ```emacs-lisp
+    (org-babel-pre-tangle  . (lambda ()
+                               (setq zz/pre-tangle-time (current-time))))
+    (org-babel-post-tangle . (lambda ()
+                               (zz/report-tangle-time zz/pre-tangle-time)))
+    ```
 
 
 ### Beautifying org-mode {#beautifying-org-mode}
