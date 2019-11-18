@@ -34,6 +34,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
   - [[#learning-cfengine][Learning CFEngine]]
   - [[#learning-hammerspoon][Learning Hammerspoon]]
   - [[#utilerías-de-unix][Utilerías de Unix]]
+  - [[#literate-config][Literate Config]]
 - [[#ideas][Ideas]]
   - [[#using-and-extending-seal][Using and extending Seal]]
   - [[#sending-things-to-omnifocus][Sending things to OmniFocus]]
@@ -59,6 +60,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#using-and-writing-completions-in-elvish][Using and writing completions in Elvish]]
     - [[#elvish-an-awesome-unix-shell][Elvish, an awesome Unix shell]]
   - [[#other][Other]]
+    - [[#new-book-literate-config][New book: Literate Config]]
     - [[#nuevo-libro-utilerías-de-unix][Nuevo libro "Utilerías de Unix"]]
     - [[#my-blogging-workflow-with-emacs-org-modeox-hugo-hugo-and-github][My blogging workflow with Emacs, org-mode+ox-hugo, Hugo and GitHub]]
     - [[#automating-leanpub-book-publishing-with-hammerspoon-and-circleci][Automating Leanpub book publishing with Hammerspoon and CircleCI]]
@@ -190,6 +192,30 @@ CLOSED: [2019-08-30 Tue 00:05]
 *¡Automatiza tus tareas e incrementa tu eficiencia!* Este libro proporciona una introducción a algunos de los comandos más útiles en un sistema Unix/Linux, que te permiten realizar fácilmente tareas de todo tipo, desde la búsqueda de texto en un archivo hasta complejas operaciones de procesamiento, cálculo y extracción de datos.
 
 Puedes obtener una muestra gratis y comprar el libro (¡tu eliges  cuánto pagas!) en https://leanpub.com/utileras-unix, o haz click  en la imágen de la derecha.
+
+#+hugo: more
+
+\nbsp
+
+** Literate Config
+:PROPERTIES:
+:export_hugo_section: book
+:export_file_name: lit-config
+:export_hugo_custom_front_matter: :finalURL https://leanpub.com/lit-config/
+:END:
+
+{{< leanpubbook book="lit-config" style="float:right" >}}
+
+This booklet will teach you about Literate Configuration, which is the application of Literate Programming to configuration files. Literate Programming can be especially applicable to configuration files for the following reasons:
+
+- Configuration files are inherently focused, since they correspond to a single application, program or set of programs, all related. This makes it easier to draw a narrative for them;
+- Most configuration files are self-contained but their structure and syntax may not be immediately evident, so they benefit from a human-readable explanation of their contents;
+- Configuration files are often shared and read by others, as we all like to learn by reading the config files of other people. Applying Literate Programming to config files makes them much easier to share, since their explanation is naturally woven into the code.
+
+Org-mode is a powerful and simple markup language for general writing, but with unique features that make it easy to include code within the text, and even further, to easily extract that code into stand-alone source files which can be interpreted by their corresponding programs.
+
+Whether you already use Emacs and org-mode or not, you will find value in this book by seeing how uniquely Literate Programming can help you better write, maintain, understand and share your config files.
+
 
 #+hugo: more
 
@@ -1932,6 +1958,25 @@ I am very happy with Elvish, and if you are interested in this sort of thing, I 
 I will post more Elvish tips and tricks over time.
 
 ** Other
+
+*** DONE New book: Literate Config
+CLOSED: [2019-11-18 Mon 22:44]
+:PROPERTIES:
+:export_hugo_bundle: 2019-11-18-new-book-literate-config
+:export_file_name: index
+:export_hugo_custom_front_matter: :toc false :featured_image /images/literate-config-cover.png
+:END:
+#+begin_description
+I am happy to announce the new release of my new book "Literate Config", devoted to the use of Literate Programming for writing and documenting configuration files.
+#+end_description
+
+{{< leanpubbook book="lit-config" style="float:right" >}}
+
+I am happy to announce the new release of my new book "Literate Config", devoted to the use of [[https://en.wikipedia.org/wiki/Literate_programming][Literate Programming]] for writing and documenting configuration files with Emacs and org-mode.
+
+This is the first in my planned "Geek Booklets" series, which will include short texts about specific topics. You can get at [[https://leanpub.com/lit-config][LeanPub]], like all my other books. You can get it for free or for a price of your choosing. You can also read it [[https://leanpub.com/lit-config/read][online]].
+
+I hope you enjoy it! Your feedback, as usual, is [[https://leanpub.com/lit-config/email_author/new][welcome]].
 
 *** DONE Nuevo libro "Utilerías de Unix" :book:announcement:spanish:unix:linux:leanpub:
 CLOSED: [2019-08-30 Fri 00:23]

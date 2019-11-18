@@ -10,7 +10,7 @@ toc = true
 featured_image = "/images/hammerspoon.png"
 +++
 
-Last update: **October 22, 2019**
+Last update: **November 18, 2019**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -41,7 +41,7 @@ col = hs.drawing.color.x11
 Work's logo, which I use in some of my Seal shortcuts later on.
 
 ```lua
-swisscom_logo = hs.image.imageFromPath(hs.configdir .. "/files/swisscom_logo_2x.png")
+work_logo = hs.image.imageFromPath(hs.configdir .. "/files/work_logo_2x.png")
 ```
 
 
@@ -90,28 +90,25 @@ BTT = spoon.BetterTouchTool
 The [URLDispatcher](http://www.hammerspoon.org/Spoons/URLDispatcher.html) spoon makes it possible to open URLs with different browsers. I have created different site-specific browsers using [Epichrome](https://github.com/dmarmor/epichrome), which allows me to keep site-specific bookmarks, search settings, etc.
 
 ```lua
-JiraApp = "org.epichrome.app.SwisscomJ995"
-WikiApp = "org.epichrome.app.SwisscomWiki"
+JiraApp = "org.epichrome.app.Jira"
+WikiApp = "org.epichrome.app.Wiki"
+CollabApp = "org.epichrome.app.Collab"
+OpsGenieApp = "org.epichrome.app.OpsGenie"
+
 Install:andUse("URLDispatcher",
                {
                  config = {
                    url_patterns = {
-                     { "https?://issue.swisscom.ch",                       JiraApp },
-                     { "https?://issue.swisscom.com",                      JiraApp },
-                     { "https?://jira.swisscom.com",                       JiraApp },
-                     { "https?://wiki.swisscom.com",                       WikiApp },
-                     { "https?://collaboration.swisscom.com",              "org.epichrome.app.SwisscomCollab" },
-                     { "https?://smca.swisscom.com",                       "org.epichrome.app.SwisscomTWP" },
-                     { "https?://portal.corproot.net",                     "com.apple.Safari" },
-                     { "https?://app.opsgenie.com",                        "org.epichrome.app.OpsGenie" },
-                     { "https?://app.eu.opsgenie.com",                     "org.epichrome.app.OpsGenie" },
-                     { "https?://fiori.swisscom.com",                      "com.apple.Safari" },
-                     { "https?://pmpgwd.apps.swisscom.com/fiori",  "com.apple.Safari" },
-                     { "https?://.*webex.com",  "com.google.Chrome" },
+                     { "https?://issue.work.com",         JiraApp },
+                     { "https?://jira.work.com",          JiraApp },
+                     { "https?://wiki.work.com",          WikiApp },
+                     { "https?://collaboration.work.com", CollabApp },
+                     { "https?://app.opsgenie.com",       OpsGenieApp },
+                     { "https?://app.eu.opsgenie.com",    OpsGenieApp },
                    },
-                   -- default_handler = "com.google.Chrome"
+                   default_handler = "com.google.Chrome"
                    -- default_handler = "com.electron.brave"
-                   default_handler = "com.brave.Browser.dev"
+                   -- default_handler = "com.brave.Browser.dev"
                  },
                  start = true
                }
@@ -176,7 +173,6 @@ Install:andUse("UniversalArchive",
                {
                  config = {
                    evernote_archive_notebook = ".Archive",
-                   outlook_archive_folder = "Archive (diego.zamboni@swisscom.com)",
                    archive_notifications = false
                  },
                  hotkeys = { archive = { { "ctrl", "cmd" }, "a" } }
@@ -184,7 +180,22 @@ Install:andUse("UniversalArchive",
 )
 ```
 
-The [SendToOmniFocus](http://www.hammerspoon.org/Spoons/SendToOmniFocus.html) spoon sets up a single key binding (`Hyper-t`) to send the current item to OmniFocus from multiple applications.
+The [SendToOmniFocus](http://www.hammerspoon.org/Spoons/SendToOmniFocus.html) spoon sets up a single key binding (`Hyper-t`) to send the current item to OmniFocus from multiple applications. We use the `fn` attribute of `Install:andUse` to call a function which registers some of the Epichrome site-specific-browsers I use, so that the Spoon knows how to collect items from them.
+
+```lua
+function chrome_item(n)
+  return { apptype = "chromeapp", itemname = n }
+end
+```
+
+```lua
+function OF_register_additional_apps(s)
+  s:registerApplication("Collab", chrome_item("tab"))
+  s:registerApplication("Wiki", chrome_item("wiki page"))
+  s:registerApplication("Jira", chrome_item("issue"))
+  s:registerApplication("Brave Browser Dev", chrome_item("page"))
+end
+```
 
 ```lua
 Install:andUse("SendToOmniFocus",
@@ -196,29 +207,24 @@ Install:andUse("SendToOmniFocus",
                  hotkeys = {
                    send_to_omnifocus = { hyper, "t" }
                  },
-                 fn = function(s)
-                   s:registerApplication("Swisscom Collab", { apptype = "chromeapp", itemname = "tab" })
-                   s:registerApplication("Swisscom Wiki", { apptype = "chromeapp", itemname = "wiki page" })
-                   s:registerApplication("Swisscom Jira", { apptype = "chromeapp", itemname = "issue" })
-                   s:registerApplication("Brave Browser Dev", { apptype = "chromeapp", itemname = "page" })
-                 end
+                 fn = OF_register_additional_apps,
                }
 )
 ```
 
-The [EvernoteOpenAndTag](http://www.hammerspoon.org/Spoons/EvernoteOpenAndTag.html) spoon sets up some missing key bindings for note manipulation in Evernote.
+The [EvernoteOpenAndTag](http://www.hammerspoon.org/Spoons/EvernoteOpenAndTag.html) spoon sets up some missing key bindings for note manipulation in Evernote. I no longer use Evernote for GTD, so I have disabled the shortcuts for tagging notes.
 
 ```lua
-Install:andUse("EvernoteOpenAndTag",
-               {
-                 hotkeys = {
-                   open_note = { hyper, "o" },
-                   ["open_and_tag-+work,+swisscom"] = { hyper, "w" },
-                   ["open_and_tag-+personal"] = { hyper, "p" },
-                   ["tag-@zzdone"] = { hyper, "z" }
+  Install:andUse("EvernoteOpenAndTag",
+                 {
+                   hotkeys = {
+                     open_note = { hyper, "o" },
+--                     ["open_and_tag-+work"] = { hyper, "w" },
+--                     ["open_and_tag-+personal"] = { hyper, "p" },
+--                     ["tag-@zzdone"] = { hyper, "z" }
+                   }
                  }
-               }
-)
+  )
 ```
 
 The [TextClipboardHistory](http://www.hammerspoon.org/Spoons/TextClipboardHistory.html) spoon implements a clipboard history, only for text items. It is invoked with `Cmd-Shift-v`.
@@ -242,6 +248,23 @@ Install:andUse("TextClipboardHistory",
 
 ## System and UI {#system-and-ui}
 
+The `BTT_restart_Hammerspoon` function sets up a BetterTouchTool widget which also executes the `config_reload` action from the spoon. This gets assigned to the `fn` config parameter in the configuration of the Hammer spoon below, which has the effect of calling the function with the Spoon object as its parameter.
+
+This is still very manual - the `uuid` parameter contains the ID of the BTT widget to configure, and for now you have to get it by hand from BTT and paste it here.
+
+```lua
+function BTT_restart_hammerspoon(s)
+  BTT:bindSpoonActions(s, {
+   config_reload = {
+     kind = 'touchbarButton',
+     uuid = "FF8DA717-737F-4C42-BF91-E8826E586FA1",
+     name = "Restart",
+     icon = hs.image.imageFromName(hs.image.systemImageNames.ApplicationIcon),
+     color = hs.drawing.color.x11.orange,
+  }})
+end
+```
+
 The [Hammer](https://zzamboni.github.io/zzSpoons/Hammer.html) spoon (get it? hehe) is a simple wrapper around some common Hamerspoon configuration variables. Note that this gets loaded from my personal repo, since it's not in the official repository.
 
 ```lua
@@ -253,23 +276,45 @@ Install:andUse("Hammer",
                    config_reload = {hyper, "r"},
                    toggle_console = {hyper, "y"}
                  },
-                 fn = function(s)
-                   BTT:bindSpoonActions(s,
-                                        { config_reload = {
-                                            kind = 'touchbarButton',
-                                            uuid = "FF8DA717-737F-4C42-BF91-E8826E586FA1",
-                                            name = "Restart",
-                                            icon = hs.image.imageFromName(hs.image.systemImageNames.ApplicationIcon),
-                                            color = hs.drawing.color.x11.orange,
-                                        }
-                   })
-                 end,
+                 fn = BTT_restart_Hammerspoon,
                  start = true
                }
 )
 ```
 
-The [Caffeine](http://www.hammerspoon.org/Spoons/Caffeine.html) spoon allows preventing the display and the machine from sleeping. I use it frequently when playing music from my machine, to avoid having to unlock the screen whenever I want to change the music.
+The [Caffeine](http://www.hammerspoon.org/Spoons/Caffeine.html) spoon allows preventing the display and the machine from sleeping. I use it frequently when playing music from my machine, to avoid having to unlock the screen whenever I want to change the music. In this case we also create a function `BTT_caffeine_widget` to configure the widget to both execute the corresponding function, and to set its icon according to the current state.
+
+```lua
+function BTT_caffeine_widget(s)
+  BTT:bindSpoonActions(s, {
+                         toggle = {
+                           kind = 'touchbarWidget',
+                           uuid = '72A96332-E908-4872-A6B4-8A6ED2E3586F',
+                           name = 'Caffeine',
+                           widget_code = [[
+do
+  title = " "
+  icon = hs.image.imageFromPath(spoon.Caffeine.spoonPath.."/caffeine-off.pdf")
+  if (hs.caffeinate.get('displayIdle')) then
+    icon = hs.image.imageFromPath(spoon.Caffeine.spoonPath.."/caffeine-on.pdf")
+  end
+  print(hs.json.encode({ text = title,
+                         icon_data = BTT:hsimageToBTTIconData(icon) }))
+end
+    ]],
+                           code = "spoon.Caffeine.clicked()",
+                           widget_interval = 1,
+                           color = hs.drawing.color.x11.black,
+                           icon_only = true,
+                           icon_size = hs.geometry.size(15,15),
+                           BTTTriggerConfig = {
+                             BTTTouchBarFreeSpaceAfterButton = 0,
+                             BTTTouchBarItemPadding = -6,
+                           },
+                         }
+  })
+end
+```
 
 ```lua
 Install:andUse("Caffeine", {
@@ -277,34 +322,7 @@ Install:andUse("Caffeine", {
                  hotkeys = {
                    toggle = { hyper, "1" }
                  },
-                 fn = function(s)
-                   BTT:bindSpoonActions(s, {
-                                          toggle = {
-                                            kind = 'touchbarWidget',
-                                            uuid = '72A96332-E908-4872-A6B4-8A6ED2E3586F',
-                                            name = 'Caffeine',
-                                            widget_code = [[
-do
-  title = " "
-  icon = hs.image.imageFromPath(spoon.Caffeine.spoonPath.."/caffeine-off.pdf")
-  if (hs.caffeinate.get('displayIdle')) then
-    icon = hs.image.imageFromPath(spoon.Caffeine.spoonPath.."/caffeine-on.pdf")
-  end
-  print(hs.json.encode({ text = title, icon_data = BTT:hsimageToBTTIconData(icon) }))
-end
-  ]],
-                                            code = "spoon.Caffeine.clicked()",
-                                            widget_interval = 1,
-                                            color = hs.drawing.color.x11.black,
-                                            icon_only = true,
-                                            icon_size = hs.geometry.size(15,15),
-                                            BTTTriggerConfig = {
-                                              BTTTouchBarFreeSpaceAfterButton = 0,
-                                              BTTTouchBarItemPadding = -6,
-                                            },
-                                          }
-                   })
-                 end
+                 fn = BTT_caffeine_widget,
 })
 ```
 
@@ -348,7 +366,7 @@ Install:andUse("ColorPicker",
                {
                  disable = true,
                  hotkeys = {
-                   show = { shift_hyper, "c" }
+                   show = { hyper, "z" }
                  },
                  config = {
                    show_in_menubar = false,
@@ -439,7 +457,8 @@ Install:andUse("Seal",
                {
                  hotkeys = { show = { {"cmd"}, "space" } },
                  fn = function(s)
-                   s:loadPlugins({"apps", "calc", "safari_bookmarks", "screencapture", "useractions"})
+                   s:loadPlugins({"apps", "calc", "safari_bookmarks",
+                                  "screencapture", "useractions"})
                    s.plugins.safari_bookmarks.always_open_with_safari = false
                    s.plugins.useractions.actions =
                      {
@@ -468,13 +487,13 @@ Or to manually trigger my work/non-work transition scripts (see below):
   fn = function()
     spoon.WiFiTransitions:processTransition('foo', 'corpnet01')
   end,
-  icon = swisscom_logo,
+  icon = work_logo,
 },
 ["Arrive in corpnet"] = {
   fn = function()
     spoon.WiFiTransitions:processTransition('corpnet01', 'foo')
   end,
-  icon = swisscom_logo,
+  icon = work_logo,
 },
 ```
 
@@ -504,19 +523,21 @@ function reconfigSpotifyProxy(proxy)
     spotify:kill()
     hs.timer.usleep(40000)
   end
-  --   hs.notify.show(string.format("Reconfiguring %sSpotify", ((spotify~=nil) and "and restarting " or "")), string.format("Proxy %s", (proxy and "enabled" or "disabled")), "")
   -- I use CFEngine to reconfigure the Spotify preferences
-  cmd = string.format("/usr/local/bin/cf-agent -K -f %s/files/spotify-proxymode.cf%s", hs.configdir, (proxy and " -DPROXY" or " -DNOPROXY"))
+  cmd = string.format(
+    "/usr/local/bin/cf-agent -K -f %s/files/spotify-proxymode.cf%s",
+    hs.configdir, (proxy and " -DPROXY" or " -DNOPROXY"))
   output, status, t, rc = hs.execute(cmd)
   if spotify and lastapp then
-    hs.timer.doAfter(3,
-                     function()
-                       if not hs.application.launchOrFocus("Spotify") then
-                         hs.notify.show("Error launching Spotify", "", "")
-                       end
-                       if lastapp then
-                         hs.timer.doAfter(0.5, hs.fnutils.partial(lastapp.activate, lastapp))
-                       end
+    hs.timer.doAfter(
+      3,
+      function()
+        if not hs.application.launchOrFocus("Spotify") then
+          hs.notify.show("Error launching Spotify", "", "")
+        end
+        if lastapp then
+          hs.timer.doAfter(0.5, hs.fnutils.partial(lastapp.activate, lastapp))
+        end
     end)
   end
 end
@@ -526,7 +547,6 @@ The `reconfigAdiumProxy` function uses AppleScript to tell Adium about the chang
 
 ```lua
 function reconfigAdiumProxy(proxy)
-  --   hs.notify.show("Reconfiguring Adium", string.format("Proxy %s", (proxy and "enabled" or "disabled")), "")
   app = hs.application.find("Adium")
   if app and app:isRunning() then
     local script = string.format([[
@@ -573,10 +593,12 @@ Install:andUse("WiFiTransitions",
                    actions = {
                      -- { -- Test action just to see the SSID transitions
                      --    fn = function(_, _, prev_ssid, new_ssid)
-                     --       hs.notify.show("SSID change", string.format("From '%s' to '%s'", prev_ssid, new_ssid), "")
+                     --       hs.notify.show("SSID change",
+                     --          string.format("From '%s' to '%s'",
+                     --          prev_ssid, new_ssid), "")
                      --    end
                      -- },
-                     { -- Enable proxy in Spotify and Adium config when joining corp network
+                     { -- Enable proxy config when joining corp network
                        to = "corpnet01",
                        fn = {hs.fnutils.partial(reconfigSpotifyProxy, true),
                              hs.fnutils.partial(reconfigAdiumProxy, true),
@@ -584,7 +606,7 @@ Install:andUse("WiFiTransitions",
                              hs.fnutils.partial(stopApp, "Evernote"),
                        }
                      },
-                     { -- Disable proxy in Spotify and Adium config when leaving corp network
+                     { -- Disable proxy config when leaving corp network
                        from = "corpnet01",
                        fn = {hs.fnutils.partial(reconfigSpotifyProxy, false),
                              hs.fnutils.partial(reconfigAdiumProxy, false),
@@ -607,9 +629,9 @@ I live in Switzerland, and my German is far from perfect, so the [PopupTranslate
 local wm=hs.webview.windowMasks
 Install:andUse("PopupTranslateSelection",
                {
-                 disable = true,
                  config = {
-                   popup_style = wm.utility|wm.HUD|wm.titled|wm.closable|wm.resizable,
+                   popup_style = wm.utility|wm.HUD|wm.titled|
+                     wm.closable|wm.resizable,
                  },
                  hotkeys = {
                    translate_to_en = { hyper, "e" },
@@ -627,8 +649,10 @@ I am now testing [DeepLTranslate](http://www.hammerspoon.org/Spoons/DeepLTransla
 ```lua
 Install:andUse("DeepLTranslate",
                {
+                 disable = true,
                  config = {
-                   popup_style = wm.utility|wm.HUD|wm.titled|wm.closable|wm.resizable,
+                   popup_style = wm.utility|wm.HUD|wm.titled|
+                     wm.closable|wm.resizable,
                  },
                  hotkeys = {
                    translate = { hyper, "e" },

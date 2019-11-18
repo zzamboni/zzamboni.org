@@ -10,7 +10,7 @@ toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **October 22, 2019**
+Last update: **November 18, 2019**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -170,7 +170,10 @@ Other possible values for `edit:completion:matcher` are `[p]{ edit:match-prefix 
 I also configure <kbd>Tab</kbd> to trigger completion mode, but also to automatically enter "filter mode", so I can keep typing the filename I want, without having to use the arrow keys. Disabled as this is the default behavior starting with commit [b24e4a7](https://github.com/elves/elvish/commit/b24e4a73ccd948b8c08d4081c2bcfb7cf603a02b), but you may need it if you are running an older version for any reason and want this behavior.
 
 ```elvish
-#  edit:insert:binding[Tab] = { edit:completion:smart-start; edit:completion:trigger-filter }
+# edit:insert:binding[Tab] = {
+#   edit:completion:smart-start
+#   edit:completion:trigger-filter
+# }
 ```
 
 I load some command-specific completions from the  [elvish-completions](https://github.com/zzamboni/elvish-completions) package:
@@ -288,7 +291,10 @@ The following makes the location and history modes be case-insensitive by defaul
 
 ```elvish
 edit:location:matcher = [@a]{ edit:location:match-dir-pattern &ignore-case $@a }
-edit:insert:binding[Ctrl-R] = { edit:histlist:start; edit:histlist:toggle-case-sensitivity }
+edit:insert:binding[Ctrl-R] = {
+  edit:histlist:start
+  edit:histlist:toggle-case-sensitivity
+}
 ```
 
 
@@ -386,7 +392,7 @@ update:check-commit &verbose
 I have a private library which contains some work-specific functions.
 
 ```elvish
-use swisscom
+use work
 ```
 
 

@@ -10,7 +10,7 @@ featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
-Last update: **October 22, 2019**
+Last update: **November 18, 2019**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at <https://github.com/zzamboni/dot%5Femacs/blob/master/init.el>.
 
@@ -267,8 +267,9 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 -   Emacs automatically creates backup files, by default in the same folder as the original file, which often leaves backup files behind. This tells Emacs to [put all backups in ~/.emacs.d/backups](http://www.gnu.org/software/emacs/manual/html%5Fnode/elisp/Backup-Files.html).
 
     ```emacs-lisp
-    (customize-set-variable 'backup-directory-alist
-                            `(("." . ,(concat user-emacs-directory "backups"))))
+    (customize-set-variable
+     'backup-directory-alist
+     `(("." . ,(concat user-emacs-directory "backups"))))
     ```
 
 -   [WinnerMode](http://emacswiki.org/emacs/WinnerMode) makes it possible to cycle and undo window configuration changes (i.e. arrangement of panels, etc.)
@@ -767,11 +768,14 @@ One of the big strengths of org-mode is the ability to export a document in many
     (use-package ox-jira
       :defer 3
       :after org)
+    ```
+
+    ```emacs-lisp
     (use-package org-jira
       :defer 3
       :after org
       :custom
-      (jiralib-url "https://jira.swisscom.com"))
+      (jiralib-url "https://jira.work.com"))
     ```
 
 -   Confluence markup.
@@ -864,14 +868,17 @@ One of the big strengths of org-mode is the ability to export a document in many
 (use-package ox-hugo
   :defer 3
   :after org
-  ;; Testing hooks to automatically set the filename on an ox-hugo blog entry when it gets marked as DONE
+  ;; Testing hooks to automatically set the filename on an ox-hugo
+  ;; blog entry when it gets marked as DONE
   ;; :hook
-  ;; (org-mode . (lambda () (add-hook 'org-after-todo-state-change-hook
-  ;;                                  (lambda ()
-  ;;                                    (org-set-property "testprop"
-  ;;                                                      (concat "org-state: " org-state
-  ;;                                                              " prev-state: " (org-get-todo-state))))
-  ;;                                  'run-at-end 'only-in-org-mode)))
+  ;; (org-mode . (lambda ()
+  ;;               (add-hook 'org-after-todo-state-change-hook
+  ;;                         (lambda ()
+  ;;                           (org-set-property
+  ;;                            "testprop"
+  ;;                            (concat "org-state: " org-state
+  ;;                                    " prev-state: " (org-get-todo-state))))
+  ;;                         'run-at-end 'only-in-org-mode)))
   )
 ```
 
@@ -905,7 +912,7 @@ See `org-capture-templates' for more information."
 
 ### Encryption {#encryption}
 
-First, load the built-in EasyPG support.
+First, load the built-in EasyPG support. By calling `(epa-file-enable)`, Emacs automatically encrypts/decrypts files with a `.gpg` extension. By default it asks about the key to use, but I configure it to always use my own GPG key.
 
 ```emacs-lisp
 (use-package epa-file
@@ -981,32 +988,36 @@ First, we load the necessary programming language support. The base features and
 
     We determine the location of the PlantUML jar file automatically from the installed Homebrew formula.
 
+    <a id="code-snippet--plantuml-jar-path"></a>
     ```shell
     brew list plantuml | grep jar
     ```
 
-    The command defined above is used to define the value of the `homebrew-plantuml-jar-path` variable. If you don't use Homebrew of have installed PlantUML some other way, you need to modify this command, or hard-code the path.
+Which in my current setup results in the following:
 
-    ```emacs-lisp
-    (require 'subr-x)
-    (setq homebrew-plantuml-jar-path
-          (expand-file-name (string-trim
-                             (shell-command-to-string "brew list plantuml | grep jar"))))
-    ```
+The command defined above is used to define the value of the `homebrew-plantuml-jar-path` variable. If you don't use Homebrew of have installed PlantUML some other way, you need to modify this command, or hard-code the path.
 
-    Finally, we use this value to configure both `plantuml-mode` (for syntax highlighting) and `ob-plantuml` (for evaluating PlantUML code and inserting the results in exported Org documents).
+```emacs-lisp
+(require 'subr-x)
+(setq homebrew-plantuml-jar-path
+      (expand-file-name
+       (string-trim
+        (shell-command-to-string "brew list plantuml | grep jar"))))
+```
 
-    ```emacs-lisp
-    (use-package plantuml-mode
-      :custom
-      (plantuml-jar-path homebrew-plantuml-jar-path))
+Finally, we use this value to configure both `plantuml-mode` (for syntax highlighting) and `ob-plantuml` (for evaluating PlantUML code and inserting the results in exported Org documents).
 
-    (use-package ob-plantuml
-      :ensure nil
-      :after org
-      :custom
-      (org-plantuml-jar-path homebrew-plantuml-jar-path))
-    ```
+```emacs-lisp
+(use-package plantuml-mode
+  :custom
+  (plantuml-jar-path homebrew-plantuml-jar-path))
+
+(use-package ob-plantuml
+  :ensure nil
+  :after org
+  :custom
+  (org-plantuml-jar-path homebrew-plantuml-jar-path))
+```
 
 -   Define `shell-script-mode` as an alias for `console-mode`, so that `console` src blocks can be edited and are fontified correctly.
 
@@ -1027,7 +1038,8 @@ First, we load the necessary programming language support. The base features and
        (shell     . t)
        (elvish    . t)
        (calc      . t)
-       (dot       . t)))
+       (dot       . t)
+       (ditaa     . t)))
     ```
 
 Now, we configure some other `org-babel` settings:
@@ -1095,9 +1107,10 @@ First, we set `org-hid-emphasis-markers` so that the markup indicators are not s
 We add an entry to the org-mode font-lock table so that list markers are shown with a middle dot instead of the original character.
 
 ```emacs-lisp
-(font-lock-add-keywords 'org-mode
-                        '(("^ *\\([-]\\) "
-                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+(font-lock-add-keywords
+ 'org-mode
+ '(("^ *\\([-]\\) "
+    (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 ```
 
 We use the `org-bullets` package to display the titles with nice unicode bullets instead of the text ones.
@@ -1117,9 +1130,10 @@ We choose a nice font for the document title and the section headings. The first
               ((x-list-fonts   "Lucida Grande")   '(:font   "Lucida Grande"))
               ((x-list-fonts   "Verdana")         '(:font   "Verdana"))
               ((x-family-fonts "Sans Serif")      '(:family "Sans Serif"))
-              (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
+              (nil (warn "Cannot find a Sans Serif Font."))))
        (base-font-color (face-foreground 'default nil 'default))
-       (headline       `(:inherit default :weight bold :foreground ,base-font-color)))
+       (headline `(:inherit default :weight bold
+                            :foreground ,base-font-color)))
 
   (custom-theme-set-faces
    'user
@@ -1132,7 +1146,8 @@ We choose a nice font for the document title and the section headings. The first
    `(org-level-2        ((t (,@headline ,@variable-tuple :height 1.5))))
    `(org-level-1        ((t (,@headline ,@variable-tuple :height 1.75))))
    `(org-headline-done  ((t (,@headline ,@variable-tuple :strike-through t))))
-   `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
+   `(org-document-title ((t (,@headline ,@variable-tuple
+                                        :height 2.0 :underline nil))))))
 ```
 
 I use proportional fonts in org-mode for the text, while keeping fixed-width fonts for blocks, so that source code, tables, etc. are shown correctly. These settings include:
@@ -1162,12 +1177,10 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
     (org-fontify-done-headline t)
     ```
 
-<!--listend-->
-
-```emacs-lisp
-(org-done ((t (:foreground "PaleGreen"
-                            :strike-through t))))
-```
+    ```emacs-lisp
+    (org-done ((t (:foreground "PaleGreen"
+                               :strike-through t))))
+    ```
 
 -   Configuring the corresponding `org-mode` faces for blocks, verbatim code, and maybe a couple of other things. As these change more frequently, I do them directly from the `customize-face` interface, you can see their current settings in the [Customized variables](#customized-variables) section.
 
@@ -1188,7 +1201,9 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
 
     ```emacs-lisp
     (org-todo-keyword-faces
-     '(("INBOX"        . "cyan")
+     '(("AREA"         . "DarkOrchid1")
+       ("[AREA]"       . "DarkOrchid1")
+       ("INBOX"        . "cyan")
        ("[INBOX]"      . "cyan")
        ("PROPOSAL"     . "orange")
        ("[PROPOSAL]"   . "orange")
@@ -1214,9 +1229,9 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
     ```emacs-lisp
     (org-mode . (lambda ()
                   "Beautify Org Checkbox Symbol"
-                  (push '("[ ]" .  "☐") prettify-symbols-alist)
+                  (push '("[ ]" . "☐" ) prettify-symbols-alist)
                   (push '("[X]" . "☑" ) prettify-symbols-alist)
-                  (push '("[-]" . "❍" ) prettify-symbols-alist)
+                  (push '("[-]" . "⊡" ) prettify-symbols-alist)
                   (prettify-symbols-mode)))
     ```
 
@@ -1298,17 +1313,28 @@ Remove a link. For some reason this is not part of org-mode. From <https://emacs
 
 Here I define functions which get used in some of my org-mode macros
 
+The first is a support function which gets used in some of the following, to return a string (or an optional custom  string) only if  it  is a non-zero, non-whitespace string,  and `nil` otherwise.
+
+```emacs-lisp
+(defun zz/org-if-str (str &optional desc)
+  (when (org-string-nw-p str)
+    (or (org-string-nw-p desc) str)))
+```
+
 This function receives three arguments, and returns the org-mode code for a link to the Hammerspoon API documentation for the `link` module, optionally to a specific `function`. If `desc` is passed, it is used as the display text, otherwise `section.function` is used.
 
 ```emacs-lisp
-(defun zz/org-macro-hsapi-code (link function desc)
-  (let* ((link-1 (concat link (if (org-string-nw-p function) (concat "#" function) "")))
-         (link-2 (concat link (if (org-string-nw-p function) (concat "." function) "")))
-         (desc-1 (or (org-string-nw-p desc) (concat "=" link-2 "="))))
-    (concat "[[https://www.hammerspoon.org/docs/" link-1 "][" desc-1 "]]")))
+(defun zz/org-macro-hsapi-code (module &optional func desc)
+  (org-link-make-string
+   (concat "https://www.hammerspoon.org/docs/"
+           (concat module (zz/org-if-str func (concat "#" func))))
+   (or (org-string-nw-p desc)
+       (format "=%s="
+               (concat module
+                       (zz/org-if-str func (concat "." func)))))))
 ```
 
-Split STR at spaces and wrap each element with `~` char, separated by `+`. Zero-width spaces are inserted around the plus signs so that they get formatted correctly.
+Split STR at spaces and wrap each element with the `~` char, separated by `+`. Zero-width spaces are inserted around the plus signs so that they get formatted correctly. Envisioned use is for formatting keybinding descriptions. There are two versions of this function: "outer" wraps each element in  `~`, the "inner" wraps the whole sequence in them.
 
 ```emacs-lisp
 (defun zz/org-macro-keys-code-outer (str)
@@ -1329,17 +1355,19 @@ Split STR at spaces and wrap each element with `~` char, separated by `+`. Zero-
 Links to a specific section/function of the Lua manual.
 
 ```emacs-lisp
-(defun zz/org-macro-luadoc-code (func section desc)
-  (let* ((anchor (or (org-string-nw-p section) func))
-         (desc-1 (or (org-string-nw-p desc) func)))
-    (concat "[[https://www.lua.org/manual/5.3/manual.html#" anchor "][" desc-1 "]]")))
+(defun zz/org-macro-luadoc-code (func &optional section desc)
+  (org-link-make-string
+   (concat "https://www.lua.org/manual/5.3/manual.html#"
+           (zz/org-if-str func section))
+   (zz/org-if-str func desc)))
 ```
 
 ```emacs-lisp
-(defun zz/org-macro-luafun-code (func desc)
-  (let* ((anchor (concat "pdf-" func))
-         (desc-1 (or (org-string-nw-p desc) (concat "=" func "()="))))
-    (concat "[[https://www.lua.org/manual/5.3/manual.html#" anchor "][" desc-1 "]]")))
+(defun zz/org-macro-luafun-code (func &optional desc)
+  (org-link-make-string
+   (concat "https://www.lua.org/manual/5.3/manual.html#"
+           (concat "pdf-" func))
+   (zz/org-if-str (concat "=" func "()=") desc)))
 ```
 
 
@@ -1533,9 +1561,9 @@ Desktop mode also includes the `desktop-clear` function, which can be used to ki
 (use-package desktop
   :defer nil
   :custom
-  (desktop-restore-eager   1   "Restore only the first buffer right away")
-  (desktop-lazy-idle-delay 1   "Restore the rest of the buffers 1 seconds later")
-  (desktop-lazy-verbose    nil "Be silent about lazily opening buffers")
+  (desktop-restore-eager   1 "Restore the first buffer right away")
+  (desktop-lazy-idle-delay 1 "Restore the other buffers 1 second later")
+  (desktop-lazy-verbose  nil "Be silent about lazily opening buffers")
   :bind
   ("C-M-s-k" . desktop-clear)
   :config
@@ -1554,18 +1582,48 @@ The `uniquify` package makes it much easier to identify different open files wit
   (uniquify-strip-common-suffix t))
 ```
 
-I like to highlight the current line and column. I'm still deciding between two approaches:
-
--   Using the built-in `global-hl-mode` to always highlight the current line, together with the `col-highlight` package, which highlights the column only after a defined interval has passed
--   Using the `crosshairs` package, which combines both but always highlights both the column and the line. It also has a "highlight crosshairs when idle" mode, but I prefer to have the current line always highlighted, I'm only undecided about the always-on column highlighting.
-
-Sometimes I find the always-highlighted column to be distracting, but other times I find it useful. So I have both pieces of code here, I'm still deciding. For now only `hl-line` is enabled.
+I like to highlight the current line. For this I use the built-in `hl-line`.
 
 ```emacs-lisp
 (use-package hl-line
   :defer nil
   :config
+  (defun zz/get-visual-line-range ()
+    (let (b e)
+      (save-excursion
+        (beginning-of-visual-line)
+        (setq b (point))
+        (end-of-visual-line)
+        (setq e (+ 1 (point)))
+        )
+      (cons b e)))
+  (setq hl-line-range-function #'zz/get-visual-line-range)
   (global-hl-line-mode))
+```
+
+I also provide a custom value for `hl-line-range-function` (thanks to Eric on the [org-mode mailing list](https://lists.gnu.org/archive/html/emacs-orgmode/2019-10/msg00303.html) for the tip) which highlights only the current visual line in `visual-line-mode`, which I use for Org-mode files (see [Beautifying org-mode](#beautifying-org-mode)).
+
+```emacs-lisp
+(defun zz/get-visual-line-range ()
+  (let (b e)
+    (save-excursion
+      (beginning-of-visual-line)
+      (setq b (point))
+      (end-of-visual-line)
+      (setq e (+ 1 (point)))
+      )
+    (cons b e)))
+(setq hl-line-range-function #'zz/get-visual-line-range)
+```
+
+I have also experimented with highlighting the current column. At the moment the code below is all disabled because I find it too distracting, but I'm leaving it  here for reference. I found two options to achieve this:
+
+-   The `col-highlight` package, which highlights the column only after a defined interval has passed
+-   The `crosshairs` package, which always highlights both the column and the line. It also has a "highlight crosshairs when idle" mode, but I prefer to have the current line always highlighted.
+
+<!--listend-->
+
+```emacs-lisp
 (use-package col-highlight
   :disabled
   :defer nil
@@ -1629,10 +1687,11 @@ For distraction-free writing, I'm testing out `writeroom-mode`.
 
 ```emacs-lisp
 (use-package neotree
+  :custom
+  (neo-theme (if (display-graphic-p) 'icons 'arrow))
+  (neo-smart-open t)
+  (projectile-switch-project-action 'neotree-projectile-action)
   :config
-  (customize-set-variable 'neo-theme (if (display-graphic-p) 'icons 'arrow))
-  (customize-set-variable 'neo-smart-open t)
-  (customize-set-variable 'projectile-switch-project-action 'neotree-projectile-action)
   (defun neotree-project-dir ()
     "Open NeoTree using the git root."
     (interactive)
@@ -1887,6 +1946,14 @@ We use `clj-refactor` for supporting advanced code refactoring in Clojure.
   (clojure-mode . my-clojure-mode-hook))
 ```
 
+Use `emr` for supporting refactoring in Emacs LISP and some other languages.
+
+```emacs-lisp
+(use-package emr
+  :config
+  (bind-key "A-RET" 'emr-show-refactor-menu prog-mode-map))
+```
+
 When coding in LISP-like languages, `rainbow-delimiters` is a must-have - it marks each concentric pair of parenthesis with different colors, which makes it much easier to understand expressions and spot mistakes.
 
 ```emacs-lisp
@@ -1898,7 +1965,10 @@ When coding in LISP-like languages, `rainbow-delimiters` is a must-have - it mar
 Another useful addition for LISP coding - `smartparens` enforces parenthesis to match, and adds a number of useful operations for manipulating parenthesized expressions. I map `M-(` to enclose the next expression as in `paredit` using a custom function. Prefix argument can be used to indicate how many expressions to enclose instead of just 1. E.g. `C-u 3 M-(` will enclose the next 3 sexps.
 
 ```emacs-lisp
-(defun zz/sp-enclose-next-sexp (num) (interactive "p") (insert-parentheses (or num 1)))
+(defun zz/sp-enclose-next-sexp (num)
+  (interactive "p")
+  (insert-parentheses (or num 1)))
+
 (use-package smartparens
   :diminish smartparens-mode
   :config
@@ -1913,7 +1983,9 @@ Another useful addition for LISP coding - `smartparens` enforces parenthesis to 
     racket-mode
     racket-repl-mode) . smartparens-strict-mode)
   (smartparens-mode  . sp-use-paredit-bindings)
-  (smartparens-mode  . (lambda () (local-set-key (kbd "M-(") 'zz/sp-enclose-next-sexp))))
+  (smartparens-mode  . (lambda ()
+                         (local-set-key (kbd "M-(")
+                                        'zz/sp-enclose-next-sexp))))
 ```
 
 Minor mode for highlighting the current sexp in LISP modes.
@@ -1937,30 +2009,6 @@ Trying out [lispy](https://github.com/abo-abo/lispy) for LISP code editing (disa
     common-lisp-mode
     scheme-mode
     lisp-mode) . enable-lispy-mode))
-```
-
-I am sometimes trying out [parinfer](https://shaunlebron.github.io/parinfer/) (disabled for now).
-
-```emacs-lisp
-(use-package parinfer
-  :disabled
-  :bind
-  (("C-," . parinfer-toggle-mode))
-  :init
-  (setq parinfer-extensions
-        '(defaults       ; should be included.
-           pretty-parens  ; different paren styles for different modes.
-           ;;evil           ; If you use Evil.
-           lispy          ; If you use Lispy. With this extension, you should install Lispy and do not enable lispy-mode directly.
-           paredit        ; Introduce some paredit commands.
-           smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab.
-           smart-yank))   ; Yank behavior depend on mode.
-  :hook
-  ((clojure-mode
-    emacs-lisp-mode
-    common-lisp-mode
-    scheme-mode
-    lisp-mode) . parinfer-mode))
 ```
 
 
@@ -2119,7 +2167,10 @@ Many other programming languages are well served by a single mode, without so mu
           (setq lines (butlast lines 1)))
         (apply 'insert
                (mapcar 'cdr
-                       (sort (mapcar (lambda (x) (cons (random) (concat x "\n"))) lines)
+                       (sort (mapcar
+                              (lambda (x)
+                                (cons (random) (concat x "\n")))
+                              lines)
                              (lambda (a b) (< (car a) (car b))))))))
     ```
 
@@ -2251,9 +2302,10 @@ Testing formatting org snippets to look like noweb-rendered output (disabled for
 
 ```emacs-lisp
 (eval-after-load 'ob
-  (customize-set-variable 'org-entities-user
-                          '(("llangle" "\\llangle" t "&lang;&lang;" "<<" "<<" "《")
-                            ("rrangle" "\\rrangle" t "&rang;&rang;" ">>" ">>" "》")))
+  (customize-set-variable
+   'org-entities-user
+   '(("llangle" "\\llangle" t "&lang;&lang;" "<<" "<<" "«")
+     ("rrangle" "\\rrangle" t "&rang;&rang;" ">>" ">>" "»")))
   (setq org-babel-exp-code-template
         (concat "\n@@latex:\\noindent@@\\llangle​//​\\rrangle\\equiv\n"
                 org-babel-exp-code-template)))
