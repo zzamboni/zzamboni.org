@@ -7,3 +7,5 @@ creator = "Emacs 26.3 (Org mode 9.2.6 + ox-hugo)"
 weight = 2
 featured_image = "/images/book-box-thin.jpg"
 +++
+
+I have a few self-published books, all of them available at [Leanpub](https://leanpub.com/u/zzamboni). Here you can find short descriptions and links to their respective pages.

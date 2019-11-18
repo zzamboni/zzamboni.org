@@ -135,6 +135,8 @@ CLOSED: [2018-03-25 Sun 20:11]
 :export_file_name: _index
 :END:
 
+I have a few self-published books, all of them available at [[https://leanpub.com/u/zzamboni][Leanpub]]. Here you can find short descriptions and links to their respective pages.
+
 * Book pages
 
 The individual pages for each book.
