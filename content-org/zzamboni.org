@@ -41,6 +41,12 @@ This file is the source for all new and updated content on [[http://zzamboni.org
   - [[#ox-hugo][ox-hugo]]
   - [[#cryfs][CryFS]]
   - [[#hosting-a-hugo-blog-in-netlify][Hosting a Hugo blog in Netlify]]
+  - [[#my-blogging-workflow-with-emacs-org-modeox-hugo-hugo-and-github][My blogging workflow with Emacs, org-mode+ox-hugo, Hugo and GitHub]]
+    - [[#writing-using-emacs-and-org-mode][Writing using Emacs and org-mode]]
+    - [[#exporting][Exporting]]
+    - [[#publishing][Publishing]]
+    - [[#hosting][Hosting]]
+    - [[#whats-next][What's next?]]
 - [[#posts][Posts]]
   - [[#literate-config-files][Literate config files]]
     - [[#my-emacs-configuration-with-commentary][My Emacs Configuration, With Commentary]]
@@ -62,7 +68,6 @@ This file is the source for all new and updated content on [[http://zzamboni.org
   - [[#other][Other]]
     - [[#new-book-literate-config][New book: Literate Config]]
     - [[#nuevo-libro-utilerías-de-unix][Nuevo libro "Utilerías de Unix"]]
-    - [[#my-blogging-workflow-with-emacs-org-modeox-hugo-hugo-and-github][My blogging workflow with Emacs, org-mode+ox-hugo, Hugo and GitHub]]
     - [[#automating-leanpub-book-publishing-with-hammerspoon-and-circleci][Automating Leanpub book publishing with Hammerspoon and CircleCI]]
     - [[#hosting-a-ghost-blog-in-github---the-easier-way][Hosting a Ghost Blog in GitHub - the easier way]]
     - [[#the-big-website-reboot][The Big Website Reboot]]
@@ -236,6 +241,74 @@ Ideas for things to write about.
 ** TODO CryFS :cryfs:howto:
 ** TODO Hosting a Hugo blog in Netlify :hugo:netlify:github:blogging:howto:
 Short guide to setting up Hugo, using /docs to host to avoid branches, and setting up your custom domain.
+** TODO My blogging workflow with Emacs, org-mode+ox-hugo, Hugo and GitHub :blogging:howto:emacs:hugo:orgmode:github:
+:PROPERTIES:
+:export_file_name: my-blogging-workflow
+:END:
+
+My blogging has seen [[file:/about/#my-online-past][multiple iterations]] over the years, and with it, the tools I use have changed. At the moment I use a set of tools and workflows which make it very easy to keep my blog updated, and I will describe them in this post. In short, they are:
+
+- *Writing:* Emacs, org-mode
+- *Exporting:* ox-hugo
+- *Publishing:* Hugo
+- *Hosting:* GitHub Pages
+
+Let's take a closer look at each of the stages.
+
+*** Writing using Emacs and org-mode
+
+I have been using Emacs for almost 30 years, so its use for me is second nature. However, I only recently started using [[https://orgmode.org/][org-mode]] for writing, blogging, coding, presentations and more, thanks to the hearty recommendations and information from [[http://www.cmdln.org/][Nick]] and many others. I am duly impressed. I have been a fan of the idea of [[https://en.wikipedia.org/wiki/Literate_programming][literate programming]] for many years, and I have tried other tools before (most notably [[https://www.cs.tufts.edu/~nr/noweb/][noweb]], which I used during grad school for many of my homeworks and projects), but org-mode is the first tool I have encountered which seems to make it practical. Here are some of the resources I have found useful in learning it:
+
+- Howard Abrams' [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][Introduction to Literate Programming]], which got me jumpstarted into writing code documented with org-mode.
+- Nick Anderson's [[https://github.com/nickanderson/Level-up-your-notes-with-Org][Level up your notes with Org]], which contains many useful tips and configuration tricks.
+- Sacha Chua's [[http://sachachua.com/blog/2014/01/tips-learning-org-mode-emacs/][Some tips for learning Org Mode for Emacs]], her [[http://pages.sachachua.com/.emacs.d/Sacha.html][Emacs configuration]] and many of her [[http://sachachua.com/blog/category/emacs/][other articles]].
+- Rainer König's [[https://www.youtube.com/playlist?list=PLVtKhBrRV_ZkPnBtt_TD1Cs9PJlU0IIdE][OrgMode Tutorial]] video series.
+
+You can see some examples in [[file:/tags/literateconfig/][my "literate config files" series]], and all recent posts in this blog are written using org-mode (you can find the [[https://github.com/zzamboni/zzamboni.org/blob/master/content-org/zzamboni.org][source file]] in GitHub).
+
+Over time I have tweaked my Emacs configuration to make writing with org-mode more pleasant. You can see my tutorial on [[file:/post/beautifying-org-mode-in-emacs/][Beautifying org-mode in Emacs]], and also see the full [[file:/post/my-emacs-configuration-with-commentary/#org-mode][org-mode section of my Emacs config]] for reference.
+
+So, I write posts using Emacs, in org-mode markup. What's next?
+
+*** Exporting
+
+When I first started writing my blog posts in org-mode, I relied on Hugo's [[https://gohugo.io/content-management/formats/][built-in support for it]], which allows you to simply create posts in =.org= files instead of =.md= and have them parse in org-mode format. Unfortunately, the support is not perfect. Hugo relies on the [[https://github.com/chaseadamsio/goorgeous][goorgeous]] library which, while quite powerful, does not support the full org-mode markup capabilities, so many elements are not rendered or processed properly.
+
+Happily, I discovered [[https://ox-hugo.scripter.co/][ox-hugo]], an org-mode exporter which produces Hugo-ready Markdown files from the org-mode source, from which Hugo can produce the final HTML output. This is a much better arrangement, because each component handles only its native format: ox-hugo processes the org-mode source with the full support of org-mode and Emacs, and Hugo processes Markdown files, which are its native input format. You can use the full range of org-mode markup in your posts, and they will be correctly converted to their equivalents in Markdown. Furthermore, your source files remain output-agnostic, as you can still use all other org-mode exporters if you need to produce other formats.
+
+Ox-hugo supports [[https://ox-hugo.scripter.co/#screenshot-one-post-per-subtree][two ways of organizing your posts]]: one post per org file, and one post per org subtree. In the first one, you write a separate org file for each post. In the second, you keep all your posts in a single org file, and specify (through org-mode properties) which subtrees should be exported as posts. The latter is the recommended way to organize posts. At first I was skeptical - who wants to keep everything in a single file? However, as I have worked more with it, I have come to realize its advantages. For one, it makes it easier to specify post metadata - for example, I have defined sections in [[https://github.com/zzamboni/zzamboni.org/blob/master/content-org/zzamboni.org][my org-mode source file]] for certain frequent topics, and those are tagged accordingly in the org source. When I create posts as subtrees of those sections, they inherit the top-level tags automatically, as well as any other properties, which I used to define (for example) the header images used in the posts. Having all posts in a single file also makes it easier to share other content, such as org macro definitions, ox-hugo configuration options, etc.
+
+Note that ox-hugo is not limited to exporting blog posts, but any content processed by Hugo. For example, my org source file also includes all the static pages in my web site - they are differentiated from blog posts simply by the Hugo [[https://gohugo.io/content-management/sections/][section]] to which they belong, which is defined using the [[https://ox-hugo.scripter.co/doc/usage/#before-you-export][HUGO_SECTION property]], which is interpreted accordingly by ox-hugo.
+
+Since the full power of org markup is available when using ox-hugo, you can do very interesting things. For example, all posts in my [[file:/tags/literateconfig/][Literate Config Files]] category are automatically updated every time I export them with the actual, real content of the corresponding config files, which I also keep in org format. There is a lot of hidden power in org-mode and ox-hugo. My recommendation is to go through the source files for some of the websites listed in ox-hugo's [[https://ox-hugo.scripter.co/doc/examples/][Real World Examples]] section. For example, I have learned a lot by reading through the source files for the [[https://github.com/kaushalmodi/ox-hugo/tree/master/doc][ox-hugo website]] itself.
+
+*** Publishing
+
+Using Netlify. Caveats:
+
+- Take care of invalid characters in filenames.
+- Disable Hugo redirects and implement aliases using Netlify aliases: https://gohugo.io/news/http2-server-push-in-hugo/
+
+Once ox-hugo has generated the Markdown files for my posts, it is Hugo's turn to convert them into HTML files that can be published as a website. Ox-hugo knows the default structure expected by Hugo (a top-level =content/= directory in which you have directories for each section), so there's usually not much to do other than point ox-hugo to where your top-level Hugo directory is, using the [[https://ox-hugo.scripter.co/doc/usage/#before-you-export][HUGO_BASE_DIR]] property. Of course, this presumes you already have a Hugo site. If you have never used Hugo before, I would suggest you go through the [[http://gohugo.io/getting-started/quick-start/][Quick Start]] guide, which shows how to set up a basic website using the [[https://github.com/budparr/gohugo-theme-ananke][Ananke]] theme. This is the same theme I use for my website.
+
+One particular piece of configuration I use to make publishing with GitHub pages easier: I change Hugo's =publishDir= parameter from its default value of =public= to =docs=, to make it easier to publish my final website from within the same repository (more below in the [[*Hosting][Hosting]] section). This is done by specifying the parameter in Hugo's [[https://github.com/zzamboni/zzamboni.org/blob/master/config.toml#L9][=config.toml=]] file:
+
+#+begin_src conf-toml
+  publishDir = "docs"
+#+end_src
+
+Hugo has extensive capabilities and it is beyond the scope of this article to show you how to use it, but it has [[https://gohugo.io/documentation/][very good documentation]] which I would urge you to peruse to learn more about it. Feel free to peruse [[https://github.com/zzamboni/zzamboni.org/blob/master/content-org/zzamboni.org][my setup]] for ideas.
+
+*** Hosting
+
+- Publishing from docs/
+- Setting up SSL certificate
+
+*** What's next?
+
+- Automatic publishing using GitHub CI
+- Maybe migrate to GitLab pages?
+
 * Posts
 :PROPERTIES:
 :export_hugo_section: post
@@ -257,9 +330,13 @@ CLOSED: [2017-12-17 Sun 20:14]
 I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file.
 #+end_description
 
+{{< leanpubbook book="lit-config" style="float:right" >}}
+
 Last update: *{{{updatetime}}}*
 
-I have enjoyed slowly converting my configuration files to [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate programming]] style style using org-mode in Emacs. I previously posted my [[file:../my-elvish-configuration-with-commentary/][Elvish configuration]], and now it's the turn of my Emacs configuration file. The text below is included directly from my [[https://github.com/zzamboni/dot_emacs/blob/master/init.org][init.org]] file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [[https://github.com/zzamboni/dot_emacs/blob/master/init.org][init.org file in GitHub]] for my current, live configuration, and the generated file at [[https://github.com/zzamboni/dot_emacs/blob/master/init.el]].
+I have enjoyed slowly converting my configuration files to [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate programming]] style style using org-mode in Emacs. I previously posted my [[file:../my-elvish-configuration-with-commentary/][Elvish configuration]], and now it's the turn of my Emacs configuration file. The text below is included directly from my [[https://github.com/zzamboni/dot_emacs/blob/master/init.org][init.org]] file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [[https://github.com/zzamboni/dot_emacs/blob/master/init.org][init.org file in GitHub]] for my current, live configuration, and the generated file at [[https://github.com/zzamboni/dot_emacs/blob/master/init.el][init.el]].
+
+If you are interested in writing your own Literate Config files, check out my new book [[https://leanpub.com/lit-config][Literate Config]] on Leanpub!
 
 #+include: "~/.emacs.d/init.org" :lines "19-"
 
@@ -273,9 +350,14 @@ CLOSED: [2018-01-08 Mon 13:31]
 In my ongoing series of literate config files, I present to you my Hammerspoon configuration file.
 #+end_description
 
+{{< leanpubbook book="lit-config" style="float:right" >}}
+{{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
+
 Last update: *{{{updatetime}}}*
 
 In my [[file:../my-elvish-configuration-with-commentary/][ongoing]] [[file:../my-emacs-configuration-with-commentary][series]] of [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate]] config files, I present to you my [[http://www.hammerspoon.org/][Hammerspoon]] configuration file. You can see the generated file at [[https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua]]. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [[https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org][in GitHub]].
+
+If you are interested in writing your own Literate Config files, check out my new book [[https://leanpub.com/lit-config][Literate Config]] on Leanpub!
 
 #+include: "~/.hammerspoon/init.org" :lines "19-"
 
@@ -289,11 +371,15 @@ CLOSED: [2017-11-16 Thu 20:21]
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 #+end_description
 
+{{< leanpubbook book="lit-config" style="float:right" >}}
+
 Last update: *{{{updatetime}}}*
 
 In this blog post I will walk you through my current [[http://elvish.io][Elvish]] configuration file, with running commentary about the different sections.
 
 This is also my first blog post written using [[http://orgmode.org/][org-mode]], which I have started using for writing and documenting my code, using [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate programming]]. The content below is included unmodified from my [[https://github.com/zzamboni/dot-elvish/blob/master/rc.org][rc.org file]] (as of the date shown above), from which the [[https://github.com/zzamboni/dot-elvish/blob/master/rc.elv][rc.elv]] file is directly generated.
+
+If you are interested in writing your own Literate Config files, check out my new book [[https://leanpub.com/lit-config][Literate Config]] on Leanpub!
 
 Without further ado...
 
@@ -2000,74 +2086,6 @@ Puedes obtener más información, leer una muestra gratuita y comprarlo  en  [[h
 {{< utileriasbookimglink >}}
 
 ¡Espero lo disfrutes!  Favor de enviarme tus comentarios a través de  la  página  [[https://leanpub.com/utileras-unix/email_author/new][/Escribe al Autor/]] en LeanPub.
-
-*** TODO My blogging workflow with Emacs, org-mode+ox-hugo, Hugo and GitHub :blogging:howto:emacs:hugo:orgmode:github:
-:PROPERTIES:
-:export_file_name: my-blogging-workflow
-:END:
-
-My blogging has seen [[file:/about/#my-online-past][multiple iterations]] over the years, and with it, the tools I use have changed. At the moment I use a set of tools and workflows which make it very easy to keep my blog updated, and I will describe them in this post. In short, they are:
-
-- *Writing:* Emacs, org-mode
-- *Exporting:* ox-hugo
-- *Publishing:* Hugo
-- *Hosting:* GitHub Pages
-
-Let's take a closer look at each of the stages.
-
-**** Writing using Emacs and org-mode
-
-I have been using Emacs for almost 30 years, so its use for me is second nature. However, I only recently started using [[https://orgmode.org/][org-mode]] for writing, blogging, coding, presentations and more, thanks to the hearty recommendations and information from [[http://www.cmdln.org/][Nick]] and many others. I am duly impressed. I have been a fan of the idea of [[https://en.wikipedia.org/wiki/Literate_programming][literate programming]] for many years, and I have tried other tools before (most notably [[https://www.cs.tufts.edu/~nr/noweb/][noweb]], which I used during grad school for many of my homeworks and projects), but org-mode is the first tool I have encountered which seems to make it practical. Here are some of the resources I have found useful in learning it:
-
-- Howard Abrams' [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][Introduction to Literate Programming]], which got me jumpstarted into writing code documented with org-mode.
-- Nick Anderson's [[https://github.com/nickanderson/Level-up-your-notes-with-Org][Level up your notes with Org]], which contains many useful tips and configuration tricks.
-- Sacha Chua's [[http://sachachua.com/blog/2014/01/tips-learning-org-mode-emacs/][Some tips for learning Org Mode for Emacs]], her [[http://pages.sachachua.com/.emacs.d/Sacha.html][Emacs configuration]] and many of her [[http://sachachua.com/blog/category/emacs/][other articles]].
-- Rainer König's [[https://www.youtube.com/playlist?list=PLVtKhBrRV_ZkPnBtt_TD1Cs9PJlU0IIdE][OrgMode Tutorial]] video series.
-
-You can see some examples in [[file:/tags/literateconfig/][my "literate config files" series]], and all recent posts in this blog are written using org-mode (you can find the [[https://github.com/zzamboni/zzamboni.org/blob/master/content-org/zzamboni.org][source file]] in GitHub).
-
-Over time I have tweaked my Emacs configuration to make writing with org-mode more pleasant. You can see my tutorial on [[file:/post/beautifying-org-mode-in-emacs/][Beautifying org-mode in Emacs]], and also see the full [[file:/post/my-emacs-configuration-with-commentary/#org-mode][org-mode section of my Emacs config]] for reference.
-
-So, I write posts using Emacs, in org-mode markup. What's next?
-
-**** Exporting
-
-When I first started writing my blog posts in org-mode, I relied on Hugo's [[https://gohugo.io/content-management/formats/][built-in support for it]], which allows you to simply create posts in =.org= files instead of =.md= and have them parse in org-mode format. Unfortunately, the support is not perfect. Hugo relies on the [[https://github.com/chaseadamsio/goorgeous][goorgeous]] library which, while quite powerful, does not support the full org-mode markup capabilities, so many elements are not rendered or processed properly.
-
-Happily, I discovered [[https://ox-hugo.scripter.co/][ox-hugo]], an org-mode exporter which produces Hugo-ready Markdown files from the org-mode source, from which Hugo can produce the final HTML output. This is a much better arrangement, because each component handles only its native format: ox-hugo processes the org-mode source with the full support of org-mode and Emacs, and Hugo processes Markdown files, which are its native input format. You can use the full range of org-mode markup in your posts, and they will be correctly converted to their equivalents in Markdown. Furthermore, your source files remain output-agnostic, as you can still use all other org-mode exporters if you need to produce other formats.
-
-Ox-hugo supports [[https://ox-hugo.scripter.co/#screenshot-one-post-per-subtree][two ways of organizing your posts]]: one post per org file, and one post per org subtree. In the first one, you write a separate org file for each post. In the second, you keep all your posts in a single org file, and specify (through org-mode properties) which subtrees should be exported as posts. The latter is the recommended way to organize posts. At first I was skeptical - who wants to keep everything in a single file? However, as I have worked more with it, I have come to realize its advantages. For one, it makes it easier to specify post metadata - for example, I have defined sections in [[https://github.com/zzamboni/zzamboni.org/blob/master/content-org/zzamboni.org][my org-mode source file]] for certain frequent topics, and those are tagged accordingly in the org source. When I create posts as subtrees of those sections, they inherit the top-level tags automatically, as well as any other properties, which I used to define (for example) the header images used in the posts. Having all posts in a single file also makes it easier to share other content, such as org macro definitions, ox-hugo configuration options, etc.
-
-Note that ox-hugo is not limited to exporting blog posts, but any content processed by Hugo. For example, my org source file also includes all the static pages in my web site - they are differentiated from blog posts simply by the Hugo [[https://gohugo.io/content-management/sections/][section]] to which they belong, which is defined using the [[https://ox-hugo.scripter.co/doc/usage/#before-you-export][HUGO_SECTION property]], which is interpreted accordingly by ox-hugo.
-
-Since the full power of org markup is available when using ox-hugo, you can do very interesting things. For example, all posts in my [[file:/tags/literateconfig/][Literate Config Files]] category are automatically updated every time I export them with the actual, real content of the corresponding config files, which I also keep in org format. There is a lot of hidden power in org-mode and ox-hugo. My recommendation is to go through the source files for some of the websites listed in ox-hugo's [[https://ox-hugo.scripter.co/doc/examples/][Real World Examples]] section. For example, I have learned a lot by reading through the source files for the [[https://github.com/kaushalmodi/ox-hugo/tree/master/doc][ox-hugo website]] itself.
-
-**** Publishing
-
-Using Netlify. Caveats:
-
-- Take care of invalid characters in filenames.
-- Disable Hugo redirects and implement aliases using Netlify aliases: https://gohugo.io/news/http2-server-push-in-hugo/
-
-Once ox-hugo has generated the Markdown files for my posts, it is Hugo's turn to convert them into HTML files that can be published as a website. Ox-hugo knows the default structure expected by Hugo (a top-level =content/= directory in which you have directories for each section), so there's usually not much to do other than point ox-hugo to where your top-level Hugo directory is, using the [[https://ox-hugo.scripter.co/doc/usage/#before-you-export][HUGO_BASE_DIR]] property. Of course, this presumes you already have a Hugo site. If you have never used Hugo before, I would suggest you go through the [[http://gohugo.io/getting-started/quick-start/][Quick Start]] guide, which shows how to set up a basic website using the [[https://github.com/budparr/gohugo-theme-ananke][Ananke]] theme. This is the same theme I use for my website.
-
-One particular piece of configuration I use to make publishing with GitHub pages easier: I change Hugo's =publishDir= parameter from its default value of =public= to =docs=, to make it easier to publish my final website from within the same repository (more below in the [[*Hosting][Hosting]] section). This is done by specifying the parameter in Hugo's [[https://github.com/zzamboni/zzamboni.org/blob/master/config.toml#L9][=config.toml=]] file:
-
-#+begin_src conf-toml
-  publishDir = "docs"
-#+end_src
-
-Hugo has extensive capabilities and it is beyond the scope of this article to show you how to use it, but it has [[https://gohugo.io/documentation/][very good documentation]] which I would urge you to peruse to learn more about it. Feel free to peruse [[https://github.com/zzamboni/zzamboni.org/blob/master/content-org/zzamboni.org][my setup]] for ideas.
-
-**** Hosting
-
-- Publishing from docs/
-- Setting up SSL certificate
-
-**** What's next?
-
-- Automatic publishing using GitHub CI
-- Maybe migrate to GitLab pages?
 
 *** DONE Automating Leanpub book publishing with Hammerspoon and CircleCI :writing:hammerspoon:circleci:automation:leanpub:github:
 CLOSED: [2019-04-16 Tue 11:25]

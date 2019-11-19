@@ -10,11 +10,15 @@ toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
-Last update: **November 18, 2019**
+{{< leanpubbook book="lit-config" style="float:right" >}}
+
+Last update: **November 19, 2019**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
 This is also my first blog post written using [org-mode](http://orgmode.org/), which I have started using for writing and documenting my code, using [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html). The content below is included unmodified from my [rc.org file](https://github.com/zzamboni/dot-elvish/blob/master/rc.org) (as of the date shown above), from which the [rc.elv](https://github.com/zzamboni/dot-elvish/blob/master/rc.elv) file is directly generated.
+
+If you are interested in writing your own Literate Config files, check out my new book [Literate Config](https://leanpub.com/lit-config) on Leanpub!
 
 Without further ado...
 
