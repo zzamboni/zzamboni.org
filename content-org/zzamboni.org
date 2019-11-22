@@ -344,7 +344,7 @@ If you are interested in writing your own Literate Config files, check out my ne
 CLOSED: [2018-01-08 Mon 13:31]
 :PROPERTIES:
 :export_file_name: 2018-01-08-my-hammerspoon-configuration-with-commentary
-:export_hugo_custom_front_matter: :toc true :featured_image /images/hammerspoon.png
+:export_hugo_custom_front_matter: :toc true :featured_image /images/hammerspoon.jpg
 :END:
 #+begin_description
 In my ongoing series of literate config files, I present to you my Hammerspoon configuration file.
@@ -537,7 +537,7 @@ The setup described above has considerably improved my enjoyment of writing in E
 
 ** Hammerspoon                                        :hammerspoon:mac:howto:
 :PROPERTIES:
-:export_hugo_custom_front_matter: :toc true :featured_image /images/hammerspoon.png
+:export_hugo_custom_front_matter: :toc true :featured_image /images/hammerspoon.jpg
 :END:
 
 *** DONE Getting Started With Hammerspoon
@@ -1568,7 +1568,7 @@ CLOSED: [2018-10-16 Tue 21:22]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2018-10-16-first-release-of-learning-hammerspoon
 :EXPORT_FILE_NAME: index
-:export_hugo_custom_front_matter: :toc false :featured_image /images/hammerspoon.png
+:export_hugo_custom_front_matter: :toc false :featured_image /images/hammerspoon.jpg
 :END:
 #+begin_description
 I am happy to announce the first release of my new book "Learning Hammerspoon", a book devoted to using Hammerspoon to make using your Mac easier, faster and more fun.
@@ -1596,7 +1596,7 @@ CLOSED: [2019-04-08 Mon 09:51]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2019-04-08-new-release-of-learning-hammerspoon
 :EXPORT_FILE_NAME: index
-:export_hugo_custom_front_matter: :toc false :featured_image /images/learning-hs-cover.png
+:export_hugo_custom_front_matter: :toc false :featured_image /images/learning-hs-cover.jpg
 :END:
 #+begin_description
 I am happy to announce a new release of my new book "Learning Hammerspoon", including a brand new chapter and many other improvements.
@@ -2052,7 +2052,7 @@ CLOSED: [2019-11-18 Mon 22:44]
 :PROPERTIES:
 :export_hugo_bundle: 2019-11-18-new-book-literate-config
 :export_file_name: index
-:export_hugo_custom_front_matter: :toc false :featured_image /images/literate-config-cover.png
+:export_hugo_custom_front_matter: :toc false :featured_image /images/literate-config-cover.jpg
 :END:
 #+begin_description
 I am happy to announce the new release of my new book "Literate Config", devoted to the use of Literate Programming for writing and documenting configuration files.
@@ -2071,7 +2071,7 @@ CLOSED: [2019-08-30 Fri 00:23]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2019-08-30-primera-edicion-utilerias-unix
 :EXPORT_FILE_NAME: index
-:export_hugo_custom_front_matter: :toc false :featured_image /images/utilerias-cover.png
+:export_hugo_custom_front_matter: :toc false :featured_image /images/utilerias-cover.jpg
 :END:
 #+begin_description
 Me complace anunciar  la primera edición de mi nuevo libro, y mi primer libro en  Español, "Utilerías de Unix".
@@ -2092,12 +2092,12 @@ CLOSED: [2019-04-16 Tue 11:25]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2019-04-16-leanpub-publishing-with-hammerspoon-circleci
 :EXPORT_FILE_NAME: index
-:export_hugo_custom_front_matter: :toc true :featured_image /images/hammerspoon-github-circleci-leanpub.001.png
+:export_hugo_custom_front_matter: :toc true :featured_image /images/hammerspoon-github-circleci-leanpub.001.jpg
 :END:
 
 I am the author of two books: [[https://cf-learn.info/][/Learning CFEngine/]] and [[https://leanpub.com/learning-hammerspoon][/Learning Hammerspoon/]], both self-published using [[https://leanpub.com/][Leanpub]]. The source of my books is kept in GitHub repositories. In this post I will show you how I use the [[https://leanpub.com/help/api][Leanpub API]] together with [[https://www.hammerspoon.org/][Hammerspoon]]  and [[https://circleci.com][CircleCI]] as part  of my workflow, to automate and monitor the building, previewing and publishing of my books.
 
-file:images/hammerspoon-github-circleci-leanpub-transp.png
+file:images/hammerspoon-github-circleci-leanpub-transp.jpg
 
 {{% tip %}}
 The Hammerspoon section of this post is Mac-specific (since Hammerspoon is a Mac-only application), but the integration between GitHub, CircleCI and Leanpub can be applied regardless of the OS you use.

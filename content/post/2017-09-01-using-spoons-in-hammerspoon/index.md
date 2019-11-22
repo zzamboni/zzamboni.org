@@ -7,7 +7,7 @@ tags = ["hammerspoon", "mac", "howto", "spoons"]
 draft = false
 creator = "Emacs 26.3 (Org mode 9.2.6 + ox-hugo)"
 toc = true
-featured_image = "/images/hammerspoon.png"
+featured_image = "/images/hammerspoon.jpg"
 +++
 
 In this second article about Hammerspoon, we look into _Spoons_, modules written in Lua which can be easily installed and loaded into Hammerspoon to provide ready-to-use functionality. Spoons provide a predefined API to configure and use them. They are also a good way to share your own work with other users.

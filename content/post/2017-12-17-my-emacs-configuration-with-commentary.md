@@ -12,7 +12,7 @@ toc = true
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **November 19, 2019**
+Last update: **November 22, 2019**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at [init.el](https://github.com/zzamboni/dot%5Femacs/blob/master/init.el).
 
@@ -623,6 +623,7 @@ Org-Agenda is the umbrella for all todo, journal, calendar, and other views. I s
                               (tags . " %i %-12:c")
                               (search . " %i %-12:c")))
   (org-agenda-start-on-weekday nil))
+
 ```
 
 I also provide some customization for the `holidays` package, since its entries are included in the Org Agenda through the `org-agenda-include-diary` integration.
@@ -663,8 +664,11 @@ I also provide some customization for the `holidays` package, since its entries 
 ```emacs-lisp
 (require 'org-habit)
 (use-package org-super-agenda
+  :defer nil
   :custom
-  (org-super-agenda-groups '((:auto-dir-name t))))
+  (org-super-agenda-groups '((:auto-dir-name t)))
+  :config
+  (org-super-agenda-mode))
 ```
 
 I configure `org-archive` to archive completed TODOs by default to the `archive.org` file in the same directory as the source file, under the "date tree" corresponding to the task's CLOSED date - this allows me to easily separate work from non-work stuff. Note that this can be overridden for specific files by specifying the desired value of `org-archive-location` in the `#+archive:` property at the top of the file.
@@ -919,13 +923,13 @@ See `org-capture-templates' for more information."
 First, load the built-in EasyPG support. By calling `(epa-file-enable)`, Emacs automatically encrypts/decrypts files with a `.gpg` extension. By default it asks about the key to use, but I configure it to always use my own GPG key.
 
 ```emacs-lisp
-(use-package epa-file
-  :ensure nil ;; included with Emacs
-  :config
-  (setq epa-file-encrypt-to '("diego@zzamboni.org"))
-  (epa-file-enable)
-  :custom
-  (epa-file-select-keys 'silent))
+  (use-package epa-file
+    :ensure nil ;; included with Emacs
+    :config
+    (setq epa-file-encrypt-to '("diego@zzamboni.org"))
+;    (epa-file-enable)
+    :custom
+    (epa-file-select-keys 'silent))
 ```
 
 Then, load [org-crypt](https://orgmode.org/worg/org-tutorials/encrypting-files.html) to enable selective  encryption/decryption using GPG within org-mode.
@@ -2245,6 +2249,12 @@ Many other programming languages are well served by a single mode, without so mu
       ("C-c m <"   . mc/mark-next-like-this)
       ("C-c m >"   . mc/mark-previous-like-this)
       ("C-c m C-<" . mc/mark-all-like-this))
+    ```
+
+-   Lorem Ipsum
+
+    ```emacs-lisp
+    (use-package lorem-ipsum)
     ```
 
 

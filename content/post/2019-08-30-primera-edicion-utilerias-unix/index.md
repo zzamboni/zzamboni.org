@@ -7,7 +7,7 @@ tags = ["book", "announcement", "spanish", "unix", "linux", "leanpub"]
 draft = false
 creator = "Emacs 26.3 (Org mode 9.2.6 + ox-hugo)"
 toc = false
-featured_image = "/images/utilerias-cover.png"
+featured_image = "/images/utilerias-cover.jpg"
 +++
 
 _(I usually write in English, but this new book  is  in  Spanish, so the announcement is also in Spanish. An English version of this book is in the works)_

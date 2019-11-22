@@ -7,7 +7,7 @@ tags = ["hammerspoon", "mac", "howto"]
 draft = false
 creator = "Emacs 26.3 (Org mode 9.2.6 + ox-hugo)"
 toc = true
-featured_image = "/images/hammerspoon.png"
+featured_image = "/images/hammerspoon.jpg"
 +++
 
 This is the first installment of a series of posts about Hammerspoon, a staggeringly powerful automation utility which gives you an amazing degree of control over your Mac, allowing you to automate and control almost anything. In the word of Hammerspoon's motto: _Making the runtime, funtime_.

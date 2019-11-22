@@ -6,7 +6,7 @@ date = 2019-11-18T22:44:00+01:00
 draft = false
 creator = "Emacs 26.3 (Org mode 9.2.6 + ox-hugo)"
 toc = false
-featured_image = "/images/literate-config-cover.png"
+featured_image = "/images/literate-config-cover.jpg"
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}

@@ -7,7 +7,7 @@ tags = ["hammerspoon", "mac", "howto", "book", "announcement"]
 draft = false
 creator = "Emacs 26.3 (Org mode 9.2.6 + ox-hugo)"
 toc = false
-featured_image = "/images/learning-hs-cover.png"
+featured_image = "/images/learning-hs-cover.jpg"
 +++
 
 {{< hsbookimglink style="float:right" >}}

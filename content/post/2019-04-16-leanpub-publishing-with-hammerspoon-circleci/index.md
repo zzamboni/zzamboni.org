@@ -6,12 +6,12 @@ tags = ["writing", "hammerspoon", "circleci", "automation", "leanpub", "github"]
 draft = false
 creator = "Emacs 26.3 (Org mode 9.2.6 + ox-hugo)"
 toc = true
-featured_image = "/images/hammerspoon-github-circleci-leanpub.001.png"
+featured_image = "/images/hammerspoon-github-circleci-leanpub.001.jpg"
 +++
 
 I am the author of two books: [_Learning CFEngine_](https://cf-learn.info/) and [_Learning Hammerspoon_](https://leanpub.com/learning-hammerspoon), both self-published using [Leanpub](https://leanpub.com/). The source of my books is kept in GitHub repositories. In this post I will show you how I use the [Leanpub API](https://leanpub.com/help/api) together with [Hammerspoon](https://www.hammerspoon.org/)  and [CircleCI](https://circleci.com) as part  of my workflow, to automate and monitor the building, previewing and publishing of my books.
 
-{{< figure src="hammerspoon-github-circleci-leanpub-transp.png" >}}
+{{< figure src="images/hammerspoon-github-circleci-leanpub-transp.jpg" >}}
 
 {{% tip %}}
 The Hammerspoon section of this post is Mac-specific (since Hammerspoon is a Mac-only application), but the integration between GitHub, CircleCI and Leanpub can be applied regardless of the OS you use.
