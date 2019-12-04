@@ -98,7 +98,7 @@ CLOSED: [2018-03-22 Thu 19:40]
 
 - 2009-2016: During this time my blog went through several iterations, hosted/powered by [[http://www.posterous.com/][Posterous]], [[https://jekyllrb.com/][Jekyll]], [[http://octopress.org/][Octopress]], [[https://postach.io/site][Postach.io]] and [[https://github.com/zzamboni/enwrite][Enwrite]]. Most blog entries from this period have been merged into [[file:/post][my current blog]];
 - 2005-2009: My blog titled [[file:/brt][BrT]], powered mainly by a self-hosted Wordpress installation, with some intermixed use of Posterous. What you find at the link is a static archive copy;
-- 1997-2001: My hand-maintained [[http://homes.cerias.purdue.edu/~zamboni/][web page at Purdue University]] ([[/cerias/zamboni/][here's a mirror]] in case the original ever disappears).
+- 1997-2001: My hand-maintained +[[http://homes.cerias.purdue.edu/~zamboni/][web page at Purdue University]]+ (the original has disappeared, [[/cerias/zamboni/][here's a mirror]]).
 
 *** About this site
 

@@ -21,7 +21,7 @@ featured_image = "/images/legoland.jpg"
 
 -   2009-2016: During this time my blog went through several iterations, hosted/powered by [Posterous](http://www.posterous.com/), [Jekyll](https://jekyllrb.com/), [Octopress](http://octopress.org/), [Postach.io](https://postach.io/site) and [Enwrite](https://github.com/zzamboni/enwrite). Most blog entries from this period have been merged into [my current blog](/post);
 -   2005-2009: My blog titled [BrT](/brt), powered mainly by a self-hosted Wordpress installation, with some intermixed use of Posterous. What you find at the link is a static archive copy;
--   1997-2001: My hand-maintained [web page at Purdue University](http://homes.cerias.purdue.edu/~zamboni/) ([here's a mirror](/cerias/zamboni/) in case the original ever disappears).
+-   1997-2001: My hand-maintained ~~[web page at Purdue University](http://homes.cerias.purdue.edu/~zamboni/)~~ (the original has disappeared, [here's a mirror](/cerias/zamboni/)).
 
 
 ## About this site {#about-this-site}
