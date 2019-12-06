@@ -3,25 +3,37 @@ title = "About"
 author = ["Diego Zamboni"]
 date = 2018-03-22T19:40:00+01:00
 draft = false
-creator = "Emacs 26.3 (Org mode 9.2.6 + ox-hugo)"
+creator = "Emacs 26.3 (Org mode 9.3 + ox-hugo)"
 weight = 6
 featured_image = "/images/legoland.jpg"
 +++
 
-**Who:** My name is Diego Zamboni. I am a computer scientist, security expert, consultant, project and team leader, programmer, sysadmin, author and overall geek. I am from Mexico but live in Switzerland with my beautiful wife and our two awesome daughters.
+**Who:**
+: My name is Diego Zamboni. I am a computer scientist, security expert, consultant, project and team leader, programmer, sysadmin, author and overall geek. I am from Mexico but live in Switzerland with my beautiful wife and our two awesome daughters.
 
-**What:** I work as Enterprise Security Architect in the IT Clouds Division of [Swisscom](http://swisscom.com/). I am also the author of ["Learning CFEngine"](http://cf-learn.info) and ["Learning Hammerspoon"](https://leanpub.com/learning-hammerspoon).
 
-**Where:** I was born in Argentina, but have moved around all my life.  When I was very young I moved to Mexico, where I lived in four different cities before moving to the U.S. to pursue my Ph.D. at [Purdue University](http://www.cerias.purdue.edu/) under the direction of [Gene Spafford](http://spaf.cerias.purdue.edu/). Upon finishing my studies, my wife and I decided to go to Switzerland, where I worked at the [IBM Zurich Research Lab](http://www.zurich.ibm.com/). Eight years and two kids later, we [moved to Mexico](/brt/2009/09/08/going-home/index.html) in late 2009. In 2015, we moved back to Switzerland.
+**What:**
+: I work as Enterprise Security Architect in the IT Clouds Division of [Swisscom](http://swisscom.com/). I am also the author of ["Learning CFEngine"](http://cf-learn.info) and ["Learning Hammerspoon"](https://leanpub.com/learning-hammerspoon).
 
-**Long version:** If you are interested, here's my [curriculum vitae](/vita.html). For other useless trivia about me, see [here](http://www.zzamboni.org/brt/2007/03/07/blog-tagged/index.html).
+
+**Where:**
+: I was born in Argentina, but have moved around all my life.  When I was very young I moved to Mexico, where I lived in four different cities before moving to the U.S. to pursue my Ph.D. at [Purdue University](http://www.cerias.purdue.edu/) under the direction of [Gene Spafford](http://spaf.cerias.purdue.edu/). Upon finishing my studies, my wife and I decided to go to Switzerland, where I worked at the [IBM Zurich Research Lab](http://www.zurich.ibm.com/). Eight years and two kids later, we [moved to Mexico](/brt/2009/09/08/going-home/index.html) in late 2009. In 2015, we moved back to Switzerland.
+
+
+**Long version:**
+: If you are interested, here's my [Curriculum Vitae](/vita). For other useless trivia about me, see [here](http://www.zzamboni.org/brt/2007/03/07/blog-tagged/index.html).
 
 
 ## My online past {#my-online-past}
 
--   2009-2016: During this time my blog went through several iterations, hosted/powered by [Posterous](http://www.posterous.com/), [Jekyll](https://jekyllrb.com/), [Octopress](http://octopress.org/), [Postach.io](https://postach.io/site) and [Enwrite](https://github.com/zzamboni/enwrite). Most blog entries from this period have been merged into [my current blog](/post);
--   2005-2009: My blog titled [BrT](/brt), powered mainly by a self-hosted Wordpress installation, with some intermixed use of Posterous. What you find at the link is a static archive copy;
--   1997-2001: My hand-maintained ~~[web page at Purdue University](http://homes.cerias.purdue.edu/~zamboni/)~~ (the original has disappeared, [here's a mirror](/cerias/zamboni/)).
+2009-2016:
+: During this time my blog went through several iterations, hosted/powered by [Posterous](http://www.posterous.com/), [Jekyll](https://jekyllrb.com/), [Octopress](http://octopress.org/), [Postach.io](https://postach.io/site) and [Enwrite](https://github.com/zzamboni/enwrite). Most blog entries from this period have been merged into [my current blog](/post);
+
+2005-2009:
+: My blog titled [BrT](/brt), powered mainly by a self-hosted Wordpress installation, with some intermixed use of Posterous. What you find at the link is a static archive copy;
+
+1997-2001:
+: My hand-maintained ~~[web page at Purdue University](http://homes.cerias.purdue.edu/~zamboni/)~~ (the original has disappeared, [here's a mirror](/cerias/zamboni/)).
 
 
 ## About this site {#about-this-site}

@@ -6,7 +6,7 @@ aliases:
 
 You can download my full [Curriculum Vitae (PDF)](/files/vita/zamboni-vita.pdf).
 
-Last updated on **November 29th, 2019**.
+Last updated on **December 6th, 2019**.
 
 If you have any questions or comments, or need additional
 information, please do not hesitate to [contact me](/contact).

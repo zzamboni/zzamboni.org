@@ -86,19 +86,19 @@ CLOSED: [2018-03-22 Thu 19:40]
 :export_file_name: _index
 :END:
 
-*Who:* My name is Diego Zamboni. I am a computer scientist, security expert, consultant, project and team leader, programmer, sysadmin, author and overall geek. I am from Mexico but live in Switzerland with my beautiful wife and our two awesome daughters.
+- *Who:* :: My name is Diego Zamboni. I am a computer scientist, security expert, consultant, project and team leader, programmer, sysadmin, author and overall geek. I am from Mexico but live in Switzerland with my beautiful wife and our two awesome daughters.
 
-*What:* I work as Enterprise Security Architect in the IT Clouds Division of [[http://swisscom.com/][Swisscom]]. I am also the author of [[http://cf-learn.info]["Learning CFEngine"]] and [[https://leanpub.com/learning-hammerspoon]["Learning Hammerspoon"]].
+- *What:* :: I work as Enterprise Security Architect in the IT Clouds Division of [[http://swisscom.com/][Swisscom]]. I am also the author of [[http://cf-learn.info]["Learning CFEngine"]] and [[https://leanpub.com/learning-hammerspoon]["Learning Hammerspoon"]].
 
-*Where:* I was born in Argentina, but have moved around all my life.  When I was very young I moved to Mexico, where I lived in four different cities before moving to the U.S. to pursue my Ph.D. at [[http://www.cerias.purdue.edu/][Purdue University]] under the direction of [[http://spaf.cerias.purdue.edu/][Gene Spafford]]. Upon finishing my studies, my wife and I decided to go to Switzerland, where I worked at the [[http://www.zurich.ibm.com/][IBM Zurich Research Lab]]. Eight years and two kids later, we [[file:/brt/2009/09/08/going-home/index.html][moved to Mexico]] in late 2009. In 2015, we moved back to Switzerland.
+- *Where:* :: I was born in Argentina, but have moved around all my life.  When I was very young I moved to Mexico, where I lived in four different cities before moving to the U.S. to pursue my Ph.D. at [[http://www.cerias.purdue.edu/][Purdue University]] under the direction of [[http://spaf.cerias.purdue.edu/][Gene Spafford]]. Upon finishing my studies, my wife and I decided to go to Switzerland, where I worked at the [[http://www.zurich.ibm.com/][IBM Zurich Research Lab]]. Eight years and two kids later, we [[file:/brt/2009/09/08/going-home/index.html][moved to Mexico]] in late 2009. In 2015, we moved back to Switzerland.
 
-*Long version:* If you are interested, here's my [[file:/vita.html][curriculum vitae]]. For other useless trivia about me, see [[http://www.zzamboni.org/brt/2007/03/07/blog-tagged/index.html][here]].
+- *Long version:* :: If you are interested, here's my [[file:/vita][Curriculum Vitae]]. For other useless trivia about me, see [[http://www.zzamboni.org/brt/2007/03/07/blog-tagged/index.html][here]].
 
 *** My online past
 
-- 2009-2016: During this time my blog went through several iterations, hosted/powered by [[http://www.posterous.com/][Posterous]], [[https://jekyllrb.com/][Jekyll]], [[http://octopress.org/][Octopress]], [[https://postach.io/site][Postach.io]] and [[https://github.com/zzamboni/enwrite][Enwrite]]. Most blog entries from this period have been merged into [[file:/post][my current blog]];
-- 2005-2009: My blog titled [[file:/brt][BrT]], powered mainly by a self-hosted Wordpress installation, with some intermixed use of Posterous. What you find at the link is a static archive copy;
-- 1997-2001: My hand-maintained +[[http://homes.cerias.purdue.edu/~zamboni/][web page at Purdue University]]+ (the original has disappeared, [[/cerias/zamboni/][here's a mirror]]).
+- 2009-2016: :: During this time my blog went through several iterations, hosted/powered by [[http://www.posterous.com/][Posterous]], [[https://jekyllrb.com/][Jekyll]], [[http://octopress.org/][Octopress]], [[https://postach.io/site][Postach.io]] and [[https://github.com/zzamboni/enwrite][Enwrite]]. Most blog entries from this period have been merged into [[file:/post][my current blog]];
+- 2005-2009: :: My blog titled [[file:/brt][BrT]], powered mainly by a self-hosted Wordpress installation, with some intermixed use of Posterous. What you find at the link is a static archive copy;
+- 1997-2001: :: My hand-maintained +[[http://homes.cerias.purdue.edu/~zamboni/][web page at Purdue University]]+ (the original has disappeared, [[/cerias/zamboni/][here's a mirror]]).
 
 *** About this site
 
