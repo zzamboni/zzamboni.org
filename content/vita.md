@@ -1,10 +1,11 @@
 ---
-title: "Curriculum Vitae"
+title: "Curriculum Vitæ"
 aliases:
     - /vita.html
+    - /vitae.html
 ---
 
-You can download my full [Curriculum Vitae (PDF)](/files/vita/zamboni-vita.pdf).
+You can download my full [Curriculum Vitæ (PDF)](/files/vita/zamboni-vita.pdf).
 
 Last updated on **December 9th, 2019**.
 
