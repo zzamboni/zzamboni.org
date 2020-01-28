@@ -5,7 +5,7 @@ summary = "In my ongoing series of literate config files, I present to you my Ha
 date = 2018-01-08T13:31:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "hammerspoon"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.2.6 + ox-hugo)"
+creator = "Emacs 26.3 (Org mode 9.3.2 + ox-hugo)"
 toc = true
 featured_image = "/images/hammerspoon.jpg"
 +++
@@ -13,7 +13,7 @@ featured_image = "/images/hammerspoon.jpg"
 {{< leanpubbook book="lit-config" style="float:right" >}}
 {{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
 
-Last update: **November 22, 2019**
+Last update: **January 28, 2020**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -92,13 +92,13 @@ BTT = spoon.BetterTouchTool
 
 ## URL Dispatching to site-specific browsers {#url-dispatching-to-site-specific-browsers}
 
-The [URLDispatcher](http://www.hammerspoon.org/Spoons/URLDispatcher.html) spoon makes it possible to open URLs with different browsers. I have created different site-specific browsers using [Epichrome](https://github.com/dmarmor/epichrome), which allows me to keep site-specific bookmarks, search settings, etc.
+The [URLDispatcher](http://www.hammerspoon.org/Spoons/URLDispatcher.html) spoon makes it possible to open URLs with different browsers. I have created different site-specific browsers ~~using [Epichrome](https://github.com/dmarmor/epichrome)~~ using [a script I wrote to create Firefox-based SSBs](https://github.com/zzamboni/firefox-ssb), which allows me to keep site-specific bookmarks, search settings, etc.
 
 ```lua
-JiraApp = "org.epichrome.app.Jira"
-WikiApp = "org.epichrome.app.Wiki"
-CollabApp = "org.epichrome.app.Collab"
-OpsGenieApp = "org.epichrome.app.OpsGenie"
+DefaultBrowser = "org.mozilla.firefox"
+JiraApp = "org.zzamboni.Jira"
+WikiApp = "org.zzamboni.Wiki"
+OpsGenieApp = "org.zzamboni.OpsGenie"
 
 Install:andUse("URLDispatcher",
                {
@@ -107,11 +107,10 @@ Install:andUse("URLDispatcher",
                      { "https?://issue.work.com",         JiraApp },
                      { "https?://jira.work.com",          JiraApp },
                      { "https?://wiki.work.com",          WikiApp },
-                     { "https?://collaboration.work.com", CollabApp },
                      { "https?://app.opsgenie.com",       OpsGenieApp },
                      { "https?://app.eu.opsgenie.com",    OpsGenieApp },
                    },
-                   default_handler = "com.google.Chrome"
+                   default_handler = DefaultBrowser
                    -- default_handler = "com.electron.brave"
                    -- default_handler = "com.brave.Browser.dev"
                  },
@@ -480,7 +479,7 @@ The `useractions` Seal plugin allows me to define my own shortcuts. For example,
 
 ```lua
 ["Hammerspoon docs webpage"] = {
-  url = "https://hammerspoon.org/docs/",
+  url = "http://hammerspoon.org/docs/",
   icon = hs.image.imageFromName(hs.image.systemImageNames.ApplicationIcon),
 },
 ```

@@ -5,7 +5,7 @@ summary = "This is the first installment of a series of posts about Hammerspoon,
 date = 2017-08-21T16:34:00+02:00
 tags = ["hammerspoon", "mac", "howto"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.2.6 + ox-hugo)"
+creator = "Emacs 26.3 (Org mode 9.3.2 + ox-hugo)"
 toc = true
 featured_image = "/images/hammerspoon.jpg"
 +++
@@ -106,7 +106,7 @@ You may have noticed by now another common operation while developing Hammerspoo
 hs.hotkey.bindSpec({ { "ctrl", "cmd", "alt" }, "r" }, hs.reload)
 ```
 
-Another useful development tool is the `hs` command, which you can run from your terminal to get a Hammerspoon console. To install it, you can use the [`hs.ipc".cliInstall`](https://www.hammerspoon.org/docs/hs.ipc"#cliInstall) function, which you can just add to your `init.lua` file to check and install the command every time Hammerspoon runs.
+Another useful development tool is the `hs` command, which you can run from your terminal to get a Hammerspoon console. To install it, you can use the [`hs.ipc".cliInstall`](https://www.hammerspoon.org/docs/hs.ipc%22#cliInstall) function, which you can just add to your `init.lua` file to check and install the command every time Hammerspoon runs.
 
 {{% warning %}}
  [`hs.ipc.cliInstall`](https://www.hammerspoon.org/docs/hs.ipc#cliInstall) creates symlinks under `/usr/local/` to the `hs` command and its manual page file, located inside the Hammerspoon application bundle. Under some circumstances (particularly if you build Hammerspoon from source, or if you install different versions of it), you may end up with broken symlinks. If the `hs` command stops working and `hs.ipc.cliInstall()` doesn't fix it, look for broken symlinks left behind from old versions of Hammerspoon.  Remove them and things should work again.

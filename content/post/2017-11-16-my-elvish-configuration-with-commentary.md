@@ -5,14 +5,14 @@ summary = "In this blog post I will walk you through my current Elvish configura
 date = 2017-11-16T20:21:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "elvish"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.2.6 + ox-hugo)"
+creator = "Emacs 26.3 (Org mode 9.3.2 + ox-hugo)"
 toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **November 22, 2019**
+Last update: **January 28, 2020**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -40,9 +40,6 @@ paths = [
   /usr/local/opt/python/libexec/bin
   /usr/local/opt/ruby/bin
   ~/Dropbox/Personal/devel/hammerspoon/spoon/bin
-  ~/.gem/ruby/2.4.0/bin
-  /opt/X11/bin
-  /Library/TeX/texbin
   /usr/local/bin
   /usr/local/sbin
   /usr/sbin
@@ -140,6 +137,12 @@ I add a couple of keybindings which are missing from the default `readline-bindi
     edit:insert:binding[Alt-d] = $edit:kill-small-word-right~
     ```
 
+I also bind "[instant preview mode](https://elv.sh/ref/edit.html#edit-instantstart)" to <kbd>Alt-m</kbd>. This is useful to see the results of a command while you are typing it.
+
+```elvish
+edit:insert:binding[Alt-m] = $edit:-instant:start~
+```
+
 
 ## Aliases {#aliases}
 
@@ -152,11 +155,11 @@ use github.com/zzamboni/elvish-modules/alias
 For reference, I define here a few of my commonly-used aliases:
 
 ```elvish
-alias:new dfc e:dfc -W -p -/dev/disk1s4,devfs,map
-alias:new ls e:exa --color-scale --git --group-directories-first
-alias:new cat bat
-alias:new more bat --paging always
-alias:new v vagrant
+  alias:new dfc e:dfc -W -p -/dev/disk1s4,devfs,map
+#  alias:new ls e:exa --color-scale --git --group-directories-first
+  alias:new cat bat
+  alias:new more bat --paging always
+  alias:new v vagrant
 ```
 
 
@@ -192,9 +195,9 @@ use github.com/zzamboni/elvish-completions/builtins
 I configure the git completer to use `hub` instead of `git` (if you use plain git, you don't need to call `git:init`)
 
 ```elvish
-use github.com/zzamboni/elvish-completions/git
-git:git-command = hub
-git:init
+use github.com/zzamboni/elvish-completions/git git-completions
+git-completions:git-command = hub
+git-completions:init
 ```
 
 This is not usually necessary, but I load the `comp` library specifically since I do a lot of tests and development of completions.
@@ -278,7 +281,7 @@ alias:new cd &use=[github.com/zzamboni/elvish-modules/dir] dir:cd
 alias:new cdb &use=[github.com/zzamboni/elvish-modules/dir] dir:cdb
 ```
 
-`dir` also implements a narrow-based directory history chooser, which I bind to <kbd>Alt-i</kbd> (I have found I don't use this as much as I thought I would - the built-in location mode works nicely).
+`dir` also implements a custom directory history chooser, which I bind to <kbd>Alt-i</kbd> (I have found I don't use this as much as I thought I would - the built-in location mode works nicely).
 
 ```elvish
 edit:insert:binding[Alt-i] = $dir:history-chooser~
@@ -294,10 +297,19 @@ edit:insert:binding[Alt-f] = $dir:right-small-word-or-next-dir~
 The following makes the location and history modes be case-insensitive by default:
 
 ```elvish
-edit:location:matcher = [@a]{ edit:location:match-dir-pattern &ignore-case $@a }
 edit:insert:binding[Ctrl-R] = {
   edit:histlist:start
   edit:histlist:toggle-case-sensitivity
+}
+```
+
+I use [exa](https://the.exa.website/) as a replacement for the `ls` command, so I alias `ls` to it. Unfortunately, `exa` does not understand the `-t` option to sort files by modification time, so I explicitly look for the `-lrt` option combination (which I use very often, and it _always_ trips me off) and replace them with the correct options for `exa`. All other options are passed as-is.
+
+```elvish
+fn ls [@_args]{
+  e:exa --color-scale --git --group-directories-first (each [o]{
+      if (eq $o "-lrt") { put "-lsnew" } else { put $o }
+  } $_args)
 }
 ```
 
@@ -344,6 +356,15 @@ I use [LeanPub](https://leanpub.com/help/api) for publishing my books, so I have
 
 ```elvish
 use github.com/zzamboni/elvish-modules/leanpub
+```
+
+
+## TinyTeX {#tinytex}
+
+Tiny module with some utility functions for using [TinyTeX](https://yihui.org/tinytex/).
+
+```elvish
+use github.com/zzamboni/elvish-modules/tinytex
 ```
 
 

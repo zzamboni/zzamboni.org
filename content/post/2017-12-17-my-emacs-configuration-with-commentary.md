@@ -5,14 +5,14 @@ summary = "I have enjoyed slowly converting my configuration files to literate p
 date = 2017-12-17T20:14:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.2.6 + ox-hugo)"
+creator = "Emacs 26.3 (Org mode 9.3.2 + ox-hugo)"
 featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **November 22, 2019**
+Last update: **January 28, 2020**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at [init.el](https://github.com/zzamboni/dot%5Femacs/blob/master/init.el).
 
@@ -38,7 +38,13 @@ Lately I've been playing with optimizing my Emacs load time. I have found a coup
 
 Based on these, I have added the code below.
 
-First, a hook that reports how long and how many garbage collections the startup took. We use a hook to run it at the very end, so the message doesn't get clobbered by other messages during startup.
+First, we wrap the whole init file in a block that sets `file-name-handler-alist` to `nil` to prevent any special-filename parsing of files loaded from the init file (e.g. remote files loaded through tramp, etc.). The `let` block gets closed in the [Epilogue](#epilogue).
+
+```emacs-lisp
+(let ((file-name-handler-alist nil))
+```
+
+Next, a hook that reports how long and how many garbage collections the startup took. We use a hook to run it at the very end, so the message doesn't get clobbered by other messages during startup.
 
 ```emacs-lisp
 (add-hook 'emacs-startup-hook
@@ -50,22 +56,23 @@ First, a hook that reports how long and how many garbage collections the startup
                      gcs-done)))
 ```
 
-Next, we wrap the whole init file in a block that sets `file-name-handler-alist` to `nil` to prevent any special-filename parsing of files loaded from the init file (e.g. remote files loaded through tramp, etc.). The `let` block gets closed in the [Epilogue](#epilogue).
-
-```emacs-lisp
-(let ((file-name-handler-alist nil))
-```
-
 Optionally enable `debug-on-error` - I do this only when I'm trying to figure out some problem in my config.
 
 ```emacs-lisp
 ;;(setq debug-on-error t)
 ```
 
+If the `gcmh` package is already installed, load and enable it early. If not, this gets installed a bit later in the Package Management section. This package manages the garbage collection thresholds and scheduling to improve performance.
+
+```emacs-lisp
+(when (require 'gcmh nil t)
+  (gcmh-mode 1))
+```
+
 We set `gc-cons-threshold` to its maximum value, to prevent any garbage collection from happening during load time. We also reset this value in the [Epilogue](#epilogue).
 
 ```emacs-lisp
-(setq gc-cons-threshold most-positive-fixnum)
+;  (setq gc-cons-threshold most-positive-fixnum)
 ```
 
 
@@ -79,17 +86,6 @@ Emacs has its own [Customization mechanism](https://www.gnu.org/software/emacs/m
 ```
 
 My current `custom.el` file can be  found  at <https://github.com/zzamboni/dot-emacs/blob/master/custom.el>.
-
-
-## Password management {#password-management}
-
-Password management using `auth-sources` and `pass` (I normally use 1Password, but I have not found a good command-line/Emacs interface for it, so I am using `pass` for now for some items I need to add to my Emacs config file).
-
-```emacs-lisp
-(require 'auth-source)
-(require 'auth-source-pass)
-(auth-source-pass-enable)
-```
 
 
 ## Package management {#package-management}
@@ -162,7 +158,7 @@ This variable tells Emacs to prefer the `.el` file if it's newer, even if there 
   :config (auto-compile-on-load-mode))
 ```
 
-Set the load path to the directories from where I sometimes load things outside the package system. Note that the path for `org-mode` (which I load from a checkout of its git repository) is set as part of its `use-package` declaration, so it doesn't appear here.
+Set the load path to the directories from where I sometimes load things outside the package system. Note that the path for specific packages like `org-mode` (which I load from a checkout of its git repository) is set as part of their `use-package` declarations, so they don't appear here.
 
 ```emacs-lisp
 (add-to-list 'load-path "~/.emacs.d/lisp")
@@ -180,7 +176,32 @@ Giving a try to [Paradox](https://github.com/Malabarba/paradox) for an enhanced 
 ```
 
 
+## Password management {#password-management}
+
+Password management using `auth-sources` and `pass` (I normally use 1Password, but I have not found a good command-line/Emacs interface for it, so I am using `pass` for now for some items I need to add to my Emacs config file).
+
+```emacs-lisp
+(require 'auth-source)
+(require 'auth-source-pass)
+(auth-source-pass-enable)
+```
+
+
 ## Settings {#settings}
+
+
+### Performance optimization {#performance-optimization}
+
+The [Garbage Collection Magic Hack](https://gitlab.com/koral/gcmh) library enables a GC strategy to improve performance.
+
+```emacs-lisp
+(use-package gcmh
+  :defer nil
+  :custom
+  (gcmh-verbose t)
+  :config
+  (gcmh-mode 1))
+```
 
 
 ### Proxy settings {#proxy-settings}
@@ -205,6 +226,12 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 
     ```emacs-lisp
     (require 'cl)
+    ```
+
+-   Install and load the `async` package to enable asynchronous operations (this gets loaded by some other packages, but I use it explicitly in `zz/org-babel-async-tangle` below, so I load it explicitly).
+
+    ```emacs-lisp
+    (use-package async)
     ```
 
 -   Start the Emacs server
@@ -825,15 +852,15 @@ One of the big strengths of org-mode is the ability to export a document in many
       :after org
       :custom
       (org-latex-compiler "xelatex")
-      (org-latex-pdf-process
-       '("%latex -shell-escape -interaction nonstopmode -output-directory %o %f"
-         "%latex -interaction nonstopmode -output-directory %o %f"
-         "%latex -interaction nonstopmode -output-directory %o %f"))
+      ;; (org-latex-pdf-process
+      ;;  '("%latex -shell-escape -interaction nonstopmode -output-directory %o %f"
+      ;;    "%latex -interaction nonstopmode -output-directory %o %f"
+      ;;    "%latex -interaction nonstopmode -output-directory %o %f"))
       :config
-      (setq org-latex-listings 'minted)
-      (add-to-list 'org-latex-packages-alist '("newfloat" "minted"))
-      (add-to-list 'org-latex-minted-langs '(lua "lua"))
-      (add-to-list 'org-latex-minted-langs '(shell "shell"))
+      ;; (setq org-latex-listings 'minted)
+      ;; (add-to-list 'org-latex-packages-alist '("newfloat" "minted"))
+      ;; (add-to-list 'org-latex-minted-langs '(lua "lua"))
+      ;; (add-to-list 'org-latex-minted-langs '(shell "shell"))
       (add-to-list 'org-latex-classes
                    '("book-no-parts" "\\documentclass[11pt,letterpaper]{book}"
                      ("\\chapter{%s}" . "\\chapter*{%s}")
@@ -841,13 +868,6 @@ One of the big strengths of org-mode is the ability to export a document in many
                      ("\\subsection{%s}" . "\\subsection*{%s}")
                      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                      ("\\paragraph{%s}" . "\\paragraph*{%s}")))
-      (add-to-list 'org-latex-classes
-                   '("awesome-cv" "\\documentclass{awesome-cv}"
-                     ("\\cvsection{%s}" . "\\cvsection{%s}")
-                     ("\\cvsubsection{%s}" . "\\cvsubsection{%s}")
-                     ("\\subsection{%s}" . "\\subsection*{%s}")
-                     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                     ("\\cvparagraph{%s}" . "\\cvparagraph{%s}")))
       ;; Necessary for LuaLaTeX to work - see
       ;; https://tex.stackexchange.com/a/374391/10680
       (setenv "LANG" "en_US.UTF-8"))
@@ -859,6 +879,26 @@ One of the big strengths of org-mode is the ability to export a document in many
     (use-package ox-clip
       :bind
       ("A-C-M-k" . ox-clip-formatted-copy))
+    ```
+
+-   I use `ox-awesomecv` and `ox-hugocv` from [Org-CV](https://titan-c.gitlab.io/org-cv/), to export my [Curriculum Vit&aelig;](https://github.com/zzamboni/vita/).
+
+    ```emacs-lisp
+    (use-package ox-awesomecv
+      :load-path "~/.emacs.d/lisp/org-cv"
+      :init (require 'ox-awesomecv))
+    (use-package ox-hugocv
+      :load-path "~/.emacs.d/lisp/org-cv"
+      :init (require 'ox-hugocv))
+    ```
+
+-   I use `ox-org` to generate an org file from another. For example, the `README.org` file for my [elvish-modules](https://github.com/zzamboni/elvish-modules) package is generated by exporting from [README-src.org](https://github.com/zzamboni/elvish-modules/blob/master/README-src.org), to automatically extract summaries from the different module files.
+
+    ```emacs-lisp
+    (use-package ox-org
+      :ensure nil
+      :defer 3
+      :after org)
     ```
 
 
@@ -1047,15 +1087,63 @@ Finally, we use this value to configure both `plantuml-mode` (for syntax highlig
        (elvish    . t)
        (calc      . t)
        (dot       . t)
-       (ditaa     . t)))
+       (ditaa     . t)
+       (org       . t)))
     ```
 
 Now, we configure some other `org-babel` settings:
 
--   This little snippet has revolutionized my literate programming workflow. It automatically runs `org-babel-tangle` upon saving any org-mode buffer, which means the resulting files will be automatically kept up to date.
+-   Tangle-on-save has revolutionized my literate programming workflow. It automatically runs `org-babel-tangle` upon saving any org-mode buffer, which means the resulting files will be automatically kept up to date. For a long time I simply had the following hook:
 
     ```emacs-lisp
-    (org-mode . (lambda () (add-hook 'after-save-hook 'org-babel-tangle
+    (org-mode . (lambda () (add-hook 'after-save-hook 'org-babel-tangle :append :local)))
+    ```
+
+    This is simple and it works, the only disadvantage is that it runs the tangle process synchronously, so Emacs freezes until the `org-babel-tangle` command is done. For large files (such as this one), the delay is noticeable, so I also had some hooks to measure and report the tangle time:
+
+    ```emacs-lisp
+    (defun zz/report-tangle-time (start-time)
+      (message "org-babel-tangle took %s"
+               (format "%.2f seconds"
+                       (float-time (time-since start-time)))))
+    ```
+
+    ```emacs-lisp
+    (org-babel-pre-tangle  . (lambda ()
+                               (setq zz/pre-tangle-time (current-time))))
+    (org-babel-post-tangle . (lambda ()
+                               (zz/report-tangle-time zz/pre-tangle-time)))
+    ```
+
+    Thanks to [the kind help of Ihor in the emacs-orgmode mailing list](https://lists.gnu.org/archive/html/emacs-orgmode/2019-12/msg00191.html), I now have an asynchronous version of this, which dispatches the tangle function to a subprocess, so that the main Emacs is not blocked while it runs. The `zz/org-babel-tangle-async` function uses the [emacs-async](https://github.com/jwiegley/emacs-async) package to start the tangle operation in a child process. Note that the child Emacs started by `async-start` is empty, without any configuration, so we need to load `org` before tangling. Depending on your setup, you may need to load more configuration.
+
+    ```emacs-lisp
+    (defun zz/org-babel-tangle-async (file)
+      "Invoke `org-babel-tangle-file' asynchronously."
+      (message "Tangling %s..." (buffer-file-name))
+      (async-start
+       (let ((args (list file)))
+         `(lambda ()
+            (require 'org)
+            ;;(load "~/.emacs.d/init.el")
+            (let ((start-time (current-time)))
+              (apply #'org-babel-tangle-file ',args)
+              (format "%.2f" (float-time (time-since start-time))))))
+       (let ((message-string (format "Tangling %S completed after " file)))
+         `(lambda (tangle-time)
+            (message (concat ,message-string
+                             (format "%s seconds" tangle-time)))))))
+
+    (defun zz/org-babel-tangle-current-buffer-async ()
+      "Tangle current buffer asynchronously."
+      (zz/org-babel-tangle-async (buffer-file-name)))
+    ```
+
+    Finally, we set up an `org-mode` hook which adds the async tangle function to the `after-save-hook`, so that it happens automatically after every save.
+
+    ```emacs-lisp
+    (org-mode . (lambda () (add-hook 'after-save-hook
+                                     'zz/org-babel-tangle-current-buffer-async
                                      'run-at-end 'only-in-org-mode)))
     ```
 
@@ -1081,24 +1169,6 @@ Now, we configure some other `org-babel` settings:
 
     ```emacs-lisp
     (org-babel-after-execute . org-redisplay-inline-images)
-    ```
-
--   I add hooks to measure and report how long the tangling took. I first define a function to compute and report the elapsed time:
-
-    ```emacs-lisp
-    (defun zz/report-tangle-time (start-time)
-      (message "org-babel-tangle took %s"
-               (format "%.2f seconds"
-                       (float-time (time-since start-time)))))
-    ```
-
-    And this function is used in the corresponding hooks before and after `org-babel-tangle`:
-
-    ```emacs-lisp
-    (org-babel-pre-tangle  . (lambda ()
-                               (setq zz/pre-tangle-time (current-time))))
-    (org-babel-post-tangle . (lambda ()
-                               (zz/report-tangle-time zz/pre-tangle-time)))
     ```
 
 
@@ -1426,14 +1496,14 @@ Sample project configuration - disabled for now because this configuration has b
 
 ### Publishing to LeanPub {#publishing-to-leanpub}
 
-I use [LeanPub](https://leanpub.com/) for self-publishing my books [Learning Hammerspoon](https://leanpub.com/learning-hammerspoon/) and [Learning CFEngine](https://leanpub.com/learning-cfengine/). Fortunately, it is possible to export from org-mode to LeanPub-flavored Markdown.
+I use [LeanPub](https://leanpub.com/) for self-publishing [my books](https://leanpub.com/u/zzamboni). Fortunately, it is possible to export from org-mode to both [LeanPub-flavored Markdown](https://leanpub.com/lfm/read) and [Markua](https://leanpub.com/markua/read), the new and favored Leanpub markup format, so I can use org-mode for writing the text and simply export it in the correct format and structure needed by Leanpub.
 
-Some references:
+As I decided to use org-mode to write my books, I looked around for existing modules and code. Here are some of the resources I found, and upon which my code and my config are based:
 
--   [Description of ox-leanpub.el](http://juanreyero.com/open/ox-leanpub/index.html) ([GitHub repo](https://github.com/juanre/ox-leanpub)) by [Juan Reyero](http://juanreyero.com/about/)
--   [Publishing a book using org-mode](https://medium.com/@lakshminp/publishing-a-book-using-org-mode-9e817a56d144) by [Lakshmi Narasimhan](https://medium.com/@lakshminp/publishing-a-book-using-org-mode-9e817a56d144)
--   [Writing a book with emacs org-mode and Leanpub](https://web.archive.org/web/20170816044305/http://anbasile.github.io/writing/2017/04/08/orgleanpub.html) by Angelo Basile (the link goes to an archive copy of the post, as it is not live on his website anymore)
--   [Publishing a Book with Leanpub and Org Mode](http://irreal.org/blog/?p=5313) by Jon Snader (from where I found the links to the above)
+-   [Description of ox-leanpub.el](http://juanreyero.com/open/ox-leanpub/index.html) ([GitHub repo](https://github.com/juanre/ox-leanpub)) by [Juan Reyero](http://juanreyero.com/about/);
+-   [Publishing a book using org-mode](https://medium.com/@lakshminp/publishing-a-book-using-org-mode-9e817a56d144) by [Lakshmi Narasimhan](https://medium.com/@lakshminp/publishing-a-book-using-org-mode-9e817a56d144);
+-   [Writing a book with emacs org-mode and Leanpub](https://web.archive.org/web/20170816044305/http://anbasile.github.io/writing/2017/04/08/orgleanpub.html) by Angelo Basile (the link goes to an archive copy of the post, as it is not live on his website anymore);
+-   [Publishing a Book with Leanpub and Org Mode](http://irreal.org/blog/?p=5313) by Jon Snader (from where I found the links to the above).
 
 First, load `ox-leanpub-markdown`. This is based on Juan's `ox-leanpub`, but with many changes of my own, including a rename.  You can get it from my fork at <https://github.com/zzamboni/ox-leanpub/tree/book-and-markua>.
 
@@ -1445,6 +1515,8 @@ First, load `ox-leanpub-markdown`. This is based on Juan's `ox-leanpub`, but wit
   :load-path "lisp/ox-leanpub")
 ```
 
+I use Markua for all my books now. `ox-leanpub-markua` is based on `ox-leanpub-markdown`, but generates the corresponding Markua syntax. I highly recommend using Markua rather than Markdown, as it is the future that Leanpub is guaranteed to support in the future, and where most of the new features are being developed.
+
 ```emacs-lisp
 (use-package ox-leanpub-markua
   :defer 1
@@ -1453,7 +1525,7 @@ First, load `ox-leanpub-markdown`. This is based on Juan's `ox-leanpub`, but wit
   :load-path "lisp/ox-leanpub")
 ```
 
-Next, load my `ox-leanpub-book` module (also available at  <https://github.com/zzamboni/ox-leanpub/tree/book-and-markua>). It defines a new export backend called `leanpub-book`, which adds three additional items in the LeanPub export section:
+The exporters above take care of converting org-mode to the corresponding formats, but producing a Leanpub book also requires exporting the files in a [specific file and directory structure](https://leanpub.com/manual/read#how-the-list-of-files-in-book-txt-works-in-bitbucket-mode). The `ox-leanpub-book` module (also available at  <https://github.com/zzamboni/ox-leanpub/tree/book-and-markua>) defines a new export backend called `leanpub-book`, which adds three additional items in the LeanPub export section:
 
 -   "Multifile: Whole book", which exports the whole book as one-file-per-chapter;
 -   "Multifile: Subset", which exports only the chapters that should be included in `Subset.txt` (if any), according to the rules listed below. I use this together with `#+LEANPUB_WRITE_SUBSET: current` in my files to quickly export only the current chapter, to be able to quickly preview it using [LeanPub's subset-preview feature](https://leanpub.com/help/manual#subsetpreview);
@@ -1470,9 +1542,9 @@ The book files are populated as follows:
     -   `sample`: use same chapters as `Sample.txt`.
     -   `current`: export the current chapter (where the cursor is at the moment of the export) as the contents of `Subset.txt`.
 
-If a heading has the `frontmatter`, `mainmatter` or `backmatter` tags, the corresponding markup is inserted in the output, before the headline. This way, you only need to tag the first chapter of the front, main, and backmatter, respectively.
+If a heading has the `frontmatter`, `mainmatter` or `backmatter` tags, the [corresponding directive](https://leanpub.com/markua/read#directives) (they work in both Markdown and Markup modes) is inserted in the output, before the headline. This way, you only need to tag the first chapter of the front, main, and backmatter, respectively.
 
-Note that the `org-leanpub-book-setup-menu-markdown` function gets called in the `:config` section. This is because I am working on `ox-markua` to export Leanpub's new [Markua](https://leanpub.com/markua/read) format, and I plan for `ox-leanpub-book` to also support it.
+Note that after loading the `ox-leanpub-book` module, you need to call the `org-leanpub-book-setup-menu-markdown` or  `org-leanpub-book-setup-menu-markua` functions respectively, to insert the Multifile items in the corresponding export sections. I call them from the `:config` section of the `use-package` directive.
 
 ```emacs-lisp
 (use-package ox-leanpub-book
@@ -1484,6 +1556,8 @@ Note that the `org-leanpub-book-setup-menu-markdown` function gets called in the
   (progn (org-leanpub-book-setup-menu-markdown)
          (org-leanpub-book-setup-menu-markua)))
 ```
+
+With this setup, I can write my book in org-mode (I usually keep a single `book.org` file at the top of my repository), and then call the corresponding Multifile export commands. The `manuscript` directory, as well as the corresponding `Book.txt` and other necessary files are created and populated automatically.
 
 
 ### Miscellaneous org functions and configuration {#miscellaneous-org-functions-and-configuration}
@@ -1800,7 +1874,8 @@ This config came originally from [Uncle Dave's Emacs config](https://github.com/
         helm-move-to-line-cycle-in-source nil
         helm-ff-search-library-in-sexp t
         helm-scroll-amount 8
-        helm-echo-input-in-header-line nil)
+        helm-echo-input-in-header-line nil
+        completion-styles '(helm-flex))
   :init
   (helm-mode 1))
 
@@ -2257,6 +2332,41 @@ Many other programming languages are well served by a single mode, without so mu
     (use-package lorem-ipsum)
     ```
 
+-   [Emacs support](https://github.com/lokedhs/keybase-chat) for [Keybase](https://keybase.io/):
+
+    ```emacs-lisp
+    (use-package keybase
+      :ensure nil
+      :load-path ("lisp/keybase-chat")
+      :config (require 'keybase))
+    ```
+
+-   `erc` configuration for IRC. Based on <https://www.reddit.com/r/emacs/comments/8ml6na/tip%5Fhow%5Fto%5Fmake%5Ferc%5Ffun%5Fto%5Fuse/>
+
+    ```emacs-lisp
+    (use-package erc
+      :custom
+      (erc-autojoin-channels-alist '(("freenode.net" "#elvish" "#hammerspoon"
+                                      "#org-mode")))
+      (erc-autojoin-timing 'ident)
+      (erc-fill-function 'erc-fill-static)
+      (erc-fill-static-center 22)
+      (erc-hide-list '("JOIN" "PART" "QUIT"))
+      (erc-lurker-hide-list '("JOIN" "PART" "QUIT"))
+      (erc-lurker-threshold-time 43200)
+      (erc-nick "zzamboni")
+      (erc-prompt-for-nickserv-password nil)
+      (erc-server-reconnect-attempts 5)
+      (erc-server-reconnect-timeout 3)
+      (erc-track-exclude-types '("JOIN" "MODE" "NICK" "PART" "QUIT"
+                                 "324" "329" "332" "333" "353" "477"))
+      :config
+      (add-to-list 'erc-modules 'notifications)
+      (add-to-list 'erc-modules 'spelling)
+      (erc-services-mode 1)
+      (erc-update-modules))
+    ```
+
 
 ## General text editing {#general-text-editing}
 
@@ -2303,6 +2413,38 @@ In addition to coding, I configure some modes that can be used for text editing.
 ## Cheatsheet and experiments {#cheatsheet-and-experiments}
 
 Playground and how to do different things, not necessarily used in my Emacs config but useful sometimes.
+
+Export an org file to separate per-top-header markdown files. Based on <https://medium.com/@lakshminp/publishing-a-book-using-org-mode-9e817a56d144>. This code is kept separately at <https://gist.github.com/zzamboni/2e6ac3c4f577249d98efb224d9d34488>.
+
+```emacs-lisp
+;; Call this function with "M-x org-multi-file-md-export"
+(defun org-multi-file-md-export ()
+  "Export current buffer to multiple Markdown files."
+  (interactive)
+  ;; Loop over all entries in the file
+  (org-map-entries
+   (lambda ()
+     (let* ((level (nth 1 (org-heading-components)))
+            (title (or (nth 4 (org-heading-components)) ""))
+            ;; Export filename is the EXPORT_FILE_NAME property, or the
+            ;; lower-cased section title if it's not set.
+            (filename
+             (or (org-entry-get (point) "EXPORT_FILE_NAME")
+                 (concat (replace-regexp-in-string " " "-" (downcase title)) ".md"))))
+       (when (= level 1) ;; export only first level entries
+         ;; Mark the subtree so that the title also gets exported
+         (org-mark-subtree)
+         ;; Call the export function. This is one of the base org
+         ;; functions, the 'md defines the backend to use for the
+         ;; conversion. For exporting to other formats, simply use the
+         ;; correct backend name, and also change the file extension
+         ;; above.
+         (org-export-to-file 'md filename nil t nil))))
+   ;; skip headlines tagged with "noexport" (this is an argument to
+   ;; org-map-entries above)
+   "-noexport")
+  nil nil)
+```
 
 This is how we get a global header property in org-mode
 
@@ -2444,10 +2586,4 @@ Here we close the `let` expression from [the preface](#performance-optimization)
 
 ```emacs-lisp
 )
-```
-
-We also reset the value of `gc-cons-threshold`, not to its original value, we still leave it larger than default so that GCs don't happen so often.
-
-```emacs-lisp
-(setq gc-cons-threshold (* 2 1000 1000))
 ```
