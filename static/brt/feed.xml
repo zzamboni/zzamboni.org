@@ -113,10 +113,10 @@ Content-type: Preventing XSRF in IE.
 &lt;/tr&gt;
 &lt;/table&gt;
 &lt;p&gt;It should look like this: &lt;/p&gt;
-&lt;div&gt;&lt;img src="http://posterous.com/getfile/files.posterous.com/blog/TiWVftjZtjgaCZ0LsfcXF6FWVwBxm1qEKKDMSQofA7muecsqwmEiCphKlX3f/moz-screenshot-1.jpg" height="152" width="500"&gt;&lt;/div&gt;
+&lt;div&gt;&lt;img src="https://posterous.com/getfile/files.posterous.com/blog/TiWVftjZtjgaCZ0LsfcXF6FWVwBxm1qEKKDMSQofA7muecsqwmEiCphKlX3f/moz-screenshot-1.jpg" height="152" width="500"&gt;&lt;/div&gt;
 &lt;p&gt;Click Save and you’re done.&lt;/p&gt;
 &lt;p&gt;Now when browsing Google Reader, you’ll see a “Send To” option for Posterous at the bottom of each reader entry like so: &lt;/p&gt;
-&lt;div&gt;&lt;img src="http://posterous.com/getfile/files.posterous.com/blog/qdrFLmifRvYFEN8Yv4DnXUGRDctCJxeZy9jIBCbMmUFf1Udp6YkVrtRcGId3/moz-screenshot-2.jpg" height="73" width="354"&gt;&lt;/div&gt;
+&lt;div&gt;&lt;img src="https://posterous.com/getfile/files.posterous.com/blog/qdrFLmifRvYFEN8Yv4DnXUGRDctCJxeZy9jIBCbMmUFf1Udp6YkVrtRcGId3/moz-screenshot-2.jpg" height="73" width="354"&gt;&lt;/div&gt;
 &lt;p&gt;When you click Posterous, you’ll be sent to our “Share on Posterous” page that works like our Bookmarklet. We’ve also revamped the way the bookmarklet handles text posts so if you don’t select any text on a page, we’ll still try to extract the meatiest part of the content of a page.&lt;/p&gt;
 &lt;p&gt;Of course, you can always still just click “Email” to &lt;a href="http://zzamboni.org/brt#"&gt;&lt;/a&gt;&lt;a href="mailto:post@posterous.com"&gt;post@posterous.com&lt;/a&gt;, and that will still work just great too.&lt;/p&gt;
 &lt;p&gt;Feel free to email us at &lt;a href="http://zzamboni.org/brt#"&gt;&lt;/a&gt;&lt;a href="mailto:help@posterous.com"&gt;help@posterous.com&lt;/a&gt; if you run into any problems.&lt;/p&gt;
@@ -284,12 +284,12 @@ $file=$files[array_rand($files)];
 
 &lt;p&gt;&lt;a href="http://posterous.com"&gt;Posted by email&lt;/a&gt; from &lt;a href="http://zzamboni.posterous.com/fixing-mailapps-recent-mail-ad"&gt;zzamboni’s posterous&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;p&gt;&lt;a href="http://posterous.com/getfile/files.posterous.com/zzamboni/W1VF6XaRiwGobSbOEcuBoGbWjoqzqi4W6hvoU3bcJtqzvbZeMFRjbaPOg8Aa/20080901101357715.png.scaled.1000.jpg"&gt;&lt;img src="http://posterous.com/getfile/files.posterous.com/zzamboni/cKlAndbxNHogTv9s0VtvoPR5kyeQTnVXWHoRLDp7mOVveaU4c67Hr9S2FJWl/20080901101357715.png.scaled.500.jpg" width="356" height="500"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;p&gt;&lt;a href="http://posterous.com/getfile/files.posterous.com/zzamboni/W1VF6XaRiwGobSbOEcuBoGbWjoqzqi4W6hvoU3bcJtqzvbZeMFRjbaPOg8Aa/20080901101357715.png.scaled.1000.jpg"&gt;&lt;img src="https://posterous.com/getfile/files.posterous.com/zzamboni/cKlAndbxNHogTv9s0VtvoPR5kyeQTnVXWHoRLDp7mOVveaU4c67Hr9S2FJWl/20080901101357715.png.scaled.500.jpg" width="356" height="500"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://posterous.com"&gt;Posted by email&lt;/a&gt; from &lt;a href="http://zzamboni.posterous.com/my-gtd-system"&gt;zzamboni’s posterous&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;p&gt;&lt;a href="http://posterous.com/getfile/files.posterous.com/zzamboni/hBjtvtyYpETVYO2Jc0C5YcOB0Jc9XLh1ThZbUhKUUoNmgE1LD1QMTAELUqbM/DSC00002_2.jpg"&gt;&lt;img src="http://posterous.com/getfile/files.posterous.com/zzamboni/trBN9PVO1EIcS5C78w2WNQ3OVBLTviAq9I4fshzcD0ROCylIs2hiS2aF7OBp/DSC00002_2.jpg.scaled.500.jpg" width="375" height="500"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;p&gt;&lt;a href="http://posterous.com/getfile/files.posterous.com/zzamboni/hBjtvtyYpETVYO2Jc0C5YcOB0Jc9XLh1ThZbUhKUUoNmgE1LD1QMTAELUqbM/DSC00002_2.jpg"&gt;&lt;img src="https://posterous.com/getfile/files.posterous.com/zzamboni/trBN9PVO1EIcS5C78w2WNQ3OVBLTviAq9I4fshzcD0ROCylIs2hiS2aF7OBp/DSC00002_2.jpg.scaled.500.jpg" width="375" height="500"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://posterous.com"&gt;Posted by email&lt;/a&gt; from &lt;a href="http://zzamboni.posterous.com/testing-posterous-57"&gt;zzamboni’s posterous&lt;/a&gt;&lt;/p&gt;
