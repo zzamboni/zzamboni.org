@@ -3,7 +3,7 @@ title = "Learning CFEngine"
 author = ["Diego Zamboni"]
 date = 2018-03-25T21:05:00+02:00
 draft = false
-creator = "Emacs 26.3 (Org mode 9.3.2 + ox-hugo)"
+creator = "Emacs 26.3 (Org mode 9.3.6 + ox-hugo)"
 finalURL = "http://cf-learn.info/"
 +++
 

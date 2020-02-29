@@ -5,18 +5,20 @@ summary = "I have enjoyed slowly converting my configuration files to literate p
 date = 2017-12-17T20:14:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.3.2 + ox-hugo)"
+creator = "Emacs 26.3 (Org mode 9.3.6 + ox-hugo)"
 featured_image = "/images/emacs-logo.svg"
 toc = true
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **January 28, 2020**
+Last update: **February 29, 2020**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at [init.el](https://github.com/zzamboni/dot%5Femacs/blob/master/init.el).
 
 If you are interested in writing your own Literate Config files, check out my new book [Literate Config](https://leanpub.com/lit-config) on Leanpub!
+
+This file is written in [literate programming style](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) using [org-mode](https://orgmode.org/). See [init.el](https://github.com/zzamboni/dot-emacs/blob/master/init.el) for the generated file. You can see this in a nicer format on my blog post [My Emacs Configuration, With Commentary](http://zzamboni.org/post/my-emacs-configuration-with-commentary/).
 
 
 ## References {#references}
@@ -62,11 +64,11 @@ Optionally enable `debug-on-error` - I do this only when I'm trying to figure ou
 ;;(setq debug-on-error t)
 ```
 
-If the `gcmh` package is already installed, load and enable it early. If not, this gets installed a bit later in the Package Management section. This package manages the garbage collection thresholds and scheduling to improve performance.
+If the `gcmh` package is already installed, load and enable it early. If not, this gets installed a bit later in the Package Management section. This package manages the garbage collection thresholds and scheduling to improve performance. DISABLED for now because it seems to cause performance degradation when inserting text in long files.
 
 ```emacs-lisp
-(when (require 'gcmh nil t)
-  (gcmh-mode 1))
+;; (when (require 'gcmh nil t)
+;;   (gcmh-mode 1))
 ```
 
 We set `gc-cons-threshold` to its maximum value, to prevent any garbage collection from happening during load time. We also reset this value in the [Epilogue](#epilogue).
@@ -97,7 +99,8 @@ First, we declare the package repositories to use.
 ```emacs-lisp
 (customize-set-variable 'package-archives
                         '(("marmalade" . "https://marmalade-repo.org/packages/")
-                          ("melpa"     . "https://melpa.org/packages/")))
+                          ("melpa"     . "https://melpa.org/packages/")
+                          ("elpa"     .  "https://elpa.gnu.org/packages/")))
 ```
 
 Then we initialize the package system, refresh the list of packages and install `use-package` if needed.
@@ -142,11 +145,13 @@ Testing [`quelpa`](https://framagit.org/steckerhalter/quelpa) and to install pac
 
 ```emacs-lisp
 (use-package quelpa
-  :defer nil)
-
-(use-package quelpa-use-package
   :defer nil
-  :after quelpa)
+  :config
+  (quelpa
+   '(quelpa-use-package
+     :fetcher git
+     :url "https://github.com/quelpa/quelpa-use-package.git"))
+  (require 'quelpa-use-package))
 ```
 
 This variable tells Emacs to prefer the `.el` file if it's newer, even if there is a corresponding `.elc` file. Also, use `auto-compile` to autocompile files as needed.
@@ -187,15 +192,16 @@ Password management using `auth-sources` and `pass` (I normally use 1Password, b
 ```
 
 
-## Settings {#settings}
+## Miscellaneous settings {#miscellaneous-settings}
 
 
 ### Performance optimization {#performance-optimization}
 
-The [Garbage Collection Magic Hack](https://gitlab.com/koral/gcmh) library enables a GC strategy to improve performance.
+The [Garbage Collection Magic Hack](https://gitlab.com/koral/gcmh) library enables a GC strategy to improve performance. DISABLED because for me it has actually caused performance degradation when typing in long files.
 
 ```emacs-lisp
 (use-package gcmh
+  :disabled
   :defer nil
   :custom
   (gcmh-verbose t)
@@ -219,8 +225,11 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
   (customize-set-variable 'url-proxy-services nil))
 ```
 
+-   Set default encoding.
 
-### Miscellaneous settings {#miscellaneous-settings}
+    ```emacs-lisp
+    (set-language-environment "UTF-8")
+    ```
 
 -   Load the `cl` library to enable some additional macros (e.g. `lexical-let`).
 
@@ -555,7 +564,8 @@ I use `use-package` to load the `org` package, and put its configuration inside 
   :pin manual
   :load-path ("lisp/org-mode/lisp" "lisp/org-mode/lisp/contrib/lisp")
   :bind
-    <<org-mode-keybindings>>
+  (:map org-mode-map
+        <<org-mode-keybindings>>)
   :custom
     <<org-mode-custom-vars>>
   :custom-face
@@ -609,6 +619,13 @@ Note that mode-specific configuration variables are defined under  their corresp
 ### General Org  Keybindings {#general-org-keybindings}
 
 Note that other keybindings are configured under their corresponding packages, this section defines only global org-mode keybindings, which are inserted in the main `use-package` declaration for `org-mode`.
+
+-   Use the special <kbd>C-a</kbd>, <kbd>C-e</kbd> and <kbd>C-k</kbd> definitions for Org, which enable some special behavior in headings.
+
+    ```emacs-lisp
+    (org-special-ctrl-a/e t)
+    (org-special-ctrl-k t)
+    ```
 
 -   Set up `C-c l` to store a link to the current org object, in counterpart to the default `C-c C-l` to insert a link.
 
@@ -708,7 +725,7 @@ I configure `org-archive` to archive completed TODOs by default to the `archive.
 ```
 
 
-### Capturing  stuff {#capturing-stuff}
+### Capturing stuff {#capturing-stuff}
 
 First, I define some global keybindings  to open my frequently-used org files (original tip from [Learn how to take notes more efficiently in Org Mode](https://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/)).
 
@@ -744,6 +761,55 @@ Now I define keybindings to access my commonly-used org files.
   :config
   <<org-capture-config>>
   )
+```
+
+
+### Note taking {#note-taking}
+
+I'm testing a new library called [org-roam](https://github.com/jethrokuan/org-roam) for non-hierarchical note taking.
+
+```emacs-lisp
+(use-package org-roam
+  :after org
+  :load-path "lisp/org-roam"
+  :diminish
+  :hook
+  ((org-mode . org-roam-mode)
+   (after-init . org-roam--build-cache-async))
+  :custom
+  (org-roam-directory "~/Dropbox/Personal/org")
+  :bind
+  ("C-c n l" . org-roam)
+  ("C-c n t" . org-roam-today)
+  ("C-c n f" . org-roam-find-file)
+  ("C-c n i" . org-roam-insert)
+  ("C-c n g" . org-roam-show-graph))
+```
+
+`org-roam` [integrates nicely with `deft`](https://org-roam.readthedocs.io/en/develop/ecosystem/#deft):
+
+```emacs-lisp
+(use-package deft
+  :after org
+  :bind
+  ("C-c n d" . deft)
+  :custom
+  (deft-directory org-directory)
+  (deft-recursive t)
+  (deft-use-filename-as-title nil)
+  (deft-use-filter-string-for-filename t)
+  (deft-file-naming-rules '((noslash . "-")
+                            (nospace . "-")
+                            (case-fn . downcase)))
+  (deft-org-mode-title-prefix t)
+  (deft-extensions '("org" "txt" "text" "md" "markdown" "org.gpg"))
+  (deft-default-extension "org"))
+```
+
+Using `org-download` to make it easier to insert images into my org notes.
+
+```emacs-lisp
+(use-package org-download)
 ```
 
 
@@ -886,10 +952,13 @@ One of the big strengths of org-mode is the ability to export a document in many
     ```emacs-lisp
     (use-package ox-awesomecv
       :load-path "~/.emacs.d/lisp/org-cv"
-      :init (require 'ox-awesomecv))
+      :init
+      (require 'ox-awesomecv))
     (use-package ox-hugocv
+      :disabled
       :load-path "~/.emacs.d/lisp/org-cv"
-      :init (require 'ox-hugocv))
+      :init
+      (require 'ox-hugocv))
     ```
 
 -   I use `ox-org` to generate an org file from another. For example, the `README.org` file for my [elvish-modules](https://github.com/zzamboni/elvish-modules) package is generated by exporting from [README-src.org](https://github.com/zzamboni/elvish-modules/blob/master/README-src.org), to automatically extract summaries from the different module files.
@@ -993,7 +1062,7 @@ I use [750words](http://750words.com/) for my personal Journal, and I used  to w
 In order to keep my journal entries encrypted there are two separate but confusingly named mechanisms:
 
 -   `org-journal-encrypt-journal`, if set to `t` has the effect of transparently encrypting/decrypting the journal files as they are written to disk. This is what  I use.
--   `org-journal-enable-encryption`, if set to `t`, enables integration with `org-crypt` (see above),  so it automatically adds a `:crypt:` tag to new journal entries. This has the effect of automatically encrypting those entries upon save, replacing them with a blob of gpg-encrypted text which has to be further decrypted with `org-decrypt-entry` in order to read or edit them again. I have disabled it for now to make it more transparent to  work with my journal entries while   I am editing them.
+-   `org-journal-enable-encryption`, if set to `t`, enables integration with `org-crypt` (see above),  so it automatically adds a `:crypt:` tag to new journal entries. This has the effect of automatically encrypting those entries upon save, replacing them with a blob of gpg-encrypted text which has to be further decrypted with `org-decrypt-entry` in order to read or edit them again. I have disabled it for now to make it more transparent to  work with my journal entries while I am editing them.
 
 <!--listend-->
 
@@ -1139,7 +1208,7 @@ Now, we configure some other `org-babel` settings:
       (zz/org-babel-tangle-async (buffer-file-name)))
     ```
 
-    Finally, we set up an `org-mode` hook which adds the async tangle function to the `after-save-hook`, so that it happens automatically after every save.
+    Finally, we set up an `org-mode` hook which adds the async tangle function to the `after-save-hook`, so that it happens automatically after every save. Disabled for now because the tangle is getting interrupted sometimes when I move the cursor before the async tangle finishes, leaving files incomplete.
 
     ```emacs-lisp
     (org-mode . (lambda () (add-hook 'after-save-hook
@@ -1204,7 +1273,8 @@ We choose a nice font for the document title and the section headings. The first
 
 ```emacs-lisp
 (let* ((variable-tuple
-        (cond ((x-list-fonts   "Source Sans Pro") '(:font   "Source Sans Pro"))
+        (cond ((x-list-fonts   "ETBembo")         '(:font   "ETBembo"))
+              ((x-list-fonts   "Source Sans Pro") '(:font   "Source Sans Pro"))
               ((x-list-fonts   "Lucida Grande")   '(:font   "Lucida Grande"))
               ((x-list-fonts   "Verdana")         '(:font   "Verdana"))
               ((x-family-fonts "Sans Serif")      '(:family "Sans Serif"))
@@ -1233,14 +1303,14 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
 -   Setting up the `variable-pitch` face to the proportional font I like to use. I'm currently alternating between my two favorites, [Source Sans Pro](https://en.wikipedia.org/wiki/Source%5FSans%5FPro) and [Avenir Next](https://en.wikipedia.org/wiki/Avenir%5F(typeface)).
 
     ```emacs-lisp
-    (variable-pitch ((t (:family "Source Sans Pro" :height 160 :weight light))))
+    (variable-pitch ((t (:family "ETBembo" :height 180 :weight thin))))
     ;;(variable-pitch ((t (:family "Avenir Next" :height 160 :weight light))))
     ```
 
 -   Setting up the `fixed-pitch` face to be the same as my usual `default` face. My current one is [Inconsolata](https://en.wikipedia.org/wiki/Inconsolata).
 
     ```emacs-lisp
-    (fixed-pitch ((t (:family "Inconsolata"))))
+    (fixed-pitch ((t (:family "Inconsolata Nerd Font"))))
     ```
 
 -   Configure `org-indent` to inherit from `fixed-pitch` to fix the vertical spacing in code blocks. Thanks to Ben for the tip!
@@ -1269,6 +1339,14 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
     (org-mode . variable-pitch-mode)
     ```
 
+    Turns out `visual-line-mode` also remaps the <kbd>C-a</kbd> and <kbd>C-e</kbd> keybindings (of course, which breaks the behavior enabled by the `org-special-ctrl-a/e/k` variables. To counter this, I also add some bindings that set those keys to their Org functions. These functions know how to deal with visual mode anyway.
+
+    ```emacs-lisp
+    ("C-a" . org-beginning-of-line)
+    ("C-e" . org-end-of-line)
+    ("C-k" . org-kill-line)
+    ```
+
 -   In `variable-pitch` mode, the default right-alignment for headline tags doesn't work, and results in the tags being misaligned (as it uses character positions to do the alignment). This setting positions the tags right after the last character of the headline, so at least they are more consistent.
 
     ```emacs-lisp
@@ -1281,14 +1359,16 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
     (org-todo-keyword-faces
      '(("AREA"         . "DarkOrchid1")
        ("[AREA]"       . "DarkOrchid1")
+       ("PROJECT"      . "DarkOrchid1")
+       ("[PROJECT]"    . "DarkOrchid1")
        ("INBOX"        . "cyan")
        ("[INBOX]"      . "cyan")
        ("PROPOSAL"     . "orange")
        ("[PROPOSAL]"   . "orange")
-       ("DRAFT"        . "yellow")
-       ("[DRAFT]"      . "yellow")
-       ("INPROGRESS"   . "yellow")
-       ("[INPROGRESS]" . "yellow")
+       ("DRAFT"        . "yellow3")
+       ("[DRAFT]"      . "yellow3")
+       ("INPROGRESS"   . "yellow4")
+       ("[INPROGRESS]" . "yellow4")
        ("MEETING"      . "purple")
        ("[MEETING]"    . "purple")
        ("CANCELED"     . "blue")
@@ -1325,6 +1405,30 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
      `(("^[ \t]*\\(?:[-+*]\\|[0-9]+[).]\\)[ \t]+\\(\\(?:\\[@\\(?:start:\\)?[0-9]+\\][ \t]*\\)?\\[\\(?:X\\|\\([0-9]+\\)/\\2\\)\\][^\n]*\n\\)"
         1 'org-checkbox-done-text prepend))
      'append)
+    ```
+
+-   I'm experimenting with some settings based on [Ricing up Org Mode](https://lepisma.xyz/2017/10/28/ricing-org-mode/), particularly for using when writing, to avoid distractions. For now these are contained within a function that I can call to enable them, to give me a chance to experiment.
+
+    ```emacs-lisp
+    (defun zz/write ()
+      (interactive)
+      ;; Line spacing
+      (setq line-spacing 0.1)
+      ;; Top padding
+      (setq header-line-format " ")
+      ;; Hide modeline
+      (hide-mode-line-mode)
+      ;;(setq mode-line-format nil)
+      ;; Side padding
+      (setq left-margin-width 2)
+      (setq right-margin-width 2)
+      (set-window-buffer nil (current-buffer)))
+    ```
+
+    The function above uses [hide-mode-line](https://github.com/hlissner/emacs-hide-mode-line) mode.
+
+    ```emacs-lisp
+    (use-package hide-mode-line)
     ```
 
 
@@ -1606,8 +1710,9 @@ I have been playing with different themes, and I have settled for now in `gruvbo
 ;;(use-package solarized-theme)
 ;;(use-package darktooth-theme)
 ;;(use-package kaolin-themes)
-(use-package gruvbox-theme)
-(load-theme 'gruvbox)
+;;(use-package gruvbox-theme)
+(use-package spacemacs-theme)
+(load-theme 'spacemacs-light)
 ```
 
 Install [smart-mode-line](https://github.com/Malabarba/smart-mode-line) for modeline goodness, including configurable abbreviation of directories, and other things.
@@ -1618,7 +1723,7 @@ Install [smart-mode-line](https://github.com/Malabarba/smart-mode-line) for mode
   :config
   (sml/setup)
   :custom
-  (sml/theme 'dark)
+  (sml/theme 'respectful)
   (sml/replacer-regexp-list
    '(("^~/\\.emacs\\.d/elpa/"                            ":ELPA:")
      ("^~/\\.emacs\\.d/"                                 ":ED:")
@@ -1668,6 +1773,7 @@ I like to highlight the current line. For this I use the built-in `hl-line`.
 
 ```emacs-lisp
 (use-package hl-line
+  :disabled
   :defer nil
   :config
   (defun zz/get-visual-line-range ()
@@ -2191,6 +2297,13 @@ Many other programming languages are well served by a single mode, without so mu
 
 ## Other tools {#other-tools}
 
+-   The `rx` library makes it easier to express regular expressions (I know regex syntax, but in Emacs the quoting makes them very hard to read). The [`xr`](https://elpa.gnu.org/packages/xr.html) library is the inverse - can be used to convert regex strings to `rx` syntax, which makes it easier to learn by example.
+
+    ```emacs-lisp
+    (require 'rx)
+    (use-package xr
+      :defer nil)
+    ```
 -   Use `helm-pass` as an interface to `pass`.
 
     ```emacs-lisp
@@ -2293,21 +2406,6 @@ Many other programming languages are well served by a single mode, without so mu
      ,@body
      (message "%.06f" (float-time (time-since time)))))
 ```
-
--   Trying out [Deft](https://github.com/jrblevin/deft)
-
-    ```emacs-lisp
-    (use-package deft
-      :custom
-      (deft-use-filename-as-title nil)
-      (deft-use-filter-string-for-filename t)
-      (deft-file-naming-rules '((noslash . "-")
-                                (nospace . "-")
-                                (case-fn . downcase)))
-      (deft-org-mode-title-prefix t)
-      (deft-extensions '("org" "txt" "text" "md" "markdown"))
-      (deft-default-extension "org"))
-    ```
 
 -   Ability to [restart Emacs from within Emacs](https://github.com/iqbalansari/restart-emacs):
 

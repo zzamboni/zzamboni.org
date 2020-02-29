@@ -5,7 +5,7 @@ summary = "I am happy to announce a new release of my new book \"Learning Hammer
 date = 2019-04-08T09:51:00+02:00
 tags = ["hammerspoon", "mac", "howto", "book", "announcement"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.3.2 + ox-hugo)"
+creator = "Emacs 26.3 (Org mode 9.3.6 + ox-hugo)"
 toc = false
 featured_image = "/images/learning-hs-cover.jpg"
 +++

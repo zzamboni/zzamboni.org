@@ -5,7 +5,7 @@ summary = "Me complace anunciar  la primera edición de mi nuevo libro, y mi pri
 date = 2019-08-30T00:23:00+02:00
 tags = ["book", "announcement", "spanish", "unix", "linux", "leanpub"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.3.2 + ox-hugo)"
+creator = "Emacs 26.3 (Org mode 9.3.6 + ox-hugo)"
 toc = false
 featured_image = "/images/utilerias-cover.jpg"
 +++
