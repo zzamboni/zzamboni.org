@@ -204,7 +204,8 @@ Puedes obtener una muestra gratis y comprar el libro (¡tu eliges  cuánto pagas
 
 \nbsp
 
-** Literate Config
+** DONE Literate Config
+CLOSED: [2020-02-29 Sat 22:56]
 :PROPERTIES:
 :export_hugo_section: book
 :export_file_name: lit-config

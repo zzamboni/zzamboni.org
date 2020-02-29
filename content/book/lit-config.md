@@ -1,8 +1,9 @@
 +++
 title = "Literate Config"
 author = ["Diego Zamboni"]
+date = 2020-02-29T22:56:00+01:00
 draft = false
-creator = "Emacs 26.3 (Org mode 9.3.2 + ox-hugo)"
+creator = "Emacs 26.3 (Org mode 9.3.6 + ox-hugo)"
 finalURL = "https://leanpub.com/lit-config/"
 +++
 
