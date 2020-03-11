@@ -2048,7 +2048,7 @@ I will post more Elvish tips and tricks over time.
 
 ** Other
 
-*** DONE New book: Literate Config
+*** DONE New book: Literate Config :literateconfig:book:leanpub:literateprogramming:
 CLOSED: [2019-11-18 Mon 22:44]
 :PROPERTIES:
 :export_hugo_bundle: 2019-11-18-new-book-literate-config

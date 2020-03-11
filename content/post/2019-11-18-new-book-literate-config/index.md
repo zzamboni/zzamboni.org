@@ -3,6 +3,7 @@ title = "New book: Literate Config"
 author = ["Diego Zamboni"]
 summary = "I am happy to announce the new release of my new book \"Literate Config\", devoted to the use of Literate Programming for writing and documenting configuration files."
 date = 2019-11-18T22:44:00+01:00
+tags = ["literateconfig", "book", "leanpub", "literateprogramming"]
 draft = false
 creator = "Emacs 26.3 (Org mode 9.3.6 + ox-hugo)"
 toc = false
