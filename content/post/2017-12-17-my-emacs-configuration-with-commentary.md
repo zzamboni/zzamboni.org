@@ -12,7 +12,7 @@ toc = true
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **February 29, 2020**
+Last update: **March 11, 2020**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at [init.el](https://github.com/zzamboni/dot%5Femacs/blob/master/init.el).
 
@@ -193,6 +193,15 @@ Password management using `auth-sources` and `pass` (I normally use 1Password, b
 
 
 ## Miscellaneous settings {#miscellaneous-settings}
+
+
+### General settings {#general-settings}
+
+Prevent asking for confirmation to kill processes when exiting.
+
+```emacs-lisp
+(customize-set-variable 'confirm-kill-processes nil)
+```
 
 
 ### Performance optimization {#performance-optimization}
@@ -768,9 +777,21 @@ Now I define keybindings to access my commonly-used org files.
 
 I'm testing a new library called [org-roam](https://github.com/jethrokuan/org-roam) for non-hierarchical note taking.
 
+Install and load dependencies first.
+
+```emacs-lisp
+(use-package emacsql
+  :defer nil)
+(use-package emacsql-sqlite
+  :after emacsql
+  :defer nil)
+```
+
+Then we load `org-roam` itself.
+
 ```emacs-lisp
 (use-package org-roam
-  :after org
+  :after (org emacsql emacsql-sqlite)
   :load-path "lisp/org-roam"
   :diminish
   :hook
@@ -809,7 +830,14 @@ I'm testing a new library called [org-roam](https://github.com/jethrokuan/org-ro
 Using `org-download` to make it easier to insert images into my org notes.
 
 ```emacs-lisp
-(use-package org-download)
+(use-package org-download
+  :after org
+  :defer nil
+  :custom
+  (org-download-method 'directory)
+  (org-download-image-dir "images")
+  :config
+  (require 'org-download))
 ```
 
 
