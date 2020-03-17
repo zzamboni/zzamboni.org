@@ -12,7 +12,7 @@ toc = true
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **March 11, 2020**
+Last update: **March 17, 2020**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at [init.el](https://github.com/zzamboni/dot%5Femacs/blob/master/init.el).
 
@@ -836,6 +836,7 @@ Using `org-download` to make it easier to insert images into my org notes.
   :custom
   (org-download-method 'directory)
   (org-download-image-dir "images")
+  (org-image-actual-width '(300))
   :config
   (require 'org-download))
 ```
@@ -1410,7 +1411,7 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
     (eval-after-load 'simple '(diminish 'visual-line-mode))
     ```
 
--   Prettify checkbox lists - courtesy of <https://blog.jft.rocks/emacs/unicode-for-orgmode-checkboxes.html>. First, we add special characters for checkboxes:
+-   Prettify checkbox lists and other symbols - courtesy of <https://blog.jft.rocks/emacs/unicode-for-orgmode-checkboxes.html>. First, we add special characters for checkboxes:
 
     ```emacs-lisp
     (org-mode . (lambda ()
@@ -1419,6 +1420,12 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
                   (push '("[X]" . "☑" ) prettify-symbols-alist)
                   (push '("[-]" . "⊡" ) prettify-symbols-alist)
                   (prettify-symbols-mode)))
+    ```
+
+    Show symbols when the cursor is over of right after them.
+
+    ```emacs-lisp
+    (prettify-symbols-unprettify-at-point 'right-edge)
     ```
 
     Second, we define a special face for checked items.
@@ -1458,6 +1465,98 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
     ```emacs-lisp
     (use-package hide-mode-line)
     ```
+
+-   The following code ([by Rasmus](https://pank.eu/blog/pretty-babel-src-blocks.html)) prettifies org-mode's source blocks by replacing the `#+begin/end_src` keywords and the header arguments with symbols. In my config, the following code:
+
+<!--listend-->
+
+```emacs-lisp
+(defvar zzamboni/test-symbol ?✎
+  "This is a test symbol")
+```
+
+Looks like this:
+
+{{< figure src="../../../../.emacs.d/images/Org_mode/2020-03-17_09-54-28_screenshot.png" >}}
+
+When the cursor is over or next to one of the symbols, it gets expanded into its text representation to make editing easier. This is enabled by setting `prettify-symbols-unprettify-at-point` to `'right-edge`:
+
+{{< figure src="../../../../.emacs.d/images/Org_mode/2020-03-17_10-22-49_screenshot.png" >}}
+
+```emacs-lisp
+(with-eval-after-load 'org
+  (defvar-local rasmus/org-at-src-begin -1
+    "Variable that holds whether last position was a ")
+
+  (defvar rasmus/ob-header-symbol ?☰
+    "Symbol used for babel headers")
+
+  (defun rasmus/org-prettify-src--update ()
+    (let ((case-fold-search t)
+          (re "^[ \t]*#\\+begin_src[ \t]+[^ \f\t\n\r\v]+[ \t]*")
+          found)
+      (save-excursion
+        (goto-char (point-min))
+        (while (re-search-forward re nil t)
+          (goto-char (match-end 0))
+          (let ((args (org-trim
+                       (buffer-substring-no-properties (point)
+                                                       (line-end-position)))))
+            (when (org-string-nw-p args)
+              (let ((new-cell (cons args rasmus/ob-header-symbol)))
+                (cl-pushnew new-cell prettify-symbols-alist :test #'equal)
+                (cl-pushnew new-cell found :test #'equal)))))
+        (setq prettify-symbols-alist
+              (cl-set-difference prettify-symbols-alist
+                                 (cl-set-difference
+                                  (cl-remove-if-not
+                                   (lambda (elm)
+                                     (eq (cdr elm) rasmus/ob-header-symbol))
+                                   prettify-symbols-alist)
+                                  found :test #'equal)))
+        ;; Clean up old font-lock-keywords.
+        (font-lock-remove-keywords nil prettify-symbols--keywords)
+        (setq prettify-symbols--keywords (prettify-symbols--make-keywords))
+        (font-lock-add-keywords nil prettify-symbols--keywords)
+        (while (re-search-forward re nil t)
+          (font-lock-flush (line-beginning-position) (line-end-position))))))
+
+  (defun rasmus/org-prettify-src ()
+    "Hide src options via `prettify-symbols-mode'.
+
+  `prettify-symbols-mode' is used because it has uncollpasing. It's
+  may not be efficient."
+    (let* ((case-fold-search t)
+           (at-src-block (save-excursion
+                           (beginning-of-line)
+                           (looking-at "^[ \t]*#\\+begin_src[ \t]+[^ \f\t\n\r\v]+[ \t]*"))))
+      ;; Test if we moved out of a block.
+      (when (or (and rasmus/org-at-src-begin
+                     (not at-src-block))
+                ;; File was just opened.
+                (eq rasmus/org-at-src-begin -1))
+        (rasmus/org-prettify-src--update))
+      ;; Remove composition if at line; doesn't work properly.
+      ;; (when at-src-block
+      ;;   (with-silent-modifications
+      ;;     (remove-text-properties (match-end 0)
+      ;;                             (1+ (line-end-position))
+      ;;                             '(composition))))
+      (setq rasmus/org-at-src-begin at-src-block)))
+
+  (defun rasmus/org-prettify-symbols ()
+    (mapc (apply-partially 'add-to-list 'prettify-symbols-alist)
+          (cl-reduce 'append
+                     (mapcar (lambda (x) (list x (cons (upcase (car x)) (cdr x))))
+                             `(("#+begin_src" . ?⎡) ;; ⎡ ➤ 🖝 ➟ ➤ ✎
+                               ("#+end_src"   . ?⎣) ;; ⎣ ✐
+                               ("#+header:" . ,rasmus/ob-header-symbol)
+                               ("#+begin_quote" . ?«)
+                               ("#+end_quote" . ?»)))))
+    (turn-on-prettify-symbols-mode)
+    (add-hook 'post-command-hook 'rasmus/org-prettify-src t t))
+  (add-hook 'org-mode-hook #'rasmus/org-prettify-symbols))
+```
 
 
 ### Auto-generated table of contents {#auto-generated-table-of-contents}
