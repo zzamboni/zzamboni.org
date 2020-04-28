@@ -325,7 +325,7 @@ I group here the posts about my documented config files, which include the live 
 CLOSED: [2017-12-17 Sun 20:14]
 :PROPERTIES:
 :export_file_name: 2017-12-17-my-emacs-configuration-with-commentary
-:export_hugo_custom_front_matter: :featured_image /images/emacs-logo.svg :toc true
+:export_hugo_custom_front_matter: :featured_image /images/emacs-logo.svg :toc true  :aliases /post/2017-12-17-my-emacs-configuration-with-commentary
 :END:
 #+begin_description
 I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file.

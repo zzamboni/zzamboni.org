@@ -8,6 +8,7 @@ draft = false
 creator = "Emacs 26.3 (Org mode 9.3.6 + ox-hugo)"
 featured_image = "/images/emacs-logo.svg"
 toc = true
+aliases = "/post/2017-12-17-my-emacs-configuration-with-commentary"
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
