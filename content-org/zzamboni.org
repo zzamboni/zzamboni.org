@@ -324,8 +324,7 @@ I group here the posts about my documented config files, which include the live 
 *** DONE My Emacs Configuration, With Commentary                      :emacs:
 CLOSED: [2017-12-17 Sun 20:14]
 :PROPERTIES:
-:export_hugo_bundle: 2017-12-17-my-emacs-configuration-with-commentary
-:export_file_name: _index
+:export_file_name: 2017-12-17-my-emacs-configuration-with-commentary
 :export_hugo_custom_front_matter: :featured_image /images/emacs-logo.svg :toc true
 :END:
 #+begin_description

@@ -12,7 +12,7 @@ toc = true
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **March 17, 2020**
+Last update: **April 28, 2020**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at [init.el](https://github.com/zzamboni/dot%5Femacs/blob/master/init.el).
 
@@ -152,6 +152,8 @@ Testing [`quelpa`](https://framagit.org/steckerhalter/quelpa) and to install pac
      :fetcher git
      :url "https://github.com/quelpa/quelpa-use-package.git"))
   (require 'quelpa-use-package))
+(require 'quelpa)
+(quelpa-use-package-activate-advice)
 ```
 
 This variable tells Emacs to prefer the `.el` file if it's newer, even if there is a corresponding `.elc` file. Also, use `auto-compile` to autocompile files as needed.
@@ -238,6 +240,11 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 
     ```emacs-lisp
     (set-language-environment "UTF-8")
+    (prefer-coding-system       'utf-8)
+    (set-default-coding-systems 'utf-8)
+    (set-terminal-coding-system 'utf-8)
+    (set-keyboard-coding-system 'utf-8)
+    (setq default-buffer-file-coding-system 'utf-8)
     ```
 
 -   Load the `cl` library to enable some additional macros (e.g. `lexical-let`).
@@ -658,6 +665,45 @@ Enable [Speed Keys](https://orgmode.org/manual/Speed-keys.html), which allows qu
 ```
 
 
+### Capturing stuff {#capturing-stuff}
+
+First, I define some global keybindings  to open my frequently-used org files (original tip from [Learn how to take notes more efficiently in Org Mode](https://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/)).
+
+I define a helper function to define keybindings that open files. Since I use the `which-key` package, it also defines the description of the key that will appear in the `which-key` menu. Note the use of `lexical-let` so that  the `lambda` creates a closure, otherwise the keybindings don't work.
+
+```emacs-lisp
+(defun zz/add-file-keybinding (key file &optional desc)
+  (lexical-let ((key key)
+                (file file)
+                (desc desc))
+    (global-set-key (kbd key) (lambda () (interactive) (find-file file)))
+    (which-key-add-key-based-replacements key (or desc file))))
+```
+
+Now I define keybindings to access my commonly-used org files.
+
+```emacs-lisp
+(zz/add-file-keybinding "C-c f w" "~/Work/work.org.gpg" "work.org")
+(zz/add-file-keybinding "C-c f p" "~/org/projects.org" "projects.org")
+(zz/add-file-keybinding "C-c f i" "~/org/ideas.org" "ideas.org")
+(zz/add-file-keybinding "C-c f d" "~/org/diary.org" "diary.org")
+```
+
+`org-capture` provides  a generic and extensible interface  to capturing things  into org-mode in  different formats. I set up <kbd>C-c c</kbd>  as the default  keybinding for triggering `org-capture`. Usually setting up a new capture template requires  some custom code,  which  gets defined in  the corresponding package config sections and included in the `:config` section below.
+
+```emacs-lisp
+(use-package org-capture
+  :ensure nil
+  :after org
+  :defer 1
+  :bind
+  ("C-c c" . org-capture)
+  :config
+  <<org-capture-config>>
+  )
+```
+
+
 ### Task tracking {#task-tracking}
 
 Org-Agenda is the umbrella for all todo, journal, calendar, and other views. I set up `C-c a` to call up agenda mode.
@@ -712,7 +758,7 @@ I also provide some customization for the `holidays` package, since its entries 
                 holiday-mexican-holidays)))
 ```
 
-[`org-super-agenda`](https://github.com/alphapapa/org-super-agenda) provides great grouping and customization features to make agenda mode easier to use.
+[org-super-agenda](https://github.com/alphapapa/org-super-agenda) provides great grouping and customization features to make agenda mode easier to use.
 
 ```emacs-lisp
 (require 'org-habit)
@@ -733,43 +779,51 @@ I configure `org-archive` to archive completed TODOs by default to the `archive.
   (org-archive-location "archive.org::datetree/"))
 ```
 
-
-### Capturing stuff {#capturing-stuff}
-
-First, I define some global keybindings  to open my frequently-used org files (original tip from [Learn how to take notes more efficiently in Org Mode](https://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/)).
-
-I define a helper function to define keybindings that open files. Since I use the `which-key` package, it also defines the description of the key that will appear in the `which-key` menu. Note the use of `lexical-let` so that  the `lambda` creates a closure, otherwise the keybindings don't work.
+Trying out [org-gtd](https://github.com/Trevoke/org-gtd.el):
 
 ```emacs-lisp
-(defun zz/add-file-keybinding (key file &optional desc)
-  (lexical-let ((key key)
-                (file file)
-                (desc desc))
-    (global-set-key (kbd key) (lambda () (interactive) (find-file file)))
-    (which-key-add-key-based-replacements key (or desc file))))
-```
-
-Now I define keybindings to access my commonly-used org files.
-
-```emacs-lisp
-(zz/add-file-keybinding "C-c f w" "~/Work/work.org.gpg" "work.org")
-(zz/add-file-keybinding "C-c f p" "~/org/projects.org" "projects.org")
-(zz/add-file-keybinding "C-c f i" "~/org/ideas.org" "ideas.org")
-(zz/add-file-keybinding "C-c f d" "~/org/diary.org" "diary.org")
-```
-
-`org-capture` provides  a generic and extensible interface  to capturing things  into org-mode in  different formats. I set up <kbd>C-c c</kbd>  as the default  keybinding for triggering `org-capture`. Usually setting up a new capture template requires  some custom code,  which  gets defined in  the corresponding package config sections and included in the `:config` section below.
-
-```emacs-lisp
-(use-package org-capture
-  :ensure nil
+(use-package org-edna
+  :defer nil)
+(use-package org-gtd
+  :defer nil
   :after org
-  :defer 1
-  :bind
-  ("C-c c" . org-capture)
+  :load-path "lisp/org-gtd.el"
   :config
-  <<org-capture-config>>
-  )
+  (require 'org-gtd)
+  ;; these are the interactive functions you're likely to want to use as you go about GTD.
+  (global-set-key (kbd "C-c d c") 'org-gtd-capture) ;; add item to inbox
+  (global-set-key (kbd "C-c d p") 'org-gtd-process-inbox) ;; process entire inbox
+  (global-set-key (kbd "C-c d a") 'org-agenda-list) ;; see what's on your plate today
+  (global-set-key (kbd "C-c d n") 'org-gtd-show-all-next) ;; see all NEXT items
+  (global-set-key (kbd "C-c d s") 'org-gtd-show-stuck-projects) ;; see projects that don't have a NEXT item
+
+  (add-to-list 'org-agenda-files org-gtd-directory)
+
+  ;; package: https://www.nongnu.org/org-edna-el/
+  ;; org-edna is used to make sure that when a project task gets DONE,
+  ;; the next TODO is automatically changed to NEXT.
+  (setq org-edna-use-inheritance t)
+  (org-edna-load)
+
+  ;; package: https://github.com/Malabarba/org-agenda-property
+  ;; this is so you can see who an item was delegated to in the agenda
+  (setq org-agenda-property-list '("DELEGATED_TO"))
+  ;; I think this makes the agenda easier to read
+  (setq org-agenda-property-position 'next-line))
+```
+
+```emacs-lisp
+(add-to-list 'org-capture-templates
+             '("i" "GTD item"
+               entry (file (lambda () (org-gtd--path org-gtd-inbox-file-basename)))
+               "* %?\n%U\n\n  %i"
+               :kill-buffer t))
+(add-to-list 'org-capture-templates
+             '("l" "GTD item with link to where you are in emacs now"
+               entry (file (lambda () (org-gtd--path org-gtd-inbox-file-basename)))
+               "* %?\n%U\n\n  %i\n  %a"
+               :kill-buffer t))
+
 ```
 
 
