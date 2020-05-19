@@ -13,7 +13,7 @@ aliases = "/post/2017-12-17-my-emacs-configuration-with-commentary"
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **April 28, 2020**
+Last update: **May 19, 2020**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at [init.el](https://github.com/zzamboni/dot%5Femacs/blob/master/init.el).
 
@@ -75,7 +75,7 @@ If the `gcmh` package is already installed, load and enable it early. If not, th
 We set `gc-cons-threshold` to its maximum value, to prevent any garbage collection from happening during load time. We also reset this value in the [Epilogue](#epilogue).
 
 ```emacs-lisp
-;  (setq gc-cons-threshold most-positive-fixnum)
+(setq gc-cons-threshold most-positive-fixnum)
 ```
 
 
@@ -1532,11 +1532,11 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
 
 Looks like this:
 
-{{< figure src="../../../../.emacs.d/images/Org_mode/2020-03-17_09-54-28_screenshot.png" >}}
+{{< figure src="../../../../.emacs.d/images/my-emacs-configuration-with-commentary/2020-03-17_09-54-28_screenshot.png" >}}
 
 When the cursor is over or next to one of the symbols, it gets expanded into its text representation to make editing easier. This is enabled by setting `prettify-symbols-unprettify-at-point` to `'right-edge`:
 
-{{< figure src="../../../../.emacs.d/images/Org_mode/2020-03-17_10-22-49_screenshot.png" >}}
+{{< figure src="../../../../.emacs.d/images/my-emacs-configuration-with-commentary/2020-03-17_10-22-49_screenshot.png" >}}
 
 ```emacs-lisp
 (with-eval-after-load 'org
@@ -1579,8 +1579,8 @@ When the cursor is over or next to one of the symbols, it gets expanded into its
   (defun rasmus/org-prettify-src ()
     "Hide src options via `prettify-symbols-mode'.
 
-  `prettify-symbols-mode' is used because it has uncollpasing. It's
-  may not be efficient."
+    `prettify-symbols-mode' is used because it has uncollpasing. It's
+    may not be efficient."
     (let* ((case-fold-search t)
            (at-src-block (save-excursion
                            (beginning-of-line)
@@ -1599,11 +1599,24 @@ When the cursor is over or next to one of the symbols, it gets expanded into its
       ;;                             '(composition))))
       (setq rasmus/org-at-src-begin at-src-block)))
 
+  ;; This function helps to produce a single glyph out of a
+  ;; string. The glyph can then be used in prettify-symbols-alist.
+  ;; This function was provided by Ihor in the org-mode mailing list.
+  (defun yant/str-to-glyph (str)
+    "Transform string into glyph, displayed correctly."
+    (let ((composition nil))
+      (dolist (char (string-to-list str)
+                    (nreverse (cdr composition)))
+        (push char composition)
+        (push '(Br . Bl) composition))))
+
   (defun rasmus/org-prettify-symbols ()
     (mapc (apply-partially 'add-to-list 'prettify-symbols-alist)
           (cl-reduce 'append
                      (mapcar (lambda (x) (list x (cons (upcase (car x)) (cdr x))))
                              `(("#+begin_src" . ?⎡) ;; ⎡ ➤ 🖝 ➟ ➤ ✎
+                               ;; multi-character strings can be used with something like this:
+                               ;; ("#+begin_src" . ,(yant/str-to-glyph "```"))
                                ("#+end_src"   . ?⎣) ;; ⎣ ✐
                                ("#+header:" . ,rasmus/ob-header-symbol)
                                ("#+begin_quote" . ?«)
@@ -2865,5 +2878,6 @@ A work-in-progress Hammerspoon shell for Emacs, posted on the Hammerspoon mailin
 Here we close the `let` expression from [the preface](#performance-optimization).
 
 ```emacs-lisp
+(setq gc-cons-threshold (* 2 1000 1000))
 )
 ```
