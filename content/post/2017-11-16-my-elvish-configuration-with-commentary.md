@@ -12,7 +12,7 @@ featured_image = "/images/elvish-logo.svg"
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **March 17, 2020**
+Last update: **May 28, 2020**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -71,12 +71,12 @@ For now I use these packages:
 
 ```elvish
 epm:install &silent-if-installed=$true   \
-github.com/zzamboni/elvish-modules     \
-github.com/zzamboni/elvish-completions \
-github.com/zzamboni/elvish-themes      \
-github.com/xiaq/edit.elv               \
-github.com/muesli/elvish-libs          \
-github.com/iwoloschin/elvish-packages
+  github.com/zzamboni/elvish-modules     \
+  github.com/zzamboni/elvish-completions \
+  github.com/zzamboni/elvish-themes      \
+  github.com/xiaq/edit.elv               \
+  github.com/muesli/elvish-libs          \
+  github.com/iwoloschin/elvish-packages
 ```
 
 The modules within each package get loaded individually below.
@@ -213,11 +213,10 @@ I use the [chain](https://github.com/zzamboni/theme.elv/blob/master/chain.org) p
 
 ```elvish
 use github.com/zzamboni/elvish-themes/chain
-chain:bold-prompt = $true
+chain:bold-prompt = $false
 ```
 
-I set the color of the directory segment, the prompt chains and the
-prompt arrow in my prompt to a session-identifying color.
+I set the color of the directory segment, the prompt chains and the prompt arrow in my prompt to a session-identifying color (a different color for each session).
 
 ```elvish
 chain:segment-style = [
@@ -231,14 +230,14 @@ chain:segment-style = [
 Customize some of the glyphs for the font I use in my terminal.
 
 ```elvish
-chain:glyph[git-ahead]  = "⬆ "
-chain:glyph[git-staged] = "✔ "
+chain:glyph[git-ahead]  = "⬆"
+chain:glyph[git-staged] = "✔"
 ```
 
-Elvish has a [comprehensive mechanism](https://elvish.io/ref/edit.html#prompts) for displaying prompts with useful information while avoiding getting blocked by prompt functions which take too long to finish. For the most part the defaults work well. One change I like to make is to change the [stale prompt transformer](https://elvish.io/ref/edit.html#stale-prompt) function to make the prompt dim when stale:
+Elvish has a [comprehensive mechanism](https://elvish.io/ref/edit.html#prompts) for displaying prompts with useful information while avoiding getting blocked by prompt functions which take too long to finish. For the most part the defaults work well. One change I like to make is to change the [stale prompt transformer](https://elvish.io/ref/edit.html#stale-prompt) function to make the prompt dim when stale (the default is to show the prompt in inverse video):
 
 ```elvish
-edit:prompt-stale-transform = { each [x]{ styled $x[text] "gray" } }
+edit:prompt-stale-transform = [x]{ styled $x "bright-black" }
 ```
 
 Another possibility is to make the prompt stay the same when stale - useful to avoid distractions (disabled for now):
@@ -386,6 +385,12 @@ Locale setting.
 
 ```elvish
 E:LC_ALL = "en_US.UTF-8"
+```
+
+PKG\_CONFIG configuration
+
+```elvish
+E:PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
 ```
 
 

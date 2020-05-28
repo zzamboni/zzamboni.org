@@ -13,7 +13,7 @@ aliases = "/post/2017-12-17-my-emacs-configuration-with-commentary"
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **May 19, 2020**
+Last update: **May 28, 2020**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at [init.el](https://github.com/zzamboni/dot%5Femacs/blob/master/init.el).
 
@@ -704,6 +704,15 @@ Now I define keybindings to access my commonly-used org files.
   )
 ```
 
+Define all my org agenda files as targets for refiling.
+
+```emacs-lisp
+(setq org-refile-targets '((nil :maxlevel . 9)
+                           (org-agenda-files :maxlevel . 9)))
+(setq org-outline-path-complete-in-steps nil)         ; Refile in a single go
+(setq org-refile-use-outline-path t)                  ; Show full paths for refiling
+```
+
 
 ### Task tracking {#task-tracking}
 
@@ -736,6 +745,9 @@ I also provide some customization for the `holidays` package, since its entries 
 ```emacs-lisp
 (quelpa '(swiss-holidays :fetcher github :repo "egli/swiss-holidays"))
 (require 'swiss-holidays)
+(setq swiss-holidays-zh-city-holidays
+      '((holiday-float 4 1 3 "Sechseläuten") ;; meistens dritter Montag im April
+        (holiday-float 9 1 3 "Knabenschiessen"))) ;; zweites Wochenende im September
 ```
 
 ```emacs-lisp
@@ -754,6 +766,7 @@ I also provide some customization for the `holidays` package, since its entries 
                   (holiday-fixed 12 25 "Christmas")
                   (solar-equinoxes-solstices))
                 swiss-holidays
+                swiss-holidays-labour-day
                 swiss-holidays-catholic
                 swiss-holidays-zh-city-holidays
                 holiday-mexican-holidays)))

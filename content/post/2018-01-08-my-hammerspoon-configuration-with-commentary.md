@@ -13,7 +13,7 @@ featured_image = "/images/hammerspoon.jpg"
 {{< leanpubbook book="lit-config" style="float:right" >}}
 {{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
 
-Last update: **March 17, 2020**
+Last update: **May 28, 2020**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -80,7 +80,7 @@ Install=spoon.SpoonInstall
 ```
 
 
-## BetterTouchTool {#bettertouchtool}
+## BetterTouchTool integration (experimental) {#bettertouchtool-integration--experimental}
 
 I'm currently working on a new [BetterTouchTool.spoon](https://github.com/zzamboni/Spoons/tree/spoon/BetterTouchTool/Source/BetterTouchTool.spoon) which provides integration with the [BetterTouchTool AppleScript API](https://docs.bettertouchtool.net/docs/apple%5Fscript.html). This is in heavy development! See the configuration for the Hammer spoon in [System and UI](#system-and-ui) for an example of how to use it.
 
@@ -92,7 +92,7 @@ BTT = spoon.BetterTouchTool
 
 ## URL Dispatching to site-specific browsers {#url-dispatching-to-site-specific-browsers}
 
-The [URLDispatcher](http://www.hammerspoon.org/Spoons/URLDispatcher.html) spoon makes it possible to open URLs with different browsers. I have created different site-specific browsers ~~using [Epichrome](https://github.com/dmarmor/epichrome)~~ using [a script I wrote to create Firefox-based SSBs](https://github.com/zzamboni/firefox-ssb), which allows me to keep site-specific bookmarks, search settings, etc.
+The [URLDispatcher](http://www.hammerspoon.org/Spoons/URLDispatcher.html) spoon makes it possible to open URLs with different browsers. I have created different site-specific browsers using [Epichrome](https://github.com/dmarmor/epichrome), which allows me to keep site-specific bookmarks, search settings, etc.
 
 ```lua
 DefaultBrowser = "com.brave.Browser.dev"
@@ -250,6 +250,9 @@ Install:andUse("TextClipboardHistory",
 
 ## System and UI {#system-and-ui}
 
+
+### General Hammerspoon utilities {#general-hammerspoon-utilities}
+
 The `BTT_restart_Hammerspoon` function sets up a BetterTouchTool widget which also executes the `config_reload` action from the spoon. This gets assigned to the `fn` config parameter in the configuration of the Hammer spoon below, which has the effect of calling the function with the Spoon object as its parameter.
 
 This is still very manual - the `uuid` parameter contains the ID of the BTT widget to configure, and for now you have to get it by hand from BTT and paste it here.
@@ -283,6 +286,9 @@ Install:andUse("Hammer",
                }
 )
 ```
+
+
+### Caffeine: Control system/display sleep {#caffeine-control-system-display-sleep}
 
 The [Caffeine](http://www.hammerspoon.org/Spoons/Caffeine.html) spoon allows preventing the display and the machine from sleeping. I use it frequently when playing music from my machine, to avoid having to unlock the screen whenever I want to change the music. In this case we also create a function `BTT_caffeine_widget` to configure the widget to both execute the corresponding function, and to set its icon according to the current state.
 
@@ -328,6 +334,9 @@ Install:andUse("Caffeine", {
 })
 ```
 
+
+### Colorize menubar according to keyboard layout {#colorize-menubar-according-to-keyboard-layout}
+
 The [MenubarFlag](http://www.hammerspoon.org/Spoons/MenubarFlag.html) spoon colorizes the menubar according to the selected keyboard language or layout (functionality inspired by [ShowyEdge](https://pqrs.org/osx/ShowyEdge/index.html.en)). I use English, Spanish and German, so those are the colors I have defined.
 
 ```lua
@@ -346,6 +355,9 @@ Install:andUse("MenubarFlag",
 )
 ```
 
+
+### Locating the mouse {#locating-the-mouse}
+
 The [MouseCircle](http://www.hammerspoon.org/Spoons/MouseCircle.html) spoon shows a circle around the mouse pointer when triggered. I have it disabled for now because I have the macOS [shake-to-grow feature](https://support.apple.com/kb/PH25507?locale=en%5FUS&viewlocale=en%5FUS) enabled.
 
 ```lua
@@ -361,6 +373,9 @@ Install:andUse("MouseCircle",
                }
 )
 ```
+
+
+### Finding colors {#finding-colors}
 
 One of my original bits of Hammerspoon code, now made into a spoon (although I keep it disabled, since I don't really use it). The [ColorPicker](http://www.hammerspoon.org/Spoons/ColorPicker.html) spoon shows a menu of the available color palettes, and when you select one, it draws swatches in all the colors in that palette, covering the whole screen. You can click on any of them to copy its name to the clipboard, or cmd-click to copy its RGB code.
 
@@ -379,6 +394,9 @@ Install:andUse("ColorPicker",
 )
 ```
 
+
+### Homebrew information popups {#homebrew-information-popups}
+
 I use Homebrew, and when I run `brew update`, I often wonder about what some of the formulas shown are (names are not always obvious). The [BrewInfo](http://www.hammerspoon.org/Spoons/BrewInfo.html) spoon allows me to point at a Formula or Cask name and press `Hyper-b` or `Hyper-c` (for Casks) to have the output of the `info` command in a popup window, or the same key with `Shift-Hyper` to open the URL of the Formula/Cask.
 
 ```lua
@@ -395,12 +413,15 @@ Install:andUse("BrewInfo",
                    show_brew_info = {hyper, "b"},
                    open_brew_url = {shift_hyper, "b"},
                    -- brew cask info
-                   show_brew_cask_info = {hyper, "c"},
-                   open_brew_cask_url = {shift_hyper, "c"},
+                   show_brew_cask_info = {shift_hyper, "c"},
+                   open_brew_cask_url = {hyper, "c"},
                  }
                }
 )
 ```
+
+
+### Displaying keyboard shortcuts {#displaying-keyboard-shortcuts}
 
 The [KSheet](http://www.hammerspoon.org/Spoons/KSheet.html) spoon traverses the current application's menus and builds a cheatsheet of the keyboard shortcuts, showing it in a nice popup window.
 
@@ -411,6 +432,9 @@ Install:andUse("KSheet",
                    toggle = { hyper, "/" }
 }})
 ```
+
+
+### TimeMachine backup monitoring {#timemachine-backup-monitoring}
 
 The [TimeMachineProgress](http://www.hammerspoon.org/Spoons/TimeMachineProgress.html) spoon shows an indicator about the progress of the ongoing Time Machine backup. The indicator disappears when there is no backup going on.
 
@@ -423,6 +447,27 @@ Install:andUse("TimeMachineProgress",
 ```
 
 
+### Disabling Turbo Boost {#disabling-turbo-boost}
+
+The TurboBoost spoon shows an indicator of the CPU's Turbo Boost status, and allows disabling/enabling. This requires [Turbo Boost Switcher](https://github.com/rugarciap/Turbo-Boost-Switcher) to be installed.
+
+```lua
+  Install:andUse("TurboBoost",
+                 {
+                   repo = 'zzspoons',
+                   config = {
+                     disable_on_start = true
+                   },
+                   hotkeys = {
+                     toggle = { hyper, "0" }
+                   },
+                   start = true,
+--                   loglevel = 'debug'
+                 }
+  )
+```
+
+
 ## Other applications {#other-applications}
 
 The [ToggleSkypeMute](http://www.hammerspoon.org/Spoons/ToggleSkypeMute.html) spoon sets up the missing keyboard bindings for toggling the mute button on Skype and Skype for Business. I'm not fully happy with this spoon - it should auto-detect the application instead of having separate keys for each application, and it could be extended to more generic use.
@@ -430,6 +475,7 @@ The [ToggleSkypeMute](http://www.hammerspoon.org/Spoons/ToggleSkypeMute.html) sp
 ```lua
 Install:andUse("ToggleSkypeMute",
                {
+                 disable = true,
                  hotkeys = {
                    toggle_skype = { shift_hyper, "v" },
                    toggle_skype_for_business = { shift_hyper, "f" }
@@ -449,7 +495,7 @@ Install:andUse("HeadphoneAutoPause",
 ```
 
 
-## Seal {#seal}
+## Seal application launcher/controller {#seal-application-launcher-controller}
 
 The [Seal](http://www.hammerspoon.org/Spoons/Seal.html) spoon is a powerhouse - it implements a Spotlight-like launcher, but which allows for infinite configurability of what can be done or searched from the launcher window. I use Seal as my default launcher, triggered with `Cmd-space`, although I still keep Spotlight around under `Hyper-space`, mainly for its search capabilities.
 
@@ -667,7 +713,7 @@ Install:andUse("DeepLTranslate",
 
 ## Leanpub integration {#leanpub-integration}
 
-The Leanpub spoon provides monitoring of book build jobs.
+The Leanpub spoon provides monitoring of book build jobs. You can read more about how I use this in my blog post [Automating Leanpub book publishing with Hammerspoon and CircleCI](https://zzamboni.org/post/automating-leanpub-book-publishing-with-hammerspoon-and-circleci/).
 
 ```lua
 Install:andUse("Leanpub",
@@ -683,6 +729,19 @@ Install:andUse("Leanpub",
                    }
                  },
                  start = true,
+})
+```
+
+
+## Showing application keybindings {#showing-application-keybindings}
+
+The KSheet spoon provides for showing the keybindings for the currently active application.
+
+```lua
+Install:andUse("KSheet", {
+                 hotkeys = {
+                   toggle = { hyper, "/" }
+                 }
 })
 ```
 
