@@ -5,7 +5,7 @@ summary = "I am happy to announce the new release of my new book \"Literate Conf
 date = 2019-11-18T22:44:00+01:00
 tags = ["literateconfig", "book", "leanpub", "literateprogramming"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.3.6 + ox-hugo)"
+creator = "Emacs 26.3 (Org mode 9.3.7 + ox-hugo)"
 toc = false
 featured_image = "/images/literate-config-cover.jpg"
 +++

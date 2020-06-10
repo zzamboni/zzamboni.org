@@ -5,7 +5,7 @@ summary = "In my ongoing series of literate config files, I present to you my Ha
 date = 2018-01-08T13:31:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "hammerspoon"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.3.6 + ox-hugo)"
+creator = "Emacs 26.3 (Org mode 9.3.7 + ox-hugo)"
 toc = true
 featured_image = "/images/hammerspoon.jpg"
 +++
@@ -13,7 +13,7 @@ featured_image = "/images/hammerspoon.jpg"
 {{< leanpubbook book="lit-config" style="float:right" >}}
 {{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
 
-Last update: **May 28, 2020**
+Last update: **June 10, 2020**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -90,7 +90,7 @@ BTT = spoon.BetterTouchTool
 ```
 
 
-## URL Dispatching to site-specific browsers {#url-dispatching-to-site-specific-browsers}
+## URL dispatching to site-specific browsers {#url-dispatching-to-site-specific-browsers}
 
 The [URLDispatcher](http://www.hammerspoon.org/Spoons/URLDispatcher.html) spoon makes it possible to open URLs with different browsers. I have created different site-specific browsers using [Epichrome](https://github.com/dmarmor/epichrome), which allows me to keep site-specific bookmarks, search settings, etc.
 
@@ -109,6 +109,12 @@ Install:andUse("URLDispatcher",
                      { "https?://wiki.work.com",          WikiApp },
                      { "https?://app.opsgenie.com",       OpsGenieApp },
                      { "https?://app.eu.opsgenie.com",    OpsGenieApp },
+                     { "msteams:",                        "com.microsoft.teams" }
+                   },
+                   url_redir_decoders = {
+                     -- Send MS Teams URLs directly to the app
+                     { "MS Teams URLs",
+                       "(https://teams.microsoft.com.*)", "msteams:%1", true }
                    },
                    default_handler = DefaultBrowser
                  },
@@ -465,6 +471,21 @@ The TurboBoost spoon shows an indicator of the CPU's Turbo Boost status, and all
 --                   loglevel = 'debug'
                  }
   )
+```
+
+
+### Unmounting external disks on sleep {#unmounting-external-disks-on-sleep}
+
+The EjectVolumes spoon automatically ejects all external disks before the system goes to sleep. I use this to avoid warnings from macOS when I close my laptop and disconnect it from my hub without explicitly unmounting my backup disk before. I disable the menubar icon, which is shown by default by the Spoon.
+
+```lua
+Install:andUse("EjectVolumes", {
+                 config = {
+                   show_in_menubar = false,
+                 },
+                 hotkeys = { hyper, "=" },
+                 start = true,
+})
 ```
 
 

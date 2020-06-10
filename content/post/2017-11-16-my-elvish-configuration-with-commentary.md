@@ -5,14 +5,14 @@ summary = "In this blog post I will walk you through my current Elvish configura
 date = 2017-11-16T20:21:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "elvish"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.3.6 + ox-hugo)"
+creator = "Emacs 26.3 (Org mode 9.3.7 + ox-hugo)"
 toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **May 28, 2020**
+Last update: **June 10, 2020**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -90,7 +90,7 @@ First, we load the module and set the proxy host.
 
 ```elvish
 use github.com/zzamboni/elvish-modules/proxy
-proxy:host = "http://proxy.corproot.net:8079"
+proxy:host = "http://aproxy.corproot.net:8080"
 ```
 
 Next, we set the test function to enable proxy auto-setting. In my case, the `/etc/resolv.conf` file contains the `corproot.net` domain (set through DHCP) when I'm in the corporate network, so I can check for that.
@@ -227,11 +227,11 @@ chain:segment-style = [
 ]
 ```
 
-Customize some of the glyphs for the font I use in my terminal.
+Customize some of the glyphs for the font I use in my terminal. I use the [Fira Code](https://github.com/tonsky/FiraCode) font which includes ligatures, so I disable the last chain, and set the `arrow` segment to a combination of characters which shows up as a nice arrow.
 
 ```elvish
-chain:glyph[git-ahead]  = "⬆"
-chain:glyph[git-staged] = "✔"
+chain:glyph[arrow]  = "=>"
+chain:show-last-chain = $false
 ```
 
 Elvish has a [comprehensive mechanism](https://elvish.io/ref/edit.html#prompts) for displaying prompts with useful information while avoiding getting blocked by prompt functions which take too long to finish. For the most part the defaults work well. One change I like to make is to change the [stale prompt transformer](https://elvish.io/ref/edit.html#stale-prompt) function to make the prompt dim when stale (the default is to show the prompt in inverse video):

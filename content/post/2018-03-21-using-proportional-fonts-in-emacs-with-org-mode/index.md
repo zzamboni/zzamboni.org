@@ -5,18 +5,22 @@ summary = "Configuring Org Mode in Emacs for beautiful typography for both text 
 date = 2018-03-21T22:45:00+01:00
 tags = ["emacs", "orgmode", "beautifulemacs", "config"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.3.6 + ox-hugo)"
+creator = "Emacs 26.3 (Org mode 9.3.7 + ox-hugo)"
 toc = true
 featured_image = "/images/emacs-logo.svg"
 +++
 
 Over the last few months, I have used [org-mode](https://orgmode.org/) more and more for writing and programming in Emacs. I love its flexibility and power, and it is the first [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) tool which "feels right", and I have been able to stick with it for a longer period of time than in my previous attempts.
 
-Recently I started thinking about how I could make my editing environment more visually appealing. I am in general very happy with my Emacs' appearance. I use the [Gruvbox theme](https://github.com/Greduan/emacs-theme-gruvbox), and org-mode has very decent syntax highlighting. But as I write more and more prose in Emacs these days, I started thinking it might be nice to edit text in more visually-appealing fonts, including using a proportional font, which makes regular prose much more readable. I would like to share with you what I learned and my current Emacs configuration.
+Recently I started thinking about how I could make my editing environment more visually appealing. I am in general very happy with my Emacs' appearance. I use the ~~[Gruvbox theme](https://github.com/Greduan/emacs-theme-gruvbox)~~ (in the meantime I have switched to the light [Spacemacs theme](https://github.com/nashamri/spacemacs-theme)) and org-mode has very decent syntax highlighting. But as I write more and more prose in Emacs these days, I started thinking it might be nice to edit text in more visually-appealing fonts, including using a proportional font, which makes regular prose much more readable. I would like to share with you what I learned and my current Emacs configuration.
 
-In the end, you can have an Emacs setup for editing org documents which looks very nice, with proportional fonts for text and monospaced fonts for code blocks, examples and other elements. To wet your appetite, here is what a fragment of my [init.org](https://github.com/zzamboni/dot-emacs/blob/master/init.org) file looks like:
+In the end, you can have an Emacs setup for editing org documents which looks very nice, with proportional fonts for text and monospaced fonts for code blocks, examples and other elements. To wet your appetite, here is what a fragment of my [init.org](https://github.com/zzamboni/dot-emacs/blob/master/init.org) file looked like with the Gruvbox theme:
 
 {{< figure src="emacs-init-propfonts.png" link="emacs-init-propfonts.png" >}}
+
+And this is how it looks now with the light Spacemacs theme:
+
+{{< figure src="emacs-init-propfonts-light.png" >}}
 
 
 ## Step 1: Configure faces for Org headlines and lists {#step-1-configure-faces-for-org-headlines-and-lists}
@@ -45,11 +49,12 @@ The `org-bullets` package replaces all headline markers with different Unicode b
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 ```
 
-Finally, we set up a nice proportional font, in different sizes, for the headlines. The fonts listed will be tried in sequence, and the first one found will be used. Feel free to add your own favorite font:
+Finally, we set up a nice proportional font, in different sizes, for the headlines. The fonts listed will be tried in sequence, and the first one found will be used. My current favorite is [ET Book](https://edwardtufte.github.io/et-book/), feel free to add your own:
 
 ```emacs-lisp
 (let* ((variable-tuple
-        (cond ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
+        (cond ((x-list-fonts "ETBembo")         '(:font "ETBembo"))
+              ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
               ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
               ((x-list-fonts "Verdana")         '(:font "Verdana"))
               ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
@@ -73,20 +78,22 @@ Finally, we set up a nice proportional font, in different sizes, for the headlin
 
 ## Step 2: Setting up `variable-pitch` and `fixed-pitch` faces {#step-2-setting-up-variable-pitch-and-fixed-pitch-faces}
 
-My next realization was that Emacs already includes support for displaying proportional fonts with the `variable-pitch-mode` command. You can try it right now: type <kbd>M-x</kbd> `variable-pitch-mode` and your current buffer will be shown in a proportional font (you can disable it by running `variable-pitch-mode` again). On my Mac the default variable-pitch font is Helvetica. You can change the font used by configuring the `variable-pitch` face. You can do this interactively through the customize interface by typing <kbd>M-x</kbd> `customize-face` `variable-pitch`. At the moment I like [Source Sans Pro](https://en.wikipedia.org/wiki/Source%5FSans%5FPro).
+My next realization was that Emacs already includes support for displaying proportional fonts with the `variable-pitch-mode` command. You can try it right now: type <kbd>M-x</kbd> `variable-pitch-mode` and your current buffer will be shown in a proportional font (you can disable it by running `variable-pitch-mode` again). On my Mac the default variable-pitch font is Helvetica. You can change the font used by configuring the `variable-pitch` face. You can do this interactively through the customize interface by typing <kbd>M-x</kbd> `customize-face` `variable-pitch`. At the moment I like ~~[Source Sans Pro](https://en.wikipedia.org/wiki/Source%5FSans%5FPro)~~ [ET Book](https://edwardtufte.github.io/et-book/).
 
-As a counterpart to `variable-pitch`, you need to configure the `fixed-pitch` face for the text that needs to be shown in a monospaced font. My first instinct was to inherit this from my `default` face (I use [Inconsolata](https://en.wikipedia.org/wiki/Inconsolata)), but it seems that this gets remapped when `variable-pitch-mode` is active, so I had to configure it by hand with the same font as my `default` face.
+As a counterpart to `variable-pitch`, you need to configure the `fixed-pitch` face for the text that needs to be shown in a monospaced font. My first instinct was to inherit this from my `default` face (I use ~~[Inconsolata](https://en.wikipedia.org/wiki/Inconsolata)~~ [Fira Code](https://github.com/tonsky/FiraCode)), but it seems that this gets remapped when `variable-pitch-mode` is active, so I had to configure it by hand with the same font as my `default` face.
 
 What I would suggest is that you customize the fonts interactively, as you can see live how it looks on your text. You can make the configuration permanent from the customize screen as well. If you want to explicitly set them in your configuration file, you can do it with the `custom-theme-set-faces` function, like this:
 
 ```emacs-lisp
 (custom-theme-set-faces
  'user
- '(variable-pitch ((t (:family "Source Sans Pro" :height 180 :weight light))))
- '(fixed-pitch ((t ( :family "Inconsolata" :slant normal :weight normal :height 1.0 :width normal)))))
+ '(variable-pitch ((t (:family "ETBembo" :height 180 :weight thin))))
+ '(fixed-pitch ((t ( :family "Fira Code Retina" :height 160)))))
 ```
 
-**Tip:** you can get the LISP expression for your chosen font (the part that looks like `((t (:family ... )))` from the `customize-face` screen - open the "State" button and choose the "Show Lisp Expression" menu item.
+**Tip #1:** you can get the LISP expression for your chosen font (the part that looks like `((t (:family ... )))` from the `customize-face` screen - open the "State" button and choose the "Show Lisp Expression" menu item.
+
+**Tip #2**: if you use a Mac, you can get the value to use for the `:family` attribute by looking at the "Family" attribute in the Font Book application for the font you want to use.
 
 You can enable `variable-pitch-mode` automatically for org buffers by setting up a hook like this:
 
