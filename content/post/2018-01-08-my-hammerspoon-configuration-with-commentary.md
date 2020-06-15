@@ -13,7 +13,7 @@ featured_image = "/images/hammerspoon.jpg"
 {{< leanpubbook book="lit-config" style="float:right" >}}
 {{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
 
-Last update: **June 10, 2020**
+Last update: **June 15, 2020**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -35,6 +35,7 @@ I use `hyper` and `shift_hyper` as the modifiers for most of my key bindings, so
 ```lua
 hyper = {"cmd","alt","ctrl"}
 shift_hyper = {"cmd","alt","ctrl","shift"}
+ctrl_cmd = {"cmd","ctrl"}
 ```
 
 Set up an abbreviation for `hs.drawing.color.x11` since I use it repeatedly later on.
@@ -128,13 +129,36 @@ Install:andUse("URLDispatcher",
 
 The [WindowHalfsAndThirds](http://www.hammerspoon.org/Spoons/WindowHalfsAndThirds.html) spoon sets up multiple key bindings for manipulating the size and position of windows.
 
+This was one of the first spoons I wrote, and I used it for window resizing until I discovered [MiroWindowsManager](https://github.com/miromannino/miro-windows-manager), which I started using now.
+
 ```lua
 Install:andUse("WindowHalfsAndThirds",
                {
+                 disable = true,
                  config = {
                    use_frame_correctness = true
                  },
                  hotkeys = 'default'
+               }
+)
+```
+
+[MiroWindowsManager](https://github.com/miromannino/miro-windows-manager) allows more granular window resizing and movement. One thing to keep in mind is that this spoon uses the `hs.grid` module internally. If you also use the `WindowGrid` spoon (see below), make sure both spoons use the same grid size to avoid conflicts.
+
+```lua
+myGrid = { w = 6, h = 4 }
+Install:andUse("MiroWindowsManager",
+               {
+                 config = {
+                   GRID = myGrid
+                 },
+                 hotkeys = {
+                   up =         { ctrl_cmd, "up" },
+                   right =      { ctrl_cmd, "right" },
+                   down =       { ctrl_cmd, "down" },
+                   left =       { ctrl_cmd, "left" },
+                   fullscreen = { hyper,    "up" }
+                 }
                }
 )
 ```
@@ -154,7 +178,7 @@ The [WindowGrid](http://www.hammerspoon.org/Spoons/WindowGrid.html) spoon sets u
 ```lua
 Install:andUse("WindowGrid",
                {
-                 config = { gridGeometries = { { "6x4" } } },
+                 config = { gridGeometries = { { myGrid.w .."x" .. myGrid.h } } },
                  hotkeys = {show_grid = {hyper, "g"}},
                  start = true
                }
@@ -485,6 +509,7 @@ Install:andUse("EjectVolumes", {
                  },
                  hotkeys = { hyper, "=" },
                  start = true,
+               loglevel = 'debug'
 })
 ```
 
@@ -745,6 +770,7 @@ Install:andUse("Leanpub",
                      -- spoon.Leanpub.api_key = "my-api-key"
                      { slug = "learning-hammerspoon" },
                      { slug = "learning-cfengine" },
+                     { slug = "emacs-org-leanpub" },
                      { slug = "lit-config"  },
                      { slug = "zztestbook" },
                    }

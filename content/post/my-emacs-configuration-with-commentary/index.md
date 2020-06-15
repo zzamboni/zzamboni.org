@@ -13,7 +13,7 @@ aliases = "/post/2017-12-17-my-emacs-configuration-with-commentary"
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **June 10, 2020**
+Last update: **June 15, 2020**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at [init.el](https://github.com/zzamboni/dot%5Femacs/blob/master/init.el).
 
@@ -1830,33 +1830,23 @@ Sample project configuration - disabled for now because this configuration has b
 
 I use [LeanPub](https://leanpub.com/) for self-publishing [my books](https://leanpub.com/u/zzamboni). Fortunately, it is possible to export from org-mode to both [LeanPub-flavored Markdown](https://leanpub.com/lfm/read) and [Markua](https://leanpub.com/markua/read), the new preferred Leanpub markup format, so I can use Org for writing the text and simply export it in the correct format and structure needed by Leanpub.
 
-As I decided to use org-mode to write my books, I looked around for existing modules and code. Here are some of the resources I found:
+When I decided to use org-mode to write my books, I looked around for existing modules and code. Here are some of the resources I found:
 
 -   [Description of ox-leanpub.el](http://juanreyero.com/open/ox-leanpub/index.html) ([GitHub repo](https://github.com/juanre/ox-leanpub)) by [Juan Reyero](http://juanreyero.com/about/);
 -   [Publishing a book using org-mode](https://medium.com/@lakshminp/publishing-a-book-using-org-mode-9e817a56d144) by [Lakshmi Narasimhan](https://medium.com/@lakshminp/publishing-a-book-using-org-mode-9e817a56d144);
 -   [Publishing a Book with Leanpub and Org Mode](http://irreal.org/blog/?p=5313) by Jon Snader (from where I found the links to the above).
 
-I have developed a new `ox-leanpub` package which you can find at <https://github.com/zzamboni/ox-leanpub> (it's not yet available through MELPA), and which I load and configure below.
+Building upon these, I have developed a new `ox-leanpub` package which you can find in MELPA (source at <https://github.com/zzamboni/ox-leanpub>), and which I load and configure below.
 
 The `ox-leanpub` module sets up Markua export automatically, and I add the code for setting up the Markdown exporter too (I don't use it, but just to keep an eye on any breakage):
 
 ```emacs-lisp
 (use-package ox-leanpub
-  :ensure nil
   :defer 1
-  :load-path "lisp/ox-leanpub"
   :after org
   :config
   (require 'ox-leanpub-markdown)
   (org-leanpub-book-setup-menu-markdown))
-```
-
-`ox-leanpub` has a dependency on [ox-gfm](https://github.com/larstvei/ox-gfm/) for exporting tables, so we install it as well.
-
-```emacs-lisp
-(use-package ox-gfm
-  :defer 1
-  :after org)
 ```
 
 I highly recommend using Markua rather than Markdown, as it is the future that Leanpub is guaranteed to support in the future, and where most of the new features are being developed.
