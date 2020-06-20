@@ -12,7 +12,7 @@ featured_image = "/images/elvish-logo.svg"
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **June 15, 2020**
+Last update: **June 20, 2020**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -155,11 +155,10 @@ use github.com/zzamboni/elvish-modules/alias
 For reference, I define here a few of my commonly-used aliases:
 
 ```elvish
-  alias:new dfc e:dfc -W -p -/dev/disk1s4,devfs,map
-#  alias:new ls e:exa --color-scale --git --group-directories-first
-  alias:new cat bat
-  alias:new more bat --paging always
-  alias:new v vagrant
+alias:new dfc e:dfc -W -p -/dev/disk1s4,devfs,map
+alias:new cat bat
+alias:new more bat --paging always
+alias:new v vagrant
 ```
 
 
@@ -224,6 +223,7 @@ chain:segment-style = [
   &chain=        session
   &arrow=        session
   &git-combined= session
+  &git-repo=     bright-blue
 ]
 ```
 

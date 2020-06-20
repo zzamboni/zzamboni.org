@@ -35,6 +35,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
   - [[#learning-hammerspoon][Learning Hammerspoon]]
   - [[#utilerías-de-unix][Utilerías de Unix]]
   - [[#literate-config][Literate Config]]
+  - [[#publishing-with-emacs-org-mode-and-leanpub][Publishing with Emacs, Org-mode and Leanpub]]
 - [[#ideas][Ideas]]
   - [[#using-and-extending-seal][Using and extending Seal]]
   - [[#sending-things-to-omnifocus][Sending things to OmniFocus]]
@@ -66,6 +67,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#using-and-writing-completions-in-elvish][Using and writing completions in Elvish]]
     - [[#elvish-an-awesome-unix-shell][Elvish, an awesome Unix shell]]
   - [[#other][Other]]
+    - [[#new-book-publishing-with-emacs-org-mode-and-leanpub][New book: Publishing with Emacs, Org-mode and Leanpub]]
     - [[#new-book-literate-config][New book: Literate Config]]
     - [[#nuevo-libro-utilerías-de-unix][Nuevo libro "Utilerías de Unix"]]
     - [[#automating-leanpub-book-publishing-with-hammerspoon-and-circleci][Automating Leanpub book publishing with Hammerspoon and CircleCI]]
@@ -224,6 +226,32 @@ Org-mode is a powerful and simple markup language for general writing, but with 
 
 Whether you already use Emacs and org-mode or not, you will find value in this book by seeing how uniquely Literate Programming can help you better write, maintain, understand and share your config files.
 
+
+#+hugo: more
+
+\nbsp
+
+** DONE Publishing with Emacs, Org-mode and Leanpub
+CLOSED: [2020-06-20 Sat 21:12]
+:PROPERTIES:
+:export_hugo_section: book
+:export_file_name: emacs-org-leanpub
+:export_hugo_custom_front_matter: :finalURL https://leanpub.com/emacs-org-leanpub
+:END:
+
+{{< leanpubbook book="emacs-org-leanpub" style="float:right" >}}
+
+Publishing your words has never been easier than it is today. Blogging means you can have your words read by thousands of people within minutes of writing them. Even publishing a book has become considerably easier through self publishing. There are many tools and publishers that allow you to get started for little or no money. Still, getting started can be confusing, and that is what this book is about.
+
+In this book, I will show you the workflow and tools I use to publish [[https://leanpub.com/u/zzamboni][my books]]. The three main tools involved are:
+
+- The [[https://www.gnu.org/software/emacs/][GNU Emacs]] editor together with [[https://orgmode.org/][Org-mode]] for writing, editing and exporting your text;
+- [[https://github.com/tonsky/FiraCode][GitHub]] or [[https://bitbucket.org/][Bitbucket]] to store your book files.
+- [[https://leanpub.com/][Leanpub]] for typesetting, previewing, publishing and selling your work.
+
+To illustrate the process and provide you with a starting point, the source repository for this book is available at https://github.com/zzamboni/emacs-org-leanpub. I am populating the repository live as I write this book.
+
+Check it out, and happy writing!
 
 #+hugo: more
 
@@ -2055,6 +2083,31 @@ I am very happy with Elvish, and if you are interested in this sort of thing, I 
 I will post more Elvish tips and tricks over time.
 
 ** Other
+
+*** DONE New book: Publishing with Emacs, Org-mode and Leanpub :book:leanpub:publishing:writing:
+CLOSED: [2020-06-20 Sat 21:13]
+:PROPERTIES:
+:export_hugo_bundle: 2020-06-20-new-book-emacs-org-leanpub
+:export_file_name: index
+:export_hugo_custom_front_matter: :toc false :featured_image /images/emacs-org-leanpub-cover.png
+:END:
+#+begin_description
+I am happy to announce the new release of my new book "Publishing with Emacs, Org-mode and Leanpub", which talks about powerful tools and workflows you can use to easily publish your words.
+#+end_description
+
+{{< leanpubbook book="emacs-org-leanpub" style="float:right" >}}
+
+Publishing your words has never been easier than it is today. Blogging means you can have your words read by thousands of people within minutes of writing them. Even publishing a book has become considerably easier through self publishing. There are many tools and publishers that allow you to get started for little or no money. Still, getting started can be confusing, and that is what this book is about.
+
+In this book, I will show you the workflow and tools I use to publish [[https://leanpub.com/u/zzamboni][my books]]. The three main tools involved are:
+
+- The [[https://www.gnu.org/software/emacs/][GNU Emacs]] editor together with [[https://orgmode.org/][Org-mode]] for writing, editing and exporting your text;
+- [[https://github.com/tonsky/FiraCode][GitHub]] or [[https://bitbucket.org/][Bitbucket]] to store your book files.
+- [[https://leanpub.com/][Leanpub]] for typesetting, previewing, publishing and selling your work.
+
+To illustrate the process and provide you with a starting point, the source repository for this book is available at https://github.com/zzamboni/emacs-org-leanpub. I am populating the repository live as I write this book.
+
+I hope you enjoy it! Your feedback, as usual, is [[https://leanpub.com/emacs-org-leanpub/email_author/new][welcome]].
 
 *** DONE New book: Literate Config :literateconfig:book:leanpub:literateprogramming:
 CLOSED: [2019-11-18 Mon 22:44]
