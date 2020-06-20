@@ -2084,7 +2084,7 @@ I will post more Elvish tips and tricks over time.
 
 ** Other
 
-*** DONE New book: Publishing with Emacs, Org-mode and Leanpub :book:leanpub:publishing:writing:
+*** DONE New book: Publishing with Emacs, Org-mode and Leanpub :book:leanpub:publishing:writing:emacs:orgmode:
 CLOSED: [2020-06-20 Sat 21:13]
 :PROPERTIES:
 :export_hugo_bundle: 2020-06-20-new-book-emacs-org-leanpub
