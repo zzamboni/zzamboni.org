@@ -14,7 +14,7 @@ I am happy to announce the first release of my new book "Learning Hammerspoon", 
 
 You can find more information, read a free sample, and purchase it at [LeanPub](https://leanpub.com/learning-hammerspoon/).
 
-{{< hsbookimglink >}}
+{{< leanpubbook book="learning-hammerspoon" >}}
 
 This book is based partly on blog posts published in [my blog](https://zzamboni.org/tags/hammerspoon/), but with a lot of new material. In this first release, the following chapters are finished:
 

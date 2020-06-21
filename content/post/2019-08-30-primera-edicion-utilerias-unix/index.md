@@ -16,6 +16,6 @@ Me complace anunciar  la primera edición de mi nuevo libro, y mi primer libro e
 
 Puedes obtener más información, leer una muestra gratuita y comprarlo  en  [LeanPub](https://leanpub.com/utileras-unix).
 
-{{< utileriasbookimglink >}}
+{{< leanpubbook book="utileras-unix" >}}
 
 ¡Espero lo disfrutes!  Favor de enviarme tus comentarios a través de  la  página  [_Escribe al Autor_](https://leanpub.com/utileras-unix/email%5Fauthor/new) en LeanPub.

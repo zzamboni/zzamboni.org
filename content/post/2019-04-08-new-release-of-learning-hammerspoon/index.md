@@ -10,7 +10,7 @@ toc = false
 featured_image = "/images/learning-hs-cover.jpg"
 +++
 
-{{< hsbookimglink style="float:right" >}}
+{{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
 
 I am happy to announce the third release of my book _[Learning Hammerspoon](https://leanpub.com/learning-hammerspoon)_, which includes the following changes:
 

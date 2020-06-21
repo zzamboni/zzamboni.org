@@ -7,7 +7,7 @@ creator = "Emacs 26.3 (Org mode 9.3.7 + ox-hugo)"
 finalURL = "https://leanpub.com/utileras-unix"
 +++
 
-{{< utileriasbookimglink style="float:right" >}}
+{{< leanpubbook book="utilerias-unix" style="float:right" >}}
 
 (this book is in Spanish)
 

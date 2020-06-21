@@ -18,5 +18,6 @@ price, US$4.98 instead of the regular US$9.99.
 Get it while it's hot! Buying the ebook on Amazon gives you access to
 free updates to the book, so you will get all future versions as well.
 
-{{< bookimglink >}}
+(note, the link below now takes you to Leanpub, where the book is published now)
 
+{{< leanpubbook book="learning-cfengine" >}}

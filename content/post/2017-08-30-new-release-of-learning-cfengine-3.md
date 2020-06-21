@@ -13,9 +13,6 @@ A new release of my book "Learning CFEngine 3" is now available!
 
 <!--more-->
 
-Read [the full
-announcement](http://cf-learn.info/post/new-release-of-learning-cfengine-3/)
-here.
+Read [the full announcement](http://cf-learn.info/post/new-release-of-learning-cfengine-3/) here.
 
-{{< bookimglink >}}
-
+{{< leanpubbook book="learning-cfengine" >}}

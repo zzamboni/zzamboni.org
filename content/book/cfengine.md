@@ -7,7 +7,7 @@ creator = "Emacs 26.3 (Org mode 9.3.7 + ox-hugo)"
 finalURL = "http://cf-learn.info/"
 +++
 
-{{< bookimglink style="float:right" >}}
+{{< leanpubbook  book="learning-cfengine" style="float:right" >}}
 
 I am the author of "Learning CFEngine", the best book for learning [CFEngine](http://cfengine.com/).
 

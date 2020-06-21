@@ -7,7 +7,7 @@ creator = "Emacs 26.3 (Org mode 9.3.7 + ox-hugo)"
 finalURL = "https://leanpub.com/learning-hammerspoon/"
 +++
 
-{{< hsbookimglink style="float:right" >}}
+{{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
 
 **Automate all the things!** From window manipulation to automated system settings depending on your current location, [Hammerspoon](http://www.hammerspoon.org/) makes it possible. In this book you will learn how to get started with Hammerspoon, how to use pre-made modules, and how to write your own, to achieve an unprecedented level of control over your Mac.
 
