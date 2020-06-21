@@ -191,7 +191,7 @@ CLOSED: [2019-08-30 Tue 00:05]
 :PROPERTIES:
 :export_hugo_section: book
 :export_file_name: utilerias-unix
-:export_hugo_custom_front_matter: :finalURL https://leanpub.com/utileras-unix
+:export_hugo_custom_front_matter: :finalURL https://leanpub.com/utilerias-unix
 :END:
 
 {{< leanpubbook book="utilerias-unix" style="float:right" >}}
@@ -200,7 +200,7 @@ CLOSED: [2019-08-30 Tue 00:05]
 
 *¡Automatiza tus tareas e incrementa tu eficiencia!* Este libro proporciona una introducción a algunos de los comandos más útiles en un sistema Unix/Linux, que te permiten realizar fácilmente tareas de todo tipo, desde la búsqueda de texto en un archivo hasta complejas operaciones de procesamiento, cálculo y extracción de datos.
 
-Puedes obtener una muestra gratis y comprar el libro (¡tu eliges  cuánto pagas!) en https://leanpub.com/utileras-unix, o haz click  en la imágen de la derecha.
+Puedes obtener una muestra gratis y comprar el libro (¡tu eliges  cuánto pagas!) en https://leanpub.com/utilerias-unix, o haz click  en la imágen de la derecha.
 
 #+hugo: more
 
@@ -2143,11 +2143,11 @@ Me complace anunciar  la primera edición de mi nuevo libro, y mi primer libro e
 
 Me complace anunciar  la primera edición de mi nuevo libro, y mi primer libro en  Español, "Utilerías de Unix", en el que podrás aprender a utilizar algunas de  las herramientas más útiles que se encuentran en un sistema Unix/Linux para automatizar y hacer más eficientemente todo tipo de tareas.
 
-Puedes obtener más información, leer una muestra gratuita y comprarlo  en  [[https://leanpub.com/utileras-unix][LeanPub]].
+Puedes obtener más información, leer una muestra gratuita y comprarlo  en  [[https://leanpub.com/utilerias-unix][LeanPub]].
 
-{{< leanpubbook book="utileras-unix" >}}
+{{< leanpubbook book="utilerias-unix" >}}
 
-¡Espero lo disfrutes!  Favor de enviarme tus comentarios a través de  la  página  [[https://leanpub.com/utileras-unix/email_author/new][/Escribe al Autor/]] en LeanPub.
+¡Espero lo disfrutes!  Favor de enviarme tus comentarios a través de  la  página  [[https://leanpub.com/utilerias-unix/email_author/new][/Escribe al Autor/]] en LeanPub.
 
 *** DONE Automating Leanpub book publishing with Hammerspoon and CircleCI :writing:hammerspoon:circleci:automation:leanpub:github:
 CLOSED: [2019-04-16 Tue 11:25]
