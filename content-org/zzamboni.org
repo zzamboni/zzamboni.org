@@ -618,6 +618,11 @@ Now when I want to insert a screenshot in a document, I simply press {{{keys(Shi
 #+DOWNLOADED: screenshot @ 2020-08-09 17:17:13
 [[file:images/20200809-171713_screenshot.png]]
 
+And without inline image display, we can see that the screenshot is automatically stored inside the =images/= directory:
+
+#+DOWNLOADED: screenshot @ 2020-08-09 17:25:34
+[[file:images/20200809-172534_screenshot.png]]
+
 {{% tip %}}
 Thanks to [[https://stackoverflow.com/questions/17435995/paste-an-image-on-clipboard-to-emacs-org-mode-file-without-saving-it][this thread at Stack Overflow]] for many of the base ideas and pointers.
 

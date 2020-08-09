@@ -44,6 +44,10 @@ Now when I want to insert a screenshot in a document, I simply press <kbd>Shiftâ
 
 {{< figure src="20200809-171713_screenshot.png" >}}
 
+And without inline image display, we can see that the screenshot is automatically stored inside the `images/` directory:
+
+{{< figure src="20200809-172534_screenshot.png" >}}
+
 {{% tip %}}
 Thanks to [this thread at Stack Overflow](https://stackoverflow.com/questions/17435995/paste-an-image-on-clipboard-to-emacs-org-mode-file-without-saving-it) for many of the base ideas and pointers.
 
