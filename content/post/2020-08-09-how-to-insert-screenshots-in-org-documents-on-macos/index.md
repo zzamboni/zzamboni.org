@@ -36,7 +36,7 @@ Fortunately, `org-download` allows customizing the command used by the `org-down
   (require 'org-download))
 ```
 
-With this configuration, images are stored in a directory named `images` under the current directory, in a flat directory structure and each file is prepended with a timestamp (I would prefer not to use timestamps, but `org-download` uses a fixed filename for screenshots, which makes it difficult to insert multiple screenshots in the same document). You may want to check the `org-download` documentation and configure these settings to your likely.
+With this configuration, images are stored in a directory named `images` under the current directory, in a flat directory structure and each file is prepended with a timestamp (I would prefer not to use timestamps, but `org-download` uses a fixed filename for screenshots, which makes it difficult to insert multiple screenshots in the same document). You may want to check the `org-download` documentation and configure these settings to your liking.
 
 Finally, I bind `org-download-screenshot` to <kbd>Ctrl​-​⌘​-​y</kbd> to keep it similar to the default <kbd>Ctrl​-​y</kbd> for pasting the clipboard and to easily perform step 2 of the workflow described above.
 
