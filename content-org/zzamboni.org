@@ -613,7 +613,12 @@ With this configuration, images are stored in a directory named =images= under t
 
 Finally, I bind =org-download-screenshot= to {{{keys(Ctrl ⌘ y)}}} to keep it similar to the default {{{keys(Ctrl y)}}} for pasting the clipboard and to easily perform step 2 of the workflow described above.
 
-Thanks to [[https://stackoverflow.com/questions/17435995/paste-an-image-on-clipboard-to-emacs-org-mode-file-without-saving-it][this thread at Stack Overflow]] for many of the base ideas and pointers.
+Now when I want to insert a screenshot in a document, I simply press {{{keys(Shift ⌘ 5)}}}, capture the screenshot, switch back to Emacs, press  {{{keys(Ctrl ⌘ y)}}}, and done. It looks like this:
+
+#+DOWNLOADED: screenshot @ 2020-08-09 17:17:13
+[[file:images/20200809-171713_screenshot.png]]
+
+(thanks to [[https://stackoverflow.com/questions/17435995/paste-an-image-on-clipboard-to-emacs-org-mode-file-without-saving-it][this thread at Stack Overflow]] for many of the base ideas and pointers).
 
 ** Hammerspoon                                        :hammerspoon:mac:howto:
 :PROPERTIES:

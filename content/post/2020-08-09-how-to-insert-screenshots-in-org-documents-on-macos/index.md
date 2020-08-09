@@ -40,4 +40,8 @@ With this configuration, images are stored in a directory named `images` under t
 
 Finally, I bind `org-download-screenshot` to <kbd>Ctrl​-​⌘​-​y</kbd> to keep it similar to the default <kbd>Ctrl​-​y</kbd> for pasting the clipboard and to easily perform step 2 of the workflow described above.
 
-Thanks to [this thread at Stack Overflow](https://stackoverflow.com/questions/17435995/paste-an-image-on-clipboard-to-emacs-org-mode-file-without-saving-it) for many of the base ideas and pointers.
+Now when I want to insert a screenshot in a document, I simply press <kbd>Shift​-​⌘​-​5</kbd>, capture the screenshot, switch back to Emacs, press  <kbd>Ctrl​-​⌘​-​y</kbd>, and done. It looks like this:
+
+{{< figure src="20200809-171713_screenshot.png" >}}
+
+(thanks to [this thread at Stack Overflow](https://stackoverflow.com/questions/17435995/paste-an-image-on-clipboard-to-emacs-org-mode-file-without-saving-it) for many of the base ideas and pointers).
