@@ -577,7 +577,7 @@ CLOSED: [2020-08-09 Sun 16:44]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2020-08-09-how-to-insert-screenshots-in-org-documents-on-macos
 :EXPORT_FILE_NAME: index
-:export_hugo_custom_front_matter: :toc true :featured_image /images/emacs-logo.svg
+:export_hugo_custom_front_matter: :toc false :featured_image /images/emacs-logo.svg
 :END:
 #+begin_description
 As I'm taking notes or writing in Org-mode, I often want to insert screenshots inline with the text. While Org supports inserting and displaying inline images, the assumption is that the image is already somewhere in the file system and we just want to link to it. In this post I will show you how to automate the insertion of images from the clipboard into an org-mode document.

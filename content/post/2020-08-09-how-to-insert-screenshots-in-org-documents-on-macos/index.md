@@ -6,7 +6,7 @@ date = 2020-08-09T16:44:00+02:00
 tags = ["emacs", "orgmode", "howto", "macos", "config"]
 draft = false
 creator = "Emacs 26.3 (Org mode 9.3.7 + ox-hugo)"
-toc = true
+toc = false
 featured_image = "/images/emacs-logo.svg"
 +++
 
