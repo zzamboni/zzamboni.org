@@ -13,7 +13,7 @@ aliases = "/post/2017-12-17-my-emacs-configuration-with-commentary"
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **June 20, 2020**
+Last update: **August  9, 2020**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at [init.el](https://github.com/zzamboni/dot%5Femacs/blob/master/init.el).
 
@@ -98,10 +98,10 @@ I use the [wonderful use-package](https://www.masteringemacs.org/article/spotlig
 First, we declare the package repositories to use.
 
 ```emacs-lisp
-(customize-set-variable 'package-archives
+(custom-set-variables '(package-archives
                         '(("marmalade" . "https://marmalade-repo.org/packages/")
                           ("melpa"     . "https://melpa.org/packages/")
-                          ("elpa"     .  "https://elpa.gnu.org/packages/")))
+                          ("elpa"      . "https://elpa.gnu.org/packages/"))))
 ```
 
 Then we initialize the package system, refresh the list of packages and install `use-package` if needed.
@@ -127,19 +127,19 @@ We set some configuration for `use-package`:
 -   The `use-package-always-ensure` variable indicates that `use-package` should always try to install missing packages. For some libraries this is not appropriate, and in those cases you see the `:ensure nil` declaration as part of the `use-package` statement. This applies mainly to libraries which are installed as part of some other package (happens mostly with some libraries that come with org-mode).
 
     ```emacs-lisp
-    (customize-set-variable 'use-package-always-ensure t)
+    (custom-set-variables '(use-package-always-ensure t))
     ```
 
 -   The `use-package-always-defer` sets `:defer true` as the default for all package declarations. This makes Emacs startup much faster by preventing packages from being loaded when Emacs starts, and only doing so when they are needed. Some packages don't work well with this, so you'll see some declarations when I explicitly set `:defer nil` to force the package to be loaded at startup, or `:defer n` to load the package, but only `n` seconds after startup.
 
     ```emacs-lisp
-    (customize-set-variable 'use-package-always-defer t)
+    (custom-set-variables '(use-package-always-defer t))
     ```
 
 -   The `use-package-verbose` variable enables verbose loading of packages, useful for debugging. I set/unset this according to need.
 
     ```emacs-lisp
-    (customize-set-variable 'use-package-verbose nil)
+    (custom-set-variables '(use-package-verbose nil))
     ```
 
 Testing [`quelpa`](https://framagit.org/steckerhalter/quelpa) and to install packages directly from their github repositories (and other places). I install `quelpa` using `use-package` first, and then install [`quelpa-use-package`](https://framagit.org/steckerhalter/quelpa-use-package) to allow using `quelpa` from  within `use-package` declarations. Very recursive.
@@ -160,7 +160,7 @@ Testing [`quelpa`](https://framagit.org/steckerhalter/quelpa) and to install pac
 This variable tells Emacs to prefer the `.el` file if it's newer, even if there is a corresponding `.elc` file. Also, use `auto-compile` to autocompile files as needed.
 
 ```emacs-lisp
-(customize-set-variable 'load-prefer-newer t)
+(custom-set-variables '(load-prefer-newer t))
 (use-package auto-compile
   :defer nil
   :config (auto-compile-on-load-mode))
@@ -203,22 +203,7 @@ Password management using `auth-sources` and `pass` (I normally use 1Password, b
 Prevent asking for confirmation to kill processes when exiting.
 
 ```emacs-lisp
-(customize-set-variable 'confirm-kill-processes nil)
-```
-
-
-### Performance optimization {#performance-optimization}
-
-The [Garbage Collection Magic Hack](https://gitlab.com/koral/gcmh) library enables a GC strategy to improve performance. DISABLED because for me it has actually caused performance degradation when typing in long files.
-
-```emacs-lisp
-(use-package gcmh
-  :disabled
-  :defer nil
-  :custom
-  (gcmh-verbose t)
-  :config
-  (gcmh-mode 1))
+(custom-set-variables '(confirm-kill-processes nil))
 ```
 
 
@@ -275,21 +260,22 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 -   When at the beginning of the line, make `Ctrl-K` remove the whole line, instead of just emptying it.
 
     ```emacs-lisp
-    (customize-set-variable 'kill-whole-line t)
+    (custom-set-variables '(kill-whole-line t))
     ```
 
 -   Paste text where the cursor is, not where the mouse is.
 
     ```emacs-lisp
-    (customize-set-variable 'mouse-yank-at-point t)
+    (custom-set-variables '(mouse-yank-at-point t))
     ```
 
 -   Make completion case-insensitive.
 
     ```emacs-lisp
     (setq completion-ignore-case t)
-    (customize-set-variable 'read-file-name-completion-ignore-case t)
-    (customize-set-variable 'read-buffer-completion-ignore-case t)
+    (custom-set-variables
+     '(read-buffer-completion-ignore-case t)
+     '(read-file-name-completion-ignore-case t))
     ```
 
 -   Show line numbers. I used `linum-mode` before, but it caused severe performance issues on large files. Emacs 26 introduces `display-line-numbers-mode`, which has no perceivable performance impact even on very large files. Disabled for now.
@@ -306,7 +292,7 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 -   Highlight trailing whitespace in red, so it's easily visible (disabled  for now as it created a lot of noise in some modes, e.g. the org-mode export screen)
 
     ```emacs-lisp
-    (customize-set-variable 'show-trailing-whitespace nil)
+    (custom-set-variables '(show-trailing-whitespace nil))
     ```
 
 -   Highlight matching parenthesis
@@ -318,15 +304,15 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 -   Don't use hard tabs
 
     ```emacs-lisp
-    (customize-set-variable 'indent-tabs-mode nil)
+    (custom-set-variables '(indent-tabs-mode nil))
     ```
 
 -   Emacs automatically creates backup files, by default in the same folder as the original file, which often leaves backup files behind. This tells Emacs to [put all backups in ~/.emacs.d/backups](http://www.gnu.org/software/emacs/manual/html%5Fnode/elisp/Backup-Files.html).
 
     ```emacs-lisp
-    (customize-set-variable
-     'backup-directory-alist
-     `(("." . ,(concat user-emacs-directory "backups"))))
+    (custom-set-variables
+     '(backup-directory-alist
+       `(("." . ,(concat user-emacs-directory "backups")))))
     ```
 
 -   [WinnerMode](http://emacswiki.org/emacs/WinnerMode) makes it possible to cycle and undo window configuration changes (i.e. arrangement of panels, etc.)
@@ -378,7 +364,7 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 -   Suppress "ad-handle-definition: .. redefined" warnings during Emacs startup.
 
     ```emacs-lisp
-    (customize-set-variable 'ad-redefinition-action 'accept)
+    (custom-set-variables '(ad-redefinition-action (quote accept)))
     ```
 
 
@@ -404,9 +390,10 @@ Some settings maybe OS-specific, and this is where we set them. For now I only u
 First, we set the key modifiers correctly to my preferences: Make Command (⌘) act as Meta, Option as Alt, right-Option as Super
 
 ```emacs-lisp
-(customize-set-variable 'mac-command-modifier 'meta)
-(customize-set-variable 'mac-option-modifier 'alt)
-(customize-set-variable 'mac-right-option-modifier 'super)
+(custom-set-variables
+ '(mac-command-modifier 'meta)
+ '(mac-option-modifier 'alt)
+ '(mac-right-option-modifier 'super))
 ```
 
 We also make it possible to use the familiar <kbd>⌘-+</kbd> and <kbd>⌘--</kbd> to increase and decrease the font size. <kbd>⌘-=</kbd> is also bound to "increase" because it's on the same key in an English keyboard.
@@ -615,7 +602,7 @@ Note that mode-specific configuration variables are defined under  their corresp
 -   Default directory for org files (not all are stored here).
 
     ```emacs-lisp
-    (org-directory "~/Dropbox/Personal/org")
+    (org-directory "~/org")
     ```
 
 -   Automatically log done times in todo items.
@@ -695,12 +682,14 @@ I define a helper function to define keybindings that open files. Since I use th
     (which-key-add-key-based-replacements key (or desc file))))
 ```
 
-Now I define keybindings to access my commonly-used org files.
+Now I define keybindings to access my commonly-used org files, and add them to `org-agenda-files`
 
 ```emacs-lisp
+(custom-set-variables '(org-agenda-files
+                        '("~/Work/work.org.gpg" "~/org/ideas.org" "~/org/projects.org" "~/org/diary.org")))
 (zz/add-file-keybinding "C-c f w" "~/Work/work.org.gpg" "work.org")
-(zz/add-file-keybinding "C-c f p" "~/org/projects.org" "projects.org")
 (zz/add-file-keybinding "C-c f i" "~/org/ideas.org" "ideas.org")
+(zz/add-file-keybinding "C-c f p" "~/org/projects.org" "projects.org")
 (zz/add-file-keybinding "C-c f d" "~/org/diary.org" "diary.org")
 ```
 
@@ -880,7 +869,7 @@ Then we load `org-roam` itself.
   ((org-mode . org-roam-mode)
    (after-init . org-roam--build-cache-async))
   :custom
-  (org-roam-directory "~/Dropbox/Personal/org")
+  (org-roam-directory "~/org")
   :bind
   ("C-c n l" . org-roam)
   ("C-c n t" . org-roam-today)
@@ -918,7 +907,12 @@ Using `org-download` to make it easier to insert images into my org notes.
   :custom
   (org-download-method 'directory)
   (org-download-image-dir "images")
+  (org-download-heading-lvl nil)
+  (org-download-timestamp "%Y%m%d-%H%M%S_")
   (org-image-actual-width 300)
+  (org-download-screenshot-method "/usr/local/bin/pngpaste %s")
+  :bind
+  ("C-M-y" . org-download-screenshot)
   :config
   (require 'org-download))
 ```
@@ -1099,7 +1093,8 @@ One of the big strengths of org-mode is the ability to export a document in many
   ;;                            (concat "org-state: " org-state
   ;;                                    " prev-state: " (org-get-todo-state))))
   ;;                         'run-at-end 'only-in-org-mode)))
-  )
+  :custom
+  (org-hugo-use-code-for-kbd t))
 ```
 
 Configure a capture template for creating new ox-hugo blog posts, from [ox-hugo's Org Capture Setup](https://ox-hugo.scripter.co/doc/org-capture-setup).
@@ -1683,8 +1678,12 @@ Note that this breaks HTML export by default, as the links generated by `toc-org
   :ensure nil
   :load-path "lisp/org-mode/contrib/lisp"
   :after org
-  :bind (:map org-mode-map
-              ("C-c g" . org-mac-grab-link)))
+  :custom
+  (org-mac-grab-Acrobat-app-p nil "Disable grabbing from Adobe Acrobat")
+  (org-mac-grab-devonthink-app-p nil "Disable grabbinb from DevonThink")
+  :bind
+  (:map org-mode-map
+        ("C-c g" . org-mac-grab-link)))
 ```
 
 

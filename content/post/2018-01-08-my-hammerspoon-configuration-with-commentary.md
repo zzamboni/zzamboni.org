@@ -13,7 +13,7 @@ featured_image = "/images/hammerspoon.jpg"
 {{< leanpubbook book="lit-config" style="float:right" >}}
 {{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
 
-Last update: **June 20, 2020**
+Last update: **August  9, 2020**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -115,7 +115,11 @@ Install:andUse("URLDispatcher",
                    url_redir_decoders = {
                      -- Send MS Teams URLs directly to the app
                      { "MS Teams URLs",
-                       "(https://teams.microsoft.com.*)", "msteams:%1", true }
+                       "(https://teams.microsoft.com.*)", "msteams:%1", true },
+                     -- Preview incorrectly encodes the anchor
+                     -- character in URLs as %23, we fix it
+                     { "Fix broken Preview anchor URLs",
+                       "%%23", "#", false, "Preview" },
                    },
                    default_handler = DefaultBrowser
                  },
@@ -134,7 +138,6 @@ This was one of the first spoons I wrote, and I used it for window resizing unti
 ```lua
 Install:andUse("WindowHalfsAndThirds",
                {
-                 disable = true,
                  config = {
                    use_frame_correctness = true
                  },
@@ -149,6 +152,7 @@ Install:andUse("WindowHalfsAndThirds",
 myGrid = { w = 6, h = 4 }
 Install:andUse("MiroWindowsManager",
                {
+                 disable = true,
                  config = {
                    GRID = myGrid
                  },
@@ -180,9 +184,13 @@ The [WindowScreenLeftAndRight](http://www.hammerspoon.org/Spoons/WindowScreenLef
 ```lua
 Install:andUse("WindowScreenLeftAndRight",
                {
+                 config = {
+                   animationDuration = 0
+                 },
                  hotkeys = 'default'
                }
 )
+
 ```
 
 The [ToggleScreenRotation](http://www.hammerspoon.org/Spoons/ToggleScreenRotation.html) spoon sets up a key binding to rotate the external screen (the spoon can set up keys for multiple screens if needed, but by default it rotates the first external screen).
@@ -519,12 +527,13 @@ The `EjectMenu` spoon automatically ejects all external disks before the system 
 ```lua
 Install:andUse("EjectMenu", {
                  config = {
+                   eject_on_lid_close = true,
                    show_in_menubar = true,
                    notify = true,
                  },
                  hotkeys = { ejectAll = { hyper, "=" } },
                  start = true,
-               loglevel = 'debug'
+                 loglevel = 'debug'
 })
 ```
 
@@ -774,7 +783,8 @@ Install:andUse("Leanpub",
                      { slug = "emacs-org-leanpub" },
                      { slug = "lit-config"  },
                      { slug = "zztestbook" },
-                   }
+                   },
+                   books_sync_to_dropbox = true,
                  },
                  start = true,
 })

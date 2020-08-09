@@ -12,7 +12,7 @@ featured_image = "/images/elvish-logo.svg"
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **June 20, 2020**
+Last update: **August  9, 2020**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -29,17 +29,13 @@ First we set up the executable paths. We set the `GOPATH` environment variable w
 
 ```elvish
 E:GOPATH = ~/Dropbox/Personal/devel/go
-E:RACKETPATH = ~/Library/Racket/7.2
 paths = [
   ~/bin
   $E:GOPATH/bin
-  $E:RACKETPATH/bin
-  ~/Library/Python/3.7/bin
   /usr/local/opt/coreutils/libexec/gnubin
   /usr/local/opt/texinfo/bin
   /usr/local/opt/python/libexec/bin
-  /usr/local/opt/ruby/bin
-  ~/Dropbox/Personal/devel/hammerspoon/spoon/bin
+  /usr/local/opt/ruby@2.6/bin
   /usr/local/bin
   /usr/local/sbin
   /usr/sbin
@@ -47,6 +43,16 @@ paths = [
   /usr/bin
   /bin
 ]
+```
+
+I have a quick sanity check because sometimes certain paths disappear depending on new versions, etc. This prints a warning when opening a new shell, if there are any non-existing directories in `$paths`.
+
+```elvish
+each [p]{
+  if (not (-is-dir $p)) {
+    echo (styled "Warning: directory "$p" in $paths no longer exists." red)
+  }
+} $paths
 ```
 
 
@@ -70,12 +76,12 @@ For now I use these packages:
 <!--listend-->
 
 ```elvish
-epm:install &silent-if-installed=$true   \
-  github.com/zzamboni/elvish-modules     \
-  github.com/zzamboni/elvish-completions \
-  github.com/zzamboni/elvish-themes      \
-  github.com/xiaq/edit.elv               \
-  github.com/muesli/elvish-libs          \
+epm:install &silent-if-installed         ^
+  github.com/zzamboni/elvish-modules     ^
+  github.com/zzamboni/elvish-completions ^
+  github.com/zzamboni/elvish-themes      ^
+  github.com/xiaq/edit.elv               ^
+  github.com/muesli/elvish-libs          ^
   github.com/iwoloschin/elvish-packages
 ```
 
@@ -97,7 +103,7 @@ Next, we set the test function to enable proxy auto-setting. In my case, the `/e
 
 ```elvish
 proxy:test = {
-  and ?(test -f /etc/resolv.conf) \
+  and ?(test -f /etc/resolv.conf) ^
   ?(egrep -q '^(search|domain).*(corproot.net|swissptt.ch)' /etc/resolv.conf)
 }
 ```
@@ -109,7 +115,7 @@ proxy:autoset
 ```
 
 
-## Base modules {#base-modules}
+## General modules and settings {#general-modules-and-settings}
 
 Load the bundled [re](https://elvish.io/ref/re.html) module to have access to regular expression functions.
 
@@ -137,14 +143,20 @@ I add a couple of keybindings which are missing from the default `readline-bindi
     edit:insert:binding[Alt-d] = $edit:kill-small-word-right~
     ```
 
-I also bind "[instant preview mode](https://elv.sh/ref/edit.html#edit-instantstart)" to <kbd>Alt-m</kbd>. This is useful to see the results of a command while you are typing it.
+-   I also bind "[instant preview mode](https://elv.sh/ref/edit.html#edit-instantstart)" to <kbd>Alt-m</kbd>. This is useful to see the results of a command while you are typing it.
 
-```elvish
-edit:insert:binding[Alt-m] = $edit:-instant:start~
-```
+    ```elvish
+    edit:insert:binding[Alt-m] = $edit:-instant:start~
+    ```
+
+-   Limit the height of location and history mode so that they don't cover the whole screen.
+
+    ```elvish
+    edit:max-height = 20
+    ```
 
 
-## Aliases {#aliases}
+## Aliases and miscellaneous functions {#aliases-and-miscellaneous-functions}
 
 Elvish does not have built-in alias functionality, but this is implemented easily using the [alias](https://github.com/zzamboni/modules.elv/blob/master/alias.org) module, which stores the alias definitions as functions under [~/.elvish/aliases/](https://github.com/zzamboni/dot-elvish/tree/master/aliases) and loads them automatically.
 
@@ -155,10 +167,26 @@ use github.com/zzamboni/elvish-modules/alias
 For reference, I define here a few of my commonly-used aliases:
 
 ```elvish
-alias:new dfc e:dfc -W -p -/dev/disk1s4,devfs,map
+alias:new dfc e:dfc -p -/dev/disk1s4,devfs,map,com.apple.TimeMachine
 alias:new cat bat
 alias:new more bat --paging always
 alias:new v vagrant
+```
+
+`bat` `man` ([using `bat` as the pager for `man` pages](https://github.com/sharkdp/bat#man)).
+
+```elvish
+E:MANPAGER="sh -c 'col -bx | bat -l man -p'"
+```
+
+Open man pages as PDF, I gathered this tip from <https://twitter.com/MrAhmadAwais/status/1279066968981635075>. Neat but not very useful for daily use, particularly with the `bat` integration above.
+
+```elvish
+fn manpdf [@cmds]{
+  each [c]{
+    man -t $c | open -f -a /System/Applications/Preview.app
+  } $cmds
+}
 ```
 
 
@@ -230,7 +258,7 @@ chain:segment-style = [
 Customize some of the glyphs for the font I use in my terminal. I use the [Fira Code](https://github.com/tonsky/FiraCode) font which includes ligatures, so I disable the last chain, and set the `arrow` segment to a combination of characters which shows up as a nice arrow.
 
 ```elvish
-chain:glyph[arrow]  = "=>"
+chain:glyph[arrow]  = "|>"
 chain:show-last-chain = $false
 ```
 
@@ -250,6 +278,17 @@ I also like the continuous update of the prompt as I type (by default it only up
 
 ```elvish
 edit:-prompt-eagerness = 10
+```
+
+
+## iTerm2 shell integration support {#iterm2-shell-integration-support}
+
+The `iterm2` module provides support for iTerm2's [Shell Integration](https://iterm2.com/documentation-shell-integration.html) features. Note that `iterm2:init` must be called after setting up the prompt, hence this is done after loading the `chain` module above.
+
+```elvish
+use github.com/zzamboni/elvish-modules/iterm2
+iterm2:init
+edit:insert:binding[Ctrl-L] = $iterm2:clear-screen~
 ```
 
 
@@ -420,6 +459,13 @@ Set up electric delimiters in the command line.
 
 ```elvish
 util:electric-delimiters
+```
+
+ASCII spinners and TTY escape code generation.
+
+```elvish
+use github.com/zzamboni/elvish-modules/spinners
+use github.com/zzamboni/elvish-modules/tty
 ```
 
 
