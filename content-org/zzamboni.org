@@ -55,6 +55,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#my-elvish-configuration-with-commentary][My Elvish Configuration With Commentary]]
   - [[#emacs][Emacs]]
     - [[#beautifying-org-mode-in-emacs][Beautifying Org Mode in Emacs]]
+    - [[#how-to-insert-screenshots-in-org-documents-on-macos][How to insert screenshots in Org documents on macOS]]
   - [[#hammerspoon][Hammerspoon]]
     - [[#getting-started-with-hammerspoon][Getting Started With Hammerspoon]]
     - [[#using-spoons-in-hammerspoon][Using Spoons in Hammerspoon]]
@@ -337,7 +338,6 @@ Hugo has extensive capabilities and it is beyond the scope of this article to sh
 
 - Automatic publishing using GitHub CI
 - Maybe migrate to GitLab pages?
-
 * Posts
 :PROPERTIES:
 :export_hugo_section: post
@@ -571,6 +571,49 @@ Here are the faces I have configured so far (there are probably many more to do,
 **** Conclusion
 
 The setup described above has considerably improved my enjoyment of writing in Emacs. I hope you find it useful. If you have any feedback, suggestions or questions, please let me know in the comments.
+
+*** DONE How to insert screenshots in Org documents on macOS :orgmode:emacs:howto:macos:config:
+CLOSED: [2020-08-09 Sun 16:44]
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: 2020-08-09-how-to-insert-screenshots-in-org-documents-on-macos
+:EXPORT_FILE_NAME: index
+:export_hugo_custom_front_matter: :toc true :featured_image /images/emacs-logo.svg
+:END:
+#+begin_description
+As I'm taking notes or writing in Org-mode, I often want to insert screenshots inline with the text. While Org supports inserting and displaying inline images, the assumption is that the image is already somewhere in the file system and we just want to link to it. In this post I will show you how to automate the insertion of images from the clipboard into an org-mode document.
+#+end_description
+
+As I'm taking notes or writing in Org-mode, I often want to insert screenshots inline with the text. While Org supports [[https://orgmode.org/manual/Images.html][inserting and displaying inline images]], the assumption is that the image is already somewhere in the file system and we just want to link to it.
+
+The [[https://github.com/abo-abo/org-download][org-download]] package eases the task of downloading or copying images and attaching them to a document, and it even has an =org-download-screenshot= command, but this assumes you want to initiate the screenshot from within Emacs, whereas the workflow I prefer is like this:
+
+1. Capture screenshot using the macOS built-in screenshot tool ({{{keys(Shift ⌘ 5)}}}) and leave it in the clipboard.
+2. Paste the image into the document I'm working on.
+
+Fortunately, =org-download= allows customizing the command used by the =org-download-screenshot= command. Together with the [[https://github.com/jcsalterego/pngpaste][pngpaste]] utility, this can be used to make =org-download-screenshot= store the image from the clipboard to disk, and insert it into the document. This is my configuration:
+
+#+begin_src emacs-lisp
+  (use-package org-download
+    :after org
+    :defer nil
+    :custom
+    (org-download-method 'directory)
+    (org-download-image-dir "images")
+    (org-download-heading-lvl nil)
+    (org-download-timestamp "%Y%m%d-%H%M%S_")
+    (org-image-actual-width 300)
+    (org-download-screenshot-method "/usr/local/bin/pngpaste %s")
+    :bind
+    ("C-M-y" . org-download-screenshot)
+    :config
+    (require 'org-download))
+#+end_src
+
+With this configuration, images are stored in a directory named =images= under the current directory, in a flat directory structure and each file is prepended with a timestamp (I would prefer not to use timestamps, but =org-download= uses a fixed filename for screenshots, which makes it difficult to insert multiple screenshots in the same document). You may want to check the =org-download= documentation and configure these settings to your likely.
+
+Finally, I bind =org-download-screenshot= to {{{keys(Ctrl ⌘ y)}}} to keep it similar to the default {{{keys(Ctrl y)}}} for pasting the clipboard and to easily perform step 2 of the workflow described above.
+
+Thanks to [[https://stackoverflow.com/questions/17435995/paste-an-image-on-clipboard-to-emacs-org-mode-file-without-saving-it][this thread at Stack Overflow]] for many of the base ideas and pointers.
 
 ** Hammerspoon                                        :hammerspoon:mac:howto:
 :PROPERTIES:
