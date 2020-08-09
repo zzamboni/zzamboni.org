@@ -623,9 +623,11 @@ And without inline image display, we can see that the screenshot is automaticall
 #+DOWNLOADED: screenshot @ 2020-08-09 17:25:34
 [[file:images/20200809-172534_screenshot.png]]
 
+{{% tip %}}
 Thanks to [[https://stackoverflow.com/questions/17435995/paste-an-image-on-clipboard-to-emacs-org-mode-file-without-saving-it][this thread at Stack Overflow]] for the base ideas and pointers for this configuration.
 
 *Note:* The same technique could be used in non-macOS systems by invoking a corresponding utility that does the same. From the thread above you can get examples for both Windows and Linux.
+{{% /tip %}}
 
 ** Hammerspoon                                        :hammerspoon:mac:howto:
 :PROPERTIES:

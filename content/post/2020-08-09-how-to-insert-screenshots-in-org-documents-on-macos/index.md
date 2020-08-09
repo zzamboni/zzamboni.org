@@ -48,6 +48,8 @@ And without inline image display, we can see that the screenshot is automaticall
 
 {{< figure src="20200809-172534_screenshot.png" >}}
 
+{{% tip %}}
 Thanks to [this thread at Stack Overflow](https://stackoverflow.com/questions/17435995/paste-an-image-on-clipboard-to-emacs-org-mode-file-without-saving-it) for the base ideas and pointers for this configuration.
 
 **Note:** The same technique could be used in non-macOS systems by invoking a corresponding utility that does the same. From the thread above you can get examples for both Windows and Linux.
+{{% /tip %}}
