@@ -44,4 +44,8 @@ Now when I want to insert a screenshot in a document, I simply press <kbd>Shiftâ
 
 {{< figure src="20200809-171713_screenshot.png" >}}
 
-(thanks to [this thread at Stack Overflow](https://stackoverflow.com/questions/17435995/paste-an-image-on-clipboard-to-emacs-org-mode-file-without-saving-it) for many of the base ideas and pointers).
+{{% tip %}}
+Thanks to [this thread at Stack Overflow](https://stackoverflow.com/questions/17435995/paste-an-image-on-clipboard-to-emacs-org-mode-file-without-saving-it) for many of the base ideas and pointers.
+
+The same technique could be used in non-macOS systems by invoking a corresponding utility that does the same. From the thread above you can get examples for both Windows and Linux.
+{{% /tip %}}
