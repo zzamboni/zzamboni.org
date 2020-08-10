@@ -63,6 +63,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#just-enough-lua-to-be-productive-in-hammerspoon-part-2][Just Enough Lua to Be Productive in Hammerspoon, Part 2]]
     - [[#first-release-of-learning-hammerspoon][First release of "Learning Hammerspoon"]]
     - [[#new-release-of-learning-hammerspoon-is-out][New release of "Learning Hammerspoon" is out!]]
+    - [[#august-2020-release-of-learning-hammerspoon-is-out][August 2020 release of "Learning Hammerspoon" is out!]]
   - [[#elvish][Elvish]]
     - [[#bang-bang---shell-shortcuts-in-elvish][Bang-Bang (!!, !$) Shell Shortcuts in Elvish]]
     - [[#using-and-writing-completions-in-elvish][Using and writing completions in Elvish]]
@@ -1704,6 +1705,26 @@ I am happy to announce the third release of my book /[[https://leanpub.com/learn
  - Two new introductory sections: /The Hyper Key/, about useful ways of defining  a common set of modifiers for your Hammerspoon keybindings; and /Keeping private information separate/, about loading separate files into your Hammerspoon configuration.
  - Multiple overall improvements in terms of wording,  figures and formatting.
  - One invisible backend change, but which bears mentioning: this book is now generated using [[https://leanpub.com/markua/read][Markua]] sources instead of the default [[https://leanpub.com/help/manual][Leanpub Markdown]] format used before. This has very little impact  on the final book as you see it, but it will make it easier in the future to handle more complex formatting as needed.
+
+I hope you enjoy it! As usual, you can find more information, read a free sample, and purchase it at [[https://leanpub.com/learning-hammerspoon/][LeanPub]].
+*** DONE August 2020 release of "Learning Hammerspoon" is out! :book:announcement:
+CLOSED: [2020-08-10 Mon 09:35]
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: 2020-08-10-august-2020-release-of-learning-hammerspoon
+:EXPORT_FILE_NAME: index
+:export_hugo_custom_front_matter: :toc false :featured_image /images/learning-hs-cover.jpg
+:END:
+#+begin_description
+I am happy to announce a new release of my new book "Learning Hammerspoon", including a brand new chapter /Hammerspoon Cookbook, Tips and Tricks/ and many other improvements.
+#+end_description
+
+{{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
+
+I am happy to announce a new release of my book /[[https://leanpub.com/learning-hammerspoon][Learning Hammerspoon]]/!
+
+This release includes a brand new chapter, /Hammerspoon Cookbook, Tips and Tricks/, which contains practical examples of doing interesting and useful things with Hammerspoon, as well as some tips to improve your configuration.
+
+Also included are multiple other fixes, clarifications and minor improvements.
 
 I hope you enjoy it! As usual, you can find more information, read a free sample, and purchase it at [[https://leanpub.com/learning-hammerspoon/][LeanPub]].
 
