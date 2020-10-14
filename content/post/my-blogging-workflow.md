@@ -3,7 +3,7 @@ title = "My blogging workflow with Emacs, org-mode+ox-hugo, Hugo and GitHub"
 author = ["Diego Zamboni"]
 tags = ["blogging", "howto", "emacs", "hugo", "orgmode", "github"]
 draft = true
-creator = "Emacs 26.3 (Org mode 9.3.7 + ox-hugo)"
+creator = "Emacs 28.0.50 (Org mode 9.4 + ox-hugo)"
 +++
 
 My blogging has seen [multiple iterations](/about/#my-online-past) over the years, and with it, the tools I use have changed. At the moment I use a set of tools and workflows which make it very easy to keep my blog updated, and I will describe them in this post. In short, they are:
@@ -57,7 +57,7 @@ Once ox-hugo has generated the Markdown files for my posts, it is Hugo's turn to
 One particular piece of configuration I use to make publishing with GitHub pages easier: I change Hugo's `publishDir` parameter from its default value of `public` to `docs`, to make it easier to publish my final website from within the same repository (more below in the [Hosting](#hosting) section). This is done by specifying the parameter in Hugo's [`config.toml`](https://github.com/zzamboni/zzamboni.org/blob/master/config.toml#L9) file:
 
 ```conf-toml
-publishDir = "docs"
+  publishDir = "docs"
 ```
 
 Hugo has extensive capabilities and it is beyond the scope of this article to show you how to use it, but it has [very good documentation](https://gohugo.io/documentation/) which I would urge you to peruse to learn more about it. Feel free to peruse [my setup](https://github.com/zzamboni/zzamboni.org/blob/master/content-org/zzamboni.org) for ideas.

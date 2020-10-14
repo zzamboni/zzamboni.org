@@ -4,7 +4,7 @@ author = ["Diego Zamboni"]
 date = 2019-04-16T11:25:00+02:00
 tags = ["writing", "hammerspoon", "circleci", "automation", "leanpub", "github"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.3.7 + ox-hugo)"
+creator = "Emacs 28.0.50 (Org mode 9.4 + ox-hugo)"
 toc = true
 featured_image = "/images/hammerspoon-github-circleci-leanpub.001.jpg"
 +++
@@ -42,9 +42,9 @@ This is not part of my final workflow and you can safely skip it. It is only a b
 As an initial step, I wrote some shell scripts to trigger and watch the progress of Leanpub builds by hand. I use the [Elvish shell](https://elv.sh), and my scripts are published as the [leanpub](https://github.com/zzamboni/elvish-modules/blob/master/leanpub.org) Elvish module. These allow you to  trigger book builds (only preview and subset builds, no publishing) by hand, and also to watch the progress of any operation. If you use Elvish, you can install the module like this:
 
 ```elvish
-use epm
-epm:install github.com/zzamboni/elvish-modules
-use github.com/zzamboni/elvish-modules/leanpub
+  use epm
+  epm:install github.com/zzamboni/elvish-modules
+  use github.com/zzamboni/elvish-modules/leanpub
 ```
 
 Then, whenever you commit changes to your text, you can trigger a build and watch its progress like this:
@@ -76,9 +76,9 @@ After a while using these scripts, I thought I would put some work on improving 
 
 The first step is to get rid of the need to run those "watch" scripts, which produce raw JSON output from the Leanpub API, and use nice macOS notifications to track the activity, like these:
 
-![](build-step11.png)
-![](build-step15.png)
-![](build-step30.png)
+![](images/leanpub-notifs/build-step11.png)
+![](images/leanpub-notifs/build-step15.png)
+![](images/leanpub-notifs/build-step30.png)
 
 These are produced by a [Spoon](/post/using-spoons-in-hammerspoon/) I wrote called [Leanpub](https://www.hammerspoon.org/Spoons/Leanpub.html). You can install, load and configure it using the [SpoonInstall](/post/using-spoons-in-hammerspoon/#automated-spoon-installation-and-configuration) spoon.
 
@@ -89,38 +89,38 @@ If you want to learn how this Spoon is implemented, please check out the "Writin
 For example, in my configuration I have [the following code](/post/my-hammerspoon-configuration-with-commentary/#leanpub-integration) to configure the spoon to watch for both of my books:
 
 ```lua
-Install:andUse("Leanpub",
-               {
-                 config = {
-                   -- api_key = "my-api-key",
-                   watch_books = {
-                     { slug = "learning-hammerspoon" },
-                     { slug = "learning-cfengine" }
-                   }
-                 },
-                 start = true
-})
+  Install:andUse("Leanpub",
+                 {
+                   config = {
+                     -- api_key = "my-api-key",
+                     watch_books = {
+                       { slug = "learning-hammerspoon" },
+                       { slug = "learning-cfengine" }
+                     }
+                   },
+                   start = true
+  })
 ```
 
 Note that you also need to specify your Leanpub API key, which you can get and manage in the Author / Your API Key in Leanpub:
 
-{{< figure src="leanpub-api-key.png" >}}
+{{< figure src="images/leanpub-api-key.png" >}}
 
 {{% warning %}}
 You can specify the `api_key` value in the main declaration as shown (commented) above. However, be careful if you keep your configuration file in GitHub or some other publicly-accessible place. What I do is keep a separate file called `init-local.lua` which I do not commit to my git repository, and where I set my API key as follows:
 
 ```lua
--- Leanpub API key
-spoon.Leanpub.api_key = "my-api-key"
+  -- Leanpub API key
+  spoon.Leanpub.api_key = "my-api-key"
 ```
 
 This file in turn gets loaded into my main config file [as follows](/post/my-hammerspoon-configuration-with-commentary/#loading-private-configuration):
 
 ```lua
-local localfile = hs.configdir .. "/init-local.lua"
-if hs.fs.attributes(localfile) then
-  dofile(localfile)
-end
+  local localfile = hs.configdir .. "/init-local.lua"
+  if hs.fs.attributes(localfile) then
+    dofile(localfile)
+  end
 ```
 
 {{% /warning %}}
@@ -136,7 +136,7 @@ Note that the actual behavior and appearance of the notifications produced by Ha
 
 The most basic way of automatically triggering builds is by using a webhook to trigger the Leanpub API directly. This is described in  your book's "Getting Started" page, which you can access at `https://leanpub.com/YOUR_BOOK/getting_started` (replacing `YOUR_BOOK` with your book's slug). This works well, but the downside is that the webhook is "hardcoded" so you can only trigger a fixed type of build per webhook (e.g. subset or regular preview). This means that if you want to trigger a different type of build, you need to keep multiple webhooks defined, and activate the one you want by hand:
 
-{{< figure src="github-webhooks.png" >}}
+{{< figure src="images/github-webhooks.png" >}}
 
 {{% tip %}}
 If you only want to automatically trigger one type of build then you don't need to do anything else. Continue reading if you are interested in a flexible workflow which allows you to trigger different types of builds based on tags you define on your book's repository.
@@ -157,45 +157,45 @@ Here's my preferred workflow (you can build others as well using the leanpub orb
 To implement this workflow, all you have to do is add a file `.circleci/config.yml` to your repository, containing the following:
 
 ```yaml
-version: 2.1
+  version: 2.1
 
-orbs:
-  leanpub: zzamboni/leanpub@0.1.1
+  orbs:
+    leanpub: zzamboni/leanpub@0.1.1
 
-# This tag-based book building workflow dispatches to the correct job
-# depending on tagging
-workflows:
-  version: 2
-  build-book:
-    jobs:
-      - leanpub/subset-preview:
-          filters:
-            tags:
-              ignore:
-                - /^preview.*/
-                - /^publish.*/
-                - /^silent-publish.*/
-      - leanpub/full-preview:
-          filters:
-            tags:
-              only: /^preview.*/
-            branches:
-              ignore: /.*/
-      - leanpub/auto-publish:
-          name: leanpub/silent-publish
-          auto-release-notes: false
-          filters:
-            tags:
-              only: /^silent-publish.*/
-            branches:
-              ignore: /.*/
-      - leanpub/auto-publish:
-          auto-release-notes: true
-          filters:
-            tags:
-              only: /^publish.*/
-            branches:
-              ignore: /.*/
+  # This tag-based book building workflow dispatches to the correct job
+  # depending on tagging
+  workflows:
+    version: 2
+    build-book:
+      jobs:
+        - leanpub/subset-preview:
+            filters:
+              tags:
+                ignore:
+                  - /^preview.*/
+                  - /^publish.*/
+                  - /^silent-publish.*/
+        - leanpub/full-preview:
+            filters:
+              tags:
+                only: /^preview.*/
+              branches:
+                ignore: /.*/
+        - leanpub/auto-publish:
+            name: leanpub/silent-publish
+            auto-release-notes: false
+            filters:
+              tags:
+                only: /^silent-publish.*/
+              branches:
+                ignore: /.*/
+        - leanpub/auto-publish:
+            auto-release-notes: true
+            filters:
+              tags:
+                only: /^publish.*/
+              branches:
+                ignore: /.*/
 ```
 
 {{% note %}}
@@ -212,11 +212,11 @@ Once you have committed this file, you can enable CircleCI on it as follows:
 -   Login at <https://circleci.com/> using your GitHub account.
 -   In the "Add projects" screen, choose your repository and click  "Set Up Project".  Since you have  already added the `config.yml` file,  you can skip  that part and click on "Start building".
 -   The first build will fail because you have not provided your Leanpub API key yet:
-    ![](circleci-first-job-fail.png)
+    ![](images/circleci-first-job-fail.png)
 -   To fix this, you need to define an environment variable called `LEANPUB_API_KEY` within your CircleCI project. Click on the project name, and then on the settings button at the top-left of the screen. Once there, select the "Environment Variables" section and enter the environment variable:
-    ![](circleci-add-leanpub-api-key.png)
+    ![](images/circleci-add-leanpub-api-key.png)
 -   Now you can go to the "Workflows" screen and click on "Rerun" for your book's workflow (alternatively, make a new commit on your git repository). Assuming you have the Leanpub Spoon installed as described before, you should see the notifications for your book's build within a few seconds.
-    ![](circleci-successful-job.png)
+    ![](images/circleci-successful-job.png)
 
 
 ## Conclusion {#conclusion}

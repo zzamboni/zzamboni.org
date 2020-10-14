@@ -5,7 +5,7 @@ summary = "Hammerspoon's configuration files are written in Lua, so a basic know
 date = 2017-10-21T20:36:00+02:00
 tags = ["hammerspoon", "mac", "howto", "lua"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.3.7 + ox-hugo)"
+creator = "Emacs 28.0.50 (Org mode 9.4 + ox-hugo)"
 toc = true
 featured_image = "/images/lua-logo.svg"
 +++
@@ -22,13 +22,13 @@ The purpose of this section is to give you a quick overview of the Lua features 
 Lua includes all the common flow-control structures you might expect.  Some examples:
 
 ```lua
-local info = "No package selected"
-if pkg and pkg ~= "" then
-   info, st = hs.execute("/usr/local/bin/brew info " .. pkg)
-   if st == nil then
-      info = "No information found about formula '" .. pkg .. "'!"
-   end
-end
+  local info = "No package selected"
+  if pkg and pkg ~= "" then
+     info, st = hs.execute("/usr/local/bin/brew info " .. pkg)
+     if st == nil then
+        info = "No information found about formula '" .. pkg .. "'!"
+     end
+  end
 ```
 
 In this example, in addition to the [if](https://www.lua.org/manual/5.3/manual.html#3.3.4) statement, you can see in the line that runs [`hs.execute`](https://www.hammerspoon.org/docs/hs#execute) that Lua functions can return multiple values (which is not the same as returning an array, which counts as a single value). Within the function, this is implemented simply by separating the values with commas in the `return` statement, like this: `return val1, val2`. You can also see in action the following operators:
@@ -44,18 +44,18 @@ In this example, in addition to the [if](https://www.lua.org/manual/5.3/manual.h
 <!--listend-->
 
 ```lua
-local doReload = false
-for _,file in pairs(files) do
-   if file:sub(-4) == ".lua" and (not string.match(file, '/[.]#')) then
-      doReload = true
-   end
-end
+  local doReload = false
+  for _,file in pairs(files) do
+     if file:sub(-4) == ".lua" and (not string.match(file, '/[.]#')) then
+        doReload = true
+     end
+  end
 ```
 
 In this example we see the [for](https://www.lua.org/manual/5.3/manual.html#3.3.5) statement in its so-called _generic form_:
 
 ```lua
-for <var> in <expression> do <block> end
+  for <var> in <expression> do <block> end
 ```
 
 This statement loops the variables over the values returned by the expressions, executing the block with each the consecutive value until it becomes `nil`.
@@ -67,7 +67,7 @@ Strictly speaking, `expression` is executed once and its value must be an _itera
 The `for` statement also has a _numeric form_:
 
 ```lua
-for <var> = <first>,<last>,<inc> do <block> end
+  for <var> = <first>,<last>,<inc> do <block> end
 ```
 
 This form loops the variable from the first to the last value, incrementing it by the given increment (defaults to 1) at each iteration.
@@ -89,8 +89,8 @@ Going back to our example, we can also learn the following:
 You will notice that sometimes, functions contained within a module are called with a dot, and others with a colon. The latter is Lua's object-method-call notation, and its effect is to pass the object on which the method is being called as an implicit first argument called `self`. This is simply a syntactic shortcut, i.e. the following two are equivalent:
 
 ```lua
-file:match('/[.]')
-string.match(file, '/')
+  file:match('/[.]')
+  string.match(file, '/')
 ```
 
 Note that in the second statement, we are calling the method using the dot notation, and explicitly passing the object as the first argument.  Normally you would use colon notation, but when you need a function pointer, you need to use the dot notation.
@@ -101,15 +101,15 @@ Note that in the second statement, we are calling the method using the dot notat
 Functions are defined using the `function` keyword.
 
 ```lua
-function leftDoubleClick(modifiers)
-   local pos=hs.mouse.getAbsolutePosition() -- <1>
-   hs.eventtap.event.newMouseEvent(
-     hs.eventtap.event.types.leftMouseDown, pos, modifiers) -- <2>
-      :setProperty(hs.eventtap.event.properties.mouseEventClickState, 2)
-      :post() -- <3>
-   hs.eventtap.event.newMouseEvent( -- <4>
-     hs.eventtap.event.types.leftMouseUp, pos, modifiers):post()
-end
+  function leftDoubleClick(modifiers)
+     local pos=hs.mouse.getAbsolutePosition() -- <1>
+     hs.eventtap.event.newMouseEvent(
+       hs.eventtap.event.types.leftMouseDown, pos, modifiers) -- <2>
+        :setProperty(hs.eventtap.event.properties.mouseEventClickState, 2)
+        :post() -- <3>
+     hs.eventtap.event.newMouseEvent( -- <4>
+       hs.eventtap.event.types.leftMouseUp, pos, modifiers):post()
+  end
 ```
 
 In this example we can also see some examples of the Hammerspoon library in action, in particular two extremely powerful libraries: [`hs.mouse`](https://www.hammerspoon.org/docs/hs.mouse) for interacting with the mouse pointer, and [`hs.eventtap`](https://www.hammerspoon.org/docs/hs.eventtap), which allows you to both intercept and generate arbitrary system events, including key pressed and mouse clicks. This function simulates a double click on the current pointer position:
@@ -127,8 +127,8 @@ Function parameters are always optional, and those not passed will default to `n
 You should try this function to see that it works. Adding it to you `~/.hammerspoon/init.lua` function will make Hammerspoon define it the next time you reload your configuration. You could then try calling it from the console, but the easiest is to bind a hotkey that will generate a double click. For example:
 
 ```lua
-hs.hotkey.bindSpec({ { "cmd", "ctrl", "alt" }, "p" },
-                   leftDoubleClick)
+  hs.hotkey.bindSpec({ { "cmd", "ctrl", "alt" }, "p" },
+                     leftDoubleClick)
 ```
 
 Once you reload your config, you can generate a double click by moving the cursor where you want it and pressing <kbd>Ctrl​-​⌘​-​Alt​-​p</kbd>. While this is a contrived example, the ability to generate events like this is immensely powerful in automating your system.
@@ -138,14 +138,14 @@ Once you reload your config, you can generate a double click by moving the curso
 By now you have seen that we are using <kbd>Ctrl​-​⌘​-​Alt</kbd> very frequently in our keybindings. To avoid having to type this every time, and since the modifiers are defined as an array, you can define them as variable. For example, I have the following at the top of my `init.lua`:
 
 ```lua
-hyper = {"cmd","alt","ctrl"}
-shift_hyper = {"cmd","alt","ctrl","shift"}
+  hyper = {"cmd","alt","ctrl"}
+  shift_hyper = {"cmd","alt","ctrl","shift"}
 ```
 
 Then I simply use `hyper` or `shift_hyper` in my key binding declarations:
 
 ```lua
-hs.hotkey.bindSpec({ hyper, "p" }, leftDoubleClick)
+  hs.hotkey.bindSpec({ hyper, "p" }, leftDoubleClick)
 ```
 
 {{% /tip %}}

@@ -5,14 +5,14 @@ summary = "In this blog post I will walk you through my current Elvish configura
 date = 2017-11-16T20:21:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "elvish"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.3.7 + ox-hugo)"
+creator = "Emacs 28.0.50 (Org mode 9.4 + ox-hugo)"
 toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **August  9, 2020**
+Last update: **October 15, 2020**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -28,13 +28,20 @@ Without further ado...
 First we set up the executable paths. We set the `GOPATH` environment variable while we are at it, since we need to use it as part of the path.
 
 ```elvish
+# Where all the Go stuff is
 E:GOPATH = ~/Dropbox/Personal/devel/go
+# I use the gccemacs build for macOS, from https://github.com/jimeh/build-emacs-for-macos
+emacs-path=~/Applications/Emacs.app/Contents/MacOS
+
 paths = [
+  $emacs-path $emacs-path/bin
   ~/bin
+  ~/.emacs.d/bin
   $E:GOPATH/bin
   /usr/local/opt/coreutils/libexec/gnubin
   /usr/local/opt/texinfo/bin
   /usr/local/opt/python/libexec/bin
+  ~/Library/Python/3.8/bin
   /usr/local/opt/ruby@2.6/bin
   /usr/local/bin
   /usr/local/sbin

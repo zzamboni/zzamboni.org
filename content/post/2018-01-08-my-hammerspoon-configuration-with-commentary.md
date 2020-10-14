@@ -5,7 +5,7 @@ summary = "In my ongoing series of literate config files, I present to you my Ha
 date = 2018-01-08T13:31:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "hammerspoon"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.3.7 + ox-hugo)"
+creator = "Emacs 28.0.50 (Org mode 9.4 + ox-hugo)"
 toc = true
 featured_image = "/images/hammerspoon.jpg"
 +++
@@ -13,7 +13,7 @@ featured_image = "/images/hammerspoon.jpg"
 {{< leanpubbook book="lit-config" style="float:right" >}}
 {{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
 
-Last update: **August  9, 2020**
+Last update: **October 15, 2020**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -93,7 +93,7 @@ BTT = spoon.BetterTouchTool
 
 ## URL dispatching to site-specific browsers {#url-dispatching-to-site-specific-browsers}
 
-The [URLDispatcher](http://www.hammerspoon.org/Spoons/URLDispatcher.html) spoon makes it possible to open URLs with different browsers. I have created different site-specific browsers using [Epichrome](https://github.com/dmarmor/epichrome), which allows me to keep site-specific bookmarks, search settings, etc.
+The [URLDispatcher](http://www.hammerspoon.org/Spoons/URLDispatcher.html) spoon makes it possible to open URLs with different browsers. I have created different site-specific browsers using [Epichrome](https://github.com/dmarmor/epichrome), which allows me to keep site-specific bookmarks, search settings, etc. I also use the `url_redir_decoders` parameter to rewrite some URLs before they are opened, both to redirect certain URLs directly to their corresponding applications (instead of going through the web browser) and to fix a bug I have experienced in opening URLs from PDF documents using Preview.
 
 ```lua
 DefaultBrowser = "com.brave.Browser.dev"
@@ -190,7 +190,6 @@ Install:andUse("WindowScreenLeftAndRight",
                  hotkeys = 'default'
                }
 )
-
 ```
 
 The [ToggleScreenRotation](http://www.hammerspoon.org/Spoons/ToggleScreenRotation.html) spoon sets up a key binding to rotate the external screen (the spoon can set up keys for multiple screens if needed, but by default it rotates the first external screen).
@@ -267,16 +266,16 @@ Install:andUse("SendToOmniFocus",
 The [EvernoteOpenAndTag](http://www.hammerspoon.org/Spoons/EvernoteOpenAndTag.html) spoon sets up some missing key bindings for note manipulation in Evernote. I no longer use Evernote for GTD, so I have disabled the shortcuts for tagging notes.
 
 ```lua
-  Install:andUse("EvernoteOpenAndTag",
-                 {
-                   hotkeys = {
-                     open_note = { hyper, "o" },
---                     ["open_and_tag-+work"] = { hyper, "w" },
---                     ["open_and_tag-+personal"] = { hyper, "p" },
---                     ["tag-@zzdone"] = { hyper, "z" }
-                   }
+Install:andUse("EvernoteOpenAndTag",
+               {
+                 hotkeys = {
+                   open_note = { hyper, "o" },
+                   --                     ["open_and_tag-+work"] = { hyper, "w" },
+                   --                     ["open_and_tag-+personal"] = { hyper, "p" },
+                   --                     ["tag-@zzdone"] = { hyper, "z" }
                  }
-  )
+               }
+)
 ```
 
 
@@ -313,12 +312,12 @@ This is still very manual - the `uuid` parameter contains the ID of the BTT widg
 ```lua
 function BTT_restart_hammerspoon(s)
   BTT:bindSpoonActions(s, {
-   config_reload = {
-     kind = 'touchbarButton',
-     uuid = "FF8DA717-737F-4C42-BF91-E8826E586FA1",
-     name = "Restart",
-     icon = hs.image.imageFromName(hs.image.systemImageNames.ApplicationIcon),
-     color = hs.drawing.color.x11.orange,
+                         config_reload = {
+                           kind = 'touchbarButton',
+                           uuid = "FF8DA717-737F-4C42-BF91-E8826E586FA1",
+                           name = "Restart",
+                           icon = hs.image.imageFromName(hs.image.systemImageNames.ApplicationIcon),
+                           color = hs.drawing.color.x11.orange,
   }})
 end
 ```
@@ -353,16 +352,16 @@ function BTT_caffeine_widget(s)
                            uuid = '72A96332-E908-4872-A6B4-8A6ED2E3586F',
                            name = 'Caffeine',
                            widget_code = [[
-do
-  title = " "
-  icon = hs.image.imageFromPath(spoon.Caffeine.spoonPath.."/caffeine-off.pdf")
-  if (hs.caffeinate.get('displayIdle')) then
-    icon = hs.image.imageFromPath(spoon.Caffeine.spoonPath.."/caffeine-on.pdf")
+  do
+    title = " "
+    icon = hs.image.imageFromPath(spoon.Caffeine.spoonPath.."/caffeine-off.pdf")
+    if (hs.caffeinate.get('displayIdle')) then
+      icon = hs.image.imageFromPath(spoon.Caffeine.spoonPath.."/caffeine-on.pdf")
+    end
+    print(hs.json.encode({ text = title,
+                           icon_data = BTT:hsimageToBTTIconData(icon) }))
   end
-  print(hs.json.encode({ text = title,
-                         icon_data = BTT:hsimageToBTTIconData(icon) }))
-end
-    ]],
+      ]],
                            code = "spoon.Caffeine.clicked()",
                            widget_interval = 1,
                            color = hs.drawing.color.x11.black,
@@ -505,18 +504,18 @@ Install:andUse("TimeMachineProgress",
 The TurboBoost spoon shows an indicator of the CPU's Turbo Boost status, and allows disabling/enabling. This requires [Turbo Boost Switcher](https://github.com/rugarciap/Turbo-Boost-Switcher) to be installed.
 
 ```lua
-  Install:andUse("TurboBoost",
-                 {
-                   config = {
-                     disable_on_start = true
-                   },
-                   hotkeys = {
-                     toggle = { hyper, "0" }
-                   },
-                   start = true,
---                   loglevel = 'debug'
-                 }
-  )
+Install:andUse("TurboBoost",
+               {
+                 config = {
+                   disable_on_start = true
+                 },
+                 hotkeys = {
+                   toggle = { hyper, "0" }
+                 },
+                 start = true,
+                 --                   loglevel = 'debug'
+               }
+)
 ```
 
 
@@ -655,16 +654,16 @@ function reconfigAdiumProxy(proxy)
   app = hs.application.find("Adium")
   if app and app:isRunning() then
     local script = string.format([[
-tell application "Adium"
-  repeat with a in accounts
-    if (enabled of a) is true then
-      set proxy enabled of a to %s
-    end if
-  end repeat
-  go offline
-  go online
-end tell
-]], hs.inspect(proxy))
+  tell application "Adium"
+    repeat with a in accounts
+      if (enabled of a) is true then
+        set proxy enabled of a to %s
+      end if
+    end repeat
+    go offline
+    go online
+  end tell
+  ]], hs.inspect(proxy))
     hs.osascript.applescript(script)
   end
 end
@@ -781,8 +780,10 @@ Install:andUse("Leanpub",
                      { slug = "learning-hammerspoon" },
                      { slug = "learning-cfengine" },
                      { slug = "emacs-org-leanpub" },
+                     { slug = "be-safe-on-the-internet" },
                      { slug = "lit-config"  },
                      { slug = "zztestbook" },
+--                     { slug = "cissp-training" },
                    },
                    books_sync_to_dropbox = true,
                  },

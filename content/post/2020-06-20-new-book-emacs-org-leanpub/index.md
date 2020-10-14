@@ -5,7 +5,7 @@ summary = "I am happy to announce the new release of my new book \"Publishing wi
 date = 2020-06-20T21:13:00+02:00
 tags = ["book", "leanpub", "publishing", "writing", "emacs", "orgmode"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.3.7 + ox-hugo)"
+creator = "Emacs 28.0.50 (Org mode 9.4 + ox-hugo)"
 toc = false
 featured_image = "/images/emacs-org-leanpub-cover.png"
 +++

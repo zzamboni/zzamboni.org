@@ -369,7 +369,7 @@ I have enjoyed slowly converting my configuration files to [[http://www.howardis
 
 If you are interested in writing your own Literate Config files, check out my new book [[https://leanpub.com/lit-config][Literate Config]] on Leanpub!
 
-#+include: "~/.emacs.d/init.org" :lines "19-"
+#+include: "~/.emacs.d.mine/init.org" :lines "19-"
 
 *** DONE My Hammerspoon Configuration, With Commentary          :hammerspoon:
 CLOSED: [2018-01-08 Mon 13:31]

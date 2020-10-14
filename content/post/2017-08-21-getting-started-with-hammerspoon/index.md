@@ -5,7 +5,7 @@ summary = "This is the first installment of a series of posts about Hammerspoon,
 date = 2017-08-21T16:34:00+02:00
 tags = ["hammerspoon", "mac", "howto"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.3.7 + ox-hugo)"
+creator = "Emacs 28.0.50 (Org mode 9.4 + ox-hugo)"
 toc = true
 featured_image = "/images/hammerspoon.jpg"
 +++
@@ -47,12 +47,12 @@ Hammerspoon is a regular Mac application. To install it by hand, you just need t
 If you are automation-minded like me, you probably use [Homebrew](https://brew.sh/) and its plugin [Cask](https://caskroom.github.io/) to manage your applications. In this case, you can use Cask to install Hammerspoon:
 
 ```shell
-brew cask install hammerspoon
+  brew cask install hammerspoon
 ```
 
 When you run Hammerspoon for the first time, you will see its icon appear in the menubar, and a notification telling you that it couldn't find a configuration file. Let's fix that!
 
-{{< figure src="hammerspoon-startup.png" >}}
+{{< figure src="images/hammerspoon-startup.png" >}}
 
 {{% tip %}}
  If you click on the initial notification, your web browser will open to the excellent [Getting Started with Hammerspoon](http://www.hammerspoon.org/go/) page, which I highly recommend you read for more examples.
@@ -64,16 +64,16 @@ When you run Hammerspoon for the first time, you will see its icon appear in the
 Let us start with a few simple examples. As tradition mandates, we will start with a "Hello World" example. Open `$HOME/.hammerspoon/init.lua` (Hammerspoon will create the directory upon first startup, but you need to create the file) in your favorite editor, and type the following:
 
 ```lua
-hs.hotkey.bindSpec({ { "ctrl", "cmd", "alt" }, "h" },
-  function()
-    hs.notify.show("Hello World!", "Welcome to Hammerspoon", "")
-  end
-)
+  hs.hotkey.bindSpec({ { "ctrl", "cmd", "alt" }, "h" },
+    function()
+      hs.notify.show("Hello World!", "Welcome to Hammerspoon", "")
+    end
+  )
 ```
 
 Save the file, and from the Hammerspoon icon in the menubar, select "Reload config". Apparently nothing will happen, but if you then press <kbd>Ctrl​-​⌘​-​Alt​-​h</kbd> on your keyboard, you will see a notification on your screen welcoming you to the world of Hammerspoon.
 
-{{< figure src="hammerspoon-hello-world.png" >}}
+{{< figure src="images/hammerspoon-hello-world.png" >}}
 
 Although it should be fairly self-explanatory, let us dissect this example to give you a clearer understanding of its components:
 
@@ -95,7 +95,7 @@ As you start modifying your configuration, errors will happen, as they always do
 To invoke the console, you normally choose "Console..." from the Hammerspoon menubar item. However, this is such a common operation, that you might find it useful to also set a key combination for showing the console. Most of Hammerspoon's internal functionality is also accessible through its API. In this case, looking at the [documentation for the main `hs` module](https://www.hammerspoon.org/docs/hs) reveals that there is an [`hs.toggleConsole`](https://www.hammerspoon.org/docs/hs#toggleConsole) function. Using the knowledge you have acquired so far, you can easily configure a hotkey for opening and hiding the console:
 
 ```lua
-hs.hotkey.bindSpec({ { "ctrl", "cmd", "alt" }, "y" }, hs.toggleConsole)
+  hs.hotkey.bindSpec({ { "ctrl", "cmd", "alt" }, "y" }, hs.toggleConsole)
 ```
 
 Once you reload your configuration, you should be able to use <kbd>Ctrl​-​⌘​-​Alt​-​y</kbd> to open and close the console. Any Lua code you type in the Console will be evaluated in the main Hammerspoon context, so you can add to your configuration directly from there. This is a good way to incrementally develop your code before committing it to the `init.lua` file.
@@ -103,7 +103,7 @@ Once you reload your configuration, you should be able to use <kbd>Ctrl​-​�
 You may have noticed by now another common operation while developing Hammerspoon code: reloading the configuration, which you normally have to do from the Hammerspoon menu. So why not set up a hotkey to do that as well? Again, the [`hs`](https://www.hammerspoon.org/docs/hs) module comes to our help with the [`hs.reload`](https://www.hammerspoon.org/docs/hs#reload) method:
 
 ```lua
-hs.hotkey.bindSpec({ { "ctrl", "cmd", "alt" }, "r" }, hs.reload)
+  hs.hotkey.bindSpec({ { "ctrl", "cmd", "alt" }, "r" }, hs.reload)
 ```
 
 Another useful development tool is the `hs` command, which you can run from your terminal to get a Hammerspoon console. To install it, you can use the [`hs.ipc".cliInstall`](https://www.hammerspoon.org/docs/hs.ipc%22#cliInstall) function, which you can just add to your `init.lua` file to check and install the command every time Hammerspoon runs.

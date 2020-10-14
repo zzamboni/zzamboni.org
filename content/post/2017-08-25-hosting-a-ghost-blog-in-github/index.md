@@ -5,7 +5,7 @@ summary = "When I was planning the reboot of my website, I seriously considered 
 date = 2017-08-25T09:00:00+02:00
 tags = ["howto", "ghost", "github", "blogging"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.3.7 + ox-hugo)"
+creator = "Emacs 28.0.50 (Org mode 9.4 + ox-hugo)"
 toc = true
 featured_image = "/images/ghost-plus-github2.png"
 slug = "hosting-a-ghost-blog-in-github"
@@ -37,58 +37,58 @@ So, without further ado, here are the detailed instructions. I ran these on my M
 1.  [Download Ghost](https://ghost.org/developers/) (version 1.7.1 as of this writing):
 
     ```console
-    cd ~/tmp # or some other suitable place
-    wget https://github.com/TryGhost/Ghost/releases/download/1.7.1/Ghost-1.7.1.zip
+           cd ~/tmp # or some other suitable place
+           wget https://github.com/TryGhost/Ghost/releases/download/1.7.1/Ghost-1.7.1.zip
     ```
 
 2.  Unpack it in a suitable directory, initialize it as a GitHub repository and commit the Ghost plain install (to have a baseline with the fresh install):
 
     ```console
-    mkdir test-ghost-blog
-    cd test-ghost-blog
-    unzip ../Ghost-1.7.1.zip
-    git init .
-    git add .
-    git commit -m 'Initial commit'
+           mkdir test-ghost-blog
+           cd test-ghost-blog
+           unzip ../Ghost-1.7.1.zip
+           git init .
+           git add .
+           git commit -m 'Initial commit'
     ```
 
 3.  Install the necessary Node modules, update the git repository:
 
     ```console
-    npm install
-    git add .
-    git commit -m 'Installed Node dependencies'
+           npm install
+           git add .
+           git commit -m 'Installed Node dependencies'
     ```
 
 4.  Install `knex-migrator`, needed for the DB initialization:
 
     ```console
-    npm install -g knex-migrator
+           npm install -g knex-migrator
     ```
 
 5.  Initialize the database and start Ghost (`knex-migrator` may give a  "Module version mismatch" message, but it seems to work OK anyway):
 
     ```console
-    knex-migrator
-    npm start
+         knex-migrator
+         npm start
     ```
 
 6.  Your blog is running! You can visit it at <http://localhost:2368/>:
-    ![](ghost-initial-screen.png)
+    ![](images/ghost-initial-screen.png)
 
 7.  Go to <http://localhost:2368/ghost>, create your user and set up your blog info:
-    ![](ghost-setup-blog.png)
+    ![](images/ghost-setup-blog.png)
 
     {{% note  %}}You may want to use an email address you don't mind being public. See "[Security Considerations](#security-considerations)" below.{{% /note %}}
 
 8.  You can now start creating content  and configuring the local Ghost instance.
-    ![](ghost-admin-screen.png)
+    ![](images/ghost-admin-screen.png)
 
 9.  When you have things the way you like them, you can commit the changes to the git repository:
 
     ```text
-    git add .
-    git commit -m 'Finished local Ghost setup'
+            git add .
+            git commit -m 'Finished local Ghost setup'
     ```
 
 
@@ -99,7 +99,7 @@ Now that you have your blog set up locally, we need to generate a static copy th
 1.  We will publish the blog from the `docs` directory of our repository, so that's where we need to store the static copy:
 
     ```console
-    wget -r -nH -P docs -E -T 2 -np -k http://localhost:2368/
+            wget -r -nH -P docs -E -T 2 -np -k http://localhost:2368/
     ```
 
     This command will crawl the entire site and create a static copy of it under the `docs` directory. You can open the file `docs/index.html` in your web browser to verify.
@@ -107,8 +107,8 @@ Now that you have your blog set up locally, we need to generate a static copy th
 2.  Add the generated pages to the git repository:
 
     ```console
-    git add docs
-    git commit -m 'Initial commit of static web site'
+            git add docs
+            git commit -m 'Initial commit of static web site'
     ```
 
 
@@ -119,13 +119,13 @@ We can finally create our GitHub repo and push the contents to it.
 1.  Create the repository. I'm using here the [`hub`](https://hub.github.com/) command, but of course you can also do it by hand in the GitHub website (in this case you need to [add the git remote](https://help.github.com/articles/adding-a-remote/) by hand as well):
 
     ```console
-    hub create
+            hub create
     ```
 
 2.  Push the local repository to GitHub (this includes both the Ghost source and the generated website under `docs`):
 
     ```console
-    git push -u origin master
+            git push -u origin master
     ```
 
 
@@ -134,14 +134,14 @@ We can finally create our GitHub repo and push the contents to it.
 Now all we need to do is enable [GitHub Pages](https://pages.github.com/) on our repository, so that the contents under `docs` gets published.
 
 1.  Go to your repository's "Settings" screen:
-    ![](ghost-repo-settings-screen.png)
+    ![](images/ghost-repo-settings-screen.png)
 
 2.  Scroll down to the "GitHub Pages" section, choose the "master branch /docs folder" option and click the "Save" button:
-    ![](ghost-repo-github-pages-setting.png)
+    ![](images/ghost-repo-github-pages-setting.png)
 
 We are done! After a few minutes (usually takes 2-5 minutes for the contents to be published the first time, afterwards updates are nearly instantaneous), you will find your new website's content under `http://<github-username>.github.io/<github-repo-name>`. In our example, the URL is <https://zzamboni.github.io/test-ghost-blog/>:
 
-{{< figure src="ghost-published-blog.png" >}}
+{{< figure src="images/ghost-published-blog.png" >}}
 
 
 ## The update workflow {#the-workflow}
@@ -151,7 +151,7 @@ After the initial setup, you need to follow these steps when you want to update 
 1.  Start Ghost inside your GitHub repository:
 
     ```console
-    npm start
+            npm start
     ```
 
 2.  Connect to <http://localhost:2368/> and update your contents. You can also change the blog settings, themes, etc.
@@ -159,32 +159,32 @@ After the initial setup, you need to follow these steps when you want to update 
 3.  Re-crawl the site to generate the local copy:
 
     ```console
-    wget -r -nH -P docs -E -T 2 -np -k http://localhost:2368/
+            wget -r -nH -P docs -E -T 2 -np -k http://localhost:2368/
     ```
 
 4.  Update and push the whole git repository:
 
     ```console
-    git add .
-    git commit -m 'Website update'
+            git add .
+            git commit -m 'Website update'
     ```
 
 Steps 3 and 4 can be easily automated. I keep the following [`update_website.sh`](https://github.com/zzamboni/test-ghost-blog/blob/master/update%5Fwebsite.sh) script in the repository:
 
 ```sh
-#!/bin/bash
-OUTDIR=docs
-LOCAL_GHOST="http://localhost:2368/"
-wget -r -nH -P $OUTDIR -E -T 2 -np -k $LOCAL_GHOST && \
-git add . && \
-git ci -m 'Update website' &&  \
-git push
+  #!/bin/bash
+  OUTDIR=docs
+  LOCAL_GHOST="http://localhost:2368/"
+  wget -r -nH -P $OUTDIR -E -T 2 -np -k $LOCAL_GHOST && \
+  git add . && \
+  git ci -m 'Update website' &&  \
+  git push
 ```
 
 Then you can just run this script from within your repository after making any changes:
 
 ```console
-./update_website.sh
+  ./update_website.sh
 ```
 
 
@@ -210,7 +210,7 @@ Sharp-eyed readers may have noticed that with the setup described above, Ghost's
 The local Ghost install uses a SQLite database, stored at `content/data/ghost-dev.db`, which you can query using the `sqlite3` command. For example, to see the user definitions:
 
 ```console
-sqlite3 content/data/ghost-dev.db 'select * from users'
+  sqlite3 content/data/ghost-dev.db 'select * from users'
 ```
 
 While this seems scandalous, keep in mind that the active Ghost installation is only running locally on your machine, and is not accessible to anyone from the outside, even when it is running (the server is only bound to `localhost`). Still, you may want to keep in mind:

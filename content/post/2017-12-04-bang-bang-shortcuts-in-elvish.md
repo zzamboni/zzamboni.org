@@ -5,7 +5,7 @@ summary = "How to set up the bash !! and !$ shortcuts for accessing the previous
 date = 2017-12-04T22:15:00+01:00
 tags = ["elvish", "shell", "unix", "config"]
 draft = false
-creator = "Emacs 26.3 (Org mode 9.3.7 + ox-hugo)"
+creator = "Emacs 28.0.50 (Org mode 9.4 + ox-hugo)"
 featured_image = "/images/elvish-logo.svg"
 +++
 
@@ -16,25 +16,25 @@ The bash shortcuts (maybe older? I'm not sure in which shell these originated) f
 -   Use [epm](https://elvish.io/ref/epm.html) to install my elvish-modules package (you can also add this to your `rc.elv` file to have the package installed automatically if needed):
 
     ```elvish
-    use epm
-    epm:install github.com/zzamboni/elvish-modules
+          use epm
+          epm:install github.com/zzamboni/elvish-modules
     ```
 
 -   In your `rc.elv` (see [mine](/post/my-elvish-configuration-with-commentary/) as an example), add the following to load the `bang-bang` module and to set up the appropriate keybindings:
 
     ```elvish
-    use github.com/zzamboni/elvish-modules/bang-bang
+          use github.com/zzamboni/elvish-modules/bang-bang
     ```
 
 That's it! Start a new shell window, and test how command-history mode can be invoked by the `!` key. Assuming your last command was `ls -l ~/.elvish/rc.elv`, when you press `!` you will see the following:
 
 ```text
-bang-lastcmd [A C] _
-! ls -l .elvish/rc.elv
-0 ls
-1 -l
-2/$ .elvish/rc.elv
-Alt-! !
+  bang-lastcmd [A C] _
+  ! ls -l .elvish/rc.elv
+  0 ls
+  1 -l
+  2/$ .elvish/rc.elv
+  Alt-! !
 ```
 
 If you press `!` again, the whole last command will be inserted. If you press `$` (or `2`), only the last argument will be inserted. You can insert any other component of the previous command using its corresponding number. If you want to insert an exclamation sign, you can press `Alt-!`.
