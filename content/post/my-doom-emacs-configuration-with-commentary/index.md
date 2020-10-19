@@ -16,6 +16,8 @@ Last update: **October 19, 2020**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
+As usual, the post below is included directly from my live [doom.org](https://github.com/zzamboni/dot-doom/blob/master/doom.org) file.
+
 If you are interested in writing your own Literate Config files, check out my book [Literate Config](https://leanpub.com/lit-config) on Leanpub!
 
 {{< figure src="doom-emacs-bw-light.svg" >}}
