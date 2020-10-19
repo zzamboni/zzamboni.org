@@ -50,6 +50,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#whats-next][What's next?]]
 - [[#posts][Posts]]
   - [[#literate-config-files][Literate config files]]
+    - [[#my-doom-emacs-configuration-with-commentary][My Doom Emacs configuration, with commentary]]
     - [[#my-emacs-configuration-with-commentary][My Emacs Configuration, With Commentary]]
     - [[#my-hammerspoon-configuration-with-commentary][My Hammerspoon Configuration, With Commentary]]
     - [[#my-elvish-configuration-with-commentary][My Elvish Configuration With Commentary]]
@@ -349,6 +350,27 @@ Blog posts.
 ** Literate config files    :config:howto:literateprogramming:literateconfig:
 
 I group here the posts about my documented config files, which include the live files from my current configuration.
+
+*** DONE My Doom Emacs configuration, with commentary :emacs:doom:
+CLOSED: [2020-10-19 Mon 09:07]
+:PROPERTIES:
+:export_hugo_bundle: my-doom-emacs-configuration-with-commentary
+:export_file_name: index
+:export_hugo_custom_front_matter: :featured_image /images/doom-emacs-color.png :toc true
+:END:
+#+begin_description
+I switched from my hand-crafted Emacs config to Doom Emacs some time ago, and I am very happy with it. This is my full, working Doom Emacs config in literate form.
+#+end_description
+
+{{< leanpubbook book="lit-config" style="float:right" >}}
+
+Last update: *{{{updatetime}}}*
+
+In my ongoing series of [[/tags/literateconfig/][literate config files]], I am now posting my [[https://github.com/hlissner/doom-emacs/][Doom Emacs]] config. I switched to Doom from my [[/post/my-emacs-configuration-with-commentary/][hand-crafted Emacs config]] some time ago, and I have been really enjoying it. Hope you find it useful!
+
+If you are interested in writing your own Literate Config files, check out my book [[https://leanpub.com/lit-config][Literate Config]] on Leanpub!
+
+#+include: "~/.doom.d/doom.org" :lines "12-"
 
 *** DONE My Emacs Configuration, With Commentary                      :emacs:
 CLOSED: [2017-12-17 Sun 20:14]
