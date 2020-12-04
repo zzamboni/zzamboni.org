@@ -23,4 +23,4 @@ This second release includes many improvements and new content, including:
 
 Hope you enjoy it!
 
-To celebrate its release, click the following link to get the book with a **30% discount** for a limited time (until December 11, 2020): [Get it now!](https://leanpub.com/emacs-org-leanpub/c/Dec2020release)
+To celebrate its release, click the following link to get the book with a **50% discount** from its suggested price, for a limited time (until December 11, 2020): [Get it now!](https://leanpub.com/emacs-org-leanpub/c/Dec2020release)

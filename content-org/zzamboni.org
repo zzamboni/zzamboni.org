@@ -2211,7 +2211,7 @@ This second release includes many improvements and new content, including:
 
 Hope you enjoy it!
 
-To celebrate its release, click the following link to get the book with a *30% discount* for a limited time (until December 11, 2020): [[https://leanpub.com/emacs-org-leanpub/c/Dec2020release][Get it now!]]
+To celebrate its release, click the following link to get the book with a *50% discount* from its suggested price, for a limited time (until December 11, 2020): [[https://leanpub.com/emacs-org-leanpub/c/Dec2020release][Get it now!]]
 
 *** DONE New book: Publishing with Emacs, Org-mode and Leanpub :book:leanpub:publishing:writing:emacs:orgmode:
 CLOSED: [2020-06-20 Sat 21:13]
