@@ -4,7 +4,7 @@ author = ["Diego Zamboni"]
 date = 2019-04-16T11:25:00+02:00
 tags = ["writing", "hammerspoon", "circleci", "automation", "leanpub", "github"]
 draft = false
-creator = "Emacs 28.0.50 (Org mode 9.4 + ox-hugo)"
+creator = "Emacs 28.0.50 (Org mode 9.5 + ox-hugo)"
 toc = true
 featured_image = "/images/hammerspoon-github-circleci-leanpub.001.jpg"
 +++

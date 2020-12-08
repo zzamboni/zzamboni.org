@@ -12,7 +12,7 @@ toc = true
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **December  6, 2020**
+Last update: **December  8, 2020**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -866,12 +866,13 @@ Second, I override `counsel-org-link-action`, which is the function that actuall
 If FORCE is t, always recreate the property."
   (org-with-point-at where
     (let ((old-id (org-entry-get nil "CUSTOM_ID")))
-      ;; If CUSTOM_ID exists, return it unless FORCE
+      ;; If CUSTOM_ID exists and FORCE is false, return it
       (if (and (not force) old-id (stringp old-id))
           old-id
         ;; otherwise, create it
         (zz/org-custom-id-create)))))
 
+;; Now override counsel-org-link-action
 (after! counsel
   (defun counsel-org-link-action (x)
     "Insert a link to X.

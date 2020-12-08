@@ -5,7 +5,7 @@ summary = "I have enjoyed slowly converting my configuration files to literate p
 date = 2017-12-17T20:14:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs"]
 draft = false
-creator = "Emacs 28.0.50 (Org mode 9.4 + ox-hugo)"
+creator = "Emacs 28.0.50 (Org mode 9.5 + ox-hugo)"
 featured_image = "/images/emacs-logo.svg"
 toc = true
 aliases = "/post/2017-12-17-my-emacs-configuration-with-commentary"
@@ -13,13 +13,13 @@ aliases = "/post/2017-12-17-my-emacs-configuration-with-commentary"
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **October 15, 2020**
+Last update: **December  8, 2020**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at [init.el](https://github.com/zzamboni/dot%5Femacs/blob/master/init.el).
 
 If you are interested in writing your own Literate Config files, check out my new book [Literate Config](https://leanpub.com/lit-config) on Leanpub!
 
-This file is written in [literate programming style](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) using [org-mode](https://orgmode.org/). See [init.el](https://github.com/zzamboni/dot-emacs/blob/master/init.el) for the generated file. You can see this in a nicer format on my blog post [My Emacs Configuration, With Commentary](http://zzamboni.org/post/my-emacs-configuration-with-commentary/).
+This file is written in [literate programming style](https://leanpub.com/lit-config) using [org-mode](https://orgmode.org/). See [init.el](https://github.com/zzamboni/dot-emacs/blob/master/init.el) for the generated file. You can see this in a nicer format on my blog post [My Emacs Configuration, With Commentary](http://zzamboni.org/post/my-emacs-configuration-with-commentary/).
 
 
 ## References {#references}

@@ -30,6 +30,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#image-attributions][Image attributions:]]
   - [[#contact][Contact]]
   - [[#books][Books]]
+  - [[#code][Code]]
 - [[#book-pages][Book pages]]
   - [[#learning-cfengine][Learning CFEngine]]
   - [[#learning-hammerspoon][Learning Hammerspoon]]
@@ -148,6 +149,17 @@ CLOSED: [2018-03-25 Sun 20:11]
 :END:
 
 I have a few self-published books, all of them available at [[https://leanpub.com/u/zzamboni][Leanpub]]. Here you can find short descriptions and links to their respective pages.
+
+** DONE Code
+CLOSED: [2018-03-25 Sun 20:11]
+:PROPERTIES:
+:export_hugo_section: code
+:export_hugo_custom_front_matter: :featured_image /images/c64-code3.png
+:export_hugo_weight: 03
+:export_file_name: _index
+:END:
+
+Here you can find a sample of some programs I have written over the years. For a full list of my public projects please check my [[https://github.com/zzamboni/][GitHub]] and [[https://gitlab.com/zzamboni][GitLab]] profiles.
 
 * Book pages
 

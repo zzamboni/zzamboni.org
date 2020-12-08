@@ -5,14 +5,14 @@ summary = "In this blog post I will walk you through my current Elvish configura
 date = 2017-11-16T20:21:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "elvish"]
 draft = false
-creator = "Emacs 28.0.50 (Org mode 9.4 + ox-hugo)"
+creator = "Emacs 28.0.50 (Org mode 9.5 + ox-hugo)"
 toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **October 15, 2020**
+Last update: **December  8, 2020**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -30,8 +30,9 @@ First we set up the executable paths. We set the `GOPATH` environment variable w
 ```elvish
 # Where all the Go stuff is
 E:GOPATH = ~/Dropbox/Personal/devel/go
-# I use the gccemacs build for macOS, from https://github.com/jimeh/build-emacs-for-macos
-emacs-path=~/Applications/Emacs.app/Contents/MacOS
+# I use the gccemacs build for macOS, from
+# https://github.com/jimeh/build-emacs-for-macos
+emacs-path = ~/Applications/Emacs.app/Contents/MacOS
 
 paths = [
   $emacs-path $emacs-path/bin
@@ -111,7 +112,7 @@ Next, we set the test function to enable proxy auto-setting. In my case, the `/e
 ```elvish
 proxy:test = {
   and ?(test -f /etc/resolv.conf) ^
-  ?(egrep -q '^(search|domain).*(corproot.net|swissptt.ch)' /etc/resolv.conf)
+  ?(egrep -q '^(search|domain).*(corproot.net|company.com)' /etc/resolv.conf)
 }
 ```
 
@@ -348,12 +349,17 @@ edit:insert:binding[Ctrl-R] = {
 }
 ```
 
-I use [exa](https://the.exa.website/) as a replacement for the `ls` command, so I alias `ls` to it. Unfortunately, `exa` does not understand the `-t` option to sort files by modification time, so I explicitly look for the `-lrt` option combination (which I use very often, and it _always_ trips me off) and replace them with the correct options for `exa`. All other options are passed as-is.
+I use [exa](https://the.exa.website/) as a replacement for the `ls` command, so I alias `ls` to it. Unfortunately, `exa` does not understand the `-t` option to sort files by modification time, so I explicitly look for the `-lrt` and `-lrta` option combinations (which I use very often, and _always_ trip me off) and replace them with the correct options for `exa`. All other options are passed as-is.
 
 ```elvish
 fn ls [@_args]{
+  use github.com/zzamboni/elvish-modules/util
   e:exa --color-scale --git --group-directories-first (each [o]{
-      if (eq $o "-lrt") { put "-lsnew" } else { put $o }
+      util:cond [
+        { eq $o "-lrt" }  "-lsnew"
+        { eq $o "-lrta" } "-alsnew"
+        :else             $o
+      ]
   } $_args)
 }
 ```

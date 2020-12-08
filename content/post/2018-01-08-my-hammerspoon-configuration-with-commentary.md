@@ -5,7 +5,7 @@ summary = "In my ongoing series of literate config files, I present to you my Ha
 date = 2018-01-08T13:31:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "hammerspoon"]
 draft = false
-creator = "Emacs 28.0.50 (Org mode 9.4 + ox-hugo)"
+creator = "Emacs 28.0.50 (Org mode 9.5 + ox-hugo)"
 toc = true
 featured_image = "/images/hammerspoon.jpg"
 +++
@@ -13,7 +13,7 @@ featured_image = "/images/hammerspoon.jpg"
 {{< leanpubbook book="lit-config" style="float:right" >}}
 {{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
 
-Last update: **October 15, 2020**
+Last update: **December  8, 2020**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -93,10 +93,16 @@ BTT = spoon.BetterTouchTool
 
 ## URL dispatching to site-specific browsers {#url-dispatching-to-site-specific-browsers}
 
-The [URLDispatcher](http://www.hammerspoon.org/Spoons/URLDispatcher.html) spoon makes it possible to open URLs with different browsers. I have created different site-specific browsers using [Epichrome](https://github.com/dmarmor/epichrome), which allows me to keep site-specific bookmarks, search settings, etc. I also use the `url_redir_decoders` parameter to rewrite some URLs before they are opened, both to redirect certain URLs directly to their corresponding applications (instead of going through the web browser) and to fix a bug I have experienced in opening URLs from PDF documents using Preview.
+The [URLDispatcher](http://www.hammerspoon.org/Spoons/URLDispatcher.html) spoon makes it possible to open URLs with different browsers. I have created different site-specific browsers using [Epichrome](https://github.com/dmarmor/epichrome), which allows me to keep site-specific bookmarks, search settings, etc. I also use Edge as my work browser (since it integrated with my work account), while using Brave for everything else. I also use the `url_redir_decoders` parameter to rewrite some URLs before they are opened, both to redirect certain URLs directly to their corresponding applications (instead of going through the web browser) and to fix a bug I have experienced in opening URLs from PDF documents using Preview.
 
 ```lua
-DefaultBrowser = "com.brave.Browser.dev"
+chromeBrowserApp = "com.google.Chrome"
+edgeBrowserApp = "com.microsoft.edgemac"
+braveBrowserApp = "com.brave.Browser.dev"
+
+DefaultBrowser = braveBrowserApp
+WorkBrowser = edgeBrowserApp
+
 JiraApp = "org.epichrome.app.Jira"
 WikiApp = "org.epichrome.app.Wiki"
 OpsGenieApp = DefaultBrowser
@@ -105,12 +111,11 @@ Install:andUse("URLDispatcher",
                {
                  config = {
                    url_patterns = {
-                     { "https?://issue.work.com",         JiraApp },
-                     { "https?://jira.work.com",          JiraApp },
-                     { "https?://wiki.work.com",          WikiApp },
-                     { "https?://app.opsgenie.com",       OpsGenieApp },
-                     { "https?://app.eu.opsgenie.com",    OpsGenieApp },
-                     { "msteams:",                        "com.microsoft.teams" }
+                     { "https?://jira%.work%.com",      JiraApp },
+                     { "https?://wiki%.work%.com",      WikiApp },
+                     { "https?://app.*%.opsgenie%.com", OpsGenieApp },
+                     { "msteams:",                      "com.microsoft.teams" },
+                     { "https?://.*%.work%.com",        WorkBrowser }
                    },
                    url_redir_decoders = {
                      -- Send MS Teams URLs directly to the app
@@ -123,7 +128,9 @@ Install:andUse("URLDispatcher",
                    },
                    default_handler = DefaultBrowser
                  },
-                 start = true
+                 start = true,
+                 -- Enable debug logging if you get unexpected behavior
+                 -- loglevel = 'debug'
                }
 )
 ```
@@ -131,9 +138,7 @@ Install:andUse("URLDispatcher",
 
 ## Window and screen manipulation {#window-and-screen-manipulation}
 
-The [WindowHalfsAndThirds](http://www.hammerspoon.org/Spoons/WindowHalfsAndThirds.html) spoon sets up multiple key bindings for manipulating the size and position of windows.
-
-This was one of the first spoons I wrote, and I used it for window resizing until I discovered [MiroWindowsManager](https://github.com/miromannino/miro-windows-manager) (see below), which I started using now.
+The [WindowHalfsAndThirds](http://www.hammerspoon.org/Spoons/WindowHalfsAndThirds.html) spoon sets up multiple key bindings for manipulating the size and position of windows. This was one of the first spoons I wrote, and I still use it for window resizing.
 
 ```lua
 Install:andUse("WindowHalfsAndThirds",
@@ -141,28 +146,8 @@ Install:andUse("WindowHalfsAndThirds",
                  config = {
                    use_frame_correctness = true
                  },
-                 hotkeys = 'default'
-               }
-)
-```
-
-[MiroWindowsManager](https://github.com/miromannino/miro-windows-manager) allows more granular window resizing and movement. One thing to keep in mind is that this spoon uses the `hs.grid` module internally. If you also use the `WindowGrid` spoon (see below), make sure both spoons use the same grid size to avoid conflicts.
-
-```lua
-myGrid = { w = 6, h = 4 }
-Install:andUse("MiroWindowsManager",
-               {
-                 disable = true,
-                 config = {
-                   GRID = myGrid
-                 },
-                 hotkeys = {
-                   up =         { ctrl_cmd, "up" },
-                   right =      { ctrl_cmd, "right" },
-                   down =       { ctrl_cmd, "down" },
-                   left =       { ctrl_cmd, "left" },
-                   fullscreen = { hyper,    "up" }
-                 }
+                 hotkeys = 'default',
+--                 loglevel = 'debug'
                }
 )
 ```
@@ -170,9 +155,11 @@ Install:andUse("MiroWindowsManager",
 The [WindowGrid](http://www.hammerspoon.org/Spoons/WindowGrid.html) spoon sets up a key binding (`Hyper-g` here) to overlay a grid that allows resizing windows by specifying their opposite corners.
 
 ```lua
+myGrid = { w = 6, h = 4 }
 Install:andUse("WindowGrid",
                {
-                 config = { gridGeometries = { { myGrid.w .."x" .. myGrid.h } } },
+                 config = { gridGeometries =
+                              { { myGrid.w .."x" .. myGrid.h } } },
                  hotkeys = {show_grid = {hyper, "g"}},
                  start = true
                }
@@ -187,7 +174,8 @@ Install:andUse("WindowScreenLeftAndRight",
                  config = {
                    animationDuration = 0
                  },
-                 hotkeys = 'default'
+                 hotkeys = 'default',
+--                 loglevel = 'debug'
                }
 )
 ```
@@ -263,16 +251,17 @@ Install:andUse("SendToOmniFocus",
 
 ### Evernote filing and tagging {#evernote-filing-and-tagging}
 
-The [EvernoteOpenAndTag](http://www.hammerspoon.org/Spoons/EvernoteOpenAndTag.html) spoon sets up some missing key bindings for note manipulation in Evernote. I no longer use Evernote for GTD, so I have disabled the shortcuts for tagging notes.
+The [EvernoteOpenAndTag](http://www.hammerspoon.org/Spoons/EvernoteOpenAndTag.html) spoon sets up some missing key bindings for note manipulation in Evernote. I no longer use Evernote for GTD, so I have it disabled for now.
 
 ```lua
 Install:andUse("EvernoteOpenAndTag",
                {
+                 disable = true,
                  hotkeys = {
                    open_note = { hyper, "o" },
-                   --                     ["open_and_tag-+work"] = { hyper, "w" },
-                   --                     ["open_and_tag-+personal"] = { hyper, "p" },
-                   --                     ["tag-@zzdone"] = { hyper, "z" }
+                   ["open_and_tag-+work"] = { hyper, "w" },
+                   ["open_and_tag-+personal"] = { hyper, "p" },
+                   ["tag-@zzdone"] = { hyper, "z" }
                  }
                }
 )
@@ -307,7 +296,7 @@ Install:andUse("TextClipboardHistory",
 
 The `BTT_restart_Hammerspoon` function sets up a BetterTouchTool widget which also executes the `config_reload` action from the spoon. This gets assigned to the `fn` config parameter in the configuration of the Hammer spoon below, which has the effect of calling the function with the Spoon object as its parameter.
 
-This is still very manual - the `uuid` parameter contains the ID of the BTT widget to configure, and for now you have to get it by hand from BTT and paste it here.
+This is still manual - the `uuid` parameter contains the ID of the BTT widget to configure, and for now you have to get it by hand from BTT and paste it here.
 
 ```lua
 function BTT_restart_hammerspoon(s)
@@ -316,13 +305,14 @@ function BTT_restart_hammerspoon(s)
                            kind = 'touchbarButton',
                            uuid = "FF8DA717-737F-4C42-BF91-E8826E586FA1",
                            name = "Restart",
-                           icon = hs.image.imageFromName(hs.image.systemImageNames.ApplicationIcon),
+                           icon = hs.image.imageFromName(
+                             hs.image.systemImageNames.ApplicationIcon),
                            color = hs.drawing.color.x11.orange,
   }})
 end
 ```
 
-The [Hammer](https://zzamboni.github.io/zzSpoons/Hammer.html) spoon (get it? hehe) is a simple wrapper around some common Hamerspoon configuration variables. Note that this gets loaded from my personal repo, since it's not in the official repository.
+The [Hammer](https://zzamboni.github.io/zzSpoons/Hammer.html) spoon (get it? hehe) is a simple wrapper around some common Hammerspoon configuration variables. Note that this gets loaded from my personal repo, since it's not in the official repository.
 
 ```lua
 Install:andUse("Hammer",
@@ -352,15 +342,15 @@ function BTT_caffeine_widget(s)
                            uuid = '72A96332-E908-4872-A6B4-8A6ED2E3586F',
                            name = 'Caffeine',
                            widget_code = [[
-  do
-    title = " "
-    icon = hs.image.imageFromPath(spoon.Caffeine.spoonPath.."/caffeine-off.pdf")
-    if (hs.caffeinate.get('displayIdle')) then
-      icon = hs.image.imageFromPath(spoon.Caffeine.spoonPath.."/caffeine-on.pdf")
-    end
-    print(hs.json.encode({ text = title,
-                           icon_data = BTT:hsimageToBTTIconData(icon) }))
+do
+  title = " "
+  icon = hs.image.imageFromPath(spoon.Caffeine.spoonPath.."/caffeine-off.pdf")
+  if (hs.caffeinate.get('displayIdle')) then
+    icon = hs.image.imageFromPath(spoon.Caffeine.spoonPath.."/caffeine-on.pdf")
   end
+  print(hs.json.encode({ text = title,
+                         icon_data = BTT:hsimageToBTTIconData(icon) }))
+end
       ]],
                            code = "spoon.Caffeine.clicked()",
                            widget_interval = 1,
@@ -503,9 +493,12 @@ Install:andUse("TimeMachineProgress",
 
 The TurboBoost spoon shows an indicator of the CPU's Turbo Boost status, and allows disabling/enabling. This requires [Turbo Boost Switcher](https://github.com/rugarciap/Turbo-Boost-Switcher) to be installed.
 
+(disabled because I ended up buying _Turbo Boost Switcher Pro_ - it's a great utility and offers a few great extra features for an excellent price, it deserves our support)
+
 ```lua
 Install:andUse("TurboBoost",
                {
+                 disable = true,
                  config = {
                    disable_on_start = true
                  },
@@ -526,13 +519,13 @@ The `EjectMenu` spoon automatically ejects all external disks before the system 
 ```lua
 Install:andUse("EjectMenu", {
                  config = {
-                   eject_on_lid_close = true,
+                   eject_on_lid_close = false,
                    show_in_menubar = true,
                    notify = true,
                  },
                  hotkeys = { ejectAll = { hyper, "=" } },
                  start = true,
-                 loglevel = 'debug'
+--                 loglevel = 'debug'
 })
 ```
 
@@ -783,7 +776,7 @@ Install:andUse("Leanpub",
                      { slug = "be-safe-on-the-internet" },
                      { slug = "lit-config"  },
                      { slug = "zztestbook" },
---                     { slug = "cissp-training" },
+                     { slug = "cisspexampreparationguide" },
                    },
                    books_sync_to_dropbox = true,
                  },
@@ -807,7 +800,7 @@ Install:andUse("KSheet", {
 
 ## Loading private configuration {#loading-private-configuration}
 
-In `init-local.lua` I keep experimental or private stuff (like API tokens) that I don't want to publish in my main config. This file is not committed to any publicly-accessible git repositories.
+In `init-local.lua` I keep experimental or private stuff (like API tokens) that I don't want to publish in my main config. This file is not committed to any publicly accessible git repositories.
 
 ```lua
 local localfile = hs.configdir .. "/init-local.lua"

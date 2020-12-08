@@ -5,7 +5,7 @@ summary = "Like other Unix shells, Elvish has advanced command-argument completi
 date = 2018-06-13T20:25:00+02:00
 tags = ["elvish", "unix", "shell", "config"]
 draft = false
-creator = "Emacs 28.0.50 (Org mode 9.4 + ox-hugo)"
+creator = "Emacs 28.0.50 (Org mode 9.5 + ox-hugo)"
 toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
