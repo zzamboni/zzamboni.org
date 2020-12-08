@@ -29,14 +29,15 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#about-this-site][About this site]]
     - [[#image-attributions][Image attributions:]]
   - [[#contact][Contact]]
-  - [[#books][Books]]
-  - [[#code][Code]]
-- [[#book-pages][Book pages]]
-  - [[#learning-cfengine][Learning CFEngine]]
-  - [[#learning-hammerspoon][Learning Hammerspoon]]
-  - [[#utilerías-de-unix][Utilerías de Unix]]
-  - [[#literate-config][Literate Config]]
-  - [[#publishing-with-emacs-org-mode-and-leanpub][Publishing with Emacs, Org-mode and Leanpub]]
+  - [[#books-section][Books section]]
+    - [[#books][Books]]
+    - [[#learning-cfengine][Learning CFEngine]]
+    - [[#learning-hammerspoon][Learning Hammerspoon]]
+    - [[#utilerías-de-unix][Utilerías de Unix]]
+    - [[#literate-config][Literate Config]]
+    - [[#publishing-with-emacs-org-mode-and-leanpub][Publishing with Emacs, Org-mode and Leanpub]]
+  - [[#code-section][Code section]]
+    - [[#code][Code]]
 - [[#ideas][Ideas]]
   - [[#using-and-extending-seal][Using and extending Seal]]
   - [[#sending-things-to-omnifocus][Sending things to OmniFocus]]
@@ -139,33 +140,23 @@ If you have any questions, comments or feedback about this site, please use the 
 
 @@html:{{< form-contact-netlify >}}@@
 
-** DONE Books
+** DONE Books section
 CLOSED: [2018-03-25 Sun 20:11]
 :PROPERTIES:
 :export_hugo_section: book
 :export_hugo_custom_front_matter: :featured_image /images/book-box-thin.jpg
 :export_hugo_weight: 02
+:END:
+
+*** DONE Books
+CLOSED: [2020-12-08 Tue 18:19]
+:PROPERTIES:
 :export_file_name: _index
 :END:
 
 I have a few self-published books, all of them available at [[https://leanpub.com/u/zzamboni][Leanpub]]. Here you can find short descriptions and links to their respective pages.
 
-** DONE Code
-CLOSED: [2018-03-25 Sun 20:11]
-:PROPERTIES:
-:export_hugo_section: code
-:export_hugo_custom_front_matter: :featured_image /images/c64-code3.png
-:export_hugo_weight: 03
-:export_file_name: _index
-:END:
-
-Here you can find a sample of some programs I have written over the years. For a full list of my public projects please check my [[https://github.com/zzamboni/][GitHub]] and [[https://gitlab.com/zzamboni][GitLab]] profiles.
-
-* Book pages
-
-The individual pages for each book.
-
-** DONE Learning CFEngine
+*** DONE Learning CFEngine
 CLOSED: [2018-03-25 Sun 21:05]
 :PROPERTIES:
 :export_hugo_section: book
@@ -185,7 +176,7 @@ You can buy the book at https://leanpub.com/learning-cfengine or by clicking the
 
 \nbsp
 
-** DONE Learning Hammerspoon
+*** DONE Learning Hammerspoon
 CLOSED: [2018-10-16 Tue 20:54]
 :PROPERTIES:
 :export_hugo_section: book
@@ -203,7 +194,7 @@ Learn more, read a free sample and get the book (you choose how much you pay!) a
 
 \nbsp
 
-** DONE Utilerías de Unix
+*** DONE Utilerías de Unix
 CLOSED: [2019-08-30 Tue 00:05]
 :PROPERTIES:
 :export_hugo_section: book
@@ -223,7 +214,7 @@ Puedes obtener una muestra gratis y comprar el libro (¡tu eliges  cuánto pagas
 
 \nbsp
 
-** DONE Literate Config
+*** DONE Literate Config
 CLOSED: [2020-02-29 Sat 22:56]
 :PROPERTIES:
 :export_hugo_section: book
@@ -248,7 +239,7 @@ Whether you already use Emacs and org-mode or not, you will find value in this b
 
 \nbsp
 
-** DONE Publishing with Emacs, Org-mode and Leanpub
+*** DONE Publishing with Emacs, Org-mode and Leanpub
 CLOSED: [2020-06-20 Sat 21:12]
 :PROPERTIES:
 :export_hugo_section: book
@@ -273,6 +264,24 @@ Check it out, and happy writing!
 #+hugo: more
 
 \nbsp
+
+
+** DONE Code section
+CLOSED: [2018-03-25 Sun 20:11]
+:PROPERTIES:
+:export_hugo_section: code
+:export_hugo_custom_front_matter: :featured_image /images/c64-code3.png
+:export_hugo_weight: 03
+:END:
+
+*** DONE Code
+CLOSED: [2020-12-08 Tue 18:07]
+:PROPERTIES:
+:export_file_name: _index
+:END:
+
+Here you can find a sample of some programs I have written over the years. For a full list of my public projects please check my [[https://github.com/zzamboni/][GitHub]] and [[https://gitlab.com/zzamboni][GitLab]] profiles.
+
 
 * Ideas
 :PROPERTIES:

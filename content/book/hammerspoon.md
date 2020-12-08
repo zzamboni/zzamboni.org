@@ -4,6 +4,7 @@ author = ["Diego Zamboni"]
 date = 2018-10-16T20:54:00+02:00
 draft = false
 creator = "Emacs 28.0.50 (Org mode 9.5 + ox-hugo)"
+weight = 2
 finalURL = "https://leanpub.com/learning-hammerspoon/"
 +++
 
