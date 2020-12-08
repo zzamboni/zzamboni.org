@@ -38,6 +38,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#publishing-with-emacs-org-mode-and-leanpub][Publishing with Emacs, Org-mode and Leanpub]]
   - [[#code-section][Code section]]
     - [[#code][Code]]
+    - [[#grabcartoons][GrabCartoons]]
 - [[#ideas][Ideas]]
   - [[#using-and-extending-seal][Using and extending Seal]]
   - [[#sending-things-to-omnifocus][Sending things to OmniFocus]]
@@ -282,6 +283,18 @@ CLOSED: [2020-12-08 Tue 18:07]
 
 Here you can find a sample of some programs I have written over the years. For a full list of my public projects please check my [[https://github.com/zzamboni/][GitHub]] and [[https://gitlab.com/zzamboni][GitLab]] profiles.
 
+*** DONE GrabCartoons
+CLOSED: [2020-12-08 Tue 18:29]
+:PROPERTIES:
+:export_hugo_custom_front_matter: :finalURL https://github.com/zzamboni/grabcartoons/ :aliases /grabcartoons
+:export_file_name: grabcartoons
+:END:
+
+[[https://github.com/zzamboni/grabcartoons/][GrabCartoons]] is a comic-summarizing utility. It is modular, and it is very easy to write modules for new comics.
+
+#+hugo: more
+
+You can find all the information at <http://github.com/zzamboni/grabcartoons>
 
 * Ideas
 :PROPERTIES:
