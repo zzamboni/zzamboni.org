@@ -1,3 +1,4 @@
+:CONFIG:
 #+hugo_base_dir: ../
 #+seq_todo: TODO DRAFT DONE
 #+options: creator:t
@@ -13,6 +14,7 @@
 #+macro: luadoc (eval (zz/org-macro-luadoc-code $1 $2 $3))
 #+macro: luafun (eval (zz/org-macro-luafun-code $1 $2))
 #+macro: spoon [[http://www.hammerspoon.org/Spoons/$1][$1]]
+:END:
 
 #+title: zzamboni.org source file
 #+author: Diego Zamboni
@@ -39,6 +41,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
   - [[#code-section][Code section]]
     - [[#code][Code]]
     - [[#ox-leanpub][ox-leanpub]]
+    - [[#enwrite][Enwrite]]
     - [[#grabcartoons][GrabCartoons]]
 - [[#ideas][Ideas]]
   - [[#using-and-extending-seal][Using and extending Seal]]
@@ -267,7 +270,6 @@ Check it out, and happy writing!
 
 \nbsp
 
-
 ** DONE Code section
 CLOSED: [2018-03-25 Sun 20:11]
 :PROPERTIES:
@@ -289,6 +291,7 @@ CLOSED: [2020-12-09 Wed 21:10]
 :PROPERTIES:
 :export_hugo_custom_front_matter: :finalURL https://github.com/zzamboni/ox-leanpub
 :export_file_name: ox-leanpub
+:export_hugo_weight: 01
 :END:
 
 {{< leanpubbook book="emacs-org-leanpub" style="float:right"  height="430" >}}
@@ -301,14 +304,29 @@ For a comprehensive introduction to publishing with Org mode and Leanpub, check 
 
 \nbsp
 
+*** DONE Enwrite
+CLOSED: [2020-12-09 Wed 22:23]
+:PROPERTIES:
+:export_hugo_custom_front_matter: :finalURL https://github.com/zzamboni/enwrite
+:export_file_name: enwrite
+:export_hugo_weight: 02
+:END:
+
+[[https://github.com/zzamboni/enwrite][Enwrite]] is a tool I wrote some time ago to publish a Hugo blog using Evernote. I don't use it anymore since I switched to publishing my blog using Org-mode and =ox-hugo=, so it may be broken, but feel free to give it a try.
+
+#+hugo: more
+
+\nbsp
+
 *** DONE GrabCartoons
 CLOSED: [2020-12-08 Tue 18:29]
 :PROPERTIES:
 :export_hugo_custom_front_matter: :finalURL https://github.com/zzamboni/grabcartoons/ :aliases /grabcartoons
 :export_file_name: grabcartoons
+:export_hugo_weight: 03
 :END:
 
-[[https://github.com/zzamboni/grabcartoons/][GrabCartoons]] is a comic-summarizing utility. It is modular, and it is very easy to write modules for new comics.
+[[https://github.com/zzamboni/grabcartoons/][GrabCartoons]] is a comic-summarizing utility. It is modular, and it is very easy to write modules for new comics. It's one of my oldest open-source projects, and still in use!
 
 #+hugo: more
 
