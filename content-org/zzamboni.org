@@ -284,7 +284,8 @@ CLOSED: [2020-12-08 Tue 18:07]
 
 Here you can find a sample of some programs I have written over the years. For a full list of my public projects please check my [[https://github.com/zzamboni/][GitHub]] and [[https://gitlab.com/zzamboni][GitLab]] profiles.
 
-*** TODO ox-leanpub
+*** DONE ox-leanpub
+CLOSED: [2020-12-09 Wed 21:10]
 :PROPERTIES:
 :export_hugo_custom_front_matter: :finalURL https://github.com/zzamboni/ox-leanpub
 :export_file_name: ox-leanpub
