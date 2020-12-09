@@ -38,6 +38,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#publishing-with-emacs-org-mode-and-leanpub][Publishing with Emacs, Org-mode and Leanpub]]
   - [[#code-section][Code section]]
     - [[#code][Code]]
+    - [[#ox-leanpub][ox-leanpub]]
     - [[#grabcartoons][GrabCartoons]]
 - [[#ideas][Ideas]]
   - [[#using-and-extending-seal][Using and extending Seal]]
@@ -282,6 +283,18 @@ CLOSED: [2020-12-08 Tue 18:07]
 :END:
 
 Here you can find a sample of some programs I have written over the years. For a full list of my public projects please check my [[https://github.com/zzamboni/][GitHub]] and [[https://gitlab.com/zzamboni][GitLab]] profiles.
+
+*** TODO ox-leanpub
+:PROPERTIES:
+:export_hugo_custom_front_matter: :finalURL https://github.com/zzamboni/ox-leanpub
+:export_file_name: ox-leanpub
+:END:
+
+{{< leanpubbook book="emacs-org-leanpub" style="float:right" >}}
+
+[[https://github.com/zzamboni/ox-leanpub][Ox-leanpub]] is a [[https://leanpub.com/][Leanpub]] book exporter for Org mode. It allows you to write your material entirely in Org mode, and manages the production of the files and directories needed for Leanpub to render your book. I use this package to publish [[https://leanpub.com/u/zzamboni][my books]].
+
+For a comprehensive introduction to publishing with Org mode and Leanpub, check out my book [[https://leanpub.com/emacs-org-leanpub][Publishing with Emacs, Org-mode and Leanpub]]!
 
 *** DONE GrabCartoons
 CLOSED: [2020-12-08 Tue 18:29]
