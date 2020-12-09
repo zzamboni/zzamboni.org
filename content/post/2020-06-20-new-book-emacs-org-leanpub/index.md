@@ -10,7 +10,7 @@ toc = false
 featured_image = "/images/emacs-org-leanpub-cover.jpg"
 +++
 
-{{< leanpubbook book="emacs-org-leanpub" style="float:right" >}}
+{{< leanpubbook book="emacs-org-leanpub" style="float:right"  height="430" >}}
 
 Publishing your words has never been easier than it is today. Blogging means you can have your words read by thousands of people within minutes of writing them. Even publishing a book has become considerably easier through self publishing. There are many tools and publishers that allow you to get started for little or no money. Still, getting started can be confusing, and that is what this book is about.
 

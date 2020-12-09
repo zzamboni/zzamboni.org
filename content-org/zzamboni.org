@@ -249,7 +249,7 @@ CLOSED: [2020-06-20 Sat 21:12]
 :export_hugo_custom_front_matter: :finalURL https://leanpub.com/emacs-org-leanpub
 :END:
 
-{{< leanpubbook book="emacs-org-leanpub" style="float:right" >}}
+{{< leanpubbook book="emacs-org-leanpub" style="float:right"  height="430" >}}
 
 Publishing your words has never been easier than it is today. Blogging means you can have your words read by thousands of people within minutes of writing them. Even publishing a book has become considerably easier through self publishing. There are many tools and publishers that allow you to get started for little or no money. Still, getting started can be confusing, and that is what this book is about.
 
@@ -291,11 +291,15 @@ CLOSED: [2020-12-09 Wed 21:10]
 :export_file_name: ox-leanpub
 :END:
 
-{{< leanpubbook book="emacs-org-leanpub" style="float:right" >}}
+{{< leanpubbook book="emacs-org-leanpub" style="float:right"  height="430" >}}
 
 [[https://github.com/zzamboni/ox-leanpub][Ox-leanpub]] is a [[https://leanpub.com/][Leanpub]] book exporter for Org mode. It allows you to write your material entirely in Org mode, and manages the production of the files and directories needed for Leanpub to render your book. I use this package to publish [[https://leanpub.com/u/zzamboni][my books]].
 
 For a comprehensive introduction to publishing with Org mode and Leanpub, check out my book [[https://leanpub.com/emacs-org-leanpub][Publishing with Emacs, Org-mode and Leanpub]]!
+
+#+hugo: more
+
+\nbsp
 
 *** DONE GrabCartoons
 CLOSED: [2020-12-08 Tue 18:29]
@@ -2334,7 +2338,7 @@ CLOSED: [2020-12-04 Fri 10:22]
 A new release of my book "Publishing with Emacs, Org-mode and Leanpub" is out! With a lot of new information and other improvements. Learn how to use powerful tools and workflows to easily publish your words.
 #+end_description
 
-{{< leanpubbook book="emacs-org-leanpub" style="float:right" >}}
+{{< leanpubbook book="emacs-org-leanpub" style="float:right"  height="430" >}}
 
 A new release of /Publishing with Emacs, Org-mode and Leanpub/ is out!
 
@@ -2360,7 +2364,7 @@ CLOSED: [2020-06-20 Sat 21:13]
 I am happy to announce the new release of my new book "Publishing with Emacs, Org-mode and Leanpub", which talks about powerful tools and workflows you can use to easily publish your words.
 #+end_description
 
-{{< leanpubbook book="emacs-org-leanpub" style="float:right" >}}
+{{< leanpubbook book="emacs-org-leanpub" style="float:right"  height="430" >}}
 
 Publishing your words has never been easier than it is today. Blogging means you can have your words read by thousands of people within minutes of writing them. Even publishing a book has become considerably easier through self publishing. There are many tools and publishers that allow you to get started for little or no money. Still, getting started can be confusing, and that is what this book is about.
 

@@ -1,4 +1,5 @@
 {{ $style := .Get "style" }}
 {{ $book := .Get "book" }}
-<iframe width='160' height='400' style="{{ $style }}" src='https://leanpub.com/{{ $book }}/embed' frameborder='0' allowtransparency='true'></iframe>
+{{ $height := .Get "height" | default "400" }}
+<iframe width='160' height="{{ $height }}" style="{{ $style }}" src='https://leanpub.com/{{ $book }}/embed' frameborder='0' allowtransparency='true'></iframe>
 </iframe>
