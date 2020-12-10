@@ -14,13 +14,12 @@ My blogging has seen [multiple iterations](/about/#my-online-past) over the year
 
 -   **Writing:** Emacs, org-mode
 -   **Exporting:** ox-hugo
--   **Publishing:** Hugo
--   **Hosting:** Netlify
+-   **Publishing:** Hugo and Netlify
 
 Let's take a closer look at each of the stages.
 
 
-## Writing using Emacs and org-mode {#writing-using-emacs-and-org-mode}
+## Writing with Emacs and org-mode {#writing-with-emacs-and-org-mode}
 
 I have been using Emacs for almost 30 years, so its use for me is second nature. For some time I've been using [org-mode](https://orgmode.org/) for writing, blogging, coding, presentations and more. I am duly impressed. I have been a fan of the idea of [literate programming](https://en.wikipedia.org/wiki/Literate%5Fprogramming) for many years, and I have tried other tools before (most notably [noweb](https://www.cs.tufts.edu/~nr/noweb/), which I used during grad school for many of my homeworks and projects), but org-mode is the first tool I have encountered which seems to make it practical. Here are some of the resources I have found useful in learning it:
 
@@ -36,7 +35,7 @@ Over time I have tweaked my Emacs configuration to make writing with org-mode mo
 So, I write posts using Emacs, in org-mode markup. What's next?
 
 
-## Exporting {#exporting}
+## Exporting with ox-hugo {#exporting-with-ox-hugo}
 
 When I first started writing my blog posts in org-mode, I relied on Hugo's [built-in support for it](https://gohugo.io/content-management/formats/), which allows you to simply create posts in `.org` files instead of `.md` and have them parse in org-mode format. Unfortunately, the support is not perfect. Hugo relies on the [go-org](https://github.com/niklasfasching/go-org) library which, while quite powerful, does not support the full org-mode markup capabilities, so many elements are not rendered or processed properly.
 
@@ -68,7 +67,7 @@ hugo server
 And browse to `http://localhost:1313`.
 
 
-## Publishing {#publishing}
+## Publishing with Hugo and Netlify {#publishing-with-hugo-and-netlify}
 
 Finally! Once you are happy with the results, we have come to the point of publishing the website. I used [GitHub Pages](https://pages.github.com/) for a long time, but nowadays I use [Netlify](https://www.netlify.com/), which does a great job of hosting websites. After connecting Netlify to my website's [GitLab repository](https://gitlab.com/zzamboni/zzamboni.org), all I have to do is push the files, and Netlify takes care of running Hugo on them and publishing the results. Netlify even handles the [DNS records](https://docs.netlify.com/domains-https/netlify-dns/) and [SSL certificates](https://docs.netlify.com/domains-https/https-ssl/) for my domain!
 
