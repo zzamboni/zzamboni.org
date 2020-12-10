@@ -1,9 +1,9 @@
 +++
-title = "My blogging setup and workflow with Emacs, Org mode, ox-hugo, Hugo, GitLab and Netlify"
+title = "My blogging setup with Emacs, Org mode, ox-hugo, Hugo, GitLab and Netlify"
 author = ["Diego Zamboni"]
 summary = "My blogging has seen multiple iterations over the years, and with it, the tools I use have changed. At the moment I use a set of free tools and workflows which make it very easy to keep my blog updated. This post gives a brief overview of my setup."
 date = 2020-12-11T00:27:00+01:00
-tags = ["blogging", "howto", "emacs", "hugo", "orgmode", "gitlab"]
+tags = ["blogging", "howto", "emacs", "hugo", "orgmode", "gitlab", "netlify"]
 draft = false
 creator = "Emacs 28.0.50 (Org mode 9.5 + ox-hugo)"
 toc = true

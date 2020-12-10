@@ -71,7 +71,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#using-and-writing-completions-in-elvish][Using and writing completions in Elvish]]
     - [[#elvish-an-awesome-unix-shell][Elvish, an awesome Unix shell]]
   - [[#other][Other]]
-    - [[#my-blogging-setup-and-workflow-with-emacs-org-mode-ox-hugo-hugo-gitlab-and-netlify][My blogging setup and workflow with Emacs, Org mode, ox-hugo, Hugo, GitLab and Netlify]]
+    - [[#my-blogging-setup-with-emacs-org-mode-ox-hugo-hugo-gitlab-and-netlify][My blogging setup with Emacs, Org mode, ox-hugo, Hugo, GitLab and Netlify]]
     - [[#new-release-of-publishing-with-emacs-org-mode-and-leanpub][New release of /Publishing with Emacs, Org-mode and Leanpub/]]
     - [[#new-book-publishing-with-emacs-org-mode-and-leanpub][New book: Publishing with Emacs, Org-mode and Leanpub]]
     - [[#new-book-literate-config][New book: Literate Config]]
@@ -2271,7 +2271,7 @@ I will post more Elvish tips and tricks over time.
 
 ** Other
 
-*** DONE My blogging setup and workflow with Emacs, Org mode, ox-hugo, Hugo, GitLab and Netlify :blogging:howto:emacs:hugo:orgmode:gitlab:
+*** DONE My blogging setup with Emacs, Org mode, ox-hugo, Hugo, GitLab and Netlify :blogging:howto:emacs:hugo:orgmode:gitlab:netlify:
 CLOSED: [2020-12-11 Fri 00:27]
 :PROPERTIES:
 :export_hugo_bundle: 2020-12-11-my-blogging-setup-and-workflow
