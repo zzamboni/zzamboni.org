@@ -44,10 +44,6 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#enwrite][Enwrite]]
     - [[#grabcartoons][GrabCartoons]]
 - [[#ideas][Ideas]]
-  - [[#using-and-extending-seal][Using and extending Seal]]
-  - [[#ox-hugo][ox-hugo]]
-  - [[#cryfs][CryFS]]
-  - [[#hosting-a-hugo-blog-in-netlify][Hosting a Hugo blog in Netlify]]
 - [[#posts][Posts]]
   - [[#literate-config-files][Literate config files]]
     - [[#my-doom-emacs-configuration-with-commentary][My Doom Emacs configuration, with commentary]]
@@ -333,11 +329,6 @@ You can find all the information at <http://github.com/zzamboni/grabcartoons>
 
 Ideas for things to write about.
 
-** TODO Using and extending Seal :hammerspoons:
-** TODO ox-hugo :emacs:hugo:
-** TODO CryFS :cryfs:howto:
-** TODO Hosting a Hugo blog in Netlify :hugo:netlify:github:blogging:howto:
-Short guide to setting up Hugo, using /docs to host to avoid branches, and setting up your custom domain.
 * Posts
 :PROPERTIES:
 :export_hugo_section: post
