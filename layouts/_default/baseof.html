@@ -20,6 +20,8 @@
      <link href='{{ "dist/main.css" | relURL }}' rel='stylesheet' type="text/css" />
      <link href='{{ "css/site.css" | relURL }}' rel='stylesheet' type="text/css" />
      <link href='{{ "css/syntax.css" | relURL }}' rel='stylesheet' type="text/css" />
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.css" />
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.js"></script>
 
      {{ if .OutputFormats.Get "RSS" }}
       <link href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
