@@ -22,6 +22,15 @@
      <link href='{{ "css/syntax.css" | relURL }}' rel='stylesheet' type="text/css" />
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.css" />
      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.js"></script>
+     <script type="text/javascript">
+  algoliasearchNetlify({
+      appId: 'MDYBSX8H6B',
+      apiKey: '90ef6cca5cc2c47a97d99682e4516114',
+      siteId: 'e5ae9eeb-01ec-4b37-90ad-2f4b3877a7d6',
+      branch: 'master',
+      selector: 'div#search',
+  });
+     </script>
 
      {{ if .OutputFormats.Get "RSS" }}
       <link href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
