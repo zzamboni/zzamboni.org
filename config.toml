@@ -67,3 +67,16 @@ notAlternative = true
 
 [Params.footer]
   show_powered_by = true
+
+[Params.algolia]
+  enabled = true
+  appId = "MDYBSX8H6B"
+  apiKey = "90ef6cca5cc2c47a97d99682e4516114"
+  siteId = "e5ae9eeb-01ec-4b37-90ad-2f4b3877a7d6"
+
+[Params.algolia.theme]
+  mark = "#fff"
+  background = "#23263b"
+  selected = "#111432"
+  text = "#d6d6e7"
+  colorSourceIcon = "#d6d6e7"

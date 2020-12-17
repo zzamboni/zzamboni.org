@@ -20,6 +20,9 @@
      <link href='{{ "dist/main.css" | relURL }}' rel='stylesheet' type="text/css" />
      <link href='{{ "css/site.css" | relURL }}' rel='stylesheet' type="text/css" />
      <link href='{{ "css/syntax.css" | relURL }}' rel='stylesheet' type="text/css" />
+     {{ if $.Site.Params.algolia.enabled }}
+     {{ partial "algolia-search.html" . }}
+     {{ end }}
 
      {{ if .OutputFormats.Get "RSS" }}
       <link href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />

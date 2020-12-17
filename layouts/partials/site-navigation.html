@@ -4,6 +4,9 @@
       {{ .Site.Title }}
     </a>
     <div class="flex-l items-center">
+      {{ if $.Site.Params.algolia.enabled }}
+      <div id="search" class="mr4"></div>
+      {{ end }}
       {{ if .Site.Menus.main }}
         <ul class="pl0 mr3">
           {{ range .Site.Menus.main }}
