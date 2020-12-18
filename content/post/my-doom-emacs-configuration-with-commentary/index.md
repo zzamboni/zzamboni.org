@@ -12,7 +12,7 @@ toc = true
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **December  8, 2020**
+Last update: **December 18, 2020**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -254,7 +254,7 @@ This code is written to the `init.el` to select which modules to load. Written h
  nav-flash             ; blink cursor line after big motions
  ;;neotree             ; a project drawer, like NERDTree for vim
  ophints               ; highlight the region an operation acts on
- ;;(popup +defaults)   ; tame sudden yet inevitable temporary windows
+ (popup +defaults)   ; tame sudden yet inevitable temporary windows
  ;;tabs                ; a tab bar for Emacs
  ;;treemacs            ; a project drawer, like neotree but cooler
  ;;unicode             ; extended unicode support for various languages
@@ -307,7 +307,7 @@ This code is written to the `init.el` to select which modules to load. Written h
  gist                  ; interacting with github gists
  lookup                ; navigate your code and its documentation
  lsp
- (magit +forge)        ; a git porcelain for Emacs
+ (magit -forge)        ; a git porcelain for Emacs
  ;;make                ; run make tasks from Emacs
  pass                  ; password manager for nerds
  ;;pdf                 ; pdf enhancements
@@ -350,7 +350,7 @@ This code is written to the `init.el` to select which modules to load. Written h
  ;;javascript          ; all(hope(abandon(ye(who(enter(here))))))
  ;;julia               ; a better, faster MATLAB
  ;;kotlin              ; a better, slicker Java(Script)
- latex                 ; writing papers in Emacs has never been so fun
+ (latex +latexmk)      ; writing papers in Emacs has never been so fun
  ;;lean
  ;;factor
  ;;ledger              ; an accounting system in Emacs
@@ -606,6 +606,19 @@ The Doom `undo` package introduces the use of [`undo-fu`](https://gitlab.com/ide
 ```emacs-lisp
 (after! undo-fu
   (map! :map undo-fu-mode-map "C-?" #'undo-fu-only-redo))
+```
+
+Replace the default `goto-line` keybindings with `avy-goto-line`, which is more flexible and also falls back to `goto-line` if a number is typed.
+
+```emacs-lisp
+(map! "M-g g" #'avy-goto-line)
+(map! "M-g M-g" #'avy-goto-line)
+```
+
+Map a keybindings for `counsel-outline`, which allows easily navigating documents (it works best with Org documents, but it also tries to extract navigation information from other file types).
+
+```emacs-lisp
+(map! "M-g o" #'counsel-outline)
 ```
 
 
@@ -1070,6 +1083,8 @@ My `ox-awesomecv` package is [not yet merged](https://gitlab.com/Titan-C/org-cv/
 ```emacs-lisp
 (use-package! ox-awesomecv
   :after org)
+(use-package! ox-moderncv
+  :after org)
 ```
 
 
@@ -1497,4 +1512,18 @@ Some experimental code to list functions which are not native-compiled. Sort of 
        (insert "\n"))
      ))
   )
+```
+
+Make ox-md export src blocks with backticks and the language name.
+
+```emacs-lisp
+(defun org-md-example-block (example-block _contents info)
+  "Transcode EXAMPLE-BLOCK element into Markdown format.
+CONTENTS is nil.  INFO is a plist used as a communication
+channel."
+  (let ((lang (or (org-element-property :language example-block) "")))
+    (format "```%s\n%s```\n"
+            lang
+            (org-remove-indentation
+             (org-export-format-code-default example-block info)))))
 ```

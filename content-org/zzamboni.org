@@ -1758,7 +1758,7 @@ You know now enough Lua to start being productive with Hammerspoon.  You'll pick
 
 Have fun!
 
-*** DONE First release of "Learning Hammerspoon"    :book:announcement:
+*** DONE First release of "Learning Hammerspoon"    :book:announcements:
 CLOSED: [2018-10-16 Tue 21:22]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2018-10-16-first-release-of-learning-hammerspoon
@@ -1786,7 +1786,7 @@ It is not complete yet, but already includes a lot of useful information. I will
 
 I look forward to your feedback! Feel free to message me through the [[https://leanpub.com/learning-hammerspoon/email_author/new][/Email the author/]] page at LeanPub.
 
-*** DONE New release of "Learning Hammerspoon" is out! :book:announcement:
+*** DONE New release of "Learning Hammerspoon" is out! :book:announcements:
 CLOSED: [2019-04-08 Mon 09:51]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2019-04-08-new-release-of-learning-hammerspoon
@@ -1807,7 +1807,7 @@ I am happy to announce the third release of my book /[[https://leanpub.com/learn
  - One invisible backend change, but which bears mentioning: this book is now generated using [[https://leanpub.com/markua/read][Markua]] sources instead of the default [[https://leanpub.com/help/manual][Leanpub Markdown]] format used before. This has very little impact  on the final book as you see it, but it will make it easier in the future to handle more complex formatting as needed.
 
 I hope you enjoy it! As usual, you can find more information, read a free sample, and purchase it at [[https://leanpub.com/learning-hammerspoon/][LeanPub]].
-*** DONE August 2020 release of "Learning Hammerspoon" is out! :book:announcement:
+*** DONE August 2020 release of "Learning Hammerspoon" is out! :book:announcements:
 CLOSED: [2020-08-10 Mon 09:35]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2020-08-10-august-2020-release-of-learning-hammerspoon
@@ -2424,7 +2424,7 @@ This is the first in my planned "Geek Booklets" series, which will include short
 
 I hope you enjoy it! Your feedback, as usual, is [[https://leanpub.com/lit-config/email_author/new][welcome]].
 
-*** DONE Nuevo libro "Utilerías de Unix" :book:announcement:spanish:unix:linux:leanpub:
+*** DONE Nuevo libro "Utilerías de Unix" :book:announcements:spanish:unix:linux:leanpub:
 CLOSED: [2019-08-30 Fri 00:23]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2019-08-30-primera-edicion-utilerias-unix
