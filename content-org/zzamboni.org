@@ -673,7 +673,7 @@ Here are the faces I have configured so far (there are probably many more to do,
 
 The setup described above has considerably improved my enjoyment of writing in Emacs. I hope you find it useful. If you have any feedback, suggestions or questions, please let me know in the comments.
 
-*** DONE How to insert screenshots in Org documents on macOS :orgmode:emacs:howto:macos:config:
+*** DONE How to insert screenshots in Org documents on macOS :orgmode:emacs:howto:mac:config:
 CLOSED: [2020-08-09 Sun 16:44]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2020-08-09-how-to-insert-screenshots-in-org-documents-on-macos
@@ -1758,7 +1758,7 @@ You know now enough Lua to start being productive with Hammerspoon.  You'll pick
 
 Have fun!
 
-*** DONE First release of "Learning Hammerspoon"    :book:announcements:
+*** DONE First release of "Learning Hammerspoon"    :books:announcements:
 CLOSED: [2018-10-16 Tue 21:22]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2018-10-16-first-release-of-learning-hammerspoon
@@ -1786,7 +1786,7 @@ It is not complete yet, but already includes a lot of useful information. I will
 
 I look forward to your feedback! Feel free to message me through the [[https://leanpub.com/learning-hammerspoon/email_author/new][/Email the author/]] page at LeanPub.
 
-*** DONE New release of "Learning Hammerspoon" is out! :book:announcements:
+*** DONE New release of "Learning Hammerspoon" is out! :books:announcements:
 CLOSED: [2019-04-08 Mon 09:51]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2019-04-08-new-release-of-learning-hammerspoon
@@ -1807,7 +1807,7 @@ I am happy to announce the third release of my book /[[https://leanpub.com/learn
  - One invisible backend change, but which bears mentioning: this book is now generated using [[https://leanpub.com/markua/read][Markua]] sources instead of the default [[https://leanpub.com/help/manual][Leanpub Markdown]] format used before. This has very little impact  on the final book as you see it, but it will make it easier in the future to handle more complex formatting as needed.
 
 I hope you enjoy it! As usual, you can find more information, read a free sample, and purchase it at [[https://leanpub.com/learning-hammerspoon/][LeanPub]].
-*** DONE August 2020 release of "Learning Hammerspoon" is out! :book:announcements:
+*** DONE August 2020 release of "Learning Hammerspoon" is out! :books:announcements:
 CLOSED: [2020-08-10 Mon 09:35]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2020-08-10-august-2020-release-of-learning-hammerspoon
@@ -2354,7 +2354,7 @@ That's it! With this setup, I can write all the contents for my website in Org-m
 
 I hope you find this useful. Let me know in the comments if you have any questions.
 
-*** DONE New release of /Publishing with Emacs, Org-mode and Leanpub/ :book:leanpub:publishing:writing:emacs:orgmode:
+*** DONE New release of /Publishing with Emacs, Org-mode and Leanpub/ :books:leanpub:publishing:writing:emacs:orgmode:
 CLOSED: [2020-12-04 Fri 10:22]
 :PROPERTIES:
 :export_hugo_bundle: 2020-12-04-new-release-of-emacs-org-leanpub
@@ -2380,7 +2380,7 @@ Hope you enjoy it!
 
 To celebrate its release, click the following link to get the book with a *50% discount* from its suggested price, for a limited time (until December 11, 2020): [[https://leanpub.com/emacs-org-leanpub/c/Dec2020release][Get it now!]]
 
-*** DONE New book: Publishing with Emacs, Org-mode and Leanpub :book:leanpub:publishing:writing:emacs:orgmode:
+*** DONE New book: Publishing with Emacs, Org-mode and Leanpub :books:leanpub:publishing:writing:emacs:orgmode:
 CLOSED: [2020-06-20 Sat 21:13]
 :PROPERTIES:
 :export_hugo_bundle: 2020-06-20-new-book-emacs-org-leanpub
@@ -2405,7 +2405,7 @@ To illustrate the process and provide you with a starting point, the source repo
 
 I hope you enjoy it! Your feedback, as usual, is [[https://leanpub.com/emacs-org-leanpub/email_author/new][welcome]].
 
-*** DONE New book: Literate Config :literateconfig:book:leanpub:literateprogramming:
+*** DONE New book: Literate Config :literateconfig:books:leanpub:literateprogramming:
 CLOSED: [2019-11-18 Mon 22:44]
 :PROPERTIES:
 :export_hugo_bundle: 2019-11-18-new-book-literate-config
@@ -2424,7 +2424,7 @@ This is the first in my planned "Geek Booklets" series, which will include short
 
 I hope you enjoy it! Your feedback, as usual, is [[https://leanpub.com/lit-config/email_author/new][welcome]].
 
-*** DONE Nuevo libro "Utilerías de Unix" :book:announcements:spanish:unix:linux:leanpub:
+*** DONE Nuevo libro "Utilerías de Unix" :books:announcements:spanish:unix:linux:leanpub:
 CLOSED: [2019-08-30 Fri 00:23]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2019-08-30-primera-edicion-utilerias-unix

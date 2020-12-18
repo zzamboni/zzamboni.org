@@ -8,7 +8,6 @@ tags:
 - homebrew
 - howto
 - mac
-- osx
 ---
 <p><a href="http://cfengine.com/">Cfengine</a> (tested 3.2.0) installs easily on OS X (tested 10.7), given that it's Unix. One problem I encountered was that it does not compile with the bundled version of Berkeley DB (it recognizes it during configure, but produces compilation errors). The solution is to use some other DB engine. I chose Tokyo Cabinet. Using <a href="http://mxcl.github.com/homebrew/">homebrew</a>, the process is simple</p>
 <p><code>brew install tokyo-cabinet</code></p>

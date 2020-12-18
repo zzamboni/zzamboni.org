@@ -1,7 +1,7 @@
 ---
 tags:
 - howto
-- macosx
+- mac
 date: '2014-05-12'
 description: ''
 keywords: []

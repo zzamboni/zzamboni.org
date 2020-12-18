@@ -1,7 +1,7 @@
 ---
 tags:
 - tips
-- macosx
+- mac
 - emacs
 date: '2015-05-14'
 description: ''

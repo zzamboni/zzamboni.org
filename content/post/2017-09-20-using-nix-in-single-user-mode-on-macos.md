@@ -3,7 +3,7 @@ title: Using Nix's "Single-user Mode" on macOS
 date: 2017-09-20T18:24:47
 tags:
 - tips
-- macos
+- mac
 - nix
 - howto
 featured_image: /images/nixos-logo.png
