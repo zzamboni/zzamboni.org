@@ -1,12 +1,11 @@
 ---
-categories: &1
+tags:
 - howto
 - macosx
 date: '2014-05-12'
 description: ''
 keywords: []
 title: How to solve truncated docker output in Mac OS X using boot2docker
-tags: *1
 aliases:
 - /new/blog/how-to-solve-truncated-docker-output-in-mac-os-x-using-boot2docker
 slug: how-to-solve-truncated-docker-output-in-mac-os-x-using-boot2docker

@@ -1,10 +1,10 @@
 ---
-categories: &1 []
+tags:
+- markdown
 date: '2013-12-16'
 description: ''
 keywords: []
 title: Testing markdown support
-tags: *1
 aliases:
 - /new/blog/testing-markdown-support
 slug: testing-markdown-support

@@ -1,11 +1,10 @@
 ---
-categories: &1
+tags:
 - zznippets
 date: '2015-06-17'
 description: ''
 keywords: []
 title: 4-year-old’s first aerobatic flight
-tags: *1
 aliases:
 - /new/blog/4-year-old-s-first-aerobatic-flight
 slug: 4-year-old-s-first-aerobatic-flight

@@ -1,5 +1,5 @@
 ---
-categories: &1
+tags:
 - tips
 - macosx
 - emacs
@@ -7,7 +7,6 @@ date: '2015-05-14'
 description: ''
 keywords: []
 title: Fixing Emacs problems with the fish shell
-tags: *1
 aliases:
 - /new/blog/fixing-emacs-problems-with-the-fish-shell
 slug: fixing-emacs-problems-with-the-fish-shell

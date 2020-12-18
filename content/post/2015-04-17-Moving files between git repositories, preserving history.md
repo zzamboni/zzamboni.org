@@ -1,5 +1,5 @@
 ---
-categories: &1
+tags:
 - howto
 - tips
 - git
@@ -7,7 +7,6 @@ date: '2015-04-17'
 description: ''
 keywords: []
 title: Moving files between git repositories, preserving history
-tags: *1
 aliases:
 - /new/blog/moving-files-between-git-repositories-preserving-history
 slug: moving-files-between-git-repositories-preserving-history
