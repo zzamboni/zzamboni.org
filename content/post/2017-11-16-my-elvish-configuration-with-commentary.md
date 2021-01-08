@@ -12,7 +12,7 @@ featured_image = "/images/elvish-logo.svg"
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **December 18, 2020**
+Last update: **January  8, 2021**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -221,7 +221,6 @@ I also configure <kbd>Tab</kbd> to trigger completion mode, but also to automati
 I load some command-specific completions from the  [elvish-completions](https://github.com/zzamboni/elvish-completions) package:
 
 ```elvish
-use github.com/zzamboni/elvish-completions/vcsh
 use github.com/zzamboni/elvish-completions/cd
 use github.com/zzamboni/elvish-completions/ssh
 use github.com/zzamboni/elvish-completions/builtins
@@ -479,6 +478,16 @@ ASCII spinners and TTY escape code generation.
 ```elvish
 use github.com/zzamboni/elvish-modules/spinners
 use github.com/zzamboni/elvish-modules/tty
+```
+
+Customize the command used for finding git repos for `chain:summary-status &all`, to ignore some uninteresting repos. List of directories to exclude is defined in `$chain-repos-to-exclude`.
+
+```elvish
+chain-repos-to-exclude = [.emacs.d/ .emacs.d.mine/quelpa/ Library/Caches Dropbox/Personal/devel/go/src]
+chain-fd-exclude-opts = [(each [d]{ put -E $d } $chain-repos-to-exclude)]
+chain:find-all-user-repos = {
+  fd -H -I -t d $@chain-fd-exclude-opts '^.git$' ~ | each $path-dir~
+}
 ```
 
 

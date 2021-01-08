@@ -12,7 +12,7 @@ toc = true
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **December 18, 2020**
+Last update: **January  8, 2021**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -236,7 +236,7 @@ This code is written to the `init.el` to select which modules to load. Written h
  (company +childframe) ; the ultimate code completion backend
  ;;helm                ; the *other* search engine for love and life
  ;;ido                 ; the other *other* search engine...
- (ivy +prescient +childframe
+ (ivy +prescient -childframe
       -fuzzy +icons)   ; a search engine for love and life
 
  :ui
@@ -267,7 +267,7 @@ This code is written to the `init.el` to select which modules to load. Written h
  :editor
  ;;(evil +everywhere)  ; come to the dark side, we have cookies
  file-templates        ; auto-snippets for empty files
- fold                  ; (nigh) universal code folding
+ ;;fold                ; (nigh) universal code folding
  ;;(format +onsave)    ; automated prettiness
  ;;god                 ; run Emacs commands without modifier keys
  ;;lispy               ; vim for lisp, for people who don't like vim
@@ -307,7 +307,7 @@ This code is written to the `init.el` to select which modules to load. Written h
  gist                  ; interacting with github gists
  lookup                ; navigate your code and its documentation
  lsp
- (magit -forge)        ; a git porcelain for Emacs
+ (magit +forge)        ; a git porcelain for Emacs
  ;;make                ; run make tasks from Emacs
  pass                  ; password manager for nerds
  ;;pdf                 ; pdf enhancements
@@ -359,7 +359,7 @@ This code is written to the `init.el` to select which modules to load. Written h
  ;;nim                 ; python + lisp at the speed of c
  ;;nix                 ; I hereby declare "nix geht mehr!"
  ;;ocaml               ; an objective camel
- (org +pretty +journal
+ (org +pretty +journal -dragndrop
       +hugo +roam +pandoc
       +present)        ; organize your plain life in plain text
  ;;php                 ; perl's insecure younger brother
@@ -1315,6 +1315,20 @@ end repeat\"")))
 ```
 
 
+### Other exporters {#other-exporters}
+
+[ox-jira](https://github.com/stig/ox-jira.el) to export in Jira markup format.
+
+```emacs-lisp
+(package! ox-jira)
+```
+
+```emacs-lisp
+(use-package! ox-jira
+  :after org)
+```
+
+
 ### Programming Org {#programming-org}
 
 Trying out [org-ml](https://github.com/ndwarshuis/org-ml) for easier access to Org objects.
@@ -1406,6 +1420,12 @@ Some other languages I use.
 
     ```emacs-lisp
     (setf slynk:*use-dedicated-output-stream* nil)
+    ```
+
+-   [package-lint](https://github.com/purcell/package-lint) for checking MELPA packages.
+
+    ```emacs-lisp
+    (package! package-lint)
     ```
 
 
