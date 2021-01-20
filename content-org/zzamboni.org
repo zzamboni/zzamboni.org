@@ -66,6 +66,8 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#bang-bang---shell-shortcuts-in-elvish][Bang-Bang (!!, !$) Shell Shortcuts in Elvish]]
     - [[#using-and-writing-completions-in-elvish][Using and writing completions in Elvish]]
     - [[#elvish-an-awesome-unix-shell][Elvish, an awesome Unix shell]]
+  - [[#security-][Security 🔐]]
+    - [[#new-course-cissp-training][New course: CISSP Training]]
   - [[#other][Other]]
     - [[#my-blogging-setup-with-emacs-org-mode-ox-hugo-hugo-gitlab-and-netlify][My blogging setup with Emacs, Org mode, ox-hugo, Hugo, GitLab and Netlify]]
     - [[#new-release-of-publishing-with-emacs-org-mode-and-leanpub][New release of /Publishing with Emacs, Org-mode and Leanpub/]]
@@ -2259,6 +2261,28 @@ Of course, Elvish is not without its quirks and drawbacks. None of these has bee
 I am very happy with Elvish, and if you are interested in this sort of thing, I encourage you to take a look. If you need a starting point, you can use [[https://github.com/zzamboni/vcsh_elvish/tree/master/.elvish/][my configuration files]] at as an example of the kind of things you can do with it.
 
 I will post more Elvish tips and tricks over time.
+
+** Security 🔐
+
+*** DONE New course: CISSP Training
+CLOSED: [2021-01-21 Thu 00:16]
+:PROPERTIES:
+:export_hugo_bundle: 2021-01-21-new-course-cissp-training
+:export_file_name: index
+:export_hugo_custom_front_matter: :toc false :featured_image /images/cissp-training-cover.jpg
+:END:
+
+{{< leanpubbook book="courses/leanpub/cissp-training" style="float:right"  height="400" >}}
+
+I am happy to finally reveal a project I've been working on for some time: my new online course [[https://leanpub.com/c/cissp-training][/CISSP Training/]], now available on Leanpub.
+
+There are multitude of CISSP courses, books and materials out there, but this one is special: it is a collection of topics I found useful when preparing for my own certification, complemented with examples, exercises and additional information based on my own experience and knowledge. I have been improving and fine tuning it for months now, and I'm happy to finally release it. The course is content-complete for all 8 /(ISC)^{2} Common Body of Knowledge/ domains, although I continue improving formatting, structure and adding exercises (quizzes and exercises for the CBK domains 1-3 are there, domains 4-8 are coming).
+
+To celebrate its release, you can get the course, until the end of January with a 25% discount off its regular minimum price. Just click [[https://leanpub.com/c/cissp-training/c/initial-release][here]] to get the discount!
+
+If you are thinking of, or already preparing for, taking the CISSP exam, I am sure you will find this course useful. Get it now!
+
+
 
 ** Other
 
