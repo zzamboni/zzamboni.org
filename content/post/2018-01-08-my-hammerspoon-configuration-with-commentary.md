@@ -13,7 +13,7 @@ featured_image = "/images/hammerspoon.jpg"
 {{< leanpubbook book="lit-config" style="float:right" >}}
 {{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
 
-Last update: **January  8, 2021**
+Last update: **February 11, 2021**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -454,9 +454,9 @@ Install:andUse("BrewInfo",
                    -- brew info
                    show_brew_info = {hyper, "b"},
                    open_brew_url = {shift_hyper, "b"},
-                   -- brew cask info
-                   show_brew_cask_info = {shift_hyper, "c"},
-                   open_brew_cask_url = {hyper, "c"},
+                   -- brew cask info - not needed anymore, the above now do both
+                   -- show_brew_cask_info = {shift_hyper, "c"},
+                   -- open_brew_cask_url = {hyper, "c"},
                  }
                }
 )

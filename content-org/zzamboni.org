@@ -385,7 +385,7 @@ I have enjoyed slowly converting my configuration files to [[http://www.howardis
 
 If you are interested in writing your own Literate Config files, check out my new book [[https://leanpub.com/lit-config][Literate Config]] on Leanpub!
 
-#+include: "~/.emacs.d.mine/init.org" :lines "19-"
+#+include: "~/.emacs.d.mine/init.org" :lines "22-"
 
 *** DONE My Hammerspoon Configuration, With Commentary          :hammerspoon:
 CLOSED: [2018-01-08 Mon 13:31]
@@ -406,7 +406,7 @@ In my [[file:../my-elvish-configuration-with-commentary/][ongoing]] [[file:../my
 
 If you are interested in writing your own Literate Config files, check out my new book [[https://leanpub.com/lit-config][Literate Config]] on Leanpub!
 
-#+include: "~/.hammerspoon/init.org" :lines "19-"
+#+include: "~/.hammerspoon/init.org" :lines "22-"
 
 *** DONE My Elvish Configuration With Commentary                     :elvish:
 CLOSED: [2017-11-16 Thu 20:21]
@@ -430,7 +430,7 @@ If you are interested in writing your own Literate Config files, check out my ne
 
 Without further ado...
 
-#+include: "~/.elvish/rc.org" :lines "19-"
+#+include: "~/.elvish/rc.org" :lines "22-"
 
 ** Emacs                                                              :emacs:
 

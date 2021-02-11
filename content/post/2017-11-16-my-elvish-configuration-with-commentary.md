@@ -12,7 +12,7 @@ featured_image = "/images/elvish-logo.svg"
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **January  8, 2021**
+Last update: **February 11, 2021**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -21,6 +21,36 @@ This is also my first blog post written using [org-mode](http://orgmode.org/), w
 If you are interested in writing your own Literate Config files, check out my new book [Literate Config](https://leanpub.com/lit-config) on Leanpub!
 
 Without further ado...
+
+
+## Module loading {#module-loading}
+
+Load a number of commonly-used modules so that they are available in my interactive session.
+
+Load the bundled [re](https://elvish.io/ref/re.html) module to have access to regular expression functions.
+
+```elvish
+use re
+```
+
+The bundled [readline-binding](https://elvish.io/ref/bundled.html) module associates some Emacs-like keybindings for manipulation of the command line.
+
+```elvish
+use readline-binding
+```
+
+The bundled `path` module contains path manipulation functions.
+
+```elvish
+use path
+```
+
+The bundled `str` and `math` modules for string manipulation and math operations.
+
+```elvish
+use str
+use math
+```
 
 
 ## Paths {#paths}
@@ -57,7 +87,7 @@ I have a quick sanity check because sometimes certain paths disappear depending 
 
 ```elvish
 each [p]{
-  if (not (-is-dir $p)) {
+  if (not (path:is-dir $p)) {
     echo (styled "Warning: directory "$p" in $paths no longer exists." red)
   }
 } $paths
@@ -125,18 +155,6 @@ proxy:autoset
 
 ## General modules and settings {#general-modules-and-settings}
 
-Load the bundled [re](https://elvish.io/ref/re.html) module to have access to regular expression functions.
-
-```elvish
-use re
-```
-
-The bundled [readline-binding](https://elvish.io/ref/bundled.html) module associates some Emacs-like keybindings for manipulation of the command line.
-
-```elvish
-use readline-binding
-```
-
 I add a couple of keybindings which are missing from the default `readline-binding` module:
 
 -   `Alt-backspace` to delete small-word
@@ -184,7 +202,7 @@ alias:new v vagrant
 `bat` `man` ([using `bat` as the pager for `man` pages](https://github.com/sharkdp/bat#man)).
 
 ```elvish
-E:MANPAGER="sh -c 'col -bx | bat -l man -p'"
+E:MANPAGER = "sh -c 'col -bx | bat -l man -p'"
 ```
 
 Open man pages as PDF, I gathered this tip from <https://twitter.com/MrAhmadAwais/status/1279066968981635075>. Neat but not very useful for daily use, particularly with the `bat` integration above.
@@ -441,7 +459,7 @@ E:LC_ALL = "en_US.UTF-8"
 PKG\_CONFIG configuration
 
 ```elvish
-E:PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
+E:PKG_CONFIG_PATH = "/usr/local/opt/icu4c/lib/pkgconfig"
 ```
 
 
@@ -486,7 +504,7 @@ Customize the command used for finding git repos for `chain:summary-status &all`
 chain-repos-to-exclude = [.emacs.d/ .emacs.d.mine/quelpa/ Library/Caches Dropbox/Personal/devel/go/src]
 chain-fd-exclude-opts = [(each [d]{ put -E $d } $chain-repos-to-exclude)]
 chain:find-all-user-repos = {
-  fd -H -I -t d $@chain-fd-exclude-opts '^.git$' ~ | each $path-dir~
+  fd -H -I -t d $@chain-fd-exclude-opts '^.git$' ~ | each $path:dir~
 }
 ```
 
@@ -497,13 +515,4 @@ I have a private library which contains some work-specific functions.
 
 ```elvish
 use work
-```
-
-
-## Exporting aliases {#exporting-aliases}
-
-We populate `$-exports-` with the alias definitions so that they become available in the interactive namespace.
-
-```elvish
--exports- = (alias:export)
 ```

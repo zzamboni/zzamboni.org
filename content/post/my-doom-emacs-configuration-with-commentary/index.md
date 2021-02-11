@@ -12,7 +12,7 @@ toc = true
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **January  8, 2021**
+Last update: **February 11, 2021**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -460,11 +460,12 @@ If you want to choose at random among a few different splash images, you can lis
                 (nth (random (length alternatives)) alternatives))))
 ```
 
-Set base and variable-pitch fonts. I currently like [Fira Code](https://github.com/tonsky/FiraCode) and [ET Book](https://edwardtufte.github.io/et-book/).
+Set base and variable-pitch fonts. I currently like [Fira Code](https://github.com/tonsky/FiraCode) and [Alegreya](https://www.huertatipografica.com/en/fonts/alegreya-ht-pro) (another favorite and my previous choice: [ET Book](https://edwardtufte.github.io/et-book/)).
 
 ```emacs-lisp
 (setq doom-font (font-spec :family "Fira Code" :size 18)
-      doom-variable-pitch-font (font-spec :family "ETBembo" :size 18))
+      ;;doom-variable-pitch-font (font-spec :family "ETBembo" :size 18)
+      doom-variable-pitch-font (font-spec :family "Alegreya" :size 18))
 ```
 
 Allow mixed fonts in a buffer. This is particularly useful for Org mode, so I can mix source and prose blocks in the same document.
@@ -494,14 +495,13 @@ In my previous configuration, I used to automatically restore the previous sessi
 ;;(add-hook 'window-setup-hook #'doom/quickload-session)
 ```
 
-Maximize the window upon startup. The `(fullscreen . maximized)` value suggested in the [Doom FAQ](https://github.com/hlissner/doom-emacs/blob/develop/docs/faq.org#how-do-i-maximizefullscreen-emacs-on-startup) works, but results in a window that cannot be resized. For now I just manually set it to a large-enough window size by hand.
+Maximize the window upon startup.
 
 ```emacs-lisp
-;;(add-to-list 'initial-frame-alist '(fullscreen . maximized))
-(setq initial-frame-alist '((top . 1) (left . 1) (width . 129) (height . 37)))
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
 ```
 
-Truncate lines in `ivy` childframes. [Thanks Henrik](https://discord.com/channels/406534637242810369/484105925733646336/770756709857755187)!
+Truncate lines in `ivy` childframes. [Thanks Henrik](https://discord.com/channels/406534637242810369/484105925733646336/770756709857755187)! (disabled for now)
 
 ```emacs-lisp
 (setq posframe-arghandler
@@ -743,6 +743,15 @@ Disable [electric-mode](https://code.orgmode.org/bzg/org-mode/src/master/etc/ORG
 (add-hook! org-mode (electric-indent-local-mode -1))
 ```
 
+I really dislike completion of words as I type prose (in code it's OK), so I disable it in Org:
+
+```emacs-lisp
+(defun zz/adjust-org-company-backends ()
+  (remove-hook 'after-change-major-mode-hook '+company-init-backends-h)
+  (setq-local company-backends nil))
+(add-hook! org-mode (zz/adjust-org-company-backends))
+```
+
 
 ### Org visual settings {#org-visual-settings}
 
@@ -752,6 +761,18 @@ Enable variable and visual line mode in Org mode by default.
 (add-hook! org-mode :append
            #'visual-line-mode
            #'variable-pitch-mode)
+```
+
+Use [org-appear](https://github.com/awth13/org-appear) to reveal emphasis markers when moving the cursor over them.
+
+```emacs-lisp
+(package! org-appear
+  :recipe (:host github
+           :repo "awth13/org-appear"))
+```
+
+```emacs-lisp
+(add-hook! org-mode :append #'org-appear-mode)
 ```
 
 
@@ -993,6 +1014,18 @@ I have started using `org-clock` to track time I spend on tasks. Often I restart
 (after! org-clock
   (setq org-clock-persist t)
   (org-clock-persistence-insinuate))
+```
+
+Testing [elegant-agenda-mode](https://github.com/justinbarclay/elegant-agenda-mode).
+
+```emacs-lisp
+(package! elegant-agenda-mode)
+```
+
+```emacs-lisp
+(use-package! elegant-agenda-mode
+  :after org
+  :hook org-agenda-mode)
 ```
 
 
@@ -1328,6 +1361,17 @@ end repeat\"")))
   :after org)
 ```
 
+[org-jira](https://github.com/ahungry/org-jira) for full Jira integration - manage issues from Org mode.
+
+```emacs-lisp
+(package! org-jira)
+```
+
+```emacs-lisp
+(make-directory "~/.org-jira" 'ignore-if-exists)
+(setq jiralib-url "https://jira.swisscom.com/")
+```
+
 
 ### Programming Org {#programming-org}
 
@@ -1345,11 +1389,19 @@ Trying out [org-ml](https://github.com/ndwarshuis/org-ml) for easier access to O
 
 ## Coding {#coding}
 
-Tangle-on-save has revolutionized my literate programming workflow. It automatically runs `org-babel-tangle` upon saving any org-mode buffer, which means the resulting files will be automatically kept up to date.
+Tangle-on-save has revolutionized my literate programming workflow. It automatically runs `org-babel-tangle` upon saving any org-mode buffer, which means the resulting files will be automatically kept up to date. For a while I did this by manually adding `org-babel-tangle` to the `after-save` hook in Org mode, but now I use the [org-auto-tangle](https://github.com/yilkalargaw/org-auto-tangle) package, which does this asynchronously and selectively for each Org file where it is desired.
 
 ```emacs-lisp
-(add-hook! org-mode :append
-  (add-hook! after-save :append :local #'org-babel-tangle))
+(package! org-auto-tangle
+  :recipe (:local-repo "~/Dropbox/Personal/devel/emacs/org-auto-tangle"))
+```
+
+```emacs-lisp
+(use-package! org-auto-tangle
+  :defer t
+  :hook (org-mode . org-auto-tangle-mode)
+  :config
+  (setq org-auto-tangle-default t))
 ```
 
 Some useful settings for LISP coding - `smartparens-strict-mode` to enforce parenthesis to match. I map `M-(` to enclose the next expression as in `paredit` using a custom function. Prefix argument can be used to indicate how many expressions to enclose instead of just 1. E.g. `C-u 3 M-(` will enclose the next 3 sexps.
@@ -1512,6 +1564,12 @@ Some other languages I use.
 
     ```emacs-lisp
     (package! annotate)
+    ```
+
+-   [gift-mode](https://github.com/csrhodes/gift-mode) for editing quizzes in [GIFT format](https://docs.moodle.org/39/en/GIFT%5Fformat).
+
+    ```emacs-lisp
+    (package! gift-mode)
     ```
 
 
