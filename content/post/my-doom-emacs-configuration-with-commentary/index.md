@@ -12,7 +12,7 @@ toc = true
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **February 11, 2021**
+Last update: **February 25, 2021**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -390,6 +390,7 @@ This code is written to the `init.el` to select which modules to load. Written h
 
  :app
  ;;calendar
+ everywhere            ; *leave* Emacs!? You must be joking
  irc                   ; how neckbeards socialize
  ;;(rss +org)          ; emacs as an RSS reader
  ;;twitter             ; twitter client https://twitter.com/vnought
@@ -813,7 +814,7 @@ I'm still trying out `org-roam`, although I have not figured out very well how i
 
 ```emacs-lisp
 (setq org-roam-directory org-directory)
-(setq +org-roam-open-buffer-on-find-file nil)
+(setq +org-roam-open-buffer-on-find-file t)
 ```
 
 
@@ -1014,18 +1015,6 @@ I have started using `org-clock` to track time I spend on tasks. Often I restart
 (after! org-clock
   (setq org-clock-persist t)
   (org-clock-persistence-insinuate))
-```
-
-Testing [elegant-agenda-mode](https://github.com/justinbarclay/elegant-agenda-mode).
-
-```emacs-lisp
-(package! elegant-agenda-mode)
-```
-
-```emacs-lisp
-(use-package! elegant-agenda-mode
-  :after org
-  :hook org-agenda-mode)
 ```
 
 
@@ -1386,6 +1375,43 @@ Trying out [org-ml](https://github.com/ndwarshuis/org-ml) for easier access to O
   :after org)
 ```
 
+I'm also testing [org-ql](https://github.com/alphapapa/org-ql) for structured queries on Org documents.
+
+```emacs-lisp
+(package! org-ql)
+```
+
+```emacs-lisp
+(use-package! org-ql
+  :after org)
+```
+
+This function returns a list of all the headings in the given file which have the given tags.
+
+```emacs-lisp
+(defun zz/headings-with-tags (file tags)
+  (let ((headings (org-ql-select file
+                    `(tags-local ,@tags))))
+    (mapconcat
+     (lambda (l) (format "- %s" l))
+     (mapcar
+      (lambda (h)
+        (let ((title (car (org-element-property :title h))))
+          (org-link-make-string
+           (format "file:%s::*%s"
+                   file title)
+           title)))
+      headings) "\n")))
+```
+
+This function returns a list of all the headings in the given file which match the tags of the current heading.
+
+```emacs-lisp
+(defun zz/headings-with-current-tags (file)
+  (let ((tags (s-split ":" (cl-sixth (org-heading-components)) t)))
+    (zz/headings-with-tags file tags)))
+```
+
 
 ## Coding {#coding}
 
@@ -1482,6 +1508,18 @@ Some other languages I use.
 
 
 ## Other tools {#other-tools}
+
+-   Use Emacs [Everywhere](https://github.com/tecosaur/emacs-everywhere)!
+
+    ```emacs-lisp
+    (package! emacs-everywhere :pin nil)
+    ```
+
+    ```emacs-lisp
+    (use-package! emacs-everywhere
+      :config
+      (setq emacs-everywhere-major-mode-function #'org-mode))
+    ```
 
 -   Trying out [Magit's multi-repository abilities](https://magit.vc/manual/magit/Repository-List.html). This stays in sync with the git repo list used by my [chain:summary-status](https://github.com/zzamboni/elvish-themes/blob/master/chain.org#bonus-displaying-the-status-of-several-git-repos-at-once) Elvish shell function by reading the file every time `magit-list-repositories` is called, using `defadvice!`. I also customize the display to add the `Status` column.
 

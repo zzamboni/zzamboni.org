@@ -12,7 +12,7 @@ featured_image = "/images/elvish-logo.svg"
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **February 11, 2021**
+Last update: **February 25, 2021**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -83,11 +83,11 @@ paths = [
 ]
 ```
 
-I have a quick sanity check because sometimes certain paths disappear depending on new versions, etc. This prints a warning when opening a new shell, if there are any non-existing directories in `$paths`.
+I have a quick sanity check because sometimes certain paths disappear depending on new versions, etc. This prints a warning when opening a new shell, if there are any non-existing directories in `$paths`. We need some wrapping around `path:eval-symlinks` to avoid seeing warnings when the directory does not exist.
 
 ```elvish
 each [p]{
-  if (not (path:is-dir $p)) {
+  if (not (path:is-dir (or (_ = ?(path:eval-symlinks $p)) $p))) {
     echo (styled "Warning: directory "$p" in $paths no longer exists." red)
   }
 } $paths
