@@ -5,7 +5,7 @@ summary = "As I'm taking notes or writing in Org-mode, I often want to insert sc
 date = 2020-08-09T16:44:00+02:00
 tags = ["orgmode", "emacs", "howto", "mac", "config"]
 draft = false
-creator = "Emacs 28.0.50 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
 toc = false
 featured_image = "/images/emacs-logo.svg"
 +++

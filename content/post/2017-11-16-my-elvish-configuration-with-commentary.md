@@ -5,14 +5,14 @@ summary = "In this blog post I will walk you through my current Elvish configura
 date = 2017-11-16T20:21:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "elvish"]
 draft = false
-creator = "Emacs 28.0.50 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
 toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **February 25, 2021**
+Last update: **April  8, 2021**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -60,12 +60,8 @@ First we set up the executable paths. We set the `GOPATH` environment variable w
 ```elvish
 # Where all the Go stuff is
 E:GOPATH = ~/Dropbox/Personal/devel/go
-# I use the gccemacs build for macOS, from
-# https://github.com/jimeh/build-emacs-for-macos
-emacs-path = ~/Applications/Emacs.app/Contents/MacOS
 
 paths = [
-  $emacs-path $emacs-path/bin
   ~/bin
   ~/.emacs.d/bin
   $E:GOPATH/bin
@@ -182,6 +178,24 @@ I add a couple of keybindings which are missing from the default `readline-bindi
     ```
 
 
+## 1Password {#1password}
+
+My `1pass` module provides some wrappers for interacting with the [1Password command line utility](https://support.1password.com/command-line/).
+
+```elvish
+use github.com/zzamboni/elvish-modules/1pass
+```
+
+I use this together with my `lazy-vars` module to read the GitHub token to use with the `brew` command.
+
+```elvish
+use github.com/zzamboni/elvish-modules/lazy-vars
+
+lazy-vars:add-var HOMEBREW_GITHUB_API_TOKEN { 1pass:get-password "github api token for homebrew" }
+lazy-vars:add-alias brew [ HOMEBREW_GITHUB_API_TOKEN ]
+```
+
+
 ## Aliases and miscellaneous functions {#aliases-and-miscellaneous-functions}
 
 Elvish does not have built-in alias functionality, but this is implemented easily using the [alias](https://github.com/zzamboni/modules.elv/blob/master/alias.org) module, which stores the alias definitions as functions under [~/.elvish/aliases/](https://github.com/zzamboni/dot-elvish/tree/master/aliases) and loads them automatically.
@@ -197,6 +211,7 @@ alias:new dfc e:dfc -p -/dev/disk1s4,devfs,map,com.apple.TimeMachine
 alias:new cat bat
 alias:new more bat --paging always
 alias:new v vagrant
+alias:new git hub
 ```
 
 `bat` `man` ([using `bat` as the pager for `man` pages](https://github.com/sharkdp/bat#man)).
@@ -420,10 +435,11 @@ use github.com/zzamboni/elvish-modules/opsgenie
 
 ## LeanPub {#leanpub}
 
-I use [LeanPub](https://leanpub.com/help/api) for publishing my books, so I have written a few utility functions. I don't use this regularly, I have much better integration using Hammerspoon and CircleCI, I wrote about it in my blog: [Automating Leanpub book publishing with Hammerspoon and CircleCI](https://zzamboni.org/post/automating-leanpub-book-publishing-with-hammerspoon-and-circleci/).
+I use [LeanPub](https://leanpub.com/help/api) for publishing my books, so I have written a few utility functions. I don't use this regularly, I have much better integration using Hammerspoon and CircleCI, I wrote about it in my blog: [Automating Leanpub book publishing with Hammerspoon and CircleCI](https://zzamboni.org/post/automating-leanpub-book-publishing-with-hammerspoon-and-circleci/). The Leanpub API key is fetched from 1Password when needed.
 
 ```elvish
 use github.com/zzamboni/elvish-modules/leanpub
+leanpub:api-key-fn = { 1pass:get-item leanpub &fields=["API key"] }
 ```
 
 

@@ -5,14 +5,14 @@ summary = "I switched from my hand-crafted Emacs config to Doom Emacs some time 
 date = 2020-10-19T09:07:00+02:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs", "doom"]
 draft = false
-creator = "Emacs 28.0.50 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
 featured_image = "/images/doom-emacs-color.jpg"
 toc = true
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **February 25, 2021**
+Last update: **April  8, 2021**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -20,7 +20,7 @@ As usual, the post below is included directly from my live [doom.org](https://gi
 
 If you are interested in writing your own Literate Config files, check out my book [Literate Config](https://leanpub.com/lit-config) on Leanpub!
 
-{{< figure src="doom-emacs-bw-light.svg" >}}
+{{< figure src="../../../../../.doom.d/splash/slant_out_purple-small.png" >}}
 
 This is my Doom Emacs configuration. From this org file, all the necessary Doom Emacs config files are generated.
 
@@ -454,11 +454,17 @@ I made a super simple set of Doom-Emacs custom splash screens by combining [a Do
 If you want to choose at random among a few different splash images, you can list them in `alternatives`.
 
 ```emacs-lisp
-(let ((alternatives '("doom-emacs-bw-light.svg")))
+(let ((alternatives '("doom-emacs-flugo-slant_out_purple-small.png")))
    ;;((alternatives '("doom-emacs-color.png" "doom-emacs-bw-light.svg")))
   (setq fancy-splash-image
         (concat doom-private-dir "splash/"
                 (nth (random (length alternatives)) alternatives))))
+```
+
+I eliminate all but the first two items in the dashboard menu, since those are the only ones I still use sometimes.
+
+```emacs-lisp
+(setq +doom-dashboard-menu-sections (cl-subseq +doom-dashboard-menu-sections 0 2))
 ```
 
 Set base and variable-pitch fonts. I currently like [Fira Code](https://github.com/tonsky/FiraCode) and [Alegreya](https://www.huertatipografica.com/en/fonts/alegreya-ht-pro) (another favorite and my previous choice: [ET Book](https://edwardtufte.github.io/et-book/)).
@@ -486,8 +492,21 @@ And then from `config.el` we specify the theme to use.
 
 ```emacs-lisp
 (setq doom-theme 'spacemacs-light)
-;;(setq doom-theme 'doom-nord-light)
-;;(setq doom-theme 'doom-solarized-light)
+;;OK (setq doom-theme 'doom-nord-light)
+;;NO (setq doom-theme 'doom-solarized-light)
+;;MAYBE (setq doom-theme 'doom-one-light)
+;;NO (setq doom-theme 'doom-opera-light)
+;;NO (setq doom-theme 'doom-tomorrow-day)
+;;NO (setq doom-theme 'doom-acario-light)
+```
+
+I love the `spacemacs-light` theme, but for some reason, the transparent dashboard images showed up with a light tint, which I eventually tracked to the fact that Doom by default [uses the `font-lock-comment-face` for the dashboard banner image](https://github.com/hlissner/doom-emacs/blob/ce65645fb87ed1b24fb1a46a33f77cf1dcc1c0d5/modules/ui/doom-dashboard/config.el#L145), and this this face has a background color in Spacemacs-light. I redefine the `doom-dashboard-banner` face to use the `default` face, which fixes the problem. Another way to fix it (commented out below) is to disable the background tint color in the theme. While we are at it, I also fix `doom-dashboard-loaded`, which suffers from the same problem.
+
+```emacs-lisp
+(custom-set-faces!
+  '(doom-dashboard-banner :inherit default)
+  '(doom-dashboard-loaded :inherit default))
+;;(setq spacemacs-theme-comment-bg nil)
 ```
 
 In my previous configuration, I used to automatically restore the previous session upon startup. Doom Emacs starts up so fast that it does not feel right to do it automatically. In any case, from the Doom dashboard I can simply press Enter to invoke the first item, which is "Reload Last Session". So this code is commented out now.
@@ -694,6 +713,12 @@ Doom's Org module provides a lot of sane configuration settings, so I don't have
 
 ### General Org Configuration {#general-org-configuration}
 
+Unpin Org to get around a current bug.
+
+```emacs-lisp
+(unpin! org-mode)
+```
+
 Default directory for Org files.
 
 ```emacs-lisp
@@ -813,7 +838,7 @@ Now I define keybindings to access my commonly-used org files.
 I'm still trying out `org-roam`, although I have not figured out very well how it works for my setup. For now I configure it to include my whole Org directory.
 
 ```emacs-lisp
-(setq org-roam-directory org-directory)
+(setq org-roam-directory "/Users/taazadi1/Dropbox/Personal/org-roam/")
 (setq +org-roam-open-buffer-on-find-file t)
 ```
 
@@ -1095,11 +1120,11 @@ I set up an advice before `org-capture` to make sure `org-gtd` and `org-capture`
 
 I use `ox-awesomecv` from [Org-CV](https://titan-c.gitlab.io/org-cv/), to export my [Curriculum Vit&aelig;](https://github.com/zzamboni/vita/).
 
-My `ox-awesomecv` package is [not yet merged](https://gitlab.com/Titan-C/org-cv/-/merge%5Frequests/3) into the main Org-CV distribution, so I install from my branch for now.
+My `ox-awesomecv` package is [not yet merged](https://gitlab.com/Titan-C/org-cv/-/merge%5Frequests/3) into the main Org-CV distribution, so I install from my local repo for now.
 
 ```emacs-lisp
 (package! org-cv
-  :recipe (:host gitlab :repo "zzamboni/org-cv" :branch "awesomecv"))
+  :recipe (:local-repo "~/Dropbox/Personal/devel/emacs/org-cv"))
 ```
 
 ```emacs-lisp
@@ -1361,6 +1386,34 @@ end repeat\"")))
 (setq jiralib-url "https://jira.swisscom.com/")
 ```
 
+[org-special-block-extras](https://github.com/alhassy/org-special-block-extras) to enable additional special block types and their corresponding exports (disabled for now).
+
+```emacs-lisp
+(package! org-special-block-extras)
+```
+
+```emacs-lisp
+(use-package! org-special-block-extras
+  :after org
+  :hook (org-mode . org-special-block-extras-mode))
+```
+
+
+### Other Org stuff {#other-org-stuff}
+
+Testing `org-ol-tree`.
+
+```emacs-lisp
+(package! org-ol-tree
+  :recipe (:host github
+           :repo "Townk/org-ol-tree"))
+```
+
+```emacs-lisp
+(use-package! org-ol-tree
+  :after org)
+```
+
 
 ### Programming Org {#programming-org}
 
@@ -1418,8 +1471,7 @@ This function returns a list of all the headings in the given file which match t
 Tangle-on-save has revolutionized my literate programming workflow. It automatically runs `org-babel-tangle` upon saving any org-mode buffer, which means the resulting files will be automatically kept up to date. For a while I did this by manually adding `org-babel-tangle` to the `after-save` hook in Org mode, but now I use the [org-auto-tangle](https://github.com/yilkalargaw/org-auto-tangle) package, which does this asynchronously and selectively for each Org file where it is desired.
 
 ```emacs-lisp
-(package! org-auto-tangle
-  :recipe (:local-repo "~/Dropbox/Personal/devel/emacs/org-auto-tangle"))
+(package! org-auto-tangle)
 ```
 
 ```emacs-lisp

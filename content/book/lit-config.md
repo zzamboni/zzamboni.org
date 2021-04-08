@@ -3,7 +3,7 @@ title = "Literate Config"
 author = ["Diego Zamboni"]
 date = 2020-02-29T22:56:00+01:00
 draft = false
-creator = "Emacs 28.0.50 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
 weight = 2
 finalURL = "https://leanpub.com/lit-config/"
 +++

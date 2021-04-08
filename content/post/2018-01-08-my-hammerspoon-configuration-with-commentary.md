@@ -5,7 +5,7 @@ summary = "In my ongoing series of literate config files, I present to you my Ha
 date = 2018-01-08T13:31:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "hammerspoon"]
 draft = false
-creator = "Emacs 28.0.50 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
 toc = true
 featured_image = "/images/hammerspoon.jpg"
 +++
@@ -13,7 +13,7 @@ featured_image = "/images/hammerspoon.jpg"
 {{< leanpubbook book="lit-config" style="float:right" >}}
 {{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
 
-Last update: **February 25, 2021**
+Last update: **April  8, 2021**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -95,16 +95,24 @@ BTT = spoon.BetterTouchTool
 
 The [URLDispatcher](http://www.hammerspoon.org/Spoons/URLDispatcher.html) spoon makes it possible to open URLs with different browsers. I have created different site-specific browsers using [Epichrome](https://github.com/dmarmor/epichrome), which allows me to keep site-specific bookmarks, search settings, etc. I also use Edge as my work browser (since it integrated with my work account), while using Brave for everything else. I also use the `url_redir_decoders` parameter to rewrite some URLs before they are opened, both to redirect certain URLs directly to their corresponding applications (instead of going through the web browser) and to fix a bug I have experienced in opening URLs from PDF documents using Preview.
 
+The `URLDispatcher` spoon requires application IDs, which may change from time to time (e.g. in a recent Epichrome update all its apps changed IDs, which broke the dispatching until I figured it out), so I define a function which gets the path of the application and returns its ID.
+
 ```lua
-chromeBrowserApp = "com.google.Chrome"
-edgeBrowserApp = "com.microsoft.edgemac"
-braveBrowserApp = "com.brave.Browser.dev"
+function appID(app)
+  return hs.application.infoForBundlePath(app)['CFBundleIdentifier']
+end
+```
 
-DefaultBrowser = braveBrowserApp
-WorkBrowser = edgeBrowserApp
+```lua
+chromeBrowser = appID('/Applications/Google Chrome.app')
+edgeBrowser = appID('/Applications/Microsoft Edge.app')
+braveBrowser = appID('/Applications/Brave Browser Dev.app')
 
-JiraApp = "org.epichrome.app.Jira"
-WikiApp = "org.epichrome.app.Wiki"
+DefaultBrowser = braveBrowser
+WorkBrowser = edgeBrowser
+
+JiraApp = appID('~/Applications/Epichrome SSBs/Jira.app')
+WikiApp = appID('~/Applications/Epichrome SSBs/Wiki.app')
 OpsGenieApp = WorkBrowser
 
 Install:andUse("URLDispatcher",
@@ -245,6 +253,30 @@ Install:andUse("SendToOmniFocus",
                  },
                  fn = OF_register_additional_apps,
                }
+)
+```
+
+
+### Capturing to Org mode {#capturing-to-org-mode}
+
+I now use Org-mode for task tracking and capturing. The following snippet runs the `~/.emacs.d/bin/org-capture` script to bring up an Emacs window which allows me to capture things from anywhere in the system. The code is a bit convoluted because it needs to capture the current window and restore it after the org-capture window closes, otherwise Emacs is brought to the front.
+
+```lua
+org_capture_path = os.getenv("HOME").."/.hammerspoon/files/org-capture.lua"
+script_file = io.open(org_capture_path, "w")
+script_file:write([[local win = hs.window.frontmostWindow()
+local o,s,t,r = hs.execute("~/.emacs.d/bin/org-capture", true)
+if not s then
+  print("Error when running org-capture: "..o.."\n")
+end
+win:focus()
+]])
+script_file:close()
+
+hs.hotkey.bindSpec({hyper, "t"},
+  function ()
+    hs.task.new("/bin/bash", nil, { "-l", "-c", "/usr/local/bin/hs "..org_capture_path }):start()
+  end
 )
 ```
 
@@ -726,6 +758,7 @@ I live in Switzerland, and my German is far from perfect, so the [PopupTranslate
 local wm=hs.webview.windowMasks
 Install:andUse("PopupTranslateSelection",
                {
+                 disable = true,
                  config = {
                    popup_style = wm.utility|wm.HUD|wm.titled|
                      wm.closable|wm.resizable,

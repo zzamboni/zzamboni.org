@@ -3,7 +3,7 @@ title = "New course: CISSP Training"
 author = ["Diego Zamboni"]
 date = 2021-01-21T00:16:00+01:00
 draft = false
-creator = "Emacs 28.0.50 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
 toc = false
 featured_image = "/images/cissp-training-cover.jpg"
 +++
