@@ -12,7 +12,7 @@ featured_image = "/images/elvish-logo.svg"
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **April  8, 2021**
+Last update: **October  5, 2021**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -27,13 +27,13 @@ Without further ado...
 
 Load a number of commonly-used modules so that they are available in my interactive session.
 
-Load the bundled [re](https://elvish.io/ref/re.html) module to have access to regular expression functions.
+Load the bundled [re](https://elv.sh/ref/re.html) module to have access to regular expression functions.
 
 ```elvish
 use re
 ```
 
-The bundled [readline-binding](https://elvish.io/ref/bundled.html) module associates some Emacs-like keybindings for manipulation of the command line.
+The bundled [readline-binding](https://elv.sh/ref/readline-binding.html) module associates some Emacs-like keybindings for manipulation of the command line.
 
 ```elvish
 use readline-binding
@@ -68,8 +68,6 @@ paths = [
   /usr/local/opt/coreutils/libexec/gnubin
   /usr/local/opt/texinfo/bin
   /usr/local/opt/python/libexec/bin
-  ~/Library/Python/3.8/bin
-  /usr/local/opt/ruby@2.6/bin
   /usr/local/bin
   /usr/local/sbin
   /usr/sbin
@@ -79,11 +77,17 @@ paths = [
 ]
 ```
 
+My work machine setup blocks `proxy.golang.org`, so I configure for all modules to be downloaded directly from their source.
+
+```elvish
+E:GONOPROXY = "*"
+```
+
 I have a quick sanity check because sometimes certain paths disappear depending on new versions, etc. This prints a warning when opening a new shell, if there are any non-existing directories in `$paths`. We need some wrapping around `path:eval-symlinks` to avoid seeing warnings when the directory does not exist.
 
 ```elvish
 each [p]{
-  if (not (path:is-dir (or (_ = ?(path:eval-symlinks $p)) $p))) {
+  if (not (path:is-dir &follow-symlink $p)) {
     echo (styled "Warning: directory "$p" in $paths no longer exists." red)
   }
 } $paths
@@ -92,7 +96,7 @@ each [p]{
 
 ## Package installation {#package-installation}
 
-The bundled [epm](https://elvish.io/ref/epm.html) module allows us to install and manage Elvish packages.
+The bundled [epm](https://elv.sh/ref/epm.html) module allows us to install and manage Elvish packages.
 
 ```elvish
 use epm
@@ -195,6 +199,14 @@ lazy-vars:add-var HOMEBREW_GITHUB_API_TOKEN { 1pass:get-password "github api tok
 lazy-vars:add-alias brew [ HOMEBREW_GITHUB_API_TOKEN ]
 ```
 
+Also for my [750words command-line client](https://github.com/zzamboni/750words-client).
+
+```elvish
+E:USER_750WORDS = diego@zzamboni.org
+lazy-vars:add-var PASS_750WORDS { 1pass:get-password "750words.com" }
+lazy-vars:add-alias 750words-client.py [ PASS_750WORDS ]
+```
+
 
 ## Aliases and miscellaneous functions {#aliases-and-miscellaneous-functions}
 
@@ -276,7 +288,21 @@ use github.com/zzamboni/elvish-completions/comp
 
 ## Prompt theme {#prompt-theme}
 
-I use the [chain](https://github.com/zzamboni/theme.elv/blob/master/chain.org) prompt theme, ported from the fish theme at <https://github.com/oh-my-fish/theme-chain>.
+
+### Starship {#starship}
+
+Testing Starship for my prompt.
+
+```elvish
+eval (starship init elvish)
+```
+
+You can find my current Starship config file at <https://gitlab.com/zzamboni/mac-setup/-/blob/master/files/homefiles/.config/starship.toml>.
+
+
+### Chain {#chain}
+
+I use the [chain](https://github.com/zzamboni/theme.elv/blob/master/chain.org) prompt theme, ported from the fish theme at <https://github.com/oh-my-fish/theme-chain> (disabled for now while I test [Starship](https://starship.rs/)).
 
 ```elvish
 use github.com/zzamboni/elvish-themes/chain
@@ -302,7 +328,10 @@ chain:glyph[arrow]  = "|>"
 chain:show-last-chain = $false
 ```
 
-Elvish has a [comprehensive mechanism](https://elvish.io/ref/edit.html#prompts) for displaying prompts with useful information while avoiding getting blocked by prompt functions which take too long to finish. For the most part the defaults work well. One change I like to make is to change the [stale prompt transformer](https://elvish.io/ref/edit.html#stale-prompt) function to make the prompt dim when stale (the default is to show the prompt in inverse video):
+
+### Other prompt settings {#other-prompt-settings}
+
+Elvish has a [comprehensive mechanism](https://elv.sh/ref/edit.html#prompts) for displaying prompts with useful information while avoiding getting blocked by prompt functions which take too long to finish. For the most part the defaults work well. One change I like to make is to change the [stale prompt transformer](https://elv.sh/ref/edit.html#stale-prompt) function to make the prompt dim when stale (the default is to show the prompt in inverse video):
 
 ```elvish
 edit:prompt-stale-transform = [x]{ styled $x "bright-black" }
@@ -452,6 +481,20 @@ use github.com/zzamboni/elvish-modules/tinytex
 ```
 
 
+## Conda integration {#conda-integration}
+
+Conda integration for Elvish. This is not yet in the main Conda distribution, but in a PR: <https://github.com/conda/conda/pull/10731>
+
+The following block will get added to `rc.elv` by `conda init elvish`. Having it tangled out allows me to control where in the file it appears, since Conda only replaces/updates it instead of adding it again.
+
+```elvish
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval (~/Dropbox/Personal/devel/conda/devenv/bin/conda "shell.elvish" "hook" | slurp)
+# <<< conda initialize <<<
+```
+
+
 ## Environment variables {#environment-variables}
 
 Default options to `less`.
@@ -476,6 +519,31 @@ PKG\_CONFIG configuration
 
 ```elvish
 E:PKG_CONFIG_PATH = "/usr/local/opt/icu4c/lib/pkgconfig"
+```
+
+
+## Git repository summary {#git-repository-summary}
+
+The `git-summary` module allows displaying the git status of multiple repositories in a single list. I use it to keep track of the status of my commonly-used repos. I load the module as `gs` to make it easier to call its functions.
+
+```elvish
+use github.com/zzamboni/elvish-modules/git-summary gs
+```
+
+Stop `gitstatusd` from staying in the background, since it's only used for this purpose.
+
+```elvish
+gs:stop-gitstatusd-after-use = $true
+```
+
+Customize the command used for finding git repos for `git-summary:summary-status &all`, to ignore some uninteresting repos. List of directories to exclude is defined in `$git-summary-repos-to-exclude`.
+
+```elvish
+git-summary-repos-to-exclude = ['.emacs.d*' .cargo Library/Caches Dropbox/Personal/devel/go/src]
+git-summary-fd-exclude-opts = [(each [d]{ put -E $d } $git-summary-repos-to-exclude)]
+gs:find-all-user-repos-fn = {
+  fd -H -I -t d $@git-summary-fd-exclude-opts '^.git$' ~ | each $path:dir~
+}
 ```
 
 
@@ -504,7 +572,8 @@ update:check-commit &verbose
 Set up electric delimiters in the command line.
 
 ```elvish
-util:electric-delimiters
+use github.com/zzamboni/elvish-modules/util-edit
+util-edit:electric-delimiters
 ```
 
 ASCII spinners and TTY escape code generation.
@@ -512,16 +581,6 @@ ASCII spinners and TTY escape code generation.
 ```elvish
 use github.com/zzamboni/elvish-modules/spinners
 use github.com/zzamboni/elvish-modules/tty
-```
-
-Customize the command used for finding git repos for `chain:summary-status &all`, to ignore some uninteresting repos. List of directories to exclude is defined in `$chain-repos-to-exclude`.
-
-```elvish
-chain-repos-to-exclude = [.emacs.d/ .emacs.d.mine/quelpa/ Library/Caches Dropbox/Personal/devel/go/src]
-chain-fd-exclude-opts = [(each [d]{ put -E $d } $chain-repos-to-exclude)]
-chain:find-all-user-repos = {
-  fd -H -I -t d $@chain-fd-exclude-opts '^.git$' ~ | each $path:dir~
-}
 ```
 
 

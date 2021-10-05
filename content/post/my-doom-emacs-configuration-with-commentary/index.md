@@ -12,7 +12,7 @@ toc = true
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **April  8, 2021**
+Last update: **October  5, 2021**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -20,7 +20,7 @@ As usual, the post below is included directly from my live [doom.org](https://gi
 
 If you are interested in writing your own Literate Config files, check out my book [Literate Config](https://leanpub.com/lit-config) on Leanpub!
 
-{{< figure src="../../../../../.doom.d/splash/slant_out_purple-small.png" >}}
+{{< figure src="doom-emacs-bw-light.svg" >}}
 
 This is my Doom Emacs configuration. From this org file, all the necessary Doom Emacs config files are generated.
 
@@ -297,7 +297,7 @@ This code is written to the `init.el` to select which modules to load. Written h
  ;;grammar             ; tasing grammar mistake every you make
 
  :tools
- ;;ansible
+ ansible
  debugger              ; FIXME stepping through code, to help you add bugs
  ;;direnv
  ;;docker
@@ -372,7 +372,7 @@ This code is written to the `init.el` to select which modules to load. Written h
  ;;rest                ; Emacs as a REST client
  rst                   ; ReST in peace
  ;;(ruby +rails)       ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
- ;;rust                ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+ rust                  ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
  ;;scala               ; java, but good
  ;;scheme              ; a fully conniving family of lisps
  (sh +lsp)             ; she sells {ba,z,fi}sh shells on the C xor
@@ -410,13 +410,14 @@ My user information.
       user-mail-address "diego@zzamboni.org")
 ```
 
-Change the Mac modifiers to my liking
+Change the Mac modifiers to my liking. I also disable passing Control characters to the system, to avoid that `C-M-space` launches the Character viewer instead of running `mark-sexp`.
 
 ```emacs-lisp
 (cond (IS-MAC
-       (setq mac-command-modifier      'meta
-             mac-option-modifier       'alt
-             mac-right-option-modifier 'alt)))
+       (setq mac-command-modifier       'meta
+             mac-option-modifier        'alt
+             mac-right-option-modifier  'alt
+             mac-pass-control-to-system nil)))
 ```
 
 When at the beginning of the line, make `Ctrl-K` remove the whole line, instead of just emptying it.
@@ -446,6 +447,13 @@ Disable exit confirmation.
 (setq confirm-kill-emacs nil)
 ```
 
+Doom configures `auth-sources` by default to include the Keychain on macOS, but it puts it at the beginning of the list. This causes creation of auth items to fail because the macOS Keychain sources do not support creation yet. I reverse it to leave `~/.authinfo.gpg` at the beginning.
+
+```emacs-lisp
+(after! auth-source
+  (setq auth-sources (nreverse auth-sources)))
+```
+
 
 ### Visual, session and window settings {#visual-session-and-window-settings}
 
@@ -453,9 +461,12 @@ I made a super simple set of Doom-Emacs custom splash screens by combining [a Do
 
 If you want to choose at random among a few different splash images, you can list them in `alternatives`.
 
+You can find other splash images at the [jeetelongname/doom-banners](https://github.com/jeetelongname/doom-banners) GitHub repository.
+
 ```emacs-lisp
-(let ((alternatives '("doom-emacs-flugo-slant_out_purple-small.png")))
-   ;;((alternatives '("doom-emacs-color.png" "doom-emacs-bw-light.svg")))
+(let ((alternatives '("doom-emacs-bw-light.svg"
+                      "doom-emacs-flugo-slant_out_purple-small.png"
+                      "doom-emacs-flugo-slant_out_bw-small.png")))
   (setq fancy-splash-image
         (concat doom-private-dir "splash/"
                 (nth (random (length alternatives)) alternatives))))
@@ -470,15 +481,16 @@ I eliminate all but the first two items in the dashboard menu, since those are t
 Set base and variable-pitch fonts. I currently like [Fira Code](https://github.com/tonsky/FiraCode) and [Alegreya](https://www.huertatipografica.com/en/fonts/alegreya-ht-pro) (another favorite and my previous choice: [ET Book](https://edwardtufte.github.io/et-book/)).
 
 ```emacs-lisp
-(setq doom-font (font-spec :family "Fira Code" :size 18)
+(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 18)
       ;;doom-variable-pitch-font (font-spec :family "ETBembo" :size 18)
       doom-variable-pitch-font (font-spec :family "Alegreya" :size 18))
 ```
 
-Allow mixed fonts in a buffer. This is particularly useful for Org mode, so I can mix source and prose blocks in the same document.
+Allow mixed fonts in a buffer. This is particularly useful for Org mode, so I can mix source and prose blocks in the same document. I also manually enable `solaire-mode` in Org mode as a workaround for font scaling not working properly.
 
 ```emacs-lisp
 (add-hook! 'org-mode-hook #'mixed-pitch-mode)
+(add-hook! 'org-mode-hook #'solaire-mode)
 (setq mixed-pitch-variable-pitch-cursor nil)
 ```
 
@@ -492,9 +504,9 @@ And then from `config.el` we specify the theme to use.
 
 ```emacs-lisp
 (setq doom-theme 'spacemacs-light)
-;;OK (setq doom-theme 'doom-nord-light)
+;;(setq doom-theme 'doom-nord-light) ;;OK
 ;;NO (setq doom-theme 'doom-solarized-light)
-;;MAYBE (setq doom-theme 'doom-one-light)
+;;(setq doom-theme 'doom-one-light) ;;MAYBE
 ;;NO (setq doom-theme 'doom-opera-light)
 ;;NO (setq doom-theme 'doom-tomorrow-day)
 ;;NO (setq doom-theme 'doom-acario-light)
@@ -518,7 +530,8 @@ In my previous configuration, I used to automatically restore the previous sessi
 Maximize the window upon startup.
 
 ```emacs-lisp
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(setq initial-frame-alist '((top . 1) (left . 1) (width . 114) (height . 32)))
+;;(add-to-list 'initial-frame-alist '(maximized))
 ```
 
 Truncate lines in `ivy` childframes. [Thanks Henrik](https://discord.com/channels/406534637242810369/484105925733646336/770756709857755187)! (disabled for now)
@@ -533,6 +546,36 @@ Truncate lines in `ivy` childframes. [Thanks Henrik](https://discord.com/channel
                           (buffer-name buffer-or-name)))
                  t)
             value)))
+```
+
+I like ligatures, but some of the ones that get enabled by the `(ligatures +extra)` module don't work in the font I use, or I don't like them, so I disable them.
+
+```emacs-lisp
+(plist-put! +ligatures-extra-symbols
+  :and           nil
+  :or            nil
+  :for           nil
+  :not           nil
+  :true          nil
+  :false         nil
+  :int           nil
+  :float         nil
+  :str           nil
+  :bool          nil
+  :list          nil
+)
+```
+
+```emacs-lisp
+(let ((ligatures-to-disable '(:true :false :int :float :str :bool :list :and :or :for :not)))
+  (dolist (sym ligatures-to-disable)
+    (plist-put! +ligatures-extra-symbols sym nil)))
+```
+
+Enable showing a word count in the modeline. This is only shown for the modes listed in `doom-modeline-continuous-word-count-modes` (Markdown, GFM and Org by default).
+
+```emacs-lisp
+(setq doom-modeline-enable-word-count t)
 ```
 
 
@@ -716,7 +759,7 @@ Doom's Org module provides a lot of sane configuration settings, so I don't have
 Unpin Org to get around a current bug.
 
 ```emacs-lisp
-(unpin! org-mode)
+;;(unpin! org-mode)
 ```
 
 Default directory for Org files.
@@ -835,11 +878,17 @@ Now I define keybindings to access my commonly-used org files.
 (zz/add-file-keybinding "C-c z d" "~/org/diary.org" "diary.org")
 ```
 
-I'm still trying out `org-roam`, although I have not figured out very well how it works for my setup. For now I configure it to include my whole Org directory.
+I'm still trying out `org-roam`, although I have not figured out very well how it works for my setup.
 
 ```emacs-lisp
-(setq org-roam-directory "/Users/taazadi1/Dropbox/Personal/org-roam/")
+(setq org-roam-directory "~/Dropbox/Personal/org-roam/")
 (setq +org-roam-open-buffer-on-find-file t)
+```
+
+Configure attachments to be stored together with their Org document.
+
+```emacs-lisp
+(setq org-attach-id-dir "attachments/")
 ```
 
 
@@ -971,12 +1020,12 @@ Customize the agenda display to indent todo items by level to show nesting, and 
 
 ```emacs-lisp
 (after! org-agenda
-  (setq org-agenda-prefix-format
-        '((agenda . " %i %-12:c%?-12t% s")
-          ;; Indent todo items by level to show nesting
-          (todo . " %i %-12:c%l")
-          (tags . " %i %-12:c")
-          (search . " %i %-12:c")))
+  ;; (setq org-agenda-prefix-format
+  ;;       '((agenda . " %i %-12:c%?-12t% s")
+  ;;         ;; Indent todo items by level to show nesting
+  ;;         (todo . " %i %-12:c%l")
+  ;;         (tags . " %i %-12:c")
+  ;;        (search . " %i %-12:c")))
   (setq org-agenda-include-diary t))
 ```
 
@@ -1120,7 +1169,15 @@ I set up an advice before `org-capture` to make sure `org-gtd` and `org-capture`
 
 I use `ox-awesomecv` from [Org-CV](https://titan-c.gitlab.io/org-cv/), to export my [Curriculum Vit&aelig;](https://github.com/zzamboni/vita/).
 
-My `ox-awesomecv` package is [not yet merged](https://gitlab.com/Titan-C/org-cv/-/merge%5Frequests/3) into the main Org-CV distribution, so I install from my local repo for now.
+Org-CV is not yet in MELPA, so I install from its repository.
+
+```emacs-lisp
+(package! org-cv
+  :recipe (:host gitlab
+           :repo "Titan-C/org-cv"))
+```
+
+For when I do development on it (I wrote the `ox-awesomecv` exporter), I check it out from my local repo - this is normally disabled.
 
 ```emacs-lisp
 (package! org-cv
@@ -1443,18 +1500,15 @@ This function returns a list of all the headings in the given file which have th
 
 ```emacs-lisp
 (defun zz/headings-with-tags (file tags)
-  (let ((headings (org-ql-select file
-                    `(tags-local ,@tags))))
-    (mapconcat
-     (lambda (l) (format "- %s" l))
-     (mapcar
-      (lambda (h)
-        (let ((title (car (org-element-property :title h))))
-          (org-link-make-string
-           (format "file:%s::*%s"
-                   file title)
-           title)))
-      headings) "\n")))
+  (string-join
+   (org-ql-select file
+     `(tags-local ,@tags)
+     :action '(let ((title (org-get-heading 'no-tags 'no-todo)))
+                (concat "- "
+                        (org-link-make-string
+                         (format "file:%s::*%s" file title)
+                         title))))
+   "\n"))
 ```
 
 This function returns a list of all the headings in the given file which match the tags of the current heading.
@@ -1523,6 +1577,12 @@ Some other languages I use.
     (package! ob-elvish)
     ```
 
+-   Fish shell.
+
+    ```emacs-lisp
+    (package! fish-mode)
+    ```
+
 -   [CFEngine](http://cfengine.com/) policy files. The `cfengine3-mode` package is included with Emacs, but I also install org-babel support.
 
     ```emacs-lisp
@@ -1560,6 +1620,27 @@ Some other languages I use.
 
 
 ## Other tools {#other-tools}
+
+
+### Miscellaneous packages {#miscellaneous-packages}
+
+-   [Dockerfile mode](https://github.com/spotify/dockerfile-mode):
+
+    ```emacs-lisp
+    (package! dockerfile-mode)
+    ```
+
+    ```emacs-lisp
+    (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+    (put 'dockerfile-image-name 'safe-local-variable #'stringp)
+    ```
+
+This prevents the `docker` command from producing ANSI sequences during the image build process, which results in a more readable output in the compilation buffer. From <https://emacs.stackexchange.com/a/55340/11843>:
+
+```emacs-lisp
+(defun plain-pipe-for-process () (setq-local process-connection-type nil))
+(add-hook 'compilation-mode-hook 'plain-pipe-for-process)
+```
 
 -   Use Emacs [Everywhere](https://github.com/tecosaur/emacs-everywhere)!
 
@@ -1599,10 +1680,8 @@ Some other languages I use.
 
     ```emacs-lisp
     (after! epa
-      (set (if EMACS27+
-               'epg-pinentry-mode
-             'epa-pinentry-mode) ; DEPRECATED `epa-pinentry-mode'
-           nil))
+      (set 'epg-pinentry-mode nil)
+      (setq epa-file-encrypt-to '("diego@zzamboni.org")))
     ```
 
 -   I find `iedit` absolutely indispensable when coding. In short: when you hit `Ctrl-;`, all occurrences of the symbol under the cursor (or the current selection) are highlighted, and any changes you make on one of them will be automatically applied to all others. It's great for renaming variables in code, but it needs to be used with care, as it has no idea of semantics, it's  a plain string replacement, so it can inadvertently modify unintended parts of the code.
@@ -1661,6 +1740,25 @@ Some other languages I use.
     ```emacs-lisp
     (package! gift-mode)
     ```
+
+
+### Posting to 750words.com {#posting-to-750words-dot-com}
+
+I use [750words.com](https://750words.com/) for recording some writing every day (1464-day streak as of this writing!). I wrote [750words-client](https://github.com/zzamboni/750words-client/) to allow posting my words from the command line, and the code below integrates this into Emacs, so I can post text directly from the current buffer.
+
+```emacs-lisp
+(package! 750words
+  :recipe (:host github
+           :repo "zzamboni/750words-client"
+           :files ("*.el")))
+;;(package! 750words
+;;  :recipe (:local-repo ;;"~/Dropbox/Personal/devel/750words-client"))
+```
+
+```emacs-lisp
+(use-package! 750words)
+(use-package! ox-750words)
+```
 
 
 ## Experiments {#experiments}

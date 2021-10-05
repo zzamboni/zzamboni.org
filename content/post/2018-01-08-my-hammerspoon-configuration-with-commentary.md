@@ -13,7 +13,7 @@ featured_image = "/images/hammerspoon.jpg"
 {{< leanpubbook book="lit-config" style="float:right" >}}
 {{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
 
-Last update: **April  8, 2021**
+Last update: **October  5, 2021**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -86,8 +86,8 @@ Install=spoon.SpoonInstall
 I'm currently working on a new [BetterTouchTool.spoon](https://github.com/zzamboni/Spoons/tree/spoon/BetterTouchTool/Source/BetterTouchTool.spoon) which provides integration with the [BetterTouchTool AppleScript API](https://docs.bettertouchtool.net/docs/apple%5Fscript.html). This is in heavy development! See the configuration for the Hammer spoon in [System and UI](#system-and-ui) for an example of how to use it.
 
 ```lua
-Install:andUse("BetterTouchTool", { loglevel = 'debug' })
-BTT = spoon.BetterTouchTool
+-- Install:andUse("BetterTouchTool", { loglevel = 'debug' })
+-- BTT = spoon.BetterTouchTool
 ```
 
 
@@ -211,7 +211,8 @@ Install:andUse("UniversalArchive",
                {
                  config = {
                    evernote_archive_notebook = ".Archive",
-                   archive_notifications = false
+                   archive_notifications = false,
+                   outlook_archive_folder = "Archive (dzamboni@amazon.ch)"
                  },
                  hotkeys = { archive = { { "ctrl", "cmd" }, "a" } }
                }
@@ -355,7 +356,7 @@ Install:andUse("Hammer",
                    config_reload = {hyper, "r"},
                    toggle_console = {hyper, "y"}
                  },
-                 fn = BTT_restart_Hammerspoon,
+--                 fn = BTT_restart_Hammerspoon,
                  start = true
                }
 )
@@ -404,7 +405,7 @@ Install:andUse("Caffeine", {
                  hotkeys = {
                    toggle = { hyper, "1" }
                  },
-                 fn = BTT_caffeine_widget,
+--                 fn = BTT_caffeine_widget,
 })
 ```
 
@@ -552,6 +553,7 @@ The `EjectMenu` spoon automatically ejects all external disks before the system 
 Install:andUse("EjectMenu", {
                  config = {
                    eject_on_lid_close = false,
+                   eject_on_sleep = false,
                    show_in_menubar = true,
                    notify = true,
                  },
@@ -584,7 +586,7 @@ We start by loading the spoon, and specifying which plugins we want.
 ```lua
 Install:andUse("Seal",
                {
-                 hotkeys = { show = { {"cmd"}, "space" } },
+                 hotkeys = { show = { {"alt"}, "space" } },
                  fn = function(s)
                    s:loadPlugins({"apps", "calc", "safari_bookmarks",
                                   "screencapture", "useractions"})
@@ -814,6 +816,7 @@ Install:andUse("Leanpub",
                    books_sync_to_dropbox = true,
                  },
                  start = true,
+                 disable = true
 })
 ```
 

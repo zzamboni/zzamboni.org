@@ -8,8 +8,6 @@ weight = 5
 featured_image = "/images/phone-booth-red-trimmed.jpg"
 +++
 
-If you have any questions, comments or feedback about this site, please use the form below to send me a message.
+I have decided to close the comments form that used to be here, because the only messages I ever got through it were spam.
 
-----
-
-{{< form-contact-netlify >}}
+If you want to reach me, please use your imagination (I'm not hard to find) or follow some of the social media icons above.

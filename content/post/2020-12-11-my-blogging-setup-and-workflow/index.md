@@ -86,7 +86,7 @@ My repository contains a `netlify.toml` file which is used to configure some Hug
 ```toml
 [build.environment]
   HUGO_ENV = "production"
-  HUGO_VERSION = "0.81.0"
+  HUGO_VERSION = "0.83.1"
 ```
 
 I also keep an [Elvish](/tags/elvish/) script for automatically updating this file to the version of Hugo currently installed on my laptop. Whenever I update Hugo locally, I test my website using `hugo server`, and then run this to instruct Netlify to upgrade to the latest version as well:
