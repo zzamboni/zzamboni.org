@@ -69,6 +69,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
   - [[#security-][Security 🔐]]
     - [[#new-course-cissp-training][New course: CISSP Training]]
   - [[#other][Other]]
+    - [[#watching-sky-show-in-the-fire-tv-stick][Watching Sky Show in the Fire TV Stick]]
     - [[#my-blogging-setup-with-emacs-org-mode-ox-hugo-hugo-gitlab-and-netlify][My blogging setup with Emacs, Org mode, ox-hugo, Hugo, GitLab and Netlify]]
     - [[#new-release-of-publishing-with-emacs-org-mode-and-leanpub][New release of /Publishing with Emacs, Org-mode and Leanpub/]]
     - [[#new-book-publishing-with-emacs-org-mode-and-leanpub][New book: Publishing with Emacs, Org-mode and Leanpub]]
@@ -2283,6 +2284,17 @@ If you are thinking of, or already preparing for, taking the CISSP exam, I am su
 
 
 ** Other
+*** TODO Watching Sky Show in the Fire TV Stick :firetv:sky:streaming:howto:tips:
+:PROPERTIES:
+:export_hugo_bundle: 2023-03-25-watching-sky-show-firetv-stick
+:export_file_name: index
+:export_hugo_custom_front_matter:
+:END:
+#+begin_description
+I recently bought a Fire TV Stick 4K Max, and I'm very happy with it. The only downside was that the application for Sky Show is not available in the Fire Appstore, and it was not immediately possible to install it from other sources. Here is how I managed to install and use it.
+#+end_description
+
+I recently bought a [[https://www.amazon.de/-/en/fire-tv-stick-4k-max-international-version-streaming-device-wi-fi-6-alexa-voice-remote/dp/B08XY388HX/][Fire TV Stick 4K Max]], and I'm very happy with it. At home we subscribe to several streaming services, includingThe only downside was that the application for Sky Show is not available in the Fire Appstore, and it was not immediately possible to install it from other sources. Here is how I managed to install and use it.
 
 *** DONE My blogging setup with Emacs, Org mode, ox-hugo, Hugo, GitLab and Netlify :blogging:howto:emacs:hugo:orgmode:gitlab:netlify:
 CLOSED: [2020-12-11 Fri 00:27]
