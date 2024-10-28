@@ -5,7 +5,7 @@ summary = "In this second article about Hammerspoon, we look into _Spoons_, modu
 date = 2017-09-01T17:55:00+02:00
 tags = ["hammerspoon", "mac", "howto", "spoons"]
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 toc = true
 featured_image = "/images/hammerspoon.jpg"
 +++
@@ -88,7 +88,6 @@ Most spoons are structured like this: you can set up hotkeys to trigger the main
 ```
 
 {{% tip %}}
-
 Lua does not include a function to easily get the keys of a table so you have to use the [`pairs()`](https://www.lua.org/manual/5.3/manual.html#pdf-pairs) function to loop over the key/value pairs of the table. The [`hs.inspect`](https://www.hammerspoon.org/docs/hs.inspect) function is convenient, but to get just the list of tables and the color names, without the color definitions themselves, you can use the following code (if you type this in the console you have to type it all in a single line -- and beware, the output is a long list):
 
 ```lua
@@ -99,7 +98,6 @@ Lua does not include a function to easily get the keys of a table so you have to
     end
   end
 ```
-
 {{% /tip %}}
 
 If we wanted to make the circle green, we can assign the configuration value like this:
@@ -111,7 +109,6 @@ If we wanted to make the circle green, we can assign the configuration value lik
 The next time you invoke the `show()` method, either directly or through the hotkey, you will see the circle in the new color.
 
 {{% tip %}}
-
 (We will look at this in more detail in a future installment about Lua, but in case you were wondering...)
 
 You may have noticed that the configuration variable was accessed with a dot (`spoon.MouseCircle.color`), and we also used it for some function calls earlier (e.g. [`hs.notify.show`](https://www.hammerspoon.org/docs/hs.notify#show), whereas for the `show()` method we used a colon (`spoon.MouseCircle:show()`). The latter is Lua's object-method-call notation, and its effect is to pass the object on which the method is being called as an implicit first argument called `self`. This is simply a syntactic shortcut, i.e. the following two are equivalent:
@@ -144,7 +141,6 @@ Alternatively, you can use the [`hs.fnutils.partial`](https://www.hammerspoon.or
 ```
 
 This is more verbose than the previous example, but the technique can be useful sometimes. Although Lua is not a full functional language, it supports using functions as first-class values, and the [`hs.fnutils`](https://www.hammerspoon.org/docs/hs.fnutils) extension includes a number of functions that make it easy to use them.
-
 {{% /tip %}}
 
 By now you know enough to use spoons with Hammerspoon's native capabilities: [look for the ones you want](http://www.hammerspoon.org/Spoons/), download and install them by hand, and configure them in your `init.lua` using their configuration variables and API. In the next sections you will learn more about the minimum API of spoons, and how to install and configure spoons in a more automated way.
@@ -191,7 +187,6 @@ If there is nothing to configure in the spoon, `spoon.SpoonInstall:andUse("SomeS
 -   `start` is a boolean value which indicates whether to call the Spoon's `start()` method (if it has one) after configuring everything else.
 
 -   `fn` specifies a function which will be called with the freshly-loaded Spoon object as its first argument. This can be used to execute other startup or configuration actions that are not covered by the other attributes. For example, if you use the [Seal](http://www.hammerspoon.org/Spoons/Seal) spoon (a configurable launcher), you need to call its `loadPlugins()` method to specify which Seal plugins to use. You can achieve this with something like this:
-
     ```lua
           spoon.SpoonInstall:andUse("Seal",
             { hotkeys = { show = { {"cmd"}, "space" } },
@@ -207,7 +202,6 @@ If there is nothing to configure in the spoon, `spoon.SpoonInstall:andUse("SomeS
 -   `disable` can be set to `true` to disable the Spoon (easier than commenting it out when you want to temporarily disable a spoon) in your configuration.
 
 {{% tip %}}
-
 You can assign functions and modules to variables to improve readability of your code. For example, in my `init.lua` file I make the following assignment:
 
 ```lua
@@ -215,7 +209,6 @@ You can assign functions and modules to variables to improve readability of your
 ```
 
 Which allows me to write `Install:andUse("MouseCircle", …​ )`, which is shorter and easier to read.
-
 {{% /tip %}}
 
 

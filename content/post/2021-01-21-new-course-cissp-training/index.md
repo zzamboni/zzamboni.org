@@ -3,12 +3,12 @@ title = "New course: CISSP Training"
 author = ["Diego Zamboni"]
 date = 2021-01-21T00:16:00+01:00
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 toc = false
 featured_image = "/images/cissp-training-cover.jpg"
 +++
 
-{{< leanpubbook book="courses/leanpub/cissp-training" style="float:right"  height="400" >}}
+{{< leanpubbook book="courses/leanpub/cissp-training" style="float:right" height="400" >}}
 
 I am happy to finally reveal a project I've been working on for some time: my new online course [_CISSP Training_](https://leanpub.com/c/cissp-training), now available on Leanpub.
 

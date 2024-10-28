@@ -1,16 +1,18 @@
 +++
 title = "New release of Publishing with Emacs, Org-mode and Leanpub"
 author = ["Diego Zamboni"]
-summary = "A new release of my book \"Publishing with Emacs, Org-mode and Leanpub\" is out! With a lot of new information and other improvements. Learn how to use powerful tools and workflows to easily publish your words."
+summary = """
+  A new release of my book "Publishing with Emacs, Org-mode and Leanpub" is out! With a lot of new information and other improvements. Learn how to use powerful tools and workflows to easily publish your words.
+  """
 date = 2020-12-04T10:22:00+01:00
 tags = ["books", "leanpub", "publishing", "writing", "emacs", "orgmode"]
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 toc = false
 featured_image = "/images/emacs-org-leanpub-cover.jpg"
 +++
 
-{{< leanpubbook book="emacs-org-leanpub" style="float:right"  height="430" >}}
+{{< leanpubbook book="emacs-org-leanpub" style="float:right" height="430" >}}
 
 A new release of _Publishing with Emacs, Org-mode and Leanpub_ is out!
 

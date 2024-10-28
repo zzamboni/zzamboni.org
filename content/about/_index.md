@@ -3,7 +3,7 @@ title = "About"
 author = ["Diego Zamboni"]
 date = 2018-03-22T19:40:00+01:00
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 weight = 6
 featured_image = "/images/legoland.jpg"
 +++
@@ -13,7 +13,7 @@ featured_image = "/images/legoland.jpg"
 
 
 **What:**
-: I work as _Global Security Architect_ at [AWS](https://aws.amazon.com/). I am also the author of ["Learning CFEngine"](http://cf-learn.info), ["Learning Hammerspoon"](https://leanpub.com/learning-hammerspoon) and a few [other books](https://leanpub.com/u/zzamboni).
+: I currently am the _Governance CISO_ at [Avaloq](https://avaloq.com/). Previously I worked as _Global Security Architect_ at [AWS](https://aws.amazon.com/). I am also the author of ["Learning CFEngine"](http://cf-learn.info), ["Learning Hammerspoon"](https://leanpub.com/learning-hammerspoon) and a few [other books](https://leanpub.com/u/zzamboni).
 
 
 **Where:**

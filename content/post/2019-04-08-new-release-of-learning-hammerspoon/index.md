@@ -1,11 +1,15 @@
 +++
-title = "New release of \"Learning Hammerspoon\" is out!"
+title = """
+  New release of "Learning Hammerspoon" is out!
+  """
 author = ["Diego Zamboni"]
-summary = "I am happy to announce a new release of my new book \"Learning Hammerspoon\", including a brand new chapter and many other improvements."
+summary = """
+  I am happy to announce a new release of my new book "Learning Hammerspoon", including a brand new chapter and many other improvements.
+  """
 date = 2019-04-08T09:51:00+02:00
 tags = ["hammerspoon", "mac", "howto", "books", "announcements"]
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 toc = false
 featured_image = "/images/learning-hs-cover.jpg"
 +++

@@ -5,7 +5,7 @@ summary = "I'm always on the lookout for new toys, particularly if they make my 
 date = 2017-09-14T15:00:00+02:00
 tags = ["elvish", "shell", "unix", "tips"]
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 featured_image = "/images/elvish-logo.svg"
 +++
 
@@ -31,6 +31,6 @@ Of course, Elvish is not without its quirks and drawbacks. None of these has bee
 -   The data/byte separation is not fully clear (at least to me) yet.  Sometimes the data stream can be interpreted as bytes as well, sometimes it does not. The language is still evolving, so I am sure this will become clearer in the future.  (_2019/06/12 update: this is just a matter of getting used to it_)
 -   There is not yet a large body of code/scripts you can use. This is very noticeable in completions---while Elvish supports completions, there are very few implementations. Coming from [Fish](https://fishshell.com/), which has an [impressive library of custom completions](https://github.com/fish-shell/fish-shell/tree/master/share/completions) out-of-the-box, this lack is very noticeable, particularly with complex commands like `git`. (_2019/06/12 update: there is still not as much as for Fish or other shells, but steadily increasing. See [Awesome Elvish](https://github.com/elves/awesome-elvish) for a list_)
 
-I am very happy with Elvish, and if you are interested in this sort of thing, I encourage you to take a look. If you need a starting point, you can use [my configuration files](https://github.com/zzamboni/vcsh%5Felvish/tree/master/.elvish/) at as an example of the kind of things you can do with it.
+I am very happy with Elvish, and if you are interested in this sort of thing, I encourage you to take a look. If you need a starting point, you can use [my configuration files](https://github.com/zzamboni/vcsh_elvish/tree/master/.elvish/) at as an example of the kind of things you can do with it.
 
 I will post more Elvish tips and tricks over time.

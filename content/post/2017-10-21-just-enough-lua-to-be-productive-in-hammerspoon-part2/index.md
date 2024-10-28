@@ -1,11 +1,13 @@
 +++
 title = "Just Enough Lua to Be Productive in Hammerspoon, Part 2"
 author = ["Diego Zamboni"]
-summary = "In this second article of the \"Just Enough Lua\" series, we dive into Lua's types and data structures."
+summary = """
+  In this second article of the "Just Enough Lua" series, we dive into Lua's types and data structures.
+  """
 date = 2017-11-01T08:16:00+01:00
 tags = ["hammerspoon", "mac", "howto", "lua"]
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 toc = true
 featured_image = "/images/lua-logo.svg"
 +++
@@ -127,14 +129,12 @@ The [`pairs()`](https://www.lua.org/manual/5.3/manual.html#pdf-pairs) function, 
 The built-in [table](https://www.lua.org/manual/5.3/manual.html#6.6) module includes a number of useful table-manipulation functions, including the following:
 
 -   [`table.concat()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.concat) for joining the values of a list in a single string (equivalent to `join` in other languages). This only joins the elements that would be returned by [`ipairs()`](https://www.lua.org/manual/5.3/manual.html#pdf-ipairs).
-
     ```lua
           > table.concat(people, ", ")
           Chris, Aaron, Diego, John
     ```
 
 -   [`table.insert()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.insert) adds an element to a list, by default adding it to the end.
-
     ```lua
           > hs.inspect(people)
           { "Chris", "Aaron", "Diego", "John", "Bill",
@@ -144,11 +144,9 @@ The built-in [table](https://www.lua.org/manual/5.3/manual.html#6.6) module incl
           > hs.inspect(people)
           { "Chris", "Aaron", "Diego", "John", "Bill", "George", "Mike" }
     ```
-
     Note how in the last example, the contiguous indices have finally caught up to 7, so the last element is no longer shown separately (and will now be included by [`ipairs()`](https://www.lua.org/manual/5.3/manual.html#pdf-ipairs), [`table.concat()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.concat), etc.
 
 -   [`table.remove()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.remove) removes an element from a list, by default the last one. It returns the removed element.
-
     ```lua
           > for i=1,4 do print(table.remove(people)) end
           Mike
@@ -292,7 +290,6 @@ The argument of the [`require()`](https://www.lua.org/manual/5.3/manual.html#pdf
 ```
 
 {{% tip %}}
-
 Hammerspoon automatically loads any modules under the `hs` namespace the first time you use them. For example, when you use [`hs.application`](https://www.hammerspoon.org/docs/hs.application) for the first time, you will see a message in the console:
 
 ```lua
@@ -310,7 +307,6 @@ If you want to avoid these messages, you need to explicitly load the modules and
 ```
 
 This avoids the console message and has the additional benefit of allowing you to use `app` (you can use whatever variable you want) instead of typing `hs.application` in your code. This is a matter of taste---I usually prefer to have the full descriptive names (makes the code easier to read), but when dealing with some of the longer module names (e.g. [`hs.distributednotifications`](https://www.hammerspoon.org/docs/hs.distributednotifications)), this technique can be useful.
-
 {{% /tip %}}
 
 
@@ -351,7 +347,6 @@ Lua includes the [string](https://www.lua.org/manual/5.3/manual.html#6.4) librar
 You can find the full documentation in the [Lua reference manual](https://www.lua.org/manual/5.3/manual.html#6.4) and many other examples in the [Lua-users wiki String Library Tutorial](http://lua-users.org/wiki/StringLibraryTutorial). The following is a partial list of some of the functions I have found most useful:
 
 -   [`string.find(str, pat, pos, plain)`](https://www.lua.org/manual/5.3/manual.html#pdf-string.find) finds the pattern within the string. By default the search starts at the beginning of the string, but can be modified with the `pos` argument (index starts at 1, as with the tables). By default `pat` is intepreted as a Lua pattern, but this can be disabled by passing `plain` as a true value. If the pattern is not found, returns `nil`.  If the pattern is found, the function returns the start and end position of the pattern within the string. Furthermore, if the pattern contains parenthesis capture groups, all groups are returned as well.  For example:
-
     ```lua
           > string.find("bah", "ah")
           2   3
@@ -363,40 +358,36 @@ You can find the full documentation in the [Lua reference manual](https://www.lu
           > p1,p2,g1,g2
           1   3   b   ah
     ```
-
     Note that the return value is not a table, but rather multiple values, as shown in the last example.
 
     {{% tip %}}
+    It can sometimes be convenient to handle multiple values as a table or as separate entities, depending on the circumstances. For example, you may have a programmatically-constructed pattern with a variable number of capture groups, so you cannot know to how many variables you need to assign the result. In this case, the [`table.pack()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.pack) and [`table.unpack()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.unpack) functions can be useful.
 
-It can sometimes be convenient to handle multiple values as a table or as separate entities, depending on the circumstances. For example, you may have a programmatically-constructed pattern with a variable number of capture groups, so you cannot know to how many variables you need to assign the result. In this case, the [`table.pack()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.pack) and [`table.unpack()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.unpack) functions can be useful.
+    [`table.pack()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.pack) takes a variable number of arguments and returns them in a table which contains an array component containing the values, plus an index `n` containing the total number of elements:
 
-[`table.pack()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.pack) takes a variable number of arguments and returns them in a table which contains an array component containing the values, plus an index `n` containing the total number of elements:
+    ```lua
+        > res = table.pack(string.find("bah", "(b)(ah)"))
+        > res
+        table: 0x608000c76e80
+        > hs.inspect(res)
+        { 1, 3, "b", "ah",
+          n = 4
+        }
+    ```
 
-```lua
-  > res = table.pack(string.find("bah", "(b)(ah)"))
-  > res
-  table: 0x608000c76e80
-  > hs.inspect(res)
-  { 1, 3, "b", "ah",
-    n = 4
-  }
-```
+    [`table.unpack()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.unpack) does the opposite, expanding an array into separate values which can be assigned to separate values as needed, or passed as arguments to a function:
 
-[`table.unpack()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.unpack) does the opposite, expanding an array into separate values which can be assigned to separate values as needed, or passed as arguments to a function:
-
-```lua
-  > args={"bah", "(b)(ah)"}
-  > string.find(args)
-  [string "return string.find(args)"]:1:
-    bad argument #1 to 'find' (string expected, got table)
-  > string.find(table.unpack(args))
-  1   3   b   ah
-```
-
-{{% /tip %}}
+    ```lua
+        > args={"bah", "(b)(ah)"}
+        > string.find(args)
+        [string "return string.find(args)"]:1:
+          bad argument #1 to 'find' (string expected, got table)
+        > string.find(table.unpack(args))
+        1   3   b   ah
+    ```
+    {{% /tip %}}
 
 -   [`string.match(str, pat, pos)`](https://www.lua.org/manual/5.3/manual.html#pdf-string.match) is similar to `string.find`, but it does not return the positions, rather it returns the part of the string matched by the pattern, or if the pattern contains capture groups, returns the captured segments:
-
     ```lua
           > string.match("bah", "ah")
           ah
@@ -407,7 +398,6 @@ It can sometimes be convenient to handle multiple values as a table or as separa
     ```
 
 -   [`string.gmatch(str, pat)`](https://www.lua.org/manual/5.3/manual.html#pdf-string.gmatch) returns a function that returns the next match of `pat` within `str` every time it is called, returning `nil` when there are no more matches. If `pat` contains capture groups, they are returned on each iteration.
-
     ```lua
           > a="Hammerspoon is awesome!"
           > f=string.gmatch(a, "(%w+)")
@@ -419,9 +409,7 @@ It can sometimes be convenient to handle multiple values as a table or as separa
           awesome
           > f()
     ```
-
     Most commonly, this is used inside a loop:
-
     ```lua
           > for cap in string.gmatch(a, "%w+") do print(cap) end
           Hammerspoon
@@ -440,7 +428,6 @@ It can sometimes be convenient to handle multiple values as a table or as separa
     -   A string which is used for the replacement. If the string contains _%m_, where _m_ is a number, the it is replaced by the m-th captured group (or the whole match if _m_ is zero).
 
     -   A table which is consulted for the replacement values, using the first capture group as a key (or the whole match if there are no captures). For example:
-
         ```lua
                   > a="Event type codes: leftMouseDown=$leftMouseDown, rightMouseDown=$rightMouseDown, mouseMoved=$mouseMoved"
                   > a:gsub("%$(%w+)", hs.eventtap.event.types)
@@ -448,7 +435,6 @@ It can sometimes be convenient to handle multiple values as a table or as separa
         ```
 
     -   A function which is executed with the captured groups (or the whole match) as an argument, and whose return value is used as the replacement. For example, using the `os.getenv` function, we can easily replace environment variables by their values in a string:
-
         ```lua
                   > a="Hello $USER, your home directory is $HOME"
                   > a:gsub("%$(%w+)", os.getenv)
@@ -456,7 +442,6 @@ It can sometimes be convenient to handle multiple values as a table or as separa
         ```
 
     Note that `gsub` returns the modified string as its first return value, and the number of replacements it made as the second (`2` in the example above). If you don't need the number, you can simply ignore it (you don't even need to assign it). Also note that `gsub` does not modify the original string, only returns a copy with the changes:
-
     ```lua
           > b = a:gsub("%$(%w+)", os.getenv)
           > b

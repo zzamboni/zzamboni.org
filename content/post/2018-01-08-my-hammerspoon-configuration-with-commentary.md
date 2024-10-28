@@ -5,15 +5,16 @@ summary = "In my ongoing series of literate config files, I present to you my Ha
 date = 2018-01-08T13:31:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "hammerspoon"]
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 toc = true
 featured_image = "/images/hammerspoon.jpg"
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
+
 {{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
 
-Last update: **October  5, 2021**
+Last update: **October 28, 2024**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -83,7 +84,7 @@ Install=spoon.SpoonInstall
 
 ## BetterTouchTool integration (experimental) {#bettertouchtool-integration--experimental}
 
-I'm currently working on a new [BetterTouchTool.spoon](https://github.com/zzamboni/Spoons/tree/spoon/BetterTouchTool/Source/BetterTouchTool.spoon) which provides integration with the [BetterTouchTool AppleScript API](https://docs.bettertouchtool.net/docs/apple%5Fscript.html). This is in heavy development! See the configuration for the Hammer spoon in [System and UI](#system-and-ui) for an example of how to use it.
+I'm currently working on a new [BetterTouchTool.spoon](https://github.com/zzamboni/Spoons/tree/spoon/BetterTouchTool/Source/BetterTouchTool.spoon) which provides integration with the [BetterTouchTool AppleScript API](https://docs.bettertouchtool.net/docs/apple_script.html). This is in heavy development! See the configuration for the Hammer spoon in [System and UI](#system-and-ui) for an example of how to use it.
 
 ```lua
 -- Install:andUse("BetterTouchTool", { loglevel = 'debug' })
@@ -93,52 +94,114 @@ I'm currently working on a new [BetterTouchTool.spoon](https://github.com/zzambo
 
 ## URL dispatching to site-specific browsers {#url-dispatching-to-site-specific-browsers}
 
-The [URLDispatcher](http://www.hammerspoon.org/Spoons/URLDispatcher.html) spoon makes it possible to open URLs with different browsers. I have created different site-specific browsers using [Epichrome](https://github.com/dmarmor/epichrome), which allows me to keep site-specific bookmarks, search settings, etc. I also use Edge as my work browser (since it integrated with my work account), while using Brave for everything else. I also use the `url_redir_decoders` parameter to rewrite some URLs before they are opened, both to redirect certain URLs directly to their corresponding applications (instead of going through the web browser) and to fix a bug I have experienced in opening URLs from PDF documents using Preview.
+The [URLDispatcher](http://www.hammerspoon.org/Spoons/URLDispatcher.html) spoon makes it possible to open URLs with different browsers. Currently I use the following:
 
-The `URLDispatcher` spoon requires application IDs, which may change from time to time (e.g. in a recent Epichrome update all its apps changed IDs, which broke the dispatching until I figured it out), so I define a function which gets the path of the application and returns its ID.
+-   Different Chrome profiles for various work-related purposes (e.g. one profile for each of my customers, another one for internal sites), which allows me to keep site-specific bookmarks, search settings, etc.;
+-   Brave for non-work browsing. I also use the `url_redir_decoders` parameter to rewrite some URLs before they are opened, both to redirect certain URLs directly to their corresponding applications (instead of going through the web browser) and to fix a bug I have experienced in opening URLs from PDF documents using Preview.
+
+The `URLDispatcher` spoon requires application IDs, so I define a function which gets the path of the application and returns its ID.
 
 ```lua
+-- Returns the bundle ID of an application, given its path.
 function appID(app)
-  return hs.application.infoForBundlePath(app)['CFBundleIdentifier']
+  if hs.application.infoForBundlePath(app) then
+    return hs.application.infoForBundlePath(app)['CFBundleIdentifier']
+  end
 end
 ```
 
+The `chromeProfile` function returns a function which opens a URL with the given Chrome Profile, and which can be used directly as the value in the `url_patterns` parameter below.
+
 ```lua
-chromeBrowser = appID('/Applications/Google Chrome.app')
-edgeBrowser = appID('/Applications/Microsoft Edge.app')
-braveBrowser = appID('/Applications/Brave Browser Dev.app')
+-- Returns a function that takes a URL and opens it in the given Chrome profile
+-- Note: the value of `profile` must be the name of the profile directory under
+-- ~/Library/Application Support/Google/Chrome/
+function chromeProfile(profile)
+  return function(url)
+    hs.task.new("/usr/bin/open", nil, { "-n",
+                                        "-a", "Google Chrome",
+                                        "--args",
+                                        "--profile-directory="..profile,
+                                        url }):start()
+  end
+end
+```
 
-DefaultBrowser = braveBrowser
-WorkBrowser = edgeBrowser
+First I define variables containing the application IDs of the various applications that might be used to open URLs (not all of these are currently used, but I leave them here for convenience).
 
-JiraApp = appID('~/Applications/Epichrome SSBs/Jira.app')
-WikiApp = appID('~/Applications/Epichrome SSBs/Wiki.app')
-OpsGenieApp = WorkBrowser
+```lua
+-- Define the IDs of the various applications used to open URLs
+chromeBrowser  = appID('/Applications/Google Chrome.app')
+braveBrowser   = appID('/Applications/Brave Browser.app')
+safariBrowser  = appID('/Applications/Safari.app')
+firefoxBrowser = appID('/Applications/Firefox.app')
+arcBrowser     = appID('/Applications/Arc.app')
+teamsApp       = appID('/Applications/Microsoft Teams.app')
+quipApp        = appID('/Applications/Quip.app')
+chimeApp       = appID('/Applications/Amazon Chime.app')
+```
 
+The `browsers` array stores the browsers used for different sets of URLs. I store them here mostly for readability and convenience, I can then refer to things like `browsers.work` in the configuration below.
+
+```lua
+-- Define my default browsers for various purposes
+browsers = {
+  default    = arcBrowser,
+  awsConsole = firefoxBrowser,
+  work       = chromeProfile("Default"),
+  customer1  = chromeProfile("Profile 1")
+}
+```
+
+Similarly, I store in an array the paths (relative to `~/.hammerspoon`) of the files in which I store the lists of URLs to be opened by different browsers. This avoids having to include (potentially private or sensitive) URLs in my public configuration file. Since URLDispatcher automatically reloads the files when they are updated, this also makes it possible to update the lists without restarting Hammerspoon every time.
+
+```lua
+-- Read URL patterns from text files
+URLfiles = {
+  work      = "local/work_urls.txt",
+  customer1 = "local/customer1_urls.txt"
+}
+```
+
+Finally, I load and configure URLDispatcher.
+
+```lua
 Install:andUse("URLDispatcher",
                {
                  config = {
+                   default_handler = browsers.default,
                    url_patterns = {
-                     { "https?://jira%.work%.com",      JiraApp },
-                     { "https?://wiki%.work%.com",      WikiApp },
-                     { "https?://app.*%.opsgenie%.com", OpsGenieApp },
-                     { "msteams:",                      "com.microsoft.teams" },
-                     { "https?://.*%.work%.com",        WorkBrowser }
+                     -- URLs that get redirected to applications
+                     { "https://quip%-amazon%.com/"      , quipApp },
+                     { "https://teams%.microsoft%.com/"  , teamsApp },
+                     { "chime://"                        , chimeApp },
+                     -- Customer-specific URLs open in their own Chrome profile
+                     { URLfiles.customer1                , browsers.customer1 },
+                     -- AWS console URLs open by default in Firefox because it
+                     -- has better plugins to improve the experience. This comes
+                     -- after customer1 URLs because I have patterns for that
+                     -- customer's accounts to open in its corresponding
+                     -- profile.
+                     { ".*%.console%.aws%.amazon%.com/.*", browsers.awsConsole },
+                     -- Work-related URLs open in the default Chrome profile
+                     { URLfiles.work                     , browsers.work },
                    },
                    url_redir_decoders = {
-                     -- Send MS Teams URLs directly to the app
-                     { "MS Teams URLs",
-                       "(https://teams.microsoft.com.*)", "msteams:%1", true },
-                     -- Preview incorrectly encodes the anchor
-                     -- character in URLs as %23, we fix it
-                     { "Fix broken Preview anchor URLs",
-                       "%%23", "#", false, "Preview" },
-                   },
-                   default_handler = DefaultBrowser
+                     -- URLs opened from within MS Teams are normally sent
+                     -- through a redirect which messes the matching, so we
+                     -- extract the final URL before dispatching it. The final
+                     -- URL is passed as parameter "url" to the redirect URL,
+                     -- which makes it easy to extract it using a function-based
+                     -- decoder.
+                     { "MS Teams links", function(_, _, params) return params.url end, nil, true, "Microsoft Teams" },
+                     -- URLs within a tracking link
+                     { "awstrack.me links", "https://.*%.awstrack%.me/.-/(.*)", "%1" },
+                     -- Chime meeting URLs get rewritten to open in the Chime app
+                     { "Chime meeting links", "https://chime%.aws/(%d+)", "chime://meeting?pin=%1" }
+                   }
                  },
                  start = true,
-                 -- Enable debug logging if you get unexpected behavior
-                 -- loglevel = 'debug'
+                 loglevel = 'debug'
                }
 )
 ```
@@ -212,7 +275,7 @@ Install:andUse("UniversalArchive",
                  config = {
                    evernote_archive_notebook = ".Archive",
                    archive_notifications = false,
-                   outlook_archive_folder = "Archive (dzamboni@amazon.ch)"
+                   outlook_archive_folder = "Archive (myemail@work.com)"
                  },
                  hotkeys = { archive = { { "ctrl", "cmd" }, "a" } }
                }
@@ -433,7 +496,7 @@ Install:andUse("MenubarFlag",
 
 ### Locating the mouse {#locating-the-mouse}
 
-The [MouseCircle](http://www.hammerspoon.org/Spoons/MouseCircle.html) spoon shows a circle around the mouse pointer when triggered. I have it disabled for now because I have the macOS [shake-to-grow feature](https://support.apple.com/kb/PH25507?locale=en%5FUS&viewlocale=en%5FUS) enabled.
+The [MouseCircle](http://www.hammerspoon.org/Spoons/MouseCircle.html) spoon shows a circle around the mouse pointer when triggered. I have it disabled for now because I have the macOS [shake-to-grow feature](https://support.apple.com/kb/PH25507?locale=en_US&viewlocale=en_US) enabled.
 
 ```lua
 Install:andUse("MouseCircle",
@@ -571,7 +634,8 @@ The [HeadphoneAutoPause](http://www.hammerspoon.org/Spoons/HeadphoneAutoPause.ht
 ```lua
 Install:andUse("HeadphoneAutoPause",
                {
-                 start = true
+                 start = true,
+                 disable = true,
                }
 )
 ```
@@ -808,15 +872,15 @@ Install:andUse("Leanpub",
                      { slug = "learning-hammerspoon" },
                      { slug = "learning-cfengine" },
                      { slug = "emacs-org-leanpub" },
-                     { slug = "be-safe-on-the-internet" },
+                     -- { slug = "be-safe-on-the-internet" },
                      { slug = "lit-config"  },
                      { slug = "zztestbook" },
-                     { slug = "cisspexampreparationguide" },
+                     -- { slug = "cisspexampreparationguide" },
                    },
                    books_sync_to_dropbox = true,
                  },
                  start = true,
-                 disable = true
+                 -- loglevel = 'debug'
 })
 ```
 
@@ -839,7 +903,7 @@ Install:andUse("KSheet", {
 In `init-local.lua` I keep experimental or private stuff (like API tokens) that I don't want to publish in my main config. This file is not committed to any publicly accessible git repositories.
 
 ```lua
-local localfile = hs.configdir .. "/init-local.lua"
+local localfile = hs.configdir .. "/local/init-local.lua"
 if hs.fs.attributes(localfile) then
   dofile(localfile)
 end

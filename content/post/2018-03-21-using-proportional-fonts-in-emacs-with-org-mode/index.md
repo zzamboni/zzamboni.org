@@ -5,7 +5,7 @@ summary = "Configuring Org Mode in Emacs for beautiful typography for both text 
 date = 2018-03-21T22:45:00+01:00
 tags = ["emacs", "orgmode", "beautifulemacs", "config"]
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 toc = true
 featured_image = "/images/emacs-logo.svg"
 +++
@@ -78,7 +78,7 @@ Finally, we set up a nice proportional font, in different sizes, for the headlin
 
 ## Step 2: Setting up `variable-pitch` and `fixed-pitch` faces {#step-2-setting-up-variable-pitch-and-fixed-pitch-faces}
 
-My next realization was that Emacs already includes support for displaying proportional fonts with the `variable-pitch-mode` command. You can try it right now: type <kbd>M-x</kbd> `variable-pitch-mode` and your current buffer will be shown in a proportional font (you can disable it by running `variable-pitch-mode` again). On my Mac the default variable-pitch font is Helvetica. You can change the font used by configuring the `variable-pitch` face. You can do this interactively through the customize interface by typing <kbd>M-x</kbd> `customize-face` `variable-pitch`. At the moment I like ~~[Source Sans Pro](https://en.wikipedia.org/wiki/Source%5FSans%5FPro)~~ [ET Book](https://edwardtufte.github.io/et-book/).
+My next realization was that Emacs already includes support for displaying proportional fonts with the `variable-pitch-mode` command. You can try it right now: type <kbd>M-x</kbd> `variable-pitch-mode` and your current buffer will be shown in a proportional font (you can disable it by running `variable-pitch-mode` again). On my Mac the default variable-pitch font is Helvetica. You can change the font used by configuring the `variable-pitch` face. You can do this interactively through the customize interface by typing <kbd>M-x</kbd> `customize-face` `variable-pitch`. At the moment I like ~~[Source Sans Pro](https://en.wikipedia.org/wiki/Source_Sans_Pro)~~ [ET Book](https://edwardtufte.github.io/et-book/).
 
 As a counterpart to `variable-pitch`, you need to configure the `fixed-pitch` face for the text that needs to be shown in a monospaced font. My first instinct was to inherit this from my `default` face (I use ~~[Inconsolata](https://en.wikipedia.org/wiki/Inconsolata)~~ [Fira Code](https://github.com/tonsky/FiraCode)), but it seems that this gets remapped when `variable-pitch-mode` is active, so I had to configure it by hand with the same font as my `default` face.
 

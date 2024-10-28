@@ -4,7 +4,7 @@ author = ["Diego Zamboni"]
 date = 2019-04-16T11:25:00+02:00
 tags = ["writing", "hammerspoon", "circleci", "automation", "leanpub", "github"]
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 toc = true
 featured_image = "/images/hammerspoon-github-circleci-leanpub.001.jpg"
 +++
@@ -23,7 +23,10 @@ The Hammerspoon section of this post is Mac-specific (since Hammerspoon is a Mac
 First, some basic concepts about the Leanpub API. See the [documentation](https://leanpub.com/help/api) for the full details, I'm only mentioning clear some things you need to know to understand the rest of this post.
 
 -   **Book slug**: Each Leanpub book is identified by a _slug_, which is basically an unique author-chosen identifier for the book. The book slug is included in the book's Leanpub URL. For example, the URL for _Learning Hammerspoon_ is <https://leanpub.com/learning-hammerspoon>, therefore its slug is `learning-hammerspoon`. The slug can be changed by the author as part of the book configuration, and is used in all the API calls to identify the book for which an operation should be performed.
-    {{% note %}} The tools I describe below assume by default that your book's git repository name is the same as its Leanpub slug. You can specify it if this is not the case by providing some additional configuration parameters. {{% /note %}}
+
+    {{% note %}}
+    The tools I describe below assume by default that your book's git repository name is the same as its Leanpub slug. You can specify it if this is not the case by providing some additional configuration parameters.
+    {{% /note %}}
 -   **API key**: Every Leanpub author gets an [_API key_](https://leanpub.com/help/api#getting-your-api-key), which is a randomly-generated string of characters which is used as an authentication token. The API key needs to be provided on most Leanpub API  calls (some query operations are allowed without a key).
 -   **Build types**: The Leanpub API allows you to trigger several types of [build operations](https://leanpub.com/help/api#previewing-and-publishing) on a book:
     -   _Preview_ builds all the formats supported by Leanpub (PDF, ePub, Mobi), using the whole book as defined in the `Book.txt` file.
@@ -61,12 +64,12 @@ leanpub:preview-and-watch
 leanpub:subset-and-watch
 ```
 
-{{% note %}}If your current directory name is not the same as your book slug, you can pass the book slug as an argument. For example:
+{{% note %}}
+If your current directory name is not the same as your book slug, you can pass the book slug as an argument. For example:
 
 ```elvish
 leanpub:preview-and-watch my_book
 ```
-
 {{% /note %}}
 
 After a while using these scripts, I thought I would put some work on improving both the aesthetics and the functionality of my automation. The next sections are what I came up with.
@@ -122,7 +125,6 @@ This file in turn gets loaded into my main config file [as follows](/post/my-ham
     dofile(localfile)
   end
 ```
-
 {{% /warning %}}
 
 Reload your Hammerspoon configuration. Now when you trigger a preview or publish (for example, using the scripts above), you will after a few seconds start seeing the corresponding notifications.

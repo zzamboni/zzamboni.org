@@ -5,7 +5,7 @@ summary = "When I was planning the reboot of my website, I seriously considered 
 date = 2017-08-25T09:00:00+02:00
 tags = ["howto", "ghost", "github", "blogging"]
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 toc = true
 featured_image = "/images/ghost-plus-github2.png"
 slug = "hosting-a-ghost-blog-in-github"
@@ -35,14 +35,12 @@ So, without further ado, here are the detailed instructions. I ran these on my M
 ## Install Ghost {#install-ghost}
 
 1.  [Download Ghost](https://ghost.org/developers/) (version 1.7.1 as of this writing):
-
     ```console
            cd ~/tmp # or some other suitable place
            wget https://github.com/TryGhost/Ghost/releases/download/1.7.1/Ghost-1.7.1.zip
     ```
 
 2.  Unpack it in a suitable directory, initialize it as a GitHub repository and commit the Ghost plain install (to have a baseline with the fresh install):
-
     ```console
            mkdir test-ghost-blog
            cd test-ghost-blog
@@ -53,7 +51,6 @@ So, without further ado, here are the detailed instructions. I ran these on my M
     ```
 
 3.  Install the necessary Node modules, update the git repository:
-
     ```console
            npm install
            git add .
@@ -61,13 +58,11 @@ So, without further ado, here are the detailed instructions. I ran these on my M
     ```
 
 4.  Install `knex-migrator`, needed for the DB initialization:
-
     ```console
            npm install -g knex-migrator
     ```
 
 5.  Initialize the database and start Ghost (`knex-migrator` may give a  "Module version mismatch" message, but it seems to work OK anyway):
-
     ```console
          knex-migrator
          npm start
@@ -79,13 +74,14 @@ So, without further ado, here are the detailed instructions. I ran these on my M
 7.  Go to <http://localhost:2368/ghost>, create your user and set up your blog info:
     ![](images/ghost-setup-blog.png)
 
-    {{% note  %}}You may want to use an email address you don't mind being public. See "[Security Considerations](#security-considerations)" below.{{% /note %}}
+    {{% note %}}
+    You may want to use an email address you don't mind being public. See "[Security Considerations](#security-considerations)" below.
+    {{% /note %}}
 
 8.  You can now start creating content  and configuring the local Ghost instance.
     ![](images/ghost-admin-screen.png)
 
 9.  When you have things the way you like them, you can commit the changes to the git repository:
-
     ```text
             git add .
             git commit -m 'Finished local Ghost setup'
@@ -97,15 +93,12 @@ So, without further ado, here are the detailed instructions. I ran these on my M
 Now that you have your blog set up locally, we need to generate a static copy that can be published to GitHub. For this we will use the `wget` command. I gathered the correct options from [this blog post by Ilya](http://www.suodatin.com/fathom/How-to-retire-a-wordpress-blog-(make-wordpress-a-static-site)) a few years ago, although it's not too hard to deduct them from the [wget man page](http://www.misc.cl.cam.ac.uk/cgi-bin/manpage?wget).
 
 1.  We will publish the blog from the `docs` directory of our repository, so that's where we need to store the static copy:
-
     ```console
             wget -r -nH -P docs -E -T 2 -np -k http://localhost:2368/
     ```
-
     This command will crawl the entire site and create a static copy of it under the `docs` directory. You can open the file `docs/index.html` in your web browser to verify.
 
 2.  Add the generated pages to the git repository:
-
     ```console
             git add docs
             git commit -m 'Initial commit of static web site'
@@ -117,13 +110,11 @@ Now that you have your blog set up locally, we need to generate a static copy th
 We can finally create our GitHub repo and push the contents to it.
 
 1.  Create the repository. I'm using here the [`hub`](https://hub.github.com/) command, but of course you can also do it by hand in the GitHub website (in this case you need to [add the git remote](https://help.github.com/articles/adding-a-remote/) by hand as well):
-
     ```console
             hub create
     ```
 
 2.  Push the local repository to GitHub (this includes both the Ghost source and the generated website under `docs`):
-
     ```console
             git push -u origin master
     ```
@@ -149,7 +140,6 @@ We are done! After a few minutes (usually takes 2-5 minutes for the contents to 
 After the initial setup, you need to follow these steps when you want to update your website:
 
 1.  Start Ghost inside your GitHub repository:
-
     ```console
             npm start
     ```
@@ -157,19 +147,17 @@ After the initial setup, you need to follow these steps when you want to update 
 2.  Connect to <http://localhost:2368/> and update your contents. You can also change the blog settings, themes, etc.
 
 3.  Re-crawl the site to generate the local copy:
-
     ```console
             wget -r -nH -P docs -E -T 2 -np -k http://localhost:2368/
     ```
 
 4.  Update and push the whole git repository:
-
     ```console
             git add .
             git commit -m 'Website update'
     ```
 
-Steps 3 and 4 can be easily automated. I keep the following [`update_website.sh`](https://github.com/zzamboni/test-ghost-blog/blob/master/update%5Fwebsite.sh) script in the repository:
+Steps 3 and 4 can be easily automated. I keep the following [`update_website.sh`](https://github.com/zzamboni/test-ghost-blog/blob/master/update_website.sh) script in the repository:
 
 ```sh
   #!/bin/bash

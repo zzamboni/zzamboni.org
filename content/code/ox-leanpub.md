@@ -3,12 +3,12 @@ title = "ox-leanpub"
 author = ["Diego Zamboni"]
 date = 2020-12-09T21:10:00+01:00
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 weight = 1
 finalURL = "https://github.com/zzamboni/ox-leanpub"
 +++
 
-{{< leanpubbook book="emacs-org-leanpub" style="float:right"  height="430" >}}
+{{< leanpubbook book="emacs-org-leanpub" style="float:right" height="430" >}}
 
 [Ox-leanpub](https://github.com/zzamboni/ox-leanpub) is a [Leanpub](https://leanpub.com/) book exporter for Org mode. It allows you to write your material entirely in Org mode, and manages the production of the files and directories needed for Leanpub to render your book. I use this package to publish [my books](https://leanpub.com/u/zzamboni).
 

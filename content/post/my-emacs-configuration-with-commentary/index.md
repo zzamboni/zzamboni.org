@@ -5,7 +5,7 @@ summary = "I have enjoyed slowly converting my configuration files to literate p
 date = 2017-12-17T20:14:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs"]
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 featured_image = "/images/emacs-logo.svg"
 toc = true
 aliases = "/post/2017-12-17-my-emacs-configuration-with-commentary"
@@ -13,9 +13,9 @@ aliases = "/post/2017-12-17-my-emacs-configuration-with-commentary"
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **October  5, 2021**
+Last update: **October 28, 2024**
 
-I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot%5Femacs/blob/master/init.org) for my current, live configuration, and the generated file at [init.el](https://github.com/zzamboni/dot%5Femacs/blob/master/init.el).
+I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot_emacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot_emacs/blob/master/init.org) for my current, live configuration, and the generated file at [init.el](https://github.com/zzamboni/dot_emacs/blob/master/init.el).
 
 If you are interested in writing your own Literate Config files, check out my new book [Literate Config](https://leanpub.com/lit-config) on Leanpub!
 
@@ -36,7 +36,7 @@ Emacs config is an art, and I have learned a lot by reading through other people
 
 Lately I've been playing with optimizing my Emacs load time. I have found a couple of useful resources, including:
 
--   [Two easy little known steps to speed up Emacs start up time](https://www.reddit.com/r/emacs/comments/3kqt6e/2%5Feasy%5Flittle%5Fknown%5Fsteps%5Fto%5Fspeed%5Fup%5Femacs%5Fstart/)
+-   [Two easy little known steps to speed up Emacs start up time](https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/)
 -   [Advanced Techniques for Reducing Emacs Startup Time](https://blog.d46.us/advanced-emacs-startup/)
 
 Based on these, I have added the code below.
@@ -81,7 +81,7 @@ We set `gc-cons-threshold` to its maximum value, to prevent any garbage collecti
 
 ## Customized variables {#customized-variables}
 
-Emacs has its own [Customization mechanism](https://www.gnu.org/software/emacs/manual/html%5Fnode/emacs/Easy-Customization.html#Easy-Customization) for easily customizing many parameters. To make it easier to manage, I keep the customized variables and faces in a separate file and load it from the main file. A lot of my custom settings are configured from this init file as well, but there are always some which I change by hand for added flexibility.
+Emacs has its own [Customization mechanism](https://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html#Easy-Customization) for easily customizing many parameters. To make it easier to manage, I keep the customized variables and faces in a separate file and load it from the main file. A lot of my custom settings are configured from this init file as well, but there are always some which I change by hand for added flexibility.
 
 ```emacs-lisp
 (setq custom-file "~/.emacs.d/custom.el")
@@ -125,19 +125,16 @@ Finally, we load `use-package`.
 We set some configuration for `use-package`:
 
 -   The `use-package-always-ensure` variable indicates that `use-package` should always try to install missing packages. For some libraries this is not appropriate, and in those cases you see the `:ensure nil` declaration as part of the `use-package` statement. This applies mainly to libraries which are installed as part of some other package (happens mostly with some libraries that come with org-mode).
-
     ```emacs-lisp
     (custom-set-variables '(use-package-always-ensure t))
     ```
 
 -   The `use-package-always-defer` sets `:defer true` as the default for all package declarations. This makes Emacs startup much faster by preventing packages from being loaded when Emacs starts, and only doing so when they are needed. Some packages don't work well with this, so you'll see some declarations when I explicitly set `:defer nil` to force the package to be loaded at startup, or `:defer n` to load the package, but only `n` seconds after startup.
-
     ```emacs-lisp
     (custom-set-variables '(use-package-always-defer t))
     ```
 
 -   The `use-package-verbose` variable enables verbose loading of packages, useful for debugging. I set/unset this according to need.
-
     ```emacs-lisp
     (custom-set-variables '(use-package-verbose nil))
     ```
@@ -223,7 +220,6 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
 ```
 
 -   Set default encoding.
-
     ```emacs-lisp
     (set-language-environment "UTF-8")
     (prefer-coding-system       'utf-8)
@@ -234,43 +230,36 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     ```
 
 -   Load the `cl` library to enable some additional macros (e.g. `lexical-let`).
-
     ```emacs-lisp
     (require 'cl)
     ```
 
 -   Install and load the `async` package to enable asynchronous operations (this gets loaded by some other packages, but I use it explicitly in `zz/org-babel-async-tangle` below, so I load it explicitly).
-
     ```emacs-lisp
     (use-package async)
     ```
 
 -   Start the Emacs server
-
     ```emacs-lisp
     (server-start)
     ```
 
 -   This is probably one of my oldest settings - I remember adding it around 1993 when I started learning Emacs, and it has been in my config ever since. When `time-stamp` is run before every save, the string `Time-stamp: <>` in the first 8 lines of the file will be updated with the current timestamp.
-
     ```emacs-lisp
     (add-hook 'before-save-hook 'time-stamp)
     ```
 
 -   When at the beginning of the line, make `Ctrl-K` remove the whole line, instead of just emptying it.
-
     ```emacs-lisp
     (custom-set-variables '(kill-whole-line t))
     ```
 
 -   Paste text where the cursor is, not where the mouse is.
-
     ```emacs-lisp
     (custom-set-variables '(mouse-yank-at-point t))
     ```
 
 -   Make completion case-insensitive.
-
     ```emacs-lisp
     (setq completion-ignore-case t)
     (custom-set-variables
@@ -279,7 +268,6 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     ```
 
 -   Show line numbers. I used `linum-mode` before, but it caused severe performance issues on large files. Emacs 26 introduces `display-line-numbers-mode`, which has no perceivable performance impact even on very large files. Disabled for now.
-
     ```emacs-lisp
     (when (>= emacs-major-version 26)
       (use-package display-line-numbers
@@ -290,25 +278,21 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     ```
 
 -   Highlight trailing whitespace in red, so it's easily visible (disabled  for now as it created a lot of noise in some modes, e.g. the org-mode export screen)
-
     ```emacs-lisp
     (custom-set-variables '(show-trailing-whitespace nil))
     ```
 
 -   Highlight matching parenthesis
-
     ```emacs-lisp
     (show-paren-mode)
     ```
 
 -   Don't use hard tabs
-
     ```emacs-lisp
     (custom-set-variables '(indent-tabs-mode nil))
     ```
 
--   Emacs automatically creates backup files, by default in the same folder as the original file, which often leaves backup files behind. This tells Emacs to [put all backups in ~/.emacs.d/backups](http://www.gnu.org/software/emacs/manual/html%5Fnode/elisp/Backup-Files.html).
-
+-   Emacs automatically creates backup files, by default in the same folder as the original file, which often leaves backup files behind. This tells Emacs to [put all backups in ~/.emacs.d/backups](http://www.gnu.org/software/emacs/manual/html_node/elisp/Backup-Files.html).
     ```emacs-lisp
     (custom-set-variables
      '(backup-directory-alist
@@ -316,13 +300,11 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     ```
 
 -   [WinnerMode](http://emacswiki.org/emacs/WinnerMode) makes it possible to cycle and undo window configuration changes (i.e. arrangement of panels, etc.)
-
     ```emacs-lisp
     (when (fboundp 'winner-mode) (winner-mode))
     ```
 
 -   Add "unfill" commands to parallel the "fill" ones, bind <kbd>A-q</kbd> to `unfill-paragraph` and rebind <kbd>M-q</kbd> to the `unfill-toggle` command, which fills/unfills paragraphs alternatively.
-
     ```emacs-lisp
     (use-package unfill
       :bind
@@ -331,7 +313,6 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     ```
 
 -   Save the place of the cursor in each file, and restore it upon opening it again.
-
     ```emacs-lisp
     (use-package saveplace
       :defer nil
@@ -340,7 +321,6 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     ```
 
 -   Provide mode-specific "bookmarks" - press `M-i` and you will be presented with a list of elements to which you can navigate - they can be headers in org-mode, function names in emacs-lisp, etc.
-
     ```emacs-lisp
     (use-package imenu-anywhere
       :bind
@@ -348,7 +328,6 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     ```
 
 -   Smooth scrolling (line by line) instead of jumping by half-screens.
-
     ```emacs-lisp
     (use-package smooth-scrolling
       :config
@@ -356,13 +335,11 @@ These are two short functions I wrote to be able to set/unset proxy settings wit
     ```
 
 -   Delete trailing whitespace before saving a file.
-
     ```emacs-lisp
     (add-hook 'before-save-hook 'delete-trailing-whitespace)
     ```
 
 -   Suppress "ad-handle-definition: .. redefined" warnings during Emacs startup.
-
     ```emacs-lisp
     (custom-set-variables '(ad-redefinition-action (quote accept)))
     ```
@@ -471,19 +448,16 @@ The main advantage of using this over `define-key` or `global-set-key` is that y
 ### Miscellaneous keybindings {#miscellaneous-keybindings}
 
 -   `M-g` interactively asks for a line number and jump to it (`goto-line)`.
-
     ```emacs-lisp
     (bind-key "M-g" 'goto-line)
     ```
 
 -   `` M-` `` focuses the next frame, if multiple ones are active (emulate the Mac "next app window" keybinding)
-
     ```emacs-lisp
     (bind-key "M-`" 'other-frame)
     ```
 
 -   Interactive search key bindings -  [visual-regexp-steroids](https://github.com/benma/visual-regexp-steroids.el) provides sane regular expressions and visual incremental search. We make <kbd>C-s</kbd> and <kbd>C-r</kbd> run the visual-regexp functions. We leave <kbd>C-M-s</kbd> and <kbd>C-M-r</kbd> to run the default `isearch-forward/backward` functions, as a fallback. I use the `pcre2el` package to support PCRE-style regular expressions.
-
     ```emacs-lisp
     (use-package pcre2el)
     (use-package visual-regexp-steroids
@@ -499,7 +473,6 @@ The main advantage of using this over `define-key` or `global-set-key` is that y
     ```
 
 -   Key binding to use "[hippie expand](http://www.emacswiki.org/emacs/HippieExpand)" for text autocompletion
-
     ```emacs-lisp
     (bind-key "M-/" 'hippie-expand)
     ```
@@ -566,12 +539,12 @@ We bind this function to the `%` key.
 
 ## Org mode {#org-mode}
 
-I have started using [org-mode](http://orgmode.org/) to writing, blogging, coding, presentations and more, thanks to the hearty recommendations and information from [Nick](http://www.cmdln.org/) and many others. I am duly impressed. I have been a fan of the idea of [literate programming](https://en.wikipedia.org/wiki/Literate%5Fprogramming) for many years, and I have tried other tools before (most notably [noweb](https://www.cs.tufts.edu/~nr/noweb/), which I used during grad school for many of my homeworks and projects), but org-mode is the first tool I have encountered which seems to make it practical. Here are some of the resources I have found useful in learning it:
+I have started using [org-mode](http://orgmode.org/) to writing, blogging, coding, presentations and more, thanks to the hearty recommendations and information from [Nick](http://www.cmdln.org/) and many others. I am duly impressed. I have been a fan of the idea of [literate programming](https://en.wikipedia.org/wiki/Literate_programming) for many years, and I have tried other tools before (most notably [noweb](https://www.cs.tufts.edu/~nr/noweb/), which I used during grad school for many of my homeworks and projects), but org-mode is the first tool I have encountered which seems to make it practical. Here are some of the resources I have found useful in learning it:
 
 -   Howard Abrams' [Introduction to Literate Programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html), which got me jumpstarted into writing code documented with org-mode.
 -   Nick Anderson's [Level up your notes with Org](https://github.com/nickanderson/Level-up-your-notes-with-Org), which contains many useful tips and configuration tricks.
 -   Sacha Chua's [Some tips for learning Org Mode for Emacs](http://sachachua.com/blog/2014/01/tips-learning-org-mode-emacs/), her [Emacs configuration](http://pages.sachachua.com/.emacs.d/Sacha.html) and many of her [other articles](http://sachachua.com/blog/category/emacs/).
--   Rainer König's [OrgMode Tutorial](https://www.youtube.com/playlist?list=PLVtKhBrRV%5FZkPnBtt%5FTD1Cs9PJlU0IIdE) video series.
+-   Rainer König's [OrgMode Tutorial](https://www.youtube.com/playlist?list=PLVtKhBrRV_ZkPnBtt_TD1Cs9PJlU0IIdE) video series.
 
 This is the newest and most-in-flux section of my Emacs config, since I'm still learning org-mode myself.
 
@@ -600,25 +573,20 @@ I use `use-package` to load the `org` package, and put its configuration inside 
 Note that mode-specific configuration variables are defined under  their corresponding packages, this  section defines only global org-mode configuration variables, which are inserted in the main `use-package` declaration for `org-mode`.
 
 -   Default directory for org files (not all are stored here).
-
     ```emacs-lisp
     (org-directory "~/org")
     ```
 
 -   Automatically log done times in todo items.
-
     ```emacs-lisp
     (org-log-done t)
     ```
 
 -   Keep the indentation well structured by setting `org-startup-indented` to `t`. This is a must have. Makes it feel less like editing a big text file and more like a purpose built editor for org-mode that forces the indentation. Thanks [Nick](https://github.com/nickanderson/Level-up-your-notes-with-Org/blob/master/Level-up-your-notes-with-Org.org#automatic-visual-indention) for the tip!
-
     ```emacs-lisp
     (org-startup-indented t)
     ```
-
     By default, `org-indent` produces an indicator `"Ind"` in the modeline. We use diminish to hide it. I also like to increase  the indentation a bit so that  the levels are more visible.
-
     ```emacs-lisp
     (use-package org-indent
       :ensure nil
@@ -628,7 +596,6 @@ Note that mode-specific configuration variables are defined under  their corresp
     ```
 
 -   Log stuff into the LOGBOOK drawer by default
-
     ```emacs-lisp
     (org-log-into-drawer t)
     ```
@@ -639,20 +606,17 @@ Note that mode-specific configuration variables are defined under  their corresp
 Note that other keybindings are configured under their corresponding packages, this section defines only global org-mode keybindings, which are inserted in the main `use-package` declaration for `org-mode`.
 
 -   Use the special <kbd>C-a</kbd>, <kbd>C-e</kbd> and <kbd>C-k</kbd> definitions for Org, which enable some special behavior in headings.
-
     ```emacs-lisp
     (org-special-ctrl-a/e t)
     (org-special-ctrl-k t)
     ```
 
 -   Set up `C-c l` to store a link to the current org object, in counterpart to the default `C-c C-l` to insert a link.
-
     ```emacs-lisp
     ("C-c l" . org-store-link)
     ```
 
 -   The default keybinding for `org-mark-element` is `M-h`, which in macOS hides the current application, so I bind it to `A-h`.
-
     ```emacs-lisp
     ("A-h" . org-mark-element)
     ```
@@ -945,7 +909,6 @@ Using `org-download` to make it easier to insert images into my org notes.
 One of the big strengths of org-mode is the ability to export a document in many different formats. Here I load some of the exporters I have found useful.
 
 -   HTML
-
     ```emacs-lisp
     (use-package ox-html
       :ensure nil
@@ -956,7 +919,6 @@ One of the big strengths of org-mode is the ability to export a document in many
     ```
 
 -   Markdown
-
     ```emacs-lisp
     (use-package ox-md
       :ensure nil
@@ -965,7 +927,6 @@ One of the big strengths of org-mode is the ability to export a document in many
     ```
 
 -   [Jira markup](https://github.com/stig/ox-jira.el). I also load `org-jira`, which provides a full interface to Jira through org-mode.
-
     ```emacs-lisp
     (use-package ox-jira
       :defer 3
@@ -981,7 +942,6 @@ One of the big strengths of org-mode is the ability to export a document in many
     ```
 
 -   Confluence markup.
-
     ```emacs-lisp
     (use-package ox-confluence
       :defer 3
@@ -990,7 +950,6 @@ One of the big strengths of org-mode is the ability to export a document in many
     ```
 
 -   AsciiDoc
-
     ```emacs-lisp
     (use-package ox-asciidoc
       :defer 3
@@ -998,7 +957,6 @@ One of the big strengths of org-mode is the ability to export a document in many
     ```
 
 -   TexInfo. I have found that the best way to produce a PDF from an org file is to export it to a `.texi` file, and then use `texi2pdf` to produce the PDF.
-
     ```emacs-lisp
     (use-package ox-texinfo
       :load-path "lisp/org-mode/lisp"
@@ -1010,7 +968,6 @@ One of the big strengths of org-mode is the ability to export a document in many
 <!--listend-->
 
 -   Some customizations for the LaTeX exporter. `ox-latex` gets loaded automatically, but we use `use-package` anyway so that the config code is only executed after the package is loaded. I add a pseudo-class which uses the document class `book` but without parts (only chapters at the top level).
-
     ```emacs-lisp
     (use-package ox-latex
       :load-path "lisp/org-mode/lisp"
@@ -1041,7 +998,6 @@ One of the big strengths of org-mode is the ability to export a document in many
     ```
 
 -   [ox-clip](https://github.com/jkitchin/ox-clip) to export HTML-formatted snippets.
-
     ```emacs-lisp
     (use-package ox-clip
       :bind
@@ -1049,7 +1005,6 @@ One of the big strengths of org-mode is the ability to export a document in many
     ```
 
 -   I use `ox-awesomecv` and `ox-hugocv` from [Org-CV](https://titan-c.gitlab.io/org-cv/), to export my [Curriculum Vit&aelig;](https://github.com/zzamboni/vita/).
-
     ```emacs-lisp
     (use-package ox-awesomecv
       :load-path "~/.emacs.d/lisp/org-cv"
@@ -1063,7 +1018,6 @@ One of the big strengths of org-mode is the ability to export a document in many
     ```
 
 -   I use `ox-org` to generate an org file from another. For example, the `README.org` file for my [elvish-modules](https://github.com/zzamboni/elvish-modules) package is generated by exporting from [README-src.org](https://github.com/zzamboni/elvish-modules/blob/master/README-src.org), to automatically extract summaries from the different module files.
-
     ```emacs-lisp
     (use-package ox-org
       :ensure nil
@@ -1186,14 +1140,12 @@ Org-mode is the first literate programming tool that seems practical and useful,
 First, we load the necessary programming language support. The base features and literate programming for Emacs LISP is built-in, but the `ob-*` packages provide the ability to execute code in different languages directly from within the Org buffer, beyond those included with org-mode. I load the modules for some of the languages I use frequently:
 
 -   CFEngine, used extensively for my book [_Learning CFEngine_](https://cf-learn.info).
-
     ```emacs-lisp
     (use-package ob-cfengine3
       :after org)
     ```
 
 -   Elvish, my favorite shell.
-
     ```emacs-lisp
     (use-package ob-elvish
       :after org)
@@ -1202,7 +1154,6 @@ First, we load the necessary programming language support. The base features and
 -   The [PlantUML](http://plantuml.com/) graph language.
 
     We determine the location of the PlantUML jar file automatically from the installed Homebrew formula.
-
     <a id="code-snippet--plantuml-jar-path"></a>
     ```shell
     brew list plantuml | grep jar
@@ -1239,13 +1190,11 @@ Finally, we use this value to configure both `plantuml-mode` (for syntax highlig
 ```
 
 -   Define `shell-script-mode` as an alias for `console-mode`, so that `console` src blocks can be edited and are fontified correctly.
-
     ```emacs-lisp
     (defalias 'console-mode 'shell-script-mode)
     ```
 
 -   Finally, from all  the available languages, we configure the  ones for which to load `org-babel` support.
-
     ```emacs-lisp
     (org-babel-do-load-languages
      'org-babel-load-languages
@@ -1265,13 +1214,10 @@ Finally, we use this value to configure both `plantuml-mode` (for syntax highlig
 Now, we configure some other `org-babel` settings:
 
 -   Tangle-on-save has revolutionized my literate programming workflow. It automatically runs `org-babel-tangle` upon saving any org-mode buffer, which means the resulting files will be automatically kept up to date. For a long time I simply had the following hook:
-
     ```emacs-lisp
     (org-mode . (lambda () (add-hook 'after-save-hook 'org-babel-tangle :append :local)))
     ```
-
     This is simple and it works, the only disadvantage is that it runs the tangle process synchronously, so Emacs freezes until the `org-babel-tangle` command is done. For large files (such as this one), the delay is noticeable, so I also had some hooks to measure and report the tangle time:
-
     ```emacs-lisp
     (defun zz/report-tangle-time (start-time)
       (message "org-babel-tangle took %s"
@@ -1285,9 +1231,7 @@ Now, we configure some other `org-babel` settings:
     (org-babel-post-tangle . (lambda ()
                                (zz/report-tangle-time zz/pre-tangle-time)))
     ```
-
     Thanks to [the kind help of Ihor in the emacs-orgmode mailing list](https://lists.gnu.org/archive/html/emacs-orgmode/2019-12/msg00191.html), I now have an asynchronous version of this, which dispatches the tangle function to a subprocess, so that the main Emacs is not blocked while it runs. The `zz/org-babel-tangle-async` function uses the [emacs-async](https://github.com/jwiegley/emacs-async) package to start the tangle operation in a child process. Note that the child Emacs started by `async-start` is empty, without any configuration, so we need to load `org` before tangling. Depending on your setup, you may need to load more configuration.
-
     ```emacs-lisp
     (defun zz/org-babel-tangle-async (file)
       "Invoke `org-babel-tangle-file' asynchronously."
@@ -1309,9 +1253,7 @@ Now, we configure some other `org-babel` settings:
       "Tangle current buffer asynchronously."
       (zz/org-babel-tangle-async (buffer-file-name)))
     ```
-
     Finally, we set up an `org-mode` hook which adds the async tangle function to the `after-save-hook`, so that it happens automatically after every save. Disabled for now because the tangle is getting interrupted sometimes when I move the cursor before the async tangle finishes, leaving files incomplete.
-
     ```emacs-lisp
     (org-mode . (lambda () (add-hook 'after-save-hook
                                      'zz/org-babel-tangle-current-buffer-async
@@ -1319,25 +1261,21 @@ Now, we configure some other `org-babel` settings:
     ```
 
 -   This is potentially dangerous: it suppresses the query before executing code from within org-mode. I use it because I am very careful and only press `C-c C-c` on blocks I absolutely understand.
-
     ```emacs-lisp
     (org-confirm-babel-evaluate nil)
     ```
 
 -   This makes it so that code within `src` blocks is fontified according to their corresponding Emacs mode, making the file much more readable.
-
     ```emacs-lisp
     (org-src-fontify-natively t)
     ```
 
 -   In principle this makes it so that indentation in `src` blocks works as in their native mode, but in my experience it does not always work reliably. For full proper indentation, always edit the code in a native buffer by pressing `C-c '`.
-
     ```emacs-lisp
     (org-src-tab-acts-natively t)
     ```
 
 -   Automatically show inline images, useful when executing code that produces them, such as PlantUML or Graphviz.
-
     ```emacs-lisp
     (org-babel-after-execute . org-redisplay-inline-images)
     ```
@@ -1442,28 +1380,24 @@ We choose a nice font for the document title and the section headings. The first
 
 I use proportional fonts in org-mode for the text, while keeping fixed-width fonts for blocks, so that source code, tables, etc. are shown correctly. These settings include:
 
--   Setting up the `variable-pitch` face to the proportional font I like to use. My current favorite is [ET Book](https://edwardtufte.github.io/et-book/), in the past I have used [Source Sans Pro](https://en.wikipedia.org/wiki/Source%5FSans%5FPro) and [Avenir Next](https://en.wikipedia.org/wiki/Avenir%5F(typeface)).
-
+-   Setting up the `variable-pitch` face to the proportional font I like to use. My current favorite is [ET Book](https://edwardtufte.github.io/et-book/), in the past I have used [Source Sans Pro](https://en.wikipedia.org/wiki/Source_Sans_Pro) and [Avenir Next](https://en.wikipedia.org/wiki/Avenir_(typeface)).
     ```emacs-lisp
     (variable-pitch ((t (:family "ETBembo" :height 180 :weight thin))))
     ;;(variable-pitch ((t (:family "Avenir Next" :height 160 :weight light))))
     ```
 
 -   Setting up the `fixed-pitch` face to be the same as my usual `default` face. My current one is ~~[Inconsolata](https://en.wikipedia.org/wiki/Inconsolata)~~ [Fira Code](https://github.com/tonsky/FiraCode)
-
     ```emacs-lisp
     ;;    (fixed-pitch ((t (:family "Inconsolata Nerd Font"))))
     (fixed-pitch ((t (:family "Fira Code Retina" :height 160))))
     ```
 
 -   Configure `org-indent` to inherit from `fixed-pitch` to fix the vertical spacing in code blocks. Thanks to Ben for the tip!
-
     ```emacs-lisp
     (org-indent ((t (:inherit (org-hide fixed-pitch)))))
     ```
 
 -   Configure `org-fontify-done-headline` to apply a special face to DONE items in org-mode, and configure the `org-done` face to be used.  Note that  `org-done` only applies to the "DONE" keyword itself, the face for the rest of a "done" headline is defined above as the `org-headline-done` face.
-
     ```emacs-lisp
     (org-fontify-done-headline t)
     ```
@@ -1476,14 +1410,11 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
 -   Configuring the corresponding `org-mode` faces for blocks, verbatim code, and maybe a couple of other things. As these change more frequently, I do them directly from the `customize-face` interface, you can see their current settings in the [Customized variables](#customized-variables) section.
 
 -   Setting up `visual-line-mode` and making all my paragraphs one single line, so that the lines wrap around nicely in the window according to their proportional-font size, instead of at a fixed character count, which does not work so nicely when characters have varying widths. I set up a hook that automatically enables `visual-line-mode` and `variable-pitch-mode` when entering org-mode.
-
     ```emacs-lisp
     (org-mode . visual-line-mode)
     (org-mode . variable-pitch-mode)
     ```
-
     Turns out `visual-line-mode` also remaps the <kbd>C-a</kbd> and <kbd>C-e</kbd> keybindings (of course, which breaks the behavior enabled by the `org-special-ctrl-a/e/k` variables. To counter this, I also add some bindings that set those keys to their Org functions. These functions know how to deal with visual mode anyway.
-
     ```emacs-lisp
     ("C-a" . org-beginning-of-line)
     ("C-e" . org-end-of-line)
@@ -1491,13 +1422,11 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
     ```
 
 -   In `variable-pitch` mode, the default right-alignment for headline tags doesn't work, and results in the tags being misaligned (as it uses character positions to do the alignment). This setting positions the tags right after the last character of the headline, so at least they are more consistent.
-
     ```emacs-lisp
     (org-tags-column 0)
     ```
 
 -   I also set `org-todo-keyword-faces` to highlight different  types of org-mode TODO items with different colors.
-
     ```emacs-lisp
     (org-todo-keyword-faces
      '(("AREA"         . "DarkOrchid1")
@@ -1517,9 +1446,7 @@ I use proportional fonts in org-mode for the text, while keeping fixed-width fon
        ("CANCELED"     . "blue")
        ("[CANCELED]"   . "blue")))
     ```
-
     These two modes produce modeline indicators, which I disable using `diminish`.
-
     ```emacs-lisp
     (eval-after-load 'face-remap '(diminish 'buffer-face-mode))
     (eval-after-load 'simple '(diminish 'visual-line-mode))
@@ -2108,7 +2035,7 @@ The `all-the-icons` package provides a number of useful icons.
 
 ### Completion: IDO or Helm? {#completion-ido-or-helm}
 
-The [battle](https://tuhdo.github.io/helm-intro.html) [rages](https://news.ycombinator.com/item?id=11100312) [on](https://www.reddit.com/r/emacs/comments/3o36sc/what%5Fdo%5Fyou%5Fprefer%5Fido%5For%5Fhelm/) - [helm](https://github.com/emacs-helm/helm) or [IDO](https://www.emacswiki.org/emacs/InteractivelyDoThings)? Both are nice completion frameworks for Emacs, and both integrate nicely with most main Emacs functions, including file opening, command and buffer selection, etc. I was using IDO for some time but are now giving helm a try. Both my configs are shown below, but only Helm is enabled at the moment.
+The [battle](https://tuhdo.github.io/helm-intro.html) [rages](https://news.ycombinator.com/item?id=11100312) [on](https://www.reddit.com/r/emacs/comments/3o36sc/what_do_you_prefer_ido_or_helm/) - [helm](https://github.com/emacs-helm/helm) or [IDO](https://www.emacswiki.org/emacs/InteractivelyDoThings)? Both are nice completion frameworks for Emacs, and both integrate nicely with most main Emacs functions, including file opening, command and buffer selection, etc. I was using IDO for some time but are now giving helm a try. Both my configs are shown below, but only Helm is enabled at the moment.
 
 Should I also look at [ivy](https://sam217pa.github.io/2016/09/13/from-helm-to-ivy/)?
 
@@ -2402,13 +2329,11 @@ Trying out [lispy](https://github.com/abo-abo/lispy) for LISP code editing (disa
 Some tools for developing Emacs LISP modules and for contributing to MELPA:
 
 -   [Flycheck](https://melpa.org/#/flycheck)
-
     ```emacs-lisp
     (use-package flycheck
       :defer 3)
     ```
 -   [package-lint](https://github.com/purcell/package-lint)
-
     ```emacs-lisp
     (use-package package-lint
       :defer 3)
@@ -2420,7 +2345,6 @@ Some tools for developing Emacs LISP modules and for contributing to MELPA:
 Many other programming languages are well served by a single mode, without so much setup as Clojure/LISP.
 
 -   [CFEngine](http://cfengine.com/) policy files.
-
     ```emacs-lisp
     (use-package cfengine
       :commands cfengine3-mode
@@ -2428,7 +2352,6 @@ Many other programming languages are well served by a single mode, without so mu
     ```
 
 -   [Perl](https://www.perl.org/).
-
     ```emacs-lisp
     (use-package cperl-mode
       :mode "\\.p[lm]\\'"
@@ -2438,7 +2361,6 @@ Many other programming languages are well served by a single mode, without so mu
     ```
 
 -   [Fish shell](http://fishshell.com/).
-
     ```emacs-lisp
     (use-package fish-mode
       :mode "\\.fish\\'"
@@ -2446,62 +2368,52 @@ Many other programming languages are well served by a single mode, without so mu
     ```
 
 -   [Lua](https://www.lua.org/), which I use for [Hammerspoon](http://zzamboni.org/tags/hammerspoon/) configuration.
-
     ```emacs-lisp
     (use-package lua-mode)
     ```
 
 -   YAML, generally useful
-
     ```emacs-lisp
     (use-package yaml-mode)
     ```
 
 -   AppleScript
-
     ```emacs-lisp
     ;;    (use-package applescript-mode)
     ```
 
 -   Go
-
     ```emacs-lisp
     (use-package go-mode)
     ```
 
 -   Build and check MELPA package definitions
-
     ```emacs-lisp
     (use-package package-build)
     (use-package package-lint)
     ```
 
 -   [Elvish shell](http://elvish.io/)
-
     ```emacs-lisp
     (use-package elvish-mode)
     ```
 
 -   [Racket](https://racket-lang.org/)
-
     ```emacs-lisp
     (use-package racket-mode)
     ```
 
 -   [Nix](https://nixos.org/nix/) package files
-
     ```emacs-lisp
     (use-package nix-mode)
     ```
 
 -   [Dockerfile files](https://github.com/spotify/dockerfile-mode)
-
     ```emacs-lisp
     (use-package dockerfile-mode)
     ```
 
 -   [The Dhall configuration language](https://dhall-lang.org/)
-
     ```emacs-lisp
     (use-package dhall-mode
       :ensure t
@@ -2512,20 +2424,17 @@ Many other programming languages are well served by a single mode, without so mu
 ## Other tools {#other-tools}
 
 -   The `rx` library makes it easier to express regular expressions (I know regex syntax, but in Emacs the quoting makes them very hard to read). The [`xr`](https://elpa.gnu.org/packages/xr.html) library is the inverse - can be used to convert regex strings to `rx` syntax, which makes it easier to learn by example.
-
     ```emacs-lisp
     (require 'rx)
     (use-package xr
       :defer nil)
     ```
 -   Use `helm-pass` as an interface to `pass`.
-
     ```emacs-lisp
     (use-package helm-pass)
     ```
 
 -   git interface with some simple configuration I picked up somewhere. When you press <kbd>C-c C-g</kbd>, `magit-status` runs full-screen, but when you press <kbd>q</kbd>, it restores your previous window setup. Very handy.
-
     ```emacs-lisp
     (use-package magit
       :diminish auto-revert-mode
@@ -2548,13 +2457,11 @@ Many other programming languages are well served by a single mode, without so mu
     ```
 
 -   Interface to use the [silver-searcher](https://geoff.greer.fm/ag/)
-
     ```emacs-lisp
     (use-package ag)
     ```
 
 -   Publishing with [Hugo](https://gohugo.io/). I don't use this anymore since I started [blogging with ox-hugo](#blogging-with-hugo). I keep it loaded, but without its keybinding, because it makes it easy sometimes to see the history of my Markdown posts.
-
     ```emacs-lisp
     (use-package easy-hugo
       :custom
@@ -2566,7 +2473,6 @@ Many other programming languages are well served by a single mode, without so mu
     ```
 
 -   Function to randomize the order of lines in a region, from <https://www.emacswiki.org/emacs/RandomizeBuffer>.
-
     ```emacs-lisp
     (defun my-randomize-region (beg end)
       "Randomize lines in region from BEG to END."
@@ -2584,8 +2490,7 @@ Many other programming languages are well served by a single mode, without so mu
                              (lambda (a b) (< (car a) (car b))))))))
     ```
 
--   [auto-insert mode](https://www.gnu.org/software/emacs/manual/html%5Fnode/autotype/Autoinserting.html) for automatically inserting user-defined templates for certain file types. It's included with Emacs, so I just configure its directory to one inside my Dropbox, and set the hook to run it automatically when opening a file.
-
+-   [auto-insert mode](https://www.gnu.org/software/emacs/manual/html_node/autotype/Autoinserting.html) for automatically inserting user-defined templates for certain file types. It's included with Emacs, so I just configure its directory to one inside my Dropbox, and set the hook to run it automatically when opening a file.
     ```emacs-lisp
     (use-package autoinsert
       :ensure nil
@@ -2596,7 +2501,6 @@ Many other programming languages are well served by a single mode, without so mu
     ```
 
 -   Create and manage [GitHub gists](https://gist.github.com/). Setting `gist-view-gist` to `t` makes it open new gists in the web browser automatically after creating them.
-
     ```emacs-lisp
     (use-package gist
       :custom
@@ -2604,7 +2508,6 @@ Many other programming languages are well served by a single mode, without so mu
     ```
 
 -   [Emacs Startup Profiler](https://github.com/jschaf/esup), to get detailed stats of what's taking time during initialization.
-
     ```emacs-lisp
     (use-package esup)
     ```
@@ -2622,13 +2525,11 @@ Many other programming languages are well served by a single mode, without so mu
 ```
 
 -   Ability to [restart Emacs from within Emacs](https://github.com/iqbalansari/restart-emacs):
-
     ```emacs-lisp
     (use-package restart-emacs)
     ```
 
 -   [Multiple cursors](https://github.com/magnars/multiple-cursors.el)
-
     ```emacs-lisp
     (use-package multiple-cursors
       :bind
@@ -2639,13 +2540,11 @@ Many other programming languages are well served by a single mode, without so mu
     ```
 
 -   Lorem Ipsum
-
     ```emacs-lisp
     (use-package lorem-ipsum)
     ```
 
 -   [Emacs support](https://github.com/lokedhs/keybase-chat) for [Keybase](https://keybase.io/):
-
     ```emacs-lisp
     (use-package keybase
       :disabled
@@ -2654,8 +2553,7 @@ Many other programming languages are well served by a single mode, without so mu
       :config (require 'keybase))
     ```
 
--   `erc` configuration for IRC. Based on <https://www.reddit.com/r/emacs/comments/8ml6na/tip%5Fhow%5Fto%5Fmake%5Ferc%5Ffun%5Fto%5Fuse/>
-
+-   `erc` configuration for IRC. Based on <https://www.reddit.com/r/emacs/comments/8ml6na/tip_how_to_make_erc_fun_to_use/>
     ```emacs-lisp
     (use-package erc
       :custom
@@ -2686,7 +2584,6 @@ Many other programming languages are well served by a single mode, without so mu
 In addition to coding, I configure some modes that can be used for text editing.
 
 -   [AsciiDoc](http://asciidoctor.org/docs/user-manual/), which I use for [my book](http://cf-learn.info/) and some other text. I also set up `visual-line-mode` and `variable-pitch-mode` here. `adoc-mode` is not so granular as `org-mode` with respect to face assignments, so the variable/fixed distinction does not always work, but it's still pretty good for long-text editing.
-
     ```emacs-lisp
     (use-package adoc-mode
       :mode "\\.asciidoc\\'"
@@ -2696,7 +2593,6 @@ In addition to coding, I configure some modes that can be used for text editing.
     ```
 
 -   [Markdown](https://daringfireball.net/projects/markdown/syntax), generally useful. I also set up variable pitch and visual line mode.
-
     ```emacs-lisp
     (use-package markdown-mode
       :hook
@@ -2705,7 +2601,6 @@ In addition to coding, I configure some modes that can be used for text editing.
     ```
 
 -   When [typopunct](https://www.emacswiki.org/emacs/TypographicalPunctuationMarks) is enabled (needs to be enabled by hand), automatically inserts “pretty” quotes of the appropriate type.
-
     ```emacs-lisp
     (use-package typopunct
       :config
@@ -2713,7 +2608,6 @@ In addition to coding, I configure some modes that can be used for text editing.
     ```
 
 -   `undo-tree` visualises undo history as a tree for easy navigation (found about this from [Jamie's config](https://jamiecollinson.com/blog/my-emacs-config/#better-undo))
-
     ```emacs-lisp
     (use-package undo-tree
       :ensure t

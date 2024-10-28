@@ -5,7 +5,7 @@ summary = "Like other Unix shells, Elvish has advanced command-argument completi
 date = 2018-06-13T20:25:00+02:00
 tags = ["elvish", "unix", "shell", "config"]
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 toc = true
 featured_image = "/images/elvish-logo.svg"
 +++
@@ -20,7 +20,6 @@ There is a growing body of shell completions that you can simply load and use.
 Elvish has a still-small but growing collection of completions that have been created by its users. These are a few that I know of (let me know if you know others!):
 
 -   My own [zzamboni/elvish-completions](https://github.com/zzamboni/elvish-completions) package, which contains completions for [git](https://github.com/zzamboni/elvish-completions/blob/master/git.org) (providing automatically-generated completions for all commands and their options, plus hand-crafted argument completions for many of them), [ssh](https://github.com/zzamboni/elvish-completions/blob/master/ssh.org), [vcsh](https://github.com/zzamboni/elvish-completions/blob/master/vcsh.org), [cd](https://github.com/zzamboni/elvish-completions/blob/master/cd.org), and a few of Elvish's [built-in functions and modules](https://github.com/zzamboni/elvish-completions/blob/master/builtins.org). It also contains [comp](https://github.com/zzamboni/elvish-completions/blob/master/comp.org), a framework for building completers, which we will explore in more detail below. To use any of these modules, you just need to install the elvish-completions package, and then load the modules you want. For example:
-
     ```elvish
           epm:install &silent-if-installed github.com/zzamboni/elvish-completions
           use github.com/zzamboni/elvish-completions/vcsh
@@ -30,7 +29,6 @@ Elvish has a still-small but growing collection of completions that have been cr
           use github.com/zzamboni/elvish-completions/git
     ```
 -   xiaq's [edit.elv/compl/go.elv](https://github.com/xiaq/edit.elv/blob/master/compl/go.elv), which provides extensive hand-crafted completions for `go`. You can also install this one as an Elvish package:
-
     ```elvish
           epm:install &silent-if-installed github.com/xiaq/edit.elv
           use github.com/xiaq/edit.elv/compl/go
@@ -69,11 +67,9 @@ The completion function must use its arguments to determine the appropriate comp
 -   Output the completions to stdout, one per line;
 -   Output the completions to the data stream (using `put`);
 -   Output the completions using the `edit:complex-candidate` command, which can additionally specify a suffix to append to the completion in the completion menu or in the returned value, and a style to use (as accepted by `edit:styled`). The full syntax of `edit:complex-candidate` is as follows:
-
     ```elvish
           edit:complex-candidate &code-suffix='' &display-suffix='' &style='' $string
     ```
-
     `$string` is the option to display; `&code-suffix` indicates a suffix to be appended to the completion string when the user selects it; `&display-suffix` indicates a suffix to be shown in the completion menu (but which is not returned as part of the completion); and `&style` indicates a text style to use in the completion menu.
 
 Keep in mind that the options returned by the completion function are additionally filtered by what the user has typed so far. This means that the last argument can usually be ignored, since Elvish will automatically do the filtering. An exception to this is if you want to return different _types of things_ depending on what the user has typed already. For example, if the last argument start with `-`, you may want to return the possible command-line options, and return regular argument completions otherwise.
@@ -127,7 +123,6 @@ In addition to `complete-getopt`, Elvish includes a few other functions to help 
 
 -   `edit:complete-filename` produces a listing of all the files and directories in the directory of its argument, and is the default completion function when no other completer is specified. See its [documentation](https://elvish.io/ref/edit.html#editcomplete-filename) for full details.
 -   `edit:complete-sudo` provides completions for commands like `sudo` which take a command as their first argument. It is the default completer for the `sudo` command, so that if you type `sudo` <kbd>Space</kbd> <kbd>Tab</kbd>, you get a list of all the commands on your execution path. It can be reused for other commands, for example `time`:
-
     ```elvish
           edit:completion:arg-completer[time] = $edit:complete-sudo~
     ```

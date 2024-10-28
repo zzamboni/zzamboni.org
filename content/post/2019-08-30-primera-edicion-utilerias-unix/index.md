@@ -1,11 +1,15 @@
 +++
-title = "Nuevo libro \"Utilerías de Unix\""
+title = """
+  Nuevo libro "Utilerías de Unix"
+  """
 author = ["Diego Zamboni"]
-summary = "Me complace anunciar  la primera edición de mi nuevo libro, y mi primer libro en  Español, \"Utilerías de Unix\"."
+summary = """
+  Me complace anunciar  la primera edición de mi nuevo libro, y mi primer libro en  Español, "Utilerías de Unix".
+  """
 date = 2019-08-30T00:23:00+02:00
 tags = ["books", "announcements", "spanish", "unix", "linux", "leanpub"]
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 toc = false
 featured_image = "/images/utilerias-cover.jpg"
 +++
@@ -16,6 +20,6 @@ Me complace anunciar  la primera edición de mi nuevo libro, y mi primer libro e
 
 Puedes obtener más información, leer una muestra gratuita y comprarlo  en  [LeanPub](https://leanpub.com/utilerias-unix).
 
-{{< leanpubbook book="utilerias-unix" >}}
+{{< leanpubbook book="utilerias-unix"  >}}
 
-¡Espero lo disfrutes!  Favor de enviarme tus comentarios a través de  la  página  [_Escribe al Autor_](https://leanpub.com/utilerias-unix/email%5Fauthor/new) en LeanPub.
+¡Espero lo disfrutes!  Favor de enviarme tus comentarios a través de  la  página  [_Escribe al Autor_](https://leanpub.com/utilerias-unix/email_author/new) en LeanPub.

@@ -5,7 +5,7 @@ summary = "Automate the process of generating and inserting links to headlines i
 date = 2020-12-06T10:20:00+01:00
 tags = ["emacs", "doom", "config", "howto"]
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 toc = false
 featured_image = "/images/org-mode-unicorn.svg"
 +++

@@ -1,11 +1,15 @@
 +++
-title = "First release of \"Learning Hammerspoon\""
+title = """
+  First release of "Learning Hammerspoon"
+  """
 author = ["Diego Zamboni"]
-summary = "I am happy to announce the first release of my new book \"Learning Hammerspoon\", a book devoted to using Hammerspoon to make using your Mac easier, faster and more fun."
+summary = """
+  I am happy to announce the first release of my new book "Learning Hammerspoon", a book devoted to using Hammerspoon to make using your Mac easier, faster and more fun.
+  """
 date = 2018-10-16T21:22:00+02:00
 tags = ["hammerspoon", "mac", "howto", "books", "announcements"]
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 toc = false
 featured_image = "/images/hammerspoon.jpg"
 +++
@@ -14,7 +18,7 @@ I am happy to announce the first release of my new book "Learning Hammerspoon", 
 
 You can find more information, read a free sample, and purchase it at [LeanPub](https://leanpub.com/learning-hammerspoon/).
 
-{{< leanpubbook book="learning-hammerspoon" >}}
+{{< leanpubbook book="learning-hammerspoon"  >}}
 
 This book is based partly on blog posts published in [my blog](https://zzamboni.org/tags/hammerspoon/), but with a lot of new material. In this first release, the following chapters are finished:
 
@@ -25,4 +29,4 @@ This book is based partly on blog posts published in [my blog](https://zzamboni.
 
 It is not complete yet, but already includes a lot of useful information. I will be updating it frequently, and of course you get all updates for free.
 
-I look forward to your feedback! Feel free to message me through the [_Email the author_](https://leanpub.com/learning-hammerspoon/email%5Fauthor/new) page at LeanPub.
+I look forward to your feedback! Feel free to message me through the [_Email the author_](https://leanpub.com/learning-hammerspoon/email_author/new) page at LeanPub.

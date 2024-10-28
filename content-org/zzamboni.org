@@ -4,8 +4,10 @@
 #+options: creator:t
 #+property: header-args :eval never-export
 #+hugo_front_matter_key_replace: description>summary
+#+hugo_paired_shortcodes: %tip %warning %note
 
 #+macro: updatetime {{{time(%B %e\, %Y)}}}
+#+macro: leanpubbook #+hugo: {{< leanpubbook book="$1" $2 >}}
 
 # The zz/* functions used in the macros are defined in my Emacs configuration:
 # https://github.com/zzamboni/dot-emacs/blob/master/init.org
@@ -69,7 +71,6 @@ This file is the source for all new and updated content on [[http://zzamboni.org
   - [[#security-][Security 🔐]]
     - [[#new-course-cissp-training][New course: CISSP Training]]
   - [[#other][Other]]
-    - [[#watching-sky-show-in-the-fire-tv-stick][Watching Sky Show in the Fire TV Stick]]
     - [[#my-blogging-setup-with-emacs-org-mode-ox-hugo-hugo-gitlab-and-netlify][My blogging setup with Emacs, Org mode, ox-hugo, Hugo, GitLab and Netlify]]
     - [[#new-release-of-publishing-with-emacs-org-mode-and-leanpub][New release of /Publishing with Emacs, Org-mode and Leanpub/]]
     - [[#new-book-publishing-with-emacs-org-mode-and-leanpub][New book: Publishing with Emacs, Org-mode and Leanpub]]
@@ -95,7 +96,7 @@ CLOSED: [2018-03-22 Thu 19:40]
 
 - *Who:* :: My name is Diego Zamboni. I am an IT architect, computer scientist, security expert, consultant, project and team leader, programmer, sysadmin, author and overall geek. I am from Mexico but live in Switzerland with my beautiful wife and our two awesome daughters.
 
-- *What:* :: I work as /Global Security Architect/ at [[https://aws.amazon.com/][AWS]]. I am also the author of [[http://cf-learn.info]["Learning CFEngine"]], [[https://leanpub.com/learning-hammerspoon]["Learning Hammerspoon"]] and a few [[https://leanpub.com/u/zzamboni][other books]].
+- *What:* :: I currently am the /Governance CISO/ at [[https://avaloq.com/][Avaloq]]. Previously I worked as /Global Security Architect/ at [[https://aws.amazon.com/][AWS]]. I am also the author of [[http://cf-learn.info]["Learning CFEngine"]], [[https://leanpub.com/learning-hammerspoon]["Learning Hammerspoon"]] and a few [[https://leanpub.com/u/zzamboni][other books]].
 
 - *Where:* :: I was born in Argentina, but have moved around all my life.  When I was very young I moved to Mexico, where I lived in four different cities before moving to the U.S. to pursue my Ph.D. at [[http://www.cerias.purdue.edu/][Purdue University]] under the direction of [[http://spaf.cerias.purdue.edu/][Gene Spafford]]. Upon finishing my studies, my wife and I decided to go to Switzerland, where I worked at the [[http://www.zurich.ibm.com/][IBM Zurich Research Lab]]. Eight years and two kids later, we [[file:/brt/2009/09/08/going-home/index.html][moved to Mexico]] in late 2009. In 2015, we moved back to Switzerland.
 
@@ -160,7 +161,7 @@ CLOSED: [2018-03-25 Sun 21:05]
 :export_hugo_custom_front_matter: :finalURL http://cf-learn.info/
 :END:
 
-{{< leanpubbook  book="learning-cfengine" style="float:right" >}}
+{{{leanpubbook(learning-cfengine,style="float:right")}}}
 
 I am the author of "Learning CFEngine", the best book for learning [[http://cfengine.com/][CFEngine]].
 
@@ -180,7 +181,7 @@ CLOSED: [2018-10-16 Tue 20:54]
 :export_hugo_custom_front_matter: :finalURL https://leanpub.com/learning-hammerspoon/
 :END:
 
-{{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
+{{{leanpubbook(learning-hammerspoon,style="float:right")}}}
 
 *Automate all the things!* From window manipulation to automated system settings depending on your current location, [[http://www.hammerspoon.org/][Hammerspoon]] makes it possible. In this book you will learn how to get started with Hammerspoon, how to use pre-made modules, and how to write your own, to achieve an unprecedented level of control over your Mac.
 
@@ -198,7 +199,7 @@ CLOSED: [2019-08-30 Tue 00:05]
 :export_hugo_custom_front_matter: :finalURL https://leanpub.com/utilerias-unix
 :END:
 
-{{< leanpubbook book="utilerias-unix" style="float:right" >}}
+{{{leanpubbook(utilerias-unix,style="float:right")}}}
 
 (this book is in Spanish)
 
@@ -218,7 +219,7 @@ CLOSED: [2020-02-29 Sat 22:56]
 :export_hugo_custom_front_matter: :finalURL https://leanpub.com/lit-config/
 :END:
 
-{{< leanpubbook book="lit-config" style="float:right" >}}
+{{{leanpubbook(lit-config,style="float:right")}}}
 
 This booklet will teach you about Literate Configuration, which is the application of Literate Programming to configuration files. Literate Programming can be especially applicable to configuration files for the following reasons:
 
@@ -243,7 +244,7 @@ CLOSED: [2020-06-20 Sat 21:12]
 :export_hugo_custom_front_matter: :finalURL https://leanpub.com/emacs-org-leanpub
 :END:
 
-{{< leanpubbook book="emacs-org-leanpub" style="float:right"  height="430" >}}
+{{{leanpubbook(emacs-org-leanpub,style="float:right" height="430")}}}
 
 Publishing your words has never been easier than it is today. Blogging means you can have your words read by thousands of people within minutes of writing them. Even publishing a book has become considerably easier through self publishing. There are many tools and publishers that allow you to get started for little or no money. Still, getting started can be confusing, and that is what this book is about.
 
@@ -285,7 +286,7 @@ CLOSED: [2020-12-09 Wed 21:10]
 :export_hugo_weight: 01
 :END:
 
-{{< leanpubbook book="emacs-org-leanpub" style="float:right"  height="430" >}}
+{{{leanpubbook(emacs-org-leanpub,style="float:right"  height="430")}}}
 
 [[https://github.com/zzamboni/ox-leanpub][Ox-leanpub]] is a [[https://leanpub.com/][Leanpub]] book exporter for Org mode. It allows you to write your material entirely in Org mode, and manages the production of the files and directories needed for Leanpub to render your book. I use this package to publish [[https://leanpub.com/u/zzamboni][my books]].
 
@@ -353,7 +354,7 @@ CLOSED: [2020-10-19 Mon 09:07]
 I switched from my hand-crafted Emacs config to Doom Emacs some time ago, and I am very happy with it. This is my full, working Doom Emacs config in literate form.
 #+end_description
 
-{{< leanpubbook book="lit-config" style="float:right" >}}
+{{{leanpubbook(lit-config,style="float:right")}}}
 
 Last update: *{{{updatetime}}}*
 
@@ -376,7 +377,7 @@ CLOSED: [2017-12-17 Sun 20:14]
 I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file.
 #+end_description
 
-{{< leanpubbook book="lit-config" style="float:right" >}}
+{{{leanpubbook(lit-config,style="float:right")}}}
 
 Last update: *{{{updatetime}}}*
 
@@ -396,8 +397,8 @@ CLOSED: [2018-01-08 Mon 13:31]
 In my ongoing series of literate config files, I present to you my Hammerspoon configuration file.
 #+end_description
 
-{{< leanpubbook book="lit-config" style="float:right" >}}
-{{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
+{{{leanpubbook(lit-config,style="float:right")}}}
+{{{leanpubbook(learning-hammerspoon,style="float:right")}}}
 
 Last update: *{{{updatetime}}}*
 
@@ -417,7 +418,7 @@ CLOSED: [2017-11-16 Thu 20:21]
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
 #+end_description
 
-{{< leanpubbook book="lit-config" style="float:right" >}}
+{{{leanpubbook(lit-config,style="float:right")}}}
 
 Last update: *{{{updatetime}}}*
 
@@ -429,7 +430,7 @@ If you are interested in writing your own Literate Config files, check out my ne
 
 Without further ado...
 
-#+include: "~/.elvish/rc.org" :lines "22-"
+#+include: "~/.config/elvish/rc.org" :lines "55-"
 
 ** Emacs                                                              :emacs:
 
@@ -725,11 +726,11 @@ And without inline image display, we can see that the screenshot is automaticall
 #+DOWNLOADED: screenshot @ 2020-08-09 17:25:34
 [[file:images/20200809-172534_screenshot.png]]
 
-{{% tip %}}
+#+begin_tip
 Thanks to [[https://stackoverflow.com/questions/17435995/paste-an-image-on-clipboard-to-emacs-org-mode-file-without-saving-it][this thread at Stack Overflow]] for the base ideas and pointers for this configuration.
 
 *Note:* The same technique could be used in non-macOS systems by invoking a corresponding utility that does the same. From the thread above you can get examples for both Windows and Linux.
-{{% /tip %}}
+#+end_tip
 
 ** Hammerspoon                                        :hammerspoon:mac:howto:
 :PROPERTIES:
@@ -787,9 +788,9 @@ When you run Hammerspoon for the first time, you will see its icon appear in the
 
 [[file:images/hammerspoon-startup.png]]
 
-{{% tip %}}
- If you click on the initial notification, your web browser will open to the excellent [[http://www.hammerspoon.org/go/][Getting Started with Hammerspoon]] page, which I highly recommend you read for more examples.
-{{% /tip %}}
+#+begin_tip
+If you click on the initial notification, your web browser will open to the excellent [[http://www.hammerspoon.org/go/][Getting Started with Hammerspoon]] page, which I highly recommend you read for more examples.
+#+end_tip
 
 **** Your first Hammerspoon configuration
 
@@ -839,9 +840,9 @@ You may have noticed by now another common operation while developing Hammerspoo
 
 Another useful development tool is the =hs= command, which you can run from your terminal to get a Hammerspoon console. To install it, you can use the {{{hsapi(hs.ipc",cliInstall)}}} function, which you can just add to your =init.lua= file to check and install the command every time Hammerspoon runs.
 
-{{% warning %}}
+#+begin_warning
  {{{hsapi(hs.ipc,cliInstall)}}} creates symlinks under =/usr/local/= to the =hs= command and its manual page file, located inside the Hammerspoon application bundle. Under some circumstances (particularly if you build Hammerspoon from source, or if you install different versions of it), you may end up with broken symlinks. If the =hs= command stops working and =hs.ipc.cliInstall()= doesn't fix it, look for broken symlinks left behind from old versions of Hammerspoon.  Remove them and things should work again.
-{{% /warning %}}
+#+end_warning
 
 Now you have all the tools for developing your Hammerspoon configuration. In the next installment we will look at how you can save yourself a lot of coding by using pre-made modules. In the meantime, feel free to look through my [[file:/post/my-hammerspoon-configuration-with-commentary/][Hammerspoon configuration file]] for ideas, and please let me know your thoughts in the comments!
 
@@ -888,7 +889,7 @@ The first API call is =spoon.MouseCircle:bindHotkeys()=, which allows us to set 
 
 Once you do this, press the hotkey and you should see a red circle appear around the mouse cursor, and fade away after 3 seconds.
 
-{{% tip %}}
+#+begin_tip
 All spoons which offer the possibility of binding hotkeys have to expose it through the same API:
 
 #+begin_src lua
@@ -897,7 +898,7 @@ All spoons which offer the possibility of binding hotkeys have to expose it thro
 #+end_src
 
 Each =actionX= is a name defined by the spoon, which refers to something that can be bound to a hotkey, and each =keySpecX= is a table with two elements: a list of modifiers and the key itself, such as ={ { "ctrl", "cmd", "alt" }, "d" }=.
-{{% /tip %}}
+#+end_tip
 
 The second API call in the MouseCircle spoon is =show()=, which triggers the functionality of showing the locator circle directly. Let's try it -- type the following in the console:
 
@@ -934,7 +935,7 @@ Most spoons are structured like this: you can set up hotkeys to trigger the main
   ...
 #+end_src
 
-{{% tip %}}
+#+begin_tip
 
 Lua does not include a function to easily get the keys of a table so you have to use the {{{luafun(pairs)}}} function to loop over the key/value pairs of the table. The {{{hsapi(hs.inspect)}}} function is convenient, but to get just the list of tables and the color names, without the color definitions themselves, you can use the following code (if you type this in the console you have to type it all in a single line -- and beware, the output is a long list):
 
@@ -947,7 +948,7 @@ Lua does not include a function to easily get the keys of a table so you have to
   end
 #+end_src
 
-{{% /tip %}}
+#+end_tip
 
 If we wanted to make the circle green, we can assign the configuration value like this:
 
@@ -957,7 +958,7 @@ If we wanted to make the circle green, we can assign the configuration value lik
 
 The next time you invoke the =show()= method, either directly or through the hotkey, you will see the circle in the new color.
 
-{{% tip %}}
+#+begin_tip
 
 (We will look at this in more detail in a future installment about Lua, but in case you were wondering...)
 
@@ -992,7 +993,7 @@ Alternatively, you can use the {{{hsapi(hs.fnutils,partial)}}} function to const
 
 This is more verbose than the previous example, but the technique can be useful sometimes. Although Lua is not a full functional language, it supports using functions as first-class values, and the {{{hsapi(hs.fnutils)}}} extension includes a number of functions that make it easy to use them.
 
-{{% /tip %}}
+#+end_tip
 
 By now you know enough to use spoons with Hammerspoon's native capabilities: [[http://www.hammerspoon.org/Spoons/][look for the ones you want]], download and install them by hand, and configure them in your =init.lua= using their configuration variables and API. In the next sections you will learn more about the minimum API of spoons, and how to install and configure spoons in a more automated way.
 
@@ -1057,7 +1058,7 @@ If there is nothing to configure in the spoon, =spoon.SpoonInstall:andUse("SomeS
 
 - =disable= can be set to =true= to disable the Spoon (easier than commenting it out when you want to temporarily disable a spoon) in your configuration.
 
-{{% tip %}}
+#+begin_tip
 
 You can assign functions and modules to variables to improve readability of your code. For example, in my =init.lua= file I make the following assignment:
 
@@ -1067,7 +1068,7 @@ You can assign functions and modules to variables to improve readability of your
 
 Which allows me to write =Install:andUse("MouseCircle", …​ )=, which is shorter and easier to read.
 
-{{% /tip %}}
+#+end_tip
 
 ***** Managing repositories and spoons using SpoonInstall
 :PROPERTIES:
@@ -1166,9 +1167,9 @@ In this example we see the {{{luadoc(for,3.3.5)}}} statement in its so-called /g
 
 This statement loops the variables over the values returned by the expressions, executing the block with each the consecutive value until it becomes =nil=.
 
-{{% tip %}}
+#+begin_tip
 Strictly speaking, =expression= is executed once and its value must be an /iterator function/, which returns one new value from the sequence every time it is called, returning =nil= at the end.
-{{% /tip %}}
+#+end_tip
 
 The =for= statement also has a /numeric form/:
 
@@ -1244,7 +1245,7 @@ You should try this function to see that it works. Adding it to you =~/.hammersp
 
 Once you reload your config, you can generate a double click by moving the cursor where you want it and pressing {{{keys(Ctrl ⌘ Alt p)}}}. While this is a contrived example, the ability to generate events like this is immensely powerful in automating your system.
 
-{{% tip %}}
+#+begin_tip
 
 By now you have seen that we are using {{{keys(Ctrl ⌘ Alt)}}} very frequently in our keybindings. To avoid having to type this every time, and since the modifiers are defined as an array, you can define them as variable. For example, I have the following at the top of my =init.lua=:
 
@@ -1259,7 +1260,7 @@ Then I simply use =hyper= or =shift_hyper= in my key binding declarations:
   hs.hotkey.bindSpec({ hyper, "p" }, leftDoubleClick)
 #+end_src
 
-{{% /tip %}}
+#+end_tip
 
 **** Until next time!
 :PROPERTIES:
@@ -1285,9 +1286,9 @@ In this second article of the "Just Enough Lua" series, we dive into Lua's types
 
 In this second article of the "Just Enough Lua" series, we dive into Lua's types and data structures.
 
-{{% tip %}}
+#+begin_tip
 If you haven't already, be sure to read [[file:/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/][the first installment of this series]] to learn about the basic Lua concepts.
-{{% /tip %}}
+#+end_tip
 
 **** Tables
 :PROPERTIES:
@@ -1568,7 +1569,7 @@ The argument of the {{{luafun(require)}}} function is the name of the file to lo
   Hammerspoon.app/Contents/Resources/extensions/?/init.lua
 #+end_example
 
-{{% tip %}}
+#+begin_tip
 
 Hammerspoon automatically loads any modules under the =hs= namespace the first time you use them. For example, when you use {{{hsapi(hs.application)}}} for the first time, you will see a message in the console:
 
@@ -1588,7 +1589,7 @@ If you want to avoid these messages, you need to explicitly load the modules and
 
 This avoids the console message and has the additional benefit of allowing you to use =app= (you can use whatever variable you want) instead of typing =hs.application= in your code. This is a matter of taste---I usually prefer to have the full descriptive names (makes the code easier to read), but when dealing with some of the longer module names (e.g. {{{hsapi(hs.distributednotifications)}}}), this technique can be useful.
 
-{{% /tip %}}
+#+end_tip
 
 **** Patterns
 :PROPERTIES:
@@ -1647,7 +1648,7 @@ You can find the full documentation in the [[https://www.lua.org/manual/5.3/manu
 
   Note that the return value is not a table, but rather multiple values, as shown in the last example.
 
-  {{% tip %}}
+  #+begin_tip
 
 It can sometimes be convenient to handle multiple values as a table or as separate entities, depending on the circumstances. For example, you may have a programmatically-constructed pattern with a variable number of capture groups, so you cannot know to how many variables you need to assign the result. In this case, the {{{luafun(table.pack)}}} and {{{luafun(table.unpack)}}} functions can be useful.
 
@@ -1674,7 +1675,7 @@ It can sometimes be convenient to handle multiple values as a table or as separa
   1   3   b   ah
 #+end_src
 
-{{% /tip %}}
+  #+end_tip
 
 - {{{luafun(string.match,=string.match(str\, pat\, pos)=)}}} is similar to =string.find=, but it does not return the positions, rather it returns the part of the string matched by the pattern, or if the pattern contains capture groups, returns the captured segments:
 
@@ -1774,7 +1775,7 @@ I am happy to announce the first release of my new book "Learning Hammerspoon", 
 
 You can find more information, read a free sample, and purchase it at [[https://leanpub.com/learning-hammerspoon/][LeanPub]].
 
-{{< leanpubbook book="learning-hammerspoon" >}}
+{{{leanpubbook(learning-hammerspoon,)}}}
 
 This book is based partly on blog posts published in [[https://zzamboni.org/tags/hammerspoon/][my blog]], but with a lot of new material. In this first release, the following chapters are finished:
 
@@ -1798,7 +1799,7 @@ CLOSED: [2019-04-08 Mon 09:51]
 I am happy to announce a new release of my new book "Learning Hammerspoon", including a brand new chapter and many other improvements.
 #+end_description
 
-{{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
+{{{leanpubbook(learning-hammerspoon,style="float:right")}}}
 
 I am happy to announce the third release of my book /[[https://leanpub.com/learning-hammerspoon][Learning Hammerspoon]]/, which includes the following changes:
 
@@ -1819,7 +1820,7 @@ CLOSED: [2020-08-10 Mon 09:35]
 I am happy to announce a new release of my new book "Learning Hammerspoon", including a brand new chapter /Hammerspoon Cookbook, Tips and Tricks/ and many other improvements.
 #+end_description
 
-{{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
+{{{leanpubbook(learning-hammerspoon,style="float:right")}}}
 
 I am happy to announce a new release of my book /[[https://leanpub.com/learning-hammerspoon][Learning Hammerspoon]]/!
 
@@ -2271,7 +2272,7 @@ CLOSED: [2021-01-21 Thu 00:16]
 :export_hugo_custom_front_matter: :toc false :featured_image /images/cissp-training-cover.jpg
 :END:
 
-{{< leanpubbook book="courses/leanpub/cissp-training" style="float:right"  height="400" >}}
+{{{leanpubbook(courses/leanpub/cissp-training,style="float:right"  height="400")}}}
 
 I am happy to finally reveal a project I've been working on for some time: my new online course [[https://leanpub.com/c/cissp-training][/CISSP Training/]], now available on Leanpub.
 
@@ -2284,17 +2285,6 @@ If you are thinking of, or already preparing for, taking the CISSP exam, I am su
 
 
 ** Other
-*** TODO Watching Sky Show in the Fire TV Stick :firetv:sky:streaming:howto:tips:
-:PROPERTIES:
-:export_hugo_bundle: 2023-03-25-watching-sky-show-firetv-stick
-:export_file_name: index
-:export_hugo_custom_front_matter:
-:END:
-#+begin_description
-I recently bought a Fire TV Stick 4K Max, and I'm very happy with it. The only downside was that the application for Sky Show is not available in the Fire Appstore, and it was not immediately possible to install it from other sources. Here is how I managed to install and use it.
-#+end_description
-
-I recently bought a [[https://www.amazon.de/-/en/fire-tv-stick-4k-max-international-version-streaming-device-wi-fi-6-alexa-voice-remote/dp/B08XY388HX/][Fire TV Stick 4K Max]], and I'm very happy with it. At home we subscribe to several streaming services, includingThe only downside was that the application for Sky Show is not available in the Fire Appstore, and it was not immediately possible to install it from other sources. Here is how I managed to install and use it.
 
 *** DONE My blogging setup with Emacs, Org mode, ox-hugo, Hugo, GitLab and Netlify :blogging:howto:emacs:hugo:orgmode:gitlab:netlify:
 CLOSED: [2020-12-11 Fri 00:27]
@@ -2399,7 +2389,7 @@ CLOSED: [2020-12-04 Fri 10:22]
 A new release of my book "Publishing with Emacs, Org-mode and Leanpub" is out! With a lot of new information and other improvements. Learn how to use powerful tools and workflows to easily publish your words.
 #+end_description
 
-{{< leanpubbook book="emacs-org-leanpub" style="float:right"  height="430" >}}
+{{{leanpubbook(emacs-org-leanpub,style="float:right"  height="430")}}}
 
 A new release of /Publishing with Emacs, Org-mode and Leanpub/ is out!
 
@@ -2425,7 +2415,7 @@ CLOSED: [2020-06-20 Sat 21:13]
 I am happy to announce the new release of my new book "Publishing with Emacs, Org-mode and Leanpub", which talks about powerful tools and workflows you can use to easily publish your words.
 #+end_description
 
-{{< leanpubbook book="emacs-org-leanpub" style="float:right"  height="430" >}}
+{{{leanpubbook(emacs-org-leanpub,style="float:right"  height="430")}}}
 
 Publishing your words has never been easier than it is today. Blogging means you can have your words read by thousands of people within minutes of writing them. Even publishing a book has become considerably easier through self publishing. There are many tools and publishers that allow you to get started for little or no money. Still, getting started can be confusing, and that is what this book is about.
 
@@ -2450,7 +2440,7 @@ CLOSED: [2019-11-18 Mon 22:44]
 I am happy to announce the new release of my new book "Literate Config", devoted to the use of Literate Programming for writing and documenting configuration files.
 #+end_description
 
-{{< leanpubbook book="lit-config" style="float:right" >}}
+{{{leanpubbook(lit-config,style="float:right")}}}
 
 I am happy to announce the new release of my new book "Literate Config", devoted to the use of [[https://en.wikipedia.org/wiki/Literate_programming][Literate Programming]] for writing and documenting configuration files with Emacs and org-mode.
 
@@ -2475,7 +2465,7 @@ Me complace anunciar  la primera edición de mi nuevo libro, y mi primer libro e
 
 Puedes obtener más información, leer una muestra gratuita y comprarlo  en  [[https://leanpub.com/utilerias-unix][LeanPub]].
 
-{{< leanpubbook book="utilerias-unix" >}}
+{{{leanpubbook(utilerias-unix)}}}
 
 ¡Espero lo disfrutes!  Favor de enviarme tus comentarios a través de  la  página  [[https://leanpub.com/utilerias-unix/email_author/new][/Escribe al Autor/]] en LeanPub.
 
@@ -2491,16 +2481,18 @@ I am the author of two books: [[https://cf-learn.info/][/Learning CFEngine/]] an
 
 file:images/hammerspoon-github-circleci-leanpub-transp.jpg
 
-{{% tip %}}
+#+begin_tip
 The Hammerspoon section of this post is Mac-specific (since Hammerspoon is a Mac-only application), but the integration between GitHub, CircleCI and Leanpub can be applied regardless of the OS you use.
-{{% /tip %}}
+#+end_tip
 
 **** Leanpub basics
 
 First, some basic concepts about the Leanpub API. See the [[https://leanpub.com/help/api][documentation]] for the full details, I'm only mentioning clear some things you need to know to understand the rest of this post.
 
 - *Book slug*: Each Leanpub book is identified by a /slug/, which is basically an unique author-chosen identifier for the book. The book slug is included in the book's Leanpub URL. For example, the URL for /Learning Hammerspoon/ is https://leanpub.com/learning-hammerspoon, therefore its slug is =learning-hammerspoon=. The slug can be changed by the author as part of the book configuration, and is used in all the API calls to identify the book for which an operation should be performed.
-  {{% note %}} The tools I describe below assume by default that your book's git repository name is the same as its Leanpub slug. You can specify it if this is not the case by providing some additional configuration parameters. {{% /note %}}
+  #+begin_note
+The tools I describe below assume by default that your book's git repository name is the same as its Leanpub slug. You can specify it if this is not the case by providing some additional configuration parameters.
+  #+end_note
 - *API key*: Every Leanpub author gets an [[https://leanpub.com/help/api#getting-your-api-key][/API key/]], which is a randomly-generated string of characters which is used as an authentication token. The API key needs to be provided on most Leanpub API  calls (some query operations are allowed without a key).
 - *Build types*: The Leanpub API allows you to trigger several types of [[https://leanpub.com/help/api#previewing-and-publishing][build operations]] on a book:
   - /Preview/ builds all the formats supported by Leanpub (PDF, ePub, Mobi), using the whole book as defined in the =Book.txt= file.
@@ -2511,9 +2503,9 @@ First, some basic concepts about the Leanpub API. See the [[https://leanpub.com/
 
 **** The beginning: triggering and watching builds by hand
 
-{{% warning %}}
+#+begin_warning
 This is not part of my final workflow and you can safely skip it. It is only a bit of historic perspective for how my workflow evolved.
-{{% /warning %}}
+#+end_warning
 
 As an initial step, I wrote some shell scripts to trigger and watch the progress of Leanpub builds by hand. I use the [[https://elv.sh][Elvish shell]], and my scripts are published as the [[https://github.com/zzamboni/elvish-modules/blob/master/leanpub.org][leanpub]] Elvish module. These allow you to  trigger book builds (only preview and subset builds, no publishing) by hand, and also to watch the progress of any operation. If you use Elvish, you can install the module like this:
 
@@ -2537,11 +2529,12 @@ leanpub:preview-and-watch
 leanpub:subset-and-watch
 #+end_src
 
-{{% note %}}If your current directory name is not the same as your book slug, you can pass the book slug as an argument. For example:
+#+begin_note
+If your current directory name is not the same as your book slug, you can pass the book slug as an argument. For example:
 #+begin_src elvish
 leanpub:preview-and-watch my_book
 #+end_src
-{{% /note %}}
+#+end_note
 
 After a while using these scripts, I thought I would put some work on improving both the aesthetics and the functionality of my automation. The next sections are what I came up with.
 
@@ -2555,9 +2548,9 @@ The first step is to get rid of the need to run those "watch" scripts, which pro
 
 These are produced by a [[/post/using-spoons-in-hammerspoon/][Spoon]] I wrote called [[https://www.hammerspoon.org/Spoons/Leanpub.html][Leanpub]]. You can install, load and configure it using the [[/post/using-spoons-in-hammerspoon/#automated-spoon-installation-and-configuration][SpoonInstall]] spoon.
 
-{{% tip %}}
+#+begin_tip
 If you want to learn how this Spoon is implemented, please check out the "Writing your own extensions and Spoons" chapter in [[https://leanpub.com/learning-hammerspoon][/Learning Hammerspoon/]].
-{{% /tip %}}
+#+end_tip
 
 For example, in my configuration I have [[/post/my-hammerspoon-configuration-with-commentary/#leanpub-integration][the following code]] to configure the spoon to watch for both of my books:
 
@@ -2579,7 +2572,7 @@ Note that you also need to specify your Leanpub API key, which you can get and m
 
 file:images/leanpub-api-key.png
 
-{{% warning %}}
+#+begin_warning
 You can specify the =api_key= value in the main declaration as shown (commented) above. However, be careful if you keep your configuration file in GitHub or some other publicly-accessible place. What I do is keep a separate file called =init-local.lua= which I do not commit to my git repository, and where I set my API key as follows:
 
 #+begin_src lua
@@ -2594,13 +2587,13 @@ This file in turn gets loaded into my main config file [[/post/my-hammerspoon-co
     dofile(localfile)
   end
 #+end_src
-{{% /warning %}}
+#+end_warning
 
 Reload your Hammerspoon configuration. Now when you trigger a preview or publish (for example, using the scripts above), you will after a few seconds start seeing the corresponding notifications.
 
-{{% tip %}}
+#+begin_tip
 Note that the actual behavior and appearance of the notifications produced by Hammerspoon (like those of any other application) depend partly on the settings you have in the macOS Notifications control panel. For example, if you don't see any notifications, make sure the Hammerspoon notifications are not blocked and that you have not enabled "Do not disturb" mode. If you don't see any buttons in the notifications, it may indicate that you have the Hammerspoon alert style set to "Banners" instead of "Alerts".
-{{% /tip %}}
+#+end_tip
 
 **** Triggering builds with a static webhook
 
@@ -2608,9 +2601,9 @@ The most basic way of automatically triggering builds is by using a webhook to t
 
 file:images/github-webhooks.png
 
-{{% tip %}}
+#+begin_tip
 If you only want to automatically trigger one type of build then you don't need to do anything else. Continue reading if you are interested in a flexible workflow which allows you to trigger different types of builds based on tags you define on your book's repository.
-{{% /tip %}}
+#+end_tip
 
 **** Triggering builds via CircleCI
 
@@ -2667,13 +2660,13 @@ To implement this workflow, all you have to do is add a file =.circleci/config.y
                 ignore: /.*/
 #+end_src
 
-{{% note %}}
+#+begin_note
 The =leanpub= orb defines the "jobs" to trigger the different types of builds, but the logic regarding tags  is defined in the =worflows:= section of the config file, by selecting or ignoring them according to our previous description. You can choose your own tags, or do the workflow based on branch names, or any other condition you want.
-{{% /note %}}
+#+end_note
 
-{{% warning %}}
+#+begin_warning
 The default config assumes that your git repository name corresponds to the book slug. If this is not the case, you have to add a =book-slug= parameter to all the job calls in the config file. See the [[https://circleci.com/orbs/registry/orb/zzamboni/leanpub][orb documentation]] for details.
-{{% /warning %}}
+#+end_warning
 
 Once you have committed this file, you can enable CircleCI on it as follows:
 
@@ -2769,7 +2762,9 @@ So, without further ado, here are the detailed instructions. I ran these on my M
 7. Go to [[http://localhost:2368/ghost]], create your user and set up your blog info:
   file:images/ghost-setup-blog.png
 
-  {{% note  %}}You may want to use an email address you don't mind being public. See "[[#security-considerations][Security Considerations]]" below.{{% /note %}}
+  #+begin_note
+     You may want to use an email address you don't mind being public. See "[[#security-considerations][Security Considerations]]" below.
+  #+end_note
 
 8. You can now start creating content  and configuring the local Ghost instance.
   file:images/ghost-admin-screen.png

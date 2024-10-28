@@ -3,7 +3,7 @@ title = "Books"
 author = ["Diego Zamboni"]
 date = 2020-12-08T18:19:00+01:00
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 weight = 2
 featured_image = "/images/book-box-thin.jpg"
 +++

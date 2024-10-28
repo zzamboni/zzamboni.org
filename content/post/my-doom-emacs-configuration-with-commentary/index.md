@@ -5,14 +5,14 @@ summary = "I switched from my hand-crafted Emacs config to Doom Emacs some time 
 date = 2020-10-19T09:07:00+02:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs", "doom"]
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 featured_image = "/images/doom-emacs-color.jpg"
 toc = true
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **October  5, 2021**
+Last update: **October 28, 2024**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -44,11 +44,11 @@ Note: a lot of manual configuration has been rendered moot by using Emacs Doom, 
 
 Doom Emacs uses three config files:
 
--   `init.el` defines which of the existing Doom [modules](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting%5Fstarted.org#modules) are loaded. A Doom module is a bundle of packages, configuration and commands, organized into a unit that can be toggled easily from this file.
--   `packages.el` defines which [packages](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting%5Fstarted.org#package-management) should be installed, beyond those that are installed and loaded as part of the enabled modules.
--   `config.el` contains all [custom configuration](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting%5Fstarted.org#configuring-doom) and code.
+-   `init.el` defines which of the existing Doom [modules](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#modules) are loaded. A Doom module is a bundle of packages, configuration and commands, organized into a unit that can be toggled easily from this file.
+-   `packages.el` defines which [packages](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#package-management) should be installed, beyond those that are installed and loaded as part of the enabled modules.
+-   `config.el` contains all [custom configuration](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#configuring-doom) and code.
 
-There are other files that can be loaded, but theses are the main ones. The load order of different files is [defined depending on the type of session](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting%5Fstarted.org#load-order) being started.
+There are other files that can be loaded, but theses are the main ones. The load order of different files is [defined depending on the type of session](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#load-order) being started.
 
 All the config files are generated from this Org file, to try and make its meaning as clear as possible. All `package!` declarations are written to `packages.el`, all other LISP code is written to `config.el`.
 
@@ -214,7 +214,7 @@ We start by simply defining the standard headers used by the three files. These 
 
 ### Customized variables {#customized-variables}
 
-Doom [does not recommend the Emacs `customize` mechanism](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting%5Fstarted.org#configure):
+Doom [does not recommend the Emacs `customize` mechanism](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#configure):
 
 > _Note: do not use M-x customize or the customize API in general. Doom is designed to be configured programmatically from your config.el, which can conflict with Customize’s way of modifying variables._
 
@@ -233,11 +233,13 @@ This code is written to the `init.el` to select which modules to load. Written h
  ;;layout              ; auie,ctsrnm is the superior home row
 
  :completion
- (company +childframe) ; the ultimate code completion backend
+ ;;(company +childframe) ; the ultimate code completion backend
+
  ;;helm                ; the *other* search engine for love and life
  ;;ido                 ; the other *other* search engine...
  (ivy +prescient -childframe
       -fuzzy +icons)   ; a search engine for love and life
+ ;;vertico
 
  :ui
  ;;deft                ; notational velocity for Emacs
@@ -490,7 +492,7 @@ Allow mixed fonts in a buffer. This is particularly useful for Org mode, so I ca
 
 ```emacs-lisp
 (add-hook! 'org-mode-hook #'mixed-pitch-mode)
-(add-hook! 'org-mode-hook #'solaire-mode)
+;;(add-hook! 'org-mode-hook #'solaire-mode)
 (setq mixed-pitch-variable-pitch-cursor nil)
 ```
 
@@ -576,6 +578,12 @@ Enable showing a word count in the modeline. This is only shown for the modes li
 
 ```emacs-lisp
 (setq doom-modeline-enable-word-count t)
+```
+
+Enable pixel scrolling
+
+```emacs-lisp
+;;(pixel-scroll-precision-mode 1)
 ```
 
 
@@ -744,12 +752,12 @@ One of the few things I missed in Emacs from vi was the `%` key, which jumps to 
 
 ## Org mode {#org-mode}
 
-[Org mode](http://orgmode.org/) has become my primary tool for writing, blogging, coding, presentations and more. I am duly impressed. I have been a fan of the idea of [literate programming](https://en.wikipedia.org/wiki/Literate%5Fprogramming) for many years, and I have tried other tools before (most notably [noweb](https://www.cs.tufts.edu/~nr/noweb/), which I used during grad school for homeworks and projects), but Org is the first tool I have encountered which makes it practical. Here are some of the resources I have found useful in learning it:
+[Org mode](http://orgmode.org/) has become my primary tool for writing, blogging, coding, presentations and more. I am duly impressed. I have been a fan of the idea of [literate programming](https://en.wikipedia.org/wiki/Literate_programming) for many years, and I have tried other tools before (most notably [noweb](https://www.cs.tufts.edu/~nr/noweb/), which I used during grad school for homeworks and projects), but Org is the first tool I have encountered which makes it practical. Here are some of the resources I have found useful in learning it:
 
 -   Howard Abrams' [Introduction to Literate Programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html), which got me jumpstarted into writing code documented with org-mode.
 -   Nick Anderson's [Level up your notes with Org](https://github.com/nickanderson/Level-up-your-notes-with-Org), which contains many useful tips and configuration tricks. Nick's recommendation also got me to start looking into Org-mode in the first place!
 -   Sacha Chua's [Some tips for learning Org Mode for Emacs](http://sachachua.com/blog/2014/01/tips-learning-org-mode-emacs/), her [Emacs configuration](http://pages.sachachua.com/.emacs.d/Sacha.html) and many of her [other articles](http://sachachua.com/blog/category/emacs/).
--   Rainer König's [OrgMode Tutorial](https://www.youtube.com/playlist?list=PLVtKhBrRV%5FZkPnBtt%5FTD1Cs9PJlU0IIdE) video series.
+-   Rainer König's [OrgMode Tutorial](https://www.youtube.com/playlist?list=PLVtKhBrRV_ZkPnBtt_TD1Cs9PJlU0IIdE) video series.
 
 Doom's Org module provides a lot of sane configuration settings, so I don't have to configure so much as in my [previous hand-crafted config](https://github.com/zzamboni/dot-emacs/).
 
@@ -812,13 +820,14 @@ Disable [electric-mode](https://code.orgmode.org/bzg/org-mode/src/master/etc/ORG
 (add-hook! org-mode (electric-indent-local-mode -1))
 ```
 
-I really dislike completion of words as I type prose (in code it's OK), so I disable it in Org:
+I really dislike completion of words as I type prose (in code it's OK), so I disable it in Org and Markdown modes.
 
 ```emacs-lisp
 (defun zz/adjust-org-company-backends ()
   (remove-hook 'after-change-major-mode-hook '+company-init-backends-h)
   (setq-local company-backends nil))
 (add-hook! org-mode (zz/adjust-org-company-backends))
+(add-hook! markdown-mode (zz/adjust-org-company-backends))
 ```
 
 
@@ -912,7 +921,7 @@ Using `org-download` to make it easier to insert images into my org notes. I don
            nil)))
     (org-download-clipboard file)))
 
-(after! org
+(after! org-download
   (setq org-download-method 'directory)
   (setq org-download-image-dir "images")
   (setq org-download-heading-lvl nil)
@@ -1001,6 +1010,11 @@ Ta-da! Now using `counsel-org-link` inserts nice, human-readable links.
 #### Capturing links to external applications {#capturing-links-to-external-applications}
 
 `org-mac-link` implements the ability to grab links from different Mac apps and insert them in the file. Bind `C-c g` to call `org-mac-grab-link` to choose an application and insert a link.
+
+```emacs-lisp
+(when IS-MAC
+  (package! org-mac-link))
+```
 
 ```emacs-lisp
 (when IS-MAC
@@ -1186,7 +1200,14 @@ For when I do development on it (I wrote the `ox-awesomecv` exporter), I check i
 
 ```emacs-lisp
 (use-package! ox-awesomecv
-  :after org)
+  :after org
+  :config
+  (defun org-awesomecv--cventry-right-img-code (file)
+  (if file
+    (format "\\begin{wrapfigure}{r}{0.15\\textwidth}
+  \\raggedleft\\vspace{-10.0mm}
+  \\includegraphics[width=0.1\\textwidth]{%s}
+\\end{wrapfigure}" file) "")))
 (use-package! ox-moderncv
   :after org)
 ```
@@ -1384,7 +1405,7 @@ The `zz/refresh-reveal-prez` function makes use of the above to perform the pres
 
 **Note #1:** This is specific to my OS (macOS) and the browser I use (Brave). I will make it more generic in the future, but for now feel free to change it to your needs.
 
-**Note #2:** the presentation must be already open in the browser, so you must run "Export to reveal.js -> To file and browse" (`C-c C-e v b`) once by hand.
+**Note #2:** the presentation must be already open in the browser, so you must run "Export to reveal.js -&gt; To file and browse" (`C-c C-e v b`) once by hand.
 
 ```emacs-lisp
 (defun zz/refresh-reveal-prez ()
@@ -1440,7 +1461,7 @@ end repeat\"")))
 
 ```emacs-lisp
 (make-directory "~/.org-jira" 'ignore-if-exists)
-(setq jiralib-url "https://jira.swisscom.com/")
+(setq jiralib-url "https://jira.example.com/")
 ```
 
 [org-special-block-extras](https://github.com/alhassy/org-special-block-extras) to enable additional special block types and their corresponding exports (disabled for now).
@@ -1457,19 +1478,6 @@ end repeat\"")))
 
 
 ### Other Org stuff {#other-org-stuff}
-
-Testing `org-ol-tree`.
-
-```emacs-lisp
-(package! org-ol-tree
-  :recipe (:host github
-           :repo "Townk/org-ol-tree"))
-```
-
-```emacs-lisp
-(use-package! org-ol-tree
-  :after org)
-```
 
 
 ### Programming Org {#programming-org}
@@ -1558,7 +1566,6 @@ Some useful settings for LISP coding - `smartparens-strict-mode` to enforce pare
 Adding keybindings for some useful functions:
 
 -   `find-function-at-point` gets bound to `C-c l g p` (grouped together with other "go to" functions bound by Doom) and to `C-c C-f` (analog to the existing `C-c f`) for faster access.
-
     ```emacs-lisp
     (after! prog-mode
       (map! :map prog-mode-map "C-h C-f" #'find-function-at-point)
@@ -1571,20 +1578,17 @@ Adding keybindings for some useful functions:
 Some other languages I use.
 
 -   [Elvish shell](http://elvish.io/), with support for org-babel.
-
     ```emacs-lisp
     (package! elvish-mode)
     (package! ob-elvish)
     ```
 
 -   Fish shell.
-
     ```emacs-lisp
     (package! fish-mode)
     ```
 
 -   [CFEngine](http://cfengine.com/) policy files. The `cfengine3-mode` package is included with Emacs, but I also install org-babel support.
-
     ```emacs-lisp
     (package! ob-cfengine3)
     ```
@@ -1597,7 +1601,6 @@ Some other languages I use.
     ```
 
 -   [Graphviz](https://graphviz.org/) for graph generation.
-
     ```emacs-lisp
     (package! graphviz-dot-mode)
     ```
@@ -1607,15 +1610,18 @@ Some other languages I use.
     ```
 
 -   I am learning [Common LISP](http://www.gigamonkeys.com/book/), which is well supported through the `common-lisp` Doom module, but I need to configure this in the `~/.slynkrc` file for I/O in the Sly REPL to work fine ([source](https://github.com/joaotavora/sly/issues/347#issuecomment-717065056)).
-
     ```emacs-lisp
     (setf slynk:*use-dedicated-output-stream* nil)
     ```
 
 -   [package-lint](https://github.com/purcell/package-lint) for checking MELPA packages.
-
     ```emacs-lisp
     (package! package-lint)
+    ```
+
+-   Playing with [Zig](https://ziglang.org/):
+    ```emacs-lisp
+    (package! zig-mode)
     ```
 
 
@@ -1625,7 +1631,6 @@ Some other languages I use.
 ### Miscellaneous packages {#miscellaneous-packages}
 
 -   [Dockerfile mode](https://github.com/spotify/dockerfile-mode):
-
     ```emacs-lisp
     (package! dockerfile-mode)
     ```
@@ -1643,7 +1648,6 @@ This prevents the `docker` command from producing ANSI sequences during the imag
 ```
 
 -   Use Emacs [Everywhere](https://github.com/tecosaur/emacs-everywhere)!
-
     ```emacs-lisp
     (package! emacs-everywhere :pin nil)
     ```
@@ -1655,7 +1659,6 @@ This prevents the `docker` command from producing ANSI sequences during the imag
     ```
 
 -   Trying out [Magit's multi-repository abilities](https://magit.vc/manual/magit/Repository-List.html). This stays in sync with the git repo list used by my [chain:summary-status](https://github.com/zzamboni/elvish-themes/blob/master/chain.org#bonus-displaying-the-status-of-several-git-repos-at-once) Elvish shell function by reading the file every time `magit-list-repositories` is called, using `defadvice!`. I also customize the display to add the `Status` column.
-
     ```emacs-lisp
     (after! magit
       (setq zz/repolist
@@ -1677,7 +1680,6 @@ This prevents the `docker` command from producing ANSI sequences during the imag
     ```
 
 -   I prefer to use the GPG graphical PIN entry utility. This is achieved by setting `epg-pinentry-mode` (`epa-pinentry-mode` before Emacs 27) to `nil` instead of the default `'loopback`.
-
     ```emacs-lisp
     (after! epa
       (set 'epg-pinentry-mode nil)
@@ -1685,7 +1687,6 @@ This prevents the `docker` command from producing ANSI sequences during the imag
     ```
 
 -   I find `iedit` absolutely indispensable when coding. In short: when you hit `Ctrl-;`, all occurrences of the symbol under the cursor (or the current selection) are highlighted, and any changes you make on one of them will be automatically applied to all others. It's great for renaming variables in code, but it needs to be used with care, as it has no idea of semantics, it's  a plain string replacement, so it can inadvertently modify unintended parts of the code.
-
     ```emacs-lisp
     (package! iedit)
     ```
@@ -1700,7 +1701,6 @@ This prevents the `docker` command from producing ANSI sequences during the imag
     ```
 
 -   A useful macro (sometimes) for timing the execution of things. From [StackOverflow](https://stackoverflow.com/questions/23622296/emacs-timing-execution-of-function-calls-in-emacs-lisp).
-
     ```emacs-lisp
     (defmacro zz/measure-time (&rest body)
       "Measure the time it takes to evaluate BODY."
@@ -1710,13 +1710,11 @@ This prevents the `docker` command from producing ANSI sequences during the imag
     ```
 
 -   I'm still not fully convinced of running a terminal inside Emacs, but `vterm` is much nicer than any of the previous terminal emulators, so I'm giving it a try. I configure it so that it runs my [favorite shell](https://elv.sh/). Vterm runs Elvish flawlessly!
-
     ```emacs-lisp
     (setq vterm-shell "/usr/local/bin/elvish")
     ```
 
 -   Add "unfill" commands to parallel the "fill" ones, bind <kbd>A-q</kbd> to `unfill-paragraph` and rebind <kbd>M-q</kbd> to the `unfill-toggle` command, which fills/unfills paragraphs alternatively.
-
     ```emacs-lisp
     (package! unfill)
     ```
@@ -1730,13 +1728,11 @@ This prevents the `docker` command from producing ANSI sequences during the imag
     ```
 
 -   The [annotate](https://github.com/bastibe/annotate.el) package is nice - allows adding annotations to files without modifying the file itself.
-
     ```emacs-lisp
     (package! annotate)
     ```
 
--   [gift-mode](https://github.com/csrhodes/gift-mode) for editing quizzes in [GIFT format](https://docs.moodle.org/39/en/GIFT%5Fformat).
-
+-   [gift-mode](https://github.com/csrhodes/gift-mode) for editing quizzes in [GIFT format](https://docs.moodle.org/39/en/GIFT_format).
     ```emacs-lisp
     (package! gift-mode)
     ```
@@ -1756,8 +1752,8 @@ I use [750words.com](https://750words.com/) for recording some writing every day
 ```
 
 ```emacs-lisp
-(use-package! 750words)
-(use-package! ox-750words)
+(use-package! 750words :defer t)
+(use-package! ox-750words :defer t)
 ```
 
 

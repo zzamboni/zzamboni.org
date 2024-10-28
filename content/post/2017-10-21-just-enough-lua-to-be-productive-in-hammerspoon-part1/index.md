@@ -5,14 +5,14 @@ summary = "Hammerspoon's configuration files are written in Lua, so a basic know
 date = 2017-10-21T20:36:00+02:00
 tags = ["hammerspoon", "mac", "howto", "lua"]
 draft = false
-creator = "Emacs 27.2 (Org mode 9.5 + ox-hugo)"
+creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
 toc = true
 featured_image = "/images/lua-logo.svg"
 +++
 
 Hammerspoon's configuration files are written in Lua, so a basic knowledge of the language is very useful to be an effective user of Hammerspoon. In this 2-part article I will show you the basics of Lua so you can read and write Hammerspoon configuration. Along the way you will discover that Lua is a surprisingly powerful language.
 
-Lua is a scripting language created in 1993, and focused from the beginning in being an embedded language for extending other applications. It is easy to learn and use while having pretty powerful features, and is frequently used in games, but also in [many other applications](https://en.wikipedia.org/wiki/List%5Fof%5Fapplications%5Fusing%5FLua) including, of course, Hammerspoon.
+Lua is a scripting language created in 1993, and focused from the beginning in being an embedded language for extending other applications. It is easy to learn and use while having pretty powerful features, and is frequently used in games, but also in [many other applications](https://en.wikipedia.org/wiki/List_of_applications_using_Lua) including, of course, Hammerspoon.
 
 The purpose of this section is to give you a quick overview of the Lua features and peculiarities you may find most useful for developing Hammerspoon policies. I assume you are a programmer who knows some other C-like language--if you already know C, Java, Ruby, Python, Perl, Javascript or some similar language, picking up Lua should be pretty easy. Instead of detailing every structure, I will focus on the aspects that are most different or that are most likely to trip you up as you learn it.
 
@@ -134,7 +134,6 @@ You should try this function to see that it works. Adding it to you `~/.hammersp
 Once you reload your config, you can generate a double click by moving the cursor where you want it and pressing <kbd>Ctrl​-​⌘​-​Alt​-​p</kbd>. While this is a contrived example, the ability to generate events like this is immensely powerful in automating your system.
 
 {{% tip %}}
-
 By now you have seen that we are using <kbd>Ctrl​-​⌘​-​Alt</kbd> very frequently in our keybindings. To avoid having to type this every time, and since the modifiers are defined as an array, you can define them as variable. For example, I have the following at the top of my `init.lua`:
 
 ```lua
@@ -147,7 +146,6 @@ Then I simply use `hyper` or `shift_hyper` in my key binding declarations:
 ```lua
   hs.hotkey.bindSpec({ hyper, "p" }, leftDoubleClick)
 ```
-
 {{% /tip %}}
 
 
