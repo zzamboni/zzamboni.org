@@ -5,6 +5,11 @@
     {{ partial "svg/facebook.svg" (dict "size" $icon_size) }}
   </a>
 {{ end }}
+{{ with .Site.Params.linkedin }}
+  <a href="{{ . }}" class="link-transition twitter link dib z-999 pt3 pt0-l mr2" title="LinkedIn link">
+    {{ partial "svg/linkedin.svg" (dict "size" $icon_size) }}
+  </a>
+{{ end }}
 {{ with .Site.Params.twitter }}
   <a href="{{ . }}" class="link-transition twitter link dib z-999 pt3 pt0-l mr2" title="Twitter link">
     {{ partial "svg/twitter.svg" (dict "size" $icon_size) }}
