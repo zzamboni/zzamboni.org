@@ -7,6 +7,7 @@ aliases:
 - /blog
 - /new/blog
 weight: "01"
+menu: main
 ---
 
 # All posts

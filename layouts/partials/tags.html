@@ -1,4 +1,4 @@
-{{ $currentPageUrl := .URL }}
+{{ $currentPageUrl := .RelPermalink }}
 {{ if .Params.tags }}
   <ul class="list dib ml0 pl0" id="tags">
     <li class="b black dib mb2 mr3">Tags: </li>
@@ -17,9 +17,9 @@
           Related:
         </li>
         {{ range $tags.Pages }}
-          {{ if ne .URL $currentPageUrl }}
+          {{ if ne .RelPermalink $currentPageUrl }}
             <li class="mb2 mr3">
-              <a href="{{ .URL }}" class="link mid-gray dim">
+              <a href="{{ .RelPermalink }}" class="link mid-gray dim">
                  {{ .LinkTitle }}
               </a>
             </li>

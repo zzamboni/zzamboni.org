@@ -90,8 +90,8 @@ CLOSED: [2018-03-22 Thu 19:40]
 :PROPERTIES:
 :export_hugo_section: about
 :export_hugo_custom_front_matter: :featured_image /images/legoland.jpg
-:export_hugo_weight: 06
 :export_file_name: _index
+:export_hugo_menu: :menu main :weight 60
 :END:
 
 - *Who:* :: My name is Diego Zamboni. I am an IT architect, computer scientist, security expert, consultant, project and team leader, programmer, sysadmin, author and overall geek. I am from Mexico but live in Switzerland with my beautiful wife and our two awesome daughters.
@@ -129,7 +129,7 @@ CLOSED: [2018-03-25 Sun 18:34]
 :PROPERTIES:
 :export_hugo_section: contact
 :export_hugo_custom_front_matter: :featured_image /images/phone-booth-red-trimmed.jpg
-:export_hugo_weight: 05
+:export_hugo_menu: :menu main :weight 50
 :export_file_name: _index
 :END:
 
@@ -142,16 +142,16 @@ CLOSED: [2018-03-25 Sun 20:11]
 :PROPERTIES:
 :export_hugo_section: book
 :export_hugo_custom_front_matter: :featured_image /images/book-box-thin.jpg
-:export_hugo_weight: 02
 :END:
 
 *** DONE Books
 CLOSED: [2020-12-08 Tue 18:19]
 :PROPERTIES:
 :export_file_name: _index
+:export_hugo_menu: :menu main :weight 20
 :END:
 
-I have a few self-published books, all of them available at [[https://leanpub.com/u/zzamboni][Leanpub]]. Here you can find short descriptions and links to their respective pages.
+I now have a few self-published books, all of them available at [[https://leanpub.com/u/zzamboni][Leanpub]]. Here you can find short descriptions and links to their respective pages.
 
 *** DONE Learning CFEngine
 CLOSED: [2018-03-25 Sun 21:05]
@@ -267,13 +267,13 @@ CLOSED: [2018-03-25 Sun 20:11]
 :PROPERTIES:
 :export_hugo_section: code
 :export_hugo_custom_front_matter: :featured_image /images/c64-code3.png
-:export_hugo_weight: 03
 :END:
 
 *** DONE Code
 CLOSED: [2020-12-08 Tue 18:07]
 :PROPERTIES:
 :export_file_name: _index
+:export_hugo_menu: :menu main :weight 30
 :END:
 
 Here you can find a sample of some programs I have written over the years. For a full list of my public projects please check my [[https://github.com/zzamboni/][GitHub]] and [[https://gitlab.com/zzamboni][GitLab]] profiles.
