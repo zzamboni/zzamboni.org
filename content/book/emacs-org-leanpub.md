@@ -4,7 +4,6 @@ author = ["Diego Zamboni"]
 date = 2020-06-20T21:12:00+02:00
 draft = false
 creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
-weight = 2
 finalURL = "https://leanpub.com/emacs-org-leanpub"
 +++
 

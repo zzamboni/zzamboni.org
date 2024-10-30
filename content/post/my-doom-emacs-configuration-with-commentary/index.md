@@ -12,7 +12,7 @@ toc = true
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **October 28, 2024**
+Last update: **October 30, 2024**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 

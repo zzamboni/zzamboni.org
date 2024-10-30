@@ -4,8 +4,11 @@ author = ["Diego Zamboni"]
 date = 2018-03-22T19:40:00+01:00
 draft = false
 creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
-weight = 6
 featured_image = "/images/legoland.jpg"
+[menu]
+  [menu.main]
+    identifier = "about"
+    weight = 60
 +++
 
 **Who:**
