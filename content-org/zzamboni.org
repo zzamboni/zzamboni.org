@@ -2271,6 +2271,9 @@ CLOSED: [2021-01-21 Thu 00:16]
 :export_file_name: index
 :export_hugo_custom_front_matter: :toc false :featured_image /images/cissp-training-cover.jpg
 :END:
+#+begin_description
+I am happy to finally reveal a project I've been working on for some time: my new online course "CISSP Training", now available on Leanpub.
+#+end_description
 
 {{{leanpubbook(courses/leanpub/cissp-training,style="float:right"  height="400")}}}
 

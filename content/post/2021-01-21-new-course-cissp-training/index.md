@@ -1,6 +1,9 @@
 +++
 title = "New course: CISSP Training"
 author = ["Diego Zamboni"]
+summary = """
+  I am happy to finally reveal a project I've been working on for some time: my new online course "CISSP Training", now available on Leanpub.
+  """
 date = 2021-01-21T00:16:00+01:00
 draft = false
 creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
