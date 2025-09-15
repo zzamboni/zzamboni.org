@@ -1,4 +1,4 @@
-#!/usr/local/bin/elvish
+#!/usr/bin/env elvish
 use re
 var hugo-ver = (put (re:find 'v([\d.]+)' (hugo version))[groups][1][text])
 var hugo-env = "production"
