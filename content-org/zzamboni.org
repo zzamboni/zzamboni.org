@@ -329,7 +329,7 @@ You can find all the information at <http://github.com/zzamboni/grabcartoons>
 :export_hugo_section: post
 :END:
 
-Ideas for things to write about.
+Ideas for new blog posts.
 
 * Posts
 :PROPERTIES:
