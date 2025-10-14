@@ -1,0 +1,3 @@
+[tasks.serve]
+description = "Build and serve the site locally"
+run = "hugo serve -D --navigateToChanged"
