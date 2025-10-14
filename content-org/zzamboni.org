@@ -46,6 +46,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#enwrite][Enwrite]]
     - [[#grabcartoons][GrabCartoons]]
 - [[#ideas][Ideas]]
+  - [[#reviving-an-old-mac-with-linux-part-2---prettifying-boot][Reviving an old Mac with Linux (part 2 - prettifying boot)]]
 - [[#posts][Posts]]
   - [[#literate-config-files][Literate config files]]
     - [[#my-doom-emacs-configuration-with-commentary][My Doom Emacs configuration, with commentary]]
@@ -79,7 +80,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#automating-leanpub-book-publishing-with-hammerspoon-and-circleci][Automating Leanpub book publishing with Hammerspoon and CircleCI]]
     - [[#hosting-a-ghost-blog-in-github---the-easier-way][Hosting a Ghost Blog in GitHub - the easier way]]
     - [[#the-big-website-reboot][The Big Website Reboot]]
-- [[#footnotes][Footnotes]]
+    - [[#reviving-an-old-mac-with-linux-part-1---installing-linux][Reviving an old Mac with Linux (part 1 - installing Linux)]]
 
 * Pages
 
@@ -329,8 +330,58 @@ You can find all the information at <http://github.com/zzamboni/grabcartoons>
 :export_hugo_section: post
 :END:
 
-Ideas for new blog posts.
+Ideas for new blog posts and posts in progress.
 
+** TODO Reviving an old Mac with Linux (part 2 - prettifying boot)
+:PROPERTIES:
+:export_hugo_bundle: 2025-10-14-reviving-an-old-mac-with-linux-part-2-prettifying-the-boot-screens
+:export_file_name: index
+:custom_id: reviving-an-old-mac-with-linux-part-2-prettifying-the-boot-screens
+:export_hugo_custom_front_matter: :featured_image /images/tram-zurich.jpg :toc false
+:END:
+
+In the previous post, we saw the steps to install Linux in a dual-boot setup on an old Mac, using OpenCore as the boot manager.
+
+However those icons are fairly generic, and there are a couple of spurious entries there introduced by default by OpenCore. Let's make it prettier.
+
+The [[https://dortania.github.io/OpenCore-Install-Guide/][OpenCore]] boot loader "is a complex piece of software" (in its own words), it's extensively documented but works reasonably well with defaults. You may need to refer to its [[https://dortania.github.io/docs/][Configuration guide]] for most advanced use cases. For what we want here, see [[https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html#setting-up-opencore-s-gui][OpenCore beauty treatment]], but I've extracted the main steps below.
+
+First, we can configure the OpenCore theme. You can find links to many nice themes at [[https://dortania.github.io/OpenCanopy-Gallery/][OpenCanopy Gallery]]. The [[https://dortania.github.io/OpenCanopy-Gallery/ocbinary.html][Acidanthera themes]] are included with OpenCore, but I personally like the [[https://dortania.github.io/OpenCanopy-Gallery/blackosx.html#themes][Blackosx themes]], the one I'm currently using is [[https://github.com/blackosx/BsxDarkFenceLight1][BsxDarkFenceLight1]]. Here's how to install and configure a theme:
+
+1. Make sure the OpenCore EFI partition is mounted. It should normally be =/dev/sda1=. Depending on how you installed Linux, it may already be mounted as =boot/efi=. If you installed Elementary OS and created a second EFI partition, you'll need to explicitly mount it:
+   #+begin_src bash
+sudo mkdir /mnt/OC_EFI; sudo mount /dev/sda1 /mnt/OC_EFI
+   #+end_src
+2. Download the theme you want to use - either clone the git repository or download and unpack its zip file.
+  #+begin_src bash
+git clone https://github.com/blackosx/BsxDarkFenceLight1.git
+  #+end_src
+3. Copy the theme under =EFI/OC/Resources/Image/= in the EFI partition, creating both the top- and sub-directory. For example:
+  #+begin_src bash
+sudo rsync -v BsxDarkFenceLight1/Blackosx /mnt/OC_EFI/EFI/OC/Resources/Image/
+  #+end_src
+4. Edit =EFI/OC/config.plist= to point at the theme you want to try. You need to modify the Misc/PickerVariant attribute. You can use your favorite plist editor, but for such a simple change you can just edit it as a text file, find =PickerVariant= and edit directly. You need to specify the top/sub directories of the theme you want to use. For example:
+  #+begin_src xml
+            <key>PickerVariant</key>
+            <string>Blackosx\BsxDarkFenceLight1</string>
+  #+end_src
+5. Reboot! You should now see the new theme in action, but still with the extra icons, and with the default Penguin icon for Linux:
+  [[file:images/20251013-232121_09205826.png]]
+
+Removing and customizing those extra icons took a bit of experimentation. The key is in using =.contentVisibility= files to hide the undesired icons, and =.contentFlavour= files to define the icon to use (these files are described in the full OpenCore Configuration guide mentioned above):
+
+- Find all the =.contentFlavour= files under all your EFI partitions (=/mnt/OC_EFI= and =/boot/efi= in our example so far) that contain "OpenCore". In those same directories, create a =.contentVisibility= file containing the string =Disabled=. You may also need to add them to other directories where =.efi= files are located. In my case I had these:
+  #+begin_src bash
+echo Disabled | sudo tee /mnt/OC_EFI/System/Library/CoreServices/.contentVisibility
+echo Disabled | sudo tee /boot/efi/EFI/BOOT/.contentVisibility
+  #+end_src
+- Reboot and adjust as needed until you only have the icons you want.
+- The Apple icon seems to be hardcoded, but to customize the icon for the Linux partition you can create a =.contentFlavour= file in the directory from which Linux is booted (in Elementary OS this is =/boot/=, in Ubuntu it was =/boot/efi/EFI/ubuntu=). The contents of the file should match the basename of one of the icons in the OpenCore theme you are using. The Blackosx icon sets include a vast number of icons for most common Linux distributions, including Elementary OS. So in my case I had to do the following:
+  #+begin_src bash
+echo ElementaryOS | sudo tee /boot/.contentFlavour
+  #+end_src
+- Reboot and enjoy your new clean boot screen!
+  [[file:images/20251001-230259_OC-dual-boot-screen.png][file:images/20251001-230259_OC-dual-boot-screen.png]]
 * Posts
 :PROPERTIES:
 :export_hugo_section: post
@@ -2950,4 +3001,93 @@ So this is it. +For now the site is mostly empty, but new content will be appear
 
 Please take a look around, and [[/contact][let me know]] if you find anything broken.
 
-* Footnotes
+*** DONE Reviving an old Mac with Linux (part 1 - installing Linux) :howto:mac:linux:opencore:oclp:
+CLOSED: [2025-10-14 Tue 22:23]
+:PROPERTIES:
+:export_hugo_bundle: 2025-10-01-reviving-an-old-mac-with-linux-part-1
+:export_file_name: index
+:custom_id: reviving-an-old-mac-with-linux-part-1
+:export_hugo_custom_front_matter: :featured_image /images/20251013-223325_eOS-default-OpenCore-boot.png :toc false
+:END:
+#+begin_description
+I recently learned how to extend the life of an old Mac by installing Linux on it. It's like having a new machine!
+#+end_description
+
+I've been a Mac user and fan for many years. However, my current work machine is a Windows laptop (to which, reluctantly, I've gotten used by now), and my personal machine is a 13" 2015 Macbook Pro which was pretty beefed up at the time (16GB, 500GB SSD), but which has felt slower as macOS has progressed. Officially it can only run up to Monterey (macOS 12), and even then it felt quite slow. Some time ago I installed [[https://dortania.github.io/OpenCore-Legacy-Patcher/][OpenCore Legacy Patcher]] so I could use it with newer versions of macOS. Most recently I had updated it to Sequoia (macOS 15), and by this time the machine felt almost unusable. So I decided to bring it back to life by installing Linux on it. In this and following posts I will write about this process, including some tips and problems I've encountered along the way.
+
+Let me start by saying I'm extremely happy with the result! My old Mac feels like a new machine again - it's fast and responsive. It's also been great to catch up with the Linux desktop universe. The last time I had regularly used a Linux machine as my desktop was back in 2007 or so, when I had Gentoo Linux installed on my laptop at work. I've been pleasantly surprised by  the evolution of Linux desktop environments since then!
+
+The road hasn't been a straight line. I started with [[https://ubuntu.com/][Ubuntu]] 25.04, which I thought was the safest way to go given its popularity. I used it with [[https://omakub.org/][Omakub]], which provides a great starting point. However I decided to keep experimenting. I briefly tried [[https://system76.com/pop/][Pop!_OS]], which is very nice, but eventually landed on [[https://elementary.io/][elementary OS]], which feels highly polished, works great, and reminds me a lot of macOS. It's also based on Ubuntu, so most packages work. I kept my machine as dual-boot with macOS in case I ever need it, but so far I've remained firmly on the Linux side and don't regret it.
+
+Here are some screenshots to wet your appetite: my current dual-boot OpenCore boot screen and my custom [[https://github.com/zzamboni/mac-like][mac-like]] boot theme for Elementary.
+
+[[file:images/20251001-230259_OC-dual-boot-screen.png][file:images/20251001-230259_OC-dual-boot-screen.png]]
+
+[[file:images/20251001-231342_eOS-mac-like-boot.png][file:images/20251001-231342_eOS-mac-like-boot.png]]
+
+Anyhow, how did we get here?
+
+#+begin_note
+Please note that I had already installed OpenCore Legacy Patcher on my Mac, which influences some of the following steps. Adjust as needed.
+
+**In fact**, if you are not already using OCLP, most likely makes no sense to use it unless you want to tinker - most Linux distros will auto-detect macOS and give you a choice in the Grub boot loader (I think, I'm not sure). OC makes for some very nice boot screens, as seen above.
+
+Please note also that the following assumes some understanding of Linux/macOS internals, and fluency with the command line. Also: *backup your system* before you try any of this. 
+#+end_note
+
+**** Step 1: Back up, clean up and repartition macOS
+
+#+begin_warning
+Again, before getting started: *make a backup of your system!* I can't stress this enough. Although tools have evolved a lot (for example, you can now easily repartition disks without data loss), there's always a chance things will go wrong. Make a full backup of your disk, or at least of your valuable data.
+#+end_warning
+
+After this, the first step was to free enough space on macOS so I could resize its disk and leave a chunk of disk empty for my Linux partition. I used the excellent [[https://daisydiskapp.com/][DaisyDisk]] for this, but there are a number of other utilities that can help you identify where the space is going. Fire at will. In my 500GB disk, I managed to reduce my usage to below 300GB on macOS, which allowed me to create a 200GB partition for Linux.
+
+#+begin_tip
+When I first tried to resize my disk, Disk Utility kept refusing due to snapshots taking up the space. With some help from ChatGPT I figured out how to identify and delete them:
+
+1. Check existing snapshots:
+  #+begin_src bash
+tmutil listlocalsnapshots /
+  #+end_src
+2. Delete them:
+  #+begin_src bash
+sudo tmutil deletelocalsnapshots <snapshot-date>
+  #+end_src
+3. Repeat until they are all gone.
+#+end_tip
+
+Once you've freed up the space, you can resize the macOS partition to leave unused space in the disk. This can be done graphically using Disk Utility or from the command line with =diskutil=. For example:
+
+#+begin_src bash
+diskutil apfs resizeContainer disk0s2 300g
+#+end_src
+
+Make sure you are using the right partition, you can view them with =diskutil list=.
+
+Make sure you can still reboot into macOS and that everything works OK.
+
+If you had [[https://dortania.github.io/OpenCore-Legacy-Patcher/POST-INSTALL.html#booting-seamlessly-without-boot-picker][disabled the boot picker in OCLP]], make sure to reenable it again, it will make it easier to see what's happening when you dual-boot the machine through OpenCore.
+
+**** Step 2: Install Linux
+
+Finally! We can install Linux. Download the installer for your chosen distro and store it in a USB stick (make sure you keep it around, it will be useful if the machine cannot boot after installation). I first installed Ubuntu and fine-tuned my OpenCore boot process with it, but you can also try going directly with something else. Let me give you a few general tips:
+
+- In most Linux installers, you will need to identify the EFI partition where the boot components will be stored. Ubuntu allows you to use the existing macOS/OpenCore boot partition, which is 200MB in size. Elementary OS however, requires its EFI partition to be at least 1GB in size, and will not let you choose a smaller partition. Fortunately, OpenCore automatically knows how to handle multiple EFI partitions, so you can just create an extra 1GB EFI partition in your free space, use it for Elementary, and leave the rest for the main Linux partition. It looks like this in GParted (=dev/sda1= was the preexisting EFI partition, =dev/sda3= is the one I created for installing Elementary):
+
+  [[file:images/20251005-000848_eOS-Gparted-extra-EFI-partition.png][file:images/20251005-000848_eOS-Gparted-extra-EFI-partition.png]]
+
+- After the Linux installation finishes, try rebooting. In principle, you should see the OpenCore boot screen. However, in my case OpenCore refused to identify the Linux partitions. After *a lot* of head banging I figured out the solution: The trick was to manually install the latest [[https://github.com/acidanthera/OpenCorePkg/releases/][OpenCore release]] into the EFI partition, overwriting the existing BOOT and OC directories (make sure you back them up first!). You can do this either from macOS if it boots, or from the Linux USB installer. Then OpenCore automatically detected and correctly booted both Linux and macOS. Once everything works, you should see something like this:
+
+  [[file:images/20251013-223325_eOS-default-OpenCore-boot.png][file:images/20251013-223325_eOS-default-OpenCore-boot.png]]
+
+This is good! You can select macOS or Linux. Give them a try. You can set your default boot entry by choosing it with the arrow keys and pressing =Ctrl-Enter=.
+
+In the next post in this series we will look into making the boot screen prettier.
+
+
+* Local Variables :noexport:ARCHIVE:
+# Local Variables:
+# org-download-image-dir: "images"
+# org-download-heading-lvl: nil
+# End:
