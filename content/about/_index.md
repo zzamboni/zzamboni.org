@@ -45,7 +45,7 @@ I think it's incredible that all of this infrastructure is so easy to use and av
 : My blog titled [BrT](/brt), powered mainly by a self-hosted Wordpress installation, with some intermixed use of Posterous. What you find at the link is a static archive copy;
 
 1997-2001:
-: My hand-maintained ~~[web page at Purdue University](http://homes.cerias.purdue.edu/~zamboni/)~~ (the original has disappeared, [here's a mirror](/cerias/zamboni/)).
+: My hand-maintained [web page at Purdue University](http://homes.cerias.purdue.edu/~zamboni/) ([here's a mirror](/cerias/zamboni/) in case it disappears).
 
 
 ## Image attributions: {#image-attributions}
