@@ -82,4 +82,4 @@ Finally! We can install Linux. Download the installer for your chosen distro and
 
 This is good! You can select macOS or Linux. Give them a try. You can set your default boot entry by choosing it with the arrow keys and pressing `Ctrl-Enter`.
 
-In the next post in this series we will look into making the boot screen prettier.
+In the [next post]({{< relref "2025-10-14-reviving-an-old-mac-with-linux-part-2-prettifying-the-boot-screens" >}}) in this series we will look into making the boot screen prettier.
