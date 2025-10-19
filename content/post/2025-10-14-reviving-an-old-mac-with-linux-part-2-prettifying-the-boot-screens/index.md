@@ -1,11 +1,13 @@
 +++
 title = "Reviving an old Mac with Linux (part 2 - prettifying boot)"
 author = ["Diego Zamboni"]
+summary = "Improve your Mac/Linux dual boot setup with pretty boot screens!"
 date = 2025-10-18T20:24:00+02:00
+tags = ["howto", "mac", "linux", "opencore", "oclp"]
 draft = false
 creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
-featured_image = "/images/tram-zurich.jpg"
-toc = false
+featured_image = "/images/20251001-230259_OC-dual-boot-screen.png"
+toc = true
 +++
 
 In the [previous post]({{< relref "2025-10-01-reviving-an-old-mac-with-linux-part-1" >}}), we saw the steps to install Linux in a dual-boot setup on an old Mac, using OpenCore as the boot manager.
