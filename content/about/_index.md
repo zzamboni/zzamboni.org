@@ -38,8 +38,11 @@ I think it's incredible that all of this infrastructure is so easy to use and av
 
 ## My online past {#my-online-past}
 
+2008-2024 (Twitter):
+: I was on Twitter fairly early (created my account in 2007, though my first tweet is from January 2008), and although I was never a super prolific user, I used it regularly for about 15 years, until its decline after its acquisition and conversion to X. My account is still there so that my username cannot be reused, but my posts are protected. You can find an archive of my tweets in this site: <https://zzamboni.org/twitter/> courtesy of [Tweetback](https://github.com/tweetback/tweetback). I'm on Bluesky these days, though I don't post too much.
+
 2009-2016:
-: During this time my blog went through several iterations, hosted/powered by [Posterous](http://www.posterous.com/), [Jekyll](https://jekyllrb.com/), [Octopress](http://octopress.org/), [Postach.io](https://postach.io/site) and [Enwrite](https://github.com/zzamboni/enwrite). Most blog entries from this period have been merged into [my current blog](/post);
+: During this time my blog went through several iterations, hosted/powered by [Posterous](http://www.posterous.com/), [Jekyll](https://jekyllrb.com/), [Octopress](http://octopress.org/), [Postach.io](https://postach.io/site) and [Enwrite](https://github.com/zzamboni/enwrite). Most blog entries from this period have been merged into [my current blog](/);
 
 2005-2009:
 : My blog titled [BrT](/brt), powered mainly by a self-hosted Wordpress installation, with some intermixed use of Posterous. What you find at the link is a static archive copy;

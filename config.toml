@@ -54,7 +54,7 @@ notAlternative = true
 
 [Params]
   description = "Musings, ramblings and code"
-  # twitter = "https://twitter.com/zzamboni"
+  twitter = "https://zzamboni.org/twitter"
   linkedin = "https://www.linkedin.com/in/zzamboni/"
   bluesky = "https://bsky.app/profile/zzamboni.org"
   # choose a background color from any on this page: http://tachyons.io/docs/themes/skins/ and preface it with "bg-"
