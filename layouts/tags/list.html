@@ -1,11 +1,14 @@
 {{ define "main" }}
+  <!-- Conditional rendering for either the main or individual tag pages -->
   {{ if .Data.Terms }}
+  <!-- Main /tags page: render only .Content from content/tags/_index.md -->
   <article class="cf pa3 pa4-m pa4-l">
     <div class="measure-wide-l center f4 lh-copy nested-copy-line-height nested-links nested-img mid-gray">                
       {{ .Content }}
     </div>
   </article>
   {{ else }}
+  <!-- Individual /tags/<tag> pages - render the list of tag page summaries -->
   <article class="cf pa3 pa4-m pa4-l">
     <div class="measure-wide-l center f4 lh-copy nested-copy-line-height nested-links nested-img mid-gray">
       <p>Below you will find pages that have the {{ .Data.Singular }} “{{ .Title | lower }}”</p>
