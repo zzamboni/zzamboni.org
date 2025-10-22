@@ -81,6 +81,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#the-big-website-reboot][The Big Website Reboot]]
     - [[#reviving-an-old-mac-with-linux-part-1---installing-linux][Reviving an old Mac with Linux (part 1 - installing Linux)]]
     - [[#reviving-an-old-mac-with-linux-part-2---prettifying-boot][Reviving an old Mac with Linux (part 2 - prettifying boot)]]
+  - [[#fixing-wake-from-sleep-in-linux-on-a-mac-when-using-ethernet][Fixing wake-from-sleep in Linux on a Mac when using Ethernet]]
 
 * Pages
 
@@ -332,7 +333,6 @@ You can find all the information at <http://github.com/zzamboni/grabcartoons>
 :END:
 
 Ideas for new blog posts and posts in progress.
-
 * Posts
 :PROPERTIES:
 :export_hugo_section: post
@@ -3139,6 +3139,65 @@ sudo update-initramfs -u
 
 In the next posts I will log some of the further configuration I have done in my laptop.
 
+** DONE Fixing wake-from-sleep in Linux on a Mac when using Ethernet :linux:howto:mac:networking:troubleshooting:
+CLOSED: [2025-10-22 Wed 23:28]
+:PROPERTIES:
+:export_hugo_bundle: 2025-10-22-fixing-wake-from-sleep-when-using-ethernet
+:export_file_name: index
+:custom_id: fixing-wake-from-sleep-when-using-ethernet
+:export_hugo_custom_front_matter: :featured_image /images/tram-zurich.jpg :toc false
+:END:
+
+I noticed that after being asleep, my [[#reviving-an-old-mac-with-linux-part-1][2015 MBP running Linux]] would not wake up if it had an Ethernet cable connected when it went to sleep. With some help from ChatGPT I learned that this seems to be a known problem on some Macs in which the Thunderbolt controller doesn’t resume cleanly, leaving the system stuck in a low-level power state — which effectively hangs the resume process.
+
+The fix is to disable the offending drivers *before* going to sleep, and reenabling them after. Fortunately, this was easy to automate with =systemd=. The Thunderbolt Ethernet device on my machine is at =/sys/bus/thunderbolt/devices/0-3/= on my machine, and the =/sys/bus/thunderbolt/devices/0-3/authorized= file can be used to enable/disable the device (by writing a 1 or 0 to it). This can be automated by using a system-hook script. Here's the script, which should be stored at =/lib/systemd/system-sleep/thunderbolt-auto-rebind.sh= and made executable. The script automatically detects all the Thunderbolt devices that can be disabled (works for me, but you may have to change it):
+
+#+begin_src bash
+#!/bin/sh
+# thunderbolt-auto-rebind.sh
+# Auto-detect Thunderbolt endpoint devices and deauthorize/reauthorize them
+# around suspend/resume to avoid resume-hangs when TB devices (eg TB->Ethernet)
+# are attached.
+
+LOGTAG="tb-auto-rebind"
+
+# Find TB devices under /sys/bus/thunderbolt/devices/
+find_tb_devices() {
+  for devpath in /sys/bus/thunderbolt/devices/*; do
+    [ -d "$devpath" ] || continue
+    devname="$(basename "$devpath")"
+    # Skip the host controller or special entries if desired (commonly 0-0)
+    # Only include endpoints that have an "authorized" control file
+    if [ -w "$devpath/authorized" ]; then
+      echo "$devname"
+    fi
+  done
+}
+
+case "$1" in
+  pre)
+    # Before suspend: deauthorize all TB endpoint devices found
+    for dev in $(find_tb_devices); do
+      devpath="/sys/bus/thunderbolt/devices/$dev"
+      echo 0 > "$devpath/authorized" 2>/dev/null && \
+        systemd-cat -t "$LOGTAG" echo "pre-suspend: deauthorized $dev"
+    done
+    ;;
+  post)
+    # After resume: small wait then re-authorize
+    sleep 2
+    for dev in $(find_tb_devices); do
+      devpath="/sys/bus/thunderbolt/devices/$dev"
+      echo 1 > "$devpath/authorized" 2>/dev/null && \
+        systemd-cat -t "$LOGTAG" echo "post-resume: reauthorized $dev"
+    done
+    ;;
+esac
+#+end_src
+
+(by the way, this script was also written by ChatGPT. I have found it's quite good at debugging issues like this. It doesn't normally get there at the first try, but with a bit of back and forth and giving it additional information its very useful)
+
+That's it! Now my machine sleeps and wakes up correctly regardless of how it's connected to the network!
 * Local Variables :noexport:ARCHIVE:
 # Local Variables:
 # org-download-image-dir: "images"
