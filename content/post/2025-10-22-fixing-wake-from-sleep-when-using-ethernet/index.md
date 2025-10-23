@@ -1,6 +1,7 @@
 +++
 title = "Fixing wake-from-sleep in Linux on a Mac when using Ethernet"
 author = ["Diego Zamboni"]
+summary = "Some Macs running Linux hang when waking up from sleep if the Ethernet port was connected. Fix this problem by automatically disabling/reenabling the drivers when the machine goes to sleep."
 date = 2025-10-22T23:28:00+02:00
 tags = ["linux", "howto", "mac", "networking", "troubleshooting"]
 draft = false

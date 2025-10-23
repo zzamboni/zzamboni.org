@@ -3147,6 +3147,9 @@ CLOSED: [2025-10-22 Wed 23:28]
 :custom_id: fixing-wake-from-sleep-when-using-ethernet
 :export_hugo_custom_front_matter: :featured_image /images/tram-zurich.jpg :toc false
 :END:
+#+begin_description
+Some Macs running Linux hang when waking up from sleep if the Ethernet port was connected. Fix this problem by automatically disabling/reenabling the drivers when the machine goes to sleep.
+#+end_description
 
 I noticed that after being asleep, my [[#reviving-an-old-mac-with-linux-part-1][2015 MBP running Linux]] would not wake up if it had an Ethernet cable connected when it went to sleep. With some help from ChatGPT I learned that this seems to be a known problem on some Macs in which the Thunderbolt controller doesn’t resume cleanly, leaving the system stuck in a low-level power state — which effectively hangs the resume process.
 
