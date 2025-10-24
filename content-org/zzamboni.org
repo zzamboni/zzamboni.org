@@ -82,6 +82,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#reviving-an-old-mac-with-linux-part-1---installing-linux][Reviving an old Mac with Linux (part 1 - installing Linux)]]
     - [[#reviving-an-old-mac-with-linux-part-2---prettifying-boot][Reviving an old Mac with Linux (part 2 - prettifying boot)]]
   - [[#fixing-wake-from-sleep-in-linux-on-a-mac-when-using-ethernet][Fixing wake-from-sleep in Linux on a Mac when using Ethernet]]
+  - [[#locally-hosting-my-twitter-archive][Locally hosting my Twitter archive]]
 
 * Pages
 
@@ -3145,7 +3146,7 @@ CLOSED: [2025-10-22 Wed 23:28]
 :export_hugo_bundle: 2025-10-22-fixing-wake-from-sleep-when-using-ethernet
 :export_file_name: index
 :custom_id: fixing-wake-from-sleep-when-using-ethernet
-:export_hugo_custom_front_matter: :featured_image /images/tram-zurich.jpg :toc false
+:export_hugo_custom_front_matter:  :toc false
 :END:
 #+begin_description
 Some Macs running Linux hang when waking up from sleep if the Ethernet port was connected. Fix this problem by automatically disabling/reenabling the drivers when the machine goes to sleep.
@@ -3201,6 +3202,34 @@ esac
 (by the way, this script was also written by ChatGPT. I have found it's quite good at debugging issues like this. It doesn't normally get there at the first try, but with a bit of back and forth and giving it additional information its very useful)
 
 That's it! Now my machine sleeps and wakes up correctly regardless of how it's connected to the network!
+** DONE Locally hosting my Twitter archive
+CLOSED: [2025-10-24 Fri 23:29]
+:PROPERTIES:
+:export_hugo_bundle: 2025-10-24-twitter-archive-online
+:export_file_name: index
+:custom_id: twitter-archive-online
+:export_hugo_custom_front_matter: :featured_image /images/i-will-be-in-bluesky.jpg :toc false
+:END:
+
+#+begin_description
+I no longer use Twitter, I keep now a local archive of my tweets.
+#+end_description
+
+I've had a Twitter account (sorry, I refuse to call it X) since 2007 (though my [[https://zzamboni.org/twitter/648153912/][first tweet]] was in January 2008). I was never super prolific, but I enjoyed using it even as it started going downhill with noise, trolls and advertising. Its sale in 2022 was the beginning of the end. In October 2024 I posted my [[https://zzamboni.org/twitter/1848357411301515531/][last tweet]] (#5,051!). I have mostly dropped out of social media, but now I have a [[https://bsky.app/profile/zzamboni.org][Bluesky account]]. Although Bluesky has also seem some growing pains, it still reminds me a lot of Twitter in the early days, in which community and interaction was more important than marketing and provocation.
+
+#+DOWNLOADED: file:///home/diego/tmp/i-will-be-in-bluesky.jpg @ 2025-10-24 22:44:29
+[[file:images/20251024-224429_i-will-be-in-bluesky.jpg][file:images/20251024-224429_i-will-be-in-bluesky.jpg]]
+
+(image courtesy of [[https://bsky.app/profile/davis.social/post/3latz2nsm2s2f][@davis.social]])
+
+My Twitter account is now protected, but I decided to keep a [[https://zzamboni.org/twitter/][local archive of my tweets]], to which the Twitter icon in the header/footer in my website now points. I used the excellent [[https://github.com/tweetback/tweetback][tweetback]] to create this archive. It's a great tool and very easy to use, and I love the look of the archive. Check it out?
+
+Why protect my account instead of deleting it? Glad you asked:
+
+- Protecting my account makes my tweets visible only to approved followers. I can still control who sees them, without erasing my history.
+- Deleting my account would surrender control entirely — once it’s gone, I wouldn't be able to reclaim the same account name. Worse - someone could reuse it! Leaving my account in place prevents it.
+- Who knows - Twitter may recover. It may become again a platform worth using. Not placing a lot of hope on this, but if it ever happens, I could easily reactivate my account.
+
 * Local Variables :noexport:ARCHIVE:
 # Local Variables:
 # org-download-image-dir: "images"

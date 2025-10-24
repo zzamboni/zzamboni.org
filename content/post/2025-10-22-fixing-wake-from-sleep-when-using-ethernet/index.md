@@ -6,7 +6,6 @@ date = 2025-10-22T23:28:00+02:00
 tags = ["linux", "howto", "mac", "networking", "troubleshooting"]
 draft = false
 creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
-featured_image = "/images/tram-zurich.jpg"
 toc = false
 +++
 
