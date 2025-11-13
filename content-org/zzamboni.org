@@ -46,6 +46,9 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#enwrite][Enwrite]]
     - [[#grabcartoons][GrabCartoons]]
 - [[#ideas][Ideas]]
+  - [[#enabling-menubar-indicators-in-elementary-os][Enabling menubar indicators in Elementary OS]]
+  - [[#how-to-set-up-copyq-in-eos-with-wayland][How to set up CopyQ in eOS with Wayland]]
+  - [[#networking-related-setup][Networking-related setup]]
 - [[#posts][Posts]]
   - [[#literate-config-files][Literate config files]]
     - [[#my-doom-emacs-configuration-with-commentary][My Doom Emacs configuration, with commentary]]
@@ -334,6 +337,46 @@ You can find all the information at <http://github.com/zzamboni/grabcartoons>
 :END:
 
 Ideas for new blog posts and posts in progress.
+** TODO Enabling menubar indicators in Elementary OS
+:PROPERTIES:
+:export_hugo_bundle: 2025-11-04-enabling-menubar-indicators-in-elementary-os
+:export_file_name: index
+:custom_id: enabling-menubar-indicators-in-elementary-os
+:export_hugo_custom_front_matter: :featured_image /images/tram-zurich.jpg :toc false
+:END:
+#+BEGIN_DESCRIPTION
+
+#+END_DESCRIPTION
+
+https://github.com/barunespadhy/wingpanel-indicator-appicontray
+<write here>
+** TODO How to set up CopyQ in eOS with Wayland
+:PROPERTIES:
+:export_hugo_bundle: 2025-11-04-how-to-set-up-copyq-in-eos-with-wayland
+:export_file_name: index
+:custom_id: how-to-set-up-copyq-in-eos-with-wayland
+:export_hugo_custom_front_matter: :featured_image /images/tram-zurich.jpg :toc false
+:END:
+#+BEGIN_DESCRIPTION
+
+#+END_DESCRIPTION
+
+<write here>
+** TODO Networking-related setup
+:PROPERTIES:
+:export_hugo_bundle: 2025-11-06-networking-related-setup
+:export_file_name: index
+:custom_id: networking-related-setup
+:export_hugo_custom_front_matter: :featured_image /images/tram-zurich.jpg :toc false
+:END:
+#+BEGIN_DESCRIPTION
+Various network-related configuration tips for eOS.
+#+END_DESCRIPTION
+
+- Preventing lockup when waking from sleep with Ethernet connected.
+- Fixing low-speed Ethernet negotiation when waking from sleep.
+- Automatically disabling/enabling WiFi when Ethernet is connected/disconnected.
+
 * Posts
 :PROPERTIES:
 :export_hugo_section: post
