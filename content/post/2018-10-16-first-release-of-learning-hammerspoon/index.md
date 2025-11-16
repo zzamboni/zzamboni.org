@@ -9,9 +9,9 @@ summary = """
 date = 2018-10-16T21:22:00+02:00
 tags = ["hammerspoon", "mac", "howto", "books", "announcements"]
 draft = false
-creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
+creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 toc = false
-featured_image = "/images/hammerspoon.jpg"
+featureimage = "img/hammerspoon.jpg"
 +++
 
 I am happy to announce the first release of my new book "Learning Hammerspoon", a book devoted to using [Hammerspoon](http://www.hammerspoon.org/) to make using your Mac easier, faster and more fun.

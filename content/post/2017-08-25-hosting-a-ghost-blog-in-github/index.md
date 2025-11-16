@@ -5,9 +5,9 @@ summary = "When I was planning the reboot of my website, I seriously considered 
 date = 2017-08-25T09:00:00+02:00
 tags = ["howto", "ghost", "github", "blogging"]
 draft = false
-creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
+creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 toc = true
-featured_image = "/images/ghost-plus-github2.png"
+featureimage = "img/ghost-plus-github2.png"
 slug = "hosting-a-ghost-blog-in-github"
 +++
 
@@ -74,9 +74,9 @@ So, without further ado, here are the detailed instructions. I ran these on my M
 7.  Go to <http://localhost:2368/ghost>, create your user and set up your blog info:
     ![](images/ghost-setup-blog.png)
 
-    {{% note %}}
-    You may want to use an email address you don't mind being public. See "[Security Considerations](#security-considerations)" below.
-    {{% /note %}}
+    {{< note >}}
+You may want to use an email address you don't mind being public. See "[Security Considerations](#security-considerations)" below.
+    {{< /note >}}
 
 8.  You can now start creating content  and configuring the local Ghost instance.
     ![](images/ghost-admin-screen.png)

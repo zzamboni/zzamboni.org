@@ -5,15 +5,15 @@ summary = "I have enjoyed slowly converting my configuration files to literate p
 date = 2017-12-17T20:14:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs"]
 draft = false
-creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
-featured_image = "/images/emacs-logo.svg"
+creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
+featureimage = "img/emacs-logo.svg"
 toc = true
 aliases = "/post/2017-12-17-my-emacs-configuration-with-commentary"
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **October 30, 2024**
+Last update: **November 16, 2025**
 
 I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot_emacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot_emacs/blob/master/init.org) for my current, live configuration, and the generated file at [init.el](https://github.com/zzamboni/dot_emacs/blob/master/init.el).
 

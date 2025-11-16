@@ -4,7 +4,7 @@
 #+options: creator:t
 #+property: header-args :eval never-export
 #+hugo_front_matter_key_replace: description>summary
-#+hugo_paired_shortcodes: %tip %warning %note
+#+hugo_paired_shortcodes: tip warning note
 
 #+macro: updatetime {{{time(%B %e\, %Y)}}}
 #+macro: leanpubbook #+hugo: {{< leanpubbook book="$1" $2 >}}
@@ -95,8 +95,8 @@ This section contains all the static pages.
 CLOSED: [2018-03-22 Thu 19:40]
 :PROPERTIES:
 :export_hugo_section: about
-:export_hugo_custom_front_matter: :featured_image /images/legoland.jpg
-:export_file_name: _index
+:export_hugo_custom_front_matter: :featureimage img/legoland.jpg :showPagination false
+:export_file_name: index
 :export_hugo_menu: :menu main :weight 60
 :END:
 
@@ -135,9 +135,9 @@ If you have any concerns or questions about the images used in this site, please
 CLOSED: [2018-03-25 Sun 18:34]
 :PROPERTIES:
 :export_hugo_section: contact
-:export_hugo_custom_front_matter: :featured_image /images/phone-booth-red-trimmed.jpg
+:export_hugo_custom_front_matter: :featureimage img/phone-booth-red.jpg :showPagination false
 :export_hugo_menu: :menu main :weight 50
-:export_file_name: _index
+:export_file_name: index
 :END:
 
 I have decided to close the comments form that used to be here, because the only messages I ever got through it were spam.
@@ -148,7 +148,7 @@ If you want to reach me, please use your imagination (I'm not hard to find) or f
 CLOSED: [2018-03-25 Sun 20:11]
 :PROPERTIES:
 :export_hugo_section: book
-:export_hugo_custom_front_matter: :featured_image /images/book-box-thin.jpg
+:export_hugo_custom_front_matter: :featureimage img/book-box-thin.jpg
 :END:
 
 *** DONE Books
@@ -273,7 +273,7 @@ Check it out, and happy writing!
 CLOSED: [2018-03-25 Sun 20:11]
 :PROPERTIES:
 :export_hugo_section: code
-:export_hugo_custom_front_matter: :featured_image /images/c64-code3.png
+:export_hugo_custom_front_matter: :featureimage img/c64-code3.png
 :END:
 
 *** DONE Code
@@ -342,7 +342,7 @@ Ideas for new blog posts and posts in progress.
 :export_hugo_bundle: 2025-11-04-enabling-menubar-indicators-in-elementary-os
 :export_file_name: index
 :custom_id: enabling-menubar-indicators-in-elementary-os
-:export_hugo_custom_front_matter: :featured_image /images/tram-zurich.jpg :toc false
+:export_hugo_custom_front_matter: :featureimage img/tram-zurich.jpg :toc false
 :END:
 #+BEGIN_DESCRIPTION
 
@@ -355,7 +355,7 @@ https://github.com/barunespadhy/wingpanel-indicator-appicontray
 :export_hugo_bundle: 2025-11-04-how-to-set-up-copyq-in-eos-with-wayland
 :export_file_name: index
 :custom_id: how-to-set-up-copyq-in-eos-with-wayland
-:export_hugo_custom_front_matter: :featured_image /images/tram-zurich.jpg :toc false
+:export_hugo_custom_front_matter: :featureimage img/tram-zurich.jpg :toc false
 :END:
 #+BEGIN_DESCRIPTION
 
@@ -367,7 +367,7 @@ https://github.com/barunespadhy/wingpanel-indicator-appicontray
 :export_hugo_bundle: 2025-11-06-networking-related-setup
 :export_file_name: index
 :custom_id: networking-related-setup
-:export_hugo_custom_front_matter: :featured_image /images/tram-zurich.jpg :toc false
+:export_hugo_custom_front_matter: :featureimage img/tram-zurich.jpg :toc false
 :END:
 #+BEGIN_DESCRIPTION
 Various network-related configuration tips for eOS.
@@ -393,7 +393,7 @@ CLOSED: [2020-10-19 Mon 09:07]
 :PROPERTIES:
 :export_hugo_bundle: my-doom-emacs-configuration-with-commentary
 :export_file_name: index
-:export_hugo_custom_front_matter: :featured_image /images/doom-emacs-color.jpg :toc true
+:export_hugo_custom_front_matter: :featureimage img/doom-emacs-color.jpg :toc true
 :CUSTOM_ID: my-doom-emacs-configuration--with-commentary
 :END:
 #+begin_description
@@ -417,7 +417,7 @@ CLOSED: [2017-12-17 Sun 20:14]
 :PROPERTIES:
 :export_hugo_bundle: my-emacs-configuration-with-commentary
 :export_file_name: index
-:export_hugo_custom_front_matter: :featured_image /images/emacs-logo.svg :toc true :aliases /post/2017-12-17-my-emacs-configuration-with-commentary
+:export_hugo_custom_front_matter: :featureimage img/emacs-logo.svg :toc true :aliases /post/2017-12-17-my-emacs-configuration-with-commentary
 :END:
 #+begin_description
 I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file.
@@ -437,7 +437,7 @@ If you are interested in writing your own Literate Config files, check out my ne
 CLOSED: [2018-01-08 Mon 13:31]
 :PROPERTIES:
 :export_file_name: 2018-01-08-my-hammerspoon-configuration-with-commentary
-:export_hugo_custom_front_matter: :toc true :featured_image /images/hammerspoon.jpg
+:export_hugo_custom_front_matter: :toc true :featureimage img/hammerspoon.jpg
 :END:
 #+begin_description
 In my ongoing series of literate config files, I present to you my Hammerspoon configuration file.
@@ -458,7 +458,7 @@ If you are interested in writing your own Literate Config files, check out my ne
 CLOSED: [2017-11-16 Thu 20:21]
 :PROPERTIES:
 :export_file_name: 2017-11-16-my-elvish-configuration-with-commentary
-:export_hugo_custom_front_matter: :toc true :featured_image /images/elvish-logo.svg
+:export_hugo_custom_front_matter: :toc true :featureimage img/elvish-logo.svg
 :END:
 #+begin_description
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
@@ -476,7 +476,7 @@ If you are interested in writing your own Literate Config files, check out my ne
 
 Without further ado...
 
-#+include: "~/.config/elvish/rc.org" :lines "55-"
+#+include: "~/.config/elvish/rc.org" :lines "57-"
 
 ** Emacs                                                              :emacs:
 
@@ -485,7 +485,7 @@ CLOSED: [2020-12-06 Sun 10:20]
 :PROPERTIES:
 :export_hugo_bundle: 2020-12-06-org-mode-human-readable-ids
 :export_file_name: index
-:export_hugo_custom_front_matter: :toc false :featured_image /images/org-mode-unicorn.svg
+:export_hugo_custom_front_matter: :toc false :featureimage img/org-mode-unicorn.svg
 :END:
 #+begin_description
 Automate the process of generating and inserting links to headlines in the current Org document using human-readable IDs instead of the default UUID-based IDs generated by Org mode.
@@ -570,7 +570,7 @@ CLOSED: [2018-03-21 Wed 22:45]
 :PROPERTIES:
 :export_hugo_bundle: 2018-03-21-using-proportional-fonts-in-emacs-with-org-mode
 :export_file_name: index
-:export_hugo_custom_front_matter: :toc true :featured_image /images/emacs-logo.svg
+:export_hugo_custom_front_matter: :toc true :featureimage img/emacs-logo.svg
 :END:
 #+begin_description
 Configuring Org Mode in Emacs for beautiful typography for both text and code editing.
@@ -726,7 +726,7 @@ CLOSED: [2020-08-09 Sun 16:44]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2020-08-09-how-to-insert-screenshots-in-org-documents-on-macos
 :EXPORT_FILE_NAME: index
-:export_hugo_custom_front_matter: :toc false :featured_image /images/emacs-logo.svg
+:export_hugo_custom_front_matter: :toc false :featureimage img/emacs-logo.svg
 :END:
 #+begin_description
 As I'm taking notes or writing in Org-mode, I often want to insert screenshots inline with the text. While Org supports inserting and displaying inline images, the assumption is that the image is already somewhere in the file system and we just want to link to it. In this post I will show you how to automate the insertion of images from the clipboard into an org-mode document.
@@ -780,7 +780,7 @@ Thanks to [[https://stackoverflow.com/questions/17435995/paste-an-image-on-clipb
 
 ** Hammerspoon                                        :hammerspoon:mac:howto:
 :PROPERTIES:
-:export_hugo_custom_front_matter: :toc true :featured_image /images/hammerspoon.jpg
+:export_hugo_custom_front_matter: :toc true :featureimage img/hammerspoon.jpg
 :END:
 
 *** DONE Getting Started With Hammerspoon
@@ -1157,7 +1157,7 @@ CLOSED: [2017-10-21 Sat 20:36]
 :PROPERTIES:
 :export_hugo_bundle: 2017-10-21-just-enough-lua-to-be-productive-in-hammerspoon-part1
 :export_file_name: index
-:export_hugo_custom_front_matter: :toc true :featured_image /images/lua-logo.svg
+:export_hugo_custom_front_matter: :toc true :featureimage img/lua-logo.svg
 :END:
 #+begin_description
 Hammerspoon's configuration files are written in Lua, so a basic knowledge of the language is very useful to be an effective user of Hammerspoon. In this two-part article I will show you the basics of Lua so you can read and write Hammerspoon configuration. Along the way you will discover that Lua is a surprisingly powerful language.
@@ -1324,7 +1324,7 @@ CLOSED: [2017-11-01 Wed 08:16]
 :PROPERTIES:
 :export_hugo_bundle: 2017-10-21-just-enough-lua-to-be-productive-in-hammerspoon-part2
 :export_file_name: index
-:export_hugo_custom_front_matter: :toc true :featured_image /images/lua-logo.svg
+:export_hugo_custom_front_matter: :toc true :featureimage img/lua-logo.svg
 :END:
 #+begin_description
 In this second article of the "Just Enough Lua" series, we dive into Lua's types and data structures.
@@ -1694,7 +1694,7 @@ You can find the full documentation in the [[https://www.lua.org/manual/5.3/manu
 
   Note that the return value is not a table, but rather multiple values, as shown in the last example.
 
-  #+begin_tip
+#+begin_tip
 
 It can sometimes be convenient to handle multiple values as a table or as separate entities, depending on the circumstances. For example, you may have a programmatically-constructed pattern with a variable number of capture groups, so you cannot know to how many variables you need to assign the result. In this case, the {{{luafun(table.pack)}}} and {{{luafun(table.unpack)}}} functions can be useful.
 
@@ -1721,7 +1721,7 @@ It can sometimes be convenient to handle multiple values as a table or as separa
   1   3   b   ah
 #+end_src
 
-  #+end_tip
+#+end_tip
 
 - {{{luafun(string.match,=string.match(str\, pat\, pos)=)}}} is similar to =string.find=, but it does not return the positions, rather it returns the part of the string matched by the pattern, or if the pattern contains capture groups, returns the captured segments:
 
@@ -1811,7 +1811,7 @@ CLOSED: [2018-10-16 Tue 21:22]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2018-10-16-first-release-of-learning-hammerspoon
 :EXPORT_FILE_NAME: index
-:export_hugo_custom_front_matter: :toc false :featured_image /images/hammerspoon.jpg
+:export_hugo_custom_front_matter: :toc false :featureimage img/hammerspoon.jpg
 :END:
 #+begin_description
 I am happy to announce the first release of my new book "Learning Hammerspoon", a book devoted to using Hammerspoon to make using your Mac easier, faster and more fun.
@@ -1839,7 +1839,7 @@ CLOSED: [2019-04-08 Mon 09:51]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2019-04-08-new-release-of-learning-hammerspoon
 :EXPORT_FILE_NAME: index
-:export_hugo_custom_front_matter: :toc false :featured_image /images/learning-hs-cover.jpg
+:export_hugo_custom_front_matter: :toc false :featureimage img/learning-hs-cover.jpg
 :END:
 #+begin_description
 I am happy to announce a new release of my new book "Learning Hammerspoon", including a brand new chapter and many other improvements.
@@ -1860,7 +1860,7 @@ CLOSED: [2020-08-10 Mon 09:35]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2020-08-10-august-2020-release-of-learning-hammerspoon
 :EXPORT_FILE_NAME: index
-:export_hugo_custom_front_matter: :toc false :featured_image /images/learning-hs-cover.jpg
+:export_hugo_custom_front_matter: :toc false :featureimage img/learning-hs-cover.jpg
 :END:
 #+begin_description
 I am happy to announce a new release of my new book "Learning Hammerspoon", including a brand new chapter /Hammerspoon Cookbook, Tips and Tricks/ and many other improvements.
@@ -1878,7 +1878,7 @@ I hope you enjoy it! As usual, you can find more information, read a free sample
 
 ** Elvish :elvish:shell:unix:
 :PROPERTIES:
-:export_hugo_custom_front_matter: :featured_image /images/elvish-logo.svg
+:export_hugo_custom_front_matter: :featureimage img/elvish-logo.svg
 :END:
 
 *** DONE Bang-Bang (!!, !$) Shell Shortcuts in Elvish     :config:
@@ -1927,7 +1927,7 @@ Have fun with Elvish!
 CLOSED: [2018-06-13 Wed 20:25]
 :PROPERTIES:
 :export_file_name: 2018-06-13-using-and-writing-completions-in-elvish
-:export_hugo_custom_front_matter: :toc true :featured_image /images/elvish-logo.svg
+:export_hugo_custom_front_matter: :toc true :featureimage img/elvish-logo.svg
 :END:
 #+begin_description
 Like other Unix shells, Elvish has advanced command-argument completion capabilities. In this article I will explore the existing completions, and show you how you can create your own (and contribute them back to the community!)
@@ -2315,7 +2315,7 @@ CLOSED: [2021-01-21 Thu 00:16]
 :PROPERTIES:
 :export_hugo_bundle: 2021-01-21-new-course-cissp-training
 :export_file_name: index
-:export_hugo_custom_front_matter: :toc false :featured_image /images/cissp-training-cover.jpg
+:export_hugo_custom_front_matter: :toc false :featureimage img/cissp-training-cover.jpg
 :END:
 #+begin_description
 I am happy to finally reveal a project I've been working on for some time: my new online course "CISSP Training", now available on Leanpub.
@@ -2340,7 +2340,7 @@ CLOSED: [2020-12-11 Fri 00:27]
 :PROPERTIES:
 :export_hugo_bundle: 2020-12-11-my-blogging-setup-and-workflow
 :export_file_name: index
-:export_hugo_custom_front_matter: :toc true :featured_image /images/z-favicon-src.png
+:export_hugo_custom_front_matter: :toc true :featureimage img/z-favicon-src.png
 :CUSTOM_ID: my-blogging-setup-with-emacs--org-mode--ox-hugo--hugo--gitlab-and-netlify
 :END:
 #+begin_description
@@ -2433,7 +2433,7 @@ CLOSED: [2020-12-04 Fri 10:22]
 :PROPERTIES:
 :export_hugo_bundle: 2020-12-04-new-release-of-emacs-org-leanpub
 :export_file_name: index
-:export_hugo_custom_front_matter: :toc false :featured_image /images/emacs-org-leanpub-cover.jpg
+:export_hugo_custom_front_matter: :toc false :featureimage img/emacs-org-leanpub-cover.jpg
 :END:
 #+begin_description
 A new release of my book "Publishing with Emacs, Org-mode and Leanpub" is out! With a lot of new information and other improvements. Learn how to use powerful tools and workflows to easily publish your words.
@@ -2459,7 +2459,7 @@ CLOSED: [2020-06-20 Sat 21:13]
 :PROPERTIES:
 :export_hugo_bundle: 2020-06-20-new-book-emacs-org-leanpub
 :export_file_name: index
-:export_hugo_custom_front_matter: :toc false :featured_image /images/emacs-org-leanpub-cover.jpg
+:export_hugo_custom_front_matter: :toc false :featureimage img/emacs-org-leanpub-cover.jpg
 :END:
 #+begin_description
 I am happy to announce the new release of my new book "Publishing with Emacs, Org-mode and Leanpub", which talks about powerful tools and workflows you can use to easily publish your words.
@@ -2484,7 +2484,7 @@ CLOSED: [2019-11-18 Mon 22:44]
 :PROPERTIES:
 :export_hugo_bundle: 2019-11-18-new-book-literate-config
 :export_file_name: index
-:export_hugo_custom_front_matter: :toc false :featured_image /images/literate-config-cover.jpg
+:export_hugo_custom_front_matter: :toc false :featureimage img/literate-config-cover.jpg
 :END:
 #+begin_description
 I am happy to announce the new release of my new book "Literate Config", devoted to the use of Literate Programming for writing and documenting configuration files.
@@ -2503,19 +2503,19 @@ CLOSED: [2019-08-30 Fri 00:23]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2019-08-30-primera-edicion-utilerias-unix
 :EXPORT_FILE_NAME: index
-:export_hugo_custom_front_matter: :toc false :featured_image /images/utilerias-cover.jpg
+:export_hugo_custom_front_matter: :toc false :featureimage img/utilerias-cover.jpg
 :END:
 #+begin_description
 Me complace anunciar  la primera edición de mi nuevo libro, y mi primer libro en  Español, "Utilerías de Unix".
 #+end_description
+
+{{{leanpubbook(utilerias-unix,style="float:right")}}}
 
 /(I usually write in English, but this new book  is  in  Spanish, so the announcement is also in Spanish. An English version of this book is in the works)/
 
 Me complace anunciar  la primera edición de mi nuevo libro, y mi primer libro en  Español, "Utilerías de Unix", en el que podrás aprender a utilizar algunas de  las herramientas más útiles que se encuentran en un sistema Unix/Linux para automatizar y hacer más eficientemente todo tipo de tareas.
 
 Puedes obtener más información, leer una muestra gratuita y comprarlo  en  [[https://leanpub.com/utilerias-unix][LeanPub]].
-
-{{{leanpubbook(utilerias-unix)}}}
 
 ¡Espero lo disfrutes!  Favor de enviarme tus comentarios a través de  la  página  [[https://leanpub.com/utilerias-unix/email_author/new][/Escribe al Autor/]] en LeanPub.
 
@@ -2524,7 +2524,7 @@ CLOSED: [2019-04-16 Tue 11:25]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2019-04-16-leanpub-publishing-with-hammerspoon-circleci
 :EXPORT_FILE_NAME: index
-:export_hugo_custom_front_matter: :toc true :featured_image /images/hammerspoon-github-circleci-leanpub.001.jpg
+:export_hugo_custom_front_matter: :toc true :featureimage img/hammerspoon-github-circleci-leanpub.001.jpg
 :END:
 
 I am the author of two books: [[https://cf-learn.info/][/Learning CFEngine/]] and [[https://leanpub.com/learning-hammerspoon][/Learning Hammerspoon/]], both self-published using [[https://leanpub.com/][Leanpub]]. The source of my books is kept in GitHub repositories. In this post I will show you how I use the [[https://leanpub.com/help/api][Leanpub API]] together with [[https://www.hammerspoon.org/][Hammerspoon]]  and [[https://circleci.com][CircleCI]] as part  of my workflow, to automate and monitor the building, previewing and publishing of my books.
@@ -2540,9 +2540,9 @@ The Hammerspoon section of this post is Mac-specific (since Hammerspoon is a Mac
 First, some basic concepts about the Leanpub API. See the [[https://leanpub.com/help/api][documentation]] for the full details, I'm only mentioning clear some things you need to know to understand the rest of this post.
 
 - *Book slug*: Each Leanpub book is identified by a /slug/, which is basically an unique author-chosen identifier for the book. The book slug is included in the book's Leanpub URL. For example, the URL for /Learning Hammerspoon/ is https://leanpub.com/learning-hammerspoon, therefore its slug is =learning-hammerspoon=. The slug can be changed by the author as part of the book configuration, and is used in all the API calls to identify the book for which an operation should be performed.
-  #+begin_note
+#+begin_note
 The tools I describe below assume by default that your book's git repository name is the same as its Leanpub slug. You can specify it if this is not the case by providing some additional configuration parameters.
-  #+end_note
+#+end_note
 - *API key*: Every Leanpub author gets an [[https://leanpub.com/help/api#getting-your-api-key][/API key/]], which is a randomly-generated string of characters which is used as an authentication token. The API key needs to be provided on most Leanpub API  calls (some query operations are allowed without a key).
 - *Build types*: The Leanpub API allows you to trigger several types of [[https://leanpub.com/help/api#previewing-and-publishing][build operations]] on a book:
   - /Preview/ builds all the formats supported by Leanpub (PDF, ePub, Mobi), using the whole book as defined in the =Book.txt= file.
@@ -2739,7 +2739,7 @@ CLOSED: [2017-08-25 Fri 09:00]
 :PROPERTIES:
 :export_hugo_bundle: 2017-08-25-hosting-a-ghost-blog-in-github
 :export_file_name: index
-:export_hugo_custom_front_matter: :toc true :featured_image /images/ghost-plus-github2.png :slug hosting-a-ghost-blog-in-github
+:export_hugo_custom_front_matter: :toc true :featureimage img/ghost-plus-github2.png :slug hosting-a-ghost-blog-in-github
 :END:
 #+begin_description
 When I was planning the reboot of my website, I seriously considered using Ghost. It has a very nice UI, beautiful and usable theme out of the box, and a very active community. Eventually I decided to use Hugo, but in the process discovered that it is possible to host a statically-generated Ghost website using GitHub Pages.
@@ -2979,7 +2979,7 @@ I hope you've found it useful. I'd love to hear your comments!
 CLOSED: [2017-08-08 Tue 06:56]
 :PROPERTIES:
 :export_file_name: 2017-08-08-the-big-website-reboot
-:export_hugo_custom_front_matter: :featured_image /images/z-favicon-src.png
+:export_hugo_custom_front_matter: :featureimage img/z-favicon-src.png
 :END:
 #+begin_description
 Welcome to the new zzamboni.org.
@@ -3003,7 +3003,7 @@ CLOSED: [2025-10-14 Tue 22:23]
 :export_hugo_bundle: 2025-10-01-reviving-an-old-mac-with-linux-part-1
 :export_file_name: index
 :custom_id: reviving-an-old-mac-with-linux-part-1
-:export_hugo_custom_front_matter: :featured_image /images/20251013-223325_eOS-default-OpenCore-boot.png :toc false
+:export_hugo_custom_front_matter: :featureimage img/20251013-223325_eOS-default-OpenCore-boot.png :toc false
 :END:
 #+begin_description
 I recently learned how to extend the life of an old Mac by installing Linux on it. It's like having a new machine!
@@ -3088,7 +3088,7 @@ CLOSED: [2025-10-18 Sat 20:24]
 :export_hugo_bundle: 2025-10-14-reviving-an-old-mac-with-linux-part-2-prettifying-the-boot-screens
 :export_file_name: index
 :custom_id: reviving-an-old-mac-with-linux-part-2-prettifying-the-boot-screens
-:export_hugo_custom_front_matter: :featured_image /images/20251001-230259_OC-dual-boot-screen.png :toc true
+:export_hugo_custom_front_matter: :featureimage img/20251001-230259_OC-dual-boot-screen.png :toc true
 :END:
 
 #+begin_description
@@ -3251,7 +3251,7 @@ CLOSED: [2025-10-24 Fri 23:29]
 :export_hugo_bundle: 2025-10-24-twitter-archive-online
 :export_file_name: index
 :custom_id: twitter-archive-online
-:export_hugo_custom_front_matter: :featured_image /images/i-will-be-in-bluesky.jpg :toc false
+:export_hugo_custom_front_matter: :featureimage img/i-will-be-in-bluesky.jpg :toc false
 :END:
 
 #+begin_description

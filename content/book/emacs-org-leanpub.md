@@ -3,7 +3,7 @@ title = "Publishing with Emacs, Org-mode and Leanpub"
 author = ["Diego Zamboni"]
 date = 2020-06-20T21:12:00+02:00
 draft = false
-creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
+creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 finalURL = "https://leanpub.com/emacs-org-leanpub"
 +++
 

@@ -5,9 +5,9 @@ summary = "Like other Unix shells, Elvish has advanced command-argument completi
 date = 2018-06-13T20:25:00+02:00
 tags = ["elvish", "unix", "shell", "config"]
 draft = false
-creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
+creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 toc = true
-featured_image = "/images/elvish-logo.svg"
+featureimage = "img/elvish-logo.svg"
 +++
 
 Like other Unix shells, [Elvish](https://elvish.io/) has advanced command-argument completion capabilities. In this article I will explore the existing completions, and show you how you can create your own (and contribute them back to the community).

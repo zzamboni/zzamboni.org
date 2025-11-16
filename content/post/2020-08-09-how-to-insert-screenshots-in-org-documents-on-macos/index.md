@@ -5,9 +5,9 @@ summary = "As I'm taking notes or writing in Org-mode, I often want to insert sc
 date = 2020-08-09T16:44:00+02:00
 tags = ["orgmode", "emacs", "howto", "mac", "config"]
 draft = false
-creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
+creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 toc = false
-featured_image = "/images/emacs-logo.svg"
+featureimage = "img/emacs-logo.svg"
 +++
 
 As I'm taking notes or writing in Org-mode, I often want to insert screenshots inline with the text. While Org supports [inserting and displaying inline images](https://orgmode.org/manual/Images.html), the assumption is that the image is already somewhere in the file system and we just want to link to it.
@@ -48,8 +48,8 @@ And without inline image display, we can see that the screenshot is automaticall
 
 {{< figure src="images/20200809-172534_screenshot.png" >}}
 
-{{% tip %}}
+{{< tip >}}
 Thanks to [this thread at Stack Overflow](https://stackoverflow.com/questions/17435995/paste-an-image-on-clipboard-to-emacs-org-mode-file-without-saving-it) for the base ideas and pointers for this configuration.
 
 **Note:** The same technique could be used in non-macOS systems by invoking a corresponding utility that does the same. From the thread above you can get examples for both Windows and Linux.
-{{% /tip %}}
+{{< /tip >}}

@@ -5,9 +5,9 @@ summary = "Automate the process of generating and inserting links to headlines i
 date = 2020-12-06T10:20:00+01:00
 tags = ["emacs", "doom", "config", "howto"]
 draft = false
-creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
+creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 toc = false
-featured_image = "/images/org-mode-unicorn.svg"
+featureimage = "img/org-mode-unicorn.svg"
 +++
 
 (this is a slightly modified extract from my [Doom Emacs configuration](/post/my-doom-emacs-configuration-with-commentary/))

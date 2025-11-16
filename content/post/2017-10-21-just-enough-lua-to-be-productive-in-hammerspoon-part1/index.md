@@ -5,9 +5,9 @@ summary = "Hammerspoon's configuration files are written in Lua, so a basic know
 date = 2017-10-21T20:36:00+02:00
 tags = ["hammerspoon", "mac", "howto", "lua"]
 draft = false
-creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
+creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 toc = true
-featured_image = "/images/lua-logo.svg"
+featureimage = "img/lua-logo.svg"
 +++
 
 Hammerspoon's configuration files are written in Lua, so a basic knowledge of the language is very useful to be an effective user of Hammerspoon. In this 2-part article I will show you the basics of Lua so you can read and write Hammerspoon configuration. Along the way you will discover that Lua is a surprisingly powerful language.
@@ -60,9 +60,9 @@ In this example we see the [for](https://www.lua.org/manual/5.3/manual.html#3.3.
 
 This statement loops the variables over the values returned by the expressions, executing the block with each the consecutive value until it becomes `nil`.
 
-{{% tip %}}
+{{< tip >}}
 Strictly speaking, `expression` is executed once and its value must be an _iterator function_, which returns one new value from the sequence every time it is called, returning `nil` at the end.
-{{% /tip %}}
+{{< /tip >}}
 
 The `for` statement also has a _numeric form_:
 
@@ -133,7 +133,7 @@ You should try this function to see that it works. Adding it to you `~/.hammersp
 
 Once you reload your config, you can generate a double click by moving the cursor where you want it and pressing <kbd>Ctrl​-​⌘​-​Alt​-​p</kbd>. While this is a contrived example, the ability to generate events like this is immensely powerful in automating your system.
 
-{{% tip %}}
+{{< tip >}}
 By now you have seen that we are using <kbd>Ctrl​-​⌘​-​Alt</kbd> very frequently in our keybindings. To avoid having to type this every time, and since the modifiers are defined as an array, you can define them as variable. For example, I have the following at the top of my `init.lua`:
 
 ```lua
@@ -146,7 +146,7 @@ Then I simply use `hyper` or `shift_hyper` in my key binding declarations:
 ```lua
   hs.hotkey.bindSpec({ hyper, "p" }, leftDoubleClick)
 ```
-{{% /tip %}}
+{{< /tip >}}
 
 
 ## Until next time! {#until-next-time}

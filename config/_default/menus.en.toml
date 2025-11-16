@@ -1,0 +1,59 @@
+[[main]]
+none = "none"
+
+# [[main]]
+# name = "Blog"
+# pageRef = "post"
+# identifier = "96qC7gUqQk"
+# weight = 10
+
+# [[main]]
+# name = "Books"
+# pageRef = "book"
+# identifier = "ianSwY3pMg"
+# weight = 20
+
+# [[main]]
+# name = "Code"
+# pageRef = "code"
+# identifier = "MbiA66tLOO"
+# weight = 30
+
+# [[main]]
+# name = "Tags"
+# pageRef = "tags"
+# identifier = "KIXKhYe3Kq"
+# weight = 40
+
+# [[main]]
+# name = "About"
+# pageRef = "about"
+# identifier = "0nHHiNcOjx"
+# weight = 50
+
+[[main]]
+pre = "bluesky"
+url = "https://bsky.app/profile/zzamboni.org"
+identifier = "xwdLhBz2ch"
+weight = 100
+
+[[main]]
+pre = "linkedin"
+url = "https://linkedin.com/in/zzamboni"
+identifier = "xwdLhBz2ci"
+weight = 110
+
+[[footer]]
+none = "none"
+
+[[footer]]
+pre = "bluesky"
+url = "https://bsky.app/profile/zzamboni.org"
+identifier = "xwdLhBz2cj"
+weight = 100
+
+[[footer]]
+pre = "linkedin"
+url = "https://linkedin.com/in/zzamboni"
+identifier = "xwdLhBz2ck"
+weight = 110

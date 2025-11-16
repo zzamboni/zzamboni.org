@@ -7,16 +7,16 @@ summary = """
 date = 2017-11-01T08:16:00+01:00
 tags = ["hammerspoon", "mac", "howto", "lua"]
 draft = false
-creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
+creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 toc = true
-featured_image = "/images/lua-logo.svg"
+featureimage = "img/lua-logo.svg"
 +++
 
 In this second article of the "Just Enough Lua" series, we dive into Lua's types and data structures.
 
-{{% tip %}}
+{{< tip >}}
 If you haven't already, be sure to read [the first installment of this series](/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/) to learn about the basic Lua concepts.
-{{% /tip %}}
+{{< /tip >}}
 
 
 ## Tables {#tables}
@@ -289,7 +289,7 @@ The argument of the [`require()`](https://www.lua.org/manual/5.3/manual.html#pdf
   Hammerspoon.app/Contents/Resources/extensions/?/init.lua
 ```
 
-{{% tip %}}
+{{< tip >}}
 Hammerspoon automatically loads any modules under the `hs` namespace the first time you use them. For example, when you use [`hs.application`](https://www.hammerspoon.org/docs/hs.application) for the first time, you will see a message in the console:
 
 ```lua
@@ -307,7 +307,7 @@ If you want to avoid these messages, you need to explicitly load the modules and
 ```
 
 This avoids the console message and has the additional benefit of allowing you to use `app` (you can use whatever variable you want) instead of typing `hs.application` in your code. This is a matter of taste---I usually prefer to have the full descriptive names (makes the code easier to read), but when dealing with some of the longer module names (e.g. [`hs.distributednotifications`](https://www.hammerspoon.org/docs/hs.distributednotifications)), this technique can be useful.
-{{% /tip %}}
+{{< /tip >}}
 
 
 ## Patterns {#patterns}
@@ -360,32 +360,32 @@ You can find the full documentation in the [Lua reference manual](https://www.lu
     ```
     Note that the return value is not a table, but rather multiple values, as shown in the last example.
 
-    {{% tip %}}
-    It can sometimes be convenient to handle multiple values as a table or as separate entities, depending on the circumstances. For example, you may have a programmatically-constructed pattern with a variable number of capture groups, so you cannot know to how many variables you need to assign the result. In this case, the [`table.pack()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.pack) and [`table.unpack()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.unpack) functions can be useful.
+{{< tip >}}
+It can sometimes be convenient to handle multiple values as a table or as separate entities, depending on the circumstances. For example, you may have a programmatically-constructed pattern with a variable number of capture groups, so you cannot know to how many variables you need to assign the result. In this case, the [`table.pack()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.pack) and [`table.unpack()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.unpack) functions can be useful.
 
-    [`table.pack()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.pack) takes a variable number of arguments and returns them in a table which contains an array component containing the values, plus an index `n` containing the total number of elements:
+[`table.pack()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.pack) takes a variable number of arguments and returns them in a table which contains an array component containing the values, plus an index `n` containing the total number of elements:
 
-    ```lua
-        > res = table.pack(string.find("bah", "(b)(ah)"))
-        > res
-        table: 0x608000c76e80
-        > hs.inspect(res)
-        { 1, 3, "b", "ah",
-          n = 4
-        }
-    ```
+```lua
+  > res = table.pack(string.find("bah", "(b)(ah)"))
+  > res
+  table: 0x608000c76e80
+  > hs.inspect(res)
+  { 1, 3, "b", "ah",
+    n = 4
+  }
+```
 
-    [`table.unpack()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.unpack) does the opposite, expanding an array into separate values which can be assigned to separate values as needed, or passed as arguments to a function:
+[`table.unpack()`](https://www.lua.org/manual/5.3/manual.html#pdf-table.unpack) does the opposite, expanding an array into separate values which can be assigned to separate values as needed, or passed as arguments to a function:
 
-    ```lua
-        > args={"bah", "(b)(ah)"}
-        > string.find(args)
-        [string "return string.find(args)"]:1:
-          bad argument #1 to 'find' (string expected, got table)
-        > string.find(table.unpack(args))
-        1   3   b   ah
-    ```
-    {{% /tip %}}
+```lua
+  > args={"bah", "(b)(ah)"}
+  > string.find(args)
+  [string "return string.find(args)"]:1:
+    bad argument #1 to 'find' (string expected, got table)
+  > string.find(table.unpack(args))
+  1   3   b   ah
+```
+{{< /tip >}}
 
 -   [`string.match(str, pat, pos)`](https://www.lua.org/manual/5.3/manual.html#pdf-string.match) is similar to `string.find`, but it does not return the positions, rather it returns the part of the string matched by the pattern, or if the pattern contains capture groups, returns the captured segments:
     ```lua

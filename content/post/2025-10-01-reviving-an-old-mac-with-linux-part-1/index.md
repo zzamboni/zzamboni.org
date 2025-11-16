@@ -6,7 +6,7 @@ date = 2025-10-14T22:23:00+02:00
 tags = ["howto", "mac", "linux", "opencore", "oclp"]
 draft = false
 creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
-featured_image = "/images/20251013-223325_eOS-default-OpenCore-boot.png"
+featureimage = "img/20251013-223325_eOS-default-OpenCore-boot.png"
 toc = false
 +++
 
@@ -24,24 +24,24 @@ Here are some screenshots to wet your appetite: my current dual-boot OpenCore bo
 
 Anyhow, how did we get here?
 
-{{% note %}}
+{{< note >}}
 Please note that I had already installed OpenCore Legacy Patcher on my Mac, which influences some of the following steps. Adjust as needed.
 
 ****In fact****, if you are not already using OCLP, most likely makes no sense to use it unless you want to tinker - most Linux distros will auto-detect macOS and give you a choice in the Grub boot loader (I think, I'm not sure). OC makes for some very nice boot screens, as seen above.
 
 Please note also that the following assumes some understanding of Linux/macOS internals, and fluency with the command line. Also: **backup your system** before you try any of this.
-{{% /note %}}
+{{< /note >}}
 
 
 ## Step 1: Back up, clean up and repartition macOS {#step-1-back-up-clean-up-and-repartition-macos}
 
-{{% warning %}}
+{{< warning >}}
 Again, before getting started: **make a backup of your system!** I can't stress this enough. Although tools have evolved a lot (for example, you can now easily repartition disks without data loss), there's always a chance things will go wrong. Make a full backup of your disk, or at least of your valuable data.
-{{% /warning %}}
+{{< /warning >}}
 
 After this, the first step was to free enough space on macOS so I could resize its disk and leave a chunk of disk empty for my Linux partition. I used the excellent [DaisyDisk](https://daisydiskapp.com/) for this, but there are a number of other utilities that can help you identify where the space is going. Fire at will. In my 500GB disk, I managed to reduce my usage to below 300GB on macOS, which allowed me to create a 200GB partition for Linux.
 
-{{% tip %}}
+{{< tip >}}
 When I first tried to resize my disk, Disk Utility kept refusing due to snapshots taking up the space. With some help from ChatGPT I figured out how to identify and delete them:
 
 1.  Check existing snapshots:
@@ -53,7 +53,7 @@ When I first tried to resize my disk, Disk Utility kept refusing due to snapshot
        sudo tmutil deletelocalsnapshots <snapshot-date>
     ```
 3.  Repeat until they are all gone.
-{{% /tip %}}
+{{< /tip >}}
 
 Once you've freed up the space, you can resize the macOS partition to leave unused space in the disk. This can be done graphically using Disk Utility or from the command line with `diskutil`. For example:
 

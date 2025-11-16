@@ -5,14 +5,14 @@ summary = "I switched from my hand-crafted Emacs config to Doom Emacs some time 
 date = 2020-10-19T09:07:00+02:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs", "doom"]
 draft = false
-creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
-featured_image = "/images/doom-emacs-color.jpg"
+creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
+featureimage = "img/doom-emacs-color.jpg"
 toc = true
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **October 30, 2024**
+Last update: **November 16, 2025**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -233,13 +233,13 @@ This code is written to the `init.el` to select which modules to load. Written h
  ;;layout              ; auie,ctsrnm is the superior home row
 
  :completion
- ;;(company +childframe) ; the ultimate code completion backend
-
+ (corfu +orderless)
+ ;;(company -childframe) ; the ultimate code completion backend
  ;;helm                ; the *other* search engine for love and life
  ;;ido                 ; the other *other* search engine...
- (ivy +prescient -childframe
-      -fuzzy +icons)   ; a search engine for love and life
- ;;vertico
+ ;;(ivy +prescient -childframe
+ ;;     -fuzzy +icons)   ; a search engine for love and life
+ vertico
 
  :ui
  ;;deft                ; notational velocity for Emacs
@@ -361,7 +361,7 @@ This code is written to the `init.el` to select which modules to load. Written h
  ;;nim                 ; python + lisp at the speed of c
  ;;nix                 ; I hereby declare "nix geht mehr!"
  ;;ocaml               ; an objective camel
- (org +pretty +journal -dragndrop
+ (org +pretty +journal ;-dragndrop
       +hugo +roam +pandoc
       +present)        ; organize your plain life in plain text
  ;;php                 ; perl's insecure younger brother
@@ -412,14 +412,17 @@ My user information.
       user-mail-address "diego@zzamboni.org")
 ```
 
-Change the Mac modifiers to my liking. I also disable passing Control characters to the system, to avoid that `C-M-space` launches the Character viewer instead of running `mark-sexp`.
+Change the Mac and Linux modifiers to my liking. I also disable passing Control characters to the system, to avoid that `C-M-space` launches the Character viewer instead of running `mark-sexp`.
 
 ```emacs-lisp
 (cond (IS-MAC
        (setq mac-command-modifier       'meta
              mac-option-modifier        'alt
              mac-right-option-modifier  'alt
-             mac-pass-control-to-system nil)))
+             mac-pass-control-to-system nil))
+      (IS-LINUX
+       (setq x-meta-keysym 'super
+             x-super-keysym 'meta)))
 ```
 
 When at the beginning of the line, make `Ctrl-K` remove the whole line, instead of just emptying it.
@@ -483,9 +486,9 @@ I eliminate all but the first two items in the dashboard menu, since those are t
 Set base and variable-pitch fonts. I currently like [Fira Code](https://github.com/tonsky/FiraCode) and [Alegreya](https://www.huertatipografica.com/en/fonts/alegreya-ht-pro) (another favorite and my previous choice: [ET Book](https://edwardtufte.github.io/et-book/)).
 
 ```emacs-lisp
-(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 18)
+(setq doom-font (font-spec :family "Fira Code" :size 24)
       ;;doom-variable-pitch-font (font-spec :family "ETBembo" :size 18)
-      doom-variable-pitch-font (font-spec :family "Alegreya" :size 18))
+      doom-variable-pitch-font (font-spec :family "Alegreya" :size 24))
 ```
 
 Allow mixed fonts in a buffer. This is particularly useful for Org mode, so I can mix source and prose blocks in the same document. I also manually enable `solaire-mode` in Org mode as a workaround for font scaling not working properly.
@@ -496,15 +499,26 @@ Allow mixed fonts in a buffer. This is particularly useful for Org mode, so I ca
 (setq mixed-pitch-variable-pitch-cursor nil)
 ```
 
+Keybindings to increase/decrease font size.
+
+```emacs-lisp
+(map! "C-="   #'doom/increase-font-size
+      "C--"   #'doom/decrease-font-size
+      "C-0"   #'doom/reset-font-size)
+```
+
 Set the theme to use. I like the [Spacemacs-Light](https://github.com/nashamri/spacemacs-theme), which does not come with Doom, so we need to install it from `package.el`:
 
 ```emacs-lisp
 (package! spacemacs-theme)
+;; Trying https://github.com/agraul/doom-alabaster-theme
+;;(package! doom-alabaster-theme :recipe (:host github :repo "agraul/doom-alabaster-theme"))
 ```
 
 And then from `config.el` we specify the theme to use.
 
 ```emacs-lisp
+;;(setq doom-theme 'doom-alabaster)
 (setq doom-theme 'spacemacs-light)
 ;;(setq doom-theme 'doom-nord-light) ;;OK
 ;;NO (setq doom-theme 'doom-solarized-light)
@@ -532,7 +546,7 @@ In my previous configuration, I used to automatically restore the previous sessi
 Maximize the window upon startup.
 
 ```emacs-lisp
-(setq initial-frame-alist '((top . 1) (left . 1) (width . 114) (height . 32)))
+;;(setq initial-frame-alist '((top . 1) (left . 1) (width . 114) (height . 32)))
 ;;(add-to-list 'initial-frame-alist '(maximized))
 ```
 
@@ -584,6 +598,109 @@ Enable pixel scrolling
 
 ```emacs-lisp
 ;;(pixel-scroll-precision-mode 1)
+```
+
+
+### Migrating from ivy+counsel+company to vertico+consul+corfu {#migrating-from-ivy-plus-counsel-plus-company-to-vertico-plus-consul-plus-corfu}
+
+Some transitionary aliases and definitions so that my config keeps working while I finish the migration (provided by ChatGPT).
+
+```emacs-lisp
+;; ---------------------------
+;; Compatibility shims: Counsel -> Consult
+;; ---------------------------
+
+;; Avoid errors if some old code still sets this variable
+(defvar counsel-outline-display-style nil
+  "Compatibility var for configs that set `counsel-outline-display-style'.")
+
+;; ---------------------------
+;; Recreate the candidate function your config expected
+;; (You had `zz/counsel-buffer-or-recentf-candidates` and
+;; override of `counsel-buffer-or-recentf-candidates`.)
+;; ---------------------------
+(defun zz/counsel-buffer-or-recentf-candidates ()
+  "Return a list of candidates similar to what `counsel-buffer-or-recentf' provided.
+
+Each candidate is a string. We include buffer names first, then recentf entries."
+  (let ((bufs (mapcar #'buffer-name (buffer-list)))
+        (recent (and (bound-and-true-p recentf-mode) recentf-list)))
+    ;; Filter nils, duplicates, and return a clean list
+    (seq-uniq
+     (cl-remove-if #'null
+                   (append bufs recent))
+     :test #'string=)))
+
+;; If some other code expects `counsel-buffer-or-recentf-candidates` symbol to exist,
+;; make sure it's what they call (your rg showed you advised/overrode it).
+(advice-add #'counsel-buffer-or-recentf-candidates :override #'zz/counsel-buffer-or-recentf-candidates)
+
+;; Provide a convenient command that old keybindings can call.
+;; This mirrors the old behaviour by delegating to consult-buffer which is feature-rich.
+(defun zz/counsel-buffer-or-recentf ()
+  "Compatibility wrapper: choose a buffer or recent file.
+This calls `consult-buffer' (from consult) so you still get good UX."
+  (interactive)
+  (consult-buffer))
+
+;; Alias the common counsel entry points to consult equivalents if counsel isn't present.
+(unless (fboundp 'counsel-switch-buffer)
+  (defalias 'counsel-switch-buffer #'consult-buffer)
+  (defalias 'counsel-buffer-or-recentf #'zz/counsel-buffer-or-recentf)
+  (defalias 'counsel-find-file #'consult-find)
+  (defalias 'counsel-recentf #'consult-recent-file)
+  (defalias 'counsel-rg #'consult-ripgrep)
+  (defalias 'counsel-grep #'consult-grep)
+  (defalias 'counsel-outline #'consult-outline))
+
+;; ---------------------------
+;; Org link integration: preserve your CUSTOM_ID behaviour
+;; ---------------------------
+;; (Assumes you already have the zz/org-custom-id-* helpers from earlier in your file;
+;; if they are declared later, move those helper definitions above this block.)
+
+;; Provide the consult-based replacement for counsel-org-link
+(defun zz/collect-org-headings-in-buffer ()
+  "Return an alist (TITLE . POSITION) for headings in the current buffer."
+  (let (res)
+    (org-element-map (org-element-parse-buffer) 'headline
+      (lambda (hl)
+        (let ((title (org-element-property :raw-value hl))
+              (pos (org-element-property :begin hl)))
+          (when (and title (not (string-empty-p title)))
+            (push (cons title pos) res)))))
+    (nreverse res)))
+
+(defun zz/consult-insert-org-link ()
+  "Prompt for an Org heading in the current buffer and insert a link to its CUSTOM_ID.
+If the heading has no CUSTOM_ID, create one using your `zz/org-custom-id-get-create'."
+  (interactive)
+  (unless (derived-mode-p 'org-mode)
+    (user-error "This command only works in Org buffers"))
+  (let* ((cands (zz/collect-org-headings-in-buffer))
+         (titles (mapcar #'car cands)))
+    (unless titles (user-error "No headings found in this buffer"))
+    (let* ((choice (completing-read "Heading: " titles nil t))
+           (pos    (cdr (assoc choice cands)))
+           (id     (zz/org-custom-id-get-create pos)))
+      (org-insert-link nil (concat "#" id) choice))))
+
+;; Keep the old symbol names mapping to the new functions so your keybindings keep working
+(unless (fboundp 'counsel-org-link)
+  (defalias 'counsel-org-link #'zz/consult-insert-org-link))
+
+;; If you had overridden `counsel-org-link-action`, ensure calls to that symbol still work:
+(when (not (fboundp 'counsel-org-link-action))
+  (defun counsel-org-link-action (x)
+    "Compatibility: insert a CUSTOM_ID link to X (X is (title . position))."
+    (let* ((pos (cdr x))
+           (id  (zz/org-custom-id-get-create pos)))
+      (org-insert-link nil (concat "#" id) (car x)))))
+
+;; ---------------------------
+;; Optional: keep compatibility aliases active until you're ready to remove them.
+;; When you've migrated everything, you can remove the defalias/advice lines above.
+;; ---------------------------
 ```
 
 
@@ -820,14 +937,11 @@ Disable [electric-mode](https://code.orgmode.org/bzg/org-mode/src/master/etc/ORG
 (add-hook! org-mode (electric-indent-local-mode -1))
 ```
 
-I really dislike completion of words as I type prose (in code it's OK), so I disable it in Org and Markdown modes.
+I really dislike completion of words as I type prose (in code it's OK), so I disable it in text buffers (includes Org and Markdown modes).
 
 ```emacs-lisp
-(defun zz/adjust-org-company-backends ()
-  (remove-hook 'after-change-major-mode-hook '+company-init-backends-h)
-  (setq-local company-backends nil))
-(add-hook! org-mode (zz/adjust-org-company-backends))
-(add-hook! markdown-mode (zz/adjust-org-company-backends))
+;;(add-hook 'text-mode-hook (lambda () (company-mode -1)))
+(add-hook 'text-mode-hook (lambda () (setq corfu-auto nil)))
 ```
 
 
@@ -903,14 +1017,32 @@ Configure attachments to be stored together with their Org document.
 
 ### Capturing images {#capturing-images}
 
-Using `org-download` to make it easier to insert images into my org notes. I don't like the configuration provided by Doom as part of the `(org +dragndrop)` module, so I install the package by hand and configure it to my liking. I also define a new keybinding to paste an image from the clipboard, asking for the filename first.
+Using `org-download` to make it easier to insert images into my org notes and blog posts. I don't like the configuration provided by Doom as part of the `(org +dragndrop)` module, so I install the package by hand and configure it to my liking.
 
 ```emacs-lisp
 (package! org-download)
 ```
 
 ```emacs-lisp
-(defun zz/org-download-paste-clipboard (&optional use-default-filename)
+(after! org-download
+  (setq org-download-method 'directory)
+  (setq org-download-image-dir "images")
+  (setq org-download-heading-lvl nil)
+  (setq org-download-timestamp "%Y%m%d-%H%M%S_")
+  (setq org-image-actual-width 300))
+(require 'org-download)
+```
+
+`org-download` implements all the basic machinery for downloading/copying and inserting an image in an org-mode file. However the user experience can be improved. I implemented two wrappers to fit my main use cases:
+
+-   Pasting images from the clipboard;
+-   Inserting images already in my laptop;
+-   Images must be inserted as links to themselves.
+
+The first function `zz/org-paste-clipboard` inserts an image from the clipboard using `org-download-clipboard`, but asking for the filename to use for storing it.
+
+```emacs-lisp
+(defun zz/org-paste-clipboard (&optional use-default-filename)
   (interactive "P")
   (require 'org-download)
   (let ((file
@@ -920,16 +1052,52 @@ Using `org-download` to make it easier to insert images into my org notes. I don
                           nil nil org-download-screenshot-basename)
            nil)))
     (org-download-clipboard file)))
+```
 
-(after! org-download
-  (setq org-download-method 'directory)
-  (setq org-download-image-dir "images")
-  (setq org-download-heading-lvl nil)
-  (setq org-download-timestamp "%Y%m%d-%H%M%S_")
-  (setq org-image-actual-width 300)
-  (map! :map org-mode-map
-        "C-c l a y" #'zz/org-download-paste-clipboard
-        "C-M-y" #'zz/org-download-paste-clipboard))
+The second function `zz/org-attach-file` allows me to choose a file to attach. The file is copied with the same name to the `org-download-image-dir` directory. If the chosen image is already from that directory, it only inserts the link without copying the file again.
+
+```emacs-lisp
+(defun zz/org-attach-file (&optional file)
+  (interactive (list (read-file-name "File to insert: "
+                                (or (progn
+                                      (require 'dired-aux)
+                                      (dired-dwim-target-directory))
+                                    default-directory))))
+  (require 'org-download)
+  (if (file-in-directory-p file org-download-image-dir)
+      (org-download-insert-link (concat "file:" (file-relative-name file (org-attach-dir))) file)
+      (let ((file-url (concat "file://" file)))
+        (org-download-image file-url))))
+```
+
+I create keybindings for the two functions above.
+
+```emacs-lisp
+(map! :map org-mode-map
+        "C-c l a y" #'zz/org-paste-clipboard
+        "C-M-y" #'zz/org-paste-clipboard
+        "C-c l a z" #'zz/org-attach-file
+        "C-M-z" #'zz/org-attach-file)
+```
+
+Finally, I like the images to be links to the image itself, so that in blog posts, for example, a thumbnail is shown, and clicking on it takes you to the full image. To this effect I define a variant of `org-download-link-format-function` which does this, and assign it to `org-download-link-format-function`.
+
+```emacs-lisp
+(defun zz/org-download-link-format-function-link-to-file (filename)
+  "Insert the file as a link to itself."
+  (if (and (>= (string-to-number org-version) 9.3)
+           (eq org-download-method 'attach))
+      ;; Respect the default behavior if org-download-method is 'attach
+      (format "[[attachment:%s]]\n"
+              (org-link-escape
+               (file-relative-name filename (org-attach-dir))))
+    (let ((formatted-filename (org-link-escape
+                               (funcall org-download-abbreviate-filename-function filename))))
+      ;; Here we use the correct link format so that the image is a link to itself
+      (format "[[file:%s][file:%s]]\n"
+             formatted-filename formatted-filename))))
+
+(setq! org-download-link-format-function #'zz/org-download-link-format-function-link-to-file)
 ```
 
 
@@ -941,7 +1109,7 @@ Using `org-download` to make it easier to insert images into my org notes. I don
 I normally use `counsel-org-link` for linking between headings in an Org document. It shows me a searchable list of all the headings in the current document, and allows selecting one, automatically creating a link to it. Since it doesn't have a keybinding by default, I give it one.
 
 ```emacs-lisp
-(map! :after counsel :map org-mode-map
+(map! :map org-mode-map
       "C-c l l h" #'counsel-org-link)
 ```
 
@@ -1115,6 +1283,8 @@ I am trying out Trevoke's [org-gtd](https://github.com/Trevoke/org-gtd.el). I ha
 ```
 
 ```emacs-lisp
+;; Supress org-gtd update warning
+(setq org-gtd-update-ack "2.1.0")
 (use-package! org-gtd
   :after org
   :config
@@ -1261,6 +1431,40 @@ I set `org-hugo-use-code-for-kbd` so that I can apply a custom style to keyboard
 ```emacs-lisp
 (after! ox-hugo
   (setq org-hugo-use-code-for-kbd t))
+```
+
+Define an `org-capture` template to create a new blog post skeleton automatically. Based on <https://ox-hugo.scripter.co/doc/org-capture-setup/>, with some customizations for my blog's setup (like a default value for `:featureimage`). I also add `:jump-to-captured t` in the `org-capture-templates` definition so that when I create a new blog post snippet, I get automatically taken to that location so I can continue writing.
+
+```emacs-lisp
+(after! org-capture
+  (defun org-hugo-new-subtree-post-capture-template ()
+    "Returns `org-capture' template string for new Hugo post.
+  See `org-capture-templates' for more information."
+    (let* ((title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
+           (fname (org-hugo-slug title)))
+      (mapconcat #'identity
+                 `(
+                   ,(concat "* TODO " title)
+                   ":PROPERTIES:"
+                   ,(concat ":export_hugo_bundle: " (format-time-string "%Y-%m-%d-") fname)
+                   ":export_file_name: index"
+                   ,(concat ":custom_id: " fname)
+                   ":export_hugo_custom_front_matter: :featureimage img/tram-zurich.jpg :toc false"
+                   ":END:"
+                   "#+BEGIN_DESCRIPTION\n%?\n#+END_DESCRIPTION"       ;Place the cursor here at the end
+                   "\n<write here>")
+                 "\n")))
+
+(add-to-list 'org-capture-templates
+               '("h"                ;`org-capture' binding + h
+                 "Hugo post"
+                 entry
+                 ;; It is assumed that below file is present in `org-directory'
+                 ;; and that it has an "Ideas" heading. It can even be a
+                 ;; symlink pointing to the actual location of all-posts.org!
+                 (file+olp "~/Personal/websites/zzamboni.org/content-org/zzamboni.org" "Ideas")
+                 (function org-hugo-new-subtree-post-capture-template)
+                 :jump-to-captured t)))
 ```
 
 
@@ -1476,6 +1680,17 @@ end repeat\"")))
   :hook (org-mode . org-special-block-extras-mode))
 ```
 
+I'v been intrigued by [Typst](https://typst.app/), and there's already an org-mode exporter for it!
+
+```emacs-lisp
+(package! ox-typst)
+```
+
+```emacs-lisp
+(use-package! ox-typst
+  :after org)
+```
+
 
 ### Other Org stuff {#other-org-stuff}
 
@@ -1602,11 +1817,11 @@ Some other languages I use.
 
 -   [Graphviz](https://graphviz.org/) for graph generation.
     ```emacs-lisp
-    (package! graphviz-dot-mode)
+    ;(package! graphviz-dot-mode)
     ```
 
     ```emacs-lisp
-    (use-package! graphviz-dot-mode)
+    ;(use-package! graphviz-dot-mode)
     ```
 
 -   I am learning [Common LISP](http://www.gigamonkeys.com/book/), which is well supported through the `common-lisp` Doom module, but I need to configure this in the `~/.slynkrc` file for I/O in the Sly REPL to work fine ([source](https://github.com/joaotavora/sly/issues/347#issuecomment-717065056)).

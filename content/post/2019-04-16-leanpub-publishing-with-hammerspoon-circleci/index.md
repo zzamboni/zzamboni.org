@@ -4,18 +4,18 @@ author = ["Diego Zamboni"]
 date = 2019-04-16T11:25:00+02:00
 tags = ["writing", "hammerspoon", "circleci", "automation", "leanpub", "github"]
 draft = false
-creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
+creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 toc = true
-featured_image = "/images/hammerspoon-github-circleci-leanpub.001.jpg"
+featureimage = "img/hammerspoon-github-circleci-leanpub.001.jpg"
 +++
 
 I am the author of two books: [_Learning CFEngine_](https://cf-learn.info/) and [_Learning Hammerspoon_](https://leanpub.com/learning-hammerspoon), both self-published using [Leanpub](https://leanpub.com/). The source of my books is kept in GitHub repositories. In this post I will show you how I use the [Leanpub API](https://leanpub.com/help/api) together with [Hammerspoon](https://www.hammerspoon.org/)  and [CircleCI](https://circleci.com) as part  of my workflow, to automate and monitor the building, previewing and publishing of my books.
 
 {{< figure src="images/hammerspoon-github-circleci-leanpub-transp.jpg" >}}
 
-{{% tip %}}
+{{< tip >}}
 The Hammerspoon section of this post is Mac-specific (since Hammerspoon is a Mac-only application), but the integration between GitHub, CircleCI and Leanpub can be applied regardless of the OS you use.
-{{% /tip %}}
+{{< /tip >}}
 
 
 ## Leanpub basics {#leanpub-basics}
@@ -24,9 +24,10 @@ First, some basic concepts about the Leanpub API. See the [documentation](https:
 
 -   **Book slug**: Each Leanpub book is identified by a _slug_, which is basically an unique author-chosen identifier for the book. The book slug is included in the book's Leanpub URL. For example, the URL for _Learning Hammerspoon_ is <https://leanpub.com/learning-hammerspoon>, therefore its slug is `learning-hammerspoon`. The slug can be changed by the author as part of the book configuration, and is used in all the API calls to identify the book for which an operation should be performed.
 
-    {{% note %}}
-    The tools I describe below assume by default that your book's git repository name is the same as its Leanpub slug. You can specify it if this is not the case by providing some additional configuration parameters.
-    {{% /note %}}
+{{< note >}}
+The tools I describe below assume by default that your book's git repository name is the same as its Leanpub slug. You can specify it if this is not the case by providing some additional configuration parameters.
+{{< /note >}}
+
 -   **API key**: Every Leanpub author gets an [_API key_](https://leanpub.com/help/api#getting-your-api-key), which is a randomly-generated string of characters which is used as an authentication token. The API key needs to be provided on most Leanpub API  calls (some query operations are allowed without a key).
 -   **Build types**: The Leanpub API allows you to trigger several types of [build operations](https://leanpub.com/help/api#previewing-and-publishing) on a book:
     -   _Preview_ builds all the formats supported by Leanpub (PDF, ePub, Mobi), using the whole book as defined in the `Book.txt` file.
@@ -38,9 +39,9 @@ First, some basic concepts about the Leanpub API. See the [documentation](https:
 
 ## The beginning: triggering and watching builds by hand {#the-beginning-triggering-and-watching-builds-by-hand}
 
-{{% warning %}}
+{{< warning >}}
 This is not part of my final workflow and you can safely skip it. It is only a bit of historic perspective for how my workflow evolved.
-{{% /warning %}}
+{{< /warning >}}
 
 As an initial step, I wrote some shell scripts to trigger and watch the progress of Leanpub builds by hand. I use the [Elvish shell](https://elv.sh), and my scripts are published as the [leanpub](https://github.com/zzamboni/elvish-modules/blob/master/leanpub.org) Elvish module. These allow you to  trigger book builds (only preview and subset builds, no publishing) by hand, and also to watch the progress of any operation. If you use Elvish, you can install the module like this:
 
@@ -64,13 +65,13 @@ leanpub:preview-and-watch
 leanpub:subset-and-watch
 ```
 
-{{% note %}}
+{{< note >}}
 If your current directory name is not the same as your book slug, you can pass the book slug as an argument. For example:
 
 ```elvish
 leanpub:preview-and-watch my_book
 ```
-{{% /note %}}
+{{< /note >}}
 
 After a while using these scripts, I thought I would put some work on improving both the aesthetics and the functionality of my automation. The next sections are what I came up with.
 
@@ -85,9 +86,9 @@ The first step is to get rid of the need to run those "watch" scripts, which pro
 
 These are produced by a [Spoon](/post/using-spoons-in-hammerspoon/) I wrote called [Leanpub](https://www.hammerspoon.org/Spoons/Leanpub.html). You can install, load and configure it using the [SpoonInstall](/post/using-spoons-in-hammerspoon/#automated-spoon-installation-and-configuration) spoon.
 
-{{% tip %}}
+{{< tip >}}
 If you want to learn how this Spoon is implemented, please check out the "Writing your own extensions and Spoons" chapter in [_Learning Hammerspoon_](https://leanpub.com/learning-hammerspoon).
-{{% /tip %}}
+{{< /tip >}}
 
 For example, in my configuration I have [the following code](/post/my-hammerspoon-configuration-with-commentary/#leanpub-integration) to configure the spoon to watch for both of my books:
 
@@ -109,7 +110,7 @@ Note that you also need to specify your Leanpub API key, which you can get and m
 
 {{< figure src="images/leanpub-api-key.png" >}}
 
-{{% warning %}}
+{{< warning >}}
 You can specify the `api_key` value in the main declaration as shown (commented) above. However, be careful if you keep your configuration file in GitHub or some other publicly-accessible place. What I do is keep a separate file called `init-local.lua` which I do not commit to my git repository, and where I set my API key as follows:
 
 ```lua
@@ -125,13 +126,13 @@ This file in turn gets loaded into my main config file [as follows](/post/my-ham
     dofile(localfile)
   end
 ```
-{{% /warning %}}
+{{< /warning >}}
 
 Reload your Hammerspoon configuration. Now when you trigger a preview or publish (for example, using the scripts above), you will after a few seconds start seeing the corresponding notifications.
 
-{{% tip %}}
+{{< tip >}}
 Note that the actual behavior and appearance of the notifications produced by Hammerspoon (like those of any other application) depend partly on the settings you have in the macOS Notifications control panel. For example, if you don't see any notifications, make sure the Hammerspoon notifications are not blocked and that you have not enabled "Do not disturb" mode. If you don't see any buttons in the notifications, it may indicate that you have the Hammerspoon alert style set to "Banners" instead of "Alerts".
-{{% /tip %}}
+{{< /tip >}}
 
 
 ## Triggering builds with a static webhook {#triggering-builds-with-a-static-webhook}
@@ -140,9 +141,9 @@ The most basic way of automatically triggering builds is by using a webhook to t
 
 {{< figure src="images/github-webhooks.png" >}}
 
-{{% tip %}}
+{{< tip >}}
 If you only want to automatically trigger one type of build then you don't need to do anything else. Continue reading if you are interested in a flexible workflow which allows you to trigger different types of builds based on tags you define on your book's repository.
-{{% /tip %}}
+{{< /tip >}}
 
 
 ## Triggering builds via CircleCI {#triggering-builds-via-circleci}
@@ -200,13 +201,13 @@ To implement this workflow, all you have to do is add a file `.circleci/config.y
                 ignore: /.*/
 ```
 
-{{% note %}}
+{{< note >}}
 The `leanpub` orb defines the "jobs" to trigger the different types of builds, but the logic regarding tags  is defined in the `worflows:` section of the config file, by selecting or ignoring them according to our previous description. You can choose your own tags, or do the workflow based on branch names, or any other condition you want.
-{{% /note %}}
+{{< /note >}}
 
-{{% warning %}}
+{{< warning >}}
 The default config assumes that your git repository name corresponds to the book slug. If this is not the case, you have to add a `book-slug` parameter to all the job calls in the config file. See the [orb documentation](https://circleci.com/orbs/registry/orb/zzamboni/leanpub) for details.
-{{% /warning %}}
+{{< /warning >}}
 
 Once you have committed this file, you can enable CircleCI on it as follows:
 

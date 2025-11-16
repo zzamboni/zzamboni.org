@@ -7,7 +7,7 @@ tags:
 - mac
 - outlook
 - applescript
-featured_image: '/images/hammerspoon.png'
+featureimage: 'img/hammerspoon.png'
 slug: fixing-outlook-to-omnifocus-script
 ---
 

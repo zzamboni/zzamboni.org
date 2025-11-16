@@ -1,0 +1,6 @@
+{{- $p := .Params | len -}}
+{{- $fun := .Get 0 -}}
+{{- .Scratch.Set "sec" $fun -}}
+{{- if ge $p 2 -}}{{- .Scratch.Set "sec" (.Get 1) -}}{{- end -}}
+{{- $sec := .Scratch.Get "sec" -}}
+<a href="https://www.lua.org/manual/5.3/manual.html#{{ $sec }}">{{- if ge $p 3 -}}{{- .Get 2 | markdownify -}}{{- else -}}<code>{{ $fun | markdownify }}</code>{{- end -}}</a>{{- "" -}}

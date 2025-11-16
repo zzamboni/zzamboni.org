@@ -1,6 +1,32 @@
-<aside class="tip">
-  <div class="admonition-icon">
-    {{ partial "svg/lightbulb.svg" . }}
-  </div>
-  <div class="admonition-content">{{- .Inner | markdownify -}}</div>
-</aside>
+{{ $.Scratch.Set "icon" (default "lightbulb" (.Get "icon") ) }}
+{{ $.Scratch.Set "cardColor" "green" }}
+{{ $.Scratch.Set "iconColor" "white" }}
+{{ $.Scratch.Set "textColor" "white" }}
+
+<div
+  {{ if not ($.Scratch.Get "cardColor") }}
+    class="flex px-4 py-3 rounded-md bg-primary-100 dark:bg-primary-900"
+  {{ else }}
+    class="flex px-4 py-3 rounded-md" style="background-color: {{ $.Scratch.Get "cardColor" }}"
+  {{ end }}
+  >
+  <span
+    {{ if not ($.Scratch.Get "iconColor") }}
+      class="text-primary-400 py-3 pe-3 flex text-3xl items-top"
+    {{ else }}
+      class="py-3 pe-3 flex text-3xl items-top" style="color: {{ $.Scratch.Get "iconColor" }}"
+    {{ end }}
+    >
+    {{ partial "icon.html" ($.Scratch.Get "icon") }}
+  </span>
+
+  <span
+    {{ if not ($.Scratch.Get "textColor") }}
+      class="dark:text-neutral-300"
+    {{ else }}
+      style="color: {{ $.Scratch.Get "textColor" }}"
+    {{ end }}
+    >
+    {{- .Inner | markdownify -}}
+  </span>
+</div>

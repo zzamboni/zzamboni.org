@@ -5,8 +5,8 @@ summary = "How to set up the bash !! and !$ shortcuts for accessing the previous
 date = 2017-12-04T22:15:00+01:00
 tags = ["elvish", "shell", "unix", "config"]
 draft = false
-creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
-featured_image = "/images/elvish-logo.svg"
+creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
+featureimage = "img/elvish-logo.svg"
 +++
 
 (Updated on March 19th, 2018 to use the new [Elvish Package Manager](https://elvish.io/ref/epm.html))

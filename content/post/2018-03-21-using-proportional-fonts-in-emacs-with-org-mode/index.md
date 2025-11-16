@@ -5,9 +5,9 @@ summary = "Configuring Org Mode in Emacs for beautiful typography for both text 
 date = 2018-03-21T22:45:00+01:00
 tags = ["emacs", "orgmode", "beautifulemacs", "config"]
 draft = false
-creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
+creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 toc = true
-featured_image = "/images/emacs-logo.svg"
+featureimage = "img/emacs-logo.svg"
 +++
 
 Over the last few months, I have used [org-mode](https://orgmode.org/) more and more for writing and programming in Emacs. I love its flexibility and power, and it is the first [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) tool which "feels right", and I have been able to stick with it for a longer period of time than in my previous attempts.

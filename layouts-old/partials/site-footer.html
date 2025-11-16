@@ -1,0 +1,20 @@
+<footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+    <a class="f5 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="{{ .Site.BaseURL }}" >
+      &copy; {{ now.Format "2006" }} {{ default .Site.Title .Site.Params.copyright_author }}
+    </a>
+    <div class="f5 fw1 no-underline white-70 dn dib-ns tl pv2 ph3" >
+      {{- if .Site.Params.footer.show_powered_by -}}
+            Made with love, coffee,&nbsp;
+            {{- with .Params.creator -}}
+                <a class="no-underline hover-white white-70" href="https://www.gnu.org/software/emacs/">{{ . | replaceRE "\\(Org.*" "" }}</a> &plus;
+                <a class="no-underline hover-white white-70" href="https://orgmode.org/">{{ . | replaceRE "Emacs.*\\(" "" | replaceRE "\\+ ox-.*" "" }}</a> &plus;
+                <a class="no-underline hover-white white-70" href="https://ox-hugo.scripter.co/">ox-hugo</a>&nbsp;
+            {{- end -}}
+            and published using <a class="no-underline hover-white white-70" href="http://gohugo.io/">Hugo {{ hugo.Version }}</a>
+            &plus; <a class="no-underline hover-white white-70" href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a>
+      {{- end -}}
+    </div>
+    {{ partial "social-follow.html" . }}
+  </div>
+</footer>

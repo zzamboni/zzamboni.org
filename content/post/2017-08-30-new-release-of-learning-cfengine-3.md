@@ -1,7 +1,7 @@
 ---
 title: New Release of "Learning CFEngine 3"
 date: 2017-08-30T11:16:26+02:00
-featured_image: '/figures/new-cfengine3-cover.jpg'
+featureimage: 'img/new-cfengine3-cover.jpg'
 tags:
 - cfengine
 - books

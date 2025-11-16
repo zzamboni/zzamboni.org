@@ -5,14 +5,14 @@ summary = "In this blog post I will walk you through my current Elvish configura
 date = 2017-11-16T20:21:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "elvish"]
 draft = false
-creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
+creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 toc = true
-featured_image = "/images/elvish-logo.svg"
+featureimage = "img/elvish-logo.svg"
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **October 30, 2024**
+Last update: **November 16, 2025**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -39,10 +39,11 @@ The bundled [readline-binding](https://elv.sh/ref/readline-binding.html) module 
 use readline-binding
 ```
 
-The bundled `path` module contains path manipulation functions.
+The bundled `path` and `os` modules contains path manipulation/checking and other functions.
 
 ```elvish
 use path
+use os
 ```
 
 The bundled `str` and `math` modules for string manipulation and math operations.
@@ -52,6 +53,22 @@ use str
 use math
 ```
 
+Some code runs only if certain external binary exists, I define a couple of functions to help with this.
+
+```elvish
+fn only-when-external { |prog lambda|
+  if (has-external $prog) { $lambda }
+}
+# Convert POSIX env assignments to Elvish
+fn read-posix-envvars {
+  each {|l|
+    var _ key val = (re:split &max=3 '[ =]' $l)
+    set val = (re:replace '^"' '' (re:replace '"$' '' $val))
+    set-env $key $val
+  }
+}
+```
+
 
 ## Paths {#paths}
 
@@ -59,20 +76,35 @@ First we set up the executable paths. We set the `GOPATH` environment variable w
 
 ```elvish
 # Where all the Go stuff is
-if (path:is-dir ~/Dropbox/Personal/devel/go) {
-  set E:GOPATH = ~/Dropbox/Personal/devel/go
-} else {
+#if (path:is-dir ~/Dropbox/Personal/devel/go) {
+#  set E:GOPATH = ~/Dropbox/Personal/devel/go
+#} else {
   set E:GOPATH = ~/go
+#}
+var brew-paths = []
+only-when-external /home/linuxbrew/.linuxbrew/bin/brew {
+  /home/linuxbrew/.linuxbrew/bin/brew shellenv | grep -v PATH | sed 's/;$//;' | read-posix-envvars
+  set brew-paths = [$E:HOMEBREW_PREFIX/bin $E:HOMEBREW_PREFIX/sbin]
 }
+
 # Optional paths, add only those that exist
 var optpaths = [
+  $E:GOPATH/bin
+  $@brew-paths
+  ~/.local/bin
+  ~/bin/(uname -s | tr '[:upper:]' '[:lower:]')-(uname -m)
   ~/.emacs.d/bin
+  ~/.local/share/flatpak/exports/bin
+  /var/lib/flatpak/exports/bin
   /usr/local/opt/coreutils/libexec/gnubin
   /usr/local/opt/texinfo/bin
   /usr/local/opt/python/libexec/bin
   /usr/local/go/bin
+  /snap/bin
   ~/Work/automated-security-helper
   ~/.toolbox/bin
+  ~/.local/bin
+  ~/.local/share/omakub/bin
 ]
 var optpaths-filtered = [(each {|p|
       if (path:is-dir $p) { put $p }
@@ -80,7 +112,6 @@ var optpaths-filtered = [(each {|p|
 
 set paths = [
   ~/bin
-  $E:GOPATH/bin
   $@optpaths-filtered
   /usr/local/bin
   /usr/local/sbin
@@ -132,8 +163,8 @@ epm:install &silent-if-installed         ^
 github.com/zzamboni/elvish-modules     ^
 github.com/zzamboni/elvish-completions ^
 github.com/xiaq/edit.elv               ^
-github.com/muesli/elvish-libs          ^
-github.com/iwoloschin/elvish-packages
+github.com/muesli/elvish-libs
+# github.com/iwoloschin/elvish-packages
 ```
 
 The modules within each package get loaded individually below.
@@ -224,16 +255,7 @@ Elvish does not have built-in alias functionality, but this is implemented easil
 use github.com/zzamboni/elvish-modules/alias
 ```
 
-For reference, I define here a few of my commonly-used aliases. Some of them are defined only if the corresponding external binary exists, I define a couple of functions to help with this.
-
-```elvish
-fn have-external { |prog|
-  put ?(which $prog >/dev/null 2>&1)
-}
-fn only-when-external { |prog lambda|
-  if (have-external $prog) { $lambda }
-}
-```
+For reference, I define here a few of my commonly-used aliases.
 
 ```elvish
 only-when-external dfc {
@@ -247,23 +269,42 @@ only-when-external hub {
 }
 ```
 
-Use `bat` as my default pager, if installed. I love the `bat` `man` configuration for [using `bat` as the pager for `man` pages](https://github.com/sharkdp/bat#man).
+Use `bat` as my default pager, if installed.
 
 ```elvish
 only-when-external bat {
-  alias:new cat bat
-  alias:new more bat --paging always
-  set E:MANPAGER = "sh -c 'col -bx | bat -l man -p'"
+  alias:new cat bat --paging never --plain
+  alias:new more bat --paging always --plain
+  #set E:MANPAGER = "sh -c 'col -bx | bat -l man -p'"
+}
+only-when-external batcat {
+  alias:new cat batcat --paging never --plain
+  alias:new more batcat --paging always --plain
+  #set E:MANPAGER = "sh -c 'col -bx | batcat -l man -p'"
 }
 ```
 
-Open man pages as PDF, I gathered this tip from <https://twitter.com/MrAhmadAwais/status/1279066968981635075>. Neat but not very useful for daily use, particularly with the `bat` integration above.
+If available, use the scripts from `bat-extras` to replace some other commands, like `man`.
+
+```elvish
+only-when-external batman {
+  alias:new man batman
+}
+```
+
+Open man pages as PDF, I gathered this tip from <https://twitter.com/MrAhmadAwais/status/1279066968981635075>. Neat but not very useful for daily use, particularly with the `batman` integration above.
 
 ```elvish
 fn manpdf {|@cmds|
   each {|c|
     man -t $c | open -f -a /System/Applications/Preview.app
   } $cmds
+}
+```
+
+```elvish
+only-when-external fdfind {
+  alias:new fd fdfind
 }
 ```
 
@@ -284,7 +325,7 @@ I now use the universal Carapace completer module for most commends instead of c
 ```elvish
 # Enable the universal command completer if available.
 # See https://github.com/rsteube/carapace-bin
-if (has-external carapace) {
+only-when-external carapace {
   eval (carapace _carapace | slurp)
 }
 ```
@@ -304,9 +345,9 @@ use github.com/zzamboni/elvish-completions/ssh
 I now use  [Starship](https://starship.rs/) for my prompt.
 
 ```elvish
-#   eval (starship init elvish | sed 's/except/catch/')
-# Temporary fix for use of except in the output of the Starship init code
-eval (/usr/local/bin/starship init elvish --print-full-init | slurp)
+only-when-external starship {
+  eval (starship init elvish --print-full-init | slurp)
+}
 ```
 
 You can find my current Starship config file at <https://gitlab.com/zzamboni/mac-setup/-/blob/master/files/homefiles/.config/starship.toml>.
@@ -382,6 +423,14 @@ The [long-running-notifications](https://github.com/zzamboni/modules.elv/blob/ma
 use github.com/zzamboni/elvish-modules/long-running-notifications
 ```
 
+For Linux, modify the notification function to use an icon (default doesn't include one).
+
+```elvish
+set long-running-notifications:notification-fns[libnotify][notify] = {|cmd duration start|
+  notify-send --icon terminal "Finished: "$cmd "Running time: "$duration"s"
+}
+```
+
 
 ## Directory and command navigation and history {#directory-and-command-navigation-and-history}
 
@@ -407,19 +456,38 @@ alias:new cdb &use=[github.com/zzamboni/elvish-modules/dir] dir:cdb
 set edit:insert:binding[Alt-i] = $dir:history-chooser~
 ```
 
-I bind `Alt-b/f` to `dir:left-small-word-or-prev-dir` and `dir:right-small-word-or-next-dir` respectively, which "do the right thing" depending on the current content of the command prompt: if it's empty, they move back/forward in the directory history, otherwise they move through the words of the current command. In my terminal setup, `Alt-left/right` also produce `Alt-b/f`, so these bindings work for those keys as well.
+I bind `Alt-b/f` and `Alt-Left/Right` to `dir:left-small-word-or-prev-dir` and `dir:right-small-word-or-next-dir` respectively, which "do the right thing" depending on the current content of the command prompt: if it's empty, they move back/forward in the directory history, otherwise they move through the words of the current command.
 
 ```elvish
 set edit:insert:binding[Alt-b] = $dir:left-small-word-or-prev-dir~
 set edit:insert:binding[Alt-f] = $dir:right-small-word-or-next-dir~
+set edit:insert:binding[Alt-Left] = $dir:left-small-word-or-prev-dir~
+set edit:insert:binding[Alt-Right] = $dir:right-small-word-or-next-dir~
 ```
 
-The following makes the location and history modes be case-insensitive by default:
+If `fzf` is installed, then we can have a fancier history search instead of the default bound to `Ctrl-R`.
 
 ```elvish
-set edit:insert:binding[Ctrl-R] = {
-  edit:histlist:start
-  edit:histlist:toggle-case-sensitivity
+# Filter the command history through the fzf program. This is normally bound
+# to Ctrl-R.
+fn fzf_history {
+  var new-cmd = (
+    edit:command-history &dedup &newest-first &cmd-only |
+    to-terminated "\x00" |
+    try {
+      fzf --no-sort --read0 --info=hidden --exact ^
+      --query=$edit:current-command
+    } catch {
+      # If the user presses [Escape] to cancel the fzf operation it will exit
+      # with a non-zero status. Ignore that we ran this function in that case.
+      return
+    }
+  )
+  set edit:current-command = $new-cmd
+}
+
+only-when-external fzf {
+  set edit:insert:binding[Ctrl-R] = { fzf_history >/dev/tty 2>&1 }
 }
 ```
 
@@ -429,7 +497,7 @@ I use [eza](https://github.com/eza-community/eza) as a replacement for the `ls` 
 only-when-external eza {
   var eza-ls~ = { |@_args|
     use github.com/zzamboni/elvish-modules/util
-    e:eza --color-scale --git --group-directories-first (each {|o|
+    e:eza --color-scale --git --group-directories-first --header --group-directories-first --icons=auto (each {|o|
         util:cond [
           { eq $o "-lrt" }  "-lsnew"
           { eq $o "-lrta" } "-alsnew"
@@ -438,6 +506,7 @@ only-when-external eza {
     } $_args)
   }
   edit:add-var ls~ $eza-ls~
+  alias:new lt eza --tree --level=2 --long --icons --git
 }
 ```
 
@@ -528,6 +597,36 @@ if (path:is-regular $conda-deactivate) {
   if (path:is-regular $conda-default-env) {
     conda activate (cat $conda-default-env)
   }
+}
+```
+
+
+## Flatpak aliases {#flatpak-aliases}
+
+The following code creates/updates short aliases for Flatpak-installed applications. I create them in my `~/bin/` directory, but could be anything else. It's very simplistic: it only creates a symlink that points to the full binary, the symlink is named after the last dot-separated component of the full name (for example, `/var/lib/flatpak/exports/bin/app.zen_browser.zen` gets a symlink named `zen`).
+
+```elvish
+each {|dir|
+  if (os:is-dir $dir) {
+    each {|f|
+      var short = (str:to-lower (echo $f | re:awk &sep='\.' {|@f| print $f[-1]}))
+      ln -sf $f ~/bin/$short
+    } [$dir/*]
+  }
+} [/var/lib/flatpak/exports/bin ~/.local/share/flatpak/exports/bin]
+```
+
+
+## Mise {#mise}
+
+If [mise](https://mise.jdx.dev/) is installed, configure it.
+
+```elvish
+only-when-external mise {
+  var mise: = (ns [&])
+  eval (mise activate elvish | slurp) &ns=$mise: &on-end={|ns| set mise: = $ns }
+  mise:activate
+  edit:add-var mise~ {|@args| mise:mise $@args }
 }
 ```
 

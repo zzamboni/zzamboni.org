@@ -1,7 +1,7 @@
 ---
 title: Limited Time Promotion! 50% off "Learning CFEngine 3"
 date: 2017-09-13T13:45:54
-featured_image: '/figures/new-cfengine3-cover.jpg'
+featureimage: 'img/new-cfengine3-cover.jpg'
 tags:
 - cfengine
 - books

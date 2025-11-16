@@ -6,14 +6,14 @@ tags:
 - mac
 - nix
 - howto
-featured_image: /images/nixos-logo.png
+featureimage: img/nixos-logo.png
 ---
 
 Here is how to set up Nix in single-user mode on macOS.
 
 <!--more-->
 
-{{% tip %}} Thanks to
+{{< tip >}} Thanks to
 [Alexander](https://disqus.com/by/alexander_vorobiev/) (see [his
 comment below](http://disq.us/p/1q17rj6)), a much easier and cleaner
 alternative (I have not tested it):
@@ -32,7 +32,7 @@ alternative (I have not tested it):
 >    only commands you need sudo rights for.
 > 6. run the install script ./install
 
-{{% /tip %}}
+{{< /tip >}}
 
 I have been playing with the [Nix package
 manager](https://nixos.org/nix/) lately (I will write more about it

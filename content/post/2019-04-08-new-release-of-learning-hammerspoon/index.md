@@ -9,9 +9,9 @@ summary = """
 date = 2019-04-08T09:51:00+02:00
 tags = ["hammerspoon", "mac", "howto", "books", "announcements"]
 draft = false
-creator = "Emacs 28.2 (Org mode 9.7.11 + ox-hugo)"
+creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 toc = false
-featured_image = "/images/learning-hs-cover.jpg"
+featureimage = "img/learning-hs-cover.jpg"
 +++
 
 {{< leanpubbook book="learning-hammerspoon" style="float:right" >}}

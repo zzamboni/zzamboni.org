@@ -6,7 +6,7 @@ date = 2025-10-18T20:24:00+02:00
 tags = ["howto", "mac", "linux", "opencore", "oclp"]
 draft = false
 creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
-featured_image = "/images/20251001-230259_OC-dual-boot-screen.png"
+featureimage = "img/20251001-230259_OC-dual-boot-screen.png"
 toc = true
 +++
 
