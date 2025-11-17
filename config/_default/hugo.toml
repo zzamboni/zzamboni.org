@@ -18,6 +18,8 @@ buildFuture = false
 enableEmoji = true
 
 # googleAnalytics = "G-XXXXXXXXX"
+# Enable comments by entering your Disqus shortname
+disqusShortname = "zzamboni-org"
 
 [pagination]
   pagerSize = 100
