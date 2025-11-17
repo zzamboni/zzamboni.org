@@ -8,6 +8,7 @@
 
 #+macro: updatetime {{{time(%B %e\, %Y)}}}
 #+macro: leanpubbook #+hugo: {{< leanpubbook book="$1" $2 >}}
+#+macro: icon @@hugo:{{< icon $1 >}}@@
 
 # The zz/* functions used in the macros are defined in my Emacs configuration:
 # https://github.com/zzamboni/dot-emacs/blob/master/init.org
@@ -31,15 +32,17 @@ This file is the source for all new and updated content on [[http://zzamboni.org
   - [[#about][About]]
     - [[#about-this-site][About this site]]
     - [[#my-online-past][My online past]]
-    - [[#image-attributions][Image attributions:]]
+    - [[#image-attributions][Image attributions]]
   - [[#contact][Contact]]
   - [[#books-section][Books section]]
     - [[#books][Books]]
+    - [[#book-bundle][Book bundle]]
     - [[#learning-cfengine][Learning CFEngine]]
     - [[#learning-hammerspoon][Learning Hammerspoon]]
     - [[#utilerías-de-unix][Utilerías de Unix]]
     - [[#literate-config][Literate Config]]
     - [[#publishing-with-emacs-org-mode-and-leanpub][Publishing with Emacs, Org-mode and Leanpub]]
+    - [[#course-cissp-training][Course: CISSP Training]]
   - [[#code-section][Code section]]
     - [[#code][Code]]
     - [[#ox-leanpub][ox-leanpub]]
@@ -92,13 +95,15 @@ This file is the source for all new and updated content on [[http://zzamboni.org
 This section contains all the static pages.
 
 ** DONE About
-CLOSED: [2018-03-22 Thu 19:40]
+CLOSED: [2025-11-17 Mon 16:28]
 :PROPERTIES:
 :export_hugo_section: about
-:export_hugo_custom_front_matter: :featureimage img/legoland.jpg :showPagination false
+:export_hugo_custom_front_matter: :featureimage img/legoland.jpg :showPagination false :layout profile :showDate false :showWordCount false :showReadingTime false :showAuthor false
 :export_file_name: index
 :export_hugo_menu: :menu main :weight 60
 :END:
+
+#+hugo: {{< profile >}}
 
 - *Who:* :: My name is Diego Zamboni. I am an IT architect, computer scientist, security expert, consultant, project and team leader, programmer, sysadmin, author and overall geek. I am from Mexico but live in Switzerland with my beautiful wife and our two awesome daughters.
 
@@ -123,7 +128,7 @@ I think it's incredible that all of this infrastructure is so easy to use and av
 - 2005-2009: :: My blog titled [[file:/brt][BrT]], powered mainly by a self-hosted Wordpress installation, with some intermixed use of Posterous. What you find at the link is a static archive copy;
 - 1997-2001: :: My hand-maintained [[http://homes.cerias.purdue.edu/~zamboni/][web page at Purdue University]] ([[/cerias/zamboni/][here's a mirror]] in case it disappears).
 
-*** Image attributions:
+*** Image attributions
 
 - C128 Code (code header background) is from the source code listing from my Commodore 128 program [[http://zzamboni.org/brt/2008/01/24/supercataloger-128][Supercataloguer 128]].
 - [[https://www.pexels.com/photo/alphabet-board-game-bundle-close-up-278888/][Scrabble letters]] ([[file:../post][blog]] header background) from [[https://www.pexels.com/][Pexels]], licensed under [[https://www.pexels.com/photo-license/][CC0]].
@@ -135,7 +140,7 @@ If you have any concerns or questions about the images used in this site, please
 CLOSED: [2018-03-25 Sun 18:34]
 :PROPERTIES:
 :export_hugo_section: contact
-:export_hugo_custom_front_matter: :featureimage img/phone-booth-red.jpg :showPagination false
+:export_hugo_custom_front_matter: :featureimage img/phone-booth-red.jpg :showPagination false :showDate false :showWordCount false :showReadingTime false
 :export_hugo_menu: :menu main :weight 50
 :export_file_name: index
 :END:
@@ -156,79 +161,93 @@ CLOSED: [2020-12-08 Tue 18:19]
 :PROPERTIES:
 :export_file_name: _index
 :export_hugo_menu: :menu main :weight 20
+:export_hugo_custom_front_matter:  :featureimage img/book-box-thin.jpg :groupByYear false :cardView true :orderByWeight true :cascade '((showReadingtime . false) (showWordCount . false) (showDate . false) (showHero . true) (showSummary . true))'
+:ID:       10a2de74-6cdc-4368-abc7-5186eb6e52d5
 :END:
 
-I now have a few self-published books, all of them available at [[https://leanpub.com/u/zzamboni][Leanpub]]. Here you can find short descriptions and links to their respective pages.
+I have a few self-published books and courses, all of them available at [[https://leanpub.com/u/zzamboni][{{{icon(leanpub)}}} Leanpub]].
+
+*** DONE Book bundle
+CLOSED: [2025-11-17 Mon 19:22]
+:PROPERTIES:
+:export_hugo_section: book
+:export_file_name: book-bundle
+:export_hugo_custom_front_matter: :externalURL https://leanpub.com/b/diego :featureimage img/book-bundle-cover.png :weight 10
+:END:
+
+You can get each book individually, or get them all as a [[https://leanpub.com/b/diego][bundle]]!
+
+@@hugo:{{<figure src=img/book-bundle-cover.png href=https://leanpub.com/b/diego nozoom=true >}}@@
 
 *** DONE Learning CFEngine
 CLOSED: [2018-03-25 Sun 21:05]
 :PROPERTIES:
 :export_hugo_section: book
 :export_file_name: cfengine
-:export_hugo_custom_front_matter: :finalURL http://cf-learn.info/
+:export_hugo_custom_front_matter: :externalURL http://cf-learn.info/ :featureimage img/learning-cfengine3-cover.png :weight 20
 :END:
 
 {{{leanpubbook(learning-cfengine,style="float:right")}}}
 
-I am the author of "Learning CFEngine", the best book for learning [[http://cfengine.com/][CFEngine]].
+The best book for learning [[http://cfengine.com/][CFEngine]]!
+
+#+hugo: more
 
 The book has its own webpage at http://cf-learn.info, please visit it for more information, code samples, etc.
 
 You can buy the book at https://leanpub.com/learning-cfengine or by clicking the link on the right.
-
-#+hugo: more
-
-\nbsp
 
 *** DONE Learning Hammerspoon
 CLOSED: [2018-10-16 Tue 20:54]
 :PROPERTIES:
 :export_hugo_section: book
 :export_file_name: hammerspoon
-:export_hugo_custom_front_matter: :finalURL https://leanpub.com/learning-hammerspoon/
+:export_hugo_custom_front_matter: :externalURL https://leanpub.com/learning-hammerspoon/ :featureimage img/learning-hs-cover.png :weight 30
 :END:
 
 {{{leanpubbook(learning-hammerspoon,style="float:right")}}}
 
-*Automate all the things!* From window manipulation to automated system settings depending on your current location, [[http://www.hammerspoon.org/][Hammerspoon]] makes it possible. In this book you will learn how to get started with Hammerspoon, how to use pre-made modules, and how to write your own, to achieve an unprecedented level of control over your Mac.
-
-Learn more, read a free sample and get the book (you choose how much you pay!) at https://leanpub.com/learning-hammerspoon/, or click on the banner on the right.
+*Automate all the things!* From window manipulation to automated system settings depending on your current location, [[http://www.hammerspoon.org/][Hammerspoon]] makes it possible. 
 
 #+hugo: more
 
-\nbsp
+In this book you will learn how to get started with Hammerspoon, how to use pre-made modules, and how to write your own, to achieve an unprecedented level of control over your Mac.
+
+Learn more, read a free sample and get the book (you choose how much you pay!) at https://leanpub.com/learning-hammerspoon/, or click on the banner on the right.
 
 *** DONE Utilerías de Unix
 CLOSED: [2019-08-30 Tue 00:05]
 :PROPERTIES:
 :export_hugo_section: book
 :export_file_name: utilerias-unix
-:export_hugo_custom_front_matter: :finalURL https://leanpub.com/utilerias-unix
+:export_hugo_custom_front_matter: :externalURL https://leanpub.com/utilerias-unix :featureimage img/utilerias-cover.jpg :weight 70
 :END:
 
 {{{leanpubbook(utilerias-unix,style="float:right")}}}
 
 (this book is in Spanish)
 
-*¡Automatiza tus tareas e incrementa tu eficiencia!* Este libro proporciona una introducción a algunos de los comandos más útiles en un sistema Unix/Linux, que te permiten realizar fácilmente tareas de todo tipo, desde la búsqueda de texto en un archivo hasta complejas operaciones de procesamiento, cálculo y extracción de datos.
-
-Puedes obtener una muestra gratis y comprar el libro (¡tu eliges  cuánto pagas!) en https://leanpub.com/utilerias-unix, o haz click  en la imágen de la derecha.
+*¡Automatiza tus tareas e incrementa tu eficiencia!* Realiza tareas de todo tipo usando los comandos más útiles en un sistema Unix/Linux.
 
 #+hugo: more
 
-\nbsp
+Puedes obtener una muestra gratis y comprar el libro (¡tu eliges  cuánto pagas!) en https://leanpub.com/utilerias-unix, o haz click  en la imágen de la derecha.
 
 *** DONE Literate Config
 CLOSED: [2020-02-29 Sat 22:56]
 :PROPERTIES:
 :export_hugo_section: book
 :export_file_name: lit-config
-:export_hugo_custom_front_matter: :finalURL https://leanpub.com/lit-config/
+:export_hugo_custom_front_matter: :externalURL https://leanpub.com/lit-config/ :featureimage img/literate-config-cover.png :weight 40
 :END:
 
 {{{leanpubbook(lit-config,style="float:right")}}}
 
-This booklet will teach you about Literate Configuration, which is the application of Literate Programming to configuration files. Literate Programming can be especially applicable to configuration files for the following reasons:
+Learn about Literate Configuration and become a master of readable, maintainable and scalable configuration files!
+
+#+hugo: more
+
+Literate Configuration  is the application of Literate Programming to configuration files. Literate Programming can be especially applicable to configuration files for the following reasons:
 
 - Configuration files are inherently focused, since they correspond to a single application, program or set of programs, all related. This makes it easier to draw a narrative for them;
 - Most configuration files are self-contained but their structure and syntax may not be immediately evident, so they benefit from a human-readable explanation of their contents;
@@ -238,20 +257,19 @@ Org-mode is a powerful and simple markup language for general writing, but with 
 
 Whether you already use Emacs and org-mode or not, you will find value in this book by seeing how uniquely Literate Programming can help you better write, maintain, understand and share your config files.
 
-
-#+hugo: more
-
-\nbsp
-
 *** DONE Publishing with Emacs, Org-mode and Leanpub
 CLOSED: [2020-06-20 Sat 21:12]
 :PROPERTIES:
 :export_hugo_section: book
 :export_file_name: emacs-org-leanpub
-:export_hugo_custom_front_matter: :finalURL https://leanpub.com/emacs-org-leanpub
+:export_hugo_custom_front_matter: :externalURL https://leanpub.com/emacs-org-leanpub :featureimage img/emacs-org-leanpub-cover.png :weight 50
 :END:
 
-{{{leanpubbook(emacs-org-leanpub,style="float:right" height="430")}}}
+{{{leanpubbook(emacs-org-leanpub,style="float:right" height="445")}}}
+
+Learn the workflow and tools to easily self-publish books using Emacs, GitHub and Leanpub.
+
+#+hugo: more
 
 Publishing your words has never been easier than it is today. Blogging means you can have your words read by thousands of people within minutes of writing them. Even publishing a book has become considerably easier through self publishing. There are many tools and publishers that allow you to get started for little or no money. Still, getting started can be confusing, and that is what this book is about.
 
@@ -265,9 +283,23 @@ To illustrate the process and provide you with a starting point, the source repo
 
 Check it out, and happy writing!
 
+*** DONE Course: CISSP Training
+CLOSED: [2021-01-21 Thu 00:16]
+:PROPERTIES:
+:export_file_name: cissp-training
+:export_hugo_custom_front_matter: :toc false :featureimage img/cissp-training-cover.jpg :weight 60
+:END:
+
+{{{leanpubbook(courses/leanpub/cissp-training,style="float:right"  height="400")}}}
+
+Prepare for passing the CISSP certification exam!
+
 #+hugo: more
 
-\nbsp
+There are multitude of CISSP courses, books and materials out there, but this one is special: it is a collection of topics I found useful when preparing for my own certification, complemented with examples, exercises and additional information based on my own experience and knowledge.  The course is content-complete for all 8 /(ISC)^{2} Common Body of Knowledge/ domains, although I continue improving formatting, structure and adding exercises (quizzes and exercises for the CBK domains 1-3 are there, domains 4-8 are coming).
+
+If you are preparing for taking the CISSP exam, I am sure you will find this course useful. Get it now!
+
 
 ** DONE Code section
 CLOSED: [2018-03-25 Sun 20:11]
@@ -281,6 +313,7 @@ CLOSED: [2020-12-08 Tue 18:07]
 :PROPERTIES:
 :export_file_name: _index
 :export_hugo_menu: :menu main :weight 30
+:export_hugo_custom_front_matter: :featureimage img/c64-code3.png :groupByYear false :cascade '((showReadingtime . false) (showWordCount . false) (showDate . false) (showHero . true) (showSummary . true))'
 :END:
 
 Here you can find a sample of some programs I have written over the years. For a full list of my public projects please check my [[https://github.com/zzamboni/][GitHub]] and [[https://gitlab.com/zzamboni][GitLab]] profiles.
@@ -288,7 +321,7 @@ Here you can find a sample of some programs I have written over the years. For a
 *** DONE ox-leanpub
 CLOSED: [2020-12-09 Wed 21:10]
 :PROPERTIES:
-:export_hugo_custom_front_matter: :finalURL https://github.com/zzamboni/ox-leanpub
+:export_hugo_custom_front_matter: :externalURL https://github.com/zzamboni/ox-leanpub
 :export_file_name: ox-leanpub
 :export_hugo_weight: 01
 :END:
@@ -299,35 +332,27 @@ CLOSED: [2020-12-09 Wed 21:10]
 
 For a comprehensive introduction to publishing with Org mode and Leanpub, check out my book [[https://leanpub.com/emacs-org-leanpub][Publishing with Emacs, Org-mode and Leanpub]]!
 
-#+hugo: more
-
-\nbsp
 
 *** DONE Enwrite
 CLOSED: [2020-12-09 Wed 22:23]
 :PROPERTIES:
-:export_hugo_custom_front_matter: :finalURL https://github.com/zzamboni/enwrite
+:export_hugo_custom_front_matter: :externalURL https://github.com/zzamboni/enwrite
 :export_file_name: enwrite
 :export_hugo_weight: 02
 :END:
 
 [[https://github.com/zzamboni/enwrite][Enwrite]] is a tool I wrote some time ago to publish a Hugo blog using Evernote. I don't use it anymore since I switched to publishing my blog using Org-mode and =ox-hugo=, so it may be broken, but feel free to give it a try.
 
-#+hugo: more
-
-\nbsp
 
 *** DONE GrabCartoons
 CLOSED: [2020-12-08 Tue 18:29]
 :PROPERTIES:
-:export_hugo_custom_front_matter: :finalURL https://github.com/zzamboni/grabcartoons/ :aliases /grabcartoons
+:export_hugo_custom_front_matter: :externalURL https://github.com/zzamboni/grabcartoons/ :aliases /grabcartoons
 :export_file_name: grabcartoons
 :export_hugo_weight: 03
 :END:
 
 [[https://github.com/zzamboni/grabcartoons/][GrabCartoons]] is a comic-summarizing utility. It is modular, and it is very easy to write modules for new comics. It's one of my oldest open-source projects, and still in use!
-
-#+hugo: more
 
 You can find all the information at <http://github.com/zzamboni/grabcartoons>
 

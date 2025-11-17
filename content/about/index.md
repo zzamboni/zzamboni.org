@@ -1,16 +1,23 @@
 +++
 title = "About"
 author = ["Diego Zamboni"]
-date = 2018-03-22T19:40:00+01:00
+date = 2025-11-17T16:28:00+01:00
 draft = false
 creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 featureimage = "img/legoland.jpg"
 showPagination = false
+layout = "profile"
+showDate = false
+showWordCount = false
+showReadingTime = false
+showAuthor = false
 [menu]
   [menu.main]
     identifier = "about"
     weight = 60
 +++
+
+{{< profile >}}
 
 **Who:**
 : My name is Diego Zamboni. I am an IT architect, computer scientist, security expert, consultant, project and team leader, programmer, sysadmin, author and overall geek. I am from Mexico but live in Switzerland with my beautiful wife and our two awesome daughters.
@@ -52,7 +59,7 @@ I think it's incredible that all of this infrastructure is so easy to use and av
 : My hand-maintained [web page at Purdue University](http://homes.cerias.purdue.edu/~zamboni/) ([here's a mirror](/cerias/zamboni/) in case it disappears).
 
 
-## Image attributions: {#image-attributions}
+## Image attributions {#image-attributions}
 
 -   C128 Code (code header background) is from the source code listing from my Commodore 128 program [Supercataloguer 128](http://zzamboni.org/brt/2008/01/24/supercataloger-128).
 -   [Scrabble letters](https://www.pexels.com/photo/alphabet-board-game-bundle-close-up-278888/) ([blog](../post) header background) from [Pexels](https://www.pexels.com/), licensed under [CC0](https://www.pexels.com/photo-license/).

@@ -4,12 +4,18 @@ author = ["Diego Zamboni"]
 date = 2020-02-29T22:56:00+01:00
 draft = false
 creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
-finalURL = "https://leanpub.com/lit-config/"
+externalURL = "https://leanpub.com/lit-config/"
+featureimage = "img/literate-config-cover.png"
+weight = 40
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-This booklet will teach you about Literate Configuration, which is the application of Literate Programming to configuration files. Literate Programming can be especially applicable to configuration files for the following reasons:
+Learn about Literate Configuration and become a master of readable, maintainable and scalable configuration files!
+
+<!--more-->
+
+Literate Configuration  is the application of Literate Programming to configuration files. Literate Programming can be especially applicable to configuration files for the following reasons:
 
 -   Configuration files are inherently focused, since they correspond to a single application, program or set of programs, all related. This makes it easier to draw a narrative for them;
 -   Most configuration files are self-contained but their structure and syntax may not be immediately evident, so they benefit from a human-readable explanation of their contents;
@@ -18,7 +24,3 @@ This booklet will teach you about Literate Configuration, which is the applicati
 Org-mode is a powerful and simple markup language for general writing, but with unique features that make it easy to include code within the text, and even further, to easily extract that code into stand-alone source files which can be interpreted by their corresponding programs.
 
 Whether you already use Emacs and org-mode or not, you will find value in this book by seeing how uniquely Literate Programming can help you better write, maintain, understand and share your config files.
-
-<!--more-->
-
-&nbsp;

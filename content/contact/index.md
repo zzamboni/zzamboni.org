@@ -6,6 +6,9 @@ draft = false
 creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 featureimage = "img/phone-booth-red.jpg"
 showPagination = false
+showDate = false
+showWordCount = false
+showReadingTime = false
 [menu]
   [menu.main]
     identifier = "contact"

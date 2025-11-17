@@ -75,7 +75,7 @@ So, without further ado, here are the detailed instructions. I ran these on my M
     ![](images/ghost-setup-blog.png)
 
     {{< note >}}
-You may want to use an email address you don't mind being public. See "[Security Considerations](#security-considerations)" below.
+    You may want to use an email address you don't mind being public. See "[Security Considerations](#security-considerations)" below.
     {{< /note >}}
 
 8.  You can now start creating content  and configuring the local Ghost instance.
