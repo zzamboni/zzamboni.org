@@ -9,6 +9,7 @@ showPagination = false
 showDate = false
 showWordCount = false
 showReadingTime = false
+showZenMode = false
 [menu]
   [menu.main]
     identifier = "contact"

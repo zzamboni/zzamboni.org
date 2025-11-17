@@ -98,7 +98,7 @@ This section contains all the static pages.
 CLOSED: [2025-11-17 Mon 16:28]
 :PROPERTIES:
 :export_hugo_section: about
-:export_hugo_custom_front_matter: :featureimage img/legoland.jpg :showPagination false :layout profile :showDate false :showWordCount false :showReadingTime false :showAuthor false
+:export_hugo_custom_front_matter: :featureimage img/legoland.jpg :showPagination false :layout profile :showDate false :showWordCount false :showReadingTime false :showAuthor false :showZenMode false
 :export_file_name: index
 :export_hugo_menu: :menu main :weight 60
 :END:
@@ -140,7 +140,7 @@ If you have any concerns or questions about the images used in this site, please
 CLOSED: [2018-03-25 Sun 18:34]
 :PROPERTIES:
 :export_hugo_section: contact
-:export_hugo_custom_front_matter: :featureimage img/phone-booth-red.jpg :showPagination false :showDate false :showWordCount false :showReadingTime false
+:export_hugo_custom_front_matter: :featureimage img/phone-booth-red.jpg :showPagination false :showDate false  :showWordCount false :showReadingTime false :showZenMode false
 :export_hugo_menu: :menu main :weight 50
 :export_file_name: index
 :END:

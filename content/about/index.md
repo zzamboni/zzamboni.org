@@ -11,6 +11,7 @@ showDate = false
 showWordCount = false
 showReadingTime = false
 showAuthor = false
+showZenMode = false
 [menu]
   [menu.main]
     identifier = "about"
