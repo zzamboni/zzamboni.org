@@ -1,3 +1,0 @@
-{{/* [`{{ .Get 0 }}`](http://www.hammerspoon.org/docs/{{ .Get 0 }}.html) */}}
-{{ $p := .Params | len }}
-http://www.hammerspoon.org/docs/{{ .Get 0 }}.html{{ if ge $p 2 }}{{ with .Get 1 }}#{{.}}{{ end }}{{ end }}{{- "" -}}
