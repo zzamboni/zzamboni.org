@@ -3211,7 +3211,7 @@ sudo update-initramfs -u
 
 In the next posts I will log some of the further configuration I have done in my laptop.
 
-*** DONE Website redesign!
+*** DONE Website redesign! :sitenews:announcements:
 CLOSED: [2025-11-18 Tue 13:37]
 :PROPERTIES:
 :export_hugo_bundle: 2025-11-17-website-redesign
@@ -3295,7 +3295,7 @@ esac
 (by the way, this script was also written by ChatGPT. I have found it's quite good at debugging issues like this. It doesn't normally get there at the first try, but with a bit of back and forth and giving it additional information its very useful)
 
 That's it! Now my machine sleeps and wakes up correctly regardless of how it's connected to the network!
-*** DONE Locally hosting my Twitter archive
+*** DONE Locally hosting my Twitter archive :sitenews:
 CLOSED: [2025-10-24 Fri 23:29]
 :PROPERTIES:
 :export_hugo_bundle: 2025-10-24-twitter-archive-online

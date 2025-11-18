@@ -2,6 +2,7 @@
 title = "Website redesign!"
 author = ["Diego Zamboni"]
 date = 2025-11-18T13:37:00+01:00
+tags = ["sitenews", "announcements"]
 draft = false
 creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 featureimage = "img/z-favicon-src.png"
