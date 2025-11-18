@@ -1,3 +1,128 @@
+#------------------
+# Build Settings
+#------------------
+[build]
+# Skip builds when only documentation or meta files change
+command = "HUGO_IMAGING_DISABLE_PROCESSING=true hugo --gc --minify --forceSyncStatic -b $URL"
+publish = "public"
+ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF"
+
 [build.environment]
-  HUGO_ENV = "production"
-  HUGO_VERSION = "0.152.2"
+HUGO_VERSION = "0.152.2"
+HUGO_EXTENDED = "true"
+NETLIFY_BUILD_IMAGE = "noble"
+HUGO_ENV = "production"
+NODE_ENV = "production"
+TZ = "EET"
+HUGO_ENABLEGITINFO = "false"
+NETLIFY_IMAGE_CDN = "true"
+GIT_DEPTH = "1"
+
+[build.processing]
+skip_processing = true
+
+#------------------
+# Headers Configuration
+#------------------
+# Global Security Headers
+[[headers]]
+for = "/*"
+[headers.values]
+Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "SAMEORIGIN"
+X-XSS-Protection = "1; mode=block"
+
+# Static Assets Caching (1 year cache for immutable assets)
+[[headers]]
+for = "/*.{jpg,jpeg,gif,png,webp,avif,css,js,svg,woff,woff2}"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+Netlify-CDN-Cache-Control = "public, s-maxage=31536000, stale-while-revalidate=86400"
+
+# Document Caching (1 hour browser, 2 weeks CDN)
+[[headers]]
+for = "/*.{html,xml,json}"
+[headers.values]
+Cache-Control = "public, max-age=3600"
+Netlify-CDN-Cache-Control = "public, s-maxage=1209600, stale-while-revalidate=86400, durable"
+
+# Projects Access Control
+# [[headers]]
+# for = "/projects/plastprofiil/*"
+# [headers.values]
+# Basic-Auth = "plastprofiil:plastprofiil"
+# X-Robots-Tag = "noindex, nofollow"
+
+# [[headers]]
+# for = "/projects/*"
+# [headers.values]
+# X-Robots-Tag = "noindex, nofollow"
+
+#------------------
+# Redirects and Image Processing
+#------------------
+# Image Optimization - Route images through Netlify Image CDN
+[[redirects]]
+from = "/*.{jpg,jpeg,gif,png,webp,avif}"
+to = "/.netlify/images?url=/:splat"
+status = 200
+force = true
+
+#------------------
+# Analytics & Security Redirects
+#------------------
+# Analytics script proxies
+# [[redirects]]
+# from = "/umami.js"
+# to = "https://cloud.umami.is/script.js"
+# status = 200
+
+# # Block admin access - Only allow from umami cloud origin
+# [[redirects]]
+# from = "/admin/*"
+# to = "/404"
+# status = 404
+# force = true
+# conditions = { Origin = ["https://cloud.umami.is"] }
+
+#------------------
+# Legacy Content Cleanup
+#------------------
+# Redirect old files to homepage (301 permanent redirects)
+# [[redirects]]
+# from = "/files/devilhide.mp3"
+# to = "/"
+# status = 301
+# force = true
+
+# [[redirects]]
+# from = "/Asjad/finalaward.JPG"
+# to = "/"
+# status = 301
+# force = true
+
+# [[redirects]]
+# from = "/temp/araamat"
+# to = "/"
+# status = 301
+# force = true
+
+# [[redirects]]
+# from = "/files/Minulood.mp3"
+# to = "/"
+# status = 301
+# force = true
+
+#------------------
+# Plugins
+#------------------
+[[plugins]]
+package = "netlify-plugin-submit-sitemap"
+
+[plugins.inputs]
+baseUrl = "https://www.zzamboni.org"
+sitemapPath = "/sitemap.xml"
+providers = ["google"]
