@@ -6,7 +6,6 @@ languageCode = "en-us"
 disqusShortname = "zzamboni-org"
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = "UA-109878074-1"
-publishDir = "docs"
 
 MetaDataFormat = "yaml"
 DefaultContentLanguage = "en"
