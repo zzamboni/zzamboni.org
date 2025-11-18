@@ -87,8 +87,9 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#the-big-website-reboot][The Big Website Reboot]]
     - [[#reviving-an-old-mac-with-linux-part-1---installing-linux][Reviving an old Mac with Linux (part 1 - installing Linux)]]
     - [[#reviving-an-old-mac-with-linux-part-2---prettifying-boot][Reviving an old Mac with Linux (part 2 - prettifying boot)]]
-  - [[#fixing-wake-from-sleep-in-linux-on-a-mac-when-using-ethernet][Fixing wake-from-sleep in Linux on a Mac when using Ethernet]]
-  - [[#locally-hosting-my-twitter-archive][Locally hosting my Twitter archive]]
+    - [[#website-redesign][Website redesign!]]
+    - [[#fixing-wake-from-sleep-in-linux-on-a-mac-when-using-ethernet][Fixing wake-from-sleep in Linux on a Mac when using Ethernet]]
+    - [[#locally-hosting-my-twitter-archive][Locally hosting my Twitter archive]]
 
 * Pages
 
@@ -143,11 +144,13 @@ CLOSED: [2018-03-25 Sun 18:34]
 :export_hugo_custom_front_matter: :featureimage img/phone-booth-red.jpg :showPagination false :showDate false  :showWordCount false :showReadingTime false :showZenMode false
 :export_hugo_menu: :menu main :weight 50
 :export_file_name: index
+:CUSTOM_ID: contact
 :END:
 
 I have decided to close the comments form that used to be here, because the only messages I ever got through it were spam.
 
 If you want to reach me, please use your imagination (I'm not hard to find) or follow some of the social media icons above.
+
 
 ** DONE Books section
 CLOSED: [2018-03-25 Sun 20:11]
@@ -401,7 +404,6 @@ Various network-related configuration tips for eOS.
 - Preventing lockup when waking from sleep with Ethernet connected.
 - Fixing low-speed Ethernet negotiation when waking from sleep.
 - Automatically disabling/enabling WiFi when Ethernet is connected/disconnected.
-
 * Posts
 :PROPERTIES:
 :export_hugo_section: post
@@ -595,7 +597,7 @@ CLOSED: [2018-03-21 Wed 22:45]
 :PROPERTIES:
 :export_hugo_bundle: 2018-03-21-using-proportional-fonts-in-emacs-with-org-mode
 :export_file_name: index
-:export_hugo_custom_front_matter: :toc true :featureimage img/emacs-logo.svg
+:export_hugo_custom_front_matter: :toc true :featureimage img/emacs-logo.svg :showComments true
 :END:
 #+begin_description
 Configuring Org Mode in Emacs for beautiful typography for both text and code editing.
@@ -751,7 +753,7 @@ CLOSED: [2020-08-09 Sun 16:44]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 2020-08-09-how-to-insert-screenshots-in-org-documents-on-macos
 :EXPORT_FILE_NAME: index
-:export_hugo_custom_front_matter: :toc false :featureimage img/emacs-logo.svg
+:export_hugo_custom_front_matter: :toc false :featureimage img/emacs-logo.svg :showComments true
 :END:
 #+begin_description
 As I'm taking notes or writing in Org-mode, I often want to insert screenshots inline with the text. While Org supports inserting and displaying inline images, the assumption is that the image is already somewhere in the file system and we just want to link to it. In this post I will show you how to automate the insertion of images from the clipboard into an org-mode document.
@@ -3005,6 +3007,7 @@ CLOSED: [2017-08-08 Tue 06:56]
 :PROPERTIES:
 :export_file_name: 2017-08-08-the-big-website-reboot
 :export_hugo_custom_front_matter: :featureimage img/z-favicon-src.png
+:CUSTOM_ID: the-big-website-reboot
 :END:
 #+begin_description
 Welcome to the new zzamboni.org.
@@ -3208,7 +3211,29 @@ sudo update-initramfs -u
 
 In the next posts I will log some of the further configuration I have done in my laptop.
 
-** DONE Fixing wake-from-sleep in Linux on a Mac when using Ethernet :linux:howto:mac:networking:troubleshooting:
+*** DONE Website redesign!
+CLOSED: [2025-11-18 Tue 13:37]
+:PROPERTIES:
+:export_hugo_bundle: 2025-11-17-website-redesign
+:export_file_name: index
+:custom_id: website-redesign
+:export_hugo_custom_front_matter: :featureimage img/z-favicon-src.png :toc false
+:END:
+
+Eight years ago I announced [[#the-big-website-reboot][The Big Website Reboot]], when I switched my website to Hugo. I'm happy to announce the first major update since then.
+
+#+hugo: more
+
+Since then, I've been using the Hugo [[https://ananke-theme.netlify.app/][Ananke]] theme, which is very nice and powerful. Over time, I made adjustments not only to the configuration but also to the theme itself. Due to my lack of experience with Hugo, I failed to separate my changes from the upstream theme, which has made it difficult to upgrade to new versions. While my website was still functional, it felt a bit kludged together under the hood, and it was hard to make any changes, so I decided a major overhaul was needed.
+
+I considered many possibilities, from upgrading Ananke itself or various other Hugo themes, including [[https://themes.gohugo.io/themes/congo/][Congo]], [[https://themes.gohugo.io/themes/hugo-papermod/][Papermod]] and [[https://hugo-tufte.netlify.app/][Tufte]]. In the end I decided on [[https://blowfish.page/][Blowfish]]. I liked that it's extensively documented, very flexible and with many nice built-in features, including search, code highlighting, support for article series, and much more.
+
+With this post I'm inaugurating the website with its new look. All the contents are structure remain mostly the same, though I've used the opportunity to do some cleanup and improvements as well. You'll find many new features thanks to Blowfish, such as the ability to switch dark/light mode, built-in search, "zen mode" for articles, nicer tables of contents, and more.
+
+Please take a look! Please [[/contact][let me know]] if you find anything broken.
+
+
+*** DONE Fixing wake-from-sleep in Linux on a Mac when using Ethernet :linux:howto:mac:networking:troubleshooting:
 CLOSED: [2025-10-22 Wed 23:28]
 :PROPERTIES:
 :export_hugo_bundle: 2025-10-22-fixing-wake-from-sleep-when-using-ethernet
@@ -3270,7 +3295,7 @@ esac
 (by the way, this script was also written by ChatGPT. I have found it's quite good at debugging issues like this. It doesn't normally get there at the first try, but with a bit of back and forth and giving it additional information its very useful)
 
 That's it! Now my machine sleeps and wakes up correctly regardless of how it's connected to the network!
-** DONE Locally hosting my Twitter archive
+*** DONE Locally hosting my Twitter archive
 CLOSED: [2025-10-24 Fri 23:29]
 :PROPERTIES:
 :export_hugo_bundle: 2025-10-24-twitter-archive-online

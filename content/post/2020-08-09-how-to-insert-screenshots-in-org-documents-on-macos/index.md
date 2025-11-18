@@ -8,6 +8,7 @@ draft = false
 creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 toc = false
 featureimage = "img/emacs-logo.svg"
+showComments = true
 +++
 
 As I'm taking notes or writing in Org-mode, I often want to insert screenshots inline with the text. While Org supports [inserting and displaying inline images](https://orgmode.org/manual/Images.html), the assumption is that the image is already somewhere in the file system and we just want to link to it.

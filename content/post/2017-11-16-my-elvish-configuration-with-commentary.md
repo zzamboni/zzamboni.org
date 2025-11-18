@@ -12,7 +12,7 @@ featureimage = "img/elvish-logo.svg"
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **November 17, 2025**
+Last update: **November 18, 2025**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
