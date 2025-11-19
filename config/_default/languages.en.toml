@@ -9,9 +9,9 @@ title = "zzamboni.org"
   isoCode = "en"
   rtl = false
   dateFormat = "2 January 2006"
-  # logo = "img/logo.png"
+  # logo = "img/z-favicon-src.png"
   # secondaryLogo = "img/secondary-logo.png"
-  # description = "My awesome website"
+  description = "Musings, ramblings and code"
   # copyright = "Copy, _right?_ :thinking_face:"
 
 [params.author]
@@ -19,10 +19,10 @@ title = "zzamboni.org"
   email = "diego@zzamboni.org"
   image = "img/avatar.jpg"
   imageQuality = 96
-#  headline = "I'm only human"
+#  headline = "Security, Emacs and automation"
 #  bio = "A little bit about you"
   links = [
-#    { email = "mailto:diego@zzamboni.org" },
+#     { email = "mailto:diego@zzamboni.org" },
 #     { link = "https://link-to-some-website.com/" },
 #     { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
 #     { apple = "https://www.apple.com" },
