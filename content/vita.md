@@ -1,8 +1,5 @@
 ---
 title: "Curriculum Vitæ"
-aliases:
-    - /vita.html
-    - /vitae.html
 ---
 
 You can download my full [Curriculum Vitæ (PDF)](/files/vita/zamboni-vita.pdf) or a [2-page résumé (PDF)](/files/vita/zamboni-resume.pdf).
