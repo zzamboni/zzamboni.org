@@ -1,8 +1,15 @@
 ---
 title: "Curriculum Vitæ"
+showWordCount: false
+showReadingtime: false
+showZenMode: false
+date: 2023-06-19
 aliases:
-    - /vita.html
-    - /vitae.html
+  - "/vita.html"
+  - "/vitae.html"
+showAuthor: false
+authors:
+  - "diego-professional"
 ---
 
 You can download my full [Curriculum Vitæ (PDF)](/files/vita/zamboni-vita.pdf) or a [2-page résumé (PDF)](/files/vita/zamboni-resume.pdf).
