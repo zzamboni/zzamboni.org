@@ -3,6 +3,7 @@
     "image" : "img/avatar-professional.jpg",
     "bio": "CISO at [Avaloq](https://avaloq.com/)",
     "social": [
+        { "avaloq": "https://avaloq.com/" },
         { "bluesky": "https://bsky.app/profile/zzamboni.org" },
         { "linkedin": "https://linkedin.com/in/zzamboni" },
         { "leanpub": "https://leanpub.com/u/zzamboni" },
