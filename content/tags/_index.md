@@ -6,6 +6,7 @@ showDate: false
 showWordCount: false
 showReadingTime: false
 showAuthor: false
+featureimage: img/tags.jpg
 menu: main
 weight: "40"
 ---

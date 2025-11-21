@@ -63,7 +63,7 @@ I think it's incredible that all of this infrastructure is so easy to use and av
 ## Image attributions {#image-attributions}
 
 -   C128 Code (code header background) is from the source code listing from my Commodore 128 program [Supercataloguer 128](http://zzamboni.org/brt/2008/01/24/supercataloger-128).
--   [Scrabble letters](https://www.pexels.com/photo/alphabet-board-game-bundle-close-up-278888/) ([blog](../post) header background) from [Pexels](https://www.pexels.com/), licensed under [CC0](https://www.pexels.com/photo-license/).
+-   [Scrabble letters](https://www.pexels.com/photo/alphabet-board-game-bundle-close-up-278888/) ([blog](../post) background) and [Tags](https://www.pexels.com/photo/brown-paper-tag-lot-1111315/) ([tags](/tags) background) from [Pexels](https://www.pexels.com/), licensed under [CC0](https://www.pexels.com/photo-license/).
 -   All other header background photos were taken either by my wife or me.
 
 If you have any concerns or questions about the images used in this site, please [let me know](../contact).
