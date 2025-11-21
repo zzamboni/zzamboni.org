@@ -1,6 +1,3 @@
-/
-  Link: <{{ "dist/app.bundle.js" | relURL }}>; rel=preload; as=script
-  Link: <{{ "dist/main.css" | relURL }}>; rel=preload; as=style
 /*
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block

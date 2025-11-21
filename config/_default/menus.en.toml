@@ -1,5 +1,5 @@
-[[main]]
-none = "none"
+# [[main]]
+# none = "none"
 
 # [[main]]
 # title = "Blog"
@@ -45,8 +45,8 @@ identifier = "xwdLhBz2ci"
 title = "Diego's LinkedIn profile"
 weight = 110
 
-[[footer]]
-none = "none"
+# [[footer]]
+# none = "none"
 
 [[footer]]
 pre = "bluesky"

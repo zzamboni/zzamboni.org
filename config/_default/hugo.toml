@@ -17,7 +17,7 @@ buildFuture = false
 
 enableEmoji = true
 
-googleAnalytics = "UA-109878074-1"
+# googleAnalytics = "UA-109878074-1"
 # Enable comments by entering your Disqus shortname
 disqusShortname = "zzamboni-org"
 
