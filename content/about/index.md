@@ -29,7 +29,7 @@ showZenMode = false
 
 
 **Where:**
-: I was born in Argentina, but have moved around all my life.  When I was very young I moved to Mexico, where I lived in four different cities before moving to the U.S. to pursue my Ph.D. at [Purdue University](http://www.cerias.purdue.edu/) under the direction of [Gene Spafford](http://spaf.cerias.purdue.edu/). Upon finishing my studies, my wife and I decided to go to Switzerland, where I worked at the [IBM Zurich Research Lab](http://www.zurich.ibm.com/). Eight years and two kids later, we [moved to Mexico](/brt/2009/09/08/going-home/index.html) in late 2009. In 2015, we moved back to Switzerland.
+: I was born in Argentina, but have moved around all my life.  When I was very young I moved to Mexico, where I grew up. I studied Computer Engineering at [UNAM](https://www.unam.mx/) before moving to the U.S. to pursue my Ph.D. at [Purdue University](http://www.cerias.purdue.edu/) under the direction of [Gene Spafford](http://spaf.cerias.purdue.edu/). Upon finishing my studies, my wife and I decided to go to Switzerland, where I worked at the [IBM Zurich Research Lab](http://www.zurich.ibm.com/). Eight years and two kids later, we [moved to Mexico](/brt/2009/09/08/going-home/index.html) in late 2009. In 2015, we moved back to Switzerland.
 
 
 **Long version:**
