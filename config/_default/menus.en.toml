@@ -2,31 +2,31 @@
 none = "none"
 
 # [[main]]
-# name = "Blog"
+# title = "Blog"
 # pageRef = "post"
 # identifier = "96qC7gUqQk"
 # weight = 10
 
 # [[main]]
-# name = "Books"
+# title = "Books"
 # pageRef = "book"
 # identifier = "ianSwY3pMg"
 # weight = 20
 
 # [[main]]
-# name = "Code"
+# title = "Code"
 # pageRef = "code"
 # identifier = "MbiA66tLOO"
 # weight = 30
 
 # [[main]]
-# name = "Tags"
+# title = "Tags"
 # pageRef = "tags"
 # identifier = "KIXKhYe3Kq"
 # weight = 40
 
 # [[main]]
-# name = "About"
+# title = "About"
 # pageRef = "about"
 # identifier = "0nHHiNcOjx"
 # weight = 50
@@ -35,12 +35,14 @@ none = "none"
 pre = "bluesky"
 url = "https://bsky.app/profile/zzamboni.org"
 identifier = "xwdLhBz2ch"
+title = "Diego's BlueSky profile"
 weight = 100
 
 [[main]]
 pre = "linkedin"
 url = "https://linkedin.com/in/zzamboni"
 identifier = "xwdLhBz2ci"
+title = "Diego's LinkedIn profile"
 weight = 110
 
 [[footer]]
@@ -50,10 +52,12 @@ none = "none"
 pre = "bluesky"
 url = "https://bsky.app/profile/zzamboni.org"
 identifier = "xwdLhBz2cj"
+title = "Diego's BlueSky profile"
 weight = 100
 
 [[footer]]
 pre = "linkedin"
 url = "https://linkedin.com/in/zzamboni"
 identifier = "xwdLhBz2ck"
+title = "Diego's LinkedIn profile"
 weight = 110
