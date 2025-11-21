@@ -9,6 +9,7 @@ aliases:
   - "/vitae.html"
 showAuthor: false
 showPagination: false
+featureimage: img/cv.jpg
 authors:
   - "diego-professional"
 ---
