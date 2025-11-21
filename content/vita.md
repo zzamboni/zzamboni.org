@@ -8,6 +8,7 @@ aliases:
   - "/vita.html"
   - "/vitae.html"
 showAuthor: false
+showPagination: false
 authors:
   - "diego-professional"
 ---
