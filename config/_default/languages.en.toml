@@ -11,7 +11,7 @@ title = "zzamboni.org"
   dateFormat = "2 January 2006"
   # logo = "img/z-favicon-src.png"
   # secondaryLogo = "img/secondary-logo.png"
-  description = "Musings, ramblings and code"
+  # description = "Musings, ramblings and code"
   # copyright = "Copy, _right?_ :thinking_face:"
 
 [params.author]
