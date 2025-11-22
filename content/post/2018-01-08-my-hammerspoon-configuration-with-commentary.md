@@ -9,6 +9,7 @@ creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 toc = true
 featureimage = "img/hammerspoon.jpg"
 series = ["Literate Config Files"]
+series_order = 3
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}

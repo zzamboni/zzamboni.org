@@ -22,7 +22,7 @@ As usual, the post below is included directly from my live [doom.org](https://gi
 
 If you are interested in writing your own Literate Config files, check out my book [Literate Config](https://leanpub.com/lit-config) on Leanpub!
 
-{{< figure src="doom-emacs-bw-light.svg" >}}
+{{< figure src="doom-emacs-color2.svg" >}}
 
 This is my Doom Emacs configuration. From this org file, all the necessary Doom Emacs config files are generated.
 

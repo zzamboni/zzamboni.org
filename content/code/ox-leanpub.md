@@ -8,7 +8,7 @@ weight = 1
 externalURL = "https://github.com/zzamboni/ox-leanpub"
 +++
 
-{{< leanpubbook book="emacs-org-leanpub" style="float:right" height="430" >}}
+{{< leanpubbook book="emacs-org-leanpub" style="float:right" height="445" >}}
 
 [Ox-leanpub](https://github.com/zzamboni/ox-leanpub) is a [Leanpub](https://leanpub.com/) book exporter for Org mode. It allows you to write your material entirely in Org mode, and manages the production of the files and directories needed for Leanpub to render your book. I use this package to publish [my books](https://leanpub.com/u/zzamboni).
 
