@@ -7,6 +7,8 @@ tags = ["linux", "howto", "mac", "networking", "troubleshooting"]
 draft = false
 creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 toc = false
+series = ["Linux on Mac"]
+series_order = 3
 +++
 
 I noticed that after being asleep, my [2015 MBP running Linux]({{< relref "2025-10-01-reviving-an-old-mac-with-linux-part-1" >}}) would not wake up if it had an Ethernet cable connected when it went to sleep. With some help from ChatGPT I learned that this seems to be a known problem on some Macs in which the Thunderbolt controller doesn’t resume cleanly, leaving the system stuck in a low-level power state — which effectively hangs the resume process.

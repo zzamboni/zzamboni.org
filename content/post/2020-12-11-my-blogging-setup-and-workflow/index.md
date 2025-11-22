@@ -81,9 +81,21 @@ Note that I change Hugo's `publishDir` parameter from its default value of `publ
 My repository contains a `netlify.toml` file which is used to configure some Hugo environment variables, and to specify the version of Hugo to use:
 
 ```toml
+[build]
+  command = "hugo --gc --minify -b $URL"
+  publish = "public"
+
 [build.environment]
+  NODE_ENV = "production"
+  GO_VERSION = "1.25.4"
+  TZ = "CET"  # Set to preferred timezone
+
+[context.production.environment]
+  HUGO_VERSION ="0.152.2"
   HUGO_ENV = "production"
-  HUGO_VERSION = "0.150.0"
+
+[context.deploy-preview.environment]
+  HUGO_VERSION ="0.152.2"
 ```
 
 I also keep an [Elvish](/tags/elvish/) script for automatically updating this file to the version of Hugo currently installed on my laptop. Whenever I update Hugo locally, I test my website using `hugo server`, and then run this to instruct Netlify to upgrade to the latest version as well:
@@ -92,10 +104,7 @@ I also keep an [Elvish](/tags/elvish/) script for automatically updating this fi
 #!/usr/bin/env elvish
 use re
 var hugo-ver = (put (re:find 'v([\d.]+)' (hugo version))[groups][1][text])
-var hugo-env = "production"
-echo '[build.environment]
-  HUGO_ENV = "'$hugo-env'"
-  HUGO_VERSION = "'$hugo-ver'"' > netlify.toml
+sed -i'' 's/HUGO_VERSION = .*$/HUGO_VERSION ="'$hugo-ver'"/' netlify.toml
 git add netlify.toml
 git ci -m 'Updated Hugo version to '$hugo-ver
 git push

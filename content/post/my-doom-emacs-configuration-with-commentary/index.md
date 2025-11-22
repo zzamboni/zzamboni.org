@@ -8,11 +8,13 @@ draft = false
 creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 featureimage = "img/doom-emacs-color.jpg"
 toc = true
+series = ["Literate Config Files"]
+series_order = 1
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **November 18, 2025**
+Last update: **November 22, 2025**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 

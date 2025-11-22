@@ -7,7 +7,8 @@ tags = ["howto", "mac", "linux", "opencore", "oclp"]
 draft = false
 creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 featureimage = "img/20251013-223325_eOS-default-OpenCore-boot.png"
-toc = false
+series = ["Linux on Mac"]
+series_order = 1
 +++
 
 I've been a Mac user and fan for many years. However, my current work machine is a Windows laptop (to which, reluctantly, I've gotten used by now), and my personal machine is a 13" 2015 Macbook Pro which was pretty beefed up at the time (16GB, 500GB SSD), but which has felt slower as macOS has progressed. Officially it can only run up to Monterey (macOS 12), and even then it felt quite slow. Some time ago I installed [OpenCore Legacy Patcher](https://dortania.github.io/OpenCore-Legacy-Patcher/) so I could use it with newer versions of macOS. Most recently I had updated it to Sequoia (macOS 15), and by this time the machine felt almost unusable. So I decided to bring it back to life by installing Linux on it. In this and following posts I will write about this process, including some tips and problems I've encountered along the way.

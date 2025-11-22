@@ -8,13 +8,14 @@ draft = false
 creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 toc = true
 featureimage = "img/hammerspoon.jpg"
+series = ["Literate Config Files"]
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
 {{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
 
-Last update: **November 18, 2025**
+Last update: **November 22, 2025**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 

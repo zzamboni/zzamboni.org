@@ -8,6 +8,8 @@ draft = false
 creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 featureimage = "img/20251001-230259_OC-dual-boot-screen.png"
 toc = true
+series = ["Linux on Mac"]
+series_order = 2
 +++
 
 In the [previous post]({{< relref "2025-10-01-reviving-an-old-mac-with-linux-part-1" >}}), we saw the steps to install Linux in a dual-boot setup on an old Mac, using OpenCore as the boot manager.

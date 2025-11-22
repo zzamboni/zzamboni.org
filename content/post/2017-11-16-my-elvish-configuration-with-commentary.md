@@ -8,11 +8,13 @@ draft = false
 creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
 toc = true
 featureimage = "img/elvish-logo.svg"
+series = ["Literate Config Files"]
+series_order = 4
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **November 18, 2025**
+Last update: **November 22, 2025**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 

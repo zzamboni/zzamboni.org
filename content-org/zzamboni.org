@@ -421,6 +421,7 @@ CLOSED: [2020-10-19 Mon 09:07]
 :export_hugo_bundle: my-doom-emacs-configuration-with-commentary
 :export_file_name: index
 :export_hugo_custom_front_matter: :featureimage img/doom-emacs-color.jpg :toc true
+:export_hugo_custom_front_matter+: :series '("Literate Config Files")' :series_order 1
 :CUSTOM_ID: my-doom-emacs-configuration--with-commentary
 :END:
 #+begin_description
@@ -445,6 +446,7 @@ CLOSED: [2017-12-17 Sun 20:14]
 :export_hugo_bundle: my-emacs-configuration-with-commentary
 :export_file_name: index
 :export_hugo_custom_front_matter: :featureimage img/emacs-logo.svg :toc true :aliases /post/2017-12-17-my-emacs-configuration-with-commentary
+:export_hugo_custom_front_matter+: :series '("Literate Config Files")' :series_order 2
 :END:
 #+begin_description
 I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file.
@@ -465,6 +467,7 @@ CLOSED: [2018-01-08 Mon 13:31]
 :PROPERTIES:
 :export_file_name: 2018-01-08-my-hammerspoon-configuration-with-commentary
 :export_hugo_custom_front_matter: :toc true :featureimage img/hammerspoon.jpg
+:export_hugo_custom_front_matter+: :series '("Literate Config Files")' :series_order 
 :END:
 #+begin_description
 In my ongoing series of literate config files, I present to you my Hammerspoon configuration file.
@@ -486,6 +489,7 @@ CLOSED: [2017-11-16 Thu 20:21]
 :PROPERTIES:
 :export_file_name: 2017-11-16-my-elvish-configuration-with-commentary
 :export_hugo_custom_front_matter: :toc true :featureimage img/elvish-logo.svg
+:export_hugo_custom_front_matter+: :series '("Literate Config Files")' :series_order 4
 :END:
 #+begin_description
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
@@ -3031,7 +3035,8 @@ CLOSED: [2025-10-14 Tue 22:23]
 :export_hugo_bundle: 2025-10-01-reviving-an-old-mac-with-linux-part-1
 :export_file_name: index
 :custom_id: reviving-an-old-mac-with-linux-part-1
-:export_hugo_custom_front_matter: :featureimage img/20251013-223325_eOS-default-OpenCore-boot.png :toc false
+:export_hugo_custom_front_matter: :featureimage img/20251013-223325_eOS-default-OpenCore-boot.png
+:export_hugo_custom_front_matter+: :series '("Linux on Mac")' :series_order 1
 :END:
 #+begin_description
 I recently learned how to extend the life of an old Mac by installing Linux on it. It's like having a new machine!
@@ -3117,6 +3122,7 @@ CLOSED: [2025-10-18 Sat 20:24]
 :export_file_name: index
 :custom_id: reviving-an-old-mac-with-linux-part-2-prettifying-the-boot-screens
 :export_hugo_custom_front_matter: :featureimage img/20251001-230259_OC-dual-boot-screen.png :toc true
+:export_hugo_custom_front_matter+: :series '("Linux on Mac")' :series_order 2
 :END:
 
 #+begin_description
@@ -3240,6 +3246,7 @@ CLOSED: [2025-10-22 Wed 23:28]
 :export_file_name: index
 :custom_id: fixing-wake-from-sleep-when-using-ethernet
 :export_hugo_custom_front_matter:  :toc false
+:export_hugo_custom_front_matter+: :series '("Linux on Mac")' :series_order 3
 :END:
 #+begin_description
 Some Macs running Linux hang when waking up from sleep if the Ethernet port was connected. Fix this problem by automatically disabling/reenabling the drivers when the machine goes to sleep.
