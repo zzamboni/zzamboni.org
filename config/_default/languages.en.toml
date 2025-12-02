@@ -10,6 +10,7 @@ title = "zzamboni.org"
   rtl = false
   dateFormat = "2 January 2006"
   summary = "Diego Zamboni's personal website and blog"
+  description = "Diego Zamboni's personal website and blog"
   # logo = "img/z-favicon-src.png"
   # secondaryLogo = "img/secondary-logo.png"
   # description = "Musings, ramblings and code"
