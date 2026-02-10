@@ -5,7 +5,7 @@ summary = "My blogging has seen multiple iterations over the years, and with it,
 date = 2020-12-11T00:27:00+01:00
 tags = ["blogging", "howto", "emacs", "hugo", "orgmode", "gitlab", "netlify"]
 draft = false
-creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
 toc = true
 featureimage = "img/z-favicon-src.png"
 +++
@@ -81,14 +81,24 @@ Note that I change Hugo's `publishDir` parameter from its default value of `publ
 My repository contains a `netlify.toml` file which is used to configure some Hugo environment variables, and to specify the version of Hugo to use:
 
 ```toml
+#------------------
+# Build Settings
+#------------------
+
 [build]
   command = "hugo --gc --minify -b $URL"
   publish = "public"
 
 [build.environment]
+  HUGO_VERSION = "0.152.2"
+  HUGO_EXTENDED = "true"
+  NETLIFY_BUILD_IMAGE = "noble"
+  HUGO_ENV = "production"
   NODE_ENV = "production"
-  GO_VERSION = "1.25.4"
-  TZ = "CET"  # Set to preferred timezone
+  TZ = "CET"
+  HUGO_ENABLEGITINFO = "false"
+  NETLIFY_IMAGE_CDN = "true"
+  GIT_DEPTH = "1"
 
 [context.production.environment]
   HUGO_VERSION ="0.152.2"
@@ -96,6 +106,44 @@ My repository contains a `netlify.toml` file which is used to configure some Hug
 
 [context.deploy-preview.environment]
   HUGO_VERSION ="0.152.2"
+
+#------------------
+# Headers Configuration
+#------------------
+# Global Security Headers
+[[headers]]
+for = "/*"
+[headers.values]
+Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "SAMEORIGIN"
+X-XSS-Protection = "1; mode=block"
+
+# Static Assets Caching (1 year cache for immutable assets)
+[[headers]]
+for = "/*.{jpg,jpeg,gif,png,webp,avif,css,js,svg,woff,woff2}"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+Netlify-CDN-Cache-Control = "public, s-maxage=31536000, stale-while-revalidate=86400"
+
+# Document Caching (1 hour browser, 2 weeks CDN)
+[[headers]]
+for = "/*.{html,xml,json}"
+[headers.values]
+Cache-Control = "public, max-age=3600"
+Netlify-CDN-Cache-Control = "public, s-maxage=1209600, stale-while-revalidate=86400, durable"
+
+#------------------
+# Redirects and Image Processing
+#------------------
+# Image Optimization - Route images through Netlify Image CDN
+[[redirects]]
+from = "/*.{jpg,jpeg,gif,png,webp,avif}"
+to = "/.netlify/images?url=/:splat"
+status = 200
+force = true
 ```
 
 I also keep an [Elvish](/tags/elvish/) script for automatically updating this file to the version of Hugo currently installed on my laptop. Whenever I update Hugo locally, I test my website using `hugo server`, and then run this to instruct Netlify to upgrade to the latest version as well:

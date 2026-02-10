@@ -5,7 +5,7 @@ summary = "I no longer use Twitter, I keep now a local archive of my tweets."
 date = 2025-10-24T23:29:00+02:00
 tags = ["sitenews"]
 draft = false
-creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
 featureimage = "img/i-will-be-in-bluesky.jpg"
 toc = false
 +++

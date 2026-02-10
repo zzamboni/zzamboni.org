@@ -5,7 +5,7 @@ summary = "Welcome to the new zzamboni.org."
 date = 2017-08-08T06:56:00+02:00
 tags = ["sitenews"]
 draft = false
-creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
 featureimage = "img/z-favicon-src.png"
 +++
 

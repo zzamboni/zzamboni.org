@@ -1,23 +1,40 @@
 # [[main]]
 # none = "none"
 
-# [[main]]
-# title = "Blog"
-# pageRef = "post"
-# identifier = "96qC7gUqQk"
-# weight = 10
+[[main]]
+title = "Blog"
+pageRef = "post"
+weight = 10
 
-# [[main]]
-# title = "Books"
-# pageRef = "book"
-# identifier = "ianSwY3pMg"
-# weight = 20
+[[main]]
+title = "Books"
+pageRef = "book"
+identifier = "ianSwY3pMg"
+weight = 20
 
-# [[main]]
-# title = "Code"
-# pageRef = "code"
-# identifier = "MbiA66tLOO"
-# weight = 30
+[[main]]
+title = "Code"
+pageRef = "code"
+weight = 30
+
+[[main]]
+title = "Contact"
+pageRef = "contact"
+weight = 50
+
+[[main]]
+name = "About"
+weight = 60
+
+[[main]]
+name = "About me"
+pageRef = "about"
+parent = "About"
+
+[[main]]
+name = "Curriculum Vitae"
+parent = "About"
+url = "/vita/"
 
 # [[main]]
 # title = "Tags"

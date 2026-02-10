@@ -3,7 +3,7 @@ title = "About"
 author = ["Diego Zamboni"]
 date = 2025-11-17T16:28:00+01:00
 draft = false
-creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
 featureimage = "img/legoland.jpg"
 showPagination = false
 layout = "profile"
@@ -12,13 +12,12 @@ showWordCount = false
 showReadingTime = false
 showAuthor = false
 showZenMode = false
-[menu]
-  [menu.main]
-    identifier = "about"
-    weight = 60
 +++
 
 {{< profile >}}
+
+
+## About me {#about-me}
 
 **Who:**
 : My name is Diego Zamboni. I am an IT architect, computer scientist, security expert, consultant, project and team leader, programmer, sysadmin, author and overall geek. I am from Mexico but live in Switzerland with my beautiful wife and our two awesome daughters.
@@ -34,6 +33,11 @@ showZenMode = false
 
 **Long version:**
 : If you are interested, here's my [Curriculum Vitae](/vita). For other useless trivia about me, see [here](http://www.zzamboni.org/brt/2007/03/07/blog-tagged/index.html).
+
+
+## Full CV {#full-cv}
+
+You can find my full [Curriculum Vitae](/vita), also in [PDF format](/vita/zamboni-vita.pdf).
 
 
 ## About this site {#about-this-site}

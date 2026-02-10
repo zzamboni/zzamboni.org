@@ -5,7 +5,7 @@ summary = "Hammerspoon's configuration files are written in Lua, so a basic know
 date = 2017-10-21T20:36:00+02:00
 tags = ["hammerspoon", "mac", "howto", "lua"]
 draft = false
-creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
 toc = true
 featureimage = "img/lua-logo.svg"
 +++

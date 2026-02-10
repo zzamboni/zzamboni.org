@@ -6,7 +6,7 @@ summary = """
   """
 date = 2021-01-21T00:16:00+01:00
 draft = false
-creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
 toc = false
 featureimage = "img/cissp-training-cover.jpg"
 +++

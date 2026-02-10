@@ -5,7 +5,7 @@ summary = "I switched from my hand-crafted Emacs config to Doom Emacs some time 
 date = 2020-10-19T09:07:00+02:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs", "doom"]
 draft = false
-creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
 featureimage = "img/doom-emacs-color.jpg"
 toc = true
 series = ["Literate Config Files"]
@@ -14,7 +14,7 @@ series_order = 1
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **November 22, 2025**
+Last update: **February  8, 2026**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -22,7 +22,7 @@ As usual, the post below is included directly from my live [doom.org](https://gi
 
 If you are interested in writing your own Literate Config files, check out my book [Literate Config](https://leanpub.com/lit-config) on Leanpub!
 
-{{< figure src="doom-emacs-color2.svg" >}}
+{{< figure src="doom-emacs-bw-light.svg" >}}
 
 This is my Doom Emacs configuration. From this org file, all the necessary Doom Emacs config files are generated.
 
@@ -235,13 +235,11 @@ This code is written to the `init.el` to select which modules to load. Written h
  ;;layout              ; auie,ctsrnm is the superior home row
 
  :completion
- (corfu +orderless)
- ;;(company -childframe) ; the ultimate code completion backend
+ (company +childframe) ; the ultimate code completion backend
  ;;helm                ; the *other* search engine for love and life
  ;;ido                 ; the other *other* search engine...
- ;;(ivy +prescient -childframe
- ;;     -fuzzy +icons)   ; a search engine for love and life
- vertico
+ (ivy +prescient -childframe
+      -fuzzy +icons)   ; a search engine for love and life
 
  :ui
  ;;deft                ; notational velocity for Emacs
@@ -461,6 +459,12 @@ Doom configures `auth-sources` by default to include the Keychain on macOS, but 
   (setq auth-sources (nreverse auth-sources)))
 ```
 
+Auto-save the desktop setup (open buffers, etc.)
+
+```emacs-lisp
+(desktop-save-mode 1)
+```
+
 
 ### Visual, session and window settings {#visual-session-and-window-settings}
 
@@ -488,9 +492,9 @@ I eliminate all but the first two items in the dashboard menu, since those are t
 Set base and variable-pitch fonts. I currently like [Fira Code](https://github.com/tonsky/FiraCode) and [Alegreya](https://www.huertatipografica.com/en/fonts/alegreya-ht-pro) (another favorite and my previous choice: [ET Book](https://edwardtufte.github.io/et-book/)).
 
 ```emacs-lisp
-(setq doom-font (font-spec :family "Fira Code" :size 24)
+(setq doom-font (font-spec :family "Fira Code Nerd Font" :size 16)
       ;;doom-variable-pitch-font (font-spec :family "ETBembo" :size 18)
-      doom-variable-pitch-font (font-spec :family "Alegreya" :size 24))
+      doom-variable-pitch-font (font-spec :family "Alegreya" :size 16))
 ```
 
 Allow mixed fonts in a buffer. This is particularly useful for Org mode, so I can mix source and prose blocks in the same document. I also manually enable `solaire-mode` in Org mode as a workaround for font scaling not working properly.
@@ -600,109 +604,6 @@ Enable pixel scrolling
 
 ```emacs-lisp
 ;;(pixel-scroll-precision-mode 1)
-```
-
-
-### Migrating from ivy+counsel+company to vertico+consul+corfu {#migrating-from-ivy-plus-counsel-plus-company-to-vertico-plus-consul-plus-corfu}
-
-Some transitionary aliases and definitions so that my config keeps working while I finish the migration (provided by ChatGPT).
-
-```emacs-lisp
-;; ---------------------------
-;; Compatibility shims: Counsel -> Consult
-;; ---------------------------
-
-;; Avoid errors if some old code still sets this variable
-(defvar counsel-outline-display-style nil
-  "Compatibility var for configs that set `counsel-outline-display-style'.")
-
-;; ---------------------------
-;; Recreate the candidate function your config expected
-;; (You had `zz/counsel-buffer-or-recentf-candidates` and
-;; override of `counsel-buffer-or-recentf-candidates`.)
-;; ---------------------------
-(defun zz/counsel-buffer-or-recentf-candidates ()
-  "Return a list of candidates similar to what `counsel-buffer-or-recentf' provided.
-
-Each candidate is a string. We include buffer names first, then recentf entries."
-  (let ((bufs (mapcar #'buffer-name (buffer-list)))
-        (recent (and (bound-and-true-p recentf-mode) recentf-list)))
-    ;; Filter nils, duplicates, and return a clean list
-    (seq-uniq
-     (cl-remove-if #'null
-                   (append bufs recent))
-     :test #'string=)))
-
-;; If some other code expects `counsel-buffer-or-recentf-candidates` symbol to exist,
-;; make sure it's what they call (your rg showed you advised/overrode it).
-(advice-add #'counsel-buffer-or-recentf-candidates :override #'zz/counsel-buffer-or-recentf-candidates)
-
-;; Provide a convenient command that old keybindings can call.
-;; This mirrors the old behaviour by delegating to consult-buffer which is feature-rich.
-(defun zz/counsel-buffer-or-recentf ()
-  "Compatibility wrapper: choose a buffer or recent file.
-This calls `consult-buffer' (from consult) so you still get good UX."
-  (interactive)
-  (consult-buffer))
-
-;; Alias the common counsel entry points to consult equivalents if counsel isn't present.
-(unless (fboundp 'counsel-switch-buffer)
-  (defalias 'counsel-switch-buffer #'consult-buffer)
-  (defalias 'counsel-buffer-or-recentf #'zz/counsel-buffer-or-recentf)
-  (defalias 'counsel-find-file #'consult-find)
-  (defalias 'counsel-recentf #'consult-recent-file)
-  (defalias 'counsel-rg #'consult-ripgrep)
-  (defalias 'counsel-grep #'consult-grep)
-  (defalias 'counsel-outline #'consult-outline))
-
-;; ---------------------------
-;; Org link integration: preserve your CUSTOM_ID behaviour
-;; ---------------------------
-;; (Assumes you already have the zz/org-custom-id-* helpers from earlier in your file;
-;; if they are declared later, move those helper definitions above this block.)
-
-;; Provide the consult-based replacement for counsel-org-link
-(defun zz/collect-org-headings-in-buffer ()
-  "Return an alist (TITLE . POSITION) for headings in the current buffer."
-  (let (res)
-    (org-element-map (org-element-parse-buffer) 'headline
-      (lambda (hl)
-        (let ((title (org-element-property :raw-value hl))
-              (pos (org-element-property :begin hl)))
-          (when (and title (not (string-empty-p title)))
-            (push (cons title pos) res)))))
-    (nreverse res)))
-
-(defun zz/consult-insert-org-link ()
-  "Prompt for an Org heading in the current buffer and insert a link to its CUSTOM_ID.
-If the heading has no CUSTOM_ID, create one using your `zz/org-custom-id-get-create'."
-  (interactive)
-  (unless (derived-mode-p 'org-mode)
-    (user-error "This command only works in Org buffers"))
-  (let* ((cands (zz/collect-org-headings-in-buffer))
-         (titles (mapcar #'car cands)))
-    (unless titles (user-error "No headings found in this buffer"))
-    (let* ((choice (completing-read "Heading: " titles nil t))
-           (pos    (cdr (assoc choice cands)))
-           (id     (zz/org-custom-id-get-create pos)))
-      (org-insert-link nil (concat "#" id) choice))))
-
-;; Keep the old symbol names mapping to the new functions so your keybindings keep working
-(unless (fboundp 'counsel-org-link)
-  (defalias 'counsel-org-link #'zz/consult-insert-org-link))
-
-;; If you had overridden `counsel-org-link-action`, ensure calls to that symbol still work:
-(when (not (fboundp 'counsel-org-link-action))
-  (defun counsel-org-link-action (x)
-    "Compatibility: insert a CUSTOM_ID link to X (X is (title . position))."
-    (let* ((pos (cdr x))
-           (id  (zz/org-custom-id-get-create pos)))
-      (org-insert-link nil (concat "#" id) (car x)))))
-
-;; ---------------------------
-;; Optional: keep compatibility aliases active until you're ready to remove them.
-;; When you've migrated everything, you can remove the defalias/advice lines above.
-;; ---------------------------
 ```
 
 
@@ -939,11 +840,14 @@ Disable [electric-mode](https://code.orgmode.org/bzg/org-mode/src/master/etc/ORG
 (add-hook! org-mode (electric-indent-local-mode -1))
 ```
 
-I really dislike completion of words as I type prose (in code it's OK), so I disable it in text buffers (includes Org and Markdown modes).
+I really dislike completion of words as I type prose (in code it's OK), so I disable it in Org and Markdown modes.
 
 ```emacs-lisp
-;;(add-hook 'text-mode-hook (lambda () (company-mode -1)))
-(add-hook 'text-mode-hook (lambda () (setq corfu-auto nil)))
+(defun zz/adjust-org-company-backends ()
+  (remove-hook 'after-change-major-mode-hook '+company-init-backends-h)
+  (setq-local company-backends nil))
+(add-hook! org-mode (zz/adjust-org-company-backends))
+(add-hook! markdown-mode (zz/adjust-org-company-backends))
 ```
 
 
@@ -1111,7 +1015,7 @@ Finally, I like the images to be links to the image itself, so that in blog post
 I normally use `counsel-org-link` for linking between headings in an Org document. It shows me a searchable list of all the headings in the current document, and allows selecting one, automatically creating a link to it. Since it doesn't have a keybinding by default, I give it one.
 
 ```emacs-lisp
-(map! :map org-mode-map
+(map! :after counsel :map org-mode-map
       "C-c l l h" #'counsel-org-link)
 ```
 
@@ -1435,7 +1339,7 @@ I set `org-hugo-use-code-for-kbd` so that I can apply a custom style to keyboard
   (setq org-hugo-use-code-for-kbd t))
 ```
 
-Define an `org-capture` template to create a new blog post skeleton automatically. Based on <https://ox-hugo.scripter.co/doc/org-capture-setup/>, with some customizations for my blog's setup (like a default value for `:featureimage`). I also add `:jump-to-captured t` in the `org-capture-templates` definition so that when I create a new blog post snippet, I get automatically taken to that location so I can continue writing.
+Define an `org-capture` template to create a new blog post skeleton automatically. Based on <https://ox-hugo.scripter.co/doc/org-capture-setup/>, with some customizations for my blog's setup (like a default value for `:featured_image`). I also add `:jump-to-captured t` in the `org-capture-templates` definition so that when I create a new blog post snippet, I get automatically taken to that location so I can continue writing.
 
 ```emacs-lisp
 (after! org-capture
@@ -1451,7 +1355,7 @@ Define an `org-capture` template to create a new blog post skeleton automaticall
                    ,(concat ":export_hugo_bundle: " (format-time-string "%Y-%m-%d-") fname)
                    ":export_file_name: index"
                    ,(concat ":custom_id: " fname)
-                   ":export_hugo_custom_front_matter: :featureimage img/tram-zurich.jpg :toc false"
+                   ":export_hugo_custom_front_matter: :featured_image /images/tram-zurich.jpg :toc false"
                    ":END:"
                    "#+BEGIN_DESCRIPTION\n%?\n#+END_DESCRIPTION"       ;Place the cursor here at the end
                    "\n<write here>")
@@ -1680,17 +1584,6 @@ end repeat\"")))
 (use-package! org-special-block-extras
   :after org
   :hook (org-mode . org-special-block-extras-mode))
-```
-
-I'v been intrigued by [Typst](https://typst.app/), and there's already an org-mode exporter for it!
-
-```emacs-lisp
-(package! ox-typst)
-```
-
-```emacs-lisp
-(use-package! ox-typst
-  :after org)
 ```
 
 
@@ -1952,6 +1845,22 @@ This prevents the `docker` command from producing ANSI sequences during the imag
 -   [gift-mode](https://github.com/csrhodes/gift-mode) for editing quizzes in [GIFT format](https://docs.moodle.org/39/en/GIFT_format).
     ```emacs-lisp
     (package! gift-mode)
+    ```
+
+-   [just-mode](https://github.com/leon-barrett/just-mode.el) for editing [Just](https://just.systems/) files.
+    ```emacs-lisp
+    (package! just-mode)
+    ```
+
+-   [chezmoi.el](https://github.com/tuh8888/chezmoi.el) for interacting with [chezmoi](https://www.chezmoi.io/).
+    ```emacs-lisp
+    (package! chezmoi)
+    ```
+
+    ```emacs-lisp
+    (use-package! chezmoi
+      :config
+      (load-file "~/.emacs.d/.local/straight/repos/chezmoi.el/extensions/chezmoi-magit.el"))
     ```
 
 

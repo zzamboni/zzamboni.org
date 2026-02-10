@@ -5,7 +5,7 @@ summary = "I'm always on the lookout for new toys, particularly if they make my 
 date = 2017-09-14T15:00:00+02:00
 tags = ["elvish", "shell", "unix", "tips"]
 draft = false
-creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
 featureimage = "img/elvish-logo.svg"
 +++
 

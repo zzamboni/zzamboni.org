@@ -9,7 +9,7 @@ summary = """
 date = 2020-08-10T09:35:00+02:00
 tags = ["hammerspoon", "mac", "howto", "books", "announcements"]
 draft = false
-creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
 toc = false
 featureimage = "img/learning-hs-cover.jpg"
 +++

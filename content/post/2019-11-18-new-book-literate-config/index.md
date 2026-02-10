@@ -7,7 +7,7 @@ summary = """
 date = 2019-11-18T22:44:00+01:00
 tags = ["literateconfig", "books", "leanpub", "literateprogramming"]
 draft = false
-creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
 toc = false
 featureimage = "img/literate-config-cover.jpg"
 +++

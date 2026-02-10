@@ -5,7 +5,7 @@ summary = "In my ongoing series of literate config files, I present to you my Ha
 date = 2018-01-08T13:31:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "hammerspoon"]
 draft = false
-creator = "Emacs 29.3 (Org mode 9.7.34 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
 toc = true
 featureimage = "img/hammerspoon.jpg"
 series = ["Literate Config Files"]
@@ -16,7 +16,7 @@ series_order = 3
 
 {{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
 
-Last update: **November 22, 2025**
+Last update: **February  8, 2026**
 
 In my [ongoing](../my-elvish-configuration-with-commentary/) [series](../my-emacs-configuration-with-commentary) of [literate](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) config files, I present to you my [Hammerspoon](http://www.hammerspoon.org/) configuration file. You can see the generated file at <https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua>. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [in GitHub](https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org).
 
@@ -155,7 +155,7 @@ browsers = {
 }
 ```
 
-Similarly, I store in an array the paths (relative to `~/.hammerspoon`) of the files in which I store the lists of URLs to be opened by different browsers. This avoids having to include (potentially private or sensitive) URLs in my public configuration file. Since URLDispatcher automatically reloads the files when they are updated, this also makes it possible to update the lists without restarting Hammerspoon every time.
+Similarly, I store in an array the paths (relative to `~/.hammerspoon`) of the files in which I store the lists of URLs to be opened by different browsers. This avoids having to include potentially private or sensitive URLs in my public configuration file. Since URLDispatcher automatically reloads the files when they are updated, this also makes it possible to update the lists without restarting Hammerspoon every time.
 
 ```lua
 -- Read URL patterns from text files
@@ -184,18 +184,27 @@ Install:andUse("URLDispatcher",
                      -- after customer1 URLs because I have patterns for that
                      -- customer's accounts to open in its corresponding
                      -- profile.
-                     { ".*%.console%.aws%.amazon%.com/.*", browsers.awsConsole },
+                     { "console%.aws%.amazon%.com/.*"    , browsers.awsConsole },
                      -- Work-related URLs open in the default Chrome profile
                      { URLfiles.work                     , browsers.work },
                    },
                    url_redir_decoders = {
-                     -- URLs opened from within MS Teams are normally sent
+                     -- Most URLs opened from within MS Teams are normally sent
                      -- through a redirect which messes the matching, so we
                      -- extract the final URL before dispatching it. The final
                      -- URL is passed as parameter "url" to the redirect URL,
                      -- which makes it easy to extract it using a function-based
                      -- decoder.
-                     { "MS Teams links", function(_, _, params) return params.url end, nil, true, "Microsoft Teams" },
+                     -- Some URLs (e.g. Sharepoint) are not sent through the
+                     -- decoder, so if there is no url parameter, we process the
+                     -- full original URL.
+                     { "MS Teams links", function(_, _, params,fullUrl)
+                         if params.url then
+                           return params.url
+                         else
+                           return fullUrl
+                         end
+                     end, nil, true, "Microsoft Teams" },
                      -- URLs within a tracking link
                      { "awstrack.me links", "https://.*%.awstrack%.me/.-/(.*)", "%1" },
                      -- Chime meeting URLs get rewritten to open in the Chime app
@@ -203,7 +212,7 @@ Install:andUse("URLDispatcher",
                    }
                  },
                  start = true,
-                 loglevel = 'debug'
+                 -- loglevel = 'debug'
                }
 )
 ```
@@ -221,6 +230,7 @@ Install:andUse("WindowHalfsAndThirds",
                  },
                  hotkeys = 'default',
 --                 loglevel = 'debug'
+                 disable = true
                }
 )
 ```
@@ -249,6 +259,7 @@ Install:andUse("WindowScreenLeftAndRight",
                  },
                  hotkeys = 'default',
 --                 loglevel = 'debug'
+                 disable = true
                }
 )
 ```
@@ -881,7 +892,7 @@ Install:andUse("Leanpub",
                    },
                    books_sync_to_dropbox = true,
                  },
-                 start = true,
+                 start = false,
                  -- loglevel = 'debug'
 })
 ```
@@ -908,6 +919,14 @@ In `init-local.lua` I keep experimental or private stuff (like API tokens) that 
 local localfile = hs.configdir .. "/local/init-local.lua"
 if hs.fs.attributes(localfile) then
   dofile(localfile)
+end
+```
+
+If the Leanpub API key is defined, then we start the spoon.
+
+```lua
+if spoon.Leanpub.api_key and spoon.Leanpub.api_key ~= "" then
+  spoon.Leanpub:start()
 end
 ```
 
