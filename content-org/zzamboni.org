@@ -92,6 +92,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#website-redesign][Website redesign!]]
     - [[#fixing-wake-from-sleep-in-linux-on-a-mac-when-using-ethernet][Fixing wake-from-sleep in Linux on a Mac when using Ethernet]]
     - [[#locally-hosting-my-twitter-archive][Locally hosting my Twitter archive]]
+  - [[#porting-my-cv-from-orglatex-to-json-resume][Porting my CV from Org+LaTeX to JSON Resume]]
 
 * Pages
 
@@ -3334,6 +3335,100 @@ Why protect my account instead of deleting it? Glad you asked:
 - Protecting my account makes my tweets visible only to approved followers. I can still control who sees them, without erasing my history.
 - Deleting my account would surrender control entirely — once it’s gone, I wouldn't be able to reclaim the same account name. Worse - someone could reuse it! Leaving my account in place prevents it.
 - Who knows - Twitter may recover. It may become again a platform worth using. Not placing a lot of hope on this, but if it ever happens, I could easily reactivate my account.
+
+** DONE Porting my CV from Org+LaTeX to JSON Resume
+CLOSED: [2026-02-11 Wed 13:21]
+:PROPERTIES:
+:export_hugo_bundle: 2026-02-10-porting-cv-to-jsonresume
+:export_file_name: index
+:custom_id: porting-cv-to-jsonresume
+:export_hugo_custom_front_matter: :featureimage img/tram-zurich.jpg :toc true
+:END:
+
+#+BEGIN_description
+How I moved my CV source of truth from Org mode + LaTeX to JSON Resume, and built a pipeline that exports both my CV and publications to HTML and PDF.
+#+END_description
+
+I have wished for a long time to have separation between my CV contents and layout. After maintaining it directly in LaTeX for a while, I switched years ago to org-mode with LaTeX as the main export target. It worked and it enforced a certain degree of separation (most of the "visual" decisions were left up to the LaTeX exporter, with the org-mode file focusing on the contents), but it was fragile: too many custom LaTeX bits, too much hand-editing, and a pipeline that was hard to reuse elsewhere. It was also impossible to produce a nice HTML version from it. In this post I'll document how I switched the source of truth to JSON Resume and built a custom pipeline that outputs *both* my CV and my publications in HTML and PDF. I'm very happy with the result, which you can find in this same website: [[http://localhost:1313/vita/][my full CV]].
+
+This post is a quick walk-through of the steps, the trade-offs, and the pieces I ended up keeping. This was a months-long side project with many detours, so this post is necessarily lacking in detail, but I hope it provides you with a good overview. The end result is in my [[https://gitlab.com/zzamboni/vita][vita]] repo in GitLab, so feel free to use it as a starting point.
+
+**** Step 0: JSONresume, YAMLresume, RenderCV, oh my
+
+I did a quick survey of the “semantic resume” ecosystem before committing. There are several options that are all pretty good and popular: [[https://jsonresume.org/][JSON Resume]], [[https://yamlresume.dev/][YAML Resume]], [[https://rendercv.com/][RenderCV]], and a few smaller variants. I picked JSON Resume mainly because the schema feels mature and stable, it is flexible enough for the kinds of entries I keep, and it has a large ecosystem of themes, validators, and exporters. The openness angle also mattered to me. YAML Resume and RenderCV are open, but both are tied to commercial products and workflows, which made me worry about drift or lock-in over time. JSON Resume felt like the most neutral, lowest‑friction baseline: I can keep the data portable, and still build my own pipeline around it without depending on any one vendor’s tooling.
+
+**** Step 1: Convert Org + LaTeX to JSON Resume
+
+The first task was simply translating the structure. Org-mode let me be loose; JSON Resume forces me to be explicit, which is both a blessing and a constraint. I built a first cut of =zamboni-vita.json= by using ChatGPT to map headings to JSON Resume sections and then iterating until the HTML output looked reasonable. Early on I chose the [[https://github.com/rbardini/jsonresume-theme-even][even]] JSONresume theme. I like its' cleanliness and nice structure. However, I added many custom features to it, as you'll see below.
+
+Key lessons:
+
+- Keep the JSON *flat and normalized*. I removed most of the presentation-specific markup and kept only semantic data. The only concession is to include Markdown in many of the JSONresume fields, to allow for some formatting and links.
+- Convert lists and sublists into fields instead of raw text. This makes them easier to render in multiple formats later.
+- Store links, dates, and IDs consistently (I ended up standardizing on ISO dates and stable IDs for publications).
+
+**** Step 2: Build the publications pipeline
+
+The CV is one thing. My publications are another: they were already in BibTeX, and I wanted a separate publications page *and* a PDF. I kept the BibTeX source, and built a small pipeline around it:
+
+- [[https://gitlab.com/zzamboni/vita/-/blob/main/scripts/build_publications.py][=scripts/build_publications.py=]] reads my BibTeX sources from [[https://gitlab.com/zzamboni/vita/-/tree/main/pubs-src][=pubs-src=]].
+- It generates publications HTML with [[https://gitlab.com/zzamboni/vita/-/blob/main/templates/publications.html.j2][=templates/publications.html.j2=]].
+- It also writes an aggregated [[http://localhost:1313/vita/publications/zamboni-pubs.bib][=zamboni-pubs.bib=]] for download.
+
+This kept the bibliographic source clean while giving me a consistent, reproducible output.
+
+**** Step 3: Tweak jsonresume-theme-even
+
+I used [[https://github.com/rbardini/jsonresume-theme-even][=jsonresume-theme-even=]] as a base, but I wanted it to look like *my* CV. I install the theme locally in my development environment so I could iterate without publishing anything upstream. I have contributed my changes to the upstream theme, you can find them [[https://github.com/rbardini/jsonresume-theme-even/pulls][separately]] or in an [[https://github.com/rbardini/jsonresume-theme-even/pull/33][aggregated pull request]]. 
+
+These were the main changes I made:
+
+- support automated grouping of "[[https://docs.jsonresume.org/schema#projects][Projects]]" entries in JSONresume according to their type. This is how I create the "Research", "Teaching", "Software" and other sections in [[https://zzamboni.org/vita/][my CV]] while maintaining compatibility with the JSONresume schema.
+- reorder sections to match my preferred layout
+- add icons and lightweight UI polish so the HTML feels like a “document” and not just a web page. For example, I added support for a floating table of contents, for displaying certification badges, for FontAwesome icons (the upstream theme uses [[https://feathericons.com/][Feather icons]], but they don't have as many icons as FontAwesome), and for floating icons that can link to arbitrary URLs.
+
+This is where JSON Resume started paying off: I could re-render quickly and keep the content stable while iterating on layout.
+
+**** Step 4: Export CV and publications to PDF
+
+For generating the CV PDF I considered converting to RenderCV, but found its schema too limited, existing conversion tools and available themes not to my liking. From the visual point of view I really liked [[https://github.com/posquit0/Awesome-CV][Awesome CV]], the LaTeX template I was already using for my PDF CV. I decided to implement a custom JSONresume exporter to [[https://typst.app/][Typst]]. I had heard of Typst and this gave me an excuse to start learning it. Furthermore, I found [[https://typst.app/universe/package/brilliant-cv][Brilliant CV]], a Typst template which replicates Awesome CV. In the end, my new [[https://zzamboni.org/vita/zamboni-vita.pdf][PDF CV]] looks *very similar* to the [[https://gitlab.com/zzamboni/vita/-/raw/orgmode-cv/build/zamboni-vita/zamboni-vita.pdf?ref_type=heads&inline=true][previous one]], which is good because I really like the format!
+
+The main component here is the [[https://gitlab.com/zzamboni/vita/-/blob/main/scripts/render_typst_cv.py?ref_type=heads][=scripts/render_typst_cv.py=]] script, which converts JSON Resume into a self-contained Typst document which uses the =brilliant-cv= template.
+
+For publications I tried to use Typst as well, since it has built-in support for [[https://typst.app/docs/reference/model/bibliography/][importing BibTeX files]]. This worked well with a single bibliography, but I wanted to keep my [[https://zzamboni.org/vita/publications/][publications list]] structured by type. In the end I decided to stay with LaTeX and used a small wrapper so the output matches the HTML:
+
+- [[https://gitlab.com/zzamboni/vita/-/blob/main/pubs-src/zamboni-pubs.tex][=pubs-src/zamboni-pubs.tex=]] is the source for the publications PDF. Note that this still uses the old AwesomeCV class, so my publications list still has the same style as my new CV.
+- A [[https://tectonic-typesetting.github.io/][=tectonic=]] build step produces [[https://zzamboni.org/vita/publications/zamboni-pubs.pdf][the PDF version of my publications list]], with the same structure (and even order of entries) of the [[https://zzamboni.org/vita/publications/][online version]].
+
+The output of both pipelines lands under =build/zamboni-jsonresume/{dev,prod}/vita/=, which mirrors the final website structure.
+
+**** Step 5: Wire it all together
+
+The last bit was making the whole thing repeatable. I added a few =mise= tasks so I can rebuild everything quickly:
+
+- =mise run build-dev= for local HTML + PDFs (the key difference is that the dev HTML outputs include some code for auto-reloading, and embedded debug information, which is omitted in the prod version)
+- =mise run build-prod= for the production outputs
+- =mise run deploy-prod= to sync the final output to my website
+
+This was the ultimate payoff: JSON/BibTeX are the source of truth, and the rest is mechanical.
+
+To further automate my development environment, I used the opportunity to learn about [[https://code.visualstudio.com/docs/devcontainers/containers][Dev Containers]], which make it easy to edit files locally, while running compilation/debug steps inside a container with all the necessary tools:
+
+- [[https://gitlab.com/zzamboni/vita/-/blob/main/.devcontainer/devcontainer.json?ref_type=heads][devcontainer.json]] defines the tools and environment that will be installed in the container. This way I can have all the necessary tools in a consistent and repeatable way, without polluting or depending on the setup of my local machine.
+- A few additional mise tasks help me interact with the devcontainer:
+  - =mise dev-up= to create the container and run the development loop inside it.
+  - =mise dev-rebuild-up= to force creation of a new container before startup.
+  - =mise dev-bash= to open a shell session in the running container.
+
+**** Takeaways
+
+- Pick a semantic source format early. JSON Resume makes it easy to reuse the data.
+- Separate “content” from “layout” aggressively. Theme tweaks are now safe and quick.
+- Keep publications as a distinct pipeline. They have different constraints and I want the flexibility.
+
+If you are thinking of a similar conversion, start with the data model and only then worry about the rendering. That order made the whole project go faster than I expected.
+
+I was also impressed by how much AI tools helped me during the process. I used ChatGPT Codex and Claude Code for much of the process, and they helped me quickly create and fine tune the scripts, and also to understand and modify the JSONresume theme.
 
 * Local Variables :noexport:ARCHIVE:
 # Local Variables:
