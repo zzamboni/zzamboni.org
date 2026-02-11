@@ -1,6 +1,11 @@
 [tasks.serve]
 description = "Build and serve the site locally"
 run = "hugo serve --navigateToChanged"
-[tasks.servedebug]
+
+[tasks.serve-drafts]
 description = "Build and serve the site locally"
 run = "hugo serve -D --navigateToChanged"
+
+[tasks.blowfish-upgrade]
+description = "Upgrade blowfish version"
+run = "git submodule update --remote --merge"
