@@ -87,7 +87,7 @@
   }
 }
 
-#add-bib-resource(read("zamboni-vita-general-vita.bib"))
+#add-bib-resource(read("zamboni-vita-vita.bib"))
 
 
 #let metadata = (

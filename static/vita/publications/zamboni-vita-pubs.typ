@@ -82,7 +82,7 @@
   }
 }
 
-#add-bib-resource(read("zamboni-vita-general-pubs.bib"))
+#add-bib-resource(read("zamboni-vita-pubs.bib"))
 
 #let metadata = (
   language: "en",
