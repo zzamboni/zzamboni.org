@@ -366,7 +366,7 @@ Full list available at #link("https://www.credly.com/users/zzamboni/")[Credly]
     - Pioneered active worm-capture technology that became the foundation for modern honeypots and honeynets
 - Designed system to simulate thousands of vulnerable hosts to attract and capture propagating worms
 - Implemented automated analysis to extract signatures and update intrusion detection/prevention systems
-- Publications: #link("/vita/publications/#pub-riordan06:_build_billy_goat:first2006")[[18]], #link("/vita/publications/#pub-riordan05:bg_techreport")[[25]]
+- Publications: #link("publications/#pub-riordan06:_build_billy_goat:first2006")[[18]], #link("publications/#pub-riordan05:bg_techreport")[[25]]
   ]
 )
 
