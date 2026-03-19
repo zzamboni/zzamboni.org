@@ -99,7 +99,7 @@
         text: "zzamboni.org",
         link: "https://zzamboni.org"
       ),
-      location: "Zurich",
+      location: "Zurich, CH",
       linkedin: "zzamboni",
       custom-leanpub: (
         awesomeIcon: "leanpub",
@@ -116,32 +116,30 @@
   ),
 
   layout: (
-    awesome_color: "skyblue",
-    before_section_skip: "1pt",
-    before_entry_skip: "1pt",
-    before_entry_description_skip: "1pt",
-    paper_size: "a4",
-    page_margin: (x: 1.5cm, y: 1.5cm),
-
-    header: (
+      awesome_color: "skyblue",
+      before_section_skip: "1pt",
+      before_entry_skip: "1pt",
+      before_entry_description_skip: "1pt",
+      paper_size: "a4",
+      fonts: (
+      regular_fonts: ("Source Sans 3",),
+      header_font: "Roboto"
+    ),
+      header: (
+      header_align: "left",
       display_profile_photo: true,
-      profile_photo_radius_pt: "50%",
-      info_row_font_size: "8pt",
-      header_align: "center"
+      profile_photo_radius: "50%",
+      info_font_size: "10pt"
     ),
-
-    entry: (
-      display_logo: true,
+      entry: (
       display_entry_society_first: true,
+      display_logo: true
     ),
-
-    footer: (
+      footer: (
       display_page_counter: true,
-      display_footer: true,
+      display_footer: true
+    )
     ),
-
-    fonts: (),
-  ),
 
   inject: (
     inject_ai_prompt: false,
@@ -186,7 +184,7 @@
   metadata_pub,
 )
 
-#cv-section("Selected publications", highlighted: false, letters: 3)
+#cv-section("Selected publications", highlighted: false)
 
 #refsection(format-citation: publications-style.format-citation)[
   #print-bibliography(
@@ -197,6 +195,15 @@
     show-all: true,
     resume-after: auto,
     filter: reference => publications-include(reference) and has-keyword(reference.fields.at("keywords", default: none), "book")
+  )
+  #print-bibliography(
+    format-reference: format-reference(reference-label: publications-style.reference-label),
+    title: "Editorial Activities",
+    label-generator: publications-style.label-generator,
+    sorting: "ydnt",
+    show-all: true,
+    resume-after: auto,
+    filter: reference => publications-include(reference) and has-keyword(reference.fields.at("keywords", default: none), "editorial")
   )
   #print-bibliography(
     format-reference: format-reference(reference-label: publications-style.reference-label),
@@ -215,24 +222,6 @@
     show-all: true,
     resume-after: auto,
     filter: reference => publications-include(reference) and has-keyword(reference.fields.at("keywords", default: none), "refereed")
-  )
-  #print-bibliography(
-    format-reference: format-reference(reference-label: publications-style.reference-label),
-    title: "Presentations at Conferences and Workshops",
-    label-generator: publications-style.label-generator,
-    sorting: "ydnt",
-    show-all: true,
-    resume-after: auto,
-    filter: reference => publications-include(reference) and has-keyword(reference.fields.at("keywords", default: none), "presentations")
-  )
-  #print-bibliography(
-    format-reference: format-reference(reference-label: publications-style.reference-label),
-    title: "Invited Talks and Articles",
-    label-generator: publications-style.label-generator,
-    sorting: "ydnt",
-    show-all: true,
-    resume-after: auto,
-    filter: reference => publications-include(reference) and has-keyword(reference.fields.at("keywords", default: none), "invited")
   )
 ]
 

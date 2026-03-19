@@ -105,7 +105,7 @@
         text: "zzamboni.org",
         link: "https://zzamboni.org"
       ),
-      location: "Zurich",
+      location: "Zurich, CH",
       linkedin: "zzamboni",
       custom-leanpub: (
         awesomeIcon: "leanpub",
@@ -122,32 +122,30 @@
   ),
 
   layout: (
-    awesome_color: "skyblue",
-    before_section_skip: "1pt",
-    before_entry_skip: "1pt",
-    before_entry_description_skip: "1pt",
-    paper_size: "a4",
-    page_margin: (x: 1.5cm, y: 1.5cm),
-
-    header: (
+      awesome_color: "skyblue",
+      before_section_skip: "1pt",
+      before_entry_skip: "1pt",
+      before_entry_description_skip: "1pt",
+      paper_size: "a4",
+      fonts: (
+      regular_fonts: ("Source Sans 3",),
+      header_font: "Roboto"
+    ),
+      header: (
+      header_align: "left",
       display_profile_photo: true,
-      profile_photo_radius_pt: "50%",
-      info_row_font_size: "8pt",
-      header_align: "center"
+      profile_photo_radius: "50%",
+      info_font_size: "10pt"
     ),
-
-    entry: (
-      display_logo: true,
+      entry: (
       display_entry_society_first: true,
+      display_logo: true
     ),
-
-    footer: (
+      footer: (
       display_page_counter: true,
-      display_footer: true,
+      display_footer: true
+    )
     ),
-
-    fonts: (),
-  ),
 
   inject: (
     inject_ai_prompt: false,
@@ -184,11 +182,9 @@
   profile-photo: image("assets/profile/avatar-professional.jpg"),
 )
 
-#cv-section("Summary", highlighted: false, letters: 3)
-
 Senior computer scientist, security expert and organizational leader with 30 years of experience across security governance, cloud security architecture, research and engineering. I combine strategic leadership, technical depth and clear communication to help organizations design secure systems, scale teams and deliver measurable outcomes.
 
-#cv-section("Professional Highlights", highlighted: false, letters: 3)
+#cv-section("Professional Highlights", highlighted: false)
 
 #cv-entry(
   metadata: metadata_alt,
@@ -220,12 +216,13 @@ Senior computer scientist, security expert and organizational leader with 30 yea
   ]
 )
 
-#cv-section("Experience", highlighted: false, letters: 3)
+#cv-section("Experience", highlighted: false)
 
 #cv-entry(
   title: [CISO Governance],
   society: [#link("https://avaloq.com/")[Avaloq]],
   date: [Jan 2024 - Present],
+  logo: image("assets/logos/Avaloq.jpg"),
   location: [Switzerland],
   description: [
     Lead Avaloq's global CISO Governance team and define and monitor the company's Information Security Management System.
@@ -239,6 +236,7 @@ Senior computer scientist, security expert and organizational leader with 30 yea
   title: [Global Security Architect / Senior Global Security Architect],
   society: [#link("https://aws.amazon.com/")[Amazon Web Services]],
   date: [Sep 2021 - Dec 2023],
+  logo: image("assets/logos/Amazon Web Services.jpg"),
   location: [Switzerland],
   description: [
     Worked with global AWS customers and internal teams to improve security posture, define secure architecture patterns and scale security awareness.
@@ -251,6 +249,7 @@ Senior computer scientist, security expert and organizational leader with 30 yea
 
 #cv-entry-start(
   society: [#link("https://swisscom.com/")[Swisscom]],
+  logo: image("assets/logos/Swisscom.jpg"),
   location: [Switzerland],
 )
 #v(4pt)
@@ -282,6 +281,7 @@ Senior computer scientist, security expert and organizational leader with 30 yea
   title: [Product Manager],
   society: [#link("https://cfengine.com/")[CFEngine AS]],
   date: [Oct 2011 - Jun 2014],
+  logo: image("assets/logos/CFEngine AS.jpg"),
   location: [Norway/U.S.A. (remote)],
   description: [
     - CFEngine Advocate, with a special focus on security.
@@ -296,6 +296,7 @@ Senior computer scientist, security expert and organizational leader with 30 yea
   title: [Research Staff Member],
   society: [#link("https://research.ibm.com/labs/zurich")[IBM Zurich Research Lab]],
   date: [Oct 2001 - Oct 2009],
+  logo: image("assets/logos/IBM Zurich Research Lab.jpg"),
   location: [Switzerland],
   description: [
     Member of IBM Zurich's Global Security Analysis Laboratory, working on intrusion detection, malware containment and virtualization security research.
@@ -306,6 +307,7 @@ Senior computer scientist, security expert and organizational leader with 30 yea
   title: [Founder and lead of Computer Security Area],
   society: [#link("https://www.seguridad.unam.mx/")[National Autonomous University of Mexico (UNAM)]],
   date: [Aug 1995 - Aug 1996],
+  logo: image("assets/logos/National Autonomous University of Mexico (UNAM).jpg"),
   location: [Mexico],
   description: [
     - Established UNAM's #link("http://www.seguridad.unam.mx/")[_Computer Security Area_], the University's first team dedicated to computer security, which has evolved into the #link("http://www.seguridad.unam.mx/")[_Information Security Coordination (UNAM-CERT)_].
@@ -314,47 +316,56 @@ Senior computer scientist, security expert and organizational leader with 30 yea
   ]
 )
 
-#cv-section("Education", highlighted: false, letters: 3)
+#cv-section("Education", highlighted: false)
 
 #cv-entry(
   title: [Ph.D. in Computer Science],
   society: [#link("https://cerias.purdue.edu/")[Purdue University]],
   date: [Aug 1996 - Aug 2001],
+  logo: image("assets/logos/Purdue University.jpg"),
   location: [West Lafayette, IN, U.S.A.],
-  description: [Thesis: #link("https://zzamboni.org/files/theses/zamboni-phd-thesis.pdf")[Using Internal Sensors for Computer Intrusion Detection]. Advisor: #link("http://spaf.cerias.purdue.edu/")[Eugene H. Spafford]]
+  description: list(
+    [Thesis: #link("https://zzamboni.org/files/theses/zamboni-phd-thesis.pdf")[Using Internal Sensors for Computer Intrusion Detection]. Advisor: #link("http://spaf.cerias.purdue.edu/")[Eugene H. Spafford]],
+  )
 )
 
 #cv-entry(
   title: [M.S. in Computer Science],
   society: [#link("https://cerias.purdue.edu/")[Purdue University]],
   date: [Aug 1996 - May 1998],
+  logo: image("assets/logos/Purdue University.jpg"),
   location: [West Lafayette, IN, U.S.A.],
-  description: [Advisor: #link("http://spaf.cerias.purdue.edu/")[Eugene H. Spafford]]
+  description: list(
+    [Advisor: #link("http://spaf.cerias.purdue.edu/")[Eugene H. Spafford]],
+  )
 )
 
 #cv-entry(
   title: [Bachelor's degree in Computer Engineering],
   society: [#link("https://www.unam.mx/")[National Autonomous University of Mexico (UNAM)]],
   date: [Aug 1989 - Jul 1995],
+  logo: image("assets/logos/National Autonomous University of Mexico (UNAM).jpg"),
   location: [Mexico City, Mexico],
-  description: [Thesis: #link("https://zzamboni.org/files/theses/zamboni-bachelors-thesis.pdf")[UNAM/Cray Project for Security in the Unix Operating System] (in Spanish, original title: _Proyecto UNAM/Cray de Seguridad en el Sistema Operativo Unix_)]
+  description: list(
+    [Thesis: #link("https://zzamboni.org/files/theses/zamboni-bachelors-thesis.pdf")[UNAM/Cray Project for Security in the Unix Operating System] (in Spanish, original title: _Proyecto UNAM/Cray de Seguridad en el Sistema Operativo Unix_)],
+  )
 )
 
-#cv-section("Certifications", highlighted: false, letters: 3)
-
-#grid(
-  columns: (auto, 1fr),
-  column-gutter: 1em,
-  align: (center + horizon, left + horizon),
-  [#image("assets/badges/6eeb0a98-33cb-4f72-bfc3-f89d65a3286c.png", width: 3em)],
-  [
-    #link("https://www.credly.com/badges/d74f6e4c-0667-41fb-9243-e11a3793ace4/public_url")[*Certified Information Systems Security Professional (CISSP)*], ISC2 (Apr 2019)
-  ]
-)
+#cv-section("Certifications", highlighted: false)
 
 Full list available at #link("https://www.credly.com/users/zzamboni/")[Credly]
 
-#cv-section("Research", highlighted: false, letters: 3)
+#cv-entry(
+  metadata: metadata_alt,
+  title: [#link("https://www.credly.com/badges/d74f6e4c-0667-41fb-9243-e11a3793ace4/public_url")[*Certified Information Systems Security Professional (CISSP)*]],
+  society: [ISC2],
+  date: [Apr 2019],
+  logo: [#image("assets/badges/6eeb0a98-33cb-4f72-bfc3-f89d65a3286c.png")],
+  location: [],
+  description: []
+)
+
+#cv-section("Research", highlighted: false)
 
 #cv-entry(
   metadata: metadata_alt,
@@ -366,11 +377,11 @@ Full list available at #link("https://www.credly.com/users/zzamboni/")[Credly]
     - Pioneered active worm-capture technology that became the foundation for modern honeypots and honeynets
 - Designed system to simulate thousands of vulnerable hosts to attract and capture propagating worms
 - Implemented automated analysis to extract signatures and update intrusion detection/prevention systems
-- Publications: #link("publications/#pub-riordan06:_build_billy_goat:first2006")[[18]], #link("publications/#pub-riordan05:bg_techreport")[[25]]
+- Publications: #link("publications/#pub-riordan06:_build_billy_goat:first2006")[[5]]
   ]
 )
 
-#cv-section("Software", highlighted: false, letters: 3)
+#cv-section("Software", highlighted: false)
 
 #cv-entry(
   metadata: metadata_alt,
@@ -384,7 +395,7 @@ Full list available at #link("https://www.credly.com/users/zzamboni/")[Credly]
   ]
 )
 
-#cv-section("Honors & Awards", highlighted: false, letters: 3)
+#cv-section("Honors & Awards", highlighted: false)
 
 #cv-honor(
   date: [May 2020],
@@ -407,7 +418,7 @@ Full list available at #link("https://www.credly.com/users/zzamboni/")[Credly]
 )
 #v(6pt)
 
-#cv-section("Selected publications", highlighted: false, letters: 3)
+#cv-section("Selected publications", highlighted: false)
 
 #refsection(format-citation: publications-style.format-citation)[
   #print-bibliography(
@@ -418,6 +429,15 @@ Full list available at #link("https://www.credly.com/users/zzamboni/")[Credly]
     show-all: true,
     resume-after: auto,
     filter: reference => publications-include(reference) and has-keyword(reference.fields.at("keywords", default: none), "book")
+  )
+  #print-bibliography(
+    format-reference: format-reference(reference-label: publications-style.reference-label),
+    title: "Editorial Activities",
+    label-generator: publications-style.label-generator,
+    sorting: "ydnt",
+    show-all: true,
+    resume-after: auto,
+    filter: reference => publications-include(reference) and has-keyword(reference.fields.at("keywords", default: none), "editorial")
   )
   #print-bibliography(
     format-reference: format-reference(reference-label: publications-style.reference-label),
@@ -437,27 +457,9 @@ Full list available at #link("https://www.credly.com/users/zzamboni/")[Credly]
     resume-after: auto,
     filter: reference => publications-include(reference) and has-keyword(reference.fields.at("keywords", default: none), "refereed")
   )
-  #print-bibliography(
-    format-reference: format-reference(reference-label: publications-style.reference-label),
-    title: "Presentations at Conferences and Workshops",
-    label-generator: publications-style.label-generator,
-    sorting: "ydnt",
-    show-all: true,
-    resume-after: auto,
-    filter: reference => publications-include(reference) and has-keyword(reference.fields.at("keywords", default: none), "presentations")
-  )
-  #print-bibliography(
-    format-reference: format-reference(reference-label: publications-style.reference-label),
-    title: "Invited Talks and Articles",
-    label-generator: publications-style.label-generator,
-    sorting: "ydnt",
-    show-all: true,
-    resume-after: auto,
-    filter: reference => publications-include(reference) and has-keyword(reference.fields.at("keywords", default: none), "invited")
-  )
 ]
 
-#cv-section("Skills", highlighted: false, letters: 3)
+#cv-section("Skills", highlighted: false)
 
 #cv-skill(type: [Leadership], info: [32 years of multidisciplinary team and project leadership experience #sym.dot.c IT Enterprise Architecture #sym.dot.c Scaled Agile Framework (SAFe)])
 #v(6pt)
@@ -474,7 +476,7 @@ Full list available at #link("https://www.credly.com/users/zzamboni/")[Credly]
 #cv-skill(type: [Communication], info: [Excellent written and spoken communication skills #sym.dot.c Extensive public speaking experience #sym.dot.c Professional writing and teaching experience])
 #v(6pt)
 
-#cv-section("Languages", highlighted: false, letters: 3)
+#cv-section("Languages", highlighted: false)
 
 #cv-skill(type: [Spanish], info: [Native])
 
@@ -482,14 +484,16 @@ Full list available at #link("https://www.credly.com/users/zzamboni/")[Credly]
 
 #cv-skill(type: [German], info: [Intermediate proficiency (B2 level)])
 
-#cv-section("Other Professional Activities", highlighted: false, letters: 3)
+#cv-section("Other Professional Activities", highlighted: false)
 
 #cv-entry(
   title: [Member],
   society: [#link("http://www.acm.org/")[The Association for Computing Machinery (ACM)]],
   date: [1998 - Present],
   location: [],
-  description: []
+  description: [
+    
+  ]
 )
 
 #cv-entry(
@@ -497,10 +501,16 @@ Full list available at #link("https://www.credly.com/users/zzamboni/")[Credly]
   society: [#link("https://www.cs.purdue.edu/future-students/organizations.html")[Purdue University Chapter of Upsilon Pi Epsilon]],
   date: [1998 - 2000],
   location: [],
-  description: []
+  description: [
+    
+  ]
 )
 
-#cv-section("References", highlighted: false, letters: 3)
+#cv-section("References", highlighted: false)
 
-- Available by request
+
+#set quote(block: true)
+#quote[
+Available by request
+]
 
