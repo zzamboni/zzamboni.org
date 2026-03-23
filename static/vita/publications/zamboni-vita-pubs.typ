@@ -174,7 +174,7 @@
   ),
   lang: metadata.lang + (
     en: metadata.lang.en + (
-      cv_footer: [ Selected publications - #datetime.today().display() ],
+      cv_footer: [ Publications - #datetime.today().display() ],
       header_quote: "",
     ),
   ),
@@ -184,7 +184,7 @@
   metadata_pub,
 )
 
-#cv-section("Selected publications", highlighted: false)
+#cv-section("Publications", highlighted: false)
 
 #refsection(format-citation: publications-style.format-citation)[
   #print-bibliography(
@@ -222,6 +222,42 @@
     show-all: true,
     resume-after: auto,
     filter: reference => publications-include(reference) and has-keyword(reference.fields.at("keywords", default: none), "refereed")
+  )
+  #print-bibliography(
+    format-reference: format-reference(reference-label: publications-style.reference-label),
+    title: "Technical Reports",
+    label-generator: publications-style.label-generator,
+    sorting: "ydnt",
+    show-all: true,
+    resume-after: auto,
+    filter: reference => publications-include(reference) and has-keyword(reference.fields.at("keywords", default: none), "techreport")
+  )
+  #print-bibliography(
+    format-reference: format-reference(reference-label: publications-style.reference-label),
+    title: "Presentations at Conferences and Workshops",
+    label-generator: publications-style.label-generator,
+    sorting: "ydnt",
+    show-all: true,
+    resume-after: auto,
+    filter: reference => publications-include(reference) and has-keyword(reference.fields.at("keywords", default: none), "presentations")
+  )
+  #print-bibliography(
+    format-reference: format-reference(reference-label: publications-style.reference-label),
+    title: "Invited Talks and Articles",
+    label-generator: publications-style.label-generator,
+    sorting: "ydnt",
+    show-all: true,
+    resume-after: auto,
+    filter: reference => publications-include(reference) and has-keyword(reference.fields.at("keywords", default: none), "invited")
+  )
+  #print-bibliography(
+    format-reference: format-reference(reference-label: publications-style.reference-label),
+    title: "Patents",
+    label-generator: publications-style.label-generator,
+    sorting: "ydnt",
+    show-all: true,
+    resume-after: auto,
+    filter: reference => publications-include(reference) and has-keyword(reference.fields.at("keywords", default: none), "patent")
   )
 ]
 
