@@ -365,7 +365,9 @@ Full list available at #link("https://www.credly.com/users/zzamboni/")[Credly]
   description: []
 )
 
-#cv-section("Research", highlighted: false)
+#cv-section("Selected Research", highlighted: false)
+
+_See #link("publications/")[Publications] for publication details._
 
 #cv-entry(
   metadata: metadata_alt,
@@ -378,6 +380,20 @@ Full list available at #link("https://www.credly.com/users/zzamboni/")[Credly]
 - Designed system to simulate thousands of vulnerable hosts to attract and capture propagating worms
 - Implemented automated analysis to extract signatures and update intrusion detection/prevention systems
 - Publications: #link("publications/#pub-riordan06:_build_billy_goat:first2006")[[18]], #link("publications/#pub-riordan05:bg_techreport")[[25]]
+  ]
+)
+
+#cv-entry(
+  metadata: metadata_alt,
+  title: [#link("https://zzamboni.org/cerias/zamboni/thesis/")[Ph.D. Thesis: Using internal sensors and embedded detectors for intrusion detection]],
+  society: [Purdue University],
+  date: [1996 - 2001],
+  location: [],
+  description: [
+    - Investigated novel approaches to data collection for intrusion detection systems
+- Implemented and evaluated internal sensors and embedded detectors as data collection mechanisms
+- Analyzed trade-offs and effectiveness of different sensor placement strategies in IDS architectures
+- Publications: #link("publications/#pub-zamboni01:phd-thesis")[[11]], #link("publications/#pub-zamboni02:sensors_detectors")[[19]],  #link("publications/#pub-kerschbaum00:network-embedded-sensors")[[20]],  #link("publications/#pub-spafford00:data_collection-techrep")[[27]],  #link("publications/#pub-zamboni00:thesis-proposal")[[26]], #link("publications/#pub-zamboni:raid2000")[[32]]
   ]
 )
 
@@ -483,28 +499,6 @@ Full list available at #link("https://www.credly.com/users/zzamboni/")[Credly]
 #cv-skill(type: [English], info: [Full proficiency])
 
 #cv-skill(type: [German], info: [Intermediate proficiency (B2 level)])
-
-#cv-section("Other Professional Activities", highlighted: false)
-
-#cv-entry(
-  title: [Member],
-  society: [#link("http://www.acm.org/")[The Association for Computing Machinery (ACM)]],
-  date: [1998 - Present],
-  location: [],
-  description: [
-    
-  ]
-)
-
-#cv-entry(
-  title: [Secretary and President],
-  society: [#link("https://www.cs.purdue.edu/future-students/organizations.html")[Purdue University Chapter of Upsilon Pi Epsilon]],
-  date: [1998 - 2000],
-  location: [],
-  description: [
-    
-  ]
-)
 
 #cv-section("References", highlighted: false)
 
