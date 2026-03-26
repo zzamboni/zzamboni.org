@@ -9,12 +9,12 @@ featureimage = "img/cissp-training-cover.jpg"
 weight = 60
 +++
 
-{{< leanpubbook book="courses/leanpub/cissp-training" style="float:right" height="400" >}}
-
 Prepare for passing the CISSP certification exam!
 
 <!--more-->
 
 There are multitude of CISSP courses, books and materials out there, but this one is special: it is a collection of topics I found useful when preparing for my own certification, complemented with examples, exercises and additional information based on my own experience and knowledge.  The course is content-complete for all 8 _(ISC)<sup>2</sup> Common Body of Knowledge_ domains, although I continue improving formatting, structure and adding exercises (quizzes and exercises for the CBK domains 1-3 are there, domains 4-8 are coming).
 
-If you are preparing for taking the CISSP exam, I am sure you will find this course useful. Get it now!
+If you are preparing for taking the CISSP exam, I am sure you will find this course useful. Get it now:
+
+[CISSP Training: Prepare to pass the CISSP!](https://leanpub.com/c/cissp-training?lng=en)

@@ -9,7 +9,7 @@ featureimage = "img/learning-cfengine3-cover.png"
 weight = 20
 +++
 
-{{< leanpubbook book="learning-cfengine" style="float:right" >}}
+{{< leanpubbook book="learning-cfengine" style="float:right" height=340 >}}
 
 The best book for learning [CFEngine](http://cfengine.com/)!
 

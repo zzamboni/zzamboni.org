@@ -12,7 +12,7 @@ toc = false
 featureimage = "img/emacs-org-leanpub-cover.jpg"
 +++
 
-{{< leanpubbook book="emacs-org-leanpub" style="float:right" height="445" >}}
+{{< leanpubbook book="emacs-org-leanpub" style="float:right" height="380" >}}
 
 A new release of _Publishing with Emacs, Org-mode and Leanpub_ is out!
 

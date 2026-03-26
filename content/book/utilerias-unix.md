@@ -9,7 +9,7 @@ featureimage = "img/utilerias-cover.jpg"
 weight = 70
 +++
 
-{{< leanpubbook book="utilerias-unix" style="float:right" >}}
+{{< leanpubbook book="utilerias-unix" style="float:right" height="340" >}}
 
 (this book is in Spanish)
 

@@ -14,7 +14,7 @@ toc = false
 featureimage = "img/learning-hs-cover.jpg"
 +++
 
-{{< leanpubbook book="learning-hammerspoon" style="float:right" height="445" >}}
+{{< leanpubbook book="learning-hammerspoon" style="float:right" >}}
 
 I am happy to announce a new release of my book _[Learning Hammerspoon](https://leanpub.com/learning-hammerspoon)_!
 

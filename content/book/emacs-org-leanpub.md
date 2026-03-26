@@ -9,7 +9,7 @@ featureimage = "img/emacs-org-leanpub-cover.png"
 weight = 50
 +++
 
-{{< leanpubbook book="emacs-org-leanpub" style="float:right" height="445" >}}
+{{< leanpubbook book="emacs-org-leanpub" style="float:right" height="380" >}}
 
 Learn the workflow and tools to easily self-publish books using Emacs, GitHub and Leanpub.
 
