@@ -92,7 +92,8 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#website-redesign][Website redesign!]]
     - [[#fixing-wake-from-sleep-in-linux-on-a-mac-when-using-ethernet][Fixing wake-from-sleep in Linux on a Mac when using Ethernet]]
     - [[#locally-hosting-my-twitter-archive][Locally hosting my Twitter archive]]
-  - [[#porting-my-cv-from-orglatex-to-json-resume][Porting my CV from Org+LaTeX to JSON Resume]]
+    - [[#porting-my-cv-from-orglatex-to-json-resume][Porting my CV from Org+LaTeX to JSON Resume]]
+    - [[#resume-toolkit-from-personal-cv-pipeline-to-reusable-toolkit][resume-toolkit: from personal CV pipeline to reusable toolkit]]
 
 * Pages
 
@@ -3337,7 +3338,7 @@ Why protect my account instead of deleting it? Glad you asked:
 - Deleting my account would surrender control entirely — once it’s gone, I wouldn't be able to reclaim the same account name. Worse - someone could reuse it! Leaving my account in place prevents it.
 - Who knows - Twitter may recover. It may become again a platform worth using. Not placing a lot of hope on this, but if it ever happens, I could easily reactivate my account.
 
-** DONE Porting my CV from Org+LaTeX to JSON Resume
+*** DONE Porting my CV from Org+LaTeX to JSON Resume :jsonresume:orgmode:latex:cv:
 CLOSED: [2026-02-11 Wed 13:21]
 :PROPERTIES:
 :export_hugo_bundle: 2026-02-10-porting-cv-to-jsonresume
@@ -3345,7 +3346,6 @@ CLOSED: [2026-02-11 Wed 13:21]
 :custom_id: porting-cv-to-jsonresume
 :export_hugo_custom_front_matter: :featureimage img/tram-zurich.jpg :toc true
 :END:
-
 #+BEGIN_description
 How I moved my CV source of truth from Org mode + LaTeX to JSON Resume, and built a pipeline that exports both my CV and publications to HTML and PDF.
 #+END_description
@@ -3354,11 +3354,11 @@ I have wished for a long time to have separation between my CV contents and layo
 
 This post is a quick walk-through of the steps, the trade-offs, and the pieces I ended up keeping. This was a months-long side project with many detours, so this post is necessarily lacking in detail, but I hope it provides you with a good overview. The end result is in my [[https://gitlab.com/zzamboni/vita][vita]] repo in GitLab, so feel free to use it as a starting point.
 
-**** Step 0: JSONresume, YAMLresume, RenderCV, oh my
+***** Step 0: JSONresume, YAMLresume, RenderCV, oh my
 
 I did a quick survey of the “semantic resume” ecosystem before committing. There are several options that are all pretty good and popular: [[https://jsonresume.org/][JSON Resume]], [[https://yamlresume.dev/][YAML Resume]], [[https://rendercv.com/][RenderCV]], and a few smaller variants. I picked JSON Resume mainly because the schema feels mature and stable, it is flexible enough for the kinds of entries I keep, and it has a large ecosystem of themes, validators, and exporters. The openness angle also mattered to me. YAML Resume and RenderCV are open, but both are tied to commercial products and workflows, which made me worry about drift or lock-in over time. JSON Resume felt like the most neutral, lowest‑friction baseline: I can keep the data portable, and still build my own pipeline around it without depending on any one vendor’s tooling.
 
-**** Step 1: Convert Org + LaTeX to JSON Resume
+***** Step 1: Convert Org + LaTeX to JSON Resume
 
 The first task was simply translating the structure. Org-mode let me be loose; JSON Resume forces me to be explicit, which is both a blessing and a constraint. I built a first cut of =zamboni-vita.json= by using ChatGPT to map headings to JSON Resume sections and then iterating until the HTML output looked reasonable. Early on I chose the [[https://github.com/rbardini/jsonresume-theme-even][even]] JSONresume theme. I like its' cleanliness and nice structure. However, I added many custom features to it, as you'll see below.
 
@@ -3368,7 +3368,7 @@ Key lessons:
 - Convert lists and sublists into fields instead of raw text. This makes them easier to render in multiple formats later.
 - Store links, dates, and IDs consistently (I ended up standardizing on ISO dates and stable IDs for publications).
 
-**** Step 2: Build the publications pipeline
+***** Step 2: Build the publications pipeline
 
 The CV is one thing. My publications are another: they were already in BibTeX, and I wanted a separate publications page *and* a PDF. I kept the BibTeX source, and built a small pipeline around it:
 
@@ -3378,7 +3378,7 @@ The CV is one thing. My publications are another: they were already in BibTeX, a
 
 This kept the bibliographic source clean while giving me a consistent, reproducible output.
 
-**** Step 3: Tweak jsonresume-theme-even
+***** Step 3: Tweak jsonresume-theme-even
 
 I used [[https://github.com/rbardini/jsonresume-theme-even][=jsonresume-theme-even=]] as a base, but I wanted it to look like *my* CV. I install the theme locally in my development environment so I could iterate without publishing anything upstream. I have contributed my changes to the upstream theme, you can find them [[https://github.com/rbardini/jsonresume-theme-even/pulls][separately]] or in an [[https://github.com/rbardini/jsonresume-theme-even/pull/33][aggregated pull request]]. 
 
@@ -3390,7 +3390,7 @@ These were the main changes I made:
 
 This is where JSON Resume started paying off: I could re-render quickly and keep the content stable while iterating on layout.
 
-**** Step 4: Export CV and publications to PDF
+***** Step 4: Export CV and publications to PDF
 
 For generating the CV PDF I considered converting to RenderCV, but found its schema too limited, existing conversion tools and available themes not to my liking. From the visual point of view I really liked [[https://github.com/posquit0/Awesome-CV][Awesome CV]], the LaTeX template I was already using for my PDF CV. I decided to implement a custom JSONresume exporter to [[https://typst.app/][Typst]]. I had heard of Typst and this gave me an excuse to start learning it. Furthermore, I found [[https://typst.app/universe/package/brilliant-cv][Brilliant CV]], a Typst template which replicates Awesome CV. In the end, my new [[https://zzamboni.org/vita/zamboni-vita.pdf][PDF CV]] looks *very similar* to the [[https://gitlab.com/zzamboni/vita/-/raw/orgmode-cv/build/zamboni-vita/zamboni-vita.pdf?ref_type=heads&inline=true][previous one]], which is good because I really like the format!
 
@@ -3403,7 +3403,7 @@ For publications I tried to use Typst as well, since it has built-in support for
 
 The output of both pipelines lands under =build/zamboni-jsonresume/{dev,prod}/vita/=, which mirrors the final website structure.
 
-**** Step 5: Wire it all together
+***** Step 5: Wire it all together
 
 The last bit was making the whole thing repeatable. I added a few =mise= tasks so I can rebuild everything quickly:
 
@@ -3421,7 +3421,7 @@ To further automate my development environment, I used the opportunity to learn 
   - =mise dev-rebuild-up= to force creation of a new container before startup.
   - =mise dev-bash= to open a shell session in the running container.
 
-**** Takeaways
+***** Takeaways
 
 - Pick a semantic source format early. JSON Resume makes it easy to reuse the data.
 - Separate “content” from “layout” aggressively. Theme tweaks are now safe and quick.
@@ -3430,6 +3430,178 @@ To further automate my development environment, I used the opportunity to learn 
 If you are thinking of a similar conversion, start with the data model and only then worry about the rendering. That order made the whole project go faster than I expected.
 
 I was also impressed by how much AI tools helped me during the process. I used ChatGPT Codex and Claude Code for much of the process, and they helped me quickly create and fine tune the scripts, and also to understand and modify the JSONresume theme.
+
+*** DONE resume-toolkit: from personal CV pipeline to reusable toolkit :jsonresume:typst:tools:
+CLOSED: [2026-03-28 Sat 01:38]
+:PROPERTIES:
+:export_hugo_bundle: 2026-03-27-from-personal-cv-pipeline-to-reusable-toolkit
+:export_file_name: index
+:custom_id: from-personal-cv-pipeline-to-reusable-toolkit
+:export_hugo_custom_front_matter: :featureimage img/tram-zurich.jpg :toc true
+:END:
+#+BEGIN_description
+How my CV pipeline escaped my own resume repo and became a reusable tool, plus the evolution of the HTML theme into its own fork.
+#+END_description
+
+#+begin_note
+If you just want a nice HTML and PDF rendering of your JSON Resume file, head here: https://github.com/zzamboni/resume-toolkit. If you are interested in more details, keep on reading!
+#+end_note
+
+A few weeks ago I wrote about [[#porting-cv-to-jsonresume][porting my CV from Org+LaTeX to JSON Resume]]. At the time, I had reached a point where my data lived in a much saner format, I could produce HTML and PDF output, and I had a publications pipeline that more or less did what I needed. It was already a big improvement over the old setup.
+
+But there was still an obvious problem: it was *my* pipeline.
+
+It lived inside my CV repository, it knew too much about my files and my directory structure, and although I had tried to keep things generic, the whole thing still felt like a personal construction project that happened to work. Reusing it would have required copying half the repository and then carefully undoing all the places where I had hardcoded my own name, information and assumptions.
+
+That bothered me more than I expected.
+
+If I was going to invest this much effort in moving to a semantic CV format, then I wanted the result to be genuinely reusable. Not “reusable if you don’t mind editing five scripts and reading my mind,” but actually reusable by someone else, or by future me after I had forgotten how it all fit together.
+
+So the next phase of the project was to separate the tool from the data, and to turn the whole thing into something I could invoke on any JSON Resume file and get sensible output.
+
+**** Extracting the toolkit from my CV repo
+
+The first big step was to pull the build pipeline out of my CV repository and make it stand on its own. That sounds obvious in retrospect, but in practice it meant a lot of clean up.
+
+I had to make paths configurable. I had to stop assuming that my publications always lived in a specific directory. I had to make the scripts work no matter where they were invoked from. I had to teach them how to find local assets, profile pictures, logos, and BibTeX files in a way that would make sense for arbitrary input files, not just for my own layout.
+
+For this I relied heavily on [[https://chatgpt.com/codex][ChatGPT Codex]], which acted as a competent programmer, implementing my specifications. I was able to give instructions of what I wanted to do, and guide it step by step through making the necessary changes in the code. I am very impressed by its abilities.
+
+The result is what is now [[https://github.com/zzamboni/resume-toolkit][=resume-toolkit=]]: a standalone project that takes a JSON Resume file, optional BibTeX sources, and produces:
+
+- an HTML CV
+- a PDF CV
+- if BibTeX files are given:
+  - a standalone HTML publications page
+  - a standalone PDF publications list
+  - an aggregated BibTeX file for download
+
+The important change was not that the scripts moved to another repository. The important change was that the *boundary* became cleaner: the toolkit is now the build system, while my CV repository is just content plus a little configuration.
+
+That sounds mundane, but it changed the whole feel of the project.
+
+**** Making it reusable enough to trust
+
+Once the pipeline lived on its own, the next challenge was making it robust enough that I could point it at other people’s JSON Resume files and not have it immediately fall apart. I tested it by grabbing random JSON Resume files from [[https://registry.jsonresume.org/explore][the JSON Resume Registry]] and testing the toolkit with them. This helped me identify several bugs and hidden assumptions that got fixed and resulted in several new useful features.
+
+This turned out to be a very good forcing function.
+
+As soon as I started trying random JSON Resume files “from the wild”, all the edge cases came out:
+
+- entries using =company= instead of =name= in work history
+- missing locations
+- missing profile images
+- image URLs with no filename extension
+- relative links that worked in HTML but not in downloaded PDFs
+- optional sections that were present in some resumes and absent in others
+- data that was valid enough for one renderer but broke another
+
+Fixing those cases made the toolkit much better. In many ways, this was the point where it stopped being “my CV exporter” and started becoming a general-purpose tool.
+
+I also wrapped the whole thing in a Docker image and a small =build-resume.sh= helper so the user-facing entry point became dead simple:
+
+#+begin_src sh
+build-resume.sh resume.json
+#+end_src
+
+That script grew a few useful features over time: watch mode, serve mode, optional pulling of a newer image, automatic port selection for multiple local preview sessions, and so on. None of those are particularly glamorous, but they make the difference between “interesting code” and “something I actually enjoy using.”
+
+**** Pulling more configuration into the JSON
+
+One thing I wanted from the start was to keep the source of truth in the data, not in the scripts.
+
+The initial version still had too many decisions hidden in code: link definitions, publications behavior, section titles, PDF layout knobs, and little bits of rendering policy. It worked, but it was not very transparent.
+
+So I kept moving configuration into the JSON file, mostly under the =meta= section. I created three new subsections in addition to the existing =meta.themeOptions= supported by the Even theme:
+- =meta.site= for defining the URL of the site where the resume will be published (to expand relative to full links in PDF rendering);
+- =meta.pdfthemeOptions= for configuring the PDF rendering;
+- =meta.publicationsOptions= for configuring the behavior of the publications section and the standalone publications page.
+
+This turned out to be one of the nicest improvements in the whole project. Instead of editing Python or shell code, I can now control a lot of behavior directly from the resume data:
+
+- floating links in the HTML CV and publications page
+- publications grouping and section titles
+- whether publications are inlined in the PDF CV
+- whether inline publications use the full list or a filtered subset
+- bibliography filtering by explicit BibTeX entries or by keywords
+- PDF layout options for the =brilliant-cv= Typst theme
+- visible printable URLs in the PDF
+- footer URLs for both the CV and the publications PDF
+- base site URL handling for converting relative links into absolute PDF links
+
+The more I did this, the more the system started feeling like a *toolkit* rather than a collection of scripts.
+
+It also made the behavior easier to reason about. If something is controlled by the JSON, it is much easier to inspect, version, and reuse than if it lives in a Python function somewhere in the middle of the pipeline.
+
+**** Publications were their own little rabbit hole
+
+The publications side of the project kept evolving too.
+
+I already had my publications in BibTeX, and I wanted to preserve that as the source of truth. At first the pipeline simply aggregated the BibTeX and rendered everything. But once I started using it more seriously, I wanted more control.
+
+In particular, I wanted to distinguish between:
+
+- the *full* standalone publications list
+- a *selected* subset of publications shown inline in the CV
+
+That led to support for filtering by BibTeX entry key and by BibTeX keywords, and to better separation between the standalone publications outputs and the inline bibliography used in the PDF CV.
+
+I also added a command to write the selected publications back into the JSON Resume =publications= section, so the HTML CV can show the same curated subset without needing special support from the HTML theme.
+
+This part was more fiddly than I expected, mostly because BibTeX is both wonderfully flexible and slightly chaotic. But in the end it gave me a setup I really like: BibTeX remains the canonical source, while the JSON Resume gets just enough derived data to render nicely everywhere.
+
+**** The HTML theme stopped being “just a few tweaks”
+
+In my previous post I mentioned that I had started from [[https://github.com/rbardini/jsonresume-theme-even][=jsonresume-theme-even=]]. That is still true. It was a great base and it gave me a clean starting point.
+
+I started making some tweaks, but over time, the number of changes kept growing. Some were small visual touches. Some were structural changes. Some were features I wanted for my own CV that turned out to be generally useful:
+
+- grouped project sections
+- floating links
+- Font Awesome icon support
+- certification badges
+- better note-style entries
+- more configurable colors and layout behavior
+- support for my publications page conventions
+- lots of little fixes and polish
+
+At some point I had to admit the obvious: this was no longer a small customization layer on top of the original theme.
+
+I had been maintaining my changes as a large pull request against the upstream theme, but realistically they are too extensive, too opinionated, and too tightly coupled to the direction I want for this project. I don’t think that is a bad thing. It just means the project has its own identity now.
+
+So I finally split it out as its own fork: [[https://github.com/zzamboni/jsonresume-theme-eventide][jsonresume-theme-eventide]].
+
+I wanted a name that still nodded to the original =even= theme without implying “version 2” or “better” or anything like that. =eventide= seemed right: related, but clearly its own thing.
+
+**** What I like about the result
+
+What I like most now is not any individual feature, but the shape of the system.
+
+- My CV repository is only content.
+- The toolkit repository is mostly machinery.
+- The theme repository is mostly HTML presentation.
+
+That separation is not perfect, but it is much better than where I started.
+
+It means I can evolve the pipeline without touching my CV data. I can evolve the theme without digging through the build scripts. I can test the toolkit with other resumes and make it more robust. And I can publish the whole thing as something that other people might actually reuse, instead of as a pile of personal glue code.
+
+That was the real goal all along.
+
+**** Takeaways
+
+A few things I learned from this second phase:
+
+- extracting a personal tool into a reusable one is mostly about removing assumptions
+- testing with other people’s data is one of the fastest ways to harden your own code
+- pushing configuration into the data model makes the system easier to understand
+- once a heavily customized theme starts developing its own direction, it is better to acknowledge that honestly and fork it
+- small workflow improvements matter a lot when you run the same build loop dozens of times
+
+I’m pretty happy with where =resume-toolkit= is now. It started as a side effect of moving my CV away from Org and LaTeX, but it has turned into a nice standalone project in its own right.
+
+There is still plenty I could improve, of course. But it now feels like I’m building on top of a tool I trust, instead of constantly patching a one-off pipeline that only I understand.
+
+If you use (or are interested in ) JSON Resume, please give [[https://github.com/zzamboni/resume-toolkit][resume-toolkit]] and [[https://github.com/zzamboni/jsonresume-theme-eventide][Eventide]] a try! I would be happy to hear your comments or feedback.
 
 * Local Variables :noexport:ARCHIVE:
 # Local Variables:

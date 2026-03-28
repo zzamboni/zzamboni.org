@@ -3,6 +3,7 @@ title = "Porting my CV from Org+LaTeX to JSON Resume"
 author = ["Diego Zamboni"]
 summary = "How I moved my CV source of truth from Org mode + LaTeX to JSON Resume, and built a pipeline that exports both my CV and publications to HTML and PDF."
 date = 2026-02-11T13:21:00+01:00
+tags = ["jsonresume", "orgmode", "latex", "cv"]
 draft = false
 creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
 featureimage = "img/tram-zurich.jpg"
