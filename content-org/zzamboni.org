@@ -3431,7 +3431,7 @@ If you are thinking of a similar conversion, start with the data model and only 
 
 I was also impressed by how much AI tools helped me during the process. I used ChatGPT Codex and Claude Code for much of the process, and they helped me quickly create and fine tune the scripts, and also to understand and modify the JSONresume theme.
 
-*** DONE resume-toolkit: from personal CV pipeline to reusable toolkit :jsonresume:typst:tools:
+*** DONE resume-toolkit: from personal CV pipeline to reusable toolkit :jsonresume:typst:tools:cv:
 CLOSED: [2026-03-28 Sat 01:38]
 :PROPERTIES:
 :export_hugo_bundle: 2026-03-27-from-personal-cv-pipeline-to-reusable-toolkit
