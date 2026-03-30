@@ -78,3 +78,10 @@ url = "https://linkedin.com/in/zzamboni"
 identifier = "xwdLhBz2ck"
 title = "Diego's LinkedIn profile"
 weight = 110
+
+[[footer]]
+pre = "gitlab"
+url = "https://gitlab.com/zzamboni/zzamboni.org"
+identifier = "djfkldsfjkd"
+title = "Website source in GitLab"
+weight = 120
