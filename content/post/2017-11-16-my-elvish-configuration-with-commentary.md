@@ -14,7 +14,7 @@ series_order = 4
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **February  8, 2026**
+Last update: **March 31, 2026**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 

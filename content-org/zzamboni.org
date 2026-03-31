@@ -50,6 +50,8 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#ox-leanpub][ox-leanpub]]
     - [[#enwrite][Enwrite]]
     - [[#grabcartoons][GrabCartoons]]
+    - [[#resume-toolkit][resume-toolkit]]
+    - [[#jsonresume-theme-eventide][jsonresume-theme-eventide]]
 - [[#ideas][Ideas]]
   - [[#enabling-menubar-indicators-in-elementary-os][Enabling menubar indicators in Elementary OS]]
   - [[#how-to-set-up-copyq-in-eos-with-wayland][How to set up CopyQ in eOS with Wayland]]
@@ -324,7 +326,7 @@ CLOSED: [2018-03-25 Sun 20:11]
 CLOSED: [2020-12-08 Tue 18:07]
 :PROPERTIES:
 :export_file_name: _index
-:export_hugo_custom_front_matter: :featureimage img/c64-code3.png :groupByYear false :cascade '((showReadingtime . false) (showWordCount . false) (showDate . false) (showHero . true) (showSummary . true))'
+:export_hugo_custom_front_matter: :featureimage img/c64-code4.png :groupByYear false :orderByWeight true :cardView true :cascade '((showReadingtime . false) (showWordCount . false) (showDate . false) (showHero . true) (showSummary . true))'
 :END:
 
 Here you can find a sample of some programs I have written over the years. For a full list of my public projects please check my [[https://github.com/zzamboni/][GitHub]] and [[https://gitlab.com/zzamboni][GitLab]] profiles.
@@ -334,7 +336,7 @@ CLOSED: [2020-12-09 Wed 21:10]
 :PROPERTIES:
 :export_hugo_custom_front_matter: :externalURL https://github.com/zzamboni/ox-leanpub
 :export_file_name: ox-leanpub
-:export_hugo_weight: 01
+:export_hugo_weight: 03
 :END:
 
 {{{leanpubbook(emacs-org-leanpub,style="float:right"  height="380")}}}
@@ -349,7 +351,7 @@ CLOSED: [2020-12-09 Wed 22:23]
 :PROPERTIES:
 :export_hugo_custom_front_matter: :externalURL https://github.com/zzamboni/enwrite
 :export_file_name: enwrite
-:export_hugo_weight: 02
+:export_hugo_weight: 04
 :END:
 
 [[https://github.com/zzamboni/enwrite][Enwrite]] is a tool I wrote some time ago to publish a Hugo blog using Evernote. I don't use it anymore since I switched to publishing my blog using Org-mode and =ox-hugo=, so it may be broken, but feel free to give it a try.
@@ -360,12 +362,33 @@ CLOSED: [2020-12-08 Tue 18:29]
 :PROPERTIES:
 :export_hugo_custom_front_matter: :externalURL https://github.com/zzamboni/grabcartoons/ :aliases /grabcartoons
 :export_file_name: grabcartoons
-:export_hugo_weight: 03
+:export_hugo_weight: 05
 :END:
 
 [[https://github.com/zzamboni/grabcartoons/][GrabCartoons]] is a comic-summarizing utility. It is modular, and it is very easy to write modules for new comics. It's one of my oldest open-source projects, and still in use!
 
 You can find all the information at <http://github.com/zzamboni/grabcartoons>
+
+*** DONE resume-toolkit
+CLOSED: [2026-03-31 Tue 20:05]
+:PROPERTIES:
+:export_hugo_custom_front_matter: :externalURL https://github.com/zzamboni/resume-toolkit/
+:export_file_name: resume-toolkit
+:export_hugo_weight: 01
+:END:
+
+[[https://github.com/zzamboni/resume-toolkit][resume-toolkit]] is a tool for converting JSON Resume (and optionally, BibTeX files) into HTML and PDF formats.
+
+*** DONE jsonresume-theme-eventide
+CLOSED: [2026-03-31 Tue 20:30]
+:PROPERTIES:
+:export_hugo_custom_front_matter: :externalURL https://github.com/zzamboni/jsonresume-theme-eventide
+:export_file_name: jsonresume-theme-eventide
+:export_hugo_weight: 02
+:END:
+
+[[https://github.com/zzamboni/jsonresume-theme-eventide][jsonresume-theme-eventide]] is a  JSON Resume theme, derived from [[https://github.com/rbardini/jsonresume-theme-even][jsonresume-theme-even]], which I extended for use with [[https://github.com/zzamboni/resume-toolkit][resume-toolkit]] with features like a Table of Contents, section reordering and custom labels, certificate and organization logos, and much more.
+
 
 * Ideas
 :PROPERTIES:

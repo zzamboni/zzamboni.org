@@ -4,7 +4,7 @@ author = ["Diego Zamboni"]
 date = 2020-12-08T18:29:00+01:00
 draft = false
 creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
-weight = 3
+weight = 5
 externalURL = "https://github.com/zzamboni/grabcartoons/"
 aliases = "/grabcartoons"
 +++

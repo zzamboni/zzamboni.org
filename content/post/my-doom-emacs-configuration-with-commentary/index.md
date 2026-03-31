@@ -14,7 +14,7 @@ series_order = 1
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **February  8, 2026**
+Last update: **March 31, 2026**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -1739,6 +1739,11 @@ Some other languages I use.
 
 
 ### Miscellaneous packages {#miscellaneous-packages}
+
+-   [Typst mode](https://codeberg.org/meow_king/typst-ts-mode/wiki/Installation.md):
+    ```emacs-lisp
+    (package! typst-ts-mode :recipe (:host codeberg :repo "meow_king/typst-ts-mode"))
+    ```
 
 -   [Dockerfile mode](https://github.com/spotify/dockerfile-mode):
     ```emacs-lisp

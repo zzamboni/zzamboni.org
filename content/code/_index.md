@@ -4,8 +4,10 @@ author = ["Diego Zamboni"]
 date = 2020-12-08T18:07:00+01:00
 draft = false
 creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
-featureimage = "img/c64-code3.png"
+featureimage = "img/c64-code4.png"
 groupByYear = false
+orderByWeight = true
+cardView = true
 [cascade]
   showReadingtime = false
   showWordCount = false
