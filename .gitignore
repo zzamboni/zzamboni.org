@@ -6,3 +6,4 @@ public
 docs
 .hugo_build.lock
 resources/_gen
+.codex
