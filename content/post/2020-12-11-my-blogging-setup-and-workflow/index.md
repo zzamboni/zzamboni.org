@@ -50,7 +50,9 @@ Since the full power of org markup is available when using ox-hugo, you can do v
 Once you have some contents in your Org file, you can export them into Markdown files. For this, use the standard Org export dispatcher (bound to <kbd>C-c C-e</kbd> by default) and choose `[H] Export to Hugo-compatible Markdown` / `[A] All subtrees (or File) to Md file(s)` options (you may choose other options for course, but this one exports the whole file). Ox-hugo knows the default structure expected by Hugo (a top-level `content/` directory in which you have directories for each section), so there's usually not much to do other than point ox-hugo to where your top-level Hugo directory is, using the [HUGO_BASE_DIR](https://ox-hugo.scripter.co/doc/usage/#before-you-export) property.
 
 {{< tip >}}
-This presumes you already have a Hugo site created. If you have never used Hugo before, I would suggest you go through the [Quick Start](http://gohugo.io/getting-started/quick-start/) guide, which shows how to set up a basic website using the [Ananke](https://github.com/theNewDynamic/gohugo-theme-ananke) theme. This is the same theme I use for my website (with some modifications).
+This presumes you already have a Hugo site created. If you have never used Hugo before, I would suggest you go through the [Quick Start](http://gohugo.io/getting-started/quick-start/) guide, which shows how to set up a basic website using the [Ananke](https://github.com/theNewDynamic/gohugo-theme-ananke) theme. ~~This is the same theme I use for my website (with some modifications).~~
+
+**Update:** I am now using [Blowfish](https://blowfish.page/), see [Website redesign!]({{< relref "2025-11-17-website-redesign" >}})
 {{< /tip >}}
 
 Hugo has extensive capabilities and it is beyond the scope of this article to show you how to use it, but it has [very good documentation](https://gohugo.io/documentation/) which I would urge you to peruse to learn more about it. Feel free to peruse [my setup](https://gitlab.com/zzamboni/zzamboni.org) for ideas.

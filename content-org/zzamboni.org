@@ -2447,7 +2447,9 @@ Since the full power of org markup is available when using ox-hugo, you can do v
 Once you have some contents in your Org file, you can export them into Markdown files. For this, use the standard Org export dispatcher (bound to ~C-c C-e~ by default) and choose =[H] Export to Hugo-compatible Markdown= / =[A] All subtrees (or File) to Md file(s)= options (you may choose other options for course, but this one exports the whole file). Ox-hugo knows the default structure expected by Hugo (a top-level =content/= directory in which you have directories for each section), so there's usually not much to do other than point ox-hugo to where your top-level Hugo directory is, using the [[https://ox-hugo.scripter.co/doc/usage/#before-you-export][HUGO_BASE_DIR]] property.
 
 #+begin_tip
-This presumes you already have a Hugo site created. If you have never used Hugo before, I would suggest you go through the [[http://gohugo.io/getting-started/quick-start/][Quick Start]] guide, which shows how to set up a basic website using the [[https://github.com/theNewDynamic/gohugo-theme-ananke][Ananke]] theme. This is the same theme I use for my website (with some modifications).
+This presumes you already have a Hugo site created. If you have never used Hugo before, I would suggest you go through the [[http://gohugo.io/getting-started/quick-start/][Quick Start]] guide, which shows how to set up a basic website using the [[https://github.com/theNewDynamic/gohugo-theme-ananke][Ananke]] theme. +This is the same theme I use for my website (with some modifications).+
+
+*Update:* I am now using [[https://blowfish.page/][Blowfish]], see [[#website-redesign][Website redesign!]]
 #+end_tip
 
 Hugo has extensive capabilities and it is beyond the scope of this article to show you how to use it, but it has [[https://gohugo.io/documentation/][very good documentation]] which I would urge you to peruse to learn more about it. Feel free to peruse [[https://gitlab.com/zzamboni/zzamboni.org][my setup]] for ideas.
