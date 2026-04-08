@@ -10,9 +10,9 @@ featureimage = "img/tram-zurich.jpg"
 toc = true
 +++
 
-I have wished for a long time to have separation between my CV contents and layout. After maintaining it directly in LaTeX for a while, I switched years ago to org-mode with LaTeX as the main export target. It worked and it enforced a certain degree of separation (most of the "visual" decisions were left up to the LaTeX exporter, with the org-mode file focusing on the contents), but it was fragile: too many custom LaTeX bits, too much hand-editing, and a pipeline that was hard to reuse elsewhere. It was also impossible to produce a nice HTML version from it. In this post I'll document how I switched the source of truth to JSON Resume and built a custom pipeline that outputs **both** my CV and my publications in HTML and PDF. I'm very happy with the result, which you can find in this same website: [my full CV](http://localhost:1313/vita/).
+I have wished for a long time to have separation between my CV contents and layout. After maintaining it directly in LaTeX for a while, I switched years ago to org-mode with LaTeX as the main export target. It worked and it enforced a certain degree of separation (most of the "visual" decisions were left up to the LaTeX exporter, with the org-mode file focusing on the contents), but it was fragile: too many custom LaTeX bits, too much hand-editing, and a pipeline that was hard to reuse elsewhere. It was also impossible to produce a nice HTML version from it. In this post I'll document how I switched the source of truth to JSON Resume and built a custom pipeline that outputs **both** my CV and my publications in HTML and PDF. I'm very happy with the result, which you can find in [my CV page](/vita/).
 
-This post is a quick walk-through of the steps, the trade-offs, and the pieces I ended up keeping. This was a months-long side project with many detours, so this post is necessarily lacking in detail, but I hope it provides you with a good overview. The end result is in my [vita](https://gitlab.com/zzamboni/vita) repo in GitLab, so feel free to use it as a starting point.
+This post is a quick walk-through of the steps, the trade-offs, and the pieces I ended up keeping. This was a months-long side project with many detours, so this post is necessarily lacking in detail, but I hope it provides you with a good overview. ~~The end result is in my [vita](https://gitlab.com/zzamboni/vita) repo in GitLab, so feel free to use it as a starting point.~~ **Update:** I've now released [resume-toolkit](https://github.com/zzamboni/resume-toolkit), which packages the resume-rendering machinery as a standalone tool. See [resume-toolkit: from personal CV pipeline to reusable toolkit]({{< relref "2026-03-27-from-personal-cv-pipeline-to-reusable-toolkit" >}}) for more details.
 
 
 ## Step 0: JSONresume, YAMLresume, RenderCV, oh my {#step-0-jsonresume-yamlresume-rendercv-oh-my}
@@ -37,7 +37,7 @@ The CV is one thing. My publications are another: they were already in BibTeX, a
 
 -   [`scripts/build_publications.py`](https://gitlab.com/zzamboni/vita/-/blob/main/scripts/build_publications.py) reads my BibTeX sources from [`pubs-src`](https://gitlab.com/zzamboni/vita/-/tree/main/pubs-src).
 -   It generates publications HTML with [`templates/publications.html.j2`](https://gitlab.com/zzamboni/vita/-/blob/main/templates/publications.html.j2).
--   It also writes an aggregated [`zamboni-pubs.bib`](http://localhost:1313/vita/publications/zamboni-pubs.bib) for download.
+-   It also writes an aggregated [`zamboni-pubs.bib`](/vita/publications/zamboni-pubs.bib) for download.
 
 This kept the bibliographic source clean while giving me a consistent, reproducible output.
 

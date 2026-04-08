@@ -375,6 +375,7 @@ CLOSED: [2026-03-31 Tue 20:05]
 :export_hugo_custom_front_matter: :externalURL https://github.com/zzamboni/resume-toolkit/
 :export_file_name: resume-toolkit
 :export_hugo_weight: 01
+:CUSTOM_ID: resume-toolkit
 :END:
 
 [[https://github.com/zzamboni/resume-toolkit][resume-toolkit]] is a tool for converting JSON Resume (and optionally, BibTeX files) into HTML and PDF formats.
@@ -3375,9 +3376,9 @@ CLOSED: [2026-02-11 Wed 13:21]
 How I moved my CV source of truth from Org mode + LaTeX to JSON Resume, and built a pipeline that exports both my CV and publications to HTML and PDF.
 #+END_description
 
-I have wished for a long time to have separation between my CV contents and layout. After maintaining it directly in LaTeX for a while, I switched years ago to org-mode with LaTeX as the main export target. It worked and it enforced a certain degree of separation (most of the "visual" decisions were left up to the LaTeX exporter, with the org-mode file focusing on the contents), but it was fragile: too many custom LaTeX bits, too much hand-editing, and a pipeline that was hard to reuse elsewhere. It was also impossible to produce a nice HTML version from it. In this post I'll document how I switched the source of truth to JSON Resume and built a custom pipeline that outputs *both* my CV and my publications in HTML and PDF. I'm very happy with the result, which you can find in this same website: [[http://localhost:1313/vita/][my full CV]].
+I have wished for a long time to have separation between my CV contents and layout. After maintaining it directly in LaTeX for a while, I switched years ago to org-mode with LaTeX as the main export target. It worked and it enforced a certain degree of separation (most of the "visual" decisions were left up to the LaTeX exporter, with the org-mode file focusing on the contents), but it was fragile: too many custom LaTeX bits, too much hand-editing, and a pipeline that was hard to reuse elsewhere. It was also impossible to produce a nice HTML version from it. In this post I'll document how I switched the source of truth to JSON Resume and built a custom pipeline that outputs *both* my CV and my publications in HTML and PDF. I'm very happy with the result, which you can find in [[/vita/][my CV page]].
 
-This post is a quick walk-through of the steps, the trade-offs, and the pieces I ended up keeping. This was a months-long side project with many detours, so this post is necessarily lacking in detail, but I hope it provides you with a good overview. The end result is in my [[https://gitlab.com/zzamboni/vita][vita]] repo in GitLab, so feel free to use it as a starting point.
+This post is a quick walk-through of the steps, the trade-offs, and the pieces I ended up keeping. This was a months-long side project with many detours, so this post is necessarily lacking in detail, but I hope it provides you with a good overview. +The end result is in my [[https://gitlab.com/zzamboni/vita][vita]] repo in GitLab, so feel free to use it as a starting point.+ *Update:* I've now released [[https://github.com/zzamboni/resume-toolkit][resume-toolkit]], which packages the resume-rendering machinery as a standalone tool. See [[#from-personal-cv-pipeline-to-reusable-toolkit][resume-toolkit: from personal CV pipeline to reusable toolkit]] for more details.
 
 ***** Step 0: JSONresume, YAMLresume, RenderCV, oh my
 
@@ -3399,7 +3400,7 @@ The CV is one thing. My publications are another: they were already in BibTeX, a
 
 - [[https://gitlab.com/zzamboni/vita/-/blob/main/scripts/build_publications.py][=scripts/build_publications.py=]] reads my BibTeX sources from [[https://gitlab.com/zzamboni/vita/-/tree/main/pubs-src][=pubs-src=]].
 - It generates publications HTML with [[https://gitlab.com/zzamboni/vita/-/blob/main/templates/publications.html.j2][=templates/publications.html.j2=]].
-- It also writes an aggregated [[http://localhost:1313/vita/publications/zamboni-pubs.bib][=zamboni-pubs.bib=]] for download.
+- It also writes an aggregated [[/vita/publications/zamboni-pubs.bib][=zamboni-pubs.bib=]] for download.
 
 This kept the bibliographic source clean while giving me a consistent, reproducible output.
 
