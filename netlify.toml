@@ -7,7 +7,7 @@
   publish = "public"
 
 [build.environment]
-  HUGO_VERSION = "0.152.2"
+  HUGO_VERSION ="0.160.0"
   HUGO_EXTENDED = "true"
   NETLIFY_BUILD_IMAGE = "noble"
   HUGO_ENV = "production"
