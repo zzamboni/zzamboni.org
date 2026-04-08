@@ -26,14 +26,14 @@
         {{ .Content }}
       </div>
     </section>
-    {{ $jsPage := resources.Get "js/page.js" }}
-    {{ $jsPage = $jsPage | resources.Minify | resources.Fingerprint (site.Params.fingerprintAlgorithm | default "sha512") }}
-    <script
-      type="text/javascript"
-      src="{{ $jsPage.RelPermalink }}"
-      integrity="{{ $jsPage.Data.Integrity }}"
-      data-oid="views_taxonomy_{{ .Data.Plural }}"
-      data-oid-likes="likes_taxonomy_{{ .Data.Plural }}"></script>
+  {{ end }}
+
+  {{ if site.Params.taxonomy.cardView }}
+    <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+      {{ range .Data.Terms }}
+        {{ partial "term-link/card.html" . }}
+      {{ end }}
+    </section>
   {{ end }}
 
 {{ end }}
