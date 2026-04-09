@@ -61,3 +61,15 @@ from = "/*.{jpg,jpeg,gif,png,webp,avif}"
 to = "/.netlify/images?url=/:splat"
 status = 200
 force = true
+
+[[redirects]]
+from = "https://mail.zzamboni.org/*"
+to = "https://mail.google.com/a/zzamboni.org"
+status = 301
+force = true
+
+[[redirects]]
+from = "http://mail.zzamboni.org/*"
+to = "https://mail.google.com/a/zzamboni.org"
+status = 301
+force = true
