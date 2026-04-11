@@ -96,6 +96,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#locally-hosting-my-twitter-archive][Locally hosting my Twitter archive]]
     - [[#porting-my-cv-from-orglatex-to-json-resume][Porting my CV from Org+LaTeX to JSON Resume]]
     - [[#resume-toolkit-from-personal-cv-pipeline-to-reusable-toolkit][resume-toolkit: from personal CV pipeline to reusable toolkit]]
+    - [[#vivaldi-browser-configuration-in-linux][Vivaldi browser configuration in Linux]]
 
 * Pages
 
@@ -3628,6 +3629,32 @@ I’m pretty happy with where =resume-toolkit= is now. It started as a side effe
 There is still plenty I could improve, of course. But it now feels like I’m building on top of a tool I trust, instead of constantly patching a one-off pipeline that only I understand.
 
 If you use (or are interested in ) JSON Resume, please give [[https://github.com/zzamboni/resume-toolkit][resume-toolkit]] and [[https://github.com/zzamboni/jsonresume-theme-eventide][Eventide]] a try! I would be happy to hear your comments or feedback.
+
+*** DRAFT Vivaldi browser configuration in Linux
+:PROPERTIES:
+:export_hugo_bundle: 2026-04-11-vivaldi-browser-configuration-in-linux
+:export_file_name: index
+:custom_id: vivaldi-browser-configuration-in-linux
+:export_hugo_custom_front_matter: :featured_image /images/tram-zurich.jpg :toc false
+:END:
+#+BEGIN_description
+I switched from Zen to Vivaldi on my Linux machine, I'm documenting here some of the configuration tips I have discovered.
+#+END_description
+
+**** Enabling two-finger swipe gesture for history navigation
+
+Using a two-finger swipe on the trackpad to move forward/back in history was not working for me, despite the option being enabled in the Vivaldi settings. I found the answer [[https://forum.vivaldi.net/post/867957][in this Vivaldi forum post]]:
+
+#+begin_quote
+Create a file =~/.var/app/com.vivaldi.Vivaldi/config/vivaldi-flags.conf=
+and put that line
+#+begin_src sh
+--enable-features=TouchpadOverscrollHistoryNavigation
+#+end_src
+into it.
+#+end_quote
+
+Now it works!
 
 * Local Variables :noexport:ARCHIVE:
 # Local Variables:
