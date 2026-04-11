@@ -73,3 +73,27 @@ from = "http://mail.zzamboni.org/*"
 to = "https://mail.google.com/a/zzamboni.org"
 status = 301
 force = true
+
+[[redirects]]
+from = "https://calendar.zzamboni.org/*"
+to = "https://calendar.google.com/a/zzamboni.org"
+status = 301
+force = true
+
+[[redirects]]
+from = "http://calendar.zzamboni.org/*"
+to = "https://calendar.google.com/a/zzamboni.org"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://docs.zzamboni.org/*"
+to = "https://docs.google.com/a/zzamboni.org"
+status = 301
+force = true
+
+[[redirects]]
+from = "http://docs.zzamboni.org/*"
+to = "https://docs.google.com/a/zzamboni.org"
+status = 301
+force = true
