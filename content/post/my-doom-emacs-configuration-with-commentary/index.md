@@ -14,7 +14,7 @@ series_order = 1
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **March 31, 2026**
+Last update: **April 12, 2026**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -22,7 +22,7 @@ As usual, the post below is included directly from my live [doom.org](https://gi
 
 If you are interested in writing your own Literate Config files, check out my book [Literate Config](https://leanpub.com/lit-config) on Leanpub!
 
-{{< figure src="doom-emacs-bw-light.svg" >}}
+{{< figure src="doom-emacs-color.png" >}}
 
 This is my Doom Emacs configuration. From this org file, all the necessary Doom Emacs config files are generated.
 
@@ -463,6 +463,7 @@ Auto-save the desktop setup (open buffers, etc.)
 
 ```emacs-lisp
 (desktop-save-mode 1)
+(setq! desktop-load-locked-desktop t)
 ```
 
 
@@ -1191,6 +1192,7 @@ I am trying out Trevoke's [org-gtd](https://github.com/Trevoke/org-gtd.el). I ha
 ```emacs-lisp
 ;; Supress org-gtd update warning
 (setq org-gtd-update-ack "2.1.0")
+(setq org-gtd-update-ack "4.0.0")
 (use-package! org-gtd
   :after org
   :config

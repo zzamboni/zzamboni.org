@@ -540,7 +540,7 @@ If you are interested in writing your own Literate Config files, check out my ne
 
 Without further ado...
 
-#+include: "~/.config/elvish/rc.org" :lines "57-"
+#+include: "~/.config/elvish/rc.org" :lines "55-"
 
 ** Emacs                                                              :emacs:
 

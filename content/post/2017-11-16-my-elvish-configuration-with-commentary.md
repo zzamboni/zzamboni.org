@@ -14,7 +14,7 @@ series_order = 4
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **March 31, 2026**
+Last update: **April 12, 2026**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -23,6 +23,9 @@ This is also my first blog post written using [org-mode](http://orgmode.org/), w
 If you are interested in writing your own Literate Config files, check out my new book [Literate Config](https://leanpub.com/lit-config) on Leanpub!
 
 Without further ado...
+
+
+## Module loading {#module-loading}
 
 Load a number of commonly-used modules so that they are available in my interactive session.
 
