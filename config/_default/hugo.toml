@@ -4,7 +4,7 @@
 
 theme = "blowfish" # UNCOMMENT THIS LINE
 baseURL = "https://zzamboni.org/"
-languageCode = "en"
+locale = "en"
 defaultContentLanguage = "en"
 
 # pluralizeListTitles = "true" # hugo function useful for non-english languages, find out more in  https://gohugo.io/getting-started/configuration/#pluralizelisttitles
@@ -47,6 +47,9 @@ disableAliases = true
 [outputs]
   home = ["HTML", "RSS", "JSON", "REDIR", "HEADERS"]
   section = [ "HTML", "RSS"]
+
+[security]
+  allowContent = ['^text/markdown$', '^text/html$']
 
 # Netlify-style redirects
 [mediaTypes]
