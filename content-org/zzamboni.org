@@ -3379,7 +3379,11 @@ How I moved my CV source of truth from Org mode + LaTeX to JSON Resume, and buil
 
 I have wished for a long time to have separation between my CV contents and layout. After maintaining it directly in LaTeX for a while, I switched years ago to org-mode with LaTeX as the main export target. It worked and it enforced a certain degree of separation (most of the "visual" decisions were left up to the LaTeX exporter, with the org-mode file focusing on the contents), but it was fragile: too many custom LaTeX bits, too much hand-editing, and a pipeline that was hard to reuse elsewhere. It was also impossible to produce a nice HTML version from it. In this post I'll document how I switched the source of truth to JSON Resume and built a custom pipeline that outputs *both* my CV and my publications in HTML and PDF. I'm very happy with the result, which you can find in [[/vita/][my CV page]].
 
-This post is a quick walk-through of the steps, the trade-offs, and the pieces I ended up keeping. This was a months-long side project with many detours, so this post is necessarily lacking in detail, but I hope it provides you with a good overview. +The end result is in my [[https://gitlab.com/zzamboni/vita][vita]] repo in GitLab, so feel free to use it as a starting point.+ *Update:* I've now released [[https://github.com/zzamboni/resume-toolkit][resume-toolkit]], which packages the resume-rendering machinery as a standalone tool. See [[#from-personal-cv-pipeline-to-reusable-toolkit][resume-toolkit: from personal CV pipeline to reusable toolkit]] for more details.
+#+begin_tip
+I've now released [[https://github.com/zzamboni/resume-toolkit][resume-toolkit]], which vastly improves on what's described in this post, and packages it as a standalone tool. See [[#from-personal-cv-pipeline-to-reusable-toolkit][resume-toolkit: from personal CV pipeline to reusable toolkit]] for more details, or keep reading to learn how the whole thing started.
+#+end_tip
+
+This post is a quick walk-through of the steps, the trade-offs, and the pieces I ended up keeping. This was a months-long side project with many detours, so this post is necessarily lacking in detail, but I hope it provides you with a good overview. +The end result is in my [[https://gitlab.com/zzamboni/vita][vita]] repo in GitLab, so feel free to use it as a starting point.+
 
 ***** Step 0: JSONresume, YAMLresume, RenderCV, oh my
 
@@ -3407,7 +3411,7 @@ This kept the bibliographic source clean while giving me a consistent, reproduci
 
 ***** Step 3: Tweak jsonresume-theme-even
 
-I used [[https://github.com/rbardini/jsonresume-theme-even][=jsonresume-theme-even=]] as a base, but I wanted it to look like *my* CV. I install the theme locally in my development environment so I could iterate without publishing anything upstream. I have contributed my changes to the upstream theme, you can find them [[https://github.com/rbardini/jsonresume-theme-even/pulls][separately]] or in an [[https://github.com/rbardini/jsonresume-theme-even/pull/33][aggregated pull request]]. 
+I used [[https://github.com/rbardini/jsonresume-theme-even][=jsonresume-theme-even=]] as a base, but I wanted it to look like *my* CV. I install the theme locally in my development environment so I could iterate without publishing anything upstream. I have contributed my changes to the upstream theme, you can find them [[https://github.com/rbardini/jsonresume-theme-even/pulls][separately]] or in an [[https://github.com/rbardini/jsonresume-theme-even/pull/33][aggregated pull request]] (*Update:* I eventually decided to fork the theme as [[https://github.com/zzamboni/jsonresume-theme-eventide][jsonresume-theme-eventide]], which includes all the initial improvements plus many more. See [[#from-personal-cv-pipeline-to-reusable-toolkit][resume-toolkit: from personal CV pipeline to reusable toolkit]] for more details).
 
 These were the main changes I made:
 
@@ -3423,7 +3427,7 @@ For generating the CV PDF I considered converting to RenderCV, but found its sch
 
 The main component here is the [[https://gitlab.com/zzamboni/vita/-/blob/main/scripts/render_typst_cv.py?ref_type=heads][=scripts/render_typst_cv.py=]] script, which converts JSON Resume into a self-contained Typst document which uses the =brilliant-cv= template.
 
-For publications I tried to use Typst as well, since it has built-in support for [[https://typst.app/docs/reference/model/bibliography/][importing BibTeX files]]. This worked well with a single bibliography, but I wanted to keep my [[https://zzamboni.org/vita/publications/][publications list]] structured by type. In the end I decided to stay with LaTeX and used a small wrapper so the output matches the HTML:
+For publications I tried to use Typst as well, since it has built-in support for [[https://typst.app/docs/reference/model/bibliography/][importing BibTeX files]]. This worked well with a single bibliography, but I wanted to keep my [[https://zzamboni.org/vita/publications/][publications list]] structured by type. In the end I decided to stay with LaTeX and used a small wrapper so the output matches the HTML (*Update:* I've also eventually fixed this, processing the entire PDF generation with Typst. This makes the PDF rendering much faster, more predictable and consistent. Again, see [[#from-personal-cv-pipeline-to-reusable-toolkit][resume-toolkit: from personal CV pipeline to reusable toolkit]] for more details):
 
 - [[https://gitlab.com/zzamboni/vita/-/blob/main/pubs-src/zamboni-pubs.tex][=pubs-src/zamboni-pubs.tex=]] is the source for the publications PDF. Note that this still uses the old AwesomeCV class, so my publications list still has the same style as my new CV.
 - A [[https://tectonic-typesetting.github.io/][=tectonic=]] build step produces [[https://zzamboni.org/vita/publications/zamboni-pubs.pdf][the PDF version of my publications list]], with the same structure (and even order of entries) of the [[https://zzamboni.org/vita/publications/][online version]].
