@@ -1,0 +1,86 @@
+media:
+  input: static/img
+  output: /img
+  rename: safe
+
+settings:
+  content:
+    merge: true
+  commit:
+    identity: user
+    templates:
+      create: "New post: {filename}"
+      update: "Update post: {filename}"
+      delete: "Delete post: {filename}"
+      rename: "Rename post: {oldFilename} -> {newFilename}"
+
+content:
+  - name: posts
+    label: Blog posts
+    type: collection
+    path: content/post
+    format: toml-frontmatter
+    subfolders: false
+
+    filename:
+      template: "{year}-{month}-{day}-{title}.md"
+      field: create
+
+    view:
+      primary: title
+      fields: [title, date, draft]
+      sort: [date, title]
+      search: [title, summary, tags]
+      default:
+        sort: date
+        order: desc
+
+    operations:
+      rename: false
+      delete: false
+
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: summary
+        label: Summary
+        type: text
+        options:
+          maxlength: 400
+
+      - name: date
+        label: Date
+        type: date
+        required: true
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm:ssXXX"
+
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+
+      - name: draft
+        label: Draft
+        type: boolean
+        default: true
+
+      - name: featureimage
+        label: Feature image
+        type: string
+        default: "img/tram-zurich.jpg"
+
+      - name: toc
+        label: Table of contents
+        type: boolean
+        default: false
+
+      - name: body
+        label: Body
+        type: rich-text
+        required: true
+        
