@@ -2,7 +2,7 @@
 title = 'Testing new posting workflow with Pages CMS'
 summary = 'Trying the use of Pages CMS for a simplified posting workflow'
 date = '2026-09-21T22:42:00Z'
-draft = true
+draft = false
 featureimage = 'img/tram-zurich.jpg'
 toc = false
 +++
