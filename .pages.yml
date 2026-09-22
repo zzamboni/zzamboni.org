@@ -35,7 +35,7 @@ content:
 
     operations:
       rename: false
-      delete: false
+      delete: true
 
     fields:
       - name: title
