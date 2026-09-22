@@ -1,0 +1,84 @@
+/* Linkblog entries */
+.article-link--simple:has(.linky-marker) {
+  border-left: 3px solid rgb(var(--color-primary-500));
+  background: rgba(var(--color-primary-500), 0.04);
+  padding: 0.7rem 1rem;
+  border-radius: 0.25rem;
+}
+
+/* .article-link--simple:has(.linky-marker) {
+  background: rgba(var(--color-primary-500), 0.05);
+  border: 1px solid rgba(var(--color-primary-500), 0.20);
+  border-left: 3px solid rgb(var(--color-primary-500));
+  border-radius: 0.5rem;
+  padding: 0.8rem 1rem;
+} */
+
+.dark .article-link--simple:has(.linky-marker) {
+  background: rgba(var(--color-primary-500), 0.08);
+  border-color: rgba(var(--color-primary-500), 0.25);
+}
+
+/* Slightly more compact than full articles */
+.article-link--simple:has(.linky-marker) h2 {
+  font-size: 1.05rem;
+}
+
+.article-link--simple:has(.linky-marker) .article-link__summary {
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.article-link--simple:has(.linky-marker) .thumbnail {
+  display: none;
+}
+
+/*
+ * Compact linkblog entries
+ */
+
+/* Put title, Link/domain and tags on the same line where possible. */
+.article-link--simple:has(.linky-marker) header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 0.6rem;
+  row-gap: 0.25rem;
+}
+
+/* The extra linkblog metadata rendered by extend-article-link.html. */
+.linky-marker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.linky-domain {
+  color: rgb(var(--color-neutral-500));
+}
+
+.dark .linky-domain {
+  color: rgb(var(--color-neutral-400));
+}
+
+/*
+ * Blowfish renders the date as <time>, but word count,
+ * separators and reading time as <span>. Hide those spans,
+ * leaving only the date.
+ */
+.article-link--simple:has(.linky-marker)
+  .text-sm > div:first-child > span {
+  display: none;
+}
+
+/*
+ * Tags normally appear in another metadata row.
+ * We're already displaying them beside the title.
+ */
+.article-link--simple:has(.linky-marker)
+  .text-sm > div:nth-child(n+2) {
+  display: none;
+}

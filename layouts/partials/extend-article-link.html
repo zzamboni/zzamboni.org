@@ -1,0 +1,23 @@
+{{ $page := . }}
+
+{{ with $page.Params.externalUrl }}
+  {{ $u := urls.Parse . }}
+
+  <div class="linky-marker">
+    {{ partial "badge.html" "Link" }}
+
+    <span class="linky-domain">
+      {{ $u.Host }}
+    </span>
+
+    {{ range $page.GetTerms "tags" }}
+      {{ if ne (lower .LinkTitle) "linky" }}
+        <a href="{{ .RelPermalink }}" class="linky-tag">
+          {{ partial "badge.html"
+             (dict "linkTitle" .LinkTitle "useSecondaryColor" true)
+          }}
+        </a>
+      {{ end }}
+    {{ end }}
+  </div>
+{{ end }}
