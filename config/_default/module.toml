@@ -1,0 +1,7 @@
+[[mounts]]
+source = "content"
+target = "content"
+
+[[mounts]]
+source = "content-pagescms"
+target = "content/post"

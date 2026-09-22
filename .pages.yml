@@ -18,7 +18,7 @@ content:
   - name: posts
     label: Blog posts
     type: collection
-    path: content/post
+    path: content-pagescms
     format: toml-frontmatter
     subfolders: false
 
