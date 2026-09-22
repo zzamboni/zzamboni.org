@@ -71,6 +71,7 @@ content:
         label: Feature image
         type: string
         default: "img/tram-zurich.jpg"
+        hidden: true
 
       - name: toc
         label: Table of contents
