@@ -1,7 +1,7 @@
 +++
 title = "Example Domain"
 externalUrl = "https://example.com/"
-summary = ""
+summary = "Posted a link to example.com to test my new linkblog pipeline."
 date = "2026-09-22T21:30:00+02:00"
 tags = ["zznippets"]
 draft = true
