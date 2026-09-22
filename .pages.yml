@@ -56,7 +56,6 @@ content:
       - name: body
         label: Body
         type: rich-text
-        required: true
         
       - name: date
         label: Date
