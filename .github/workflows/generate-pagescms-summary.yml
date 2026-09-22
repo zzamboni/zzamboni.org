@@ -1,0 +1,142 @@
+name: Generate missing post summary
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "content-pagescms/*.md"
+
+permissions:
+  contents: write
+
+jobs:
+  generate-summary:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install OpenAI SDK
+        run: pip install openai
+
+      - name: Generate missing summaries
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          python <<'PY'
+          import json
+          import os
+          import re
+          import subprocess
+          import tomllib
+          from pathlib import Path
+
+          from openai import OpenAI
+
+          client = OpenAI()
+
+          changed = subprocess.check_output(
+              [
+                  "git", "diff", "--name-only", "--diff-filter=AM",
+                  os.environ["BEFORE"], os.environ["AFTER"],
+                  "--", "content-pagescms/*.md",
+              ],
+              text=True,
+          ).splitlines()
+
+          for filename in changed:
+              path = Path(filename)
+              if not path.exists():
+                  continue
+
+              text = path.read_text()
+
+              if not text.startswith("+++\n"):
+                  continue
+
+              end = text.find("\n+++\n", 4)
+              if end == -1:
+                  continue
+
+              frontmatter_text = text[4:end]
+              body = text[end + 5:].strip()
+              frontmatter = tomllib.loads(frontmatter_text)
+
+              # Keep anything written manually.
+              if str(frontmatter.get("summary", "")).strip():
+                  continue
+
+              title = str(frontmatter.get("title", "")).strip()
+
+              if not body:
+                  continue
+
+              print(f"Generating summary for {filename}")
+
+              response = client.responses.create(
+                  model="gpt-5-mini",
+                  store=False,
+                  instructions=(
+                      "Write a concise summary for a technical personal blog post. "
+                      "Use one or two sentences, maximum 350 characters. "
+                      "Write in the same language as the post. "
+                      "Be informative and natural, not promotional. "
+                      "Return only the summary, with no label or quotation marks."
+                  ),
+                  input=f"Title: {title}\n\nPost:\n{body}",
+              )
+
+              summary = " ".join(response.output_text.strip().split())
+
+              # JSON double-quoted strings are valid TOML basic strings.
+              replacement = f"summary = {json.dumps(summary, ensure_ascii=False)}"
+
+              if re.search(r"(?m)^summary\s*=.*$", frontmatter_text):
+                  frontmatter_text = re.sub(
+                      r"(?m)^summary\s*=.*$",
+                      replacement,
+                      frontmatter_text,
+                      count=1,
+                  )
+              else:
+                  # Normally Pages CMS will already have created an empty
+                  # summary field, but handle its absence as well.
+                  lines = frontmatter_text.splitlines()
+                  insert_at = next(
+                      (i + 1 for i, line in enumerate(lines)
+                       if line.startswith("title =")),
+                      0,
+                  )
+                  lines.insert(insert_at, replacement)
+                  frontmatter_text = "\n".join(lines)
+
+              path.write_text(
+                  "+++\n" + frontmatter_text + "\n+++\n" + body + "\n"
+              )
+          PY
+
+      - name: Commit generated summaries
+        run: |
+          if git diff --quiet; then
+            echo "No summaries needed"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add content-pagescms/
+          git commit -m "Generate post summary"
+          git push
+          
