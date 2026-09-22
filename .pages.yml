@@ -45,6 +45,14 @@ content:
         type: string
         required: true
 
+      - name: author
+        label: Author
+        type: string
+        list: true
+        default:
+          - "Diego Zamboni"
+        required: true
+        
       - name: summary
         label: Summary
         type: text
