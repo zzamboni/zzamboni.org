@@ -43,6 +43,10 @@ content:
         type: string
         required: true
 
+      - name: externalUrl
+        label: External link
+        type: string
+
       - name: summary
         label: Summary
         type: text
