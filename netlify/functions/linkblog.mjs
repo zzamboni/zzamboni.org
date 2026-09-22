@@ -201,7 +201,7 @@ export default async function handler(request) {
 
     const content =
       frontmatter +
-      `[${tomlString(url.href)}](${tomlString(url.href)})\n\n` +
+      `\n[${url.href}](${url.href})\n\n` +
       (commentary ? `${commentary}\n` : "");
 
     const day = date.slice(0, 10);

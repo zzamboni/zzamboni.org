@@ -9,6 +9,6 @@ toc = false
 showReadingTime = false
 showWordCount = false
 +++
-["https://example.com/"]("https://example.com/")
+[https://example.com/](https://example.com/)
 
 Testing my new linkblog pipeline.
