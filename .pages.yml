@@ -49,6 +49,11 @@ content:
         options:
           maxlength: 400
 
+      - name: body
+        label: Body
+        type: rich-text
+        required: true
+        
       - name: date
         label: Date
         type: date
@@ -77,9 +82,3 @@ content:
         label: Table of contents
         type: boolean
         default: false
-
-      - name: body
-        label: Body
-        type: rich-text
-        required: true
-        
