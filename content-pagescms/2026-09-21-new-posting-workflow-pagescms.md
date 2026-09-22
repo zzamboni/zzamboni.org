@@ -1,6 +1,5 @@
 +++
 title = 'New posting workflow with Pages CMS'
-summary = 'Using Pages CMS for a simplified posting workflow'
 date = '2026-09-21T22:42:00Z'
 draft = false
 featureimage = 'img/tram-zurich.jpg'
