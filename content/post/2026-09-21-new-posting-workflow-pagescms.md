@@ -5,9 +5,6 @@ date = '2026-09-21T22:42:00Z'
 draft = false
 featureimage = 'img/tram-zurich.jpg'
 toc = false
-author = [
-	'Diego Zamboni',
-]
 tags = [
 	'sitenews',
 ]
