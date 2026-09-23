@@ -153,6 +153,9 @@ export default async function handler(request) {
   try {
     const input = await request.json();
 
+      console.log("request:")
+      console.log(await input.text)
+      
     if (!input.url) {
       throw new Error("Missing URL");
     }
