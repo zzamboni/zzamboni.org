@@ -137,6 +137,8 @@ async function createGitHubFile(path, content, title) {
 }
 
 export default async function handler(request) {
+    console.log("0: entering");
+
   if (request.method !== "POST") {
     return new Response("Method not allowed", { status: 405 });
   }
@@ -146,6 +148,7 @@ export default async function handler(request) {
   if (request.headers.get("authorization") !== expected) {
     return new Response("Unauthorized", { status: 401 });
   }
+    console.log("1: authenticated");
 
   try {
     const input = await request.json();
@@ -166,10 +169,14 @@ export default async function handler(request) {
         ? input.date
         : new Date().toISOString();
 
+      console.log("2: fetching title");
+
     const title =
       String(input.title || "").trim() ||
       (await fetchPageTitle(url.href)) ||
       url.hostname;
+
+      console.log("3: title fetched", title);
 
     const tags = [
       "zznippets",
@@ -209,7 +216,11 @@ export default async function handler(request) {
     let filename = `${day}-${slug}.md`;
     let path = `${CONTENT_DIR}/${filename}`;
 
+      console.log("4: writing GitHub");
+
     let githubResponse = await createGitHubFile(path, content, title);
+
+      console.log("5: GitHub response", githubResponse.status);
 
     /*
      * Same title twice on the same day? Rare, but computers enjoy
@@ -233,6 +244,8 @@ export default async function handler(request) {
       throw new Error(`GitHub returned ${githubResponse.status}`);
     }
 
+      console.log("6: returning response");
+      
     return Response.json({
       ok: true,
       title,
