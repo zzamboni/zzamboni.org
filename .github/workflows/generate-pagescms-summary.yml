@@ -88,9 +88,8 @@ jobs:
                   model="gpt-5-mini",
                   store=False,
                   instructions=(
-                      "Write a concise summary for a technical personal blog post. "
+                      "Write a concise summary in English for a technical personal blog post. "
                       "Use one or two sentences, maximum 350 characters. "
-                      "Write in the same language as the post. "
                       "Be informative and natural, not promotional. "
                       "Return only the summary, with no label or quotation marks."
                   ),
