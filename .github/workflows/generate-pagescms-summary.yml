@@ -90,6 +90,7 @@ jobs:
                   store=False,
                   instructions=(
                       "Write a concise summary in English for a technical personal blog post. "
+                      "Whenever the post refers to something about Diego Zamboni, use first person in the description (e.g. say 'I' instead of 'Diego Zamboni'). "
                       "Use one or two sentences, maximum 350 characters. "
                       "Be informative and natural, not promotional. "
                       "Return only the summary, with no label or quotation marks."
