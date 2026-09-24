@@ -1,7 +1,7 @@
 +++
 title = 'New posting workflow with Pages CMS'
 summary = 'Testing Pages CMS as a simpler, mobile-friendly alternative to my Emacs Org-mode/ox-hugo workflow — I installed it on the blog and this is a first test post; more details to come.'
-date = '2026-09-21T22:42:00Z'
+date = '2026-09-24T07:15:00.000Z'
 draft = false
 featureimage = 'img/tram-zurich.jpg'
 toc = false
