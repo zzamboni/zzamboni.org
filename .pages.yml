@@ -63,7 +63,7 @@ content:
         required: true
         options:
           time: true
-          format: "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
+          format: "yyyy-MM-dd'T'HH:mm:ss.SSS"
 
       - name: tags
         label: Tags
