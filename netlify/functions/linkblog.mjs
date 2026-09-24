@@ -1,6 +1,6 @@
 const OWNER = "zzamboni";
 const REPO = "zzamboni.org";
-const BRANCH = "main";
+const BRANCH = process.env.LINKBLOG_BRANCH || "main";
 const CONTENT_DIR = "content-pagescms";
 
 function tomlString(value) {
