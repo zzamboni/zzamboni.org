@@ -61,6 +61,28 @@ function validateUrl(value) {
   return url;
 }
 
+function formatZurichLocalDate(input) {
+  const date = new Date(input);
+
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Zurich",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    fractionalSecondDigits: 3,
+    hourCycle: "h23",
+  }).formatToParts(date);
+
+  const p = Object.fromEntries(
+    parts.map(({ type, value }) => [type, value])
+  );
+
+  return `${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}:${p.second}.${p.fractionalSecond}`;
+}
+
 async function fetchPageTitle(url) {
   try {
     const response = await fetch(url, {
@@ -162,10 +184,9 @@ export default async function handler(request) {
      * Preserve the date supplied by the phone, including its timezone.
      * Fall back to UTC if none was supplied.
      */
-    const date =
-      typeof input.date === "string" && !Number.isNaN(Date.parse(input.date))
-        ? input.date
-        : new Date().toISOString();
+    const date = input.date
+          ? formatZurichLocalDate(input.date)
+          : formatZurichLocalDate(new Date());
 
     const title =
       String(input.title || "").trim() ||
