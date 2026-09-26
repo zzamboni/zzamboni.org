@@ -82,3 +82,34 @@
   .text-sm > div:nth-child(n+2) {
   display: none;
 }
+
+/* External destination shown on local pages for entries with externalUrl. */
+.external-link-callout {
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.external-link-callout > a {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.external-link-domain {
+  color: rgb(var(--color-neutral-500));
+}
+
+.dark .external-link-domain {
+  color: rgb(var(--color-neutral-400));
+}
+
+.external-link-callout > a:hover .external-link-domain {
+  color: rgb(var(--color-primary-600));
+}
+
+.dark .external-link-callout > a:hover .external-link-domain {
+  color: rgb(var(--color-primary-400));
+}
