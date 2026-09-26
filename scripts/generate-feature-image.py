@@ -34,7 +34,7 @@ DEFAULT_FEATURE_IMAGES = {
 }
 FEATURE_KEYS = ("featureimage", "featured_image", "featureImage")
 ORG_SOURCE = Path("content-org/zzamboni.org")
-GENERATED_DIR = Path("static/img/generated")
+GENERATED_DIR = Path("assets/img/generated")
 
 SITE_STYLE = """Create a landscape editorial illustration for a personal technical blog.
 Clean, understated, intelligent, and slightly playful. Use natural or believable
