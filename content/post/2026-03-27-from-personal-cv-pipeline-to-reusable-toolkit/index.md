@@ -6,7 +6,7 @@ date = 2026-03-28T01:38:00+01:00
 tags = ["jsonresume", "typst", "tools", "cv"]
 draft = false
 creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
-featureimage = "img/tram-zurich.jpg"
+featureimage = "img/generated/2026-03-27-from-personal-cv-pipeline-to-reusable-toolkit.webp"
 toc = true
 +++
 
