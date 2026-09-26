@@ -97,6 +97,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#porting-my-cv-from-orglatex-to-json-resume][Porting my CV from Org+LaTeX to JSON Resume]]
     - [[#resume-toolkit-from-personal-cv-pipeline-to-reusable-toolkit][resume-toolkit: from personal CV pipeline to reusable toolkit]]
     - [[#vivaldi-browser-configuration-in-linux][Vivaldi browser configuration in Linux]]
+    - [[#when-a-local-timestamp-pretends-to-be-utc][When a local timestamp pretends to be UTC]]
 
 * Pages
 
@@ -342,7 +343,7 @@ CLOSED: [2020-12-09 Wed 21:10]
 
 {{{leanpubbook(emacs-org-leanpub,style="float:right"  height="380")}}}
 
-[[https://github.com/zzamboni/ox-leanpub][Ox-leanpub]] is a [[https://leanpub.com/][Leanpub]] book exporter for Org mode. It allows you to write your material entirely in Org mode, and manages the production of the files and directories needed for Leanpub to render your book. I use this package to publish [[https://leanpub.com/u/zzamboni][my books]].
+A [[https://leanpub.com/][Leanpub]] book exporter for Org mode. Allows writing the book entirely in Org mode, and generates the Leanpub manuscript. I use this package to publish [[https://leanpub.com/u/zzamboni][my books]].
 
 For a comprehensive introduction to publishing with Org mode and Leanpub, check out my book [[https://leanpub.com/emacs-org-leanpub][Publishing with Emacs, Org-mode and Leanpub]]!
 
@@ -355,7 +356,7 @@ CLOSED: [2020-12-09 Wed 22:23]
 :export_hugo_weight: 04
 :END:
 
-[[https://github.com/zzamboni/enwrite][Enwrite]] is a tool I wrote some time ago to publish a Hugo blog using Evernote. I don't use it anymore since I switched to publishing my blog using Org-mode and =ox-hugo=, so it may be broken, but feel free to give it a try.
+Publish a Hugo blog using Evernote. Unmaintained.
 
 
 *** DONE GrabCartoons
@@ -366,9 +367,9 @@ CLOSED: [2020-12-08 Tue 18:29]
 :export_hugo_weight: 05
 :END:
 
-[[https://github.com/zzamboni/grabcartoons/][GrabCartoons]] is a comic-summarizing utility. It is modular, and it is very easy to write modules for new comics. It's one of my oldest open-source projects, and still in use!
+A comic-summarizing utility. Modular and extensible. It's one of my oldest open-source projects, and still in use!
 
-You can find all the information at <http://github.com/zzamboni/grabcartoons>
+You can find all the information at http://github.com/zzamboni/grabcartoons.
 
 *** DONE resume-toolkit
 CLOSED: [2026-03-31 Tue 20:05]
@@ -379,7 +380,7 @@ CLOSED: [2026-03-31 Tue 20:05]
 :CUSTOM_ID: resume-toolkit
 :END:
 
-[[https://github.com/zzamboni/resume-toolkit][resume-toolkit]] is a tool for converting JSON Resume (and optionally, BibTeX files) into HTML and PDF formats.
+A tool for exporting JSON Resume (and optionally, BibTeX files) into HTML and PDF formats.
 
 *** DONE jsonresume-theme-eventide
 CLOSED: [2026-03-31 Tue 20:30]
@@ -389,7 +390,7 @@ CLOSED: [2026-03-31 Tue 20:30]
 :export_hugo_weight: 02
 :END:
 
-[[https://github.com/zzamboni/jsonresume-theme-eventide][jsonresume-theme-eventide]] is a  JSON Resume theme, derived from [[https://github.com/rbardini/jsonresume-theme-even][jsonresume-theme-even]], which I extended for use with [[https://github.com/zzamboni/resume-toolkit][resume-toolkit]] with features like a Table of Contents, section reordering and custom labels, certificate and organization logos, and much more.
+A JSON Resume theme, derived from [[https://github.com/rbardini/jsonresume-theme-even][jsonresume-theme-even]], with new features like Table of Contents, section reordering and custom labels, certificate and organization logos, and much more. This is the theme used by  [[https://github.com/zzamboni/resume-toolkit][resume-toolkit]].
 
 
 * Ideas

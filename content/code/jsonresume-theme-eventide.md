@@ -8,4 +8,4 @@ weight = 2
 externalURL = "https://github.com/zzamboni/jsonresume-theme-eventide"
 +++
 
-[jsonresume-theme-eventide](https://github.com/zzamboni/jsonresume-theme-eventide) is a  JSON Resume theme, derived from [jsonresume-theme-even](https://github.com/rbardini/jsonresume-theme-even), which I extended for use with [resume-toolkit](https://github.com/zzamboni/resume-toolkit) with features like a Table of Contents, section reordering and custom labels, certificate and organization logos, and much more.
+A JSON Resume theme, derived from [jsonresume-theme-even](https://github.com/rbardini/jsonresume-theme-even), with new features like Table of Contents, section reordering and custom labels, certificate and organization logos, and much more. This is the theme used by  [resume-toolkit](https://github.com/zzamboni/resume-toolkit).

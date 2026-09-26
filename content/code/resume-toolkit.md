@@ -8,4 +8,4 @@ weight = 1
 externalURL = "https://github.com/zzamboni/resume-toolkit/"
 +++
 
-[resume-toolkit](https://github.com/zzamboni/resume-toolkit) is a tool for converting JSON Resume (and optionally, BibTeX files) into HTML and PDF formats.
+A tool for exporting JSON Resume (and optionally, BibTeX files) into HTML and PDF formats.
