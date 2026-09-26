@@ -1,7 +1,8 @@
 {{ with .Params.externalUrl }}
   {{ $url := . }}
   {{ $parsed := urls.Parse $url }}
-  {{ $label := $parsed.Host | default $url }}
+  <!-- {{ $label := $parsed.Host | default $url }} -->
+  {{ $label := $url }}
 
   <div class="external-link-callout max-w-prose print:hidden">
     <a href="{{ $url }}" rel="external noopener noreferrer">
