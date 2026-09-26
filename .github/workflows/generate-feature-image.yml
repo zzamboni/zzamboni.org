@@ -1,0 +1,103 @@
+name: Generate feature image
+
+on:
+  workflow_dispatch:
+    inputs:
+      post:
+        description: "Post path, e.g. content/post/my-post/index.md"
+        required: true
+        type: string
+      extra_prompt:
+        description: "Optional artistic direction"
+        required: false
+        default: ""
+        type: string
+      force:
+        description: "Replace an existing non-default feature image"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out selected branch
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: pip install openai pillow pyyaml
+
+      - name: Generate image and update metadata
+        id: image
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          POST: ${{ inputs.post }}
+          EXTRA_PROMPT: ${{ inputs.extra_prompt }}
+          FORCE: ${{ inputs.force }}
+        run: |
+          args=(generate "$POST")
+          if [[ -n "$EXTRA_PROMPT" ]]; then
+            args+=(--extra-prompt "$EXTRA_PROMPT")
+          fi
+          if [[ "$FORCE" == "true" ]]; then
+            args+=(--force)
+          fi
+          python scripts/generate-feature-image.py "${args[@]}"
+
+      - name: Create feature-image branch
+        id: branch
+        env:
+          SLUG: ${{ steps.image.outputs.slug }}
+        run: |
+          branch="ai-feature-image/${SLUG}-${GITHUB_RUN_ID}"
+          echo "name=$branch" >> "$GITHUB_OUTPUT"
+          git switch -c "$branch"
+
+      - name: Commit generated feature image
+        env:
+          TITLE: ${{ steps.image.outputs.title }}
+        run: |
+          if git diff --quiet && [[ -z "$(git ls-files --others --exclude-standard)" ]]; then
+            echo "No changes generated"
+            exit 1
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/ content-pagescms/ content-org/ assets/img/generated/ 2>/dev/null || true
+          git commit -m "AI feature image: $TITLE"
+          git push --set-upstream origin "${{ steps.branch.outputs.name }}"
+
+      - name: Open pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TITLE: ${{ steps.image.outputs.title }}
+          IMAGE: ${{ steps.image.outputs.image }}
+          BRANCH: ${{ steps.branch.outputs.name }}
+          BASE: ${{ github.ref_name }}
+        run: |
+          gh pr create \
+            --base "$BASE" \
+            --head "$BRANCH" \
+            --title "AI feature image: $TITLE" \
+            --body "$(cat <<EOF
+          Generates a proposed AI feature image for **$TITLE**.
+
+          Image: `$IMAGE`
+
+          This PR is intentionally reviewable rather than auto-merged so the image can be checked in the Netlify deploy preview before accepting it.
+          EOF
+          )"
