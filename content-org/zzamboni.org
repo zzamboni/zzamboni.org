@@ -3660,6 +3660,53 @@ into it.
 
 Now it works!
 
+*** DRAFT When a local timestamp pretends to be UTC :blogging:hugo:pagescms:troubleshooting:
+:PROPERTIES:
+:export_hugo_bundle: 2026-09-26-pages-cms-hugo-timezones
+:export_file_name: index
+:custom_id: pages-cms-hugo-timezones
+:export_hugo_custom_front_matter: :toc false :featureimage img/tram-zurich.jpg
+:END:
+#+begin_description
+A Pages CMS date field gave my new Hugo post the right clock time but the wrong timezone. Here is why the post disappeared, and the workaround I chose.
+#+end_description
+
+I recently added [[https://pagescms.org/][Pages CMS]] as a way to write short posts for this site from a browser or my phone. My usual workflow is Emacs, Org mode, =ox-hugo= and Hugo, so the two editing paths need to agree on the meaning of a post's =date=. This turned out to be trickier than expected.
+
+**** The disappearing post
+
+Pages CMS's date-and-time field started with my local clock time. But with a format that included a literal =Z=, it wrote the same clock numbers as a UTC timestamp. For example, if I chose 14:05 in Zürich in winter, the front matter could contain:
+
+#+begin_src toml
+date = '2026-01-15T14:05:00.000Z'
+#+end_src
+
+The =Z= means *14:05 UTC*, which is 15:05 in Zürich in January. The intended time was 14:05 Zürich time, or 13:05 UTC. During daylight saving time the discrepancy is two hours. Hugo quite reasonably treats a post dated in the future as unpublished, so a post I had just created could be missing from the site. The problem was at the boundary between the browser's local time and the timestamp written to front matter, not in Hugo's parsing of that timestamp.
+
+There is an [[https://github.com/hunvreus/pagescms/pull/410][open Pages CMS pull request]] to convert date fields to UTC on the client. That is the more general fix: preserve the actual instant when writing a timestamp with =Z=.
+
+**** My workaround
+
+For now, my Pages CMS configuration writes a local timestamp *without* a timezone suffix:
+
+#+begin_src yaml
+options:
+  time: true
+  format: "yyyy-MM-dd'T'HH:mm:ss.SSS"
+#+end_src
+
+I also set the site's default timezone in Hugo:
+
+#+begin_src toml
+timeZone = "Europe/Zurich"
+#+end_src
+
+Now =2026-01-15T14:05:00.000= means 14:05 in Zürich when Hugo reads it. The named timezone also takes care of the seasonal switch between CET and CEST; a fixed =+01:00= offset would not. I normalized the post that had already been written with the misleading =Z= so it followed the same convention.
+
+This works for my single-timezone blog, but a timestamp without an offset is ambiguous outside the site's Hugo configuration. If I start editing while traveling or add collaborators in other timezones, the browser's local clock and =Europe/Zurich= could disagree. At that point I would prefer a proper UTC conversion in Pages CMS, while keeping explicit offsets from =ox-hugo= where available.
+
+The tiny lesson: a date can look perfectly ISO 8601-shaped and still be wrong. The =Z= is a claim about the clock numbers, not merely a formatting flourish.
+
 * Local Variables :noexport:ARCHIVE:
 # Local Variables:
 # org-download-image-dir: "images"
