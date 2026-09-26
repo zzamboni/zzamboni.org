@@ -3468,7 +3468,7 @@ CLOSED: [2026-03-28 Sat 01:38]
 :export_hugo_bundle: 2026-03-27-from-personal-cv-pipeline-to-reusable-toolkit
 :export_file_name: index
 :custom_id: from-personal-cv-pipeline-to-reusable-toolkit
-:export_hugo_custom_front_matter: :featureimage img/tram-zurich.jpg :toc true
+:export_hugo_custom_front_matter: :featureimage img/generated/2026-03-27-from-personal-cv-pipeline-to-reusable-toolkit.webp :toc true
 :END:
 #+BEGIN_description
 How my CV pipeline escaped my own resume repo and became a reusable tool, plus the evolution of the HTML theme into its own fork.
