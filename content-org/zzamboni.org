@@ -369,8 +369,6 @@ CLOSED: [2020-12-08 Tue 18:29]
 
 A comic-summarizing utility. Modular and extensible. It's one of my oldest open-source projects, and still in use!
 
-You can find all the information at http://github.com/zzamboni/grabcartoons.
-
 *** DONE resume-toolkit
 CLOSED: [2026-03-31 Tue 20:05]
 :PROPERTIES:

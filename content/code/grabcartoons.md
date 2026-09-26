@@ -10,5 +10,3 @@ aliases = "/grabcartoons"
 +++
 
 A comic-summarizing utility. Modular and extensible. It's one of my oldest open-source projects, and still in use!
-
-You can find all the information at <http://github.com/zzamboni/grabcartoons>.
