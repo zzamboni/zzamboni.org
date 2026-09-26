@@ -87,6 +87,15 @@
 .external-link-callout {
   margin-top: -0.5rem;
   margin-bottom: 1.5rem;
+  border-left: 3px solid rgb(var(--color-primary-500));
+  background: rgba(var(--color-primary-500), 0.04);
+  padding: 0.7rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.dark .external-link-callout {
+  background: rgba(var(--color-primary-500), 0.08);
+  border-color: rgba(var(--color-primary-500), 0.25);
 }
 
 .external-link-callout > a {
