@@ -3371,7 +3371,7 @@ CLOSED: [2026-02-11 Wed 13:21]
 :export_hugo_bundle: 2026-02-10-porting-cv-to-jsonresume
 :export_file_name: index
 :custom_id: porting-cv-to-jsonresume
-:export_hugo_custom_front_matter: :featureimage img/tram-zurich.jpg :toc true
+:export_hugo_custom_front_matter: :featureimage img/generated/2026-02-10-porting-cv-to-jsonresume.webp :toc true
 :END:
 #+BEGIN_description
 How I moved my CV source of truth from Org mode + LaTeX to JSON Resume, and built a pipeline that exports both my CV and publications to HTML and PDF.
