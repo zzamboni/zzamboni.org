@@ -3280,7 +3280,7 @@ CLOSED: [2025-10-22 Wed 23:28]
 :export_hugo_bundle: 2025-10-22-fixing-wake-from-sleep-when-using-ethernet
 :export_file_name: index
 :custom_id: fixing-wake-from-sleep-when-using-ethernet
-:export_hugo_custom_front_matter:  :toc false
+:export_hugo_custom_front_matter:  :toc false :featureimage img/generated/2025-10-22-fixing-wake-from-sleep-when-using-ethernet.webp
 :export_hugo_custom_front_matter+: :series '("Linux on Mac")' :series_order 3
 :END:
 #+begin_description
