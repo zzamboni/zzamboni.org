@@ -40,8 +40,9 @@ SITE_STYLE = """Create a landscape editorial illustration for a personal technic
 Clean, understated, intelligent, and slightly playful. Use natural or believable
 lighting, a restrained composition, and a strong focal point that remains clear
 at thumbnail size. Do not include visible text, captions, logos, watermarks, UI
-labels, or decorative typography. Avoid generic corporate stock-art aesthetics,
-neon cyberpunk imagery, floating code, and gratuitous circuit-board motifs."""
+labels, or decorative typography. Avoid using human figures or hands, lean more towards
+abstract or technological images. Avoid generic corporate stock-art aesthetics,
+neon cyberpunk imagery, floating code, and gratuitous circuit-board or 'hacker' motifs."""
 
 
 def parse_frontmatter(path: Path) -> tuple[str, dict[str, Any], str, str]:
