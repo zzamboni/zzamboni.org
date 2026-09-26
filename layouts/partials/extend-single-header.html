@@ -1,0 +1,13 @@
+{{ with .Params.externalUrl }}
+  {{ $url := . }}
+  {{ $parsed := urls.Parse $url }}
+  {{ $label := $parsed.Host | default $url }}
+
+  <div class="external-link-callout max-w-prose print:hidden">
+    <a href="{{ $url }}" rel="external noopener noreferrer">
+      {{ partial "badge.html" "External link" }}
+      <span class="external-link-domain">{{ $label }}</span>
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+{{ end }}
