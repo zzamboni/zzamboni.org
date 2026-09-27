@@ -223,7 +223,7 @@ export default async function handler(request) {
 
     const content =
       frontmatter +
-      `\n[${url.href}](${url.href})\n\n` +
+      `\n` +
       (commentary ? `${commentary}\n` : "");
 
     const day = date.slice(0, 10);
