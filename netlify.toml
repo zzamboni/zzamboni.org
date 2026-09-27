@@ -4,6 +4,8 @@
 
 [build]
   command = """
+    echo "BUILD_DRAFTS=$BUILD_DRAFTS"
+    echo "CONTEXT=$CONTEXT"
     if [ "$BUILD_DRAFTS" = "true" ]; then
       hugo --gc --minify --buildDrafts -b $URL
     else
