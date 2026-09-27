@@ -8,6 +8,7 @@ draft = true
 toc = false
 showReadingTime = false
 showWordCount = false
+featureimage = "img/generated/2026-09-25-imminent-zero-day-attack-kiteworks-urges-customers-to-shut-down-servers.webp"
 +++
 [https://www.heise.de/en/news/Imminent-Zero-Day-Attack-KiteWorks-Urges-Customers-to-Shut-Down-Servers-11466375.html](https://www.heise.de/en/news/Imminent-Zero-Day-Attack-KiteWorks-Urges-Customers-to-Shut-Down-Servers-11466375.html)
 
