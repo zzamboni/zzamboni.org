@@ -1,5 +1,6 @@
+{{/* Based on Blowfish v3.8.0 terms.html; omit the default text list because page content supplies the tag cloud. Keep card view available. */}}
 {{ define "main" }}
-  {{ .Scratch.Set "scope" "list" }}
+  {{ .Scratch.Set "scope" "terms" }}
   {{ $showHero := .Params.showHero | default site.Params.taxonomy.showHero | default false }}
   {{ if $showHero }}
     {{ $heroStyle := print "hero/" site.Params.taxonomy.heroStyle ".html" }}
