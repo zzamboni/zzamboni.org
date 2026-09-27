@@ -3658,7 +3658,8 @@ into it.
 
 Now it works!
 
-*** DRAFT When a local timestamp pretends to be UTC :blogging:hugo:pagescms:troubleshooting:howto:
+*** DONE When a local timestamp pretends to be UTC :blogging:hugo:pagescms:troubleshooting:howto:
+CLOSED: [2026-09-27 Sun 17:21]
 :PROPERTIES:
 :export_hugo_bundle: 2026-09-26-pages-cms-hugo-timezones
 :export_file_name: index
