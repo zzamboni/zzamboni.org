@@ -7,8 +7,10 @@
     echo "BUILD_DRAFTS=$BUILD_DRAFTS"
     echo "CONTEXT=$CONTEXT"
     if [ "$BUILD_DRAFTS" = "true" ]; then
+      echo "Build command: hugo --gc --minify --buildDrafts -b $URL"
       hugo --gc --minify --buildDrafts -b $URL
     else
+      echo "Build command: hugo --gc --minify -b $URL"
       hugo --gc --minify -b $URL
     fi
   """
