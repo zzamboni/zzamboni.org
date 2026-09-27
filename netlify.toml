@@ -3,11 +3,17 @@
 #------------------
 
 [build]
-  command = "hugo --gc --minify -b $URL"
+  command = """
+    if [ "$BUILD_DRAFTS" = "true" ]; then
+      hugo --gc --minify --buildDrafts -b $URL
+    else
+      hugo --gc --minify -b $URL
+    fi
+  """
   publish = "public"
 
 [build.environment]
-  HUGO_VERSION = "0.164.0"
+  HUGO_VERSION = "0.166.0"
   HUGO_EXTENDED = "true"
   NETLIFY_BUILD_IMAGE = "noble"
   HUGO_ENV = "production"
@@ -18,11 +24,11 @@
   GIT_DEPTH = "1"
 
 [context.production.environment]
-  HUGO_VERSION = "0.164.0"
+  HUGO_VERSION = "0.166.0"
   HUGO_ENV = "production"
 
 [context.deploy-preview.environment]
-  HUGO_VERSION = "0.164.0"
+  HUGO_VERSION = "0.166.0"
 
 #------------------
 # Headers Configuration
