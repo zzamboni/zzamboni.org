@@ -8,5 +8,6 @@ draft = true
 toc = false
 showReadingTime = false
 showWordCount = false
+featureimage = "img/generated/2026-09-27-edition-cnn-com.webp"
 +++
 [https://edition.cnn.com/](https://edition.cnn.com/)
