@@ -148,7 +148,7 @@ async function createGitHubFile(path, content, title) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        message: `Linkblog: ${title}`,
+        message: `auto: linkblog: ${title}`,
         content: Buffer.from(content, "utf8").toString("base64"),
         branch: BRANCH,
       }),

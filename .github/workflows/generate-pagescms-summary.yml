@@ -138,6 +138,12 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add content-pagescms/
-          git commit -m "Generate post summary"
+          mapfile -t posts < <(git diff --cached --name-only -- 'content-pagescms/*.md')
+          if (( ${#posts[@]} == 1 )); then
+            subject="${posts[0]##*/}"
+          else
+            subject="${#posts[@]} posts"
+          fi
+          git commit -m "auto: summary: $subject"
           git push
           
