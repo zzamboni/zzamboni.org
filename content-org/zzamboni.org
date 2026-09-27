@@ -48,7 +48,6 @@ This file is the source for all new and updated content on [[http://zzamboni.org
   - [[#code-section][Code section]]
     - [[#code][Code]]
     - [[#ox-leanpub][ox-leanpub]]
-    - [[#enwrite][Enwrite]]
     - [[#grabcartoons][GrabCartoons]]
     - [[#resume-toolkit][resume-toolkit]]
     - [[#jsonresume-theme-eventide][jsonresume-theme-eventide]]
@@ -348,7 +347,7 @@ A [[https://leanpub.com/][Leanpub]] book exporter for Org mode. Allows writing t
 For a comprehensive introduction to publishing with Org mode and Leanpub, check out my book [[https://leanpub.com/emacs-org-leanpub][Publishing with Emacs, Org-mode and Leanpub]]!
 
 
-*** DONE Enwrite
+*** DONE Enwrite :noexport:
 CLOSED: [2020-12-09 Wed 22:23]
 :PROPERTIES:
 :export_hugo_custom_front_matter: :externalURL https://github.com/zzamboni/enwrite
