@@ -6,7 +6,7 @@ tags = ["blogging", "hugo", "pagescms", "troubleshooting", "howto"]
 draft = true
 creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
 toc = false
-featureimage = "img/tram-zurich.jpg"
+featureimage = "img/generated/2026-09-26-pages-cms-hugo-timezones.webp"
 +++
 
 I recently added [Pages CMS](https://pagescms.org/) as a way to write short posts for this site from a browser or my phone. My usual workflow is Emacs, Org mode, `ox-hugo` and Hugo, so the two editing paths need to agree on the meaning of a post's `date`. This resulted in an unexpected behavior.
