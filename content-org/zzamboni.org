@@ -3663,7 +3663,7 @@ Now it works!
 :export_hugo_bundle: 2026-09-26-pages-cms-hugo-timezones
 :export_file_name: index
 :custom_id: pages-cms-hugo-timezones
-:export_hugo_custom_front_matter: :toc false :featureimage img/tram-zurich.jpg
+:export_hugo_custom_front_matter: :toc false :featureimage img/generated/2026-09-26-pages-cms-hugo-timezones.webp
 :END:
 #+begin_description
 The Pages CMS date field stores the right clock time but the wrong timezone. Here is why the post disappeared, and the workaround I chose.
