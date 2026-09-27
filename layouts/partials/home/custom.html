@@ -1,12 +1,12 @@
-{{ $disableImageOptimization := .Site.Params.disableImageOptimization | default false }}
+{{/* Based on Blowfish v3.8.0 home/background.html; use the site title and page content instead of the author profile. Recent articles are rendered by layouts/index.html. */}}
+{{ $homepageImage := "" }}
 <article class="prose dark:prose-invert max-w-full">
   <div class="relative">
     <div class="absolute inset-x-0 bottom-0 h-1/2"></div>
     <div class="mx-auto max-w-7xl p-0">
       <div class="relative sm:overflow-hidden">
-        <div class="fixed inset-x-0 top-0 -z-10">
+        <div class="pointer-events-none fixed inset-x-0 top-0 -z-10">
           {{ $useDefault := true }}
-          {{ $homepageImage := "" }}
           {{ with .Site.Params.defaultBackgroundImage }}
             {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
               {{ $homepageImage = resources.GetRemote . }}
@@ -23,7 +23,11 @@
               {{ $useDefault = false }}
             {{ end }}
           {{ end }}
+          {{ if and $useDefault (site.Params.backgroundCanvas | default false) }}
+            {{ $homepageImage = "" }}
+          {{ end }}
           {{ if $homepageImage }}
+            {{ $.Store.Set "suppressBackgroundCanvas" true }}
             {{ $style := "" }}
             {{ $defaultPosition := cond $useDefault site.Params.imagePosition false }}
             {{ with $.Params.imagePosition | default $defaultPosition }}
@@ -41,7 +45,7 @@
               class="from-neutral absolute inset-0 h-[1000px] bg-gradient-to-t to-neutral-100 opacity-60 mix-blend-normal dark:from-neutral-800 dark:to-neutral-800"></div>
           {{ end }}
         </div>
-        <div class="relative flex flex-col items-center justify-center px-1 py-1 text-center">
+        <div class="relative z-10 flex flex-col items-center justify-center px-1 py-1 text-center">
           <h1 class="mb-2 py-8 text-4xl font-extrabold text-neutral-800 dark:text-neutral-200">
             {{ default .Site.Title }}
           </h1>
@@ -51,13 +55,10 @@
     </div>
   </div>
 </article>
-<section>
-  {{ partial "recent-articles/main.html" . }}
-</section>
 {{ if .Site.Params.homepage.layoutBackgroundBlur | default false }}
   <div
     id="background-blur"
-    class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+    class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-xl bg-neutral-100/75 dark:bg-neutral-800/60"></div>
   {{ $backgroundBlur := resources.Get "js/background-blur.js" }}
   {{ $backgroundBlur = $backgroundBlur | resources.Minify | resources.Fingerprint (.Site.Params.fingerprintAlgorithm | default "sha512") }}
   <script
