@@ -1,0 +1,7 @@
+{{ with site.Params.deploymentBanner }}
+  <aside class="deployment-banner" aria-label="Deployment notice">
+    <strong>{{ if eq . "draft" }}Draft preview{{ else if eq . "staging" }}Staging site{{ else }}Preview site{{ end }}</strong>
+    <span>·</span>
+    <a href="https://zzamboni.org/">View the production site &rarr;</a>
+  </aside>
+{{ end }}

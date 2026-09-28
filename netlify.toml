@@ -7,6 +7,13 @@
     echo "BUILD_DRAFTS=$BUILD_DRAFTS"
     echo "CONTEXT=$CONTEXT"
     if [ "$BUILD_DRAFTS" = "true" ]; then
+      export HUGO_PARAMS_DEPLOYMENTBANNER=draft
+    elif [ "$BRANCH" = "staging" ]; then
+      export HUGO_PARAMS_DEPLOYMENTBANNER=staging
+    else
+      unset HUGO_PARAMS_DEPLOYMENTBANNER
+    fi
+    if [ "$BUILD_DRAFTS" = "true" ]; then
       echo "Build command: hugo --gc --minify --buildDrafts -b $URL"
       hugo --gc --minify --buildDrafts -b $URL
     else
