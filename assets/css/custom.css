@@ -1,4 +1,14 @@
 /* Non-production Netlify deployments. */
+/* The hidden skip link overlaps the banner until it receives keyboard focus. */
+#the-top,
+#the-top a {
+  pointer-events: none;
+}
+
+#the-top a:focus {
+  pointer-events: auto;
+}
+
 .deployment-banner {
   margin: 0 -1.5rem;
   padding: 0.55rem 1.5rem;
