@@ -9,6 +9,4 @@ externalURL = "https://github.com/zzamboni/grabcartoons/"
 aliases = "/grabcartoons"
 +++
 
-[GrabCartoons](https://github.com/zzamboni/grabcartoons/) is a comic-summarizing utility. It is modular, and it is very easy to write modules for new comics. It's one of my oldest open-source projects, and still in use!
-
-You can find all the information at <http://github.com/zzamboni/grabcartoons>
+A comic-summarizing utility. Modular and extensible. It's one of my oldest open-source projects, and still in use!
