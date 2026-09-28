@@ -5,7 +5,11 @@ on:
     inputs:
       post:
         description: "Post path, e.g. content/post/my-post/index.md"
-        required: true
+        required: false
+        type: string
+      payload:
+        description: "Pages CMS action payload as JSON"
+        required: false
         type: string
       extra_prompt:
         description: "Optional artistic direction"
@@ -45,9 +49,27 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           POST: ${{ inputs.post }}
+          PAGES_CMS_PAYLOAD: ${{ inputs.payload }}
           EXTRA_PROMPT: ${{ inputs.extra_prompt }}
           FORCE: ${{ inputs.force }}
         run: |
+          if [[ -n "$PAGES_CMS_PAYLOAD" ]]; then
+            POST=$(jq -er --arg ref "$GITHUB_REF_NAME" '
+              select(.source == "pages-cms" and .action.name == "generate-image"
+                and .repository.ref == $ref and .context.type == "entry"
+                and .context.name == "posts") | .context.path
+            ' <<< "$PAGES_CMS_PAYLOAD")
+            EXTRA_PROMPT=$(jq -r '.inputs.extra_prompt // ""' <<< "$PAGES_CMS_PAYLOAD")
+            FORCE=$(jq -r '.inputs.force // false | tostring' <<< "$PAGES_CMS_PAYLOAD")
+            if [[ ! "$POST" =~ ^content-pagescms/[^/]+\.md$ ]]; then
+              echo "Unexpected Pages CMS post path: $POST" >&2
+              exit 1
+            fi
+          fi
+          if [[ -z "$POST" || ! -f "$POST" ]]; then
+            echo "Select a saved post before generating an image: $POST" >&2
+            exit 1
+          fi
           args=(generate "$POST")
           if [[ -n "$EXTRA_PROMPT" ]]; then
             args+=(--extra-prompt "$EXTRA_PROMPT")
