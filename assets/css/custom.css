@@ -1,21 +1,24 @@
 /* Non-production Netlify deployments. */
 .deployment-banner {
   margin: 0 -1.5rem;
-  padding: 0.4rem 1.5rem;
+  padding: 0.55rem 1.5rem;
   text-align: center;
   font-size: 0.8rem;
   line-height: 1.5;
-  background: rgba(var(--color-primary-500), 0.12);
-  border-bottom: 1px solid rgba(var(--color-primary-500), 0.3);
+  color: #422006;
+  background: #fde68a;
+  border-bottom: 2px solid #d97706;
 }
 
 .deployment-banner a {
+  color: inherit;
+  font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .deployment-banner a:hover {
-  color: rgb(var(--color-primary-600));
+  color: #92400e;
 }
 
 /* Linkblog entries */
