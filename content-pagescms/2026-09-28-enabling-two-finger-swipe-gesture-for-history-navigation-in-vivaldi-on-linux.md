@@ -1,6 +1,6 @@
 +++
 title = 'Enabling two-finger swipe gesture for history navigation in Vivaldi on Linux'
-summary = "Two-finger trackpad swipes for history navigation in Vivaldi on Linux can be enabled by creating ~/.var/app/com.vivaldi.Vivaldi/config/vivaldi-flags.conf with the line --enable-features=TouchpadOverscrollHistoryNavigation and then restarting Vivaldi."
+summary = 'How to enable this useful gesture in Vivaldi running on Linux.'
 date = '2026-09-28T13:16:00.000'
 tags = [
 	'howto',
