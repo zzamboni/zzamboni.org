@@ -37,6 +37,25 @@ content:
       rename: false
       delete: true
 
+    actions:
+      - name: generate-image
+        label: Generate image
+        scope: entry
+        workflow: generate-feature-image.yml
+        ref: current
+        confirm:
+          title: Generate a feature image?
+          message: Uses the saved post and opens a pull request to review the image.
+          button: Generate image
+        fields:
+          - name: extra_prompt
+            label: Additional artistic direction
+            type: textarea
+          - name: force
+            label: Replace an existing feature image
+            type: checkbox
+            default: false
+
     fields:
       - name: title
         label: Title
