@@ -8,9 +8,12 @@ appear in the Photos menu. No Org source is involved for these mobile posts.
 
 The function reuses `LINKBLOG_SECRET` and `LINKBLOG_GITHUB_TOKEN` from the
 linkblog function. Optional `PHOTOBLOG_SECRET` and `PHOTOBLOG_GITHUB_TOKEN`
-override them. A staging Netlify build (`BRANCH=staging`) writes to the
-`staging` branch; other builds write to `main`. `PHOTOBLOG_BRANCH` overrides
-this selection if needed. Use the staging site's URL while experimenting.
+override them. Set `PHOTOBLOG_BRANCH=staging` in the staging Netlify site's
+environment variables, with the Functions scope, then redeploy. If you later
+promote this function to the production and draft sites, set
+`PHOTOBLOG_BRANCH=main` there. Netlify's built-in `BRANCH` is available to
+builds but not to deployed Functions, so an unset branch is an error instead
+of defaulting to `main`. Use the staging site's URL while experimenting.
 
 ## Build the shortcut
 

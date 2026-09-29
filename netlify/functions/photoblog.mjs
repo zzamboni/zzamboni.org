@@ -2,8 +2,9 @@ import { randomUUID } from "node:crypto";
 
 const OWNER = "zzamboni";
 const REPO = "zzamboni.org";
-const BRANCH = process.env.PHOTOBLOG_BRANCH ||
-  (process.env.BRANCH === "staging" ? "staging" : "main");
+// Netlify exposes BRANCH during builds, but not to deployed Functions.
+// Require an explicit runtime target so staging can never silently write to main.
+const BRANCH = process.env.PHOTOBLOG_BRANCH;
 const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
 const MAX_PHOTOS = 6;
 const MAX_IMAGE_BYTES = 2_500_000;
@@ -105,6 +106,12 @@ export default async function handler(request) {
   }
   if (!process.env.PHOTOBLOG_GITHUB_TOKEN && !process.env.LINKBLOG_GITHUB_TOKEN) {
     return Response.json({ ok: false, error: "Missing GitHub token" }, { status: 500 });
+  }
+  if (!BRANCH || !["main", "staging"].includes(BRANCH)) {
+    return Response.json({
+      ok: false,
+      error: "Set PHOTOBLOG_BRANCH to main or staging in the Netlify site's Function environment",
+    }, { status: 500 });
   }
 
   try {
