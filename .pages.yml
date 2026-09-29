@@ -146,6 +146,11 @@ content:
           rename: true
           extensions: [jpg, png, webp]
 
+      - name: showHero
+        label: Full-page photo background
+        type: boolean
+        default: false
+
       - name: body
         label: Commentary
         description: Photos above are rendered as a gallery before this text.
