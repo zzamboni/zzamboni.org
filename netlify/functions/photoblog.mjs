@@ -101,6 +101,12 @@ async function createPost(files, title) {
 export default async function handler(request) {
   if (request.method !== "POST") return new Response("Method not allowed", { status: 405 });
   const secret = process.env.PHOTOBLOG_SECRET || process.env.LINKBLOG_SECRET;
+  console.info("Photoblog request headers:", {
+    contentType: request.headers.get("content-type"),
+    contentLength: request.headers.get("content-length"),
+    authorizationPresent: request.headers.has("authorization"),
+    authorizationMatches: Boolean(secret) && request.headers.get("authorization") === `Bearer ${secret}`,
+  });
   if (!secret || request.headers.get("authorization") !== `Bearer ${secret}`) {
     return new Response("Unauthorized", { status: 401 });
   }
@@ -116,6 +122,20 @@ export default async function handler(request) {
 
   try {
     const input = await request.json();
+    console.info("Photoblog request body:", {
+      type: Array.isArray(input) ? "array" : typeof input,
+      keys: input && typeof input === "object" ? Object.keys(input) : [],
+      title: typeof input?.title === "string" ? input.title.slice(0, 150) : typeof input?.title,
+      commentary: typeof input?.commentary === "string" ? input.commentary.slice(0, 150) : typeof input?.commentary,
+      date: typeof input?.date === "string" ? input.date.slice(0, 80) : typeof input?.date,
+      draft: input?.draft === true || input?.draft === false ? input.draft : typeof input?.draft,
+      tags: Array.isArray(input?.tags) ? input.tags.slice(0, 10).map(tag => String(tag).slice(0, 80)) : typeof input?.tags,
+      photos: Array.isArray(input?.photos)
+        ? input.photos.map(photo => typeof photo === "string"
+          ? { type: "string", base64Length: photo.length }
+          : { type: typeof photo, keys: photo && typeof photo === "object" ? Object.keys(photo) : [] })
+        : { type: typeof input?.photos },
+    });
     if (!Array.isArray(input.photos) || !input.photos.length || input.photos.length > MAX_PHOTOS) {
       throw new Error(`Provide 1–${MAX_PHOTOS} photos`);
     }
