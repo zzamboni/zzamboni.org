@@ -150,8 +150,11 @@ export default async function handler(request) {
     await createPost(files, title);
 
     return Response.json({
-      ok: true, title, path: `${bundle}/index.md`, branch: BRANCH,
-      editUrl: `https://github.com/${OWNER}/${REPO}/edit/${BRANCH}/${bundle}/index.md`,
+        ok: true,
+        title: title,
+        path: `${bundle}/index.md`,
+        branch: BRANCH,
+        editUrl: `https://github.com/${OWNER}/${REPO}/edit/${BRANCH}/${bundle}/index.md`,
     });
   } catch (error) {
     console.error("Photoblog upload failed:", error);
