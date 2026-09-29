@@ -1,0 +1,10 @@
+{{/* Blowfish normally loads these only when a gallery shortcode is present. */}}
+{{ if .Params.photos }}
+  {{ $algorithm := site.Params.fingerprintAlgorithm | default "sha512" }}
+  {{ $css := resources.Get "css/components/gallery.css" | resources.Fingerprint $algorithm }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{ $packery := resources.Get "lib/packery/packery.pkgd.min.js" | resources.Fingerprint $algorithm }}
+  <script defer src="{{ $packery.RelPermalink }}" integrity="{{ $packery.Data.Integrity }}"></script>
+  {{ $gallery := resources.Get "js/shortcodes/gallery.js" | resources.Minify | resources.Fingerprint $algorithm }}
+  <script src="{{ $gallery.RelPermalink }}" integrity="{{ $gallery.Data.Integrity }}"></script>
+{{ end }}
