@@ -1,0 +1,51 @@
+name: Mirror to GitLab
+
+on:
+  push:
+    branches:
+      - main
+      - staging
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mirror-to-gitlab-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out full history
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Push branch to GitLab
+        env:
+          GITLAB_MIRROR_TOKEN: ${{ secrets.GITLAB_MIRROR_TOKEN }}
+        run: |
+          if [ -z "$GITLAB_MIRROR_TOKEN" ]; then
+            echo "Set the GITLAB_MIRROR_TOKEN repository secret to a GitLab token with write_repository access." >&2
+            exit 1
+          fi
+
+          askpass=$(mktemp)
+          trap 'rm -f "$askpass"' EXIT
+          cat > "$askpass" <<'SH'
+          #!/bin/sh
+          case "$1" in
+            *Username*) printf '%s\n' oauth2 ;;
+            *Password*) printf '%s\n' "$GITLAB_MIRROR_TOKEN" ;;
+          esac
+          SH
+          chmod 700 "$askpass"
+
+          GIT_ASKPASS="$askpass" GIT_TERMINAL_PROMPT=0 \
+            git -c credential.helper= push \
+              https://gitlab.com/zzamboni/zzamboni.org.git \
+              "HEAD:refs/heads/${GITHUB_REF_NAME}"
