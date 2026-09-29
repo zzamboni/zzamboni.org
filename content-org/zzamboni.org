@@ -95,7 +95,8 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#locally-hosting-my-twitter-archive][Locally hosting my Twitter archive]]
     - [[#porting-my-cv-from-orglatex-to-json-resume][Porting my CV from Org+LaTeX to JSON Resume]]
     - [[#resume-toolkit-from-personal-cv-pipeline-to-reusable-toolkit][resume-toolkit: from personal CV pipeline to reusable toolkit]]
-    - [[#vivaldi-browser-configuration-in-linux][Vivaldi browser configuration in Linux]]
+    - [[#when-a-local-timestamp-pretends-to-be-utc][When a local timestamp pretends to be UTC]]
+    - [[#using-pages-cms-alongside-org-mode-and-hugo][Using Pages CMS alongside Org mode and Hugo]]
 
 * Pages
 
@@ -3277,7 +3278,7 @@ CLOSED: [2025-10-22 Wed 23:28]
 :export_hugo_bundle: 2025-10-22-fixing-wake-from-sleep-when-using-ethernet
 :export_file_name: index
 :custom_id: fixing-wake-from-sleep-when-using-ethernet
-:export_hugo_custom_front_matter:  :toc false
+:export_hugo_custom_front_matter:  :toc false :featureimage img/generated/2025-10-22-fixing-wake-from-sleep-when-using-ethernet.webp
 :export_hugo_custom_front_matter+: :series '("Linux on Mac")' :series_order 3
 :END:
 #+begin_description
@@ -3631,31 +3632,190 @@ There is still plenty I could improve, of course. But it now feels like I’m bu
 
 If you use (or are interested in ) JSON Resume, please give [[https://github.com/zzamboni/resume-toolkit][resume-toolkit]] and [[https://github.com/zzamboni/jsonresume-theme-eventide][Eventide]] a try! I would be happy to hear your comments or feedback.
 
-*** DRAFT Vivaldi browser configuration in Linux
+*** DONE When a local timestamp pretends to be UTC :blogging:hugo:pagescms:troubleshooting:howto:
+CLOSED: [2026-09-27 Sun 17:21]
 :PROPERTIES:
-:export_hugo_bundle: 2026-04-11-vivaldi-browser-configuration-in-linux
+:export_hugo_bundle: 2026-09-26-pages-cms-hugo-timezones
 :export_file_name: index
-:custom_id: vivaldi-browser-configuration-in-linux
-:export_hugo_custom_front_matter: :featured_image /images/tram-zurich.jpg :toc false
+:custom_id: pages-cms-hugo-timezones
+:export_hugo_custom_front_matter: :toc false :featureimage img/generated/2026-09-26-pages-cms-hugo-timezones.webp
 :END:
-#+BEGIN_description
-I switched from Zen to Vivaldi on my Linux machine, I'm documenting here some of the configuration tips I have discovered.
-#+END_description
+#+begin_description
+The Pages CMS date field stores the right clock time but the wrong timezone. Here is why the post disappeared, and the workaround I chose.
+#+end_description
 
-**** Enabling two-finger swipe gesture for history navigation
+I recently added [[https://pagescms.org/][Pages CMS]] as a way to write short posts for this site from a browser or my phone. My usual workflow is Emacs, Org mode, =ox-hugo= and Hugo, so the two editing paths need to agree on the meaning of a post's =date=. This resulted in an unexpected behavior.
 
-Using a two-finger swipe on the trackpad to move forward/back in history was not working for me, despite the option being enabled in the Vivaldi settings. I found the answer [[https://forum.vivaldi.net/post/867957][in this Vivaldi forum post]]:
+**** The disappearing post
 
-#+begin_quote
-Create a file =~/.var/app/com.vivaldi.Vivaldi/config/vivaldi-flags.conf=
-and put that line
-#+begin_src sh
---enable-features=TouchpadOverscrollHistoryNavigation
+I first noticed the problem when, after creating a new post using Pages CMS, the new post was not rendered by Hugo when rebuilding my website. After some digging, I realized that Pages CMS's date-and-time field stores my local clock time, but with a format that includes a literal =Z=, representing a UTC timestamp. For example, if my post was created at 14:05 in Zürich in winter, the front matter written by Pages CMS would contain:
+
+#+begin_src toml
+date = '2026-01-15T14:05:00.000Z'
 #+end_src
-into it.
-#+end_quote
 
-Now it works!
+The =Z= means *14:05 UTC*, which is 15:05 in Zürich in January. The intended time was 14:05 Zürich time, or 13:05 UTC. During daylight saving time the discrepancy is two hours. Hugo treats a post dated in the future as unpublished, so the post I had just created would be missing from the site. The problem was at the boundary between the browser's local time and the timestamp written to front matter, not in Hugo's parsing of that timestamp.
+
+There is an [[https://github.com/hunvreus/pagescms/pull/410][open Pages CMS pull request]] to convert date fields to UTC on the client. That is the more general fix: preserve the actual instant when writing a timestamp with =Z=.
+
+**** My workaround
+
+For now, my Pages CMS configuration writes a local timestamp *without* a timezone suffix:
+
+#+begin_src yaml
+options:
+  time: true
+  format: "yyyy-MM-dd'T'HH:mm:ss.SSS"
+#+end_src
+
+I also set the site's default timezone in Hugo:
+
+#+begin_src toml
+timeZone = "Europe/Zurich"
+#+end_src
+
+Now =2026-01-15T14:05:00.000= means 14:05 in Zürich when Hugo reads it. The named timezone also takes care of the seasonal switch between CET and CEST, since it gets interpreted correctly according to the time of the year.
+
+This works for my single-timezone blog, but a timestamp without an offset is ambiguous outside the site's Hugo configuration. If I start editing while traveling or add collaborators in other timezones, the browser's local clock and =Europe/Zurich= could disagree. At that point I would prefer a proper UTC conversion in Pages CMS, while keeping explicit offsets from =ox-hugo= where available. I hope the pull request I mentioned above gets merged soon!
+
+*** DRAFT Using Pages CMS alongside Org mode and Hugo :blogging:hugo:pagescms:howto:
+:PROPERTIES:
+:export_date: <2026-09-29 Tue 13:02>
+:export_hugo_bundle: 2026-09-28-using-pagescms-alongside-org-and-hugo
+:export_file_name: index
+:export_hugo_custom_front_matter: :toc true :featureimage img/generated/2026-09-28-using-pagescms-alongside-org-and-hugo.webp
+:END:
+#+begin_description
+How I added a lightweight writing path to my Org-mode blog, and the small configuration choices that make Pages CMS, Hugo, GitHub Actions and Netlify work together.
+#+end_description
+
+My main blogging setup is still Emacs, Org mode and =ox-hugo=. I like having the source in one Org file, and I have no plans to give that up for longer posts. But a quick note or link is a different kind of writing. Over time, I have realized that for quick posts, friction matters a lot more than for longer ones. If I have to open my laptop, find the right heading, export, preview, commit and push, I might never write it down.
+
+I wanted a low-friction path from an idea on my phone to a post in the same Hugo site. [[https://pagescms.org/][Pages CMS]] edits files in my GitHub repository, so it fits the existing Hugo and Netlify pipeline without introducing a new content database. The standard installation was uneventful; the interesting part was making this second authoring path coexist with the first one. In this post I focus on the decisions and the relevant pieces of [[https://github.com/zzamboni/zzamboni.org][my configuration]].
+
+**** Two authoring paths, one Hugo section
+
+The Org file =content-org/zzamboni.org= remains the source for my longer articles; =ox-hugo= exports those to =content/post/=. Pages CMS writes its own Markdown files under =content-pagescms/=. A Hugo module mount makes those files appear in the same =content/post= section at build time. I added the following to my [[https://github.com/zzamboni/zzamboni.org/blob/main/config/_default/module.toml][module.toml]] Hugo configuration file:
+
+#+begin_src toml
+[[mounts]]
+source = "content"
+target = "content"
+
+[[mounts]]
+source = "content-pagescms"
+target = "content/post"
+#+end_src
+
+This keeps ownership clear. If a post came from Org, I edit the Org source, not just its generated Markdown. If it came from Pages CMS, its Markdown file is the source. Hugo and Blowfish see both as ordinary posts.
+
+In =.pages.yml=, I use =format: toml-frontmatter= to match the existing posts, and a dated, title-based filename so that the repository remains understandable outside the CMS:
+
+#+begin_src yaml
+content:
+  - name: posts
+    type: collection
+    path: content-pagescms
+    format: toml-frontmatter
+    filename: "{year}-{month}-{day}-{primary}.md"
+#+end_src
+
+In the =.pages.yml= field configuration I put the title, summary and body near the top of the editor and leave the less frequently changed metadata below. Posts default to draft, so saving a new post does not immediately publish it.
+
+#+begin_src yaml
+fields:
+  - name: title
+    label: Title
+    type: string
+    required: true
+
+  - name: externalUrl
+    label: External link
+    type: string
+
+  - name: summary
+    label: Summary
+    type: text
+    options:
+      maxlength: 400
+
+  - name: body
+    label: Body
+    type: rich-text
+    
+  - name: date
+    label: Date
+    type: date
+    required: true
+    options:
+      time: true
+      format: "yyyy-MM-dd'T'HH:mm:ss.SSS"
+
+  - name: tags
+    label: Tags
+    type: string
+    list: true
+
+  - name: draft
+    label: Draft
+    type: boolean
+    default: true
+
+  - name: featureimage
+    label: Feature image
+    type: string
+    default: "img/tram-zurich.jpg"
+    hidden: false
+
+  - name: toc
+    label: Table of contents
+    type: boolean
+    default: false
+#+end_src
+
+**** The date is local time, and I mean it
+
+The least obvious setting is the date format:
+
+#+begin_src yaml
+      - name: date
+        type: date
+        required: true
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm:ss.SSS"
+#+end_src
+
+There is deliberately no =Z= or timezone offset. The timestamp is a Zürich wall-clock time, and Hugo's =timeZone= is set to =Europe/Zurich=. I arrived at this after Pages CMS wrote a local clock time with a =Z= suffix, which made Hugo interpret it as UTC and sometimes hide a just-created post as a future post. I wrote up [[/post/2026-09-26-pages-cms-hugo-timezones/][the bug and the tradeoff in more detail]] separately.
+
+This is a pragmatic convention for a personal site with one expected timezone. It would need revisiting if I began editing across timezones or with collaborators. The small Netlify function behind my iOS link-sharing shortcut follows the same rule: it converts incoming timestamps to Zürich local time before storing them without an offset.
+
+**** Link posts still belong in the archive
+
+For quick links, a Pages CMS post can have an =externalUrl= field. The article list sends the title directly to the external site and gives link posts their own compact styling. The local page remains available for my commentary and as an archive, with a visible callout showing the full destination URL. I have created an iOS Share Sheet shortcut (topic for a future post!) to create one of these posts through a Netlify function, but I can also edit it in Pages CMS afterward.
+
+**** Help with summaries, review for images
+
+If I leave the summary blank on a Pages CMS post, a GitHub Actions workflow generates a short one and commits it back to the file. A summary I have written myself is left alone. I also gave machine-made commits an =auto:= prefix, so I can filter them out while reviewing changes between =staging= and =main=.
+
+Images have a different approval path. In the entry editor I added a *Generate image* action:
+
+#+begin_src yaml
+    actions:
+      - name: generate-image
+        label: Generate image
+        scope: entry
+        workflow: generate-feature-image.yml
+        ref: current
+#+end_src
+
+After I save the post, the button dispatches the workflow on the branch I am editing. The dialog also offers extra artistic direction and a checkbox to replace an existing image. The workflow reads the saved Markdown, creates a visual brief, generates a landscape WebP under =assets/img/generated/=, and sets =featureimage= to the corresponding =img/generated/...webp= path. Keeping the image in Hugo's =assets/= pipeline matters for Blowfish's resource lookup. For an Org-authored post, the same workflow can be run manually and updates the matching Org metadata as well.
+
+The image workflow opens a pull request instead of merging its result. I can inspect the image and the Netlify deploy preview before accepting it. That little review step is especially useful for images: even an attractive result can be wrong for the post.
+
+**** The useful boundary
+
+The two writing paths now have distinct jobs. Org mode is where I develop a deeper article; Pages CMS is where I can capture and edit a short post without turning it into a laptop project. Both still end up as files in Git and pages built by Hugo. The configuration is a collection of small choices, but together they remove just enough friction that a quick idea has a reasonable chance of becoming an actual post.
 
 * Local Variables :noexport:ARCHIVE:
 # Local Variables:
