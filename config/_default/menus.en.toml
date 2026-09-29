@@ -7,7 +7,7 @@ pageRef = "post"
 weight = 10
 
 [[main]]
-title = "Photos"
+name = "Photos"
 url = "/tags/photos/"
 weight = 15
 
