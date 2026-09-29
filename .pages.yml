@@ -137,6 +137,16 @@ content:
         label: Summary
         type: text
 
+      - name: photos
+        label: Photos
+        type: image
+        options:
+          multiple:
+            max: 20
+          unique: true
+          rename: true
+          extensions: [jpg, png, webp]
+
       - name: body
         label: Gallery and commentary
         description: Keep the gallery shortcodes; edit the commentary below them.
