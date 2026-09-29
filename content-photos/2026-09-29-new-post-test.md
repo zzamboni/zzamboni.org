@@ -6,4 +6,7 @@ photos = [
 showHero = false
 date = '2026-09-29T22:27:00.000'
 draft = true
+tags = [
+	'photos',
+]
 +++
