@@ -116,7 +116,7 @@ content:
       layout: tree
       node:
         filename: index.md
-        hideDirs: others
+        hideDirs: all
       primary: title
       fields: [title, date, draft]
       sort: [date, title]
