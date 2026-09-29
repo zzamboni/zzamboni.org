@@ -7,6 +7,7 @@ tags = ["blogging", "hugo", "pagescms", "howto"]
 draft = true
 creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
 toc = true
+featureimage = "img/generated/2026-09-28-using-pagescms-alongside-org-and-hugo.webp"
 +++
 
 My main blogging setup is still Emacs, Org mode and `ox-hugo`. I like having the source in one Org file, and I have no plans to give that up for longer posts. But a quick note or link is a different kind of writing. Over time, I have realized that for quick posts, friction matters a lot more than for longer ones. If I have to open my laptop, find the right heading, export, preview, commit and push, I might never write it down.
