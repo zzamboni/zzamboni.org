@@ -3683,7 +3683,7 @@ This works for my single-timezone blog, but a timestamp without an offset is amb
 :export_date: <2026-09-29 Tue 13:02>
 :export_hugo_bundle: 2026-09-28-using-pagescms-alongside-org-and-hugo
 :export_file_name: index
-:export_hugo_custom_front_matter: :draft true :toc true
+:export_hugo_custom_front_matter: :toc true
 :END:
 #+begin_description
 How I added a lightweight writing path to my Org-mode blog, and the small configuration choices that make Pages CMS, Hugo, GitHub Actions and Netlify work together.

@@ -6,7 +6,6 @@ date = 2026-09-29T13:02:00+02:00
 tags = ["blogging", "hugo", "pagescms", "howto"]
 draft = true
 creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
-draft = true
 toc = true
 +++
 
