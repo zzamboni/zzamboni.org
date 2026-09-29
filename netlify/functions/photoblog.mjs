@@ -151,25 +151,21 @@ export default async function handler(request) {
       .map(String).map(tag => tag.trim()).filter(Boolean)
       .filter((tag, index, all) => all.indexOf(tag) === index);
     const bundle = `content-photos/${date.slice(0, 10)}-${slugify(title)}-${randomUUID().slice(0, 8)}`;
+    const mediaFolder = `static/img/photos/${bundle.split("/").pop()}`;
     const images = photos.map((photo, i) => ({
-      path: `${bundle}/${i === 0 ? "feature" : String(i + 1).padStart(2, "0")}.${photo.extension}`,
+      path: `${mediaFolder}/${i === 0 ? "feature" : String(i + 1).padStart(2, "0")}.${photo.extension}`,
       bytes: photo.bytes,
     }));
+    const photoPaths = images.map(image => `/${image.path.slice("static/".length)}`);
     const frontmatter = [
       "+++", `title = ${tomlString(title)}`, `date = ${tomlString(date)}`,
       `slug = ${tomlString(bundle.split("/").pop())}`,
       `summary = ${tomlString(commentary.replace(/\s+/g, " ").slice(0, 280) || title)}`,
       `tags = ${JSON.stringify(tags)}`, `draft = ${input.draft === false ? "false" : "true"}`, "toc = false",
+      `photos = ${JSON.stringify(photoPaths)}`,
       "showHero = false", "showReadingTime = false", "showWordCount = false", "+++", "",
     ].join("\n");
-    const gallery = [
-      "{{< gallery >}}",
-      ...images.map((image, i) =>
-        `{{< figure src="${image.path.split("/").pop()}" alt="Photo ${i + 1}" figureClass="${images.length === 1 ? "grid-w100" : "grid-w50 md:grid-w33"}" >}}`
-      ),
-      "{{< /gallery >}}", "",
-    ].join("\n");
-    const markdown = frontmatter + gallery + (commentary ? `\n${commentary}\n` : "");
+    const markdown = frontmatter + (commentary ? `${commentary}\n` : "");
     const files = [
       { path: `${bundle}/index.md`, bytes: Buffer.from(markdown, "utf8") },
       ...images.map((image, i) => ({ path: image.path, bytes: photos[i].bytes })),

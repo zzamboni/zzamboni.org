@@ -6,11 +6,8 @@ summary = "Two photos"
 tags = ["photos"]
 draft = false
 toc = false
+photos = ["/img/photos/2026-09-29-two-photos-caa6bff7/feature.jpg", "/img/photos/2026-09-29-two-photos-caa6bff7/02.jpg"]
 showHero = false
 showReadingTime = false
 showWordCount = false
 +++
-{{< gallery >}}
-{{< figure src="feature.jpg" alt="Photo 1" figureClass="grid-w50 md:grid-w33" >}}
-{{< figure src="02.jpg" alt="Photo 2" figureClass="grid-w50 md:grid-w33" >}}
-{{< /gallery >}}

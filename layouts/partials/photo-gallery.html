@@ -1,0 +1,23 @@
+{{ with .Params.photos }}
+  {{ $title := $.Title }}
+  {{ $class := cond (eq (len .) 1) "grid-w100" "grid-w50 md:grid-w33" }}
+  <div class="gallery">
+    {{ range $i, $photo := . }}
+      {{ $path := strings.TrimPrefix "/" $photo }}
+      {{ $image := resources.Get $path }}
+      <figure class="{{ $class }}">
+        {{ with $image }}
+          <img class="my-0 rounded-md" loading="lazy" decoding="async"
+            src="{{ (.Resize "800x").RelPermalink }}"
+            srcset="{{ (.Resize "800x").RelPermalink }} 800w, {{ (.Resize "1280x").RelPermalink }} 1280w"
+            sizes="(min-width: 768px) 50vw, 65vw"
+            data-zoom-src="{{ .RelPermalink }}"
+            alt="{{ $title }} (photo {{ add $i 1 }})" />
+        {{ else }}
+          <img class="my-0 rounded-md" loading="lazy" src="{{ $photo | relURL }}"
+            alt="{{ $title }} (photo {{ add $i 1 }})" />
+        {{ end }}
+      </figure>
+    {{ end }}
+  </div>
+{{ end }}
