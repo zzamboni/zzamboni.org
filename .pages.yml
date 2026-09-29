@@ -171,6 +171,7 @@ content:
         label: Tags
         type: string
         list: true
+        default: [ "photos" ]
 
       - name: draft
         label: Draft
