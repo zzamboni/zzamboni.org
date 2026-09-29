@@ -138,8 +138,8 @@ content:
         type: text
 
       - name: body
-        label: Gallery and commentary
-        description: Keep the gallery shortcodes; edit the commentary below them.
+        label: Commentary
+        description: Photos above are rendered as a gallery before this text.
         type: code
         options:
           format: markdown

@@ -9,3 +9,11 @@ target = "content/post"
 [[mounts]]
 source = "content-photos"
 target = "content/post"
+
+[[mounts]]
+source = "assets"
+target = "assets"
+
+[[mounts]]
+source = "static/img"
+target = "assets/img"

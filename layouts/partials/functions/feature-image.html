@@ -1,0 +1,13 @@
+{{/* The first CMS photo is the thumbnail; preserve Blowfish's normal fallback elsewhere. */}}
+{{ with .Params.photos }}
+  {{ with index . 0 }}
+    {{ return (strings.TrimPrefix "/" .) }}
+  {{ end }}
+{{ end }}
+{{ $featureImage := .Params.featureimage }}
+{{ if not $featureImage }}
+  {{ range .Translations }}
+    {{ with .Params.featureimage }}{{ $featureImage = . }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ return $featureImage }}
