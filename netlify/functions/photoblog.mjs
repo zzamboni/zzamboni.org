@@ -150,7 +150,7 @@ export default async function handler(request) {
     const tags = ["photos", ...(Array.isArray(input.tags) ? input.tags : [])]
       .map(String).map(tag => tag.trim()).filter(Boolean)
       .filter((tag, index, all) => all.indexOf(tag) === index);
-    const bundle = `content/post/${date.slice(0, 10)}-${slugify(title)}-${randomUUID().slice(0, 8)}`;
+    const bundle = `content-photos/${date.slice(0, 10)}-${slugify(title)}-${randomUUID().slice(0, 8)}`;
     const images = photos.map((photo, i) => ({
       path: `${bundle}/${i === 0 ? "feature" : String(i + 1).padStart(2, "0")}.${photo.extension}`,
       bytes: photo.bytes,
@@ -181,7 +181,8 @@ export default async function handler(request) {
         title: title,
         path: `${bundle}/index.md`,
         branch: BRANCH,
-        editUrl: `https://github.com/${OWNER}/${REPO}/edit/${BRANCH}/${bundle}/index.md`,
+        editUrl: `https://app.pagescms.org/${OWNER}/${REPO}/${BRANCH}/collection/photos/edit/${encodeURIComponent(`${bundle}/index.md`)}`,
+        githubUrl: `https://github.com/${OWNER}/${REPO}/edit/${BRANCH}/${bundle}/index.md`,
     });
   } catch (error) {
     console.error("Photoblog upload failed:", error);
