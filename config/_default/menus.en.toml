@@ -7,6 +7,11 @@ pageRef = "post"
 weight = 10
 
 [[main]]
+title = "Photos"
+url = "/tags/photos/"
+weight = 15
+
+[[main]]
 title = "Books"
 pageRef = "book"
 identifier = "ianSwY3pMg"
