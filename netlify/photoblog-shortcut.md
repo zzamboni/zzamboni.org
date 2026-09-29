@@ -1,10 +1,13 @@
 # Photo posts from iOS
 
 The staging deployment accepts `POST /api/photoblog`. It creates a draft Hugo
-page bundle in `content/post/`, with the first image named `feature.jpg` (or
+page bundle in `content-photos/`, mounted into Hugo's `content/post/`, with the first image named `feature.jpg` (or
 `feature.png` / `feature.webp`) for Blowfish's article list. The body uses
 Blowfish's `gallery` and `figure` shortcodes. The `photos` tag makes the post
 appear in the Photos menu. No Org source is involved for these mobile posts.
+The Photos collection in Pages CMS edits the bundle's `index.md`. Its body
+uses a Markdown code editor so the gallery shortcodes remain intact; photo
+files stay alongside it in the bundle.
 
 The function reuses `LINKBLOG_SECRET` and `LINKBLOG_GITHUB_TOKEN` from the
 linkblog function. Optional `PHOTOBLOG_SECRET` and `PHOTOBLOG_GITHUB_TOKEN`
@@ -38,8 +41,10 @@ of defaulting to `main`. Use the staging site's URL while experimenting.
    values for the corresponding keys. Store the secret only in your own
    shortcut. A JSON response contains `editUrl` for the new draft.
 6. Use **Get Dictionary Value** for `editUrl` from the response, then **Open
-   URLs** if you want to inspect the Markdown in GitHub. Review the staging
-   draft before publishing it by changing `draft = true` to `false`.
+   URLs** if you want to review the post in Pages CMS. `githubUrl` in the
+   response opens the raw Markdown editor in GitHub. Review the staging
+   draft in the Pages CMS Photos collection before publishing it by changing
+   the Draft toggle to false.
 
 The staging site currently does not build drafts. To see an upload there,
 include `draft: false` in the shortcut's JSON dictionary while testing, or
