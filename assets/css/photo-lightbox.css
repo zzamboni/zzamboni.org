@@ -6,3 +6,4 @@
   position: absolute; bottom: max(1rem, env(safe-area-inset-bottom)); left: 50%;
   transform: translateX(-50%); color: white; pointer-events: none;
 }
+.glightbox-container .glightbox-button-hidden { display: none; }
