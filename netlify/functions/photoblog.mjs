@@ -6,7 +6,7 @@ const REPO = "zzamboni.org";
 // Require an explicit runtime target so staging can never silently write to main.
 const BRANCH = process.env.PHOTOBLOG_BRANCH;
 const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
-const MAX_PHOTOS = 6;
+const MAX_PHOTOS = 20;
 const MAX_IMAGE_BYTES = 2_500_000;
 const MAX_TOTAL_BYTES = 3_000_000;
 
@@ -39,7 +39,7 @@ function photoBytes(value) {
     throw new Error("Invalid base64 photo");
   }
   const bytes = Buffer.from(base64, "base64");
-  if (bytes.length > MAX_IMAGE_BYTES) throw new Error("Photo exceeds 2.5 MB; resize it in Shortcuts");
+  //if (bytes.length > MAX_IMAGE_BYTES) throw new Error("Photo exceeds 2.5 MB; resize it in Shortcuts");
   if (bytes.subarray(0, 3).equals(Buffer.from([0xff, 0xd8, 0xff]))) return { bytes, extension: "jpg" };
   if (bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))) return { bytes, extension: "png" };
   if (bytes.toString("ascii", 0, 4) === "RIFF" && bytes.toString("ascii", 8, 12) === "WEBP") return { bytes, extension: "webp" };
@@ -140,9 +140,9 @@ export default async function handler(request) {
       throw new Error(`Provide 1–${MAX_PHOTOS} photos`);
     }
     const photos = input.photos.map(photoBytes);
-    if (photos.reduce((sum, photo) => sum + photo.bytes.length, 0) > MAX_TOTAL_BYTES) {
-      throw new Error("Photos exceed 3 MB total; resize or send fewer photos");
-    }
+    // if (photos.reduce((sum, photo) => sum + photo.bytes.length, 0) > MAX_TOTAL_BYTES) {
+    //   throw new Error("Photos exceed 3 MB total; resize or send fewer photos");
+    // }
 
     const date = zurichDate(input.date);
     const title = String(input.title || "").trim().replace(/\s+/g, " ").slice(0, 150) || `Photos from ${date.slice(0, 10)}`;
