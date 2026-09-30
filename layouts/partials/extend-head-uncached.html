@@ -7,4 +7,8 @@
   <script defer src="{{ $packery.RelPermalink }}" integrity="{{ $packery.Data.Integrity }}"></script>
   {{ $gallery := resources.Get "js/shortcodes/gallery.js" | resources.Minify | resources.Fingerprint $algorithm }}
   <script src="{{ $gallery.RelPermalink }}" integrity="{{ $gallery.Data.Integrity }}"></script>
+  {{ $lightboxCSS := resources.Get "css/photo-lightbox.css" | resources.Minify | resources.Fingerprint $algorithm }}
+  <link rel="stylesheet" href="{{ $lightboxCSS.RelPermalink }}" integrity="{{ $lightboxCSS.Data.Integrity }}">
+  {{ $lightboxJS := resources.Get "js/photo-lightbox.js" | resources.Minify | resources.Fingerprint $algorithm }}
+  <script defer src="{{ $lightboxJS.RelPermalink }}" integrity="{{ $lightboxJS.Data.Integrity }}"></script>
 {{ end }}
