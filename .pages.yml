@@ -123,9 +123,8 @@ content:
       search: [title, summary, tags]
 
     operations:
-      create: false
       rename: false
-      delete: false
+      delete: true
 
     fields:
       - name: title
