@@ -4,6 +4,8 @@
 .glightbox-container .gclose { top: max(15px, env(safe-area-inset-top)); right: max(15px, env(safe-area-inset-right)); }
 .photo-lightbox-counter {
   position: absolute; bottom: max(1rem, env(safe-area-inset-bottom)); left: 50%;
+  z-index: 10000; /* Above GLightbox's .gcontainer (9999), including slide animations. */
   transform: translateX(-50%); color: white; pointer-events: none;
+  padding: .25rem .65rem; border-radius: .5rem; background: rgba(0, 0, 0, .75);
 }
 .glightbox-container .glightbox-button-hidden { display: none; }
