@@ -1,13 +1,16 @@
 {{ with .Params.photos }}
   {{ $title := $.Title }}
   {{ $class := cond (eq (len .) 1) "grid-w100" "grid-w50 md:grid-w33" }}
-  <div class="gallery">
+  <div class="gallery photo-gallery">
     {{ range $i, $photo := . }}
       {{ $path := strings.TrimPrefix "/" $photo }}
       {{ $image := resources.Get $path }}
+      {{ $original := $photo | relURL }}
+      {{ with $image }}{{ $original = .RelPermalink }}{{ end }}
       <figure class="{{ $class }}">
+        <a href="{{ $original }}">
         {{ with $image }}
-          <img class="my-0 rounded-md w-full h-auto" loading="lazy" decoding="async"
+          <img class="nozoom my-0 rounded-md w-full h-auto" loading="lazy" decoding="async"
             width="{{ .Width }}" height="{{ .Height }}"
             src="{{ (.Resize "800x").RelPermalink }}"
             srcset="{{ (.Resize "800x").RelPermalink }} 800w, {{ (.Resize "1280x").RelPermalink }} 1280w"
@@ -15,10 +18,18 @@
             data-zoom-src="{{ .RelPermalink }}"
             alt="{{ $title }} (photo {{ add $i 1 }})" />
         {{ else }}
-          <img class="my-0 rounded-md w-full h-auto" loading="lazy" src="{{ $photo | relURL }}"
+          <img class="nozoom my-0 rounded-md w-full h-auto" loading="lazy" src="{{ $photo | relURL }}"
             alt="{{ $title }} (photo {{ add $i 1 }})" />
         {{ end }}
+        </a>
       </figure>
     {{ end }}
   </div>
+  <dialog class="photo-lightbox" aria-label="{{ i18n "photo_lightbox" }}">
+    <button type="button" data-previous aria-label="{{ i18n "photo_previous" }}">‹</button>
+    <img class="nozoom" alt="">
+    <button type="button" data-next aria-label="{{ i18n "photo_next" }}">›</button>
+    <button type="button" data-close aria-label="{{ i18n "photo_close" }}">×</button>
+    <span data-counter role="status" aria-live="polite"></span>
+  </dialog>
 {{ end }}
