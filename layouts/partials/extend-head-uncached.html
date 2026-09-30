@@ -7,6 +7,10 @@
   <script defer src="{{ $packery.RelPermalink }}" integrity="{{ $packery.Data.Integrity }}"></script>
   {{ $gallery := resources.Get "js/shortcodes/gallery.js" | resources.Minify | resources.Fingerprint $algorithm }}
   <script src="{{ $gallery.RelPermalink }}" integrity="{{ $gallery.Data.Integrity }}"></script>
+  {{ $vendorCSS := resources.Get "lib/glightbox/glightbox.min.css" | resources.Fingerprint $algorithm }}
+  <link rel="stylesheet" href="{{ $vendorCSS.RelPermalink }}" integrity="{{ $vendorCSS.Data.Integrity }}">
+  {{ $vendorJS := resources.Get "lib/glightbox/glightbox.min.js" | resources.Fingerprint $algorithm }}
+  <script defer src="{{ $vendorJS.RelPermalink }}" integrity="{{ $vendorJS.Data.Integrity }}"></script>
   {{ $lightboxCSS := resources.Get "css/photo-lightbox.css" | resources.Minify | resources.Fingerprint $algorithm }}
   <link rel="stylesheet" href="{{ $lightboxCSS.RelPermalink }}" integrity="{{ $lightboxCSS.Data.Integrity }}">
   {{ $lightboxJS := resources.Get "js/photo-lightbox.js" | resources.Minify | resources.Fingerprint $algorithm }}
