@@ -153,7 +153,7 @@ content:
 
       - name: body
         label: Commentary
-        description: Photos above are rendered as a gallery before this text.
+        description: Commentary is displayed above the photo gallery.
         type: code
         options:
           format: markdown
