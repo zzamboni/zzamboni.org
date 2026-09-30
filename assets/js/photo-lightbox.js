@@ -1,54 +1,61 @@
 (() => {
-  const dialog = document.querySelector('.photo-lightbox');
-  if (!dialog) return;
-  const image = dialog.querySelector('img');
-  const counter = dialog.querySelector('[data-counter]');
-  const previous = dialog.querySelector('[data-previous]');
-  const next = dialog.querySelector('[data-next]');
-  let photos = [], index = 0, origin, touch;
-  function show(position) {
-    index = (position + photos.length) % photos.length;
-    image.src = photos[index].href;
-    image.alt = photos[index].querySelector('img').alt;
-    counter.textContent = `${index + 1} / ${photos.length}`;
-    previous.hidden = next.hidden = photos.length < 2;
-  }
+  if (typeof GLightbox !== 'function') return;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('.photo-gallery').forEach(gallery => {
     const links = [...gallery.querySelectorAll('a')];
-    links.forEach((link, position) => link.addEventListener('click', event => {
+    if (!links.length) return;
+    let origin, counter;
+    const lightbox = GLightbox({
+      selector: null,
+      elements: links.map(link => ({
+        href: link.href, type: 'image', alt: link.querySelector('img').alt
+      })),
+      loop: true,
+      touchNavigation: true,
+      keyboardNavigation: true,
+      zoomable: true,
+      draggable: true,
+      preload: true,
+      openEffect: reducedMotion ? 'none' : 'fade',
+      closeEffect: reducedMotion ? 'none' : 'fade',
+      slideEffect: reducedMotion ? 'none' : 'slide'
+    });
+    const updateCounter = () => {
+      if (!counter) return;
+      counter.textContent = `${lightbox.index + 1} / ${links.length}`;
+    };
+    lightbox.on('open', () => {
+      const modal = lightbox.modal;
+      modal.setAttribute('aria-label', gallery.dataset.label);
+      modal.setAttribute('aria-modal', 'true');
+      [['.gprev', 'previous'], ['.gnext', 'next'], ['.gclose', 'close']].forEach(([selector, label]) => {
+        modal.querySelector(selector).setAttribute('aria-label', gallery.dataset[label]);
+      });
+      counter = document.createElement('span');
+      counter.className = 'photo-lightbox-counter';
+      counter.setAttribute('role', 'status');
+      counter.setAttribute('aria-live', 'polite');
+      modal.appendChild(counter);
+      updateCounter();
+      modal.querySelector('.gclose').focus();
+      // Keep Tab and Shift-Tab inside the viewer, including single-photo galleries.
+      modal.addEventListener('keydown', event => {
+        if (event.key !== 'Tab') return;
+        event.preventDefault();
+        event.stopPropagation();
+        const buttons = [...modal.querySelectorAll('.gbtn')].filter(button =>
+          !button.classList.contains('disabled') && !button.classList.contains('glightbox-button-hidden'));
+        const index = buttons.indexOf(document.activeElement);
+        buttons[(index + (event.shiftKey ? -1 : 1) + buttons.length) % buttons.length].focus();
+      });
+    });
+    lightbox.on('slide_changed', updateCounter);
+    lightbox.on('close', () => origin?.focus({ preventScroll: true }));
+    links.forEach((link, index) => link.addEventListener('click', event => {
       if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
-      photos = links;
       origin = link;
-      show(position);
-      dialog.showModal();
-      document.documentElement.classList.add('photo-lightbox-open');
+      lightbox.openAt(index);
     }));
-  });
-  previous.addEventListener('click', () => show(index - 1));
-  next.addEventListener('click', () => show(index + 1));
-  dialog.querySelector('[data-close]').addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
-  dialog.addEventListener('keydown', event => {
-    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-      event.preventDefault();
-      show(index + (event.key === 'ArrowLeft' ? -1 : 1));
-    }
-  });
-  image.addEventListener('touchstart', event => {
-    touch = event.touches.length === 1 ? { x: event.touches[0].clientX, y: event.touches[0].clientY } : null;
-  }, { passive: true });
-  image.addEventListener('touchend', event => {
-    if (!touch || !event.changedTouches.length) return;
-    const dx = event.changedTouches[0].clientX - touch.x;
-    const dy = event.changedTouches[0].clientY - touch.y;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) show(index + (dx < 0 ? 1 : -1));
-    touch = null;
-  }, { passive: true });
-  image.addEventListener('touchcancel', () => { touch = null; });
-  dialog.addEventListener('close', () => {
-    document.documentElement.classList.remove('photo-lightbox-open');
-    image.removeAttribute('src');
-    origin?.focus();
   });
 })();

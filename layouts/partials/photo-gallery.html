@@ -1,7 +1,11 @@
 {{ with .Params.photos }}
   {{ $title := $.Title }}
   {{ $class := cond (eq (len .) 1) "grid-w100" "grid-w50 md:grid-w33" }}
-  <div class="gallery photo-gallery">
+  <div class="gallery photo-gallery"
+    data-label="{{ i18n "photo_lightbox" }}"
+    data-previous="{{ i18n "photo_previous" }}"
+    data-next="{{ i18n "photo_next" }}"
+    data-close="{{ i18n "photo_close" }}">
     {{ range $i, $photo := . }}
       {{ $path := strings.TrimPrefix "/" $photo }}
       {{ $image := resources.Get $path }}
@@ -25,11 +29,4 @@
       </figure>
     {{ end }}
   </div>
-  <dialog class="photo-lightbox" aria-label="{{ i18n "photo_lightbox" }}">
-    <button type="button" data-previous aria-label="{{ i18n "photo_previous" }}">‹</button>
-    <img class="nozoom" alt="">
-    <button type="button" data-next aria-label="{{ i18n "photo_next" }}">›</button>
-    <button type="button" data-close aria-label="{{ i18n "photo_close" }}">×</button>
-    <span data-counter role="status" aria-live="polite"></span>
-  </dialog>
 {{ end }}
