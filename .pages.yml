@@ -9,10 +9,10 @@ settings:
   commit:
     identity: user
     templates:
-      create: "auto: pagescms create: {primary} ({filename})"
-      update: "auto: pagescms update: {primary} ({filename})"
-      delete: "auto: pagescms delete: {primary} ({filename})"
-      rename: "auto: pagescms rename: {oldFilename} -> {newFilename}"
+      create: "auto: pagescms create: {path}"
+      update: "auto: pagescms update: {path}"
+      delete: "auto: pagescms delete: {path}"
+      rename: "auto: pagescms rename: {oldPath} -> {newPath}"
 
 content:
   - name: posts
