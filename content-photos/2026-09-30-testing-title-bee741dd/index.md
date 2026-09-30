@@ -6,7 +6,7 @@ summary = 'Testing text'
 tags = [
 	'photos',
 ]
-draft = true
+draft = false
 toc = false
 photos = [
 	'/img/photos/2026-09-30-testing-title-bee741dd/feature.jpg',
