@@ -58,8 +58,8 @@
       <div class="min-w-0 min-h-0 {{ if .Params.photos }}w-full{{ else }}max-w-fit{{ end }}">
         {{ partial "series/series.html" . }}
         <div class="article-content max-w-prose mb-20">
-          {{ partial "photo-gallery.html" . }}
           {{ .Content }}
+          {{ partial "photo-gallery.html" . }}
           {{ $defaultReplyByEmail := site.Params.replyByEmail }}
           {{ $replyByEmail := default $defaultReplyByEmail .Params.replyByEmail }}
           {{ if $replyByEmail }}
