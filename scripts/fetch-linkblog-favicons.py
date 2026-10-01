@@ -4,8 +4,8 @@
 import argparse
 import hashlib
 import io
-import json
 import os
+import re
 import subprocess
 import tomllib
 import warnings
@@ -15,7 +15,10 @@ from urllib.parse import urljoin, urlsplit
 from urllib.request import Request, urlopen
 
 from cairosvg.surface import PNGSurface
+from coloraide import Color
+from defusedxml import ElementTree
 from PIL import Image
+import tinycss2
 
 ICON_DIR = Path("assets/img/linkblog-favicons")
 MAX_BYTES = 2_000_000
@@ -51,6 +54,41 @@ class IconLinks(HTMLParser):
                 self.links.append(href)
 
 
+def svg_colors(data):
+    """Resolve default SVG CSS colors that CairoSVG cannot render itself."""
+    root = ElementTree.fromstring(data)
+    variables = {}
+    for node in root.iter():
+        if node.tag.endswith("}style"):
+            for rule in tinycss2.parse_stylesheet(node.text or "", skip_comments=True):
+                if rule.type == "qualified-rule" and tinycss2.serialize(rule.prelude).strip() in (":root", "svg"):
+                    for declaration in tinycss2.parse_declaration_list(rule.content):
+                        if declaration.type == "declaration" and declaration.name.startswith("--"):
+                            variables[declaration.name] = tinycss2.serialize(declaration.value).strip()
+
+    def resolve(value):
+        def variable(match):
+            if match[1] not in variables:
+                raise ValueError(f"Unsupported SVG CSS variable: {match[1]}")
+            return variables[match[1]]
+
+        value = re.sub(r"var\(\s*(--[\w-]+)\s*\)", variable, value)
+        if "var(" in value:
+            raise ValueError("Unsupported SVG CSS variable expression")
+        return re.sub(
+            r"\b(?:oklch|oklab|lab|lch|color)\([^()]*\)",
+            lambda match: Color(match[0]).convert("srgb").to_string(comma=True),
+            value,
+        )
+
+    for node in root.iter():
+        for name, value in node.attrib.items():
+            node.set(name, resolve(value))
+        if node.tag.endswith("}style") and node.text:
+            node.text = resolve(node.text)
+    return ElementTree.tostring(root)
+
+
 def png_icon(data):
     # Decode raster formats (including ICO) before trying SVG. Re-encoding
     # strips metadata; the browser never receives downloaded SVG or scripts.
@@ -64,7 +102,7 @@ def png_icon(data):
             raise ValueError("SVG favicon references an external resource")
 
         data = PNGSurface.convert(
-            bytestring=data, output_width=96, output_height=96,
+            bytestring=svg_colors(data), output_width=96, output_height=96,
             unsafe=False, url_fetcher=no_external_resources,
         )
         image = Image.open(io.BytesIO(data))
@@ -115,15 +153,15 @@ def post_url(path):
 def changed_posts():
     before, after = os.getenv("BEFORE"), os.getenv("AFTER")
     if not before or not after or set(before) == {"0"}:
-        return sorted(Path("content-pagescms").glob("*.md"))
+        return sorted(Path("content-pagescms").glob("*.md")), False
     changed = subprocess.check_output(
         ["git", "diff", "--name-only", "-z", "--diff-filter=AM", before, after],
     ).decode().split("\0")
     if any(name in ("scripts/fetch-linkblog-favicons.py",
                     ".github/workflows/fetch-linkblog-favicons.yml") for name in changed):
-        return sorted(Path("content-pagescms").glob("*.md"))
-    return [Path(name) for name in changed
-            if Path(name).parent == Path("content-pagescms") and name.endswith(".md")]
+        return sorted(Path("content-pagescms").glob("*.md")), True
+    return ([Path(name) for name in changed
+             if Path(name).parent == Path("content-pagescms") and name.endswith(".md")], False)
 
 
 def main():
@@ -131,7 +169,10 @@ def main():
     parser.add_argument("posts", nargs="*", help="Pages CMS Markdown paths; default: changed/all posts")
     parser.add_argument("--refresh", action="store_true", help="Refetch already cached icons")
     args = parser.parse_args()
-    paths = [Path(name) for name in args.posts] if args.posts else changed_posts()
+    paths, tooling_changed = changed_posts()
+    if args.posts:
+        paths = [Path(name) for name in args.posts]
+    refresh = args.refresh or tooling_changed
     print(f"Checking {len(paths)} posts")
     seen, updated = set(), []
     for path in paths:
@@ -154,7 +195,7 @@ def main():
         seen.add(host)
         # Must match sha256(lower $u.Host) in extend-article-link.html.
         destination = ICON_DIR / (hashlib.sha256(host.encode()).hexdigest() + ".png")
-        if destination.exists() and not args.refresh:
+        if destination.exists() and not refresh:
             print(f"Cached favicon already present: {host}")
             continue
         print(f"Looking for favicon: {host} ({path})")

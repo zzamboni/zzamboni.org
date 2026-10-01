@@ -42,7 +42,7 @@ jobs:
           python-version: "3.13"
 
       - name: Install image dependencies
-        run: pip install pillow cairosvg
+        run: pip install pillow cairosvg coloraide
 
       - name: Fetch missing favicons
         id: icons
