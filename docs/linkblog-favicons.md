@@ -5,7 +5,7 @@ Simple article lists show a compact site icon beside entries with
 Blowfish's globe icon.
 
 The **Fetch linkblog favicons** workflow runs when Pages CMS posts change on
-`main` or `staging`. Changes to its script/workflow also backfill existing
+`main` or `staging`. Changes to its script/workflow also refresh existing
 Pages CMS links. It discovers HTML icon and Apple touch icon links, resolves
 relative URLs and redirects, and falls back to `/favicon.ico`. Unavailable or
 unsupported icons produce log messages and leave the globe fallback in place.
@@ -15,12 +15,13 @@ Icons are converted from raster/ICO/SVG to small PNGs and cached under
 to the same host share the icon, including legacy or Org-authored posts. No
 post frontmatter or Org source is modified. The template uses Hugo resources
 and fingerprints the published image; browsers do not contact the linked site.
-SVG conversion disables external resource loading.
+SVG conversion disables external resource loading and resolves default CSS
+variables and modern color functions to raster-compatible sRGB colors.
 
 Future generated icon commits use `auto: favicon: <hostname(s)>` and contain
 only icon assets. They do not retrigger the workflow.
 
-For local use (after installing `pillow` and `cairosvg`):
+For local use (after installing `pillow`, `cairosvg` and `coloraide`):
 
 ```
 python scripts/fetch-linkblog-favicons.py content-pagescms/my-link.md
