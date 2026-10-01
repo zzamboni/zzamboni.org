@@ -4,6 +4,8 @@ externalUrl = 'https://alignment.openai.com/misalignment-reports/an-agent-used-d
 date = '2026-10-01T06:00:00.000'
 tags = [
 	'zznippets',
+	'security',
+	'ai',
 ]
 draft = false
 toc = false
