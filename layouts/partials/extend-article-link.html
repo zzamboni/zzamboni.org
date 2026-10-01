@@ -3,6 +3,18 @@
 {{ with $page.Params.externalUrl }}
   {{ $u := urls.Parse . }}
 
+  {{/* Cached per host by the favicon workflow; no remote requests at build time. */}}
+  {{ $favicon := resources.Get (printf "img/linkblog-favicons/%s.png" (sha256 (lower $u.Host))) }}
+  <span class="linkblog-favicon" aria-hidden="true">
+    {{ with $favicon }}
+      {{ $image := . | fingerprint }}
+      <img src="{{ $image.RelPermalink }}" alt="" width="48" height="48"
+           loading="lazy" decoding="async" class="nozoom">
+    {{ else }}
+      {{ partial "icon.html" "globe" }}
+    {{ end }}
+  </span>
+
   <div class="linky-marker">
     {{ partial "badge.html" "Link" }}
 

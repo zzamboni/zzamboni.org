@@ -1,0 +1,79 @@
+name: Fetch linkblog favicons
+
+on:
+  push:
+    branches: [main, staging]
+    paths:
+      - "content-pagescms/*.md"
+      - "scripts/fetch-linkblog-favicons.py"
+      - ".github/workflows/fetch-linkblog-favicons.yml"
+  workflow_dispatch:
+    inputs:
+      post:
+        description: "Optional content-pagescms/*.md path; blank checks all posts"
+        required: false
+        type: string
+      refresh:
+        description: "Refetch cached favicons"
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: linkblog-favicons-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out selected branch
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Install image dependencies
+        run: pip install pillow cairosvg
+
+      - name: Fetch missing favicons
+        id: icons
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+          POST: ${{ inputs.post }}
+          REFRESH: ${{ inputs.refresh }}
+        run: |
+          args=()
+          if [[ -n "$POST" ]]; then args+=("$POST"); fi
+          if [[ "$REFRESH" == "true" ]]; then args+=(--refresh); fi
+          python scripts/fetch-linkblog-favicons.py "${args[@]}"
+
+      - name: Commit cached favicons
+        env:
+          SUBJECT: ${{ steps.icons.outputs.subject }}
+        run: |
+          if [[ -z "$SUBJECT" ]]; then
+            echo "No new favicons to commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/img/linkblog-favicons/
+          git diff --cached --quiet && exit 0
+          git commit -m "auto: favicon: $SUBJECT"
+          # The summary workflow or author may have pushed while fetching.
+          for attempt in 1 2 3; do
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            if git push origin "HEAD:$GITHUB_REF_NAME"; then exit 0; fi
+          done
+          echo "Unable to push favicons after three attempts" >&2
+          exit 1
