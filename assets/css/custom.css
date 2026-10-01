@@ -44,8 +44,7 @@
 .article-link--simple .linkblog-favicon {
   position: absolute;
   inset-inline-start: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0.7rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,6 +55,13 @@
   background: rgba(var(--color-neutral-100), 0.9);
   color: rgb(var(--color-primary-600));
   pointer-events: none;
+}
+
+/* Blowfish adds a top margin to list content below the md breakpoint. */
+@media (max-width: 767px) {
+  .article-link--simple .linkblog-favicon {
+    top: 1.45rem;
+  }
 }
 
 .article-link--simple .linkblog-favicon img {
