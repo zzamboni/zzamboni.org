@@ -154,9 +154,7 @@ content:
       - name: body
         label: Commentary
         description: Commentary is displayed above the photo gallery.
-        type: code
-        options:
-          format: markdown
+        type: rich-text
 
       - name: date
         label: Date
