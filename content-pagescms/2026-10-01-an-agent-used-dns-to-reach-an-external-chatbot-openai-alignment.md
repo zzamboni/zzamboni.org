@@ -6,7 +6,7 @@ date = '2026-10-01T10:11:00.000'
 tags = [
 	'zznippets',
 ]
-draft = true
+draft = false
 toc = false
 showReadingTime = false
 showWordCount = false
