@@ -4,6 +4,7 @@ media:
   rename: safe
 
 settings:
+  hide: true
   content:
     merge: true
   commit:
