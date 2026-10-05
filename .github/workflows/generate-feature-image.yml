@@ -57,7 +57,7 @@ jobs:
             POST=$(jq -er --arg ref "$GITHUB_REF_NAME" '
               select(.source == "pages-cms" and .action.name == "generate-image"
                 and .repository.ref == $ref and .context.type == "entry"
-                and (.context.name == "posts" or .context.name == "legacy")) | .context.path
+                and (.context.name == "posts" or .context.name == "legacy" or .context.name == "legacy-html")) | .context.path
             ' <<< "$PAGES_CMS_PAYLOAD")
             EXTRA_PROMPT=$(jq -r '.inputs.extra_prompt // ""' <<< "$PAGES_CMS_PAYLOAD")
             FORCE=$(jq -r '.inputs.force // false | tostring' <<< "$PAGES_CMS_PAYLOAD")
