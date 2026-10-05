@@ -105,6 +105,76 @@ content:
         type: boolean
         default: false
 
+  - name: photos
+    label: Photos
+    type: collection
+    path: content-photos
+    format: toml-frontmatter
+    subfolders: true
+
+    view:
+      layout: tree
+      node:
+        filename: index.md
+        hideDirs: all
+      primary: title
+      fields: [title, date, draft]
+      sort: [date, title]
+      search: [title, summary, tags]
+
+    operations:
+      rename: false
+      delete: true
+
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: summary
+        label: Summary
+        type: text
+
+      - name: photos
+        label: Photos
+        type: image
+        options:
+          multiple:
+            max: 20
+          unique: true
+          rename: true
+          extensions: [jpg, png, webp]
+
+      - name: showHero
+        label: Full-page photo background
+        type: boolean
+        default: false
+
+      - name: body
+        label: Commentary
+        description: Commentary is displayed above the photo gallery.
+        type: rich-text
+
+      - name: date
+        label: Date
+        type: date
+        required: true
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm:ss.SSS"
+
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+        default: [ "photos" ]
+
+      - name: draft
+        label: Draft
+        type: boolean
+        default: true
+
   - name: legacy
     label: Legacy posts (Markdown)
     type: collection
@@ -274,73 +344,3 @@ content:
         type: code
         options:
           format: html
-
-  - name: photos
-    label: Photos
-    type: collection
-    path: content-photos
-    format: toml-frontmatter
-    subfolders: true
-
-    view:
-      layout: tree
-      node:
-        filename: index.md
-        hideDirs: all
-      primary: title
-      fields: [title, date, draft]
-      sort: [date, title]
-      search: [title, summary, tags]
-
-    operations:
-      rename: false
-      delete: true
-
-    fields:
-      - name: title
-        label: Title
-        type: string
-        required: true
-
-      - name: summary
-        label: Summary
-        type: text
-
-      - name: photos
-        label: Photos
-        type: image
-        options:
-          multiple:
-            max: 20
-          unique: true
-          rename: true
-          extensions: [jpg, png, webp]
-
-      - name: showHero
-        label: Full-page photo background
-        type: boolean
-        default: false
-
-      - name: body
-        label: Commentary
-        description: Commentary is displayed above the photo gallery.
-        type: rich-text
-
-      - name: date
-        label: Date
-        type: date
-        required: true
-        options:
-          time: true
-          format: "yyyy-MM-dd'T'HH:mm:ss.SSS"
-
-      - name: tags
-        label: Tags
-        type: string
-        list: true
-        default: [ "photos" ]
-
-      - name: draft
-        label: Draft
-        type: boolean
-        default: true
