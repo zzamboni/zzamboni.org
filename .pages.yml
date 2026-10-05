@@ -106,11 +106,12 @@ content:
         default: false
 
   - name: legacy
-    label: Legacy posts
+    label: Legacy posts (Markdown)
     type: collection
     path: content-legacy
     format: yaml-frontmatter
     subfolders: false
+    filename: "{primary}.md"
 
     view:
       primary: title
@@ -188,6 +189,91 @@ content:
         type: code
         options:
           format: markdown
+
+  - name: legacy-html
+    label: Legacy posts (HTML)
+    type: collection
+    path: content-legacy
+    format: yaml-frontmatter
+    subfolders: false
+    filename: "{primary}.html"
+
+    view:
+      primary: title
+      fields: [title, date, draft]
+      sort: [date, title]
+      search: [title, summary, description, tags]
+      default:
+        sort: date
+        order: desc
+
+    operations:
+      create: false
+      rename: false
+      delete: true
+
+    actions:
+      - name: generate-image
+        label: Generate image
+        scope: entry
+        workflow: generate-feature-image.yml
+        ref: current
+        confirm:
+          title: Generate a feature image?
+          message: Uses the saved post and opens a pull request to review the image.
+          button: Generate image
+        fields:
+          - name: extra_prompt
+            label: Additional artistic direction
+            type: textarea
+          - name: force
+            label: Replace an existing feature image
+            type: checkbox
+            default: false
+
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: date
+        label: Date
+        description: Preserve the existing date or ISO timestamp, including its timezone when present.
+        type: string
+
+      - name: draft
+        label: Draft
+        type: boolean
+
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+
+      - name: summary
+        label: Summary
+        type: text
+
+      - name: description
+        label: Legacy description
+        type: text
+
+      - name: featureimage
+        label: Feature image
+        type: string
+
+      - name: slug
+        label: URL slug
+        type: string
+        readonly: true
+
+      - name: body
+        label: Body (HTML)
+        description: Preserve existing HTML, shortcodes, and Markdown when editing.
+        type: code
+        options:
+          format: html
 
   - name: photos
     label: Photos
