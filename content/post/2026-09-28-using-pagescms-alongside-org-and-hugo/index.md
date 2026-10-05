@@ -10,14 +10,14 @@ toc = true
 featureimage = "img/generated/2026-09-28-using-pagescms-alongside-org-and-hugo.webp"
 +++
 
-My main blogging setup is still Emacs, Org mode and `ox-hugo`. I like having the source in one Org file, and I have no plans to give that up for longer posts. But a quick note or link is a different kind of writing. Over time, I have realized that for quick posts, friction matters a lot more than for longer ones. If I have to open my laptop, find the right heading, export, preview, commit and push, I might never write it down.
+My main blogging setup is with [Emacs, Org mode and `ox-hugo`]({{< relref "2020-12-11-my-blogging-setup-and-workflow" >}}). I like having the source in one Org file, and I have no plans to give that up for longer posts. But a quick note, link or a photo is a different kind of posting. Over time, I have realized that for quick posts, friction matters a lot more than for longer ones. If I have to open my laptop, find the right heading, export, preview, commit and push, I might never write it down.
 
-I wanted a low-friction path from an idea on my phone to a post in the same Hugo site. [Pages CMS](https://pagescms.org/) edits files in my GitHub repository, so it fits the existing Hugo and Netlify pipeline without introducing a new content database. The standard installation was uneventful; the interesting part was making this second authoring path coexist with the first one. In this post I focus on the decisions and the relevant pieces of [my configuration](https://github.com/zzamboni/zzamboni.org).
+I wanted a low-friction path from an idea on my phone to a post in my Hugo-powered website. I found [Pages CMS](https://pagescms.org/), which edits files directly in my GitHub repository, so it fits the existing Hugo and Netlify pipeline without introducing a new content database. The [standard installation](https://pagescms.org/docs/quick-start/) was uneventful; the interesting part was making this second authoring path coexist with the first one. In this post I focus on the decisions and the relevant pieces of [my configuration](https://github.com/zzamboni/zzamboni.org).
 
 
 ## Two authoring paths, one Hugo section {#two-authoring-paths-one-hugo-section}
 
-The Org file `content-org/zzamboni.org` remains the source for my longer articles; `ox-hugo` exports those to `content/post/`. Pages CMS writes its own Markdown files under `content-pagescms/`. A Hugo module mount makes those files appear in the same `content/post` section at build time. I added the following to my [module.toml](https://github.com/zzamboni/zzamboni.org/blob/main/config/_default/module.toml) Hugo configuration file:
+The Org file `content-org/zzamboni.org` remains the source for my longer articles; `ox-hugo` exports those to `content/post/`. Pages CMS writes its own Markdown files under `content-pagescms/`. A Hugo [module mount](https://gohugo.io/configuration/module/#mounts) makes those files appear in the same `content/post` section at build time. I added the following to my [module.toml](https://github.com/zzamboni/zzamboni.org/blob/main/config/_default/module.toml) Hugo configuration file:
 
 ```toml
 [[mounts]]
@@ -31,7 +31,7 @@ target = "content/post"
 
 This keeps ownership clear. If a post came from Org, I edit the Org source, not just its generated Markdown. If it came from Pages CMS, its Markdown file is the source. Hugo and Blowfish see both as ordinary posts.
 
-In `.pages.yml`, I use `format: toml-frontmatter` to match the existing posts, and a dated, title-based filename so that the repository remains understandable outside the CMS:
+In [`.pages.yml`](https://github.com/zzamboni/zzamboni.org/blob/main/.pages.yml), I use `format: toml-frontmatter` to match the existing posts, and a dated, title-based filename so that the repository remains understandable outside the CMS:
 
 ```yaml
 content:
