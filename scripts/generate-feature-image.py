@@ -310,9 +310,11 @@ def generate(post: Path, extra_prompt: str, force: bool) -> None:
 
 def candidates(limit: int | None) -> None:
     paths: list[Path] = []
-    for root in (Path("content-pagescms"), Path("content/post")):
+    for root in (Path("content-pagescms"), Path("content/post"), Path("content-legacy")):
         if root.exists():
             paths.extend(root.rglob("*.md"))
+            if root == Path("content-legacy"):
+                paths.extend(root.glob("*.html"))
 
     count = 0
     for path in sorted(paths):

@@ -57,11 +57,11 @@ jobs:
             POST=$(jq -er --arg ref "$GITHUB_REF_NAME" '
               select(.source == "pages-cms" and .action.name == "generate-image"
                 and .repository.ref == $ref and .context.type == "entry"
-                and .context.name == "posts") | .context.path
+                and (.context.name == "posts" or .context.name == "legacy")) | .context.path
             ' <<< "$PAGES_CMS_PAYLOAD")
             EXTRA_PROMPT=$(jq -r '.inputs.extra_prompt // ""' <<< "$PAGES_CMS_PAYLOAD")
             FORCE=$(jq -r '.inputs.force // false | tostring' <<< "$PAGES_CMS_PAYLOAD")
-            if [[ ! "$POST" =~ ^content-pagescms/[^/]+\.md$ ]]; then
+            if [[ ! "$POST" =~ ^(content-pagescms/[^/]+\.md|content-legacy/[^/]+\.(md|html))$ ]]; then
               echo "Unexpected Pages CMS post path: $POST" >&2
               exit 1
             fi
@@ -99,7 +99,7 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/ content-pagescms/ content-org/ assets/img/generated/ 2>/dev/null || true
+          git add content/ content-pagescms/ content-legacy/ content-org/ assets/img/generated/ 2>/dev/null || true
           git commit -m "auto: feature-image: $TITLE"
           git push --set-upstream origin "${{ steps.branch.outputs.name }}"
 
