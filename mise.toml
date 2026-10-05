@@ -1,3 +1,6 @@
+[tools]
+hugo-extended = "0.166.0"
+
 [tasks.serve]
 description = "Build and serve the site locally"
 run = "hugo serve --navigateToChanged"
@@ -7,5 +10,17 @@ description = "Build and serve the site locally"
 run = "hugo serve -D --navigateToChanged"
 
 [tasks.blowfish-upgrade]
-description = "Upgrade blowfish version"
-run = "git submodule update --remote --merge"
+description = "Update stable Blowfish and supported Hugo, with override review"
+run = "python3 scripts/theme_update.py update"
+
+[tasks.theme-check]
+description = "Check stable Blowfish, supported Hugo, and deployment pins"
+run = "python3 scripts/theme_update.py check"
+
+[tasks.theme-update]
+description = "Update theme and Hugo pins, report overrides, and build"
+run = "python3 scripts/theme_update.py update"
+
+[tasks.theme-verify]
+description = "Verify version pins and build with the pinned Hugo"
+run = "python3 scripts/theme_update.py verify"

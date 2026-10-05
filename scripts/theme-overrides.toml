@@ -1,0 +1,21 @@
+# Matching paths under layouts/ are detected automatically. List indirect
+# dependencies here so changes to their upstream templates also get reviewed.
+[[overrides]]
+local = "layouts/partials/home/custom.html"
+upstream = "layouts/partials/home/background.html"
+reason = "Site title and page content replace the theme author profile."
+
+[[overrides]]
+local = "layouts/partials/extend-single-header.html"
+upstream = "layouts/_default/single.html"
+reason = "Local single.html calls the external-link header hook."
+
+[[overrides]]
+local = "layouts/partials/extend-article-link.html"
+upstream = "layouts/partials/article-link/simple.html"
+reason = "Listing hook adds external-link badges and tags."
+
+[[overrides]]
+local = "layouts/partials/comments.html"
+upstream = "layouts/partials/article-comments.html"
+reason = "Keep the site's Disqus partial working through the comment wrapper."
