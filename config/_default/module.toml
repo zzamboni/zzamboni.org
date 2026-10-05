@@ -7,6 +7,10 @@ source = "content-pagescms"
 target = "content/post"
 
 [[mounts]]
+source = "content-legacy"
+target = "content/post"
+
+[[mounts]]
 source = "content-photos"
 target = "content/post"
 
