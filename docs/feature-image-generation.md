@@ -23,7 +23,7 @@ The workflow:
 1. reads the rendered post as common input,
 2. asks a text model for a visual brief,
 3. generates a landscape image,
-4. stores it under `static/img/generated/<slug>.webp`,
+4. stores it under `assets/img/generated/<slug>.webp`,
 5. updates the feature-image metadata,
 6. creates a branch and pull request against the branch from which the workflow
    was launched.
@@ -43,6 +43,29 @@ environment variables supported by the script are:
 - `FEATURE_IMAGE_SIZE` (default: `1536x1024`)
 - `FEATURE_IMAGE_QUALITY` (default: `medium`)
 
+## Choosing a style
+
+The workflow's **Image style** dropdown and the Pages CMS **Generate image** action
+both offer these styles:
+
+- **Photographic editorial image** (default)
+- **Analog film photography**
+- **Architectural photography**
+- **Macro photography**
+- **Printmaking / linocut**
+- **Original editorial illustration**
+
+The selected style guides both the visual brief and image generation. Additional
+artistic direction supplements the chosen style. Older action payloads that omit
+the style use photographic editorial images. Generated images still require PR
+review before publication.
+
+Locally, select a style with:
+
+```sh
+python scripts/generate-feature-image.py generate path/to/post.md --style "Analog film photography"
+```
+
 ## Finding older posts to improve
 
 Locally:
@@ -58,7 +81,8 @@ Use `--limit N` to inspect a smaller batch.
 To generate an image locally:
 
 ```sh
-OPENAI_API_KEY=... python scripts/generate-feature-image.py generate path/to/post.md
+set-env OPENAI_API_KEY ...
+python scripts/generate-feature-image.py generate path/to/post.md
 ```
 
 Add `--extra-prompt "..." ` for art direction. Existing non-default feature

@@ -58,6 +58,24 @@ content:
           message: Uses the saved post and opens a pull request to review the image.
           button: Generate image
         fields:
+          - name: style
+            label: Image style
+            type: select
+            required: true
+            default: "Photographic editorial image"
+            options:
+              - label: "Photographic editorial image"
+                value: "Photographic editorial image"
+              - label: "Analog film photography"
+                value: "Analog film photography"
+              - label: "Architectural photography"
+                value: "Architectural photography"
+              - label: "Macro photography"
+                value: "Macro photography"
+              - label: "Printmaking / linocut"
+                value: "Printmaking / linocut"
+              - label: "Original editorial illustration"
+                value: "Original editorial illustration"
           - name: extra_prompt
             label: Additional artistic direction
             type: textarea
@@ -218,6 +236,24 @@ content:
           message: Uses the saved post and opens a pull request to review the image.
           button: Generate image
         fields:
+          - name: style
+            label: Image style
+            type: select
+            required: true
+            default: "Photographic editorial image"
+            options:
+              - label: "Photographic editorial image"
+                value: "Photographic editorial image"
+              - label: "Analog film photography"
+                value: "Analog film photography"
+              - label: "Architectural photography"
+                value: "Architectural photography"
+              - label: "Macro photography"
+                value: "Macro photography"
+              - label: "Printmaking / linocut"
+                value: "Printmaking / linocut"
+              - label: "Original editorial illustration"
+                value: "Original editorial illustration"
           - name: extra_prompt
             label: Additional artistic direction
             type: textarea
@@ -303,6 +339,24 @@ content:
           message: Uses the saved post and opens a pull request to review the image.
           button: Generate image
         fields:
+          - name: style
+            label: Image style
+            type: select
+            required: true
+            default: "Photographic editorial image"
+            options:
+              - label: "Photographic editorial image"
+                value: "Photographic editorial image"
+              - label: "Analog film photography"
+                value: "Analog film photography"
+              - label: "Architectural photography"
+                value: "Architectural photography"
+              - label: "Macro photography"
+                value: "Macro photography"
+              - label: "Printmaking / linocut"
+                value: "Printmaking / linocut"
+              - label: "Original editorial illustration"
+                value: "Original editorial illustration"
           - name: extra_prompt
             label: Additional artistic direction
             type: textarea
