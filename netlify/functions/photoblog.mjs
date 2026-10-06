@@ -108,7 +108,7 @@ export default async function handler(request) {
     authorizationMatches: Boolean(secret) && request.headers.get("authorization") === `Bearer ${secret}`,
   });
   if (!secret || request.headers.get("authorization") !== `Bearer ${secret}`) {
-    return new Response("Unauthorized", { status: 401 });
+    return new Response("Wrong secret token! Please check your configuration.", { status: 401 });
   }
   if (!process.env.PHOTOBLOG_GITHUB_TOKEN && !process.env.LINKBLOG_GITHUB_TOKEN) {
     return Response.json({ ok: false, error: "Missing GitHub token" }, { status: 500 });
