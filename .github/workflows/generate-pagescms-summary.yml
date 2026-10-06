@@ -11,6 +11,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: pagescms-summary-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   generate-summary:
     runs-on: ubuntu-latest
@@ -19,6 +23,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v7
         with:
+          ref: ${{ github.ref_name }}
           fetch-depth: 0
 
       - name: Set up Python
@@ -206,5 +211,10 @@ jobs:
             subject="${#posts[@]} posts"
           fi
           git commit -m "auto: summary: $subject"
-          git push
-          
+          # The favicon workflow or author may have pushed while generating.
+          for attempt in 1 2 3; do
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            if git push origin "HEAD:$GITHUB_REF_NAME"; then exit 0; fi
+          done
+          echo "Unable to push summaries after three attempts" >&2
+          exit 1
