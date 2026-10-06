@@ -3691,11 +3691,11 @@ How I added a lightweight writing path to my Org-mode blog, and the small config
 
 My main blogging setup is with [[#my-blogging-setup-with-emacs--org-mode--ox-hugo--hugo--gitlab-and-netlify][Emacs, Org mode and =ox-hugo=]]. I like having the source in one Org file, and I have no plans to give that up for longer posts. But a quick note, link or a photo is a different kind of posting. Over time, I have realized that for quick posts, friction matters a lot more than for longer ones. If I have to open my laptop, find the right heading, export, preview, commit and push, I might never write it down.
 
-I wanted a low-friction path from an idea on my phone to a post in my Hugo-powered website. I found [[https://pagescms.org/][Pages CMS]], which edits files directly in my GitHub repository, so it fits the existing Hugo and Netlify pipeline without introducing a new content database. The [[https://pagescms.org/docs/quick-start/][standard installation]] was uneventful; the interesting part was making this second authoring path coexist with the first one. In this post I focus on the decisions and the relevant pieces of [[https://github.com/zzamboni/zzamboni.org][my configuration]].
+I wanted a low-friction path from an idea on my phone to a post in my Hugo-powered website. I found [[https://pagescms.org/][Pages CMS]], which edits files directly in my GitHub repository, so it fits the existing Hugo and Netlify pipeline without introducing a new content source. The [[https://pagescms.org/docs/quick-start/][standard Pages CMS installation]] was uneventful; the interesting part was making this second authoring path coexist with the first one. In this post I focus on the decisions and the relevant pieces of [[https://github.com/zzamboni/zzamboni.org][my configuration]].
 
-**** Two authoring paths, one Hugo section
+**** Joining multiple directories into a single Hugo section
 
-The Org file =content-org/zzamboni.org= remains the source for my longer articles; =ox-hugo= exports those to =content/post/=. Pages CMS writes its own Markdown files under =content-pagescms/=. A Hugo [[https://gohugo.io/configuration/module/#mounts][module mount]] makes those files appear in the same =content/post= section at build time. I added the following to my [[https://github.com/zzamboni/zzamboni.org/blob/main/config/_default/module.toml][module.toml]] Hugo configuration file:
+The Org file =content-org/zzamboni.org= remains the source for my longer articles; =ox-hugo= exports those to =content/post/=. Pages CMS writes its own Markdown files under =content-pagescms/=. I learned that Hugo [[https://gohugo.io/configuration/module/#mounts][module mounts]] can make multiple directories appear in the same =content/post= section at build time. I added the following to my [[https://github.com/zzamboni/zzamboni.org/blob/main/config/_default/module.toml][module.toml]] Hugo configuration file:
 
 #+begin_src toml
 [[mounts]]
@@ -3707,9 +3707,9 @@ source = "content-pagescms"
 target = "content/post"
 #+end_src
 
-This keeps ownership clear. If a post came from Org, I edit the Org source, not just its generated Markdown. If it came from Pages CMS, its Markdown file is the source. Hugo and Blowfish see both as ordinary posts.
+This keeps the content ownership clear: If a post came from Org, I edit the Org source, not just its generated Markdown. If it came from Pages CMS, its Markdown file is the source. Hugo and Blowfish see both as ordinary posts.
 
-In [[https://github.com/zzamboni/zzamboni.org/blob/main/.pages.yml][=.pages.yml=]], I use =format: toml-frontmatter= to match the existing posts, and a dated, title-based filename so that the repository remains understandable outside the CMS:
+In [[https://github.com/zzamboni/zzamboni.org/blob/main/.pages.yml][=.pages.yml=]], I use =format: toml-frontmatter= to match the existing posts, and a dated, title-based filename to match the filenames I have been using already for exporting from the org-mode file:
 
 #+begin_src yaml
 content:
@@ -3729,10 +3729,6 @@ fields:
     type: string
     required: true
 
-  - name: externalUrl
-    label: External link
-    type: string
-
   - name: summary
     label: Summary
     type: text
@@ -3743,6 +3739,10 @@ fields:
     label: Body
     type: rich-text
     
+  - name: externalUrl
+    label: External link
+    type: string
+
   - name: date
     label: Date
     type: date
@@ -3774,6 +3774,9 @@ fields:
 #+end_src
 
 **** The date is local time, and I mean it
+:PROPERTIES:
+:CUSTOM_ID: the-date-is-local-time--and-i-mean-it
+:END:
 
 The least obvious setting is the date format:
 
@@ -3786,9 +3789,9 @@ The least obvious setting is the date format:
           format: "yyyy-MM-dd'T'HH:mm:ss.SSS"
 #+end_src
 
-There is deliberately no =Z= or timezone offset. The timestamp is a Zürich wall-clock time, and Hugo's =timeZone= is set to =Europe/Zurich=. I arrived at this after Pages CMS wrote a local clock time with a =Z= suffix, which made Hugo interpret it as UTC and sometimes hide a just-created post as a future post. I wrote up [[/post/2026-09-26-pages-cms-hugo-timezones/][the bug and the tradeoff in more detail]] separately.
+There is deliberately no =Z= or timezone offset. The timestamp is a Zürich wall-clock time, and Hugo's =timeZone= is set to =Europe/Zurich=. This is to work around a bug in which Pages CMS writes the local clock time with a =Z= suffix, which makes Hugo interpret it as UTC and sometimes hide a just-created post as a future post. I wrote about [[#pages-cms-hugo-timezones][the bug and the tradeoff in more detail]] separately.
 
-This is a pragmatic convention for a personal site with one expected timezone. It would need revisiting if I began editing across timezones or with collaborators. The small Netlify function behind my iOS link-sharing shortcut follows the same rule: it converts incoming timestamps to Zürich local time before storing them without an offset.
+This is a pragmatic convention for a personal site with one expected timezone. It would need revisiting if I began editing across timezones or with collaborators. 
 
 **** Link posts still belong in the archive
 
