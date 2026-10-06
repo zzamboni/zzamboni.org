@@ -39,6 +39,15 @@ content:
       delete: true
 
     actions:
+      - name: generate-summary
+        label: Generate summary
+        scope: entry
+        workflow: generate-pagescms-summary.yml
+        ref: current
+        confirm:
+          title: Generate a missing summary?
+          message: Uses the saved post or linked article and commits a summary if the summary field is blank. Save your changes first.
+          button: Generate summary
       - name: generate-image
         label: Generate image
         scope: entry

@@ -7,6 +7,16 @@ on:
       - staging
     paths:
       - "content-pagescms/*.md"
+  workflow_dispatch:
+    inputs:
+      post:
+        description: "Saved content-pagescms/*.md post to summarize"
+        required: false
+        type: string
+      payload:
+        description: "Pages CMS action payload as JSON"
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -37,6 +47,8 @@ jobs:
       - name: Generate missing summaries
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          POST: ${{ inputs.post }}
+          PAGES_CMS_PAYLOAD: ${{ inputs.payload }}
           BEFORE: ${{ github.event.before }}
           AFTER: ${{ github.sha }}
         run: |
@@ -82,14 +94,34 @@ jobs:
                   print("Truncating linked article to 30000 characters")
               return article[:30_000]
 
-          changed = subprocess.check_output(
-              [
-                  "git", "diff", "--name-only", "--diff-filter=AM",
-                  os.environ["BEFORE"], os.environ["AFTER"],
-                  "--", "content-pagescms/*.md",
-              ],
-              text=True,
-          ).splitlines()
+          if os.getenv("GITHUB_EVENT_NAME") == "workflow_dispatch":
+              post = os.getenv("POST", "").strip()
+              payload_text = os.getenv("PAGES_CMS_PAYLOAD", "")
+              if payload_text:
+                  payload = json.loads(payload_text)
+                  if not (
+                      payload.get("source") == "pages-cms"
+                      and payload.get("action", {}).get("name") == "generate-summary"
+                      and payload.get("repository", {}).get("ref") == os.environ["GITHUB_REF_NAME"]
+                      and payload.get("context", {}).get("type") == "entry"
+                      and payload.get("context", {}).get("name") == "posts"
+                  ):
+                      raise ValueError("Unexpected Pages CMS summary action payload")
+                  post = payload["context"]["path"]
+              if not isinstance(post, str) or not re.fullmatch(r"content-pagescms/[^/]+\.md", post):
+                  raise ValueError("Select a saved content-pagescms/*.md post")
+              if not Path(post).is_file():
+                  raise ValueError(f"Post does not exist: {post}")
+              changed = [post]
+          else:
+              changed = subprocess.check_output(
+                  [
+                      "git", "diff", "--name-only", "--diff-filter=AM",
+                      os.environ["BEFORE"], os.environ["AFTER"],
+                      "--", "content-pagescms/*.md",
+                  ],
+                  text=True,
+              ).splitlines()
 
           print(f"Changed posts ({len(changed)}): {changed}")
           generated = 0
