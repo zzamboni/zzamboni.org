@@ -24,3 +24,15 @@ run = "python3 scripts/theme_update.py update"
 [tasks.theme-verify]
 description = "Verify version pins and build with the pinned Hugo"
 run = "python3 scripts/theme_update.py verify"
+
+[tasks.diff-staging-main]
+description = "Show non-content differences between staging and branch"
+run = "git diff staging..main -- . ':(exclude)content/' ':(exclude)content-pagescms/' ':(exclude)content-photos/' ':(exclude)content-org/' ':(exclude)static/img/' ':(exclude)assets/'"
+
+[tasks.shortlog]
+usage = '''
+      arg "<branch>" default=""
+      flag "-n --number <number>" default="-10"
+'''
+description = "Short-format log listing of staging"
+run = "git log {{ usage.branch }} {{ usage.number }} --reverse --format='%h %s'"
