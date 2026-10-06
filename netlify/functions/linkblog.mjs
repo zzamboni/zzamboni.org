@@ -167,14 +167,14 @@ export default async function handler(request) {
   const expected = `Bearer ${process.env.LINKBLOG_SECRET}`;
 
   if (request.headers.get("authorization") !== expected) {
-    return new Response("Unauthorized", { status: 401 });
+    return new Response("Wrong secret token! Please check your configuration.", { status: 401 });
   }
 
   try {
     const input = await request.json();
 
     if (!input.url) {
-      throw new Error("Missing URL");
+      throw new Error("Missing URL.");
     }
 
     const url = validateUrl(input.url);
