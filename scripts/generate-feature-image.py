@@ -36,13 +36,21 @@ FEATURE_KEYS = ("featureimage", "featured_image", "featureImage")
 ORG_SOURCE = Path("content-org/zzamboni.org")
 GENERATED_DIR = Path("assets/img/generated")
 
-SITE_STYLE = """Create a landscape editorial illustration for a personal technical blog.
-Clean, understated, intelligent, and slightly playful. Use natural or believable
-lighting, a restrained composition, and a strong focal point that remains clear
-at thumbnail size. Do not include visible text, captions, logos, watermarks, UI
-labels, or decorative typography. Avoid using human figures or hands, lean more towards
-abstract or technological images. Avoid generic corporate stock-art aesthetics,
-neon cyberpunk imagery, floating code, and gratuitous circuit-board or 'hacker' motifs."""
+DEFAULT_STYLE = "Photographic editorial image"
+IMAGE_STYLES = {
+    "Photographic editorial image": "Photographic editorial image. Natural window light, realistic materials and proportions, subtle colors, and a simple composition with one strong focal point. Use a plausible physical scene to evoke the post's central idea. No illustration, 3D render, cartoon styling, glowing interfaces, or implausible hardware.",
+    "Analog film photography": "Editorial photograph shot on 35mm film. Soft natural light, muted colors, fine film grain, realistic textures and subtle imperfections. Use a simple physical scene to evoke the post's central idea. No illustration, 3D rendering, or exaggerated effects.",
+    "Architectural photography": "Minimal architectural photograph evoking the post's central idea through structure, repetition, boundaries, or connections. Real materials, believable geometry, soft daylight, restrained colors and carefully composed lines. Prefer a close detail over a sweeping panorama. No futuristic buildings, impossible structures, or illustration.",
+    "Macro photography": "Editorial macro photograph of a tangible object or material related to the post's central idea. Realistic surface detail, gentle directional light and selective focus. Use a tight composition with one recognizable subject and a quiet background. Avoid excessive blur, glossy CGI surfaces, and miniature fantasy scenes.",
+    "Printmaking / linocut": "Editorial linocut print inspired by the post's central idea. Bold simplified shapes, slightly irregular carved edges, visible paper texture and a limited palette of two or three muted inks. Use one strong visual metaphor and generous negative space. No gradients, glossy shading, 3D effects, or cartoon characters.",
+    "Original editorial illustration": "Create a landscape editorial illustration for a personal technical blog.\nClean, understated, intelligent, and slightly playful. Use natural or believable\nlighting, a restrained composition, and a strong focal point that remains clear\nat thumbnail size. Do not include visible text, captions, logos, watermarks, UI\nlabels, or decorative typography. Avoid using human figures or hands, lean more towards\nabstract or technological images. Avoid generic corporate stock-art aesthetics,\nneon cyberpunk imagery, floating code, and gratuitous circuit-board or 'hacker' motifs.",
+}
+
+SITE_GUIDELINES = """Create a landscape feature image for a personal technical blog.
+Use a restrained composition and a strong focal point that remains clear at thumbnail size.
+No visible text, captions, logos, watermarks, UI labels, or decorative typography.
+Avoid human figures or hands, generic corporate stock-art aesthetics, neon cyberpunk
+imagery, floating code, and gratuitous circuit-board or hacker motifs."""
 
 
 def parse_frontmatter(path: Path) -> tuple[str, dict[str, Any], str, str]:
@@ -197,6 +205,7 @@ def make_visual_brief(
     tags: list[str],
     body: str,
     extra_prompt: str,
+    style: str = DEFAULT_STYLE,
 ) -> str:
     model = os.getenv("FEATURE_IMAGE_TEXT_MODEL", "gpt-5-mini")
     response = client.responses.create(
@@ -206,12 +215,16 @@ def make_visual_brief(
             "Create a concise visual brief for an editorial feature image inspired by "
             "a personal technical blog post. Focus on the post's central idea rather "
             "than literal screenshots. Specify subject, visual emphasis, composition, "
-            "mood/style, and what to avoid. No visible text or logos. Return only the brief."
+            "mood/style, and what to avoid. Follow the selected style consistently; "
+            "choose subjects and metaphors suited to that medium. "
+            "No visible text or logos. Return only the brief."
         ),
         input=(
             f"Title: {title}\n"
             f"Summary: {summary}\n"
             f"Tags: {', '.join(tags)}\n"
+            f"Selected style: {style}\n{IMAGE_STYLES[style]}\n"
+            f"Shared guidelines: {SITE_GUIDELINES}\n"
             f"Optional direction: {extra_prompt}\n\n"
             f"Post:\n{clean_body(body)}"
         ),
@@ -252,7 +265,7 @@ def generate_image(client: OpenAI, prompt: str, destination: Path) -> None:
         image.save(destination, "WEBP", quality=88, method=6)
 
 
-def generate(post: Path, extra_prompt: str, force: bool) -> None:
+def generate(post: Path, extra_prompt: str, force: bool, style: str = DEFAULT_STYLE) -> None:
     kind, frontmatter, _raw, body = parse_frontmatter(post)
     if not is_candidate(frontmatter, force=force):
         raise SystemExit(
@@ -276,11 +289,15 @@ def generate(post: Path, extra_prompt: str, force: bool) -> None:
     hugo_path = f"img/generated/{slug}.webp"
 
     client = OpenAI()
-    brief = make_visual_brief(client, title, summary, tags, body, extra_prompt)
-    full_prompt = SITE_STYLE + "\n\nVisual brief:\n" + brief
+    brief = make_visual_brief(client, title, summary, tags, body, extra_prompt, style)
+    full_prompt = SITE_GUIDELINES + "\n\nSelected style:\n" + IMAGE_STYLES[style]
+    full_prompt += "\n\nVisual brief:\n" + brief
+    if extra_prompt:
+        full_prompt += "\n\nAdditional artistic direction:\n" + extra_prompt
 
     print(f"Post: {post}")
     print(f"Output: {output}")
+    print(f"Style: {style}")
     print("\nVisual brief:\n" + brief + "\n")
 
     generate_image(client, full_prompt, output)
@@ -339,6 +356,7 @@ def main() -> None:
     p_generate.add_argument("post", type=Path)
     p_generate.add_argument("--extra-prompt", default="")
     p_generate.add_argument("--force", action="store_true")
+    p_generate.add_argument("--style", choices=IMAGE_STYLES, default=DEFAULT_STYLE)
 
     p_candidates = sub.add_parser(
         "candidates", help="list posts with no image or the default tram image"
@@ -348,7 +366,7 @@ def main() -> None:
     args = parser.parse_args()
 
     if args.command == "generate":
-        generate(args.post, args.extra_prompt, args.force)
+        generate(args.post, args.extra_prompt, args.force, args.style)
     else:
         candidates(args.limit)
 

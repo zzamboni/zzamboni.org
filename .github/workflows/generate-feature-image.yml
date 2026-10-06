@@ -11,6 +11,18 @@ on:
         description: "Pages CMS action payload as JSON"
         required: false
         type: string
+      style:
+        description: "Image style"
+        required: false
+        type: choice
+        default: "Photographic editorial image"
+        options:
+          - "Photographic editorial image"
+          - "Analog film photography"
+          - "Architectural photography"
+          - "Macro photography"
+          - "Printmaking / linocut"
+          - "Original editorial illustration"
       extra_prompt:
         description: "Optional artistic direction"
         required: false
@@ -50,6 +62,7 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           POST: ${{ inputs.post }}
           PAGES_CMS_PAYLOAD: ${{ inputs.payload }}
+          IMAGE_STYLE: ${{ inputs.style }}
           EXTRA_PROMPT: ${{ inputs.extra_prompt }}
           FORCE: ${{ inputs.force }}
         run: |
@@ -59,6 +72,7 @@ jobs:
                 and .repository.ref == $ref and .context.type == "entry"
                 and (.context.name == "posts" or .context.name == "legacy" or .context.name == "legacy-html")) | .context.path
             ' <<< "$PAGES_CMS_PAYLOAD")
+            IMAGE_STYLE=$(jq -r '.inputs.style // "Photographic editorial image"' <<< "$PAGES_CMS_PAYLOAD")
             EXTRA_PROMPT=$(jq -r '.inputs.extra_prompt // ""' <<< "$PAGES_CMS_PAYLOAD")
             FORCE=$(jq -r '.inputs.force // false | tostring' <<< "$PAGES_CMS_PAYLOAD")
             if [[ ! "$POST" =~ ^(content-pagescms/[^/]+\.md|content-legacy/[^/]+\.(md|html))$ ]]; then
@@ -70,7 +84,7 @@ jobs:
             echo "Select a saved post before generating an image: $POST" >&2
             exit 1
           fi
-          args=(generate "$POST")
+          args=(generate "$POST" --style "${IMAGE_STYLE:-Photographic editorial image}")
           if [[ -n "$EXTRA_PROMPT" ]]; then
             args+=(--extra-prompt "$EXTRA_PROMPT")
           fi
