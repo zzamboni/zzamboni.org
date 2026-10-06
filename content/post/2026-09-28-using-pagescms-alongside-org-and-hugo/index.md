@@ -12,12 +12,12 @@ featureimage = "img/generated/2026-09-28-using-pagescms-alongside-org-and-hugo.w
 
 My main blogging setup is with [Emacs, Org mode and `ox-hugo`]({{< relref "2020-12-11-my-blogging-setup-and-workflow" >}}). I like having the source in one Org file, and I have no plans to give that up for longer posts. But a quick note, link or a photo is a different kind of posting. Over time, I have realized that for quick posts, friction matters a lot more than for longer ones. If I have to open my laptop, find the right heading, export, preview, commit and push, I might never write it down.
 
-I wanted a low-friction path from an idea on my phone to a post in my Hugo-powered website. I found [Pages CMS](https://pagescms.org/), which edits files directly in my GitHub repository, so it fits the existing Hugo and Netlify pipeline without introducing a new content database. The [standard installation](https://pagescms.org/docs/quick-start/) was uneventful; the interesting part was making this second authoring path coexist with the first one. In this post I focus on the decisions and the relevant pieces of [my configuration](https://github.com/zzamboni/zzamboni.org).
+I wanted a low-friction path from an idea on my phone to a post in my Hugo-powered website. I found [Pages CMS](https://pagescms.org/), which edits files directly in my GitHub repository, so it fits the existing Hugo and Netlify pipeline without introducing a new content source. The [standard Pages CMS installation](https://pagescms.org/docs/quick-start/) was uneventful; the interesting part was making this second authoring path coexist with the first one. In this post I focus on the decisions and the relevant pieces of [my configuration](https://github.com/zzamboni/zzamboni.org).
 
 
-## Two authoring paths, one Hugo section {#two-authoring-paths-one-hugo-section}
+## Joining multiple directories into a single Hugo section {#joining-multiple-directories-into-a-single-hugo-section}
 
-The Org file `content-org/zzamboni.org` remains the source for my longer articles; `ox-hugo` exports those to `content/post/`. Pages CMS writes its own Markdown files under `content-pagescms/`. A Hugo [module mount](https://gohugo.io/configuration/module/#mounts) makes those files appear in the same `content/post` section at build time. I added the following to my [module.toml](https://github.com/zzamboni/zzamboni.org/blob/main/config/_default/module.toml) Hugo configuration file:
+The Org file `content-org/zzamboni.org` remains the source for my longer articles; `ox-hugo` exports those to `content/post/`. Pages CMS writes its own Markdown files under `content-pagescms/`. I learned that Hugo [module mounts](https://gohugo.io/configuration/module/#mounts) can make multiple directories appear in the same `content/post` section at build time. I added the following to my [module.toml](https://github.com/zzamboni/zzamboni.org/blob/main/config/_default/module.toml) Hugo configuration file:
 
 ```toml
 [[mounts]]
@@ -29,9 +29,9 @@ source = "content-pagescms"
 target = "content/post"
 ```
 
-This keeps ownership clear. If a post came from Org, I edit the Org source, not just its generated Markdown. If it came from Pages CMS, its Markdown file is the source. Hugo and Blowfish see both as ordinary posts.
+This keeps the content ownership clear: If a post came from Org, I edit the Org source, not just its generated Markdown. If it came from Pages CMS, its Markdown file is the source. Hugo and Blowfish see both as ordinary posts.
 
-In [`.pages.yml`](https://github.com/zzamboni/zzamboni.org/blob/main/.pages.yml), I use `format: toml-frontmatter` to match the existing posts, and a dated, title-based filename so that the repository remains understandable outside the CMS:
+In [`.pages.yml`](https://github.com/zzamboni/zzamboni.org/blob/main/.pages.yml), I use `format: toml-frontmatter` to match the existing posts, and a dated, title-based filename to match the filenames I have been using already for exporting from the org-mode file:
 
 ```yaml
 content:
@@ -51,10 +51,6 @@ fields:
     type: string
     required: true
 
-  - name: externalUrl
-    label: External link
-    type: string
-
   - name: summary
     label: Summary
     type: text
@@ -64,6 +60,10 @@ fields:
   - name: body
     label: Body
     type: rich-text
+
+  - name: externalUrl
+    label: External link
+    type: string
 
   - name: date
     label: Date
@@ -96,7 +96,7 @@ fields:
 ```
 
 
-## The date is local time, and I mean it {#the-date-is-local-time-and-i-mean-it}
+## The date is local time, and I mean it {#the-date-is-local-time--and-i-mean-it}
 
 The least obvious setting is the date format:
 
@@ -109,9 +109,9 @@ The least obvious setting is the date format:
           format: "yyyy-MM-dd'T'HH:mm:ss.SSS"
 ```
 
-There is deliberately no `Z` or timezone offset. The timestamp is a Zürich wall-clock time, and Hugo's `timeZone` is set to `Europe/Zurich`. I arrived at this after Pages CMS wrote a local clock time with a `Z` suffix, which made Hugo interpret it as UTC and sometimes hide a just-created post as a future post. I wrote up [the bug and the tradeoff in more detail](/post/2026-09-26-pages-cms-hugo-timezones/) separately.
+There is deliberately no `Z` or timezone offset. The timestamp is a Zürich wall-clock time, and Hugo's `timeZone` is set to `Europe/Zurich`. This is to work around a bug in which Pages CMS writes the local clock time with a `Z` suffix, which makes Hugo interpret it as UTC and sometimes hide a just-created post as a future post. I wrote about [the bug and the tradeoff in more detail]({{< relref "2026-09-26-pages-cms-hugo-timezones" >}}) separately.
 
-This is a pragmatic convention for a personal site with one expected timezone. It would need revisiting if I began editing across timezones or with collaborators. The small Netlify function behind my iOS link-sharing shortcut follows the same rule: it converts incoming timestamps to Zürich local time before storing them without an offset.
+This is a pragmatic convention for a personal site with one expected timezone. It would need revisiting if I began editing across timezones or with collaborators.
 
 
 ## Link posts still belong in the archive {#link-posts-still-belong-in-the-archive}
