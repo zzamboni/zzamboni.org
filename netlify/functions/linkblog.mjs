@@ -213,7 +213,7 @@ export default async function handler(request) {
       `summary = ""`,
       `date = ${tomlString(date)}`,
       `tags = ${JSON.stringify(tags)}`,
-      `draft = true`,
+      `draft = ${input.draft === false ? "false" : "true"}`,
       `toc = false`,
       `showReadingTime = false`,
       `showWordCount = false`,
