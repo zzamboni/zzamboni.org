@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "test:photoblog": "node --test netlify/functions/photoblog.test.mjs"
+  },
+  "dependencies": {
+    "sharp": "0.35.4"
+  }
+}
