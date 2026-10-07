@@ -225,8 +225,6 @@ content:
         label: Body (edit in Org)
         type: rich-text
         readonly: true
-        options:
-          format: markdown
 
   - name: photos
     label: Photos
