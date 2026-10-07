@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto";
+import sharp from "sharp";
 
 const OWNER = "zzamboni";
 const REPO = "zzamboni.org";
@@ -32,7 +33,7 @@ function zurichDate(value) {
   return `${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}:${p.second}.${p.fractionalSecond}`;
 }
 
-function photoBytes(value) {
+export async function photoBytes(value) {
   if (typeof value !== "string") throw new Error("Each photo must be a base64 string");
   const base64 = value.replace(/\s/g, "");
   if (!base64 || !/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(base64)) {
@@ -40,10 +41,27 @@ function photoBytes(value) {
   }
   const bytes = Buffer.from(base64, "base64");
   //if (bytes.length > MAX_IMAGE_BYTES) throw new Error("Photo exceeds 2.5 MB; resize it in Shortcuts");
-  if (bytes.subarray(0, 3).equals(Buffer.from([0xff, 0xd8, 0xff]))) return { bytes, extension: "jpg" };
-  if (bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))) return { bytes, extension: "png" };
-  if (bytes.toString("ascii", 0, 4) === "RIFF" && bytes.toString("ascii", 8, 12) === "WEBP") return { bytes, extension: "webp" };
-  throw new Error("Convert photos to JPEG, PNG or WebP before uploading");
+  let extension;
+  if (bytes.subarray(0, 3).equals(Buffer.from([0xff, 0xd8, 0xff]))) extension = "jpg";
+  else if (bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))) extension = "png";
+  else if (bytes.toString("ascii", 0, 4) === "RIFF" && bytes.toString("ascii", 8, 12) === "WEBP") extension = "webp";
+  else throw new Error("Convert photos to JPEG, PNG or WebP before uploading");
+
+  try {
+    const image = sharp(bytes, { limitInputPixels: 50_000_000 });
+    const metadata = await image.metadata();
+    if (metadata.format !== (extension === "jpg" ? "jpeg" : extension) || (metadata.pages || 1) !== 1) {
+      throw new Error("Unsupported or animated photo");
+    }
+    // Re-encode the pixels, applying EXIF orientation while discarding
+    // location, camera, IPTC, XMP and other embedded metadata.
+    const clean = await image.rotate().toFormat(metadata.format, {
+      ...(metadata.format !== "png" && { quality: 92 }),
+    }).toBuffer();
+    return { bytes: clean, extension };
+  } catch (error) {
+    throw new Error(`Could not process photo: ${error.message}`);
+  }
 }
 
 async function github(path, { method = "GET", body } = {}) {
@@ -139,7 +157,7 @@ export default async function handler(request) {
     if (!Array.isArray(input.photos) || !input.photos.length || input.photos.length > MAX_PHOTOS) {
       throw new Error(`Provide 1–${MAX_PHOTOS} photos`);
     }
-    const photos = input.photos.map(photoBytes);
+    const photos = await Promise.all(input.photos.map(photoBytes));
     // if (photos.reduce((sum, photo) => sum + photo.bytes.length, 0) > MAX_TOTAL_BYTES) {
     //   throw new Error("Photos exceed 3 MB total; resize or send fewer photos");
     // }
