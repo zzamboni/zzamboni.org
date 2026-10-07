@@ -223,8 +223,10 @@ content:
         readonly: true
       - name: body
         label: Body (edit in Org)
-        type: rich-text
+        type: code
         readonly: true
+        options:
+          format: markdown
 
   - name: photos
     label: Photos
