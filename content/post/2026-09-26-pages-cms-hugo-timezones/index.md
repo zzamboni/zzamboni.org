@@ -1,7 +1,7 @@
 +++
 title = "When a local timestamp pretends to be UTC"
 author = ["Diego Zamboni"]
-summary = "The Pages CMS date field stores the right clock time but the wrong timezone. Here is why the post disappeared, and the workaround I chose."
+summary = "The Pages CMS date field stores the right clock time but the wrong timezone. Here is why this caused posts to disappear, and the workaround I found."
 date = 2026-09-27T17:21:00+02:00
 tags = ["blogging", "hugo", "pagescms", "troubleshooting", "howto"]
 draft = false
@@ -10,7 +10,7 @@ toc = false
 featureimage = "img/generated/2026-09-26-pages-cms-hugo-timezones.webp"
 +++
 
-I recently added [Pages CMS](https://pagescms.org/) as a way to write short posts for this site from a browser or my phone. My usual workflow is Emacs, Org mode, `ox-hugo` and Hugo, so the two editing paths need to agree on the meaning of a post's `date`. This resulted in an unexpected behavior.
+I recently [added Pages CMS]({{< relref "2026-09-28-using-pagescms-alongside-org-and-hugo" >}}) as a way to write short posts for this site from a browser or my phone. My usual workflow is Emacs, Org mode, `ox-hugo` and Hugo, so the two editing paths need to agree on the meaning of a post's `date`. This resulted in an unexpected behavior.
 
 
 ## The disappearing post {#the-disappearing-post}

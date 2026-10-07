@@ -3641,10 +3641,10 @@ CLOSED: [2026-09-27 Sun 17:21]
 :export_hugo_custom_front_matter: :toc false :featureimage img/generated/2026-09-26-pages-cms-hugo-timezones.webp
 :END:
 #+begin_description
-The Pages CMS date field stores the right clock time but the wrong timezone. Here is why the post disappeared, and the workaround I chose.
+The Pages CMS date field stores the right clock time but the wrong timezone. Here is why this caused posts to disappear, and the workaround I found.
 #+end_description
 
-I recently added [[https://pagescms.org/][Pages CMS]] as a way to write short posts for this site from a browser or my phone. My usual workflow is Emacs, Org mode, =ox-hugo= and Hugo, so the two editing paths need to agree on the meaning of a post's =date=. This resulted in an unexpected behavior.
+I recently [[#using-pages-cms-alongside-org-mode-and-hugo][added Pages CMS]] as a way to write short posts for this site from a browser or my phone. My usual workflow is Emacs, Org mode, =ox-hugo= and Hugo, so the two editing paths need to agree on the meaning of a post's =date=. This resulted in an unexpected behavior.
 
 **** The disappearing post
 
@@ -3685,6 +3685,7 @@ CLOSED: [2026-10-06 Tue 22:04]
 :export_hugo_bundle: 2026-09-28-using-pagescms-alongside-org-and-hugo
 :export_file_name: index
 :export_hugo_custom_front_matter: :toc true :featureimage img/generated/2026-09-28-using-pagescms-alongside-org-and-hugo.webp
+:CUSTOM_ID: using-pages-cms-alongside-org-mode-and-hugo
 :END:
 #+begin_description
 How I added a lightweight writing path to my Org-mode blog, and the small configuration choices that make Pages CMS, Hugo, GitHub Actions and Netlify work together.
