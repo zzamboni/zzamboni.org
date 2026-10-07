@@ -43,7 +43,7 @@ IMAGE_STYLES = {
     "Architectural photography": "Minimal architectural photograph evoking the post's central idea through structure, repetition, boundaries, or connections. Real materials, believable geometry, soft daylight, restrained colors and carefully composed lines. Prefer a close detail over a sweeping panorama. No futuristic buildings, impossible structures, or illustration.",
     "Macro photography": "Editorial macro photograph of a tangible object or material related to the post's central idea. Realistic surface detail, gentle directional light and selective focus. Use a tight composition with one recognizable subject and a quiet background. Avoid excessive blur, glossy CGI surfaces, and miniature fantasy scenes.",
     "Printmaking / linocut": "Editorial linocut print inspired by the post's central idea. Bold simplified shapes, slightly irregular carved edges, visible paper texture and a limited palette of two or three muted inks. Use one strong visual metaphor and generous negative space. No gradients, glossy shading, 3D effects, or cartoon characters.",
-    "Original editorial illustration": "Create a landscape editorial illustration for a personal technical blog.\nClean, understated, intelligent, and slightly playful. Use natural or believable\nlighting, a restrained composition, and a strong focal point that remains clear\nat thumbnail size. Do not include visible text, captions, logos, watermarks, UI\nlabels, or decorative typography. Avoid using human figures or hands, lean more towards\nabstract or technological images. Avoid generic corporate stock-art aesthetics,\nneon cyberpunk imagery, floating code, and gratuitous circuit-board or 'hacker' motifs.",
+    "Editorial illustration": "Create a landscape editorial illustration for a personal technical blog.\nClean, understated, intelligent, and slightly playful. Use natural or believable\nlighting, a restrained composition, and a strong focal point that remains clear\nat thumbnail size. Do not include visible text, captions, logos, watermarks, UI\nlabels, or decorative typography. Avoid using human figures or hands, lean more towards\nabstract or technological images. Avoid generic corporate stock-art aesthetics,\nneon cyberpunk imagery, floating code, and gratuitous circuit-board or 'hacker' motifs.",
 }
 
 SITE_GUIDELINES = """Create a landscape feature image for a personal technical blog.
@@ -287,6 +287,11 @@ def generate(post: Path, extra_prompt: str, force: bool, style: str = DEFAULT_ST
     slug = page_slug(post, frontmatter)
     output = GENERATED_DIR / f"{slug}.webp"
     hugo_path = f"img/generated/{slug}.webp"
+
+    # Org exports are generated files; ensure metadata can be written to the source.
+    if post.as_posix().startswith("content/post/"):
+        if "ox-hugo" not in str(frontmatter.get("creator", "")).lower() or not find_org_drawer(slug):
+            raise SystemExit(f"{post}: no matching ox-hugo entry in {ORG_SOURCE}")
 
     client = OpenAI()
     brief = make_visual_brief(client, title, summary, tags, body, extra_prompt, style)

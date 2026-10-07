@@ -28,6 +28,11 @@ The workflow:
 6. creates a branch and pull request against the branch from which the workflow
    was launched.
 
+In Pages CMS, use **Org posts (image actions)** to select an export under
+`content/post/`. Its fields are read-only; edit post content in
+`content-org/zzamboni.org`. The workflow checks for a matching ox-hugo entry
+before asking the image models to run.
+
 For ox-hugo posts, the script also updates the matching property drawer in
 `content-org/zzamboni.org` so that a later export does not overwrite the
 generated feature image.
@@ -53,7 +58,7 @@ both offer these styles:
 - **Architectural photography**
 - **Macro photography**
 - **Printmaking / linocut**
-- **Original editorial illustration**
+- **Editorial illustration**
 
 The selected style guides both the visual brief and image generation. Additional
 artistic direction supplements the chosen style. Older action payloads that omit

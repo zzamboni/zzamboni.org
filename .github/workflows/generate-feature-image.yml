@@ -22,7 +22,7 @@ on:
           - "Architectural photography"
           - "Macro photography"
           - "Printmaking / linocut"
-          - "Original editorial illustration"
+          - "Editorial illustration"
       extra_prompt:
         description: "Optional artistic direction"
         required: false
@@ -70,12 +70,12 @@ jobs:
             POST=$(jq -er --arg ref "$GITHUB_REF_NAME" '
               select(.source == "pages-cms" and .action.name == "generate-image"
                 and .repository.ref == $ref and .context.type == "entry"
-                and (.context.name == "posts" or .context.name == "legacy" or .context.name == "legacy-html")) | .context.path
+                and (.context.name == "posts" or .context.name == "legacy" or .context.name == "legacy-html" or .context.name == "org-posts")) | .context.path
             ' <<< "$PAGES_CMS_PAYLOAD")
             IMAGE_STYLE=$(jq -r '.inputs.style // "Photographic editorial image"' <<< "$PAGES_CMS_PAYLOAD")
             EXTRA_PROMPT=$(jq -r '.inputs.extra_prompt // ""' <<< "$PAGES_CMS_PAYLOAD")
             FORCE=$(jq -r '.inputs.force // false | tostring' <<< "$PAGES_CMS_PAYLOAD")
-            if [[ ! "$POST" =~ ^(content-pagescms/[^/]+\.md|content-legacy/[^/]+\.(md|html))$ ]]; then
+            if [[ ! "$POST" =~ ^(content-pagescms/[^/]+\.md|content-legacy/[^/]+\.(md|html)|content/post/[^/]+/index\.md|content/post/[^/]+\.md)$ ]]; then
               echo "Unexpected Pages CMS post path: $POST" >&2
               exit 1
             fi
