@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import sharp from "sharp";
-import { photoBytes } from "./photoblog.mjs";
+import { photoBytes } from "../../netlify/functions/photoblog.mjs";
 
 for (const format of ["jpeg", "png", "webp"]) {
   test(`${format} uploads discard EXIF and XMP`, async () => {
