@@ -36,3 +36,7 @@ usage = '''
 '''
 description = "Short-format log listing of staging"
 run = "git log {{ usage.branch }} {{ usage.number }} --reverse --format='%h %s'"
+
+[tasks.cherry-staging-main]
+description = "Show commits in 'staging' not yet applied in 'main'"
+run = "git cherry -v main staging | grep '^\\+'"
