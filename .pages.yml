@@ -48,7 +48,8 @@ content:
           title: Generate a missing summary?
           message: Uses the saved post or linked article and commits a summary if the summary field is blank. Save your changes first.
           button: Generate summary
-      - name: generate-image
+      - &generate_image
+        name: generate-image
         label: Generate image
         scope: entry
         workflow: generate-feature-image.yml
@@ -160,41 +161,8 @@ content:
       delete: false
 
     actions:
-      - name: generate-image
-        label: Generate image
-        scope: entry
-        workflow: generate-feature-image.yml
-        ref: current
-        confirm:
-          title: Generate a feature image?
-          message: Uses the saved post and opens a pull request to review the image.
-          button: Generate image
-        fields:
-          - name: style
-            label: Image style
-            type: select
-            required: true
-            default: "Photographic editorial image"
-            options:
-              - label: "Photographic editorial image"
-                value: "Photographic editorial image"
-              - label: "Analog film photography"
-                value: "Analog film photography"
-              - label: "Architectural photography"
-                value: "Architectural photography"
-              - label: "Macro photography"
-                value: "Macro photography"
-              - label: "Printmaking / linocut"
-                value: "Printmaking / linocut"
-              - label: "Editorial illustration"
-                value: "Editorial illustration"
-          - name: extra_prompt
-            label: Additional artistic direction
-            type: textarea
-          - name: force
-            label: Replace an existing feature image
-            type: checkbox
-            default: false
+      - *generate_image
+
     fields:
       - name: title
         label: Title (edit in Org)
@@ -321,41 +289,7 @@ content:
       delete: true
 
     actions:
-      - name: generate-image
-        label: Generate image
-        scope: entry
-        workflow: generate-feature-image.yml
-        ref: current
-        confirm:
-          title: Generate a feature image?
-          message: Uses the saved post and opens a pull request to review the image.
-          button: Generate image
-        fields:
-          - name: style
-            label: Image style
-            type: select
-            required: true
-            default: "Photographic editorial image"
-            options:
-              - label: "Photographic editorial image"
-                value: "Photographic editorial image"
-              - label: "Analog film photography"
-                value: "Analog film photography"
-              - label: "Architectural photography"
-                value: "Architectural photography"
-              - label: "Macro photography"
-                value: "Macro photography"
-              - label: "Printmaking / linocut"
-                value: "Printmaking / linocut"
-              - label: "Editorial illustration"
-                value: "Editorial illustration"
-          - name: extra_prompt
-            label: Additional artistic direction
-            type: textarea
-          - name: force
-            label: Replace an existing feature image
-            type: checkbox
-            default: false
+      - *generate_image
 
     fields:
       - name: title
@@ -424,41 +358,7 @@ content:
       delete: true
 
     actions:
-      - name: generate-image
-        label: Generate image
-        scope: entry
-        workflow: generate-feature-image.yml
-        ref: current
-        confirm:
-          title: Generate a feature image?
-          message: Uses the saved post and opens a pull request to review the image.
-          button: Generate image
-        fields:
-          - name: style
-            label: Image style
-            type: select
-            required: true
-            default: "Photographic editorial image"
-            options:
-              - label: "Photographic editorial image"
-                value: "Photographic editorial image"
-              - label: "Analog film photography"
-                value: "Analog film photography"
-              - label: "Architectural photography"
-                value: "Architectural photography"
-              - label: "Macro photography"
-                value: "Macro photography"
-              - label: "Printmaking / linocut"
-                value: "Printmaking / linocut"
-              - label: "Editorial illustration"
-                value: "Editorial illustration"
-          - name: extra_prompt
-            label: Additional artistic direction
-            type: textarea
-          - name: force
-            label: Replace an existing feature image
-            type: checkbox
-            default: false
+      - *generate_image
 
     fields:
       - name: title
