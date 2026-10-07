@@ -2,9 +2,9 @@
 title = "Using Pages CMS alongside Org mode and Hugo"
 author = ["Diego Zamboni"]
 summary = "How I added a lightweight writing path to my Org-mode blog, and the small configuration choices that make Pages CMS, Hugo, GitHub Actions and Netlify work together."
-date = 2026-09-29T13:02:00+02:00
+date = 2026-10-06T22:04:00+02:00
 tags = ["blogging", "hugo", "pagescms", "howto"]
-draft = true
+draft = false
 creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
 toc = true
 featureimage = "img/generated/2026-09-28-using-pagescms-alongside-org-and-hugo.webp"
@@ -61,10 +61,6 @@ fields:
     label: Body
     type: rich-text
 
-  - name: externalUrl
-    label: External link
-    type: string
-
   - name: date
     label: Date
     type: date
@@ -96,7 +92,7 @@ fields:
 ```
 
 
-## The date is local time, and I mean it {#the-date-is-local-time--and-i-mean-it}
+## Time zone woes {#time-zone-woes}
 
 The least obvious setting is the date format:
 
@@ -111,30 +107,38 @@ The least obvious setting is the date format:
 
 There is deliberately no `Z` or timezone offset. The timestamp is a Zürich wall-clock time, and Hugo's `timeZone` is set to `Europe/Zurich`. This is to work around a bug in which Pages CMS writes the local clock time with a `Z` suffix, which makes Hugo interpret it as UTC and sometimes hide a just-created post as a future post. I wrote about [the bug and the tradeoff in more detail]({{< relref "2026-09-26-pages-cms-hugo-timezones" >}}) separately.
 
-This is a pragmatic convention for a personal site with one expected timezone. It would need revisiting if I began editing across timezones or with collaborators.
-
-
-## Link posts still belong in the archive {#link-posts-still-belong-in-the-archive}
-
-For quick links, a Pages CMS post can have an `externalUrl` field. The article list sends the title directly to the external site and gives link posts their own compact styling. The local page remains available for my commentary and as an archive, with a visible callout showing the full destination URL. I have created an iOS Share Sheet shortcut (topic for a future post!) to create one of these posts through a Netlify function, but I can also edit it in Pages CMS afterward.
+This is a pragmatic convention for a personal site with one expected timezone. It would need revisiting if I began editing across timezones or with collaborators, or when the [PR that fixes this](https://github.com/hunvreus/pagescms/pull/410) gets merged into Pages CMS.
 
 
 ## Help with summaries, review for images {#help-with-summaries-review-for-images}
 
-If I leave the summary blank on a Pages CMS post, a GitHub Actions workflow generates a short one and commits it back to the file. A summary I have written myself is left alone. I also gave machine-made commits an `auto:` prefix, so I can filter them out while reviewing changes between `staging` and `main`.
-
-Images have a different approval path. In the entry editor I added a **Generate image** action:
+If I leave the summary blank on a Pages CMS post, a GitHub Actions workflow ([generate-pagescms-summary.yml](https://github.com/zzamboni/zzamboni.org/blob/main/.github/workflows/generate-pagescms-summary.yml)) generates a short one and commits it back to the file. If the post already contains a summary (e.g. one I wrote when posting it), it is left alone. In addition to getting triggered automatically, I can also trigger it with an action button in Pages CMS:
 
 ```yaml
-    actions:
-      - name: generate-image
-        label: Generate image
-        scope: entry
-        workflow: generate-feature-image.yml
-        ref: current
+actions:
+  - name: generate-summary
+    label: Generate summary
+    scope: entry
+    workflow: generate-pagescms-summary.yml
+    ref: current
+    confirm:
+      title: Generate a missing summary?
+      message: Uses the saved post or linked article and commits a summary if the summary field is blank. Save your changes first.
+      button: Generate summary
 ```
 
-After I save the post, the button dispatches the workflow on the branch I am editing. The dialog also offers extra artistic direction and a checkbox to replace an existing image. The workflow reads the saved Markdown, creates a visual brief, generates a landscape WebP under `assets/img/generated/`, and sets `featureimage` to the corresponding `img/generated/...webp` path. Keeping the image in Hugo's `assets/` pipeline matters for Blowfish's resource lookup. For an Org-authored post, the same workflow can be run manually and updates the matching Org metadata as well.
+Another workflow ([generate-feature-image.yml](https://github.com/zzamboni/zzamboni.org/blob/main/.github/workflows/generate-feature-image.yml)) uses AI to generate an image to be used as the thumbnail of a new blog post (I'm not yet convinced that this is a good idea, the images look too "AI generated" for my taste). These are not generated automatically, only on request using an action button:
+
+```yaml
+actions:
+  - name: generate-image
+    label: Generate image
+    scope: entry
+    workflow: generate-feature-image.yml
+    ref: current
+```
+
+After I save the post, the button dispatches the workflow on the branch I am editing. The dialog also offers the chance to provide extra artistic direction and a checkbox to replace an existing image. The workflow reads the saved Markdown, creates a visual brief, generates a landscape WebP under `assets/img/generated/`, and sets `featureimage` to the corresponding `img/generated/...webp` path. Keeping the image in Hugo's `assets/` pipeline matters for Blowfish's resource lookup. For an Org-authored post, the same workflow can be run manually and updates the matching Org metadata as well.
 
 The image workflow opens a pull request instead of merging its result. I can inspect the image and the Netlify deploy preview before accepting it. That little review step is especially useful for images: even an attractive result can be wrong for the post.
 
@@ -142,3 +146,5 @@ The image workflow opens a pull request instead of merging its result. I can ins
 ## The useful boundary {#the-useful-boundary}
 
 The two writing paths now have distinct jobs. Org mode is where I develop a deeper article; Pages CMS is where I can capture and edit a short post without turning it into a laptop project. Both still end up as files in Git and pages built by Hugo. The configuration is a collection of small choices, but together they remove just enough friction that a quick idea has a reasonable chance of becoming an actual post.
+
+In future posts I'll show how I have created link- and photo-specific sections (including custom rendering) of my blog, and matching iOS Shortcuts to easily post them.
