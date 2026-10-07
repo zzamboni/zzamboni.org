@@ -223,7 +223,7 @@ content:
         readonly: true
       - name: body
         label: Body (edit in Org)
-        type: code
+        type: rich-text
         readonly: true
         options:
           format: markdown
