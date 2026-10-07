@@ -137,3 +137,13 @@ jobs:
           This PR is intentionally reviewable rather than auto-merged so the image can be checked in the Netlify deploy preview before accepting it.
           EOF
           )"
+
+  openai-usage:
+    name: OpenAI usage report
+    needs: generate
+    if: ${{ always() && !cancelled() }}
+    permissions:
+      contents: read
+    uses: ./.github/workflows/openai-usage.yml
+    secrets:
+      OPENAI_ADMIN_KEY: ${{ secrets.OPENAI_ADMIN_KEY }}

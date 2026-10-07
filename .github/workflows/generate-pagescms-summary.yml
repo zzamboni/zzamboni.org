@@ -270,3 +270,13 @@ jobs:
           done
           echo "Unable to push summaries after three attempts" >&2
           exit 1
+
+  openai-usage:
+    name: OpenAI usage report
+    needs: generate-summary
+    if: ${{ always() && !cancelled() }}
+    permissions:
+      contents: read
+    uses: ./.github/workflows/openai-usage.yml
+    secrets:
+      OPENAI_ADMIN_KEY: ${{ secrets.OPENAI_ADMIN_KEY }}

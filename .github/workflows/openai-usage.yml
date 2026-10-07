@@ -1,0 +1,31 @@
+name: OpenAI API usage
+
+on:
+  workflow_dispatch:
+  workflow_call:
+    secrets:
+      OPENAI_ADMIN_KEY:
+        description: "OpenAI organization admin key for the Costs API"
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out workflow revision
+        uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - name: Report OpenAI usage
+        continue-on-error: true
+        env:
+          OPENAI_ADMIN_KEY: ${{ secrets.OPENAI_ADMIN_KEY }}
+          OPENAI_CREDIT_DATE: ${{ vars.OPENAI_CREDIT_DATE }}
+          OPENAI_CREDIT_AMOUNT: ${{ vars.OPENAI_CREDIT_AMOUNT }}
+        run: python scripts/openai-usage.py
