@@ -71,6 +71,27 @@ Locally, select a style with:
 python scripts/generate-feature-image.py generate path/to/post.md --style "Analog film photography"
 ```
 
+## Refining an image in its PR
+
+On an open image-generation PR, add a top-level comment beginning with
+`/refine-image `, followed by your requested change. For example:
+
+```text
+/refine-image Keep the composition, but make the background warmer and remove the text on the sign.
+```
+
+The comment workflow accepts commands from `zzamboni` on same-repository
+`ai-feature-image/` PRs. It uses the latest WebP from the PR as the edit input,
+keeps the selected style where the PR records one, and commits the revised WebP
+to the same branch. Each revision remains in Git history, and Netlify updates
+the Deploy Preview after the push. The command may be repeated. Review each
+result before merging, since an image edit can change more than requested.
+
+GitHub handles `issue_comment` workflows from the default branch, so the
+refinement workflow lives on `main` even for a PR targeting `staging`. It
+runs trusted code from `main` and never executes PR branch files. It uses
+the same `OPENAI_API_KEY` secret and image model settings as generation.
+
 ## Finding older posts to improve
 
 Locally:
