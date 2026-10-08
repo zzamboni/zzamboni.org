@@ -2402,7 +2402,7 @@ CLOSED: [2020-12-11 Fri 00:27]
 :PROPERTIES:
 :export_hugo_bundle: 2020-12-11-my-blogging-setup-and-workflow
 :export_file_name: index
-:export_hugo_custom_front_matter: :toc true :featureimage img/z-favicon-src.png
+:export_hugo_custom_front_matter: :toc true :featureimage img/generated/2020-12-11-my-blogging-setup-and-workflow.webp
 :CUSTOM_ID: my-blogging-setup-with-emacs--org-mode--ox-hugo--hugo--gitlab-and-netlify
 :END:
 #+begin_description

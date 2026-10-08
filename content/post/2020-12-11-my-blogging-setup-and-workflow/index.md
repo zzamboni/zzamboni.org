@@ -7,7 +7,7 @@ tags = ["blogging", "howto", "emacs", "hugo", "orgmode", "gitlab", "netlify"]
 draft = false
 creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
 toc = true
-featureimage = "img/z-favicon-src.png"
+featureimage = "img/generated/2020-12-11-my-blogging-setup-and-workflow.webp"
 +++
 
 My blogging has seen [multiple iterations](/about/#my-online-past) over the years, and with it, the tools I use have changed. At the moment I use a set of tools and workflows which make it very easy to keep my blog updated, and I will describe them in this post. In short, they are:
