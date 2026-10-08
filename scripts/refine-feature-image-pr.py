@@ -156,6 +156,14 @@ def main() -> None:
         event, pr, set(paths), settings.IMAGE_STYLES
     )
 
+    # Verify PR comment permissions without generating or committing another image.
+    if instruction == "--status":
+        run("gh", "api", "--method", "POST",
+            f"repos/{repository}/issues/{number}/comments", "-f",
+            f"body=Image refinement status ({style}): current PR revision "
+            f"{pr['head']['sha'][:12]}. No image was generated or changed.")
+        return
+
     run("git", "fetch", "--no-tags", "origin", f"refs/heads/{branch}")
     head_sha = run("git", "rev-parse", "FETCH_HEAD")
     if head_sha != pr["head"]["sha"]:
@@ -170,10 +178,19 @@ def main() -> None:
         slug = Path(image_path).stem
         commit = commit_image(head_sha, branch, image_path, output, slug)
 
+    message = (
+        f"Updated the image using your refinement instruction ({style}). "
+        f"Revision: {commit[:12]}. The Deploy Preview will update shortly."
+    )
+    print(message, flush=True)
+    if summary_path := os.getenv("GITHUB_STEP_SUMMARY"):
+        with open(summary_path, "a", encoding="utf-8") as summary:
+            summary.write(f"{message}\n\nImage push completed before posting the PR reply. "
+                          "If only the reply fails, do not rerun the image edit; "
+                          "use `/refine-image --status` to check comment permissions.\n")
     run("gh", "api", "--method", "POST",
         f"repos/{repository}/issues/{number}/comments", "-f",
-        f"body=Updated the image using your refinement instruction ({style}). "
-        f"Revision: {commit[:12]}. The Deploy Preview will update shortly.")
+        f"body={message}")
 
 
 if __name__ == "__main__":
