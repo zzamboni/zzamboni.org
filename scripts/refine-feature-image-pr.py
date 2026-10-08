@@ -25,9 +25,13 @@ OWNER = "zzamboni"
 
 
 def run(*args: str, input_text: str | None = None) -> str:
-    result = subprocess.run(
-        args, input=input_text, text=True, capture_output=True, check=True
-    )
+    try:
+        result = subprocess.run(
+            args, input=input_text, text=True, capture_output=True, check=True
+        )
+    except subprocess.CalledProcessError as error:
+        detail = (error.stderr or error.stdout or "").strip()
+        raise RuntimeError(f"{args[0]} {args[1]} failed ({error.returncode}): {detail}") from error
     return result.stdout.strip()
 
 
@@ -166,8 +170,9 @@ def main() -> None:
         slug = Path(image_path).stem
         commit = commit_image(head_sha, branch, image_path, output, slug)
 
-    run("gh", "issue", "comment", str(number), "--body",
-        f"Updated the image using your refinement instruction ({style}). "
+    run("gh", "api", "--method", "POST",
+        f"repos/{repository}/issues/{number}/comments", "-f",
+        f"body=Updated the image using your refinement instruction ({style}). "
         f"Revision: {commit[:12]}. The Deploy Preview will update shortly.")
 
 
