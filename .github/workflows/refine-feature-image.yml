@@ -1,0 +1,43 @@
+name: Refine feature image from PR comment
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: read
+  issues: write
+
+concurrency:
+  group: refine-feature-image-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  refine:
+    if: >-
+      ${{ github.event.issue.pull_request &&
+          github.event.comment.user.login == 'zzamboni' &&
+          startsWith(github.event.comment.body, '/refine-image ') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out trusted workflow code
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Install image dependencies
+        run: pip install openai pillow pyyaml
+
+      - name: Refine image and update PR branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/refine-feature-image-pr.py
