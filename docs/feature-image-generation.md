@@ -87,6 +87,12 @@ to the same branch. Each revision remains in Git history, and Netlify updates
 the Deploy Preview after the push. The command may be repeated. Review each
 result before merging, since an image edit can change more than requested.
 
+To check the current PR revision and verify that the workflow can post replies,
+comment `/refine-image --status`. This does not generate an image or change the
+PR branch. If a run pushes the image successfully but fails while posting its
+reply, the revision is recorded in the workflow log and step summary; use the
+status command instead of rerunning the paid image edit.
+
 GitHub handles `issue_comment` workflows from the default branch, so the
 refinement workflow lives on `main` even for a PR targeting `staging`. It
 runs trusted code from `main` and never executes PR branch files. It uses
