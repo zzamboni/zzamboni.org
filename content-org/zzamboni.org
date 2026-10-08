@@ -3831,7 +3831,7 @@ In future posts I'll show how I have created link- and photo-specific sections (
 :export_date: <2026-10-07 Wed 22:34>
 :export_hugo_bundle: 2026-10-07-linkblog-and-photoblog-with-netlify-and-shortcuts
 :export_file_name: index
-:export_hugo_custom_front_matter: :toc true
+:export_hugo_custom_front_matter: :toc true :featureimage img/generated/2026-10-07-linkblog-and-photoblog-with-netlify-and-shortcuts.webp
 :CUSTOM_ID: linkblog-and-photoblog-from-my-phone
 :END:
 #+begin_description
