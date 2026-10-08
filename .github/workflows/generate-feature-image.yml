@@ -92,6 +92,7 @@ jobs:
             args+=(--force)
           fi
           python scripts/generate-feature-image.py "${args[@]}"
+          echo "style=${IMAGE_STYLE:-Photographic editorial image}" >> "$GITHUB_OUTPUT"
 
       - name: Create feature-image branch
         id: branch
@@ -122,21 +123,25 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           TITLE: ${{ steps.image.outputs.title }}
           IMAGE: ${{ steps.image.outputs.image }}
+          STYLE: ${{ steps.image.outputs.style }}
           BRANCH: ${{ steps.branch.outputs.name }}
           BASE: ${{ github.ref_name }}
         run: |
-          gh pr create \
-            --base "$BASE" \
-            --head "$BRANCH" \
-            --title "AI feature image: $TITLE" \
-            --body "$(cat <<EOF
+          body_file="$RUNNER_TEMP/feature-image-pr-body.md"
+          cat > "$body_file" <<EOF
           Generates a proposed AI feature image for **$TITLE**.
 
-          Image: `$IMAGE`
+          Style: **$STYLE**
+
+          Image: \`$IMAGE\`
 
           This PR is intentionally reviewable rather than auto-merged so the image can be checked in the Netlify deploy preview before accepting it.
           EOF
-          )"
+          gh pr create \
+            --base "$BASE" \
+            --head "$BRANCH" \
+            --title "AI feature image: $TITLE [$STYLE]" \
+            --body-file "$body_file"
 
   openai-usage:
     name: OpenAI usage report
