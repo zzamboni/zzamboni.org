@@ -4,6 +4,6 @@
     "test:photoblog": "node --test scripts/tests/photoblog.test.mjs"
   },
   "dependencies": {
-    "sharp": "0.35.4"
+    "sharp": "0.35.5"
   }
 }
