@@ -1,5 +1,5 @@
 +++
-title = "Linkblog and photoblog from my phone with Netlify and Shortcuts"
+title = "Posting links and photos from my phone with Netlify and iOS Shortcuts"
 author = ["Diego Zamboni"]
 summary = "How I turned shared links and photos into Hugo posts with iOS Shortcuts, Netlify Functions, GitHub, and a small amount of custom Blowfish styling."
 date = 2026-10-07T22:34:00+02:00
@@ -10,15 +10,17 @@ toc = true
 featureimage = "img/generated/2026-10-07-linkblog-and-photoblog-with-netlify-and-shortcuts.webp"
 +++
 
-In [my previous post]({{< relref "2026-09-28-using-pagescms-alongside-org-and-hugo" >}}), I described how Pages CMS gives me a quick editing path alongside Org mode. But for the two things I share most often from my phone—a link I want to remember and a few photos I want to show—even opening an editor feels like an extra step. I wanted to use the iOS Share Sheet, add a title or a sentence if I felt like it, and get a draft into the same Git-backed site.
+In [my previous post]({{< relref "2026-09-28-using-pagescms-alongside-org-and-hugo" >}}), I described how I set up Pages CMS as a quick editing path alongside Org mode. But for the two things I share most often from my phone—a link I want to remember and a few photos I want to show—even opening an editor feels like an extra step. I wanted to use the iOS Share Sheet, add a title or a sentence if I felt like it, and get a draft into the same Git-backed site.
 
 The result is two [iOS Shortcuts](https://support.apple.com/guide/shortcuts/welcome/ios) and two small [Netlify Functions](https://docs.netlify.com/build/functions/overview/). The Shortcuts collect input on the phone; the functions turn it into files in GitHub; Hugo and Blowfish render the files like any other post. The Shortcuts are available here: [Post Link](https://www.icloud.com/shortcuts/cad708218dd348598a43ba394e7f75b5) and [Post Photo](https://www.icloud.com/shortcuts/437c4651085e42da9b465c3f0d2857da). You need to configure your own endpoint and secret before using them.
+
 
 ## One publishing pipeline, different entry points {#one-publishing-pipeline-different-entry-points}
 
 My longer articles still start in `content-org/zzamboni.org` and are exported by `ox-hugo` to `content/post/`. Shorter posts start in Pages CMS or in a Shortcut. The [Hugo mounts](https://github.com/zzamboni/zzamboni.org/blob/main/config/_default/module.toml) combine `content-pagescms/` and `content-photos/` with `content/post/` at build time. All of them show up in the same blog, while the source of each post remains clear. I can later edit a link in Pages CMS, or edit a photo post and its image list in the [Photos collection](https://github.com/zzamboni/zzamboni.org/blob/main/.pages.yml). An Org post still gets edited in Org.
 
 The functions use a bearer secret to authorize a request and a GitHub token to write the result. I keep those credentials in the Netlify environment, rather than in the repository. Each function returns the new post's title and an edit URL, so the Shortcut can offer to open the entry in Pages CMS after posting. The request can ask for a draft; both functions default to draft unless I explicitly send `draft: false`. For a draft, my separate draft Netlify site gives me a place to check the result before publishing.
+
 
 ## A link is a post, but its title should take you to the link {#a-link-is-a-post-but-its-title-should-take-you-to-the-link}
 
@@ -30,6 +32,7 @@ I wanted link entries to look like links rather than tiny ordinary articles. The
 
 The post body can be just a line or two of my own commentary. When I leave its summary blank, the [summary workflow](https://github.com/zzamboni/zzamboni.org/blob/main/.github/workflows/generate-pagescms-summary.yml) may fill it in later. The Shortcut is for capturing the link quickly; Pages CMS remains useful for polishing the entry afterward.
 
+
 ## Photos are the content, not an attachment to it {#photos-are-the-content-not-an-attachment-to-it}
 
 The [photo Shortcut](https://www.icloud.com/shortcuts/437c4651085e42da9b465c3f0d2857da) takes shared images, resizes and encodes them for the request, and asks for a title and optional commentary. The [photoblog function](https://github.com/zzamboni/zzamboni.org/blob/main/netlify/functions/photoblog.mjs) validates the uploaded images and creates a post bundle under `content-photos/` together with image files under `static/img/photos/`. It writes a `photos` list of image paths into the post's front matter and adds the `photos` tag. The post and its images land in one Git commit, avoiding a half-created gallery if the upload fails partway through.
@@ -37,6 +40,7 @@ The [photo Shortcut](https://www.icloud.com/shortcuts/437c4651085e42da9b465c3f0d
 The images live in a central media directory because I also wanted to manage them through Pages CMS's image field. The Markdown post is still a Hugo leaf bundle (`index.md`), but its image list points to those separately stored media files. The [Photos menu item](https://github.com/zzamboni/zzamboni.org/blob/main/config/_default/menus.en.toml) goes to `/tags/photos/`; I did not need a separate Hugo section to collect them. The short commentary, when present, appears above the gallery where a visitor will see it before scrolling through the pictures.
 
 Blowfish supplies the gallery styling, while my [gallery partial](https://github.com/zzamboni/zzamboni.org/blob/main/layouts/partials/photo-gallery.html) reads the `photos` front matter and renders thumbnails linked to the original images. For viewing them, I use [GLightbox](https://github.com/biati-digital/glightbox), loaded only on pages with photos by [the head extension](https://github.com/zzamboni/zzamboni.org/blob/main/layouts/partials/extend-head-uncached.html). The small [integration script](https://github.com/zzamboni/zzamboni.org/blob/main/assets/js/photo-lightbox.js) adds next/previous navigation, touch and keyboard controls, a photo counter, and focus handling. That matters more than it sounds: opening and closing every image separately gets old quickly, especially on a phone. [A little CSS](https://github.com/zzamboni/zzamboni.org/blob/main/assets/css/photo-lightbox.css) keeps the controls and counter legible on small screens.
+
 
 ## What this setup buys me {#what-this-setup-buys-me}
 

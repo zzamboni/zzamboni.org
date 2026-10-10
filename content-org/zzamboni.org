@@ -97,6 +97,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#resume-toolkit-from-personal-cv-pipeline-to-reusable-toolkit][resume-toolkit: from personal CV pipeline to reusable toolkit]]
     - [[#when-a-local-timestamp-pretends-to-be-utc][When a local timestamp pretends to be UTC]]
     - [[#using-pages-cms-alongside-org-mode-and-hugo][Using Pages CMS alongside Org mode and Hugo]]
+    - [[#posting-links-and-photos-from-my-phone-with-netlify-and-ios-shortcuts][Posting links and photos from my phone with Netlify and iOS Shortcuts]]
 
 * Pages
 
@@ -3826,7 +3827,7 @@ The two writing paths now have distinct jobs. Org mode is where I develop a deep
 
 In future posts I'll show how I have created link- and photo-specific sections (including custom rendering) of my blog, and matching iOS Shortcuts to easily post them.
 
-*** DRAFT Linkblog and photoblog from my phone with Netlify and Shortcuts :blogging:hugo:pagescms:netlify:shortcuts:howto:
+*** DRAFT Posting links and photos from my phone with Netlify and iOS Shortcuts :blogging:hugo:pagescms:netlify:shortcuts:howto:
 :PROPERTIES:
 :export_date: <2026-10-07 Wed 22:34>
 :export_hugo_bundle: 2026-10-07-linkblog-and-photoblog-with-netlify-and-shortcuts
@@ -3838,7 +3839,7 @@ In future posts I'll show how I have created link- and photo-specific sections (
 How I turned shared links and photos into Hugo posts with iOS Shortcuts, Netlify Functions, GitHub, and a small amount of custom Blowfish styling.
 #+end_description
 
-In [[#using-pages-cms-alongside-org-mode-and-hugo][my previous post]], I described how Pages CMS gives me a quick editing path alongside Org mode. But for the two things I share most often from my phone—a link I want to remember and a few photos I want to show—even opening an editor feels like an extra step. I wanted to use the iOS Share Sheet, add a title or a sentence if I felt like it, and get a draft into the same Git-backed site.
+In [[#using-pages-cms-alongside-org-mode-and-hugo][my previous post]], I described how I set up Pages CMS as a quick editing path alongside Org mode. But for the two things I share most often from my phone—a link I want to remember and a few photos I want to show—even opening an editor feels like an extra step. I wanted to use the iOS Share Sheet, add a title or a sentence if I felt like it, and get a draft into the same Git-backed site.
 
 The result is two [[https://support.apple.com/guide/shortcuts/welcome/ios][iOS Shortcuts]] and two small [[https://docs.netlify.com/build/functions/overview/][Netlify Functions]]. The Shortcuts collect input on the phone; the functions turn it into files in GitHub; Hugo and Blowfish render the files like any other post. The Shortcuts are available here: [[https://www.icloud.com/shortcuts/cad708218dd348598a43ba394e7f75b5][Post Link]] and [[https://www.icloud.com/shortcuts/437c4651085e42da9b465c3f0d2857da][Post Photo]]. You need to configure your own endpoint and secret before using them.
 
