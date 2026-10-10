@@ -1,4 +1,4 @@
-{{/* Based on Blowfish v3.8.0 home/background.html; use the site title and page content instead of the author profile. Recent articles are rendered by layouts/index.html. */}}
+{{/* Based on Blowfish v3.8.0 home/background.html; use the site title and page content instead of the author profile. Custom feeds replace the theme's recent articles section. */}}
 {{ $homepageImage := "" }}
 <article class="prose dark:prose-invert max-w-full">
   <div class="relative">
@@ -55,6 +55,7 @@
     </div>
   </div>
 </article>
+{{ partial "home/feeds.html" . }}
 {{ if .Site.Params.homepage.layoutBackgroundBlur | default false }}
   <div
     id="background-blur"

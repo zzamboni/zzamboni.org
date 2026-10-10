@@ -6,3 +6,9 @@ photo_next:
   other: Next photo
 photo_close:
   other: Close gallery
+home_recent_photos:
+  other: Recent photos
+home_all_posts:
+  other: All posts
+home_all_photos:
+  other: All photos
