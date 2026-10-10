@@ -3,7 +3,6 @@ gh-config.toml*
 node_modules
 public
 .DS_Store
-docs
 .hugo_build.lock
 resources/_gen
 .codex
