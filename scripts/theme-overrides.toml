@@ -19,3 +19,8 @@ reason = "Listing hook adds external-link badges and tags."
 local = "layouts/partials/comments.html"
 upstream = "layouts/partials/article-comments.html"
 reason = "Keep the site's Disqus partial working through the comment wrapper."
+
+[[overrides]]
+local = "layouts/partials/home/feeds.html"
+upstream = "layouts/partials/article-link/simple.html"
+reason = "Homepage post feed reuses the summary and linkblog markup; sidebar renders photo thumbnails."

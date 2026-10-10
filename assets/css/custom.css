@@ -196,3 +196,31 @@
 .dark .external-link-callout > a:hover .external-link-domain {
   color: rgb(var(--color-primary-400));
 }
+/* Custom homepage feeds: preserve intrinsic photo proportions and theme colors. */
+.home-feeds {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  margin-block: 3rem;
+}
+.home-feeds--posts-only { grid-template-columns: minmax(0, 1fr); }
+.home-posts, .home-photos { min-width: 0; }
+.home-feed-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 2rem; }
+.home-post-list { display: grid; gap: 2.5rem; }
+.home-post-list .article-link--simple { max-width: none; }
+.home-post-list .article-link--simple > div { min-width: 0; }
+.home-post-list .article-link--simple .thumbnail { display: none; }
+.home-post-list .article-link__summary { overflow-wrap: anywhere; }
+.home-photo-list { display: grid; gap: 1.25rem; }
+.home-photo { display: block; border-radius: 0.5rem; overflow: hidden; }
+.home-photo img { display: block; width: 100%; height: auto; margin: 0; }
+.home-photo:hover { opacity: 0.9; }
+.home-photo:focus-visible, .home-feed-more:focus-visible {
+  outline: 3px solid rgb(var(--color-primary-500));
+  outline-offset: 4px;
+}
+.home-feed-more { display: inline-block; margin-top: 2rem; font-weight: 600; }
+.home-feed-more:hover { text-decoration: underline; }
+@media (max-width: 767px) {
+  .home-feeds { grid-template-columns: minmax(0, 1fr); }
+}

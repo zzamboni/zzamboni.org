@@ -1,0 +1,63 @@
+{{ $posts := where site.RegularPages "Section" "post" }}
+{{ $photos := where $posts "Params.tags" "intersect" (slice "photos") }}
+{{ $articles := $posts | complement $photos }}
+{{ $photoCards := slice }}
+{{/* Skip photo posts without an image before applying the sidebar limit. */}}
+{{ range $photos.ByDate.Reverse }}
+  {{ $page := . }}
+  {{ $image := false }}
+  {{ with partial "functions/feature-image.html" . }}
+    {{ if or (strings.HasPrefix . "https://") (strings.HasPrefix . "http://") }}
+      {{ with try (resources.GetRemote .) }}
+        {{ with .Value }}{{ $image = . }}{{ end }}
+      {{ end }}
+    {{ else }}
+      {{ $image = $page.Resources.Get (strings.TrimPrefix "/" .) }}
+      {{ if not $image }}{{ $image = resources.Get (strings.TrimPrefix "/" .) }}{{ end }}
+    {{ end }}
+  {{ end }}
+  {{ if not $image }}
+    {{ $images := $page.Resources.ByType "image" }}
+    {{ range slice "*feature*" "*cover*" "*thumbnail*" }}
+      {{ if not $image }}{{ $image = $images.GetMatch . }}{{ end }}
+    {{ end }}
+  {{ end }}
+  {{ with $image }}
+    {{ $photoCards = $photoCards | append (dict "page" $page "image" .) }}
+  {{ end }}
+  {{ if ge (len $photoCards) (site.Params.homepage.showRecentPhotos | default 6) }}{{ break }}{{ end }}
+{{ end }}
+<div class="home-feeds{{ if not $photoCards }} home-feeds--posts-only{{ end }}">
+  <section class="home-posts" aria-labelledby="home-posts-title">
+    <h2 id="home-posts-title" class="home-feed-title">{{ i18n "shortcode.recent_articles" }}</h2>
+    <div class="home-post-list">
+      {{ range first (site.Params.homepage.showRecentItems | default 10) $articles.ByDate.Reverse }}
+        {{ partial "article-link/simple.html" . }}
+      {{ end }}
+    </div>
+    {{ with site.GetPage "/post" }}
+      <a class="home-feed-more" href="{{ .RelPermalink }}">{{ i18n "home_all_posts" }} &rarr;</a>
+    {{ end }}
+  </section>
+  {{ with $photoCards }}
+    <aside class="home-photos" aria-labelledby="home-photos-title">
+      <h2 id="home-photos-title" class="home-feed-title">{{ i18n "home_recent_photos" }}</h2>
+      <div class="home-photo-list">
+        {{ range first (site.Params.homepage.showRecentPhotos | default 6) . }}
+          {{ $image := .image }}
+          {{ if and (not site.Params.disableImageOptimization) (ne $image.MediaType.SubType "svg") }}
+            {{ $image = $image.Resize "720x" }}
+          {{ end }}
+          <a class="home-photo" href="{{ .page.RelPermalink }}">
+            <img class="nozoom" src="{{ $image.RelPermalink }}" alt="{{ .page.Title }}"
+              {{ if ne $image.MediaType.SubType "svg" }}width="{{ $image.Width }}" height="{{ $image.Height }}"{{ end }}
+              loading="lazy" decoding="async">
+          </a>
+        {{ end }}
+      </div>
+      {{ with site.GetPage "/tags/photos" }}
+        <a class="home-feed-more" href="{{ .RelPermalink }}">{{ i18n "home_all_photos" }} &rarr;</a>
+      {{ end }}
+    </aside>
+  {{ end }}
+</div>
