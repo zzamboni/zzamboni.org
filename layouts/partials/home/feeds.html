@@ -1,3 +1,13 @@
+{{ $photoPercent := 20 }}
+{{ if isset site.Params.homepage "photocolumnpercent" }}
+  {{ $photoPercent = int site.Params.homepage.photoColumnPercent }}
+{{ end }}
+{{ if isset .Params "photocolumnpercent" }}
+  {{ $photoPercent = int .Params.photoColumnPercent }}
+{{ end }}
+{{ if or (lt $photoPercent 1) (gt $photoPercent 99) }}
+  {{ errorf "Homepage photoColumnPercent must be between 1 and 99; got %d" $photoPercent }}
+{{ end }}
 {{ $posts := where site.RegularPages "Section" "post" }}
 {{ $photos := where $posts "Params.tags" "intersect" (slice "photos") }}
 {{ $articles := $posts | complement $photos }}
@@ -27,7 +37,8 @@
   {{ end }}
   {{ if ge (len $photoCards) (site.Params.homepage.showRecentPhotos | default 6) }}{{ break }}{{ end }}
 {{ end }}
-<div class="home-feeds{{ if not $photoCards }} home-feeds--posts-only{{ end }}">
+<div class="home-feeds{{ if not $photoCards }} home-feeds--posts-only{{ end }}"
+  style="{{ printf "--home-posts-width: %dfr; --home-photos-width: %dfr;" (sub 100 $photoPercent) $photoPercent | safeCSS }}">
   <section class="home-posts" aria-labelledby="home-posts-title">
     <h2 id="home-posts-title" class="home-feed-title">{{ i18n "shortcode.recent_articles" }}</h2>
     <div class="home-post-list">

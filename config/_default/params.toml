@@ -55,6 +55,7 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
   homepageImage = "img/tram-zurich.jpg" # used in: hero, and card
   showRecent = false # The custom homepage renders separate post and photo feeds.
   showRecentPhotos = 6
+  photoColumnPercent = 20 # Desktop share excluding gap (1-99); homepage front matter can override.
   showRecentItems = 10
   showMoreLink = true
   showMoreLinkDest = "/post/"
