@@ -5,7 +5,7 @@ import { pathToFileURL } from 'node:url';
 export function nonSitePath(path) {
   return ['AGENTS.md', 'README.md', '.pages.yml'].includes(path)
     || path.startsWith('docs/')
-    || path.startsWith('scripts/tests/')
+    || path.startsWith('scripts/')
     || /^content-org\/.*\.org$/.test(path);
 }
 
@@ -28,7 +28,7 @@ export function decide(env = process.env, cwd = process.cwd()) {
     if (!paths.length) return [1, 'No file changes; preserve explicit rebuilds'];
     const relevant = paths.filter(path => !nonSitePath(path));
     if (relevant.length) return [1, `Site or unclassified changes: ${relevant.map(p => JSON.stringify(p)).join(', ')}`];
-    return [0, `Only documentation, CMS configuration, Org source, or tests changed (${paths.length} files)`];
+    return [0, `Only documentation, CMS configuration, Org source, or maintenance scripts changed (${paths.length} files)`];
   } catch {
     return [1, 'Git comparison unavailable; building conservatively'];
   }

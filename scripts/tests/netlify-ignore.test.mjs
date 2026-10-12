@@ -14,10 +14,10 @@ test('on-demand skips without Git history, with force-build taking precedence', 
 });
 
 test('only a narrow set of paths is ignored', () => {
-  for (const p of ['README.md', 'AGENTS.md', '.pages.yml', 'docs/guide.md', 'scripts/tests/test.py', 'content-org/zzamboni.org']) {
+  for (const p of ['README.md', 'AGENTS.md', '.pages.yml', 'docs/guide.md', 'scripts/tests/test.py', 'scripts/netlify-ignore.mjs', 'scripts/generate-feature-image.py', 'scripts/theme-overrides.toml', 'content-org/zzamboni.org']) {
     assert.equal(nonSitePath(p), true, p);
   }
-  for (const p of ['content/post/a.md', 'content-legacy/a.html', 'content-pagescms/a.md', 'content-photos/a/index.md', 'content-org/images/a.jpg', 'assets/a.css', 'static/a.png', 'layouts/a.html', 'config/a.toml', 'themes/blowfish', 'netlify.toml', 'netlify/functions/a.mjs', 'package-lock.json', 'scripts/netlify-ignore.mjs', '.github/workflows/a.yml', 'unknown']) {
+  for (const p of ['content/post/a.md', 'content-legacy/a.html', 'content-pagescms/a.md', 'content-photos/a/index.md', 'content-org/images/a.jpg', 'assets/a.css', 'static/a.png', 'layouts/a.html', 'config/a.toml', 'themes/blowfish', 'netlify.toml', 'netlify/functions/a.mjs', 'package-lock.json', '.github/workflows/a.yml', 'unknown']) {
     assert.equal(nonSitePath(p), false, p);
   }
 });
@@ -32,7 +32,10 @@ test('real Git comparisons preserve changes across commits, deletions and rename
     put('README.md', 'two'); const b = commit();
     const check = (before, after) => decide({ CACHED_COMMIT_REF: before, COMMIT_REF: after }, cwd)[0];
     assert.equal(check(a, b), 0);
+    put('scripts/netlify-ignore.mjs', '// maintenance change'); const scriptsOnly = commit();
+    assert.equal(check(b, scriptsOnly), 0);
     put('content/post/a.md', 'post'); const c = commit();
+    assert.equal(check(b, c), 1); // Scripts plus generated content still build.
     put('README.md', 'three'); const d = commit();
     assert.equal(check(b, d), 1); // Do not inspect only the last commit.
     assert.equal(decide({ NETLIFY_ON_DEMAND: 'true', CACHED_COMMIT_REF: b, COMMIT_REF: d }, cwd)[0], 0);
