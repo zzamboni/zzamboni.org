@@ -12,6 +12,11 @@ url = "/tags/photos/"
 weight = 15
 
 [[main]]
+name = "Links"
+url = "/tags/zznippets/"
+weight = 17
+
+[[main]]
 title = "Books"
 pageRef = "book"
 identifier = "ianSwY3pMg"
