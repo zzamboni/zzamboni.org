@@ -199,7 +199,7 @@
 /* Custom homepage feeds: square photo thumbnails and theme colors. */
 .home-feeds {
   display: grid;
-  grid-template-columns: minmax(0, 4fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, var(--home-posts-width, 80fr)) minmax(0, var(--home-photos-width, 20fr));
   gap: clamp(2rem, 5vw, 4rem);
   margin-block: 3rem;
 }
