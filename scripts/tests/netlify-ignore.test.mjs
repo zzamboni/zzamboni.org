@@ -6,6 +6,13 @@ import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { decide, nonSitePath } from '../netlify-ignore.mjs';
 
+test('on-demand skips without Git history, with force-build taking precedence', () => {
+  assert.equal(decide({ NETLIFY_ON_DEMAND: 'true' })[0], 0);
+  assert.equal(decide({ NETLIFY_ON_DEMAND: 'true', NETLIFY_FORCE_BUILD: 'true' })[0], 1);
+  assert.equal(decide({ NETLIFY_ON_DEMAND: 'false' })[0], 1);
+  assert.equal(decide({ NETLIFY_ON_DEMAND: '' })[0], 1);
+});
+
 test('only a narrow set of paths is ignored', () => {
   for (const p of ['README.md', 'AGENTS.md', '.pages.yml', 'docs/guide.md', 'scripts/tests/test.py', 'content-org/zzamboni.org']) {
     assert.equal(nonSitePath(p), true, p);
@@ -28,6 +35,7 @@ test('real Git comparisons preserve changes across commits, deletions and rename
     put('content/post/a.md', 'post'); const c = commit();
     put('README.md', 'three'); const d = commit();
     assert.equal(check(b, d), 1); // Do not inspect only the last commit.
+    assert.equal(decide({ NETLIFY_ON_DEMAND: 'true', CACHED_COMMIT_REF: b, COMMIT_REF: d }, cwd)[0], 0);
     mkdirSync(join(cwd, 'docs')); git('mv', 'content/post/a.md', 'docs/a.md'); const e = commit();
     assert.equal(check(d, e), 1); // Removed deployed file still requires a build.
     assert.equal(check(e, e), 1);
