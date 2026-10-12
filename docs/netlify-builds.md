@@ -6,14 +6,17 @@ installation. It requires only Node's standard library and Git.
 By default, the script skips a build only when every changed path is one of:
 
 - Root `README.md`, `AGENTS.md`, or `.pages.yml`.
-- Files under `docs/` or `scripts/`.
+- Files under `docs/`, `scripts/`, or `.github/workflows/`.
 - `.org` authoring files under `content-org/` (Hugo builds their exports).
 
 Images under `content-org/`, exported content, all publishing directories,
-functions, dependencies, theme pointers, configuration, workflows,
+functions, dependencies, theme pointers, site configuration,
 and unknown paths continue to build. Keep this list aligned with template
 dependencies: if Hugo starts reading a currently excluded file, remove the
 exclusion. Do not skip all bot commits; generated summaries/images affect output.
+
+Workflow definitions do not affect the Netlify build directly. Content or assets
+committed by those workflows still trigger builds normally.
 
 `scripts/` currently contains authoring, maintenance, and test tooling, not
 site-build or function-runtime dependencies. Its generated content and assets
