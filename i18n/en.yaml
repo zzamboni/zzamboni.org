@@ -8,6 +8,8 @@ photo_close:
   other: Close gallery
 home_recent_photos:
   other: Recent photos
+home_recent_posts:
+  other: Recent posts
 home_all_posts:
   other: All posts
 home_all_photos:
