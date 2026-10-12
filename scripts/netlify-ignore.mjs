@@ -11,6 +11,7 @@ export function nonSitePath(path) {
 
 export function decide(env = process.env, cwd = process.cwd()) {
   if (env.NETLIFY_FORCE_BUILD === 'true') return [1, 'Forced build requested'];
+  if (env.NETLIFY_ON_DEMAND === 'true') return [0, 'On-demand builds enabled; use a Netlify build hook to refresh'];
   const refs = [env.CACHED_COMMIT_REF, env.COMMIT_REF];
   if (refs.some(ref => !/^[a-f0-9]{40,64}$/i.test(ref || ''))) {
     return [1, 'Missing or invalid comparison commits'];

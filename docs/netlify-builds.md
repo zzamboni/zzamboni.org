@@ -3,7 +3,7 @@
 `netlify.toml` runs `node ./scripts/netlify-ignore.mjs` before dependency
 installation. It requires only Node's standard library and Git.
 
-The script skips a build only when every changed path is one of:
+By default, the script skips a build only when every changed path is one of:
 
 - Root `README.md`, `AGENTS.md`, or `.pages.yml`.
 - Files under `docs/` or `scripts/tests/`.
@@ -28,3 +28,20 @@ Run `node --test scripts/tests/netlify-ignore.test.mjs` to test the policy.
 No live build settings are changed by adding this file. The policy takes effect
 when the configuration reaches each deployed branch; verify the printed
 `[netlify-ignore]` decision in the next build log.
+
+## On-demand draft builds
+
+Set `NETLIFY_ON_DEMAND=true` only on the draft project's build environment,
+alongside its existing `BUILD_DRAFTS=true`. This skips all builds that run the
+ignore check, even with missing Git history or site changes. Production is
+unaffected when the variable is unset. Only the exact value `true` enables it.
+
+Leave Netlify builds Active and create a build hook targeting `main` on the
+draft project. Invoke that hook to refresh drafts; Netlify build hooks bypass
+the ignore check. Do not use Stopped builds, which also disables hooks.
+Ordinary UI-triggered builds are not the supported bypass for this policy.
+
+`NETLIFY_FORCE_BUILD=true` takes precedence over on-demand mode. Unset it after
+use to restore on-demand behavior. Keep hook URLs private and outside Git.
+This feature becomes effective once the script change reaches the branch the
+draft project builds; setting the environment variable alone is insufficient.
