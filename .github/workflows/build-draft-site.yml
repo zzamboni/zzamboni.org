@@ -1,0 +1,50 @@
+name: Build draft site
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: "Pages CMS action payload (optional for manual runs)"
+        required: false
+        type: string
+
+permissions: {}
+
+jobs:
+  request-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Request Netlify draft build
+        env:
+          NETLIFY_DRAFT_BUILD_HOOK: ${{ secrets.NETLIFY_DRAFT_BUILD_HOOK }}
+        shell: bash
+        run: |
+          if [[ "$GITHUB_REF" != "refs/heads/main" ]]; then
+            echo "::error::Run this workflow from main; the draft hook builds main."
+            exit 1
+          fi
+          if [[ ! "$NETLIFY_DRAFT_BUILD_HOOK" =~ ^https://api\.netlify\.com/build_hooks/[a-zA-Z0-9_-]+$ ]]; then
+            echo "::error::Set NETLIFY_DRAFT_BUILD_HOOK to the draft project's Netlify build hook URL."
+            exit 1
+          fi
+          # Do not retry a POST: a lost response could otherwise queue duplicate builds.
+          status=$(curl --silent --output /dev/null --write-out '%{http_code}' \
+            --connect-timeout 10 --max-time 30 \
+            --request POST --header 'Content-Type: application/json' --data '{}' \
+            "$NETLIFY_DRAFT_BUILD_HOOK")
+          if [[ "$status" != 2?? ]]; then
+            echo "::error::Netlify rejected the draft build request (HTTP $status)."
+            exit 1
+          fi
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ## Draft build requested
+
+          Netlify accepted the request to build the latest saved content on **main**, including drafts.
+          This workflow does not wait for deployment; success here does not mean the site is ready.
+
+          - [Check Netlify deployment status](https://app.netlify.com/projects/draft-zzamboni/deploys)
+          - [Open the draft site](https://draft-zzamboni.netlify.app) (previous version until deployment finishes)
+
+          Cancelling this workflow does not cancel an already requested Netlify build.
+          EOF

@@ -52,3 +52,31 @@ Ordinary UI-triggered builds are not the supported bypass for this policy.
 use to restore on-demand behavior. Keep hook URLs private and outside Git.
 This feature becomes effective once the script change reaches the branch the
 draft project builds; setting the environment variable alone is insufficient.
+
+### Trigger from Pages CMS or GitHub
+
+The repository-level **Build draft site** action in Pages CMS dispatches
+`.github/workflows/build-draft-site.yml` on `main`. It always rebuilds the latest
+saved content on `main`, including all drafts, regardless of the branch open in
+the CMS. Save edits first; unsaved edits and staging-only changes are not included.
+
+One-time setup:
+
+1. On the **draft** Netlify project, create or reuse a build hook targeting `main`.
+2. In GitHub repository Settings > Secrets and variables > Actions, add the
+   repository secret `NETLIFY_DRAFT_BUILD_HOOK` with that hook's URL. Do not use
+   a production-project hook or commit the URL.
+3. Promote the workflow and CMS configuration to `main` before using the button.
+   Keep the draft project's builds Active and `NETLIFY_ON_DEMAND=true`.
+
+Alternatively, open GitHub Actions > Build draft site > Run workflow, select
+`main`, and leave `payload` blank. Other workflow branches are rejected.
+The CMS payload is accepted for compatibility but does not control the hook or
+target branch. The workflow needs no checkout or GitHub token permissions.
+
+A successful action means Netlify accepted the request, not that deployment
+finished. The run summary links to deployment status and the draft site. Avoid
+repeated clicks while a build is running; cancelling the GitHub run cannot cancel
+a request already sent to Netlify. No automatic POST retries are made.
+
+See the [Pages CMS actions documentation](https://pagescms.org/docs/configuration/actions/).

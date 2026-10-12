@@ -3,6 +3,17 @@ media:
   output: /img
   rename: safe
 
+actions:
+  - name: build-draft-site
+    label: Build draft site
+    workflow: build-draft-site.yml
+    ref: main
+    cancelable: false
+    confirm:
+      title: Build draft site from main?
+      message: Rebuilds all drafts from the latest saved content on main, not the current CMS branch or unsaved edits. Save your changes first. Production is not updated.
+      button: Build draft site
+
 settings:
   hide: true
   content:
