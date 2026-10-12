@@ -196,7 +196,7 @@
 .dark .external-link-callout > a:hover .external-link-domain {
   color: rgb(var(--color-primary-400));
 }
-/* Custom homepage feeds: preserve intrinsic photo proportions and theme colors. */
+/* Custom homepage feeds: square photo thumbnails and theme colors. */
 .home-feeds {
   display: grid;
   grid-template-columns: minmax(0, 4fr) minmax(0, 1fr);
@@ -212,8 +212,8 @@
 .home-post-list .article-link--simple .thumbnail { display: none; }
 .home-post-list .article-link__summary { overflow-wrap: anywhere; }
 .home-photo-list { display: grid; gap: 1.25rem; }
-.home-photo { display: block; border-radius: 0.5rem; overflow: hidden; }
-.home-photo img { display: block; width: 100%; height: auto; margin: 0; }
+.home-photo { display: block; aspect-ratio: 1; border-radius: 0.5rem; overflow: hidden; }
+.home-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; margin: 0; }
 .home-photo:hover { opacity: 0.9; }
 .home-photo:focus-visible, .home-feed-more:focus-visible {
   outline: 3px solid rgb(var(--color-primary-500));
