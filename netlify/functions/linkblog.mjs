@@ -178,7 +178,11 @@ export default async function handler(request) {
     }
 
     const url = validateUrl(input.url);
-    const commentary = String(input.commentary || "").trim();
+    const suppliedCommentary = String(input.commentary || "").trim();
+    const suppliedSummary = String(input.summary || "").trim();
+    // A single supplied value serves as both the summary and post body.
+    const commentary = suppliedCommentary || suppliedSummary;
+    const summary = suppliedSummary || suppliedCommentary;
 
     /*
      * Preserve the date supplied by the phone, including its timezone.
@@ -210,7 +214,7 @@ export default async function handler(request) {
       "+++",
       `title = ${tomlString(title)}`,
       `externalUrl = ${tomlString(url.href)}`,
-      `summary = ""`,
+      `summary = ${tomlString(summary)}`,
       `date = ${tomlString(date)}`,
       `tags = ${JSON.stringify(tags)}`,
       `draft = ${input.draft === false ? "false" : "true"}`,
