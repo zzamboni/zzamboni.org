@@ -1,5 +1,26 @@
 # Netlify build filtering
 
+## Hugo resource caching
+
+`netlify.toml` enables `netlify-plugin-hugo-cache-resources` for all deploy
+contexts, including production, drafts, and staging. The package is pinned in
+`package.json` under `dependencies` because `NODE_ENV=production` skips
+devDependencies during Netlify installation. It persists Hugo's generated
+`resources/` directory; it does not change browser or CDN caching.
+
+After this configuration reaches the deployed branch, remove the redundant
+UI installation from the draft project (and any other project where it was
+enabled manually). File configuration takes precedence while both exist.
+Verify the next build loads the plugin from `netlify.toml` and restores/saves
+resources. A project's first cache-populating build may not be faster; do not
+clear its cache when checking subsequent builds.
+
+The draft-site benchmark measured median Hugo time falling from 12.9s to 3.9s
+and median total processing from 39.3s to 31.4s across three runs per phase.
+These were unchanged-content builds; new images still require processing.
+
+## Build filtering
+
 `netlify.toml` runs `node ./scripts/netlify-ignore.mjs` before dependency
 installation. It requires only Node's standard library and Git.
 

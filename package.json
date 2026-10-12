@@ -4,6 +4,7 @@
     "test:photoblog": "node --test scripts/tests/photoblog.test.mjs"
   },
   "dependencies": {
+    "netlify-plugin-hugo-cache-resources": "0.2.1",
     "sharp": "0.35.5"
   }
 }

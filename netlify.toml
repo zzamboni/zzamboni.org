@@ -42,6 +42,10 @@
 [context.deploy-preview.environment]
   HUGO_VERSION = "0.166.0"
 
+# Persist Hugo's generated resources between builds in all deploy contexts.
+[[plugins]]
+  package = "netlify-plugin-hugo-cache-resources"
+
 #------------------
 # Headers Configuration
 #------------------
