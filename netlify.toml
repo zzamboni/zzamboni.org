@@ -3,6 +3,7 @@
 #------------------
 
 [build]
+  ignore = "node ./scripts/netlify-ignore.mjs"
   command = """
     echo "BUILD_DRAFTS=$BUILD_DRAFTS"
     echo "CONTEXT=$CONTEXT"
