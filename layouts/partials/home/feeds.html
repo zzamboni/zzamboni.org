@@ -40,7 +40,7 @@
 <div class="home-feeds{{ if not $photoCards }} home-feeds--posts-only{{ end }}"
   style="{{ printf "--home-posts-width: %dfr; --home-photos-width: %dfr;" (sub 100 $photoPercent) $photoPercent | safeCSS }}">
   <section class="home-posts" aria-labelledby="home-posts-title">
-    <h2 id="home-posts-title" class="home-feed-title">{{ i18n "shortcode.recent_articles" }}</h2>
+    <h2 id="home-posts-title" class="home-feed-title">{{ i18n "home_recent_posts" }}</h2>
     <div class="home-post-list">
       {{ range first (site.Params.homepage.showRecentItems | default 10) $articles.ByDate.Reverse }}
         {{ partial "article-link/simple.html" . }}
