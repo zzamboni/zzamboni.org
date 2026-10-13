@@ -15,7 +15,7 @@ After years of using a photo of the Z from a Zamboni machine as my favicon, I de
 
 | Before | After |
 | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| ![](/img/z-favicon-src.png) | ![](/img/favicon-original-crop.png) |
+| ![](/img/z-favicon-src.png) | ![](/img/favicon-144x144.png) |
 
 
 The new design keeps the Z, but gives it a cleaner, more recognizable look: two parallel strokes in white and light blue against a dark background.
