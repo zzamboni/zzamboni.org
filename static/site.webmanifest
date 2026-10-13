@@ -1,6 +1,6 @@
 {
   "name": "zzamboni.org",
-  "short_name": "zzamboni.org",
+  "short_name": "zzamboni",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -15,5 +15,5 @@
   ],
   "theme_color": "#061e35",
   "background_color": "#061e35",
-  "display": "browser"
+  "display": "standalone"
 }
