@@ -209,7 +209,6 @@
 .home-post-list { display: grid; gap: 2.5rem; }
 .home-post-list .article-link--simple { max-width: none; }
 .home-post-list .article-link--simple > div { min-width: 0; }
-.home-post-list .article-link--simple .thumbnail { display: none; }
 .home-post-list .article-link__summary { overflow-wrap: anywhere; }
 .home-photo-list { display: grid; gap: 1.25rem; }
 .home-photo { display: block; aspect-ratio: 1; border-radius: 0.5rem; overflow: hidden; }
@@ -221,6 +220,22 @@
 }
 .home-feed-more { display: inline-block; margin-top: 2rem; font-weight: 600; }
 .home-feed-more:hover { text-decoration: underline; }
+@media (min-width: 768px) {
+  /* Narrower than Blowfish's 300px thumbnails, without cropping the image. */
+  .home-post-list .article-link--simple .thumbnail {
+    width: 180px;
+    min-height: 0;
+    align-self: flex-start;
+  }
+  .home-post-list .article-link--simple .thumbnail img {
+    position: static;
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    transform: none;
+  }
+}
 @media (max-width: 767px) {
   .home-feeds { grid-template-columns: minmax(0, 1fr); }
 }
