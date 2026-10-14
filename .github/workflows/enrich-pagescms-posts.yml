@@ -50,6 +50,7 @@ jobs:
         run: pip install openai 'trafilatura==2.2.0' pillow cairosvg coloraide
 
       - name: Generate missing summaries
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.post != '' || inputs.payload != '' }}
         id: summaries
         continue-on-error: true
         env:
