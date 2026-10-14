@@ -58,8 +58,10 @@ export function decide(env = process.env, cwd = process.cwd()) {
     // Empty comparisons may be explicit rebuilds for changed environment settings.
     if (!paths.length) return [1, 'No file changes; preserve explicit rebuilds'];
     const candidates = paths.filter(path => !nonSitePath(path));
-    const eligible = path => /^content-pagescms\/[^/]+\.md$/.test(path)
-      && !/\/(?:_?index)\.md$/.test(path);
+    const eligible = path => (
+      /^(?:content-pagescms|content\/post)\/[^/]+\.md$/.test(path)
+      && !/\/(?:_?index)\.md$/.test(path)
+    ) || /^content\/post\/[^/]+\/index\.md$/.test(path);
     const skipDrafts = candidates.some(eligible) && excludesDrafts(env, git, refs[1]);
     const draftOnly = path => {
       if (!skipDrafts || !eligible(path)) return false;

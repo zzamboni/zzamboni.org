@@ -107,3 +107,38 @@ test('draft transitions, mixed commits, overrides and config changes', () => {
     assert.equal(check(malformed, section), 1);
   } finally { rmSync(cwd, { recursive: true, force: true }); }
 });
+
+for (const path of ['content/post/example.md', 'content/post/example/index.md']) {
+  test(`Org-export draft transitions: ${path}`, () => {
+    const cwd = mkdtempSync(join(tmpdir(), 'netlify-org-drafts-'));
+    const git = (...args) => execFileSync('git', args, { cwd, encoding: 'utf8' }).trim();
+    const put = (name, text) => { mkdirSync(dirname(join(cwd, name)), { recursive: true }); writeFileSync(join(cwd, name), text); };
+    const commit = () => { git('add', '.'); git('-c', 'user.name=Test', '-c', 'user.email=test@example.org', 'commit', '-qm', 'test'); return git('rev-parse', 'HEAD'); };
+    const check = (before, after, env = {}) => decide({ CACHED_COMMIT_REF: before, COMMIT_REF: after, ...env }, cwd)[0];
+    const post = (draft, body = '') => `+++\ntitle = "Org export"\ndraft = ${draft}\n+++\n${body}`;
+    try {
+      git('init', '-q'); put('config/_default/hugo.toml', 'buildDrafts = false'); const base = commit();
+      put(path, post(true)); put('content-org/site.org', '* DRAFT Example'); const added = commit();
+      assert.equal(check(base, added), 0);
+      assert.equal(check(base, added, { BUILD_DRAFTS: 'true' }), 1);
+      put(path, post(true, 'edited')); const edited = commit();
+      assert.equal(check(added, edited), 0);
+      put(path, post(false)); const published = commit();
+      assert.equal(check(edited, published), 1);
+      put(path, post(true)); const unpublished = commit();
+      assert.equal(check(published, unpublished), 1);
+      git('rm', '-q', path); const deleted = commit();
+      assert.equal(check(unpublished, deleted), 0);
+      assert.equal(check(published, deleted), 1);
+      put(path, post(true)); put('content/post/example/feature.jpg', 'image'); const image = commit();
+      assert.equal(check(deleted, image), 1);
+      let before = image;
+      for (const excluded of ['content/post/_index.md', 'content/post/index.md',
+        'content/post/example/_index.md', 'content/post/example/resource.md']) {
+        put(excluded, post(true)); const after = commit();
+        assert.equal(check(before, after), 1, excluded);
+        before = after;
+      }
+    } finally { rmSync(cwd, { recursive: true, force: true }); }
+  });
+}
