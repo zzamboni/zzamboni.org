@@ -90,7 +90,7 @@ content:
       - name: generate-summary
         label: Generate summary
         scope: entry
-        workflow: generate-pagescms-summary.yml
+        workflow: enrich-pagescms-posts.yml
         ref: current
         confirm:
           title: Generate a missing summary?
