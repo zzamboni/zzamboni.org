@@ -62,6 +62,54 @@ when the configuration reaches each deployed branch; verify the printed
 
 ## On-demand draft builds
 
+### Draft-only content filtering
+
+On main and staging, builds that exclude drafts also skip changes limited to
+ordinary `content-pagescms/*.md` posts that are explicitly drafts. The ignore
+script parses TOML front matter at both comparison commits: adding, editing,
+renaming, or deleting drafts can skip; publishing or unpublishing always builds.
+`index.md` and `_index.md` are not eligible. Other content formats, images,
+shared assets, and mixed published-content changes still build.
+
+For eligible posts, compare `CACHED_COMMIT_REF` (before) with `COMMIT_REF`
+(after). These decisions apply when drafts are excluded and no force-build or
+on-demand override applies:
+
+| Before | After | Decision |
+| --- | --- | --- |
+| Absent | Draft | Skip |
+| Draft | Draft | Skip |
+| Draft | Absent | Skip |
+| Draft | Published | Build |
+| Published | Draft | Build to remove the published page |
+| Published | Absent | Build to remove the published page |
+| Absent | Published | Build |
+| Published | Published | Build |
+| Unknown or invalid | Any state (or vice versa) | Build conservatively |
+
+Skip only if every changed path is draft-only or already classified as non-site.
+Renames are checked as a deletion plus an addition, so renaming a published post
+still builds.
+
+Malformed front matter, missing draft flags, conflicting case variants, missing
+Git history, and unsupported configuration all build conservatively. A vendored
+`smol-toml` parser (with license under `scripts/vendor/`) avoids depending on npm
+installation during the ignore check. The filter checks tracked TOML configuration
+for draft-enabling settings and honors `BUILD_DRAFTS` and `HUGO_BUILDDRAFTS`;
+custom `HUGO_CONFIG`/`HUGO_CONFIGDIR` overrides disable the optimization.
+
+This assumes the build command continues to use the repository's standard Hugo
+configuration and does not add other draft-enabling flags. Templates must not read
+excluded post source files directly. The current template audit found no such
+dependency; revisit this policy if introducing one. Force-build and on-demand
+overrides retain their existing precedence, and build hooks still bypass filtering.
+
+Run `node --test scripts/tests/netlify-ignore.test.mjs` for transition and parser
+regressions. After rollout, check `[netlify-ignore]` logs for a draft-only push,
+then publish/unpublish a test post and verify those changes trigger builds.
+
+### On-demand project setup
+
 Set `NETLIFY_ON_DEMAND=true` only on the draft project's build environment,
 alongside its existing `BUILD_DRAFTS=true`. This skips all builds that run the
 ignore check, even with missing Git history or site changes. Production is

@@ -1,6 +1,36 @@
 // Netlify ignore convention: 0 skips, 1 builds. No npm dependencies required.
 import { execFileSync } from 'node:child_process';
 import { pathToFileURL } from 'node:url';
+import toml from './vendor/smol-toml/index.cjs';
+
+export function isDraftPost(source) {
+  const match = /^\uFEFF?\+\+\+\r?\n([\s\S]*?)^\+\+\+[ \t]*\r?$/m.exec(source);
+  if (!match || match.index !== 0) return false;
+  try {
+    const front = toml.parse(match[1]);
+    // Conflicting case variants are ambiguous to Hugo's case-insensitive params.
+    const keys = Object.keys(front).filter(key => key.toLowerCase() === 'draft');
+    return keys.length === 1 && front[keys[0]] === true;
+  } catch { return false; }
+}
+
+function excludesDrafts(env, git, ref) {
+  if (env.BUILD_DRAFTS === 'true') return false;
+  if (env.HUGO_CONFIG || env.HUGO_CONFIGDIR) return false;
+  // Unknown environment overrides are not safe to interpret as false.
+  if (env.HUGO_BUILDDRAFTS && env.HUGO_BUILDDRAFTS !== 'false') return false;
+  // Inspect all tracked config variants, not just the default environment.
+  const files = git('ls-tree', '-r', '--name-only', ref, '--', 'config',
+    'hugo.toml', 'hugo.yaml', 'hugo.yml', 'hugo.json',
+    'config.toml', 'config.yaml', 'config.yml', 'config.json').trim().split('\n').filter(Boolean);
+  const hasDrafts = value => value && typeof value === 'object' && Object.entries(value).some(
+    ([key, item]) => key.toLowerCase() === 'builddrafts' ? item !== false : hasDrafts(item));
+  for (const file of files) {
+    if (!file.endsWith('.toml')) return false;
+    if (hasDrafts(toml.parse(git('show', `${ref}:${file}`)))) return false;
+  }
+  return files.includes('config/_default/hugo.toml');
+}
 
 export function nonSitePath(path) {
   return ['AGENTS.md', 'README.md', '.pages.yml'].includes(path)
@@ -27,9 +57,23 @@ export function decide(env = process.env, cwd = process.cwd()) {
       .split('\0').filter(Boolean);
     // Empty comparisons may be explicit rebuilds for changed environment settings.
     if (!paths.length) return [1, 'No file changes; preserve explicit rebuilds'];
-    const relevant = paths.filter(path => !nonSitePath(path));
+    const candidates = paths.filter(path => !nonSitePath(path));
+    const eligible = path => /^content-pagescms\/[^/]+\.md$/.test(path)
+      && !/\/(?:_?index)\.md$/.test(path);
+    const skipDrafts = candidates.some(eligible) && excludesDrafts(env, git, refs[1]);
+    const draftOnly = path => {
+      if (!skipDrafts || !eligible(path)) return false;
+      return refs.every(ref => {
+        // An absent tree entry is different from failure to read an existing blob.
+        const entry = git('ls-tree', ref, '--', path).trim();
+        if (!entry) return true;
+        if (!entry.startsWith('100644 blob ') && !entry.startsWith('100755 blob ')) return false;
+        return isDraftPost(git('show', `${ref}:${path}`));
+      });
+    };
+    const relevant = candidates.filter(path => !draftOnly(path));
     if (relevant.length) return [1, `Site or unclassified changes: ${relevant.map(p => JSON.stringify(p)).join(', ')}`];
-    return [0, `Only documentation, CMS configuration, Org source, maintenance scripts, or GitHub workflows changed (${paths.length} files)`];
+    return [0, `Only non-site files or excluded draft posts changed (${paths.length} files)`];
   } catch {
     return [1, 'Git comparison unavailable; building conservatively'];
   }
