@@ -65,11 +65,16 @@ when the configuration reaches each deployed branch; verify the printed
 ### Draft-only content filtering
 
 On main and staging, builds that exclude drafts also skip changes limited to
-ordinary `content-pagescms/*.md` posts that are explicitly drafts. The ignore
+ordinary `content-pagescms/*.md`, `content/post/*.md`, and
+`content/post/<slug>/index.md` posts that are explicitly drafts. This includes
+both standalone and page-bundle Markdown exports from Org mode. The ignore
 script parses TOML front matter at both comparison commits: adding, editing,
 renaming, or deleting drafts can skip; publishing or unpublishing always builds.
-`index.md` and `_index.md` are not eligible. Other content formats, images,
-shared assets, and mixed published-content changes still build.
+Top-level `index.md`, all `_index.md` section pages, and other nested Markdown
+resources are not eligible. Other content formats, bundle images, shared assets,
+and mixed published-content changes still build. Org source changes retain their
+existing non-site classification; the exported Markdown determines whether a
+draft-only content change can skip.
 
 For eligible posts, compare `CACHED_COMMIT_REF` (before) with `COMMIT_REF`
 (after). These decisions apply when drafts are excluded and no force-build or
