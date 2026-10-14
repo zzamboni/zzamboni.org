@@ -33,7 +33,7 @@ I wanted link entries to look like links rather than tiny ordinary articles. The
 The post body can be just a line or two of my own commentary. When I leave its summary blank, the [summary workflow](https://github.com/zzamboni/zzamboni.org/blob/main/.github/workflows/generate-pagescms-summary.yml) may fill it in later. The Shortcut is for capturing the link quickly; Pages CMS remains useful for polishing the entry afterward.
 
 
-## Photos are the content, not an attachment to it {#photos-are-the-content-not-an-attachment-to-it}
+## Photos as first-class content {#photos-as-first-class-content}
 
 The [photo Shortcut](https://www.icloud.com/shortcuts/437c4651085e42da9b465c3f0d2857da) takes shared images, resizes and encodes them for the request, and asks for a title and optional commentary. The [photoblog function](https://github.com/zzamboni/zzamboni.org/blob/main/netlify/functions/photoblog.mjs) validates the uploaded images and creates a post bundle under `content-photos/` together with image files under `static/img/photos/`. It writes a `photos` list of image paths into the post's front matter and adds the `photos` tag. The post and its images land in one Git commit, avoiding a half-created gallery if the upload fails partway through.
 
