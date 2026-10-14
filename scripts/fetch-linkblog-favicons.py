@@ -158,7 +158,7 @@ def changed_posts():
         ["git", "diff", "--name-only", "-z", "--diff-filter=AM", before, after],
     ).decode().split("\0")
     if any(name in ("scripts/fetch-linkblog-favicons.py",
-                    ".github/workflows/fetch-linkblog-favicons.yml") for name in changed):
+                    ".github/workflows/enrich-pagescms-posts.yml") for name in changed):
         return sorted(Path("content-pagescms").glob("*.md")), True
     return ([Path(name) for name in changed
              if Path(name).parent == Path("content-pagescms") and name.endswith(".md")], False)

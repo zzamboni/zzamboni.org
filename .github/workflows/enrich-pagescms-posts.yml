@@ -1,32 +1,37 @@
-name: Generate missing post summary
+name: Enrich Pages CMS posts
 
 on:
   push:
-    branches:
-      - main
-      - staging
+    branches: [main, staging]
     paths:
       - "content-pagescms/*.md"
+      - "scripts/fetch-linkblog-favicons.py"
+      - ".github/workflows/enrich-pagescms-posts.yml"
   workflow_dispatch:
     inputs:
       post:
-        description: "Saved content-pagescms/*.md post to summarize"
+        description: "Optional content-pagescms/*.md path (required for Pages CMS summary action)"
         required: false
         type: string
       payload:
         description: "Pages CMS action payload as JSON"
         required: false
         type: string
+      refresh:
+        description: "Refetch cached favicons"
+        default: false
+        type: boolean
 
 permissions:
   contents: write
 
 concurrency:
-  group: pagescms-summary-${{ github.ref }}
+  group: pagescms-enrichment-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  generate-summary:
+  enrich:
+    timeout-minutes: 20
     runs-on: ubuntu-latest
 
     steps:
@@ -42,9 +47,12 @@ jobs:
           python-version: "3.13"
 
       - name: Install summary dependencies
-        run: pip install openai 'trafilatura==2.2.0'
+        run: pip install openai 'trafilatura==2.2.0' pillow cairosvg coloraide
 
       - name: Generate missing summaries
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.post != '' || inputs.payload != '' }}
+        id: summaries
+        continue-on-error: true
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           POST: ${{ inputs.post }}
@@ -245,35 +253,66 @@ jobs:
           print(f"Updated {generated} post summaries")
           PY
 
-      - name: Commit generated summaries
+      - name: Fetch missing favicons
+        id: favicons
+        continue-on-error: true
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+          POST: ${{ inputs.post }}
+          REFRESH: ${{ inputs.refresh }}
         run: |
-          if git diff --quiet; then
-            echo "No summaries needed"
+          args=()
+          if [[ -n "$POST" ]]; then args+=("$POST"); fi
+          if [[ "$REFRESH" == "true" ]]; then args+=(--refresh); fi
+          python scripts/fetch-linkblog-favicons.py "${args[@]}"
+
+      - name: Commit enrichment together
+        id: commit
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          git add -- 'content-pagescms/*.md' assets/img/linkblog-favicons/
+          if git diff --cached --quiet; then
+            echo "No enrichment changes needed"
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add content-pagescms/
           mapfile -t posts < <(git diff --cached --name-only -- 'content-pagescms/*.md')
           if (( ${#posts[@]} == 1 )); then
             subject="${posts[0]##*/}"
-          else
+          elif (( ${#posts[@]} > 1 )); then
             subject="${#posts[@]} posts"
+          else
+            subject="linkblog favicons"
           fi
-          git commit -m "auto: summary: $subject"
-          # The favicon workflow or author may have pushed while generating.
+          git commit -m "auto: enrich: $subject"
+          # Authors or other workflows can push during network enrichment.
           for attempt in 1 2 3; do
-            git pull --rebase origin "$GITHUB_REF_NAME"
-            if git push origin "HEAD:$GITHUB_REF_NAME"; then exit 0; fi
+            git pull --rebase origin "$BRANCH"
+            if git push origin "HEAD:$BRANCH"; then exit 0; fi
           done
-          echo "Unable to push summaries after three attempts" >&2
+          echo "Unable to push enriched content after three attempts" >&2
           exit 1
+
+      - name: Report enrichment failures
+        if: ${{ always() && !cancelled() }}
+        env:
+          SUMMARY_RESULT: ${{ steps.summaries.outcome }}
+          FAVICON_RESULT: ${{ steps.favicons.outcome }}
+          COMMIT_RESULT: ${{ steps.commit.outcome }}
+        run: |
+          if [[ "$SUMMARY_RESULT" == "failure" || "$FAVICON_RESULT" == "failure" || "$COMMIT_RESULT" == "failure" ]]; then
+            echo "::error::Enrichment did not fully succeed (summary=$SUMMARY_RESULT, favicon=$FAVICON_RESULT, commit=$COMMIT_RESULT)"
+            exit 1
+          fi
 
   openai-usage:
     name: OpenAI usage report
-    needs: generate-summary
+    needs: enrich
     if: ${{ always() && !cancelled() }}
     permissions:
       contents: read
