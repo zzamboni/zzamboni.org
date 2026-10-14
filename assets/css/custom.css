@@ -210,6 +210,14 @@
 .home-post-list .article-link--simple { max-width: none; }
 .home-post-list .article-link--simple > div { min-width: 0; }
 .home-post-list .article-link__summary { overflow-wrap: anywhere; }
+/* Follow image transparency instead of casting a rectangular wrapper shadow. */
+.home-post-list .thumbnail-shadow {
+  box-shadow: none;
+  overflow: visible;
+}
+.home-post-list .thumbnail-shadow img {
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3));
+}
 .home-photo-list { display: grid; gap: 1.25rem; }
 .home-photo { display: block; aspect-ratio: 1; border-radius: 0.5rem; overflow: hidden; }
 .home-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; margin: 0; }
