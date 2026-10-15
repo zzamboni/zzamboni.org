@@ -131,6 +131,9 @@
   {{ with resources.Get "css/custom.css" }}
     {{ $cssResources = $cssResources | append . }}
   {{ end }}
+  {{ with resources.Get "css/commonplace.css" }}
+    {{ $cssResources = $cssResources | append . }}
+  {{ end }}
   {{ if not .Site.Params.disableImageZoom | default true }}
     {{ $cssResources = $cssResources | append (resources.Get "lib/zoom/style.css") }}
   {{ end }}

@@ -1,0 +1,23 @@
+{{/* Editorial rows retain local permalinks, external destinations and the existing linkblog hook. */}}
+{{ $isPhoto := in .Params.tags "photos" }}
+{{ $kind := i18n "cp_essay" }}
+{{ if $isPhoto }}{{ $kind = i18n "cp_photo" }}{{ else if .Params.externalUrl }}{{ $kind = i18n "cp_link" }}{{ end }}
+<article class="cp-post{{ if .Params.externalUrl }} cp-post--link{{ end }}">
+  <div class="cp-post-meta">
+    <span class="cp-category">{{ $kind }}</span>
+    <time datetime="{{ .Date.Format `2006-01-02T15:04:05Z07:00` }}">{{ .Date.Format "2 Jan 2006" }}</time>
+    {{ if .Draft }}{{ partial "badge.html" (i18n "article.draft") }}{{ end }}
+  </div>
+  <div class="cp-post-main">
+    <h2><a href="{{ .RelPermalink }}">{{ .Title | emojify }}</a></h2>
+    {{ if .Params.externalUrl }}{{ partial "extend-article-link.html" . }}{{ end }}
+    {{ if .Params.showSummary | default (site.Params.list.showSummary | default false) }}
+      <p class="cp-post-summary">{{ .Summary | plainify | htmlUnescape | truncate 280 }}</p>
+    {{ end }}
+    <div class="cp-post-bottom">
+      <span>{{ i18n "article.reading_time" .ReadingTime }}</span>
+      {{ with .Params.externalUrl }}<a href="{{ . }}" target="_blank" rel="noopener noreferrer external">{{ i18n "cp_link" }} ↗</a>{{ end }}
+    </div>
+  </div>
+  <a class="cp-post-arrow" href="{{ .RelPermalink }}" aria-label="{{ .Title }}"><span aria-hidden="true">↗</span></a>
+</article>
