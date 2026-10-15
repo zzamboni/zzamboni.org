@@ -1,0 +1,22 @@
+{{/* Resolve existing image conventions without depending on a cached init partial. */}}
+{{ $image := false }}
+{{ $url := "" }}
+{{ $page := . }}
+{{ if not .Params.hideFeatureImage }}
+  {{ with partial "functions/feature-image.html" . }}
+    {{ if or (strings.HasPrefix . "https://") (strings.HasPrefix . "http://") }}
+      {{ $url = . }}
+    {{ else }}
+      {{ $image = $page.Resources.Get (strings.TrimPrefix "/" .) }}
+      {{ if not $image }}{{ $image = resources.Get (strings.TrimPrefix "/" .) }}{{ end }}
+      {{ if not $image }}{{ $url = . | relURL }}{{ end }}
+    {{ end }}
+  {{ end }}
+  {{ if not (or $image $url) }}
+    {{ $images := .Resources.ByType "image" }}
+    {{ range slice "*feature*" "*cover*" "*thumbnail*" }}
+      {{ if not $image }}{{ $image = $images.GetMatch . }}{{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ return (dict "resource" $image "url" $url) }}
