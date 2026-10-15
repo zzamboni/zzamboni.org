@@ -1,0 +1,24 @@
+{{/* Keep Blowfish's cards, but recommend articles rather than links or photos. */}}
+{{ $enabled := .Params.showRelatedContent | default (site.Params.article.showRelatedContent | default false) }}
+{{ $isArticle := and (eq .Section "post") (not .Params.externalUrl) (not .Params.photos) (not (in (.Params.tags | default slice) "photos")) }}
+{{ if and $enabled $isArticle }}
+  {{ $articles := where site.RegularPages "Section" "post" }}
+  {{ $excluded := slice }}
+  {{ range $articles }}
+    {{ if or .Params.externalUrl .Params.photos (in (.Params.tags | default slice) "photos") }}
+      {{ $excluded = $excluded | append . }}
+    {{ end }}
+  {{ end }}
+  {{ $articles = $articles | complement $excluded }}
+  {{ $related := $articles.Related . | first (site.Params.article.relatedContentLimit | default 3) }}
+  {{ with $related }}
+    <section class="mt-8" aria-labelledby="related-articles-title">
+      <h2 id="related-articles-title" class="text-2xl font-extrabold mb-10">{{ i18n "article.related_articles" | emojify }}</h2>
+      <div class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+        {{ range . }}
+          {{ partial "article-link/card-related.html" . }}
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+{{ end }}
