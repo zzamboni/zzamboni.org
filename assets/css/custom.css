@@ -247,3 +247,20 @@
 @media (max-width: 767px) {
   .home-feeds { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Compact archive: natural title wrapping, with dates in a stable column. */
+.archive-years { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin-block: 1.5rem 2.5rem; }
+.archive-years a { color: rgb(var(--color-primary-600)); font-weight: 600; }
+.dark .archive-years a { color: rgb(var(--color-primary-400)); }
+.blog-archive { max-width: 65ch; }
+.archive-year { font-size: 1.5rem; font-weight: 700; margin-block: 2rem 0.75rem; scroll-margin-top: 10rem; }
+.archive-count { font-size: 0.875rem; font-weight: 400; color: rgb(var(--color-neutral-600)); }
+.archive-entries { list-style: none; padding: 0; margin: 0; }
+.archive-entry { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0.75rem; padding-block: 0.5rem; border-bottom: 1px solid rgb(var(--color-neutral-200)); }
+.archive-entry time { font-size: 0.875rem; color: rgb(var(--color-neutral-600)); font-variant-numeric: tabular-nums; }
+.archive-entry a { overflow-wrap: anywhere; }
+.archive-badge { display: inline-block; margin-inline-start: 0.5rem; padding: 0.05rem 0.35rem; border: 1px solid currentColor; border-radius: 0.25rem; font-size: 0.75rem; }
+.dark .archive-entry { border-color: rgb(var(--color-neutral-700)); }
+.dark .archive-count, .dark .archive-entry time { color: rgb(var(--color-neutral-400)); }
+.archive-years a:hover, .archive-entry a:hover { text-decoration: underline; }
+.archive-years a:focus-visible, .archive-entry a:focus-visible, .archive-browse:focus-visible { outline: 2px solid rgb(var(--color-primary-500)); outline-offset: 4px; }

@@ -1,0 +1,33 @@
+{{/* Match the Blog's scope: retain links, exclude photo-tagged posts. */}}
+{{ $posts := where site.RegularPages "Section" "post" }}
+{{ $photos := where $posts "Params.tags" "intersect" (slice "photos") }}
+{{ $posts = $posts | complement $photos }}
+{{ $years := $posts.GroupByDate "2006" "desc" }}
+{{ with $years }}
+  <nav class="archive-years" aria-label="{{ i18n "archive_jump_to_year" }}">
+    {{ range . }}
+      <a href="#year-{{ .Key }}">{{ .Key }} <span class="archive-count">({{ len .Pages }})</span></a>
+    {{ end }}
+  </nav>
+  <div class="blog-archive">
+    {{ range . }}
+      <section aria-labelledby="year-{{ .Key }}">
+        <h2 id="year-{{ .Key }}" class="archive-year">{{ .Key }} <span class="archive-count">({{ len .Pages }})</span></h2>
+        <ul class="archive-entries">
+          {{ range .Pages.ByDate.Reverse }}
+            <li class="archive-entry">
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format "Jan 2" }}</time>
+              <div>
+                <a href="{{ .Params.externalUrl | default .RelPermalink }}"{{ if .Params.externalUrl }} rel="external"{{ end }}>{{ .Title }}</a>
+                {{ if .Params.externalUrl }}<span class="archive-badge">{{ i18n "archive_link" }}</span>{{ end }}
+                {{ if .Draft }}<span class="archive-badge">{{ i18n "article.draft" }}</span>{{ end }}
+              </div>
+            </li>
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }}
+  </div>
+{{ else }}
+  <p>{{ i18n "list.no_articles" }}</p>
+{{ end }}

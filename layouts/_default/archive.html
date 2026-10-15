@@ -1,0 +1,8 @@
+{{ define "main" }}
+  {{ .Scratch.Set "scope" "list" }}
+  <header>
+    <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
+    <div class="prose dark:prose-invert mt-4 mb-10">{{ .Content }}</div>
+  </header>
+  {{ partial "archive-list.html" . }}
+{{ end }}
