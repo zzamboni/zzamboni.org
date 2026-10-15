@@ -21,6 +21,9 @@
       <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
         {{ .Title | emojify }}
       </h1>
+      {{ with site.GetPage "/archive" }}
+        <p class="prose dark:prose-invert mt-4"><a class="archive-browse" href="{{ .RelPermalink }}">{{ i18n "archive_browse" }} &rarr;</a></p>
+      {{ end }}
       <div class="mt-1 mb-2 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       {{ partial "article-meta/list.html" (dict "context" . "scope" "single") }}
     </div>
