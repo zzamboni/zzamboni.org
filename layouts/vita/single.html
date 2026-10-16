@@ -35,13 +35,16 @@
   </header>
   {{ $order := $options.sections | default (slice "work" "education" "projects" "certificates" "awards" "publications" "skills" "languages" "references") }}
   {{/* Hugo's .TableOfContents is populated from the section-heading index in content/vita/index.md. */}}
-  <div class="vita-body">
+  <section class="vita-body flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    {{ $topClass := cond (or (hasPrefix site.Params.header.layout "fixed") (eq site.Params.header.layout "floating")) "lg:top-[140px]" "lg:top-10" }}
     {{ if in .TableOfContents "<ul" }}
-      <aside class="vita-toc-slot toc print:hidden lg:sticky lg:top-10">
-        {{ partial "toc.html" . }}
-      </aside>
+      <div class="order-first lg:ms-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
+        <div class="toc ps-5 print:hidden lg:sticky {{ $topClass }}">
+          {{ partial "toc.html" . }}
+        </div>
+      </div>
     {{ end }}
-  <div class="vita-sections">
+    <div class="vita-sections min-w-0 min-h-0">
     {{ range $order }}
       {{ $key := . }}
       {{ $name := index $labels $key | default (cond (hasPrefix $key "projects:") (strings.TrimPrefix "projects:" $key) ($key | humanize)) }}
@@ -61,7 +64,7 @@
       </section>
       {{ end }}
     {{ end }}
-  </div>
-  </div>
+    </div>
+  </section>
 </main>
 {{ end }}
