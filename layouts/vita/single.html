@@ -53,8 +53,8 @@
         {{ $items = $resume.projects | default (slice) }}
       {{ else }}{{ $items = index $resume $key | default (slice) }}{{ end }}
       {{ with $items }}
-      <section class="vita-section" id="{{ $key | anchorize }}" aria-labelledby="{{ $key | anchorize }}-title">
-        <h2 id="{{ $key | anchorize }}-title"><span class="anchor" id="{{ $key | anchorize }}"></span>{{ $name }}</h2>
+      <section class="vita-section" id="{{ (replace $key ":" "-" | anchorize) }}" aria-labelledby="{{ (replace $key ":" "-" | anchorize) }}-title">
+        <h2 id="{{ (replace $key ":" "-" | anchorize) }}-title"><span class="anchor" id="{{ (replace $key ":" "-" | anchorize) }}"></span>{{ $name }}</h2>
         <div class="vita-section-content">
           {{ range . }}{{ partial "vita/entry.html" (dict "entry" . "section" $key) }}{{ end }}
         </div>
