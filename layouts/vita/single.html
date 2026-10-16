@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ $resume := site.Data.vita.resume }}
+{{ $resume := hugo.Data.vita.resume }}
 {{ $options := $resume.meta.themeOptions | default dict }}
 {{ $labels := $options.sectionLabels | default dict }}
 {{ $css := resources.Get "css/vita.css" | minify | fingerprint }}

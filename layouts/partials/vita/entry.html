@@ -20,10 +20,10 @@
   {{ $date := $e.date | default $e.releaseDate | default "" }}
   {{ if or $start $end $date $e.location }}
     <p class="vita-meta">
-      {{ with $start }}{{ (time .).Format "Jan 2006" }}{{ end }}
-      {{ if $start }} – {{ if $end }}{{ (time $end).Format "Jan 2006" }}{{ else }}Present{{ end }}{{ end }}
-      {{ if and (not $start) $end }}{{ (time $end).Format "Jan 2006" }}{{ end }}
-      {{ with $date }}{{ (time .).Format "2006" }}{{ end }}
+      {{ with $start }}{{ partial "vita/date.html" (dict "value" . "format" "Jan 2006") }}{{ end }}
+      {{ if $start }} – {{ if $end }}{{ partial "vita/date.html" (dict "value" $end "format" "Jan 2006") }}{{ else }}Present{{ end }}{{ end }}
+      {{ if and (not $start) $end }}{{ partial "vita/date.html" (dict "value" $end "format" "Jan 2006") }}{{ end }}
+      {{ with $date }}{{ partial "vita/date.html" (dict "value" . "format" "2006") }}{{ end }}
       {{ with $e.location }} · {{ . }}{{ end }}
     </p>
   {{ end }}
