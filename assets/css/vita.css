@@ -28,7 +28,7 @@
 @media(max-width:700px) {
  .vita-page { padding:0 1rem; margin-top:1rem; }
  .vita-section { display:block; padding:1.6rem 0; }
- .vita-section h2 { text-align:left; margin-bottom:1.1rem; }
+ .vita-page .vita-section h2 { text-align:left; font-size:1.5rem; font-weight:700; line-height:1.35; margin:0 0 1.1rem; }
 }
 @media print { .vita-actions {display:none;} .vita-page {width:100%; margin:0;} .vita-section {break-inside:avoid;} }
 
