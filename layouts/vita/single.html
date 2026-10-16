@@ -13,7 +13,7 @@
           src="{{ . | safeURL }}" alt="{{ $resume.basics.name }}"
           loading="eager" fetchpriority="high">
       {{ end }}
-      <h1 class="text-4xl font-extrabold">{{ $resume.basics.name }}</h1>
+      <h1 class="text-4xl font-extrabold">{{ $resume.basics.name | markdownify }}</h1>
       {{ with $resume.basics.label }}
         <h2 class="text-xl text-neutral-500 dark:text-neutral-400">{{ . | markdownify }}</h2>
       {{ end }}
@@ -74,7 +74,7 @@
       {{ else }}{{ $items = index $resume $key | default (slice) }}{{ end }}
       {{ with $items }}
       <section class="vita-section" id="{{ (replace $key ":" "-" | anchorize) }}" aria-labelledby="{{ (replace $key ":" "-" | anchorize) }}-title">
-        <h2 id="{{ (replace $key ":" "-" | anchorize) }}-title"><span class="anchor" id="{{ (replace $key ":" "-" | anchorize) }}"></span>{{ $name }}</h2>
+        <h2 id="{{ (replace $key ":" "-" | anchorize) }}-title"><span class="anchor" id="{{ (replace $key ":" "-" | anchorize) }}"></span>{{ $name | markdownify }}</h2>
         <div class="vita-section-content">
           {{ range . }}{{ partial "vita/entry.html" (dict "entry" . "section" $key) }}{{ end }}
         </div>
