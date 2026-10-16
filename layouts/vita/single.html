@@ -17,22 +17,23 @@
       {{ with $resume.basics.label }}
         <h2 class="text-xl text-neutral-500 dark:text-neutral-400">{{ . | markdownify }}</h2>
       {{ end }}
+      {{ with $resume.basics.location }}
+        {{ $location := .city | default "" }}
+        {{ with .countryCode }}{{ $location = printf "%s, %s" $location . }}{{ end }}
+        {{ with $location }}
+          <div class="mt-2 flex items-center justify-center gap-1.5 text-base text-neutral-500 dark:text-neutral-400">
+            <span class="inline-flex h-4 w-4 items-center justify-center" aria-hidden="true">{{ partial "icon.html" "location-dot" }}</span>
+            <span>{{ . }}</span>
+          </div>
+        {{ end }}
+      {{ end }}
       <div class="mt-1 text-2xl">
-        <div class="flex flex-wrap justify-center text-neutral-400 dark:text-neutral-500 gap-x-2 gap-y-1">
+        <div class="flex flex-wrap justify-center text-neutral-400 dark:text-neutral-500 space-x-2">
           {{ with $resume.basics.email }}
             <a href="mailto:{{ . }}" aria-label="Email" title="Email"
               class="hover:text-primary-700 dark:hover:text-primary-400">
               <span class="inline-block align-text-bottom">{{ partial "icon.html" "email" }}</span>
             </a>
-          {{ end }}
-          {{ with $resume.basics.location }}
-            {{ $location := .city | default "" }}
-            {{ with .countryCode }}{{ $location = printf "%s, %s" $location . }}{{ end }}
-            {{ with $location }}
-              <span class="inline-block align-text-bottom" title="{{ . }}" aria-label="Location: {{ . }}">
-                {{ partial "icon.html" "location-dot" }}
-              </span>
-            {{ end }}
           {{ end }}
           {{ range $resume.basics.profiles }}
             {{ $network := lower (.network | default "") }}
