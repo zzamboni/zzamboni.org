@@ -1,0 +1,39 @@
+/* Native JSON Resume page, intentionally scoped to avoid changing Blowfish. */
+.vita-page { --vita-accent:#0891b2; width:min(100%,1100px); margin:2rem auto 5rem; padding:0 1.25rem; color:inherit; }
+.dark .vita-page { --vita-accent:#22d3ee; }
+.vita-page a { color:var(--vita-accent); text-decoration:none; }
+.vita-page a:hover { text-decoration:underline; }
+.vita-intro { display:grid; grid-template-columns:155px minmax(0,1fr); gap:2rem; padding:2rem; border-radius:1rem; background:rgb(128 128 128 / .08); align-items:start; }
+.vita-portrait { border-radius:50%; width:155px; aspect-ratio:1; object-fit:cover; border:3px solid var(--vita-accent); }
+.vita-intro h1 { font-size:clamp(2rem,4vw,3rem); font-weight:700; line-height:1.1; margin:0 0 .6rem; }
+.vita-role { font-size:1.15rem; opacity:.85; margin-bottom:1rem; }
+.vita-summary { line-height:1.65; max-width:75ch; }
+.vita-contact,.vita-actions { display:flex; flex-wrap:wrap; list-style:none; gap:.5rem 1.2rem; margin:1.2rem 0 0; padding:0; font-size:.9rem; }
+.vita-actions a { display:inline-block; border:1px solid currentColor; padding:.35rem .7rem; border-radius:.45rem; }
+.vita-toc { display:flex; flex-wrap:wrap; align-items:center; gap:.5rem 1rem; padding:1.3rem 0; border-bottom:1px solid rgb(128 128 128 / .25); font-size:.85rem; }
+.vita-toc span { font-weight:700; }
+.vita-section { display:grid; grid-template-columns:minmax(130px,23%) minmax(0,1fr); gap:2.4rem; padding:2.25rem 0; border-bottom:1px solid rgb(128 128 128 / .2); scroll-margin-top:6rem; }
+.vita-section h2 { color:var(--vita-accent); font-size:1.3rem; line-height:1.3; font-weight:650; text-align:right; padding-top:.25rem; }
+.vita-section-content { min-width:0; display:grid; gap:1.5rem; }
+.vita-entry { position:relative; padding:0 0 1.5rem 1.2rem; border-left:2px solid rgb(128 128 128 / .35); min-width:0; }
+.vita-entry:before { content:""; position:absolute; top:.5rem; left:-5px; width:8px; height:8px; background:var(--vita-accent); border-radius:50%; }
+.vita-entry:last-child { padding-bottom:0; }
+.vita-entry h3 { font-size:1.15rem; font-weight:650; line-height:1.35; margin:0 0 .2rem; }
+.vita-position { font-weight:550; margin:.1rem 0; }
+.vita-meta { font-size:.87rem; opacity:.7; margin:.35rem 0 .65rem; }
+.vita-description { line-height:1.65; margin:.65rem 0; }
+.vita-description p { margin:.4rem 0; }
+.vita-highlights { margin:.65rem 0; padding-left:1.3rem; list-style:disc; line-height:1.65; }
+.vita-highlights li { margin:.4rem 0; }
+.vita-tags { display:flex; flex-wrap:wrap; list-style:none; gap:.45rem; padding:0; margin:.65rem 0; }
+.vita-tags li { background:rgb(128 128 128 / .13); border-radius:.4rem; padding:.2rem .55rem; font-size:.84rem; }
+.vita-entry-logo { float:right; width:52px; height:52px; object-fit:contain; margin:0 0 .6rem .8rem; border-radius:.4rem; background:white; padding:4px; }
+.vita-small-link { font-size:.9rem; }
+@media(max-width:700px) {
+ .vita-page { padding:0 1rem; margin-top:1rem; }
+ .vita-intro { display:block; padding:1.25rem; }
+ .vita-portrait { width:110px; margin-bottom:1rem; }
+ .vita-section { display:block; padding:1.6rem 0; }
+ .vita-section h2 { text-align:left; margin-bottom:1.1rem; }
+}
+@media print { .vita-toc,.vita-actions {display:none;} .vita-page {width:100%; margin:0;} .vita-section {break-inside:avoid;} }

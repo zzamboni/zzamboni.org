@@ -1,0 +1,38 @@
+{{ $e := .entry }}
+{{ $section := .section }}
+<article class="vita-entry">
+  {{ with $e.image }}<img class="vita-entry-logo" src="{{ . | safeURL }}" alt="" loading="lazy">{{ end }}
+  {{ if $e.name }}
+    <h3>{{ with $e.url }}<a href="{{ . | safeURL }}">{{ $e.name }}</a>{{ else }}{{ $e.name }}{{ end }}</h3>
+  {{ else if $e.title }}
+    <h3>{{ $e.title }}</h3>
+  {{ else if $e.institution }}
+    <h3>{{ with $e.url }}<a href="{{ . | safeURL }}">{{ $e.institution }}</a>{{ else }}{{ $e.institution }}{{ end }}</h3>
+  {{ else if $e.language }}<h3>{{ $e.language }}</h3>
+  {{ end }}
+  {{ with $e.position }}<p class="vita-position">{{ . }}</p>{{ end }}
+  {{ if or $e.studyType $e.area }}<p class="vita-position">{{ $e.studyType }}{{ if and $e.studyType $e.area }} · {{ end }}{{ $e.area }}</p>{{ end }}
+  {{ with $e.issuer }}<p class="vita-position">{{ . }}</p>{{ end }}
+  {{ with $e.awarder }}<p class="vita-position">{{ . }}</p>{{ end }}
+  {{ with $e.fluency }}<p class="vita-position">{{ . }}</p>{{ end }}
+  {{ $start := $e.startDate | default "" }}
+  {{ $end := $e.endDate | default "" }}
+  {{ $date := $e.date | default $e.releaseDate | default "" }}
+  {{ if or $start $end $date $e.location }}
+    <p class="vita-meta">
+      {{ with $start }}{{ (time .).Format "Jan 2006" }}{{ end }}
+      {{ if $start }} – {{ if $end }}{{ (time $end).Format "Jan 2006" }}{{ else }}Present{{ end }}{{ end }}
+      {{ if and (not $start) $end }}{{ (time $end).Format "Jan 2006" }}{{ end }}
+      {{ with $date }}{{ (time .).Format "2006" }}{{ end }}
+      {{ with $e.location }} · {{ . }}{{ end }}
+    </p>
+  {{ end }}
+  {{ with $e.description }}<div class="vita-description">{{ . | markdownify }}</div>{{ end }}
+  {{ with $e.summary }}<div class="vita-description">{{ . | markdownify }}</div>{{ end }}
+  {{ with $e.reference }}<div class="vita-description">{{ . | markdownify }}</div>{{ end }}
+  {{ with $e.highlights }}<ul class="vita-highlights">{{ range . }}<li>{{ . | markdownify }}</li>{{ end }}</ul>{{ end }}
+  {{ with $e.keywords }}<ul class="vita-tags">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+  {{ with $e.authors }}<p class="vita-meta">{{ delimit . ", " }}</p>{{ end }}
+  {{ if and (eq $section "publications") $e.bibfiles }}<p class="vita-description"><a href="/vita/publications/">Full publications and patents bibliography ↗</a></p>{{ end }}
+  {{ if and (eq $section "certificates") $e.url }}<p><a href="{{ $e.url | safeURL }}" class="vita-small-link">View certificate ↗</a></p>{{ end }}
+</article>

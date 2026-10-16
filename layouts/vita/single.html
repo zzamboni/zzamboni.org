@@ -1,0 +1,62 @@
+{{ define "main" }}
+{{ $resume := site.Data.vita.resume }}
+{{ $options := $resume.meta.themeOptions | default dict }}
+{{ $labels := $options.sectionLabels | default dict }}
+{{ $css := resources.Get "css/vita.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+<main id="vita" class="vita-page">
+  <header class="vita-intro">
+    {{ with $resume.basics.image }}<img class="vita-portrait" src="{{ . | safeURL }}" alt="Portrait of {{ $resume.basics.name }}">{{ end }}
+    <div class="vita-intro-text">
+      <h1>{{ $resume.basics.name }}</h1>
+      {{ with $resume.basics.label }}<p class="vita-role">{{ . }}</p>{{ end }}
+      {{ with $resume.basics.summary }}<div class="vita-summary">{{ . | markdownify }}</div>{{ end }}
+      <ul class="vita-contact">
+        {{ with $resume.basics.location }}<li>{{ .city }}{{ with .countryCode }}, {{ . }}{{ end }}</li>{{ end }}
+        {{ with $resume.basics.email }}<li><a href="mailto:{{ . }}">{{ . }}</a></li>{{ end }}
+        {{ range $resume.basics.profiles }}<li><a href="{{ .url | safeURL }}" rel="me">{{ .network | default .username }}</a></li>{{ end }}
+      </ul>
+      <nav class="vita-actions" aria-label="CV downloads">
+        <a href="/vita/zamboni-vita.pdf">Download PDF ↗</a>
+        <a href="/vita/publications/">Publications ↗</a>
+        <a href="/vita/publications/zamboni-vita-pubs.bib">BibTeX ↗</a>
+      </nav>
+    </div>
+  </header>
+  {{ $order := $options.sections | default (slice "work" "education" "projects" "certificates" "awards" "publications" "skills" "languages" "references") }}
+  <nav class="vita-toc" aria-label="CV sections">
+    <span>On this page</span>
+    {{ range $order }}
+      {{ $key := . }}
+      {{ $name := index $labels $key | default (cond (hasPrefix $key "projects:") (strings.TrimPrefix "projects:" $key) ($key | humanize)) }}
+      {{ $items := slice }}
+      {{ if hasPrefix $key "projects:" }}
+        {{ $group := strings.TrimPrefix "projects:" $key }}
+        {{ range $resume.projects }}{{ if eq .type $group }}{{ $items = $items | append . }}{{ end }}{{ end }}
+      {{ else }}{{ $items = index $resume $key | default (slice) }}{{ end }}
+      {{ if gt (len $items) 0 }}<a href="#{{ $key | anchorize }}">{{ $name }}</a>{{ end }}
+    {{ end }}
+  </nav>
+  <div class="vita-sections">
+    {{ range $order }}
+      {{ $key := . }}
+      {{ $name := index $labels $key | default (cond (hasPrefix $key "projects:") (strings.TrimPrefix "projects:" $key) ($key | humanize)) }}
+      {{ $items := slice }}
+      {{ if hasPrefix $key "projects:" }}
+        {{ $group := strings.TrimPrefix "projects:" $key }}
+        {{ range $resume.projects }}{{ if eq .type $group }}{{ $items = $items | append . }}{{ end }}{{ end }}
+      {{ else if eq $key "projects" }}
+        {{ $items = $resume.projects | default (slice) }}
+      {{ else }}{{ $items = index $resume $key | default (slice) }}{{ end }}
+      {{ with $items }}
+      <section class="vita-section" id="{{ $key | anchorize }}" aria-labelledby="{{ $key | anchorize }}-title">
+        <h2 id="{{ $key | anchorize }}-title">{{ $name }}</h2>
+        <div class="vita-section-content">
+          {{ range . }}{{ partial "vita/entry.html" (dict "entry" . "section" $key) }}{{ end }}
+        </div>
+      </section>
+      {{ end }}
+    {{ end }}
+  </div>
+</main>
+{{ end }}
