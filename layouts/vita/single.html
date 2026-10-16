@@ -3,36 +3,53 @@
 {{ $options := $resume.meta.themeOptions | default dict }}
 {{ $labels := $options.sectionLabels | default dict }}
 {{ $css := resources.Get "css/vita.css" | minify | fingerprint }}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 <main id="vita" class="vita-page">
-  <header class="vita-intro">
-    {{ with $resume.basics.image }}<img class="vita-portrait" src="{{ . | safeURL }}" alt="Portrait of {{ $resume.basics.name }}">{{ end }}
-    <div class="vita-intro-text">
-      <h1>{{ $resume.basics.name }}</h1>
-      {{ with $resume.basics.label }}<p class="vita-role">{{ . }}</p>{{ end }}
-      {{ with $resume.basics.summary }}<div class="vita-summary">{{ . | markdownify }}</div>{{ end }}
-      <ul class="vita-contact">
-        {{/* Font Awesome icons are restricted to this CV page. */}}
-        {{ with $resume.basics.location }}<li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>{{ .city }}{{ with .countryCode }}, {{ . }}{{ end }}</span></li>{{ end }}
-        {{ with $resume.basics.email }}<li><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:{{ . }}">{{ . }}</a></li>{{ end }}
-        {{ range $resume.basics.profiles }}
-          {{ $network := .network | default "" | lower }}
-          {{ $icon := "fa-solid fa-link" }}
-          {{ if eq $network "linkedin" }}{{ $icon = "fa-brands fa-linkedin" }}
-          {{ else if eq $network "github" }}{{ $icon = "fa-brands fa-github" }}
-          {{ else if eq $network "bluesky" }}{{ $icon = "fa-brands fa-bluesky" }}
-          {{ else if eq $network "leanpub" }}{{ $icon = "fa-brands fa-leanpub" }}{{ end }}
-          <li><i class="{{ $icon }}" aria-hidden="true"></i><a href="{{ .url | safeURL }}" rel="me">{{ .network | default .username }}</a></li>
-        {{ end }}
-      </ul>
-      <nav class="vita-actions" aria-label="CV downloads">
-        <a href="/vita/zamboni-vita.pdf">Download PDF ↗</a>
-        <a href="/vita/publications/">Publications ↗</a>
-        <a href="/vita/publications/zamboni-vita-pubs.bib">BibTeX ↗</a>
-      </nav>
-    </div>
-  </header>
+  {{/* Adapted from Blowfish v3.8.0 home/profile.html, with CV-specific source data. */}}
+  <article class="vita-profile flex flex-col items-center justify-center text-center">
+    <header class="relative px-1 py-1 flex flex-col items-center mb-3">
+      {{ with $resume.basics.image }}
+        <img class="mb-2 h-36 w-36 rounded-full" width="144" height="144"
+          src="{{ . | safeURL }}" alt="{{ $resume.basics.name }}"
+          loading="eager" fetchpriority="high">
+      {{ end }}
+      <h1 class="text-4xl font-extrabold">{{ $resume.basics.name }}</h1>
+      {{ with $resume.basics.label }}
+        <h2 class="text-xl text-neutral-500 dark:text-neutral-400">{{ . | markdownify }}</h2>
+      {{ end }}
+      <div class="mt-1 text-2xl">
+        <div class="flex flex-wrap justify-center text-neutral-400 dark:text-neutral-500 gap-x-2 gap-y-1">
+          {{ range $resume.basics.profiles }}
+            {{ $network := lower (.network | default "") }}
+            {{ $icon := $network }}
+            {{ if eq $network "linkedin" }}{{ $icon = "linkedin" }}
+            {{ else if eq $network "github" }}{{ $icon = "github" }}
+            {{ else if eq $network "bluesky" }}{{ $icon = "bluesky" }}
+            {{ else if eq $network "leanpub" }}{{ $icon = "leanpub" }}{{ end }}
+            <a href="{{ .url | safeURL }}" target="_blank" rel="me noopener noreferrer"
+              aria-label="{{ .network | default .username }}" title="{{ .network | default .username }}"
+              class="hover:text-primary-700 dark:hover:text-primary-400">
+              <span class="inline-block align-text-bottom">{{ partial "icon.html" $icon }}</span>
+            </a>
+          {{ end }}
+          {{ with $resume.basics.email }}
+            <a href="mailto:{{ . }}" aria-label="Email" title="Email"
+              class="hover:text-primary-700 dark:hover:text-primary-400">
+              <span class="inline-block align-text-bottom">{{ partial "icon.html" "email" }}</span>
+            </a>
+          {{ end }}
+        </div>
+      </div>
+    </header>
+    {{ with $resume.basics.summary }}
+      <section class="prose dark:prose-invert w-full">{{ . | markdownify }}</section>
+    {{ end }}
+    <nav class="vita-actions" aria-label="CV downloads">
+      <a href="/vita/zamboni-vita.pdf">Download PDF ↗</a>
+      <a href="/vita/publications/">Publications ↗</a>
+      <a href="/vita/publications/zamboni-vita-pubs.bib">BibTeX ↗</a>
+    </nav>
+  </article>
   {{ $order := $options.sections | default (slice "work" "education" "projects" "certificates" "awards" "publications" "skills" "languages" "references") }}
   {{/* Hugo's .TableOfContents is populated from the section-heading index in content/vita/index.md. */}}
   <section class="vita-body flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">

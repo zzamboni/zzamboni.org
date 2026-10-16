@@ -1,16 +1,11 @@
 /* Native JSON Resume page, intentionally scoped to avoid changing Blowfish. */
 .vita-page { width:min(100%,1100px); margin:2rem auto 5rem; padding:0 1.25rem; color:inherit; }
-.vita-intro { display:grid; grid-template-columns:155px minmax(0,1fr); gap:2rem; padding:2rem; border-radius:1rem; background:rgb(128 128 128 / .08); align-items:start; }
-.vita-portrait { border-radius:50%; width:155px; aspect-ratio:1; object-fit:cover; border:3px solid rgb(var(--color-primary-500)); }
-.vita-intro h1 { font-size:clamp(2rem,4vw,3rem); font-weight:700; line-height:1.1; margin:0 0 .6rem; }
-.vita-role { font-size:1.15rem; opacity:.85; margin-bottom:1rem; }
-.vita-summary { line-height:1.65; max-width:75ch; }
-.vita-contact,.vita-actions { display:flex; flex-wrap:wrap; list-style:none; gap:.5rem 1.2rem; margin:1.2rem 0 0; padding:0; font-size:.9rem; }
+.vita-profile { margin:1rem auto 3rem; }
+.vita-profile > section { max-width:80ch; font-size:1.1rem; line-height:1.7; }
+.vita-actions { display:flex; justify-content:center; flex-wrap:wrap; list-style:none; gap:.5rem 1.2rem; margin:1.5rem 0 0; padding:0; font-size:.9rem; }
 .vita-actions a { display:inline-block; border:1px solid currentColor; padding:.35rem .7rem; border-radius:.45rem; }
 .vita-page .vita-body { max-width:100%; }
 .vita-page .vita-sections { flex:1 1 auto; min-width:0; max-width:none; }
-.vita-contact li { display:inline-flex; align-items:baseline; gap:.4rem; }
-.vita-contact i { min-width:1em; color:rgb(var(--color-primary-500)); text-align:center; }
 .vita-section .anchor { position:relative; top:-5rem; }
 
 .vita-section { display:grid; grid-template-columns:minmax(130px,23%) minmax(0,1fr); gap:2.4rem; padding:2.25rem 0; border-bottom:1px solid rgb(128 128 128 / .2); scroll-margin-top:6rem; }
@@ -32,8 +27,6 @@
 .vita-small-link { font-size:.9rem; }
 @media(max-width:700px) {
  .vita-page { padding:0 1rem; margin-top:1rem; }
- .vita-intro { display:block; padding:1.25rem; }
- .vita-portrait { width:110px; margin-bottom:1rem; }
  .vita-section { display:block; padding:1.6rem 0; }
  .vita-section h2 { text-align:left; margin-bottom:1.1rem; }
 }
