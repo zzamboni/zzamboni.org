@@ -21,7 +21,7 @@
     {{- else -}}
       {{- $icon = "link" -}}
     {{- end -}}
-    <a href="{{ $href | safeURL }}"><span class="vita-action-icon" aria-hidden="true">{{ partial "icon.html" $icon }}</span><span>{{ .name }}</span></a>
+    <a href="{{ $href | safeURL }}" {{ if $.floating }}aria-label="{{ .name }}" title="{{ .name }}"{{ end }}><span class="vita-action-icon" aria-hidden="true">{{ partial "icon.html" $icon }}</span>{{ if not $.floating }}<span>{{ .name }}</span>{{ end }}</a>
   {{- end -}}
 </nav>
 {{- end -}}

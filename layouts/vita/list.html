@@ -57,6 +57,7 @@
       <section class="prose dark:prose-invert w-full">{{ . | markdownify }}</section>
     {{ end }}
     {{ partial "vita/action-links.html" (dict "links" $options.links "class" "vita-actions" "label" "CV links") }}
+    {{ partial "vita/action-links.html" (dict "links" $options.links "class" "vita-floating-links" "label" "CV quick links" "floating" true) }}
   </article>
   {{ $order := $options.sections | default (slice "work" "education" "projects" "certificates" "awards" "publications" "skills" "languages" "references") }}
   {{/* Hugo's .TableOfContents is populated from the section-heading index in content/vita/index.md. */}}

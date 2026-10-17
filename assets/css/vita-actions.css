@@ -21,3 +21,45 @@
 .vita-action-icon { display:inline-flex; width:1.1em; height:1.1em; align-items:center; }
 .vita-action-icon svg { width:100%; height:100%; }
 @media print { .vita-actions, .vita-publications-downloads { display:none; } }
+
+/* Eventide-inspired quick actions: supplementary desktop navigation. */
+.vita-floating-links { display:none; }
+@media (min-width:1024px) {
+  .vita-floating-links {
+    position:fixed;
+    right:1.25rem;
+    bottom:5.75rem; /* clear Blowfish's back-to-top control */
+    z-index:30;
+    display:flex;
+    flex-direction:column;
+    gap:.65rem;
+    margin:0;
+    padding:0;
+  }
+  .vita-floating-links a {
+    display:grid;
+    place-items:center;
+    width:2.75rem;
+    height:2.75rem;
+    border:1px solid rgb(128 128 128 / .22);
+    border-radius:999px;
+    background:rgb(var(--color-neutral-200));
+    color:rgb(var(--color-neutral-700));
+    box-shadow:0 3px 12px rgb(0 0 0 / .12);
+    transition:transform .18s ease, box-shadow .18s ease, color .18s ease;
+  }
+  .dark .vita-floating-links a {
+    background:rgb(var(--color-neutral-800));
+    color:rgb(var(--color-neutral-200));
+  }
+  .vita-floating-links a:hover, .vita-floating-links a:focus-visible {
+    transform:translateY(-2px);
+    color:rgb(var(--color-primary-500));
+    box-shadow:0 5px 16px rgb(0 0 0 / .18);
+  }
+  .vita-floating-links .vita-action-icon { width:1.3rem; height:1.3rem; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .vita-floating-links a { transition:none; }
+}
+@media print { .vita-floating-links { display:none; } }
