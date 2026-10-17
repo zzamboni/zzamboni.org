@@ -11,6 +11,8 @@
   {{ else if $e.language }}<h3>{{ $e.language | markdownify }}</h3>
   {{ end }}
   {{ with $e.position }}<p class="jsonresume-position">{{ . | markdownify }}</p>{{ end }}
+  {{ with $e.entity }}<p class="jsonresume-meta">{{ . | markdownify }}</p>{{ end }}
+  {{ with $e.publisher }}<p class="jsonresume-meta">{{ . | markdownify }}</p>{{ end }}
   {{ if or $e.studyType $e.area }}<p class="jsonresume-position">{{ $e.studyType | markdownify }}{{ if and $e.studyType $e.area }} · {{ end }}{{ $e.area | markdownify }}</p>{{ end }}
   {{ with $e.issuer }}<p class="jsonresume-position">{{ . | markdownify }}</p>{{ end }}
   {{ with $e.awarder }}<p class="jsonresume-position">{{ . | markdownify }}</p>{{ end }}

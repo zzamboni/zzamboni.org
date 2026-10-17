@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 {{ $actionsCSS := resources.Get "css/jsonresume-actions.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $actionsCSS.RelPermalink }}">
-<main id="vita" class="jsonresume-page">
+<div id="vita" class="jsonresume-page">
   {{/* Adapted from Blowfish v3.8.0 home/profile.html, with CV-specific source data. */}}
   <article class="jsonresume-profile flex flex-col items-center justify-center text-center">
     <header class="relative px-1 py-1 flex flex-col items-center mb-3">
@@ -79,4 +79,4 @@
     {{ end }}
     </div>
   </section>
-</main>
+</div>
