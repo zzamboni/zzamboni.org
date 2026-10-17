@@ -1456,5 +1456,22 @@
         }
       ]
     }
+  ],
+  "links": [
+    {
+      "name": "Curriculum Vitae",
+      "icon": "fa-regular fa-house",
+      "url": "/vita/"
+    },
+    {
+      "name": "PDF version",
+      "icon": "fa-regular fa-file-pdf",
+      "url": "/vita/publications/zamboni-vita-pubs.pdf"
+    },
+    {
+      "name": "BibTeX",
+      "icon": "fa-file-lines",
+      "url": "/vita/publications/zamboni-vita-pubs.bib"
+    }
   ]
 }

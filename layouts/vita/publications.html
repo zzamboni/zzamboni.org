@@ -7,11 +7,7 @@
     {{ partial "breadcrumbs.html" . }}
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">Publications</h1>
     <p class="text-neutral-500 dark:text-neutral-400">Books, research papers, reports, presentations and patents.</p>
-    <nav class="vita-publications-downloads print:hidden" aria-label="Publication downloads">
-      <a href="/vita/">Curriculum Vitae</a>
-      <a href="/vita/publications/zamboni-vita-pubs.pdf">Download PDF</a>
-      <a href="/vita/publications/zamboni-vita-pubs.bib">Download BibTeX</a>
-    </nav>
+    {{ partial "vita/action-links.html" (dict "links" $data.links "class" "vita-publications-downloads print:hidden" "label" "Publication links") }}
   </header>
   <div class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
     {{ if in .TableOfContents "<ul" }}

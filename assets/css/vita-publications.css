@@ -12,3 +12,7 @@
 .vita-pub-meta { margin-top:.2rem; opacity:.75; font-size:.88rem; }
 @media(max-width:700px) { .vita-publications { padding:0 1rem; } .vita-pub-item { grid-template-columns:2.6rem minmax(0,1fr); } }
 @media print { .vita-pub-item {break-inside:avoid;} }
+
+.vita-publications-downloads a { display:inline-flex; align-items:center; gap:.4rem; }
+.vita-publications-downloads .vita-action-icon { display:inline-flex; width:1.1em; height:1.1em; align-items:center; }
+.vita-publications-downloads .vita-action-icon svg { width:100%; height:100%; }

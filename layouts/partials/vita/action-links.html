@@ -1,0 +1,27 @@
+{{- /* Use the icon names supplied by JSON Resume, mapping Font Awesome names to Blowfish SVG icons. */ -}}
+{{- with .links -}}
+<nav class="{{ $.class }}" aria-label="{{ $.label }}">
+  {{- range . -}}
+    {{- $href := .url | default "" -}}
+    {{- $href = replace $href "<resume>" "/vita/zamboni-vita" -}}
+    {{- if and $href (not (or (hasPrefix $href "/") (hasPrefix $href "https://") (hasPrefix $href "http://"))) -}}
+      {{- $href = printf "/vita/%s" $href -}}
+    {{- end -}}
+    {{- $icon := .icon | default "link" | lower -}}
+    {{- if in $icon "file-pdf" -}}
+      {{- $icon = "download" -}}
+    {{- else if in $icon "house" -}}
+      {{- $icon = "link" -}}
+    {{- else if in $icon "quote-left" -}}
+      {{- $icon = "quote-left" -}}
+    {{- else if in $icon "gitlab" -}}
+      {{- $icon = "gitlab" -}}
+    {{- else if in $icon "file-lines" -}}
+      {{- $icon = "file-lines" -}}
+    {{- else -}}
+      {{- $icon = "link" -}}
+    {{- end -}}
+    <a href="{{ $href | safeURL }}"><span class="vita-action-icon" aria-hidden="true">{{ partial "icon.html" $icon }}</span><span>{{ .name }}</span></a>
+  {{- end -}}
+</nav>
+{{- end -}}
