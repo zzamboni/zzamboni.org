@@ -1,5 +1,13 @@
 {{- /* Use the icon names supplied by JSON Resume, mapping Font Awesome names to Blowfish SVG icons. */ -}}
-{{- with .links -}}
+{{- /* Filtering belongs to the Hugo presentation policy, not the JSON Resume data. */ -}}
+{{- $excluded := site.Params.vita.excludeLinkRoles | default (slice) -}}
+{{- $visible := slice -}}
+{{- range (.links | default (slice)) -}}
+  {{- if not (in $excluded (.role | default "")) -}}
+    {{- $visible = $visible | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- with $visible -}}
 <nav class="{{ $.class }}" aria-label="{{ $.label }}">
   {{- range . -}}
     {{- $href := .url | default "" -}}

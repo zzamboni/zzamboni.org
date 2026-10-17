@@ -429,7 +429,8 @@
         {
           "name": "Home",
           "icon": "fa-regular fa-house",
-          "url": "https://zzamboni.org/about/"
+          "url": "https://zzamboni.org/about/",
+          "role": "site-home"
         },
         {
           "name": "PDF version",
