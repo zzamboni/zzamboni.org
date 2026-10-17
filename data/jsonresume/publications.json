@@ -629,12 +629,12 @@
     },
     {
       "name": "PDF",
-      "url": "zamboni-vita-general-pubs.pdf",
+      "url": "zamboni-vita-pubs.pdf",
       "icon": "fa-regular fa-file-pdf"
     },
     {
       "name": "BibTeX",
-      "url": "zamboni-vita-general-pubs.bib",
+      "url": "zamboni-vita-pubs.bib",
       "icon": "tex"
     }
   ]
