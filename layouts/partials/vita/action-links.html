@@ -7,20 +7,12 @@
     {{- if and $href (not (or (hasPrefix $href "/") (hasPrefix $href "https://") (hasPrefix $href "http://"))) -}}
       {{- $href = printf "/vita/%s" $href -}}
     {{- end -}}
-    {{- $icon := .icon | default "link" | lower -}}
-    {{- if in $icon "file-pdf" -}}
-      {{- $icon = "download" -}}
-    {{- else if in $icon "house" -}}
-      {{- $icon = "link" -}}
-    {{- else if in $icon "quote-left" -}}
-      {{- $icon = "quote-left" -}}
-    {{- else if in $icon "gitlab" -}}
-      {{- $icon = "gitlab" -}}
-    {{- else if in $icon "github" -}}
-      {{- $icon = "github" -}}
-    {{- else if in $icon "file-lines" -}}
-      {{- $icon = "file-lines" -}}
-    {{- else -}}
+    {{- /* Preserve native Blowfish icon names; translate common Font Awesome aliases. */ -}}
+    {{- $requested := lower (.icon | default "link") -}}
+    {{- $aliases := dict "fa-regular fa-file-pdf" "download" "fa-file-pdf" "download" "fa-regular fa-house" "link" "fa-house" "link" "fa-quote-left" "quote-left" "fa-file-lines" "file-lines" -}}
+    {{- $icon := index $aliases $requested | default $requested -}}
+    {{- /* Blowfish's icon partial reads resources.Get "icons/<name>.svg". */ -}}
+    {{- if not (resources.Get (printf "icons/%s.svg" $icon)) -}}
       {{- $icon = "link" -}}
     {{- end -}}
     <a href="{{ $href | safeURL }}" {{ if $.floating }}aria-label="{{ .name }}" title="{{ .name }}"{{ end }}><span class="vita-action-icon" aria-hidden="true">{{ partial "icon.html" $icon }}</span>{{ if not $.floating }}<span>{{ .name }}</span>{{ end }}</a>
