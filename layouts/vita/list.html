@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{ $resume := hugo.Data.vita.resume }}
 {{ $options := $resume.meta.themeOptions | default dict }}
-{{ $labels := $options.sectionLabels | default dict }}
+{{ $sections := partial "vita/cv-sections.html" $resume }}
 {{ $css := resources.Get "css/vita.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 {{ $actionsCSS := resources.Get "css/vita-actions.css" | minify | fingerprint }}
@@ -59,36 +59,23 @@
     {{ partial "vita/action-links.html" (dict "links" $options.links "class" "vita-actions" "label" "CV links") }}
     {{ partial "vita/action-links.html" (dict "links" $options.links "class" "vita-floating-links" "label" "CV quick links" "floating" true) }}
   </article>
-  {{ $order := $options.sections | default (slice "work" "education" "projects" "certificates" "awards" "publications" "skills" "languages" "references") }}
-  {{/* Hugo's .TableOfContents is populated from the section-heading index in content/vita/index.md. */}}
   <section class="vita-body flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
     {{ $topClass := cond (or (hasPrefix site.Params.header.layout "fixed") (eq site.Params.header.layout "floating")) "lg:top-[140px]" "lg:top-10" }}
-    {{ if in .TableOfContents "<ul" }}
+    {{ if $sections }}
       <div class="order-first lg:ms-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
         <div class="toc ps-5 print:hidden lg:sticky {{ $topClass }}">
-          {{ partial "toc.html" . }}
+          {{ partial "toc.html" (dict "TableOfContents" (partial "vita/toc-markup.html" $sections) "Site" site) }}
         </div>
       </div>
     {{ end }}
     <div class="vita-sections min-w-0 min-h-0">
-    {{ range $order }}
-      {{ $key := . }}
-      {{ $name := index $labels $key | default (cond (hasPrefix $key "projects:") (strings.TrimPrefix "projects:" $key) ($key | humanize)) }}
-      {{ $items := slice }}
-      {{ if hasPrefix $key "projects:" }}
-        {{ $group := strings.TrimPrefix "projects:" $key }}
-        {{ range $resume.projects }}{{ if eq .type $group }}{{ $items = $items | append . }}{{ end }}{{ end }}
-      {{ else if eq $key "projects" }}
-        {{ $items = $resume.projects | default (slice) }}
-      {{ else }}{{ $items = index $resume $key | default (slice) }}{{ end }}
-      {{ with $items }}
-      <section class="vita-section" id="{{ (replace $key ":" "-" | anchorize) }}" aria-labelledby="{{ (replace $key ":" "-" | anchorize) }}-title">
-        <h2 id="{{ (replace $key ":" "-" | anchorize) }}-title"><span class="anchor" id="{{ (replace $key ":" "-" | anchorize) }}"></span>{{ $name | markdownify }}</h2>
+    {{ range $sections }}
+      <section class="vita-section" id="{{ .id }}" aria-labelledby="{{ .id }}-title">
+        <h2 id="{{ .id }}-title"><span class="anchor" id="{{ .id }}"></span>{{ .label | markdownify }}</h2>
         <div class="vita-section-content">
-          {{ range . }}{{ partial "vita/entry.html" (dict "entry" . "section" $key) }}{{ end }}
+          {{ $key := .key }}{{ range .entries }}{{ partial "vita/entry.html" (dict "entry" . "section" $key) }}{{ end }}
         </div>
       </section>
-      {{ end }}
     {{ end }}
     </div>
   </section>
