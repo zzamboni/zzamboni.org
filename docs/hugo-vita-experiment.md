@@ -1,21 +1,22 @@
-# Native CV page (experimental)
+# JSON Resume Hugo renderer (experimental)
 
-This branch renders `/vita/` as a native Hugo page inside Blowfish using a
-snapshot of `zzamboni/vita/zamboni-vita-general.json` in
-`data/vita/resume.json`. This JSON is a copied fixture, not a live sync.
+The public routes stay at `/vita/` and `/vita/publications/` through
+`content/vita/` and two thin layout adapters in `layouts/vita/`.
 
-- `content/vita/index.md`: Hugo page route and metadata.
-- `layouts/vita/single.html`: Blowfish-compatible CV layout and section order.
-- `layouts/partials/vita/entry.html`: shared section entry rendering.
-- `assets/css/vita.css`: scoped responsive styling.
+Reusable presentation lives in `layouts/partials/jsonresume/` and
+`assets/css/jsonresume*.css`. JSON snapshots live in
+`data/jsonresume/resume.json` and `data/jsonresume/publications.json`.
+The source of the resume snapshot is `zzamboni/vita/zamboni-vita-general.json`.
+The publication snapshot comes from the upstream bibliography. Neither is
+automatically synchronized.
 
-The former `static/vita/index.html` is removed to avoid an output collision.
-PDF, BibTeX and the standalone publications page in `static/vita/` remain
-available and unchanged. No deploy automation or upstream repository changes.
+The renderer's action links use the content section's URL as their base,
+with `<resume>` expanded to that section's `zamboni-vita` stem.
+Semantic link role filtering is site-controlled in `[jsonresume]` in
+`config/_default/params.toml`.
 
-To test locally, run `mise run serve` and open `/vita/`; check light/dark
-modes, desktop/mobile layout, PDF links, publications and generated page source.
+CSS class names are namespaced `jsonresume-*`, but the public URL remains
+`/vita/` and legacy PDF and BibTeX files under `static/vita/` are unchanged.
 
-Known limitations: this is a first pass at Eventide fidelity; the native page
-does not yet reproduce every type-specific rendering detail, floating TOC,
-badge artwork or Eventide typography.
+Test: `mise run serve`, then inspect both `/vita/` pages for TOC links,
+icons, floating actions, publications, PDF downloads and responsive layout.

@@ -1,5 +1,5 @@
 /* Shared action links for both native CV and bibliography pages. */
-.vita-actions, .vita-publications-downloads {
+.jsonresume-actions, .jsonresume-publications-downloads {
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
@@ -9,7 +9,7 @@
   padding:0;
   font-size:.9rem;
 }
-.vita-actions a, .vita-publications-downloads a {
+.jsonresume-actions a, .jsonresume-publications-downloads a {
   display:inline-flex;
   align-items:center;
   gap:.4rem;
@@ -18,14 +18,14 @@
   border-radius:.45rem;
   text-decoration:none;
 }
-.vita-action-icon { display:inline-flex; width:1.1em; height:1.1em; align-items:center; }
-.vita-action-icon svg { width:100%; height:100%; }
-@media print { .vita-actions, .vita-publications-downloads { display:none; } }
+.jsonresume-action-icon { display:inline-flex; width:1.1em; height:1.1em; align-items:center; }
+.jsonresume-action-icon svg { width:100%; height:100%; }
+@media print { .jsonresume-actions, .jsonresume-publications-downloads { display:none; } }
 
 /* Eventide-inspired quick actions: supplementary desktop navigation. */
-.vita-floating-links { display:none; }
+.jsonresume-floating-links { display:none; }
 @media (min-width:1024px) {
-  .vita-floating-links {
+  .jsonresume-floating-links {
     position:fixed;
     right:1.25rem;
     bottom:5.75rem; /* clear Blowfish's back-to-top control */
@@ -36,7 +36,7 @@
     margin:0;
     padding:0;
   }
-  .vita-floating-links a {
+  .jsonresume-floating-links a {
     display:grid;
     place-items:center;
     width:2.75rem;
@@ -48,18 +48,18 @@
     box-shadow:0 3px 12px rgb(0 0 0 / .12);
     transition:transform .18s ease, box-shadow .18s ease, color .18s ease;
   }
-  .dark .vita-floating-links a {
+  .dark .jsonresume-floating-links a {
     background:rgb(var(--color-neutral-800));
     color:rgb(var(--color-neutral-200));
   }
-  .vita-floating-links a:hover, .vita-floating-links a:focus-visible {
+  .jsonresume-floating-links a:hover, .jsonresume-floating-links a:focus-visible {
     transform:translateY(-2px);
     color:rgb(var(--color-primary-500));
     box-shadow:0 5px 16px rgb(0 0 0 / .18);
   }
-  .vita-floating-links .vita-action-icon { width:1.3rem; height:1.3rem; }
+  .jsonresume-floating-links .jsonresume-action-icon { width:1.3rem; height:1.3rem; }
 }
 @media (prefers-reduced-motion:reduce) {
-  .vita-floating-links a { transition:none; }
+  .jsonresume-floating-links a { transition:none; }
 }
-@media print { .vita-floating-links { display:none; } }
+@media print { .jsonresume-floating-links { display:none; } }

@@ -1,19 +1,21 @@
 {{- /* Use the icon names supplied by JSON Resume, mapping Font Awesome names to Blowfish SVG icons. */ -}}
 {{- /* Filtering belongs to the Hugo presentation policy, not the JSON Resume data. */ -}}
-{{- $excluded := site.Params.vita.excludeLinkRoles | default (slice) -}}
+{{- $excluded := site.Params.jsonresume.excludeLinkRoles | default (slice) -}}
 {{- $visible := slice -}}
 {{- range (.links | default (slice)) -}}
   {{- if not (in $excluded (.role | default "")) -}}
     {{- $visible = $visible | append . -}}
   {{- end -}}
 {{- end -}}
+{{- $base := $.base | default "/vita/" -}}
+{{- $resumeBase := $.resumeBase | default (printf "%szamboni-vita" $base) -}}
 {{- with $visible -}}
 <nav class="{{ $.class }}" aria-label="{{ $.label }}">
   {{- range . -}}
     {{- $href := .url | default "" -}}
-    {{- $href = replace $href "<resume>" "/vita/zamboni-vita" -}}
+    {{- $href = replace $href "<resume>" "/jsonresume/zamboni-vita" -}}
     {{- if and $href (not (or (hasPrefix $href "/") (hasPrefix $href "https://") (hasPrefix $href "http://"))) -}}
-      {{- $href = printf "/vita/%s" $href -}}
+      {{- $href = printf "/jsonresume/%s" $href -}}
     {{- end -}}
     {{- /* Preserve native Blowfish icon names; translate common Font Awesome aliases. */ -}}
     {{- $requested := lower (.icon | default "link") -}}
@@ -23,7 +25,7 @@
     {{- if not (resources.Get (printf "icons/%s.svg" $icon)) -}}
       {{- $icon = "link" -}}
     {{- end -}}
-    <a href="{{ $href | safeURL }}" {{ if $.floating }}aria-label="{{ .name }}" title="{{ .name }}"{{ end }}><span class="vita-action-icon" aria-hidden="true">{{ partial "icon.html" $icon }}</span>{{ if not $.floating }}<span>{{ .name }}</span>{{ end }}</a>
+    <a href="{{ $href | safeURL }}" {{ if $.floating }}aria-label="{{ .name }}" title="{{ .name }}"{{ end }}><span class="jsonresume-action-icon" aria-hidden="true">{{ partial "icon.html" $icon }}</span>{{ if not $.floating }}<span>{{ .name }}</span>{{ end }}</a>
   {{- end -}}
 </nav>
 {{- end -}}

@@ -185,5 +185,5 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
   # adsense = ""
 
 # JSON Resume link roles that duplicate navigation already provided by Hugo.
-[vita]
+[jsonresume]
   excludeLinkRoles = ["site-home"]
