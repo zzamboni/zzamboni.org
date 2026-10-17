@@ -4,6 +4,8 @@
 {{ $labels := $options.sectionLabels | default dict }}
 {{ $css := resources.Get "css/vita.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{ $actionsCSS := resources.Get "css/vita-actions.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $actionsCSS.RelPermalink }}">
 <main id="vita" class="vita-page">
   {{/* Adapted from Blowfish v3.8.0 home/profile.html, with CV-specific source data. */}}
   <article class="vita-profile flex flex-col items-center justify-center text-center">

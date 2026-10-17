@@ -2,6 +2,8 @@
 {{ $data := hugo.Data.vita.publications }}
 {{ $css := resources.Get "css/vita-publications.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{ $actionsCSS := resources.Get "css/vita-actions.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $actionsCSS.RelPermalink }}">
 <article class="vita-publications">
   <header id="single_header" class="mt-5 max-w-prose">
     {{ partial "breadcrumbs.html" . }}
