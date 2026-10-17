@@ -1,5 +1,6 @@
 /* Native JSON Resume page, intentionally scoped to avoid changing Blowfish. */
-.vita-page { width:min(100%,1100px); margin:2rem auto 5rem; padding:0 1.25rem; color:inherit; }
+/* Blowfish's base layout already owns page width and horizontal gutters. */
+.vita-page { margin:2rem 0 5rem; color:inherit; }
 .vita-profile { margin:1rem auto 3rem; }
 .vita-profile > section { max-width:80ch; font-size:1.1rem; line-height:1.7; }
 .vita-page .vita-body { max-width:100%; }
@@ -24,7 +25,7 @@
 .vita-entry-logo { float:right; width:52px; height:52px; object-fit:contain; margin:0 0 .6rem .8rem; border-radius:.4rem; background:white; padding:4px; }
 .vita-small-link { font-size:.9rem; }
 @media(max-width:700px) {
- .vita-page { padding:0 1rem; margin-top:1rem; }
+ .vita-page { margin-top:1rem; }
  .vita-section { display:block; padding:1.6rem 0; }
  .vita-page .vita-section h2 { text-align:left; font-size:1.5rem; font-weight:700; line-height:1.35; margin:0 0 1.1rem; }
 }
