@@ -1,0 +1,31 @@
+{{- /* Use the icon names supplied by JSON Resume, mapping Font Awesome names to Blowfish SVG icons. */ -}}
+{{- /* Filtering belongs to the Hugo presentation policy, not the JSON Resume data. */ -}}
+{{- $excluded := site.Params.jsonresume.excludeLinkRoles | default (slice) -}}
+{{- $visible := slice -}}
+{{- range (.links | default (slice)) -}}
+  {{- if not (in $excluded (.role | default "")) -}}
+    {{- $visible = $visible | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- $base := $.base | default "/vita/" -}}
+{{- $resumeBase := $.resumeBase | default (printf "%szamboni-vita" $base) -}}
+{{- with $visible -}}
+<nav class="{{ $.class }}" aria-label="{{ $.label }}">
+  {{- range . -}}
+    {{- $href := .url | default "" -}}
+    {{- $href = replace $href "<resume>" $resumeBase -}}
+    {{- if and $href (not (or (hasPrefix $href "/") (hasPrefix $href "https://") (hasPrefix $href "http://"))) -}}
+      {{- $href = printf "%s%s" $base $href -}}
+    {{- end -}}
+    {{- /* Preserve native Blowfish icon names; translate common Font Awesome aliases. */ -}}
+    {{- $requested := lower (.icon | default "link") -}}
+    {{- $aliases := dict "fa-regular fa-file-pdf" "download" "fa-file-pdf" "download" "fa-regular fa-house" "link" "fa-house" "link" "fa-quote-left" "quote-left" "fa-file-lines" "file-lines" -}}
+    {{- $icon := index $aliases $requested | default $requested -}}
+    {{- /* Blowfish's icon partial reads resources.Get "icons/<name>.svg". */ -}}
+    {{- if not (resources.Get (printf "icons/%s.svg" $icon)) -}}
+      {{- $icon = "link" -}}
+    {{- end -}}
+    <a href="{{ $href | safeURL }}" {{ if $.floating }}aria-label="{{ .name }}" title="{{ .name }}"{{ end }}><span class="jsonresume-action-icon" aria-hidden="true">{{ partial "icon.html" $icon }}</span>{{ if not $.floating }}<span>{{ .name }}</span>{{ end }}</a>
+  {{- end -}}
+</nav>
+{{- end -}}

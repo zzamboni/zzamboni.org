@@ -1,0 +1,642 @@
+{
+  "sections": [
+    {
+      "id": "book",
+      "title": "Books",
+      "entries": [
+        {
+          "key": "zamboni20:emacs-org-leanpub",
+          "title": "Publishing with Emacs, Org-mode and Leanpub",
+          "authors": "Diego Zamboni",
+          "publisher": "Leanpub",
+          "year": 2020,
+          "url": "https://leanpub.com/emacs-org-leanpub"
+        },
+        {
+          "key": "zamboni19:lit-config",
+          "title": "Literate Configuration",
+          "authors": "Diego Zamboni",
+          "publisher": "Leanpub",
+          "year": 2019,
+          "url": "https://leanpub.com/lit-config"
+        },
+        {
+          "key": "zamboni19:utilerias-unix",
+          "title": "Utilerías de Unix (Unix utilities course notes)",
+          "authors": "Diego Zamboni",
+          "publisher": "Leanpub",
+          "year": 2019,
+          "url": "https://leanpub.com/utileras-unix"
+        },
+        {
+          "key": "zamboni18:learning-hammerspoon",
+          "title": "Learning Hammerspoon",
+          "authors": "Diego Zamboni",
+          "publisher": "Leanpub",
+          "year": 2018,
+          "url": "https://leanpub.com/learning-hammerspoon"
+        },
+        {
+          "key": "zamboni12:learning-cfengine3",
+          "title": "Learning CFEngine",
+          "authors": "Diego Zamboni",
+          "publisher": "O'Reilly Media, Inc. 2012–2017, afterwards self-published",
+          "year": 2012,
+          "url": "http://cf-learn.info/"
+        }
+      ]
+    },
+    {
+      "id": "editorial",
+      "title": "Editorial Activities",
+      "entries": [
+        {
+          "key": "zamboni-editorial-board-csj",
+          "title": "Computers & Security Journal",
+          "authors": "Diego Zamboni",
+          "publisher": "Elsevier",
+          "year": 2011,
+          "note": "Member of the Editorial Board"
+        },
+        {
+          "key": "frincke-wespi-zamboni:comnet-specialissue",
+          "title": "From Intrusion Detection to Self-Protection",
+          "editor": "Deborah Frincke and Andreas Wespi and Diego Zamboni",
+          "publisher": "Elsevier North-Holland, Inc.",
+          "number": "Issue 5",
+          "year": 2007,
+          "doi": "10.1016/j.comnet.2006.10.004"
+        },
+        {
+          "key": "zamboni06:raid06-proceedings",
+          "title": "Proceedings of the Recent Advances in Intrusion Detection (RAID): 9th International Symposium",
+          "editor": "Diego Zamboni and Christopher Kruegel",
+          "publisher": "Springer-Verlag New York, Inc.",
+          "year": 2006
+        },
+        {
+          "key": "valdes06:raid05-proceedings",
+          "title": "Proceedings of the Recent Advances in Intrusion Detection (RAID): 8th International Symposium",
+          "editor": "Alfonso Valdes and Diego Zamboni",
+          "publisher": "Springer-Verlag New York, Inc.",
+          "year": 2005
+        },
+        {
+          "key": "zamboni03:SPE-SS",
+          "title": "Special issue on Security Software",
+          "editor": "Diego Zamboni",
+          "publisher": "John Wiley & Sons",
+          "number": "5",
+          "year": 2003,
+          "url": "http://onlinelibrary.wiley.com/doi/10.1002/spe.v33:5/issuetoc"
+        }
+      ]
+    },
+    {
+      "id": "thesis",
+      "title": "Theses",
+      "entries": [
+        {
+          "key": "zamboni01:phd-thesis",
+          "title": "Using Internal Sensors for Computer Intrusion Detection",
+          "authors": "Diego Zamboni",
+          "school": "Purdue University",
+          "year": 2001,
+          "note": "CERIAS TR 2001-42",
+          "url": "https://www.cerias.purdue.edu/apps/reports_and_papers/view/1800"
+        },
+        {
+          "key": "zamboni95:bs-thesis",
+          "title": "Proyecto UNAM/Cray de Seguridad en el Sistema Operativo Unix (<em>UNAM/Cray project for Unix System Security</em>)",
+          "authors": "Diego Zamboni",
+          "school": "Universidad Nacional Autonoma de México",
+          "year": 1995,
+          "url": "https://zzamboni.org/files/theses/zamboni-bachelors-thesis.pdf",
+          "type": "B.Sc. Thesis"
+        }
+      ]
+    },
+    {
+      "id": "refereed",
+      "title": "Refereed Papers",
+      "entries": [
+        {
+          "key": "Christodorescu:2009:CSV:1655008.1655022",
+          "title": "Cloud Security is Not (Just) Virtualization Security: A Short Paper",
+          "authors": "Mihai Christodorescu, Reiner Sailer, Douglas Lee Schales, Daniele Sgandurra, Diego Zamboni",
+          "booktitle": "Proceedings of the 2009 ACM Workshop on Cloud Computing Security",
+          "publisher": "ACM",
+          "year": 2009,
+          "doi": "10.1145/1655008.1655022"
+        },
+        {
+          "key": "zurutuza08:recsi08",
+          "title": "Un marco inteligente para el análisis de tráfico generado por gusanos en Internet (An intelligent framework for analysis of worm-generated Internet traffic)",
+          "authors": "U. Zurutuza, R. Uribeetxeberria, M. Fernández, I. Vélez de Mendizabal, D. Zamboni",
+          "booktitle": "Actas de la X Reunión Española sobre Criptología y Seguridad de la Información (X Spanish Meeting on Cryptology and Information Security)",
+          "year": 2008
+        },
+        {
+          "key": "zurutuza08:aisec-bg",
+          "title": "A data mining approach for analysis of worm activity through automatic signature generation",
+          "authors": "Urko Zurutuza, Roberto Uribeetxeberria, Diego Zamboni",
+          "booktitle": "Proceedings of the 1st ACM workshop on AISec (AISec'08)",
+          "publisher": "Association for Computing Machinery",
+          "year": 2008,
+          "doi": "10.1145/1456377.1456394"
+        },
+        {
+          "key": "zurutuza07:cedi07-wormledge",
+          "title": "Análisis de datos procedentes de un sistema de detección de gusanos mediante técnicas de clustering (Analysis of data from a worm-detection system using clustering techniques)",
+          "authors": "Urko Zurutuza, Roberto Uribetxeberria, Diego Zamboni",
+          "booktitle": "Actas del II Simposio sobre Seguridad Informática (SSI'2007), II Congreso Español de Informática (CEDI 2007) (Proceedings of the II Symposium on Computer Security, II Spanish Conference on Informatics)",
+          "year": 2007
+        },
+        {
+          "key": "zamboni07:sruti07-rbg",
+          "title": "Boundary detection and containment of local worm infections",
+          "authors": "Diego Zamboni, James Riordan, Milton Yates",
+          "booktitle": "Proceedings of the 3rd Workshop on Steps to Reducing Unwanted Traffic on the Internet (SRUTI'07)",
+          "year": 2007,
+          "url": "http://www.usenix.org/events/sruti07/tech/full_papers/zamboni/zamboni.pdf"
+        },
+        {
+          "key": "riordan06:_build_billy_goat:first2006",
+          "title": "Building and deploying Billy Goat, a worm-detection system",
+          "authors": "James Riordan, Diego Zamboni, Yann Duponchel",
+          "booktitle": "Proceedings of the 18th Annual FIRST Conference",
+          "year": 2006
+        },
+        {
+          "key": "zamboni02:sensors_detectors",
+          "title": "Using internal sensors and embedded detectors for intrusion detection",
+          "authors": "Florian Kerschbaum, Eugene H. Spafford, Diego Zamboni",
+          "journal": "Journal of Computer Security",
+          "number": "1,2",
+          "year": 2002,
+          "url": "https://www.researchgate.net/publication/220065478_Using_Internal_Sensors_and_Embedded_Detectors_for_Intrusion_Detection"
+        },
+        {
+          "key": "kerschbaum00:network-embedded-sensors",
+          "title": "Using embedded sensors for detecting network attacks",
+          "authors": "Florian Kerschbaum, Eugene H. Spafford, Diego Zamboni",
+          "editor": "Deborah Frincke and Dimitris Gritzalis",
+          "booktitle": "Proceedings of the 1st ACM Workshop on Intrusion Detection Systems",
+          "year": 2000,
+          "note": "CERIAS TR 2000-25",
+          "url": "https://www.cerias.purdue.edu/apps/reports_and_papers/view/1641/"
+        },
+        {
+          "key": "spafford00:intrus_detec_auton_agent",
+          "title": "Intrusion Detection using Autonomous Agents",
+          "authors": "Eugene H. Spafford, Diego Zamboni",
+          "journal": "Computer Networks",
+          "publisher": "Elsevier",
+          "number": "4",
+          "year": 2000,
+          "url": "http://dx.doi.org/10.1016/S1389-1286(00)00136-5"
+        },
+        {
+          "key": "zamboni:aafid-acsac98",
+          "title": "An Architecture for Intrusion Detection using Autonomous Agents",
+          "authors": "Jai Sundar Balasubramaniyan, Jose Omar Garcia-Fernandez, David Isacoff, Eugene Spafford, Diego Zamboni",
+          "booktitle": "Proceedings of the Fourteenth Annual Computer Security Applications Conference",
+          "publisher": "IEEE Computer Society",
+          "year": 1998,
+          "url": "http://zzamboni.org/files/pubs/aafid-acsac98.pdf"
+        },
+        {
+          "key": "schuba97:synkill",
+          "title": "Analysis of a Denial of Service Attack on TCP",
+          "authors": "Christoph L. Schuba, Ivan V. Krsul, Markus G. Kuhn, Eugene H. Spafford, Aurobindo Sundaram, Diego Zamboni",
+          "booktitle": "Proceedings of the 1997 IEEE Symposium on Security and Privacy",
+          "publisher": "IEEE Computer Society Press",
+          "year": 1997,
+          "note": "Awarded the 2020 IEEE Security & Privacy Test of Time Award.",
+          "url": "https://www.cerias.purdue.edu/apps/reports_and_papers/view/605"
+        },
+        {
+          "key": "zamboni96:saint",
+          "title": "SAINT –-A Security Analysis Integration Tool",
+          "authors": "Diego Zamboni",
+          "booktitle": "Proceedings of the 1996 Systems Administration, Networking and Security Conference",
+          "year": 1996,
+          "url": "http://zzamboni.org/files/pubs/SAINT.pdf"
+        }
+      ]
+    },
+    {
+      "id": "techreport",
+      "title": "Technical Reports",
+      "entries": [
+        {
+          "key": "riordan05:bg_techreport",
+          "title": "Billy Goat, an Accurate Worm-Detection System",
+          "authors": "James Riordan, Diego Zamboni, Yann Duponchel",
+          "institution": "IBM Research",
+          "number": "RZ 3609",
+          "year": 2005,
+          "url": "https://dominoweb.draco.res.ibm.com/reports/rz3609_revised.pdf",
+          "type": "Research Report"
+        },
+        {
+          "key": "zamboni00:thesis-proposal",
+          "title": "Doing intrusion detection using embedded sensors–- Thesis proposal",
+          "authors": "Diego Zamboni",
+          "institution": "CERIAS, Purdue University",
+          "number": "2000-21",
+          "year": 2000,
+          "url": "https://www.cerias.purdue.edu/apps/reports_and_papers/view/581",
+          "type": "CERIAS Technical Report"
+        },
+        {
+          "key": "spafford00:data_collection-techrep",
+          "title": "Data Collection mechanisms for intrusion detection systems",
+          "authors": "Eugene Spafford, Diego Zamboni",
+          "institution": "CERIAS, Purdue University",
+          "number": "2000-08",
+          "year": 2000,
+          "url": "https://www.cerias.purdue.edu/apps/reports_and_papers/view/1842",
+          "type": "CERIAS Technical Report"
+        },
+        {
+          "key": "zamboni:aafid-architecture",
+          "title": "An Architecture for Intrusion Detection using Autonomous Agents",
+          "authors": "Jai Sundar Balasubramaniyan, Jose Omar Garcia-Fernandez, Eugene Spafford, Diego Zamboni",
+          "institution": "COAST Laboratory, Purdue University",
+          "number": "98-05",
+          "year": 1998,
+          "url": "https://www.cerias.purdue.edu/apps/reports_and_papers/view/65",
+          "type": "Technical Report"
+        }
+      ]
+    },
+    {
+      "id": "presentations",
+      "title": "Presentations",
+      "entries": [
+        {
+          "key": "zamboni-chapman:cfsummit2016",
+          "title": "Chaos Heidi vs. Orchard: Self-Disruption and Healing in a Cloud Foundry-Based Service Environment",
+          "authors": "Diego Zamboni, Bill Chapman",
+          "year": 2016,
+          "note": "<a href=\"https://www.youtube.com/watch?v=Wr4E–kr_KE\">Recording</a>",
+          "url": "http://sched.co/6aQ2",
+          "howpublished": "Presented at the Cloud Foundry Summit Silicon Valley 2016"
+        },
+        {
+          "key": "zamboni-burgess:ucms14",
+          "title": "The Future of In-Container Configuration Management",
+          "authors": "Diego Zamboni, Mark Burgess",
+          "year": 2014,
+          "url": "https://www.usenix.org/conference/ucms14/summit-program/presentation/zamboni",
+          "howpublished": "Invited talk at the 2014 Usenix Configuration Management Summit (UCMS'14)"
+        },
+        {
+          "key": "svoboda-zamboni:lisa2013",
+          "title": "Leveraging In-Memory Key Value Stores for Large-Scale Operations",
+          "authors": "Mike Svoboda, Diego Zamboni",
+          "year": 2013,
+          "url": "https://www.usenix.org/conference/lisa13/leveraging-memory-key-value-stores-large-scale-operations",
+          "howpublished": "Invited talk at the 27th Large Installation System Administration (LISA) Conference"
+        },
+        {
+          "key": "zamboni:raid2000",
+          "title": "Design and implementation issues for embedded\nsensors in intrusion detection",
+          "authors": "Eugene H. Spafford, Diego Zamboni",
+          "year": 2000,
+          "url": "http://zzamboni.org/files/pubs/sensors-raid2000.pdf",
+          "howpublished": "Presented at the Third International Workshop on\nRecent Advances in Intrusion Detection\n(RAID2000)"
+        },
+        {
+          "key": "zamboni00:build_aafid_with_perl",
+          "title": "Building a Distributed Intrusion Detection System with Perl",
+          "authors": "Diego Zamboni",
+          "year": 2000,
+          "url": "http://zzamboni.org/files/pubs/tpc40.pdf",
+          "howpublished": "Presented at The Perl Conference 4.0"
+        },
+        {
+          "key": "zamboni:raid99",
+          "title": "New directions for the AAFID architecture",
+          "authors": "Eugene H. Spafford, Diego Zamboni",
+          "booktitle": "Proceedings of the Second International Workshop on Recent\nAdvances in Intrusion Detection (RAID99)",
+          "year": 1999,
+          "url": "https://www.cerias.purdue.edu/apps/reports_and_papers/view/3487"
+        },
+        {
+          "key": "zamboni:raid98",
+          "title": "AAFID: Autonomous Agents for Intrusion Detection",
+          "authors": "Eugene H. Spafford, Diego Zamboni",
+          "booktitle": "Proceedings of the First International Workshop on Recent\nAdvances in Intrusion Detection (RAID98)",
+          "year": 1998
+        }
+      ]
+    },
+    {
+      "id": "invited",
+      "title": "Invited Talks and Articles",
+      "entries": [
+        {
+          "key": "burgess14:cfeng_decen_approac_config_manag",
+          "title": "CFEngine's Decentralized Approach to Configuration Management",
+          "authors": "Mark Burgess, Diego Zamboni",
+          "journal": "InfoQ",
+          "year": 2014,
+          "url": "http://www.infoq.com/articles/cfengine-view-on-it-automation"
+        },
+        {
+          "key": "zamboni11:security_third_wave_it_engineering",
+          "title": "Security in the Third Wave of IT Engineering",
+          "authors": "Diego Zamboni",
+          "year": 2011,
+          "url": "https://zzamboni.org/post/security-in-the-third-wave-of-it-engineering/",
+          "howpublished": "Keynote talk, presented at the 2011 Computer Security Congress in Mexico City"
+        },
+        {
+          "key": "carbone08:_tamin_virtualization",
+          "title": "Taming Virtualization",
+          "authors": "Martim Carbone, Diego Zamboni, Wenke Lee",
+          "journal": "IEEE Security and Privacy",
+          "publisher": "IEEE Educational Activities Department",
+          "number": "1",
+          "year": 2008,
+          "url": "https://ieeexplore.ieee.org/document/4446700"
+        },
+        {
+          "key": "zamboni06:sigmaxi-talk",
+          "title": "From Intrusion Detection to Remediation and Beyond: Evolution, Trends, and Research at IBM",
+          "authors": "Diego Zamboni",
+          "year": 2006,
+          "howpublished": "Invited talk at the annual meeting of the Swiss Chapter of the Sigma XI Honorary Scientific Society"
+        },
+        {
+          "key": "zamboni05:zisc-talk",
+          "title": "Intrusion what? From detection to prevention and beyond",
+          "authors": "Diego Zamboni",
+          "year": 2005,
+          "howpublished": "Talk at the Zurich Information Security Center Information Security Colloquium"
+        },
+        {
+          "key": "_how_to_hook_worms:spectrum05",
+          "title": "How to Hook Worms",
+          "authors": "James Riordan, Andreas Wespi, Diego Zamboni",
+          "journal": "IEEE Spectrum",
+          "year": 2005,
+          "url": "https://spectrum.ieee.org/computing/networks/how-to-hook-worms"
+        },
+        {
+          "key": "zamboni2004:congreso-seguridad",
+          "title": "<em>Diez Años de Aciertos y Fallas –- ¿Qué Hemos Aprendido y Qué nos Depara el Futuro en la Seguridad?</em> (Ten years of hits and misses –- what have we learned, and what does the future in security hold for us?)",
+          "authors": "Diego Zamboni",
+          "year": 2004,
+          "howpublished": "Keynote talk, presented at the 2004 Computer Security Congress in Mexico City"
+        },
+        {
+          "key": "riordan04:billy_goat",
+          "title": "Billy Goat Detects Worms and Viruses",
+          "authors": "James Riordan, Diego Zamboni",
+          "journal": "ERCIM News",
+          "year": 2004,
+          "url": "http://www.ercim.org/publication/Ercim_News/enw56/riordan.html"
+        },
+        {
+          "key": "zamboni99:disc-aafid",
+          "title": "<em>Avances en el sistema y arquitectura AAFID para detección de intrusos</em> (Advances in the AAFID intrusion detection architecture and system)",
+          "authors": "Diego Zamboni",
+          "booktitle": "Proceedings of the 1999 <em>Día Internacional de la Seguridad en Cómputo</em> (International Computer Security Day) conference",
+          "year": 1999
+        },
+        {
+          "key": "zamboni98:disc-aafid",
+          "title": "AAFID: <em>Detección de Intrusos usando Agentes Autónomos</em> (Intrusion Detection using Autonomous Agents)",
+          "authors": "Diego Zamboni",
+          "booktitle": "Proceedings of the 1998 <em>Día Internacional de la Seguridad en Cómputo</em> (International Computer Security Day) conference",
+          "year": 1998
+        }
+      ]
+    },
+    {
+      "id": "patent",
+      "title": "Patents",
+      "entries": [
+        {
+          "key": "lens.org/107-038-681-631-856",
+          "title": "Hardware Emulation Using On-the-fly Virtualization",
+          "authors": "Martim Carbone, Bernhard Jansen, Harigovind Ramasamy, Matthias Schunter, Axel Tanner, Diego Zamboni",
+          "number": "US 9250942 B2",
+          "year": 0,
+          "url": "https://lens.org/107-038-681-631-856",
+          "type": "Granted Patent"
+        },
+        {
+          "key": "lens.org/012-709-360-909-626",
+          "title": "Secure User Interaction Using Virtualization",
+          "authors": "Bernhard Jansen, Matthias Schunter, Axel Tanner, Diego Zamboni",
+          "number": "US 8516564 B2",
+          "year": 0,
+          "url": "https://lens.org/012-709-360-909-626",
+          "type": "Granted Patent"
+        },
+        {
+          "key": "lens.org/113-267-068-964-958",
+          "title": "Detection And Control Of Peer-to-peer Communication",
+          "authors": "Diego Zamboni, Alessandri Dominique, Daniela Bourges-Waldegg, James Riordan",
+          "number": "CN 101390369 B",
+          "year": 0,
+          "url": "https://lens.org/113-267-068-964-958",
+          "type": "Granted Patent"
+        },
+        {
+          "key": "lens.org/151-595-773-205-878",
+          "title": "Detection And Control Of Peer-to-peer Communication",
+          "authors": "Diego Zamboni, Dominique Alessandri, Daniela Bourges-Waldegg, James Riordan",
+          "number": "US 8219679 B2",
+          "year": 0,
+          "url": "https://lens.org/151-595-773-205-878",
+          "type": "Patent Family of"
+        },
+        {
+          "key": "lens.org/025-823-888-291-212",
+          "title": "Network Attack Detection",
+          "authors": "James Riordan, Yann Duponchel, Ruediger Rissmann, Diego Zamboni",
+          "number": "US 2012/0096548 A1",
+          "year": 0,
+          "url": "https://lens.org/025-823-888-291-212",
+          "type": "Patent Application"
+        },
+        {
+          "key": "lens.org/029-398-797-666-948",
+          "title": "Methods For Operating Virtual Networks, Data Network System, Computer Program And Computer Program Product",
+          "authors": "Yann Duponchel, James Riordan, Ruediger Rissmann, Diego Zamboni",
+          "number": "JP 4886788 B2",
+          "year": 0,
+          "url": "https://lens.org/029-398-797-666-948",
+          "type": "Granted Patent"
+        },
+        {
+          "key": "lens.org/180-018-185-996-580",
+          "title": "Network Attack Detection",
+          "authors": "Ruediger Rissmann, Yann Duponchel, Diego Zamboni, James Riordan",
+          "number": "KR 101090815 B1",
+          "year": 0,
+          "url": "https://lens.org/180-018-185-996-580",
+          "type": "Granted Patent"
+        },
+        {
+          "key": "lens.org/046-970-961-390-965",
+          "title": "Detection And Control Of Peer-to-peer Communication",
+          "authors": "Diego Zamboni, Alessandri Dominique, Daniela Bourges-Waldegg, James Riordan",
+          "number": "JP 4829982 B2",
+          "year": 0,
+          "url": "https://lens.org/046-970-961-390-965",
+          "type": "Granted Patent"
+        },
+        {
+          "key": "lens.org/065-534-634-366-763",
+          "title": "IP Network Management Based On Automatically Acquired Network Entity Status Information",
+          "authors": "James Riordan, Ruediger Rissmann, Diego Zamboni",
+          "number": "US 8055751 B2",
+          "year": 0,
+          "url": "https://lens.org/065-534-634-366-763",
+          "type": "Patent Family of"
+        },
+        {
+          "key": "lens.org/090-147-732-334-753",
+          "title": "Network Attack Detection",
+          "authors": "Ruediger Rissmann, Yann Duponchel, Diego Zamboni, James Riordan",
+          "number": "JP 4753264 B2",
+          "year": 0,
+          "url": "https://lens.org/090-147-732-334-753",
+          "type": "Granted Patent"
+        },
+        {
+          "key": "lens.org/080-322-567-493-840",
+          "title": "Methods For Operating Virtual Networks, Data Network System, Computer Program And Computer Program Product",
+          "authors": "Yann Duponchel, James Riordan, Ruediger Rissmann, Diego Zamboni",
+          "number": "US 7908350 B2",
+          "year": 0,
+          "url": "https://lens.org/080-322-567-493-840",
+          "type": "Patent Family of"
+        },
+        {
+          "key": "lens.org/002-818-728-052-940",
+          "title": "Methods For Operating Virtual Networks, Data Network System, Computer Program And Computer Program Product",
+          "authors": "Yann Duponchel, James Riordan, Ruediger Rissmann, Diego Zamboni",
+          "number": "KR 100998418 B1",
+          "year": 0,
+          "url": "https://lens.org/002-818-728-052-940",
+          "type": "Granted Patent"
+        },
+        {
+          "key": "lens.org/179-407-514-833-082",
+          "title": "Erkennung Von Netzwerkangriffen",
+          "authors": "Ruediger Rissmann, Yann Duponchel, Diego Zamboni, James Riordan",
+          "number": "DE 602006017668 D1",
+          "year": 0,
+          "url": "https://lens.org/179-407-514-833-082",
+          "type": "Granted Patent"
+        },
+        {
+          "key": "lens.org/002-199-882-054-266",
+          "title": "Erkennung Von Netzwerkangriffen",
+          "authors": "Ruediger Rissmann, Yann Duponchel, Diego Zamboni, James Riordan",
+          "number": "AT 485552 T",
+          "year": 0,
+          "url": "https://lens.org/002-199-882-054-266",
+          "type": "Granted Patent"
+        },
+        {
+          "key": "lens.org/044-792-433-937-531",
+          "title": "Network Attack Detection",
+          "authors": "Ruediger Rissmann, Yann Duponchel, Diego Zamboni, James Riordan",
+          "number": "EP 1866725 B1",
+          "year": 0,
+          "url": "https://lens.org/044-792-433-937-531",
+          "type": "Patent Family of"
+        },
+        {
+          "key": "lens.org/032-065-473-420-813",
+          "title": "Methods For Operating Virtual Networks, Equipment, Data Network System",
+          "authors": "Diego Zamboni, Yann Duponchel, James Riordan, Ruediger Rissmann",
+          "number": "CN 101326771 B",
+          "year": 0,
+          "url": "https://lens.org/032-065-473-420-813",
+          "type": "Granted Patent"
+        },
+        {
+          "key": "lens.org/023-500-648-492-606",
+          "title": "Verfahren Zum Betrieb Von Mehreren Virtuellen Netzwerken",
+          "authors": "Yann Duponchel, James Riordan, Ruediger Rissmann, Diego Zamboni",
+          "number": "DE 602006012095 D1",
+          "year": 0,
+          "url": "https://lens.org/023-500-648-492-606",
+          "type": "Granted Patent"
+        },
+        {
+          "key": "lens.org/066-334-395-713-288",
+          "title": "Verfahren Zum Betrieb Von Mehreren Virtuellen Netzwerken",
+          "authors": "Yann Duponchel, James Riordan, Ruediger Rissmann, Diego Zamboni",
+          "number": "AT 456890 T",
+          "year": 0,
+          "url": "https://lens.org/066-334-395-713-288",
+          "type": "Granted Patent"
+        },
+        {
+          "key": "lens.org/159-743-880-849-911",
+          "title": "Method For Operating Several Virtual Networks",
+          "authors": "Yann Duponchel, James Riordan, Ruediger Rissmann, Diego Zamboni",
+          "number": "EP 1969777 B1",
+          "year": 0,
+          "url": "https://lens.org/159-743-880-849-911",
+          "type": "Patent Family of"
+        },
+        {
+          "key": "lens.org/038-781-979-981-306",
+          "title": "Network Attack Detection Method And Device",
+          "authors": "Ruediger Rissmann, Yann Duponchel",
+          "number": "CN 100561492 C",
+          "year": 0,
+          "url": "https://lens.org/038-781-979-981-306",
+          "type": "Granted Patent"
+        },
+        {
+          "key": "lens.org/077-245-544-178-974",
+          "title": "Preventing Attacks In A Data Processing System",
+          "authors": "Morton Swimmer, Andreas Wespi, Diego Zamboni",
+          "number": "US 7555777 B2",
+          "year": 0,
+          "url": "https://lens.org/077-245-544-178-974",
+          "type": "Granted Patent"
+        },
+        {
+          "key": "lens.org/009-701-089-204-105",
+          "title": "Network Protection For Denial Of Service Attacks",
+          "authors": "Christoph Schuba, Ivan Krsul, Diego Zamboni, Eugene Spafford, Aurobindo Sundaram, Markus Kuhn",
+          "number": "US 6725378 B1",
+          "year": 0,
+          "url": "https://lens.org/009-701-089-204-105",
+          "type": "Granted Patent"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "name": "Home",
+      "icon": "fa-regular fa-house",
+      "url": "https://zzamboni.org/about/",
+      "role": "site-home"
+    },
+    {
+      "name": "PDF",
+      "url": "zamboni-vita-pubs.pdf",
+      "icon": "fa-regular fa-file-pdf"
+    },
+    {
+      "name": "BibTeX",
+      "url": "zamboni-vita-pubs.bib",
+      "icon": "tex"
+    }
+  ]
+}
