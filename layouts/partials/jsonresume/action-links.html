@@ -13,9 +13,9 @@
 <nav class="{{ $.class }}" aria-label="{{ $.label }}">
   {{- range . -}}
     {{- $href := .url | default "" -}}
-    {{- $href = replace $href "<resume>" "/jsonresume/zamboni-vita" -}}
+    {{- $href = replace $href "<resume>" $resumeBase -}}
     {{- if and $href (not (or (hasPrefix $href "/") (hasPrefix $href "https://") (hasPrefix $href "http://"))) -}}
-      {{- $href = printf "/jsonresume/%s" $href -}}
+      {{- $href = printf "%s%s" $base $href -}}
     {{- end -}}
     {{- /* Preserve native Blowfish icon names; translate common Font Awesome aliases. */ -}}
     {{- $requested := lower (.icon | default "link") -}}
