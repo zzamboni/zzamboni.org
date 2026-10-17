@@ -1,5 +1,7 @@
 /* Scoped bibliography presentation; typography and TOC come from Blowfish. */
 .vita-publications { width:min(100%,1100px); margin:2rem auto 5rem; padding:0 1.25rem; }
+/* Match the CV profile's 3rem gap between action links and the content/TOC. */
+.vita-publications > header { margin-bottom:3rem; }
 .vita-publications-content { flex:1 1 auto; min-width:0; }
 .vita-pub-section { padding:1rem 0 2rem; }
 .vita-publications .vita-pub-section h2 { margin:1.2rem 0 1rem; font-weight:700; text-align:left; }
