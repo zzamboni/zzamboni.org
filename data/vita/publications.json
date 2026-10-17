@@ -1461,7 +1461,8 @@
     {
       "name": "Curriculum Vitae",
       "icon": "fa-regular fa-house",
-      "url": "/vita/"
+      "url": "/vita/",
+      "role": "site-home"
     },
     {
       "name": "PDF version",
