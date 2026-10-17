@@ -1,5 +1,7 @@
 {{ $e := .entry }}
 {{ $section := .section }}
+{{ $publicationNote := and (eq $section "publications") $e.bibfiles }}
+{{ $certificateNote := and (eq $section "certificates") $e.name $e.url (not $e.issuer) (not $e.date) (not $e.image) }}
 <article class="jsonresume-entry">
   {{ with $e.image }}<img class="jsonresume-entry-logo" src="{{ . | safeURL }}" alt="" loading="lazy">{{ end }}
   {{ if $e.name }}
@@ -34,7 +36,7 @@
   {{ with $e.reference }}<div class="jsonresume-description">{{ . | markdownify }}</div>{{ end }}
   {{ with $e.highlights }}<ul class="jsonresume-highlights">{{ range . }}<li>{{ . | markdownify }}</li>{{ end }}</ul>{{ end }}
   {{ with $e.keywords }}<ul class="jsonresume-tags">{{ range . }}<li>{{ . | markdownify }}</li>{{ end }}</ul>{{ end }}
-  {{ with $e.authors }}<p class="jsonresume-meta">{{ delimit . ", " | markdownify }}</p>{{ end }}
-  {{ if and (eq $section "publications") $e.bibfiles }}<p class="jsonresume-description"><a href="{{ .publicationsURL | default "/vita/publications/" }}">Full publications and patents bibliography ↗</a></p>{{ end }}
-  {{ if and (eq $section "certificates") $e.url }}<p><a href="{{ $e.url | safeURL }}" class="jsonresume-small-link">View certificate ↗</a></p>{{ end }}
+  {{ if not $publicationNote }}{{ with $e.authors }}<p class="jsonresume-meta">{{ delimit . ", " | markdownify }}</p>{{ end }}{{ end }}
+  {{ if and (eq $section "publications") $e.bibfiles (not $e.url) }}<p class="jsonresume-description"><a href="{{ .publicationsURL | default "/vita/publications/" }}">Full publications and patents bibliography ↗</a></p>{{ end }}
+  {{ if and (eq $section "certificates") $e.url (not $certificateNote) }}<p><a href="{{ $e.url | safeURL }}" class="jsonresume-small-link">View certificate ↗</a></p>{{ end }}
 </article>
