@@ -10,8 +10,8 @@
     {{ partial "breadcrumbs.html" . }}
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">Publications</h1>
     <p class="text-neutral-500 dark:text-neutral-400">Books, research papers, reports, presentations and patents.</p>
-    {{ partial "jsonresume/action-links.html" (dict "links" $data.links "base" $page.Parent.RelPermalink "resumeBase" (printf "%szamboni-vita" $page.Parent.RelPermalink) "class" "jsonresume-publications-downloads print:hidden" "label" "Publication links") }}
-    {{ partial "jsonresume/action-links.html" (dict "links" $data.links "base" $page.Parent.RelPermalink "resumeBase" (printf "%szamboni-vita" $page.Parent.RelPermalink) "class" "jsonresume-floating-links" "label" "Publication quick links" "floating" true) }}
+    {{ partial "jsonresume/action-links.html" (dict "links" $data.links "base" $page.RelPermalink "resumeBase" (printf "%szamboni-vita" $page.Parent.RelPermalink) "class" "jsonresume-publications-downloads print:hidden" "label" "Publication links") }}
+    {{ partial "jsonresume/action-links.html" (dict "links" $data.links "base" $page.RelPermalink "resumeBase" (printf "%szamboni-vita" $page.Parent.RelPermalink) "class" "jsonresume-floating-links" "label" "Publication quick links" "floating" true) }}
   </header>
   <div class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
     {{ if $sections }}
