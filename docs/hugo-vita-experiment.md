@@ -1,8 +1,27 @@
 # JSON Resume Hugo renderer
 
 The CV and publications are native Hugo pages under `/vita/`, implemented through
-thin `layouts/vita/` adapters and reusable `jsonresume` partials. JSON Resume
-data is kept in `data/jsonresume/`, not inside the presentation code.
+reusable `layouts/jsonresume/` page layouts and `jsonresume` partials. JSON
+Resume data is kept in `data/jsonresume/`, not inside the presentation code.
+
+The content pages select the renderer explicitly in their TOML front matter:
+
+```toml
+# content/vita/_index.md
+type = "jsonresume"
+layout = "cv"
+```
+
+```toml
+# content/vita/publications/index.md
+type = "jsonresume"
+layout = "publications"
+```
+
+The page layouts define Blowfish's `main` block and call the corresponding
+`jsonresume` partials. The `type` selects the template namespace; the content
+paths retain `/vita/` and `/vita/publications/`. No site-specific
+`layouts/vita/` adapters are needed.
 
 ## Configuration
 
