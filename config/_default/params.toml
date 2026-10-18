@@ -187,3 +187,8 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
 # JSON Resume link roles that duplicate navigation already provided by Hugo.
 [jsonresume]
   excludeLinkRoles = ["site-home"]
+  dataNamespace = "jsonresume"
+  resumeDataKey = "resume"
+  publicationsDataKey = "publications"
+  resumeFileStem = "zamboni-vita"
+  publicationsPath = "publications/"

@@ -7,13 +7,13 @@
     {{- $visible = $visible | append . -}}
   {{- end -}}
 {{- end -}}
-{{- $base := $.base | default "/vita/" -}}
-{{- $resumeBase := $.resumeBase | default (printf "%szamboni-vita" $base) -}}
+{{- $base := $.base | default "/" -}}
+{{- $resumeBase := $.resumeBase | default "" -}}
 {{- with $visible -}}
 <nav class="{{ $.class }}" aria-label="{{ $.label }}">
   {{- range . -}}
     {{- $href := .url | default "" -}}
-    {{- $href = replace $href "<resume>" $resumeBase -}}
+    {{- if $resumeBase -}}{{- $href = replace $href "<resume>" $resumeBase -}}{{- end -}}
     {{- if and $href (not (or (hasPrefix $href "/") (hasPrefix $href "https://") (hasPrefix $href "http://"))) -}}
       {{- $href = printf "%s%s" $base $href -}}
     {{- end -}}

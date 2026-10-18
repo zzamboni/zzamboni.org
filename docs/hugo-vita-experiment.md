@@ -1,22 +1,35 @@
-# JSON Resume Hugo renderer (experimental)
+# Hugo JSON Resume renderer: parameterization
 
-The public routes stay at `/vita/` and `/vita/publications/` through
-`content/vita/` and two thin layout adapters in `layouts/vita/`.
+This is the site-local Blowfish renderer pending extraction into a reusable
+Hugo module. The page adapters in `layouts/vita/` define the public routes,
+not the reusable partials. Site JSON snapshots remain in `data/jsonresume/`.
 
-Reusable presentation lives in `layouts/partials/jsonresume/` and
-`assets/css/jsonresume*.css`. JSON snapshots live in
-`data/jsonresume/resume.json` and `data/jsonresume/publications.json`.
-The source of the resume snapshot is `zzamboni/vita/zamboni-vita-general.json`.
-The publication snapshot comes from the upstream bibliography. Neither is
-automatically synchronized.
+Configure the renderer via `[jsonresume]` in `config/_default/params.toml`:
 
-The renderer's action links use the content section's URL as their base,
-with `<resume>` expanded to that section's `zamboni-vita` stem.
-Semantic link role filtering is site-controlled in `[jsonresume]` in
-`config/_default/params.toml`.
+| Parameter | Default | Purpose |
+| --- | --- | --- |
+| `dataNamespace` | `jsonresume` | Directory under Hugo `data/` |
+| `resumeDataKey` | `resume` | Resume JSON filename without extension |
+| `publicationsDataKey` | `publications` | Bibliography JSON filename without extension |
+| `resumeFileStem` | empty | Filename stem for the `<resume>` placeholder, relative to the CV page |
+| `publicationsPath` | `publications/` | Publications page relative to the CV section |
+| `excludeLinkRoles` | empty | Metadata roles filtered from action links |
 
-CSS class names are namespaced `jsonresume-*`, but the public URL remains
-`/vita/` and legacy PDF and BibTeX files under `static/vita/` are unchanged.
+The publications title and description come from its Hugo content front
+matter instead of the template. Action links resolve relative filenames
+against the current CV or publications page; the `<resume>` replacement uses
+the configured stem. The CV's bibliography note links to the publications
+page resolved by Hugo's page tree where available.
 
-Test: `mise run serve`, then inspect both `/vita/` pages for TOC links,
-icons, floating actions, publications, PDF downloads and responsive layout.
+The current site sets `resumeFileStem = "zamboni-vita"`, keeping
+`/vita/zamboni-vita.pdf` stable. The module code contains no personal
+filenames or hardcoded `/vita/` URLs. The site supplies its existing routes
+via `content/vita/` and retains PDFs and BibTeX under `static/vita/`.
+
+The underlying resume input is `zzamboni/vita/zamboni-vita-general.json`;
+publications JSON is exported by resume-toolkit. Neither snapshot is synced
+automatically yet.
+
+For manual verification run `mise run serve` and inspect both `/vita/` pages,
+including links, TOC, note entries, icons and mobile layout. A Hugo build and
+Netlify deploy-preview are needed to verify template compatibility.
