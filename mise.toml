@@ -1,5 +1,6 @@
 [tools]
 hugo-extended = "0.166.0"
+go = "1.25"
 
 [tasks.serve]
 description = "Build and serve the site locally"

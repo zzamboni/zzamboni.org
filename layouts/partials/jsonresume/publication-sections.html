@@ -1,7 +1,0 @@
-{{- $sections := slice -}}
-{{- range .sections -}}
-  {{- if .entries -}}
-    {{- $sections = $sections | append (dict "id" .id "label" .title "entries" .entries) -}}
-  {{- end -}}
-{{- end -}}
-{{- return $sections -}}
