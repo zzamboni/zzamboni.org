@@ -26,6 +26,7 @@
 
 [build.environment]
   HUGO_VERSION = "0.166.0"
+  GO_VERSION = "1.25"
   HUGO_EXTENDED = "true"
   NETLIFY_BUILD_IMAGE = "noble"
   HUGO_ENV = "production"

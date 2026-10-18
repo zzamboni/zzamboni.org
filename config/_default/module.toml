@@ -1,3 +1,6 @@
+[[imports]]
+path = "github.com/zzamboni/hugo-jsonresume"
+
 [[mounts]]
 source = "content"
 target = "content"
