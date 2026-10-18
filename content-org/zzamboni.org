@@ -98,6 +98,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#when-a-local-timestamp-pretends-to-be-utc][When a local timestamp pretends to be UTC]]
     - [[#using-pages-cms-alongside-org-mode-and-hugo][Using Pages CMS alongside Org mode and Hugo]]
     - [[#posting-links-and-photos-from-my-phone-with-netlify-and-ios-shortcuts][Posting links and photos from my phone with Netlify and iOS Shortcuts]]
+    - [[#bringing-my-json-resume-cv-home-to-hugo][Bringing my JSON Resume CV home to Hugo]]
 
 * Pages
 
