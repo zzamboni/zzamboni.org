@@ -27,7 +27,9 @@ requiring a personal filename in the templates.
 Link paths are resolved relative to the current page (and to the CV parent
 for `<resume>` placeholders on publications). The CV's bibliography-note link
 uses the child `publications/` page by default; `publicationsURL` overrides it.
-The publication page title comes from Hugo front matter; its description uses\nthe page description by default and can be overridden with\n`publicationsDescription` for compatibility with an existing layout.
+The publication page title comes from Hugo front matter; its description uses
+the page description by default and can be overridden with
+`publicationsDescription` for compatibility with an existing layout.
 
 Reusable presentation is in `layouts/partials/jsonresume/` and scoped
 `assets/css/jsonresume*.css`. It currently relies on Blowfish's icon,
