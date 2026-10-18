@@ -36,7 +36,7 @@
                 <strong itemprop="name">{{ if .url }}<a href="{{ .url | safeURL }}" itemprop="url">{{ .title | markdownify }}</a>{{ else }}{{ .title | markdownify }}{{ end }}</strong>
                 {{ with .authors }}<div>{{ . | markdownify }}</div>{{ else }}{{ with .editor }}<div>Editors: {{ . | markdownify }}</div>{{ end }}{{ end }}
                 <div class="jsonresume-pub-meta">
-                  {{ with .journal }}{{ . | markdownify }}{{ else }}{{ with .booktitle }}{{ . | markdownify }}{{ else }}{{ with .publisher }}{{ . | markdownify }}{{ else }}{{ with .school }}{{ . | markdownify }}{{ else }}{{ with .institution }}{{ . | markdownify }}{{ end }}{{ end }}{{ end }}{{ end }}{{ end }}
+                  {{ with .journal }}{{ . | markdownify }}{{ else }}{{ with .booktitle }}{{ . | markdownify }}{{ else }}{{ with .publisher }}{{ . | markdownify }}{{ else }}{{ with .school }}{{ . | markdownify }}{{ else }}{{ with .institution }}{{ . | markdownify }}{{ else }}{{ with .howpublished }}{{ . | markdownify }}{{ end }}{{ end }}{{ end }}{{ end }}{{ end }}{{ end }}
                   {{ with .number }} · {{ . }}{{ end }}
                   {{ with .year }} · {{ . }}{{ end }}
                   {{ with .doi }} · <a href="https://doi.org/{{ . | urlquery }}">DOI</a>{{ end }}
