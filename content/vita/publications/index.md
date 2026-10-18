@@ -1,6 +1,6 @@
 +++
 title = "Publications"
-description = "Research publications, books, presentations and patents by Diego Zamboni."
+description = "Research publications, books, presentations and patents."
 layout = "publications"
 showDate = false
 showAuthor = false
