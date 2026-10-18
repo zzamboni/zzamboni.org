@@ -26,6 +26,15 @@ run = "python3 scripts/theme_update.py update"
 description = "Verify version pins and build with the pinned Hugo"
 run = "python3 scripts/theme_update.py verify"
 
+[tasks.jsonresume-update]
+description = "Update the JSON Resume module pin and show dependency changes"
+usage = 'arg "[version]" default="main" help="Module branch, tag, or commit to import"'
+run = '''
+set -eu
+hugo mod get "github.com/zzamboni/hugo-jsonresume@${usage_version?}"
+git diff -- go.mod go.sum
+'''
+
 [tasks.diff-staging-main]
 description = "Show non-content differences between staging and branch"
 run = "git diff staging..main -- . ':(exclude)content/' ':(exclude)content-pagescms/' ':(exclude)content-photos/' ':(exclude)content-org/' ':(exclude)static/img/' ':(exclude)assets/'"

@@ -48,12 +48,22 @@ keeps its existing introduction via `publicationsDescription`.
 ## Updating the renderer
 
 Implement and test renderer changes in the module repository first. Then,
-from a site feature branch based on current staging, resolve the reviewed
-module commit:
+from a site feature branch based on current staging, run the update task:
 
 ```sh
-hugo mod get github.com/zzamboni/hugo-jsonresume@COMMIT_SHA
+mise run jsonresume-update
 ```
+
+It imports the latest module `main` commit and shows the `go.mod`/`go.sum`
+diff. To select a reviewed commit or version tag instead:
+
+```sh
+mise run jsonresume-update COMMIT_SHA
+mise run jsonresume-update v0.1.0
+```
+
+The tag example applies once that release exists. The task only updates the
+module pin and shows the diff; preview, commit and push remain explicit steps.
 
 Commit `go.mod` and `go.sum` together. Run a production build and compare both
 CV pages and generated styles against the previous pin. Review the Netlify
