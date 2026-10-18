@@ -1,32 +1,32 @@
-# JSON Resume Hugo renderer
+# JSON Resume Hugo integration
 
-The CV and publications are native Hugo pages under `/vita/`, implemented through
-reusable `layouts/jsonresume/` page layouts and `jsonresume` partials. JSON
-Resume data is kept in `data/jsonresume/`, not inside the presentation code.
+The CV and publications at `/vita/` and `/vita/publications/` are native Hugo
+pages rendered by the Blowfish-specific module
+[`zzamboni/hugo-jsonresume`](https://github.com/zzamboni/hugo-jsonresume).
+The reusable layouts, partials and three namespaced stylesheets now live in
+that repository. There are no local renderer copies to keep in sync.
 
-The content pages select the renderer explicitly in their TOML front matter:
+## Host responsibilities
 
-```toml
-# content/vita/_index.md
-type = "jsonresume"
-layout = "cv"
-```
+- `content/vita/_index.md`: `type = "jsonresume"`, `layout = "cv"`.
+- `content/vita/publications/index.md`: the same type, `layout = "publications"`.
+- `data/jsonresume/resume.json` and `publications.json`: host-owned snapshots
+  from `zzamboni/vita` and resume-toolkit. Automatic synchronization remains
+  a separate follow-up.
+- `static/vita/`: existing PDFs, BibTeX and images; URLs remain unchanged.
+- `config/_default/params.toml`: data paths, download stem, introduction and
+  semantic link-role filtering. These site-specific settings are not module
+  defaults.
+- `themes/blowfish/`: the existing pinned submodule supplies the base layout,
+  icons, breadcrumbs and TOC. The renderer module does not import Blowfish.
 
-```toml
-# content/vita/publications/index.md
-type = "jsonresume"
-layout = "publications"
-```
-
-The page layouts define Blowfish's `main` block and call the corresponding
-`jsonresume` partials. The `type` selects the template namespace; the content
-paths retain `/vita/` and `/vita/publications/`. No site-specific
-`layouts/vita/` adapters are needed.
+The module is imported in `config/_default/module.toml` alongside the site's
+existing mounts. `go.mod` pins its exact pseudo-version; `go.sum` records
+checksums. Do not replace the pin with a moving branch or commit local Go
+replacement paths. Go 1.25 is selected in mise and Netlify; install the local
+tools with `mise install` before building.
 
 ## Configuration
-
-The host site supplies its data sources and download basename in
-`config/_default/params.toml`:
 
 ```toml
 [jsonresume]
@@ -38,28 +38,28 @@ The host site supplies its data sources and download basename in
   # publicationsURL = "/vita/publications/"
 ```
 
-The two data paths use dot-separated keys relative to Hugo's `data/` directory.
-For example, `jsonresume.resume` reads `data/jsonresume/resume.json`.
-The `resumeStem` option identifies the generated CV download stem, without
-requiring a personal filename in the templates.
+The data paths use dot-separated Hugo data keys. Relative action links use
+the current page; `<resume>` uses the CV page plus `resumeStem`, including
+when linked from publications. The bibliography-note link defaults to the
+CV's `publications/` child, with `publicationsURL` as an optional override.
+Page front matter supplies the title and default description; this site
+keeps its existing introduction via `publicationsDescription`.
 
-Link paths are resolved relative to the current page (and to the CV parent
-for `<resume>` placeholders on publications). The CV's bibliography-note link
-uses the child `publications/` page by default; `publicationsURL` overrides it.
-The publication page title comes from Hugo front matter; its description uses
-the page description by default and can be overridden with
-`publicationsDescription` for compatibility with an existing layout.
+## Updating the renderer
 
-Reusable presentation is in `layouts/partials/jsonresume/` and scoped
-`assets/css/jsonresume*.css`. It currently relies on Blowfish's icon,
-breadcrumb and table-of-contents partials, and has not yet been extracted
-into a standalone module.
+Implement and test renderer changes in the module repository first. Then,
+from a site feature branch based on current staging, resolve the reviewed
+module commit:
 
-Snapshots originate in `zzamboni/vita` and `resume-toolkit` and are
-not automatically synchronized. Downloads remain under `static/vita/`.
+```sh
+hugo mod get github.com/zzamboni/hugo-jsonresume@COMMIT_SHA
+```
 
-## Review
+Commit `go.mod` and `go.sum` together. Run a production build and compare both
+CV pages and generated styles against the previous pin. Review the Netlify
+preview on desktop/mobile before merging. Use `mise run serve` to preview
+locally. Site-level overrides remain possible at the imported template/asset
+paths, but should be deliberate and documented.
 
-Run `mise run serve` locally and inspect `/vita/` and
-`/vita/publications/` for TOC links, icons, floating actions,
-publication notes, PDF/BibTeX links, and mobile layout.
+The module README owns the renderer's full data contract and its synthetic
+example. This document owns the site's routes, inputs and integration.
