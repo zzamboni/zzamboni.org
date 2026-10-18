@@ -13,7 +13,7 @@
   <header id="single_header" class="mt-5 max-w-prose">
     {{ partial "breadcrumbs.html" . }}
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ $page.Title }}</h1>
-    <p class="text-neutral-500 dark:text-neutral-400">{{ $page.Description }}</p>
+    <p class="text-neutral-500 dark:text-neutral-400">{{ site.Params.jsonresume.publicationsDescription | default $page.Description }}</p>
     {{ partial "jsonresume/action-links.html" (dict "links" $data.links "base" $page.RelPermalink "resumeBase" $resumeBase "class" "jsonresume-publications-downloads print:hidden" "label" "Publication links") }}
     {{ partial "jsonresume/action-links.html" (dict "links" $data.links "base" $page.RelPermalink "resumeBase" $resumeBase "class" "jsonresume-floating-links" "label" "Publication quick links" "floating" true) }}
   </header>

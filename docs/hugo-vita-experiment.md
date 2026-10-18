@@ -14,6 +14,7 @@ The host site supplies its data sources and download basename in
   resumeData = "jsonresume.resume"
   publicationsData = "jsonresume.publications"
   resumeStem = "zamboni-vita"
+  publicationsDescription = "Books, research papers, reports, presentations and patents."
   excludeLinkRoles = ["site-home"]
   # publicationsURL = "/vita/publications/"
 ```
@@ -26,7 +27,7 @@ requiring a personal filename in the templates.
 Link paths are resolved relative to the current page (and to the CV parent
 for `<resume>` placeholders on publications). The CV's bibliography-note link
 uses the child `publications/` page by default; `publicationsURL` overrides it.
-The publication page title and description come from its Hugo front matter.
+The publication page title comes from Hugo front matter; its description uses\nthe page description by default and can be overridden with\n`publicationsDescription` for compatibility with an existing layout.
 
 Reusable presentation is in `layouts/partials/jsonresume/` and scoped
 `assets/css/jsonresume*.css`. It currently relies on Blowfish's icon,
