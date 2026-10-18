@@ -3882,7 +3882,7 @@ If you want to adapt this, the [[https://github.com/zzamboni/zzamboni.org/blob/m
 :export_hugo_bundle: 2026-10-18-bringing-json-resume-cv-home-to-hugo
 :export_file_name: index
 :custom_id: bringing-json-resume-cv-home-to-hugo
-:export_hugo_custom_front_matter: :toc true
+:export_hugo_custom_front_matter: :toc true :featureimage img/generated/2026-10-18-bringing-json-resume-cv-home-to-hugo.webp
 :END:
 #+begin_description
 How I brought my JSON Resume CV and publications into Hugo, and extracted the renderer into a reusable Blowfish module without giving up the standalone toolkit, PDFs, or BibTeX sources.
