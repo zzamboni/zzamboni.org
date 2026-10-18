@@ -1,5 +1,10 @@
 {{ $page := . }}
-{{ $resume := hugo.Data.jsonresume.resume }}
+{{ $dataPath := site.Params.jsonresume.resumeData | default "jsonresume.resume" }}
+{{ $resume := hugo.Data }}
+{{ range split $dataPath "." }}{{ $resume = index $resume . }}{{ end }}
+{{ $resumeStem := site.Params.jsonresume.resumeStem | default "" }}
+{{ $resumeBase := printf "%s%s" $page.RelPermalink $resumeStem }}
+{{ $publicationsURL := site.Params.jsonresume.publicationsURL | default (printf "%spublications/" $page.RelPermalink) }}
 {{ $options := $resume.meta.themeOptions | default dict }}
 {{ $sections := partial "jsonresume/cv-sections.html" $resume }}
 {{ $css := resources.Get "css/jsonresume.css" | minify | fingerprint }}
@@ -56,8 +61,8 @@
     {{ with $resume.basics.summary }}
       <section class="prose dark:prose-invert w-full">{{ . | markdownify }}</section>
     {{ end }}
-    {{ partial "jsonresume/action-links.html" (dict "links" $options.links "base" $page.RelPermalink "resumeBase" (printf "%szamboni-vita" $page.RelPermalink) "class" "jsonresume-actions" "label" "CV links") }}
-    {{ partial "jsonresume/action-links.html" (dict "links" $options.links "base" $page.RelPermalink "resumeBase" (printf "%szamboni-vita" $page.RelPermalink) "class" "jsonresume-floating-links" "label" "CV quick links" "floating" true) }}
+    {{ partial "jsonresume/action-links.html" (dict "links" $options.links "base" $page.RelPermalink "resumeBase" $resumeBase "class" "jsonresume-actions" "label" "CV links") }}
+    {{ partial "jsonresume/action-links.html" (dict "links" $options.links "base" $page.RelPermalink "resumeBase" $resumeBase "class" "jsonresume-floating-links" "label" "CV quick links" "floating" true) }}
   </article>
   <section class="jsonresume-body flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
     {{ $topClass := cond (or (hasPrefix site.Params.header.layout "fixed") (eq site.Params.header.layout "floating")) "lg:top-[140px]" "lg:top-10" }}
@@ -73,7 +78,7 @@
       <section class="jsonresume-section" id="{{ .id }}" aria-labelledby="{{ .id }}-title">
         <h2 id="{{ .id }}-title"><span class="anchor" id="{{ .id }}"></span>{{ .label | markdownify }}</h2>
         <div class="jsonresume-section-content">
-          {{ $key := .key }}{{ range .entries }}{{ partial "jsonresume/entry.html" (dict "entry" . "section" $key "publicationsURL" (printf "%spublications/" $page.RelPermalink)) }}{{ end }}
+          {{ $key := .key }}{{ range .entries }}{{ partial "jsonresume/entry.html" (dict "entry" . "section" $key "publicationsURL" $publicationsURL) }}{{ end }}
         </div>
       </section>
     {{ end }}
