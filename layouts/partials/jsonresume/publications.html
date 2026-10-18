@@ -1,5 +1,9 @@
 {{ $page := . }}
-{{ $data := hugo.Data.jsonresume.publications }}
+{{ $dataPath := site.Params.jsonresume.publicationsData | default "jsonresume.publications" }}
+{{ $data := hugo.Data }}
+{{ range split $dataPath "." }}{{ $data = index $data . }}{{ end }}
+{{ $resumeStem := site.Params.jsonresume.resumeStem | default "" }}
+{{ $resumeBase := printf "%s%s" $page.Parent.RelPermalink $resumeStem }}
 {{ $sections := partial "jsonresume/publication-sections.html" $data }}
 {{ $css := resources.Get "css/jsonresume-publications.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
@@ -8,10 +12,10 @@
 <article class="jsonresume-publications">
   <header id="single_header" class="mt-5 max-w-prose">
     {{ partial "breadcrumbs.html" . }}
-    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">Publications</h1>
-    <p class="text-neutral-500 dark:text-neutral-400">Books, research papers, reports, presentations and patents.</p>
-    {{ partial "jsonresume/action-links.html" (dict "links" $data.links "base" $page.RelPermalink "resumeBase" (printf "%szamboni-vita" $page.Parent.RelPermalink) "class" "jsonresume-publications-downloads print:hidden" "label" "Publication links") }}
-    {{ partial "jsonresume/action-links.html" (dict "links" $data.links "base" $page.RelPermalink "resumeBase" (printf "%szamboni-vita" $page.Parent.RelPermalink) "class" "jsonresume-floating-links" "label" "Publication quick links" "floating" true) }}
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ $page.Title }}</h1>
+    <p class="text-neutral-500 dark:text-neutral-400">{{ $page.Description }}</p>
+    {{ partial "jsonresume/action-links.html" (dict "links" $data.links "base" $page.RelPermalink "resumeBase" $resumeBase "class" "jsonresume-publications-downloads print:hidden" "label" "Publication links") }}
+    {{ partial "jsonresume/action-links.html" (dict "links" $data.links "base" $page.RelPermalink "resumeBase" $resumeBase "class" "jsonresume-floating-links" "label" "Publication quick links" "floating" true) }}
   </header>
   <div class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
     {{ if $sections }}

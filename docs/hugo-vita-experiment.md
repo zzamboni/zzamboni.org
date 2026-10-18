@@ -1,22 +1,43 @@
-# JSON Resume Hugo renderer (experimental)
+# JSON Resume Hugo renderer
 
-The public routes stay at `/vita/` and `/vita/publications/` through
-`content/vita/` and two thin layout adapters in `layouts/vita/`.
+The CV and publications are native Hugo pages under `/vita/`, implemented through
+thin `layouts/vita/` adapters and reusable `jsonresume` partials. JSON Resume
+data is kept in `data/jsonresume/`, not inside the presentation code.
 
-Reusable presentation lives in `layouts/partials/jsonresume/` and
-`assets/css/jsonresume*.css`. JSON snapshots live in
-`data/jsonresume/resume.json` and `data/jsonresume/publications.json`.
-The source of the resume snapshot is `zzamboni/vita/zamboni-vita-general.json`.
-The publication snapshot comes from the upstream bibliography. Neither is
-automatically synchronized.
+## Configuration
 
-The renderer's action links use the content section's URL as their base,
-with `<resume>` expanded to that section's `zamboni-vita` stem.
-Semantic link role filtering is site-controlled in `[jsonresume]` in
-`config/_default/params.toml`.
+The host site supplies its data sources and download basename in
+`config/_default/params.toml`:
 
-CSS class names are namespaced `jsonresume-*`, but the public URL remains
-`/vita/` and legacy PDF and BibTeX files under `static/vita/` are unchanged.
+```toml
+[jsonresume]
+  resumeData = "jsonresume.resume"
+  publicationsData = "jsonresume.publications"
+  resumeStem = "zamboni-vita"
+  excludeLinkRoles = ["site-home"]
+  # publicationsURL = "/vita/publications/"
+```
 
-Test: `mise run serve`, then inspect both `/vita/` pages for TOC links,
-icons, floating actions, publications, PDF downloads and responsive layout.
+The two data paths use dot-separated keys relative to Hugo's `data/` directory.
+For example, `jsonresume.resume` reads `data/jsonresume/resume.json`.
+The `resumeStem` option identifies the generated CV download stem, without
+requiring a personal filename in the templates.
+
+Link paths are resolved relative to the current page (and to the CV parent
+for `<resume>` placeholders on publications). The CV's bibliography-note link
+uses the child `publications/` page by default; `publicationsURL` overrides it.
+The publication page title and description come from its Hugo front matter.
+
+Reusable presentation is in `layouts/partials/jsonresume/` and scoped
+`assets/css/jsonresume*.css`. It currently relies on Blowfish's icon,
+breadcrumb and table-of-contents partials, and has not yet been extracted
+into a standalone module.
+
+Snapshots originate in `zzamboni/vita` and `resume-toolkit` and are
+not automatically synchronized. Downloads remain under `static/vita/`.
+
+## Review
+
+Run `mise run serve` locally and inspect `/vita/` and
+`/vita/publications/` for TOC links, icons, floating actions,
+publication notes, PDF/BibTeX links, and mobile layout.

@@ -7,8 +7,8 @@
     {{- $visible = $visible | append . -}}
   {{- end -}}
 {{- end -}}
-{{- $base := $.base | default "/vita/" -}}
-{{- $resumeBase := $.resumeBase | default (printf "%szamboni-vita" $base) -}}
+{{- $base := $.base -}}
+{{- $resumeBase := $.resumeBase | default $base -}}
 {{- with $visible -}}
 <nav class="{{ $.class }}" aria-label="{{ $.label }}">
   {{- range . -}}
