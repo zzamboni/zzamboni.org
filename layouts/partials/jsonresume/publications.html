@@ -35,13 +35,20 @@
               <div class="jsonresume-pub-info">
                 <strong itemprop="name">{{ if .url }}<a href="{{ .url | safeURL }}" itemprop="url">{{ .title | markdownify }}</a>{{ else }}{{ .title | markdownify }}{{ end }}</strong>
                 {{ with .authors }}<div>{{ . | markdownify }}</div>{{ else }}{{ with .editor }}<div>Editors: {{ . | markdownify }}</div>{{ end }}{{ end }}
+                {{ $meta := slice }}
+                {{ with or .journal .booktitle .publisher .school .institution .howpublished }}{{ $meta = $meta | append (. | markdownify) }}{{ end }}
+                {{ $designation := slice }}
+                {{ with .type }}{{ $designation = $designation | append (printf "%v" .) }}{{ end }}
+                {{ with .number }}{{ $designation = $designation | append (printf "%v" .) }}{{ end }}
+                {{ with $designation }}{{ $meta = $meta | append (delimit . " ") }}{{ end }}
+                {{ with .year }}{{ $meta = $meta | append (printf "%v" .) }}{{ end }}
+                {{ with .doi }}{{ $meta = $meta | append (printf "<a href=\"https://doi.org/%s\">DOI</a>" (. | urlquery) | safeHTML) }}{{ end }}
+                {{ with .note }}{{ $meta = $meta | append (. | markdownify) }}{{ end }}
+                {{ with $meta }}
                 <div class="jsonresume-pub-meta">
-                  {{ with .journal }}{{ . | markdownify }}{{ else }}{{ with .booktitle }}{{ . | markdownify }}{{ else }}{{ with .publisher }}{{ . | markdownify }}{{ else }}{{ with .school }}{{ . | markdownify }}{{ else }}{{ with .institution }}{{ . | markdownify }}{{ else }}{{ with .howpublished }}{{ . | markdownify }}{{ end }}{{ end }}{{ end }}{{ end }}{{ end }}{{ end }}
-                  {{ with .number }} · {{ . }}{{ end }}
-                  {{ with .year }} · {{ . }}{{ end }}
-                  {{ with .doi }} · <a href="https://doi.org/{{ . | urlquery }}">DOI</a>{{ end }}
-                  {{ with .note }} · {{ . | markdownify }}{{ end }}
+                  {{ range $index, $part := . }}{{ if $index }} · {{ end }}{{ $part }}{{ end }}
                 </div>
+                {{ end }}
               </div>
             </div>
           {{ end }}
