@@ -4,7 +4,9 @@
   const svgNS = "http://www.w3.org/2000/svg";
 
   function enhance(diagram) {
-    diagram.querySelectorAll("svg g.node").forEach((node) => {
+    // Mermaid measures a temporary SVG inside a div before publishing the final SVG.
+    // Never touch that working tree: changing it can corrupt label sizes and layout.
+    diagram.querySelectorAll(":scope > svg g.node").forEach((node) => {
       const links = node.querySelectorAll("a[href]");
       if (links.length !== 1 || node.parentElement.classList.contains("mermaid-node-link")) return;
 
