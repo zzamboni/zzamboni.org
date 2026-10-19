@@ -25,20 +25,20 @@ The flow now looks like this:
 
 {{< mermaid >}}
 flowchart TD
-  source["<a href='https://github.com/zzamboni/vita'>zzamboni/vita</a>: JSON Resume, BibTeX and images"]
-  toolkit["<a href='https://github.com/zzamboni/resume-toolkit'>resume-toolkit</a>"]
-  downloads["PDFs and BibTeX downloads"]
-  publications["Normalized publications JSON"]
-  hugo["Hugo / Blowfish with <a href='https://github.com/zzamboni/hugo-jsonresume'>hugo-jsonresume</a>"]
-  pages["<a href='/vita/'>/vita/</a> and <a href='/vita/publications/'>/vita/publications/</a>"]
+  source["&lt;a href='https://github.com/zzamboni/vita'&gt;zzamboni/vita&lt;/a&gt;:&lt;br/&gt;JSON Resume, BibTeX&lt;br/&gt;and images"]
+  toolkit["&lt;a href='https://github.com/zzamboni/resume-toolkit'&gt;resume-toolkit&lt;/a&gt;"]
+  downloads["PDFs and BibTeX&lt;br/&gt;downloads"]
+  publications["Normalized&lt;br/&gt;publications JSON"]
+  hugo["Hugo / Blowfish with&lt;br/&gt;&lt;a href='https://github.com/zzamboni/hugo-jsonresume'&gt;hugo-jsonresume&lt;/a&gt;"]
+  pages["&lt;a href='/vita/'&gt;/vita/&lt;/a&gt; and&lt;br/&gt;&lt;a href='/vita/publications/'&gt;/vita/publications/&lt;/a&gt;"]
 
   source --> toolkit
-  source -->|JSON Resume and images| hugo
+  source -->|JSON Resume&lt;br/&gt;and images| hugo
   toolkit --> downloads
   toolkit --> publications
   publications --> hugo
   hugo --> pages
-  downloads -->|Static files linked from the pages| pages
+  downloads -->|Static files linked&lt;br/&gt;from the pages| pages
 {{< /mermaid >}}
 
 
