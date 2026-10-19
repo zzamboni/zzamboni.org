@@ -16,3 +16,12 @@
   {{ $lightboxJS := resources.Get "js/photo-lightbox.js" | resources.Minify | resources.Fingerprint $algorithm }}
   <script defer src="{{ $lightboxJS.RelPermalink }}" integrity="{{ $lightboxJS.Data.Integrity }}"></script>
 {{ end }}
+
+{{/* Add visible, native links after Mermaid renders (including appearance changes). */}}
+{{ if .Page.HasShortcode "mermaid" }}
+  {{ $algorithm := site.Params.fingerprintAlgorithm | default "sha512" }}
+  {{ $css := resources.Get "css/mermaid-links.css" | resources.Minify | resources.Fingerprint $algorithm }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{ $js := resources.Get "js/mermaid-links.js" | resources.Minify | resources.Fingerprint $algorithm }}
+  <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ end }}
