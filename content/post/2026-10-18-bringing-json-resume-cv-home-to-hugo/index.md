@@ -23,21 +23,23 @@ The Hugo integration is simply another consumer of that data. The distinction ma
 
 The flow now looks like this:
 
-```text
-zzamboni/vita
-  JSON Resume + BibTeX + images
-          |
-          v
-    resume-toolkit
-    |            |
-    v            v
- PDFs/BibTeX   normalized publications JSON
-    |            |
-    +------ Hugo/Blowfish ------+
-                 |
-                 v
-         /vita/ and /vita/publications/
-```
+{{< mermaid >}}
+flowchart TD
+  source["zzamboni/vita: JSON Resume, BibTeX and images"]
+  toolkit["resume-toolkit"]
+  downloads["PDFs and BibTeX downloads"]
+  publications["Normalized publications JSON"]
+  hugo["Hugo / Blowfish with hugo-jsonresume"]
+  pages["/vita/ and /vita/publications/"]
+
+  source --> toolkit
+  source -->|JSON Resume and images| hugo
+  toolkit --> downloads
+  toolkit --> publications
+  publications --> hugo
+  hugo --> pages
+  downloads -->|Static files linked from the pages| pages
+{{< /mermaid >}}
 
 
 ## Let Hugo do the rendering {#let-hugo-do-the-rendering}
