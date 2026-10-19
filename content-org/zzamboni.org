@@ -3903,12 +3903,12 @@ The flow now looks like this:
 #+begin_export hugo
 {{< mermaid >}}
 flowchart TD
-  source["zzamboni/vita: JSON Resume, BibTeX and images"]
-  toolkit["resume-toolkit"]
+  source["<a href='https://github.com/zzamboni/vita'>zzamboni/vita</a>: JSON Resume, BibTeX and images"]
+  toolkit["<a href='https://github.com/zzamboni/resume-toolkit'>resume-toolkit</a>"]
   downloads["PDFs and BibTeX downloads"]
   publications["Normalized publications JSON"]
-  hugo["Hugo / Blowfish with hugo-jsonresume"]
-  pages["/vita/ and /vita/publications/"]
+  hugo["Hugo / Blowfish with <a href='https://github.com/zzamboni/hugo-jsonresume'>hugo-jsonresume</a>"]
+  pages["<a href='/vita/'>/vita/</a> and <a href='/vita/publications/'>/vita/publications/</a>"]
 
   source --> toolkit
   source -->|JSON Resume and images| hugo
