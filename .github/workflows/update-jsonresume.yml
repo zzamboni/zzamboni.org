@@ -1,0 +1,114 @@
+name: Update JSON Resume module
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-jsonresume-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Check target branch
+        run: |
+          case "$GITHUB_REF" in
+            refs/heads/main|refs/heads/staging) ;;
+            *) echo "::error::Run this workflow from main or staging."; exit 1 ;;
+          esac
+
+      - name: Check out selected branch and pinned theme
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+
+      - name: Install repository-pinned Hugo and Go
+        uses: jdx/mise-action@v3
+
+      - name: Update module on a new branch
+        id: update
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          module="github.com/zzamboni/hugo-jsonresume"
+          revision=$(gh api repos/zzamboni/hugo-jsonresume/commits/main --jq .sha)
+          [[ "$revision" =~ ^[0-9a-f]{40}$ ]]
+          branch="update-jsonresume/${GITHUB_REF_NAME}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git switch -c "$branch"
+          before=$(go list -m -f '{{.Version}}' "$module")
+          mise run jsonresume-update "$revision"
+          after=$(go list -m -f '{{.Version}}' "$module")
+          git add go.mod go.sum
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "JSON Resume module is already current ($after). No PR created." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          {
+            echo "changed=true"
+            echo "branch=$branch"
+            echo "revision=$revision"
+            echo "before=$before"
+            echo "after=$after"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Verify site builds with updated module
+        if: steps.update.outputs.changed == 'true'
+        env:
+          HUGO_ENV: production
+        run: hugo --buildDrafts --minify --destination "$RUNNER_TEMP/jsonresume-preview"
+
+      - name: Commit and push module pin
+        if: steps.update.outputs.changed == 'true'
+        env:
+          BRANCH: ${{ steps.update.outputs.branch }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add go.mod go.sum
+          git commit -m "auto: jsonresume: update renderer module"
+          git push --set-upstream origin "$BRANCH"
+
+      - name: Open review pull request
+        if: steps.update.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.update.outputs.branch }}
+          BASE: ${{ github.ref_name }}
+          REVISION: ${{ steps.update.outputs.revision }}
+          BEFORE: ${{ steps.update.outputs.before }}
+          AFTER: ${{ steps.update.outputs.after }}
+        run: |
+          set -euo pipefail
+          body_file="$RUNNER_TEMP/jsonresume-pr-body.md"
+          # Go pseudo-versions are not Git refs; use their commit suffix.
+          previous_ref="$BEFORE"
+          if [[ "$BEFORE" =~ -([0-9a-f]{12})$ ]]; then
+            previous_ref="${BASH_REMATCH[1]}"
+          fi
+          cat > "$body_file" <<EOF
+          Updates the JSON Resume renderer to the latest commit on its main branch when the update runs.
+
+          - Previous pin: \`$BEFORE\`
+          - New pin: \`$AFTER\`
+          - [Renderer commit](https://github.com/zzamboni/hugo-jsonresume/commit/$REVISION)
+          - [Upstream changes](https://github.com/zzamboni/hugo-jsonresume/compare/$previous_ref...$REVISION)
+
+          Updated using \`mise run jsonresume-update\`. The site builds successfully with drafts included.
+
+          Review the CV at \`/vita/\` and bibliography at \`/vita/publications/\` in the Netlify deploy preview before merging. This workflow does not merge or deploy to production.
+          EOF
+          pr_url=$(gh pr create --base "$BASE" --head "$BRANCH" \
+            --title "Update JSON Resume renderer" --body-file "$body_file")
+          echo "Review the module update: $pr_url" >> "$GITHUB_STEP_SUMMARY"
