@@ -1,0 +1,63 @@
+name: Reset staging to main
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reset-staging-to-main
+  cancel-in-progress: false
+
+jobs:
+  reset:
+    name: Discard staging changes and mirror main
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Require main
+        run: |
+          if [[ "$GITHUB_REF" != "refs/heads/main" ]]; then
+            echo "::error::Run this workflow from main."
+            exit 1
+          fi
+
+      - name: Check out main
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: Reset staging with a lease
+        run: |
+          set -euo pipefail
+          # Fetch both tips at execution time, rather than using the dispatch SHA.
+          git fetch --no-tags origin \
+            +refs/heads/main:refs/remotes/origin/main \
+            +refs/heads/staging:refs/remotes/origin/staging
+          main_sha=$(git rev-parse refs/remotes/origin/main)
+          staging_sha=$(git rev-parse refs/remotes/origin/staging)
+          if [[ "$main_sha" == "$staging_sha" ]]; then
+            echo "Staging already matches main at $main_sha." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          # Refuse to overwrite a staging push made after the fetch.
+          git push --force-with-lease="refs/heads/staging:$staging_sha" \
+            origin "$main_sha:refs/heads/staging"
+          actual_sha=$(git ls-remote --exit-code origin refs/heads/staging | cut -f1)
+          if [[ "$actual_sha" != "$main_sha" ]]; then
+            echo "::error::Staging changed again after the reset. Inspect the branch before retrying."
+            exit 1
+          fi
+          {
+            echo "Reset staging to main."
+            echo
+            echo "- Previous staging: $staging_sha"
+            echo "- New staging (main at fetch time): $main_sha"
+            echo
+            echo "Staging-only commits and test content are no longer on the branch."
+            echo "This workflow does not explicitly trigger a Netlify build."
+          } >> "$GITHUB_STEP_SUMMARY"
