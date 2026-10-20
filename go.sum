@@ -1,2 +1,4 @@
 github.com/zzamboni/hugo-jsonresume v0.0.0-20261018152807-7acc0967027b h1:nsBJe4iJC6AwOMqkpO6F6sbuZ1NifaZ61yDD2yZkCZ0=
 github.com/zzamboni/hugo-jsonresume v0.0.0-20261018152807-7acc0967027b/go.mod h1:B2pDJLd7+G/WlJioyRJC9We7qDg7q8mQC3srKFzlqKs=
+github.com/zzamboni/hugo-jsonresume v0.0.0-20261020140527-6b82f15f7c44 h1:rbk56hQLY7iiH1c067ZflpgXqI9wV5oc0fYzy1NbNr8=
+github.com/zzamboni/hugo-jsonresume v0.0.0-20261020140527-6b82f15f7c44/go.mod h1:B2pDJLd7+G/WlJioyRJC9We7qDg7q8mQC3srKFzlqKs=
