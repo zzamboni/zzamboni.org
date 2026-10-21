@@ -16,6 +16,8 @@ The biggest change is at the beginning of that process. I wanted to make it easi
 
 So I have added a few more ways to get content into the site. This post is a tour of the current arrangement, with links to the more focused articles where the configuration gets interesting. The [repository](https://github.com/zzamboni/zzamboni.org) contains the complete setup; its [documentation directory](https://github.com/zzamboni/zzamboni.org/tree/main/docs) is where I keep maintenance details that would make this post unnecessarily long.
 
+I should also give some credit to Cody, my AI assistant: I've used ChatGPT and Codex extensively throughout this work, from discussing the architecture and exploring alternatives to implementing changes, debugging workflows, and writing initial drafts of these articles. Being able to work through an idea, try it in the repository, and refine it together has made many of these improvements much easier to tackle. I still make the decisions and review the results, but a lot of the work described here has been a collaboration.
+
 ## Org mode is still where I write
 
 For an article like this one, I still prefer a heading in `content-org/zzamboni.org`. I can develop the text, rearrange sections, include code, and keep related posts together. `ox-hugo` exports the article to Markdown under `content/post/`, which is what Hugo reads.
