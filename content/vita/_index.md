@@ -6,5 +6,5 @@ layout = "cv"
 showDate = false
 showAuthor = false
 showReadingTime = false
-showTableOfContents = false
+showTableOfContents = true
 +++
