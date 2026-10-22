@@ -99,6 +99,9 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#using-pages-cms-alongside-org-mode-and-hugo][Using Pages CMS alongside Org mode and Hugo]]
     - [[#posting-links-and-photos-from-my-phone-with-netlify-and-ios-shortcuts][Posting links and photos from my phone with Netlify and iOS Shortcuts]]
     - [[#bringing-my-json-resume-cv-home-to-hugo][Bringing my JSON Resume CV home to Hugo]]
+    - [[#my-blogging-setup-in-2026][My blogging setup in 2026: more ways to write, one Hugo site]]
+    - [[#hugo-drafts-and-netlify-builds][Drafts, previews, and fewer Netlify builds]]
+    - [[#automating-blog-housekeeping][Automating blog housekeeping with GitHub Actions]]
 
 * Pages
 
@@ -3846,23 +3849,23 @@ The result is two [[https://support.apple.com/guide/shortcuts/welcome/ios][iOS S
 
 **** One publishing pipeline, different entry points
 
-My longer articles still start in =content-org/zzamboni.org= and are exported by =ox-hugo= to =content/post/=. Shorter posts start in Pages CMS or in a Shortcut. The [[https://github.com/zzamboni/zzamboni.org/blob/main/config/_default/module.toml][Hugo mounts]] combine =content-pagescms/= and =content-photos/= with =content/post/= at build time. All of them show up in the same blog, while the source of each post remains clear. I can later edit a link in Pages CMS, or edit a photo post and its image list in the [[https://github.com/zzamboni/zzamboni.org/blob/main/.pages.yml][Photos collection]]. An Org post still gets edited in Org.
+My longer articles still start in =content-org/zzamboni.org= and are exported by =ox-hugo= to =content/post/=. Shorter posts start in Pages CMS or in a Shortcut. The [[https://github.com/zzamboni/zzamboni.org/blob/main/config/_default/module.toml][Hugo mounts]] combine =content-pagescms/= and =content-photos/= with =content/post/= at build time. All of them enter the same Hugo post section, while the source of each post remains clear. The Blog listing excludes photo-tagged posts; photos have their own listing and a separate column on the homepage. I can later edit a link in Pages CMS, or edit a photo post and its image list in the [[https://github.com/zzamboni/zzamboni.org/blob/main/.pages.yml][Photos collection]]. An Org post still gets edited in Org.
 
-The functions use a bearer secret to authorize a request and a GitHub token to write the result. I keep those credentials in the Netlify environment, rather than in the repository. Each function returns the new post's title and an edit URL, so the Shortcut can offer to open the entry in Pages CMS after posting. The request can ask for a draft; both functions default to draft unless I explicitly send =draft: false=. For a draft, my separate draft Netlify site gives me a place to check the result before publishing.
+The functions use a bearer secret to authorize a request and a GitHub token to write the result. I keep those credentials in the Netlify environment, rather than in the repository. Each function returns the new post's title and an edit URL, so the Shortcut can offer to open the entry in Pages CMS after posting. The request can ask for a draft; both functions default to draft unless I explicitly send =draft: false=. For a draft, my separate draft Netlify site gives me a place to check the result before publishing. I save the content on =main= and use the Pages CMS *Build draft site* action when I want to refresh that preview; it is built on demand. I describe that arrangement in [[#hugo-drafts-and-netlify-builds][Drafts, previews, and fewer Netlify builds]].
 
 **** A link is a post, but its title should take you to the link
 
-The [[https://github.com/zzamboni/zzamboni.org/blob/main/netlify/functions/linkblog.mjs][linkblog function]] accepts a URL, optional title and commentary, date, tags, and draft setting. If I leave the title empty, it tries the linked page's metadata and falls back to the hostname. It writes a small TOML-front-matter Markdown file in =content-pagescms/=, including =externalUrl= and the =zznippets= tag. The supplied timestamp is normalized to Zürich local time, following the Pages CMS date convention I described in the previous post.
+The [[https://github.com/zzamboni/zzamboni.org/blob/main/netlify/functions/linkblog.mjs][linkblog function]] accepts a URL, optional title, commentary and summary, date, tags, and draft setting. If I provide only commentary or only a summary, the function uses it for both the body and the summary; providing both keeps them separate. If I leave the title empty, it tries the linked page's metadata and falls back to the hostname. It writes a small TOML-front-matter Markdown file in =content-pagescms/=, including =externalUrl= and the =zznippets= tag. The supplied timestamp is normalized to Zürich local time, following the Pages CMS date convention I described in the previous post.
 
 On a list page, a link title goes straight to =externalUrl=. I prefer that behavior when scanning links: one tap takes me to the thing I saved. There is still a local post page for my commentary and the archive. On that page, a [[https://github.com/zzamboni/zzamboni.org/blob/main/layouts/partials/extend-single-header.html][callout]] displays the full external URL near the top, so the destination is visible there too.
 
-I wanted link entries to look like links rather than tiny ordinary articles. The [[https://github.com/zzamboni/zzamboni.org/blob/main/layouts/partials/extend-article-link.html][list partial]] shows a Link badge, domain, and tags; [[https://github.com/zzamboni/zzamboni.org/blob/main/assets/css/custom.css][custom CSS]] gives the entry a tinted background, left border, and compact layout. Instead of a large feature image, it gets a small site icon aligned near the top. A [[https://github.com/zzamboni/zzamboni.org/blob/main/.github/workflows/fetch-linkblog-favicons.yml][GitHub Actions workflow]] fetches and caches favicons in the repository; if no icon is available, the template shows a globe. Hugo does not need to request third-party icons when a visitor opens the page.
+I wanted link entries to look like links rather than tiny ordinary articles. The [[https://github.com/zzamboni/zzamboni.org/blob/main/layouts/partials/extend-article-link.html][list partial]] shows a Link badge, domain, and tags; [[https://github.com/zzamboni/zzamboni.org/blob/main/assets/css/custom.css][custom CSS]] gives the entry a tinted background, left border, and compact layout. Instead of a large feature image, it gets a small site icon aligned near the top. A [[https://github.com/zzamboni/zzamboni.org/blob/main/.github/workflows/enrich-pagescms-posts.yml][GitHub Actions workflow]] fetches and caches favicons in the repository; if no icon is available, the template shows a globe. Hugo does not need to request third-party icons when a visitor opens the page.
 
-The post body can be just a line or two of my own commentary. When I leave its summary blank, the [[https://github.com/zzamboni/zzamboni.org/blob/main/.github/workflows/generate-pagescms-summary.yml][summary workflow]] may fill it in later. The Shortcut is for capturing the link quickly; Pages CMS remains useful for polishing the entry afterward.
+The post body can be just a line or two of my own commentary. When both commentary and summary are blank, the [[https://github.com/zzamboni/zzamboni.org/blob/main/.github/workflows/enrich-pagescms-posts.yml][enrichment workflow]] may fill the summary from the linked article later. I describe that workflow and its limits in [[#automating-blog-housekeeping][Automating blog housekeeping with GitHub Actions]]. The Shortcut is for capturing the link quickly; Pages CMS remains useful for polishing the entry afterward.
 
 **** Photos as first-class content
 
-The [[https://www.icloud.com/shortcuts/437c4651085e42da9b465c3f0d2857da][photo Shortcut]] takes shared images, resizes and encodes them for the request, and asks for a title and optional commentary. The [[https://github.com/zzamboni/zzamboni.org/blob/main/netlify/functions/photoblog.mjs][photoblog function]] validates the uploaded images and creates a post bundle under =content-photos/= together with image files under =static/img/photos/=. It writes a =photos= list of image paths into the post's front matter and adds the =photos= tag. The post and its images land in one Git commit, avoiding a half-created gallery if the upload fails partway through.
+The [[https://www.icloud.com/shortcuts/437c4651085e42da9b465c3f0d2857da][photo Shortcut]] takes shared images, resizes and encodes them for the request, and asks for a title and optional commentary. The [[https://github.com/zzamboni/zzamboni.org/blob/main/netlify/functions/photoblog.mjs][photoblog function]] validates the uploaded images, applies their orientation, re-encodes them to discard embedded metadata, and creates a post bundle under =content-photos/= together with image files under =static/img/photos/=. It writes a =photos= list of image paths into the post's front matter and adds the =photos= tag. The post and its images land in one Git commit, avoiding a half-created gallery if the upload fails partway through.
 
 The images live in a central media directory because I also wanted to manage them through Pages CMS's image field. The Markdown post is still a Hugo leaf bundle (=index.md=), but its image list points to those separately stored media files. The [[https://github.com/zzamboni/zzamboni.org/blob/main/config/_default/menus.en.toml][Photos menu item]] goes to =/tags/photos/=; I did not need a separate Hugo section to collect them. The short commentary, when present, appears above the gallery where a visitor will see it before scrolling through the pictures.
 
@@ -3885,7 +3888,7 @@ If you want to adapt this, the [[https://github.com/zzamboni/zzamboni.org/blob/m
 :export_hugo_custom_front_matter: :toc true :featureimage img/generated/2026-10-18-bringing-json-resume-cv-home-to-hugo.webp
 :END:
 #+begin_description
-How I brought my JSON Resume CV and publications into Hugo, and extracted the renderer into a reusable Blowfish module without giving up the standalone toolkit, PDFs, or BibTeX sources.
+How I brought my JSON Resume CV and publications into Hugo, and extracted the renderer into a reusable Hugo module without giving up the standalone toolkit, PDFs, or BibTeX sources.
 #+end_description
 
 Earlier this year I wrote about [[#porting-cv-to-jsonresume][moving my CV from Org and LaTeX to JSON Resume]], and then about [[#from-personal-cv-pipeline-to-reusable-toolkit][extracting the build system into =resume-toolkit=]]. That solved a problem I had wrestled with for years: keeping the content separate from how it is presented, while producing good-looking HTML and PDF versions of both my CV and publications.
@@ -3922,7 +3925,7 @@ flowchart TD
 
 **** Let Hugo do the rendering
 
-Instead of copying the toolkit's generated =index.html= into =static/vita/=, I added native Hugo pages for [[/vita/][the CV]] and [[/vita/publications/][the publications list]]. They use the site's Blowfish layout, responsive table of contents, header and footer. Small Hugo templates render the sections and entries, and scoped CSS handles the details that are specific to a CV.
+Instead of copying the toolkit's generated =index.html= into =static/vita/=, I added native Hugo pages for [[/vita/][the CV]] and [[/vita/publications/][the publications list]]. They use the site's Blowfish layout, header and footer. The module builds table-of-contents links from the JSON sections and uses Blowfish's presentation for them. Small Hugo templates render the sections and entries, and scoped CSS handles the details that are specific to a CV.
 
 Those templates and styles initially lived in my website repository. They now live in [[https://github.com/zzamboni/hugo-jsonresume][=hugo-jsonresume=]], a reusable Hugo Module. The presentation code is deliberately separated from the public URL: my site's pages select the module's =jsonresume= type and the =cv= or =publications= layout, while the data snapshots live under =data/jsonresume/=. The module does not impose a =/vita/= route.
 
@@ -3930,9 +3933,11 @@ One pleasant benefit is that the CV no longer needs to pretend to be a different
 
 **** A module instead of another copy of the templates
 
-Once the integration worked, the renderer no longer needed anything specific to my website. I extracted it into [[https://github.com/zzamboni/hugo-jsonresume][=hugo-jsonresume=]] so another Blowfish site can use it without copying templates and CSS from mine.
+Once the integration worked, the renderer no longer needed anything specific to my website. I extracted it into [[https://github.com/zzamboni/hugo-jsonresume][=hugo-jsonresume=]] so other sites can use it without copying templates and CSS from mine.
 
-It is a *Blowfish-specific Hugo Module*, not a standalone theme. It uses the host site's existing Blowfish installation and does not depend on Eventide or run =resume-toolkit= during a Hugo build. The host owns the content pages, JSON data, images, and downloadable files; the module supplies the rendering.
+It is a Hugo Module with two integrations: =blowfish=, the default I use here, and =generic= for other hosts. The generic renderer inherits the host's typography and colors and can also be embedded through shortcodes. Neither integration installs a theme, depends on Eventide, or runs =resume-toolkit= during a Hugo build. The host owns the content pages, JSON data, images, and downloadable files; the module supplies the rendering.
+
+The table of contents is configurable at page and module level. In the Blowfish integration it also respects the theme's article setting; the CV can fall back to Eventide's =meta.themeOptions.showTableOfContents= when no higher-priority setting is present. The [[https://github.com/zzamboni/hugo-jsonresume#table-of-contents][module documentation]] has the exact precedence, including how the publications page differs.
 
 For a site already using Blowfish and initialized for Hugo Modules, installation means adding an import to =config/_default/module.toml=, alongside any existing imports and mounts:
 
@@ -3961,7 +3966,7 @@ layout = "cv"
 
 The default inputs are =data/jsonresume/resume.json= and, optionally, =data/jsonresume/publications.json=. The latter is normalized JSON from the publications pipeline, not raw BibTeX. The [[https://github.com/zzamboni/hugo-jsonresume#content-and-data][README]] documents the publications child page and configuration options.
 
-There is also a synthetic =exampleSite/= with no personal data, which doubles as a development fixture. From the module repository's root, clone the tested Blowfish version once, then start the example:
+There is also an =exampleSite/= using the fictional resume from Eventide's sample editor, which doubles as a development fixture. A separate =exampleGeneric/= demonstrates the generic integration without a theme. From the module repository's root, clone the tested Blowfish version once, then start the example:
 
 #+begin_src elvish
 git clone --depth 1 --branch v3.8.0 https://github.com/nunocoracao/blowfish.git exampleSite/themes/blowfish
@@ -3986,11 +3991,228 @@ I also wanted certain navigation links to appear in the standalone Eventide vers
 
 **** Where things stand
 
-The native CV and publications pages are now in the site's main branch, while the PDFs and BibTeX downloads keep their established URLs. I'm pleased with the result not just because it looks more integrated, but because the underlying pieces remain separately useful: =resume-toolkit= produces the documents and normalized data, Eventide provides the standalone HTML presentation, and =hugo-jsonresume= brings the same data into a Blowfish site.
+The native CV and publications pages are now in the site's main branch, while the PDFs and BibTeX downloads keep their established URLs. I'm pleased with the result not just because it looks more integrated, but because the underlying pieces remain separately useful: =resume-toolkit= produces the documents and normalized data, Eventide provides the standalone HTML presentation, and =hugo-jsonresume= brings the same data into Hugo, using Blowfish here and a generic integration when needed.
 
-The next improvement is to make synchronization less manual. At the moment, updating the website involves generating the files from =zzamboni/vita= and copying the relevant JSON, PDFs, BibTeX, and images to the Hugo repository. I plan to turn that into a manually triggered GitHub workflow that proposes a pull request rather than deploying automatically.
+Renderer updates now have their own manually triggered GitHub workflow, which updates the module pin, checks the site build, and opens a review PR. That is separate from synchronizing my CV content.
+
+The next improvement is to make data synchronization less manual. At the moment, updating the website involves generating the files from =zzamboni/vita= and copying the relevant JSON, PDFs, BibTeX, and images to the Hugo repository. I plan to turn that into a manually triggered GitHub workflow that proposes a pull request rather than deploying automatically.
 
 It's a small architectural victory: *one source of truth, multiple outputs, and no need to rebuild the entire publishing system just to change how one page looks*.
+
+*** DRAFT My blogging setup in 2026: more ways to write, one Hugo site :blogging:howto:emacs:orgmode:hugo:pagescms:github:netlify:
+:PROPERTIES:
+:export_date: <2026-10-21 Wed 12:00>
+:export_hugo_bundle: 2026-10-21-my-blogging-setup-in-2026
+:export_file_name: index
+:custom_id: my-blogging-setup-in-2026
+:export_hugo_custom_front_matter: :toc true
+:END:
+#+begin_description
+My updated blogging setup: Org mode for longer articles, Pages CMS and iPhone Shortcuts for quick posts, and Hugo, GitHub and Netlify to bring it all together.
+#+end_description
+
+In 2020 I wrote about [[#my-blogging-setup-with-emacs--org-mode--ox-hugo--hugo--gitlab-and-netlify][my blogging setup with Emacs, Org mode, ox-hugo, Hugo, GitLab and Netlify]]. Much of that setup is still here. I still write longer articles in Emacs, still export them with =ox-hugo=, and still let Hugo and Netlify turn files into a website.
+
+The biggest change is at the beginning of that process. I wanted to make it easier to publish something small: a useful link, a few photos, or a note that did not need to become a full article. Opening my laptop and going through the whole export-and-push routine was often enough friction for me to put it off.
+
+So I have added a few more ways to get content into the site. This post is a tour of the current arrangement, with links to the more focused articles where the configuration gets interesting. The [[https://github.com/zzamboni/zzamboni.org][repository]] contains the complete setup; its [[https://github.com/zzamboni/zzamboni.org/tree/main/docs][documentation directory]] is where I keep maintenance details that would make this post unnecessarily long.
+
+I should also give some credit to Cody, my AI assistant: I've used ChatGPT and Codex extensively throughout this work, from discussing the architecture and exploring alternatives to implementing changes, debugging workflows, and writing initial drafts of these articles. Being able to work through an idea, try it in the repository, and refine it together has made many of these improvements much easier to tackle. I still make the decisions and review the results, but a lot of the work described here has been a collaboration.
+
+**** Org mode is still where I write
+
+For an article like this one, I still prefer a heading in =content-org/zzamboni.org=. I can develop the text, rearrange sections, include code, and keep related posts together. =ox-hugo= exports the article to Markdown under =content/post/=, which is what Hugo reads.
+
+That distinction is worth keeping explicit: the Org subtree is the source, and the Markdown is an export. If I fix a paragraph only in the Markdown, the next export can erase that change. I keep both in Git, so building the website does not require Emacs or my personal Emacs configuration.
+
+My original article goes into the Org and =ox-hugo= side in more detail. I have not replaced that workflow. I have given the shorter things somewhere else to start.
+
+**** A browser editor for the smaller things
+
+[[https://pagescms.org/][Pages CMS]] lets me edit posts through a browser, including on my phone. Its content is still made of files in my GitHub repository. A saved post lands in =content-pagescms/=, with the title, date, summary, tags, and draft status in its front matter.
+
+The useful trick is Hugo's module mounts. The Org exports and the CMS files live in different directories, but Hugo presents them as posts in the same section. Older Markdown and HTML posts have their own home in =content-legacy/= too. I do not need to convert everything before using a new editor, or let two editors compete over the same source file.
+
+I described the arrangement in [[#using-pages-cms-alongside-org-mode-and-hugo][Using Pages CMS alongside Org mode and Hugo]]. That post also links to [[#pages-cms-hugo-timezones][the timezone problem]] I ran into. A field that looks like an ordinary date can hide a surprising amount of trouble!
+
+**** Links and photos from the Share Sheet
+
+For links and photos, I wanted an even shorter path. My iOS Shortcuts collect the shared URL or images, ask for a little context, and send the result to a Netlify Function. The function creates the files in GitHub and returns an edit link for Pages CMS.
+
+Link posts live alongside the other CMS posts. Photo posts get bundles under =content-photos/=, with images stored separately under =static/img/photos/=. They still enter the same Hugo content model, but I give them different presentations: compact entries for links, and galleries with a lightbox for photos. The homepage has a separate recent-photo column, and the Blog listing leaves photos to their own page.
+
+Both functions default to creating drafts. I can capture something while I am out and finish it later, without treating a successful upload as a decision to publish. [[#linkblog-and-photoblog-from-my-phone][Posting links and photos from my phone with Netlify and iOS Shortcuts]] walks through the functions, the Shortcuts, and how the pieces fit together.
+
+**** One repository, a few places to preview
+
+GitHub is now the source of truth for the site; GitLab is a downstream mirror. That is a change from the original article, where GitLab was at the center of the publishing process.
+
+I keep real content, including drafts, on =main=. I use =staging= for experiments with templates, configuration, and tooling. A draft is a content state, not a branch: putting an unfinished article on =main= is fine as long as it stays marked as a draft.
+
+Netlify gives me separate production, draft, and staging sites. Production builds =main= without drafts. The draft site builds the same branch with drafts included, when I request a refresh. Staging lets me try site changes before bringing them to =main=.
+
+Locally I use [[https://mise.jdx.dev/][mise]] to select the repository's Hugo and Go versions. My usual preview commands are:
+
+#+begin_src elvish
+mise run serve
+mise run serve-drafts
+#+end_src
+
+I also became more deliberate about when Netlify builds. Documentation edits and many draft-only changes do not need a production deployment, and caching Hugo's generated resources saves repeated image work. I grouped those decisions in [[#hugo-drafts-and-netlify-builds][Drafts, previews, and fewer Netlify builds]].
+
+**** Small bits of automation
+
+GitHub Actions handles some of the finishing work. For Pages CMS posts, an enrichment workflow fills missing summaries and caches favicons for linked sites. Keeping those changes together also avoids creating separate commits for two parts of the same bit of housekeeping.
+
+Feature images work differently. I request an image, the workflow proposes it in a pull request, and I decide whether to use it. I am still wary of illustrations that look too obviously AI-generated, so having a review step matters more to me than having a completely automatic process.
+
+[[#automating-blog-housekeeping][Automating blog housekeeping with GitHub Actions]] describes those boundaries, including image refinement and the usage report that helps me keep track of API spending.
+
+**** Making it feel like one website
+
+The site uses [[https://blowfish.page/][Blowfish]], with my custom layouts and styles layered on top. The goal is fairly modest: articles should be comfortable to read, links should be quick to scan, and photos should be easy to browse. The compact archive and related-article links also help older posts remain discoverable.
+
+My CV and publications now fit into that same presentation. Their source remains JSON Resume and BibTeX, with [[https://github.com/zzamboni/resume-toolkit][resume-toolkit]] producing documents and normalized publication data. My [[https://github.com/zzamboni/hugo-jsonresume][hugo-jsonresume module]] renders the data inside Hugo, while PDF and BibTeX downloads remain available. [[#bringing-json-resume-cv-home-to-hugo][Bringing my JSON Resume CV home to Hugo]] tells that story separately.
+
+I keep the theme pinned and use the [[https://github.com/zzamboni/zzamboni.org/blob/main/scripts/README-theme-updates.md][theme update tooling]] to review the upstream changes that might affect my overrides. I enjoy tweaking the site, but I would rather not rediscover the same customization after every upgrade.
+
+**** What I want from all this
+
+There are certainly more moving parts here than in the 2020 version. The payoff is that I can choose a writing path that matches the thing I want to publish, while the result still belongs to the same website and lives in Git.
+
+For a long article, I open Emacs. For a short note, I open Pages CMS. For a link or photo, I use the Share Sheet. Then I can review, edit, and publish when I am ready. That is the part I wanted to make easier. Now I just have to remember to spend some of the time writing instead of improving the tools.
+
+*** DRAFT Drafts, previews, and fewer Netlify builds :blogging:hugo:netlify:automation:howto:
+:PROPERTIES:
+:export_date: <2026-10-21 Wed 12:01>
+:export_hugo_bundle: 2026-10-21-hugo-drafts-and-netlify-builds
+:export_file_name: index
+:custom_id: hugo-drafts-and-netlify-builds
+:export_hugo_custom_front_matter: :toc true
+:END:
+#+begin_description
+How I separate content drafts from site experiments, preview drafts on demand, and avoid rebuilding my Hugo site when there is nothing new to publish.
+#+end_description
+
+Making it easier to post to my blog had an unexpected side effect: I started giving Netlify more work. A quick save, a generated summary, a fetched icon, a small correction—each could lead to another build. With production, draft, and staging sites, those little changes add up.
+
+I wanted to keep the convenience of Git-based deployment while being more selective about the work it triggers. The result combines three fairly ordinary ideas: distinguish drafts from experiments, request draft previews when I need them, and preserve Hugo's generated resources between builds.
+
+**** Drafts belong with the content
+
+I keep unfinished articles on =main=, marked as drafts. That means they share the real site's content history and can be edited through the same tools. Production excludes drafts; publishing an article means changing its state, not moving it from an experimental branch.
+
+For Org posts, I use a =DRAFT= heading and let =ox-hugo= generate =draft = true= in the exported front matter. I do not also add a custom =draft= field: doing both can produce a duplicate TOML key. I can use an =EXPORT_DATE= property to give an unfinished article a useful place in the draft listing.
+
+=staging= has a different job. I use it for changes to the site itself, such as a layout experiment or an adjustment to the publishing tools. Those changes get reviewed before I bring them to =main=.
+
+**** Preview when I need to preview
+
+For local work, =mise run serve-drafts= is the quickest way to see unfinished articles. For checking from my phone, I also have a separate Netlify project that builds =main= with =BUILD_DRAFTS=true=.
+
+I configured that draft project for on-demand builds. In Pages CMS, the *Build draft site* action dispatches a [[https://github.com/zzamboni/zzamboni.org/blob/main/.github/workflows/build-draft-site.yml][GitHub workflow]], which calls a Netlify build hook. I save my edits first, request the refresh, and wait for the Netlify deployment to finish.
+
+There are two details that are easy to miss. The action builds saved content from =main=, even if I was browsing another branch in the CMS. And a successful GitHub workflow only means Netlify accepted the request; it does not mean the preview has finished deploying.
+
+This is also not the same as stopping builds in Netlify. The draft project keeps builds active so its hook can run them; the ignore check suppresses ordinary automatic builds. A draft flag controls what Hugo publishes, not who can read the repository or a preview URL. I use this for unfinished public writing, not confidential notes.
+
+**** Deciding whether a change needs a build
+
+The [[https://github.com/zzamboni/zzamboni.org/blob/main/scripts/netlify-ignore.mjs][ignore script]] runs before dependency installation. It compares the current commit with Netlify's cached commit, rather than looking only at the most recent commit. That matters when several changes have accumulated since the last build.
+
+Some decisions are straightforward: changes limited to the README, maintenance documentation, or Org source do not affect the rendered site. Hugo reads the Org exports, so the Markdown change is the important part for publishing.
+
+Drafts need more care. My script recognizes a limited set of ordinary Markdown post paths and checks their TOML front matter in both versions. If all relevant changes are drafts being added, edited, or removed, a build that excludes drafts can be skipped. But changing a published post into a draft must still build, so the old public page gets removed. Publishing a draft must build too.
+
+| Change | Production build |
+|--------+------------------|
+| Documentation only | Skip |
+| Eligible draft added or edited | Skip |
+| Draft changed to published | Build |
+| Published post changed to draft | Build |
+| Image, shared layout, or unrecognized change | Build |
+
+I deliberately keep the policy conservative. It does not try to prove that every image belongs only to a draft, and it does not cover every content format. Missing history or front matter it cannot confidently interpret causes a build. An unnecessary build is less annoying than a published site that silently stops following its source.
+
+Netlify's ignore command convention is slightly surprising: exit status =0= means skip, and =1= means build. I have tests for that behavior, including publishing and unpublishing transitions. The [[https://github.com/zzamboni/zzamboni.org/blob/main/docs/netlify-builds.md][build guide]] has the exact rules and overrides.
+
+**** Reuse the expensive work
+
+Avoiding builds is only half the story. I also enabled =netlify-plugin-hugo-cache-resources= in =netlify.toml= and pinned the package in =package.json=. It preserves Hugo's generated =resources/= directory between builds, including processed images.
+
+In a small draft-site benchmark recorded in my build notes, the median Hugo step dropped from 12.9 to 3.9 seconds, and the total build process from 39.3 to 31.4 seconds. Those were repeated builds of unchanged content after warming the cache. A batch of new photos will still need processing, so I would not treat those numbers as a promise for every deployment.
+
+This cache is also separate from browser or CDN caching: it helps produce the site, rather than changing how visitors receive it. I keep the configuration and the measurements in the same build guide so I can revisit the assumptions later.
+
+**** Less work between an edit and a page
+
+The result is a workflow I can mostly forget about. I save drafts without rebuilding everything, request a remote preview when I want one, and let published-content changes trigger the normal deployment. Local previews still handle most of the iteration.
+
+The implementation is specific to my repository, especially the paths that are safe to ignore. If you adapt it, start with your own content and build dependencies. The useful idea is to decide what actually changes the published site, then make that decision explicit enough to test.
+
+*** DRAFT Automating blog housekeeping with GitHub Actions :blogging:github:automation:pagescms:ai:howto:
+:PROPERTIES:
+:export_date: <2026-10-21 Wed 12:02>
+:export_hugo_bundle: 2026-10-21-automating-blog-housekeeping
+:export_file_name: index
+:custom_id: automating-blog-housekeeping
+:export_hugo_custom_front_matter: :toc true
+:END:
+#+begin_description
+How I use GitHub Actions for missing summaries, cached link icons, and feature images, with different levels of review for each kind of change.
+#+end_description
+
+After [[#using-pages-cms-alongside-org-mode-and-hugo][adding Pages CMS]] to my blog, I kept finding small bits of work around a post: writing a summary for the listing, finding an icon for a link, and sometimes choosing a feature image. None of these needs to interrupt the moment when I have something to say.
+
+I now use GitHub Actions to help with those jobs. The interesting part is deciding which changes can be made directly and which should wait for me to look at them.
+
+**** Fill a blank, leave my text alone
+
+The [[https://github.com/zzamboni/zzamboni.org/blob/main/.github/workflows/enrich-pagescms-posts.yml][Enrich Pages CMS posts workflow]] runs for relevant changes on =main= and =staging=. For summaries, it checks the affected CMS posts and leaves any nonempty summary alone. If I have written one, that is the one I want.
+
+When the summary is blank, the workflow uses the post body as its source. If there is no body but the post has an =externalUrl=, it tries to fetch and extract the linked article. This distinction matters for link posts: a summary of someone else's article should not accidentally claim that I wrote it or did the work it describes.
+
+I have also had to account for pages that return a loading screen, login barrier, or error message instead of an article. A blank summary is better than a confident description of something the workflow never actually read. The extraction and generation steps try to skip those cases rather than guess from the title.
+
+Pages CMS has an action for requesting a missing summary manually too. Like the other repository-backed actions, it operates on the saved file. It does not see text still sitting unsaved in my browser.
+
+**** Give links an icon without a browser dependency
+
+The same workflow runs my [[https://github.com/zzamboni/zzamboni.org/blob/main/scripts/fetch-linkblog-favicons.py][favicon script]]. It discovers icons from linked sites, converts them to small PNGs, and stores them under =assets/img/linkblog-favicons/=. Posts linking to the same host share the cached icon.
+
+That lets the site display compact link entries without making every visitor's browser fetch an icon from the destination site. If discovery fails, a globe icon is a perfectly acceptable fallback. There is more detail in the [[https://github.com/zzamboni/zzamboni.org/blob/main/docs/linkblog-favicons.md][favicon notes]], although the current workflow combines this job with summary enrichment.
+
+The workflow commits summary and favicon changes together. Besides keeping related housekeeping in one place in the history, this avoids a separate push for each step. The jobs can still fail independently, and the workflow reports failures rather than treating a partially completed run as a complete success.
+
+**** An image is a proposal
+
+Images need more judgment. I can request a feature image from Pages CMS or by running the [[https://github.com/zzamboni/zzamboni.org/blob/main/.github/workflows/generate-feature-image.yml][image workflow]] manually. It reads the saved post, prepares a visual brief, generates an image, and opens a pull request containing the WebP file and the metadata changes.
+
+I can choose a style and provide extra direction, but that does not guarantee I will like the result. Some images still look much too AI-generated for my taste. Keeping them in a PR gives me a chance to see the actual result in context and decide whether it belongs with the article.
+
+For an Org-authored post, the workflow updates the corresponding Org metadata as well as the Markdown export. Otherwise the next export could undo the image selection. The image itself goes through Hugo's assets pipeline, alongside the other processed resources.
+
+If an image is close, I can ask for a revision in the PR:
+
+#+begin_example
+/refine-image Simplify the background and remove the text.
+#+end_example
+
+That is a paid generation request, not just a comment for my future self. The refinement workflow accepts these commands from my account and updates the image on the same PR branch. I still decide whether to merge it. The [[https://github.com/zzamboni/zzamboni.org/blob/main/docs/feature-image-generation.md][feature-image guide]] has the operating details.
+
+**** Keep the cost visible
+
+The generation workflows also call a small [[https://github.com/zzamboni/zzamboni.org/blob/main/.github/workflows/openai-usage.yml][usage-reporting workflow]]. It reports current-day and month-to-date costs, and can estimate what remains from a recorded credit purchase when I provide its date and amount.
+
+I think of that estimate as a reminder, not an authoritative balance. It describes one recorded purchase, and does not reconstruct the provider's prepaid ledger. The report also needs an admin key with access to cost information, separate from the key used for generation. Missing reporting configuration should not prevent the main job from completing.
+
+This is small enough to keep with the other automation rather than build a dashboard for it. The [[https://github.com/zzamboni/zzamboni.org/blob/main/docs/openai-usage.md][usage notes]] explain what the numbers mean and where their limitations are.
+
+**** Choosing what to automate
+
+The boundary I have ended up with is practical: preserve text I supplied, make small missing-metadata changes easy to inspect in Git, and ask me to review generated images before using them. A summary can still be wrong, so I check the resulting post; putting something in a workflow does not make it editorially reliable.
+
+I like that the automation leaves ordinary files behind. I can edit a generated summary, replace an icon, or close an image PR and carry on. The tools help finish a post, but they do not need to become another publishing system.
 
 * Local Variables :noexport:ARCHIVE:
 # Local Variables:
