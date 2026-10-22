@@ -20,5 +20,3 @@ archive_jump_to_year:
   other: Jump to year
 archive_link:
   other: Link
-footer_powered_by_jsonresume:
-  other: "Powered by {{ .Hugo }}, {{ .Theme }} and {{ .JSONResume }}"
