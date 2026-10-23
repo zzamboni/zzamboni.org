@@ -7,8 +7,8 @@ reason = "Article-only related content reuses Blowfish's related-card renderer."
 
 [[overrides]]
 local = "layouts/partials/home/custom.html"
-upstream = "layouts/partials/home/background.html"
-reason = "Site title and page content replace the theme author profile."
+upstream = "layouts/partials/home/custom.html"
+reason = "Commonplace homepage hook replaces the theme author profile with the editorial hero and existing feeds."
 
 [[overrides]]
 local = "layouts/partials/extend-single-header.html"
@@ -28,4 +28,19 @@ reason = "Keep the site's Disqus partial working through the comment wrapper."
 [[overrides]]
 local = "layouts/partials/home/feeds.html"
 upstream = "layouts/partials/article-link/simple.html"
-reason = "Homepage post feed reuses the summary and linkblog markup; sidebar renders photo thumbnails."
+reason = "Homepage feed uses Commonplace editorial rows in place of Blowfish simple rows; sidebar preserves photo selection and sizing."
+
+[[overrides]]
+local = "themes/commonplace/layouts/partials/header/basic.html"
+upstream = "layouts/partials/header/basic.html"
+reason = "Editorial masthead retains upstream desktop/mobile components and JS IDs."
+
+[[overrides]]
+local = "themes/commonplace/layouts/partials/article-link/simple.html"
+upstream = "layouts/partials/article-link/simple.html"
+reason = "Date-led editorial rows replace thumbnail lists, retain the linkblog hook and expose local plus external links."
+
+[[overrides]]
+local = "themes/commonplace/assets/css/commonplace.css"
+upstream = "layouts/_default/single.html"
+reason = "Reader and TOC styles depend on the retained single-page structure."

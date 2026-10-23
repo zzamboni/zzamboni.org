@@ -12,6 +12,5 @@ draft = false
 toc = false
 showReadingTime = false
 showWordCount = false
-featureimage = 'img/tram-zurich.jpg'
 +++
 Very useful iOS Shortcut for customizing the icon of bookmarks added to the home screen. Works from Safari only.
