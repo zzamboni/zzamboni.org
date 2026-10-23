@@ -25,7 +25,7 @@
   publish = "public"
 
 [build.environment]
-  HUGO_VERSION = "0.166.0"
+  HUGO_VERSION = "0.167.0"
   GO_VERSION = "1.25"
   HUGO_EXTENDED = "true"
   NETLIFY_BUILD_IMAGE = "noble"
@@ -37,11 +37,11 @@
   GIT_DEPTH = "1"
 
 [context.production.environment]
-  HUGO_VERSION = "0.166.0"
+  HUGO_VERSION = "0.167.0"
   HUGO_ENV = "production"
 
 [context.deploy-preview.environment]
-  HUGO_VERSION = "0.166.0"
+  HUGO_VERSION = "0.167.0"
 
 # Persist Hugo's generated resources between builds in all deploy contexts.
 [[plugins]]
