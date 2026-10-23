@@ -1,4 +1,4 @@
-{{/* Based on Blowfish v3.8.0 baseof.html; add a deployment banner above the header. */}}
+{{/* Based on Blowfish v3.9.0 baseof.html; preserve the deployment banner and deferred background canvas. */}}
 <!doctype html>
 <html
   lang="{{ with site.Params.isoCode | default (site.Language.Locale | default `en`) }}{{- . -}}{{ end }}"
@@ -75,5 +75,16 @@
       {{ with site.Params.buymeacoffee.globalWidgetPosition }}data-position="{{ . }}"{{ end }}
       data-x_margin="18"
       data-y_margin="18"></script>
+  {{ end }}
+  {{ if site.Params.kofi.globalWidget | default false }}
+    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+    <script>
+      kofiWidgetOverlay.draw('{{ site.Params.kofi.identifier }}', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': '{{ site.Params.kofi.globalWidgetText | default "" }}',
+        'floating-chat.donateButton.background-color': '{{ site.Params.kofi.globalWidgetBackgroundColor | default "#00B9FE" }}',
+        'floating-chat.donateButton.text-color': '{{ site.Params.kofi.globalWidgetTextColor | default "#FFFFFF" }}',
+      });
+    </script>
   {{ end }}
 </html>
