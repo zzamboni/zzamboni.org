@@ -35,6 +35,8 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#about-this-site][About this site]]
     - [[#my-online-past][My online past]]
     - [[#image-attributions][Image attributions]]
+  - [[#curriculum-vitae][Curriculum Vitae]]
+    - [[#publications][Publications]]
   - [[#contact][Contact]]
   - [[#books-section][Books section]]
     - [[#books][Books]]
@@ -99,9 +101,9 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#using-pages-cms-alongside-org-mode-and-hugo][Using Pages CMS alongside Org mode and Hugo]]
     - [[#posting-links-and-photos-from-my-phone-with-netlify-and-ios-shortcuts][Posting links and photos from my phone with Netlify and iOS Shortcuts]]
     - [[#bringing-my-json-resume-cv-home-to-hugo][Bringing my JSON Resume CV home to Hugo]]
-    - [[#my-blogging-setup-in-2026][My blogging setup in 2026: more ways to write, one Hugo site]]
-    - [[#hugo-drafts-and-netlify-builds][Drafts, previews, and fewer Netlify builds]]
-    - [[#automating-blog-housekeeping][Automating blog housekeeping with GitHub Actions]]
+    - [[#my-blogging-setup-in-2026-more-ways-to-write-one-hugo-site][My blogging setup in 2026: more ways to write, one Hugo site]]
+    - [[#drafts-previews-and-fewer-netlify-builds][Drafts, previews, and fewer Netlify builds]]
+    - [[#automating-blog-housekeeping-with-github-actions][Automating blog housekeeping with GitHub Actions]]
 
 * Pages
 
@@ -154,6 +156,22 @@ I think it's incredible that all of this infrastructure is so easy to use and av
 - All other site-page header and background photos were taken either by my wife or me.
 
 If you have any concerns or questions about the images used in this site, please [[file:../contact][let me know]].
+
+
+** DONE Curriculum Vitae
+CLOSED: [2026-10-24 Sat 22:56]
+:PROPERTIES:
+:export_hugo_section: vita
+:export_hugo_custom_front_matter: :type jsonresume :layout cv :showDate false :showWordCount false :showReadingTime false :showAuthor false :showZenMode false :showTableOfContents true
+:export_file_name: _index
+:END:
+
+*** DONE Publications
+CLOSED: [2026-10-24 Sat 23:01]
+:PROPERTIES:
+:export_hugo_custom_front_matter: :type jsonresume :layout publications :showDate false :showWordCount false :showReadingTime false :showAuthor false :showZenMode false :showTableOfContents true
+:export_file_name: publications
+:END:
 
 ** DONE Contact
 CLOSED: [2018-03-25 Sun 18:34]
