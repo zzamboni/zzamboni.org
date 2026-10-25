@@ -249,9 +249,21 @@
 }
 
 /* Compact archive: natural title wrapping, with dates in a stable column. */
-.archive-years { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin-block: 1.5rem 2.5rem; }
-.archive-years a { color: rgb(var(--color-primary-600)); font-weight: 600; }
-.dark .archive-years a { color: rgb(var(--color-primary-400)); }
+.archive-chart { margin-block: 1.5rem 2.5rem; }
+.archive-chart-title { margin: 0 0 0.5rem; font-size: 0.875rem; font-weight: 600; }
+.archive-chart-scroll { overflow-x: auto; padding: 0.5rem 0.25rem; }
+.archive-chart-bars { display: flex; gap: 0.375rem; padding-top: 1.25rem; }
+.archive-chart-column { flex: 1 0 2rem; min-width: 0; text-align: center; color: rgb(var(--color-neutral-600)); font-variant-numeric: tabular-nums; }
+.archive-chart-plot { display: flex; align-items: end; justify-content: center; height: 6rem; border-bottom: 1px solid rgb(var(--color-neutral-300)); }
+.archive-chart-bar { position: relative; display: block; width: 80%; max-width: 2rem; border-radius: 0.2rem 0.2rem 0 0; background: rgb(var(--color-primary-500)); }
+.archive-chart-count { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); padding-bottom: 0.2rem; font-size: 0.6875rem; line-height: 1.4; white-space: nowrap; }
+.archive-chart-year { display: block; padding-top: 0.4rem; font-size: 0.6875rem; line-height: 1.4; }
+.archive-chart-column:hover .archive-chart-bar, .archive-chart-column:focus-visible .archive-chart-bar { background: rgb(var(--color-primary-700)); }
+.archive-chart-column:hover .archive-chart-year { text-decoration: underline; }
+.dark .archive-chart-column { color: rgb(var(--color-neutral-400)); }
+.dark .archive-chart-plot { border-color: rgb(var(--color-neutral-700)); }
+.dark .archive-chart-bar { background: rgb(var(--color-primary-400)); }
+.dark .archive-chart-column:hover .archive-chart-bar, .dark .archive-chart-column:focus-visible .archive-chart-bar { background: rgb(var(--color-primary-300)); }
 .blog-archive { max-width: 65ch; }
 .archive-year { font-size: 1.5rem; font-weight: 700; margin-block: 2rem 0.75rem; scroll-margin-top: 10rem; }
 .archive-count { font-size: 0.875rem; font-weight: 400; color: rgb(var(--color-neutral-600)); }
@@ -262,5 +274,5 @@
 .archive-badge { display: inline-block; margin-inline-start: 0.5rem; padding: 0.05rem 0.35rem; border: 1px solid currentColor; border-radius: 0.25rem; font-size: 0.75rem; }
 .dark .archive-entry { border-color: rgb(var(--color-neutral-700)); }
 .dark .archive-count, .dark .archive-entry time { color: rgb(var(--color-neutral-400)); }
-.archive-years a:hover, .archive-entry a:hover { text-decoration: underline; }
-.archive-years a:focus-visible, .archive-entry a:focus-visible, .archive-browse:focus-visible { outline: 2px solid rgb(var(--color-primary-500)); outline-offset: 4px; }
+.archive-entry a:hover { text-decoration: underline; }
+.archive-chart-column:focus-visible, .archive-chart-scroll:focus-visible, .archive-entry a:focus-visible, .archive-browse:focus-visible { outline: 2px solid rgb(var(--color-primary-500)); outline-offset: 2px; }

@@ -4,11 +4,7 @@
 {{ $posts = $posts | complement $photos }}
 {{ $years := $posts.GroupByDate "2006" "desc" }}
 {{ with $years }}
-  <nav class="archive-years" aria-label="{{ i18n "archive_jump_to_year" }}">
-    {{ range . }}
-      <a href="#year-{{ .Key }}">{{ .Key }} <span class="archive-count">({{ len .Pages }})</span></a>
-    {{ end }}
-  </nav>
+  {{ partial "archive-chart.html" . }}
   <div class="blog-archive">
     {{ range . }}
       <section aria-labelledby="year-{{ .Key }}">
