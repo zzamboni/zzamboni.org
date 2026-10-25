@@ -1,0 +1,34 @@
+{{/* Reuse the archive groups so counts always match the entries below. */}}
+{{ $counts := dict }}
+{{ $maximum := 1 }}
+{{ range . }}
+  {{ $count := len .Pages }}
+  {{ $counts = merge $counts (dict .Key $count) }}
+  {{ $maximum = math.Max $maximum $count }}
+{{ end }}
+{{ $newest := int (index . 0).Key }}
+{{ $oldest := int (index . (sub (len .) 1)).Key }}
+<nav class="archive-chart" aria-label="{{ i18n "archive_jump_to_year" }}">
+  <p class="archive-chart-title">{{ i18n "archive_posts_per_year" }}</p>
+  <div class="archive-chart-scroll" tabindex="0" role="region" aria-label="{{ i18n "archive_chart_hint" }}">
+    <div class="archive-chart-bars">
+      {{ range seq $oldest $newest }}
+        {{ $year := printf "%d" . }}
+        {{ $count := index $counts $year | default 0 }}
+        {{ $height := mul (div (float $count) (float $maximum)) 100 }}
+        {{ $label := i18n "archive_year_posts" (dict "Year" $year "Count" $count) }}
+        {{ if $count }}
+          <a class="archive-chart-column" href="#year-{{ $year }}" aria-label="{{ $label }}" title="{{ $label }}">
+            <span class="archive-chart-plot" aria-hidden="true"><span class="archive-chart-bar" style="{{ printf "height: %.4f%%" $height | safeCSS }}"><span class="archive-chart-count">{{ $count }}</span></span></span>
+            <span class="archive-chart-year" aria-hidden="true">{{ $year }}</span>
+          </a>
+        {{ else }}
+          <span class="archive-chart-column" aria-label="{{ $label }}">
+            <span class="archive-chart-plot" aria-hidden="true"><span class="archive-chart-bar" style="height: 0"><span class="archive-chart-count">0</span></span></span>
+            <span class="archive-chart-year" aria-hidden="true">{{ $year }}</span>
+          </span>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</nav>
