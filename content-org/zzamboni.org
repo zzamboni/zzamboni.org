@@ -4061,6 +4061,14 @@ Link posts live alongside the other CMS posts. Photo posts get bundles under =co
 
 Both functions default to creating drafts. I can capture something while I am out and finish it later, without treating a successful upload as a decision to publish. [[#linkblog-and-photoblog-from-my-phone][Posting links and photos from my phone with Netlify and iOS Shortcuts]] walks through the functions, the Shortcuts, and how the pieces fit together.
 
+**** A specialized source for my CV
+
+My CV is another kind of content, with its own specialized source: [[https://jsonresume.org/][JSON Resume]]. I keep my experience, education, projects, and other CV information as structured data, alongside BibTeX sources for my publications. That lets me reuse the information across my website and downloadable documents without maintaining each version by hand.
+
+[[https://github.com/zzamboni/resume-toolkit][resume-toolkit]] produces the documents and normalized publication data, and my [[https://github.com/zzamboni/hugo-jsonresume][hugo-jsonresume module]] renders the data as native Hugo pages. The CV and publications share the site's navigation and styling, while PDF and BibTeX downloads remain available. It is another entry point into the same website, alongside Org mode, Pages CMS, and the phone Shortcuts.
+
+I'll describe this in more detail in the forthcoming article [[#bringing-json-resume-cv-home-to-hugo][Bringing my JSON Resume CV home to Hugo]].
+
 **** One repository, a few places to preview
 
 GitHub is now the source of truth for the site; GitLab is a downstream mirror. That is a change from the original article, where GitLab was at the center of the publishing process.
@@ -4089,8 +4097,6 @@ Feature images work differently. I request an image, the workflow proposes it in
 **** Making it feel like one website
 
 The site uses [[https://blowfish.page/][Blowfish]], with my custom layouts and styles layered on top. The goal is fairly modest: articles should be comfortable to read, links should be quick to scan, and photos should be easy to browse. The compact archive and related-article links also help older posts remain discoverable.
-
-My CV and publications now fit into that same presentation. Their source remains JSON Resume and BibTeX, with [[https://github.com/zzamboni/resume-toolkit][resume-toolkit]] producing documents and normalized publication data. My [[https://github.com/zzamboni/hugo-jsonresume][hugo-jsonresume module]] renders the data inside Hugo, while PDF and BibTeX downloads remain available. [[#bringing-json-resume-cv-home-to-hugo][Bringing my JSON Resume CV home to Hugo]] tells that story separately.
 
 I keep the theme pinned and use the [[https://github.com/zzamboni/zzamboni.org/blob/main/scripts/README-theme-updates.md][theme update tooling]] to review the upstream changes that might affect my overrides. I enjoy tweaking the site, but I would rather not rediscover the same customization after every upgrade.
 
