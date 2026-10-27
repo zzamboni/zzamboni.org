@@ -1,48 +1,61 @@
 +++
-title = "My blogging setup in 2026: more ways to write, one Hugo site"
+title = "My blogging setup in 2026: more ways to write, reducing friction"
 author = ["Diego Zamboni"]
-summary = "My updated blogging setup: Org mode for longer articles, Pages CMS and iPhone Shortcuts for quick posts, and Hugo, GitHub and Netlify to bring it all together."
+summary = "My updated blogging setup: Org mode for longer articles, Pages CMS and iPhone Shortcuts for quick posts, hugo-jsonresume for the CV, and Hugo, GitHub and Netlify to bring it all together."
 date = 2026-10-21T12:00:00+02:00
 tags = ["blogging", "howto", "emacs", "orgmode", "hugo", "pagescms", "github", "netlify"]
 draft = true
+creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
 toc = true
 +++
 
-<!-- Markdown preview exported from Org with Pandoc; edit the Org source. -->
+In 2020 I wrote about [my blogging setup with Emacs, Org mode, ox-hugo, Hugo, GitLab and Netlify]({{< relref "2020-12-11-my-blogging-setup-and-workflow" >}}). Much of that setup is still here: I still write in Emacs, still export them with `ox-hugo`, and still let Hugo and Netlify turn files into a website.
 
-In 2020 I wrote about [my blogging setup with Emacs, Org mode, ox-hugo, Hugo, GitLab and Netlify]({{< relref "2020-12-11-my-blogging-setup-and-workflow" >}}). Much of that setup is still here. I still write longer articles in Emacs, still export them with `ox-hugo`, and still let Hugo and Netlify turn files into a website.
+Still, you may have noticed that I [barely posted anything](/archive/) since then! The biggest issue was friction: I wanted to make it easier to publish something small: a useful link, a few photos, or a note that did not need to become a full article. Opening my laptop and going through the whole writing, export and push routine was often enough friction for me to put it off.
 
-The biggest change is at the beginning of that process. I wanted to make it easier to publish something small: a useful link, a few photos, or a note that did not need to become a full article. Opening my laptop and going through the whole export-and-push routine was often enough friction for me to put it off.
+For this reason, over the last few weeks I have added a few more ways to get content into the site. This post is an overview of the current setup, with links to the more focused articles about specific aspects. My website's [repository](https://github.com/zzamboni/zzamboni.org) contains the complete setup; its [documentation directory](https://github.com/zzamboni/zzamboni.org/tree/main/docs) is where I keep maintenance details.
 
-So I have added a few more ways to get content into the site. This post is a tour of the current arrangement, with links to the more focused articles where the configuration gets interesting. The [repository](https://github.com/zzamboni/zzamboni.org) contains the complete setup; its [documentation directory](https://github.com/zzamboni/zzamboni.org/tree/main/docs) is where I keep maintenance details that would make this post unnecessarily long.
+{{< note >}}
+I should also give some credit to my AI assistants: I've used ChatGPT and Codex extensively throughout this work, from discussing the architecture and exploring alternatives to implementing changes and debugging workflows. Being able to work through an idea, try it in the repository, and refine it together has made many of these improvements much easier to tackle. I still make the decisions and review the results, but a lot of the work described here has been a collaboration.
+{{< /note >}}
 
-I should also give some credit to Cody, my AI assistant: I've used ChatGPT and Codex extensively throughout this work, from discussing the architecture and exploring alternatives to implementing changes, debugging workflows, and writing initial drafts of these articles. Being able to work through an idea, try it in the repository, and refine it together has made many of these improvements much easier to tackle. I still make the decisions and review the results, but a lot of the work described here has been a collaboration.
 
-## Org mode is still where I write
+## Org mode for long-form writing {#org-mode-for-long-form-writing}
 
-For an article like this one, I still prefer a heading in `content-org/zzamboni.org`. I can develop the text, rearrange sections, include code, and keep related posts together. `ox-hugo` exports the article to Markdown under `content/post/`, which is what Hugo reads.
+For an article like this one, I still prefer writing in [`content-org/zzamboni.org`](https://github.com/zzamboni/zzamboni.org/blob/main/content-org/zzamboni.org). I can use the full power of Emacs and org-mode to develop the text, rearrange sections, include code, and keep related posts together. `ox-hugo` exports the article to Markdown under `content/post/`, which is what Hugo reads.
 
-That distinction is worth keeping explicit: the Org subtree is the source, and the Markdown is an export. If I fix a paragraph only in the Markdown, the next export can erase that change. I keep both in Git, so building the website does not require Emacs or my personal Emacs configuration.
+That distinction is worth keeping explicit: the Org file is the source, and the Markdown is an export. If I fix a paragraph only in the Markdown, the next export will erase that change. I keep both in Git, so building the website does not require Emacs or my personal Emacs configuration.
 
-My original article goes into the Org and `ox-hugo` side in more detail. I have not replaced that workflow. I have given the shorter things somewhere else to start.
+My [original article]({{< relref "2020-12-11-my-blogging-setup-and-workflow" >}}) goes into the Org and `ox-hugo` side in more detail. I have not replaced that workflow, but I created new posting paths for shorter things.
 
-## A browser editor for the smaller things
 
-[Pages CMS](https://pagescms.org/) lets me edit posts through a browser, including on my phone. Its content is still made of files in my GitHub repository. A saved post lands in `content-pagescms/`, with the title, date, summary, tags, and draft status in its front matter.
+## A browser editor for the smaller things {#a-browser-editor-for-the-smaller-things}
 
-The useful trick is Hugo's module mounts. The Org exports and the CMS files live in different directories, but Hugo presents them as posts in the same section. Older Markdown and HTML posts have their own home in `content-legacy/` too. I do not need to convert everything before using a new editor, or let two editors compete over the same source file.
+[Pages CMS](https://pagescms.org/) lets me edit posts through a browser, including on my phone. It adds and edits files directly  in my GitHub repository. Posts created with Pages CMS are stored in  `content-pagescms/` already in the format Hugo expects.
 
-I described the arrangement in [Using Pages CMS alongside Org mode and Hugo]({{< relref "2026-09-28-using-pagescms-alongside-org-and-hugo" >}}). That post also links to [the timezone problem]({{< relref "2026-09-26-pages-cms-hugo-timezones" >}}) I ran into. A field that looks like an ordinary date can hide a surprising amount of trouble!
+The useful trick here is Hugo's module mounts, which allow different locations to be merged into the same folder when Hugo builds the site. With modules, the Org exports and the CMS files can live in different directories, but Hugo presents them as posts in the same `post` section. Older Markdown and HTML posts have their own home in `content-legacy/`, which gets merged into `post` as well. Since Pages CMS supports multiple content _collections_, I can view and edit these different types of content from Pages CMS as well.
 
-## Links and photos from the Share Sheet
+I described the arrangement in [Using Pages CMS alongside Org mode and Hugo]({{< relref "2026-09-28-using-pagescms-alongside-org-and-hugo" >}}). It's worth mentioning a [the timezone problem]({{< relref "2026-09-26-pages-cms-hugo-timezones" >}}) I ran into due to a bug in how Pages CMS (does not) handles timezone conversions.
 
-For links and photos, I wanted an even shorter path. My iOS Shortcuts collect the shared URL or images, ask for a little context, and send the result to a Netlify Function. The function creates the files in GitHub and returns an edit link for Pages CMS.
+{{< gallery >}}
+{{< figure src="images/20261027-071431_pagescms1.png" caption="<span class=\"figure-number\">Figure 1: </span>Pages CMS post list" link="images/20261027-071431_pagescms1.png" >}}
+
+{{< figure src="images/20261027-071451_pagescms2.png" caption="<span class=\"figure-number\">Figure 2: </span>Pages CMS post collections" link="images/20261027-071451_pagescms2.png" >}}
+
+{{< figure src="images/20261027-071513_pagescms3.png" caption="<span class=\"figure-number\">Figure 3: </span>Pages CMS post editing screen" link="images/20261027-071513_pagescms3.png" >}}
+{{< /gallery >}}
+
+
+## Links and photos from the Share Sheet {#links-and-photos-from-the-share-sheet}
+
+For links and photos, I wanted an even easier path. My iOS Shortcuts collect the shared URL or images, ask for a little context, and send the result to a Netlify Function. The function creates the files in GitHub and returns an edit link for Pages CMS.
 
 Link posts live alongside the other CMS posts. Photo posts get bundles under `content-photos/`, with images stored separately under `static/img/photos/`. They still enter the same Hugo content model, but I give them different presentations: compact entries for links, and galleries with a lightbox for photos. The homepage has a separate recent-photo column, and the Blog listing leaves photos to their own page.
 
 Both functions default to creating drafts. I can capture something while I am out and finish it later, without treating a successful upload as a decision to publish. [Posting links and photos from my phone with Netlify and iOS Shortcuts]({{< relref "2026-10-07-linkblog-and-photoblog-with-netlify-and-shortcuts" >}}) walks through the functions, the Shortcuts, and how the pieces fit together.
 
-## One repository, a few places to preview
+
+## One repository, a few places to preview {#one-repository-a-few-places-to-preview}
 
 GitHub is now the source of truth for the site; GitLab is a downstream mirror. That is a change from the original article, where GitLab was at the center of the publishing process.
 
@@ -52,14 +65,15 @@ Netlify gives me separate production, draft, and staging sites. Production build
 
 Locally I use [mise](https://mise.jdx.dev/) to select the repository's Hugo and Go versions. My usual preview commands are:
 
-``` elvish
+```elvish
 mise run serve
 mise run serve-drafts
 ```
 
 I also became more deliberate about when Netlify builds. Documentation edits and many draft-only changes do not need a production deployment, and caching Hugo's generated resources saves repeated image work. I grouped those decisions in [Drafts, previews, and fewer Netlify builds]({{< relref "2026-10-21-hugo-drafts-and-netlify-builds" >}}).
 
-## Small bits of automation
+
+## Small bits of automation {#small-bits-of-automation}
 
 GitHub Actions handles some of the finishing work. For Pages CMS posts, an enrichment workflow fills missing summaries and caches favicons for linked sites. Keeping those changes together also avoids creating separate commits for two parts of the same bit of housekeeping.
 
@@ -67,7 +81,8 @@ Feature images work differently. I request an image, the workflow proposes it in
 
 [Automating blog housekeeping with GitHub Actions]({{< relref "2026-10-21-automating-blog-housekeeping" >}}) describes those boundaries, including image refinement and the usage report that helps me keep track of API spending.
 
-## Making it feel like one website
+
+## Making it feel like one website {#making-it-feel-like-one-website}
 
 The site uses [Blowfish](https://blowfish.page/), with my custom layouts and styles layered on top. The goal is fairly modest: articles should be comfortable to read, links should be quick to scan, and photos should be easy to browse. The compact archive and related-article links also help older posts remain discoverable.
 
@@ -75,7 +90,8 @@ My CV and publications now fit into that same presentation. Their source remains
 
 I keep the theme pinned and use the [theme update tooling](https://github.com/zzamboni/zzamboni.org/blob/main/scripts/README-theme-updates.md) to review the upstream changes that might affect my overrides. I enjoy tweaking the site, but I would rather not rediscover the same customization after every upgrade.
 
-## What I want from all this
+
+## What I want from all this {#what-i-want-from-all-this}
 
 There are certainly more moving parts here than in the 2020 version. The payoff is that I can choose a writing path that matches the thing I want to publish, while the result still belongs to the same website and lives in Git.
 
