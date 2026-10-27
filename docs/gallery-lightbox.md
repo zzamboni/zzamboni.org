@@ -6,6 +6,24 @@ are loaded conditionally by `layouts/partials/extend-head-uncached.html`.
 Keep gallery images marked `nozoom` in rendered HTML so Blowfish's regular
 image zoom does not attach before GLightbox initializes.
 
+## Captions
+
+The shared initializer passes each image's rendered `figcaption` to GLightbox's
+native bottom description panel, preserving formatting and links. Missing or
+whitespace-only captions produce no panel; image alt text remains an accessible
+description and is not used as a caption fallback. Photoblog galleries currently
+have no per-image captions, so their appearance is unchanged.
+
+Captioned slides move the image counter to the top to avoid covering the panel.
+Tab navigation includes links in the active caption, and mobile captions display
+in full rather than using GLightbox's truncated "See more" text. The native mobile
+panel supports scrolling for long captions. Local CSS gives caption text explicit
+contrast instead of inheriting the site's light/dark text color on a white panel.
+
+Run `node --test scripts/tests/photo-lightbox.test.mjs` for caption mapping tests.
+Browser checks should also cover formatted/link captions, captioned-to-uncaptioned
+navigation, keyboard focus, counter placement and desktop/mobile readability.
+
 ## Why the scroll-lock overrides are necessary
 
 Blowfish centers its max-width body using `m-auto`. GLightbox 3.3.1 injects

@@ -26,9 +26,16 @@
     let origin, counter;
     const lightbox = GLightbox({
       selector: null,
-      elements: links.map(link => ({
-        href: link.href, type: 'image', alt: link.querySelector('img').alt
-      })),
+      elements: links.map(link => {
+        const caption = link.closest('figure')?.querySelector('figcaption');
+        return {
+          href: link.href, type: 'image', alt: link.querySelector('img').alt,
+          // Reuse rendered caption markup; alt text is not a visible caption.
+          description: caption?.textContent.trim() ? caption.innerHTML : ''
+        };
+      }),
+      descPosition: 'bottom',
+      moreLength: 0,
       loop: true,
       touchNavigation: true,
       keyboardNavigation: true,
@@ -42,6 +49,8 @@
     const updateCounter = () => {
       if (!counter) return;
       counter.textContent = `${lightbox.index + 1} / ${links.length}`;
+      counter.classList.toggle('has-caption', Boolean(
+        lightbox.getActiveSlide()?.querySelector('.gslide-description')));
     };
     lightbox.on('open', () => {
       const modal = lightbox.modal;
@@ -57,13 +66,14 @@
       modal.appendChild(counter);
       updateCounter();
       modal.querySelector('.gclose').focus();
-      // Keep Tab and Shift-Tab inside the viewer, including single-photo galleries.
+      // Include caption links, but never focus controls in inactive slides.
       modal.addEventListener('keydown', event => {
         if (event.key !== 'Tab') return;
         event.preventDefault();
         event.stopPropagation();
-        const buttons = [...modal.querySelectorAll('.gbtn')].filter(button =>
-          !button.classList.contains('disabled') && !button.classList.contains('glightbox-button-hidden'));
+        const buttons = [...modal.querySelectorAll('.gbtn, .gslide.current .gslide-desc a[href]')].filter(button =>
+          !button.classList.contains('disabled') && !button.classList.contains('glightbox-button-hidden') &&
+          button.getClientRects().length > 0);
         const index = buttons.indexOf(document.activeElement);
         buttons[(index + (event.shiftKey ? -1 : 1) + buttons.length) % buttons.length].focus();
       });

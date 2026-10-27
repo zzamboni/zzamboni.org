@@ -18,3 +18,13 @@ body.gscrollbar-fixer { margin-right: auto !important; }
   padding: .25rem .65rem; border-radius: .5rem; background: rgba(0, 0, 0, .75);
 }
 .glightbox-container .glightbox-button-hidden { display: none; }
+/* Leave GLightbox's bottom caption panel unobstructed. */
+.photo-lightbox-counter.has-caption {
+  top: max(1rem, env(safe-area-inset-top)); bottom: auto;
+}
+/* Native captions sit outside the article's prose styling. */
+.glightbox-container .gslide-description { background: #171717; }
+.glightbox-container .gslide-description .gslide-desc {
+  color: #fff; font-family: inherit;
+}
+.glightbox-container .gslide-desc a { text-decoration: underline; }
