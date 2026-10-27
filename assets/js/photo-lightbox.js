@@ -1,8 +1,27 @@
 (() => {
   if (typeof GLightbox !== 'function') return;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.querySelectorAll('.photo-gallery').forEach(gallery => {
-    const links = [...gallery.querySelectorAll('a')];
+  document.querySelectorAll('.photo-gallery, .lightbox-gallery').forEach(gallery => {
+    if (gallery.classList.contains('lightbox-gallery')) {
+      gallery.querySelectorAll('figure').forEach(figure => {
+        const img = figure.querySelector('img');
+        if (!img) return;
+        img.classList.add('nozoom');
+        if (img.closest('a')) return;
+        const link = document.createElement('a');
+        link.href = img.dataset.zoomSrc || img.currentSrc || img.src;
+        img.parentNode.insertBefore(link, img);
+        link.appendChild(img);
+      });
+    }
+    const links = [...gallery.querySelectorAll('figure a')].filter(link => link.querySelector('img'));
+    if (gallery.classList.contains('lightbox-gallery')) {
+      links.forEach(link => {
+        const img = link.querySelector('img');
+        link.href = img.dataset.zoomSrc || link.href;
+        link.removeAttribute('target');
+      });
+    }
     if (!links.length) return;
     let origin, counter;
     const lightbox = GLightbox({
