@@ -1,3 +1,8 @@
+/* Keep article/ToC geometry stable while GLightbox locks document scrolling.
+   GLightbox's injected margin compensates for a scrollbar that we now reserve. */
+html { scrollbar-gutter: stable; }
+body.gscrollbar-fixer { margin-right: 0 !important; }
+
 .photo-gallery a { display: block; }
 .glightbox-container .gbtn:focus-visible { outline: 3px solid #facc15; outline-offset: 3px; }
 .glightbox-container .gbtn { min-width: 44px; min-height: 44px; }
