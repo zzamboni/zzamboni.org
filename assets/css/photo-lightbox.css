@@ -1,7 +1,5 @@
-/* GLightbox locks overflow on both root and body, which disrupts the sticky
-   article ToC. Keep the original document scroll container and scrollbar
-   gutter unchanged; the fixed lightbox overlay handles pointer interaction. */
-html { scrollbar-gutter: stable; }
+/* Keep Blowfish's sticky ToC and the document's existing scrollbar intact
+   while GLightbox is open. Do not reserve an additional scrollbar gutter. */
 html.glightbox-open,
 body.glightbox-open { overflow: visible !important; }
 body.gscrollbar-fixer { margin-right: 0 !important; }
