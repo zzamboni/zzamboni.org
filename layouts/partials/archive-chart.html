@@ -1,3 +1,5 @@
+{{/* Undated drafts use year 0001; keep them in the list, outside the chart. */}}
+{{ with where . "Key" "ne" "0001" }}
 {{/* Reuse the archive groups so counts always match the entries below. */}}
 {{ $counts := dict }}
 {{ $maximum := 1 }}
@@ -32,3 +34,4 @@
     </div>
   </div>
 </nav>
+{{ end }}
