@@ -276,3 +276,8 @@
 .dark .archive-count, .dark .archive-entry time { color: rgb(var(--color-neutral-400)); }
 .archive-entry a:hover { text-decoration: underline; }
 .archive-chart-column:focus-visible, .archive-chart-scroll:focus-visible, .archive-entry a:focus-visible, .archive-browse:focus-visible { outline: 2px solid rgb(var(--color-primary-500)); outline-offset: 2px; }
+
+/* Hide figure numbers exported by ox-hugo */
+.figure-number {
+  display: none;
+}
