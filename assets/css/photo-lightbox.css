@@ -1,8 +1,9 @@
-/* Preserve the scrollbar gutter, and avoid creating a new scroll container
-   while GLightbox is open. overflow:hidden on html/body breaks sticky ToCs. */
+/* GLightbox locks overflow on both root and body, which disrupts the sticky
+   article ToC. Keep the original document scroll container and scrollbar
+   gutter unchanged; the fixed lightbox overlay handles pointer interaction. */
 html { scrollbar-gutter: stable; }
 html.glightbox-open,
-body.glightbox-open { overflow: clip; }
+body.glightbox-open { overflow: visible !important; }
 body.gscrollbar-fixer { margin-right: 0 !important; }
 
 .photo-gallery a { display: block; }
