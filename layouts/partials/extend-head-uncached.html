@@ -7,6 +7,11 @@
   <script defer src="{{ $packery.RelPermalink }}" integrity="{{ $packery.Data.Integrity }}"></script>
   {{ $gallery := resources.Get "js/shortcodes/gallery.js" | resources.Minify | resources.Fingerprint $algorithm }}
   <script src="{{ $gallery.RelPermalink }}" integrity="{{ $gallery.Data.Integrity }}"></script>
+{{ end }}
+
+{{/* Standard Blowfish galleries already load their Packery assets through the theme. */}}
+{{ if or .Params.photos (.HasShortcode "gallery") }}
+  {{ $algorithm := site.Params.fingerprintAlgorithm | default "sha512" }}
   {{ $vendorCSS := resources.Get "lib/glightbox/glightbox.min.css" | resources.Fingerprint $algorithm }}
   <link rel="stylesheet" href="{{ $vendorCSS.RelPermalink }}" integrity="{{ $vendorCSS.Data.Integrity }}">
   {{ $vendorJS := resources.Get "lib/glightbox/glightbox.min.js" | resources.Fingerprint $algorithm }}

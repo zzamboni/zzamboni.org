@@ -1,3 +1,12 @@
+/* Lock only the root: a body scroll container breaks Blowfish's sticky ToC.
+   Reserve the scrollbar space so hiding it does not resize the article. */
+html { scrollbar-gutter: stable; }
+html.glightbox-open { overflow: hidden !important; }
+body.glightbox-open { overflow: visible !important; }
+/* GLightbox's pixel compensation (or zero) overrides Blowfish's m-auto
+   centering. The root gutter already provides scrollbar compensation. */
+body.gscrollbar-fixer { margin-right: auto !important; }
+
 .photo-gallery a { display: block; }
 .glightbox-container .gbtn:focus-visible { outline: 3px solid #facc15; outline-offset: 3px; }
 .glightbox-container .gbtn { min-width: 44px; min-height: 44px; }
@@ -9,3 +18,13 @@
   padding: .25rem .65rem; border-radius: .5rem; background: rgba(0, 0, 0, .75);
 }
 .glightbox-container .glightbox-button-hidden { display: none; }
+/* Leave GLightbox's bottom caption panel unobstructed. */
+.photo-lightbox-counter.has-caption {
+  top: max(1rem, env(safe-area-inset-top)); bottom: auto;
+}
+/* Native captions sit outside the article's prose styling. */
+.glightbox-container .gslide-description { background: #171717; }
+.glightbox-container .gslide-description .gslide-desc {
+  color: #fff; font-family: inherit;
+}
+.glightbox-container .gslide-desc a { text-decoration: underline; }
