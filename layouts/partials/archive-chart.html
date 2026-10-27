@@ -14,7 +14,7 @@
   <p class="archive-chart-title">{{ i18n "archive_posts_per_year" }}</p>
   <div class="archive-chart-scroll" tabindex="0" role="region" aria-label="{{ i18n "archive_chart_hint" }}">
     <div class="archive-chart-bars">
-      {{ range seq $oldest $newest }}
+      {{ range seq $newest -1 $oldest }}
         {{ $year := printf "%d" . }}
         {{ $count := index $counts $year | default 0 }}
         {{ $height := mul (div (float $count) (float $maximum)) 100 }}
