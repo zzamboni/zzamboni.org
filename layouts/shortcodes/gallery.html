@@ -28,6 +28,21 @@
   {{ end -}}
 {{ end -}}
 
+{{/* Blowfish medium-zoom initializes before the deferred GLightbox adapter. */}}
+{{/* Mark gallery images nozoom in the HTML so both viewers cannot attach. */}}
+{{ range findRE `<img\s+[^>]*>` $content -}}
+  {{ $imgTag := . -}}
+  {{ if not (in $imgTag "nozoom") -}}
+    {{ $newTag := "" -}}
+    {{ if findRE `\sclass="` $imgTag -}}
+      {{ $newTag = replace $imgTag `class="` `class="nozoom ` -}}
+    {{ else -}}
+      {{ $newTag = replaceRE `^<img\s` `<img class="nozoom" ` $imgTag -}}
+    {{ end -}}
+    {{ $content = replace $content $imgTag $newTag -}}
+  {{ end -}}
+{{ end -}}
+
 {{/* images without alternative text get an explicit empty alt so screen
   readers skip them instead of announcing the file name */}}
 {{ range findRE `<img\s+[^>]*>` $content -}}
