@@ -1,6 +1,8 @@
-/* Keep article/ToC geometry stable while GLightbox locks document scrolling.
-   GLightbox's injected margin compensates for a scrollbar that we now reserve. */
+/* Preserve the scrollbar gutter, and avoid creating a new scroll container
+   while GLightbox is open. overflow:hidden on html/body breaks sticky ToCs. */
 html { scrollbar-gutter: stable; }
+html.glightbox-open,
+body.glightbox-open { overflow: clip; }
 body.gscrollbar-fixer { margin-right: 0 !important; }
 
 .photo-gallery a { display: block; }
