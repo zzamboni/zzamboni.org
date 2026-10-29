@@ -36,6 +36,55 @@ FEATURE_KEYS = ("featureimage", "featured_image", "featureImage")
 ORG_SOURCE = Path("content-org/zzamboni.org")
 GENERATED_DIR = Path("assets/img/generated")
 
+DEFAULT_IMAGE_MODELS = "gpt-image-1.5,gpt-image-1"
+DEFAULT_TEXT_MODELS = "gpt-5-mini,gpt-5"
+
+
+def model_candidates(family: str) -> list[str]:
+    """Read a preferred-first comma-separated list, preserving older overrides."""
+    if family == "image":
+        value = os.getenv("FEATURE_IMAGE_MODELS") or os.getenv("FEATURE_IMAGE_MODEL") or DEFAULT_IMAGE_MODELS
+    elif family == "text":
+        value = os.getenv("FEATURE_IMAGE_TEXT_MODELS") or os.getenv("FEATURE_IMAGE_TEXT_MODEL") or DEFAULT_TEXT_MODELS
+    else:
+        raise ValueError(f"Unknown model family: {family}")
+    models = list(dict.fromkeys(part.strip() for part in value.split(",") if part.strip()))
+    if not models:
+        raise ValueError(f"No {family} models configured")
+    return models
+
+
+def model_unavailable(exc: Exception) -> bool:
+    """Only fall back for a recognizable missing/inaccessible-model error."""
+    if getattr(exc, "status_code", None) not in (400, 403, 404):
+        return False
+    body = getattr(exc, "body", None)
+    if isinstance(body, dict):
+        code = str(body.get("code") or "").lower()
+        if code in ("model_not_found", "model_not_available", "invalid_model"):
+            return True
+    message = str(exc).lower()
+    return "model" in message and any(fragment in message for fragment in (
+        "does not exist", "not found", "do not have access",
+        "don't have access", "not available", "not accessible",
+    ))
+
+
+def call_with_model_fallback(client_method: Any, family: str, **kwargs: Any) -> Any:
+    models = model_candidates(family)
+    for index, model in enumerate(models):
+        try:
+            result = client_method(model=model, **kwargs)
+            print(f"Selected {family} model: {model}", flush=True)
+            return result
+        except Exception as exc:
+            if not model_unavailable(exc):
+                raise
+            print(f"Unavailable {family} model {model}: {exc}", file=sys.stderr, flush=True)
+            if index == len(models) - 1:
+                raise RuntimeError(f"No available {family} model among: {', '.join(models)}") from exc
+
+
 DEFAULT_STYLE = "Photographic editorial image"
 IMAGE_STYLES = {
     "Photographic editorial image": "Photographic editorial image. Natural window light, realistic materials and proportions, subtle colors, and a simple composition with one strong focal point. Use a plausible physical scene to evoke the post's central idea. No illustration, 3D render, cartoon styling, glowing interfaces, or implausible hardware.",
@@ -207,9 +256,8 @@ def make_visual_brief(
     extra_prompt: str,
     style: str = DEFAULT_STYLE,
 ) -> str:
-    model = os.getenv("FEATURE_IMAGE_TEXT_MODEL", "gpt-5-mini")
-    response = client.responses.create(
-        model=model,
+    response = call_with_model_fallback(
+        client.responses.create, "text",
         store=False,
         instructions=(
             "Create a concise visual brief for an editorial feature image inspired by "
@@ -233,12 +281,11 @@ def make_visual_brief(
 
 
 def generate_image(client: OpenAI, prompt: str, destination: Path) -> None:
-    model = os.getenv("FEATURE_IMAGE_MODEL", "gpt-image-1.5")
     size = os.getenv("FEATURE_IMAGE_SIZE", "1536x1024")
     quality = os.getenv("FEATURE_IMAGE_QUALITY", "medium")
 
-    result = client.images.generate(
-        model=model,
+    result = call_with_model_fallback(
+        client.images.generate, "image",
         prompt=prompt,
         size=size,
         quality=quality,
