@@ -4019,6 +4019,7 @@ It's a small architectural victory: *one source of truth, multiple outputs, and 
 
 *** DRAFT My blogging setup in 2026: more ways to write, reducing friction :blogging:howto:emacs:orgmode:hugo:pagescms:github:netlify:
 :PROPERTIES:
+:ID:       0a229ae8-72df-4c4f-87b5-60dfbb57423a
 :export_date: <2026-10-21 Wed 12:00>
 :export_hugo_bundle: 2026-10-21-my-blogging-setup-in-2026
 :export_file_name: index
@@ -4033,10 +4034,10 @@ In 2020 I wrote about [[#my-blogging-setup-with-emacs--org-mode--ox-hugo--hugo--
 
 Still, you may have noticed that I [[/archive/][barely posted anything]] since then! The biggest issue was friction: I wanted to make it easier to publish something small: a useful link, a few photos, or a note that did not need to become a full article. Opening my laptop and going through the whole writing, export and push routine was often enough friction for me to put it off.
 
-For this reason, over the last few weeks I have added a few more ways to get content into the site. This post is an overview of the current setup, with links to the more focused articles about specific aspects. My website's [[https://github.com/zzamboni/zzamboni.org][repository]] contains the complete setup; its [[https://github.com/zzamboni/zzamboni.org/tree/main/docs][documentation directory]] is where I keep maintenance details.
+For this reason, over the last few weeks I have added a few more ways to get content into the site. This post is an overview of the current setup, with links to the more focused articles (some of them not published yet) about specific aspects. My website's [[https://github.com/zzamboni/zzamboni.org][repository]] contains the complete setup; its [[https://github.com/zzamboni/zzamboni.org/tree/main/docs][documentation directory]] is where I keep maintenance details.
 
 #+begin_note
-I should also give some credit to my AI assistants: I've used ChatGPT and Codex extensively throughout this work, from discussing the architecture and exploring alternatives to implementing changes and debugging workflows. Being able to work through an idea, try it in the repository, and refine it together has made many of these improvements much easier to tackle. I still make the decisions and review the results, but a lot of the work described here has been a collaboration.
+Like much of the world, I've started using AI tools to improve my workflows. Specifically, I've used ChatGPT and Codex extensively throughout this work, from discussing the architecture and exploring alternatives to implementing changes and debugging workflows. Being able to work through an idea, try it in the repository, and refine it together has made many of these improvements much easier to tackle. I still make the decisions and review the results, but a lot of the work described here has been a collaboration. Having an assistant that can transform a natural language description of how I want my website to look or function, and to transform it quickly into code, whether it's CSS, Javascript or Hugo markdown, it's an amazing advantage.
 #+end_note
 
 **** Org mode for long-form writing
@@ -4047,10 +4048,10 @@ That distinction is worth keeping explicit: the Org file is the source, and the 
 
 My [[#my-blogging-setup-with-emacs--org-mode--ox-hugo--hugo--gitlab-and-netlify][original article]] goes into the Org and =ox-hugo= side in more detail. I have not replaced that workflow, but I created new posting paths for shorter things.
 
+#+caption: My Emacs screen while writing this article
+[[attachment:20261029-161728_org-mode-writing.png]]
+
 **** A browser editor for the smaller things
-:PROPERTIES:
-:ID:       1839e575-f4a1-495e-9c58-970d9d12f313
-:END:
 
 [[https://pagescms.org/][Pages CMS]] lets me edit posts through a browser, including on my phone. It adds and edits files directly  in my GitHub repository. Posts created with Pages CMS are stored in  =content-pagescms/= already in the format Hugo expects.
 
@@ -4061,22 +4062,39 @@ I described the arrangement in [[#using-pages-cms-alongside-org-mode-and-hugo][U
 #+begin_gallery
 #+DOWNLOADED: screenshot @ 2026-10-27 07:14:31
 #+caption: Pages CMS post list
-[[file:images/20261027-071431_pagescms1.png][file:images/20261027-071431_pagescms1.png]]
+[[attachment:pagescms1.png]]
 #+DOWNLOADED: screenshot @ 2026-10-27 07:14:51
 #+caption: Pages CMS post collections
-[[file:images/20261027-071451_pagescms2.png][file:images/20261027-071451_pagescms2.png]]
+[[attachment:pagescms2.png]]
 #+DOWNLOADED: screenshot @ 2026-10-27 07:15:13
 #+caption: Pages CMS post editing screen
-[[file:images/20261027-071513_pagescms3.png][file:images/20261027-071513_pagescms3.png]]
+[[attachment:pagescms3.png]]
 #+end_gallery
 
 **** Links and photos from the Share Sheet
+:PROPERTIES:
+:ID:       ae81fdd0-aac7-41a3-8c4e-24ca07a204e4
+:END:
 
-For links and photos, I wanted an even easier path. My iOS Shortcuts collect the shared URL or images, ask for a little context, and send the result to a Netlify Function. The function creates the files in GitHub and returns an edit link for Pages CMS.
+For links and photos, I wanted an even easier path, since these are things I most likely want to post on the fly from my phone, so it needs to be extremely low-friction. For this I developed a couple of specialized iOS Shortcuts paired with corresponding server-side functionality (in the form of [[https://docs.netlify.com/build/functions/overview/][Netlify Functions]]) that collect the shared URL or images, ask for a little context, and create the files in GitHub.
 
-Link posts live alongside the other CMS posts. Photo posts get bundles under =content-photos/=, with images stored separately under =static/img/photos/=. They still enter the same Hugo content model, but I give them different presentations: compact entries for links, and galleries with a lightbox for photos. The homepage has a separate recent-photo column, and the Blog listing leaves photos to their own page.
+Link posts live alongside the other Pages CMS posts in =content-pagescms/=, while photo posts are stored under =content-photos/=, with images stored separately under =static/img/photos/=. Photos are configured as a separate collection in Pages CMS, which allows managing them through the Pages CMS [[https://pagescms.org/docs/configuration/media/][media management]] features. They still enter the same Hugo content model, but I give them different presentations: compact entries for links, and galleries with a lightbox for photos. The [[/][homepage]] has a separate recent-photo column, and I've created a separate [[/tags/photos/][Photos]] link in the top menu, separate from the [[/post/][Blog]] listing and [[/archive/][Archive]].
 
-Both functions default to creating drafts. I can capture something while I am out and finish it later, without treating a successful upload as a decision to publish. [[#linkblog-and-photoblog-from-my-phone][Posting links and photos from my phone with Netlify and iOS Shortcuts]] walks through the functions, the Shortcuts, and how the pieces fit together.
+#+attr_shortcode: :figureClass grid-w33
+#+begin_gallery
+#+caption: Sharing an image from iOS.
+[[attachment:IMG_0275.jpg]]
+#+caption: Adding optional commentary.
+[[attachment:IMG_0276.jpg]]
+#+caption: Editing the photo post in Pages CMS.
+[[attachment:IMG_0278.jpg]]
+#+caption: Sharing a link from iOS. 
+[[attachment:IMG_0279.jpg]]
+#+caption: The end result: link and photo on my website homepage.
+[[attachment:20261029-162927_link-photo-on-website.png]]
+#+end_gallery
+
+Both functions default to creating drafts, but this can be configured in the Shortcuts. I can capture something while I am out and finish it later, without treating a successful upload as a decision to publish. My upcoming post /Posting links and photos from my phone with Netlify and iOS Shortcuts/ walks through the functions, the Shortcuts, and how the pieces fit together.
 
 **** A specialized source for my CV
 

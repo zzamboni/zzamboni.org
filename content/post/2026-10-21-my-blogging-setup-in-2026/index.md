@@ -13,10 +13,10 @@ In 2020 I wrote about [my blogging setup with Emacs, Org mode, ox-hugo, Hugo, Gi
 
 Still, you may have noticed that I [barely posted anything](/archive/) since then! The biggest issue was friction: I wanted to make it easier to publish something small: a useful link, a few photos, or a note that did not need to become a full article. Opening my laptop and going through the whole writing, export and push routine was often enough friction for me to put it off.
 
-For this reason, over the last few weeks I have added a few more ways to get content into the site. This post is an overview of the current setup, with links to the more focused articles about specific aspects. My website's [repository](https://github.com/zzamboni/zzamboni.org) contains the complete setup; its [documentation directory](https://github.com/zzamboni/zzamboni.org/tree/main/docs) is where I keep maintenance details.
+For this reason, over the last few weeks I have added a few more ways to get content into the site. This post is an overview of the current setup, with links to the more focused articles (some of them not published yet) about specific aspects. My website's [repository](https://github.com/zzamboni/zzamboni.org) contains the complete setup; its [documentation directory](https://github.com/zzamboni/zzamboni.org/tree/main/docs) is where I keep maintenance details.
 
 {{< note >}}
-I should also give some credit to my AI assistants: I've used ChatGPT and Codex extensively throughout this work, from discussing the architecture and exploring alternatives to implementing changes and debugging workflows. Being able to work through an idea, try it in the repository, and refine it together has made many of these improvements much easier to tackle. I still make the decisions and review the results, but a lot of the work described here has been a collaboration.
+Like much of the world, I've started using AI tools to improve my workflows. Specifically, I've used ChatGPT and Codex extensively throughout this work, from discussing the architecture and exploring alternatives to implementing changes and debugging workflows. Being able to work through an idea, try it in the repository, and refine it together has made many of these improvements much easier to tackle. I still make the decisions and review the results, but a lot of the work described here has been a collaboration. Having an assistant that can transform a natural language description of how I want my website to look or function, and to transform it quickly into code, whether it's CSS, Javascript or Hugo markdown, it's an amazing advantage.
 {{< /note >}}
 
 
@@ -28,6 +28,8 @@ That distinction is worth keeping explicit: the Org file is the source, and the 
 
 My [original article]({{< relref "2020-12-11-my-blogging-setup-and-workflow" >}}) goes into the Org and `ox-hugo` side in more detail. I have not replaced that workflow, but I created new posting paths for shorter things.
 
+{{< figure src="20261029-161728_org-mode-writing.png" caption="<span class=\"figure-number\">Figure 1: </span>My Emacs screen while writing this article" >}}
+
 
 ## A browser editor for the smaller things {#a-browser-editor-for-the-smaller-things}
 
@@ -38,21 +40,42 @@ The useful trick here is Hugo's module mounts, which allow different locations t
 I described the arrangement in [Using Pages CMS alongside Org mode and Hugo]({{< relref "2026-09-28-using-pagescms-alongside-org-and-hugo" >}}). It's worth mentioning a [the timezone problem]({{< relref "2026-09-26-pages-cms-hugo-timezones" >}}) I ran into due to a bug in how Pages CMS (does not) handles timezone conversions.
 
 {{< gallery >}}
-{{< figure src="images/20261027-071431_pagescms1.png" caption="<span class=\"figure-number\">Figure 1: </span>Pages CMS post list" link="images/20261027-071431_pagescms1.png" >}}
+{{< figure src="pagescms1.png" caption="<span class=\"figure-number\">Figure 2: </span>Pages CMS post list" >}}
 
-{{< figure src="images/20261027-071451_pagescms2.png" caption="<span class=\"figure-number\">Figure 2: </span>Pages CMS post collections" link="images/20261027-071451_pagescms2.png" >}}
+{{< figure src="pagescms2.png" caption="<span class=\"figure-number\">Figure 3: </span>Pages CMS post collections" >}}
 
-{{< figure src="images/20261027-071513_pagescms3.png" caption="<span class=\"figure-number\">Figure 3: </span>Pages CMS post editing screen" link="images/20261027-071513_pagescms3.png" >}}
+{{< figure src="pagescms3.png" caption="<span class=\"figure-number\">Figure 4: </span>Pages CMS post editing screen" >}}
 {{< /gallery >}}
 
 
 ## Links and photos from the Share Sheet {#links-and-photos-from-the-share-sheet}
 
-For links and photos, I wanted an even easier path. My iOS Shortcuts collect the shared URL or images, ask for a little context, and send the result to a Netlify Function. The function creates the files in GitHub and returns an edit link for Pages CMS.
+For links and photos, I wanted an even easier path, since these are things I most likely want to post on the fly from my phone, so it needs to be extremely low-friction. For this I developed a couple of specialized iOS Shortcuts paired with corresponding server-side functionality (in the form of [Netlify Functions](https://docs.netlify.com/build/functions/overview/)) that collect the shared URL or images, ask for a little context, and create the files in GitHub.
 
-Link posts live alongside the other CMS posts. Photo posts get bundles under `content-photos/`, with images stored separately under `static/img/photos/`. They still enter the same Hugo content model, but I give them different presentations: compact entries for links, and galleries with a lightbox for photos. The homepage has a separate recent-photo column, and the Blog listing leaves photos to their own page.
+Link posts live alongside the other Pages CMS posts in `content-pagescms/`, while photo posts are stored under `content-photos/`, with images stored separately under `static/img/photos/`. Photos are configured as a separate collection in Pages CMS, which allows managing them through the Pages CMS [media management](https://pagescms.org/docs/configuration/media/) features. They still enter the same Hugo content model, but I give them different presentations: compact entries for links, and galleries with a lightbox for photos. The [homepage](/) has a separate recent-photo column, and I've created a separate [Photos](/tags/photos/) link in the top menu, separate from the [Blog](/post/) listing and [Archive](/archive/).
 
-Both functions default to creating drafts. I can capture something while I am out and finish it later, without treating a successful upload as a decision to publish. [Posting links and photos from my phone with Netlify and iOS Shortcuts]({{< relref "2026-10-07-linkblog-and-photoblog-with-netlify-and-shortcuts" >}}) walks through the functions, the Shortcuts, and how the pieces fit together.
+{{< gallery figureClass="grid-w33" >}}
+{{< figure src="IMG_0275.jpg" caption="<span class=\"figure-number\">Figure 5: </span>Sharing an image from iOS." >}}
+
+{{< figure src="IMG_0276.jpg" caption="<span class=\"figure-number\">Figure 6: </span>Adding optional commentary." >}}
+
+{{< figure src="IMG_0278.jpg" caption="<span class=\"figure-number\">Figure 7: </span>Editing the photo post in Pages CMS." >}}
+
+{{< figure src="IMG_0279.jpg" caption="<span class=\"figure-number\">Figure 8: </span>Sharing a link from iOS." >}}
+
+{{< figure src="20261029-162927_link-photo-on-website.png" caption="<span class=\"figure-number\">Figure 9: </span>The end result: link and photo on my website homepage." >}}
+{{< /gallery >}}
+
+Both functions default to creating drafts, but this can be configured in the Shortcuts. I can capture something while I am out and finish it later, without treating a successful upload as a decision to publish. My upcoming post _Posting links and photos from my phone with Netlify and iOS Shortcuts_ walks through the functions, the Shortcuts, and how the pieces fit together.
+
+
+## A specialized source for my CV {#a-specialized-source-for-my-cv}
+
+My CV is another kind of content, with its own specialized source: [JSON Resume](https://jsonresume.org/). I keep my experience, education, projects, and other CV information as structured data, alongside BibTeX sources for my publications. That lets me reuse the information across my website and downloadable documents without maintaining each version by hand.
+
+[resume-toolkit](https://github.com/zzamboni/resume-toolkit) produces the documents and normalized publication data, and my [hugo-jsonresume module](https://github.com/zzamboni/hugo-jsonresume) renders the data as native Hugo pages. The CV and publications share the site's navigation and styling, while PDF and BibTeX downloads remain available. It is another entry point into the same website, alongside Org mode, Pages CMS, and the phone Shortcuts.
+
+I'll describe this in more detail in the forthcoming article [Bringing my JSON Resume CV home to Hugo]({{< relref "2026-10-18-bringing-json-resume-cv-home-to-hugo" >}}).
 
 
 ## One repository, a few places to preview {#one-repository-a-few-places-to-preview}
@@ -85,8 +108,6 @@ Feature images work differently. I request an image, the workflow proposes it in
 ## Making it feel like one website {#making-it-feel-like-one-website}
 
 The site uses [Blowfish](https://blowfish.page/), with my custom layouts and styles layered on top. The goal is fairly modest: articles should be comfortable to read, links should be quick to scan, and photos should be easy to browse. The compact archive and related-article links also help older posts remain discoverable.
-
-My CV and publications now fit into that same presentation. Their source remains JSON Resume and BibTeX, with [resume-toolkit](https://github.com/zzamboni/resume-toolkit) producing documents and normalized publication data. My [hugo-jsonresume module](https://github.com/zzamboni/hugo-jsonresume) renders the data inside Hugo, while PDF and BibTeX downloads remain available. [Bringing my JSON Resume CV home to Hugo]({{< relref "2026-10-18-bringing-json-resume-cv-home-to-hugo" >}}) tells that story separately.
 
 I keep the theme pinned and use the [theme update tooling](https://github.com/zzamboni/zzamboni.org/blob/main/scripts/README-theme-updates.md) to review the upstream changes that might affect my overrides. I enjoy tweaking the site, but I would rather not rediscover the same customization after every upgrade.
 
