@@ -1,0 +1,46 @@
+name: Check OpenAI feature-image models
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 7 * * 4"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - name: Install OpenAI SDK
+        run: pip install openai pillow pyyaml
+      - name: Verify configured model catalog entries
+        id: models
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          FEATURE_IMAGE_MODELS: ${{ vars.FEATURE_IMAGE_MODELS }}
+          FEATURE_IMAGE_TEXT_MODELS: ${{ vars.FEATURE_IMAGE_TEXT_MODELS }}
+        run: python scripts/generate-feature-image.py check-models
+      - name: Create or update a tracking issue on failure
+        if: failure() && steps.models.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          title="OpenAI feature-image model compatibility check failed"
+          existing=$(gh issue list --state open --search "in:title \"$title\"" --json number,title --jq '.[] | select(.title == "OpenAI feature-image model compatibility check failed") | .number' | head -n 1)
+          body="The weekly model catalog check failed. Review the [workflow run]($RUN_URL) and update FEATURE_IMAGE_MODELS / FEATURE_IMAGE_TEXT_MODELS or the script defaults. This check does not generate images."
+          if [[ -n "$existing" ]]; then
+            gh issue comment "$existing" --body "$body"
+          else
+            gh issue create --title "$title" --body "$body"
+          fi
