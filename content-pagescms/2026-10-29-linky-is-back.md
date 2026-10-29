@@ -8,7 +8,7 @@ tags = [
 ]
 draft = true
 toc = false
-featureimage = "img/generated/2026-10-29-linky-is-back.webp"
+featureimage = 'img/generated/2026-10-29-linky-is-back.webp'
 +++
 Back in the mists of time, in [February 2005](/brt/2005/02/19/new-linky-category/), I introduced a category called **Linky** for quick links to interesting things on the web. At the time, I used WordPress “asides” and a little icon to make those posts stand out.
 
@@ -16,4 +16,4 @@ The name eventually gave way to **[zznippets](https://zzamboni.org/tags/zznippet
 
 So **[Linky](https://zzamboni.org/tags/linky/) is back!** Same idea as twenty-one years ago: interesting links, sometimes with a few words of commentary. The underlying technology has changed quite a bit, but the purpose hasn't.
 
-The old zznippets posts will keep their name as part of the blog's history.
+The old zznippets posts will keep their tag as part of my blog's history.
