@@ -8,7 +8,7 @@ tags = [
 ]
 draft = true
 toc = false
-featureimage = 'img/tram-zurich.jpg'
+featureimage = "img/generated/2026-10-29-linky-is-back.webp"
 +++
 Back in the mists of time, in [February 2005](/brt/2005/02/19/new-linky-category/), I introduced a category called **Linky** for quick links to interesting things on the web. At the time, I used WordPress “asides” and a little icon to make those posts stand out.
 
