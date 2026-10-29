@@ -400,6 +400,23 @@ def candidates(limit: int | None) -> None:
                 break
 
 
+def check_models() -> None:
+    """Catalog-only preflight: no text or image generation and no generation charges."""
+    available = {model.id for model in OpenAI().models.list().data}
+    problems = []
+    for family in ("image", "text"):
+        configured = model_candidates(family)
+        present = [model for model in configured if model in available]
+        print(f"{family}: configured={', '.join(configured)}; visible={', '.join(present) or '(none)'}")
+        if not present:
+            problems.append(f"No configured {family} model is visible to the API key")
+        elif configured[0] not in available:
+            problems.append(f"Preferred {family} model {configured[0]} is unavailable; fallback {present[0]} is visible")
+    if problems:
+        raise SystemExit("Model compatibility check failed:\n" + "\n".join(problems))
+    print("Model catalog check passed (generation compatibility not tested).")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -410,6 +427,8 @@ def main() -> None:
     p_generate.add_argument("--force", action="store_true")
     p_generate.add_argument("--style", choices=IMAGE_STYLES, default=DEFAULT_STYLE)
 
+    sub.add_parser("check-models", help="verify configured models are listed by the API without generating content")
+
     p_candidates = sub.add_parser(
         "candidates", help="list posts with no image or the default tram image"
     )
@@ -419,6 +438,8 @@ def main() -> None:
 
     if args.command == "generate":
         generate(args.post, args.extra_prompt, args.force, args.style)
+    elif args.command == "check-models":
+        check_models()
     else:
         candidates(args.limit)
 
