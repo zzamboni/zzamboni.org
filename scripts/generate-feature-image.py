@@ -36,7 +36,7 @@ FEATURE_KEYS = ("featureimage", "featured_image", "featureImage")
 ORG_SOURCE = Path("content-org/zzamboni.org")
 GENERATED_DIR = Path("assets/img/generated")
 
-DEFAULT_IMAGE_MODELS = "gpt-image-1.5,gpt-image-2"
+DEFAULT_IMAGE_MODELS = "gpt-image-2.5-flare,gpt-image-2.5-sunburst,gpt-image-2,gpt-image-1.5"
 DEFAULT_TEXT_MODELS = "gpt-5-mini,gpt-5"
 
 
