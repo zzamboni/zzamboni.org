@@ -233,7 +233,7 @@ def make_visual_brief(
 
 
 def generate_image(client: OpenAI, prompt: str, destination: Path) -> None:
-    model = os.getenv("FEATURE_IMAGE_MODEL", "gpt-image-1")
+    model = os.getenv("FEATURE_IMAGE_MODEL", "gpt-image-1.5")
     size = os.getenv("FEATURE_IMAGE_SIZE", "1536x1024")
     quality = os.getenv("FEATURE_IMAGE_QUALITY", "medium")
 
