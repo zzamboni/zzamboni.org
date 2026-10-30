@@ -4273,8 +4273,7 @@ The boundary I have ended up with is practical: preserve text I supplied, make s
 
 I like that the automation leaves ordinary files behind. I can edit a generated summary, replace an icon, or close an image PR and carry on. The tools help finish a post, but they do not need to become another publishing system.
 
-* Local Variables :noexport:ARCHIVE:
+* COMMENT Local Variables :noexport:ARCHIVE:
 # Local Variables:
-# org-download-image-dir: "images"
-# org-download-heading-lvl: nil
+# eval: (org-hugo-auto-export-mode)
 # End:
