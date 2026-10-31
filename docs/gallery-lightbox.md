@@ -6,6 +6,22 @@ are loaded conditionally by `layouts/partials/extend-head-uncached.html`.
 Keep gallery images marked `nozoom` in rendered HTML so Blowfish's regular
 image zoom does not attach before GLightbox initializes.
 
+## Images linking to pages
+
+The local `figure` shortcode accepts ox-hugo's `link` parameter as an alias
+for Blowfish's `href` (`href` wins if both are present). This keeps Org attachment
+paths automatic:
+
+```org
+#+ATTR_HTML: :link https://example.org/ :class nozoom
+[[attachment:post-link.png]]
+```
+
+Keep linked images outside explicit galleries, which intentionally open images
+in GLightbox. The `nozoom` class prevents Blowfish's regular zoom from competing
+with the link. This override otherwise follows the theme's figure shortcode;
+it is detected automatically by the theme-update override review.
+
 ## Captions
 
 The shared initializer passes each image's rendered `figcaption` to GLightbox's
