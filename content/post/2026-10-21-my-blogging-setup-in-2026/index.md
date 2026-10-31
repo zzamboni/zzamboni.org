@@ -5,7 +5,7 @@ summary = "My updated blogging setup: Org mode for longer articles, Pages CMS an
 date = 2026-10-21T12:00:00+02:00
 tags = ["blogging", "howto", "emacs", "orgmode", "hugo", "pagescms", "github", "netlify"]
 draft = true
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
 toc = true
 +++
 
@@ -35,7 +35,7 @@ My [original article]({{< relref "2020-12-11-my-blogging-setup-and-workflow" >}}
 
 [Pages CMS](https://pagescms.org/) lets me edit posts through a browser, including on my phone. It adds and edits files directly  in my GitHub repository. Posts created with Pages CMS are stored in  `content-pagescms/` already in the format Hugo expects.
 
-The useful trick here is Hugo's module mounts, which allow different locations to be merged into the same folder when Hugo builds the site. With modules, the Org exports and the CMS files can live in different directories, but Hugo presents them as posts in the same `post` section. Older Markdown and HTML posts have their own home in `content-legacy/`, which gets merged into `post` as well. Since Pages CMS supports multiple content _collections_, I can view and edit these different types of content from Pages CMS as well.
+The useful trick here is Hugo's module mounts, which allow different locations to be merged into the same folder when Hugo builds the site. With modules, the Org exports and the CMS files can live in different directories, but Hugo presents them as posts in the same section.
 
 I described the arrangement in [Using Pages CMS alongside Org mode and Hugo]({{< relref "2026-09-28-using-pagescms-alongside-org-and-hugo" >}}). It's worth mentioning a [the timezone problem]({{< relref "2026-09-26-pages-cms-hugo-timezones" >}}) I ran into due to a bug in how Pages CMS (does not) handles timezone conversions.
 
@@ -52,21 +52,25 @@ I described the arrangement in [Using Pages CMS alongside Org mode and Hugo]({{<
 
 For links and photos, I wanted an even easier path, since these are things I most likely want to post on the fly from my phone, so it needs to be extremely low-friction. For this I developed a couple of specialized iOS Shortcuts paired with corresponding server-side functionality (in the form of [Netlify Functions](https://docs.netlify.com/build/functions/overview/)) that collect the shared URL or images, ask for a little context, and create the files in GitHub.
 
-Link posts live alongside the other Pages CMS posts in `content-pagescms/`, while photo posts are stored under `content-photos/`, with images stored separately under `static/img/photos/`. Photos are configured as a separate collection in Pages CMS, which allows managing them through the Pages CMS [media management](https://pagescms.org/docs/configuration/media/) features. They still enter the same Hugo content model, but I give them different presentations: compact entries for links, and galleries with a lightbox for photos. The [homepage](/) has a separate recent-photo column, and I've created a separate [Photos](/tags/photos/) link in the top menu, separate from the [Blog](/post/) listing and [Archive](/archive/).
+{{< figure src="post-link.png" link="https://www.icloud.com/shortcuts/cad708218dd348598a43ba394e7f75b5" class="nozoom" >}}
+
+{{< figure src="post-photos.png" >}}
+
+Both links and photos enter the same Hugo content model, but I give them different presentations: compact entries for links, and galleries with a lightbox for photos. The [homepage](/) has a separate recent-photo column, and I've created a separate [Photos](/tags/photos/) link in the top menu, separate from the [Blog](/post/) listing and [Archive](/archive/).
+
+The screenshots below show the complete process, from sharing a photo or link on my iPhone to seeing the resulting post on my website.
 
 {{< gallery figureClass="grid-w33" >}}
 {{< figure src="IMG_0275.jpg" caption="<span class=\"figure-number\">Figure 5: </span>Sharing an image from iOS." >}}
 
 {{< figure src="IMG_0276.jpg" caption="<span class=\"figure-number\">Figure 6: </span>Adding optional commentary." >}}
 
-{{< figure src="IMG_0278.jpg" caption="<span class=\"figure-number\">Figure 7: </span>Editing the photo post in Pages CMS." >}}
-
-{{< figure src="IMG_0279.jpg" caption="<span class=\"figure-number\">Figure 8: </span>Sharing a link from iOS." >}}
-
-{{< figure src="20261029-162927_link-photo-on-website.png" caption="<span class=\"figure-number\">Figure 9: </span>The end result: link and photo on my website homepage." >}}
+{{< figure src="IMG_0279.jpg" caption="<span class=\"figure-number\">Figure 7: </span>Sharing a link from iOS." >}}
 {{< /gallery >}}
 
-Both functions default to creating drafts, but this can be configured in the Shortcuts. I can capture something while I am out and finish it later, without treating a successful upload as a decision to publish. My upcoming post _Posting links and photos from my phone with Netlify and iOS Shortcuts_ walks through the functions, the Shortcuts, and how the pieces fit together.
+{{< figure src="20261029-162927_link-photo-on-website.png" caption="<span class=\"figure-number\">Figure 8: </span>The end result: link and photo on my website homepage." >}}
+
+Both functions default to creating drafts, but this can be configured in the Shortcuts. My upcoming post _Posting links and photos from my phone with Netlify and iOS Shortcuts_ walks through the functions, the Shortcuts, and how the pieces fit together.
 
 
 ## A specialized source for my CV {#a-specialized-source-for-my-cv}

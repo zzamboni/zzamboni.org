@@ -4055,18 +4055,15 @@ My [[#my-blogging-setup-with-emacs--org-mode--ox-hugo--hugo--gitlab-and-netlify]
 
 [[https://pagescms.org/][Pages CMS]] lets me edit posts through a browser, including on my phone. It adds and edits files directly  in my GitHub repository. Posts created with Pages CMS are stored in  =content-pagescms/= already in the format Hugo expects.
 
-The useful trick here is Hugo's module mounts, which allow different locations to be merged into the same folder when Hugo builds the site. With modules, the Org exports and the CMS files can live in different directories, but Hugo presents them as posts in the same =post= section. Older Markdown and HTML posts have their own home in =content-legacy/=, which gets merged into =post= as well. Since Pages CMS supports multiple content /collections/, I can view and edit these different types of content from Pages CMS as well.
+The useful trick here is Hugo's module mounts, which allow different locations to be merged into the same folder when Hugo builds the site. With modules, the Org exports and the CMS files can live in different directories, but Hugo presents them as posts in the same section.
 
 I described the arrangement in [[#using-pages-cms-alongside-org-mode-and-hugo][Using Pages CMS alongside Org mode and Hugo]]. It's worth mentioning a [[#pages-cms-hugo-timezones][the timezone problem]] I ran into due to a bug in how Pages CMS (does not) handles timezone conversions.
 
 #+begin_gallery
-#+DOWNLOADED: screenshot @ 2026-10-27 07:14:31
 #+caption: Pages CMS post list
 [[attachment:pagescms1.png]]
-#+DOWNLOADED: screenshot @ 2026-10-27 07:14:51
 #+caption: Pages CMS post collections
 [[attachment:pagescms2.png]]
-#+DOWNLOADED: screenshot @ 2026-10-27 07:15:13
 #+caption: Pages CMS post editing screen
 [[attachment:pagescms3.png]]
 #+end_gallery
@@ -4078,7 +4075,14 @@ I described the arrangement in [[#using-pages-cms-alongside-org-mode-and-hugo][U
 
 For links and photos, I wanted an even easier path, since these are things I most likely want to post on the fly from my phone, so it needs to be extremely low-friction. For this I developed a couple of specialized iOS Shortcuts paired with corresponding server-side functionality (in the form of [[https://docs.netlify.com/build/functions/overview/][Netlify Functions]]) that collect the shared URL or images, ask for a little context, and create the files in GitHub.
 
-Link posts live alongside the other Pages CMS posts in =content-pagescms/=, while photo posts are stored under =content-photos/=, with images stored separately under =static/img/photos/=. Photos are configured as a separate collection in Pages CMS, which allows managing them through the Pages CMS [[https://pagescms.org/docs/configuration/media/][media management]] features. They still enter the same Hugo content model, but I give them different presentations: compact entries for links, and galleries with a lightbox for photos. The [[/][homepage]] has a separate recent-photo column, and I've created a separate [[/tags/photos/][Photos]] link in the top menu, separate from the [[/post/][Blog]] listing and [[/archive/][Archive]].
+#+ATTR_HTML: :link https://www.icloud.com/shortcuts/cad708218dd348598a43ba394e7f75b5 :class nozoom
+[[attachment:post-link.png]]
+
+[[attachment:post-photos.png]]
+
+Both links and photos enter the same Hugo content model, but I give them different presentations: compact entries for links, and galleries with a lightbox for photos. The [[/][homepage]] has a separate recent-photo column, and I've created a separate [[/tags/photos/][Photos]] link in the top menu, separate from the [[/post/][Blog]] listing and [[/archive/][Archive]].
+
+The screenshots below show the complete process, from sharing a photo or link on my iPhone to seeing the resulting post on my website.
 
 #+attr_shortcode: :figureClass grid-w33
 #+begin_gallery
@@ -4086,15 +4090,14 @@ Link posts live alongside the other Pages CMS posts in =content-pagescms/=, whil
 [[attachment:IMG_0275.jpg]]
 #+caption: Adding optional commentary.
 [[attachment:IMG_0276.jpg]]
-#+caption: Editing the photo post in Pages CMS.
-[[attachment:IMG_0278.jpg]]
 #+caption: Sharing a link from iOS. 
 [[attachment:IMG_0279.jpg]]
-#+caption: The end result: link and photo on my website homepage.
-[[attachment:20261029-162927_link-photo-on-website.png]]
 #+end_gallery
 
-Both functions default to creating drafts, but this can be configured in the Shortcuts. I can capture something while I am out and finish it later, without treating a successful upload as a decision to publish. My upcoming post /Posting links and photos from my phone with Netlify and iOS Shortcuts/ walks through the functions, the Shortcuts, and how the pieces fit together.
+#+caption: The end result: link and photo on my website homepage.
+[[attachment:20261029-162927_link-photo-on-website.png]]
+
+Both functions default to creating drafts, but this can be configured in the Shortcuts. My upcoming post /Posting links and photos from my phone with Netlify and iOS Shortcuts/ walks through the functions, the Shortcuts, and how the pieces fit together.
 
 **** A specialized source for my CV
 
@@ -4272,8 +4275,3 @@ This is small enough to keep with the other automation rather than build a dashb
 The boundary I have ended up with is practical: preserve text I supplied, make small missing-metadata changes easy to inspect in Git, and ask me to review generated images before using them. A summary can still be wrong, so I check the resulting post; putting something in a workflow does not make it editorially reliable.
 
 I like that the automation leaves ordinary files behind. I can edit a generated summary, replace an icon, or close an image PR and carry on. The tools help finish a post, but they do not need to become another publishing system.
-
-* COMMENT Local Variables :noexport:ARCHIVE:
-# Local Variables:
-# eval: (org-hugo-auto-export-mode)
-# End:
