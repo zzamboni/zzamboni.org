@@ -64,8 +64,8 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#my-hammerspoon-configuration-with-commentary][My Hammerspoon Configuration, With Commentary]]
     - [[#my-elvish-configuration-with-commentary][My Elvish Configuration With Commentary]]
   - [[#emacs][Emacs]]
-    - [[#native-image-attachments-in-org-mode][Goodbye org-download: native image attachments in Org mode]]
-    - [[#org-mode-cheat-sheet-with-typst][From Org mode to a PDF cheat sheet with Typst]]
+    - [[#goodbye-org-download-native-image-attachments-in-org-mode][Goodbye org-download: native image attachments in Org mode]]
+    - [[#from-org-mode-to-a-pdf-cheat-sheet-with-typst][From Org mode to a PDF cheat sheet with Typst]]
     - [[#how-to-easily-create-and-use-human-readable-ids-in-org-mode-and-doom-emacs][How to easily create and use human-readable IDs in Org mode and Doom Emacs]]
     - [[#beautifying-org-mode-in-emacs][Beautifying Org Mode in Emacs]]
     - [[#how-to-insert-screenshots-in-org-documents-on-macos][How to insert screenshots in Org documents on macOS]]
@@ -4458,3 +4458,9 @@ This is small enough to keep with the other automation rather than build a dashb
 The boundary I have ended up with is practical: preserve text I supplied, make small missing-metadata changes easy to inspect in Git, and ask me to review generated images before using them. A summary can still be wrong, so I check the resulting post; putting something in a workflow does not make it editorially reliable.
 
 I like that the automation leaves ordinary files behind. I can edit a generated summary, replace an icon, or close an image PR and carry on. The tools help finish a post, but they do not need to become another publishing system.
+
+* COMMENT Local variables :noexport:ARCHIVE:
+
+# Local Variables:
+# flycheck-org-lint-disabled-checkers: (invalid-id-link link-to-local-file)
+# End:
