@@ -64,6 +64,8 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#my-hammerspoon-configuration-with-commentary][My Hammerspoon Configuration, With Commentary]]
     - [[#my-elvish-configuration-with-commentary][My Elvish Configuration With Commentary]]
   - [[#emacs][Emacs]]
+    - [[#native-image-attachments-in-org-mode][Goodbye org-download: native image attachments in Org mode]]
+    - [[#org-mode-cheat-sheet-with-typst][From Org mode to a PDF cheat sheet with Typst]]
     - [[#how-to-easily-create-and-use-human-readable-ids-in-org-mode-and-doom-emacs][How to easily create and use human-readable IDs in Org mode and Doom Emacs]]
     - [[#beautifying-org-mode-in-emacs][Beautifying Org Mode in Emacs]]
     - [[#how-to-insert-screenshots-in-org-documents-on-macos][How to insert screenshots in Org documents on macOS]]
@@ -564,6 +566,187 @@ Without further ado...
 #+include: "~/.config/elvish/rc.org" :lines "55-"
 
 ** Emacs                                                              :emacs:
+
+*** DRAFT Goodbye org-download: native image attachments in Org mode :emacs:orgmode:doom:blogging:howto:
+:PROPERTIES:
+:export_date: <2026-10-31 Sat>
+:export_hugo_bundle: 2026-10-31-native-image-attachments-in-org-mode
+:export_file_name: index
+:custom_id: native-image-attachments-in-org-mode
+:export_hugo_custom_front_matter: :toc false
+:END:
+#+begin_description
+I replaced org-download and several custom image-capture functions with Org attachments and Emacs media pasting. A little configuration keeps images grouped by blog post and makes C-y do the right thing.
+#+end_description
+
+A few years ago I [[/post/how-to-insert-screenshots-in-org-documents-on-macos/][wrote about inserting screenshots into Org documents]] using =org-download= and =pngpaste=. That setup served me well, but my image-handling configuration gradually acquired wrappers for choosing filenames, copying existing files, and formatting links.
+
+I recently revisited it and found that native Emacs and Org functionality now covers the parts I actually use. My current setup combines =org-attach= for storage, =yank-media= for clipboard images, and a small helper that chooses between pasting an image and yanking text.
+
+**** One attachment identity per post
+
+I keep this blog's Org-authored articles in a single file. Each post is a subtree, often with several child headings. I want an image inserted anywhere inside a post to belong to that post.
+
+My attachment directory is relative to the Org document:
+
+#+begin_src emacs-lisp
+(setq org-attach-id-dir "attachments/")
+#+end_src
+
+Org partitions ID-based attachments into directories beneath that location. With attachment inheritance enabled, child headings can use the post's attachment identity instead of requiring a new directory for every subsection. My post-capture template already supplies an ID, and Org can create one when needed elsewhere.
+
+Here is the configuration from [[https://github.com/zzamboni/dot-doom/blob/main/doom.org][my Doom configuration]]; =after!= is a Doom macro:
+
+#+begin_src emacs-lisp
+(after! org
+  (setq org-attach-use-inheritance t            ;; Inherit ID from higher headings, that way I can have a single ID per blog post
+        org-attach-preferred-new-method 'id     ;; Create a new ID when needed
+        org-attach-auto-tag nil                 ;; Do not add the ATTACH tag to headings
+        org-yank-dnd-method 'attach             ;; Attach by default without asking for drag-and-drop
+        org-yank-image-file-name-function 'org-yank-image-read-filename   ;; Ask for filename when attaching something
+        org-image-actual-width nil              ;; Flexible image width, with a...
+        org-image-max-width 300                 ;; ...maximum for inlined images in org buffers
+  ))
+#+end_src
+
+The image-width settings affect previews in the Org buffer. They do not prescribe the image size on the website.
+
+An inserted link looks like this:
+
+#+begin_src org
+[[attachment:screenshot.png]]
+#+end_src
+
+The link stays readable without exposing the ID-based directory layout. The attachment files still need to travel with the source: I commit them alongside the Org document, then let =ox-hugo= resolve the attachment links when exporting the post.
+
+**** Making C-y choose sensibly
+
+The remaining bit of custom code handles a small usability problem: I want =C-y= to paste an image when the clipboard contains one, and to behave like an ordinary Org yank otherwise.
+
+#+begin_src emacs-lisp
+(defun zz/org-smart-yank (&optional arg)
+  "Yank normally, or use `yank-media' for clipboard images."
+  (interactive "P")
+  (let ((targets (and (display-graphic-p)
+                      (gui-get-selection 'CLIPBOARD 'TARGETS))))
+    (if (and (not arg)
+             (seq-some
+              (lambda (type)
+                (string-match-p
+                 "^image/\\(png\\|jpeg\\|webp\\|gif\\)$"
+                 (format "%s" type)))
+              (append targets nil)))
+        (yank-media)
+      (org-yank arg))))
+
+(after! org
+  (map! :map org-mode-map
+        "C-y" #'zz/org-smart-yank))
+#+end_src
+
+In graphical Emacs, this checks the clipboard's advertised formats for PNG, JPEG, WebP, or GIF. If it finds one, it invokes =yank-media=, which uses Org's media handling. Otherwise it calls =org-yank=. A prefix argument, =C-u C-y=, forces the latter path when the clipboard offers both an image and text.
+
+This relies on graphical clipboard support and an Emacs/Org combination that provides =yank-media= and the image-yank options above. It does not turn a terminal session into a clipboard-image transport. When diagnosing a problem, =M-x yank-media= is a useful way to try the media-paste path directly.
+
+**** The everyday workflow
+
+Now I copy an image, move to the right place in the post, press =C-y=, and choose a filename. I have left my old timestamp-prefix helper disabled: filenames are already separated by attachment identity, so I usually prefer a plain descriptive name.
+
+For existing files I use =org-attach= (=C-c C-a=), choose copy, and then insert the stored attachment link with =C-c C-l=. For a URL, =org-attach-url= downloads the file. Leaving the link description empty lets Org display an inline image. Dragged files also use attachment storage with this configuration.
+
+I still have a custom function, but it now only selects the action. Org and Emacs handle the storage, link insertion, and media capture. That is a useful reason to revisit an old configuration occasionally: some of the glue I once needed has become functionality I can simply configure.
+
+*** DRAFT From Org mode to a PDF cheat sheet with Typst :emacs:orgmode:typst:documentation:howto:
+:PROPERTIES:
+:export_date: <2026-10-31 Sat>
+:export_hugo_bundle: 2026-10-31-org-mode-cheat-sheet-with-typst
+:export_file_name: index
+:custom_id: org-mode-cheat-sheet-with-typst
+:export_hugo_custom_front_matter: :toc false
+:END:
+#+begin_description
+My Doom Emacs cheat sheet lives in Org mode and exports to PDF through ox-typst. A small Typst header controls the appearance, with one targeted adjustment for table widths and repeating headers.
+#+end_description
+
+I have used Emacs long enough to accumulate plenty of useful commands that I promptly forget when I need them. My solution is a [[https://github.com/zzamboni/dot-doom/blob/main/cheatsheet.org][personal cheat sheet]]: short tables of tasks, keybindings, and command names for blogging, inserting images, and working with Org subtrees.
+
+The source belongs in Org mode, where I can edit it while using the tools it describes. I also want a readable PDF that I can keep open beside Emacs. The first version used Org's LaTeX exporter; I recently switched it to [[https://typst.app/][Typst]] using [[https://github.com/jmpunkt/ox-typst][ox-typst]].
+
+**** Keep the source ordinary
+
+Most of the file is still headings, short explanations, and three-column Org tables. For example:
+
+#+begin_src org
+| Action                | Shortcut | Command                  |
+|-----------------------+----------+--------------------------|
+| Narrow to one subtree | C-x n s  | org-narrow-to-subtree     |
+| Restore entire buffer | C-x n w  | widen                    |
+#+end_src
+
+I include command names because some shortcuts are specific to [[/post/my-doom-emacs-configuration-with-commentary/][my configuration]]. The PDF should help me remember what a binding does, and the Org source should remain useful when read directly on GitHub.
+
+The presentation settings live at the top of the same file, so I can change the layout without rewriting the reference material.
+
+**** Exporting through ox-typst
+
+In my literate Doom configuration I install and load the exporter:
+
+#+begin_src emacs-lisp
+;; Package declaration, tangled to packages.el:
+(package! ox-typst)
+
+;; Configuration, tangled to config.el:
+(use-package! ox-typst
+  :after org)
+#+end_src
+
+After changing package declarations I run =doom sync=. Typst itself also needs to be installed and available to Emacs. I can then run =M-x org-typst-export-to-pdf=. The exporter also registers a =y= prefix in Org's export dispatcher.
+
+The pipeline is straightforward: Org source becomes Typst source, which Typst compiles to PDF. I keep the Org source and the resulting [[https://github.com/zzamboni/dot-doom/blob/main/cheatsheet.pdf][PDF]] in the repository; generated =.typ= files are ignored.
+
+**** A small layout header
+
+I chose the [[https://typst.app/universe/package/cram-snap/][cram-snap]] package as the starting point for the layout, pinned to version =0.2.2=. My header sets A4 paper, margins, fonts, colors, and spacing. Here is a reduced example of the arrangement:
+
+#+begin_src org
+,#+options: toc:nil num:nil author:nil date:nil
+,#+typst_header: #import "@preview/cram-snap:0.2.2": cram-snap
+,#+typst_header: #set page(paper: "a4", margin: 14mm)
+,#+typst_header: #set text(font: "Source Sans 3", size: 10pt)
+,#+typst_header: #show: doc => context cram-snap(title: document.title, column-number: 1, doc)
+,#+typst_header: #show raw: set text(font: "Cascadia Code", size: 8.2pt)
+#+end_src
+
+The real header adds the color and spacing adjustments. In the exporter version I am using, the title becomes document metadata, so I explicitly pass =document.title= to the template to make it visible.
+
+The fonts need to be installed. Typst downloads the pinned package on first use and subsequently uses its cache. Pinning the package keeps a future export from silently picking up a different template release.
+
+**** Tables needed one extra step
+
+The main layout issue was the tables. In my export, =ox-typst= gave the three columns equal widths and represented the heading row as ordinary cells. That wastes space on short keybindings and leaves too little room for explanations.
+
+I added a Typst show rule that rebuilds those tables with widths of =23%=, =20%=, and =57%=, and wraps the first three cells in =table.header(repeat: true, ...)=. Expanded for readability, the rule looks like this:
+
+#+begin_src typst
+#show table: it => if it.children.first().func() == table.header {
+  it
+} else {
+  table(
+    columns: (23%, 20%, 57%),
+    inset: (x: 5pt, y: 3pt),
+    table.header(repeat: true, ..it.children.slice(0, 3)),
+    ..it.children.slice(3),
+  )
+}
+#+end_src
+
+In the Org file this is another =#+typst_header:= line. It is tailored to my uniform three-column tables; it would need adjusting before applying it to a document with different table shapes. The repeated header helps when a table crosses a page boundary.
+
+**** A reference I can keep updating
+
+There is still layout code to maintain, but it is concentrated in a short header. Adding a new command usually means adding a row to an Org table and exporting again.
+
+The [[https://github.com/zzamboni/dot-doom/blob/main/cheatsheet.org][complete source]] includes the details omitted here. For this small document, Org handles the writing and Typst handles the page layout, which is exactly the division of work I wanted.
 
 *** DONE How to easily create and use human-readable IDs in Org mode and Doom Emacs :doom:config:howto:
 CLOSED: [2020-12-06 Sun 10:20]
