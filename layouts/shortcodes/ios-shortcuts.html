@@ -1,0 +1,28 @@
+{{- /* A pair of iOS Shortcut links. Metadata is explicit because iCloud share pages do not provide a stable public metadata API. */ -}}
+<div class="ios-shortcuts" role="group" aria-label="Download iOS Shortcuts">
+  {{- range slice (dict "name" (.Get "firstName") "url" (.Get "firstUrl") "icon" (.Get "firstIcon") "color" (.Get "firstColor")) (dict "name" (.Get "secondName") "url" (.Get "secondUrl") "icon" (.Get "secondIcon") "color" (.Get "secondColor")) -}}
+  {{- $icon := .icon | default "link" -}}
+  {{- $color := .color | default "#6750ce" -}}
+  {{- if not (hasPrefix .url "https://www.icloud.com/shortcuts/") -}}
+    {{- errorf "ios-shortcuts shortcode: expected an iCloud Shortcuts URL, got %q" .url -}}
+  {{- end -}}
+  <a class="ios-shortcut" href="{{ .url | safeURL }}" target="_blank" rel="noopener noreferrer" aria-label="Get {{ .name }} iOS Shortcut">
+    <span class="ios-shortcut-icon" style="--shortcut-color: {{ $color | safeCSS }};" aria-hidden="true">
+      {{- if eq $icon "camera" -}}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg>{{- else -}}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7.1-7.1l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7.1 7.1l1.7-1.7"/></svg>{{- end -}}
+    </span>
+    <strong>{{ .name }}</strong>
+    <small>Get Shortcut ↗</small>
+  </a>
+  {{- end -}}
+</div>
+<style>
+.ios-shortcuts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.5rem 0}
+.ios-shortcut{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;padding:1.3rem .8rem;border:1px solid rgba(var(--color-neutral-400),.35);border-radius:.85rem;background:rgba(var(--color-neutral-200),.16);text-decoration:none!important;color:inherit!important;transition:transform .15s,border-color .15s,background .15s}
+.ios-shortcut:hover{transform:translateY(-2px);border-color:rgb(var(--color-primary-500));background:rgba(var(--color-primary-500),.08)}
+.ios-shortcut:focus-visible{outline:3px solid rgb(var(--color-primary-500));outline-offset:3px}
+.ios-shortcut-icon{display:grid;place-items:center;width:3.5rem;height:3.5rem;border-radius:.85rem;background:var(--shortcut-color);color:white}
+.ios-shortcut-icon svg{width:2rem;height:2rem}
+.ios-shortcut strong{font-size:1rem;text-align:center}
+.ios-shortcut small{font-size:.8rem;opacity:.75}
+@media(max-width:420px){.ios-shortcuts{gap:.6rem}.ios-shortcut{padding:1rem .4rem}}
+</style>
