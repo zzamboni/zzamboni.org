@@ -157,3 +157,41 @@ repeated clicks while a build is running; cancelling the GitHub run cannot cance
 a request already sent to Netlify. No automatic POST retries are made.
 
 See the [Pages CMS actions documentation](https://pagescms.org/docs/configuration/actions/).
+
+## On-demand staging builds
+
+The staging Netlify project uses `NETLIFY_ON_DEMAND=true` in its build
+environment. Like the draft project, ordinary Git-triggered builds are skipped
+by `scripts/netlify-ignore.mjs`. Keep Netlify builds **Active**, not stopped,
+so the build hook can bypass the ignore check. Do not set
+`NETLIFY_FORCE_BUILD=true` persistently, since it takes precedence.
+
+Create a Netlify build hook on the **staging** project targeting the
+`staging` branch, and store its URL in the GitHub Actions repository secret
+`NETLIFY_STAGING_BUILD_HOOK`. Do not commit the hook URL. This is distinct
+from the draft site's hook and secret.
+
+The repository-level **Build staging site** Pages CMS action dispatches
+`.github/workflows/build-staging-site.yml` on **main** for reliable workflow
+discovery, even if the CMS is currently viewing another branch. The workflow
+checks that its own GitHub ref is main, then POSTs to the staging Netlify hook,
+which builds the latest committed **staging** branch. It does not build main,
+unsaved CMS changes, or unpushed local changes.
+
+Alternatively, use GitHub Actions > Build staging site > Run workflow,
+select **main**, and leave the optional payload blank. The payload is ignored;
+it cannot override the target branch. No checkout or GitHub token permissions
+are required. The workflow does not retry POST requests to avoid accidentally
+triggering multiple paid builds.
+
+A successful GitHub Actions run means Netlify accepted the build request,
+**not** that the deployment completed. Check the staging Netlify deploy log
+and the live staging URL after the run. Avoid repeated triggers while a
+build is in progress. Cancelling the workflow does not cancel a build already
+requested. Production continues to build automatically under its existing
+ignore rules; draft builds remain independently on-demand.
+
+To verify the configuration, push a staging-only change and confirm the
+ordinary Netlify build is skipped; then trigger **Build staging site** from
+Pages CMS or GitHub Actions and confirm the staging deployment updates.
+This verification intentionally consumes one staging build.
