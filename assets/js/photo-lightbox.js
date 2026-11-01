@@ -1,6 +1,7 @@
 (() => {
   if (typeof GLightbox !== 'function') return;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const groups = new Map();
   document.querySelectorAll('.photo-gallery, .lightbox-gallery').forEach(gallery => {
     if (gallery.classList.contains('lightbox-gallery')) {
       gallery.querySelectorAll('figure').forEach(figure => {
@@ -23,6 +24,12 @@
       });
     }
     if (!links.length) return;
+    // Share navigation within an article; keep galleries elsewhere independent.
+    const scope = gallery.closest('.article-content') || gallery;
+    if (!groups.has(scope)) groups.set(scope, { gallery, links: [] });
+    groups.get(scope).links.push(...links);
+  });
+  groups.forEach(({ gallery, links }) => {
     let origin, counter;
     const lightbox = GLightbox({
       selector: null,

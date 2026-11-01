@@ -6,6 +6,13 @@ are loaded conditionally by `layouts/partials/extend-head-uncached.html`.
 Keep gallery images marked `nozoom` in rendered HTML so Blowfish's regular
 image zoom does not attach before GLightbox initializes.
 
+All photo/shortcode galleries within one `.article-content` share a single
+GLightbox viewer, in document order. Clicking an image opens its position in
+the combined list; navigation, looping and the counter span gallery boundaries.
+Closing restores focus to the image originally clicked. Gallery layout is
+unchanged, and standalone images outside galleries are not included. Galleries
+outside an article remain independent.
+
 ## Images linking to pages
 
 The local `figure` shortcode accepts ox-hugo's `link` parameter as an alias
