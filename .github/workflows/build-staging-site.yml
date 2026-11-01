@@ -1,0 +1,51 @@
+name: Build staging site
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: "Pages CMS action payload (optional for manual runs)"
+        required: false
+        type: string
+
+permissions: {}
+
+jobs:
+  request-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Request Netlify staging build
+        env:
+          NETLIFY_STAGING_BUILD_HOOK: ${{ secrets.NETLIFY_STAGING_BUILD_HOOK }}
+        shell: bash
+        run: |
+          if [[ "$GITHUB_REF" != "refs/heads/main" ]]; then
+            echo "::error::Run this workflow from main; the staging hook builds staging."
+            exit 1
+          fi
+          if [[ ! "$NETLIFY_STAGING_BUILD_HOOK" =~ ^https://api\.netlify\.com/build_hooks/[a-zA-Z0-9_-]+$ ]]; then
+            echo "::error::Set NETLIFY_STAGING_BUILD_HOOK to the staging project's Netlify build hook URL."
+            exit 1
+          fi
+          # Do not retry POSTs: an uncertain response could queue duplicate builds.
+          status=$(curl --silent --output /dev/null --write-out '%{http_code}' \
+            --connect-timeout 10 --max-time 30 \
+            --request POST --header 'Content-Type: application/json' --data '{}' \
+            "$NETLIFY_STAGING_BUILD_HOOK")
+          if [[ "$status" != 2?? ]]; then
+            echo "::error::Netlify rejected the staging build request (HTTP $status)."
+            exit 1
+          fi
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ## Staging build requested
+
+          Netlify accepted a request to build the latest committed content on **staging**.
+          This workflow runs from **main** for Pages CMS compatibility, but the Netlify hook targets staging.
+          Success here does not confirm deployment completion.
+
+          - [Check Netlify deployment status](https://app.netlify.com/projects/staging-zzamboni/deploys)
+          - [Open staging](https://staging--zzamboni.netlify.app) (previous version until deployment finishes)
+
+          Cancelling this workflow does not cancel an already requested Netlify build.
+          EOF
