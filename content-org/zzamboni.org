@@ -4,11 +4,13 @@
 #+options: creator:t
 #+property: header-args :eval never-export
 #+hugo_front_matter_key_replace: description>summary
-#+hugo_paired_shortcodes: tip warning note gallery
+#+hugo_paired_shortcodes: tip warning note gallery feature-grid
 
 #+macro: updatetime {{{time(%B %e\, %Y)}}}
 #+macro: leanpubbook #+hugo: {{< leanpubbook book="$1" $2 >}}
 #+macro: icon @@hugo:{{< icon $1 >}}@@
+#+macro: feature @@hugo:{{< feature icon="$1" title="$2" url="$3" label="$4" />}}@@
+#+macro: shortcut @@hugo:{{< feature icon="$1" title="$2" url="https://www.icloud.com/shortcuts/$3" label="Get Shortcut" />}}@@
 
 # The zz/* functions used in the macros are defined in my Emacs configuration:
 # https://github.com/zzamboni/dot-emacs/blob/master/init.org
@@ -4258,12 +4260,10 @@ I described the arrangement in [[#using-pages-cms-alongside-org-mode-and-hugo][U
 
 For links and photos, I wanted an even easier path, since these are things I most likely want to post on the fly from my phone, so it needs to be extremely low-friction. For this I developed a couple of specialized iOS Shortcuts paired with corresponding server-side functionality (in the form of [[https://docs.netlify.com/build/functions/overview/][Netlify Functions]]) that collect the shared URL or images, ask for a little context, and create the files in GitHub.
 
-#+begin_export hugo
-{{< feature-grid columns="3" >}}
-{{< feature icon="link" title="Post Link" url="https://www.icloud.com/shortcuts/cad708218dd348598a43ba394e7f75b5" label="Get Shortcut" />}}
-{{< feature icon="image" title="Post Photos" url="https://www.icloud.com/shortcuts/437c4651085e42da9b465c3f0d2857da" label="Get Shortcut" />}}
-{{< /feature-grid >}}
-#+end_export
+#+begin_feature-grid
+{{{shortcut(link,Post Link,cad708218dd348598a43ba394e7f75b5)}}}
+{{{shortcut(image,Post Photos,437c4651085e42da9b465c3f0d2857da)}}}
+#+end_feature-grid
 
 Both links and photos enter the same Hugo content model, but I give them different presentations: compact entries for links, and galleries with a lightbox for photos. The [[/][homepage]] has a separate recent-photo column, and I've created a separate [[/tags/photos/][Photos]] link in the top menu, separate from the [[/post/][Blog]] listing and [[/archive/][Archive]].
 

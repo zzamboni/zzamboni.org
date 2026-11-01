@@ -52,7 +52,7 @@ I described the arrangement in [Using Pages CMS alongside Org mode and Hugo]({{<
 
 For links and photos, I wanted an even easier path, since these are things I most likely want to post on the fly from my phone, so it needs to be extremely low-friction. For this I developed a couple of specialized iOS Shortcuts paired with corresponding server-side functionality (in the form of [Netlify Functions](https://docs.netlify.com/build/functions/overview/)) that collect the shared URL or images, ask for a little context, and create the files in GitHub.
 
-{{< feature-grid columns="3" >}}
+{{< feature-grid >}}
 {{< feature icon="link" title="Post Link" url="https://www.icloud.com/shortcuts/cad708218dd348598a43ba394e7f75b5" label="Get Shortcut" />}}
 {{< feature icon="image" title="Post Photos" url="https://www.icloud.com/shortcuts/437c4651085e42da9b465c3f0d2857da" label="Get Shortcut" />}}
 {{< /feature-grid >}}
