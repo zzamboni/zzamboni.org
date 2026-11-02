@@ -9,7 +9,7 @@ summary = """
 date = 2018-10-16T21:22:00+02:00
 tags = ["hammerspoon", "mac", "howto", "books", "announcements"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
 toc = false
 featureimage = "img/hammerspoon.jpg"
 +++

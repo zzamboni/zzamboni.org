@@ -5,7 +5,7 @@ summary = "I switched from my hand-crafted Emacs config to Doom Emacs some time 
 date = 2020-10-19T09:07:00+02:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs", "doom"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
 featureimage = "img/doom-emacs-color.jpg"
 toc = true
 series = ["Literate Config Files"]
@@ -14,7 +14,7 @@ series_order = 1
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **April 12, 2026**
+Last update: **November  2, 2026**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -244,7 +244,7 @@ This code is written to the `init.el` to select which modules to load. Written h
  :ui
  ;;deft                ; notational velocity for Emacs
  doom                  ; what makes DOOM look the way it does
- doom-dashboard        ; a nifty splash screen for Emacs
+ dashboard        ; a nifty splash screen for Emacs
  ;;doom-quit           ; DOOM quit-message prompts when you quit Emacs
  ;;fill-column         ; a `fill-column' indicator
  hl-todo               ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
@@ -362,7 +362,7 @@ This code is written to the `init.el` to select which modules to load. Written h
  ;;nix                 ; I hereby declare "nix geht mehr!"
  ;;ocaml               ; an objective camel
  (org +pretty +journal ;-dragndrop
-      +hugo +roam +pandoc
+      +roam
       +present)        ; organize your plain life in plain text
  ;;php                 ; perl's insecure younger brother
  plantuml              ; diagrams for confusing people more
@@ -487,7 +487,7 @@ You can find other splash images at the [jeetelongname/doom-banners](https://git
 I eliminate all but the first two items in the dashboard menu, since those are the only ones I still use sometimes.
 
 ```emacs-lisp
-(setq +doom-dashboard-menu-sections (cl-subseq +doom-dashboard-menu-sections 0 2))
+;(setq +doom-dashboard-menu-sections (cl-subseq +doom-dashboard-menu-sections 0 2))
 ```
 
 Set base and variable-pitch fonts. I currently like [Fira Code](https://github.com/tonsky/FiraCode) and [Alegreya](https://www.huertatipografica.com/en/fonts/alegreya-ht-pro) (another favorite and my previous choice: [ET Book](https://edwardtufte.github.io/et-book/)).
@@ -844,11 +844,9 @@ Disable [electric-mode](https://code.orgmode.org/bzg/org-mode/src/master/etc/ORG
 I really dislike completion of words as I type prose (in code it's OK), so I disable it in Org and Markdown modes.
 
 ```emacs-lisp
-(defun zz/adjust-org-company-backends ()
-  (remove-hook 'after-change-major-mode-hook '+company-init-backends-h)
-  (setq-local company-backends nil))
-(add-hook! org-mode (zz/adjust-org-company-backends))
-(add-hook! markdown-mode (zz/adjust-org-company-backends))
+;; Disable automatic Company completion in prose modes.
+(after! company
+  (setq company-global-modes '(not org-mode markdown-mode)))
 ```
 
 
@@ -924,88 +922,144 @@ Configure attachments to be stored together with their Org document.
 
 ### Capturing images {#capturing-images}
 
-Using `org-download` to make it easier to insert images into my org notes and blog posts. I don't like the configuration provided by Doom as part of the `(org +dragndrop)` module, so I install the package by hand and configure it to my liking.
+I've moved to native Emacs/Org functionality, using `org-attach` and `org-yank` instead of `org-download` and custom functions (see the next section). This considerably reduces the amount of custom code and configuration needed.
 
 ```emacs-lisp
-(package! org-download)
+(after! org
+  (setq org-attach-use-inheritance t            ;; Inherit ID from higher headings, that way I can have a single ID per blog post
+        org-attach-preferred-new-method 'id     ;; Create a new ID when needed
+        org-attach-auto-tag nil                 ;; Do not add the ATTACH tag to headings
+        org-yank-dnd-method 'attach             ;; Attach by default without asking for drag-and-drop
+        org-yank-image-file-name-function 'org-yank-image-read-filename   ;; Ask for filename when attaching something
+        org-image-actual-width nil              ;; Flexible image width, with a...
+        org-image-max-width 300                 ;; ...maximum for inlined images in org buffers
+  ))
 ```
 
-```emacs-lisp
-(after! org-download
-  (setq org-download-method 'directory)
-  (setq org-download-image-dir "images")
-  (setq org-download-heading-lvl nil)
-  (setq org-download-timestamp "%Y%m%d-%H%M%S_")
-  (setq org-image-actual-width 300))
-(require 'org-download)
-```
-
-`org-download` implements all the basic machinery for downloading/copying and inserting an image in an org-mode file. However the user experience can be improved. I implemented two wrappers to fit my main use cases:
-
--   Pasting images from the clipboard;
--   Inserting images already in my laptop;
--   Images must be inserted as links to themselves.
-
-The first function `zz/org-paste-clipboard` inserts an image from the clipboard using `org-download-clipboard`, but asking for the filename to use for storing it.
+Create and map a "smart yank" function which does the right thing, calling `org-yank` or `yank-media` depending on the contents of the clipboard.
 
 ```emacs-lisp
-(defun zz/org-paste-clipboard (&optional use-default-filename)
+(defun zz/org-smart-yank (&optional arg)
+  "Yank normally, or use `yank-media' for clipboard images."
   (interactive "P")
-  (require 'org-download)
-  (let ((file
-         (if (not use-default-filename)
-             (read-string (format "Filename [%s]: "
-                                  org-download-screenshot-basename)
-                          nil nil org-download-screenshot-basename)
-           nil)))
-    (org-download-clipboard file)))
+  (let ((targets (and (display-graphic-p)
+                      (gui-get-selection 'CLIPBOARD 'TARGETS))))
+    (if (and (not arg)
+             (seq-some
+              (lambda (type)
+                (string-match-p
+                 "^image/\\(png\\|jpeg\\|webp\\|gif\\)$"
+                 (format "%s" type)))
+              (append targets nil)))
+        (yank-media)
+      (org-yank arg))))
+
+(after! org
+  (map! :map org-mode-map
+        "C-y" #'zz/org-smart-yank))
 ```
 
-The second function `zz/org-attach-file` allows me to choose a file to attach. The file is copied with the same name to the `org-download-image-dir` directory. If the chosen image is already from that directory, it only inserts the link without copying the file again.
+Wrap the function that prompts the filename when yanking an image to prepend a timestamp. Disabled for now since plain filenames work well when the attachments are partitioned by heading.
 
 ```emacs-lisp
-(defun zz/org-attach-file (&optional file)
-  (interactive (list (read-file-name "File to insert: "
-                                (or (progn
-                                      (require 'dired-aux)
-                                      (dired-dwim-target-directory))
-                                    default-directory))))
-  (require 'org-download)
-  (if (file-in-directory-p file org-download-image-dir)
-      (org-download-insert-link (concat "file:" (file-relative-name file (org-attach-dir))) file)
-      (let ((file-url (concat "file://" file)))
-        (org-download-image file-url))))
+(defun zz/org-yank-image-timestamped-filename ()
+  "Prompt for an image filename and prepend a timestamp."
+  (concat (format-time-string "%Y%m%d-%H%M%S_")
+          (org-yank-image-read-filename)))
+
+(after! org
+  (setq org-yank-image-file-name-function
+        #'zz/org-yank-image-timestamped-filename))
 ```
 
-I create keybindings for the two functions above.
+<!--list-separator-->
 
-```emacs-lisp
-(map! :map org-mode-map
-        "C-c l a y" #'zz/org-paste-clipboard
-        "C-M-y" #'zz/org-paste-clipboard
-        "C-c l a z" #'zz/org-attach-file
-        "C-M-z" #'zz/org-attach-file)
-```
+-  Capturing images using `org-download` (unused)
 
-Finally, I like the images to be links to the image itself, so that in blog posts, for example, a thumbnail is shown, and clicking on it takes you to the full image. To this effect I define a variant of `org-download-link-format-function` which does this, and assign it to `org-download-link-format-function`.
+    I was using `org-download` for a long time to insert images into my org notes and blog posts. I have now replaced it with the native functionality, so I'm keeping the config below disabled for now, only as referene.
 
-```emacs-lisp
-(defun zz/org-download-link-format-function-link-to-file (filename)
-  "Insert the file as a link to itself."
-  (if (and (>= (string-to-number org-version) 9.3)
-           (eq org-download-method 'attach))
-      ;; Respect the default behavior if org-download-method is 'attach
-      (format "[[attachment:%s]]\n"
-              (org-link-escape
-               (file-relative-name filename (org-attach-dir))))
-    (let ((formatted-filename (org-link-escape
-                               (funcall org-download-abbreviate-filename-function filename))))
-      ;; Here we use the correct link format so that the image is a link to itself
-      (format "[[file:%s][file:%s]]\n"
-             formatted-filename formatted-filename))))
+    I don't like the configuration provided by Doom as part of the `(org +dragndrop)` module, so I install the package by hand and configure it to my liking.
 
-(setq! org-download-link-format-function #'zz/org-download-link-format-function-link-to-file)
-```
+    ```emacs-lisp
+    (package! org-download)
+    ```
+
+    ```emacs-lisp
+    (after! org-download
+      (setq org-download-method 'directory)
+      (setq org-download-image-dir "images")
+      (setq org-download-heading-lvl nil)
+      (setq org-download-timestamp "%Y%m%d-%H%M%S_")
+      (setq org-image-actual-width 300))
+    (require 'org-download)
+    ```
+
+    `org-download` implements all the basic machinery for downloading/copying and inserting an image in an org-mode file. However the user experience can be improved. I implemented two wrappers to fit my main use cases:
+
+    -   Pasting images from the clipboard;
+    -   Inserting images already in my laptop;
+    -   Images must be inserted as links to themselves.
+
+    The first function `zz/org-paste-clipboard` inserts an image from the clipboard using `org-download-clipboard`, but asking for the filename to use for storing it.
+
+    ```emacs-lisp
+    (defun zz/org-paste-clipboard (&optional use-default-filename)
+      (interactive "P")
+      (require 'org-download)
+      (let ((file
+             (if (not use-default-filename)
+                 (read-string (format "Filename [%s]: "
+                                      org-download-screenshot-basename)
+                              nil nil org-download-screenshot-basename)
+               nil)))
+        (org-download-clipboard file)))
+    ```
+
+    The second function `zz/org-attach-file` allows me to choose a file to attach. The file is copied with the same name to the `org-download-image-dir` directory. If the chosen image is already from that directory, it only inserts the link without copying the file again.
+
+    ```emacs-lisp
+    (defun zz/org-attach-file (&optional file)
+      (interactive (list (read-file-name "File to insert: "
+                                    (or (progn
+                                          (require 'dired-aux)
+                                          (dired-dwim-target-directory))
+                                        default-directory))))
+      (require 'org-download)
+      (if (file-in-directory-p file org-download-image-dir)
+          (org-download-insert-link (concat "file:" (file-relative-name file (org-attach-dir))) file)
+          (let ((file-url (concat "file://" file)))
+            (org-download-image file-url))))
+    ```
+
+    I create keybindings for the two functions above.
+
+    ```emacs-lisp
+    (map! :map org-mode-map
+            "C-c l a y" #'zz/org-paste-clipboard
+            "C-M-y" #'zz/org-paste-clipboard
+            "C-c l a z" #'zz/org-attach-file
+            "C-M-z" #'zz/org-attach-file)
+    ```
+
+    Finally, I like the images to be links to the image itself, so that in blog posts, for example, a thumbnail is shown, and clicking on it takes you to the full image. To this effect I define a variant of `org-download-link-format-function` which does this, and assign it to `org-download-link-format-function`.
+
+    ```emacs-lisp
+    (defun zz/org-download-link-format-function-link-to-file (filename)
+      "Insert the file as a link to itself."
+      (if (and (>= (string-to-number org-version) 9.3)
+               (eq org-download-method 'attach))
+          ;; Respect the default behavior if org-download-method is 'attach
+          (format "[[attachment:%s]]\n"
+                  (org-link-escape
+                   (file-relative-name filename (org-attach-dir))))
+        (let ((formatted-filename (org-link-escape
+                                   (funcall org-download-abbreviate-filename-function filename))))
+          ;; Here we use the correct link format so that the image is a link to itself
+          (format "[[file:%s][file:%s]]\n"
+                 formatted-filename formatted-filename))))
+
+    (setq! org-download-link-format-function #'zz/org-download-link-format-function-link-to-file)
+    ```
 
 
 ### Capturing links {#capturing-links}
@@ -1257,6 +1311,109 @@ I set up an advice before `org-capture` to make sure `org-gtd` and `org-capture`
 ```
 
 
+### Export menu {#export-menu}
+
+Hide the Org and iCalendar entries from `C-c C-e` without disabling their
+exporters. Other packages can still use them, and their export commands remain
+available through `M-x`.
+
+Defer expansion of `setf` as well as its execution: Org defines this structure's
+setter in `ox`, which may not be loaded when Emacs expands the deferred callbacks
+during startup.
+
+```emacs-lisp
+(after! ox-org
+  (eval '(setf (org-export-backend-menu
+                (org-export-get-backend 'org))
+               nil)))
+
+(after! ox-icalendar
+  (eval '(setf (org-export-backend-menu
+                (org-export-get-backend 'icalendar))
+               nil)))
+
+(after! ox-odt
+  (eval '(setf (org-export-backend-menu
+                (org-export-get-backend 'odt))
+               nil)))
+
+```
+
+
+#### Export with Transient {#export-with-transient}
+
+`C-c e` opens a compact export menu (`M-x zz/org-export-menu`). Toggle
+subtree, visible-only, and body-only output before choosing a document exporter.
+Hugo actions use their own post/all-posts scope and ignore these toggles.
+`C-c C-e` remains the standard dispatcher; `e` also opens it from this menu.
+
+```emacs-lisp
+(after! transient
+  (defun zz/org-export-run (format &optional open)
+    "Export FORMAT with this menu's options, optionally OPEN the result."
+    (let* ((args (transient-args 'zz/org-export-menu))
+           (subtree (and (member "--subtree" args) t))
+           (visible (and (member "--visible" args) t))
+           (body (and (member "--body" args) t))
+           (backend (pcase format
+                      ('typst 'ox-typst) ('latex 'ox-latex) ('html 'ox-html)))
+           (command (pcase format
+                      ('typst #'org-typst-export-to-pdf)
+                      ('latex #'org-latex-export-to-pdf)
+                      ('html #'org-html-export-to-html))))
+      (require backend)
+      (let ((file (funcall command nil subtree visible body)))
+        (when (and open file) (org-open-file file)))))
+
+  (transient-define-prefix zz/org-export-menu ()
+    "Export this Org document or Hugo post."
+    ["Document options"
+     ("-s" "Subtree only" "--subtree")
+     ("-v" "Visible only" "--visible")
+     ("-b" "Body only" "--body")]
+    [["Documents"
+      ("y" "Typst PDF" (lambda () (interactive) (zz/org-export-run 'typst)))
+      ("Y" "Typst PDF and open" (lambda () (interactive) (zz/org-export-run 'typst t)))
+      ("l" "LaTeX PDF" (lambda () (interactive) (zz/org-export-run 'latex)))
+      ("h" "HTML" (lambda () (interactive) (zz/org-export-run 'html)))]
+     ["Hugo (own scope)"
+      ("H" "Current post" (lambda () (interactive)
+                            (require 'ox-hugo) (org-hugo-export-wim-to-md)))
+      ("A" "All posts" (lambda () (interactive)
+                         (require 'ox-hugo) (org-hugo-export-wim-to-md t)))]
+     ["Other"
+      ("e" "Standard dispatcher" org-export-dispatch)
+      ("q" "Quit" transient-quit-one)]]))
+
+;; Doom's leader map takes precedence over major-mode bindings for C-c e.
+;; Dispatch by mode so evaluation remains available outside Org buffers.
+(defun zz/org-export-or-eval ()
+  "Open the export menu in Org, otherwise evaluate the line or region."
+  (interactive)
+  (if (derived-mode-p 'org-mode)
+      (progn (require 'transient) (zz/org-export-menu))
+    (call-interactively #'+eval/line-or-region)))
+
+(map! :leader :desc "Export (Org) / evaluate" "e" #'zz/org-export-or-eval)
+```
+
+
+### Exporting to PDF {#exporting-to-pdf}
+
+Use `tectonic` for Org's LaTeX-to-PDF compilation (`C-c C-e l p`, or
+`C-c C-e l o` to also open the PDF). Tectonic must be available on Emacs'
+`exec-path`; it downloads missing TeX resources on demand and handles reruns
+automatically. Select `xelatex` for Org's engine-specific LaTeX output because
+Tectonic uses an XeTeX-based engine.
+
+```emacs-lisp
+(after! ox-latex
+  (setq org-latex-compiler "xelatex"
+        org-latex-pdf-process
+        '("tectonic --keep-logs --outdir %o %f")))
+```
+
+
 ### Exporting a Curriculum Vitae {#exporting-a-curriculum-vitae}
 
 I use `ox-awesomecv` from [Org-CV](https://titan-c.gitlab.io/org-cv/), to export my [Curriculum Vit&aelig;](https://github.com/zzamboni/vita/).
@@ -1303,19 +1460,20 @@ When I decided to use org-mode to write my books, I looked around for existing m
 
 Building upon these, I developed a new `ox-leanpub` package which you can find in MELPA (source at <https://github.com/zzamboni/ox-leanpub>), and which I load and configure below.
 
-The `ox-leanpub` module sets up Markua export automatically. I add the code for setting up the Markdown exporter too (I don't use it, but just to keep an eye on any breakage):
-
 ```emacs-lisp
 (package! ox-leanpub
   :recipe (:local-repo "~/Dropbox/Personal/devel/emacs/ox-leanpub"))
 ```
 
+The `ox-leanpub` module sets up Markua export automatically. The code below (disabled) sets up the Markdown exporter too (I don't use it, but just as reference).
+
 ```emacs-lisp
 (use-package! ox-leanpub
   :after org
-  :config
-  (require 'ox-leanpub-markdown)
-  (org-leanpub-book-setup-menu-markdown))
+  ;;:config
+  ;;(require 'ox-leanpub-markdown)
+  ;;(org-leanpub-book-setup-menu-markdown)
+)
 ```
 
 I highly recommend using Markua rather than Markdown, as it is the format that Leanpub is guaranteed to support in the future, and where most of the new features are being developed.
@@ -1332,28 +1490,37 @@ If you are interested in learning more about publishing to Leanpub with Org-mode
 -   Parsing is done by org-mode natively, not by an external library. Although goorgeous (used by Hugo) is very good, it still lacks in many areas, which leads to text being interpreted differently as by org-mode.
 -   Hugo is left to parse a native Markdown file, which means that many of its features such as shortcodes, TOC generation, etc., can still be used on the generated file.
 
-Doom Emacs includes and configures `ox-hugo` as part of its `(:lang org +hugo)` module, so all that's left is to configure some parameters to my liking.
+The current Doom Org module no longer installs `ox-hugo` through the old
+`+hugo` flag, so install it explicitly and load it with the export framework.
+
+```emacs-lisp
+(package! ox-hugo)
+```
 
 I set `org-hugo-use-code-for-kbd` so that I can apply a custom style to keyboard bindings in my blog.
 
 ```emacs-lisp
-(after! ox-hugo
+(use-package! ox-hugo
+  :after ox
+  :config
   (setq org-hugo-use-code-for-kbd t))
 ```
 
-Define an `org-capture` template to create a new blog post skeleton automatically. Based on <https://ox-hugo.scripter.co/doc/org-capture-setup/>, with some customizations for my blog's setup (like a default value for `:featured_image`). I also add `:jump-to-captured t` in the `org-capture-templates` definition so that when I create a new blog post snippet, I get automatically taken to that location so I can continue writing.
+Define an `org-capture` template to create a new blog post skeleton automatically. Based on <https://ox-hugo.scripter.co/doc/org-capture-setup/>, with some customizations for my blog's setup (like a default value for `:featured_image` and a section-level `ID`, so that all attachments within a blog post are stored together). I also add `:jump-to-captured t` in the `org-capture-templates` definition so that when I create a new blog post snippet, I get automatically taken to that location so I can continue writing.
 
 ```emacs-lisp
 (after! org-capture
   (defun org-hugo-new-subtree-post-capture-template ()
     "Returns `org-capture' template string for new Hugo post.
   See `org-capture-templates' for more information."
+    (require 'ox-hugo)
     (let* ((title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
            (fname (org-hugo-slug title)))
       (mapconcat #'identity
                  `(
                    ,(concat "* TODO " title)
                    ":PROPERTIES:"
+                   ,(concat ":ID: " (org-id-new))
                    ,(concat ":export_hugo_bundle: " (format-time-string "%Y-%m-%d-") fname)
                    ":export_file_name: index"
                    ,(concat ":custom_id: " fname)
@@ -1554,7 +1721,7 @@ end repeat\"")))
 
 ### Other exporters {#other-exporters}
 
-[ox-jira](https://github.com/stig/ox-jira.el) to export in Jira markup format.
+[ox-jira](https://github.com/stig/ox-jira.el) to export in Jira markup format (disabled).
 
 ```emacs-lisp
 (package! ox-jira)
@@ -1586,6 +1753,17 @@ end repeat\"")))
 (use-package! org-special-block-extras
   :after org
   :hook (org-mode . org-special-block-extras-mode))
+```
+
+[ox-typst](https://github.com/jmpunkt/ox-typst) to export to Typst.
+
+```emacs-lisp
+(package! ox-typst)
+```
+
+```emacs-lisp
+(use-package! ox-typst
+  :after org)
 ```
 
 
@@ -1712,13 +1890,17 @@ Some other languages I use.
       :mode ("\\.cf\\'" . cfengine3-mode))
     ```
 
--   [Graphviz](https://graphviz.org/) for graph generation.
+-   [Graphviz](https://graphviz.org/) and [d2](https://github.com/andorsk/d2-mode) for graph generation.
     ```emacs-lisp
     ;(package! graphviz-dot-mode)
+    (package! d2-mode)
     ```
 
     ```emacs-lisp
     ;(use-package! graphviz-dot-mode)
+    (use-package! d2-mode)
+    (after! d2-mode
+      (setq d2-tmp-dir "."))
     ```
 
 -   I am learning [Common LISP](http://www.gigamonkeys.com/book/), which is well supported through the `common-lisp` Doom module, but I need to configure this in the `~/.slynkrc` file for I/O in the Sly REPL to work fine ([source](https://github.com/joaotavora/sly/issues/347#issuecomment-717065056)).

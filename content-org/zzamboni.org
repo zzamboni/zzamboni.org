@@ -38,6 +38,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#my-online-past][My online past]]
     - [[#image-attributions][Image attributions]]
   - [[#curriculum-vitae][Curriculum Vitae]]
+    - [[#curriculum-vitae-1][Curriculum Vitae]]
     - [[#publications][Publications]]
   - [[#contact][Contact]]
   - [[#books-section][Books section]]
@@ -60,6 +61,8 @@ This file is the source for all new and updated content on [[http://zzamboni.org
   - [[#how-to-set-up-copyq-in-eos-with-wayland][How to set up CopyQ in eOS with Wayland]]
   - [[#networking-related-setup][Networking-related setup]]
 - [[#posts][Posts]]
+  - [[#blog][Blog]]
+    - [[#all-posts][All posts]]
   - [[#literate-config-files][Literate config files]]
     - [[#my-doom-emacs-configuration-with-commentary][My Doom Emacs configuration, with commentary]]
     - [[#my-emacs-configuration-with-commentary][My Emacs Configuration, With Commentary]]
@@ -167,14 +170,21 @@ CLOSED: [2026-10-24 Sat 22:56]
 :PROPERTIES:
 :export_hugo_section: vita
 :export_hugo_custom_front_matter: :type jsonresume :layout cv :showDate false :showWordCount false :showReadingTime false :showAuthor false :showZenMode false :showTableOfContents true
+:END:
+
+*** Curriculum Vitae
+:PROPERTIES:
+:export_hugo_section: vita
 :export_file_name: _index
+:export_hugo_custom_front_matter: :type jsonresume :layout cv :showDate false :showWordCount false :showReadingTime false :showAuthor false :showZenMode false :showTableOfContents true
 :END:
 
 *** DONE Publications
 CLOSED: [2026-10-24 Sat 23:01]
 :PROPERTIES:
-:export_hugo_custom_front_matter: :type jsonresume :layout publications :showDate false :showWordCount false :showReadingTime false :showAuthor false :showZenMode false :showTableOfContents true
+:export_hugo_section: vita
 :export_file_name: publications
+:export_hugo_custom_front_matter: :type jsonresume :layout publications :showDate false :showWordCount false :showReadingTime false :showAuthor false :showZenMode false :showTableOfContents true
 :END:
 
 ** DONE Contact
@@ -468,6 +478,14 @@ Various network-related configuration tips for eOS.
 :END:
 
 Blog posts.
+
+** DONE Blog
+:PROPERTIES:
+:export_file_name: _index
+:export_hugo_custom_front_matter: :featureimage img/scrabble-trim1-lowres.jpg :aliases '(/blog /new/blog)'
+:END:
+
+*** All posts
 
 ** Literate config files    :config:howto:literateprogramming:literateconfig:
 
@@ -2690,7 +2708,15 @@ My repository contains a =netlify.toml= file which is used to configure some Hug
 
 I also keep an [[/tags/elvish/][Elvish]] script for automatically updating this file to the version of Hugo currently installed on my laptop. Whenever I update Hugo locally, I test my website using =hugo server=, and then run this to instruct Netlify to upgrade to the latest version as well:
 
-#+include: ../update-hugo.elv src elvish
+#+begin_src elvish
+#!/usr/bin/env elvish
+use re
+var hugo-ver = (put (re:find 'v([\d.]+)' (hugo version))[groups][1][text])
+sed -i'' 's/HUGO_VERSION = .*$/HUGO_VERSION ="'$hugo-ver'"/' netlify.toml
+git add netlify.toml
+git ci -m 'Updated Hugo version to '$hugo-ver
+git push
+#+end_src
 
 Finally, [[https://gohugo.io/content-management/urls/#aliases][Hugo aliases]] can be handled via [[https://docs.netlify.com/routing/redirects/][Netlify redirects]] by following the instructions from [[https://gohugo.io/news/http2-server-push-in-hugo/][this blog post]] to automatically populate the redirects configuration from the Hugo source files.
 
@@ -3079,16 +3105,15 @@ So, without further ado, here are the detailed instructions. I ran these on my M
   #+end_src
 
 6. Your blog is running! You can visit it at [[http://localhost:2368/]]:
+
   file:images/ghost-initial-screen.png
 
-7. Go to [[http://localhost:2368/ghost]], create your user and set up your blog info:
+7. Go to [[http://localhost:2368/ghost]], create your user and set up your blog info (use an email address you don't mind being public. See "[[#security-considerations][Security Considerations]]" below):
+
   file:images/ghost-setup-blog.png
 
-  #+begin_note
-     You may want to use an email address you don't mind being public. See "[[#security-considerations][Security Considerations]]" below.
-  #+end_note
-
 8. You can now start creating content  and configuring the local Ghost instance.
+
   file:images/ghost-admin-screen.png
 
 9. When you have things the way you like them, you can commit the changes to the git repository:
@@ -3146,9 +3171,11 @@ We can finally create our GitHub repo and push the contents to it.
 Now all we need to do is enable [[https://pages.github.com/][GitHub Pages]] on our repository, so that the contents under =docs= gets published.
 
 1. Go to your repository's "Settings" screen:
+
   file:images/ghost-repo-settings-screen.png
 
 2. Scroll down to the "GitHub Pages" section, choose the "master branch /docs folder" option and click the "Save" button:
+
   file:images/ghost-repo-github-pages-setting.png
 
 We are done! After a few minutes (usually takes 2-5 minutes for the contents to be published the first time, afterwards updates are nearly instantaneous), you will find your new website's content under =http://<github-username>.github.io/<github-repo-name>=. In our example, the URL is [[https://zzamboni.github.io/test-ghost-blog/]]:

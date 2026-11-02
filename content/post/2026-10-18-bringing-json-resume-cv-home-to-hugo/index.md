@@ -5,17 +5,17 @@ summary = "How I brought my JSON Resume CV and publications into Hugo, and extra
 date = 2026-10-18T00:00:00+02:00
 tags = ["jsonresume", "hugo", "blowfish", "cv", "blogging"]
 draft = true
+creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
 toc = true
 featureimage = "img/generated/2026-10-18-bringing-json-resume-cv-home-to-hugo.webp"
 +++
-
-<!-- Markdown preview exported from Org with Pandoc; edit the Org source. -->
 
 Earlier this year I wrote about [moving my CV from Org and LaTeX to JSON Resume]({{< relref "2026-02-10-porting-cv-to-jsonresume" >}}), and then about [extracting the build system into `resume-toolkit`]({{< relref "2026-03-27-from-personal-cv-pipeline-to-reusable-toolkit" >}}). That solved a problem I had wrestled with for years: keeping the content separate from how it is presented, while producing good-looking HTML and PDF versions of both my CV and publications.
 
 There was one slightly awkward detail left. The CV on [my website](/vita/) was still a separate, pre-rendered HTML page using the [Eventide](https://github.com/zzamboni/jsonresume-theme-eventide) theme. It looked good, but it did not quite belong to the rest of the site, which uses [Hugo](https://gohugo.io/) and the [Blowfish](https://blowfish.page/) theme. It had its own navigation and styling. I wanted the CV to feel like part of the website without losing the independence I had worked so hard to create.
 
-## One source, several presentations
+
+## One source, several presentations {#one-source-several-presentations}
 
 I deliberately **did not** replace the JSON Resume source with Hugo content. My CV data still lives in [`zzamboni/vita`](https://github.com/zzamboni/vita), along with the BibTeX files and images. [`resume-toolkit`](https://github.com/zzamboni/resume-toolkit) still generates the standalone HTML and the PDF documents, and Eventide is still useful independently of my website.
 
@@ -41,7 +41,8 @@ flowchart TD
   downloads -->|Static files linked&lt;br/&gt;from the pages| pages
 {{< /mermaid >}}
 
-## Let Hugo do the rendering
+
+## Let Hugo do the rendering {#let-hugo-do-the-rendering}
 
 Instead of copying the toolkit's generated `index.html` into `static/vita/`, I added native Hugo pages for [the CV](/vita/) and [the publications list](/vita/publications/). They use the site's Blowfish layout, header and footer. The module builds table-of-contents links from the JSON sections and uses Blowfish's presentation for them. Small Hugo templates render the sections and entries, and scoped CSS handles the details that are specific to a CV.
 
@@ -49,7 +50,8 @@ Those templates and styles initially lived in my website repository. They now li
 
 One pleasant benefit is that the CV no longer needs to pretend to be a different website. The same navigation and overall look that surround my posts now surround the CV as well.
 
-## A module instead of another copy of the templates
+
+## A module instead of another copy of the templates {#a-module-instead-of-another-copy-of-the-templates}
 
 Once the integration worked, the renderer no longer needed anything specific to my website. I extracted it into [`hugo-jsonresume`](https://github.com/zzamboni/hugo-jsonresume) so other sites can use it without copying templates and CSS from mine.
 
@@ -59,14 +61,14 @@ The table of contents is configurable at page and module level. In the Blowfish 
 
 For a site already using Blowfish and initialized for Hugo Modules, installation means adding an import to `config/_default/module.toml`, alongside any existing imports and mounts:
 
-``` toml
+```toml
 [[imports]]
 path = "github.com/zzamboni/hugo-jsonresume"
 ```
 
 Then resolve a reviewed commit and commit the resulting `go.mod` and `go.sum`:
 
-``` elvish
+```elvish
 hugo mod get github.com/zzamboni/hugo-jsonresume@COMMIT_SHA
 ```
 
@@ -74,7 +76,7 @@ hugo mod get github.com/zzamboni/hugo-jsonresume@COMMIT_SHA
 
 A page such as `content/cv/_index.md` selects the renderer through its front matter:
 
-``` toml
+```toml
 +++
 title = "Curriculum Vitae"
 type = "jsonresume"
@@ -86,14 +88,15 @@ The default inputs are `data/jsonresume/resume.json` and, optionally, `data/json
 
 There is also an `exampleSite/` using the fictional resume from Eventide's sample editor, which doubles as a development fixture. A separate `exampleGeneric/` demonstrates the generic integration without a theme. From the module repository's root, clone the tested Blowfish version once, then start the example:
 
-``` elvish
+```elvish
 git clone --depth 1 --branch v3.8.0 https://github.com/nunocoracao/blowfish.git exampleSite/themes/blowfish
 hugo server --source exampleSite
 ```
 
 The CV appears at `http://localhost:1313/cv/`. The example points back to the local module checkout, so it is useful for trying template and style changes before bringing them into my website.
 
-## The bibliography was the interesting part
+
+## The bibliography was the interesting part {#the-bibliography-was-the-interesting-part}
 
 The CV itself was relatively straightforward because JSON Resume is already structured data. Publications were more complicated. Their source is BibTeX, including LaTeX commands and braces that should not appear literally on a web page. I also wanted to keep the established grouping of books, papers, presentations, patents, and other work.
 
@@ -101,13 +104,15 @@ Initially, the Hugo page consumed an independently generated JSON snapshot, but 
 
 There is a useful boundary here: **resume-toolkit knows about BibTeX; Hugo knows about HTML pages**. Neither has to impersonate the other.
 
-## Little details that matter
 
-As usual, most of the remaining work was in the details. Relative PDF and BibTeX links needed to resolve under `/vita/publications/`, not under `/vita/`. The CV has special note entries such as "Full list online" and "See full list on Credly," whose titles are already links; treating them like ordinary entries produced redundant "view" links. We also adjusted the reusable templates to show affiliations and publishers and to avoid introducing a second HTML `main` landmark inside the site's existing one. Research reports now show the type together with the report number, such as "Research Report RZ 3609," and metadata separators only appear between populated fields.
+## Little details that matter {#little-details-that-matter}
+
+As usual, most of the remaining work was in the details. Relative PDF and BibTeX links needed to resolve under `/vita/publications/`, not under `/vita/`. The CV has special note entries such as “Full list online” and “See full list on Credly,” whose titles are already links; treating them like ordinary entries produced redundant “view” links. We also adjusted the reusable templates to show affiliations and publishers and to avoid introducing a second HTML `main` landmark inside the site's existing one. Research reports now show the type together with the report number, such as “Research Report RZ 3609,” and metadata separators only appear between populated fields.
 
 I also wanted certain navigation links to appear in the standalone Eventide version but not inside Hugo, where the site's navigation already provides them. A small, renderer-independent `role` field on the link, combined with Hugo's `excludeLinkRoles` setting, solved that without forcing website-specific behavior into the toolkit.
 
-## Where things stand
+
+## Where things stand {#where-things-stand}
 
 The native CV and publications pages are now in the site's main branch, while the PDFs and BibTeX downloads keep their established URLs. I'm pleased with the result not just because it looks more integrated, but because the underlying pieces remain separately useful: `resume-toolkit` produces the documents and normalized data, Eventide provides the standalone HTML presentation, and `hugo-jsonresume` brings the same data into Hugo, using Blowfish here and a generic integration when needed.
 

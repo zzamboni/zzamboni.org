@@ -5,7 +5,7 @@ summary = "In this second article about Hammerspoon, we look into _Spoons_, modu
 date = 2017-09-01T17:55:00+02:00
 tags = ["hammerspoon", "mac", "howto", "spoons"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
 toc = true
 featureimage = "img/hammerspoon.jpg"
 +++
@@ -21,7 +21,7 @@ As a first example, we will use the [MouseCircle](http://www.hammerspoon.org/Spo
 
 To install the spoon, download its zip file from <https://github.com/Hammerspoon/Spoons/raw/master/Spoons/MouseCircle.spoon.zip>, unpack it, and double-click on the resulting `MouseCircle.spoon` file.  Hammerspoon will install the Spoon under `~/.hammerspoon/Spoons/`.
 
-{{< figure src="images/mousecircle.png" >}}
+{{< figure src="mousecircle.png" >}}
 
 Once a Spoon is installed, you need to use the `hs.loadSpoon()` function to load it. Type the following in the Hammerspoon console, or add it to your `init.lua` file and reload the configuration:
 

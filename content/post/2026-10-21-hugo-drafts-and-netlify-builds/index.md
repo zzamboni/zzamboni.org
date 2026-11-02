@@ -5,16 +5,16 @@ summary = "How I separate content drafts from site experiments, preview drafts o
 date = 2026-10-21T12:01:00+02:00
 tags = ["blogging", "hugo", "netlify", "automation", "howto"]
 draft = true
+creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
 toc = true
 +++
 
-<!-- Markdown preview exported from Org with Pandoc; edit the Org source. -->
-
-Making it easier to post to my blog had an unexpected side effect: I started giving Netlify more work. A quick save, a generated summary, a fetched icon, a small correction---each could lead to another build. With production, draft, and staging sites, those little changes add up.
+Making it easier to post to my blog had an unexpected side effect: I started giving Netlify more work. A quick save, a generated summary, a fetched icon, a small correction—each could lead to another build. With production, draft, and staging sites, those little changes add up.
 
 I wanted to keep the convenience of Git-based deployment while being more selective about the work it triggers. The result combines three fairly ordinary ideas: distinguish drafts from experiments, request draft previews when I need them, and preserve Hugo's generated resources between builds.
 
-## Drafts belong with the content
+
+## Drafts belong with the content {#drafts-belong-with-the-content}
 
 I keep unfinished articles on `main`, marked as drafts. That means they share the real site's content history and can be edited through the same tools. Production excludes drafts; publishing an article means changing its state, not moving it from an experimental branch.
 
@@ -22,7 +22,8 @@ For Org posts, I use a `DRAFT` heading and let `ox-hugo` generate `draft = true`
 
 `staging` has a different job. I use it for changes to the site itself, such as a layout experiment or an adjustment to the publishing tools. Those changes get reviewed before I bring them to `main`.
 
-## Preview when I need to preview
+
+## Preview when I need to preview {#preview-when-i-need-to-preview}
 
 For local work, `mise run serve-drafts` is the quickest way to see unfinished articles. For checking from my phone, I also have a separate Netlify project that builds `main` with `BUILD_DRAFTS=true`.
 
@@ -32,7 +33,8 @@ There are two details that are easy to miss. The action builds saved content fro
 
 This is also not the same as stopping builds in Netlify. The draft project keeps builds active so its hook can run them; the ignore check suppresses ordinary automatic builds. A draft flag controls what Hugo publishes, not who can read the repository or a preview URL. I use this for unfinished public writing, not confidential notes.
 
-## Deciding whether a change needs a build
+
+## Deciding whether a change needs a build {#deciding-whether-a-change-needs-a-build}
 
 The [ignore script](https://github.com/zzamboni/zzamboni.org/blob/main/scripts/netlify-ignore.mjs) runs before dependency installation. It compares the current commit with Netlify's cached commit, rather than looking only at the most recent commit. That matters when several changes have accumulated since the last build.
 
@@ -52,7 +54,8 @@ I deliberately keep the policy conservative. It does not try to prove that every
 
 Netlify's ignore command convention is slightly surprising: exit status `0` means skip, and `1` means build. I have tests for that behavior, including publishing and unpublishing transitions. The [build guide](https://github.com/zzamboni/zzamboni.org/blob/main/docs/netlify-builds.md) has the exact rules and overrides.
 
-## Reuse the expensive work
+
+## Reuse the expensive work {#reuse-the-expensive-work}
 
 Avoiding builds is only half the story. I also enabled `netlify-plugin-hugo-cache-resources` in `netlify.toml` and pinned the package in `package.json`. It preserves Hugo's generated `resources/` directory between builds, including processed images.
 
@@ -60,7 +63,8 @@ In a small draft-site benchmark recorded in my build notes, the median Hugo step
 
 This cache is also separate from browser or CDN caching: it helps produce the site, rather than changing how visitors receive it. I keep the configuration and the measurements in the same build guide so I can revisit the assumptions later.
 
-## Less work between an edit and a page
+
+## Less work between an edit and a page {#less-work-between-an-edit-and-a-page}
 
 The result is a workflow I can mostly forget about. I save drafts without rebuilding everything, request a remote preview when I want one, and let published-content changes trigger the normal deployment. Local previews still handle most of the iteration.
 

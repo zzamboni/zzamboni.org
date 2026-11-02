@@ -5,7 +5,7 @@ summary = "This is the first installment of a series of posts about Hammerspoon,
 date = 2017-08-21T16:34:00+02:00
 tags = ["hammerspoon", "mac", "howto"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
 toc = true
 featureimage = "img/hammerspoon.jpg"
 +++
@@ -52,7 +52,7 @@ If you are automation-minded like me, you probably use [Homebrew](https://brew.s
 
 When you run Hammerspoon for the first time, you will see its icon appear in the menubar, and a notification telling you that it couldn't find a configuration file. Let's fix that!
 
-{{< figure src="images/hammerspoon-startup.png" >}}
+{{< figure src="hammerspoon-startup.png" >}}
 
 {{< tip >}}
 If you click on the initial notification, your web browser will open to the excellent [Getting Started with Hammerspoon](http://www.hammerspoon.org/go/) page, which I highly recommend you read for more examples.
@@ -73,7 +73,7 @@ Let us start with a few simple examples. As tradition mandates, we will start wi
 
 Save the file, and from the Hammerspoon icon in the menubar, select "Reload config". Apparently nothing will happen, but if you then press <kbd>Ctrl​-​⌘​-​Alt​-​h</kbd> on your keyboard, you will see a notification on your screen welcoming you to the world of Hammerspoon.
 
-{{< figure src="images/hammerspoon-hello-world.png" >}}
+{{< figure src="hammerspoon-hello-world.png" >}}
 
 Although it should be fairly self-explanatory, let us dissect this example to give you a clearer understanding of its components:
 

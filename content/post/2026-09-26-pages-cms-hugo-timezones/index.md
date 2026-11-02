@@ -5,7 +5,7 @@ summary = "The Pages CMS date field stores the right clock time but the wrong ti
 date = 2026-09-27T17:21:00+02:00
 tags = ["blogging", "hugo", "pagescms", "troubleshooting", "howto"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
 toc = false
 featureimage = "img/generated/2026-09-26-pages-cms-hugo-timezones.webp"
 +++
