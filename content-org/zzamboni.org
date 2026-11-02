@@ -4238,7 +4238,7 @@ CLOSED: [2026-11-02 Mon 14:16]
 :export_hugo_bundle: 2026-10-21-my-blogging-setup-in-2026
 :export_file_name: index
 :custom_id: my-blogging-setup-in-2026
-:export_hugo_custom_front_matter: :toc true
+:export_hugo_custom_front_matter: :toc true :featureimage img/generated/2026-10-21-my-blogging-setup-in-2026.webp
 :END:
 #+begin_description
 My updated blogging setup: Org mode for longer articles, Pages CMS and iPhone Shortcuts for quick posts, hugo-jsonresume for the CV, and Hugo, GitHub and Netlify to bring it all together.
