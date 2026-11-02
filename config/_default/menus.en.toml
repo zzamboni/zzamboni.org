@@ -13,7 +13,7 @@ weight = 15
 
 [[main]]
 name = "Links"
-url = "/tags/zznippets/"
+url = "/tags/linky/"
 weight = 17
 
 [[main]]
