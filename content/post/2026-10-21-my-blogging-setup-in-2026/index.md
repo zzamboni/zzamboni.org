@@ -97,9 +97,9 @@ My [original article]({{< relref "2020-12-11-my-blogging-setup-and-workflow" >}}
 
 ## A browser editor for the smaller things {#a-browser-editor-for-the-smaller-things}
 
-[Pages CMS](https://pagescms.org/) lets me edit posts through a browser, including on my phone. It adds and edits files directly  in my GitHub repository. Posts created with Pages CMS are stored in  `content-pagescms/` already in the format Hugo expects.
+This whole thing started by asking myself how to reduce friction for posting. I have found [Pages CMS](https://pagescms.org/) is perfect for this: it lets me edit posts through a browser, including on my phone. It adds and edits files directly  in my GitHub repository. Posts created with Pages CMS are stored in  `content-pagescms/` already in the format Hugo expects.
 
-The useful trick here is Hugo's module mounts, which allow different locations to be merged into the same folder when Hugo builds the site. With modules, the Org exports and the CMS files can live in different directories, but Hugo presents them as posts in the same section.
+The key trick here is [Hugo's module mounts](https://gohugo.io/configuration/module/#mounts), which allow different locations to be merged into the same folder when Hugo builds the site. With modules, the Org exports and the CMS files can live in different directories (which simplifies their management through different tools), but Hugo presents them as posts in the same section.
 
 I described the arrangement in [Using Pages CMS alongside Org mode and Hugo]({{< relref "2026-09-28-using-pagescms-alongside-org-and-hugo" >}}). It's also worth mentioning [the timezone problem]({{< relref "2026-09-26-pages-cms-hugo-timezones" >}}) I ran into due to a bug in Pages CMS's handling of timezone conversions.
 
@@ -121,7 +121,7 @@ For links and photos, I wanted an even simpler workflow. These are things I'm li
 {{< feature icon="image" title="Post Photos" url="https://www.icloud.com/shortcuts/437c4651085e42da9b465c3f0d2857da" label="Get Shortcut" />}}
 {{< /feature-grid >}}
 
-Both links and photos end up in the same Hugo content model, but I give them different presentations: compact entries for links, and galleries with a lightbox for photos. The [homepage](/) has a separate recent-photo column, and I've created a separate [Photos](/tags/photos/) link in the top menu, separate from the [Blog](/post/) listing and [Archive](/archive/).
+Both links and photos end up in the same Hugo content model, but I give them different presentations: compact entries for links, and galleries with a lightbox for photos. I configured my [homepage](/) with a separate recent-photo column, and I've created a separate [Photos](/tags/photos/) link in the top menu, separate from the [Blog](/post/) listing and [Archive](/archive/).
 
 The screenshots below show the complete process, from sharing a photo or link on my iPhone to seeing the resulting post on my website.
 
@@ -142,7 +142,7 @@ Both shortcuts default to creating drafts, but this can be configured. My upcomi
 
 My [Curriculum Vitae](/vita/) is another kind of content, with its own specialized source format: [JSON Resume](https://jsonresume.org/) (I wrote about its transformation at [Porting my CV from Org+LaTeX to JSON Resume]({{< relref "2026-02-10-porting-cv-to-jsonresume" >}})). I keep my experience, education, projects, and other CV information as structured data, alongside BibTeX sources for my publications. That lets me reuse the information across my website and downloadable documents without maintaining each version by hand.
 
-My own [resume-toolkit](https://github.com/zzamboni/resume-toolkit) produces the PDF documents and normalized publication data, and my [hugo-jsonresume module](https://github.com/zzamboni/hugo-jsonresume) renders the data as native Hugo pages. The CV and publications share the site's navigation and styling, while PDF and BibTeX downloads remain available. It is another entry point into the same website, alongside Org mode, Pages CMS, and the phone Shortcuts.
+My own [resume-toolkit](https://github.com/zzamboni/resume-toolkit) produces the PDF documents and normalized publication data, and my [hugo-jsonresume Hugo module](https://github.com/zzamboni/hugo-jsonresume) renders the data as native Hugo pages. The CV and publications share the site's navigation and styling, while PDF and BibTeX downloads remain available. It is another entry point into the same website, alongside Org mode, Pages CMS, and the phone Shortcuts.
 
 {{< figure src="cv-json-and-rendered.png" caption="<span class=\"figure-number\">Figure 9: </span>My CV's JSON Resume source, and the [rendered version in my website](/vita)." >}}
 
