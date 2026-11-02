@@ -29,7 +29,29 @@
     if (!groups.has(scope)) groups.set(scope, { gallery, links: [] });
     groups.get(scope).links.push(...links);
   });
+  document.querySelectorAll('.article-content').forEach(article => {
+    article.querySelectorAll('figure').forEach(figure => {
+      if (figure.closest('.photo-gallery, .lightbox-gallery, .nozoom')) return;
+      const images = figure.querySelectorAll('img');
+      if (images.length !== 1) return;
+      const img = images[0];
+      if (img.closest('a, .nozoom')) return;
+      // The theme initializer runs first; detach its actual listener, not just
+      // its CSS class. If image zoom is disabled, there is nothing to detach.
+      window.siteImageZoom?.detach(img);
+      img.classList.add('nozoom');
+      const link = document.createElement('a');
+      link.className = 'article-lightbox-link';
+      link.href = img.dataset.zoomSrc || img.currentSrc || img.src;
+      const media = img.parentElement.tagName === 'PICTURE' ? img.parentElement : img;
+      media.parentNode.insertBefore(link, media);
+      link.appendChild(media);
+      if (!groups.has(article)) groups.set(article, { gallery: article, links: [] });
+      groups.get(article).links.push(link);
+    });
+  });
   groups.forEach(({ gallery, links }) => {
+    links.sort((a, b) => a.compareDocumentPosition(b) & 2 ? 1 : -1);
     let origin, counter;
     const lightbox = GLightbox({
       selector: null,

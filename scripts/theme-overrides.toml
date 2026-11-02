@@ -1,6 +1,11 @@
 # Matching paths under layouts/ are detected automatically. List indirect
 # dependencies here so changes to their upstream templates also get reviewed.
 [[overrides]]
+local = "assets/js/medium-zoom.js"
+upstream = "assets/js/medium-zoom.js"
+reason = "Retain the zoom instance so standalone article figures can transfer to GLightbox without duplicate listeners."
+
+[[overrides]]
 local = "layouts/partials/related.html"
 upstream = "layouts/partials/article-link/card-related.html"
 reason = "Article-only related content reuses Blowfish's related-card renderer."

@@ -20,7 +20,7 @@ function slideOptions(caption) {
   };
   runInNewContext(source, {
     window: { matchMedia: () => ({ matches: false }) },
-    document: { querySelectorAll: () => [gallery] },
+    document: { querySelectorAll: selector => selector === '.article-content' ? [] : [gallery] },
     GLightbox(config) {
       options = config;
       return { on() {} };
@@ -62,6 +62,7 @@ test('groups galleries by article, opens global indices and restores origin focu
   function gallery(scope, paths) {
     const links = paths.map(href => ({
       href,
+      compareDocumentPosition(other) { return this.href < other.href ? 4 : 2; },
       querySelector: () => ({ alt: href }),
       closest: () => ({ querySelector: () => null }),
       addEventListener(type, handler) { this[type] = handler; },
@@ -79,7 +80,7 @@ test('groups galleries by article, opens global indices and restores origin focu
     gallery(otherArticle, ['/d.jpg']), gallery(null, ['/e.jpg'])];
   runInNewContext(source, {
     window: { matchMedia: () => ({ matches: false }) },
-    document: { querySelectorAll: () => galleries },
+    document: { querySelectorAll: selector => selector === '.article-content' ? [] : galleries },
     GLightbox(config) {
       const instance = { config, events: {},
         on(name, handler) { this.events[name] = handler; },
@@ -102,3 +103,49 @@ test('groups galleries by article, opens global indices and restores origin focu
   origin.click({ ctrlKey: true, preventDefault() { assert.fail('Modified click intercepted'); } });
   assert.equal(instances[0].index, null);
 });
+
+for (const mode of ['ordinary', 'picture', 'zoom-disabled', 'linked', 'nozoom', 'gallery', 'multiple']) {
+  test(`standalone figure eligibility: ${mode}`, () => {
+    let options, detached, wrapped;
+    const img = {
+      alt: 'Standalone', src: '/small.jpg', dataset: { zoomSrc: '/original.jpg' },
+      closest: () => ['linked', 'nozoom'].includes(mode) ? {} : null,
+      classList: { add(name) { assert.equal(name, 'nozoom'); } }
+    };
+    const parent = { insertBefore(link, media) { wrapped = media; } };
+    const picture = { tagName: 'PICTURE', parentNode: parent };
+    img.parentElement = mode === 'picture' ? picture : { tagName: 'FIGURE' };
+    img.parentNode = parent;
+    const caption = { textContent: 'Caption', innerHTML: '<em>Caption</em>' };
+    const figure = {
+      closest: () => mode === 'gallery' ? {} : null,
+      querySelectorAll: () => mode === 'multiple' ? [img, img] : [img],
+      querySelector: () => caption
+    };
+    const article = { querySelectorAll: () => [figure] };
+    runInNewContext(source, {
+      window: {
+        matchMedia: () => ({ matches: false }),
+        siteImageZoom: mode === 'zoom-disabled' ? undefined : { detach(image) { detached = image; } }
+      },
+      document: {
+        querySelectorAll: selector => selector === '.article-content' ? [article] : [],
+        createElement: () => ({
+          appendChild() {}, addEventListener() {},
+          querySelector: () => img, closest: () => figure
+        })
+      },
+      GLightbox(config) { options = config; return { on() {} }; }
+    });
+    if (['ordinary', 'picture', 'zoom-disabled'].includes(mode)) {
+      assert.equal(options.elements[0].href, '/original.jpg');
+      assert.equal(options.elements[0].description, '<em>Caption</em>');
+      assert.equal(wrapped, mode === 'picture' ? picture : img);
+      assert.equal(detached, mode === 'zoom-disabled' ? undefined : img);
+    } else {
+      assert.equal(options, undefined);
+      assert.equal(detached, undefined);
+      assert.equal(wrapped, undefined);
+    }
+  });
+}

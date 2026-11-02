@@ -10,8 +10,20 @@ All photo/shortcode galleries within one `.article-content` share a single
 GLightbox viewer, in document order. Clicking an image opens its position in
 the combined list; navigation, looping and the counter span gallery boundaries.
 Closing restores focus to the image originally clicked. Gallery layout is
-unchanged, and standalone images outside galleries are not included. Galleries
-outside an article remain independent.
+unchanged. Eligible standalone figures join the same viewer, without gallery
+wrappers, width classes or Packery. Figures with exactly one image are eligible;
+linked images, explicit `nozoom` opt-outs, inline images outside figures and
+multi-image figures remain untouched. Captions and original-resolution sources
+are preserved, including images inside `picture` elements. Galleries outside
+an article remain independent.
+
+`assets/js/medium-zoom.js` retains Blowfish's zoom instance as
+`window.siteImageZoom`. The lightbox initializer detaches the images it takes
+over from that instance before adding its own handlers. Keep the theme zoom
+initializer before `photo-lightbox.js` in deferred script order. Pages with
+figures load lightbox assets even without a gallery shortcode, but do not load
+Packery just for standalone images. The older automatic gallery-wrapping
+experiment is still stashed and is not required by this implementation.
 
 ## Images linking to pages
 

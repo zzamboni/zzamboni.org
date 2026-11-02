@@ -57,7 +57,11 @@
 
       <div class="min-w-0 min-h-0 {{ if .Params.photos }}w-full{{ else }}max-w-fit{{ end }}">
         {{ partial "series/series.html" . }}
-        <div class="article-content max-w-prose mb-20">
+        <div class="article-content max-w-prose mb-20"
+          data-label="{{ i18n "photo_lightbox" }}"
+          data-previous="{{ i18n "photo_previous" }}"
+          data-next="{{ i18n "photo_next" }}"
+          data-close="{{ i18n "photo_close" }}">
           {{ .Content }}
           {{ partial "photo-gallery.html" . }}
           {{ $defaultReplyByEmail := site.Params.replyByEmail }}
