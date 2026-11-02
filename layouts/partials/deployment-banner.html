@@ -1,7 +1,11 @@
 {{ with site.Params.deploymentBanner }}
-  <aside class="deployment-banner" aria-label="Deployment notice">
+  <aside class="deployment-banner" data-header-layout="{{ site.Params.header.layout }}" aria-label="Deployment notice">
     <strong>{{ if eq . "staging-draft" }}Staging · Draft preview{{ else if eq . "draft" }}Draft preview{{ else if eq . "staging" }}Staging site{{ else }}Preview site{{ end }}</strong>
     <span>·</span>
     <a href="https://zzamboni.org/">View the production site &rarr;</a>
   </aside>
+  {{ if eq site.Params.header.layout "floating" }}
+    {{ $script := resources.Get "js/deployment-banner.js" | resources.Minify | resources.Fingerprint }}
+    <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+  {{ end }}
 {{ end }}

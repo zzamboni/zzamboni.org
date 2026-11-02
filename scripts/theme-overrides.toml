@@ -1,6 +1,11 @@
 # Matching paths under layouts/ are detected automatically. List indirect
 # dependencies here so changes to their upstream templates also get reviewed.
 [[overrides]]
+local = "assets/css/custom.css"
+upstream = "layouts/partials/header/floating.html"
+reason = "Offset the fixed floating header below the measured deployment banner, preserving its responsive top gutters."
+
+[[overrides]]
 local = "assets/js/medium-zoom.js"
 upstream = "assets/js/medium-zoom.js"
 reason = "Retain the zoom instance so standalone article figures can transfer to GLightbox without duplicate listeners."
