@@ -7,7 +7,9 @@
   command = """
     echo "BUILD_DRAFTS=$BUILD_DRAFTS"
     echo "CONTEXT=$CONTEXT"
-    if [ "$BUILD_DRAFTS" = "true" ]; then
+    if [ "$BUILD_DRAFTS" = "true" ] && [ "$BRANCH" = "staging" ]; then
+      export HUGO_PARAMS_DEPLOYMENTBANNER=staging-draft
+    elif [ "$BUILD_DRAFTS" = "true" ]; then
       export HUGO_PARAMS_DEPLOYMENTBANNER=draft
     elif [ "$BRANCH" = "staging" ]; then
       export HUGO_PARAMS_DEPLOYMENTBANNER=staging

@@ -10,6 +10,9 @@
 }
 
 .deployment-banner {
+  position: relative;
+  z-index: 101;
+  flex-shrink: 0;
   margin: 0 -1.5rem;
   padding: 0.55rem 1.5rem;
   text-align: center;
@@ -29,6 +32,17 @@
 
 .deployment-banner a:hover {
   color: #92400e;
+}
+
+/* Preserve Blowfish's floating-header gutters below the responsive banner. */
+.deployment-banner[data-header-layout="floating"] ~ header > .fixed {
+  top: calc(var(--deployment-banner-height, 0px) + 0.75rem);
+}
+
+@media (min-width: 640px) {
+  .deployment-banner[data-header-layout="floating"] ~ header > .fixed {
+    top: calc(var(--deployment-banner-height, 0px) + 1.25rem);
+  }
 }
 
 /* Linkblog entries */
