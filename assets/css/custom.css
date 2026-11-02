@@ -31,9 +31,11 @@
   color: #92400e;
 }
 
-/* Reserve room below the banner for Blowfish's floating navigation. */
-.deployment-banner + header {
-  margin-top: 3rem;
+/* Keep the deployment notice readable above Blowfish's floating header.
+   The floating nav uses its own positioning, so header margins do not move it. */
+.deployment-banner {
+  position: relative;
+  z-index: 50;
 }
 
 /* Linkblog entries */
