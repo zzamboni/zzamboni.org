@@ -5,7 +5,7 @@ summary = "Configuring Org Mode in Emacs for beautiful typography for both text 
 date = 2018-03-21T22:45:00+01:00
 tags = ["emacs", "orgmode", "beautifulemacs", "config"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
+creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
 toc = true
 featureimage = "img/emacs-logo.svg"
 showComments = true
@@ -17,11 +17,11 @@ Recently I started thinking about how I could make my editing environment more v
 
 In the end, you can have an Emacs setup for editing org documents which looks very nice, with proportional fonts for text and monospaced fonts for code blocks, examples and other elements. To wet your appetite, here is what a fragment of my [init.org](https://github.com/zzamboni/dot-emacs/blob/master/init.org) file looked like with the Gruvbox theme:
 
-{{< figure src="images/emacs-init-propfonts.png" link="images/emacs-init-propfonts.png" >}}
+{{< figure src="emacs-init-propfonts.png" >}}
 
 And this is how it looks now with the light Spacemacs theme:
 
-{{< figure src="images/emacs-init-propfonts-light.png" >}}
+{{< figure src="emacs-init-propfonts-light.png" >}}
 
 
 ## Step 1: Configure faces for Org headlines and lists {#step-1-configure-faces-for-org-headlines-and-lists}
@@ -107,13 +107,13 @@ You can enable `variable-pitch-mode` automatically for org buffers by setting up
 
 One thing you will notice right away with proportional fonts is that filling paragraphs no longer makes sense. This is because `fill-paragraph` works based on the number of characters in a line, but with a proportional font, characters have different widths, so a filled paragraph looks strange:
 
-{{< figure src="images/emacs-filled-paragraph.png" link="images/emacs-filled-paragraph.png" >}}
+{{< figure src="emacs-filled-paragraph.png" >}}
 
 Of course, you can still do it, but there's a better way. With `visual-line-mode` enabled, long lines will flow and adjust to the width of the window. This is great for writing prose, because you can choose how wide your lines are by just resizing your window.
 
-{{< figure src="images/emacs-narrow-window.png" link="images/emacs-narrow-window.png" >}}
+{{< figure src="emacs-narrow-window.png" >}}
 
-{{< figure src="images/emacs-wide-window.png" link="images/emacs-wide-window.png" >}}
+{{< figure src="emacs-wide-window.png" >}}
 
 There is one habit you have to change for this to work: the instinct (at least for me) of pressing <kbd>M-q</kbd> every once in a while to readjust the current paragraph. I personally think it's worth it.
 
