@@ -2,7 +2,7 @@
 title = "Curriculum Vitae"
 author = ["Diego Zamboni"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 type = "jsonresume"
 layout = "cv"
 showDate = false

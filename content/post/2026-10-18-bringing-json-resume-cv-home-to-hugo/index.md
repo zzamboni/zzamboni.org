@@ -5,7 +5,7 @@ summary = "How I brought my JSON Resume CV and publications into Hugo, and extra
 date = 2026-10-18T00:00:00+02:00
 tags = ["jsonresume", "hugo", "blowfish", "cv", "blogging"]
 draft = true
-creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 featureimage = "img/generated/2026-10-18-bringing-json-resume-cv-home-to-hugo.webp"
 +++

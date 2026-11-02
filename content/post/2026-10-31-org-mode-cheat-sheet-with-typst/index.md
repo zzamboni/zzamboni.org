@@ -5,7 +5,7 @@ summary = "My Doom Emacs cheat sheet lives in Org mode and exports to PDF throug
 date = 2026-10-31T00:00:00+01:00
 tags = ["emacs", "orgmode", "typst", "documentation", "howto"]
 draft = true
-creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 toc = false
 +++
 

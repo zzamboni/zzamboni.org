@@ -5,7 +5,7 @@ summary = "My updated blogging setup: Org mode for longer articles, Pages CMS an
 date = 2026-10-21T12:00:00+02:00
 tags = ["blogging", "howto", "emacs", "orgmode", "hugo", "pagescms", "github", "netlify"]
 draft = true
-creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 +++
 

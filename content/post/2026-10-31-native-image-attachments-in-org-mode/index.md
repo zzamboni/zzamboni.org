@@ -5,7 +5,7 @@ summary = "I replaced org-download and several custom image-capture functions wi
 date = 2026-10-31T00:00:00+01:00
 tags = ["emacs", "orgmode", "doom", "blogging", "howto"]
 draft = true
-creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 toc = false
 +++
 

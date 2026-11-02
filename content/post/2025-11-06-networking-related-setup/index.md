@@ -2,7 +2,7 @@
 title = "Networking-related setup"
 author = ["Diego Zamboni"]
 draft = true
-creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/tram-zurich.jpg"
 toc = false
 +++

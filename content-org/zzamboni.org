@@ -2,6 +2,8 @@
 #+hugo_base_dir: ../
 #+seq_todo: TODO DRAFT DONE
 #+options: creator:t
+#+creator: Emacs (Org mode + ox-hugo)
+
 #+property: header-args :eval never-export
 #+hugo_front_matter_key_replace: description>summary
 #+hugo_paired_shortcodes: tip warning note gallery feature-grid

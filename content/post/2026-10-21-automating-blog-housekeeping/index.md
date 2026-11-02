@@ -5,7 +5,7 @@ summary = "How I use GitHub Actions for missing summaries, cached link icons, an
 date = 2026-10-21T12:02:00+02:00
 tags = ["blogging", "github", "automation", "pagescms", "ai", "howto"]
 draft = true
-creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 +++
 

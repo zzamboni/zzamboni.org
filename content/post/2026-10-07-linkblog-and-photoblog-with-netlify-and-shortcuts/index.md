@@ -5,7 +5,7 @@ summary = "How I turned shared links and photos into Hugo posts with iOS Shortcu
 date = 2026-10-07T22:34:00+02:00
 tags = ["blogging", "hugo", "pagescms", "netlify", "shortcuts", "howto"]
 draft = true
-creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 featureimage = "img/generated/2026-10-07-linkblog-and-photoblog-with-netlify-and-shortcuts.webp"
 +++

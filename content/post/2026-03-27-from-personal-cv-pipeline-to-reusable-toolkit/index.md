@@ -5,7 +5,7 @@ summary = "How my CV pipeline escaped my own resume repo and became a reusable t
 date = 2026-03-28T01:38:00+01:00
 tags = ["jsonresume", "typst", "tools", "cv"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/generated/2026-03-27-from-personal-cv-pipeline-to-reusable-toolkit.webp"
 toc = true
 +++

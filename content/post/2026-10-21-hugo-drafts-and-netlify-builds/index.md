@@ -5,7 +5,7 @@ summary = "How I separate content drafts from site experiments, preview drafts o
 date = 2026-10-21T12:01:00+02:00
 tags = ["blogging", "hugo", "netlify", "automation", "howto"]
 draft = true
-creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 +++
 

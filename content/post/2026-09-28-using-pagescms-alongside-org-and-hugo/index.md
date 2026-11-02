@@ -5,7 +5,7 @@ summary = "How I added a lightweight writing path to my Org-mode blog, and the s
 date = 2026-10-06T22:04:00+02:00
 tags = ["blogging", "hugo", "pagescms", "howto"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 featureimage = "img/generated/2026-09-28-using-pagescms-alongside-org-and-hugo.webp"
 +++

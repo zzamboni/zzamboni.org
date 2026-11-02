@@ -5,7 +5,7 @@ summary = "My blogging has seen multiple iterations over the years, and with it,
 date = 2020-12-11T00:27:00+01:00
 tags = ["blogging", "howto", "emacs", "hugo", "orgmode", "gitlab", "netlify"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.8.9 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 featureimage = "img/z-favicon-src.png"
 +++
