@@ -2,9 +2,9 @@
 title = "My blogging setup in 2026: reducing friction"
 author = ["Diego Zamboni"]
 summary = "My updated blogging setup: Org mode for longer articles, Pages CMS and iPhone Shortcuts for quick posts, hugo-jsonresume for the CV, and Hugo, GitHub and Netlify to bring it all together."
-date = 2026-10-21T12:00:00+02:00
+date = 2026-11-02T14:16:00+01:00
 tags = ["blogging", "howto", "emacs", "orgmode", "hugo", "pagescms", "github", "netlify"]
-draft = true
+draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 +++
@@ -16,13 +16,76 @@ Still, you may have noticed that I [barely posted anything](/archive/) since the
 For this reason, over the last few weeks I have added a few more ways to get content into the site. This post is an overview of the current setup, with links to the more focused articles (some of them not published yet) about specific aspects. My website's [repository](https://github.com/zzamboni/zzamboni.org) contains the complete setup; its [documentation directory](https://github.com/zzamboni/zzamboni.org/tree/main/docs) is where I keep maintenance details.
 
 {{< note >}}
-Like much of the world, I've started using AI tools to improve my workflows. Specifically, I've used ChatGPT and Codex extensively throughout this work, from discussing the architecture and exploring alternatives to implementing changes and debugging workflows. Being able to work through an idea, try it in the repository, and refine it together has made many of these improvements much easier to tackle. I still make the decisions and review the results, but a lot of the work described here has been a collaboration. Having an assistant that can transform a natural language description of how I want my website to look or function, and to quickly turn it into code, whether it's CSS, Javascript or Hugo markdown, it's an amazing advantage.
+Like much of the world, I've started using AI tools to improve my workflows. Specifically, I've used ChatGPT and Codex extensively throughout this work, from discussing the architecture and exploring alternatives to implementing changes and debugging workflows. Being able to work through an idea, try it in the repository, and refine it together has made many of these improvements much easier to tackle. I still make the decisions and review the results, but a lot of the work described here has been a collaboration. It's an amazing advantage to have an assistant that can transform a natural language description into code, whether it's CSS, JavaScript or Hugo markdown.
 {{< /note >}}
+
+
+## Overview {#overview}
+
+My new setup makes it possible to combine multiple sources of content into a single website, using consistent formats and tooling, as shown in this diagram. The next sections go into more detail about its different paths.
+
+{{< mermaid >}}
+---
+config:
+  theme: base
+  themeVariables:
+    primaryTextColor: "#DCE7F5"
+    primaryColor: "#26374D"
+    primaryBorderColor: "#6599D4"
+    lineColor: "#94A8BF"
+    edgeLabelBackground: "#26374D"
+    clusterBkg: "#26374D"
+    clusterBorder: "#607C9B"
+    tertiaryColor: "#26374D"
+    fontSize: "16px"
+  flowchart:
+    htmlLabels: false
+    curve: basis
+    nodeSpacing: 40
+    rankSpacing: 55
+---
+flowchart TB
+    subgraph sources["CONTENT SOURCES"]
+        direction LR
+        org["🦄️ Org mode"]
+        cms["📝 Pages CMS"]
+        ios["📱 iOS Shortcuts"]
+        cv["📄 JSON Resume"]
+    end
+
+git["🐙 GitHub Repo"]
+hugo["🐡️ Hugo +<br/>Blowfish"]
+netlify["☁️ Netlify"]
+site["🌐 zzamboni.org"]
+
+org -->|"ox-hugo"| git
+cms --> git
+ios -->|"Netlify Functions"| git
+cv -->|"resume-toolkit"| git
+
+git --> hugo
+hugo --> netlify
+netlify --> site
+
+classDef source fill:#EAF3FF,stroke:#6699D0,color:#1D426B,stroke-width:1.5px
+classDef repository fill:#F0EAFF,stroke:#9370D2,color:#493080,stroke-width:2px
+classDef build fill:#E7F5F0,stroke:#55A58B,color:#205D4C,stroke-width:2px
+classDef deploy fill:#FFF2E3,stroke:#E5A45A,color:#805020,stroke-width:2px
+classDef website fill:#E7F0FF,stroke:#417ED4,color:#174782,stroke-width:2.5px
+
+class org,cms,ios,cv source
+class git repository
+class hugo build
+class netlify deploy
+class site website
+
+style sources fill:transparent,stroke:#A9B9CA,stroke-dasharray:4 4,color:#DCE7F5
+{{< /mermaid >}}
 
 
 ## Org mode for long-form writing {#org-mode-for-long-form-writing}
 
-For an article like this one, I still prefer writing in [`content-org/zzamboni.org`](https://github.com/zzamboni/zzamboni.org/blob/main/content-org/zzamboni.org). I can use the full power of Emacs and org-mode to develop the text, rearrange sections, include code, and keep related posts together. `ox-hugo` exports the article to Markdown under `content/post/`, which is what Hugo reads.
+For an article like this one, I still prefer writing in [`content-org/zzamboni.org`](https://github.com/zzamboni/zzamboni.org/blob/main/content-org/zzamboni.org). I can use the full power of Emacs and Org mode to develop the text, rearrange sections, include code, and keep related posts together. `ox-hugo` exports the article to Markdown under `content/post/`, which is what Hugo reads.
 
 That distinction is worth keeping explicit: the Org file is the source, and the Markdown is an export. If I fix a paragraph only in the Markdown, the next export will erase that change. I keep both in Git, so building the website does not require Emacs or my personal Emacs configuration.
 
@@ -37,7 +100,7 @@ My [original article]({{< relref "2020-12-11-my-blogging-setup-and-workflow" >}}
 
 The useful trick here is Hugo's module mounts, which allow different locations to be merged into the same folder when Hugo builds the site. With modules, the Org exports and the CMS files can live in different directories, but Hugo presents them as posts in the same section.
 
-I described the arrangement in [Using Pages CMS alongside Org mode and Hugo]({{< relref "2026-09-28-using-pagescms-alongside-org-and-hugo" >}}). It's worth mentioning a [the timezone problem]({{< relref "2026-09-26-pages-cms-hugo-timezones" >}}) I ran into due to a bug in Pages CMS's handling of timezone conversions.
+I described the arrangement in [Using Pages CMS alongside Org mode and Hugo]({{< relref "2026-09-28-using-pagescms-alongside-org-and-hugo" >}}). It's also worth mentioning [the timezone problem]({{< relref "2026-09-26-pages-cms-hugo-timezones" >}}) I ran into due to a bug in Pages CMS's handling of timezone conversions.
 
 {{< gallery >}}
 {{< figure src="pagescms1.png" caption="<span class=\"figure-number\">Figure 2: </span>Pages CMS post list" >}}
@@ -50,7 +113,7 @@ I described the arrangement in [Using Pages CMS alongside Org mode and Hugo]({{<
 
 ## Links and photos from the Share Sheet {#links-and-photos-from-the-share-sheet}
 
-For links and photos, I wanted an even easier path, since these are things I most likely want to post on the fly from my phone, so it needs to be extremely low-friction. For this I developed a couple of specialized iOS Shortcuts paired with corresponding server-side functionality (in the form of [Netlify Functions](https://docs.netlify.com/build/functions/overview/)) that collect the shared URL or images, ask for a little context, and create the files in GitHub.
+For links and photos, I wanted an even simpler workflow. These are things I'm likely to share while using my phone, so minimizing friction is particularly important. For this I developed a couple of specialized iOS Shortcuts paired with corresponding server-side functionality (in the form of [Netlify Functions](https://docs.netlify.com/build/functions/overview/)) that collect the shared URL or images, ask for a little context, and create the files in GitHub.
 
 {{< feature-grid >}}
 {{< feature icon="link" title="Post Link" url="https://www.icloud.com/shortcuts/cad708218dd348598a43ba394e7f75b5" label="Get Shortcut" />}}
@@ -80,6 +143,8 @@ My [Curriculum Vitae](/vita/) is another kind of content, with its own specializ
 
 My own [resume-toolkit](https://github.com/zzamboni/resume-toolkit) produces the PDF documents and normalized publication data, and my [hugo-jsonresume module](https://github.com/zzamboni/hugo-jsonresume) renders the data as native Hugo pages. The CV and publications share the site's navigation and styling, while PDF and BibTeX downloads remain available. It is another entry point into the same website, alongside Org mode, Pages CMS, and the phone Shortcuts.
 
+{{< figure src="cv-json-and-rendered.png" caption="<span class=\"figure-number\">Figure 9: </span>My CV's JSON Resume source, and the [rendered version in my website](/vita)." >}}
+
 I'll describe this in more detail in the forthcoming article _Bringing my JSON Resume CV home to Hugo_.
 
 
@@ -96,7 +161,7 @@ mise run serve
 mise run serve-drafts
 ```
 
-I have also became more deliberate about triggering Netlify builds. I am lucky to be on a [Netlify free legacy plan](https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-legacy-plans/legacy-pricing-plans/) which includes a very generous 300 build minutes per month, but I'm still able to exhaust them with all my tinkering :smile: Documentation edits and many draft-only changes do not need a production deployment, and caching Hugo's generated resources saves repeated image work. I grouped those decisions in the upcoming article _Drafts, previews, and fewer Netlify builds_.
+I've also become more deliberate about triggering Netlify builds. I am lucky to be on a [Netlify free legacy plan](https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-legacy-plans/legacy-pricing-plans/) which includes a very generous 300 build minutes per month, but I'm still able to exhaust them with all my tinkering :smile: Documentation edits and many draft-only changes do not need a production deployment, and caching Hugo's generated resources saves repeated image work. I grouped those decisions in the upcoming article _Drafts, previews, and fewer Netlify builds_.
 
 
 ## Small bits of automation {#small-bits-of-automation}
