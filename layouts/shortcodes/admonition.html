@@ -1,0 +1,2 @@
+{{- $type := .Get "type" | default "note" -}}
+{{- partial "shortcode-admonition.html" (dict "Inner" .Inner "Name" $type "Page" .Page "Icon" (.Get "icon")) -}}

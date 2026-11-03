@@ -6,7 +6,7 @@
 
 #+property: header-args :eval never-export
 #+hugo_front_matter_key_replace: description>summary
-#+hugo_paired_shortcodes: tip warning note gallery feature-grid mermaid
+#+hugo_paired_shortcodes: tip warning note gallery feature-grid mermaid alert admonition
 
 #+macro: updatetime {{{time(%B %e\, %Y)}}}
 #+macro: leanpubbook #+hugo: {{< leanpubbook book="$1" $2 >}}
