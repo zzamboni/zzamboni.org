@@ -1,0 +1,19 @@
+{{- /* Read metadata only: excluded drafts never become Hugo pages.
+     This site's Org exports use TOML front matter in content/post. */ -}}
+{{- $drafts := slice -}}
+{{- range os.ReadDir . -}}
+  {{- $path := path.Join $ .Name -}}
+  {{- if .IsDir -}}
+    {{- $drafts = $drafts | append (partial "series/drafts.html" $path) -}}
+  {{- else if eq (path.Ext .Name) ".md" -}}
+    {{- $raw := replace (os.ReadFile $path) "\r\n" "\n" -}}
+    {{- range findRE `(?s)^\+\+\+\n.*?\n\+\+\+` $raw 1 -}}
+      {{- $front := replaceRE `(?s)^\+\+\+\n(.*?)\n\+\+\+$` "$1" . -}}
+      {{- $meta := transform.Unmarshal (dict "format" "toml") $front -}}
+      {{- if and $meta.draft $meta.series $meta.series_order -}}
+        {{- $drafts = $drafts | append (dict "title" $meta.title "series" $meta.series "order" (int $meta.series_order)) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $drafts -}}

@@ -1,0 +1,40 @@
+{{ if .Params.series }}
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-primary-200 text-neutral-800 -ms-5 ps-5 dark:bg-primary-800 dark:text-neutral-100">
+    {{ index .Params.series 0 }} -
+    {{ i18n "article.part_of_series" }}
+  </summary>
+  {{ $seriesName := strings.ToLower (index .Params.series 0) }}
+  {{ $entries := slice }}
+  {{ range index .Site.Taxonomies.series $seriesName }}
+    {{ $entries = $entries | append (dict "title" .Title "order" (int .Params.series_order) "page" .Page) }}
+  {{ end }}
+  {{ range partialCached "series/drafts.html" "content/post" "content/post" }}
+    {{ $draft := . }}
+    {{ range .series }}
+      {{ if and (eq (strings.ToLower .) $seriesName) (not (where $entries "order" $draft.order)) }}
+        {{ $entries = $entries | append $draft }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ range sort $entries "order" }}
+    <div class="py-1 border-dotted border-neutral-300 border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+      {{ with .page }}
+        {{ if eq .Permalink $.Page.Permalink }}
+          {{ i18n "article.part" }} {{ .Params.series_order }}:
+          {{ i18n "article.this_article" }}
+        {{ else }}
+          <a href="{{ .RelPermalink }}">
+            {{ i18n "article.part" }} {{ .Params.series_order }}:
+            {{ .Title | emojify }}
+          </a>
+        {{ end }}
+      {{ else }}
+        <span class="series-upcoming">
+          {{ i18n "article.part" }} {{ .order }}: {{ .title | emojify }}
+          <em>— {{ i18n "series_upcoming" }}</em>
+        </span>
+      {{ end }}
+    </div>
+  {{ end }}
+{{ end }}
