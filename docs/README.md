@@ -1,6 +1,6 @@
 # Documentation
 
-Maintainer documentation for [zzamboni.org](../README.md). The repository's current code and configuration on `main` are authoritative; dated notes and plans describe the state when written, not necessarily today's behavior.
+Maintainer documentation for [zzamboni.org](../README.org). The repository's current code and configuration on `main` are authoritative; dated notes and plans describe the state when written, not necessarily today's behavior.
 
 ## Site features and operating guides
 
@@ -35,6 +35,6 @@ These handoffs are intentionally preserved as records. In particular, old branch
 
 ## Where to start
 
-For day-to-day changes, read [AGENTS.md](../AGENTS.md) and the relevant feature guide above. For the authoring/publishing overview, start with the [repository README](../README.md). For theme maintenance, consult [theme update instructions](../scripts/README-theme-updates.md) and [override tracking](../scripts/theme-overrides.toml). For current implementation details, inspect `config/`, `layouts/`, `scripts/`, `.github/workflows/`, and `netlify/functions/` on the target branch.
+For day-to-day changes, read [AGENTS.md](../AGENTS.md) and the relevant feature guide above. For the authoring/publishing overview, start with the [repository README](../README.org). For theme maintenance, consult [theme update instructions](../scripts/README-theme-updates.md) and [override tracking](../scripts/theme-overrides.toml). For current implementation details, inspect `config/`, `layouts/`, `scripts/`, `.github/workflows/`, and `netlify/functions/` on the target branch.
 
 Documentation-only edits normally do not require a Hugo build; changes to configuration, templates, or authoring behavior should be checked with the relevant local tests and preview. Avoid treating a successful workflow dispatch as proof of a completed Netlify deployment.
