@@ -7,7 +7,7 @@ tags = ["emacs", "orgmode", "doom", "blogging", "howto"]
 draft = true
 creator = "Emacs (Org mode + ox-hugo)"
 toc = false
-series = ["My blogging setup"]
+series = ["My website setup"]
 series_order = 3
 +++
 

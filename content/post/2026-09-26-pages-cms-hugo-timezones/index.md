@@ -8,7 +8,7 @@ draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 toc = false
 featureimage = "img/generated/2026-09-26-pages-cms-hugo-timezones.webp"
-series = ["My blogging setup"]
+series = ["My website setup"]
 series_order = 5
 +++
 

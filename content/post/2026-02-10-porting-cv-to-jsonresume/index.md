@@ -8,7 +8,7 @@ draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/generated/2026-02-10-porting-cv-to-jsonresume.webp"
 toc = true
-series = ["My blogging setup"]
+series = ["My website setup"]
 series_order = 9
 +++
 

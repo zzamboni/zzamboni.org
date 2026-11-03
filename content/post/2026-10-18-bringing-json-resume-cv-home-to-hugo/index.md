@@ -8,7 +8,7 @@ draft = true
 creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 featureimage = "img/generated/2026-10-18-bringing-json-resume-cv-home-to-hugo.webp"
-series = ["My blogging setup"]
+series = ["My website setup"]
 series_order = 11
 +++
 

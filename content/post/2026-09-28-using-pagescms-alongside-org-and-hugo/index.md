@@ -8,7 +8,7 @@ draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 featureimage = "img/generated/2026-09-28-using-pagescms-alongside-org-and-hugo.webp"
-series = ["My blogging setup"]
+series = ["My website setup"]
 series_order = 4
 +++
 

@@ -8,7 +8,7 @@ draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 featureimage = "img/generated/2026-10-21-my-blogging-setup-in-2026.webp"
-series = ["My blogging setup"]
+series = ["My website setup"]
 series_order = 1
 +++
 

@@ -8,7 +8,7 @@ draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 featureimage = "img/z-favicon-src.png"
-series = ["My blogging setup"]
+series = ["My website setup"]
 series_order = 2
 +++
 
@@ -94,7 +94,9 @@ My repository contains a `netlify.toml` file which is used to configure some Hug
   command = """
     echo "BUILD_DRAFTS=$BUILD_DRAFTS"
     echo "CONTEXT=$CONTEXT"
-    if [ "$BUILD_DRAFTS" = "true" ]; then
+    if [ "$BUILD_DRAFTS" = "true" ] && [ "$BRANCH" = "staging" ]; then
+      export HUGO_PARAMS_DEPLOYMENTBANNER=staging-draft
+    elif [ "$BUILD_DRAFTS" = "true" ]; then
       export HUGO_PARAMS_DEPLOYMENTBANNER=draft
     elif [ "$BRANCH" = "staging" ]; then
       export HUGO_PARAMS_DEPLOYMENTBANNER=staging

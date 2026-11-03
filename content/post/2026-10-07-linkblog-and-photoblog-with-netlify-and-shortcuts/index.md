@@ -8,7 +8,7 @@ draft = true
 creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 featureimage = "img/generated/2026-10-07-linkblog-and-photoblog-with-netlify-and-shortcuts.webp"
-series = ["My blogging setup"]
+series = ["My website setup"]
 series_order = 6
 +++
 

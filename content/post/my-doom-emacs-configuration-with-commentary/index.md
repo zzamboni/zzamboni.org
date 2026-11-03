@@ -14,7 +14,7 @@ series_order = 1
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **November  2, 2026**
+Last update: **November  3, 2026**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -934,6 +934,23 @@ I've moved to native Emacs/Org functionality, using `org-attach` and `org-yank` 
         org-image-actual-width nil              ;; Flexible image width, with a...
         org-image-max-width 300                 ;; ...maximum for inlined images in org buffers
   ))
+```
+
+Org now uses the filename description returned by `org-attach-attach` when
+pasting images. Omit that description during image paste so exporters recognize
+an inline image/figure. Ordinary attachment insertion keeps its descriptions.
+
+```emacs-lisp
+(after! org
+  (defun zz/org-yank-image-without-description (handler &rest args)
+    "Run image HANDLER with bare links suitable for inline image export."
+    (let ((formatter (symbol-function 'org-link-make-string-for-buffer)))
+      (cl-letf (((symbol-function 'org-link-make-string-for-buffer)
+                 (lambda (link &optional _description interactive-p)
+                   (funcall formatter link nil interactive-p))))
+        (apply handler args))))
+  (advice-add 'org--image-yank-media-handler :around
+              #'zz/org-yank-image-without-description))
 ```
 
 Create and map a "smart yank" function which does the right thing, calling `org-yank` or `yank-media` depending on the contents of the clipboard.
