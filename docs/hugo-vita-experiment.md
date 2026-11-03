@@ -1,7 +1,7 @@
 # JSON Resume Hugo integration
 
 The CV and publications at `/vita/` and `/vita/publications/` are native Hugo
-pages rendered by the Blowfish-specific module
+pages rendered by the Hugo module with Blowfish and generic renderers
 [`zzamboni/hugo-jsonresume`](https://github.com/zzamboni/hugo-jsonresume).
 The reusable layouts, partials and three namespaced stylesheets now live in
 that repository. There are no local renderer copies to keep in sync.
@@ -62,7 +62,7 @@ mise run jsonresume-update COMMIT_SHA
 mise run jsonresume-update v0.1.0
 ```
 
-The tag example applies once that release exists. The task only updates the
+The v0.1.0 tag has been released; check the module repository for newer tags before updating. The task only updates the
 module pin and shows the diff; preview, commit and push remain explicit steps.
 
 Commit `go.mod` and `go.sum` together. Run a production build and compare both
