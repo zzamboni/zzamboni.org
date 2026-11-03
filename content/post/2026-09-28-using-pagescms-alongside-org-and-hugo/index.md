@@ -8,6 +8,8 @@ draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 featureimage = "img/generated/2026-09-28-using-pagescms-alongside-org-and-hugo.webp"
+series = ["My blogging setup"]
+series_order = 4
 +++
 
 My main blogging setup is with [Emacs, Org mode and `ox-hugo`]({{< relref "2020-12-11-my-blogging-setup-and-workflow" >}}). I like having the source in one Org file, and I have no plans to give that up for longer posts. But a quick note, link or a photo is a different kind of posting. Over time, I have realized that for quick posts, friction matters a lot more than for longer ones. If I have to open my laptop, find the right heading, export, preview, commit and push, I might never write it down.

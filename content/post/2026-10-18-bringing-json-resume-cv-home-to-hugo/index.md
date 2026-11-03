@@ -8,6 +8,8 @@ draft = true
 creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 featureimage = "img/generated/2026-10-18-bringing-json-resume-cv-home-to-hugo.webp"
+series = ["My blogging setup"]
+series_order = 11
 +++
 
 Earlier this year I wrote about [moving my CV from Org and LaTeX to JSON Resume]({{< relref "2026-02-10-porting-cv-to-jsonresume" >}}), and then about [extracting the build system into `resume-toolkit`]({{< relref "2026-03-27-from-personal-cv-pipeline-to-reusable-toolkit" >}}). That solved a problem I had wrestled with for years: keeping the content separate from how it is presented, while producing good-looking HTML and PDF versions of both my CV and publications.

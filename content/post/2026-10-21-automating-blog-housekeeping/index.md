@@ -7,6 +7,8 @@ tags = ["blogging", "github", "automation", "pagescms", "ai", "howto"]
 draft = true
 creator = "Emacs (Org mode + ox-hugo)"
 toc = true
+series = ["My blogging setup"]
+series_order = 8
 +++
 
 After [adding Pages CMS]({{< relref "2026-09-28-using-pagescms-alongside-org-and-hugo" >}}) to my blog, I kept finding small bits of work around a post: writing a summary for the listing, finding an icon for a link, and sometimes choosing a feature image. None of these needs to interrupt the moment when I have something to say.

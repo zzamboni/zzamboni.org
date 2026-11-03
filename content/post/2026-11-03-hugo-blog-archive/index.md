@@ -7,6 +7,8 @@ tags = ["blogging", "hugo", "opensource", "blowfish"]
 draft = true
 creator = "Emacs (Org mode + ox-hugo)"
 toc = false
+series = ["My blogging setup"]
+series_order = 12
 +++
 
 I recently added a [blog archive](/archive/) to this site: a compact list of posts grouped by year, with a small posts-per-year chart at the top. Clicking a bar jumps to that year's entries. It is a useful way to browse older posts without paging through summaries and images.

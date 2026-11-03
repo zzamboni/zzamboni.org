@@ -8,6 +8,8 @@ draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 featureimage = "img/z-favicon-src.png"
+series = ["My blogging setup"]
+series_order = 2
 +++
 
 My blogging has seen [multiple iterations](/about/#my-online-past) over the years, and with it, the tools I use have changed. At the moment I use a set of tools and workflows which make it very easy to keep my blog updated, and I will describe them in this post. In short, they are:
