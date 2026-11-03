@@ -8,6 +8,8 @@ draft = true
 creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 featureimage = "img/generated/2026-10-07-linkblog-and-photoblog-with-netlify-and-shortcuts.webp"
+series = ["My website setup"]
+series_order = 6
 +++
 
 In [my previous post]({{< relref "2026-09-28-using-pagescms-alongside-org-and-hugo" >}}), I described how I set up Pages CMS as a quick editing path alongside Org mode. But for the two things I share most often from my phone—a link I want to remember and a few photos I want to show—even opening an editor feels like an extra step. I wanted to use the iOS Share Sheet, add a title or a sentence if I felt like it, and get a draft into the same Git-backed site.

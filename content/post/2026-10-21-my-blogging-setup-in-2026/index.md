@@ -8,6 +8,8 @@ draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 toc = true
 featureimage = "img/generated/2026-10-21-my-blogging-setup-in-2026.webp"
+series = ["My website setup"]
+series_order = 1
 +++
 
 In 2020 I wrote about [my blogging setup with Emacs, Org mode, ox-hugo, Hugo, GitLab and Netlify]({{< relref "2020-12-11-my-blogging-setup-and-workflow" >}}). Much of that setup is still here: I still write my articles in Emacs and export them with `ox-hugo`, while Hugo and Netlify turn files into a website.

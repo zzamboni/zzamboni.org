@@ -7,6 +7,8 @@ tags = ["emacs", "orgmode", "doom", "blogging", "howto"]
 draft = true
 creator = "Emacs (Org mode + ox-hugo)"
 toc = false
+series = ["My website setup"]
+series_order = 3
 +++
 
 A few years ago I [wrote about inserting screenshots into Org documents](/post/how-to-insert-screenshots-in-org-documents-on-macos/) using `org-download` and `pngpaste`. That setup served me well, but my image-handling configuration gradually acquired wrappers for choosing filenames, copying existing files, and formatting links.
