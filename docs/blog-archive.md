@@ -1,26 +1,36 @@
 # Blog archive
 
-`/archive/` provides a compact, unpaginated date/title listing grouped by year,
-newest first, with year jump links and counts. It complements rather than
-replaces `/post/`; the Blog header links to it and the archive introduction links
-back. Main navigation is unchanged.
+`/archive/` uses [hugo-blog-archive](https://github.com/zzamboni/hugo-blog-archive),
+a theme-independent Hugo module with a Blowfish palette. Its shared partials
+render the compact year/date/title list and linked posts-per-year chart.
 
-`content/archive/_index.md` selects `layouts/_default/archive.html`, which uses
-the existing site base layout. `layouts/partials/archive-list.html` selects Hugo
-regular pages in section `post`, including mounted Org, Pages CMS, and legacy
-content. It matches the Blog's filter by excluding the `photos` tag. Linkblog
-posts are retained, marked "Link", and point directly to `externalUrl`, matching
-the existing listing behavior. Other sections are excluded.
+The host-owned `content/archive/_index.md` retains its title and introduction.
+`layouts/_default/archive.html` retains the site's Blowfish heading/base layout
+and calls `blog-archive/render.html`. No head hook or JavaScript is required.
 
-Hugo's normal visibility rules apply: production omits drafts/future posts;
-`mise run serve-drafts` includes drafts, which receive a draft badge. No special
-source parsing, image processing, pagination, or client-side JavaScript is added.
-No matching posts means the standard localized empty-list message.
+`config/_default/module.toml` imports the module and `go.mod`/`go.sum` pin it.
+`params.toml` configures `blogArchive.sections = ["post"]`,
+`excludeTags = ["photos"]`, `style = "blowfish"`, descending ordering, and the
+chart. Mounted Org exports, Pages CMS, and legacy posts remain in the archive;
+photo posts and other sections remain excluded. External destinations and draft
+badges keep their previous behavior. Chart counts come from the listed pages;
+empty years remain visible, and undated drafts stay outside the chart.
+Existing `#year-YYYY` links are preserved.
 
-Presentation uses the existing theme typography/colors and localized labels in
-`i18n/en.yaml`, with narrowly scoped CSS in `assets/css/custom.css`. Dates occupy
-a fixed narrow column; long titles wrap on small screens. Year headings have a
-scroll offset for the fixed site header, and links have visible keyboard focus.
+Hugo's visibility rules still apply. Production omits unpublished content;
+`mise run serve-drafts` includes drafts. This is a display filter, not a privacy
+mechanism. The archive stays unpaginated. Module CSS and namespaced translations
+replace the former site-owned archive CSS/partials/strings. The Blog link and
+its `archive_browse` translation remain site-owned.
+
+To update deliberately, run:
+
+```sh
+hugo mod get github.com/zzamboni/hugo-blog-archive@main
+```
+
+Review/commit the resulting module pin changes and verify the archive before
+pushing. Do not commit a local module replacement.
 
 Validate locally:
 
@@ -29,7 +39,13 @@ mise exec -- python3 -m unittest discover -s scripts/tests -p test_archive.py
 mise run serve
 ```
 
-The isolated Hugo test checks mounted content, year/date ordering, counts,
-external-link markers, photo/non-post exclusions, production/draft behavior,
-empty output, and absence of pagination even with pager size 1. Inspect the
-actual archive on desktop/mobile, including year jumps and long titles.
+The site test checks the real imported renderer with mounted content, ordering,
+counts, publication visibility, external links, year anchors, empty/undated
+archives and absence of pagination. Broader configuration/localization tests
+live in the module repository. For development before publishing a module
+revision, `HUGO_BLOG_ARCHIVE_DIR` can point the test at a local module checkout;
+the test adds a replacement only inside its disposable fixture.
+
+Inspect `/archive/` on desktop/mobile in light/dark mode, including long titles,
+chart scrolling, focus visibility, and year jumps. The module's public example
+sites demonstrate the generic and Blowfish presentations.

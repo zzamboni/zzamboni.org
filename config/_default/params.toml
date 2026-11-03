@@ -193,3 +193,11 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
   resumeStem = "zamboni-vita"
   # publicationsDescription = "Books, research papers, reports, presentations and patents."
   # publicationsURL = "/vita/publications/"
+
+# Shared Hugo archive module; retain this site's content scope and theme palette.
+[blogArchive]
+  sections = ["post"]
+  excludeTags = ["photos"]
+  style = "blowfish"
+  order = "desc"
+  showChart = true
