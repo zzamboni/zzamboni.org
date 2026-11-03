@@ -22,7 +22,7 @@ These were unchanged-content builds; new images still require processing.
 ## Build filtering
 
 `netlify.toml` runs `node ./scripts/netlify-ignore.mjs` before dependency
-installation. It requires only Node's standard library and Git.
+installation. It uses Node's standard library, Git, and a checked-in vendored TOML parser under `scripts/vendor/`; it does not require an npm install to run the ignore check.
 
 By default, the script skips a build only when every changed path is one of:
 
