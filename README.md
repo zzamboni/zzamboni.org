@@ -19,7 +19,7 @@ Hugo brings these sources together into one site. My [original blogging setup po
 
 ## CV and publications
 
-I keep my CV data in JSON Resume format and render it as native Hugo pages using my [hugo-jsonresume module](https://github.com/zzamboni/hugo-jsonresume). I also offer PDF and BibTeX downloads. The [CV integration guide](docs/hugo-vita-experiment.md) covers how the data, downloads, and renderer fit together.
+I keep my CV data in JSON Resume format and render it as native Hugo pages using my [hugo-jsonresume module](https://github.com/zzamboni/hugo-jsonresume). I also offer PDF and BibTeX downloads. The [CV integration guide](docs/hugo-jsonresume.md) covers how the data, downloads, and renderer fit together.
 
 ## A little automation
 

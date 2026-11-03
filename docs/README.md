@@ -10,7 +10,7 @@ Maintainer documentation for [zzamboni.org](../README.md). The repository's curr
 | [Callout blocks](callout-blocks.md) | Org-mode tip/note/warning blocks, generic Blowfish admonitions, alerts, and shortcode attributes. |
 | [Feature image generation](feature-image-generation.md) | GitHub Actions image generation, styles, review PRs, and image refinement. |
 | [Gallery and lightbox](gallery-lightbox.md) | GLightbox integration, figure behavior, captions, scroll locking, and browser regression checks. |
-| [JSON Resume in Hugo](hugo-vita-experiment.md) | Site-owned CV/publications data, the `hugo-jsonresume` module, and updates. The filename is historical; this is an implemented integration. |
+| [JSON Resume in Hugo](hugo-jsonresume.md) | Site-owned CV/publications data, the `hugo-jsonresume` module, and updates. |
 | [Legacy content](legacy-content.md) | Mounted legacy Markdown/HTML posts and their Pages CMS collections. |
 | [Linkblog favicons](linkblog-favicons.md) | Icon discovery, caching, fallback behavior, and refresh workflow. |
 | [Netlify builds](netlify-builds.md) | Build filtering, resource caching, and on-demand draft/staging deployments. |
