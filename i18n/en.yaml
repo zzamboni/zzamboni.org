@@ -16,14 +16,3 @@ home_all_photos:
   other: All photos
 archive_browse:
   other: Browse the archive by year
-archive_jump_to_year:
-  other: Jump to year
-archive_link:
-  other: Link
-archive_posts_per_year:
-  other: Posts per year
-archive_chart_hint:
-  other: Posts per year. Scroll horizontally for more years; select a bar to jump to that year.
-archive_year_posts:
-  one: "{{ .Year }}: {{ .Count }} post"
-  other: "{{ .Year }}: {{ .Count }} posts"

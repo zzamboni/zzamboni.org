@@ -1,4 +1,7 @@
 [[imports]]
+path = "github.com/zzamboni/hugo-blog-archive"
+
+[[imports]]
 path = "github.com/zzamboni/hugo-jsonresume"
 
 [[mounts]]
