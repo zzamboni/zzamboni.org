@@ -1,6 +1,6 @@
 # Blogging setup: publication plan
 
-Prepared 2026-10-21 against `main`. This is a proposal, not a publication schedule. All five articles below remain drafts. Their canonical sources are subtrees in [content-org/zzamboni.org](../content-org/zzamboni.org); Markdown previews are linked below.
+Prepared 2026-10-21 against the then-current `main`. **Historical editorial snapshot, not a current publication-status report.** Some articles have since been published, and the series was organized as **My website setup**. Check the current Org headings and exported front matter before using the proposed order. The statuses below are preserved as they were on October 21. Their canonical sources are subtrees in [content-org/zzamboni.org](../content-org/zzamboni.org); Markdown previews are linked below.
 
 ## Proposed order
 
@@ -36,7 +36,7 @@ The existing Pages CMS and phone articles cover the publishing entry points. The
 
 ## Other drafts already in the repository
 
-- [My blogging workflow with Emacs, org-mode+ox-hugo, Hugo and GitHub](../content/post/my-blogging-workflow.md) is an old, incomplete precursor to the published setup article. Treat it as superseded by the new overview rather than another publication in this series. It has been left untouched; removal can be a separate cleanup decision.
+- [My blogging workflow with Emacs, org-mode+ox-hugo, Hugo and GitHub](../content/post/my-blogging-workflow.md) was an old, incomplete precursor to the published setup article. Its leftover exported draft was subsequently removed; this link may no longer resolve. Consult Git history if you need the old version.
 - [Enabling menubar indicators in Elementary OS](../content/post/2025-11-04-enabling-menubar-indicators-in-elementary-os/index.md), [CopyQ on Wayland](../content/post/2025-11-04-how-to-set-up-copyq-in-eos-with-wayland/index.md), [Networking-related setup](../content/post/2025-11-06-networking-related-setup/index.md), and [Vivaldi browser configuration in Linux](../content/post/2026-04-11-vivaldi-browser-configuration-in-linux/index.md) are separate Linux/browser backlog items. Their export files remain drafts; some are outlines. They do not block this series and need a current-system review before getting publication dates.
 
 ## Preview notes
