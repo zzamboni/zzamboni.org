@@ -7,6 +7,8 @@ tags = ["blogging", "hugo", "netlify", "automation", "howto"]
 draft = true
 creator = "Emacs (Org mode + ox-hugo)"
 toc = true
+series = ["My website setup"]
+series_order = 7
 +++
 
 Making it easier to post to my blog had an unexpected side effect: I started giving Netlify more work. A quick save, a generated summary, a fetched icon, a small correction—each could lead to another build. With production, draft, and staging sites, those little changes add up.

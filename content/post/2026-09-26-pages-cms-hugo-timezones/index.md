@@ -8,6 +8,8 @@ draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 toc = false
 featureimage = "img/generated/2026-09-26-pages-cms-hugo-timezones.webp"
+series = ["My website setup"]
+series_order = 5
 +++
 
 I recently [added Pages CMS]({{< relref "2026-09-28-using-pagescms-alongside-org-and-hugo" >}}) as a way to write short posts for this site from a browser or my phone. My usual workflow is Emacs, Org mode, `ox-hugo` and Hugo, so the two editing paths need to agree on the meaning of a post's `date`. This resulted in an unexpected behavior.

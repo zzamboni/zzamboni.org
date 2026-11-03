@@ -113,6 +113,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#my-blogging-setup-in-2026-reducing-friction][My blogging setup in 2026: reducing friction]]
     - [[#drafts-previews-and-fewer-netlify-builds][Drafts, previews, and fewer Netlify builds]]
     - [[#automating-blog-housekeeping-with-github-actions][Automating blog housekeeping with GitHub Actions]]
+    - [[#a-reusable-blog-archive-for-hugo][A reusable blog archive for Hugo]]
 
 * Pages
 
@@ -596,6 +597,7 @@ Without further ado...
 :export_file_name: index
 :custom_id: native-image-attachments-in-org-mode
 :export_hugo_custom_front_matter: :toc false
+:export_hugo_custom_front_matter+: :series '("My website setup")' :series_order 3
 :END:
 #+begin_description
 I replaced org-download and several custom image-capture functions with Org attachments and Emacs media pasting. A little configuration keeps images grouped by blog post and makes C-y do the right thing.
@@ -2632,6 +2634,7 @@ CLOSED: [2020-12-11 Fri 00:27]
 :export_file_name: index
 :export_hugo_custom_front_matter: :toc true :featureimage img/z-favicon-src.png
 :CUSTOM_ID: my-blogging-setup-with-emacs--org-mode--ox-hugo--hugo--gitlab-and-netlify
+:export_hugo_custom_front_matter+: :series '("My website setup")' :series_order 2
 :END:
 #+begin_description
 My blogging has seen multiple iterations over the years, and with it, the tools I use have changed. At the moment I use a set of free tools and workflows which make it very easy to keep my blog updated. This post gives a brief overview of my setup.
@@ -3606,6 +3609,7 @@ CLOSED: [2026-02-11 Wed 13:21]
 :export_file_name: index
 :custom_id: porting-cv-to-jsonresume
 :export_hugo_custom_front_matter: :featureimage img/generated/2026-02-10-porting-cv-to-jsonresume.webp :toc true
+:export_hugo_custom_front_matter+: :series '("My website setup")' :series_order 9
 :END:
 #+BEGIN_description
 How I moved my CV source of truth from Org mode + LaTeX to JSON Resume, and built a pipeline that exports both my CV and publications to HTML and PDF.
@@ -3703,6 +3707,7 @@ CLOSED: [2026-03-28 Sat 01:38]
 :export_file_name: index
 :custom_id: from-personal-cv-pipeline-to-reusable-toolkit
 :export_hugo_custom_front_matter: :featureimage img/generated/2026-03-27-from-personal-cv-pipeline-to-reusable-toolkit.webp :toc true
+:export_hugo_custom_front_matter+: :series '("My website setup")' :series_order 10
 :END:
 #+BEGIN_description
 How my CV pipeline escaped my own resume repo and became a reusable tool, plus the evolution of the HTML theme into its own fork.
@@ -3875,6 +3880,7 @@ CLOSED: [2026-09-27 Sun 17:21]
 :export_file_name: index
 :custom_id: pages-cms-hugo-timezones
 :export_hugo_custom_front_matter: :toc false :featureimage img/generated/2026-09-26-pages-cms-hugo-timezones.webp
+:export_hugo_custom_front_matter+: :series '("My website setup")' :series_order 5
 :END:
 #+begin_description
 The Pages CMS date field stores the right clock time but the wrong timezone. Here is why this caused posts to disappear, and the workaround I found.
@@ -3922,6 +3928,7 @@ CLOSED: [2026-10-06 Tue 22:04]
 :export_file_name: index
 :export_hugo_custom_front_matter: :toc true :featureimage img/generated/2026-09-28-using-pagescms-alongside-org-and-hugo.webp
 :CUSTOM_ID: using-pages-cms-alongside-org-mode-and-hugo
+:export_hugo_custom_front_matter+: :series '("My website setup")' :series_order 4
 :END:
 #+begin_description
 How I added a lightweight writing path to my Org-mode blog, and the small configuration choices that make Pages CMS, Hugo, GitHub Actions and Netlify work together.
@@ -4069,6 +4076,7 @@ In future posts I'll show how I have created link- and photo-specific sections (
 :export_file_name: index
 :export_hugo_custom_front_matter: :toc true :featureimage img/generated/2026-10-07-linkblog-and-photoblog-with-netlify-and-shortcuts.webp
 :CUSTOM_ID: linkblog-and-photoblog-from-my-phone
+:export_hugo_custom_front_matter+: :series '("My website setup")' :series_order 6
 :END:
 #+begin_description
 How I turned shared links and photos into Hugo posts with iOS Shortcuts, Netlify Functions, GitHub, and a small amount of custom Blowfish styling.
@@ -4117,6 +4125,7 @@ If you want to adapt this, the [[https://github.com/zzamboni/zzamboni.org/blob/m
 :export_file_name: index
 :custom_id: bringing-json-resume-cv-home-to-hugo
 :export_hugo_custom_front_matter: :toc true :featureimage img/generated/2026-10-18-bringing-json-resume-cv-home-to-hugo.webp
+:export_hugo_custom_front_matter+: :series '("My website setup")' :series_order 11
 :END:
 #+begin_description
 How I brought my JSON Resume CV and publications into Hugo, and extracted the renderer into a reusable Hugo module without giving up the standalone toolkit, PDFs, or BibTeX sources.
@@ -4239,6 +4248,7 @@ CLOSED: [2026-11-02 Mon 14:16]
 :export_file_name: index
 :custom_id: my-blogging-setup-in-2026
 :export_hugo_custom_front_matter: :toc true :featureimage img/generated/2026-10-21-my-blogging-setup-in-2026.webp
+:export_hugo_custom_front_matter+: :series '("My website setup")' :series_order 1
 :END:
 #+begin_description
 My updated blogging setup: Org mode for longer articles, Pages CMS and iPhone Shortcuts for quick posts, hugo-jsonresume for the CV, and Hugo, GitHub and Netlify to bring it all together.
@@ -4424,6 +4434,7 @@ For a long article, I open Emacs. For a short note, I open Pages CMS. For a link
 :export_file_name: index
 :custom_id: hugo-drafts-and-netlify-builds
 :export_hugo_custom_front_matter: :toc true
+:export_hugo_custom_front_matter+: :series '("My website setup")' :series_order 7
 :END:
 #+begin_description
 How I separate content drafts from site experiments, preview drafts on demand, and avoid rebuilding my Hugo site when there is nothing new to publish.
@@ -4492,6 +4503,7 @@ The implementation is specific to my repository, especially the paths that are s
 :export_file_name: index
 :custom_id: automating-blog-housekeeping
 :export_hugo_custom_front_matter: :toc true
+:export_hugo_custom_front_matter+: :series '("My website setup")' :series_order 8
 :END:
 #+begin_description
 How I use GitHub Actions for missing summaries, cached link icons, and feature images, with different levels of review for each kind of change.
@@ -4548,6 +4560,73 @@ This is small enough to keep with the other automation rather than build a dashb
 The boundary I have ended up with is practical: preserve text I supplied, make small missing-metadata changes easy to inspect in Git, and ask me to review generated images before using them. A summary can still be wrong, so I check the resulting post; putting something in a workflow does not make it editorially reliable.
 
 I like that the automation leaves ordinary files behind. I can edit a generated summary, replace an icon, or close an image PR and carry on. The tools help finish a post, but they do not need to become another publishing system.
+
+*** DRAFT A reusable blog archive for Hugo :blogging:hugo:opensource:blowfish:
+:PROPERTIES:
+:export_date: <2026-11-03 Tue>
+:export_hugo_bundle: 2026-11-03-hugo-blog-archive
+:export_file_name: index
+:custom_id: hugo-blog-archive
+:export_hugo_custom_front_matter: :toc false
+:export_hugo_custom_front_matter+: :series '("My website setup")' :series_order 12
+:END:
+#+begin_description
+I extracted my site's year-by-year archive and linked posts-per-year chart into hugo-blog-archive, a small module that works with any Hugo theme.
+#+end_description
+
+I recently added a [[/archive/][blog archive]] to this site: a compact list of posts grouped by year, with a small posts-per-year chart at the top. Clicking a bar jumps to that year's entries. It is a useful way to browse older posts without paging through summaries and images.
+
+Once it was working, I realized that very little of it needed to be specific to my website. I extracted it into [[https://github.com/zzamboni/hugo-blog-archive][=hugo-blog-archive=]], a reusable Hugo module.
+
+**** A small feature that travels well
+
+The module renders the list and chart together, so their counts come from the same filtered collection of posts. Years with no posts remain visible in the chart, and the default ordering puts the newest posts first.
+
+Everything is generated by Hugo at build time. There is no JavaScript charting library to load: the bars are HTML and CSS, and the year links are ordinary anchors. The chart scrolls horizontally on narrow screens.
+
+I use [[https://blowfish.page/][Blowfish]], so the module includes an optional style that follows its colors and light/dark appearance. The default styling works independently of Blowfish, inherits the site's fonts, and can be adjusted with CSS variables. The site's own theme still provides the surrounding page.
+
+**** Adding an archive
+
+For a site already using Hugo Modules, add this to =hugo.toml=:
+
+#+begin_src toml
+[[module.imports]]
+path = "github.com/zzamboni/hugo-blog-archive"
+#+end_src
+
+Then resolve the dependency:
+
+#+begin_src sh
+hugo mod get github.com/zzamboni/hugo-blog-archive@main
+#+end_src
+
+Create =content/archive.md= with a title and the =archive= shortcode:
+
+#+begin_src markdown
++++
+title = "Blog archive"
++++
+
+{{</* archive */>}}
+#+end_src
+
+By default, the archive includes the =post= and =posts= sections. My site's configuration selects =post=, excludes photo posts, and enables the Blowfish palette:
+
+#+begin_src toml
+[params.blogArchive]
+sections = ["post"]
+excludeTags = ["photos"]
+style = "blowfish"
+#+end_src
+
+The chart, ordering, and date format are configurable too. Hugo's normal draft and publication rules still apply.
+
+**** Try it
+
+You can compare the [[https://zzamboni.github.io/hugo-blog-archive/generic/archive/][generic example]] and the [[https://zzamboni.github.io/hugo-blog-archive/blowfish/archive/][Blowfish example]], which use the same sample content.
+
+The [[https://github.com/zzamboni/hugo-blog-archive][repository]] has installation instructions, configuration options, and examples for custom layouts. It is MIT-licensed. If you have wanted a straightforward archive for your Hugo site, give it a try!
 
 * COMMENT Local variables :noexport:ARCHIVE:
 
