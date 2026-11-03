@@ -1,8 +1,8 @@
 #+TITLE: zzamboni.org
 #+OPTIONS: toc:nil num:nil
 
-#+HTML: <a href="https://app.netlify.com/projects/zzamboni/deploys"><img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/e5ae9eeb-01ec-4b37-90ad-2f4b3877a7d6/deploy-status"></a>
-#+HTML: <a href="https://zzamboni.org/"><img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fzzamboni.org&amp;up_message=zzamboni.org&amp;down_message=zzamboni.org%20(down)"></a>
+[[https://app.netlify.com/projects/zzamboni/deploys][https://api.netlify.com/api/v1/badges/e5ae9eeb-01ec-4b37-90ad-2f4b3877a7d6/deploy-status]]
+[[https://zzamboni.org][https://img.shields.io/website?url=https%3A%2F%2Fzzamboni.org&up_message=zzamboni.org&down_message=zzamboni.org%20(down)]]
 
 This repository contains the source for [[https://zzamboni.org/][zzamboni.org]], my little corner of the web. I write mostly about technology, security, automation, and whatever else catches my attention. I also share interesting links, post photos, and keep my CV and publications here.
 
