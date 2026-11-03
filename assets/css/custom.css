@@ -270,3 +270,11 @@
 .figure-number {
   display: none;
 }
+
+/* Upcoming series titles are readable but distinct from published links. */
+.series-upcoming {
+  color: rgb(var(--color-neutral-600));
+}
+.dark .series-upcoming {
+  color: rgb(var(--color-neutral-400));
+}
