@@ -18,9 +18,9 @@ There's a whole service [https://shields.io/](https://shields.io/) devoted to th
 
 I love that Github also renders Org-mode files correctly, however I ran into a problem when trying to display badges within Org files - the badge was being shown as text instead of as an image. This could be solved by using Org's `#+HTML:` keywords to insert HTML code directly, but I prefer to stick to the native markup whenever possible.
 
-I found the cause: Github's Org-mode parser expects image URLs to have an image extension, and often the badge image URLs don't. For example this is the URL for the badge above: `https://img.shields.io/badge/this_is-a_cool_badge-blue?label=This%20is`
+I found the cause: Github's Org-mode parser expects image URLs to have an image extension, and often the badge image URLs don't. For example this is the URL for the badge above: `https://img.shields.io/badge/this_is-a_cool_badge-blue`
 
-Fortunately, I also found the solution! Just add .svg to the end of the URL. This seems to work with both [shields.io](http://shields.io) and Netlify badges. In the example above, this means using `https://raster.shields.io/badge/this_is-a_cool_badge-blue.svg`. The badge is shown without the extension. This works too for the Netlify badge URLs.
+Fortunately, I also found the solution! Just add .svg to the end of the URL. This seems to work with both [shields.io](http://shields.io) and Netlify badges. In the example above, this means using `https://img.shields.io/badge/this_is-a_cool_badge-blue.svg`. The badge is shown without the extension. This works too for the Netlify badge URLs.
 
 You can see this in action in my website's [README.org](https://github.com/zzamboni/zzamboni.org/blob/main/README.org) file. The Org-mode markup for the badges is this:
 
