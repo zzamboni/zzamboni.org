@@ -6,8 +6,8 @@ tags = [
 	'tips',
 	'orgmode',
 ]
-draft = true
-featureimage = "img/generated/2026-11-04-badges-in-org-files-in-github.webp"
+draft = false
+featureimage = 'img/generated/2026-11-04-badges-in-org-files-in-github.webp'
 toc = false
 +++
 I love badges - those little graphical status or information indicators often seen in Github README files, like this:
