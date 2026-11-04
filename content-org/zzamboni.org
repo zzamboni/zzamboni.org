@@ -43,6 +43,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#curriculum-vitae-1][Curriculum Vitae]]
     - [[#publications][Publications]]
   - [[#contact][Contact]]
+  - [[#series][Series]]
   - [[#books-section][Books section]]
     - [[#books][Books]]
     - [[#book-bundle][Book bundle]]
@@ -203,6 +204,15 @@ I have decided to close the comments form that used to be here, because the only
 
 If you want to reach me, please use your imagination (I'm not hard to find) or follow some of the social media icons above.
 
+
+** DONE Series
+:PROPERTIES:
+:export_hugo_section: series
+:export_file_name: _index
+:CUSTOM_ID: series
+:END:
+
+Some topics deserve more than a single post. These series bring related articles together so you can explore a topic in more depth and follow along as it develops.
 
 ** DONE Books section
 CLOSED: [2018-03-25 Sun 20:11]
