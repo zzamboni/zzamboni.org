@@ -1,6 +1,11 @@
 # Matching paths under layouts/ are detected automatically. List indirect
 # dependencies here so changes to their upstream templates also get reviewed.
 [[overrides]]
+local = "layouts/tags/terms.html"
+upstream = "layouts/_default/terms.html"
+reason = "Only Tags replaces the default taxonomy text list with a tag cloud; other taxonomies use the theme template."
+
+[[overrides]]
 local = "layouts/partials/shortcode-admonition.html"
 upstream = "layouts/_default/_markup/render-blockquote.html"
 reason = "Legacy tip, note, and warning shortcodes render Markdown alerts through Blowfish's admonition hook."

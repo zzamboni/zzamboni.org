@@ -1,4 +1,4 @@
-{{/* Based on Blowfish v3.8.0 terms.html; omit the default text list because page content supplies the tag cloud. Keep card view available. */}}
+{{/* Tags-only override of Blowfish terms.html: page content supplies the tag cloud. Keep card view available and let other taxonomies use the theme's default list. */}}
 {{ define "main" }}
   {{ .Scratch.Set "scope" "terms" }}
   {{ $showHero := .Params.showHero | default site.Params.taxonomy.showHero | default false }}
