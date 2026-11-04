@@ -28,6 +28,11 @@ pageRef = "code"
 weight = 30
 
 [[main]]
+title = "Series"
+pageRef = "series"
+weight = 40
+
+[[main]]
 title = "Contact"
 pageRef = "contact"
 weight = 50

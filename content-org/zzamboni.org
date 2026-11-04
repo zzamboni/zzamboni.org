@@ -212,7 +212,7 @@ If you want to reach me, please use your imagination (I'm not hard to find) or f
 :CUSTOM_ID: series
 :END:
 
-Some topics deserve more than a single post. These series bring related articles together so you can explore a topic in more depth and follow along as it develops.
+Some topics deserve more than a single post. These series bring related articles together so you can explore a topic in more depth.
 
 ** DONE Books section
 CLOSED: [2018-03-25 Sun 20:11]
