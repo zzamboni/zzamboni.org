@@ -16,7 +16,7 @@ I love badges - those little graphical status or information indicators often se
 
 There's a whole service [https://shields.io/](https://shields.io/) devoted to this, but they can come from anywhere - for example Netlify provides its own [status badges](https://docs.netlify.com/manage/monitoring/status-badges/).
 
-I love that Github also renders Org-mode files correctly, however I ran into a problem when trying to display badges within Org files - the badge was being shown as text instead of as an image.
+I love that Github also renders Org-mode files correctly, however I ran into a problem when trying to display badges within Org files - the badge was being shown as text instead of as an image. This could be solved by using Org's `#+HTML:` keywords to insert HTML code directly, but I prefer to stick to the native markup whenever possible.
 
 I found the cause: Github's Org-mode parser expects image URLs to have an image extension, and often the badge image URLs don't. For example this is the URL for the badge above: `https://img.shields.io/badge/this_is-a_cool_badge-blue?label=This%20is`
 
