@@ -57,18 +57,18 @@ flowchart TB
     end
 
 git["🐙 GitHub Repo"]
-hugo["🐡️ Hugo +<br/>Blowfish"]
+hugo["🐡️ Hugo +&lt;br/&gt;Blowfish"]
 netlify["☁️ Netlify"]
 site["🌐 zzamboni.org"]
 
-org -->|"ox-hugo"| git
-cms --> git
-ios -->|"Netlify Functions"| git
-cv -->|"resume-toolkit"| git
+org --&gt;|"ox-hugo"| git
+cms --&gt; git
+ios --&gt;|"Netlify Functions"| git
+cv --&gt;|"resume-toolkit"| git
 
-git --> hugo
-hugo --> netlify
-netlify --> site
+git --&gt; hugo
+hugo --&gt; netlify
+netlify --&gt; site
 
 classDef source fill:#EAF3FF,stroke:#6699D0,color:#1D426B,stroke-width:1.5px
 classDef repository fill:#F0EAFF,stroke:#9370D2,color:#493080,stroke-width:2px

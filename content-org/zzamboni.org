@@ -33,6 +33,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
 
 * Table of Contents                                          :TOC_3:noexport:
 - [[#pages][Pages]]
+  - [[#zzamboniorg][zzamboni.org]]
   - [[#about][About]]
     - [[#about-me][About me]]
     - [[#full-cv][Full CV]]
@@ -43,6 +44,10 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#curriculum-vitae-1][Curriculum Vitae]]
     - [[#publications][Publications]]
   - [[#contact][Contact]]
+  - [[#blog-archive][Blog archive]]
+  - [[#tags-section][Tags section]]
+    - [[#tags][Tags]]
+    - [[#photos][Photos]]
   - [[#series][Series]]
   - [[#books-section][Books section]]
     - [[#books][Books]]
@@ -119,6 +124,14 @@ This file is the source for all new and updated content on [[http://zzamboni.org
 * Pages
 
 This section contains all the static pages.
+
+** DONE zzamboni.org
+:PROPERTIES:
+:export_hugo_section: /
+:export_file_name: _index
+:export_date: 2025-11-18
+:export_hugo_aliases: /new
+:END:
 
 ** DONE About
 CLOSED: [2025-11-17 Mon 16:28]
@@ -205,6 +218,46 @@ I have decided to close the comments form that used to be here, because the only
 If you want to reach me, please use your imagination (I'm not hard to find) or follow some of the social media icons above.
 
 
+** DONE Blog archive
+:PROPERTIES:
+:export_hugo_section: archive
+:export_file_name: _index
+:export_hugo_custom_front_matter: :layout archive
+:END:
+
+Browse all posts by year. For summaries and images, visit the [[/post/][Blog]].
+
+** Tags section
+:PROPERTIES:
+:export_hugo_section: tags
+:END:
+
+*** DONE Tags
+:PROPERTIES:
+:export_file_name: _index
+:export_date: 2017-09-16T14:22:03+02:00
+:export_hugo_custom_front_matter: :showPagination false :showDate false :showWordCount false :showReadingTime false :showAuthor false :featureimage img/tags.jpg :menu main :weight 40
+:END:
+
+#+begin_export html
+<div class="tc">
+#+end_export
+
+These are all the tags used in my posts.
+
+#+hugo: {{< tagcloud >}}
+
+#+begin_export html
+</div>
+#+end_export
+
+*** DONE Photos
+:PROPERTIES:
+:export_hugo_section: tags/photos
+:export_file_name: _index
+:export_hugo_custom_front_matter: :cardView true
+:END:
+
 ** DONE Series
 :PROPERTIES:
 :export_hugo_section: series
@@ -212,7 +265,7 @@ If you want to reach me, please use your imagination (I'm not hard to find) or f
 :CUSTOM_ID: series
 :END:
 
-Some topics deserve more than a single post. These series bring related articles together so you can explore a topic in more depth.
+Some topics deserve more than a single post. These series bring related articles together so we can explore a topic in more depth.
 
 ** DONE Books section
 CLOSED: [2018-03-25 Sun 20:11]
@@ -527,7 +580,7 @@ As usual, the post below is included directly from my live [[https://github.com/
 
 If you are interested in writing your own Literate Config files, check out my book [[https://leanpub.com/lit-config][Literate Config]] on Leanpub!
 
-#+include: "~/.doom.d/doom.org" :lines "12-"
+#+include: "~/.doom.d/doom.org" :lines "7-"
 
 *** DONE My Emacs Configuration, With Commentary                      :emacs:
 CLOSED: [2017-12-17 Sun 20:14]
