@@ -14,7 +14,7 @@ series_order = 4
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **November  5, 2026**
+Last update: **November 11, 2026**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -336,7 +336,10 @@ Alias open to the correct command.
 
 ```elvish
 only-when-external xdg-open {
-  alias:new open xdg-open
+  var open-without-errors~ = { |@files|
+    xdg-open $@files 2> /dev/null
+  }
+  edit:add-var open~ $open-without-errors~
 }
 ```
 
