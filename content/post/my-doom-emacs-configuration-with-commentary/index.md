@@ -14,7 +14,7 @@ series_order = 1
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **November  5, 2026**
+Last update: **November 11, 2026**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -22,17 +22,13 @@ As usual, the post below is included directly from my live [doom.org](https://gi
 
 If you are interested in writing your own Literate Config files, check out my book [Literate Config](https://leanpub.com/lit-config) on Leanpub!
 
-{{< figure src="doom-emacs-color.png" >}}
-
-This is my [literate](https://leanpub.com/lit-config) Doom Emacs configuration. I use Emacs keybindings, Ivy/Company completion, and Org for notes, tasks, writing, and publishing. The code below is the source of my generated configuration; [the cheat sheet](https://github.com/zzamboni/dot-doom/blob/main/cheatsheet.pdf) documents everyday commands.
-
 
 ## Maintaining this configuration {#maintaining-this-configuration}
 
 
 ### Files and load order {#files-and-load-order}
 
-Edit this file, then run `C-c C-v t` (`org-babel-tangle`). Do not edit the generated files directly. Package declarations stay beside their configuration and explicitly select `packages.el`; other Lisp defaults to `config.el`.
+I make all my changes in this file, then run `C-c C-v t` (`org-babel-tangle`) (or just save it - see [Automatic tangling](#automatic-tangling)) to generate the Lisp files. If you want to change something, this is the place to do it! I keep package declarations next to the code that uses them, with `:tangle packages.el` to send them to the right file. Other Lisp blocks go to `config.el` by default (this is configured at the top of `doom.org` with `#+property: header-args:emacs-lisp :tangle config.el`).
 
 | Output        | Purpose                                   | Apply changes                |
 |---------------|-------------------------------------------|------------------------------|
@@ -40,21 +36,21 @@ Edit this file, then run `C-c C-v t` (`org-babel-tangle`). Do not edit the gener
 | `packages.el` | Additional packages and recipe overrides  | `doom sync`, restart         |
 | `config.el`   | Personal settings, commands, and bindings | Restart or `M-x doom/reload` |
 
-`custom.el` holds Emacs-managed settings, including trusted themes and file-local variables; keep those separate from this source.
+I let Emacs manage `custom.el` separately. It holds settings such as trusted themes and file-local variables that I've approved. I try to keep it minimal, so that `doom.org` is almost always the authoritative source of configuration
 
-Set variables needed during package initialization before loading the package. Use `after!` or `use-package!` for settings that depend on its definitions. Keep structure setters and Transient macros inside the existing deferred forms: expanding them too early can break startup after an upgrade.
+Some variables need their values before a package loads; for settings that depend on the package's definitions, I use `after!` or `use-package!`. Structure setters and Transient macros need a little extra care: expanding them before their packages load can break startup, so I defer those too.
 
 
 ### Dependencies and upgrades {#dependencies-and-upgrades}
 
-This configuration is reviewed against Emacs 30.2, Org 9.8.9, and org-gtd 4.0.7. Doom modules live in `~/.emacs.d/sources/doom+/modules/` on this installation. Their `.doommodule`, `packages.el`, and `config.el` describe the installed behavior; older online examples may reference removed flags such as Org's `+hugo`.
+At the time of this update, I'm using Emacs 30.2, Org 9.8.9, and org-gtd 4.0.7. On my machine, Doom's modules live in `~/.emacs.d/sources/doom+/modules/`. When something doesn't work as expected, I check their `.doommodule`, `packages.el`, and `config.el` files to see what my installed version actually does. Online examples sometimes refer to flags that no longer exist, such as Org's `+hugo`.
 
-Keep the local `org-cv` and `ox-leanpub` development repositories available at the paths in their recipes. External tools include `tectonic`, `typst`, `elvish`, `pandoc`, and the compilers/interpreters used by enabled language modules. The Reveal browser helper and Outlook capture require macOS.
-
-After edits, tangle, run `git diff --check`, inspect the generated diff, and test a fresh Emacs startup plus the affected commands. A package upgrade can require `doom sync -b` to rebuild stale bytecode; do not add compatibility shims before checking the installed sources and build state.
+I use local development checkouts of some modules, like my own `ox-leanpub`, so their recipe paths need to point to those repositories (see [Leanpub books](#leanpub-books) for an example). Some features also need external tools: `tectonic`, `typst`, `elvish`, `pandoc`, and the compilers or interpreters for the languages I use. The Reveal browser helper (see [Reveal presentations](#reveal-presentations)) and Outlook capture code (see [Capture templates](#capture-templates)) need macOS.
 
 
 ### Generated file headers {#generated-file-headers}
+
+In each generated file, add a header indicating not to edit it by hand.
 
 ```emacs-lisp
 ;;; init.el -*- lexical-binding: t; -*-
@@ -80,15 +76,14 @@ After edits, tangle, run `git diff --check`, inspect the generated diff, and tes
 
 ## Enabled Doom modules {#enabled-doom-modules}
 
-Only enabled modules are listed here. Use Doom's module documentation to browse other options. Evil is deliberately absent; `C-c` is my leader prefix. `+pretty` supplies Org Modern and Org Appear; `+present` supplies Reveal export. The LaTeX module's `+latexmk` is for editing TeX files; Org PDF export separately uses Tectonic. The negative Ivy flags are retained as explicit preferences.
+I list only the modules I enable here. Doom's [init.example.el](https://github.com/doomemacs/core/blob/master/static/init.example.el) and [module documentation](https://github.com/doomemacs/modules) cover all the options. I don't use Evil mode, so it's absent. Corfu handles completion in editing buffers, and Vertico handles the minibuffer. They seem to work quite well so far.
 
 ```emacs-lisp
 (doom!
 
   :completion
-  (company +childframe)
-  (ivy +prescient -childframe
-       -fuzzy +icons)
+  (corfu +orderless +icons +dabbrev)
+  (vertico +icons)
 
   :ui
   doom
@@ -101,12 +96,12 @@ Only enabled modules are listed here. Use Doom's module documentation to browse 
   (popup +defaults)
   vi-tilde-fringe
   window-select
-  workspaces
   zen
 
   :editor
   file-templates
   snippets
+  word-wrap
 
   :emacs
   dired
@@ -133,6 +128,7 @@ Only enabled modules are listed here. Use Doom's module documentation to browse 
 
   :os
   (:if IS-MAC macos)
+  tty
 
   :lang
   common-lisp
@@ -152,10 +148,6 @@ Only enabled modules are listed here. Use Doom's module documentation to browse 
   (sh +lsp)
   (yaml +lsp)
 
-  :app
-  everywhere
-  irc
-
   :config
   (default +bindings +smartparens))
 ```
@@ -163,9 +155,7 @@ Only enabled modules are listed here. Use Doom's module documentation to browse 
 
 ## Editor defaults {#editor-defaults}
 
-Use Command as Meta on macOS and swap the X Meta/Super modifiers on Linux. `C-k` removes the whole line when invoked at its beginning. Enable auto-save and backups, hide line numbers, and exit without a confirmation prompt.
-
-Retain the existing credential-source reversal and desktop restoration policy, including loading locked desktops. The reversal changes credential precedence and runs again on reload; replacing it with an explicit order is a separate policy decision.
+I use Command as Meta on macOS and swap the X Meta/Super modifiers on Linux. I'm used to having the Emacs Meta key immediately to the left of the spacebar.
 
 ```emacs-lisp
 (setq user-full-name "Diego Zamboni"
@@ -177,9 +167,13 @@ Retain the existing credential-source reversal and desktop restoration policy, i
              mac-right-option-modifier  'alt
              mac-pass-control-to-system nil))
       (IS-LINUX
-       (setq x-meta-keysym 'super
+       (setq x-meta-keysym 'alt
              x-super-keysym 'meta)))
+```
 
+I like `C-k` to remove the whole line when I'm at its beginning. I also enable auto-save and backups, hide line numbers, and let Emacs exit without asking for confirmation.
+
+```emacs-lisp
 (setq kill-whole-line t)
 
 (setq display-line-numbers-type nil)
@@ -188,9 +182,13 @@ Retain the existing credential-source reversal and desktop restoration policy, i
       make-backup-files t)
 
 (setq confirm-kill-emacs nil)
+```
 
-(after! auth-source
-  (setq auth-sources (nreverse auth-sources)))
+I use Desktop to restore my files and window layouts automatically, including desktops with a lock file. I don't need separate workspace contexts, so I leave Doom's workspaces module disabled.
+
+```emacs-lisp
+;(after! auth-source
+;  (setq auth-sources (nreverse auth-sources)))
 
 (desktop-save-mode 1)
 (setq! desktop-load-locked-desktop t)
@@ -202,9 +200,9 @@ Retain the existing credential-source reversal and desktop restoration policy, i
 
 ### Dashboard, fonts, and theme {#dashboard-fonts-and-theme}
 
-Choose a splash image from `splash/` at startup. Use Fira Code Nerd Font for code, Alegreya for prose, and the Spacemacs Light theme. Mixed Pitch keeps code in Org buffers monospaced. <kbd>C-=</kbd>, `C--`, and `C-0` adjust or reset font size.
+I pick a random splash image from `splash/` each time Emacs starts. For fonts, I use Fira Code Nerd Font for code and Alegreya for prose, with the Spacemacs Light theme. Mixed Pitch lets me use a proportional font in Org while keeping code monospaced. I can adjust the font size with <kbd>C-=</kbd> and `C--`, or reset it with `C-0`.
 
-The dashboard face overrides prevent the theme's comment background from tinting transparent banner images. Disable selected symbolic ligatures while keeping font ligatures and the modeline word count.
+The dashboard faces need a small tweak so the theme's comment background doesn't show through transparent banner images. I also turn off a few symbolic ligatures, keep the font ligatures, and show a word count in the modeline.
 
 ```emacs-lisp
 (let ((alternatives '("doom-emacs-bw-light.svg"
@@ -252,37 +250,113 @@ The dashboard face overrides prevent the theme's comment background from tinting
 (setq doom-modeline-enable-word-count t)
 ```
 
+Remove from the dashboard some sections I don't use. Disabled for now to test how I feel about the new dashboard.
+
+```emacs-lisp
+;(setq +dashboard-menu-sections (cl-subseq +dashboard-menu-sections 0 2))
+```
+
 
 ## Navigation and editing {#navigation-and-editing}
 
 
-### Buffers, search, and undo {#buffers-search-and-undo}
+### Completion {#completion}
 
-`C-x b` combines file buffers and recent files; `C-x C-b` lists buffers. The [Counsel override](https://github.com/abo-abo/swiper/pull/2687) still matters: the installed implementation does not abbreviate buffer paths before deduplication. Track visits so recent files follow navigation order.
+I use [Corfu](https://github.com/minad/corfu) for completion at point and [Vertico](https://github.com/minad/vertico) for minibuffer selection. Doom takes care of the surrounding pieces through its built-in `corfu` and `vertico` modules: [Cape](https://github.com/minad/cape), [Consult](https://github.com/minad/consult), [Orderless](https://github.com/oantolin/orderless), [Marginalia](https://github.com/minad/marginalia), [Embark](https://github.com/oantolin/embark), [Prescient](https://github.com/radian-software/prescient.el), icons, popup documentation, and snippets. Phew! The Emacs ecosystem has become extremely complex in this respect. I had to learn what these do, so here's a summary:
 
-`C-s` uses Doom's buffer search; `C-c s r/q` perform visual regexp replacement. `C-c C-g` opens Magit. `C-?` redoes changes, `M-g g` and `M-g M-g` jump to lines, and `M-g o` selects an outline heading.
+-   With Orderless, you can type space-separated terms in any order, or use `~term` when I want fuzzy matching;
+-   Prescient learns and ranks choices based on my behavior;
+-   `C-M-i` asks for completion explicitly. ; I let Orderless do the matching. Corfu remembers my choices in editing buffers through its history extension.
+
+<!--listend-->
 
 ```emacs-lisp
-(map! "C-x b"   #'counsel-buffer-or-recentf
-  "C-x C-b" #'counsel-switch-buffer)
+(package! vertico-prescient)
+```
 
-(defun zz/counsel-buffer-or-recentf-candidates ()
-  "Return candidates for `counsel-buffer-or-recentf'."
-  (require 'recentf)
-  (recentf-mode)
-  (let ((buffers
-         (delq nil
-               (mapcar (lambda (b)
-                         (when (buffer-file-name b)
-                           (abbreviate-file-name (buffer-file-name b))))
-                       (delq (current-buffer) (buffer-list))))))
-    (append
-     buffers
-     (cl-remove-if (lambda (f) (member f buffers))
-                   (counsel-recentf-candidates)))))
+```emacs-lisp
+(use-package! vertico-prescient
+  :after vertico
+  :init
+  (setq vertico-prescient-enable-filtering nil
+        prescient-save-file (doom-profile-cache-dir t "prescient-save.el"))
+  :config
+  (vertico-prescient-mode 1)
+  (prescient-persist-mode 1))
 
-(advice-add #'counsel-buffer-or-recentf-candidates
-            :override #'zz/counsel-buffer-or-recentf-candidates)
+(after! cape
+  ;; Preserve Company's current-buffer-only fallback word search.
+  (setq cape-dabbrev-check-other-buffers nil))
+
+(after! corfu
+  ;; Preview candidates without committing them merely by continuing to type.
+  (setq corfu-preview-current t))
+```
+
+For Lua and LaTeX, I use Company backends through Cape's Company-to-CAPF adapter. That gives Corfu access to their specialized candidates without turning on Company mode. Emacs Lisp, Sly, ESS, Python, Racket, and LSP use native completion functions, including LSP completion in shell buffers. Doom also adds Yasnippet candidates so I can complete snippets through the same interface.
+
+```emacs-lisp
+(package! company-lua :pin "29f6819de4d691e5fd0b62893a9f4fbc1c6fcb52")
+(package! company-auctex :pin "9400a2ec7459dde8cbf1a5d50dfee4e300ed7e18")
+(package! company-reftex :pin "42eb98c6504e65989635d95ab81b65b9d5798e76")
+(package! company-math :pin "3eb006874e309ff4076d947fcbd61bb6806aa508")
+```
+
+```emacs-lisp
+(defun zz/add-company-capfs (&rest backends)
+  "Add BACKENDS to this buffer through Cape without enabling Company mode."
+  (require 'cape)
+  (dolist (backend backends)
+    (let ((capf (intern (format "zz/capf-%s" backend))))
+      (unless (fboundp capf)
+        (defalias capf (cape-company-to-capf backend)))
+      (add-hook 'completion-at-point-functions capf 10 t))))
+
+(defun zz/lua-completion-setup ()
+  "Retain Lua's built-in API completion without a language server."
+  (require 'company-lua)
+  (zz/add-company-capfs #'company-lua))
+(add-hook 'lua-mode-hook #'zz/lua-completion-setup)
+
+(defun zz/latex-completion-setup ()
+  "Retain AUCTeX and math completion alongside native CAPFs."
+  (require 'company-auctex)
+  (require 'company-math)
+  (zz/add-company-capfs #'company-auctex-environments
+                       #'company-auctex-macros
+                       #'+latex-symbols-company-backend))
+(add-hook 'LaTeX-mode-hook #'zz/latex-completion-setup)
+
+(defun zz/reftex-completion-setup ()
+  "Retain RefTeX label and citation completion."
+  (when reftex-mode
+    (require 'company-reftex)
+    (zz/add-company-capfs #'company-reftex-labels #'company-reftex-citations)))
+(add-hook 'reftex-mode-hook #'zz/reftex-completion-setup)
+```
+
+
+### Buffers, search, and undo {#buffers-search-and-undo}
+
+I often want to open a recent file as well as switch buffers, so I bind `C-x b` to a Consult picker that offers both, including buffers without a file. Consult takes care of removing duplicate recent-file entries. When I only want open buffers, I use `C-x C-b`. I also track file visits as I switch buffers, so the recent-file list follows my navigation order.
+
+For searching within a buffer, I use Doom's region-aware search command on `C-s`, with Consult providing the interface. I bind visual regexp replacement to `C-c s r` and query replacement to `C-c s q`. A few other keys I use often: `C-c C-g` opens Magit, `C-?` redoes a change, and `M-g g` or `M-g M-g` jumps to a line. `M-g o` lets me pick an outline heading with a live preview.
+
+```emacs-lisp
+(defun zz/buffer-or-recentf ()
+  "Select a buffer or recent file with Consult."
+  (interactive)
+  (require 'consult)
+  (consult-buffer '(consult-source-buffer consult-source-recent-file)))
+
+(defun zz/switch-buffer ()
+  "Select an open buffer with Consult."
+  (interactive)
+  (require 'consult)
+  (consult-buffer '(consult-source-buffer)))
+
+(map! "C-x b" #'zz/buffer-or-recentf
+      "C-x C-b" #'zz/switch-buffer)
 ```
 
 ```emacs-lisp
@@ -324,13 +398,20 @@ The dashboard face overrides prevent the theme's comment background from tinting
 (map! "M-g g" #'avy-goto-line)
 (map! "M-g M-g" #'avy-goto-line)
 
-(map! "M-g o" #'counsel-outline)
+(defun zz/outline ()
+  "Select a heading using the appropriate Consult command."
+  (interactive)
+  (if (derived-mode-p 'org-mode)
+      (progn (require 'consult-org) (consult-org-heading))
+    (consult-outline)))
+
+(map! "M-g o" #'zz/outline)
 ```
 
 
 ### Matching parentheses with `%` {#matching-parentheses-with}
 
-Inspired by [NavigatingParentheses](https://www.emacswiki.org/emacs/NavigatingParentheses). After navigation commands, `%` jumps to the matching delimiter using Smartparens. Otherwise it inserts a literal percent sign. Keep the command whitelist explicit so normal typing and repeated jumps retain their existing behavior.
+I got this idea from [NavigatingParentheses](https://www.emacswiki.org/emacs/NavigatingParentheses): after a navigation command, `%` jumps to the matching delimiter using Smartparens. Otherwise, it types a percent sign as usual. The list of navigation commands below determines when jumping makes sense, so I can use the same key for both.
 
 ```emacs-lisp
 (after! smartparens
@@ -390,7 +471,7 @@ Inspired by [NavigatingParentheses](https://www.emacswiki.org/emacs/NavigatingPa
 
 ### Editing defaults {#editing-defaults}
 
-Org files live in `~/org/`. Insert headings at point, log completed tasks in `LOGBOOK`, and use Org-aware `C-a`, `C-e`, and `C-k`. Speed commands work on any leading heading star. Disable electric indentation and automatic Company completion in prose buffers.
+I keep my Org files in `~/org/`. I like new headings to appear right where I'm editing, and I log completed tasks in a `LOGBOOK` drawer. Org's special handling of `C-a`, `C-e`, and `C-k` makes those keys work with the heading structure. I also let speed commands work on any of a heading's leading stars. Electric indentation and completion popups get in my way when I'm writing, so I turn them off in Org; I can still request completion manually in both Org and Markdown.
 
 ```emacs-lisp
 (setq org-directory "~/org/")
@@ -411,28 +492,38 @@ Org files live in `~/org/`. Insert headings at point, log completed tasks in `LO
 
 (add-hook! org-mode (electric-indent-local-mode -1))
 
-;; Disable automatic Company completion in prose modes.
-(after! company
-  (setq company-global-modes '(not org-mode markdown-mode)))
+(defun zz/prose-completion-setup ()
+  "Keep automatic completion quiet in Org and Markdown."
+  (when (derived-mode-p 'org-mode 'markdown-mode)
+    (setq-local corfu-auto nil)))
+
+(add-hook 'corfu-mode-hook #'zz/prose-completion-setup)
+(add-hook 'org-mode-hook #'zz/prose-completion-setup)
+(add-hook 'markdown-mode-hook #'zz/prose-completion-setup)
 ```
 
 
 ### Display {#display}
 
-Wrap prose visually and use variable-pitch text. Mixed Pitch is configured with the fonts above. Doom's `+pretty` flag already enables Org Appear, which reveals markup under the cursor, so no additional package or hook is necessary.
+I prefer variable-pitch text and visual wrapping when I write. Doom's word-wrap module wraps Org and Markdown paragraphs at the window edge without inserting newlines, so each paragraph can stay on one physical line. I turn off automatic hard wrapping, but can still fill or unfill a paragraph with `M-q` and `A-q`. Mixed Pitch uses the fonts I set above. Org Appear, which Doom enables through `+pretty`, reveals markup when the cursor reaches it, so I can hide the markers without making them awkward to edit.
 
 ```emacs-lisp
-(add-hook! org-mode :append
-  #'visual-line-mode
-  #'variable-pitch-mode)
+(defun zz/prose-wrapping-setup ()
+  "Wrap at the window edge without inserting newlines."
+  (auto-fill-mode -1)
+  (+word-wrap-mode 1))
+
+(add-hook 'org-mode-hook #'zz/prose-wrapping-setup t)
+(add-hook 'markdown-mode-hook #'zz/prose-wrapping-setup t)
+(add-hook 'org-mode-hook #'variable-pitch-mode t)
 ```
 
 
 ### Files, notes, and Roam {#files-notes-and-roam}
 
-The agenda includes GTD, work, and personal notes. `C-c z w/i/p/d` opens my work, ideas, projects, and diary files. The file-opening helper uses lexical closures. Keep Roam's directory separate and store attachments beside each Org document in `attachments/`.
+My agenda brings together GTD, work, and personal notes. I use `C-c z w`, `C-c z i`, `C-c z p`, and `C-c z d` to jump to my work, ideas, projects, and diary files. The helper below makes it easy to add more of these shortcuts. I keep Roam notes in their own directory and store attachments beside each Org document in `attachments/`.
 
-The old `+org-roam-open-buffer-on-find-file` setting is no longer read by Doom. Automatic backlinks remain disabled, matching the installed module's behavior; its current option is `+org-roam-auto-backlinks-buffer`.
+I leave the automatic Roam backlinks buffer off. If I want it later, Doom's option for that is `+org-roam-auto-backlinks-buffer`.
 
 ```emacs-lisp
 (after! org
@@ -458,9 +549,9 @@ The old `+org-roam-open-buffer-on-find-file` setting is no longer read by Doom. 
 
 ### Clipboard images and attachments {#clipboard-images-and-attachments}
 
-Use native `org-attach` and `yank-media`. `C-y` pastes clipboard images with a filename prompt, otherwise it calls `org-yank`; a prefix argument forces normal yanking. Inherit attachment IDs so one post can share its attachment directory.
+I use Org's built-in `org-attach` and `yank-media` to paste images. My `C-y` command checks the clipboard: if there's an image, it asks for a filename and attaches it; otherwise, it calls `org-yank`. A prefix argument forces normal yanking. I enable attachment ID inheritance so the headings within a post can share one attachment directory.
 
-Org 9.8's image handler now passes a filename description to the link formatter. The scoped advice removes that description only while pasting images, preserving bare `[[attachment:image.png]]` links for figure export. Ordinary attachment links keep their descriptions. Recheck this private handler when upgrading Org.
+For image export, I need bare links such as `[[attachment:image.png]]`. Org 9.8's image handler adds a filename description, so the advice below strips it while I paste an image. Other attachment links can still have descriptions. This hooks into a private Org function, so I'll need to check it when I upgrade Org.
 
 ```emacs-lisp
 (after! org
@@ -506,14 +597,11 @@ Org 9.8's image handler now passes a filename description to the link formatter.
 
 ### Links between headings {#links-between-headings}
 
-`C-c l l h` selects a heading with Counsel. Store readable `CUSTOM_ID` values and insert local `#id` links rather than UUID links. Existing IDs are retained; the title-derived format is intentionally unchanged for published anchors.
+I use `C-c l l h` to pick a heading with Vertico and insert a link to it. The choices include outline paths and line numbers, which help when several headings have the same title. I prefer readable `CUSTOM_ID` values based on the title, so the command creates one if needed and inserts a local `#id` link. If the heading already has an ID, I reuse it so links to published pages keep working.
 
 ```emacs-lisp
-(map! :after counsel :map org-mode-map
-  "C-c l l h" #'counsel-org-link)
-
-(after! counsel
-  (setq counsel-outline-display-style 'title))
+(map! :after org :map org-mode-map
+  "C-c l l h" #'zz/org-insert-heading-link)
 
 (after! org-id
   ;; Do not create ID if a CUSTOM_ID exists
@@ -543,24 +631,38 @@ If FORCE is t, always recreate the property."
         ;; otherwise, create it
         (zz/org-custom-id-create)))))
 
-;; Now override counsel-org-link-action
-(after! counsel
-  (defun counsel-org-link-action (x)
-    "Insert a link to X.
-
-X is expected to be a cons of the form (title . point), as passed
-by `counsel-org-link'.
-
-If X does not have a CUSTOM_ID, create it based on the headline
-title."
-    (let* ((id (zz/org-custom-id-get-create (cdr x))))
-      (org-insert-link nil (concat "#" id) (car x)))))
+(defun zz/org-insert-heading-link ()
+  "Select a heading and insert its readable CUSTOM_ID link at point."
+  (interactive)
+  (require 'org-id)
+  (let ((origin (copy-marker (point) t)) candidates)
+    (unwind-protect
+        (save-restriction
+          (widen)
+          (setq candidates
+                (org-map-entries
+                 (lambda ()
+                   (cons (format "%s [line %d]"
+                                 (string-join (org-get-outline-path t t) "/")
+                                 (line-number-at-pos))
+                         (point-marker)))))
+          (unless candidates (user-error "No headings in this buffer"))
+          (let* ((choice (completing-read "Link to heading: " candidates nil t))
+                 (target (cdr (assoc choice candidates)))
+                 (title (org-with-point-at target
+                          (nth 4 (org-heading-components))))
+                 (id (save-excursion (zz/org-custom-id-get-create target))))
+            (goto-char origin)
+            (org-insert-link nil (concat "#" id) title)))
+      (set-marker origin nil)
+      (dolist (candidate candidates)
+        (set-marker (cdr candidate) nil)))))
 ```
 
 
 ### Links from macOS applications {#links-from-macos-applications}
 
-On macOS, `C-c g` opens `org-mac-grab-link`. Acrobat and DEVONthink capture are disabled; the package and binding are conditional on the platform.
+On macOS, I use `C-c g` to grab a link from another application with `org-mac-grab-link`. I turn off its Acrobat and DEVONthink capture helpers, and only load the package and binding on macOS.
 
 ```emacs-lisp
 (when IS-MAC
@@ -584,7 +686,7 @@ On macOS, `C-c g` opens `org-mac-grab-link`. Acrobat and DEVONthink capture are 
 
 ### Agenda, holidays, archiving, and clocks {#agenda-holidays-archiving-and-clocks}
 
-Include diary entries and Mexican/Swiss holidays, including my Zürich dates. Org Super Agenda groups items by directory. Archive tasks to the neighboring `archive.org` under a date tree; a file's `#+archive:` can override this. Persist running clocks and clock history across sessions.
+I include diary entries and Mexican and Swiss holidays in my agenda, with a couple of Zürich holidays added below. Org Super Agenda groups the items by directory. I archive tasks in a date tree in the neighboring `archive.org` file, unless I specify a different destination with `#+archive:` in a document. I also save running clocks and clock history between sessions.
 
 ```emacs-lisp
 (after! org-agenda
@@ -644,9 +746,9 @@ Include diary entries and Mexican/Swiss holidays, including my Zürich dates. Or
 
 ### GTD workflow {#gtd-workflow}
 
-Keep my GTD files in `~/gtd/` and show `DELEGATED_TO` on the next agenda line. Use the names provided by org-gtd 4: `org-gtd-agenda-property-*`, `org-gtd-reflect-stuck-projects`, and `org-gtd-organize`. Existing keys stay the same: `C-c d c/a/p/n/s/f` for capture, agenda, inbox processing, next actions, stuck projects, and organizing the clarified item.
+I use org-gtd to manage my tasks, with its files in `~/gtd/`. For delegated tasks, I show `DELEGATED_TO` on the next line in the agenda so I can see who's responsible. My shortcuts are `C-c d c` for capture, `C-c d a` for the agenda, `C-c d p` to process the inbox, `C-c d n` for next actions, `C-c d s` for stuck projects, and `C-c d f` to organize the item I've just clarified.
 
-The existing `4.0.0` upgrade acknowledgment is retained. It suppresses the upgrade notice; it does not migrate task data. If old v3 projects remain, review org-gtd's migration instructions separately before changing those files.
+The `org-gtd-update-ack` setting acknowledges the version 4 upgrade and suppresses its notice. It doesn't migrate task data; org-gtd's migration instructions cover that separately for version 3 projects.
 
 ```emacs-lisp
 (package! org-gtd)
@@ -676,7 +778,7 @@ The existing `4.0.0` upgrade acknowledgment is retained. It suppresses the upgra
 
 #### Capture templates {#capture-templates}
 
-The `i` and `l` templates capture an inbox item, optionally with its source link. The macOS-only `m` template includes the current Outlook message. Use the public `org-gtd-inbox-path` function so capture follows the installed package's filename convention. Load GTD before capture to register these templates.
+I use the `i` template to capture an inbox item and `l` when I also want a link to where I am in Emacs. On macOS, `m` captures a link to the current Outlook message. I let `org-gtd-inbox-path` choose the inbox filename. The advice below loads GTD before opening the capture menu, so the templates are ready when I need them.
 
 ```emacs-lisp
 (after! (org-gtd org-capture)
@@ -713,7 +815,7 @@ The `i` and `l` templates capture an inbox item, optionally with its source link
 
 ### Standard export menu {#standard-export-menu}
 
-Hide Org, iCalendar, and ODT from `C-c C-e` while leaving their backends and commands available. Delay both expansion and execution of each structure setter: `ox` may not be loaded when Doom expands the surrounding configuration.
+I hide Org, iCalendar, and ODT from the standard export menu because I rarely need them there. Their export commands still work. The `eval` forms delay expansion of the structure setters until each backend loads; without that, Doom can try to expand them before `ox` is ready.
 
 ```emacs-lisp
 (after! ox-org
@@ -735,7 +837,7 @@ Hide Org, iCalendar, and ODT from `C-c C-e` while leaving their backends and com
 
 ### Transient export menu {#transient-export-menu}
 
-`C-c e` opens `zz/org-export-menu` in Org and retains Doom's evaluation command elsewhere. The leader binding is deliberate: it takes precedence over a plain Org mode binding. Toggle subtree, visible-only, and body-only output for document exporters. Hugo uses its own post/all-posts scope. `e` opens the standard dispatcher.
+The standard Org export menu becomes a bit unwieldy when many exporter modules are available. I'd like to have those available, but I don't use them very often, so I defined a new custom export menu using Transient, which includes only my most commonly-used exporters: Leanpub Markua book export, Hugo posts, and Typst/LaTeX export to PDF. It also offers a key to open the standard export menu in case it's ever needed.
 
 ```emacs-lisp
 (after! transient
@@ -746,17 +848,21 @@ Hide Org, iCalendar, and ODT from `C-c C-e` while leaving their backends and com
            (visible (and (member "--visible" args) t))
            (body (and (member "--body" args) t))
            (backend (pcase format
-                      ('typst 'ox-typst) ('latex 'ox-latex) ('html 'ox-html)))
+                      ('typst 'ox-typst) ('latex 'ox-latex) ('html 'ox-html)
+                      ('markua-book 'ox-leanpub)))
            (command (pcase format
                       ('typst #'org-typst-export-to-pdf)
                       ('latex #'org-latex-export-to-pdf)
-                      ('html #'org-html-export-to-html))))
+                      ('html #'org-html-export-to-html)
+                      ('markua-book #'org-leanpub-book-export-markua))))
       (require backend)
-      (let ((file (funcall command nil subtree visible body)))
+      (let ((file (if (eq format 'markua-book)
+                      (funcall command subtree visible)
+                    (funcall command nil subtree visible body))))
         (when (and open file) (org-open-file file)))))
 
   (transient-define-prefix zz/org-export-menu ()
-    "Export this Org document or Hugo post."
+    "Export this Org document, Hugo post, or Leanpub book."
     ["Document options"
      ("-s" "Subtree only" "--subtree")
      ("-v" "Visible only" "--visible")
@@ -771,26 +877,27 @@ Hide Org, iCalendar, and ODT from `C-c C-e` while leaving their backends and com
                             (require 'ox-hugo) (org-hugo-export-wim-to-md)))
       ("A" "All posts" (lambda () (interactive)
                          (require 'ox-hugo) (org-hugo-export-wim-to-md t)))]
+     ["Leanpub"
+      ("m" "Markua book" (lambda () (interactive) (zz/org-export-run 'markua-book)))]
      ["Other"
       ("e" "Standard dispatcher" org-export-dispatch)
       ("q" "Quit" transient-quit-one)]]))
 
-;; Doom's leader map takes precedence over major-mode bindings for C-c e.
-;; Dispatch by mode so evaluation remains available outside Org buffers.
-(defun zz/org-export-or-eval ()
-  "Open the export menu in Org, otherwise evaluate the line or region."
-  (interactive)
-  (if (derived-mode-p 'org-mode)
-      (progn (require 'transient) (zz/org-export-menu))
-    (call-interactively #'+eval/line-or-region)))
+```
 
-(map! :leader :desc "Export (Org) / evaluate" "e" #'zz/org-export-or-eval)
+I bind the new menu to `C-c C-e` (the same key originally used by the standard menu).
+
+```emacs-lisp
+(after! org
+  ;; Load the prefix definition before binding it directly.
+  (require 'transient)
+  (map! :map org-mode-map "C-c C-e" #'zz/org-export-menu))
 ```
 
 
 ### LaTeX PDF with Tectonic {#latex-pdf-with-tectonic}
 
-`C-c C-e l p` exports a PDF; `l o` also opens it. Tectonic must be on Emacs' `exec-path`. It downloads missing TeX resources and handles reruns automatically. Select `xelatex` for Org's engine-specific output because Tectonic uses XeTeX.
+I use Tectonic for LaTeX PDF export: `C-c C-e l` exports a PDF through my custom menu. In the standard dispatcher (`C-c C-e e`), `l p` exports a PDF and `l o` opens it too. Tectonic downloads missing TeX resources and handles reruns for me; its executable needs to be on Emacs' `exec-path`. I select `xelatex` for Org's engine-specific output because Tectonic uses XeTeX.
 
 ```emacs-lisp
 (after! ox-latex
@@ -802,7 +909,7 @@ Hide Org, iCalendar, and ODT from `C-c C-e` while leaving their backends and com
 
 ### Typst PDF {#typst-pdf}
 
-`ox-typst` provides Typst export; `C-c e y` uses it from the custom menu. The landscape, two-column template, fonts, title, and footer for the printable reference are kept in [cheatsheet.org](https://github.com/zzamboni/dot-doom/blob/main/cheatsheet.org), not applied globally to other documents. The `typst` executable must be on Emacs' `exec-path`. Tree-sitter editing support is configured with the other language modes below.
+I use `ox-typst` for Typst export, with `C-c C-e y` as the shortcut in my custom menu. My printable [cheat sheet](https://github.com/zzamboni/dot-doom/blob/main/cheatsheet.org) has its own landscape, two-column template, fonts, title, and footer, so those settings only apply to that document. The `typst` executable needs to be on Emacs' `exec-path`. I configure tree-sitter editing support with the other language modes below.
 
 ```emacs-lisp
 (package! ox-typst)
@@ -816,9 +923,9 @@ Hide Org, iCalendar, and ODT from `C-c C-e` while leaving their backends and com
 
 ### Hugo posts {#hugo-posts}
 
-Install `ox-hugo` explicitly: Doom removed the `+hugo` flag. Load it after `ox` and before capture calls its slug function. Export keyboard markup as code for my site's styling.
+I write my blog posts in Org and export them with `ox-hugo`. I install it explicitly and load it after `ox`. I also ask it to export keyboard markup as code, which works with my site's styling.
 
-Based on the [ox-hugo capture example](https://ox-hugo.scripter.co/doc/org-capture-setup/), the `h` capture template adds a post under `Ideas` in the site's Org source, with a dated page bundle, readable anchor, attachment ID, and default featured image. Keep the existing capture target and front matter conventions.
+My `h` capture template, based on the [ox-hugo capture example](https://ox-hugo.scripter.co/doc/org-capture-setup/), adds a post under `Ideas` in my website's Org source. It sets up a dated page bundle, a readable anchor, an attachment ID, and a default featured image, so I can get straight to writing.
 
 ```emacs-lisp
 (package! ox-hugo)
@@ -831,9 +938,9 @@ Based on the [ox-hugo capture example](https://ox-hugo.scripter.co/doc/org-captu
   (setq org-hugo-use-code-for-kbd t))
 ```
 
-Make Hugo's asset layout independent of whether Emacs restored the source at startup. Org's documented `org-export-before-processing-functions` hook runs in the temporary export buffer, leaving the source buffer's directory unchanged.
+I want Hugo to put assets in the same place whether I opened the source file myself or Emacs restored it at startup. To make that consistent, I normalize the export directory through `org-export-before-processing-functions`. That hook runs in the temporary export buffer, so my source buffer's directory stays as it was.
 
-Set `zz/org-hugo-directory-style` to `canonical` for ox-hugo's nested asset layout, or `abbreviated` (the current experiment) to preserve flat copying for this site under the home directory. Abbreviation deliberately exploits ox-hugo 0.12.1's literal path comparison; an upstream fix could change its behavior. It does not guarantee flattening outside the home directory or override the exporter's separate rules for static files and bundle-named directories.
+I currently set `zz/org-hugo-directory-style` to `abbreviated` to get flat asset copying for my site under the home directory. This relies on a path-comparison bug in ox-hugo 0.12.1, so an upstream fix could change it. Setting it to `canonical` uses ox-hugo's nested asset layout instead. The workaround doesn't guarantee flat copying outside the home directory, and the exporter's separate rules for static files and bundle-named directories still apply.
 
 <a id="code-snippet--hugo-export-directory"></a>
 ```emacs-lisp
@@ -891,10 +998,20 @@ but relies on its path-comparison bug, not a supported layout option."
                  :jump-to-captured t)))
 ```
 
+Configure `mermaid` blocks as "raw" ([reference](https://ox-hugo.scripter.co/doc/org-special-blocks/?utm_source=chatgpt.com#raw-org-contents)) so that they are exported as-is instead of using HTML entities.
+
+```emacs-lisp
+(after! ox-hugo
+  (add-to-list 'org-hugo-special-block-type-properties
+               '("mermaid" . (:raw t))))
+```
+
 
 ### Curriculum vitae {#curriculum-vitae}
 
-Load Awesome CV and Modern CV exporters from my local `org-cv` development checkout. Preserve my right-aligned image override, which uses `wrapfigure`. The local recipe is active; this does not install the public GitLab version.
+**Note:** I no longer use Org-CV, I keep my CV in JSON Resume, from which I produce all the necessary output formats. See my blog post [Porting my CV from Org+LaTeX to JSON Resume](https://zzamboni.org/post/porting-my-cv-from-org-latex-to-json-resume/) for more details! The code below is kept in the Org file for reference but is not being tangled to my config files anymore.
+
+I load the Awesome CV and Modern CV exporters from my local `org-cv` development checkout. I also override Awesome CV's image helper to place the image on the right using `wrapfigure`.
 
 ```emacs-lisp
 (package! org-cv
@@ -918,7 +1035,7 @@ Load Awesome CV and Modern CV exporters from my local `org-cv` development check
 
 ### Leanpub books {#leanpub-books}
 
-Use my local `ox-leanpub` checkout for Markua book export. Its book commands create `manuscript/`, `Book.txt`, and the exported chapters. Markdown export is not enabled. My book [Publishing with Emacs, Org-mode and Leanpub](https://leanpub.com/emacs-org-leanpub) describes this workflow.
+I use my local `ox-leanpub` checkout to export books in Markua format. Its book commands create the `manuscript/` directory, `Book.txt`, and the exported chapters. I wrote about this workflow in [Publishing with Emacs, Org-mode and Leanpub](https://leanpub.com/emacs-org-leanpub).
 
 ```emacs-lisp
 (package! ox-leanpub
@@ -933,9 +1050,9 @@ Use my local `ox-leanpub` checkout for Markua book export. Its book commands cre
 
 ### Reveal presentations {#reveal-presentations}
 
-Doom's `+present` flag supplies `org-re-reveal`. The headline-number helper ignores `noexport` headings and supplies the slide anchor. The refresh command exports the document and refreshes a matching Brave tab using `osascript`; this browser integration is macOS-only, even though Reveal export works on Linux.
+I use `org-re-reveal`, which Doom provides through `+present`, to make presentations. The headline-number helper below skips `noexport` headings when building slide anchors. On macOS, I can also export the document and refresh its Brave tab with one command, using `osascript`. Reveal export itself works on Linux too.
 
-Open the exported presentation in Brave first (`C-c C-e v b`). To refresh on save, add this trusted file-local hook to that presentation:
+To use the browser refresh helper, I first open the exported presentation with `C-c C-e e v b`. For automatic refresh on save, I add this file-local hook to the presentation and approve it when Emacs asks:
 
 ```text
 * COMMENT Local variables :ARCHIVE:noexport:
@@ -1011,7 +1128,7 @@ end repeat\"")))
 
 ### Document macro helpers {#document-macro-helpers}
 
-These functions are called from Org documents, so keep their public names. They format Hammerspoon API links, keyboard sequences, and Lua 5.3 documentation links. The Lua version is intentional for existing documents.
+I use these helpers in Org macros to format Hammerspoon API links, keyboard sequences, and Lua documentation links. The Lua helper points to version 5.3, which is the version those documents refer to.
 
 ```emacs-lisp
 (defun zz/org-if-str (str &optional desc)
@@ -1056,7 +1173,7 @@ These functions are called from Org documents, so keep their public names. They 
 
 ### Reformatting and importing {#reformatting-and-importing}
 
-`zz/org-reformat-buffer` confirms before regenerating the current document from Org's parsed representation. `org-pandoc-import` provides conversion workflows for other document formats and requires Pandoc.
+When I want to regenerate an Org document from its parsed structure, I run `zz/org-reformat-buffer`. It asks for confirmation before rewriting the buffer. I also use `org-pandoc-import` to bring in other document formats; that needs Pandoc installed.
 
 ```emacs-lisp
 (defun zz/org-reformat-buffer ()
@@ -1082,7 +1199,7 @@ These functions are called from Org documents, so keep their public names. They 
 
 ### Structured queries {#structured-queries}
 
-Keep Org ML available for manipulating Org elements and Org QL for queries. The heading helpers generate links to headings with selected local tags or with the current heading's tags. These helpers may be used by external Org documents.
+I use Org ML to manipulate Org elements and Org QL to query them. The heading helpers below build lists of links based on local tags, either ones I specify or those on the current heading. I can call them from my Org documents.
 
 ```emacs-lisp
 (package! org-ml)
@@ -1123,7 +1240,7 @@ Keep Org ML available for manipulating Org elements and Org QL for queries. The 
 
 ### Automatic tangling {#automatic-tangling}
 
-Enable Org Auto Tangle in Org buffers, with tangling on save enabled by default. A document can opt out with `#+auto_tangle: nil`. This is broader than Doom's literate module, which is not enabled here.
+I use Org Auto Tangle to regenerate code when I save an Org file. I enable it in all Org buffers by default, so it works for other literate documents as well as this configuration. For a document I don't want to tangle automatically, I add `#+auto_tangle: nil`.
 
 ```emacs-lisp
 (package! org-auto-tangle)
@@ -1140,7 +1257,7 @@ Enable Org Auto Tangle in Org buffers, with tangling on save enabled by default.
 
 ### Lisp editing {#lisp-editing}
 
-Use Smartparens strict mode for Lisp buffers and Paredit-style bindings. `M-(` encloses the next expression; a numeric prefix selects more expressions. `C-h C-f` and the localleader `g p` binding find the function at point.
+I use Smartparens strict mode in Lisp buffers, with Paredit-style bindings. `M-(` wraps the next expression in parentheses, or more expressions if I give it a numeric prefix. To look up the function at point, I use `C-h C-f` or the localleader `g p` binding.
 
 ```emacs-lisp
 (defun zz/sp-enclose-next-sexp (num)
@@ -1169,7 +1286,7 @@ Use Smartparens strict mode for Lisp buffers and Paredit-style bindings. `M-(` e
 
 ### Additional languages and Babel {#additional-languages-and-babel}
 
-Install modes for Elvish, Fish, CFEngine, D2, Zig, and package linting, with Babel support for Elvish and CFEngine. Doom's enabled modules supply the other languages. D2 uses the current directory for temporary files.
+Beyond the languages covered by my Doom modules, I install modes for Elvish, Fish, CFEngine, D2, and Zig, plus package linting. I also add Babel support for Elvish and CFEngine so I can run their code blocks from Org. I ask D2 to put temporary files in the current directory.
 
 ```emacs-lisp
 (package! elvish-mode)
@@ -1206,7 +1323,7 @@ Install modes for Elvish, Fish, CFEngine, D2, Zig, and package linting, with Bab
 
 ### Typst and Dockerfiles {#typst-and-dockerfiles}
 
-Typst TS mode requires a compatible Typst tree-sitter grammar. Dockerfile mode recognizes `Dockerfile` and permits string-valued `dockerfile-image-name` file variables. Compilation buffers use pipes to avoid terminal escape sequences.
+I use Typst TS mode for editing Typst files, which needs a compatible tree-sitter grammar. I also add Dockerfile mode for files named `Dockerfile` and allow string values for its `dockerfile-image-name` file-local variable. For compilation buffers, I use pipes to avoid terminal escape sequences in the output.
 
 ```emacs-lisp
 (package! typst-ts-mode :recipe (:host codeberg :repo "meow_king/typst-ts-mode"))
@@ -1226,24 +1343,9 @@ Typst TS mode requires a compatible Typst tree-sitter grammar. Dockerfile mode r
 ## Desktop and development tools {#desktop-and-development-tools}
 
 
-### Emacs Everywhere {#emacs-everywhere}
-
-Use Org mode in Emacs Everywhere buffers. Doom's `:app everywhere` supplies the integration; the explicit `:pin nil` override intentionally keeps this package unpinned and is retained.
-
-```emacs-lisp
-(package! emacs-everywhere :pin nil)
-```
-
-```emacs-lisp
-(use-package! emacs-everywhere
-  :config
-  (setq emacs-everywhere-major-mode-function #'org-mode))
-```
-
-
 ### Magit repository overview {#magit-repository-overview}
 
-Read the repository list from my Elvish theme's JSON file each time `magit-list-repositories` runs. Include status, upstream counts, and paths in the overview; the JSON file must exist for this command.
+My Elvish theme already keeps a list of repositories in a JSON file, so I have Magit read that list whenever I run `magit-list-repositories`. The overview shows each repository's status, how far it is ahead of or behind upstream, and its path. This needs the JSON file at `zz/repolist` to exist.
 
 ```emacs-lisp
 (after! magit
@@ -1268,7 +1370,7 @@ Read the repository list from my Elvish theme's JSON file each time `magit-list-
 
 ### Encryption {#encryption}
 
-Use graphical GPG pinentry and encrypt files to my email address.
+I let GPG use its graphical pinentry prompt and encrypt files to my email address by default.
 
 ```emacs-lisp
 (after! epa
@@ -1279,7 +1381,7 @@ Use graphical GPG pinentry and encrypt files to my email address.
 
 ### Text editing and timing {#text-editing-and-timing}
 
-`C-;` edits occurrences with Iedit; this is textual replacement rather than semantic renaming. `zz/measure-time` returns elapsed seconds for a Lisp body.
+I use `C-;` to edit matching occurrences together with Iedit. It's handy for text changes, though it doesn't understand symbols the way a language-aware rename command does. The small `zz/measure-time` macro lets me time a Lisp expression and get the elapsed seconds.
 
 ```emacs-lisp
 (package! iedit)
@@ -1303,7 +1405,7 @@ Use graphical GPG pinentry and encrypt files to my email address.
 
 ### Terminal {#terminal}
 
-Run Elvish in Vterm. Resolve it through Emacs' `exec-path`, retaining the previous path as a fallback so a missing executable remains visible when launching Vterm.
+Elvish is my shell of choice, so I use it in Vterm too. I look for it on Emacs' `exec-path`, with `/usr/local/bin/elvish` as a fallback.
 
 ```emacs-lisp
 (setq vterm-shell (or (executable-find "elvish") "/usr/local/bin/elvish"))
@@ -1312,7 +1414,7 @@ Run Elvish in Vterm. Resolve it through Emacs' `exec-path`, retaining the previo
 
 ### Filling, annotations, and file formats {#filling-annotations-and-file-formats}
 
-`M-q` toggles paragraph filling; `A-q` unfills. Keep Annotate for external annotations, GIFT mode for quizzes, and Just mode for task files.
+I bind `M-q` to toggle between filling and unfilling a paragraph, and `A-q` to unfill it directly. I also install Annotate for external annotations, GIFT mode for quizzes, and Just mode for task files.
 
 ```emacs-lisp
 (package! unfill)
@@ -1337,7 +1439,7 @@ Run Elvish in Vterm. Resolve it through Emacs' `exec-path`, retaining the previo
 
 ### Chezmoi and Magit {#chezmoi-and-magit}
 
-Include the Chezmoi Magit extension in the package recipe and load it through `load-path`. This avoids depending on a particular Straight checkout path. `chezmoi-magit-status` remains available on demand; opening Magit also loads the integration.
+I include the Chezmoi Magit extension in the package recipe so I can load it through `load-path` without hardcoding a Straight checkout path. Opening Magit loads the integration, and I can also call `chezmoi-magit-status` directly.
 
 ```emacs-lisp
 (package! chezmoi
@@ -1356,7 +1458,7 @@ Include the Chezmoi Magit extension in the package recipe and load it through `l
 
 ### Jira {#jira}
 
-Keep Org Jira installed for issue management. The URL below is still a placeholder; configure the actual server before use. This integration is retained because package usage cannot be determined from the configuration alone.
+I have Org Jira installed for managing issues from Emacs. The URL below is a placeholder; it needs a real Jira server address before I can use it.
 
 ```emacs-lisp
 (package! org-jira)
@@ -1370,7 +1472,7 @@ Keep Org Jira installed for issue management. The URL below is still a placehold
 
 ### Posting to 750words.com {#posting-to-750words-dot-com}
 
-Use my [750words-client](https://github.com/zzamboni/750words-client/) package to submit writing from Emacs. Keep its commands and Org exporter deferred until requested.
+I use my [750words-client](https://github.com/zzamboni/750words-client/) package to submit writing from Emacs. Its commands and Org exporter load when I need them.
 
 ```emacs-lisp
 (package! 750words
@@ -1387,7 +1489,7 @@ Use my [750words-client](https://github.com/zzamboni/750words-client/) package t
 
 ## References {#references}
 
-These configurations and tutorials influenced my setup. Individual code sections above describe current behavior; removed experiments remain in Git history.
+I've borrowed ideas from these configurations and tutorials along the way:
 
 -   [My Doom Emacs configuration, with commentary](https://zzamboni.org/post/my-doom-emacs-configuration-with-commentary/) (published background).
 -   [Sacha Chua's configuration](https://sachachua.com/dotemacs/).

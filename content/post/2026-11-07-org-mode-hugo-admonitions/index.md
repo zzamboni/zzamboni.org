@@ -3,7 +3,7 @@ title = "Bringing modern admonitions to Org mode and Hugo"
 author = ["Diego Zamboni"]
 summary = "How I map Org special blocks to Blowfish admonitions, keep old tip and warning blocks working, and choose icons or colors without duplicating the theme's renderer."
 date = 2026-11-07T00:00:00+01:00
-tags = ["blogging","orgmode","hugo","blowfish","howto"]
+tags = ["blogging", "orgmode", "hugo", "blowfish", "howto"]
 draft = true
 creator = "Emacs (Org mode + ox-hugo)"
 toc = false
@@ -12,6 +12,7 @@ toc = false
 I have used `tip`, `note`, and `warning` blocks in my Org-authored articles for years. They are useful little interruptions: a shortcut worth knowing, some background, or a warning before running a command.
 
 After moving to [Blowfish](https://blowfish.page/), I wanted those blocks to use the theme's modern admonition styling, including its icons and light/dark palettes. I also wanted old articles to benefit without rewriting their source. The solution turned out to be a small adapter between `ox-hugo` and the theme.
+
 
 ## Start with the Org block {#start-with-the-org-block}
 
@@ -30,6 +31,7 @@ I register the block names as paired shortcodes in the Org file, alongside the o
 ```
 
 That registration matters. It tells [ox-hugo](https://ox-hugo.scripter.co/doc/shortcodes/) to export a matching Hugo shortcode call, with an opening and closing tag, instead of treating the special block as a generic HTML container. The block's contents still go through Org export, so I can use links, lists, and source blocks inside it.
+
 
 ## Let Blowfish do the rendering {#let-blowfish-do-the-rendering}
 
@@ -50,6 +52,7 @@ My `tip`, `note`, and `warning` shortcode files all delegate to the same partial
 Every line gets a quote prefix, including blank lines, so multiple paragraphs and code blocks stay inside the callout. `RenderString` then sends the constructed Markdown through the page's render hooks. Blowfish's blockquote hook supplies the title, icon, palette, and final markup.
 
 The optional icon is added as a block attribute understood by the theme. The important dependency is that render hook: this adapter is designed for Blowfish's admonition support, and I track it with my other theme overrides.
+
 
 ## One block for more types {#one-block-for-more-types}
 
@@ -73,6 +76,7 @@ A useful trick deserves a memorable icon.
 #+end_tip
 ```
 
+
 ## Colors have two different paths {#colors-have-two-different-paths}
 
 Admonition colors follow the selected type. For a site-wide change I can override variables such as `--adm-tip-bg` in my own CSS, with separate light and dark values.
@@ -87,6 +91,7 @@ Review this operation before continuing.
 ```
 
 The admonition adapters only forward the icon override; they do not forward those color parameters. The alert also has a different layout, without an automatic admonition title. Explicit colors need a contrast check in both appearances.
+
 
 ## Old markup, new presentation {#old-markup-new-presentation}
 
