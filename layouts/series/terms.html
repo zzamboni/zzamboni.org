@@ -1,0 +1,11 @@
+{{ define "main" }}
+  <header class="mt-5">
+    <h1 class="text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
+    <div class="mt-4 prose dark:prose-invert">{{ .Content }}</div>
+  </header>
+  <section class="mt-6 grid w-full gap-4 md:grid-cols-3">
+    {{ range .Data.Terms.Alphabetical }}
+      {{ partial "article-link/card.html" .Page }}
+    {{ end }}
+  </section>
+{{ end }}

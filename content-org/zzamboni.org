@@ -48,7 +48,11 @@ This file is the source for all new and updated content on [[http://zzamboni.org
   - [[#tags-section][Tags section]]
     - [[#tags][Tags]]
     - [[#photos][Photos]]
-  - [[#series][Series]]
+  - [[#series-section][Series section]]
+    - [[#series][Series]]
+    - [[#linux-on-mac][Linux on Mac]]
+    - [[#literate-config-files][Literate Config Files]]
+    - [[#my-website-setup][My website setup]]
   - [[#books-section][Books section]]
     - [[#books][Books]]
     - [[#book-bundle][Book bundle]]
@@ -71,7 +75,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
 - [[#posts][Posts]]
   - [[#blog][Blog]]
     - [[#all-posts][All posts]]
-  - [[#literate-config-files][Literate config files]]
+  - [[#literate-config-files-1][Literate config files]]
     - [[#my-doom-emacs-configuration-with-commentary][My Doom Emacs configuration, with commentary]]
     - [[#my-emacs-configuration-with-commentary][My Emacs Configuration, With Commentary]]
     - [[#my-hammerspoon-configuration-with-commentary][My Hammerspoon Configuration, With Commentary]]
@@ -120,8 +124,6 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#drafts-previews-and-fewer-netlify-builds][Drafts, previews, and fewer Netlify builds]]
     - [[#automating-blog-housekeeping-with-github-actions][Automating blog housekeeping with GitHub Actions]]
     - [[#a-reusable-blog-archive-for-hugo][A reusable blog archive for Hugo]]
-    - [[#bringing-modern-admonitions-to-org-mode-and-hugo][Bringing modern admonitions to Org mode and Hugo]]
-    - [[#making-hugo-article-series-work-with-unpublished-posts][Making Hugo article series work with unpublished posts]]
 
 * Pages
 
@@ -219,7 +221,6 @@ I have decided to close the comments form that used to be here, because the only
 
 If you want to reach me, please use your imagination (I'm not hard to find) or follow some of the social media icons above.
 
-
 ** DONE Blog archive
 :PROPERTIES:
 :export_hugo_section: archive
@@ -260,14 +261,44 @@ These are all the tags used in my posts.
 :export_hugo_custom_front_matter: :cardView true
 :END:
 
-** DONE Series
+** Series section
+
+*** DONE Series
 :PROPERTIES:
 :export_hugo_section: series
 :export_file_name: _index
 :CUSTOM_ID: series
+:export_hugo_custom_front_matter:  :groupByYear false :cardView true :cascade '((showReadingtime . false) (showWordCount . false) (showDate . false) (showHero . true) (showSummary . true))'
 :END:
 
-Some topics deserve more than a single post. These series bring related articles together so we can explore a topic in more depth.
+Some topics deserve more than a single post. These series bring related articles together so you can explore a topic in more depth.
+
+*** DONE Linux on Mac
+:PROPERTIES:
+:export_hugo_section: series/linux-on-mac
+:export_file_name: _index
+:export_hugo_custom_front_matter: :featureImage img/series/linux-on-mac.webp
+:END:
+
+Articles about bringing back to life some older Macs using Linux, making them fast and usable again.
+
+*** DONE Literate Config Files
+:PROPERTIES:
+:export_hugo_section: series/literate-config-files
+:export_file_name: _index
+:export_hugo_custom_front_matter: :featureImage img/series/literate-config-files.webp
+:END:
+
+Literate-config all the things!
+
+*** DONE My website setup
+:PROPERTIES:
+:export_hugo_section: series/my-website-setup
+:export_file_name: _index
+:export_hugo_custom_front_matter: :featureImage img/series/my-website-setup.webp
+:END:
+
+How I build and maintain this site with Org mode, Hugo, Netlify and more.
 
 ** DONE Books section
 CLOSED: [2018-03-25 Sun 20:11]
@@ -582,7 +613,7 @@ As usual, the post below is included directly from my live [[https://github.com/
 
 If you are interested in writing your own Literate Config files, check out my book [[https://leanpub.com/lit-config][Literate Config]] on Leanpub!
 
-#+include: "~/.doom.d/doom.org" :lines "7-"
+#+include: "~/.doom.d/doom.org" :lines "12-"
 
 *** DONE My Emacs Configuration, With Commentary                      :emacs:
 CLOSED: [2017-12-17 Sun 20:14]
@@ -4692,174 +4723,6 @@ The chart, ordering, and date format are configurable too. Hugo's normal draft a
 You can compare the [[https://zzamboni.github.io/hugo-blog-archive/generic/archive/][generic example]] and the [[https://zzamboni.github.io/hugo-blog-archive/blowfish/archive/][Blowfish example]], which use the same sample content.
 
 The [[https://github.com/zzamboni/hugo-blog-archive][repository]] has installation instructions, configuration options, and examples for custom layouts. It is MIT-licensed. If you have wanted a straightforward archive for your Hugo site, give it a try!
-
-*** DRAFT Bringing modern admonitions to Org mode and Hugo :blogging:orgmode:hugo:blowfish:howto:
-:PROPERTIES:
-:export_date: <2026-11-07 Sat>
-:export_hugo_bundle: 2026-11-07-org-mode-hugo-admonitions
-:export_file_name: index
-:custom_id: org-mode-hugo-admonitions
-:export_hugo_custom_front_matter: :toc false
-:END:
-#+begin_description
-How I map Org special blocks to Blowfish admonitions, keep old tip and warning blocks working, and choose icons or colors without duplicating the theme's renderer.
-#+end_description
-
-I have used =tip=, =note=, and =warning= blocks in my Org-authored articles for years. They are useful little interruptions: a shortcut worth knowing, some background, or a warning before running a command.
-
-After moving to [[https://blowfish.page/][Blowfish]], I wanted those blocks to use the theme's modern admonition styling, including its icons and light/dark palettes. I also wanted old articles to benefit without rewriting their source. The solution turned out to be a small adapter between =ox-hugo= and the theme.
-
-**** Start with the Org block
-
-The authoring syntax is ordinary Org:
-
-#+begin_src org
-,#+begin_tip
-Use =mise run serve-drafts= to preview unfinished articles.
-,#+end_tip
-#+end_src
-
-I register the block names as paired shortcodes in the Org file, alongside the other shortcodes I already use:
-
-#+begin_src org
-,#+hugo_paired_shortcodes: tip warning note gallery feature-grid mermaid alert admonition
-#+end_src
-
-That registration matters. It tells [[https://ox-hugo.scripter.co/doc/shortcodes/][ox-hugo]] to export a matching Hugo shortcode call, with an opening and closing tag, instead of treating the special block as a generic HTML container. The block's contents still go through Org export, so I can use links, lists, and source blocks inside it.
-
-**** Let Blowfish do the rendering
-
-Blowfish already renders Markdown alerts such as a blockquote beginning with =[!TIP]=. I reuse that path rather than maintaining another set of callout HTML and CSS.
-
-My =tip=, =note=, and =warning= shortcode files all delegate to the same partial. Hugo supplies the invoked shortcode's name, and the partial turns its body into a Markdown blockquote:
-
-#+begin_src go-html-template
-{{- /* Keep legacy shortcode calls, but let Blowfish's blockquote hook render them. */ -}}
-{{- $body := strings.Trim .Inner "\r\n" -}}
-{{- $markdown := printf "> [!%s]\n%s" (strings.ToUpper .Name) (replaceRE "(?m)^" "> " $body) -}}
-{{- with .Icon -}}
-  {{- $markdown = printf "%s\n{icon=%q}" $markdown . -}}
-{{- end -}}
-{{- .Page.RenderString (dict "display" "block") $markdown -}}
-#+end_src
-
-Every line gets a quote prefix, including blank lines, so multiple paragraphs and code blocks stay inside the callout. =RenderString= then sends the constructed Markdown through the page's render hooks. Blowfish's blockquote hook supplies the title, icon, palette, and final markup.
-
-The optional icon is added as a block attribute understood by the theme. The important dependency is that render hook: this adapter is designed for Blowfish's admonition support, and I track it with my other theme overrides.
-
-**** One block for more types
-
-The three original block names remain convenient, but I do not want a new shortcode file for every possible callout type. A generic =admonition= shortcode accepts a =type= parameter and passes it to the same partial:
-
-#+begin_src org
-,#+attr_shortcode: :type important :icon star
-,#+begin_admonition
-Keep the Org source and its Markdown export together.
-,#+end_admonition
-#+end_src
-
-The generic block defaults to =note=. Other types come from Blowfish's supported admonitions, including =caution=, =question=, and =example=. Named arguments use Org's =:name value= syntax in =#+attr_shortcode=; =#+attr_html= would target a different part of the export.
-
-For an ordinary tip, I can override just its icon:
-
-#+begin_src org
-,#+attr_shortcode: :icon star
-,#+begin_tip
-A useful trick deserves a memorable icon.
-,#+end_tip
-#+end_src
-
-**** Colors have two different paths
-
-Admonition colors follow the selected type. For a site-wide change I can override variables such as =--adm-tip-bg= in my own CSS, with separate light and dark values.
-
-For one individually styled box, I use Blowfish's separate =alert= shortcode:
-
-#+begin_src org
-,#+attr_shortcode: :icon fire :cardColor #e63946 :iconColor #ffffff :textColor #ffffff
-,#+begin_alert
-Review this operation before continuing.
-,#+end_alert
-#+end_src
-
-The admonition adapters only forward the icon override; they do not forward those color parameters. The alert also has a different layout, without an automatic admonition title. Explicit colors need a contrast check in both appearances.
-
-**** Old markup, new presentation
-
-The nicest part is that existing shortcode calls keep working. Once the adapters are in place, rebuilding the site gives old articles the new rendering. I can improve their presentation while leaving their content alone.
-
-The [[https://github.com/zzamboni/zzamboni.org/blob/main/docs/callout-blocks.md][full configuration notes]] cover the aliases, supported parameters, and palette overrides. For everyday writing, all I need to remember is the block name and, occasionally, a line of attributes.
-
-*** DRAFT Making Hugo article series work with unpublished posts :blogging:hugo:blowfish:templates:howto:
-:PROPERTIES:
-:export_date: <2026-11-07 Sat>
-:export_hugo_bundle: 2026-11-07-hugo-series-unpublished-posts
-:export_file_name: index
-:custom_id: hugo-series-unpublished-posts
-:export_hugo_custom_front_matter: :toc false
-:END:
-#+begin_description
-My website setup series includes unfinished articles. A small template override lists their titles as Upcoming, preserving the numbering without publishing draft pages.
-#+end_description
-
-I recently grouped my blogging infrastructure articles into a [[/series/my-website-setup/][My website setup]] series. Some installments are published; others are still drafts. Blowfish orders the articles using =series_order=, so production visitors could see parts 1, 2, 4, and 5 with no explanation of the missing part 3.
-
-I liked keeping the planned numbering: it gives the series a structure that does not change every time I publish an installment. I wanted the navigation to show what was coming, without offering links to pages that do not exist yet.
-
-**** The missing information is outside Hugo's page collection
-
-An article's front matter provides its series membership and position:
-
-#+begin_src toml
-series = ["My website setup"]
-series_order = 3
-draft = true
-#+end_src
-
-In my Org source these values are export properties, and =ox-hugo= writes them into the Markdown front matter. A normal production build excludes draft pages from the series collection that the navigation uses. Sorting that collection differently cannot restore entries that are not there.
-
-Enabling drafts for production would make their contents available too. Instead, I extended the navigation with a separate collection of editorial metadata.
-
-**** Read metadata from the exported files
-
-A small [[https://github.com/zzamboni/zzamboni.org/blob/main/layouts/partials/series/drafts.html][helper partial]] walks =content/post/= recursively. It opens Markdown files, extracts their TOML front matter, and keeps draft entries that have a series and part number. The records it returns contain only the title, series membership, and order:
-
-#+begin_src go-html-template
-{{- if and $meta.draft $meta.series $meta.series_order -}}
-  {{- $drafts = $drafts | append (dict
-    "title" $meta.title
-    "series" $meta.series
-    "order" (int $meta.series_order)) -}}
-{{- end -}}
-#+end_src
-
-The file is read to extract its front matter, but the helper does not render the draft body or turn it into a Hugo page. I call it through =partialCached= so the scan is shared across article navigations during the build.
-
-This is deliberately specific to my current sources: TOML-frontmatter Markdown under =content/post/=, where my Org exports live. It does not discover drafts in the separate CMS content root, or drafts using YAML front matter. An Org draft must be exported before it can appear.
-
-**** Merge real pages and upcoming entries
-
-My [[https://github.com/zzamboni/zzamboni.org/blob/main/layouts/partials/series/series_base.html][series template override]] first collects the pages Hugo already knows about. It then adds matching draft records only when their part number is missing, and sorts the combined list by order.
-
-A record with a page gets the usual link, or the current-article label. A metadata-only record gets plain text and an /Upcoming/ label:
-
-#+begin_src text
-Part 2: A published installment
-Part 3: An unfinished installment — Upcoming
-Part 4: Another published installment
-#+end_src
-
-There is no anchor around the upcoming row. The title itself is intentionally public, so I would not use this for a draft whose existence or working title should remain private. The series also needs unique part numbers, because those numbers are what the merge uses to detect an existing entry.
-
-**** The same sources work in previews
-
-On the draft site, Hugo already includes the unfinished pages. Those page entries take precedence over the metadata records, so they retain working links for review. Publishing an installment changes its normal page metadata, and the next production build automatically replaces its upcoming row with a link.
-
-The override applies to the series navigation at the top and bottom of articles. The series taxonomy landing page keeps its normal published-only listing.
-
-For validation, I check both a regular build and one with drafts enabled: upcoming titles should be visible in production navigation, while their page output, search entries, RSS entries, and sitemap entries remain absent. In the draft build, the same installments should be linked.
-
-The result is a small editorial improvement: readers can see the intended shape of the series, and I can keep publishing it one installment at a time. There is no second reading list to maintain; the exported article metadata supplies it.
 
 * COMMENT Local variables :noexport:ARCHIVE:
 
