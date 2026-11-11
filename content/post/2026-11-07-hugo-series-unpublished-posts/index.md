@@ -3,7 +3,7 @@ title = "Making Hugo article series work with unpublished posts"
 author = ["Diego Zamboni"]
 summary = "My website setup series includes unfinished articles. A small template override lists their titles as Upcoming, preserving the numbering without publishing draft pages."
 date = 2026-11-07T00:00:00+01:00
-tags = ["blogging","hugo","blowfish","templates","howto"]
+tags = ["blogging", "hugo", "blowfish", "templates", "howto"]
 draft = true
 creator = "Emacs (Org mode + ox-hugo)"
 toc = false
@@ -13,7 +13,8 @@ I recently grouped my blogging infrastructure articles into a [My website setup]
 
 I liked keeping the planned numbering: it gives the series a structure that does not change every time I publish an installment. I wanted the navigation to show what was coming, without offering links to pages that do not exist yet.
 
-## The missing information is outside Hugo's page collection {#the-missing-information-is-outside-hugos-page-collection}
+
+## The missing information is outside Hugo's page collection {#the-missing-information-is-outside-hugo-s-page-collection}
 
 An article's front matter provides its series membership and position:
 
@@ -26,6 +27,7 @@ draft = true
 In my Org source these values are export properties, and `ox-hugo` writes them into the Markdown front matter. A normal production build excludes draft pages from the series collection that the navigation uses. Sorting that collection differently cannot restore entries that are not there.
 
 Enabling drafts for production would make their contents available too. Instead, I extended the navigation with a separate collection of editorial metadata.
+
 
 ## Read metadata from the exported files {#read-metadata-from-the-exported-files}
 
@@ -44,6 +46,7 @@ The file is read to extract its front matter, but the helper does not render the
 
 This is deliberately specific to my current sources: TOML-frontmatter Markdown under `content/post/`, where my Org exports live. It does not discover drafts in the separate CMS content root, or drafts using YAML front matter. An Org draft must be exported before it can appear.
 
+
 ## Merge real pages and upcoming entries {#merge-real-pages-and-upcoming-entries}
 
 My [series template override](https://github.com/zzamboni/zzamboni.org/blob/main/layouts/partials/series/series_base.html) first collects the pages Hugo already knows about. It then adds matching draft records only when their part number is missing, and sorts the combined list by order.
@@ -57,6 +60,7 @@ Part 4: Another published installment
 ```
 
 There is no anchor around the upcoming row. The title itself is intentionally public, so I would not use this for a draft whose existence or working title should remain private. The series also needs unique part numbers, because those numbers are what the merge uses to detect an existing entry.
+
 
 ## The same sources work in previews {#the-same-sources-work-in-previews}
 
