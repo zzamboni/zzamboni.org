@@ -14,6 +14,7 @@ cardView = true
   showDate = false
   showHero = true
   showSummary = true
+  sharingLinks = false
 +++
 
 Here you can find a sample of some programs I have written over the years. For a full list of my public projects please check my [GitHub](https://github.com/zzamboni/) and [GitLab](https://gitlab.com/zzamboni) profiles.

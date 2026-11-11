@@ -143,7 +143,7 @@ This section contains all the static pages.
 CLOSED: [2025-11-17 Mon 16:28]
 :PROPERTIES:
 :export_hugo_section: about
-:export_hugo_custom_front_matter: :featureimage img/legoland.jpg :showPagination false :layout profile :showDate false :showWordCount false :showReadingTime false :showAuthor false :showZenMode false
+:export_hugo_custom_front_matter: :featureimage img/legoland.jpg :showPagination false :layout profile :showDate false :showWordCount false :showReadingTime false :showAuthor false :showZenMode false :sharingLinks false
 :export_file_name: index
 :END:
 
@@ -195,7 +195,8 @@ CLOSED: [2026-10-24 Sat 22:56]
 :export_hugo_custom_front_matter: :type jsonresume :layout cv :showDate false :showWordCount false :showReadingTime false :showAuthor false :showZenMode false :showTableOfContents true
 :END:
 
-*** Curriculum Vitae
+*** DONE Curriculum Vitae
+CLOSED: [2026-11-11 Wed 21:56]
 :PROPERTIES:
 :export_hugo_section: vita
 :export_file_name: _index
@@ -214,7 +215,7 @@ CLOSED: [2026-10-24 Sat 23:01]
 CLOSED: [2018-03-25 Sun 18:34]
 :PROPERTIES:
 :export_hugo_section: contact
-:export_hugo_custom_front_matter: :featureimage img/phone-booth-red.jpg :showPagination false :showDate false  :showWordCount false :showReadingTime false :showZenMode false
+:export_hugo_custom_front_matter: :featureimage img/phone-booth-red.jpg :showPagination false :showDate false  :showWordCount false :showReadingTime false :showZenMode false :sharingLinks false
 :export_file_name: index
 :CUSTOM_ID: contact
 :END:
@@ -313,7 +314,7 @@ CLOSED: [2018-03-25 Sun 20:11]
 CLOSED: [2020-12-08 Tue 18:19]
 :PROPERTIES:
 :export_file_name: _index
-:export_hugo_custom_front_matter:  :featureimage img/book-box-thin.jpg :groupByYear false :cardView true :orderByWeight true :cascade '((showReadingtime . false) (showWordCount . false) (showDate . false) (showHero . true) (showSummary . true))'
+:export_hugo_custom_front_matter:  :featureimage img/book-box-thin.jpg :groupByYear false :cardView true :orderByWeight true :cascade '((showReadingtime . false) (showWordCount . false) (showDate . false) (showHero . true) (showSummary . true) (sharingLinks . false))'
 :ID:       10a2de74-6cdc-4368-abc7-5186eb6e52d5
 :END:
 
@@ -442,7 +443,7 @@ CLOSED: [2021-01-21 Thu 00:16]
 :export_hugo_custom_front_matter: :toc false :featureimage img/cissp-training-cover.jpg :weight 60
 :END:
 
-# {{{leanpubbook(courses/leanpub/cissp-training,style="float:right"  height="400")}}}
+{{{leanpubbook(c/leanpub/cissp-training,style="float:right"  height="250")}}}
 
 Prepare for passing the CISSP certification exam!
 
@@ -452,7 +453,6 @@ There are multitude of CISSP courses, books and materials out there, but this on
 
 If you are preparing for taking the CISSP exam, I am sure you will find this course useful. Get it now:
 
-[[https://leanpub.com/c/cissp-training?lng=en][CISSP Training: Prepare to pass the CISSP!]]
 
 ** DONE Code section
 CLOSED: [2018-03-25 Sun 20:11]
@@ -465,7 +465,7 @@ CLOSED: [2018-03-25 Sun 20:11]
 CLOSED: [2020-12-08 Tue 18:07]
 :PROPERTIES:
 :export_file_name: _index
-:export_hugo_custom_front_matter: :featureimage img/c64-code4.png :groupByYear false :orderByWeight true :cardView true :cascade '((showReadingtime . false) (showWordCount . false) (showDate . false) (showHero . true) (showSummary . true))'
+:export_hugo_custom_front_matter: :featureimage img/c64-code4.png :groupByYear false :orderByWeight true :cardView true :cascade '((showReadingtime . false) (showWordCount . false) (showDate . false) (showHero . true) (showSummary . true) (sharingLinks . false))'
 :END:
 
 Here you can find a sample of some programs I have written over the years. For a full list of my public projects please check my [[https://github.com/zzamboni/][GitHub]] and [[https://gitlab.com/zzamboni][GitLab]] profiles.

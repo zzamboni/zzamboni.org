@@ -10,6 +10,7 @@ showDate = false
 showWordCount = false
 showReadingTime = false
 showZenMode = false
+sharingLinks = false
 +++
 
 I have decided to close the comments form that used to be here, because the only messages I ever got through it were spam.

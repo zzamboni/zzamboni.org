@@ -14,6 +14,7 @@ orderByWeight = true
   showDate = false
   showHero = true
   showSummary = true
+  sharingLinks = false
 +++
 
 I have a few self-published books and courses, all of them available at [{{< icon leanpub >}} Leanpub](https://leanpub.com/u/zzamboni).

@@ -12,6 +12,7 @@ showWordCount = false
 showReadingTime = false
 showAuthor = false
 showZenMode = false
+sharingLinks = false
 +++
 
 {{< profile >}}
