@@ -6,6 +6,7 @@ date = 2026-11-12T00:00:00+01:00
 tags = ["emacs", "orgmode", "doom", "hugo", "howto"]
 draft = true
 creator = "Emacs (Org mode + ox-hugo)"
+featureimage = "img/generated/2026-11-12-org-heading-links-across-hugo-articles.webp"
 +++
 
 A few years ago I wrote about [creating human-readable heading IDs in Org mode]({{< relref "2020-12-06-org-mode-human-readable-ids" >}}). At the time I used `counsel-org-link` with Ivy and a bit of custom code to insert links using `CUSTOM_ID` instead of opaque UUIDs.
