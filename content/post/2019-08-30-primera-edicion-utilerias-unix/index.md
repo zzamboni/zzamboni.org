@@ -7,7 +7,7 @@ summary = """
   Me complace anunciar  la primera edición de mi nuevo libro, y mi primer libro en  Español, "Utilerías de Unix".
   """
 date = 2019-08-30T00:23:00+02:00
-tags = ["books", "announcements", "spanish", "unix", "linux", "leanpub"]
+tags = ["publishing", "books", "announcements", "spanish", "unix", "linux", "leanpub"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/utilerias-cover.jpg"

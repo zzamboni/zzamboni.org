@@ -2,7 +2,7 @@
 title = "Automating Leanpub book publishing with Hammerspoon and CircleCI"
 author = ["Diego Zamboni"]
 date = 2019-04-16T11:25:00+02:00
-tags = ["writing", "hammerspoon", "circleci", "automation", "leanpub", "github"]
+tags = ["publishing", "writing", "hammerspoon", "circleci", "automation", "leanpub", "github"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/hammerspoon-github-circleci-leanpub.001.jpg"

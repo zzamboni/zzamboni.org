@@ -5,7 +5,7 @@ summary = """
   A new release of my book "Publishing with Emacs, Org-mode and Leanpub" is out! With a lot of new information and other improvements. Learn how to use powerful tools and workflows to easily publish your words.
   """
 date = 2020-12-04T10:22:00+01:00
-tags = ["books", "leanpub", "publishing", "writing", "emacs", "orgmode"]
+tags = ["publishing", "books", "leanpub", "writing", "emacs", "orgmode", "announcements"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/emacs-org-leanpub-cover.jpg"
