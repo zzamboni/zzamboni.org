@@ -1,6 +1,11 @@
 # Matching paths under layouts/ are detected automatically. List indirect
 # dependencies here so changes to their upstream templates also get reviewed.
 [[overrides]]
+local = "layouts/shortcodes/profile.html"
+upstream = "layouts/partials/home/profile.html"
+reason = "About-page profile header only: omit homepage wrappers and Content; preserve the existing thumbnail crop and original-image zoom instead of the homepage's centered square zoom."
+
+[[overrides]]
 local = "layouts/tags/terms.html"
 upstream = "layouts/_default/terms.html"
 reason = "Only Tags replaces the default taxonomy text list with a tag cloud; other taxonomies use the theme template."
