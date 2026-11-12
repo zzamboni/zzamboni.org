@@ -710,7 +710,7 @@ The first is an ordinary Org heading link. The second points into an *included* 
 To handle this, I added a custom =hugo-ref:= link type. It records the owning Hugo content file and heading anchor. During Hugo export, my link handler turns it into Markdown containing Hugo's [[https://gohugo.io/shortcodes/relref/][=relref= shortcode]]:
 
 #+begin_src markdown
-[my heading-link configuration]({{< relref "/post/my-doom-emacs-configuration-with-commentary/index.md#links-between-headings" >}})
+[my heading-link configuration]({{</* relref "/post/my-doom-emacs-configuration-with-commentary/index.md#links-between-headings" */>}})
 #+end_src
 
 Hugo then resolves the content reference to the right permalink. For other Org export backends, the handler keeps only the link description as plain text. You can see the [[hugo-ref:/post/my-doom-emacs-configuration-with-commentary/index.md#links-between-headings][full implementation in my Doom Emacs configuration]].
