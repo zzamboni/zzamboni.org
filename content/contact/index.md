@@ -4,13 +4,15 @@ author = ["Diego Zamboni"]
 date = 2018-03-25T18:34:00+02:00
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
+showReadingTime = false
+showWordCount = false
+showDate = false
+showHero = true
+showSummary = true
+sharingLinks = false
 featureimage = "img/phone-booth-red.jpg"
 showPagination = false
-showDate = false
-showWordCount = false
-showReadingTime = false
 showZenMode = false
-sharingLinks = false
 +++
 
 I have decided to close the comments form that used to be here, because the only messages I ever got through it were spam.

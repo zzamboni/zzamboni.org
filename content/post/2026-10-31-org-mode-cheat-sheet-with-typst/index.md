@@ -6,7 +6,6 @@ date = 2026-10-31T00:00:00+01:00
 tags = ["emacs", "orgmode", "typst", "documentation", "howto"]
 draft = true
 creator = "Emacs (Org mode + ox-hugo)"
-toc = false
 +++
 
 I have used Emacs long enough to accumulate plenty of useful commands that I promptly forget when I need them. My solution is a [personal cheat sheet](https://github.com/zzamboni/dot-doom/blob/main/cheatsheet.org): short tables of tasks, keybindings, and command names for blogging, inserting images, and working with Org subtrees.

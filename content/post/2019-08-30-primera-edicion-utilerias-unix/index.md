@@ -10,7 +10,6 @@ date = 2019-08-30T00:23:00+02:00
 tags = ["books", "announcements", "spanish", "unix", "linux", "leanpub"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-toc = false
 featureimage = "img/utilerias-cover.jpg"
 +++
 

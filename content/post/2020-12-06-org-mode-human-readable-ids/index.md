@@ -6,7 +6,6 @@ date = 2020-12-06T10:20:00+01:00
 tags = ["emacs", "doom", "config", "howto"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-toc = false
 featureimage = "img/org-mode-unicorn.svg"
 +++
 

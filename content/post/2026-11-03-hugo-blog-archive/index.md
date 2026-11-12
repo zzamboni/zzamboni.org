@@ -6,7 +6,6 @@ date = 2026-11-03T00:00:00+01:00
 tags = ["blogging", "hugo", "opensource", "blowfish"]
 draft = true
 creator = "Emacs (Org mode + ox-hugo)"
-toc = false
 series = ["My website setup"]
 series_order = 12
 +++

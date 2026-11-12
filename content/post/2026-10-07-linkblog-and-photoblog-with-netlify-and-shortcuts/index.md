@@ -6,7 +6,6 @@ date = 2026-10-07T22:34:00+02:00
 tags = ["blogging", "hugo", "pagescms", "netlify", "shortcuts", "howto"]
 draft = true
 creator = "Emacs (Org mode + ox-hugo)"
-toc = true
 featureimage = "img/generated/2026-10-07-linkblog-and-photoblog-with-netlify-and-shortcuts.webp"
 series = ["My website setup"]
 series_order = 6

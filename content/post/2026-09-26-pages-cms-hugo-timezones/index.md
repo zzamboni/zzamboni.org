@@ -6,7 +6,6 @@ date = 2026-09-27T17:21:00+02:00
 tags = ["blogging", "hugo", "pagescms", "troubleshooting", "howto"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-toc = false
 featureimage = "img/generated/2026-09-26-pages-cms-hugo-timezones.webp"
 series = ["My website setup"]
 series_order = 5

@@ -6,7 +6,6 @@ date = 2018-06-13T20:25:00+02:00
 tags = ["elvish", "unix", "shell", "config"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-toc = true
 featureimage = "img/elvish-logo.svg"
 +++
 

@@ -3,12 +3,11 @@ title = "Hosting a Ghost Blog in GitHub - the easier way"
 author = ["Diego Zamboni"]
 summary = "When I was planning the reboot of my website, I seriously considered using Ghost. It has a very nice UI, beautiful and usable theme out of the box, and a very active community. Eventually I decided to use Hugo, but in the process discovered that it is possible to host a statically-generated Ghost website using GitHub Pages."
 date = 2017-08-25T09:00:00+02:00
+slug = "hosting-a-ghost-blog-in-github"
 tags = ["howto", "ghost", "github", "blogging"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-toc = true
 featureimage = "img/ghost-plus-github2.png"
-slug = "hosting-a-ghost-blog-in-github"
 +++
 
 When I was planning the reboot of my website, I seriously considered using Ghost. It has a very nice UI, beautiful and usable theme out of the box, and a very active community. Eventually I decided to use Hugo, but in the process discovered that it is possible to host a statically-generated Ghost website using GitHub Pages.

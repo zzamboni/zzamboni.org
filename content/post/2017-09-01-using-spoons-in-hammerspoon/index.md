@@ -6,7 +6,6 @@ date = 2017-09-01T17:55:00+02:00
 tags = ["hammerspoon", "mac", "howto", "spoons"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-toc = true
 featureimage = "img/hammerspoon.jpg"
 +++
 

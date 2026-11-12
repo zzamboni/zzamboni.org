@@ -6,7 +6,6 @@ date = 2025-10-22T23:28:00+02:00
 tags = ["linux", "howto", "mac", "networking", "troubleshooting"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-toc = false
 featureimage = "img/generated/2025-10-22-fixing-wake-from-sleep-when-using-ethernet.webp"
 series = ["Linux on Mac"]
 series_order = 3

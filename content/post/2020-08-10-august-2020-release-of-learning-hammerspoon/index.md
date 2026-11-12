@@ -10,7 +10,6 @@ date = 2020-08-10T09:35:00+02:00
 tags = ["hammerspoon", "mac", "howto", "books", "announcements"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-toc = false
 featureimage = "img/learning-hs-cover.jpg"
 +++
 

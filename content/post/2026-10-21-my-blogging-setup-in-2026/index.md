@@ -6,7 +6,6 @@ date = 2026-11-02T14:16:00+01:00
 tags = ["blogging", "howto", "emacs", "orgmode", "hugo", "pagescms", "github", "netlify"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-toc = true
 featureimage = "img/generated/2026-10-21-my-blogging-setup-in-2026.webp"
 series = ["My website setup"]
 series_order = 1

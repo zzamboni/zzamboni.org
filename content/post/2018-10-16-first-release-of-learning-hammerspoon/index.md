@@ -10,7 +10,6 @@ date = 2018-10-16T21:22:00+02:00
 tags = ["hammerspoon", "mac", "howto", "books", "announcements"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-toc = false
 featureimage = "img/hammerspoon.jpg"
 +++
 

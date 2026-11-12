@@ -6,7 +6,6 @@ date = 2026-10-21T12:01:00+02:00
 tags = ["blogging", "hugo", "netlify", "automation", "howto"]
 draft = true
 creator = "Emacs (Org mode + ox-hugo)"
-toc = true
 series = ["My website setup"]
 series_order = 7
 +++

@@ -4,9 +4,15 @@ author = ["Diego Zamboni"]
 date = 2020-02-29T22:56:00+01:00
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
+weight = 40
+showReadingTime = false
+showWordCount = false
+showDate = false
+showHero = true
+showSummary = true
+sharingLinks = false
 externalURL = "https://leanpub.com/lit-config/"
 featureimage = "img/literate-config-cover.png"
-weight = 40
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}

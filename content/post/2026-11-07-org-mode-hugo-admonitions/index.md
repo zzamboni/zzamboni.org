@@ -6,7 +6,6 @@ date = 2026-11-07T00:00:00+01:00
 tags = ["blogging", "orgmode", "hugo", "blowfish", "howto"]
 draft = true
 creator = "Emacs (Org mode + ox-hugo)"
-toc = false
 +++
 
 I have used `tip`, `note`, and `warning` blocks in my Org-authored articles for years. They are useful little interruptions: a shortcut worth knowing, some background, or a warning before running a command.

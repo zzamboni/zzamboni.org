@@ -4,9 +4,15 @@ author = ["Diego Zamboni"]
 date = 2018-03-25T21:05:00+02:00
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
+weight = 20
+showReadingTime = false
+showWordCount = false
+showDate = false
+showHero = true
+showSummary = true
+sharingLinks = false
 externalURL = "http://cf-learn.info/"
 featureimage = "img/learning-cfengine3-cover.png"
-weight = 20
 +++
 
 {{< leanpubbook book="learning-cfengine" style="float:right" height=340 >}}

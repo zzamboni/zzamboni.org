@@ -6,7 +6,6 @@ tags = ["sitenews", "announcements"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/z-favicon-src.png"
-toc = false
 +++
 
 Eight years ago I announced [The Big Website Reboot]({{< relref "2017-08-08-the-big-website-reboot" >}}), when I switched my website to Hugo. I'm happy to announce the first major update since then.

@@ -6,7 +6,6 @@ date = 2026-10-06T22:04:00+02:00
 tags = ["blogging", "hugo", "pagescms", "howto"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-toc = true
 featureimage = "img/generated/2026-09-28-using-pagescms-alongside-org-and-hugo.webp"
 series = ["My website setup"]
 series_order = 4

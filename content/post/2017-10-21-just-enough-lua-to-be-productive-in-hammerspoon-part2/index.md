@@ -8,7 +8,6 @@ date = 2017-11-01T08:16:00+01:00
 tags = ["hammerspoon", "mac", "howto", "lua"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-toc = true
 featureimage = "img/lua-logo.svg"
 +++
 

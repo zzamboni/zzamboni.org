@@ -8,7 +8,6 @@ date = 2020-06-20T21:13:00+02:00
 tags = ["books", "leanpub", "publishing", "writing", "emacs", "orgmode"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-toc = false
 featureimage = "img/emacs-org-leanpub-cover.jpg"
 +++
 

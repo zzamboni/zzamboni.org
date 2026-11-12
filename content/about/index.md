@@ -2,17 +2,19 @@
 title = "About"
 author = ["Diego Zamboni"]
 date = 2025-11-17T16:28:00+01:00
+layout = "profile"
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
+showReadingTime = false
+showWordCount = false
+showDate = false
+showHero = true
+showSummary = true
+sharingLinks = false
 featureimage = "img/legoland.jpg"
 showPagination = false
-layout = "profile"
-showDate = false
-showWordCount = false
-showReadingTime = false
 showAuthor = false
 showZenMode = false
-sharingLinks = false
 +++
 
 {{< profile >}}

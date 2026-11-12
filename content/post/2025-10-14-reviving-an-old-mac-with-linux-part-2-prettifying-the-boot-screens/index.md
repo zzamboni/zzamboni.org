@@ -7,7 +7,6 @@ tags = ["howto", "mac", "linux", "opencore", "oclp"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/20251001-230259_OC-dual-boot-screen.png"
-toc = true
 series = ["Linux on Mac"]
 series_order = 2
 +++

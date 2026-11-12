@@ -5,6 +5,12 @@ date = 2020-12-09T21:10:00+01:00
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 weight = 3
+showReadingTime = false
+showWordCount = false
+showDate = false
+showHero = true
+showSummary = true
+sharingLinks = false
 externalURL = "https://github.com/zzamboni/ox-leanpub"
 +++
 

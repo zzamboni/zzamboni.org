@@ -4,9 +4,14 @@ author = ["Diego Zamboni"]
 date = 2021-01-21T00:16:00+01:00
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-toc = false
-featureimage = "img/cissp-training-cover.jpg"
 weight = 60
+showReadingTime = false
+showWordCount = false
+showDate = false
+showHero = true
+showSummary = true
+sharingLinks = false
+featureimage = "img/cissp-training-cover.jpg"
 +++
 
 {{< leanpubbook book="c/leanpub/cissp-training" style="float:right" height="250" >}}

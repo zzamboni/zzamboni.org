@@ -1,14 +1,17 @@
 +++
 title = "Publications"
 author = ["Diego Zamboni"]
-date = 2026-10-24T23:01:00+02:00
+date = 2026-11-12
+layout = "publications"
+type = "jsonresume"
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-type = "jsonresume"
-layout = "publications"
-showDate = false
-showWordCount = false
 showReadingTime = false
+showWordCount = false
+showDate = false
+showHero = true
+showSummary = true
+sharingLinks = false
 showAuthor = false
 showZenMode = false
 showTableOfContents = true

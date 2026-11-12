@@ -4,9 +4,15 @@ author = ["Diego Zamboni"]
 date = 2025-11-17T19:22:00+01:00
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
+weight = 10
+showReadingTime = false
+showWordCount = false
+showDate = false
+showHero = true
+showSummary = true
+sharingLinks = false
 externalURL = "https://leanpub.com/b/diego"
 featureimage = "img/book-bundle-cover.png"
-weight = 10
 +++
 
 You can get each book individually, or get them all as a [bundle](https://leanpub.com/b/diego)!

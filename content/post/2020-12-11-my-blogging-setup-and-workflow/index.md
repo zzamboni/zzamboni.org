@@ -6,7 +6,6 @@ date = 2020-12-11T00:27:00+01:00
 tags = ["blogging", "howto", "emacs", "hugo", "orgmode", "gitlab", "netlify"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-toc = true
 featureimage = "img/z-favicon-src.png"
 series = ["My website setup"]
 series_order = 2

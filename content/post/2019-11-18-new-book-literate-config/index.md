@@ -8,7 +8,6 @@ date = 2019-11-18T22:44:00+01:00
 tags = ["literateconfig", "books", "leanpub", "literateprogramming"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-toc = false
 featureimage = "img/literate-config-cover.jpg"
 +++
 

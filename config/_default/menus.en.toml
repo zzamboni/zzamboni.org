@@ -7,9 +7,9 @@ pageRef = "post"
 weight = 10
 
 [[main]]
-name = "Photos"
-url = "/tags/photos/"
-weight = 15
+  name = "Photos"
+  pageRef = "tags/photos"
+  weight = 15
 
 [[main]]
 name = "Links"
@@ -32,6 +32,11 @@ title = "Series"
 pageRef = "series"
 weight = 40
 
+[[main]]
+  name = "Tags"
+  pageRef = "tags"
+  weight = 45
+  
 [[main]]
 title = "Contact"
 pageRef = "contact"

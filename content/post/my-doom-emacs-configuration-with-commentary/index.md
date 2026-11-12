@@ -7,14 +7,13 @@ tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs", "do
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/doom-emacs-color.jpg"
-toc = true
 series = ["Literate Config Files"]
 series_order = 1
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **November 11, 2026**
+Last update: **November 12, 2026**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -980,7 +979,7 @@ but relies on its path-comparison bug, not a supported layout option."
                    ,(concat ":export_hugo_bundle: " (format-time-string "%Y-%m-%d-") fname)
                    ":export_file_name: index"
                    ,(concat ":custom_id: " fname)
-                   ":export_hugo_custom_front_matter: :featured_image /images/tram-zurich.jpg :toc false"
+                   ":export_hugo_custom_front_matter: :featured_image /images/tram-zurich.jpg"
                    ":END:"
                    "#+BEGIN_DESCRIPTION\n%?\n#+END_DESCRIPTION"       ;Place the cursor here at the end
                    "\n<write here>")

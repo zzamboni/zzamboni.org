@@ -6,7 +6,6 @@ date = 2017-11-16T20:21:00+01:00
 tags = ["config", "howto", "literateprogramming", "literateconfig", "elvish"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
-toc = true
 featureimage = "img/elvish-logo.svg"
 series = ["Literate Config Files"]
 series_order = 4
@@ -14,7 +13,7 @@ series_order = 4
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **November 11, 2026**
+Last update: **November 12, 2026**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 

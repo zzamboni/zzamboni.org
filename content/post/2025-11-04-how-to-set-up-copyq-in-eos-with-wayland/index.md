@@ -4,7 +4,6 @@ author = ["Diego Zamboni"]
 draft = true
 creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/tram-zurich.jpg"
-toc = false
 +++
 
 <div class="DESCRIPTION">
