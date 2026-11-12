@@ -494,7 +494,9 @@ I keep my Org files in `~/org/`. I like new headings to appear right where I'm e
 (defun zz/prose-completion-setup ()
   "Keep automatic completion quiet in Org and Markdown."
   (when (derived-mode-p 'org-mode 'markdown-mode)
-    (setq-local corfu-auto nil)))
+    (setq-local corfu-auto nil)
+    ;; Corfu may have installed this before running `corfu-mode-hook'.
+    (remove-hook 'post-command-hook #'corfu-auto--post-command t)))
 
 (add-hook 'corfu-mode-hook #'zz/prose-completion-setup)
 (add-hook 'org-mode-hook #'zz/prose-completion-setup)
@@ -596,7 +598,11 @@ For image export, I need bare links such as `[[attachment:image.png]]`. Org 9.8'
 
 ### Links between headings {#links-between-headings}
 
-I use `C-c l l h` to pick a heading with Vertico and insert a link to it. The choices include outline paths and line numbers, which help when several headings have the same title. I prefer readable `CUSTOM_ID` values based on the title, so the command creates one if needed and inserts a local `#id` link. If the heading already has an ID, I reuse it so links to published pages keep working.
+I use `C-c l l h` to pick a heading with Vertico and insert a link to it. Similarly, `C-u C-c l l h` on an existing link replaces its destination while preserving its description (or its visible URL if it has no description). The choices include outline paths and line numbers, which help when several headings have the same title. I prefer readable `CUSTOM_ID` values based on the title, so the command creates one if needed and inserts a local `#id` link. If the heading already has an ID, I reuse it so links to published pages keep working.
+
+The picker expands `#+include` directives in a temporary buffer, respecting line ranges and nested includes. Included headings are marked in the choices, and use a custom `hugo-ref:` link to the containing exported article plus their existing `CUSTOM_ID` or ox-hugo's normalized heading anchor. This prevents ox-hugo export errors due to nonexisting IDs in the local file. When exporting with the Hugo format, `hugo-ref:` is converted to a Hugo [relref](https://gohugo.io/shortcodes/relref/) shortcode, so that on Hugo will resolve the article path using its permalink. Other export backends retain only the description as plain text. Included files are never modified (e.g. no `CUSTOM_ID` attributes are created).
+
+I bind `C-c l l h` to the picker and tell Org to reuse an existing `CUSTOM_ID` rather than create a separate Org ID. The small helpers below make readable IDs from heading titles and preserve IDs already used by links.
 
 ```emacs-lisp
 (map! :after org :map org-mode-map
@@ -629,33 +635,167 @@ If FORCE is t, always recreate the property."
           old-id
         ;; otherwise, create it
         (zz/org-custom-id-create)))))
+```
 
-(defun zz/org-insert-heading-link ()
-  "Select a heading and insert its readable CUSTOM_ID link at point."
-  (interactive)
+A normal Org heading reference works for headings in this file. It does not work for headings brought in with `#+include`, because ox-hugo resolves references before it expands includes. For those, I define `hugo-ref:`, an Org link type that carries the owning article's content path and fragment. Its export handler writes Hugo's `relref` shortcode, allowing Hugo to resolve the final permalink. The helper finds the exported article that contains the included heading.
+
+```emacs-lisp
+(defun zz/org-hugo-ref-export (path description backend info)
+  "Export PATH as a Hugo content reference, retaining DESCRIPTION."
+  (require 'json)
+  (if (org-export-derived-backend-p (or (plist-get info :back-end) backend) 'hugo)
+      (format "[%s]({{</* relref %s */>}})"
+              (or description path) (json-encode-string path))
+    (or description path)))
+
+(after! org
+  (org-link-set-parameters "hugo-ref" :export #'zz/org-hugo-ref-export))
+
+(defun zz/org-included-heading-reference (anchor)
+  "Find the original exporting ancestor and reference its ANCHOR."
+  (save-excursion
+    (let (owner)
+      (while (and (not owner) (org-up-heading-safe))
+        (when (and (get-text-property (point) 'zz-heading-source)
+                   (org-entry-get nil "EXPORT_FILE_NAME"))
+          (setq owner (get-text-property (point) 'zz-heading-source))))
+      (unless owner
+        (user-error "Included heading has no containing exported article"))
+      (org-with-point-at owner
+        (let* ((org-use-property-inheritance
+                (org-hugo--selective-property-inheritance))
+               (info (org-export-get-environment 'hugo t))
+               (section (org-hugo--get-section-path info))
+               (bundle (org-entry-get nil "EXPORT_HUGO_BUNDLE" t))
+               (file (org-entry-get nil "EXPORT_FILE_NAME")))
+          (concat "hugo-ref:/"
+                  (mapconcat #'identity
+                             (seq-filter
+                              (lambda (x) (not (string-empty-p x)))
+                              (mapcar (lambda (x) (string-trim (or x "") "/" "/"))
+                                      (list section bundle
+                                            (if (string-suffix-p ".md" file)
+                                                file (concat file ".md")))))
+                             "/")
+                  "#" anchor))))))
+```
+
+The picker reads a temporary copy of the document and asks Org to expand its includes, including nested includes and line ranges. It marks headings from the original buffer so it can still create IDs there; included headings instead use their existing `CUSTOM_ID` or ox-hugo's normalized title slug. It never edits included files or evaluates their Babel blocks. Title-derived anchors will change if you rename a heading, and duplicate anchors remain ambiguous, so use explicit unique IDs when those links need to stay stable.
+
+```emacs-lisp
+(defun zz/org-heading-link-candidates ()
+  "Collect headings from this buffer and expanded Org includes.
+Return (LABEL TITLE MARKER ID) records.  MARKER points into the original
+buffer for local headings; included headings have a full Hugo reference instead of an ID."
+  (require 'ox)
+  (let* ((source (current-buffer))
+         (file buffer-file-name)
+         (directory default-directory)
+         (text (save-restriction (widen) (buffer-string)))
+         markers candidates success export-info)
+    (unwind-protect
+        (with-temp-buffer
+          (insert text)
+          (setq default-directory directory)
+          (org-mode)
+          (org-map-entries
+           (lambda ()
+             (let ((marker (make-marker)))
+               (set-marker marker (point) source)
+               (push marker markers)
+               (put-text-property (point) (1+ (point))
+                                  'zz-heading-source marker))))
+          (let ((enable-local-variables nil)
+                (enable-local-eval nil))
+            ;; The key trick: include the current file with includes expanded
+            (org-export-expand-include-keyword nil directory nil file))
+          (org-map-entries
+           (lambda ()
+             (let* ((marker (get-text-property (point) 'zz-heading-source))
+                    (title (org-get-heading t t t t))
+                    (id (unless marker
+                          (or (org-entry-get nil "CUSTOM_ID")
+                              (progn
+                                (require 'ox-hugo)
+                                (org-hugo-get-heading-slug
+                                 (org-element-at-point)
+                                 (or export-info
+                                     (setq export-info
+                                           (org-export-get-environment 'hugo)))))))))
+               (push (list (format "%s [%s %d]"
+                                   (string-join (org-get-outline-path t t) "/")
+                                   (if marker "line" "included; expanded line")
+                                   (if marker
+                                       (with-current-buffer source
+                                         (save-restriction
+                                           (widen)
+                                           (line-number-at-pos marker)))
+                                     (line-number-at-pos)))
+                           title marker
+                           (when id
+                             (condition-case nil
+                                 (zz/org-included-heading-reference id)
+                               (user-error nil))))
+                     candidates))))
+          (setq success t)
+          (nreverse candidates))
+      (unless success
+        (dolist (marker markers) (set-marker marker nil))))))
+```
+
+Finally, the main interactive function that gets invoked through a hotkey. With no prefix, the command inserts a new link using the selected heading as its description. With `C-u`, it replaces the link at point but keeps its existing description—including Org markup—or its visible URL if the link had no description.
+
+```emacs-lisp
+(defun zz/org-insert-heading-link (&optional replace)
+  "Insert a heading link.  With REPLACE, retain the link description at point."
+  (interactive "P")
   (require 'org-id)
-  (let ((origin (copy-marker (point) t)) candidates)
+  (require 'json)
+  (let* ((element (and replace (org-element-context)))
+         (link (and element (if (eq (org-element-type element) 'link)
+                                element
+                              (org-element-lineage element '(link) t))))
+         (origin (copy-marker (point) t))
+         (start (and link (copy-marker (org-element-property :begin link))))
+         (end (and link (copy-marker
+                        (- (org-element-property :end link)
+                           (org-element-property :post-blank link)) t)))
+         (description
+          (when link
+            (if (org-element-property :contents-begin link)
+                (buffer-substring-no-properties
+                 (org-element-property :contents-begin link)
+                 (org-element-property :contents-end link))
+              (org-element-property :raw-link link))))
+         candidates)
     (unwind-protect
         (save-restriction
           (widen)
-          (setq candidates
-                (org-map-entries
-                 (lambda ()
-                   (cons (format "%s [line %d]"
-                                 (string-join (org-get-outline-path t t) "/")
-                                 (line-number-at-pos))
-                         (point-marker)))))
+          (when (and replace (not link))
+            (user-error "Place point on the link to replace"))
+          (setq candidates (zz/org-heading-link-candidates))
           (unless candidates (user-error "No headings in this buffer"))
           (let* ((choice (completing-read "Link to heading: " candidates nil t))
-                 (target (cdr (assoc choice candidates)))
-                 (title (org-with-point-at target
-                          (nth 4 (org-heading-components))))
-                 (id (save-excursion (zz/org-custom-id-get-create target))))
-            (goto-char origin)
-            (org-insert-link nil (concat "#" id) title)))
-      (set-marker origin nil)
+                 (target (assoc choice candidates))
+                 (title (nth 1 target))
+                 (marker (nth 2 target))
+                 (path (if marker
+                           (concat "#" (save-excursion
+                                         (zz/org-custom-id-get-create marker)))
+                         (nth 3 target))))
+            (unless (org-string-nw-p path)
+              (user-error "Selected heading has no usable anchor"))
+            (if replace
+                (progn
+                  (goto-char start)
+                  (delete-region start end)
+                  (insert (org-link-make-string path description)))
+              (goto-char origin)
+              (org-insert-link nil path title))))
+      (dolist (marker (list origin start end))
+        (when marker (set-marker marker nil)))
       (dolist (candidate candidates)
-        (set-marker (cdr candidate) nil)))))
+        (when (nth 2 candidate) (set-marker (nth 2 candidate) nil))))))
 ```
 
 

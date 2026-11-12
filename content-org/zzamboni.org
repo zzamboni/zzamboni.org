@@ -128,11 +128,11 @@ This section contains all the static pages.
 
 - *Where:* :: I was born in Argentina, but have moved around all my life.  When I was very young I moved to Mexico, where I grew up. I studied Computer Engineering at [[https://www.unam.mx/][UNAM]] before moving to the U.S. to pursue my Ph.D. at [[http://www.cerias.purdue.edu/][Purdue University]] under the direction of [[http://spaf.cerias.purdue.edu/][Gene Spafford]]. Upon finishing my studies, my wife and I decided to go to Switzerland, where I worked at the [[http://www.zurich.ibm.com/][IBM Zurich Research Lab]]. Eight years and two kids later, we [[/brt/2009/09/08/going-home/index.html][moved to Mexico]] in late 2009. In 2015, we moved back to Switzerland.
 
-- *Long version:* :: If you are interested, here's my [[file:/vita][Curriculum Vitae]]. For other useless trivia about me, see [[http://www.zzamboni.org/brt/2007/03/07/blog-tagged/index.html][here]].
+- *Long version:* :: If you are interested, here's my [[#curriculum-vitae][Curriculum Vitae]]. For other useless trivia about me, see [[/brt/2007/03/07/blog-tagged/index.html][here]].
 
 **** Full CV
 
-You can find my full [[file:/vita][Curriculum Vitae]], also in [[/vita/zamboni-vita.pdf][PDF format]].
+You can find my full [[#curriculum-vitae][Curriculum Vitae]], also in [[/vita/zamboni-vita.pdf][PDF format]].
 
 **** About this site
 
@@ -143,10 +143,13 @@ The sources are stored in my [[https://gitlab.com/zzamboni/zzamboni.org][zzambon
 I think it's incredible that all of this infrastructure is so easy to use and available for free.
 
 **** My online past
+:PROPERTIES:
+:CUSTOM_ID: my-online-past
+:END:
 
 - 2008-2024 (Twitter): :: I was on Twitter fairly early (created my account in 2007, though my first tweet is from January 2008), and although I was never a super prolific user, I used it regularly for about 15 years, until its decline after its acquisition and conversion to X. My account is still there so that my username cannot be reused, but my posts are protected. You can find an archive of my tweets in this site: https://zzamboni.org/twitter/ courtesy of [[https://github.com/tweetback/tweetback][Tweetback]]. I'm on Bluesky these days, though I don't post too much.
 - 2009-2016: :: During this time my blog went through several iterations, hosted/powered by [[https://en.wikipedia.org/wiki/Posterous][Posterous]], [[https://jekyllrb.com/][Jekyll]], [[http://octopress.org/][Octopress]], [[https://postach.io/site][Postach.io]] and [[https://github.com/zzamboni/enwrite][Enwrite]]. Most blog entries from this period have been merged into [[/][my current blog]];
-- 2005-2009: :: My blog titled [[file:/brt][BrT]] was powered mainly by a self-hosted Wordpress installation, with some intermixed use of Posterous. What you find at the link is a static archive copy;
+- 2005-2009: :: My blog titled [[/brt][BrT]] was powered mainly by a self-hosted Wordpress installation, with some intermixed use of Posterous. What you find at the link is a static archive copy;
 - 1997-2001: :: My hand-maintained [[http://homes.cerias.purdue.edu/~zamboni/][web page at Purdue University]] ([[/cerias/zamboni/][here's a mirror]] in case it disappears).
 
 **** Image attributions
@@ -160,7 +163,8 @@ If you have any concerns or questions about the images used in this site, please
 *** Curriculum Vitae
 :PROPERTIES:
 :export_date: 2026-11-12 
-:export_hugo_section: vita
+:export_hugo_section: /
+:export_hugo_bundle: vita
 :export_hugo_custom_front_matter+: :showAuthor false :showZenMode false :showTableOfContents true
 :export_hugo_type: jsonresume
 :END:
@@ -169,6 +173,7 @@ If you have any concerns or questions about the images used in this site, please
 :PROPERTIES:
 :export_file_name: _index
 :export_hugo_layout: cv
+:CUSTOM_ID: curriculum-vitae
 :END:
 
 **** Publications
@@ -258,7 +263,8 @@ Some topics deserve more than a single post. These series bring related articles
 
 **** Linux on Mac
 :PROPERTIES:
-:export_hugo_section: series/linux-on-mac
+:export_hugo_section: /
+:export_hugo_bundle: series/linux-on-mac
 :export_file_name: _index
 :export_hugo_custom_front_matter+: :featureImage img/series/linux-on-mac.webp
 :END:
@@ -267,16 +273,19 @@ Articles about bringing back to life some older Macs using Linux, making them fa
 
 **** Literate Config Files
 :PROPERTIES:
-:export_hugo_section: series/literate-config-files
+:export_hugo_section: /
+:export_hugo_bundle: series/literate-config-files
 :export_file_name: _index
 :export_hugo_custom_front_matter+: :featureImage img/series/literate-config-files.webp
+:CUSTOM_ID: literate-config-files
 :END:
 
 Literate-config all the things!
 
 **** My website setup
 :PROPERTIES:
-:export_hugo_section: series/my-website-setup
+:export_hugo_section: /
+:export_hugo_bundle: series/my-website-setup
 :export_file_name: _index
 :export_hugo_custom_front_matter+: :featureImage img/series/my-website-setup.webp
 :END:
@@ -286,7 +295,8 @@ How I build and maintain this site with Org mode, Hugo, Netlify and more.
 *** Books section
 :PROPERTIES:
 :export_date: [2018-03-25 Sun 20:11]
-:export_hugo_section: book
+:export_hugo_section: /
+:export_hugo_bundle: book
 :END:
 
 **** Books
@@ -436,7 +446,8 @@ Puedes obtener una muestra gratis y comprar el libro (¡tu eliges  cuánto pagas
 *** Code section
 :PROPERTIES:
 :export_date: [2018-03-25 Sun 20:11]
-:export_hugo_section: code
+:export_hugo_section: /
+:export_hugo_bundle: code
 :END:
 
 **** Code
@@ -604,7 +615,7 @@ I have enjoyed slowly converting my configuration files to literate programming 
 
 Last update: *{{{updatetime}}}*
 
-I have enjoyed slowly converting my configuration files to [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate programming]] style style using org-mode in Emacs. I previously posted my [[file:../my-elvish-configuration-with-commentary/][Elvish configuration]], and now it's the turn of my Emacs configuration file. The text below is included directly from my [[https://github.com/zzamboni/dot_emacs/blob/master/init.org][init.org]] file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [[https://github.com/zzamboni/dot_emacs/blob/master/init.org][init.org file in GitHub]] for my current, live configuration, and the generated file at [[https://github.com/zzamboni/dot_emacs/blob/master/init.el][init.el]].
+I have enjoyed slowly converting my configuration files to [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate programming]] style style using org-mode in Emacs. I previously posted my [[#my-elvish-configuration-with-commentary][My Elvish Configuration With Commentary]], and now it's the turn of my Emacs configuration file. The text below is included directly from my [[https://github.com/zzamboni/dot_emacs/blob/master/init.org][init.org]] file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [[https://github.com/zzamboni/dot_emacs/blob/master/init.org][init.org file in GitHub]] for my current, live configuration, and the generated file at [[https://github.com/zzamboni/dot_emacs/blob/master/init.el][init.el]].
 
 If you are interested in writing your own Literate Config files, check out my new book [[https://leanpub.com/lit-config][Literate Config]] on Leanpub!
 
@@ -616,6 +627,7 @@ CLOSED: [2018-01-08 Mon 13:31]
 :export_file_name: 2018-01-08-my-hammerspoon-configuration-with-commentary
 :export_hugo_custom_front_matter: :featureimage img/hammerspoon.jpg
 :export_hugo_custom_front_matter+: :series '("Literate Config Files")' :series_order 3
+:CUSTOM_ID: my-hammerspoon-configuration--with-commentary
 :END:
 #+begin_description
 In my ongoing series of literate config files, I present to you my Hammerspoon configuration file.
@@ -626,7 +638,7 @@ In my ongoing series of literate config files, I present to you my Hammerspoon c
 
 Last update: *{{{updatetime}}}*
 
-In my [[file:../my-elvish-configuration-with-commentary/][ongoing]] [[file:../my-emacs-configuration-with-commentary][series]] of [[http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][literate]] config files, I present to you my [[http://www.hammerspoon.org/][Hammerspoon]] configuration file. You can see the generated file at [[https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua]]. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [[https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org][in GitHub]].
+In my ongoing series of [[#literate-config-files][Literate Config Files]], I present to you my [[http://www.hammerspoon.org/][Hammerspoon]] configuration file. You can see the generated file at [[https://github.com/zzamboni/dot-hammerspoon/blob/master/init.lua]]. As usual, this is just a snapshot at the time shown above, you can see the current version of my configuration [[https://github.com/zzamboni/dot-hammerspoon/blob/master/init.org][in GitHub]].
 
 If you are interested in writing your own Literate Config files, check out my new book [[https://leanpub.com/lit-config][Literate Config]] on Leanpub!
 
@@ -638,6 +650,7 @@ CLOSED: [2017-11-16 Thu 20:21]
 :export_file_name: 2017-11-16-my-elvish-configuration-with-commentary
 :export_hugo_custom_front_matter: :featureimage img/elvish-logo.svg
 :export_hugo_custom_front_matter+: :series '("Literate Config Files")' :series_order 4
+:CUSTOM_ID: my-elvish-configuration-with-commentary
 :END:
 #+begin_description
 In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections.
@@ -1147,6 +1160,7 @@ CLOSED: [2017-08-21 Mon 16:34]
 :PROPERTIES:
 :export_hugo_bundle: 2017-08-21-getting-started-with-hammerspoon
 :export_file_name: index
+:CUSTOM_ID: getting-started-with-hammerspoon
 :END:
 #+begin_description
 This is the first installment of a series of posts about Hammerspoon, a staggeringly powerful automation utility which gives you an amazing degree of control over your Mac, allowing you to automate and control almost anything. In the word of Hammerspoon's motto: /Making the runtime, funtime/.
@@ -1158,16 +1172,16 @@ This is the first installment of a series of posts about Hammerspoon, a staggeri
 
 [[http://www.hammerspoon.org/][Hammerspoon]] is a Mac application that allows you to achieve an unprecedented level of control over your Mac.  Hammerspoon enables interaction with the system at multiple layers--from low-level file system or network access, mouse or keyboard event capture and generation, all the way to manipulating applications or windows, processing URLs and drawing on the screen. It also allows interfacing with [[https://www.macosxautomation.com/applescript/][AppleScript]], Unix commands and scripts, and other applications. Hammerspoon configuration is written in [[https://www.lua.org/about.html][Lua]], a popular embedded programming language.
 
-Using Hammerspoon, you can replace many stand-alone Mac utilities for controlling or customizing specific aspects of your Mac (the kind that tends to overcrowd the menubar). For example, the following are doable using Hammerspoon (these are all things I do with it on my machine - each paragraph links to the corresponding sections in my [[file:/post/my-hammerspoon-configuration-with-commentary/][config file]]):
+Using Hammerspoon, you can replace many stand-alone Mac utilities for controlling or customizing specific aspects of your Mac (the kind that tends to overcrowd the menubar). For example, the following are doable using Hammerspoon (these are all things I do with it on my machine - each paragraph links to the corresponding sections in my [[#my-hammerspoon-configuration--with-commentary][my config file]]):
 
-- Add missing or more convenient keyboard shortcuts to applications, even for complex multi-step actions. For example: [[file:/post/my-hammerspoon-configuration-with-commentary/#organization-and-productivity][automated tagging and filing in Evernote, mail/note archival in Mail, Outlook and Evernote, filing items from multiple applications to OmniFocus using consistent keyboard shortcuts]], or [[file:/post/my-hammerspoon-configuration-with-commentary/#other-applications][muting/unmuting a conversation in Skype]].
-- [[file:/post/my-hammerspoon-configuration-with-commentary/#url-dispatching-to-site-specific-browsers][Open URLs in different browsers based on regular expression patterns]].  When combined with Site-specific Browsers (I use [[https://github.com/dmarmor/epichrome][Epichrome]]), this allows for highly flexible management of bookmarks, plugins and search configurations.
-- Replace Spotlight, Lacona and other launchers with a [[file:/post/my-hammerspoon-configuration-with-commentary/#seal][fully configurable, extensible launcher]], which allows not only to open applications, files and bookmarks, but to trigger arbitrary Lua functions.
-- [[file:/post/my-hammerspoon-configuration-with-commentary/#window-and-screen-manipulation][Manipulate windows]] using keyboard shortcuts to resize, move and arrange them.
-- [[file:/post/my-hammerspoon-configuration-with-commentary/#network-transitions][Set up actions to happen automatically when switching between WiFi networks]]--for example for reconfiguring proxies in some applications.
-- [[file:/post/my-hammerspoon-configuration-with-commentary/#pop-up-translation][Keyboard-triggered translation]] of selected text between arbitrary human languages.
-- Keep a configurable and persistent [[file:/post/my-hammerspoon-configuration-with-commentary/#organization-and-productivity][clipboard history]].
-- [[file:/post/my-hammerspoon-configuration-with-commentary/#other-applications][Automatically pause audio playback]] when headphones are unplugged.
+- Add missing or more convenient keyboard shortcuts to applications, even for complex multi-step actions. For example:  [[hugo-ref:/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#organization-and-productivity][automated tagging and filing in Evernote, mail/note archival in Mail, Outlook and Evernote, filing items from multiple applications to OmniFocus using consistent keyboard shortcuts]], or [[hugo-ref:/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#other-applications][muting/unmuting a conversation in Skype]].
+- [[hugo-ref:/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#url-dispatching-to-site-specific-browsers][Open URLs in different browsers based on regular expression patterns]].  When combined with Site-specific Browsers (I use [[https://github.com/dmarmor/epichrome][Epichrome]]), this allows for highly flexible management of bookmarks, plugins and search configurations.
+- Replace Spotlight, Lacona and other launchers with a [[hugo-ref:/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#seal-application-launcher-controller][fully configurable, extensible launcher]], which allows not only to open applications, files and bookmarks, but to trigger arbitrary Lua functions.
+- [[hugo-ref:/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#window-and-screen-manipulation][Window and screen manipulation]] using keyboard shortcuts to resize, move and arrange them.
+- [[hugo-ref:/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#network-transitions][Set up actions to happen automatically when switching between WiFi networks]] -- for example for reconfiguring proxies in some applications.
+- [[hugo-ref:/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#pop-up-translation][Pop-up keyboard-triggered translation]] of selected text between arbitrary human languages.
+- Keep a configurable and persistent [[hugo-ref:/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#organization-and-productivity][clipboard history]].
+- [[hugo-ref:/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#other-applications][Automatically pause audio playback]] when headphones are unplugged.
 
 Hammerspoon is the most powerful Mac automation utility I have ever used. If you are a programmer, it can make using your Mac vastly more fun and productive.
 
@@ -1249,7 +1263,7 @@ Another useful development tool is the =hs= command, which you can run from your
  {{{hsapi(hs.ipc,cliInstall)}}} creates symlinks under =/usr/local/= to the =hs= command and its manual page file, located inside the Hammerspoon application bundle. Under some circumstances (particularly if you build Hammerspoon from source, or if you install different versions of it), you may end up with broken symlinks. If the =hs= command stops working and =hs.ipc.cliInstall()= doesn't fix it, look for broken symlinks left behind from old versions of Hammerspoon.  Remove them and things should work again.
 #+end_warning
 
-Now you have all the tools for developing your Hammerspoon configuration. In the next installment we will look at how you can save yourself a lot of coding by using pre-made modules. In the meantime, feel free to look through my [[file:/post/my-hammerspoon-configuration-with-commentary/][Hammerspoon configuration file]] for ideas, and please let me know your thoughts in the comments!
+Now you have all the tools for developing your Hammerspoon configuration. In the next installment we will look at how you can save yourself a lot of coding by using pre-made modules. In the meantime, feel free to look through my [[#my-hammerspoon-configuration--with-commentary][Hammerspoon configuration file]] for ideas, and please let me know your thoughts in the comments!
 
 *** DONE Using Spoons in Hammerspoon :howto:spoons:
 CLOSED: [2017-09-01 Fri 17:55]
@@ -1263,7 +1277,7 @@ In this second article about Hammerspoon, we look into /Spoons/, modules written
 
 In this second article about Hammerspoon, we look into /Spoons/, modules written in Lua which can be easily installed and loaded into Hammerspoon to provide ready-to-use functionality. Spoons provide a predefined API to configure and use them. They are also a good way to share your own work with other users.
 
-See also the [[file:/post/getting-started-with-hammerspoon/][first article in this series]].
+See also the previous article [[#getting-started-with-hammerspoon][Getting Started With Hammerspoon]].
 
 **** Using a Spoon to locate your mouse
 :PROPERTIES:
@@ -1517,6 +1531,7 @@ CLOSED: [2017-10-21 Sat 20:36]
 :export_hugo_bundle: 2017-10-21-just-enough-lua-to-be-productive-in-hammerspoon-part1
 :export_file_name: index
 :export_hugo_custom_front_matter: :featureimage img/lua-logo.svg
+:CUSTOM_ID: just-enough-lua-to-be-productive-in-hammerspoon--part-1
 :END:
 #+begin_description
 Hammerspoon's configuration files are written in Lua, so a basic knowledge of the language is very useful to be an effective user of Hammerspoon. In this two-part article I will show you the basics of Lua so you can read and write Hammerspoon configuration. Along the way you will discover that Lua is a surprisingly powerful language.
@@ -1672,7 +1687,7 @@ Then I simply use =hyper= or =shift_hyper= in my key binding declarations:
 :CUSTOM_ID: until-next-time
 :END:
 
-In the [[file:/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/][next installment]], we will dive into Lua's types and data structures. In the meantime, feel free to explore and learn on your own. If you need more information, I can recommend the following resources, which I have found useful:
+In the [[#just-enough-lua-to-be-productive-in-hammerspoon--part-2][next installment]], we will dive into Lua's types and data structures. In the meantime, feel free to explore and learn on your own. If you need more information, I can recommend the following resources, which I have found useful:
 
 - [[http://www.lua.org/manual/5.3/][The Lua 5.3 Reference Manual]], available at the official [[http://www.lua.org][Lua website]].
 
@@ -1684,6 +1699,7 @@ CLOSED: [2017-11-01 Wed 08:16]
 :export_hugo_bundle: 2017-10-21-just-enough-lua-to-be-productive-in-hammerspoon-part2
 :export_file_name: index
 :export_hugo_custom_front_matter: :featureimage img/lua-logo.svg
+:CUSTOM_ID: just-enough-lua-to-be-productive-in-hammerspoon--part-2
 :END:
 #+begin_description
 In this second article of the "Just Enough Lua" series, we dive into Lua's types and data structures.
@@ -1692,7 +1708,7 @@ In this second article of the "Just Enough Lua" series, we dive into Lua's types
 In this second article of the "Just Enough Lua" series, we dive into Lua's types and data structures.
 
 #+begin_tip
-If you haven't already, be sure to read [[file:/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/][the first installment of this series]] to learn about the basic Lua concepts.
+If you haven't already, be sure to read [[#just-enough-lua-to-be-productive-in-hammerspoon--part-1][the first installment of this series]] to learn about the basic Lua concepts.
 #+end_tip
 
 **** Tables
@@ -1911,7 +1927,7 @@ All the Hammerspoon modules are implemented the same way:
   }
 #+end_src
 
-The common way of defining a new module in Lua is to create an empty table, and populate it with functions or variables as needed. For example, let's put our [[file:/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/#functions][double-click generator]] in a module. Create the file =~/.hammerspoon/doubleclick.lua= with the following contents:
+The common way of defining a new module in Lua is to create an empty table, and populate it with functions or variables as needed. For example, let's put our [[#functions][double-click generator]] in a module. Create the file =~/.hammerspoon/doubleclick.lua= with the following contents:
 
 #+begin_src lua
   local mod={}
@@ -2028,7 +2044,7 @@ Patterns, just like regular expressions, are commonly used for string manipulati
 :CUSTOM_ID: string-manipulation
 :END:
 
-Lua includes the {{{luadoc(string,6.4)}}} library to implement common string manipulation functions, including pattern matching. All of these functions can be called either as regular functions, with the string as the first argument, or as method calls on the string itself, using the colon syntax (which, as we saw [[file:/post/just-enough-lua-to-be-productive-in-hammerspoon-part-1/#dot-vs-colon-method-access-in-lua][before]], gets converted to the same call). For example, the following two are equivalent:
+Lua includes the {{{luadoc(string,6.4)}}} library to implement common string manipulation functions, including pattern matching. All of these functions can be called either as regular functions, with the string as the first argument, or as method calls on the string itself, using the colon syntax (which, as we saw [[#dot-vs-colon-method-access-in-lua][before]], gets converted to the same call). For example, the following two are equivalent:
 
 #+begin_src lua
   string.find(a, "^foo")
@@ -2531,7 +2547,7 @@ How to set up the bash !! and !$ shortcuts for accessing the previous command in
 
 (Updated on March 19th, 2018 to use the new [[https://elvish.io/ref/epm.html][Elvish Package Manager]])
 
-The bash shortcuts (maybe older? I'm not sure in which shell these originated) for "last command" (=!!=) and "last argument of last command" (=!$=) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in [[file:/post/elvish-an-awesome-unix-shell/][Elvish]] by default, they are easy to implement. I have written a module called [[https://github.com/zzamboni/elvish-modules/blob/master/bang-bang.org][bang-bang]] which you can readily use as follows:
+The bash shortcuts (maybe older? I'm not sure in which shell these originated) for "last command" (=!!=) and "last argument of last command" (=!$=) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in [[#elvish--an-awesome-unix-shell][Elvish]] by default, they are easy to implement. I have written a module called [[https://github.com/zzamboni/elvish-modules/blob/master/bang-bang.org][bang-bang]] which you can readily use as follows:
 
 - Use [[https://elvish.io/ref/epm.html][epm]] to install my elvish-modules package (you can also add this to your =rc.elv= file to have the package installed automatically if needed):
 
@@ -2540,7 +2556,7 @@ The bash shortcuts (maybe older? I'm not sure in which shell these originated) f
     epm:install github.com/zzamboni/elvish-modules
   #+end_src
 
-- In your =rc.elv= (see [[file:/post/my-elvish-configuration-with-commentary/][mine]] as an example), add the following to load the =bang-bang= module and to set up the appropriate keybindings:
+- In your =rc.elv= (see [[#my-elvish-configuration-with-commentary][mine]] as an example), add the following to load the =bang-bang= module and to set up the appropriate keybindings:
 
   #+begin_src elvish
     use github.com/zzamboni/elvish-modules/bang-bang
@@ -2566,6 +2582,7 @@ Have fun with Elvish!
 CLOSED: [2017-09-14 Wed 15:00]
 :PROPERTIES:
 :export_file_name: 2017-09-14-learning-elvish
+:CUSTOM_ID: elvish--an-awesome-unix-shell
 :END:
 #+begin_description
 I'm always on the lookout for new toys, particularly if they make my work more productive or enjoyable.  For a couple of months now I have been using a little-known Unix shell called Elvish as my default login shell on macOS, and I love it.
@@ -3663,7 +3680,7 @@ CLOSED: [2020-12-11 Fri 00:27]
 My blogging has seen multiple iterations over the years, and with it, the tools I use have changed. At the moment I use a set of free tools and workflows which make it very easy to keep my blog updated. This post gives a brief overview of my setup.
 #+end_description
 
-My blogging has seen [[file:/about/#my-online-past][multiple iterations]] over the years, and with it, the tools I use have changed. At the moment I use a set of tools and workflows which make it very easy to keep my blog updated, and I will describe them in this post. In short, they are:
+My blogging has seen [[#my-online-past][multiple iterations]] over the years, and with it, the tools I use have changed. At the moment I use a set of tools and workflows which make it very easy to keep my blog updated, and I will describe them in this post. In short, they are:
 
 - *Writing:* Emacs, org-mode
 - *Exporting:* ox-hugo
@@ -3696,7 +3713,7 @@ Ox-hugo supports [[https://ox-hugo.scripter.co/#screenshot-one-post-per-subtree]
 
 Note that ox-hugo is not limited to exporting blog posts, but any content processed by Hugo. For example, my org source file also includes all the static pages in my web site - they are differentiated from blog posts simply by the Hugo [[https://gohugo.io/content-management/sections/][section]] to which they belong, which is defined using the [[https://ox-hugo.scripter.co/doc/usage/#before-you-export][HUGO_SECTION property]] in my Org file.
 
-Since the full power of org markup is available when using ox-hugo, you can do very interesting things. For example, all the posts in my [[file:/tags/literateconfig/][Literate Config Files]] category are automatically updated every time I export them with the actual, real content of the corresponding config file, which I also keep in org format. There is a lot of hidden power in org-mode and ox-hugo. My recommendation is to go through the source files for some of the websites listed in ox-hugo's [[https://ox-hugo.scripter.co/doc/examples/][Real World Examples]] section. I have learned a lot by reading through the source files for the [[https://github.com/kaushalmodi/ox-hugo/tree/master/doc][ox-hugo website]] itself.
+Since the full power of org markup is available when using ox-hugo, you can do very interesting things. For example, all the posts in my [[#literate-config-files][Literate Config Files]] series are automatically updated every time I export them with the actual, real content of the corresponding config file, which I also keep in org format. There is a lot of hidden power in org-mode and ox-hugo. My recommendation is to go through the source files for some of the websites listed in ox-hugo's [[https://ox-hugo.scripter.co/doc/examples/][Real World Examples]] section. I have learned a lot by reading through the source files for the [[https://github.com/kaushalmodi/ox-hugo/tree/master/doc][ox-hugo website]] itself.
 
 Once you have some contents in your Org file, you can export them into Markdown files. For this, use the standard Org export dispatcher (bound to ~C-c C-e~ by default) and choose =[H] Export to Hugo-compatible Markdown= / =[A] All subtrees (or File) to Md file(s)= options (you may choose other options for course, but this one exports the whole file). Ox-hugo knows the default structure expected by Hugo (a top-level =content/= directory in which you have directories for each section), so there's usually not much to do other than point ox-hugo to where your top-level Hugo directory is, using the [[https://ox-hugo.scripter.co/doc/usage/#before-you-export][HUGO_BASE_DIR]] property.
 
@@ -4872,5 +4889,5 @@ If you are thinking of, or already preparing for, taking the CISSP exam, I am su
 * COMMENT Local variables :noexport:ARCHIVE:
 
 # Local Variables:
-# flycheck-org-lint-disabled-checkers: (invalid-id-link link-to-local-file)
+# flycheck-org-lint-disabled-checkers: (invalid-id-link link-to-local-file invalid-custom-id-link)
 # End:

@@ -11,7 +11,7 @@ featureimage = "img/hammerspoon.jpg"
 
 In this second article about Hammerspoon, we look into _Spoons_, modules written in Lua which can be easily installed and loaded into Hammerspoon to provide ready-to-use functionality. Spoons provide a predefined API to configure and use them. They are also a good way to share your own work with other users.
 
-See also the [first article in this series](/post/getting-started-with-hammerspoon/).
+See also the previous article [Getting Started With Hammerspoon]({{< relref "2017-08-21-getting-started-with-hammerspoon" >}}).
 
 
 ## Using a Spoon to locate your mouse {#using-a-spoon-to-locate-your-mouse}

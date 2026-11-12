@@ -35,12 +35,12 @@ showZenMode = false
 
 
 **Long version:**
-: If you are interested, here's my [Curriculum Vitae](/vita). For other useless trivia about me, see [here](http://www.zzamboni.org/brt/2007/03/07/blog-tagged/index.html).
+: If you are interested, here's my [Curriculum Vitae]({{< relref "vita" >}}). For other useless trivia about me, see [here](/brt/2007/03/07/blog-tagged/index.html).
 
 
 ## Full CV {#full-cv}
 
-You can find my full [Curriculum Vitae](/vita), also in [PDF format](/vita/zamboni-vita.pdf).
+You can find my full [Curriculum Vitae]({{< relref "vita" >}}), also in [PDF format](/vita/zamboni-vita.pdf).
 
 
 ## About this site {#about-this-site}

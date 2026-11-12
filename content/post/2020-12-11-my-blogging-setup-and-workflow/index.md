@@ -11,7 +11,7 @@ series = ["My website setup"]
 series_order = 2
 +++
 
-My blogging has seen [multiple iterations](/about/#my-online-past) over the years, and with it, the tools I use have changed. At the moment I use a set of tools and workflows which make it very easy to keep my blog updated, and I will describe them in this post. In short, they are:
+My blogging has seen [multiple iterations]({{< relref "index#my-online-past" >}}) over the years, and with it, the tools I use have changed. At the moment I use a set of tools and workflows which make it very easy to keep my blog updated, and I will describe them in this post. In short, they are:
 
 -   **Writing:** Emacs, org-mode
 -   **Exporting:** ox-hugo
@@ -46,7 +46,7 @@ Ox-hugo supports [two ways of organizing your posts](https://ox-hugo.scripter.co
 
 Note that ox-hugo is not limited to exporting blog posts, but any content processed by Hugo. For example, my org source file also includes all the static pages in my web site - they are differentiated from blog posts simply by the Hugo [section](https://gohugo.io/content-management/sections/) to which they belong, which is defined using the [HUGO_SECTION property](https://ox-hugo.scripter.co/doc/usage/#before-you-export) in my Org file.
 
-Since the full power of org markup is available when using ox-hugo, you can do very interesting things. For example, all the posts in my [Literate Config Files](/tags/literateconfig/) category are automatically updated every time I export them with the actual, real content of the corresponding config file, which I also keep in org format. There is a lot of hidden power in org-mode and ox-hugo. My recommendation is to go through the source files for some of the websites listed in ox-hugo's [Real World Examples](https://ox-hugo.scripter.co/doc/examples/) section. I have learned a lot by reading through the source files for the [ox-hugo website](https://github.com/kaushalmodi/ox-hugo/tree/master/doc) itself.
+Since the full power of org markup is available when using ox-hugo, you can do very interesting things. For example, all the posts in my [Literate Config Files]({{< relref "literate-config-files" >}}) series are automatically updated every time I export them with the actual, real content of the corresponding config file, which I also keep in org format. There is a lot of hidden power in org-mode and ox-hugo. My recommendation is to go through the source files for some of the websites listed in ox-hugo's [Real World Examples](https://ox-hugo.scripter.co/doc/examples/) section. I have learned a lot by reading through the source files for the [ox-hugo website](https://github.com/kaushalmodi/ox-hugo/tree/master/doc) itself.
 
 Once you have some contents in your Org file, you can export them into Markdown files. For this, use the standard Org export dispatcher (bound to <kbd>C-c C-e</kbd> by default) and choose `[H] Export to Hugo-compatible Markdown` / `[A] All subtrees (or File) to Md file(s)` options (you may choose other options for course, but this one exports the whole file). Ox-hugo knows the default structure expected by Hugo (a top-level `content/` directory in which you have directories for each section), so there's usually not much to do other than point ox-hugo to where your top-level Hugo directory is, using the [HUGO_BASE_DIR](https://ox-hugo.scripter.co/doc/usage/#before-you-export) property.
 
