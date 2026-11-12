@@ -12,5 +12,3 @@ showSummary = true
 sharingLinks = false
 featureimage = "img/scrabble-trim1-lowres.jpg"
 +++
-
-## All posts {#all-posts}

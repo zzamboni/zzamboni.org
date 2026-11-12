@@ -1,5 +1,4 @@
-# [[main]]
-# none = "none"
+# Top menu
 
 [[main]]
 title = "Blog"
@@ -7,9 +6,9 @@ pageRef = "post"
 weight = 10
 
 [[main]]
-  name = "Photos"
-  pageRef = "tags/photos"
-  weight = 15
+name = "Photos"
+pageRef = "tags/photos"
+weight = 15
 
 [[main]]
 name = "Links"
@@ -19,7 +18,6 @@ weight = 17
 [[main]]
 title = "Books"
 pageRef = "book"
-identifier = "ianSwY3pMg"
 weight = 20
 
 [[main]]
@@ -33,75 +31,66 @@ pageRef = "series"
 weight = 40
 
 [[main]]
-  name = "Tags"
-  pageRef = "tags"
-  weight = 45
+name = "Tags"
+pageRef = "tags"
+weight = 45
   
-[[main]]
-title = "Contact"
-pageRef = "contact"
-weight = 50
-
 [[main]]
 name = "About"
 weight = 60
 
-[[main]]
-name = "About me"
-pageRef = "about"
-parent = "About"
-
-[[main]]
-name = "Curriculum Vitae"
-parent = "About"
-url = "/vita/"
-
-# [[main]]
-# title = "Tags"
-# pageRef = "tags"
-# identifier = "KIXKhYe3Kq"
-# weight = 40
-
-# [[main]]
-# title = "About"
-# pageRef = "about"
-# identifier = "0nHHiNcOjx"
-# weight = 50
+  [[main]]
+  name = "About me"
+  pageRef = "about"
+  parent = "About"
+  weight = 10
+  
+  [[main]]
+  name = "Curriculum Vitae"
+  parent = "About"
+  pageRef = "vita"
+  weight = 20
+  
+  [[main]]
+  title = "---"
+  parent = "About"
+  identifier ="separator"
+  weight = 25
+  
+  [[main]]
+  title = "Contact"
+  parent = "About"
+  pageRef = "contact"
+  weight = 30
 
 [[main]]
 pre = "bluesky"
 url = "https://bsky.app/profile/zzamboni.org"
-identifier = "xwdLhBz2ch"
 title = "Diego's BlueSky profile"
 weight = 100
 
 [[main]]
 pre = "linkedin"
 url = "https://linkedin.com/in/zzamboni"
-identifier = "xwdLhBz2ci"
 title = "Diego's LinkedIn profile"
 weight = 110
 
-# [[footer]]
-# none = "none"
+# Bottom menu
 
 [[footer]]
 pre = "bluesky"
 url = "https://bsky.app/profile/zzamboni.org"
-identifier = "xwdLhBz2cj"
 title = "Diego's BlueSky profile"
 weight = 100
 
 [[footer]]
 pre = "linkedin"
 url = "https://linkedin.com/in/zzamboni"
-identifier = "xwdLhBz2ck"
 title = "Diego's LinkedIn profile"
 weight = 110
 
 [[footer]]
 pre = "github"
 url = "https://github.com/zzamboni/zzamboni.org"
-identifier = "djfkldsfjke"
 title = "Website source in GitHub"
 weight = 120
