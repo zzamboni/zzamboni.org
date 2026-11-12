@@ -347,24 +347,6 @@ In this book you will learn how to get started with Hammerspoon, how to use pre-
 
 Learn more, read a free sample and get the book (you choose how much you pay!) at https://leanpub.com/learning-hammerspoon/, or click on the banner on the right.
 
-**** Utilerías de Unix
-:PROPERTIES:
-:export_date: [2019-08-30 Tue 00:05]
-:export_file_name: utilerias-unix
-:export_hugo_custom_front_matter+: :externalURL https://leanpub.com/utilerias-unix :featureimage img/utilerias-cover.jpg
-:export_hugo_weight: 70
-:END:
-
-{{{leanpubbook(utilerias-unix,style="float:right" height="340")}}}
-
-(this book is in Spanish)
-
-*¡Automatiza tus tareas e incrementa tu eficiencia!* Realiza tareas de todo tipo usando los comandos más útiles en un sistema Unix/Linux.
-
-#+hugo: more
-
-Puedes obtener una muestra gratis y comprar el libro (¡tu eliges  cuánto pagas!) en https://leanpub.com/utilerias-unix, o haz click  en la imágen de la derecha.
-
 **** Literate Config
 :PROPERTIES:
 :export_date: [2020-02-29 Sat 22:56]
@@ -433,6 +415,24 @@ There are multitude of CISSP courses, books and materials out there, but this on
 
 If you are preparing for taking the CISSP exam, I am sure you will find this course useful. Get it now:
 
+**** Utilerías de Unix
+:PROPERTIES:
+:export_date: [2019-08-30 Tue 00:05]
+:export_file_name: utilerias-unix
+:export_hugo_custom_front_matter+: :externalURL https://leanpub.com/utilerias-unix :featureimage img/utilerias-cover.jpg
+:export_hugo_weight: 70
+:END:
+
+{{{leanpubbook(utilerias-unix,style="float:right" height="340")}}}
+
+(this book is in Spanish)
+
+*¡Automatiza tus tareas e incrementa tu eficiencia!* Realiza tareas de todo tipo usando los comandos más útiles en un sistema Unix/Linux.
+
+#+hugo: more
+
+Puedes obtener una muestra gratis y comprar el libro (¡tu eliges  cuánto pagas!) en https://leanpub.com/utilerias-unix, o haz click  en la imágen de la derecha.
+
 *** Code section
 :PROPERTIES:
 :export_date: [2018-03-25 Sun 20:11]
@@ -447,6 +447,28 @@ If you are preparing for taking the CISSP exam, I am sure you will find this cou
 :END:
 
 Here you can find a sample of some programs I have written over the years. For a full list of my public projects please check my [[https://github.com/zzamboni/][GitHub]] and [[https://gitlab.com/zzamboni][GitLab]] profiles.
+
+**** resume-toolkit
+:PROPERTIES:
+:export_date: [2026-03-31 Tue 20:05]
+:export_hugo_custom_front_matter+: :externalURL https://github.com/zzamboni/resume-toolkit/
+:export_file_name: resume-toolkit
+:export_hugo_weight: 01
+:CUSTOM_ID: resume-toolkit
+:END:
+
+A tool for exporting JSON Resume (and optionally, BibTeX files) into HTML and PDF formats.
+
+**** jsonresume-theme-eventide
+:PROPERTIES:
+:export_date: [2026-03-31 Tue 20:30]
+:export_hugo_custom_front_matter+: :externalURL https://github.com/zzamboni/jsonresume-theme-eventide
+:export_file_name: jsonresume-theme-eventide
+:export_hugo_weight: 02
+:END:
+
+A JSON Resume theme, derived from [[https://github.com/rbardini/jsonresume-theme-even][jsonresume-theme-even]], with new features like Table of Contents, section reordering and custom labels, certificate and organization logos, and much more. This is the theme used by  [[https://github.com/zzamboni/resume-toolkit][resume-toolkit]].
+
 
 **** ox-leanpub
 :PROPERTIES:
@@ -473,7 +495,6 @@ For a comprehensive introduction to publishing with Org mode and Leanpub, check 
 
 Publish a Hugo blog using Evernote. Unmaintained.
 
-
 **** GrabCartoons
 :PROPERTIES:
 :export_date: [2020-12-08 Tue 18:29]
@@ -484,28 +505,6 @@ Publish a Hugo blog using Evernote. Unmaintained.
 :END:
 
 A comic-summarizing utility. Modular and extensible. It's one of my oldest open-source projects, and still in use!
-
-**** resume-toolkit
-:PROPERTIES:
-:export_date: [2026-03-31 Tue 20:05]
-:export_hugo_custom_front_matter+: :externalURL https://github.com/zzamboni/resume-toolkit/
-:export_file_name: resume-toolkit
-:export_hugo_weight: 01
-:CUSTOM_ID: resume-toolkit
-:END:
-
-A tool for exporting JSON Resume (and optionally, BibTeX files) into HTML and PDF formats.
-
-**** jsonresume-theme-eventide
-:PROPERTIES:
-:export_date: [2026-03-31 Tue 20:30]
-:export_hugo_custom_front_matter+: :externalURL https://github.com/zzamboni/jsonresume-theme-eventide
-:export_file_name: jsonresume-theme-eventide
-:export_hugo_weight: 02
-:END:
-
-A JSON Resume theme, derived from [[https://github.com/rbardini/jsonresume-theme-even][jsonresume-theme-even]], with new features like Table of Contents, section reordering and custom labels, certificate and organization logos, and much more. This is the theme used by  [[https://github.com/zzamboni/resume-toolkit][resume-toolkit]].
-
 
 * Ideas
 :PROPERTIES:
