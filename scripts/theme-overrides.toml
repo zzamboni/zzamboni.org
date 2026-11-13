@@ -54,3 +54,8 @@ reason = "Keep the site's Disqus partial working through the comment wrapper."
 local = "layouts/partials/home/feeds.html"
 upstream = "layouts/partials/article-link/simple.html"
 reason = "Homepage post feed reuses the summary and linkblog markup; sidebar renders photo thumbnails."
+
+[[overrides]]
+local = "themes/tufte-overlay/assets/css/tufte-overlay.css"
+upstream = "layouts/_default/single.html"
+reason = "Reading width, note margin and TOC placement depend on the single-page structure."
