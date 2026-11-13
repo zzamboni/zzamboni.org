@@ -11,7 +11,8 @@
   {{/* Title */}}
   {{ $deploymentTitle := "" }}
   {{ with site.Params.deploymentBanner }}
-    {{ $deploymentTitle = cond (eq . "draft") "DRAFT" (cond (eq . "staging") "STAGING" "PREVIEW") }}
+    {{ $deploymentTitles := dict "local" "LOCAL" "draft" "DRAFT" "staging" "STAGING" "staging-draft" "STAGING DRAFT" }}
+    {{ $deploymentTitle = index $deploymentTitles . | default "PREVIEW" }}
   {{ end }}
   {{ if .IsHome }}
     <title>{{ with $deploymentTitle }}{{ . }} · {{ end }}{{ .Site.Title | emojify }}</title>

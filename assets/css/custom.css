@@ -23,6 +23,12 @@
   border-bottom: 2px solid #d97706;
 }
 
+.deployment-banner[data-deployment="local"] {
+  color: #082f49;
+  background: #bae6fd;
+  border-bottom-color: #0284c7;
+}
+
 .deployment-banner a {
   color: inherit;
   font-weight: 600;

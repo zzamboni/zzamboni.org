@@ -1,10 +1,16 @@
 {{ with site.Params.deploymentBanner }}
-  <aside class="deployment-banner" data-header-layout="{{ site.Params.header.layout }}" aria-label="Deployment notice">
-    <strong>{{ if eq . "staging-draft" }}Staging · Draft preview{{ else if eq . "draft" }}Draft preview{{ else if eq . "staging" }}Staging site{{ else }}Preview site{{ end }}</strong>
-    <span>·</span>
-    <span>Built {{ now.UTC.Format "2006-01-02 15:04 UTC" }}</span>
-    <span>·</span>
-    <a href="https://zzamboni.org/">View the production site &rarr;</a>
+  <aside class="deployment-banner" data-deployment="{{ . }}" data-header-layout="{{ site.Params.header.layout }}" aria-label="Deployment notice">
+    {{ if eq . "local" }}
+      <strong>Local development server</strong>
+      <span>·</span>
+      <span>Not the live site</span>
+    {{ else }}
+      <strong>{{ if eq . "staging-draft" }}Staging · Draft preview{{ else if eq . "draft" }}Draft preview{{ else if eq . "staging" }}Staging site{{ else }}Preview site{{ end }}</strong>
+      <span>·</span>
+      <span>Built {{ now.UTC.Format "2006-01-02 15:04 UTC" }}</span>
+      <span>·</span>
+      <a href="https://zzamboni.org/">View the production site &rarr;</a>
+    {{ end }}
   </aside>
   {{ if eq site.Params.header.layout "floating" }}
     {{ $script := resources.Get "js/deployment-banner.js" | resources.Minify | resources.Fingerprint }}
