@@ -684,6 +684,7 @@ Without further ado...
 :export_hugo_bundle: 2026-11-12-org-heading-links-across-hugo-articles
 :export_file_name: index
 :custom_id: org-heading-links-across-hugo-articles
+:export_hugo_custom_front_matter: :featureimage img/generated/2026-11-12-org-heading-links-across-hugo-articles.webp
 :END:
 #+begin_description
 My Org heading-link picker now finds headings in included files, creates Hugo-aware links, and lets me change a link's target without rewriting its description.
