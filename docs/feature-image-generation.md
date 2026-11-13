@@ -40,13 +40,21 @@ generated feature image.
 The PR is deliberately not auto-merged. Review the Netlify deploy preview and
 merge only if the image works well with the site.
 
-The workflow uses the existing `OPENAI_API_KEY` repository secret. Optional
-environment variables supported by the script are:
+The workflows use the existing `OPENAI_API_KEY` repository secret. Set these
+optional GitHub Actions repository variables or use them as environment
+variables when running locally:
 
-- `FEATURE_IMAGE_TEXT_MODEL` (default: `gpt-5-mini`)
-- `FEATURE_IMAGE_MODEL` (default: `gpt-image-1`)
+- `FEATURE_IMAGE_MODELS` (preferred-first list, default:
+  `gpt-image-2.5-flare,gpt-image-2.5-sunburst,gpt-image-2,gpt-image-1.5`)
+- `FEATURE_IMAGE_TEXT_MODELS` (preferred-first list for the generation brief,
+  default: `gpt-5-mini,gpt-5`)
 - `FEATURE_IMAGE_SIZE` (default: `1536x1024`)
 - `FEATURE_IMAGE_QUALITY` (default: `medium`)
+
+Generation and refinement try the next image model when the API reports that the
+current model is unavailable or inaccessible. Other API errors stop the request.
+The older `FEATURE_IMAGE_MODEL` and `FEATURE_IMAGE_TEXT_MODEL` variables still
+work when their corresponding list variables are unset or empty.
 
 ## Choosing a style
 

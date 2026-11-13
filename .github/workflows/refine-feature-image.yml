@@ -40,4 +40,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          FEATURE_IMAGE_MODELS: ${{ vars.FEATURE_IMAGE_MODELS }}
+          FEATURE_IMAGE_MODEL: ${{ vars.FEATURE_IMAGE_MODEL }}
+          FEATURE_IMAGE_SIZE: ${{ vars.FEATURE_IMAGE_SIZE }}
+          FEATURE_IMAGE_QUALITY: ${{ vars.FEATURE_IMAGE_QUALITY }}
         run: python scripts/refine-feature-image-pr.py

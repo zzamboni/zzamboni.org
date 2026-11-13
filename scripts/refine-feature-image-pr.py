@@ -71,7 +71,7 @@ def validate(event: dict, pr: dict, changed_files: set[str], styles: dict) -> tu
 
 
 def load_generation_settings():
-    # Import trusted code from main to share the exact style definitions.
+    # Import trusted code from main to share styles and model fallback.
     path = Path(__file__).with_name("generate-feature-image.py")
     spec = importlib.util.spec_from_file_location("generate_feature_image", path)
     if spec is None or spec.loader is None:
@@ -96,15 +96,16 @@ def edit_image(source: Path, destination: Path, instruction: str, style: str, se
         f"Shared guidelines: {settings.SITE_GUIDELINES}\n\n"
         f"Requested change: {instruction}"
     )
-    with source.open("rb") as image:
-        result = OpenAI().images.edit(
-            model=os.getenv("FEATURE_IMAGE_MODEL", "gpt-image-1"),
-            image=image,
-            prompt=prompt,
-            size=os.getenv("FEATURE_IMAGE_SIZE", "1536x1024"),
-            quality=os.getenv("FEATURE_IMAGE_QUALITY", "medium"),
-            n=1,
-        )
+    client = OpenAI()
+
+    def request_edit(**kwargs):
+        # Each attempt needs the full source even if the previous upload consumed it.
+        with source.open("rb") as image:
+            return client.images.edit(image=image, **kwargs)
+
+    result = settings.call_with_model_fallback(
+        request_edit, "image", prompt=prompt, **settings.image_request_options(),
+    )
     encoded = result.data[0].b64_json
     if not encoded:
         raise RuntimeError("Image edit returned no image")

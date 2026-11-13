@@ -85,6 +85,14 @@ def call_with_model_fallback(client_method: Any, family: str, **kwargs: Any) -> 
                 raise RuntimeError(f"No available {family} model among: {', '.join(models)}") from exc
 
 
+def image_request_options() -> dict[str, str | int]:
+    return {
+        "size": os.getenv("FEATURE_IMAGE_SIZE") or "1536x1024",
+        "quality": os.getenv("FEATURE_IMAGE_QUALITY") or "medium",
+        "n": 1,
+    }
+
+
 DEFAULT_STYLE = "Photographic editorial image"
 IMAGE_STYLES = {
     "Photographic editorial image": "Photographic editorial image. Natural window light, realistic materials and proportions, subtle colors, and a simple composition with one strong focal point. Use a plausible physical scene to evoke the post's central idea. No illustration, 3D render, cartoon styling, glowing interfaces, or implausible hardware.",
@@ -281,15 +289,10 @@ def make_visual_brief(
 
 
 def generate_image(client: OpenAI, prompt: str, destination: Path) -> None:
-    size = os.getenv("FEATURE_IMAGE_SIZE", "1536x1024")
-    quality = os.getenv("FEATURE_IMAGE_QUALITY", "medium")
-
     result = call_with_model_fallback(
         client.images.generate, "image",
         prompt=prompt,
-        size=size,
-        quality=quality,
-        n=1,
+        **image_request_options(),
     )
     item = result.data[0]
 

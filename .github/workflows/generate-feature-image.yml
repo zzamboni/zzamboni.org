@@ -60,6 +60,12 @@ jobs:
         id: image
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          FEATURE_IMAGE_MODELS: ${{ vars.FEATURE_IMAGE_MODELS }}
+          FEATURE_IMAGE_MODEL: ${{ vars.FEATURE_IMAGE_MODEL }}
+          FEATURE_IMAGE_TEXT_MODELS: ${{ vars.FEATURE_IMAGE_TEXT_MODELS }}
+          FEATURE_IMAGE_TEXT_MODEL: ${{ vars.FEATURE_IMAGE_TEXT_MODEL }}
+          FEATURE_IMAGE_SIZE: ${{ vars.FEATURE_IMAGE_SIZE }}
+          FEATURE_IMAGE_QUALITY: ${{ vars.FEATURE_IMAGE_QUALITY }}
           POST: ${{ inputs.post }}
           PAGES_CMS_PAYLOAD: ${{ inputs.payload }}
           IMAGE_STYLE: ${{ inputs.style }}
