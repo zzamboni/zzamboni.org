@@ -66,13 +66,15 @@ weight = 60
 [[main]]
 pre = "bluesky"
 url = "https://bsky.app/profile/zzamboni.org"
-title = "Diego's BlueSky profile"
+title = "Diego's BlueSky profile link"
+identifier = "bluesky-link-header"
 weight = 100
 
 [[main]]
 pre = "linkedin"
 url = "https://linkedin.com/in/zzamboni"
 title = "Diego's LinkedIn profile"
+identifier = "linkedin-link-header"
 weight = 110
 
 # Bottom menu
@@ -81,16 +83,19 @@ weight = 110
 pre = "bluesky"
 url = "https://bsky.app/profile/zzamboni.org"
 title = "Diego's BlueSky profile"
+identifier = "bluesky-link-footer"
 weight = 100
 
 [[footer]]
 pre = "linkedin"
 url = "https://linkedin.com/in/zzamboni"
 title = "Diego's LinkedIn profile"
+identifier = "linkedin-link-footer"
 weight = 110
 
 [[footer]]
 pre = "github"
 url = "https://github.com/zzamboni/zzamboni.org"
 title = "Website source in GitHub"
+identifier = "github-link-footer"
 weight = 120
