@@ -8,7 +8,7 @@
   {{ if $showReadingProgress }}
     {{ partial "reading-progress.html" . }}
   {{ end }}
-  <article>
+  <article class="cp-reader">
     {{/* Hero */}}
     {{ if .Params.showHero | default (site.Params.article.showHero | default false) }}
       {{ $heroStyle := .Params.heroStyle }}
@@ -21,6 +21,9 @@
       {{ end }}
     {{ end }}
 
+    {{ with site.GetPage "/post" }}
+      <a class="cp-back" href="{{ .RelPermalink }}">&larr; {{ i18n "cp_all_writing" }}</a>
+    {{ end }}
     {{/* Header */}}
     <header id="single_header" class="mt-5 max-w-prose">
       {{ if .Params.showBreadcrumbs | default (site.Params.article.showBreadcrumbs | default false) }}
@@ -37,6 +40,10 @@
       {{ end }}
     </header>
 
+    {{ with .Params.summary }}<p class="cp-standfirst">{{ . | markdownify }}</p>{{ end }}
+    {{ if and (not .Params.photos) (not (.Params.showHero | default false)) }}
+      {{ partial "commonplace/cover.html" . }}
+    {{ end }}
     {{/* Site-specific extension point */}}
     {{ partial "extend-single-header.html" . }}
 

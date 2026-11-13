@@ -1,0 +1,119 @@
+/* Commonplace presentation. No Tailwind rebuild, remote fonts or runtime dependencies. */
+:root { --cp-paper:#f7f5ee; --cp-ink:#252c26; --cp-green:#28523e; --cp-muted:#787d70; --cp-line:#dddcd1; --cp-tint:#eceee3; --cp-focus:#b77849; }
+:root.dark { --cp-paper:#1d241e; --cp-ink:#eeeede; --cp-green:#a5c099; --cp-muted:#a0a996; --cp-line:#3f493f; --cp-tint:#283329; --cp-focus:#d39a6f; }
+html { scroll-padding-top:2rem; }
+body.commonplace { max-width:1280px; padding:0 6%; background:var(--cp-paper); color:var(--cp-ink); font:16px/1.75 Arial,Helvetica,sans-serif; -webkit-font-smoothing:antialiased; }
+.commonplace :is(a,button,input,summary):focus-visible { outline:2px solid var(--cp-focus); outline-offset:5px; }
+.commonplace :is(h1,h2,h3) { color:var(--cp-ink); font-family:Georgia,'Times New Roman',serif; font-weight:400; }
+.commonplace #main-content > header { padding-block:3rem 1rem; }
+.commonplace #main-content > header h1 { font-size:clamp(2.6rem,5vw,4rem); line-height:1.12; letter-spacing:-.04em; }
+.commonplace .cp-header { min-height:110px; border-bottom:1px solid var(--cp-line); display:flex; align-items:center; justify-content:space-between; gap:2rem; }
+.cp-brand { display:flex; align-items:center; flex-shrink:0; gap:12px; font-size:17px; font-weight:600; letter-spacing:-.6px; }
+.cp-brand img { width:40px; height:40px; object-fit:contain; }
+.cp-desktop nav { gap:1.15rem; }
+.cp-desktop nav a span { font-size:12px; }
+.cp-mobile { display:none; }
+.cp-hero { display:grid; grid-template-columns:1.3fr 1fr; gap:20px; align-items:center; min-height:550px; padding:65px 0 58px; }
+.cp-eyebrow { display:flex; align-items:center; gap:9px; color:var(--cp-green); font-size:10px; font-weight:600; letter-spacing:1.7px; text-transform:uppercase; }
+.cp-dot { width:6px; height:6px; border-radius:50%; background:#648064; }
+.commonplace .cp-hero h1 { font-size:clamp(48px,5.4vw,76px); line-height:1.06; letter-spacing:-3.5px; margin:26px 0; }
+.cp-hero h1 em { color:var(--cp-green); font-weight:400; }
+.cp-intro { max-width:450px; font-size:15px; line-height:1.9; color:var(--cp-muted); }
+.cp-text-link { display:inline-flex; align-items:center; gap:17px; padding-bottom:7px; border-bottom:1px solid var(--cp-green); color:var(--cp-green); font-size:13px; font-weight:600; margin-top:27px; }
+.cp-text-link:hover { color:var(--cp-ink); }
+.cp-art { padding:0 5%; transform:rotate(-4deg); }
+.cp-art svg { width:100%; max-height:390px; }
+.cp-art p { text-align:center; font:8px/1.5 monospace; letter-spacing:1.3px; color:var(--cp-muted); transform:rotate(4deg); margin-top:7px; text-transform:uppercase; }
+.dark .cp-art svg { filter:brightness(.78) saturate(.8); }
+.cp-home-content { margin-bottom:2rem; }
+.cp-ribbon { display:flex; justify-content:space-between; flex-wrap:wrap; gap:15px; padding:20px 0; border-block:1px solid var(--cp-line); font-size:11px; color:var(--cp-muted); }
+.cp-ribbon > span { font-size:9px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase; color:var(--cp-ink); }
+.cp-ribbon a:hover { color:var(--cp-green); text-decoration:underline; }
+.commonplace .home-feeds { margin-block:65px 80px; gap:clamp(2rem,5vw,4rem); }
+.commonplace .home-feed-title { font:400 36px/1.2 Georgia,serif; letter-spacing:-1.2px; padding-bottom:24px; margin:0; border-bottom:1px solid var(--cp-line); }
+.commonplace .home-post-list { display:block; }
+.commonplace .home-post-list .cp-post:first-child { background:var(--cp-tint); padding:30px 24px; margin-top:20px; border-bottom:0; }
+.commonplace .cp-post { display:grid; grid-template-columns:105px minmax(0,1fr) 36px; align-items:start; gap:18px; padding:34px 0; border-bottom:1px solid var(--cp-line); position:relative; }
+.cp-post-meta { display:flex; flex-direction:column; align-items:flex-start; gap:12px; padding-top:5px; font-size:10px; letter-spacing:.5px; color:var(--cp-muted); }
+.cp-category { color:var(--cp-green); font-size:10px; text-transform:uppercase; font-weight:600; letter-spacing:.9px; }
+.commonplace .cp-post h2 { margin:0; font:400 27px/1.25 Georgia,serif; letter-spacing:-.6px; overflow-wrap:anywhere; }
+.cp-post h2 a:hover { color:var(--cp-green); }
+.cp-post-summary { color:var(--cp-muted); font-size:13px; line-height:1.85; margin:13px 0 20px; overflow-wrap:anywhere; }
+.cp-post-bottom { display:flex; flex-wrap:wrap; gap:1rem; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(--cp-muted); }
+.cp-post-bottom a { color:var(--cp-green); }
+.cp-post-bottom a:hover { text-decoration:underline; }
+.cp-post-arrow { display:grid; place-items:center; align-self:center; border:1px solid var(--cp-line); border-radius:50%; width:36px; height:36px; color:var(--cp-green); font-size:22px; }
+.cp-post-arrow:hover { background:var(--cp-green); color:var(--cp-paper); }
+/* Existing linkblog hook keeps cached icons, destination and tag links. */
+.cp-post .linky-marker { font-size:10px; gap:6px; margin-top:10px; }
+.cp-post .linkblog-favicon { display:none; }
+.cp-post .linky-domain { overflow-wrap:anywhere; color:var(--cp-muted); }
+.commonplace .home-photo-list { padding-top:20px; gap:1.25rem; }
+.commonplace .home-photo { border-radius:2px; }
+.commonplace .home-feed-more { font-size:12px; color:var(--cp-green); border-bottom:1px solid var(--cp-line); padding-bottom:5px; }
+/* The reading column shares the reference's serif body and standfirst. */
+.cp-reader { margin:60px auto 80px; }
+.cp-back { display:inline-block; font-size:12px; color:var(--cp-muted); margin-bottom:28px; }
+.cp-back:hover { color:var(--cp-green); }
+.commonplace #single_header { max-width:730px; margin:0 0 24px; }
+.commonplace #single_header h1 { font-size:clamp(2.6rem,5vw,3.625rem); line-height:1.12; letter-spacing:-2px; margin:20px 0; }
+.commonplace #single_header .text-base { font-size:12px; }
+.commonplace .cp-standfirst { max-width:730px; font:20px/1.65 Georgia,serif; color:var(--cp-muted); padding-bottom:29px; margin:0 0 30px; border-bottom:1px solid var(--cp-line); }
+.cp-cover { max-width:730px; margin:0 0 36px; }
+.cp-cover img { max-width:100%; height:auto; max-height:460px; object-fit:contain; margin:auto; border-radius:3px; }
+.commonplace .external-link-callout { max-width:730px; }
+.commonplace .article-content { max-width:730px; width:100%; font:18px/1.9 Georgia,'Times New Roman',serif; color:var(--cp-ink); overflow-wrap:anywhere; }
+.commonplace .article-content p { margin-block:0 25px; }
+.commonplace .article-content :is(h2,h3,h4) { color:var(--cp-ink); line-height:1.3; margin-block:2rem 1rem; }
+.commonplace .article-content h2 { font-size:32px; letter-spacing:-.6px; }
+.commonplace .article-content h3 { font-size:26px; }
+.commonplace .article-content :is(a,strong,th) { color:var(--cp-green); }
+.commonplace .article-content a { text-underline-offset:3px; }
+.commonplace .article-content img { height:auto; border-radius:3px; }
+.commonplace .prose :is(pre,code) { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; }
+.commonplace .prose pre { font-size:13px; line-height:1.7; border:1px solid var(--cp-line); border-radius:4px; max-width:100%; }
+.commonplace .article-content table { display:block; overflow:auto; font:14px/1.6 Arial,sans-serif; }
+.commonplace .article-content :is(th,td) { padding:12px 17px; border:1px solid var(--cp-line); }
+.commonplace .article-content th { background:var(--cp-tint); }
+.commonplace .article-content blockquote { border-color:var(--cp-green); font-weight:400; color:var(--cp-muted); }
+.commonplace .toc { font:12px/1.8 Arial,sans-serif; border-color:var(--cp-line); }
+.commonplace .toc a { color:var(--cp-muted); }
+.commonplace .toc a:hover { color:var(--cp-green); }
+.commonplace #single_header ~ section > .min-w-0 { min-width:0; flex:1; }
+.cp-closing { display:flex; gap:18px; align-items:center; border-top:1px solid var(--cp-line); padding:34px 0; color:var(--cp-green); }
+.cp-closing p { font:italic 20px/1.4 Georgia,serif; }
+.cp-closing p span { color:var(--cp-muted); }
+.cp-compass .icon { width:26px; height:26px; }
+.cp-star { margin-left:auto; font-size:37px; }
+.commonplace #site-footer { border-top:1px solid var(--cp-line); padding:25px 0 36px; }
+.commonplace #site-footer p { font-size:11px; }
+.commonplace #site-footer nav { padding:0 0 16px; }
+.commonplace .deployment-banner { margin:0; font-size:12px; }
+@media (min-width:1280px) { body.commonplace { padding:0 80px; } .cp-reader { max-width:100%; } }
+@media (max-width:1100px) { .cp-desktop { display:none; } .cp-mobile { display:block; } }
+@media (min-width:768px) and (max-width:1000px) { .commonplace .home-feeds { gap:2rem; } .commonplace .home-post-list .cp-post { grid-template-columns:minmax(0,1fr) 32px; } .home-post-list .cp-post-meta { grid-column:1/-1; flex-direction:row; } }
+@media (max-width:767px) {
+ .cp-header { min-height:90px!important; } .cp-hero { min-height:470px; padding:50px 0; }
+ .commonplace .cp-hero h1 { font-size:53px; letter-spacing:-2.5px; }
+ .cp-ribbon > span { width:100%; } .commonplace .home-feeds { margin-block:43px 55px; }
+ .cp-reader { margin-top:35px; } .commonplace #single_header h1 { font-size:46px; }
+ .commonplace .home-feed-title { font-size:31px; }
+}
+@media (max-width:540px) {
+ .cp-header { min-height:82px!important; gap:10px!important; } .cp-brand { font-size:15px; gap:8px; } .cp-brand img { width:31px; height:35px; }
+ .cp-hero { grid-template-columns:1fr; padding:43px 0 35px; position:relative; min-height:0; }
+ .cp-hero-copy { position:relative; z-index:1; } .commonplace .cp-hero h1 { font-size:clamp(43px,11.7vw,54px); margin:22px 0; }
+ .cp-intro { font-size:13px; } .cp-art { position:absolute; right:-5px; top:18px; width:135px; opacity:.25; padding:0; } .cp-art p { display:none; }
+ .cp-eyebrow { font-size:8px; letter-spacing:1.3px; } .cp-ribbon { gap:13px; padding:18px 0; font-size:9px; }
+ .commonplace .cp-post,.commonplace .home-post-list .cp-post:first-child { grid-template-columns:minmax(0,1fr) 30px; padding:25px 0; gap:14px; }
+ .commonplace .home-post-list .cp-post:first-child { padding:23px 18px; }
+ .cp-post-meta { grid-column:1/-1; flex-direction:row; flex-wrap:wrap; align-items:center; font-size:9px; gap:12px; }
+ .commonplace .cp-post h2 { font-size:26px; } .cp-post-arrow { width:30px; height:30px; }
+ .commonplace #single_header h1 { font-size:41px; letter-spacing:-1.5px; }
+ .commonplace .cp-standfirst { font-size:18px; } .commonplace .article-content { font-size:17px; }
+ .cp-closing p { font-size:18px; } .commonplace #site-footer > div { flex-wrap:wrap; gap:12px; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+@media print { body.commonplace { padding:0; color:#000; background:#fff; } .cp-header,.cp-closing,.cp-back,.deployment-banner { display:none!important; } }
+/* Short pages and posts without a TOC keep the centered reference reading measure. */
+.commonplace .cp-reader:not(:has(.toc)) { max-width:730px; }

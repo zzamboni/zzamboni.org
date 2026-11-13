@@ -1,0 +1,15 @@
+{{/* Keep real feature images within the reading column, with natural proportions. */}}
+{{ $cover := partial "commonplace/image.html" . }}
+{{ $url := $cover.url }}
+{{ $image := $cover.resource }}
+{{ with $image }}
+  {{ if and (not site.Params.disableImageOptimization) (ne .MediaType.SubType "svg") }}
+    {{ $image = .Resize "1100x" }}
+  {{ end }}
+  {{ $url = $image.RelPermalink }}
+{{ end }}
+{{ with $url }}
+  <figure class="cp-cover"><img class="nozoom" src="{{ . }}" alt="{{ $.Title }}"
+    {{ with $image }}{{ if ne .MediaType.SubType "svg" }}width="{{ .Width }}" height="{{ .Height }}"{{ end }}{{ end }}
+    loading="eager" decoding="async"></figure>
+{{ end }}
