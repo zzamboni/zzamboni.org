@@ -15,6 +15,10 @@
 
 ## Development & Verification
 - `mise run serve`: preview; `mise run serve-drafts`: include drafts.
+- `mise install` installs Hugo and Go. The JSON Resume renderer is imported
+  from `github.com/zzamboni/hugo-jsonresume`, pinned in `go.mod`/`go.sum`.
+  Edit renderer templates/styles in that repository, then update this site's
+  module pin. Data, content front matter and downloads remain host-owned.
 - `mise run theme-check`: check releases/pins; `mise run theme-update`: update pins and report override diffs; `mise run theme-verify`: validate pins/build into temporary output.
 - `python3 -m unittest discover -s scripts/tests`: Python tests (Python 3.11+).
 - `npm ci`, then `npm run test:photoblog`: photo tests. Keep tests outside `netlify/functions/`.
@@ -23,5 +27,5 @@
 ## Style & Review
 - Match existing formatting; use singular `content/post/` paths. Use the Blowfish skill for theme work and review `scripts/theme-overrides.toml`. Preserve custom hooks, banners, tag clouds, galleries, and Blog photo filtering.
 - Run relevant tests and visually check desktop/mobile pages; build success alone does not establish visual correctness.
-- Separate content/tooling commits where practical. Automated subjects start with `auto:`. PRs include change descriptions, affected pages, verification, and screenshots for visual updates.
+- Separate content/tooling commits where practical. Use descriptive subjects for collaborative work; reserve `auto:` for commits made by automated workflows. PRs include change descriptions, affected pages, verification, and screenshots for visual updates.
 - Report branch/commit if created and remaining live checks. Batch pushes to conserve Netlify minutes; avoid unnecessary deployments or paid generation for validation.

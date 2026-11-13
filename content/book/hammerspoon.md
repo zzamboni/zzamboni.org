@@ -3,10 +3,16 @@ title = "Learning Hammerspoon"
 author = ["Diego Zamboni"]
 date = 2018-10-16T20:54:00+02:00
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
+weight = 30
+showReadingTime = false
+showWordCount = false
+showDate = false
+showHero = true
+showSummary = true
+sharingLinks = false
 externalURL = "https://leanpub.com/learning-hammerspoon/"
 featureimage = "img/learning-hs-cover.png"
-weight = 30
 +++
 
 {{< leanpubbook book="learning-hammerspoon" style="float:right" >}}

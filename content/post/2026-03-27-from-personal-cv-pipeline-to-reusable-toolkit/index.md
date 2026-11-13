@@ -3,11 +3,12 @@ title = "resume-toolkit: from personal CV pipeline to reusable toolkit"
 author = ["Diego Zamboni"]
 summary = "How my CV pipeline escaped my own resume repo and became a reusable tool, plus the evolution of the HTML theme into its own fork."
 date = 2026-03-28T01:38:00+01:00
-tags = ["jsonresume", "typst", "tools", "cv"]
+tags = ["cv", "jsonresume", "typst", "tools"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/generated/2026-03-27-from-personal-cv-pipeline-to-reusable-toolkit.webp"
-toc = true
+series = ["My website setup"]
+series_order = 10
 +++
 
 {{< note >}}

@@ -7,10 +7,9 @@ summary = """
   I am happy to announce a new release of my new book "Learning Hammerspoon", including a brand new chapter and many other improvements.
   """
 date = 2019-04-08T09:51:00+02:00
-tags = ["hammerspoon", "mac", "howto", "books", "announcements"]
+tags = ["publishing", "hammerspoon", "mac", "books", "announcements"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
-toc = false
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/learning-hs-cover.jpg"
 +++
 

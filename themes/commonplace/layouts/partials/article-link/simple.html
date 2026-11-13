@@ -6,7 +6,7 @@
   <div class="cp-post-meta">
     <span class="cp-category">{{ $kind }}</span>
     <time datetime="{{ .Date.Format `2006-01-02T15:04:05Z07:00` }}">{{ .Date.Format "2 Jan 2006" }}</time>
-    {{ if .Draft }}{{ partial "badge.html" (i18n "article.draft") }}{{ end }}
+    {{ if and .Draft site.Params.article.showDraftLabel }}{{ partial "badge.html" (i18n "article.draft") }}{{ end }}
   </div>
   <div class="cp-post-main">
     <h2><a href="{{ .RelPermalink }}">{{ .Title | emojify }}</a></h2>

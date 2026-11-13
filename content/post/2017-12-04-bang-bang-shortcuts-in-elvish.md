@@ -5,13 +5,13 @@ summary = "How to set up the bash !! and !$ shortcuts for accessing the previous
 date = 2017-12-04T22:15:00+01:00
 tags = ["elvish", "shell", "unix", "config"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/elvish-logo.svg"
 +++
 
 (Updated on March 19th, 2018 to use the new [Elvish Package Manager](https://elvish.io/ref/epm.html))
 
-The bash shortcuts (maybe older? I'm not sure in which shell these originated) for "last command" (`!!`) and "last argument of last command" (`!$`) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in [Elvish](/post/elvish-an-awesome-unix-shell/) by default, they are easy to implement. I have written a module called [bang-bang](https://github.com/zzamboni/elvish-modules/blob/master/bang-bang.org) which you can readily use as follows:
+The bash shortcuts (maybe older? I'm not sure in which shell these originated) for "last command" (`!!`) and "last argument of last command" (`!$`) are, for me at least, among the most strongly imprinted in my muscle memory, and I use them all the time. Although these shortcuts are not available in [Elvish]({{< relref "2017-09-14-learning-elvish" >}}) by default, they are easy to implement. I have written a module called [bang-bang](https://github.com/zzamboni/elvish-modules/blob/master/bang-bang.org) which you can readily use as follows:
 
 -   Use [epm](https://elvish.io/ref/epm.html) to install my elvish-modules package (you can also add this to your `rc.elv` file to have the package installed automatically if needed):
     ```elvish
@@ -19,7 +19,7 @@ The bash shortcuts (maybe older? I'm not sure in which shell these originated) f
           epm:install github.com/zzamboni/elvish-modules
     ```
 
--   In your `rc.elv` (see [mine](/post/my-elvish-configuration-with-commentary/) as an example), add the following to load the `bang-bang` module and to set up the appropriate keybindings:
+-   In your `rc.elv` (see [mine]({{< relref "2017-11-16-my-elvish-configuration-with-commentary" >}}) as an example), add the following to load the `bang-bang` module and to set up the appropriate keybindings:
     ```elvish
           use github.com/zzamboni/elvish-modules/bang-bang
     ```

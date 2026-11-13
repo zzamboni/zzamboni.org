@@ -3,10 +3,16 @@ title = "Publishing with Emacs, Org-mode and Leanpub"
 author = ["Diego Zamboni"]
 date = 2020-06-20T21:12:00+02:00
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
+weight = 50
+showReadingTime = false
+showWordCount = false
+showDate = false
+showHero = true
+showSummary = true
+sharingLinks = false
 externalURL = "https://leanpub.com/emacs-org-leanpub"
 featureimage = "img/emacs-org-leanpub-cover.png"
-weight = 50
 +++
 
 {{< leanpubbook book="emacs-org-leanpub" style="float:right" height="380" >}}

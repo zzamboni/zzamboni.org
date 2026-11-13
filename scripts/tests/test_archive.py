@@ -1,5 +1,7 @@
 """Run with mise exec -- python3 -m unittest discover -s scripts/tests -p test_archive.py."""
 from pathlib import Path
+import re
+import os
 import shutil
 import subprocess
 import tempfile
@@ -19,10 +21,21 @@ class ArchiveTests(unittest.TestCase):
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_text(text)
 
+            module_file = (ROOT / 'go.mod').read_text()
+            if local_module := os.environ.get('HUGO_BLOG_ARCHIVE_DIR'):
+                module_file += f'\nreplace github.com/zzamboni/hugo-blog-archive => {Path(local_module).resolve().as_posix()}\n'
+            put('go.mod', module_file)
+            put('go.sum', (ROOT / 'go.sum').read_text())
             put('hugo.toml', '''baseURL = "https://example.org/"
 [pagination]
 pagerSize = 1
 [module]
+[[module.imports]]
+path = "github.com/zzamboni/hugo-blog-archive"
+[params.blogArchive]
+sections = ["post"]
+excludeTags = ["photos"]
+style = "blowfish"
 [[module.mounts]]
 source = "content"
 target = "content"
@@ -34,7 +47,7 @@ source = "content-legacy"
 target = "content/post"
 ''')
             for path in ['content/archive/_index.md', 'layouts/_default/archive.html',
-                         'layouts/partials/archive-list.html', 'i18n/en.yaml']:
+                         'i18n/en.yaml']:
                 put(path, (ROOT / path).read_text())
             put('layouts/_default/baseof.html', '{{ block "main" . }}{{ end }}')
             put('layouts/_default/single.html', '{{ define "main" }}{{ .Content }}{{ end }}')
@@ -44,10 +57,12 @@ target = "content/post"
                 ('content-legacy/link.md', 'External link', '2025-01-03', 'externalUrl = "https://example.com/story"'),
                 ('content/post/photo.md', 'Photo excluded', '2025-01-04', 'tags = ["photos"]'),
                 ('content/post/draft.md', 'Draft article', '2025-01-05', 'draft = true'),
+                ('content/post/undated.md', 'Undated draft', None, 'draft = true'),
                 ('content/about.md', 'About excluded', '2025-01-06', ''),
             ]
             for path, title, date, extra in fixtures:
-                put(path, f'+++\ntitle = "{title}"\ndate = {date}\n{extra}\n+++\nBody')
+                date_field = f'date = {date}\n' if date else ''
+                put(path, f'+++\ntitle = "{title}"\n{date_field}{extra}\n+++\nBody')
             for draft in [False, True]:
                 destination = site / ('draft-output' if draft else 'production-output')
                 command = ['hugo', '--source', str(site), '--destination', str(destination)]
@@ -60,13 +75,23 @@ target = "content/post"
                 for title in ['Photo excluded', 'About excluded']:
                     self.assertNotIn(title, html)
                 self.assertEqual('Draft article' in html, draft)
+                self.assertEqual('Undated draft' in html, draft)
+                chart = html.split('<nav class="hba-chart"', 1)[1].split('</nav>', 1)[0]
+                years = re.findall(r'class="hba-chart-year"[^>]*>(\d+)</span>', chart)
+                self.assertEqual(years, [str(year) for year in range(2025, 2019, -1)])
+                counts = re.findall(r'class="hba-chart-count">(\d+)</span>', chart)
+                self.assertEqual(counts, ['3' if draft else '2', '0', '0', '0', '0', '1'])
+                heights = re.findall(r'style="height: ([\d.]+)%"', chart)
+                self.assertEqual(len(heights), 2)
+                self.assertAlmostEqual(float(heights[1]), 100 / (3 if draft else 2), places=4)
+                self.assertEqual(float(heights[0]), 100)
                 self.assertLess(html.index('External link'), html.index('New article'))
                 self.assertLess(html.index('New article'), html.index('Old article'))
                 self.assertIn('href="#year-2025"', html)
                 self.assertIn('id="year-2025"', html)
                 self.assertIn(f'({3 if draft else 2})', html)
                 self.assertIn('href="https://example.com/story" rel="external"', html)
-                self.assertIn('class="archive-badge">Link</span>', html)
+                self.assertIn('class="hba-badge">Link</span>', html)
                 self.assertIn('datetime="2025-01-03"', html)
                 self.assertNotIn('<img', html)
                 self.assertFalse((destination / 'archive/page/2').exists())
@@ -76,4 +101,11 @@ target = "content/post"
             destination = site / 'empty-output'
             subprocess.run(['hugo', '--source', str(site), '--destination', str(destination)],
                            check=True, capture_output=True, text=True)
-            self.assertNotIn('archive-years', (destination / 'archive/index.html').read_text())
+            self.assertNotIn('class="hba-chart"', (destination / 'archive/index.html').read_text())
+            # An archive containing only undated drafts must not draw a year-1 chart.
+            put('content/post/undated.md', '+++\ntitle = "Undated only"\ndraft = true\n+++\nBody')
+            subprocess.run(['hugo', '--source', str(site), '--destination', str(destination),
+                            '--buildDrafts'], check=True, capture_output=True, text=True)
+            html = (destination / 'archive/index.html').read_text()
+            self.assertIn('Undated only', html)
+            self.assertNotIn('class="hba-chart"', html)

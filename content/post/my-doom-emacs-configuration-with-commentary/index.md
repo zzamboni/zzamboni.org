@@ -3,18 +3,17 @@ title = "My Doom Emacs configuration, with commentary"
 author = ["Diego Zamboni"]
 summary = "I switched from my hand-crafted Emacs config to Doom Emacs some time ago, and I am very happy with it. This is my full, working Doom Emacs config in literate form."
 date = 2020-10-19T09:07:00+02:00
-tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs", "doom"]
+tags = ["config", "literateprogramming", "literateconfig", "howto", "emacs", "doom"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/doom-emacs-color.jpg"
-toc = true
 series = ["Literate Config Files"]
 series_order = 1
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **April 12, 2026**
+Last update: **November 12, 2026**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -22,558 +21,218 @@ As usual, the post below is included directly from my live [doom.org](https://gi
 
 If you are interested in writing your own Literate Config files, check out my book [Literate Config](https://leanpub.com/lit-config) on Leanpub!
 
-{{< figure src="doom-emacs-color.png" >}}
 
-This is my Doom Emacs configuration. From this org file, all the necessary Doom Emacs config files are generated.
-
-This file is written in [literate programming style](https://leanpub.com/lit-config) using [org-mode](https://orgmode.org/). See [init.el](../../../../../.doom.d/init.el), [packages.el](../../../../../.doom.d/packages.el) and [config.el](../../../../../.doom.d/config.el) for the generated files. You can see this in a nicer format on my blog post [My Doom Emacs configuration, with commentary](https://zzamboni.org/post/my-doom-emacs-configuration-with-commentary/).
+## Maintaining this configuration {#maintaining-this-configuration}
 
 
-## References {#references}
+### Files and load order {#files-and-load-order}
 
-Emacs config is an art, and I have learned a lot by reading through other people's config files, and from many other resources. These are some of the best ones (several are also written in org mode). You will find snippets from all of these (and possibly others) throughout my config.
+I make all my changes in this file, then run `C-c C-v t` (`org-babel-tangle`) (or just save it - see [Automatic tangling](#automatic-tangling)) to generate the Lisp files. If you want to change something, this is the place to do it! I keep package declarations next to the code that uses them, with `:tangle packages.el` to send them to the right file. Other Lisp blocks go to `config.el` by default (this is configured at the top of `doom.org` with `#+property: header-args:emacs-lisp :tangle config.el`).
 
--   [Sacha Chua's Emacs Configuration](http://pages.sachachua.com/.emacs.d/Sacha.html)
--   [Uncle Dave's Emacs config](https://github.com/daedreth/UncleDavesEmacs#user-content-ido-and-why-i-started-using-helm)
--   [PythonNut's Emacs config](https://github.com/PythonNut/emacs-config)
--   [Mastering Emacs](https://www.masteringemacs.org/)
--   [Tecosaur's Emacs config](https://tecosaur.github.io/emacs-config/config.html)
+| Output        | Purpose                                   | Apply changes                |
+|---------------|-------------------------------------------|------------------------------|
+| `init.el`     | Enabled Doom modules and flags            | `doom sync`, restart         |
+| `packages.el` | Additional packages and recipe overrides  | `doom sync`, restart         |
+| `config.el`   | Personal settings, commands, and bindings | Restart or `M-x doom/reload` |
 
-Note: a lot of manual configuration has been rendered moot by using Emacs Doom, which aggregates a well-maintained and organized collection of common configuration settings for performance optimization, package management, commonly used packages (e.g. Org) and much more.
+I let Emacs manage `custom.el` separately. It holds settings such as trusted themes and file-local variables that I've approved. I try to keep it minimal, so that `doom.org` is almost always the authoritative source of configuration
 
-
-## Doom config file overview {#doom-config-file-overview}
-
-Doom Emacs uses three config files:
-
--   `init.el` defines which of the existing Doom [modules](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#modules) are loaded. A Doom module is a bundle of packages, configuration and commands, organized into a unit that can be toggled easily from this file.
--   `packages.el` defines which [packages](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#package-management) should be installed, beyond those that are installed and loaded as part of the enabled modules.
--   `config.el` contains all [custom configuration](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#configuring-doom) and code.
-
-There are other files that can be loaded, but theses are the main ones. The load order of different files is [defined depending on the type of session](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#load-order) being started.
-
-All the config files are generated from this Org file, to try and make its meaning as clear as possible. All `package!` declarations are written to `packages.el`, all other LISP code is written to `config.el`.
+Some variables need their values before a package loads; for settings that depend on the package's definitions, I use `after!` or `use-package!`. Structure setters and Transient macros need a little extra care: expanding them before their packages load can break startup, so I defer those too.
 
 
-### Config file headers {#config-file-headers}
+### Dependencies and upgrades {#dependencies-and-upgrades}
 
-We start by simply defining the standard headers used by the three files. These headers come from the initial files generated by `doom install`, and contain either some Emacs-LISP relevant indicators like `lexical-binding`, or instructions about the contents of the file.
+At the time of this update, I'm using Emacs 30.2, Org 9.8.9, and org-gtd 4.0.7. On my machine, Doom's modules live in `~/.emacs.d/sources/doom+/modules/`. When something doesn't work as expected, I check their `.doommodule`, `packages.el`, and `config.el` files to see what my installed version actually does. Online examples sometimes refer to flags that no longer exist, such as Org's `+hugo`.
 
-<details><summary>init.el</summary>
+I use local development checkouts of some modules, like my own `ox-leanpub`, so their recipe paths need to point to those repositories (see [Leanpub books](#leanpub-books) for an example). Some features also need external tools: `tectonic`, `typst`, `elvish`, `pandoc`, and the compilers or interpreters for the languages I use. The Reveal browser helper (see [Reveal presentations](#reveal-presentations)) and Outlook capture code (see [Capture templates](#capture-templates)) need macOS.
+
+
+### Generated file headers {#generated-file-headers}
+
+In each generated file, add a header indicating not to edit it by hand.
 
 ```emacs-lisp
 ;;; init.el -*- lexical-binding: t; -*-
 
-;; DO NOT EDIT THIS FILE DIRECTLY
-;; This is a file generated from a literate programing source file located at
-;; https://gitlab.com/zzamboni/dot-doom/-/blob/master/doom.org
-;; You should make any changes there and regenerate it from Emacs org-mode
-;; using org-babel-tangle (C-c C-v t)
-
-;; This file controls what Doom modules are enabled and what order they load
-;; in. Remember to run 'doom sync' after modifying it!
-
-;; NOTE Press 'SPC h d h' (or 'C-h d h' for non-vim users) to access Doom's
-;;      documentation. There you'll find a "Module Index" link where you'll find
-;;      a comprehensive list of Doom's modules and what flags they support.
-
-;; NOTE Move your cursor over a module's name (or its flags) and press 'K' (or
-;;      'C-c c k' for non-vim users) to view its documentation. This works on
-;;      flags as well (those symbols that start with a plus).
-;;
-;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
-;;      directory (for easy access to its source code).
+;; DO NOT EDIT THIS FILE DIRECTLY.
+;; Generated from doom.org with org-babel-tangle (C-c C-v t).
 ```
-
-</details>
-
-<details><summary>packages.el</summary>
 
 ```emacs-lisp
-;; -*- no-byte-compile: t; -*-
-;;; $DOOMDIR/packages.el
+;;; packages.el -*- lexical-binding: t; no-byte-compile: t; -*-
 
-;; DO NOT EDIT THIS FILE DIRECTLY
-;; This is a file generated from a literate programing source file located at
-;; https://gitlab.com/zzamboni/dot-doom/-/blob/master/doom.org
-;; You should make any changes there and regenerate it from Emacs org-mode
-;; using org-babel-tangle (C-c C-v t)
-
-;; To install a package with Doom you must declare them here and run 'doom sync'
-;; on the command line, then restart Emacs for the changes to take effect -- or
-;; use 'M-x doom/reload'.
-
-;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
-;;(package! some-package)
-
-;; To install a package directly from a remote git repo, you must specify a
-;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
-;; https://github.com/raxod502/straight.el#the-recipe-format
-;;(package! another-package
-;;  :recipe (:host github :repo "username/repo"))
-
-;; If the package you are trying to install does not contain a PACKAGENAME.el
-;; file, or is located in a subdirectory of the repo, you'll need to specify
-;; `:files' in the `:recipe':
-;;(package! this-package
-;;  :recipe (:host github :repo "username/repo"
-;;           :files ("some-file.el" "src/lisp/*.el")))
-
-;; If you'd like to disable a package included with Doom, you can do so here
-;; with the `:disable' property:
-;;(package! builtin-package :disable t)
-
-;; You can override the recipe of a built in package without having to specify
-;; all the properties for `:recipe'. These will inherit the rest of its recipe
-;; from Doom or MELPA/ELPA/Emacsmirror:
-;;(package! builtin-package :recipe (:nonrecursive t))
-;;(package! builtin-package-2 :recipe (:repo "myfork/package"))
-
-;; Specify a `:branch' to install a package from a particular branch or tag.
-;; This is required for some packages whose default branch isn't 'master' (which
-;; our package manager can't deal with; see raxod502/straight.el#279)
-;;(package! builtin-package :recipe (:branch "develop"))
-
-;; Use `:pin' to specify a particular commit to install.
-;;(package! builtin-package :pin "1a2b3c4d5e")
-
-;; Doom's packages are pinned to a specific commit and updated from release to
-;; release. The `unpin!' macro allows you to unpin single packages...
-;;(unpin! pinned-package)
-;; ...or multiple packages
-;;(unpin! pinned-package another-pinned-package)
-;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
-;;(unpin! t)
+;; DO NOT EDIT THIS FILE DIRECTLY.
+;; Generated from doom.org with org-babel-tangle (C-c C-v t).
 ```
-
-</details>
-
-<details><summary>config.el</summary>
 
 ```emacs-lisp
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+;;; config.el -*- lexical-binding: t; -*-
 
-;; DO NOT EDIT THIS FILE DIRECTLY
-;; This is a file generated from a literate programing source file located at
-;; https://gitlab.com/zzamboni/dot-doom/-/blob/master/doom.org
-;; You should make any changes there and regenerate it from Emacs org-mode
-;; using org-babel-tangle (C-c C-v t)
-
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
-
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets.
-;; (setq user-full-name "John Doe"
-;;      user-mail-address "john@doe.com")
-
-;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
-;; are the three important ones:
-;;
-;; + `doom-font'
-;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;;
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-;; (setq doom-theme 'doom-one)
-
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-;; (setq org-directory "~/org/")
-
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-;; (setq display-line-numbers-type t)
-
-;; Here are some additional functions/macros that could help you configure Doom:
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
+;; DO NOT EDIT THIS FILE DIRECTLY.
+;; Generated from doom.org with org-babel-tangle (C-c C-v t).
 ```
 
-</details>
 
+## Enabled Doom modules {#enabled-doom-modules}
 
-### Customized variables {#customized-variables}
-
-Doom [does not recommend the Emacs `customize` mechanism](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#configure):
-
-> _Note: do not use M-x customize or the customize API in general. Doom is designed to be configured programmatically from your config.el, which can conflict with Customize’s way of modifying variables._
-
-All necessary settings are therefore set by hand as part of this configuration file. The only exceptions are "safe variable" and "safe theme" settings, which are automatically saved by Emacs in `custom.el`, but this is OK as they don't conflict with anything else from the config.
-
-
-## Doom modules {#doom-modules}
-
-This code is written to the `init.el` to select which modules to load. Written here as-is for now, as it is quite well structured and clear.
+I list only the modules I enable here. Doom's [init.example.el](https://github.com/doomemacs/core/blob/master/static/init.example.el) and [module documentation](https://github.com/doomemacs/modules) cover all the options. I don't use Evil mode, so it's absent. Corfu handles completion in editing buffers, and Vertico handles the minibuffer. They seem to work quite well so far.
 
 ```emacs-lisp
 (doom!
- :input
- ;;chinese
- ;;japanese
- ;;layout              ; auie,ctsrnm is the superior home row
 
- :completion
- (company +childframe) ; the ultimate code completion backend
- ;;helm                ; the *other* search engine for love and life
- ;;ido                 ; the other *other* search engine...
- (ivy +prescient -childframe
-      -fuzzy +icons)   ; a search engine for love and life
+  :completion
+  (corfu +orderless +icons +dabbrev)
+  (vertico +icons)
 
- :ui
- ;;deft                ; notational velocity for Emacs
- doom                  ; what makes DOOM look the way it does
- doom-dashboard        ; a nifty splash screen for Emacs
- ;;doom-quit           ; DOOM quit-message prompts when you quit Emacs
- ;;fill-column         ; a `fill-column' indicator
- hl-todo               ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
- ;;hydra
- ;;indent-guides       ; highlighted indent columns
- (ligatures +extra)    ; ligatures or substitute text with pretty symbols
- ;;minimap             ; show a map of the code on the side
- modeline              ; snazzy, Atom-inspired modeline, plus API
- nav-flash             ; blink cursor line after big motions
- ;;neotree             ; a project drawer, like NERDTree for vim
- ophints               ; highlight the region an operation acts on
- (popup +defaults)   ; tame sudden yet inevitable temporary windows
- ;;tabs                ; a tab bar for Emacs
- ;;treemacs            ; a project drawer, like neotree but cooler
- ;;unicode             ; extended unicode support for various languages
- ;;vc-gutter           ; vcs diff in the fringe
- vi-tilde-fringe       ; fringe tildes to mark beyond EOB
- window-select         ; visually switch windows
- workspaces            ; tab emulation, persistence & separate workspaces
- zen                   ; distraction-free coding or writing
+  :ui
+  doom
+  dashboard
+  hl-todo
+  (ligatures +extra)
+  modeline
+  nav-flash
+  ophints
+  (popup +defaults)
+  vi-tilde-fringe
+  window-select
+  zen
 
- :editor
- ;;(evil +everywhere)  ; come to the dark side, we have cookies
- file-templates        ; auto-snippets for empty files
- ;;fold                ; (nigh) universal code folding
- ;;(format +onsave)    ; automated prettiness
- ;;god                 ; run Emacs commands without modifier keys
- ;;lispy               ; vim for lisp, for people who don't like vim
- ;;multiple-cursors    ; editing in many places at once
- ;;objed               ; text object editing for the innocent
- ;;parinfer            ; turn lisp into python, sort of
- ;;rotate-text         ; cycle region at point between text candidates
- snippets              ; my elves. They type so I don't have to
- ;;word-wrap           ; soft wrapping with language-aware indent
+  :editor
+  file-templates
+  snippets
+  word-wrap
 
- :emacs
- dired                 ; making dired pretty [functional]
- electric              ; smarter, keyword-based electric-indent
- ;;ibuffer             ; interactive buffer management
- undo                  ; persistent, smarter undo for your inevitable mistakes
- vc                    ; version-control and Emacs, sitting in a tree
+  :emacs
+  dired
+  electric
+  undo
+  vc
 
- :term
- ;;eshell              ; the elisp shell that works everywhere
- ;;shell               ; simple shell REPL for Emacs
- ;;term                ; basic terminal emulator for Emacs
- vterm                 ; the best terminal emulation in Emacs
+  :term
+  vterm
 
- :checkers
- (syntax +childframe)  ; tasing you for every semicolon you forget
- spell                 ; tasing you for misspelling mispelling
- ;;grammar             ; tasing grammar mistake every you make
+  :checkers
+  (syntax +childframe)
+  spell
 
- :tools
- ansible
- debugger              ; FIXME stepping through code, to help you add bugs
- ;;direnv
- ;;docker
- ;;editorconfig        ; let someone else argue about tabs vs spaces
- ;;ein                 ; tame Jupyter notebooks with emacs
- (eval +overlay)       ; run code, run (also, repls)
- gist                  ; interacting with github gists
- lookup                ; navigate your code and its documentation
- lsp
- (magit +forge)        ; a git porcelain for Emacs
- ;;make                ; run make tasks from Emacs
- pass                  ; password manager for nerds
- ;;pdf                 ; pdf enhancements
- ;;prodigy             ; FIXME managing external services & code builders
- ;;rgb                 ; creating color strings
- ;;taskrunner          ; taskrunner for all your projects
- ;;terraform           ; infrastructure as code
- ;;tmux                ; an API for interacting with tmux
- ;;upload              ; map local to remote projects via ssh/ftp
+  :tools
+  ansible
+  debugger
+  (eval +overlay)
+  gist
+  lookup
+  lsp
+  (magit +forge)
+  pass
 
- :os
- (:if IS-MAC macos)    ; improve compatibility with macOS
- ;;tty                 ; improve the terminal Emacs experience
+  :os
+  (:if IS-MAC macos)
+  tty
 
- :lang
- ;;agda                ; types of types of types of types...
- ;;cc                  ; C/C++/Obj-C madness
- ;;clojure             ; java with a lisp
- common-lisp           ; if you've seen one lisp, you've seen them all
- ;;coq                 ; proofs-as-programs
- ;;crystal             ; ruby at the speed of c
- ;;csharp              ; unity, .NET, and mono shenanigans
- ;;data                ; config/data formats
- ;;(dart +flutter)     ; paint ui and not much else
- ;;elixir              ; erlang done right
- ;;elm                 ; care for a cup of TEA?
- emacs-lisp            ; drown in parentheses
- ;;erlang              ; an elegant language for a more civilized age
- (ess +lsp)            ; emacs speaks statistics
- ;;faust               ; dsp, but you get to keep your soul
- ;;fsharp              ; ML stands for Microsoft's Language
- ;;fstar               ; (dependent) types and (monadic) effects and Z3
- ;;gdscript            ; the language you waited for
- (go +lsp)             ; the hipster dialect
- ;;(haskell +dante)    ; a language that's lazier than I am
- ;;hy                  ; readability of scheme w/ speed of python
- ;;idris               ; a language you can depend on
- json                  ; At least it ain't XML
- ;;(java +meghanada)   ; the poster child for carpal tunnel syndrome
- ;;javascript          ; all(hope(abandon(ye(who(enter(here))))))
- ;;julia               ; a better, faster MATLAB
- ;;kotlin              ; a better, slicker Java(Script)
- (latex +latexmk)      ; writing papers in Emacs has never been so fun
- ;;lean
- ;;factor
- ;;ledger              ; an accounting system in Emacs
- lua                   ; one-based indices? one-based indices
- markdown              ; writing docs for people to ignore
- ;;nim                 ; python + lisp at the speed of c
- ;;nix                 ; I hereby declare "nix geht mehr!"
- ;;ocaml               ; an objective camel
- (org +pretty +journal ;-dragndrop
-      +hugo +roam +pandoc
-      +present)        ; organize your plain life in plain text
- ;;php                 ; perl's insecure younger brother
- plantuml              ; diagrams for confusing people more
- ;;purescript          ; javascript, but functional
- python                ; beautiful is better than ugly
- ;;qt                  ; the 'cutest' gui framework ever
- racket                ; a DSL for DSLs
- ;;raku                ; the artist formerly known as perl6
- ;;rest                ; Emacs as a REST client
- rst                   ; ReST in peace
- ;;(ruby +rails)       ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
- rust                  ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
- ;;scala               ; java, but good
- ;;scheme              ; a fully conniving family of lisps
- (sh +lsp)             ; she sells {ba,z,fi}sh shells on the C xor
- ;;sml
- ;;solidity            ; do you need a blockchain? No.
- ;;swift               ; who asked for emoji variables?
- ;;terra               ; Earth and Moon in alignment for performance.
- ;;web                 ; the tubes
- (yaml +lsp)           ; JSON, but readable
+  :lang
+  common-lisp
+  emacs-lisp
+  (ess +lsp)
+  (go +lsp)
+  json
+  (latex +latexmk)
+  lua
+  markdown
+  (org +pretty +journal +roam +present)
+  plantuml
+  python
+  racket
+  rst
+  rust
+  (sh +lsp)
+  (yaml +lsp)
 
- :email
- ;;(mu4e +gmail)
- ;;notmuch
- ;;(wanderlust +gmail)
-
- :app
- ;;calendar
- everywhere            ; *leave* Emacs!? You must be joking
- irc                   ; how neckbeards socialize
- ;;(rss +org)          ; emacs as an RSS reader
- ;;twitter             ; twitter client https://twitter.com/vnought
-
- :config
- ;;literate
- (default +bindings +smartparens))
+  :config
+  (default +bindings +smartparens))
 ```
 
 
-## General configuration {#general-configuration}
+## Editor defaults {#editor-defaults}
 
-My user information.
+I use Command as Meta on macOS and swap the X Meta/Super modifiers on Linux. I'm used to having the Emacs Meta key immediately to the left of the spacebar.
 
 ```emacs-lisp
 (setq user-full-name "Diego Zamboni"
       user-mail-address "diego@zzamboni.org")
-```
 
-Change the Mac and Linux modifiers to my liking. I also disable passing Control characters to the system, to avoid that `C-M-space` launches the Character viewer instead of running `mark-sexp`.
-
-```emacs-lisp
 (cond (IS-MAC
        (setq mac-command-modifier       'meta
              mac-option-modifier        'alt
              mac-right-option-modifier  'alt
              mac-pass-control-to-system nil))
       (IS-LINUX
-       (setq x-meta-keysym 'super
+       (setq x-meta-keysym 'alt
              x-super-keysym 'meta)))
 ```
 
-When at the beginning of the line, make `Ctrl-K` remove the whole line, instead of just emptying it.
+I like `C-k` to remove the whole line when I'm at its beginning. I also enable auto-save and backups, hide line numbers, and let Emacs exit without asking for confirmation.
 
 ```emacs-lisp
 (setq kill-whole-line t)
-```
 
-Disable line numbers.
-
-```emacs-lisp
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type nil)
-```
 
-For some reason Doom disables auto-save and backup files by default. Let's reenable them.
-
-```emacs-lisp
 (setq auto-save-default t
       make-backup-files t)
-```
 
-Disable exit confirmation.
-
-```emacs-lisp
 (setq confirm-kill-emacs nil)
 ```
 
-Doom configures `auth-sources` by default to include the Keychain on macOS, but it puts it at the beginning of the list. This causes creation of auth items to fail because the macOS Keychain sources do not support creation yet. I reverse it to leave `~/.authinfo.gpg` at the beginning.
+I use Desktop to restore my files and window layouts automatically, including desktops with a lock file. I don't need separate workspace contexts, so I leave Doom's workspaces module disabled.
 
 ```emacs-lisp
-(after! auth-source
-  (setq auth-sources (nreverse auth-sources)))
-```
+;(after! auth-source
+;  (setq auth-sources (nreverse auth-sources)))
 
-Auto-save the desktop setup (open buffers, etc.)
-
-```emacs-lisp
 (desktop-save-mode 1)
 (setq! desktop-load-locked-desktop t)
 ```
 
 
-### Visual, session and window settings {#visual-session-and-window-settings}
+## Appearance {#appearance}
 
-I made a super simple set of Doom-Emacs custom splash screens by combining [a Doom logo](http://www.thedreamcastjunkyard.co.uk/2018/03/cross-platform-online-multiplayer-added.html) with the word "Emacs" rendered in the [Doom Font](https://fontmeme.com/doom-font/). You can see them at <https://gitlab.com/zzamboni/dot-doom/-/tree/master/splash> (you can also see one of them at the top of this file). I configure it to be used instead of the default splash screen. It took me all of 5 minutes to make, so improvements are welcome!
 
-If you want to choose at random among a few different splash images, you can list them in `alternatives`.
+### Dashboard, fonts, and theme {#dashboard-fonts-and-theme}
 
-You can find other splash images at the [jeetelongname/doom-banners](https://github.com/jeetelongname/doom-banners) GitHub repository.
+I pick a random splash image from `splash/` each time Emacs starts. For fonts, I use Fira Code Nerd Font for code and Alegreya for prose, with the Spacemacs Light theme. Mixed Pitch lets me use a proportional font in Org while keeping code monospaced. I can adjust the font size with <kbd>C-=</kbd> and `C--`, or reset it with `C-0`.
+
+The dashboard faces need a small tweak so the theme's comment background doesn't show through transparent banner images. I also turn off a few symbolic ligatures, keep the font ligatures, and show a word count in the modeline.
 
 ```emacs-lisp
 (let ((alternatives '("doom-emacs-bw-light.svg"
                       "doom-emacs-flugo-slant_out_purple-small.png"
                       "doom-emacs-flugo-slant_out_bw-small.png")))
   (setq fancy-splash-image
-        (concat doom-private-dir "splash/"
+        (concat doom-user-dir "splash/"
                 (nth (random (length alternatives)) alternatives))))
-```
 
-I eliminate all but the first two items in the dashboard menu, since those are the only ones I still use sometimes.
-
-```emacs-lisp
-(setq +doom-dashboard-menu-sections (cl-subseq +doom-dashboard-menu-sections 0 2))
-```
-
-Set base and variable-pitch fonts. I currently like [Fira Code](https://github.com/tonsky/FiraCode) and [Alegreya](https://www.huertatipografica.com/en/fonts/alegreya-ht-pro) (another favorite and my previous choice: [ET Book](https://edwardtufte.github.io/et-book/)).
-
-```emacs-lisp
 (setq doom-font (font-spec :family "Fira Code Nerd Font" :size 16)
-      ;;doom-variable-pitch-font (font-spec :family "ETBembo" :size 18)
       doom-variable-pitch-font (font-spec :family "Alegreya" :size 16))
-```
 
-Allow mixed fonts in a buffer. This is particularly useful for Org mode, so I can mix source and prose blocks in the same document. I also manually enable `solaire-mode` in Org mode as a workaround for font scaling not working properly.
-
-```emacs-lisp
 (add-hook! 'org-mode-hook #'mixed-pitch-mode)
-;;(add-hook! 'org-mode-hook #'solaire-mode)
 (setq mixed-pitch-variable-pitch-cursor nil)
-```
 
-Keybindings to increase/decrease font size.
-
-```emacs-lisp
 (map! "C-="   #'doom/increase-font-size
-      "C--"   #'doom/decrease-font-size
-      "C-0"   #'doom/reset-font-size)
+  "C--"   #'doom/decrease-font-size
+  "C-0"   #'doom/reset-font-size)
 ```
-
-Set the theme to use. I like the [Spacemacs-Light](https://github.com/nashamri/spacemacs-theme), which does not come with Doom, so we need to install it from `package.el`:
 
 ```emacs-lisp
 (package! spacemacs-theme)
-;; Trying https://github.com/agraul/doom-alabaster-theme
-;;(package! doom-alabaster-theme :recipe (:host github :repo "agraul/doom-alabaster-theme"))
 ```
 
-And then from `config.el` we specify the theme to use.
-
 ```emacs-lisp
-;;(setq doom-theme 'doom-alabaster)
 (setq doom-theme 'spacemacs-light)
-;;(setq doom-theme 'doom-nord-light) ;;OK
-;;NO (setq doom-theme 'doom-solarized-light)
-;;(setq doom-theme 'doom-one-light) ;;MAYBE
-;;NO (setq doom-theme 'doom-opera-light)
-;;NO (setq doom-theme 'doom-tomorrow-day)
-;;NO (setq doom-theme 'doom-acario-light)
-```
 
-I love the `spacemacs-light` theme, but for some reason, the transparent dashboard images showed up with a light tint, which I eventually tracked to the fact that Doom by default [uses the `font-lock-comment-face` for the dashboard banner image](https://github.com/hlissner/doom-emacs/blob/ce65645fb87ed1b24fb1a46a33f77cf1dcc1c0d5/modules/ui/doom-dashboard/config.el#L145), and this this face has a background color in Spacemacs-light. I redefine the `doom-dashboard-banner` face to use the `default` face, which fixes the problem. Another way to fix it (commented out below) is to disable the background tint color in the theme. While we are at it, I also fix `doom-dashboard-loaded`, which suffers from the same problem.
-
-```emacs-lisp
 (custom-set-faces!
-  '(doom-dashboard-banner :inherit default)
-  '(doom-dashboard-loaded :inherit default))
-;;(setq spacemacs-theme-comment-bg nil)
-```
+ '(doom-dashboard-banner :inherit default)
+ '(doom-dashboard-loaded :inherit default))
 
-In my previous configuration, I used to automatically restore the previous session upon startup. Doom Emacs starts up so fast that it does not feel right to do it automatically. In any case, from the Doom dashboard I can simply press Enter to invoke the first item, which is "Reload Last Session". So this code is commented out now.
-
-```emacs-lisp
-;;(add-hook 'window-setup-hook #'doom/quickload-session)
-```
-
-Maximize the window upon startup.
-
-```emacs-lisp
-;;(setq initial-frame-alist '((top . 1) (left . 1) (width . 114) (height . 32)))
-;;(add-to-list 'initial-frame-alist '(maximized))
-```
-
-Truncate lines in `ivy` childframes. [Thanks Henrik](https://discord.com/channels/406534637242810369/484105925733646336/770756709857755187)! (disabled for now)
-
-```emacs-lisp
-(setq posframe-arghandler
-      (lambda (buffer-or-name key value)
-        (or (and (eq key :lines-truncate)
-                 (equal ivy-posframe-buffer
-                        (if (stringp buffer-or-name)
-                            buffer-or-name
-                          (buffer-name buffer-or-name)))
-                 t)
-            value)))
-```
-
-I like ligatures, but some of the ones that get enabled by the `(ligatures +extra)` module don't work in the font I use, or I don't like them, so I disable them.
-
-```emacs-lisp
 (plist-put! +ligatures-extra-symbols
   :and           nil
   :or            nil
@@ -585,68 +244,119 @@ I like ligatures, but some of the ones that get enabled by the `(ligatures +extr
   :float         nil
   :str           nil
   :bool          nil
-  :list          nil
-)
-```
+  :list          nil)
 
-```emacs-lisp
-(let ((ligatures-to-disable '(:true :false :int :float :str :bool :list :and :or :for :not)))
-  (dolist (sym ligatures-to-disable)
-    (plist-put! +ligatures-extra-symbols sym nil)))
-```
-
-Enable showing a word count in the modeline. This is only shown for the modes listed in `doom-modeline-continuous-word-count-modes` (Markdown, GFM and Org by default).
-
-```emacs-lisp
 (setq doom-modeline-enable-word-count t)
 ```
 
-Enable pixel scrolling
+Remove from the dashboard some sections I don't use. Disabled for now to test how I feel about the new dashboard.
 
 ```emacs-lisp
-;;(pixel-scroll-precision-mode 1)
+;(setq +dashboard-menu-sections (cl-subseq +dashboard-menu-sections 0 2))
 ```
 
 
-### Key bindings {#key-bindings}
-
-Doom Emacs has an extensive keybinding system, and most module functions are already bound. I modify some keybindings for simplicity of to match the muscle memory I have from my previous Emacs configuration.
-
-**Note:** I do not use VI-style keybindings (which are the default for Doom) because I have decades of muscle memory with Emacs-style keybindings. You may need to adjust these if you want to use them.
+## Navigation and editing {#navigation-and-editing}
 
 
-#### Miscellaneous keybindings {#miscellaneous-keybindings}
+### Completion {#completion}
 
-Use `counsel-buffer-or-recentf` for <kbd>C-x b</kbd>. I like being able to see all recently opened files, instead of just the current ones. This makes it possible to use <kbd>C-x b</kbd> almost as a replacement for <kbd>C-c C-f</kbd>, for files that I edit often. Similarly, for switching between non-file buffers I use `counsel-switch-buffer`, mapped to <kbd>C-x C-b</kbd>.
+I use [Corfu](https://github.com/minad/corfu) for completion at point and [Vertico](https://github.com/minad/vertico) for minibuffer selection. Doom takes care of the surrounding pieces through its built-in `corfu` and `vertico` modules: [Cape](https://github.com/minad/cape), [Consult](https://github.com/minad/consult), [Orderless](https://github.com/oantolin/orderless), [Marginalia](https://github.com/minad/marginalia), [Embark](https://github.com/oantolin/embark), [Prescient](https://github.com/radian-software/prescient.el), icons, popup documentation, and snippets. Phew! The Emacs ecosystem has become extremely complex in this respect. I had to learn what these do, so here's a summary:
 
-```emacs-lisp
-(map! "C-x b"   #'counsel-buffer-or-recentf
-      "C-x C-b" #'counsel-switch-buffer)
-```
+-   With Orderless, you can type space-separated terms in any order, or use `~term` when I want fuzzy matching;
+-   Prescient learns and ranks choices based on my behavior;
+-   `C-M-i` asks for completion explicitly. ; I let Orderless do the matching. Corfu remembers my choices in editing buffers through its history extension.
 
-The `counsel-buffer-or-recentf` function by default shows duplicated entries because it does not abbreviate the paths of the open buffers. The function below fixes this, I have submitted this change to the `counsel` library (<https://github.com/abo-abo/swiper/pull/2687>), in the meantime I define it here and integrate it via `advice-add`.
+<!--listend-->
 
 ```emacs-lisp
-(defun zz/counsel-buffer-or-recentf-candidates ()
-  "Return candidates for `counsel-buffer-or-recentf'."
-  (require 'recentf)
-  (recentf-mode)
-  (let ((buffers
-         (delq nil
-               (mapcar (lambda (b)
-                         (when (buffer-file-name b)
-                           (abbreviate-file-name (buffer-file-name b))))
-                       (delq (current-buffer) (buffer-list))))))
-    (append
-     buffers
-     (cl-remove-if (lambda (f) (member f buffers))
-                   (counsel-recentf-candidates)))))
-
-(advice-add #'counsel-buffer-or-recentf-candidates
-            :override #'zz/counsel-buffer-or-recentf-candidates)
+(package! vertico-prescient)
 ```
 
-The `switch-buffer-functions` package allows us to update the `recentf` buffer list as we switch between them, so that the list produced by `counsel-buffer-or-recentf` is shown in the order the buffers have been visited, rather than in the order they were opened. Thanks to [@tau3000](https://github.com/abo-abo/swiper/issues/1560#issuecomment-729403768) for the tip.
+```emacs-lisp
+(use-package! vertico-prescient
+  :after vertico
+  :init
+  (setq vertico-prescient-enable-filtering nil
+        prescient-save-file (doom-profile-cache-dir t "prescient-save.el"))
+  :config
+  (vertico-prescient-mode 1)
+  (prescient-persist-mode 1))
+
+(after! cape
+  ;; Preserve Company's current-buffer-only fallback word search.
+  (setq cape-dabbrev-check-other-buffers nil))
+
+(after! corfu
+  ;; Preview candidates without committing them merely by continuing to type.
+  (setq corfu-preview-current t))
+```
+
+For Lua and LaTeX, I use Company backends through Cape's Company-to-CAPF adapter. That gives Corfu access to their specialized candidates without turning on Company mode. Emacs Lisp, Sly, ESS, Python, Racket, and LSP use native completion functions, including LSP completion in shell buffers. Doom also adds Yasnippet candidates so I can complete snippets through the same interface.
+
+```emacs-lisp
+(package! company-lua :pin "29f6819de4d691e5fd0b62893a9f4fbc1c6fcb52")
+(package! company-auctex :pin "9400a2ec7459dde8cbf1a5d50dfee4e300ed7e18")
+(package! company-reftex :pin "42eb98c6504e65989635d95ab81b65b9d5798e76")
+(package! company-math :pin "3eb006874e309ff4076d947fcbd61bb6806aa508")
+```
+
+```emacs-lisp
+(defun zz/add-company-capfs (&rest backends)
+  "Add BACKENDS to this buffer through Cape without enabling Company mode."
+  (require 'cape)
+  (dolist (backend backends)
+    (let ((capf (intern (format "zz/capf-%s" backend))))
+      (unless (fboundp capf)
+        (defalias capf (cape-company-to-capf backend)))
+      (add-hook 'completion-at-point-functions capf 10 t))))
+
+(defun zz/lua-completion-setup ()
+  "Retain Lua's built-in API completion without a language server."
+  (require 'company-lua)
+  (zz/add-company-capfs #'company-lua))
+(add-hook 'lua-mode-hook #'zz/lua-completion-setup)
+
+(defun zz/latex-completion-setup ()
+  "Retain AUCTeX and math completion alongside native CAPFs."
+  (require 'company-auctex)
+  (require 'company-math)
+  (zz/add-company-capfs #'company-auctex-environments
+                       #'company-auctex-macros
+                       #'+latex-symbols-company-backend))
+(add-hook 'LaTeX-mode-hook #'zz/latex-completion-setup)
+
+(defun zz/reftex-completion-setup ()
+  "Retain RefTeX label and citation completion."
+  (when reftex-mode
+    (require 'company-reftex)
+    (zz/add-company-capfs #'company-reftex-labels #'company-reftex-citations)))
+(add-hook 'reftex-mode-hook #'zz/reftex-completion-setup)
+```
+
+
+### Buffers, search, and undo {#buffers-search-and-undo}
+
+I often want to open a recent file as well as switch buffers, so I bind `C-x b` to a Consult picker that offers both, including buffers without a file. Consult takes care of removing duplicate recent-file entries. When I only want open buffers, I use `C-x C-b`. I also track file visits as I switch buffers, so the recent-file list follows my navigation order.
+
+For searching within a buffer, I use Doom's region-aware search command on `C-s`, with Consult providing the interface. I bind visual regexp replacement to `C-c s r` and query replacement to `C-c s q`. A few other keys I use often: `C-c C-g` opens Magit, `C-?` redoes a change, and `M-g g` or `M-g M-g` jumps to a line. `M-g o` lets me pick an outline heading with a live preview.
+
+```emacs-lisp
+(defun zz/buffer-or-recentf ()
+  "Select a buffer or recent file with Consult."
+  (interactive)
+  (require 'consult)
+  (consult-buffer '(consult-source-buffer consult-source-recent-file)))
+
+(defun zz/switch-buffer ()
+  "Select an open buffer with Consult."
+  (interactive)
+  (require 'consult)
+  (consult-buffer '(consult-source-buffer)))
+
+(map! "C-x b" #'zz/buffer-or-recentf
+      "C-x C-b" #'zz/switch-buffer)
+```
 
 ```emacs-lisp
 (package! switch-buffer-functions)
@@ -661,22 +371,11 @@ The `switch-buffer-functions` package allows us to update the `recentf` buffer l
          (recentf-add-file buffer-file-name)))
   :init
   (add-hook 'switch-buffer-functions #'my-recentf-track-visited-file))
-```
 
-Use `+default/search-buffer` for searching by default, I like the Swiper interface.
-
-```emacs-lisp
-;;(map! "C-s" #'counsel-grep-or-swiper)
 (map! "C-s" #'+default/search-buffer)
-```
 
-Map <kbd>C-c C-g</kbd> to `magit-status` - I have too ingrained muscle memory for this keybinding.
-
-```emacs-lisp
 (map! :after magit "C-c C-g" #'magit-status)
 ```
-
-Interactive search key bindings -  [visual-regexp-steroids](https://github.com/benma/visual-regexp-steroids.el) provides sane regular expressions and visual incremental search. I use the `pcre2el` package to support PCRE-style regular expressions.
 
 ```emacs-lisp
 (package! pcre2el)
@@ -691,32 +390,27 @@ Interactive search key bindings -  [visual-regexp-steroids](https://github.com/b
   (setq vr/engine 'pcre2el)
   (map! "C-c s r" #'vr/replace)
   (map! "C-c s q" #'vr/query-replace))
-```
 
-The Doom `undo` package introduces the use of [`undo-fu`](https://gitlab.com/ideasman42/emacs-undo-fu), which makes undo/redo more "lineal". I normally use <kbd>C-/</kbd> for undo and Emacs doesn't have a separate "redo" action, so I map <kbd>C-?</kbd> (in my keyboard, the same combination + <kbd>Shift</kbd>) for redo.
-
-```emacs-lisp
 (after! undo-fu
   (map! :map undo-fu-mode-map "C-?" #'undo-fu-only-redo))
-```
 
-Replace the default `goto-line` keybindings with `avy-goto-line`, which is more flexible and also falls back to `goto-line` if a number is typed.
-
-```emacs-lisp
 (map! "M-g g" #'avy-goto-line)
 (map! "M-g M-g" #'avy-goto-line)
+
+(defun zz/outline ()
+  "Select a heading using the appropriate Consult command."
+  (interactive)
+  (if (derived-mode-p 'org-mode)
+      (progn (require 'consult-org) (consult-org-heading))
+    (consult-outline)))
+
+(map! "M-g o" #'zz/outline)
 ```
 
-Map a keybindings for `counsel-outline`, which allows easily navigating documents (it works best with Org documents, but it also tries to extract navigation information from other file types).
 
-```emacs-lisp
-(map! "M-g o" #'counsel-outline)
-```
+### Matching parentheses with `%` {#matching-parentheses-with}
 
-
-#### Emulating vi's `%` key {#emulating-vi-s-key}
-
-One of the few things I missed in Emacs from vi was the `%` key, which jumps to the parenthesis, bracket or brace which matches the one below the cursor. This function implements this functionality, bound to the same key. Inspired by [NavigatingParentheses](http://www.emacswiki.org/emacs/NavigatingParentheses), but modified to use `smartparens` instead of the default commands, and to work on brackets and braces.
+I got this idea from [NavigatingParentheses](https://www.emacswiki.org/emacs/NavigatingParentheses): after a navigation command, `%` jumps to the matching delimiter using Smartparens. Otherwise, it types a percent sign as usual. The list of navigation commands below determines when jumping makes sense, so I can use the same key for both.
 
 ```emacs-lisp
 (after! smartparens
@@ -771,279 +465,156 @@ One of the few things I missed in Emacs from vi was the `%` key, which jumps to 
 ```
 
 
-## Org mode {#org-mode}
-
-[Org mode](http://orgmode.org/) has become my primary tool for writing, blogging, coding, presentations and more. I am duly impressed. I have been a fan of the idea of [literate programming](https://en.wikipedia.org/wiki/Literate_programming) for many years, and I have tried other tools before (most notably [noweb](https://www.cs.tufts.edu/~nr/noweb/), which I used during grad school for homeworks and projects), but Org is the first tool I have encountered which makes it practical. Here are some of the resources I have found useful in learning it:
-
--   Howard Abrams' [Introduction to Literate Programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html), which got me jumpstarted into writing code documented with org-mode.
--   Nick Anderson's [Level up your notes with Org](https://github.com/nickanderson/Level-up-your-notes-with-Org), which contains many useful tips and configuration tricks. Nick's recommendation also got me to start looking into Org-mode in the first place!
--   Sacha Chua's [Some tips for learning Org Mode for Emacs](http://sachachua.com/blog/2014/01/tips-learning-org-mode-emacs/), her [Emacs configuration](http://pages.sachachua.com/.emacs.d/Sacha.html) and many of her [other articles](http://sachachua.com/blog/category/emacs/).
--   Rainer König's [OrgMode Tutorial](https://www.youtube.com/playlist?list=PLVtKhBrRV_ZkPnBtt_TD1Cs9PJlU0IIdE) video series.
-
-Doom's Org module provides a lot of sane configuration settings, so I don't have to configure so much as in my [previous hand-crafted config](https://github.com/zzamboni/dot-emacs/).
+## Org editing and attachments {#org-editing-and-attachments}
 
 
-### General Org Configuration {#general-org-configuration}
+### Editing defaults {#editing-defaults}
 
-Unpin Org to get around a current bug.
-
-```emacs-lisp
-;;(unpin! org-mode)
-```
-
-Default directory for Org files.
+I keep my Org files in `~/org/`. I like new headings to appear right where I'm editing, and I log completed tasks in a `LOGBOOK` drawer. Org's special handling of `C-a`, `C-e`, and `C-k` makes those keys work with the heading structure. I also let speed commands work on any of a heading's leading stars. Electric indentation and completion popups get in my way when I'm writing, so I turn them off in Org; I can still request completion manually in both Org and Markdown.
 
 ```emacs-lisp
 (setq org-directory "~/org/")
-```
 
-Hide Org markup indicators.
-
-```emacs-lisp
-(after! org (setq org-hide-emphasis-markers t))
-```
-
-Insert Org headings at point, not after the current subtree (this is enabled by default by Doom).
-
-```emacs-lisp
-(after! org (setq org-insert-heading-respect-content nil))
-```
-
-Enable logging of done tasks, and log stuff into the LOGBOOK drawer by default
-
-```emacs-lisp
 (after! org
-  (setq org-log-done t)
-  (setq org-log-into-drawer t))
-```
+  (setq org-hide-emphasis-markers t
+        org-insert-heading-respect-content nil
+        org-log-done t
+        org-log-into-drawer t
+        org-special-ctrl-a/e t
+        org-special-ctrl-k t))
 
-Use the special <kbd>C-a</kbd>, <kbd>C-e</kbd> and <kbd>C-k</kbd> definitions for Org, which enable some special behavior in headings.
-
-```emacs-lisp
-(after! org
-  (setq org-special-ctrl-a/e t)
-  (setq org-special-ctrl-k t))
-```
-
-Enable [Speed Keys](https://orgmode.org/manual/Speed-keys.html), which allows quick single-key commands when the cursor is placed on a heading. Usually the cursor needs to be at the beginning of a headline line, but defining it with this function makes them active on any of the asterisks at the beginning of the line.
-
-```emacs-lisp
 (after! org
   (setq org-use-speed-commands
         (lambda ()
           (and (looking-at org-outline-regexp)
-               (looking-back "^\**")))))
-```
+               (looking-back "^\**" (line-beginning-position))))))
 
-Disable [electric-mode](https://code.orgmode.org/bzg/org-mode/src/master/etc/ORG-NEWS#L323), which is now respected by Org and which creates some confusing indentation sometimes.
-
-```emacs-lisp
 (add-hook! org-mode (electric-indent-local-mode -1))
+
+(defun zz/prose-completion-setup ()
+  "Keep automatic completion quiet in Org and Markdown."
+  (when (derived-mode-p 'org-mode 'markdown-mode)
+    (setq-local corfu-auto nil)
+    ;; Corfu may have installed this before running `corfu-mode-hook'.
+    (remove-hook 'post-command-hook #'corfu-auto--post-command t)))
+
+(add-hook 'corfu-mode-hook #'zz/prose-completion-setup)
+(add-hook 'org-mode-hook #'zz/prose-completion-setup)
+(add-hook 'markdown-mode-hook #'zz/prose-completion-setup)
 ```
 
-I really dislike completion of words as I type prose (in code it's OK), so I disable it in Org and Markdown modes.
+
+### Display {#display}
+
+I prefer variable-pitch text and visual wrapping when I write. Doom's word-wrap module wraps Org and Markdown paragraphs at the window edge without inserting newlines, so each paragraph can stay on one physical line. I turn off automatic hard wrapping, but can still fill or unfill a paragraph with `M-q` and `A-q`. Mixed Pitch uses the fonts I set above. Org Appear, which Doom enables through `+pretty`, reveals markup when the cursor reaches it, so I can hide the markers without making them awkward to edit.
 
 ```emacs-lisp
-(defun zz/adjust-org-company-backends ()
-  (remove-hook 'after-change-major-mode-hook '+company-init-backends-h)
-  (setq-local company-backends nil))
-(add-hook! org-mode (zz/adjust-org-company-backends))
-(add-hook! markdown-mode (zz/adjust-org-company-backends))
+(defun zz/prose-wrapping-setup ()
+  "Wrap at the window edge without inserting newlines."
+  (auto-fill-mode -1)
+  (+word-wrap-mode 1))
+
+(add-hook 'org-mode-hook #'zz/prose-wrapping-setup t)
+(add-hook 'markdown-mode-hook #'zz/prose-wrapping-setup t)
+(add-hook 'org-mode-hook #'variable-pitch-mode t)
 ```
 
 
-### Org visual settings {#org-visual-settings}
+### Files, notes, and Roam {#files-notes-and-roam}
 
-Enable variable and visual line mode in Org mode by default.
+My agenda brings together GTD, work, and personal notes. I use `C-c z w`, `C-c z i`, `C-c z p`, and `C-c z d` to jump to my work, ideas, projects, and diary files. The helper below makes it easy to add more of these shortcuts. I keep Roam notes in their own directory and store attachments beside each Org document in `attachments/`.
 
-```emacs-lisp
-(add-hook! org-mode :append
-           #'visual-line-mode
-           #'variable-pitch-mode)
-```
-
-Use [org-appear](https://github.com/awth13/org-appear) to reveal emphasis markers when moving the cursor over them.
-
-```emacs-lisp
-(package! org-appear
-  :recipe (:host github
-           :repo "awth13/org-appear"))
-```
-
-```emacs-lisp
-(add-hook! org-mode :append #'org-appear-mode)
-```
-
-
-### Capturing and note taking {#capturing-and-note-taking}
-
-First, I define where all my Org-captured things can be found.
+I leave the automatic Roam backlinks buffer off. If I want it later, Doom's option for that is `+org-roam-auto-backlinks-buffer`.
 
 ```emacs-lisp
 (after! org
   (setq org-agenda-files
         '("~/gtd" "~/Work/work.org.gpg" "~/org/")))
-```
 
-I define some global keybindings  to open my frequently-used org files (original tip from [Learn how to take notes more efficiently in Org Mode](https://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/)).
-
-First, I define a helper function to define keybindings that open files. Note that this requires lexical binding to be enabled, so that  the `lambda` creates a closure, otherwise the keybindings don't work.
-
-```emacs-lisp
 (defun zz/add-file-keybinding (key file &optional desc)
-  (let ((key key)
-        (file file)
-        (desc desc))
-    (map! :desc (or desc file)
-          key
-          (lambda () (interactive) (find-file file)))))
-```
+  "Bind KEY to open FILE, using DESC in the key menu."
+  (map! :desc (or desc file)
+    key
+    (lambda () (interactive) (find-file file))))
 
-Now I define keybindings to access my commonly-used org files.
-
-```emacs-lisp
 (zz/add-file-keybinding "C-c z w" "~/Work/work.org.gpg" "work.org")
 (zz/add-file-keybinding "C-c z i" "~/org/ideas.org" "ideas.org")
 (zz/add-file-keybinding "C-c z p" "~/org/projects.org" "projects.org")
 (zz/add-file-keybinding "C-c z d" "~/org/diary.org" "diary.org")
-```
 
-I'm still trying out `org-roam`, although I have not figured out very well how it works for my setup.
-
-```emacs-lisp
 (setq org-roam-directory "~/Dropbox/Personal/org-roam/")
-(setq +org-roam-open-buffer-on-find-file t)
-```
 
-Configure attachments to be stored together with their Org document.
-
-```emacs-lisp
 (setq org-attach-id-dir "attachments/")
 ```
 
 
-### Capturing images {#capturing-images}
+### Clipboard images and attachments {#clipboard-images-and-attachments}
 
-Using `org-download` to make it easier to insert images into my org notes and blog posts. I don't like the configuration provided by Doom as part of the `(org +dragndrop)` module, so I install the package by hand and configure it to my liking.
+I use Org's built-in `org-attach` and `yank-media` to paste images. My `C-y` command checks the clipboard: if there's an image, it asks for a filename and attaches it; otherwise, it calls `org-yank`. A prefix argument forces normal yanking. I enable attachment ID inheritance so the headings within a post can share one attachment directory.
 
-```emacs-lisp
-(package! org-download)
-```
+For image export, I need bare links such as `[[attachment:image.png]]`. Org 9.8's image handler adds a filename description, so the advice below strips it while I paste an image. Other attachment links can still have descriptions. This hooks into a private Org function, so I'll need to check it when I upgrade Org.
 
 ```emacs-lisp
-(after! org-download
-  (setq org-download-method 'directory)
-  (setq org-download-image-dir "images")
-  (setq org-download-heading-lvl nil)
-  (setq org-download-timestamp "%Y%m%d-%H%M%S_")
-  (setq org-image-actual-width 300))
-(require 'org-download)
-```
+(after! org
+  (setq org-attach-use-inheritance t
+        org-attach-preferred-new-method 'id
+        org-attach-auto-tag nil
+        org-yank-dnd-method 'attach
+        org-yank-image-file-name-function #'org-yank-image-read-filename
+        org-image-actual-width nil
+        org-image-max-width 300))
 
-`org-download` implements all the basic machinery for downloading/copying and inserting an image in an org-mode file. However the user experience can be improved. I implemented two wrappers to fit my main use cases:
+(after! org
+  (defun zz/org-yank-image-without-description (handler &rest args)
+    "Run image HANDLER with bare links suitable for inline image export."
+    (let ((formatter (symbol-function 'org-link-make-string-for-buffer)))
+      (cl-letf (((symbol-function 'org-link-make-string-for-buffer)
+                 (lambda (link &optional _description interactive-p)
+                   (funcall formatter link nil interactive-p))))
+        (apply handler args))))
+  (advice-add 'org--image-yank-media-handler :around
+              #'zz/org-yank-image-without-description))
 
--   Pasting images from the clipboard;
--   Inserting images already in my laptop;
--   Images must be inserted as links to themselves.
-
-The first function `zz/org-paste-clipboard` inserts an image from the clipboard using `org-download-clipboard`, but asking for the filename to use for storing it.
-
-```emacs-lisp
-(defun zz/org-paste-clipboard (&optional use-default-filename)
+(defun zz/org-smart-yank (&optional arg)
+  "Yank normally, or use `yank-media' for clipboard images."
   (interactive "P")
-  (require 'org-download)
-  (let ((file
-         (if (not use-default-filename)
-             (read-string (format "Filename [%s]: "
-                                  org-download-screenshot-basename)
-                          nil nil org-download-screenshot-basename)
-           nil)))
-    (org-download-clipboard file)))
-```
+  (let ((targets (and (display-graphic-p)
+                      (gui-get-selection 'CLIPBOARD 'TARGETS))))
+    (if (and (not arg)
+             (seq-some
+              (lambda (type)
+                (string-match-p
+                 "^image/\\(png\\|jpeg\\|webp\\|gif\\)$"
+                 (format "%s" type)))
+              (append targets nil)))
+        (yank-media)
+      (org-yank arg))))
 
-The second function `zz/org-attach-file` allows me to choose a file to attach. The file is copied with the same name to the `org-download-image-dir` directory. If the chosen image is already from that directory, it only inserts the link without copying the file again.
-
-```emacs-lisp
-(defun zz/org-attach-file (&optional file)
-  (interactive (list (read-file-name "File to insert: "
-                                (or (progn
-                                      (require 'dired-aux)
-                                      (dired-dwim-target-directory))
-                                    default-directory))))
-  (require 'org-download)
-  (if (file-in-directory-p file org-download-image-dir)
-      (org-download-insert-link (concat "file:" (file-relative-name file (org-attach-dir))) file)
-      (let ((file-url (concat "file://" file)))
-        (org-download-image file-url))))
-```
-
-I create keybindings for the two functions above.
-
-```emacs-lisp
-(map! :map org-mode-map
-        "C-c l a y" #'zz/org-paste-clipboard
-        "C-M-y" #'zz/org-paste-clipboard
-        "C-c l a z" #'zz/org-attach-file
-        "C-M-z" #'zz/org-attach-file)
-```
-
-Finally, I like the images to be links to the image itself, so that in blog posts, for example, a thumbnail is shown, and clicking on it takes you to the full image. To this effect I define a variant of `org-download-link-format-function` which does this, and assign it to `org-download-link-format-function`.
-
-```emacs-lisp
-(defun zz/org-download-link-format-function-link-to-file (filename)
-  "Insert the file as a link to itself."
-  (if (and (>= (string-to-number org-version) 9.3)
-           (eq org-download-method 'attach))
-      ;; Respect the default behavior if org-download-method is 'attach
-      (format "[[attachment:%s]]\n"
-              (org-link-escape
-               (file-relative-name filename (org-attach-dir))))
-    (let ((formatted-filename (org-link-escape
-                               (funcall org-download-abbreviate-filename-function filename))))
-      ;; Here we use the correct link format so that the image is a link to itself
-      (format "[[file:%s][file:%s]]\n"
-             formatted-filename formatted-filename))))
-
-(setq! org-download-link-format-function #'zz/org-download-link-format-function-link-to-file)
+(after! org
+  (map! :map org-mode-map
+    "C-y" #'zz/org-smart-yank))
 ```
 
 
-### Capturing links {#capturing-links}
+### Links between headings {#links-between-headings}
 
+I use `C-c l l h` to pick a heading with Vertico and insert a link to it. Similarly, `C-u C-c l l h` on an existing link replaces its destination while preserving its description (or its visible URL if it has no description). The choices include outline paths and line numbers, which help when several headings have the same title. I prefer readable `CUSTOM_ID` values based on the title, so the command creates one if needed and inserts a local `#id` link. If the heading already has an ID, I reuse it so links to published pages keep working.
 
-#### Capturing and creating internal Org links {#capturing-and-creating-internal-org-links}
+The picker expands `#+include` directives in a temporary buffer, respecting line ranges and nested includes. Included headings are marked in the choices, and use a custom `hugo-ref:` link to the containing exported article plus their existing `CUSTOM_ID` or ox-hugo's normalized heading anchor. This prevents ox-hugo export errors due to nonexisting IDs in the local file. When exporting with the Hugo format, `hugo-ref:` is converted to a Hugo [relref](https://gohugo.io/shortcodes/relref/) shortcode, so that on Hugo will resolve the article path using its permalink. Other export backends retain only the description as plain text. Included files are never modified (e.g. no `CUSTOM_ID` attributes are created).
 
-I normally use `counsel-org-link` for linking between headings in an Org document. It shows me a searchable list of all the headings in the current document, and allows selecting one, automatically creating a link to it. Since it doesn't have a keybinding by default, I give it one.
-
-```emacs-lisp
-(map! :after counsel :map org-mode-map
-      "C-c l l h" #'counsel-org-link)
-```
-
-I also configure `counsel-outline-display-style` so that only the headline title is inserted into the link, instead of its full path within the document.
+I bind `C-c l l h` to the picker and tell Org to reuse an existing `CUSTOM_ID` rather than create a separate Org ID. The small helpers below make readable IDs from heading titles and preserve IDs already used by links.
 
 ```emacs-lisp
-(after! counsel
-  (setq counsel-outline-display-style 'title))
-```
+(map! :after org :map org-mode-map
+  "C-c l l h" #'zz/org-insert-heading-link)
 
-`counsel-org-link` uses `org-id` as its backend which generates IDs using UUIDs, and it uses the `ID` property to store them. I prefer using human-readable IDs stored in the `CUSTOM_ID` property of each heading, so we need to make some changes.
-
-First, configure `org-id` to use `CUSTOM_ID` if it exists. This affects the links generated by the `org-store-link` function.
-
-```emacs-lisp
 (after! org-id
   ;; Do not create ID if a CUSTOM_ID exists
   (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id))
-```
 
-Second, I override `counsel-org-link-action`, which is the function that actually generates and inserts the link, with a custom function that computes and inserts human-readable `CUSTOM_ID` links. This is supported by a few auxiliary functions for generating and storing the `CUSTOM_ID`.
-
-```emacs-lisp
 (defun zz/make-id-for-title (title)
   "Return an ID based on TITLE."
-  (let* ((new-id (replace-regexp-in-string "[^[:alnum:]]" "-" (downcase title))))
-    new-id))
+  (replace-regexp-in-string "[^[:alnum:]]" "-" (downcase title)))
 
 (defun zz/org-custom-id-create ()
   "Create and store CUSTOM_ID for current heading."
@@ -1064,27 +635,173 @@ If FORCE is t, always recreate the property."
           old-id
         ;; otherwise, create it
         (zz/org-custom-id-create)))))
-
-;; Now override counsel-org-link-action
-(after! counsel
-  (defun counsel-org-link-action (x)
-    "Insert a link to X.
-
-X is expected to be a cons of the form (title . point), as passed
-by `counsel-org-link'.
-
-If X does not have a CUSTOM_ID, create it based on the headline
-title."
-    (let* ((id (zz/org-custom-id-get-create (cdr x))))
-      (org-insert-link nil (concat "#" id) (car x)))))
 ```
 
-Ta-da! Now using `counsel-org-link` inserts nice, human-readable links.
+A normal Org heading reference works for headings in this file. It does not work for headings brought in with `#+include`, because ox-hugo resolves references before it expands includes. For those, I define `hugo-ref:`, an Org link type that carries the owning article's content path and fragment. Its export handler writes Hugo's `relref` shortcode, allowing Hugo to resolve the final permalink. The helper finds the exported article that contains the included heading.
+
+```emacs-lisp
+(defun zz/org-hugo-ref-export (path description backend info)
+  "Export PATH as a Hugo content reference, retaining DESCRIPTION."
+  (require 'json)
+  (if (org-export-derived-backend-p (or (plist-get info :back-end) backend) 'hugo)
+      (format "[%s]({{</* relref %s */>}})"
+              (or description path) (json-encode-string path))
+    (or description path)))
+
+(after! org
+  (org-link-set-parameters "hugo-ref" :export #'zz/org-hugo-ref-export))
+
+(defun zz/org-included-heading-reference (anchor)
+  "Find the original exporting ancestor and reference its ANCHOR."
+  (save-excursion
+    (let (owner)
+      (while (and (not owner) (org-up-heading-safe))
+        (when (and (get-text-property (point) 'zz-heading-source)
+                   (org-entry-get nil "EXPORT_FILE_NAME"))
+          (setq owner (get-text-property (point) 'zz-heading-source))))
+      (unless owner
+        (user-error "Included heading has no containing exported article"))
+      (org-with-point-at owner
+        (let* ((org-use-property-inheritance
+                (org-hugo--selective-property-inheritance))
+               (info (org-export-get-environment 'hugo t))
+               (section (org-hugo--get-section-path info))
+               (bundle (org-entry-get nil "EXPORT_HUGO_BUNDLE" t))
+               (file (org-entry-get nil "EXPORT_FILE_NAME")))
+          (concat "hugo-ref:/"
+                  (mapconcat #'identity
+                             (seq-filter
+                              (lambda (x) (not (string-empty-p x)))
+                              (mapcar (lambda (x) (string-trim (or x "") "/" "/"))
+                                      (list section bundle
+                                            (if (string-suffix-p ".md" file)
+                                                file (concat file ".md")))))
+                             "/")
+                  "#" anchor))))))
+```
+
+The picker reads a temporary copy of the document and asks Org to expand its includes, including nested includes and line ranges. It marks headings from the original buffer so it can still create IDs there; included headings instead use their existing `CUSTOM_ID` or ox-hugo's normalized title slug. It never edits included files or evaluates their Babel blocks. Title-derived anchors will change if you rename a heading, and duplicate anchors remain ambiguous, so use explicit unique IDs when those links need to stay stable.
+
+```emacs-lisp
+(defun zz/org-heading-link-candidates ()
+  "Collect headings from this buffer and expanded Org includes.
+Return (LABEL TITLE MARKER ID) records.  MARKER points into the original
+buffer for local headings; included headings have a full Hugo reference instead of an ID."
+  (require 'ox)
+  (let* ((source (current-buffer))
+         (file buffer-file-name)
+         (directory default-directory)
+         (text (save-restriction (widen) (buffer-string)))
+         markers candidates success export-info)
+    (unwind-protect
+        (with-temp-buffer
+          (insert text)
+          (setq default-directory directory)
+          (org-mode)
+          (org-map-entries
+           (lambda ()
+             (let ((marker (make-marker)))
+               (set-marker marker (point) source)
+               (push marker markers)
+               (put-text-property (point) (1+ (point))
+                                  'zz-heading-source marker))))
+          (let ((enable-local-variables nil)
+                (enable-local-eval nil))
+            ;; The key trick: include the current file with includes expanded
+            (org-export-expand-include-keyword nil directory nil file))
+          (org-map-entries
+           (lambda ()
+             (let* ((marker (get-text-property (point) 'zz-heading-source))
+                    (title (org-get-heading t t t t))
+                    (id (unless marker
+                          (or (org-entry-get nil "CUSTOM_ID")
+                              (progn
+                                (require 'ox-hugo)
+                                (org-hugo-get-heading-slug
+                                 (org-element-at-point)
+                                 (or export-info
+                                     (setq export-info
+                                           (org-export-get-environment 'hugo)))))))))
+               (push (list (format "%s [%s %d]"
+                                   (string-join (org-get-outline-path t t) "/")
+                                   (if marker "line" "included; expanded line")
+                                   (if marker
+                                       (with-current-buffer source
+                                         (save-restriction
+                                           (widen)
+                                           (line-number-at-pos marker)))
+                                     (line-number-at-pos)))
+                           title marker
+                           (when id
+                             (condition-case nil
+                                 (zz/org-included-heading-reference id)
+                               (user-error nil))))
+                     candidates))))
+          (setq success t)
+          (nreverse candidates))
+      (unless success
+        (dolist (marker markers) (set-marker marker nil))))))
+```
+
+Finally, the main interactive function that gets invoked through a hotkey. With no prefix, the command inserts a new link using the selected heading as its description. With `C-u`, it replaces the link at point but keeps its existing description—including Org markup—or its visible URL if the link had no description.
+
+```emacs-lisp
+(defun zz/org-insert-heading-link (&optional replace)
+  "Insert a heading link.  With REPLACE, retain the link description at point."
+  (interactive "P")
+  (require 'org-id)
+  (require 'json)
+  (let* ((element (and replace (org-element-context)))
+         (link (and element (if (eq (org-element-type element) 'link)
+                                element
+                              (org-element-lineage element '(link) t))))
+         (origin (copy-marker (point) t))
+         (start (and link (copy-marker (org-element-property :begin link))))
+         (end (and link (copy-marker
+                        (- (org-element-property :end link)
+                           (org-element-property :post-blank link)) t)))
+         (description
+          (when link
+            (if (org-element-property :contents-begin link)
+                (buffer-substring-no-properties
+                 (org-element-property :contents-begin link)
+                 (org-element-property :contents-end link))
+              (org-element-property :raw-link link))))
+         candidates)
+    (unwind-protect
+        (save-restriction
+          (widen)
+          (when (and replace (not link))
+            (user-error "Place point on the link to replace"))
+          (setq candidates (zz/org-heading-link-candidates))
+          (unless candidates (user-error "No headings in this buffer"))
+          (let* ((choice (completing-read "Link to heading: " candidates nil t))
+                 (target (assoc choice candidates))
+                 (title (nth 1 target))
+                 (marker (nth 2 target))
+                 (path (if marker
+                           (concat "#" (save-excursion
+                                         (zz/org-custom-id-get-create marker)))
+                         (nth 3 target))))
+            (unless (org-string-nw-p path)
+              (user-error "Selected heading has no usable anchor"))
+            (if replace
+                (progn
+                  (goto-char start)
+                  (delete-region start end)
+                  (insert (org-link-make-string path description)))
+              (goto-char origin)
+              (org-insert-link nil path title))))
+      (dolist (marker (list origin start end))
+        (when marker (set-marker marker nil)))
+      (dolist (candidate candidates)
+        (when (nth 2 candidate) (set-marker (nth 2 candidate) nil))))))
+```
 
 
-#### Capturing links to external applications {#capturing-links-to-external-applications}
+### Links from macOS applications {#links-from-macos-applications}
 
-`org-mac-link` implements the ability to grab links from different Mac apps and insert them in the file. Bind `C-c g` to call `org-mac-grab-link` to choose an application and insert a link.
+On macOS, I use `C-c g` to grab a link from another application with `org-mac-grab-link`. I turn off its Acrobat and DEVONthink capture helpers, and only load the package and binding on macOS.
 
 ```emacs-lisp
 (when IS-MAC
@@ -1099,26 +816,21 @@ Ta-da! Now using `counsel-org-link` inserts nice, human-readable links.
     (setq org-mac-grab-Acrobat-app-p nil) ; Disable grabbing from Adobe Acrobat
     (setq org-mac-grab-devonthink-app-p nil) ; Disable grabbinb from DevonThink
     (map! :map org-mode-map
-          "C-c g"  #'org-mac-grab-link)))
+      "C-c g"  #'org-mac-grab-link)))
 ```
 
 
-### Tasks and agenda {#tasks-and-agenda}
+## Tasks and capture {#tasks-and-capture}
 
-Customize the agenda display to indent todo items by level to show nesting, and enable showing holidays in the Org agenda display.
+
+### Agenda, holidays, archiving, and clocks {#agenda-holidays-archiving-and-clocks}
+
+I include diary entries and Mexican and Swiss holidays in my agenda, with a couple of Zürich holidays added below. Org Super Agenda groups the items by directory. I archive tasks in a date tree in the neighboring `archive.org` file, unless I specify a different destination with `#+archive:` in a document. I also save running clocks and clock history between sessions.
 
 ```emacs-lisp
 (after! org-agenda
-  ;; (setq org-agenda-prefix-format
-  ;;       '((agenda . " %i %-12:c%?-12t% s")
-  ;;         ;; Indent todo items by level to show nesting
-  ;;         (todo . " %i %-12:c%l")
-  ;;         (tags . " %i %-12:c")
-  ;;        (search . " %i %-12:c")))
   (setq org-agenda-include-diary t))
 ```
-
-Install and load some custom local holiday lists I'm interested in.
 
 ```emacs-lisp
 (package! mexican-holidays)
@@ -1149,8 +861,6 @@ Install and load some custom local holiday lists I'm interested in.
                 holiday-mexican-holidays)))
 ```
 
-[org-super-agenda](https://github.com/alphapapa/org-super-agenda) provides great grouping and customization features to make agenda mode easier to use.
-
 ```emacs-lisp
 (package! org-super-agenda)
 ```
@@ -1160,210 +870,262 @@ Install and load some custom local holiday lists I'm interested in.
   :after org-agenda
   :config
   (setq org-super-agenda-groups '((:auto-dir-name t)))
-  (org-super-agenda-mode))
-```
+  (org-super-agenda-mode 1))
 
-I configure `org-archive` to archive completed TODOs by default to the `archive.org` file in the same directory as the source file, under the "date tree" corresponding to the task's CLOSED date - this allows me to easily separate work from non-work stuff. Note that this can be overridden for specific files by specifying the desired value of `org-archive-location` in the `#+archive:` property at the top of the file.
-
-```emacs-lisp
 (use-package! org-archive
   :after org
   :config
   (setq org-archive-location "archive.org::datetree/"))
-```
 
-I have started using `org-clock` to track time I spend on tasks. Often I restart Emacs for different reasons in the middle of a session, so I want to persist all the running clocks and their history.
-
-```emacs-lisp
 (after! org-clock
   (setq org-clock-persist t)
   (org-clock-persistence-insinuate))
 ```
 
 
-### GTD {#gtd}
+### GTD workflow {#gtd-workflow}
 
-I am trying out Trevoke's [org-gtd](https://github.com/Trevoke/org-gtd.el). I haven't figured out my perfect workflow for tracking GTD with Org yet, but this looks like a very promising approach.
+I use org-gtd to manage my tasks, with its files in `~/gtd/`. For delegated tasks, I show `DELEGATED_TO` on the next line in the agenda so I can see who's responsible. My shortcuts are `C-c d c` for capture, `C-c d a` for the agenda, `C-c d p` to process the inbox, `C-c d n` for next actions, `C-c d s` for stuck projects, and `C-c d f` to organize the item I've just clarified.
+
+The `org-gtd-update-ack` setting acknowledges the version 4 upgrade and suppresses its notice. It doesn't migrate task data; org-gtd's migration instructions cover that separately for version 3 projects.
 
 ```emacs-lisp
 (package! org-gtd)
 ```
 
 ```emacs-lisp
-;; Supress org-gtd update warning
-(setq org-gtd-update-ack "2.1.0")
+;; Retain the existing acknowledgment of the v4 upgrade.
 (setq org-gtd-update-ack "4.0.0")
 (use-package! org-gtd
   :after org
   :config
-  ;; where org-gtd will put its files. This value is also the default one.
-  (setq org-gtd-directory "~/gtd/")
-  ;; package: https://github.com/Malabarba/org-agenda-property
-  ;; this is so you can see who an item was delegated to in the agenda
-  (setq org-agenda-property-list '("DELEGATED_TO"))
-  ;; I think this makes the agenda easier to read
-  (setq org-agenda-property-position 'next-line)
-  ;; package: https://www.nongnu.org/org-edna-el/
-  ;; org-edna is used to make sure that when a project task gets DONE,
-  ;; the next TODO is automatically changed to NEXT.
-  (setq org-edna-use-inheritance t)
-  (org-edna-load)
+  (setq org-gtd-directory "~/gtd/"
+        org-gtd-agenda-property-list '("DELEGATED_TO")
+        org-gtd-agenda-property-position 'next-line
+        org-edna-use-inheritance t)
+  ;; Keep dependency processing enabled when reloading this configuration.
+  (org-edna-mode 1)
   :bind
-  (("C-c d c" . org-gtd-capture) ;; add item to inbox
-   ("C-c d a" . org-agenda-list) ;; see what's on your plate today
-   ("C-c d p" . org-gtd-process-inbox) ;; process entire inbox
-   ("C-c d n" . org-gtd-show-all-next) ;; see all NEXT items
-   ;; see projects that don't have a NEXT item
-   ("C-c d s" . org-gtd-show-stuck-projects)
-   ;; the keybinding to hit when you're done editing an item in the
-   ;; processing phase
-   ("C-c d f" . org-gtd-clarify-finalize)))
+  (("C-c d c" . org-gtd-capture)
+   ("C-c d a" . org-agenda-list)
+   ("C-c d p" . org-gtd-process-inbox)
+   ("C-c d n" . org-gtd-show-all-next)
+   ("C-c d s" . org-gtd-reflect-stuck-projects)
+   ("C-c d f" . org-gtd-organize)))
 ```
 
 
 #### Capture templates {#capture-templates}
 
-We define the corresponding Org-GTD capture templates.
+I use the `i` template to capture an inbox item and `l` when I also want a link to where I am in Emacs. On macOS, `m` captures a link to the current Outlook message. I let `org-gtd-inbox-path` choose the inbox filename. The advice below loads GTD before opening the capture menu, so the templates are ready when I need them.
 
 ```emacs-lisp
 (after! (org-gtd org-capture)
   (add-to-list 'org-capture-templates
                '("i" "GTD item"
                  entry
-                 (file (lambda () (org-gtd--path org-gtd-inbox-file-basename)))
+                 (file org-gtd-inbox-path)
                  "* %?\n%U\n\n  %i"
                  :kill-buffer t))
   (add-to-list 'org-capture-templates
                '("l" "GTD item with link to where you are in emacs now"
                  entry
-                 (file (lambda () (org-gtd--path org-gtd-inbox-file-basename)))
+                 (file org-gtd-inbox-path)
                  "* %?\n%U\n\n  %i\n  %a"
                  :kill-buffer t))
-  (add-to-list 'org-capture-templates
-               '("m" "GTD item with link to current Outlook mail message"
-                 entry
-                 (file (lambda () (org-gtd--path org-gtd-inbox-file-basename)))
-                 "* %?\n%U\n\n  %i\n  %(org-mac-outlook-message-get-links)"
-                 :kill-buffer t)))
+  (when IS-MAC
+    (add-to-list 'org-capture-templates
+                 '("m" "GTD item with link to current Outlook mail message"
+                   entry
+                   (file org-gtd-inbox-path)
+                   "* %?\n%U\n\n  %i\n  %(org-mac-outlook-message-get-links)"
+                   :kill-buffer t))))
+
+(defadvice! +zz/load-org-gtd-before-capture (&rest _)
+  "Register GTD templates before opening the capture menu."
+  :before #'org-capture
+  (require 'org-capture)
+  (require 'org-gtd))
 ```
 
-I set up an advice before `org-capture` to make sure `org-gtd` and `org-capture` are loaded, which triggers the setup of the templates above.
+
+## Export and publishing {#export-and-publishing}
+
+
+### Standard export menu {#standard-export-menu}
+
+I hide Org, iCalendar, and ODT from the standard export menu because I rarely need them there. Their export commands still work. The `eval` forms delay expansion of the structure setters until each backend loads; without that, Doom can try to expand them before `ox` is ready.
 
 ```emacs-lisp
-(defadvice! +zz/load-org-gtd-before-capture (&optional goto keys)
-    :before #'org-capture
-    (require 'org-capture)
-    (require 'org-gtd))
+(after! ox-org
+  (eval '(setf (org-export-backend-menu
+                (org-export-get-backend 'org))
+               nil)))
+
+(after! ox-icalendar
+  (eval '(setf (org-export-backend-menu
+                (org-export-get-backend 'icalendar))
+               nil)))
+
+(after! ox-odt
+  (eval '(setf (org-export-backend-menu
+                (org-export-get-backend 'odt))
+               nil)))
 ```
 
 
-### Exporting a Curriculum Vitae {#exporting-a-curriculum-vitae}
+### Transient export menu {#transient-export-menu}
 
-I use `ox-awesomecv` from [Org-CV](https://titan-c.gitlab.io/org-cv/), to export my [Curriculum Vit&aelig;](https://github.com/zzamboni/vita/).
-
-Org-CV is not yet in MELPA, so I install from its repository.
+The standard Org export menu becomes a bit unwieldy when many exporter modules are available. I'd like to have those available, but I don't use them very often, so I defined a new custom export menu using Transient, which includes only my most commonly-used exporters: Leanpub Markua book export, Hugo posts, and Typst/LaTeX export to PDF. It also offers a key to open the standard export menu in case it's ever needed.
 
 ```emacs-lisp
-(package! org-cv
-  :recipe (:host gitlab
-           :repo "Titan-C/org-cv"))
+(after! transient
+  (defun zz/org-export-run (format &optional open)
+    "Export FORMAT with this menu's options, optionally OPEN the result."
+    (let* ((args (transient-args 'zz/org-export-menu))
+           (subtree (and (member "--subtree" args) t))
+           (visible (and (member "--visible" args) t))
+           (body (and (member "--body" args) t))
+           (backend (pcase format
+                      ('typst 'ox-typst) ('latex 'ox-latex) ('html 'ox-html)
+                      ('markua-book 'ox-leanpub)))
+           (command (pcase format
+                      ('typst #'org-typst-export-to-pdf)
+                      ('latex #'org-latex-export-to-pdf)
+                      ('html #'org-html-export-to-html)
+                      ('markua-book #'org-leanpub-book-export-markua))))
+      (require backend)
+      (let ((file (if (eq format 'markua-book)
+                      (funcall command subtree visible)
+                    (funcall command nil subtree visible body))))
+        (when (and open file) (org-open-file file)))))
+
+  (transient-define-prefix zz/org-export-menu ()
+    "Export this Org document, Hugo post, or Leanpub book."
+    ["Document options"
+     ("-s" "Subtree only" "--subtree")
+     ("-v" "Visible only" "--visible")
+     ("-b" "Body only" "--body")]
+    [["Documents"
+      ("y" "Typst PDF" (lambda () (interactive) (zz/org-export-run 'typst)))
+      ("Y" "Typst PDF and open" (lambda () (interactive) (zz/org-export-run 'typst t)))
+      ("l" "LaTeX PDF" (lambda () (interactive) (zz/org-export-run 'latex)))
+      ("h" "HTML" (lambda () (interactive) (zz/org-export-run 'html)))]
+     ["Hugo (own scope)"
+      ("H" "Current post" (lambda () (interactive)
+                            (require 'ox-hugo) (org-hugo-export-wim-to-md)))
+      ("A" "All posts" (lambda () (interactive)
+                         (require 'ox-hugo) (org-hugo-export-wim-to-md t)))]
+     ["Leanpub"
+      ("m" "Markua book" (lambda () (interactive) (zz/org-export-run 'markua-book)))]
+     ["Other"
+      ("e" "Standard dispatcher" org-export-dispatch)
+      ("q" "Quit" transient-quit-one)]]))
+
 ```
 
-For when I do development on it (I wrote the `ox-awesomecv` exporter), I check it out from my local repo - this is normally disabled.
+I bind the new menu to `C-c C-e` (the same key originally used by the standard menu).
 
 ```emacs-lisp
-(package! org-cv
-  :recipe (:local-repo "~/Dropbox/Personal/devel/emacs/org-cv"))
+(after! org
+  ;; Load the prefix definition before binding it directly.
+  (require 'transient)
+  (map! :map org-mode-map "C-c C-e" #'zz/org-export-menu))
+```
+
+
+### LaTeX PDF with Tectonic {#latex-pdf-with-tectonic}
+
+I use Tectonic for LaTeX PDF export: `C-c C-e l` exports a PDF through my custom menu. In the standard dispatcher (`C-c C-e e`), `l p` exports a PDF and `l o` opens it too. Tectonic downloads missing TeX resources and handles reruns for me; its executable needs to be on Emacs' `exec-path`. I select `xelatex` for Org's engine-specific output because Tectonic uses XeTeX.
+
+```emacs-lisp
+(after! ox-latex
+  (setq org-latex-compiler "xelatex"
+        org-latex-pdf-process
+        '("tectonic --keep-logs --outdir %o %f")))
+```
+
+
+### Typst PDF {#typst-pdf}
+
+I use `ox-typst` for Typst export, with `C-c C-e y` as the shortcut in my custom menu. My printable [cheat sheet](https://github.com/zzamboni/dot-doom/blob/main/cheatsheet.org) has its own landscape, two-column template, fonts, title, and footer, so those settings only apply to that document. The `typst` executable needs to be on Emacs' `exec-path`. I configure tree-sitter editing support with the other language modes below.
+
+```emacs-lisp
+(package! ox-typst)
 ```
 
 ```emacs-lisp
-(use-package! ox-awesomecv
-  :after org
-  :config
-  (defun org-awesomecv--cventry-right-img-code (file)
-  (if file
-    (format "\\begin{wrapfigure}{r}{0.15\\textwidth}
-  \\raggedleft\\vspace{-10.0mm}
-  \\includegraphics[width=0.1\\textwidth]{%s}
-\\end{wrapfigure}" file) "")))
-(use-package! ox-moderncv
+(use-package! ox-typst
   :after org)
 ```
 
 
-### Publishing to LeanPub {#publishing-to-leanpub}
+### Hugo posts {#hugo-posts}
 
-I use [LeanPub](https://leanpub.com/) for self-publishing [my books](https://leanpub.com/u/zzamboni). Fortunately, it is possible to export from org-mode to both [LeanPub-flavored Markdown](https://leanpub.com/lfm/read) and [Markua](https://leanpub.com/markua/read), so I can use Org for writing the text and simply export it in the correct format and structure needed by Leanpub.
+I write my blog posts in Org and export them with `ox-hugo`. I install it explicitly and load it after `ox`. I also ask it to export keyboard markup as code, which works with my site's styling.
 
-When I decided to use org-mode to write my books, I looked around for existing modules and code. Here are some of the resources I found:
-
--   [Description of ox-leanpub.el](http://juanreyero.com/open/ox-leanpub/index.html) ([GitHub repo](https://github.com/juanre/ox-leanpub)) by [Juan Reyero](http://juanreyero.com/about/);
--   [Publishing a book using org-mode](https://medium.com/@lakshminp/publishing-a-book-using-org-mode-9e817a56d144) by [Lakshmi Narasimhan](https://medium.com/@lakshminp/publishing-a-book-using-org-mode-9e817a56d144);
--   [Publishing a Book with Leanpub and Org Mode](http://irreal.org/blog/?p=5313) by Jon Snader (from where I found the links to the above).
-
-Building upon these, I developed a new `ox-leanpub` package which you can find in MELPA (source at <https://github.com/zzamboni/ox-leanpub>), and which I load and configure below.
-
-The `ox-leanpub` module sets up Markua export automatically. I add the code for setting up the Markdown exporter too (I don't use it, but just to keep an eye on any breakage):
+My `h` capture template, based on the [ox-hugo capture example](https://ox-hugo.scripter.co/doc/org-capture-setup/), adds a post under `Ideas` in my website's Org source. It sets up a dated page bundle, a readable anchor, an attachment ID, and a default featured image, so I can get straight to writing.
 
 ```emacs-lisp
-(package! ox-leanpub
-  :recipe (:local-repo "~/Dropbox/Personal/devel/emacs/ox-leanpub"))
+(package! ox-hugo)
 ```
 
 ```emacs-lisp
-(use-package! ox-leanpub
-  :after org
+(use-package! ox-hugo
+  :after ox
   :config
-  (require 'ox-leanpub-markdown)
-  (org-leanpub-book-setup-menu-markdown))
-```
-
-I highly recommend using Markua rather than Markdown, as it is the format that Leanpub is guaranteed to support in the future, and where most of the new features are being developed.
-
-With this setup, I can write my book in org-mode (I usually keep a single `book.org` file at the top of my repository), and then call the corresponding "Book" export commands. The `manuscript` directory, as well as the corresponding `Book.txt` and other necessary files are created and populated automatically.
-
-If you are interested in learning more about publishing to Leanpub with Org-mode, check out my book [_Publishing with Emacs, Org-mode and Leanpub_](https://leanpub.com/emacs-org-leanpub).
-
-
-### Blogging with Hugo {#blogging-with-hugo}
-
-[ox-hugo](https://ox-hugo.scripter.co/) is an awesome way to blog from org-mode. It makes it possible for posts in org-mode format to be kept separate, and it generates the Markdown files for Hugo. Hugo [supports org files](https://gohugo.io/content-management/formats/), but using ox-hugo has multiple advantages:
-
--   Parsing is done by org-mode natively, not by an external library. Although goorgeous (used by Hugo) is very good, it still lacks in many areas, which leads to text being interpreted differently as by org-mode.
--   Hugo is left to parse a native Markdown file, which means that many of its features such as shortcodes, TOC generation, etc., can still be used on the generated file.
-
-Doom Emacs includes and configures `ox-hugo` as part of its `(:lang org +hugo)` module, so all that's left is to configure some parameters to my liking.
-
-I set `org-hugo-use-code-for-kbd` so that I can apply a custom style to keyboard bindings in my blog.
-
-```emacs-lisp
-(after! ox-hugo
   (setq org-hugo-use-code-for-kbd t))
 ```
 
-Define an `org-capture` template to create a new blog post skeleton automatically. Based on <https://ox-hugo.scripter.co/doc/org-capture-setup/>, with some customizations for my blog's setup (like a default value for `:featured_image`). I also add `:jump-to-captured t` in the `org-capture-templates` definition so that when I create a new blog post snippet, I get automatically taken to that location so I can continue writing.
+I want Hugo to put assets in the same place whether I opened the source file myself or Emacs restored it at startup. To make that consistent, I normalize the export directory through `org-export-before-processing-functions`. That hook runs in the temporary export buffer, so my source buffer's directory stays as it was.
+
+I currently set `zz/org-hugo-directory-style` to `abbreviated` to get flat asset copying for my site under the home directory. This relies on a path-comparison bug in ox-hugo 0.12.1, so an upstream fix could change it. Setting it to `canonical` uses ox-hugo's nested asset layout instead. The workaround doesn't guarantee flat copying outside the home directory, and the exporter's separate rules for static files and bundle-named directories still apply.
+
+<a id="code-snippet--hugo-export-directory"></a>
+```emacs-lisp
+(defcustom zz/org-hugo-directory-style 'abbreviated
+  "Directory representation for Hugo export: canonical or abbreviated.
+Abbreviated preserves flat assets under HOME with ox-hugo 0.12.1,
+but relies on its path-comparison bug, not a supported layout option."
+  :type '(choice (const canonical) (const abbreviated))
+  :group 'org-export-hugo)
+
+(defun zz/org-hugo-normalize-export-directory (backend)
+  "Normalize the temporary export buffer's directory for Hugo BACKEND."
+  (when (org-export-derived-backend-p backend 'hugo)
+    (setq default-directory
+          (if (eq zz/org-hugo-directory-style 'abbreviated)
+              (abbreviate-file-name (file-truename default-directory))
+            (file-truename default-directory)))))
+
+(after! ox
+  (add-hook 'org-export-before-processing-functions
+            #'zz/org-hugo-normalize-export-directory))
+```
 
 ```emacs-lisp
 (after! org-capture
   (defun org-hugo-new-subtree-post-capture-template ()
     "Returns `org-capture' template string for new Hugo post.
   See `org-capture-templates' for more information."
+    (require 'ox-hugo)
     (let* ((title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
            (fname (org-hugo-slug title)))
       (mapconcat #'identity
                  `(
                    ,(concat "* TODO " title)
                    ":PROPERTIES:"
+                   ,(concat ":ID: " (org-id-new))
                    ,(concat ":export_hugo_bundle: " (format-time-string "%Y-%m-%d-") fname)
                    ":export_file_name: index"
                    ,(concat ":custom_id: " fname)
-                   ":export_hugo_custom_front_matter: :featured_image /images/tram-zurich.jpg :toc false"
+                   ":export_hugo_custom_front_matter: :featured_image /images/tram-zurich.jpg"
                    ":END:"
                    "#+BEGIN_DESCRIPTION\n%?\n#+END_DESCRIPTION"       ;Place the cursor here at the end
                    "\n<write here>")
                  "\n")))
 
-(add-to-list 'org-capture-templates
+  (add-to-list 'org-capture-templates
                '("h"                ;`org-capture' binding + h
                  "Hugo post"
                  entry
@@ -1375,105 +1137,68 @@ Define an `org-capture` template to create a new blog post skeleton automaticall
                  :jump-to-captured t)))
 ```
 
-
-### Code for org-mode macros {#code-for-org-mode-macros}
-
-Here I define functions which get used in some of my org-mode macros
-
-The first is a support function which gets used in some of the following, to return a string (or an optional custom  string) only if  it  is a non-zero, non-whitespace string,  and `nil` otherwise.
+Configure `mermaid` blocks as "raw" ([reference](https://ox-hugo.scripter.co/doc/org-special-blocks/?utm_source=chatgpt.com#raw-org-contents)) so that they are exported as-is instead of using HTML entities.
 
 ```emacs-lisp
-(defun zz/org-if-str (str &optional desc)
-  (when (org-string-nw-p str)
-    (or (org-string-nw-p desc) str)))
-```
-
-This function receives three arguments, and returns the org-mode code for a link to the Hammerspoon API documentation for the `link` module, optionally to a specific `function`. If `desc` is passed, it is used as the display text, otherwise `section.function` is used.
-
-```emacs-lisp
-(defun zz/org-macro-hsapi-code (module &optional func desc)
-  (org-link-make-string
-   (concat "https://www.hammerspoon.org/docs/"
-           (concat module (zz/org-if-str func (concat "#" func))))
-   (or (org-string-nw-p desc)
-       (format "=%s="
-               (concat module
-                       (zz/org-if-str func (concat "." func)))))))
-```
-
-Split STR at spaces and wrap each element with the `~` char, separated by `+`. Zero-width spaces are inserted around the plus signs so that they get formatted correctly. Envisioned use is for formatting keybinding descriptions. There are two versions of this function: "outer" wraps each element in  `~`, the "inner" wraps the whole sequence in them.
-
-```emacs-lisp
-(defun zz/org-macro-keys-code-outer (str)
-  (mapconcat (lambda (s)
-               (concat "~" s "~"))
-             (split-string str)
-             (concat (string ?\u200B) "+" (string ?\u200B))))
-(defun zz/org-macro-keys-code-inner (str)
-  (concat "~" (mapconcat (lambda (s)
-                           (concat s))
-                         (split-string str)
-                         (concat (string ?\u200B) "-" (string ?\u200B)))
-          "~"))
-(defun zz/org-macro-keys-code (str)
-  (zz/org-macro-keys-code-inner str))
-```
-
-Links to a specific section/function of the Lua manual.
-
-```emacs-lisp
-(defun zz/org-macro-luadoc-code (func &optional section desc)
-  (org-link-make-string
-   (concat "https://www.lua.org/manual/5.3/manual.html#"
-           (zz/org-if-str func section))
-   (zz/org-if-str func desc)))
-```
-
-```emacs-lisp
-(defun zz/org-macro-luafun-code (func &optional desc)
-  (org-link-make-string
-   (concat "https://www.lua.org/manual/5.3/manual.html#"
-           (concat "pdf-" func))
-   (zz/org-if-str (concat "=" func "()=") desc)))
+(after! ox-hugo
+  (add-to-list 'org-hugo-special-block-type-properties
+               '("mermaid" . (:raw t))))
 ```
 
 
-### Reformatting an Org buffer {#reformatting-an-org-buffer}
+### Curriculum vitae {#curriculum-vitae}
 
-I picked up this little gem in the org mailing list. A function that reformats the current buffer by regenerating the text from its internal parsed representation. Quite amazing.
+**Note:** I no longer use Org-CV, I keep my CV in JSON Resume, from which I produce all the necessary output formats. See my blog post [Porting my CV from Org+LaTeX to JSON Resume](https://zzamboni.org/post/porting-my-cv-from-org-latex-to-json-resume/) for more details! The code below is kept in the Org file for reference but is not being tangled to my config files anymore.
 
-```emacs-lisp
-(defun zz/org-reformat-buffer ()
-  (interactive)
-  (when (y-or-n-p "Really format current buffer? ")
-    (let ((document (org-element-interpret-data (org-element-parse-buffer))))
-      (erase-buffer)
-      (insert document)
-      (goto-char (point-min)))))
-```
-
-
-### Avoiding non-Org mode files {#avoiding-non-org-mode-files}
-
-[org-pandoc-import](https://github.com/tecosaur/org-pandoc-import) is a mode that automates conversions to/from Org mode as much as possible.
+I load the Awesome CV and Modern CV exporters from my local `org-cv` development checkout. I also override Awesome CV's image helper to place the image on the right using `wrapfigure`.
 
 ```emacs-lisp
-(package! org-pandoc-import
-  :recipe (:host github
-           :repo "tecosaur/org-pandoc-import"
-           :files ("*.el" "filters" "preprocessors")))
+(package! org-cv
+  :recipe (:local-repo "~/Dropbox/Personal/devel/emacs/org-cv"))
 ```
 
 ```emacs-lisp
-(use-package org-pandoc-import)
+(use-package! ox-awesomecv
+  :after org
+  :config
+  (defun org-awesomecv--cventry-right-img-code (file)
+    (if file
+        (format "\\begin{wrapfigure}{r}{0.15\\textwidth}
+  \\raggedleft\\vspace{-10.0mm}
+  \\includegraphics[width=0.1\\textwidth]{%s}
+\\end{wrapfigure}" file) "")))
+(use-package! ox-moderncv
+  :after org)
 ```
 
 
-### Reveal.js presentations {#reveal-dot-js-presentations}
+### Leanpub books {#leanpub-books}
 
-I use `org-re-reveal` to make presentations. The functions below help me improve my workflow by automatically exporting the slides whenever I save the file, refreshing the presentation in my browser, and moving it to the slide where the cursor was when I saved the file. This helps keeping a "live" rendering of the presentation next to my Emacs window.
+I use my local `ox-leanpub` checkout to export books in Markua format. Its book commands create the `manuscript/` directory, `Book.txt`, and the exported chapters. I wrote about this workflow in [Publishing with Emacs, Org-mode and Leanpub](https://leanpub.com/emacs-org-leanpub).
 
-The first function is a modified version of the `org-num--number-region` function of the `org-num` package, but modified to only return the numbering of the innermost headline in which the cursor is currently placed.
+```emacs-lisp
+(package! ox-leanpub
+  :recipe (:local-repo "~/Dropbox/Personal/devel/emacs/ox-leanpub"))
+```
+
+```emacs-lisp
+(use-package! ox-leanpub
+  :after org)
+```
+
+
+### Reveal presentations {#reveal-presentations}
+
+I use `org-re-reveal`, which Doom provides through `+present`, to make presentations. The headline-number helper below skips `noexport` headings when building slide anchors. On macOS, I can also export the document and refresh its Brave tab with one command, using `osascript`. Reveal export itself works on Linux too.
+
+To use the browser refresh helper, I first open the exported presentation with `C-c C-e e v b`. For automatic refresh on save, I add this file-local hook to the presentation and approve it when Emacs asks:
+
+```text
+* COMMENT Local variables :ARCHIVE:noexport:
+# Local Variables:
+# eval: (add-hook! after-save :append :local (zz/refresh-reveal-prez))
+# End:
+```
 
 ```emacs-lisp
 (defun zz/org-current-headline-number ()
@@ -1504,22 +1229,7 @@ headlines tagged with :noexport:"
         ;; innermost and all its parents), so we only return the innermost one.
         ;; We reverse its order to make it more readable.
         (reverse (car new))))))
-```
 
-The `zz/refresh-reveal-prez` function makes use of the above to perform the presentation export, refresh and update. You can use it by adding an after-save hook like this (add at the end of the file):
-
-```text
-* Local variables :ARCHIVE:noexport:
-# Local variables:
-# eval: (add-hook! after-save :append :local (zz/refresh-reveal-prez))
-# end:
-```
-
-**Note #1:** This is specific to my OS (macOS) and the browser I use (Brave). I will make it more generic in the future, but for now feel free to change it to your needs.
-
-**Note #2:** the presentation must be already open in the browser, so you must run "Export to reveal.js -&gt; To file and browse" (`C-c C-e v b`) once by hand.
-
-```emacs-lisp
 (defun zz/refresh-reveal-prez ()
   ;; Export the file
   (org-re-reveal-export-to-html)
@@ -1534,7 +1244,7 @@ The `zz/refresh-reveal-prez` function makes use of the above to perform the pres
          (title (cadar (org-collect-keywords '("TITLE"))))
          ;; Command to reload the browser and move to the correct slide
          (cmd (concat
-"osascript -e \"tell application \\\"Brave\\\" to repeat with W in windows
+               "osascript -e \"tell application \\\"Brave\\\" to repeat with W in windows
 set i to 0
 repeat with T in (tabs in W)
 set i to i + 1
@@ -1552,49 +1262,83 @@ end repeat\"")))
 ```
 
 
-### Other exporters {#other-exporters}
+## Org automation {#org-automation}
 
-[ox-jira](https://github.com/stig/ox-jira.el) to export in Jira markup format.
+
+### Document macro helpers {#document-macro-helpers}
+
+I use these helpers in Org macros to format Hammerspoon API links, keyboard sequences, and Lua documentation links. The Lua helper points to version 5.3, which is the version those documents refer to.
 
 ```emacs-lisp
-(package! ox-jira)
+(defun zz/org-if-str (str &optional desc)
+  (when (org-string-nw-p str)
+    (or (org-string-nw-p desc) str)))
+
+(defun zz/org-macro-hsapi-code (module &optional func desc)
+  (org-link-make-string
+   (concat "https://www.hammerspoon.org/docs/"
+           (concat module (zz/org-if-str func (concat "#" func))))
+   (or (org-string-nw-p desc)
+       (format "=%s="
+               (concat module
+                       (zz/org-if-str func (concat "." func)))))))
+
+(defun zz/org-macro-keys-code-outer (str)
+  (mapconcat (lambda (s)
+               (concat "~" s "~"))
+             (split-string str)
+             (concat (string ?\u200B) "+" (string ?\u200B))))
+(defun zz/org-macro-keys-code-inner (str)
+  (concat "~" (mapconcat #'identity
+                         (split-string str)
+                         (concat (string ?\u200B) "-" (string ?\u200B)))
+          "~"))
+(defun zz/org-macro-keys-code (str)
+  (zz/org-macro-keys-code-inner str))
+
+(defun zz/org-macro-luadoc-code (func &optional section desc)
+  (org-link-make-string
+   (concat "https://www.lua.org/manual/5.3/manual.html#"
+           (zz/org-if-str func section))
+   (zz/org-if-str func desc)))
+
+(defun zz/org-macro-luafun-code (func &optional desc)
+  (org-link-make-string
+   (concat "https://www.lua.org/manual/5.3/manual.html#"
+           (concat "pdf-" func))
+   (zz/org-if-str (concat "=" func "()=") desc)))
+```
+
+
+### Reformatting and importing {#reformatting-and-importing}
+
+When I want to regenerate an Org document from its parsed structure, I run `zz/org-reformat-buffer`. It asks for confirmation before rewriting the buffer. I also use `org-pandoc-import` to bring in other document formats; that needs Pandoc installed.
+
+```emacs-lisp
+(defun zz/org-reformat-buffer ()
+  (interactive)
+  (when (y-or-n-p "Really format current buffer? ")
+    (let ((document (org-element-interpret-data (org-element-parse-buffer))))
+      (erase-buffer)
+      (insert document)
+      (goto-char (point-min)))))
 ```
 
 ```emacs-lisp
-(use-package! ox-jira
-  :after org)
-```
-
-[org-jira](https://github.com/ahungry/org-jira) for full Jira integration - manage issues from Org mode.
-
-```emacs-lisp
-(package! org-jira)
+(package! org-pandoc-import
+  :recipe (:host github
+                 :repo "tecosaur/org-pandoc-import"
+                 :files ("*.el" "filters" "preprocessors")))
 ```
 
 ```emacs-lisp
-(make-directory "~/.org-jira" 'ignore-if-exists)
-(setq jiralib-url "https://jira.example.com/")
-```
-
-[org-special-block-extras](https://github.com/alhassy/org-special-block-extras) to enable additional special block types and their corresponding exports (disabled for now).
-
-```emacs-lisp
-(package! org-special-block-extras)
-```
-
-```emacs-lisp
-(use-package! org-special-block-extras
-  :after org
-  :hook (org-mode . org-special-block-extras-mode))
+(use-package! org-pandoc-import)
 ```
 
 
-### Other Org stuff {#other-org-stuff}
+### Structured queries {#structured-queries}
 
-
-### Programming Org {#programming-org}
-
-Trying out [org-ml](https://github.com/ndwarshuis/org-ml) for easier access to Org objects.
+I use Org ML to manipulate Org elements and Org QL to query them. The heading helpers below build lists of links based on local tags, either ones I specify or those on the current heading. I can call them from my Org documents.
 
 ```emacs-lisp
 (package! org-ml)
@@ -1605,8 +1349,6 @@ Trying out [org-ml](https://github.com/ndwarshuis/org-ml) for easier access to O
   :after org)
 ```
 
-I'm also testing [org-ql](https://github.com/alphapapa/org-ql) for structured queries on Org documents.
-
 ```emacs-lisp
 (package! org-ql)
 ```
@@ -1614,35 +1356,30 @@ I'm also testing [org-ql](https://github.com/alphapapa/org-ql) for structured qu
 ```emacs-lisp
 (use-package! org-ql
   :after org)
-```
 
-This function returns a list of all the headings in the given file which have the given tags.
-
-```emacs-lisp
 (defun zz/headings-with-tags (file tags)
   (string-join
    (org-ql-select file
-     `(tags-local ,@tags)
-     :action '(let ((title (org-get-heading 'no-tags 'no-todo)))
-                (concat "- "
-                        (org-link-make-string
-                         (format "file:%s::*%s" file title)
-                         title))))
+                  `(tags-local ,@tags)
+                  :action '(let ((title (org-get-heading 'no-tags 'no-todo)))
+                             (concat "- "
+                                     (org-link-make-string
+                                      (format "file:%s::*%s" file title)
+                                      title))))
    "\n"))
-```
 
-This function returns a list of all the headings in the given file which match the tags of the current heading.
-
-```emacs-lisp
 (defun zz/headings-with-current-tags (file)
   (let ((tags (s-split ":" (cl-sixth (org-heading-components)) t)))
     (zz/headings-with-tags file tags)))
 ```
 
 
-## Coding {#coding}
+## Programming {#programming}
 
-Tangle-on-save has revolutionized my literate programming workflow. It automatically runs `org-babel-tangle` upon saving any org-mode buffer, which means the resulting files will be automatically kept up to date. For a while I did this by manually adding `org-babel-tangle` to the `after-save` hook in Org mode, but now I use the [org-auto-tangle](https://github.com/yilkalargaw/org-auto-tangle) package, which does this asynchronously and selectively for each Org file where it is desired.
+
+### Automatic tangling {#automatic-tangling}
+
+I use Org Auto Tangle to regenerate code when I save an Org file. I enable it in all Org buffers by default, so it works for other literate documents as well as this configuration. For a document I don't want to tangle automatically, I add `#+auto_tangle: nil`.
 
 ```emacs-lisp
 (package! org-auto-tangle)
@@ -1656,7 +1393,10 @@ Tangle-on-save has revolutionized my literate programming workflow. It automatic
   (setq org-auto-tangle-default t))
 ```
 
-Some useful settings for LISP coding - `smartparens-strict-mode` to enforce parenthesis to match. I map `M-(` to enclose the next expression as in `paredit` using a custom function. Prefix argument can be used to indicate how many expressions to enclose instead of just 1. E.g. `C-u 3 M-(` will enclose the next 3 sexps.
+
+### Lisp editing {#lisp-editing}
+
+I use Smartparens strict mode in Lisp buffers, with Paredit-style bindings. `M-(` wraps the next expression in parentheses, or more expressions if I give it a numeric prefix. To look up the function at point, I use `C-h C-f` or the localleader `g p` binding.
 
 ```emacs-lisp
 (defun zz/sp-enclose-next-sexp (num)
@@ -1672,216 +1412,212 @@ Some useful settings for LISP coding - `smartparens-strict-mode` to enforce pare
               racket-repl-mode) :append #'smartparens-strict-mode)
   (add-hook! smartparens-mode :append #'sp-use-paredit-bindings)
   (map! :map (smartparens-mode-map smartparens-strict-mode-map)
-        "M-(" #'zz/sp-enclose-next-sexp))
+    "M-(" #'zz/sp-enclose-next-sexp))
+
+(after! prog-mode
+  (map! :map prog-mode-map "C-h C-f" #'find-function-at-point)
+  (map! :map prog-mode-map
+    :localleader
+    :desc "Find function at point"
+    "g p" #'find-function-at-point))
 ```
 
-Adding keybindings for some useful functions:
 
--   `find-function-at-point` gets bound to `C-c l g p` (grouped together with other "go to" functions bound by Doom) and to `C-c C-f` (analog to the existing `C-c f`) for faster access.
-    ```emacs-lisp
-    (after! prog-mode
-      (map! :map prog-mode-map "C-h C-f" #'find-function-at-point)
-      (map! :map prog-mode-map
-            :localleader
-            :desc "Find function at point"
-            "g p" #'find-function-at-point))
-    ```
+### Additional languages and Babel {#additional-languages-and-babel}
 
-Some other languages I use.
-
--   [Elvish shell](http://elvish.io/), with support for org-babel.
-    ```emacs-lisp
-    (package! elvish-mode)
-    (package! ob-elvish)
-    ```
-
--   Fish shell.
-    ```emacs-lisp
-    (package! fish-mode)
-    ```
-
--   [CFEngine](http://cfengine.com/) policy files. The `cfengine3-mode` package is included with Emacs, but I also install org-babel support.
-    ```emacs-lisp
-    (package! ob-cfengine3)
-    ```
-
-    ```emacs-lisp
-    (use-package! cfengine
-      :defer t
-      :commands cfengine3-mode
-      :mode ("\\.cf\\'" . cfengine3-mode))
-    ```
-
--   [Graphviz](https://graphviz.org/) for graph generation.
-    ```emacs-lisp
-    ;(package! graphviz-dot-mode)
-    ```
-
-    ```emacs-lisp
-    ;(use-package! graphviz-dot-mode)
-    ```
-
--   I am learning [Common LISP](http://www.gigamonkeys.com/book/), which is well supported through the `common-lisp` Doom module, but I need to configure this in the `~/.slynkrc` file for I/O in the Sly REPL to work fine ([source](https://github.com/joaotavora/sly/issues/347#issuecomment-717065056)).
-    ```emacs-lisp
-    (setf slynk:*use-dedicated-output-stream* nil)
-    ```
-
--   [package-lint](https://github.com/purcell/package-lint) for checking MELPA packages.
-    ```emacs-lisp
-    (package! package-lint)
-    ```
-
--   Playing with [Zig](https://ziglang.org/):
-    ```emacs-lisp
-    (package! zig-mode)
-    ```
-
-
-## Other tools {#other-tools}
-
-
-### Miscellaneous packages {#miscellaneous-packages}
-
--   [Typst mode](https://codeberg.org/meow_king/typst-ts-mode/wiki/Installation.md):
-    ```emacs-lisp
-    (package! typst-ts-mode :recipe (:host codeberg :repo "meow_king/typst-ts-mode"))
-    ```
-
--   [Dockerfile mode](https://github.com/spotify/dockerfile-mode):
-    ```emacs-lisp
-    (package! dockerfile-mode)
-    ```
-
-    ```emacs-lisp
-    (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
-    (put 'dockerfile-image-name 'safe-local-variable #'stringp)
-    ```
-
-This prevents the `docker` command from producing ANSI sequences during the image build process, which results in a more readable output in the compilation buffer. From <https://emacs.stackexchange.com/a/55340/11843>:
+Beyond the languages covered by my Doom modules, I install modes for Elvish, Fish, CFEngine, D2, and Zig, plus package linting. I also add Babel support for Elvish and CFEngine so I can run their code blocks from Org. I ask D2 to put temporary files in the current directory.
 
 ```emacs-lisp
+(package! elvish-mode)
+(package! ob-elvish)
+
+(package! fish-mode)
+
+(package! ob-cfengine3)
+```
+
+```emacs-lisp
+(use-package! cfengine
+  :defer t
+  :commands cfengine3-mode
+  :mode ("\\.cf\\'" . cfengine3-mode))
+```
+
+```emacs-lisp
+(package! d2-mode)
+```
+
+```emacs-lisp
+(use-package! d2-mode)
+(after! d2-mode
+  (setq d2-tmp-dir "."))
+```
+
+```emacs-lisp
+(package! package-lint)
+
+(package! zig-mode)
+```
+
+
+### Typst and Dockerfiles {#typst-and-dockerfiles}
+
+I use Typst TS mode for editing Typst files, which needs a compatible tree-sitter grammar. I also add Dockerfile mode for files named `Dockerfile` and allow string values for its `dockerfile-image-name` file-local variable. For compilation buffers, I use pipes to avoid terminal escape sequences in the output.
+
+```emacs-lisp
+(package! typst-ts-mode :recipe (:host codeberg :repo "meow_king/typst-ts-mode"))
+
+(package! dockerfile-mode)
+```
+
+```emacs-lisp
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+(put 'dockerfile-image-name 'safe-local-variable #'stringp)
+
 (defun plain-pipe-for-process () (setq-local process-connection-type nil))
 (add-hook 'compilation-mode-hook 'plain-pipe-for-process)
 ```
 
--   Use Emacs [Everywhere](https://github.com/tecosaur/emacs-everywhere)!
-    ```emacs-lisp
-    (package! emacs-everywhere :pin nil)
-    ```
 
-    ```emacs-lisp
-    (use-package! emacs-everywhere
-      :config
-      (setq emacs-everywhere-major-mode-function #'org-mode))
-    ```
+## Desktop and development tools {#desktop-and-development-tools}
 
--   Trying out [Magit's multi-repository abilities](https://magit.vc/manual/magit/Repository-List.html). This stays in sync with the git repo list used by my [chain:summary-status](https://github.com/zzamboni/elvish-themes/blob/master/chain.org#bonus-displaying-the-status-of-several-git-repos-at-once) Elvish shell function by reading the file every time `magit-list-repositories` is called, using `defadvice!`. I also customize the display to add the `Status` column.
-    ```emacs-lisp
-    (after! magit
-      (setq zz/repolist
-            "~/.elvish/package-data/elvish-themes/chain-summary-repos.json")
-      (defadvice! +zz/load-magit-repositories ()
-        :before #'magit-list-repositories
-        (setq magit-repository-directories
-              (seq-map (lambda (e) (cons e 0)) (json-read-file zz/repolist))))
-      (setq magit-repolist-columns
-            '(("Name" 25 magit-repolist-column-ident nil)
-              ("Status" 7 magit-repolist-column-flag nil)
-              ("B<U" 3 magit-repolist-column-unpulled-from-upstream
-               ((:right-align t)
-                (:help-echo "Upstream changes not in branch")))
-              ("B>U" 3 magit-repolist-column-unpushed-to-upstream
-               ((:right-align t)
-                (:help-echo "Local changes not in upstream")))
-              ("Path" 99 magit-repolist-column-path nil))))
-    ```
 
--   I prefer to use the GPG graphical PIN entry utility. This is achieved by setting `epg-pinentry-mode` (`epa-pinentry-mode` before Emacs 27) to `nil` instead of the default `'loopback`.
-    ```emacs-lisp
-    (after! epa
-      (set 'epg-pinentry-mode nil)
-      (setq epa-file-encrypt-to '("diego@zzamboni.org")))
-    ```
+### Magit repository overview {#magit-repository-overview}
 
--   I find `iedit` absolutely indispensable when coding. In short: when you hit `Ctrl-;`, all occurrences of the symbol under the cursor (or the current selection) are highlighted, and any changes you make on one of them will be automatically applied to all others. It's great for renaming variables in code, but it needs to be used with care, as it has no idea of semantics, it's  a plain string replacement, so it can inadvertently modify unintended parts of the code.
-    ```emacs-lisp
-    (package! iedit)
-    ```
+My Elvish theme already keeps a list of repositories in a JSON file, so I have Magit read that list whenever I run `magit-list-repositories`. The overview shows each repository's status, how far it is ahead of or behind upstream, and its path. This needs the JSON file at `zz/repolist` to exist.
 
-    ```emacs-lisp
-    (use-package! iedit
-      :defer
-      :config
-      (set-face-background 'iedit-occurrence "Magenta")
-      :bind
-      ("C-;" . iedit-mode))
-    ```
+```emacs-lisp
+(after! magit
+  (setq zz/repolist
+        "~/.elvish/package-data/elvish-themes/chain-summary-repos.json")
+  (defadvice! +zz/load-magit-repositories ()
+    :before #'magit-list-repositories
+    (setq magit-repository-directories
+          (seq-map (lambda (e) (cons e 0)) (json-read-file zz/repolist))))
+  (setq magit-repolist-columns
+        '(("Name" 25 magit-repolist-column-ident nil)
+          ("Status" 7 magit-repolist-column-flag nil)
+          ("B<U" 3 magit-repolist-column-unpulled-from-upstream
+           ((:right-align t)
+            (:help-echo "Upstream changes not in branch")))
+          ("B>U" 3 magit-repolist-column-unpushed-to-upstream
+           ((:right-align t)
+            (:help-echo "Local changes not in upstream")))
+          ("Path" 99 magit-repolist-column-path nil))))
+```
 
--   A useful macro (sometimes) for timing the execution of things. From [StackOverflow](https://stackoverflow.com/questions/23622296/emacs-timing-execution-of-function-calls-in-emacs-lisp).
-    ```emacs-lisp
-    (defmacro zz/measure-time (&rest body)
-      "Measure the time it takes to evaluate BODY."
-      `(let ((time (current-time)))
-         ,@body
-         (float-time (time-since time))))
-    ```
 
--   I'm still not fully convinced of running a terminal inside Emacs, but `vterm` is much nicer than any of the previous terminal emulators, so I'm giving it a try. I configure it so that it runs my [favorite shell](https://elv.sh/). Vterm runs Elvish flawlessly!
-    ```emacs-lisp
-    (setq vterm-shell "/usr/local/bin/elvish")
-    ```
+### Encryption {#encryption}
 
--   Add "unfill" commands to parallel the "fill" ones, bind <kbd>A-q</kbd> to `unfill-paragraph` and rebind <kbd>M-q</kbd> to the `unfill-toggle` command, which fills/unfills paragraphs alternatively.
-    ```emacs-lisp
-    (package! unfill)
-    ```
+I let GPG use its graphical pinentry prompt and encrypt files to my email address by default.
 
-    ```emacs-lisp
-    (use-package! unfill
-      :defer t
-      :bind
-      ("M-q" . unfill-toggle)
-      ("A-q" . unfill-paragraph))
-    ```
+```emacs-lisp
+(after! epa
+  (setq epg-pinentry-mode nil)
+  (setq epa-file-encrypt-to '("diego@zzamboni.org")))
+```
 
--   The [annotate](https://github.com/bastibe/annotate.el) package is nice - allows adding annotations to files without modifying the file itself.
-    ```emacs-lisp
-    (package! annotate)
-    ```
 
--   [gift-mode](https://github.com/csrhodes/gift-mode) for editing quizzes in [GIFT format](https://docs.moodle.org/39/en/GIFT_format).
-    ```emacs-lisp
-    (package! gift-mode)
-    ```
+### Text editing and timing {#text-editing-and-timing}
 
--   [just-mode](https://github.com/leon-barrett/just-mode.el) for editing [Just](https://just.systems/) files.
-    ```emacs-lisp
-    (package! just-mode)
-    ```
+I use `C-;` to edit matching occurrences together with Iedit. It's handy for text changes, though it doesn't understand symbols the way a language-aware rename command does. The small `zz/measure-time` macro lets me time a Lisp expression and get the elapsed seconds.
 
--   [chezmoi.el](https://github.com/tuh8888/chezmoi.el) for interacting with [chezmoi](https://www.chezmoi.io/).
-    ```emacs-lisp
-    (package! chezmoi)
-    ```
+```emacs-lisp
+(package! iedit)
+```
 
-    ```emacs-lisp
-    (use-package! chezmoi
-      :config
-      (load-file "~/.emacs.d/.local/straight/repos/chezmoi.el/extensions/chezmoi-magit.el"))
-    ```
+```emacs-lisp
+(use-package! iedit
+  :defer
+  :config
+  (set-face-background 'iedit-occurrence "Magenta")
+  :bind
+  ("C-;" . iedit-mode))
+
+(defmacro zz/measure-time (&rest body)
+  "Measure the time it takes to evaluate BODY."
+  `(let ((time (current-time)))
+     ,@body
+     (float-time (time-since time))))
+```
+
+
+### Terminal {#terminal}
+
+Elvish is my shell of choice, so I use it in Vterm too. I look for it on Emacs' `exec-path`, with `/usr/local/bin/elvish` as a fallback.
+
+```emacs-lisp
+(setq vterm-shell (or (executable-find "elvish") "/usr/local/bin/elvish"))
+```
+
+
+### Filling, annotations, and file formats {#filling-annotations-and-file-formats}
+
+I bind `M-q` to toggle between filling and unfilling a paragraph, and `A-q` to unfill it directly. I also install Annotate for external annotations, GIFT mode for quizzes, and Just mode for task files.
+
+```emacs-lisp
+(package! unfill)
+```
+
+```emacs-lisp
+(use-package! unfill
+  :defer t
+  :bind
+  ("M-q" . unfill-toggle)
+  ("A-q" . unfill-paragraph))
+```
+
+```emacs-lisp
+(package! annotate)
+
+(package! gift-mode)
+
+(package! just-mode)
+```
+
+
+### Chezmoi and Magit {#chezmoi-and-magit}
+
+I include the Chezmoi Magit extension in the package recipe so I can load it through `load-path` without hardcoding a Straight checkout path. Opening Magit loads the integration, and I can also call `chezmoi-magit-status` directly.
+
+```emacs-lisp
+(package! chezmoi
+  :recipe (:files (:defaults "extensions/chezmoi-magit.el")))
+```
+
+```emacs-lisp
+(use-package! chezmoi
+  :defer t)
+
+(use-package! chezmoi-magit
+  :after magit
+  :commands chezmoi-magit-status)
+```
+
+
+### Jira {#jira}
+
+I have Org Jira installed for managing issues from Emacs. The URL below is a placeholder; it needs a real Jira server address before I can use it.
+
+```emacs-lisp
+(package! org-jira)
+```
+
+```emacs-lisp
+(make-directory "~/.org-jira" 'ignore-if-exists)
+(setq jiralib-url "https://jira.example.com/")
+```
 
 
 ### Posting to 750words.com {#posting-to-750words-dot-com}
 
-I use [750words.com](https://750words.com/) for recording some writing every day (1464-day streak as of this writing!). I wrote [750words-client](https://github.com/zzamboni/750words-client/) to allow posting my words from the command line, and the code below integrates this into Emacs, so I can post text directly from the current buffer.
+I use my [750words-client](https://github.com/zzamboni/750words-client/) package to submit writing from Emacs. Its commands and Org exporter load when I need them.
 
 ```emacs-lisp
 (package! 750words
   :recipe (:host github
-           :repo "zzamboni/750words-client"
-           :files ("*.el")))
-;;(package! 750words
-;;  :recipe (:local-repo ;;"~/Dropbox/Personal/devel/750words-client"))
+                 :repo "zzamboni/750words-client"
+                 :files ("*.el")))
 ```
 
 ```emacs-lisp
@@ -1890,35 +1626,15 @@ I use [750words.com](https://750words.com/) for recording some writing every day
 ```
 
 
-## Experiments {#experiments}
+## References {#references}
 
-Some experimental code to list functions which are not native-compiled. Sort of works but its very slow. This does not get tangled to my config.el, I just keep it here for reference.
+I've borrowed ideas from these configurations and tutorials along the way:
 
-```emacs-lisp
-(with-current-buffer (get-buffer-create "*Non-native functions*")
-  (mapatoms
-   (lambda (s)
-     (when (and (functionp s)
-                (not (helpful--native-compiled-p s))
-                (not (helpful--primitive-p s t)))
-       (insert (symbol-name s))
-       (insert " --- ")
-       (insert (or (cdr (find-function-library s)) "<no file>"))
-       (insert "\n"))
-     ))
-  )
-```
-
-Make ox-md export src blocks with backticks and the language name.
-
-```emacs-lisp
-(defun org-md-example-block (example-block _contents info)
-  "Transcode EXAMPLE-BLOCK element into Markdown format.
-CONTENTS is nil.  INFO is a plist used as a communication
-channel."
-  (let ((lang (or (org-element-property :language example-block) "")))
-    (format "```%s\n%s```\n"
-            lang
-            (org-remove-indentation
-             (org-export-format-code-default example-block info)))))
-```
+-   [My Doom Emacs configuration, with commentary](https://zzamboni.org/post/my-doom-emacs-configuration-with-commentary/) (published background).
+-   [Sacha Chua's configuration](https://sachachua.com/dotemacs/).
+-   [PythonNut's configuration](https://github.com/PythonNut/emacs-config).
+-   [Mastering Emacs](https://www.masteringemacs.org/).
+-   [Tecosaur's configuration](https://tecosaur.github.io/emacs-config/config.html).
+-   [Howard Abrams' literate programming tutorial](https://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html).
+-   [Nick Anderson's Level up your notes with Org](https://github.com/nickanderson/Level-up-your-notes-with-Org).
+-   [Org GTD manual and migration guide](https://github.com/Trevoke/org-gtd.el/blob/master/doc/org-gtd.org).

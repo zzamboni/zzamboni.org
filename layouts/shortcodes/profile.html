@@ -1,3 +1,6 @@
+{{/* Header-only adaptation of Blowfish home/profile.html for article content.
+     Keep the existing thumbnail crop and original-image zoom rather than the
+     homepage's forced center crop and square zoom image. */}}
 {{ $disableImageOptimization := .Site.Params.disableImageOptimization | default false }}
   <header class="relative px-1 py-1 flex flex-col items-center mb-3">
     {{ with .Site.Params.Author.image }}
@@ -9,7 +12,7 @@
       {{ end }}
       {{ if $authorImage }}
         {{ $final := $authorImage }}
-        {{ if not $disableImageOptimization }}
+        {{ if not (or $disableImageOptimization (eq $authorImage.MediaType.SubType "svg")) }}
           {{ $final = $authorImage.Fill (print "288x288 q" ( $.Site.Params.Author.imagequality | default "96" )) }}
         {{ end }}
         <img
@@ -17,6 +20,8 @@
           width="144"
           height="144"
           alt="{{ $.Site.Params.Author.name | default `Author` }}"
+          loading="eager"
+          fetchpriority="high"
           src="{{ $final.RelPermalink }}"
           data-zoom-src="{{ $authorImage.RelPermalink }}">
       {{ end }}

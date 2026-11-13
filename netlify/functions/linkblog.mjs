@@ -198,7 +198,7 @@ export default async function handler(request) {
       url.hostname;
 
     const tags = [
-      "zznippets",
+      "linky",
       ...(Array.isArray(input.tags) ? input.tags : []),
     ]
       .map(String)

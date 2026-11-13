@@ -3,11 +3,10 @@ title = "Reviving an old Mac with Linux (part 2 - prettifying boot)"
 author = ["Diego Zamboni"]
 summary = "Improve your Mac/Linux dual boot setup with pretty boot screens!"
 date = 2025-10-18T20:24:00+02:00
-tags = ["howto", "mac", "linux", "opencore", "oclp"]
+tags = ["linux", "mac", "howto", "opencore", "oclp"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/20251001-230259_OC-dual-boot-screen.png"
-toc = true
 series = ["Linux on Mac"]
 series_order = 2
 +++
@@ -16,7 +15,7 @@ In the [previous post]({{< relref "2025-10-01-reviving-an-old-mac-with-linux-par
 
 However those icons are fairly generic, and there are a couple of spurious entries there introduced by default by OpenCore. Let's make it prettier.
 
-{{< figure src="images/20251013-223325_eOS-default-OpenCore-boot.png" link="images/20251013-223325_eOS-default-OpenCore-boot.png" >}}
+{{< figure src="20251013-223325_eOS-default-OpenCore-boot.png" >}}
 
 
 ## Prettifying the OpenCore boot screen {#prettifying-the-opencore-boot-screen}
@@ -43,7 +42,7 @@ First, we can configure the OpenCore theme. You can find links to many nice them
                    <string>Blackosx\BsxDarkFenceLight1</string>
     ```
 5.  Reboot! You should now see the new theme in action, but still with the extra icons, and with the default Penguin icon for Linux:
-    ![](images/20251013-232121_09205826.png)
+    ![](20251013-232121_09205826.png)
 
 Removing and customizing those extra icons took a bit of experimentation. The key is in using `.contentVisibility` files to hide the undesired icons, and `.contentFlavour` files to define the icon to use (these files are described in the full OpenCore Configuration guide mentioned above):
 
@@ -58,7 +57,7 @@ Removing and customizing those extra icons took a bit of experimentation. The ke
       echo ElementaryOS | sudo tee /boot/.contentFlavour
     ```
 -   Reboot and enjoy your new clean boot screen!
-    [![](images/20251001-230259_OC-dual-boot-screen.png)](images/20251001-230259_OC-dual-boot-screen.png)
+    ![](20251001-230259_OC-dual-boot-screen.png)
 -   Bonus tip: to configure the default boot entry, just select it and press `Ctrl-Enter` - the choice will be remembers in future boots.
 
 
@@ -66,11 +65,11 @@ Removing and customizing those extra icons took a bit of experimentation. The ke
 
 Most Ubuntu-based distributions (and maybe others) these days use [Plymouth](https://wiki.ubuntu.com/Plymouth#Splash_Theme) as their boot-screen manager. Plymouth is a bit of a dark art - it's somewhat documented but a lot of trial and error is still needed. In elementary OS, by default you will see the following boot screen:
 
-{{< figure src="images/20251018-180313_eOS-plymouth-boot.png" link="images/20251018-180313_eOS-plymouth-boot.png" >}}
+{{< figure src="20251018-180313_eOS-plymouth-boot.png" >}}
 
 It's not bad, but I prefer something a bit more Mac-like, with the logo not so big, and a progress bar at the bottom. Here's what my boot screen looks like:
 
-{{< figure src="images/20251018-180510_mac-like-boot-eos.png" link="images/20251018-180510_mac-like-boot-eos.png" >}}
+{{< figure src="20251018-180510_mac-like-boot-eos.png" >}}
 
 And here's how to achieve it:
 

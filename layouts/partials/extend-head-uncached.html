@@ -7,6 +7,12 @@
   <script defer src="{{ $packery.RelPermalink }}" integrity="{{ $packery.Data.Integrity }}"></script>
   {{ $gallery := resources.Get "js/shortcodes/gallery.js" | resources.Minify | resources.Fingerprint $algorithm }}
   <script src="{{ $gallery.RelPermalink }}" integrity="{{ $gallery.Data.Integrity }}"></script>
+{{ end }}
+
+{{/* Standard Blowfish galleries already load their Packery assets through the theme. */}}
+{{ $hasFigures := and .IsPage (strings.Contains .Content "<figure") }}
+{{ if or .Params.photos (.HasShortcode "gallery") $hasFigures }}
+  {{ $algorithm := site.Params.fingerprintAlgorithm | default "sha512" }}
   {{ $vendorCSS := resources.Get "lib/glightbox/glightbox.min.css" | resources.Fingerprint $algorithm }}
   <link rel="stylesheet" href="{{ $vendorCSS.RelPermalink }}" integrity="{{ $vendorCSS.Data.Integrity }}">
   {{ $vendorJS := resources.Get "lib/glightbox/glightbox.min.js" | resources.Fingerprint $algorithm }}
@@ -15,4 +21,13 @@
   <link rel="stylesheet" href="{{ $lightboxCSS.RelPermalink }}" integrity="{{ $lightboxCSS.Data.Integrity }}">
   {{ $lightboxJS := resources.Get "js/photo-lightbox.js" | resources.Minify | resources.Fingerprint $algorithm }}
   <script defer src="{{ $lightboxJS.RelPermalink }}" integrity="{{ $lightboxJS.Data.Integrity }}"></script>
+{{ end }}
+
+{{/* Add visible, native links after Mermaid renders (including appearance changes). */}}
+{{ if .Page.HasShortcode "mermaid" }}
+  {{ $algorithm := site.Params.fingerprintAlgorithm | default "sha512" }}
+  {{ $css := resources.Get "css/mermaid-links.css" | resources.Minify | resources.Fingerprint $algorithm }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{ $js := resources.Get "js/mermaid-links.js" | resources.Minify | resources.Fingerprint $algorithm }}
+  <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
 {{ end }}

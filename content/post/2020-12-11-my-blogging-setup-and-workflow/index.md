@@ -5,12 +5,13 @@ summary = "My blogging has seen multiple iterations over the years, and with it,
 date = 2020-12-11T00:27:00+01:00
 tags = ["blogging", "howto", "emacs", "hugo", "orgmode", "gitlab", "netlify"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
-toc = true
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/z-favicon-src.png"
+series = ["My website setup"]
+series_order = 2
 +++
 
-My blogging has seen [multiple iterations](/about/#my-online-past) over the years, and with it, the tools I use have changed. At the moment I use a set of tools and workflows which make it very easy to keep my blog updated, and I will describe them in this post. In short, they are:
+My blogging has seen [multiple iterations]({{< relref "index#my-online-past" >}}) over the years, and with it, the tools I use have changed. At the moment I use a set of tools and workflows which make it very easy to keep my blog updated, and I will describe them in this post. In short, they are:
 
 -   **Writing:** Emacs, org-mode
 -   **Exporting:** ox-hugo
@@ -45,7 +46,7 @@ Ox-hugo supports [two ways of organizing your posts](https://ox-hugo.scripter.co
 
 Note that ox-hugo is not limited to exporting blog posts, but any content processed by Hugo. For example, my org source file also includes all the static pages in my web site - they are differentiated from blog posts simply by the Hugo [section](https://gohugo.io/content-management/sections/) to which they belong, which is defined using the [HUGO_SECTION property](https://ox-hugo.scripter.co/doc/usage/#before-you-export) in my Org file.
 
-Since the full power of org markup is available when using ox-hugo, you can do very interesting things. For example, all the posts in my [Literate Config Files](/tags/literateconfig/) category are automatically updated every time I export them with the actual, real content of the corresponding config file, which I also keep in org format. There is a lot of hidden power in org-mode and ox-hugo. My recommendation is to go through the source files for some of the websites listed in ox-hugo's [Real World Examples](https://ox-hugo.scripter.co/doc/examples/) section. I have learned a lot by reading through the source files for the [ox-hugo website](https://github.com/kaushalmodi/ox-hugo/tree/master/doc) itself.
+Since the full power of org markup is available when using ox-hugo, you can do very interesting things. For example, all the posts in my [Literate Config Files]({{< relref "literate-config-files" >}}) series are automatically updated every time I export them with the actual, real content of the corresponding config file, which I also keep in org format. There is a lot of hidden power in org-mode and ox-hugo. My recommendation is to go through the source files for some of the websites listed in ox-hugo's [Real World Examples](https://ox-hugo.scripter.co/doc/examples/) section. I have learned a lot by reading through the source files for the [ox-hugo website](https://github.com/kaushalmodi/ox-hugo/tree/master/doc) itself.
 
 Once you have some contents in your Org file, you can export them into Markdown files. For this, use the standard Org export dispatcher (bound to <kbd>C-c C-e</kbd> by default) and choose `[H] Export to Hugo-compatible Markdown` / `[A] All subtrees (or File) to Md file(s)` options (you may choose other options for course, but this one exports the whole file). Ox-hugo knows the default structure expected by Hugo (a top-level `content/` directory in which you have directories for each section), so there's usually not much to do other than point ox-hugo to where your top-level Hugo directory is, using the [HUGO_BASE_DIR](https://ox-hugo.scripter.co/doc/usage/#before-you-export) property.
 
@@ -72,7 +73,7 @@ Finally! Once you are happy with the results, we have come to the point of publi
 
 Netlify has impressive capabilities, but for a basic website like mine, a mostly default setup works well. This is what the Build Settings look like:
 
-{{< figure src="images/20201211-000928_zzamboni-netlify-build-settings.png" >}}
+{{< figure src="20201211-000928_zzamboni-netlify-build-settings.png" >}}
 
 Note that I change Hugo's `publishDir` parameter from its default value of `public` to `docs`, and configure Netlify to match (note that this could also be configured in `netlify.toml`, below). This is done by specifying the parameter in Hugo's [`config.toml`](https://gitlab.com/zzamboni/zzamboni.org/-/blob/master/config.toml#L9) file:
 
@@ -88,11 +89,32 @@ My repository contains a `netlify.toml` file which is used to configure some Hug
 #------------------
 
 [build]
-  command = "hugo --gc --minify -b $URL"
+  ignore = "node ./scripts/netlify-ignore.mjs"
+  command = """
+    echo "BUILD_DRAFTS=$BUILD_DRAFTS"
+    echo "CONTEXT=$CONTEXT"
+    if [ "$BUILD_DRAFTS" = "true" ] && [ "$BRANCH" = "staging" ]; then
+      export HUGO_PARAMS_DEPLOYMENTBANNER=staging-draft
+    elif [ "$BUILD_DRAFTS" = "true" ]; then
+      export HUGO_PARAMS_DEPLOYMENTBANNER=draft
+    elif [ "$BRANCH" = "staging" ]; then
+      export HUGO_PARAMS_DEPLOYMENTBANNER=staging
+    else
+      unset HUGO_PARAMS_DEPLOYMENTBANNER
+    fi
+    if [ "$BUILD_DRAFTS" = "true" ]; then
+      echo "Build command: hugo --gc --minify --buildDrafts -b $URL"
+      hugo --gc --minify --buildDrafts -b $URL
+    else
+      echo "Build command: hugo --gc --minify -b $URL"
+      hugo --gc --minify -b $URL
+    fi
+  """
   publish = "public"
 
 [build.environment]
-  HUGO_VERSION = "0.152.2"
+  HUGO_VERSION = "0.167.0"
+  GO_VERSION = "1.25"
   HUGO_EXTENDED = "true"
   NETLIFY_BUILD_IMAGE = "noble"
   HUGO_ENV = "production"
@@ -103,11 +125,15 @@ My repository contains a `netlify.toml` file which is used to configure some Hug
   GIT_DEPTH = "1"
 
 [context.production.environment]
-  HUGO_VERSION ="0.152.2"
+  HUGO_VERSION = "0.167.0"
   HUGO_ENV = "production"
 
 [context.deploy-preview.environment]
-  HUGO_VERSION ="0.152.2"
+  HUGO_VERSION = "0.167.0"
+
+# Persist Hugo's generated resources between builds in all deploy contexts.
+[[plugins]]
+  package = "netlify-plugin-hugo-cache-resources"
 
 #------------------
 # Headers Configuration
@@ -145,6 +171,48 @@ Netlify-CDN-Cache-Control = "public, s-maxage=1209600, stale-while-revalidate=86
 from = "/*.{jpg,jpeg,gif,png,webp,avif}"
 to = "/.netlify/images?url=/:splat"
 status = 200
+force = true
+
+[[redirects]]
+from = "https://mail.zzamboni.org/*"
+to = "https://mail.google.com/a/zzamboni.org"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://mail2.zzamboni.org/*"
+to = "https://mail.google.com/a/zzamboni.org"
+status = 301
+force = true
+
+[[redirects]]
+from = "http://mail.zzamboni.org/*"
+to = "https://mail.google.com/a/zzamboni.org"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://calendar.zzamboni.org/*"
+to = "https://calendar.google.com/a/zzamboni.org"
+status = 301
+force = true
+
+[[redirects]]
+from = "http://calendar.zzamboni.org/*"
+to = "https://calendar.google.com/a/zzamboni.org"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://docs.zzamboni.org/*"
+to = "https://docs.google.com/a/zzamboni.org"
+status = 301
+force = true
+
+[[redirects]]
+from = "http://docs.zzamboni.org/*"
+to = "https://docs.google.com/a/zzamboni.org"
+status = 301
 force = true
 ```
 

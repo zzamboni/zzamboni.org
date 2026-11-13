@@ -5,14 +5,13 @@ summary = "In this second article about Hammerspoon, we look into _Spoons_, modu
 date = 2017-09-01T17:55:00+02:00
 tags = ["hammerspoon", "mac", "howto", "spoons"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
-toc = true
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/hammerspoon.jpg"
 +++
 
 In this second article about Hammerspoon, we look into _Spoons_, modules written in Lua which can be easily installed and loaded into Hammerspoon to provide ready-to-use functionality. Spoons provide a predefined API to configure and use them. They are also a good way to share your own work with other users.
 
-See also the [first article in this series](/post/getting-started-with-hammerspoon/).
+See also the previous article [Getting Started With Hammerspoon]({{< relref "2017-08-21-getting-started-with-hammerspoon" >}}).
 
 
 ## Using a Spoon to locate your mouse {#using-a-spoon-to-locate-your-mouse}
@@ -21,7 +20,7 @@ As a first example, we will use the [MouseCircle](http://www.hammerspoon.org/Spo
 
 To install the spoon, download its zip file from <https://github.com/Hammerspoon/Spoons/raw/master/Spoons/MouseCircle.spoon.zip>, unpack it, and double-click on the resulting `MouseCircle.spoon` file.  Hammerspoon will install the Spoon under `~/.hammerspoon/Spoons/`.
 
-{{< figure src="images/mousecircle.png" >}}
+{{< figure src="mousecircle.png" >}}
 
 Once a Spoon is installed, you need to use the `hs.loadSpoon()` function to load it. Type the following in the Hammerspoon console, or add it to your `init.lua` file and reload the configuration:
 

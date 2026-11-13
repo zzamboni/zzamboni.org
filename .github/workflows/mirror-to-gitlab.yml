@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - staging
   workflow_dispatch:
 
 permissions:
@@ -16,7 +15,7 @@ concurrency:
 
 jobs:
   mirror:
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Check out full history

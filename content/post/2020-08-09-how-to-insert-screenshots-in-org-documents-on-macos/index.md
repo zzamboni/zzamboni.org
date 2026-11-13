@@ -3,10 +3,9 @@ title = "How to insert screenshots in Org documents on macOS"
 author = ["Diego Zamboni"]
 summary = "As I'm taking notes or writing in Org-mode, I often want to insert screenshots inline with the text. While Org supports inserting and displaying inline images, the assumption is that the image is already somewhere in the file system and we just want to link to it. In this post I will show you how to automate the insertion of images from the clipboard into an org-mode document."
 date = 2020-08-09T16:44:00+02:00
-tags = ["orgmode", "emacs", "howto", "mac", "config"]
+tags = ["emacs", "orgmode", "howto", "mac", "config"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
-toc = false
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/emacs-logo.svg"
 showComments = true
 +++
@@ -43,11 +42,11 @@ Finally, I bind `org-download-screenshot` to <kbd>Ctrl​-​⌘​-​y</kbd> t
 
 Now when I want to insert a screenshot in a document, I simply press <kbd>Shift​-​⌘​-​5</kbd>, capture the screenshot, switch back to Emacs, press  <kbd>Ctrl​-​⌘​-​y</kbd>, and done. It looks like this:
 
-{{< figure src="images/20200809-171713_screenshot.png" >}}
+{{< figure src="20200809-171713_screenshot.png" >}}
 
 And without inline image display, we can see that the screenshot is automatically stored inside the `images/` directory:
 
-{{< figure src="images/20200809-172534_screenshot.png" >}}
+{{< figure src="20200809-172534_screenshot.png" >}}
 
 {{< tip >}}
 Thanks to [this thread at Stack Overflow](https://stackoverflow.com/questions/17435995/paste-an-image-on-clipboard-to-emacs-org-mode-file-without-saving-it) for the base ideas and pointers for this configuration.

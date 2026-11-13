@@ -5,10 +5,9 @@ summary = """
   I am happy to announce the new release of my new book "Literate Config", devoted to the use of Literate Programming for writing and documenting configuration files.
   """
 date = 2019-11-18T22:44:00+01:00
-tags = ["literateconfig", "books", "leanpub", "literateprogramming"]
+tags = ["publishing", "literateconfig", "books", "leanpub", "literateprogramming", "announcements"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
-toc = false
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/literate-config-cover.jpg"
 +++
 

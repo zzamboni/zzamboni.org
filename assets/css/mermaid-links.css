@@ -1,0 +1,17 @@
+/* Scope link affordances to Mermaid diagrams, including HTML labels in SVG. */
+.mermaid a[href]:not(.mermaid-node-link),
+.mermaid .mermaid-link-label {
+  text-decoration: underline;
+  text-underline-offset: .15em;
+}
+.mermaid .mermaid-node-link {
+  cursor: pointer;
+  text-decoration: none;
+}
+.mermaid .mermaid-node-link:hover .node > .label-container,
+.mermaid .mermaid-node-link:focus-visible .node > .label-container {
+  stroke-width: 3px;
+}
+.mermaid .mermaid-node-link:focus-visible .node > .label-container {
+  stroke: currentColor;
+}

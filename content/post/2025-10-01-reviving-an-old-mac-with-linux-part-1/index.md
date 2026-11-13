@@ -3,9 +3,9 @@ title = "Reviving an old Mac with Linux (part 1 - installing Linux)"
 author = ["Diego Zamboni"]
 summary = "I recently learned how to extend the life of an old Mac by installing Linux on it. It's like having a new machine!"
 date = 2025-10-14T22:23:00+02:00
-tags = ["howto", "mac", "linux", "opencore", "oclp"]
+tags = ["linux", "mac", "howto", "opencore", "oclp"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/20251013-223325_eOS-default-OpenCore-boot.png"
 series = ["Linux on Mac"]
 series_order = 1
@@ -19,9 +19,9 @@ The road hasn't been a straight line. I started with [Ubuntu](https://ubuntu.com
 
 Here are some screenshots to wet your appetite: my current dual-boot OpenCore boot screen and my custom [mac-like](https://github.com/zzamboni/mac-like) boot theme for Elementary.
 
-{{< figure src="images/20251001-230259_OC-dual-boot-screen.png" link="images/20251001-230259_OC-dual-boot-screen.png" >}}
+{{< figure src="20251001-230259_OC-dual-boot-screen.png" >}}
 
-{{< figure src="images/20251001-231342_eOS-mac-like-boot.png" link="images/20251001-231342_eOS-mac-like-boot.png" >}}
+{{< figure src="20251001-231342_eOS-mac-like-boot.png" >}}
 
 Anyhow, how did we get here?
 
@@ -75,11 +75,11 @@ Finally! We can install Linux. Download the installer for your chosen distro and
 
 -   In most Linux installers, you will need to identify the EFI partition where the boot components will be stored. Ubuntu allows you to use the existing macOS/OpenCore boot partition, which is 200MB in size. Elementary OS however, requires its EFI partition to be at least 1GB in size, and will not let you choose a smaller partition. Fortunately, OpenCore automatically knows how to handle multiple EFI partitions, so you can just create an extra 1GB EFI partition in your free space, use it for Elementary, and leave the rest for the main Linux partition. It looks like this in GParted (`dev/sda1` was the preexisting EFI partition, `dev/sda3` is the one I created for installing Elementary):
 
-    {{< figure src="images/20251005-000848_eOS-Gparted-extra-EFI-partition.png" link="images/20251005-000848_eOS-Gparted-extra-EFI-partition.png" >}}
+    {{< figure src="20251005-000848_eOS-Gparted-extra-EFI-partition.png" >}}
 
 -   After the Linux installation finishes, try rebooting. In principle, you should see the OpenCore boot screen. However, in my case OpenCore refused to identify the Linux partitions. After **a lot** of head banging I figured out the solution: The trick was to manually install the latest [OpenCore release](https://github.com/acidanthera/OpenCorePkg/releases/) into the EFI partition, overwriting the existing BOOT and OC directories (make sure you back them up first!). You can do this either from macOS if it boots, or from the Linux USB installer. Then OpenCore automatically detected and correctly booted both Linux and macOS. Once everything works, you should see something like this:
 
-    {{< figure src="images/20251013-223325_eOS-default-OpenCore-boot.png" link="images/20251013-223325_eOS-default-OpenCore-boot.png" >}}
+    {{< figure src="20251013-223325_eOS-default-OpenCore-boot.png" >}}
 
 This is good! You can select macOS or Linux. Give them a try. You can set your default boot entry by choosing it with the arrow keys and pressing `Ctrl-Enter`.
 

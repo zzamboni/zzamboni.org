@@ -1,0 +1,56 @@
+#+TITLE: zzamboni.org
+#+OPTIONS: toc:nil num:nil
+
+[[https://app.netlify.com/projects/zzamboni/deploys][https://api.netlify.com/api/v1/badges/e5ae9eeb-01ec-4b37-90ad-2f4b3877a7d6/deploy-status.svg]]
+[[https://zzamboni.org][https://img.shields.io/website?url=https%3A%2F%2Fzzamboni.org&up_message=zzamboni.org&down_message=zzamboni.org%20(down)#.svg]]
+
+This repository contains the source for [[https://zzamboni.org/][zzamboni.org]], my little corner of the web. I write mostly about technology, security, automation, and whatever else catches my attention. I also share interesting links, post photos, and keep my CV and publications here.
+
+I build the site with [[https://gohugo.io/][Hugo]] and the [[https://blowfish.page/][Blowfish]] theme, with custom layouts and styles. [[https://www.netlify.com/][Netlify]] handles hosting and deployment. GitHub is the source of truth; I mirror =main= to [[https://gitlab.com/zzamboni/zzamboni.org][GitLab]].
+
+* How I publish
+
+I use different paths depending on what I'm posting:
+
+- *Longer articles:* I write in Emacs and Org mode in [[file:content-org/zzamboni.org][=content-org/zzamboni.org=]], then export to =content/post/= using [[https://ox-hugo.scripter.co/][ox-hugo]]. The Org source is canonical; the Markdown is generated.
+- *Quick posts and links:* [[https://pagescms.org/][Pages CMS]] edits posts in =content-pagescms/= directly through GitHub.
+- *Links and photos from my phone:* iOS Shortcuts call Netlify functions to create linkblog and photoblog posts. Photo bundles live in =content-photos/=.
+- *Older posts:* =content-legacy/= contains the original Markdown and HTML posts, preserved at their existing URLs. See the [[file:docs/legacy-content.md][legacy content guide]].
+
+Hugo's module mounts bring all these sources together as articles on one website.
+
+For the current architecture, start with [[https://zzamboni.org/post/my-blogging-setup-in-2026-reducing-friction/][My blogging setup in 2026: reducing friction]] (November 2026), the opening article of my /My website setup/ series. The [[https://zzamboni.org/post/my-blogging-setup-with-emacs-org-mode-ox-hugo-hugo-gitlab-and-netlify/][original 2020 blogging setup post]] explains how the Org/ox-hugo workflow began.
+
+* What readers see
+
+The Blowfish-based site has a customized homepage with recent articles and a photo sidebar, plus a [[https://zzamboni.org/archive/][year-by-year archive]] and related-article recommendations. Photo galleries and article figures use a shared lightbox. I also use Blowfish admonitions and alerts in Org-authored articles.
+
+The archive is powered by my reusable [[https://github.com/zzamboni/hugo-blog-archive][hugo-blog-archive]] module; see its [[file:docs/blog-archive.md][site integration guide]]. The [[file:docs/related-posts.md][related-articles]], [[file:docs/gallery-lightbox.md][gallery/lightbox]], and [[file:docs/callout-blocks.md][callout block]] guides explain the other customizations.
+
+* CV and publications
+
+I keep my CV data in JSON Resume format and render the [[https://zzamboni.org/vita/][CV]] and [[https://zzamboni.org/vita/publications/][publications]] as native Hugo pages with my [[https://github.com/zzamboni/hugo-jsonresume][hugo-jsonresume]] module. The module supports Blowfish and generic presentation; the site also provides PDF and BibTeX downloads. The [[file:docs/hugo-jsonresume.md][integration guide]] covers the site's data, downloads, and renderer.
+
+* Automation and environments
+
+GitHub Actions handles housekeeping such as generating missing summaries, caching linkblog favicons, and generating or refining feature images through review PRs. See [[file:docs/feature-image-generation.md][feature images]], [[file:docs/linkblog-favicons.md][link favicons]], and [[file:docs/openai-usage.md][OpenAI usage reporting]].
+
+Real content, including unpublished drafts, lives on =main=. The =staging= branch is used for site experiments. Netlify has separate production, draft, and staging sites. Build filtering, Hugo resource caching, and on-demand draft/staging builds reduce unnecessary deployments; see [[file:docs/netlify-builds.md][Netlify build documentation]].
+
+* Working on the site
+
+I use [[https://mise.jdx.dev/][mise]] to pin development tools. After cloning the repository, run:
+
+#+begin_src sh
+git submodule update --init --recursive
+mise install
+mise run serve
+#+end_src
+
+Use =mise run serve-drafts= to preview unpublished content. Site configuration is under =config/_default/=, theme customizations under =layouts/= and =assets/=, and posting endpoints under =netlify/functions/=.
+
+For maintenance, read the [[file:AGENTS.md][repository guidelines]] and [[file:scripts/README-theme-updates.md][theme/module update guide]].
+
+* Documentation
+
+The [[file:docs/README.md][docs/ directory index]] links to the current operational guides, feature explanations, editorial plans, and dated historical development notes. It is the best starting point for working on a specific part of the site without guessing which of the older notes is still current.

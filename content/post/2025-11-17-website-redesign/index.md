@@ -2,11 +2,10 @@
 title = "Website redesign!"
 author = ["Diego Zamboni"]
 date = 2025-11-18T13:37:00+01:00
-tags = ["sitenews", "announcements"]
+tags = ["blogging", "sitenews", "announcements"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/z-favicon-src.png"
-toc = false
 +++
 
 Eight years ago I announced [The Big Website Reboot]({{< relref "2017-08-08-the-big-website-reboot" >}}), when I switched my website to Hugo. I'm happy to announce the first major update since then.

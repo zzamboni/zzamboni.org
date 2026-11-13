@@ -3,11 +3,12 @@ title = "Porting my CV from Org+LaTeX to JSON Resume"
 author = ["Diego Zamboni"]
 summary = "How I moved my CV source of truth from Org mode + LaTeX to JSON Resume, and built a pipeline that exports both my CV and publications to HTML and PDF."
 date = 2026-02-11T13:21:00+01:00
-tags = ["jsonresume", "orgmode", "latex", "cv"]
+tags = ["cv", "jsonresume", "orgmode", "latex"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/generated/2026-02-10-porting-cv-to-jsonresume.webp"
-toc = true
+series = ["My website setup"]
+series_order = 9
 +++
 
 I have wished for a long time to have separation between my CV contents and layout. After maintaining it directly in LaTeX for a while, I switched years ago to org-mode with LaTeX as the main export target. It worked and it enforced a certain degree of separation (most of the "visual" decisions were left up to the LaTeX exporter, with the org-mode file focusing on the contents), but it was fragile: too many custom LaTeX bits, too much hand-editing, and a pipeline that was hard to reuse elsewhere. It was also impossible to produce a nice HTML version from it. In this post I'll document how I switched the source of truth to JSON Resume and built a custom pipeline that outputs **both** my CV and my publications in HTML and PDF. I'm very happy with the result, which you can find in [my CV page](/vita/).

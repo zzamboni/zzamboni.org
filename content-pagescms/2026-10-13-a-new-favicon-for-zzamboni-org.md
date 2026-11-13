@@ -3,7 +3,6 @@ title = 'A New Favicon for zzamboni.org'
 summary = 'A small refresh of the zzamboni.org favicon, from a Zamboni photo to a cleaner Z-based design.'
 date = '2026-10-13T13:09:00.000'
 tags = [
-	'zznippets',
 	'sitenews',
 ]
 draft = false
@@ -14,7 +13,7 @@ After years of using a photo of the Z from a Zamboni machine as my favicon, I de
 
 
 | Before | After |
-| ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | ![](/img/old-favicon-144x144.png) | ![](/img/favicon-144x144.png) |
 
 

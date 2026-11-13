@@ -16,7 +16,7 @@ home_all_photos:
   other: All photos
 archive_browse:
   other: Browse the archive by year
-archive_jump_to_year:
-  other: Jump to year
-archive_link:
-  other: Link
+share_this_article:
+  other: Share this article
+series_upcoming:
+  other: Upcoming

@@ -7,10 +7,9 @@ summary = """
   I am happy to announce the first release of my new book "Learning Hammerspoon", a book devoted to using Hammerspoon to make using your Mac easier, faster and more fun.
   """
 date = 2018-10-16T21:22:00+02:00
-tags = ["hammerspoon", "mac", "howto", "books", "announcements"]
+tags = ["publishing", "hammerspoon", "mac", "books", "announcements"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
-toc = false
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/hammerspoon.jpg"
 +++
 

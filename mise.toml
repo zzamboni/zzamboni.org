@@ -1,5 +1,6 @@
 [tools]
-hugo-extended = "0.166.0"
+hugo-extended = "0.167.0"
+go = "1.25"
 
 [tasks.serve]
 description = "Build and serve the site locally"
@@ -24,6 +25,15 @@ run = "python3 scripts/theme_update.py update"
 [tasks.theme-verify]
 description = "Verify version pins and build with the pinned Hugo"
 run = "python3 scripts/theme_update.py verify"
+
+[tasks.jsonresume-update]
+description = "Update the JSON Resume module pin and show dependency changes"
+usage = 'arg "[version]" default="main" help="Module branch, tag, or commit to import"'
+run = '''
+set -eu
+hugo mod get "github.com/zzamboni/hugo-jsonresume@${usage_version?}"
+git diff -- go.mod go.sum
+'''
 
 [tasks.diff-staging-main]
 description = "Show non-content differences between staging and branch"

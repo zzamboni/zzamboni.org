@@ -1,0 +1,7 @@
+{{- /* Keep legacy shortcode calls, but let Blowfish's blockquote hook render them. */ -}}
+{{- $body := strings.Trim .Inner "\r\n" -}}
+{{- $markdown := printf "> [!%s]\n%s" (strings.ToUpper .Name) (replaceRE "(?m)^" "> " $body) -}}
+{{- with .Icon -}}
+  {{- $markdown = printf "%s\n{icon=%q}" $markdown . -}}
+{{- end -}}
+{{- .Page.RenderString (dict "display" "block") $markdown -}}

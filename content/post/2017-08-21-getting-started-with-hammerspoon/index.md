@@ -5,8 +5,7 @@ summary = "This is the first installment of a series of posts about Hammerspoon,
 date = 2017-08-21T16:34:00+02:00
 tags = ["hammerspoon", "mac", "howto"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
-toc = true
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/hammerspoon.jpg"
 +++
 
@@ -17,16 +16,16 @@ This is the first installment of a series of posts about Hammerspoon, a staggeri
 
 [Hammerspoon](http://www.hammerspoon.org/) is a Mac application that allows you to achieve an unprecedented level of control over your Mac.  Hammerspoon enables interaction with the system at multiple layers--from low-level file system or network access, mouse or keyboard event capture and generation, all the way to manipulating applications or windows, processing URLs and drawing on the screen. It also allows interfacing with [AppleScript](https://www.macosxautomation.com/applescript/), Unix commands and scripts, and other applications. Hammerspoon configuration is written in [Lua](https://www.lua.org/about.html), a popular embedded programming language.
 
-Using Hammerspoon, you can replace many stand-alone Mac utilities for controlling or customizing specific aspects of your Mac (the kind that tends to overcrowd the menubar). For example, the following are doable using Hammerspoon (these are all things I do with it on my machine - each paragraph links to the corresponding sections in my [config file](/post/my-hammerspoon-configuration-with-commentary/)):
+Using Hammerspoon, you can replace many stand-alone Mac utilities for controlling or customizing specific aspects of your Mac (the kind that tends to overcrowd the menubar). For example, the following are doable using Hammerspoon (these are all things I do with it on my machine - each paragraph links to the corresponding sections in my [my config file]({{< relref "2018-01-08-my-hammerspoon-configuration-with-commentary" >}})):
 
--   Add missing or more convenient keyboard shortcuts to applications, even for complex multi-step actions. For example: [automated tagging and filing in Evernote, mail/note archival in Mail, Outlook and Evernote, filing items from multiple applications to OmniFocus using consistent keyboard shortcuts](/post/my-hammerspoon-configuration-with-commentary/#organization-and-productivity), or [muting/unmuting a conversation in Skype](/post/my-hammerspoon-configuration-with-commentary/#other-applications).
--   [Open URLs in different browsers based on regular expression patterns](/post/my-hammerspoon-configuration-with-commentary/#url-dispatching-to-site-specific-browsers).  When combined with Site-specific Browsers (I use [Epichrome](https://github.com/dmarmor/epichrome)), this allows for highly flexible management of bookmarks, plugins and search configurations.
--   Replace Spotlight, Lacona and other launchers with a [fully configurable, extensible launcher](/post/my-hammerspoon-configuration-with-commentary/#seal), which allows not only to open applications, files and bookmarks, but to trigger arbitrary Lua functions.
--   [Manipulate windows](/post/my-hammerspoon-configuration-with-commentary/#window-and-screen-manipulation) using keyboard shortcuts to resize, move and arrange them.
--   [Set up actions to happen automatically when switching between WiFi networks](/post/my-hammerspoon-configuration-with-commentary/#network-transitions)--for example for reconfiguring proxies in some applications.
--   [Keyboard-triggered translation](/post/my-hammerspoon-configuration-with-commentary/#pop-up-translation) of selected text between arbitrary human languages.
--   Keep a configurable and persistent [clipboard history](/post/my-hammerspoon-configuration-with-commentary/#organization-and-productivity).
--   [Automatically pause audio playback](/post/my-hammerspoon-configuration-with-commentary/#other-applications) when headphones are unplugged.
+-   Add missing or more convenient keyboard shortcuts to applications, even for complex multi-step actions. For example:  [automated tagging and filing in Evernote, mail/note archival in Mail, Outlook and Evernote, filing items from multiple applications to OmniFocus using consistent keyboard shortcuts]({{< relref "/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#organization-and-productivity" >}}), or [muting/unmuting a conversation in Skype]({{< relref "/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#other-applications" >}}).
+-   [Open URLs in different browsers based on regular expression patterns]({{< relref "/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#url-dispatching-to-site-specific-browsers" >}}).  When combined with Site-specific Browsers (I use [Epichrome](https://github.com/dmarmor/epichrome)), this allows for highly flexible management of bookmarks, plugins and search configurations.
+-   Replace Spotlight, Lacona and other launchers with a [fully configurable, extensible launcher]({{< relref "/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#seal-application-launcher-controller" >}}), which allows not only to open applications, files and bookmarks, but to trigger arbitrary Lua functions.
+-   [Window and screen manipulation]({{< relref "/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#window-and-screen-manipulation" >}}) using keyboard shortcuts to resize, move and arrange them.
+-   [Set up actions to happen automatically when switching between WiFi networks]({{< relref "/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#network-transitions" >}}) -- for example for reconfiguring proxies in some applications.
+-   [Pop-up keyboard-triggered translation]({{< relref "/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#pop-up-translation" >}}) of selected text between arbitrary human languages.
+-   Keep a configurable and persistent [clipboard history]({{< relref "/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#organization-and-productivity" >}}).
+-   [Automatically pause audio playback]({{< relref "/post/2018-01-08-my-hammerspoon-configuration-with-commentary.md#other-applications" >}}) when headphones are unplugged.
 
 Hammerspoon is the most powerful Mac automation utility I have ever used. If you are a programmer, it can make using your Mac vastly more fun and productive.
 
@@ -52,7 +51,7 @@ If you are automation-minded like me, you probably use [Homebrew](https://brew.s
 
 When you run Hammerspoon for the first time, you will see its icon appear in the menubar, and a notification telling you that it couldn't find a configuration file. Let's fix that!
 
-{{< figure src="images/hammerspoon-startup.png" >}}
+{{< figure src="hammerspoon-startup.png" >}}
 
 {{< tip >}}
 If you click on the initial notification, your web browser will open to the excellent [Getting Started with Hammerspoon](http://www.hammerspoon.org/go/) page, which I highly recommend you read for more examples.
@@ -73,7 +72,7 @@ Let us start with a few simple examples. As tradition mandates, we will start wi
 
 Save the file, and from the Hammerspoon icon in the menubar, select "Reload config". Apparently nothing will happen, but if you then press <kbd>Ctrl​-​⌘​-​Alt​-​h</kbd> on your keyboard, you will see a notification on your screen welcoming you to the world of Hammerspoon.
 
-{{< figure src="images/hammerspoon-hello-world.png" >}}
+{{< figure src="hammerspoon-hello-world.png" >}}
 
 Although it should be fairly self-explanatory, let us dissect this example to give you a clearer understanding of its components:
 
@@ -112,4 +111,4 @@ Another useful development tool is the `hs` command, which you can run from your
 [`hs.ipc.cliInstall`](https://www.hammerspoon.org/docs/hs.ipc#cliInstall) creates symlinks under `/usr/local/` to the `hs` command and its manual page file, located inside the Hammerspoon application bundle. Under some circumstances (particularly if you build Hammerspoon from source, or if you install different versions of it), you may end up with broken symlinks. If the `hs` command stops working and `hs.ipc.cliInstall()` doesn't fix it, look for broken symlinks left behind from old versions of Hammerspoon.  Remove them and things should work again.
 {{< /warning >}}
 
-Now you have all the tools for developing your Hammerspoon configuration. In the next installment we will look at how you can save yourself a lot of coding by using pre-made modules. In the meantime, feel free to look through my [Hammerspoon configuration file](/post/my-hammerspoon-configuration-with-commentary/) for ideas, and please let me know your thoughts in the comments!
+Now you have all the tools for developing your Hammerspoon configuration. In the next installment we will look at how you can save yourself a lot of coding by using pre-made modules. In the meantime, feel free to look through my [Hammerspoon configuration file]({{< relref "2018-01-08-my-hammerspoon-configuration-with-commentary" >}}) for ideas, and please let me know your thoughts in the comments!

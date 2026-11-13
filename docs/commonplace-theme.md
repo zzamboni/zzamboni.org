@@ -1,14 +1,10 @@
 # Commonplace theme experiment
 
-Branch: `experiment/commonplace-hugo`, based on staging commit
-`c43d8cb0a59389be17f2b2d11d4161ee0d14cac8` (15 October 2026).
-
-This is a local Hugo presentation theme layered over the pinned Blowfish v3.8.0,
-not a replacement CMS or a standalone distributable theme. It recreates the
-paper/forest palette, Georgia typography, notebook illustration, editorial rows,
-and reading layout from **Diego — Commonplace**, source commit
-`4fe89164b4a16e0fabb58acfd3da7292d9612b63`. The illustration is copied from that
-site's inline SVG; there are no external font requests, new packages or AI assets.
+The `experiment/commonplace-hugo` branch started from staging and now follows
+`main`. The experiment adds a local Hugo theme over the site's pinned Blowfish
+version. Its paper and forest palette, Georgia typography, notebook
+illustration, editorial article lists, and reading layout come from
+**Diego — Commonplace** (source commit `4fe89164b4a16e0fabb58acfd3da7292d9612b63`).
 
 ## Structure and behavior
 
@@ -44,30 +40,11 @@ Org/ox-hugo, Pages CMS, linkblog and photoblog remain the publishing system.
 
 ## Preview and rollback
 
-Use `mise run serve` or `mise run serve-drafts` on this branch. The repository's
-Hugo Extended 0.166.0 pin and Blowfish submodule pin are unchanged. No Tailwind
-build or npm installation is required for this presentation layer.
+Use `mise run serve` or `mise run serve-drafts` on this branch. The Hugo
+and Blowfish pins come from `main`. The overlay needs no Tailwind rebuild or
+additional npm packages.
 
-The experiment changes default config only on its own branch. Switching back to
-`staging` restores the existing design; do not merge this branch wholesale as a
-way to move unrelated staging content into main. Removing only the theme-array
-entry is insufficient, because the site hooks deliberately call its partials.
-Revert the experiment commit for a complete rollback.
-
-Validation in the implementation session:
-
-- Hugo Extended 0.166.0 production build: 738 pages, no build errors.
-- Draft build with staging banner: 746 pages, no build errors.
-- Baseline vs experiment: 7,154 HTML output paths unchanged (including copied
-  static HTML); RSS, search JSON, sitemap, redirects and headers byte-identical.
-- Three comparison articles: reading structure, summaries, available covers,
-  local images/scripts/styles, code blocks and external destination checked.
-- Four renderable homepage photos and their links match staging. Blog photo
-  filtering, archive rows, search/menu/appearance element IDs, preview banner,
-  and production exclusion of the phone-publishing draft checked.
-- TOML parsing and `git diff --check` passed.
-
-Browser rendering and interaction checks remain necessary before adoption:
-no browser executable was installed, and the Chromium download failed. There
-are consequently no desktop/mobile screenshots or claimed visual sign-off.
-No live deployment is implied by a successful build or branch push.
+The draft pull request targets `main` so the Files changed view isolates the
+presentation layer. To refresh the experiment, bring over the new `main` tree,
+reapply the overlay changes, and compare production and draft builds with
+`main`. Switch back to `main` for the production design.

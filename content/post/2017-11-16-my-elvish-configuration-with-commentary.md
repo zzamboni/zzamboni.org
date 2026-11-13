@@ -3,10 +3,9 @@ title = "My Elvish Configuration With Commentary"
 author = ["Diego Zamboni"]
 summary = "In this blog post I will walk you through my current Elvish configuration file, with running commentary about the different sections."
 date = 2017-11-16T20:21:00+01:00
-tags = ["config", "howto", "literateprogramming", "literateconfig", "elvish"]
+tags = ["config", "literateprogramming", "literateconfig", "howto", "elvish"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
-toc = true
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/elvish-logo.svg"
 series = ["Literate Config Files"]
 series_order = 4
@@ -14,7 +13,7 @@ series_order = 4
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **April 12, 2026**
+Last update: **November 12, 2026**
 
 In this blog post I will walk you through my current [Elvish](http://elvish.io) configuration file, with running commentary about the different sections.
 
@@ -293,9 +292,6 @@ If available, use the scripts from `bat-extras` to replace some other commands, 
 only-when-external batman {
   alias:new man batman
 }
-only-when-external batgrep {
-  alias:new rg batgrep
-}
 only-when-external batdiff {
   alias:new diff batdiff
 }
@@ -339,7 +335,10 @@ Alias open to the correct command.
 
 ```elvish
 only-when-external xdg-open {
-  alias:new open xdg-open
+  var open-without-errors~ = { |@files|
+    xdg-open $@files 2> /dev/null
+  }
+  edit:add-var open~ $open-without-errors~
 }
 ```
 
@@ -578,7 +577,7 @@ I use [LeanPub](https://leanpub.com/help/api) for publishing my books, so I have
 
 ```elvish
 use github.com/zzamboni/elvish-modules/leanpub
-set leanpub:api-key-fn = { 1pass:get-item leanpub &fields=["API key"] }
+set leanpub:api-key-fn = { str:trim-space (1pass:get-item leanpub &fields=["API key"]) }
 ```
 
 
@@ -634,6 +633,21 @@ I do some manual setup for [PyEnv](https://github.com/pyenv/pyenv), since it doe
 only-when-external pyenv {
   set paths = [ ~/.pyenv/shims $@paths ]
   set-env PYENV_SHELL elvish
+}
+```
+
+
+## Mise {#mise}
+
+I use [Mise](https://mise.jdx.dev/installing-mise.html#elvish) for some of my projects so I activate its Elvish integration.
+
+```elvish
+only-when-external mise {
+  var mise: = (ns [&])
+  eval (mise activate elvish | slurp) &ns=$mise: &on-end={|ns| set mise: = $ns }
+  mise:activate
+
+  edit:add-var mise~ {|@args| mise:mise $@args }
 }
 ```
 

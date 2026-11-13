@@ -93,6 +93,7 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
   showCategoryOnly = false # use showTaxonomies OR showCategoryOnly, not both
   showAuthorsBadges = false
   showWordCount = true
+  sharingLinks = [ "bluesky", "reddit", "linkedin" ]
   # sharingLinks = [ "linkedin", "twitter", "bluesky", "mastodon", "reddit", "pinterest", "facebook", "email", "whatsapp", "telegram", "line"]
   showZenMode = true
   showComments = false
@@ -130,7 +131,7 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
 
 [term]
   showHero = false
-  # heroStyle = "basic" # valid options: basic, big, background, thumbAndBackground
+  heroStyle = "basic" # valid options: basic, big, background, thumbAndBackground
   showBreadcrumbs = true
   showViews = false
   showLikes = false
@@ -183,3 +184,20 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
 
 [advertisement]
   # adsense = ""
+
+# JSON Resume link roles that duplicate navigation already provided by Hugo.
+[jsonresume]
+  excludeLinkRoles = ["site-home"]
+  resumeData = "jsonresume.resume"
+  publicationsData = "jsonresume.publications"
+  resumeStem = "zamboni-vita"
+  # publicationsDescription = "Books, research papers, reports, presentations and patents."
+  # publicationsURL = "/vita/publications/"
+
+# Shared Hugo archive module; retain this site's content scope and theme palette.
+[blogArchive]
+  sections = ["post"]
+  excludeTags = ["photos"]
+  style = "blowfish"
+  order = "desc"
+  showChart = true

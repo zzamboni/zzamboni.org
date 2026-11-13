@@ -5,8 +5,7 @@ summary = "Hammerspoon's configuration files are written in Lua, so a basic know
 date = 2017-10-21T20:36:00+02:00
 tags = ["hammerspoon", "mac", "howto", "lua"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
-toc = true
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/lua-logo.svg"
 +++
 
@@ -151,7 +150,7 @@ Then I simply use `hyper` or `shift_hyper` in my key binding declarations:
 
 ## Until next time! {#until-next-time}
 
-In the [next installment](/post/just-enough-lua-to-be-productive-in-hammerspoon-part-2/), we will dive into Lua's types and data structures. In the meantime, feel free to explore and learn on your own. If you need more information, I can recommend the following resources, which I have found useful:
+In the [next installment]({{< relref "2017-10-21-just-enough-lua-to-be-productive-in-hammerspoon-part2" >}}), we will dive into Lua's types and data structures. In the meantime, feel free to explore and learn on your own. If you need more information, I can recommend the following resources, which I have found useful:
 
 -   [The Lua 5.3 Reference Manual](http://www.lua.org/manual/5.3/), available at the official [Lua website](http://www.lua.org).
 

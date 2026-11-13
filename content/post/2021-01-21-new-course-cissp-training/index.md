@@ -5,9 +5,9 @@ summary = """
   I am happy to finally reveal a project I've been working on for some time: my new online course "CISSP Training", now available on Leanpub.
   """
 date = 2021-01-21T00:16:00+01:00
+tags = ["security", "announcements", "cissp", "leanpub"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
-toc = false
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/cissp-training-cover.jpg"
 +++
 

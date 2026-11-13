@@ -3,21 +3,19 @@ title = "My Emacs Configuration, With Commentary"
 author = ["Diego Zamboni"]
 summary = "I have enjoyed slowly converting my configuration files to literate programming style using org-mode in Emacs. It's now the turn of my Emacs configuration file."
 date = 2017-12-17T20:14:00+01:00
-tags = ["config", "howto", "literateprogramming", "literateconfig", "emacs"]
+tags = ["config", "literateprogramming", "literateconfig", "howto", "emacs"]
 draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
+creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/emacs-logo.svg"
-toc = true
-aliases = "/post/2017-12-17-my-emacs-configuration-with-commentary"
 series = ["Literate Config Files"]
 series_order = 2
 +++
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **April 12, 2026**
+Last update: **November 12, 2026**
 
-I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [Elvish configuration](../my-elvish-configuration-with-commentary/), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot_emacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot_emacs/blob/master/init.org) for my current, live configuration, and the generated file at [init.el](https://github.com/zzamboni/dot_emacs/blob/master/init.el).
+I have enjoyed slowly converting my configuration files to [literate programming](http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html) style style using org-mode in Emacs. I previously posted my [My Elvish Configuration With Commentary]({{< relref "2017-11-16-my-elvish-configuration-with-commentary" >}}), and now it's the turn of my Emacs configuration file. The text below is included directly from my [init.org](https://github.com/zzamboni/dot_emacs/blob/master/init.org) file. Please note that the text below is a snapshot as the file stands as of the date shown above, but it is always evolving. See the [init.org file in GitHub](https://github.com/zzamboni/dot_emacs/blob/master/init.org) for my current, live configuration, and the generated file at [init.el](https://github.com/zzamboni/dot_emacs/blob/master/init.el).
 
 If you are interested in writing your own Literate Config files, check out my new book [Literate Config](https://leanpub.com/lit-config) on Leanpub!
 

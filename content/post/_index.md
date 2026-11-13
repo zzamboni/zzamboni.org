@@ -1,11 +1,14 @@
----
-title: "Blog"
-itemname: "Post"
-date: 2017-08-03T23:04:22+02:00
-featureimage: "img/scrabble-trim1-lowres.jpg"
-aliases:
-- /blog
-- /new/blog
----
-
-# All posts
++++
+title = "Blog"
+author = ["Diego Zamboni"]
+aliases = ["/blog", "/new/blog"]
+draft = false
+creator = "Emacs (Org mode + ox-hugo)"
+showReadingTime = false
+showWordCount = false
+showDate = false
+showHero = true
+showSummary = true
+sharingLinks = false
+featureimage = "img/scrabble-trim1-lowres.jpg"
++++

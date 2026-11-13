@@ -3,7 +3,7 @@
 **Date:** October 15, 2026  
 **Purpose:** Roadmap and working guidance for future improvements to zzamboni.org, based on the October 14 Codex context update and subsequent ChatGPT recommendations.
 
-**Status:** Planning document. Nothing here authorizes implementation, commits, pushes, merges, deployments, or paid API usage without an explicit request.
+**Status:** Historical planning snapshot, not a live backlog. Since this was written, related-article recommendations and the archive (including its chart and reusable Hugo module) have been implemented; see [related-posts.md](related-posts.md) and [blog-archive.md](blog-archive.md). Other suggestions may also have changed status. Verify current code and issues before treating any item as outstanding. Nothing here authorizes implementation, commits, pushes, merges, deployments, or paid API usage without an explicit request.
 
 ## 1. Current State
 

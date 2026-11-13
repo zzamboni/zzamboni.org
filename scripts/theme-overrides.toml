@@ -1,6 +1,31 @@
 # Matching paths under layouts/ are detected automatically. List indirect
 # dependencies here so changes to their upstream templates also get reviewed.
 [[overrides]]
+local = "layouts/shortcodes/profile.html"
+upstream = "layouts/partials/home/profile.html"
+reason = "About-page profile header only: omit homepage wrappers and Content; preserve the existing thumbnail crop and original-image zoom instead of the homepage's centered square zoom."
+
+[[overrides]]
+local = "layouts/tags/terms.html"
+upstream = "layouts/_default/terms.html"
+reason = "Only Tags replaces the default taxonomy text list with a tag cloud; other taxonomies use the theme template."
+
+[[overrides]]
+local = "layouts/partials/shortcode-admonition.html"
+upstream = "layouts/_default/_markup/render-blockquote.html"
+reason = "Legacy tip, note, and warning shortcodes render Markdown alerts through Blowfish's admonition hook."
+
+[[overrides]]
+local = "assets/css/custom.css"
+upstream = "layouts/partials/header/floating.html"
+reason = "Offset the fixed floating header below the measured deployment banner, preserving its responsive top gutters."
+
+[[overrides]]
+local = "assets/js/medium-zoom.js"
+upstream = "assets/js/medium-zoom.js"
+reason = "Retain the zoom instance so standalone article figures can transfer to GLightbox without duplicate listeners."
+
+[[overrides]]
 local = "layouts/partials/related.html"
 upstream = "layouts/partials/article-link/card-related.html"
 reason = "Article-only related content reuses Blowfish's related-card renderer."

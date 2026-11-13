@@ -3,12 +3,11 @@ title = "Hosting a Ghost Blog in GitHub - the easier way"
 author = ["Diego Zamboni"]
 summary = "When I was planning the reboot of my website, I seriously considered using Ghost. It has a very nice UI, beautiful and usable theme out of the box, and a very active community. Eventually I decided to use Hugo, but in the process discovered that it is possible to host a statically-generated Ghost website using GitHub Pages."
 date = 2017-08-25T09:00:00+02:00
-tags = ["howto", "ghost", "github", "blogging"]
-draft = false
-creator = "Emacs 30.2 (Org mode 9.7.39 + ox-hugo)"
-toc = true
-featureimage = "img/ghost-plus-github2.png"
 slug = "hosting-a-ghost-blog-in-github"
+tags = ["blogging", "howto", "ghost", "github"]
+draft = false
+creator = "Emacs (Org mode + ox-hugo)"
+featureimage = "img/ghost-plus-github2.png"
 +++
 
 When I was planning the reboot of my website, I seriously considered using Ghost. It has a very nice UI, beautiful and usable theme out of the box, and a very active community. Eventually I decided to use Hugo, but in the process discovered that it is possible to host a statically-generated Ghost website using GitHub Pages.
@@ -69,17 +68,16 @@ So, without further ado, here are the detailed instructions. I ran these on my M
     ```
 
 6.  Your blog is running! You can visit it at <http://localhost:2368/>:
-    ![](images/ghost-initial-screen.png)
 
-7.  Go to <http://localhost:2368/ghost>, create your user and set up your blog info:
-    ![](images/ghost-setup-blog.png)
+    {{< figure src="ghost-initial-screen.png" >}}
 
-    {{< note >}}
-    You may want to use an email address you don't mind being public. See "[Security Considerations](#security-considerations)" below.
-    {{< /note >}}
+7.  Go to <http://localhost:2368/ghost>, create your user and set up your blog info (use an email address you don't mind being public. See "[Security Considerations](#security-considerations)" below):
+
+    {{< figure src="ghost-setup-blog.png" >}}
 
 8.  You can now start creating content  and configuring the local Ghost instance.
-    ![](images/ghost-admin-screen.png)
+
+    {{< figure src="ghost-admin-screen.png" >}}
 
 9.  When you have things the way you like them, you can commit the changes to the git repository:
     ```text
@@ -125,14 +123,16 @@ We can finally create our GitHub repo and push the contents to it.
 Now all we need to do is enable [GitHub Pages](https://pages.github.com/) on our repository, so that the contents under `docs` gets published.
 
 1.  Go to your repository's "Settings" screen:
-    ![](images/ghost-repo-settings-screen.png)
+
+    {{< figure src="ghost-repo-settings-screen.png" >}}
 
 2.  Scroll down to the "GitHub Pages" section, choose the "master branch /docs folder" option and click the "Save" button:
-    ![](images/ghost-repo-github-pages-setting.png)
+
+    {{< figure src="ghost-repo-github-pages-setting.png" >}}
 
 We are done! After a few minutes (usually takes 2-5 minutes for the contents to be published the first time, afterwards updates are nearly instantaneous), you will find your new website's content under `http://<github-username>.github.io/<github-repo-name>`. In our example, the URL is <https://zzamboni.github.io/test-ghost-blog/>:
 
-{{< figure src="images/ghost-published-blog.png" >}}
+{{< figure src="ghost-published-blog.png" >}}
 
 
 ## The update workflow {#the-workflow}

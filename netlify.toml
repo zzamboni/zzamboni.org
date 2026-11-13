@@ -7,7 +7,9 @@
   command = """
     echo "BUILD_DRAFTS=$BUILD_DRAFTS"
     echo "CONTEXT=$CONTEXT"
-    if [ "$BUILD_DRAFTS" = "true" ]; then
+    if [ "$BUILD_DRAFTS" = "true" ] && [ "$BRANCH" = "staging" ]; then
+      export HUGO_PARAMS_DEPLOYMENTBANNER=staging-draft
+    elif [ "$BUILD_DRAFTS" = "true" ]; then
       export HUGO_PARAMS_DEPLOYMENTBANNER=draft
     elif [ "$BRANCH" = "staging" ]; then
       export HUGO_PARAMS_DEPLOYMENTBANNER=staging
@@ -25,7 +27,8 @@
   publish = "public"
 
 [build.environment]
-  HUGO_VERSION = "0.166.0"
+  HUGO_VERSION = "0.167.0"
+  GO_VERSION = "1.25"
   HUGO_EXTENDED = "true"
   NETLIFY_BUILD_IMAGE = "noble"
   HUGO_ENV = "production"
@@ -36,11 +39,11 @@
   GIT_DEPTH = "1"
 
 [context.production.environment]
-  HUGO_VERSION = "0.166.0"
+  HUGO_VERSION = "0.167.0"
   HUGO_ENV = "production"
 
 [context.deploy-preview.environment]
-  HUGO_VERSION = "0.166.0"
+  HUGO_VERSION = "0.167.0"
 
 # Persist Hugo's generated resources between builds in all deploy contexts.
 [[plugins]]
