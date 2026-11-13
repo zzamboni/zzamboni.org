@@ -1,4 +1,4 @@
 {{- if site.Params.showBuildTimestamp -}}
   {{- $built := now.UTC -}}
-  <p><small>This version was built on <time datetime="{{ $built.Format "2006-01-02T15:04:05Z" }}">{{ $built.Format "2 January 2006 at 15:04 UTC" }}</time>.</small></p>
+  <p>This version was built on <b><time datetime="{{ $built.Format "2006-01-02T15:04:05Z" }}">{{ $built.Format "2 January 2006 at 15:04 UTC" }}</time></b>.</p>
 {{- end -}}
