@@ -1,0 +1,33 @@
+
+/* Tufte-inspired reading measure, quiet headings and a dedicated note margin. */
+body { background: #fffff8; }
+.dark body { background: #191b19; }
+#main-content h1, #main-content h2, #main-content h3,
+.article-content { font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif; }
+#main-content h1 { font-weight: 400; letter-spacing: -.025em; }
+.article-content { font-size: 1.25rem; line-height: 1.65; }
+.article-content h2, .article-content h3 { font-weight: 400; font-style: italic; }
+.article-content a { text-decoration-thickness: 1px; text-underline-offset: .18em; }
+.article-content pre { font-size: .85rem; }
+.article-content { counter-reset: tufte-note; }
+.tufte-note { font-size: 1rem; line-height: 1.45; margin: 1rem 0; padding: .75rem 1rem; border-left: 1px solid currentColor; }
+.tufte-note p:last-child { margin-bottom: 0; }
+.tufte-sidenote { counter-increment: tufte-note; }
+.tufte-sidenote::before { content: counter(tufte-note) ". "; font-weight: bold; }
+.tufte-newthought { font-variant: small-caps; letter-spacing: .04em; }
+.tufte-epigraph { font-style: italic; border: 0; }
+.tufte-epigraph footer { font-size: .85em; text-align: right; font-style: normal; }
+@media (min-width: 1280px) {
+  #single_header ~ section { display: block; }
+  #single_header ~ section > .order-first { max-width: 100%; padding: 0; margin-bottom: 2rem; }
+  #single_header ~ section .toc { position: static; }
+  #single_header ~ section > .min-w-0 { width: 100%; max-width: 100%; }
+  .article-content { width: 65%; max-width: 65%; }
+  .tufte-note { float: right; clear: right; width: 43%; margin: 0 -50% 1.5rem 0; padding: 0; border: 0; }
+  .article-content::after { content: ""; display: block; clear: both; }
+  .tufte-wide { width: 150%; max-width: none; }
+}
+@media print {
+  .article-content { width: 100%; max-width: 100%; }
+  .tufte-note { float: none; width: auto; margin: 1rem 0; }
+}
