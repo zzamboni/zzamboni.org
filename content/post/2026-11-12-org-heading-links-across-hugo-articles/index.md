@@ -1,10 +1,10 @@
 +++
-title = "Improved linking to Org headings across Hugo articles in Doom Emacs"
+title = "Cross-article linking in Org/Hugo"
 author = ["Diego Zamboni"]
-summary = "My Org heading-link picker now finds headings in included files, creates Hugo-aware links, and lets me change a link's target without rewriting its description."
-date = 2026-11-12T00:00:00+01:00
+summary = "My new Org heading-link picker finds headings in included files, creates Hugo-aware links, and lets me update links without rewriting their description."
+date = 2026-11-13T03:25:00+01:00
 tags = ["emacs", "orgmode", "doom", "hugo", "howto"]
-draft = true
+draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/generated/2026-11-12-org-heading-links-across-hugo-articles.webp"
 +++
@@ -16,7 +16,9 @@ I still want readable links, but my setup has become more complex. I write this 
 
 ## One shortcut for finding headings {#one-shortcut-for-finding-headings}
 
-I still use `C-c l l h` to run my own `zz/org-insert-heading-link` command, but the function now uses Vertico to give me a searchable list of headings, including their outline paths and line numbers to distinguish similar titles. The picker also expands `#+include:` directives (including nested includes and line ranges) and identifies headings that came from another file.
+I still use `C-c l l h` to run my own `zz/org-insert-heading-link` command, but the function now uses Vertico to give me a searchable list of headings, including their outline paths and line numbers to distinguish similar titles. The picker also expands `#+include:` directives (including nested includes and line ranges) and identifies headings that came from another file. This is what it looks like:
+
+{{< figure src="heading-picker.png" caption="<span class=\"figure-number\">Figure 1: </span>Extended heading picker. The \"included\" items come from my external [doom.org](https://github.com/zzamboni/dot-doom/blob/main/doom.org) file, so I can link directly to them from other posts" >}}
 
 For headings in the main Org document, like before, the command reuses an existing `CUSTOM_ID` or creates one from the title, then inserts a normal Org link. Since ox-hugo knows which article owns each heading, this also works for links between articles defined in the same source file.
 

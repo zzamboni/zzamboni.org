@@ -55,7 +55,7 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#my-hammerspoon-configuration-with-commentary][My Hammerspoon Configuration, With Commentary]]
     - [[#my-elvish-configuration-with-commentary][My Elvish Configuration With Commentary]]
   - [[#emacs-and-org-mode][Emacs and Org mode]]
-    - [[#improved-linking-to-org-headings-across-hugo-articles-in-doom-emacs][Improved linking to Org headings across Hugo articles in Doom Emacs]]
+    - [[#cross-article-linking-in-orghugo][Cross-article linking in Org/Hugo]]
     - [[#goodbye-org-download-native-image-attachments-in-org-mode][Goodbye org-download: native image attachments in Org mode]]
     - [[#from-org-mode-to-a-pdf-cheat-sheet-with-typst][From Org mode to a PDF cheat sheet with Typst]]
     - [[#how-to-easily-create-and-use-human-readable-ids-in-org-mode-and-doom-emacs][How to easily create and use human-readable IDs in Org mode and Doom Emacs]]
@@ -678,7 +678,8 @@ Without further ado...
 
 ** Emacs and Org mode :emacs:
 
-*** DRAFT Improved linking to Org headings across Hugo articles in Doom Emacs :orgmode:doom:hugo:howto:
+*** DONE Cross-article linking in Org/Hugo :orgmode:doom:hugo:howto:
+CLOSED: [2026-11-13 Fri 03:25]
 :PROPERTIES:
 :export_date: <2026-11-12 Thu>
 :export_hugo_bundle: 2026-11-12-org-heading-links-across-hugo-articles
@@ -687,7 +688,7 @@ Without further ado...
 :export_hugo_custom_front_matter: :featureimage img/generated/2026-11-12-org-heading-links-across-hugo-articles.webp
 :END:
 #+begin_description
-My Org heading-link picker now finds headings in included files, creates Hugo-aware links, and lets me change a link's target without rewriting its description.
+My new Org heading-link picker finds headings in included files, creates Hugo-aware links, and lets me update links without rewriting their description.
 #+end_description
 
 A few years ago I wrote about [[#how-to-easily-create-and-use-human-readable-ids-in-org-mode-and-doom-emacs][creating human-readable heading IDs in Org mode]]. At the time I used =counsel-org-link= with Ivy and a bit of custom code to insert links using =CUSTOM_ID= instead of opaque UUIDs.
@@ -695,8 +696,14 @@ A few years ago I wrote about [[#how-to-easily-create-and-use-human-readable-ids
 I still want readable links, but my setup has become more complex. I write this blog in one Org file, with each article exported separately by [[https://ox-hugo.scripter.co/][ox-hugo]]. Some articles, like [[#my-doom-emacs-configuration--with-commentary][my Doom Emacs configuration]], also pull in other Org files using =#+include:=. I wanted to be able to interactively link to headings within those files as well.
 
 **** One shortcut for finding headings
+:PROPERTIES:
+:ID:       b196fc29-f192-4ce3-b9e8-9c283cd0519e
+:END:
 
-I still use =C-c l l h= to run my own =zz/org-insert-heading-link= command, but the function now uses Vertico to give me a searchable list of headings, including their outline paths and line numbers to distinguish similar titles. The picker also expands =#+include:= directives (including nested includes and line ranges) and identifies headings that came from another file.
+I still use =C-c l l h= to run my own =zz/org-insert-heading-link= command, but the function now uses Vertico to give me a searchable list of headings, including their outline paths and line numbers to distinguish similar titles. The picker also expands =#+include:= directives (including nested includes and line ranges) and identifies headings that came from another file. This is what it looks like:
+
+#+caption: Extended heading picker. The "included" items come from my external [[https://github.com/zzamboni/dot-doom/blob/main/doom.org][doom.org]] file, so I can link directly to them from other posts
+[[attachment:heading-picker.png]]
 
 For headings in the main Org document, like before, the command reuses an existing =CUSTOM_ID= or creates one from the title, then inserts a normal Org link. Since ox-hugo knows which article owns each heading, this also works for links between articles defined in the same source file.
 
