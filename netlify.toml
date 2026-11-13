@@ -16,15 +16,8 @@
     else
       unset HUGO_PARAMS_DEPLOYMENTBANNER
     fi
-    # Show the Colophon timestamp on the production and staging sites.
-    unset HUGO_PARAMS_SHOWBUILDTIMESTAMP
-    if [ "$BUILD_DRAFTS" != "true" ]; then
-      case "$CONTEXT:$BRANCH" in
-        production:main|production:staging|branch-deploy:staging)
-          export HUGO_PARAMS_SHOWBUILDTIMESTAMP=true
-          ;;
-      esac
-    fi
+    # Show the Colophon timestamp 
+    export HUGO_PARAMS_SHOWBUILDTIMESTAMP=true
     if [ "$BUILD_DRAFTS" = "true" ]; then
       echo "Build command: hugo --gc --minify --buildDrafts -b $URL"
       hugo --gc --minify --buildDrafts -b $URL
