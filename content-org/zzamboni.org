@@ -2943,6 +2943,7 @@ In the next posts I will log some of the further configuration I have done in my
 :export_hugo_bundle: 2026-11-07-org-mode-hugo-admonitions
 :export_file_name: index
 :custom_id: org-mode-hugo-admonitions
+:export_hugo_custom_front_matter: :featureimage img/generated/2026-11-07-org-mode-hugo-admonitions.webp
 :END:
 #+begin_description
 How I map Org special blocks to Blowfish admonitions for a consistent look and feel across old and new posts.
