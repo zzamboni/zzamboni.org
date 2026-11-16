@@ -2945,6 +2945,7 @@ CLOSED: [2026-11-15 Sun 18:26]
 :export_file_name: index
 :custom_id: org-mode-hugo-admonitions
 :export_hugo_custom_front_matter: :featureimage img/generated/2026-11-07-org-mode-hugo-admonitions.webp
+:export_hugo_custom_front_matter+: :series '("My website setup") :series_order 13
 :END:
 
 #+begin_description
