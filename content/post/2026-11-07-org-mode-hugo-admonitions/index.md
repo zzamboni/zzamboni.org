@@ -6,6 +6,7 @@ date = 2026-11-07T00:00:00-06:00
 tags = ["blogging", "orgmode", "hugo", "blowfish", "howto"]
 draft = true
 creator = "Emacs (Org mode + ox-hugo)"
+featureimage = "img/generated/2026-11-07-org-mode-hugo-admonitions.webp"
 +++
 
 I have used `tip`, `note`, and `warning` blocks in my Org-authored articles for years. I find them useful to provide additional information: a shortcut worth knowing, some background, or a warning before running a potentially destructive command.
