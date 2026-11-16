@@ -6,7 +6,7 @@
 
 #+property: header-args :eval never-export
 #+hugo_front_matter_key_replace: description>summary
-#+hugo_paired_shortcodes: tip warning note gallery feature-grid mermaid alert admonition
+#+hugo_paired_shortcodes: tip warning note gallery feature-grid feature column mermaid alert admonition
 
 #+macro: updatetime {{{time(%B %e\, %Y)}}}
 #+macro: leanpubbook #+hugo: {{< leanpubbook book="$1" $2 >}}
@@ -2945,14 +2945,22 @@ In the next posts I will log some of the further configuration I have done in my
 :custom_id: org-mode-hugo-admonitions
 :END:
 #+begin_description
-How I map Org special blocks to Blowfish admonitions, keep old tip and warning blocks working, and choose icons or colors without duplicating the theme's renderer.
+How I map Org special blocks to Blowfish admonitions for a consistent look and feel across old and new posts.
 #+end_description
 
-I have used =tip=, =note=, and =warning= blocks in my Org-authored articles for years. They are useful little interruptions: a shortcut worth knowing, some background, or a warning before running a command.
+I have used =tip=, =note=, and =warning= blocks in my Org-authored articles for years. I find them useful to provide additional information: a shortcut worth knowing, some background, or a warning before running a potentially destructive command.
 
-After moving to [[https://blowfish.page/][Blowfish]], I wanted those blocks to use the theme's modern admonition styling, including its icons and light/dark palettes. I also wanted old articles to benefit without rewriting their source. The solution turned out to be a small adapter between =ox-hugo= and the theme.
+Some time ago I had created custom Hugo shortcodes for these blocks. =ox-hugo= allows seamless conversion from Org blocks to Hugo shortcodes by declaring them as follows near the top of my Org file, together with other shortcodes I use:
 
-***** Start with the Org block
+#+begin_src org
+,#+hugo_paired_shortcodes: tip warning note alert admonition gallery feature-grid mermaid
+#+end_src
+
+Afterwards, a =#+begin_tip= / =#+end_tip= block in my Org file will be automatically exported as ={{</* tip */>}}= / ={{</* /tip */>}}= in Hugo markup to invoke the corresponding shortcodes; similarly for the others.
+
+After moving to [[https://blowfish.page/][Blowfish]], I wanted to keep using these blocks, but to use the theme's modern [[https://blowfish.page/docs/shortcodes/#admonition][admonition styling]], including its icons and light/dark palettes. The solution was a small adapter between =ox-hugo= and the theme.
+
+***** Org block structure
 
 The authoring syntax is ordinary Org:
 
@@ -2962,37 +2970,44 @@ Use =mise run serve-drafts= to preview unfinished articles.
 ,#+end_tip
 #+end_src
 
-I register the block names as paired shortcodes in the Org file, alongside the other shortcodes I already use:
+Which gets rendered as follows:
 
-#+begin_src org
-,#+hugo_paired_shortcodes: tip warning note gallery feature-grid mermaid alert admonition
+#+begin_tip
+Use =mise run serve-drafts= to preview unfinished articles.
+#+end_tip
+
+***** Reusing Blowfish-style rendering from Org
+
+Blowfish supports rendering Github-style Markdown alerts such as a blockquote beginning with =[!TIP]= (see [[https://blowfish.page/docs/shortcodes/#admonition][Admonitions]] for the full list of supported styles). We simply reuse this capability by exporting the blocks in the appropriate format.
+
+My new =tip=, =note=, and =warning= shortcodes are identical, they all accept =icon= and =title= parameters and delegate to the same [[https://github.com/zzamboni/zzamboni.org/blob/experiment/commonplace-hugo/layouts/partials/shortcode-admonition.html][shortcode-admonition]] partial:
+
+#+begin_src go-html-template
+{{- partial "shortcode-admonition.html" (dict "Inner" .Inner "Name" .Name "Page" .Page "Icon" (.Get "icon") "Title" (.Get "title")) -}}
 #+end_src
 
-That registration matters. It tells [[https://ox-hugo.scripter.co/doc/shortcodes/][ox-hugo]] to export a matching Hugo shortcode call, with an opening and closing tag, instead of treating the special block as a generic HTML container. The block's contents still go through Org export, so I can use links, lists, and source blocks inside it.
-
-***** Let Blowfish do the rendering
-
-Blowfish already renders Markdown alerts such as a blockquote beginning with =[!TIP]=. I reuse that path rather than maintaining another set of callout HTML and CSS.
-
-My =tip=, =note=, and =warning= shortcode files all delegate to the same partial. Hugo supplies the invoked shortcode's name, and the partial turns its body into a Markdown blockquote:
+Hugo supplies the invoked shortcode's name in =.Name=, so the files can be identical. This is the code of the =shortcode-admonition= partial, which turns its body into a Markdown blockquote:
 
 #+begin_src go-html-template
 {{- /* Keep legacy shortcode calls, but let Blowfish's blockquote hook render them. */ -}}
 {{- $body := strings.Trim .Inner "\r\n" -}}
-{{- $markdown := printf "> [!%s]\n%s" (strings.ToUpper .Name) (replaceRE "(?m)^" "> " $body) -}}
+{{- $title := strings.TrimSpace (.Title | default "") -}}
+{{- $alert := printf "[!%s]" (strings.ToUpper .Name) -}}
+{{- with $title -}}
+  {{- $alert = printf "%s %s" $alert . -}}
+{{- end -}}
+{{- $markdown := printf "> %s\n%s" $alert (replaceRE "(?m)^" "> " $body) -}}
 {{- with .Icon -}}
   {{- $markdown = printf "%s\n{icon=%q}" $markdown . -}}
 {{- end -}}
 {{- .Page.RenderString (dict "display" "block") $markdown -}}
 #+end_src
 
-Every line gets a quote prefix, including blank lines, so multiple paragraphs and code blocks stay inside the callout. =RenderString= then sends the constructed Markdown through the page's render hooks. Blowfish's blockquote hook supplies the title, icon, palette, and final markup.
-
-The optional icon is added as a block attribute understood by the theme. The important dependency is that render hook: this adapter is designed for Blowfish's admonition support, and I track it with my other theme overrides.
+Every line gets a quote prefix, including blank lines, so multiple paragraphs and code blocks stay inside the callout. =RenderString= then sends the constructed Markdown through the page's render hooks. Blowfish renders the title, icon, palette, and final markup.
 
 ***** One block for more types
 
-The three original block names remain convenient, but I do not want a new shortcode file for every possible callout type. A generic =admonition= shortcode accepts a =type= parameter and passes it to the same partial:
+The three custom block names remain convenient, but I don't necessarily want a new shortcode file for every possible callout type. A generic =admonition= shortcode accepts a =type= parameter and passes it to the same partial:
 
 #+begin_src org
 ,#+attr_shortcode: :type important :icon star
@@ -3001,22 +3016,34 @@ Keep the Org source and its Markdown export together.
 ,#+end_admonition
 #+end_src
 
-The generic block defaults to =note=. Other types come from Blowfish's supported admonitions, including =caution=, =question=, and =example=. Named arguments use Org's =:name value= syntax in =#+attr_shortcode=; =#+attr_html= would target a different part of the export.
+Which gets rendered as follows:
 
-For an ordinary tip, I can override just its icon:
+#+attr_shortcode: :type important :icon github
+#+begin_admonition
+Keep the Org source and its Markdown export together.
+#+end_admonition
+
+The generic block defaults to =note=. Other types come from Blowfish's supported admonitions, including =caution=, =question=, and =example=. Named arguments use Org's =:name value= syntax in =#+attr_shortcode=.
+
+The dedicated shortcodes hard-code the block type, but still allow overriding the icon with =#+attr_shortcode=:
 
 #+begin_src org
-,#+attr_shortcode: :icon star
+,#+attr_shortcode: :icon sun
 ,#+begin_tip
 A useful trick deserves a memorable icon.
 ,#+end_tip
 #+end_src
 
-***** Colors have two different paths
+#+attr_shortcode: :icon sun
+#+begin_tip
+A useful trick deserves a memorable icon.
+#+end_tip
 
-Admonition colors follow the selected type. For a site-wide change I can override variables such as =--adm-tip-bg= in my own CSS, with separate light and dark values.
+***** Admonition colors
 
-For one individually styled box, I use Blowfish's separate =alert= shortcode:
+Admonition colors follow the selected type. It is possible to override them site-wide, see [[https://github.com/nunocoracao/blowfish/blob/main/layouts/_default/_markup/render-blockquote.html][the Blowfish documentation]].
+
+However, for individually styled boxes, I use Blowfish's separate [[https://blowfish.page/docs/shortcodes/#alert][alert shortcode]]:
 
 #+begin_src org
 ,#+attr_shortcode: :icon fire :cardColor #e63946 :iconColor #ffffff :textColor #ffffff
@@ -3025,13 +3052,26 @@ Review this operation before continuing.
 ,#+end_alert
 #+end_src
 
-The admonition adapters only forward the icon override; they do not forward those color parameters. The alert also has a different layout, without an automatic admonition title. Explicit colors need a contrast check in both appearances.
+#+attr_shortcode: :icon fire :cardColor #e63946 :iconColor #ffffff :textColor #ffffff
+#+begin_alert
+Review this operation before continuing.
+#+end_alert
 
 ***** Old markup, new presentation
 
-The nicest part is that existing shortcode calls keep working. Once the adapters are in place, rebuilding the site gives old articles the new rendering. I can improve their presentation while leaving their content alone.
+The nicest part is that existing shortcode calls keep working. Once the adapters are in place, rebuilding the site gives all old articles the new rendering. I can improve their presentation while leaving their content alone.
 
-The [[https://github.com/zzamboni/zzamboni.org/blob/main/docs/callout-blocks.md][full configuration notes]] cover the aliases, supported parameters, and palette overrides. For everyday writing, all I need to remember is the block name and, occasionally, a line of attributes.
+You can find the [[https://github.com/zzamboni/zzamboni.org/blob/main/docs/callout-blocks.md][full configuration notes]] in my Github repo with more details. For everyday writing, all I need to remember is the block name and, occasionally, a line of attributes.
+
+#+attr_shortcode: :title Using it yourself :type info
+#+begin_admonition
+If you want to use this feature in your own Org + ox-hugo website, you need to copy the following files from my repo and store them in your own:
+- [[https://github.com/zzamboni/zzamboni.org/blob/experiment/commonplace-hugo/layouts/partials/shortcode-admonition.html][layouts/partials/shortcode-admonition.html]]
+- [[https://github.com/zzamboni/zzamboni.org/blob/experiment/commonplace-hugo/layouts/shortcodes/tip.html][layouts/shortcodes/tip.html]] (same for [[https://github.com/zzamboni/zzamboni.org/blob/experiment/commonplace-hugo/layouts/shortcodes/note.html][note.html]] and [[https://github.com/zzamboni/zzamboni.org/blob/experiment/commonplace-hugo/layouts/shortcodes/warning.html][warning.html]], and you can copy the same file to create custom shortcodes for other supported admonition types)
+- [[https://github.com/zzamboni/zzamboni.org/blob/experiment/commonplace-hugo/layouts/shortcodes/admonition.html][layouts/shortcodes/admonition.html]]
+
+Don't forget to declare the appropriate blocks with =#+hugo_paired_shortcodes:= in your Org file!
+#+end_admonition
 
 **** DRAFT Making Hugo article series work with unpublished posts :hugo:blowfish:templates:howto:
 :PROPERTIES:
