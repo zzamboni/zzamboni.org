@@ -2937,7 +2937,8 @@ In the next posts I will log some of the further configuration I have done in my
 
 *** Implementation and workflows
 
-**** DRAFT Bringing modern admonitions to Org mode and Hugo :orgmode:hugo:blowfish:howto:
+**** DONE Bringing Blowfish admonitions to Org mode and Hugo :orgmode:hugo:blowfish:howto:
+CLOSED: [2026-11-15 Sun 18:26]
 :PROPERTIES:
 :export_date: <2026-11-07 Sat>
 :export_hugo_bundle: 2026-11-07-org-mode-hugo-admonitions
@@ -2945,6 +2946,7 @@ In the next posts I will log some of the further configuration I have done in my
 :custom_id: org-mode-hugo-admonitions
 :export_hugo_custom_front_matter: :featureimage img/generated/2026-11-07-org-mode-hugo-admonitions.webp
 :END:
+
 #+begin_description
 How I map Org special blocks to Blowfish admonitions for a consistent look and feel across old and new posts.
 #+end_description

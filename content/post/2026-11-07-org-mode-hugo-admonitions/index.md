@@ -1,10 +1,10 @@
 +++
-title = "Bringing modern admonitions to Org mode and Hugo"
+title = "Bringing Blowfish admonitions to Org mode and Hugo"
 author = ["Diego Zamboni"]
 summary = "How I map Org special blocks to Blowfish admonitions for a consistent look and feel across old and new posts."
-date = 2026-11-07T00:00:00-06:00
+date = 2026-11-15T18:26:00-06:00
 tags = ["blogging", "orgmode", "hugo", "blowfish", "howto"]
-draft = true
+draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/generated/2026-11-07-org-mode-hugo-admonitions.webp"
 +++
