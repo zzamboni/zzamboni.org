@@ -1,0 +1,6 @@
+name = "Commonplace"
+description = "An editorial presentation layer for zzamboni.org, inspired by Diego — Commonplace. Requires the pinned Blowfish theme as its fallback."
+min_version = "0.166.0"
+[author]
+name = "Diego Zamboni"
+homepage = "https://zzamboni.org/"

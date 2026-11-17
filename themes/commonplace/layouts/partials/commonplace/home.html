@@ -1,0 +1,19 @@
+<section class="cp-hero" aria-labelledby="cp-home-title">
+  <div class="cp-hero-copy">
+    <p class="cp-eyebrow"><span class="cp-dot" aria-hidden="true"></span>{{ i18n "cp_eyebrow" }}</p>
+    <h1 id="cp-home-title">{{ i18n "cp_title_one" }}<br>{{ i18n "cp_title_two" }}<br><em>{{ i18n "cp_title_three" }}</em></h1>
+    <p class="cp-intro">{{ i18n "cp_intro" }}</p>
+    <a class="cp-text-link" href="#home-posts-title">{{ i18n "cp_explore" }} <span aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="cp-art" aria-hidden="true">
+    {{ partial "commonplace/notebook.svg" . }}
+    <p>{{ i18n "cp_art_caption" }}</p>
+  </div>
+</section>
+{{ with .Content }}<div class="prose cp-home-content dark:prose-invert">{{ . }}</div>{{ end }}
+<nav class="cp-ribbon" aria-label="{{ i18n "cp_ribbon" }}">
+  <span>{{ i18n "cp_ribbon" }}</span>
+  {{ with site.GetPage "/code" }}<a href="{{ .RelPermalink }}">↗ {{ i18n "cp_technology" }}</a>{{ end }}
+  {{ with site.GetPage "/post" }}<a href="{{ .RelPermalink }}">↗ {{ i18n "cp_ideas" }}</a>{{ end }}
+  {{ with site.GetPage "/tags/zznippets" }}<a href="{{ .RelPermalink }}">↗ {{ i18n "cp_sharing" }}</a>{{ end }}
+</nav>

@@ -1,0 +1,12 @@
+{{/* Retain Blowfish's menu components and their search, appearance and keyboard contracts. */}}
+<div class="cp-header main-menu">
+  <a class="cp-brand" href="{{ site.Home.RelPermalink }}">
+    {{ with resources.Get site.Params.logo }}
+      {{ $logo := .Resize "96x" }}
+      <img class="nozoom" src="{{ $logo.RelPermalink }}" width="40" height="40" alt="">
+    {{ end }}
+    <span>{{ site.Title }}</span>
+  </a>
+  <div class="cp-desktop">{{ partial "header/components/desktop-menu.html" . }}</div>
+  <div class="cp-mobile">{{ partial "header/components/mobile-menu.html" . }}</div>
+</div>

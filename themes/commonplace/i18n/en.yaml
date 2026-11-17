@@ -1,0 +1,38 @@
+cp_eyebrow:
+  other: "A personal corner of the internet"
+cp_title_one:
+  other: "Stay curious."
+cp_title_two:
+  other: "Make things."
+cp_title_three:
+  other: "Write them down."
+cp_intro:
+  other: "Ideas, useful things, and the occasional rabbit hole. A collection of things worth thinking about."
+cp_explore:
+  other: "Explore the writing"
+cp_ribbon:
+  other: "Thinking out loud"
+cp_technology:
+  other: "Technology & tools"
+cp_ideas:
+  other: "Ideas & observations"
+cp_sharing:
+  other: "Things worth sharing"
+cp_art_caption:
+  other: "A field guide to following curiosity ↗"
+cp_all_writing:
+  other: "All writing"
+cp_essay:
+  other: "Essay"
+cp_link:
+  other: "Link"
+cp_photo:
+  other: "Photo"
+cp_closing:
+  other: "Always a work in progress."
+cp_closing_second:
+  other: "Just like the interesting things."
+cp_footer:
+  other: "A little less scrolling. A little more curiosity."
+cp_rss:
+  other: "RSS feed"
