@@ -9,6 +9,8 @@ tags = ["hammerspoon", "mac", "howto", "lua"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/lua-logo.svg"
+series = ["Learning Hammerspoon"]
+series_order = 4
 +++
 
 In this second article of the "Just Enough Lua" series, we dive into Lua's types and data structures.

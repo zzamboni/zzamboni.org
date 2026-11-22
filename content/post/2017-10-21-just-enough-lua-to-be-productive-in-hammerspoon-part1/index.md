@@ -7,6 +7,8 @@ tags = ["hammerspoon", "mac", "howto", "lua"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/lua-logo.svg"
+series = ["Learning Hammerspoon"]
+series_order = 3
 +++
 
 Hammerspoon's configuration files are written in Lua, so a basic knowledge of the language is very useful to be an effective user of Hammerspoon. In this 2-part article I will show you the basics of Lua so you can read and write Hammerspoon configuration. Along the way you will discover that Lua is a surprisingly powerful language.

@@ -13,7 +13,7 @@ series_order = 1
 
 {{< leanpubbook book="lit-config" style="float:right" >}}
 
-Last update: **November 12, 2026**
+Last update: **November 22, 2026**
 
 In my ongoing series of [literate config files](/tags/literateconfig/), I am now posting my [Doom Emacs](https://github.com/hlissner/doom-emacs/) config. I switched to Doom from my [hand-crafted Emacs config](/post/my-emacs-configuration-with-commentary/) some time ago, and I have been really enjoying it. Hope you find it useful!
 
@@ -1143,6 +1143,302 @@ Configure `mermaid` blocks as "raw" ([reference](https://ox-hugo.scripter.co/doc
 (after! ox-hugo
   (add-to-list 'org-hugo-special-block-type-properties
                '("mermaid" . (:raw t))))
+```
+
+In my website Org file, I run `M-x zz/org-hugo-add-to-series` from anywhere inside a post. I choose a series and the command gives the post the next part number, counting drafts. If the post is already in that series, it keeps its number. I export the post as usual.
+
+I use `M-x zz/org-hugo-show-articles` from this file to open a temporary overview of all exported posts, grouped by series and ordered by part number. Posts outside a series appear separately, newest first. Dates come from `EXPORT_DATE`, then `CLOSED`, then a date-prefixed bundle name.
+
+I use `M-x zz/org-hugo-create-series` to add a heading under _Series section_. I enter a title, a description, and an optional cover path under `assets/`. The command exports the series page to `content/series/<term>/_index.md`. I save the Org file after either command.
+
+<a id="code-snippet--hugo-article-series"></a>
+```emacs-lisp
+(after! org
+  (require 'cl-lib)
+  (require 'ob-core)
+  (require 'ox)
+  (require 'subr-x)
+
+  (declare-function org-hugo-export-wim-to-md "ox-hugo")
+
+  (defconst zz/org-hugo--series-front-matter "EXPORT_HUGO_CUSTOM_FRONT_MATTER")
+
+  (defun zz/org-hugo--article-series ()
+    "Return the current heading's (SERIES-NAMES . ORDER)."
+    (let ((front-matter (org-entry-get nil zz/org-hugo--series-front-matter)))
+      (when (and front-matter (string-match-p ":series[ \t]" front-matter))
+        (let* ((args (org-babel-parse-header-arguments front-matter 'no-eval))
+               (series (alist-get :series args))
+               (names (cond
+                       ((and (stringp series) (string-prefix-p "'(" series))
+                        (cadr (read series)))
+                       ((stringp series) (list series)))))
+          (cons (cl-remove-if-not #'stringp names)
+                (alist-get :series_order args))))))
+
+  (defun zz/org-hugo--series-catalog ()
+    "Return an alist of series names and their highest Org part numbers."
+    (let (catalog)
+      (org-map-entries
+       (lambda ()
+         (let ((file (org-entry-get nil "EXPORT_FILE_NAME"))
+               (bundle (org-entry-get nil "EXPORT_HUGO_BUNDLE")))
+           (when file
+             (when (and (equal file "_index")
+                        (string-prefix-p "series/" (or bundle "")))
+               (let ((name (org-get-heading t t t t)))
+                 (unless (assoc name catalog)
+                   (push (cons name 0) catalog))))
+             (pcase-let ((`(,names . ,order) (zz/org-hugo--article-series)))
+               (dolist (name names)
+                 (let ((entry (assoc-string name catalog t))
+                       (number (if (integerp order) order 0)))
+                   (if entry
+                       (setcdr entry (max number (cdr entry)))
+                     (push (cons name (max 0 number)) catalog))))))))
+       nil)
+      catalog))
+
+  (defun zz/org-hugo--article-records ()
+    "Collect exportable post headings and their series/date metadata."
+    (let (records)
+      (org-map-entries
+       (lambda ()
+         (when (and (org-entry-get nil "EXPORT_FILE_NAME")
+                    (equal "post" (org-entry-get nil "EXPORT_HUGO_SECTION" t)))
+           (let* ((title (substring-no-properties (org-get-heading t t t t)))
+                  (bundle (org-entry-get nil "EXPORT_HUGO_BUNDLE"))
+                  (raw-date (or (org-entry-get nil "EXPORT_DATE")
+                                (org-entry-get nil "CLOSED")))
+                  (date (or (and raw-date
+                                 (condition-case nil
+                                     (org-time-string-to-time raw-date)
+                                   (error nil)))
+                            (and bundle
+                                 (string-match "\\`\\([0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\\)"
+                                               bundle)
+                                 (condition-case nil
+                                     (org-time-string-to-time (match-string 1 bundle))
+                                   (error nil)))))
+                  (series (zz/org-hugo--article-series))
+                  (todo (org-get-todo-state)))
+             (push (list :title title :date date
+                         :series (car series) :order (cdr series)
+                         :todo todo)
+                   records))))
+       nil)
+      records))
+
+  (defun zz/org-hugo--article-date-newer-p (a b)
+    "Sort article records A and B newest first, leaving undated items last."
+    (let ((date-a (plist-get a :date))
+          (date-b (plist-get b :date)))
+      (cond
+       ((and date-a date-b) (time-less-p date-b date-a))
+       (date-a t)
+       (date-b nil)
+       (t (string-lessp (plist-get a :title) (plist-get b :title))))))
+
+  (defun zz/org-hugo--article-series-order-less-p (a b)
+    "Sort article records A and B by series order, then date and title."
+    (let ((order-a (or (plist-get a :order) most-positive-fixnum))
+          (order-b (or (plist-get b :order) most-positive-fixnum)))
+      (if (= order-a order-b)
+          (zz/org-hugo--article-date-newer-p a b)
+        (< order-a order-b))))
+
+  (defun zz/org-hugo-show-articles ()
+    "Show posts grouped by series and then ungrouped posts by date."
+    (interactive)
+    (unless (derived-mode-p 'org-mode)
+      (user-error "Run this from your website Org buffer"))
+    (let* ((records (org-with-wide-buffer (zz/org-hugo--article-records)))
+           (series-names (mapcar #'car
+                                 (org-with-wide-buffer
+                                  (zz/org-hugo--series-catalog))))
+           (buffer (get-buffer-create "*Hugo Article Overview*")))
+      (dolist (record records)
+        (dolist (name (plist-get record :series))
+          (unless (member-ignore-case name series-names)
+            (push name series-names))))
+      (setq series-names (sort series-names #'string-lessp))
+      (with-current-buffer buffer
+        (let ((inhibit-read-only t))
+          (erase-buffer)
+          (insert "Articles in this Org file\n"
+                  "Series are sorted by part number; other articles are newest first.\n"
+                  "Dates use EXPORT_DATE, then CLOSED, then the bundle name.\n\n")
+          (dolist (name series-names)
+            (let ((articles
+                   (cl-remove-if-not
+                    (lambda (record)
+                      (member-ignore-case name (plist-get record :series)))
+                    records)))
+              (insert name "\n" (make-string (string-width name) ?-) "\n")
+              (if articles
+                  (dolist (record (sort articles #'zz/org-hugo--article-series-order-less-p))
+                    (insert (format "%s  %4s  %s%s\n"
+                                    (if-let ((date (plist-get record :date)))
+                                        (format-time-string "%Y-%m-%d" date)
+                                      "----------")
+                                    (or (plist-get record :order) "-")
+                                    (plist-get record :title)
+                                    (if (and (plist-get record :todo)
+                                             (not (equal "DONE" (plist-get record :todo))))
+                                        (format " [%s]" (plist-get record :todo))
+                                      ""))))
+                (insert "  (no articles)\n"))
+              (insert "\n")))
+          (let ((other-articles
+                 (cl-remove-if (lambda (record) (plist-get record :series)) records)))
+            (insert "Other articles\n---------------\n")
+            (if other-articles
+                (dolist (record (sort other-articles #'zz/org-hugo--article-date-newer-p))
+                  (insert (format "%s  %s%s\n"
+                                  (if-let ((date (plist-get record :date)))
+                                      (format-time-string "%Y-%m-%d" date)
+                                    "----------")
+                                  (plist-get record :title)
+                                  (if (and (plist-get record :todo)
+                                           (not (equal "DONE" (plist-get record :todo))))
+                                      (format " [%s]" (plist-get record :todo))
+                                    ""))))
+              (insert "  (no articles)\n")))
+          (goto-char (point-min))
+          (special-mode)))
+      (display-buffer buffer)))
+
+  (defun zz/org-hugo--remove-series-front-matter ()
+    "Remove series keys in this drawer while preserving other arguments."
+    (save-excursion
+      (when-let* ((drawer (org-get-property-block)))
+        (let ((end (copy-marker (cdr drawer)))
+              (case-fold-search t)
+              (property-re (concat "^[ \t]*:" zz/org-hugo--series-front-matter
+                                   "\\+?:[ \t]*\\(.*\\)$")))
+          (goto-char (car drawer))
+          (while (re-search-forward property-re end t)
+            (let* ((start (match-beginning 1))
+                   (value-end (match-end 1))
+                   (value (match-string-no-properties 1))
+                   (args (org-babel-balanced-split value '((32 9) . 58)))
+                   (remaining
+                    (cl-remove-if
+                     (lambda (arg)
+                       (string-match-p "\\`:?series\\(?:_order\\)?\\(?:[ \t]\\|\\'\\)" arg))
+                     args)))
+              (unless (equal args remaining)
+                (if remaining
+                    (progn
+                      (delete-region start value-end)
+                      (goto-char start)
+                      (insert (mapconcat (lambda (arg)
+                                           (concat ":" (string-remove-prefix ":" arg)))
+                                         remaining " ")))
+                  (delete-region (line-beginning-position)
+                                 (line-beginning-position 2))))))
+          (set-marker end nil)))))
+
+  (defun zz/org-hugo-add-to-series ()
+    "Choose a series for the current article and assign its next part number.
+  Count both published articles and drafts in the whole Org buffer.
+  Keep the current number when the article is already in the chosen series."
+    (interactive)
+    (unless (derived-mode-p 'org-mode)
+      (user-error "Run this from your website Org buffer"))
+    (save-excursion
+      (org-with-wide-buffer
+       (when (org-before-first-heading-p)
+         (user-error "Put point inside an article"))
+       (org-back-to-heading t)
+       (while (and (not (org-entry-get nil "EXPORT_FILE_NAME"))
+                   (org-up-heading-safe)))
+       (unless (and (org-entry-get nil "EXPORT_FILE_NAME")
+                    (equal "post" (org-entry-get nil "EXPORT_HUGO_SECTION" t)))
+         (user-error "Put point inside an exportable post"))
+       (let* ((catalog (zz/org-hugo--series-catalog))
+              (current (zz/org-hugo--article-series))
+              (current-name (caar current)))
+         (unless catalog (user-error "This Org file has no series yet"))
+         (let* ((completion-ignore-case t)
+                (choice (completing-read "Series: " (mapcar #'car catalog)
+                                         nil t nil nil current-name))
+                (series (assoc-string choice catalog t)))
+           (unless series (user-error "Choose an existing series"))
+           (if (and (member-ignore-case (car series) (car current))
+                    (integerp (cdr current)) (> (cdr current) 0))
+               (message "%s, part %d" (car series) (cdr current))
+             (let ((order (1+ (cdr series))))
+               (atomic-change-group
+                 (zz/org-hugo--remove-series-front-matter)
+                 (save-excursion
+                   (goto-char (cdr (org-get-property-block nil t)))
+                   (insert (format ":%s+: :series '%S :series_order %d\n"
+                                   (downcase zz/org-hugo--series-front-matter)
+                                   (list (substring-no-properties (car series)))
+                                   order))))
+               (message "Added to %s as part %d" (car series) order))))))))
+
+  (defun zz/org-hugo-create-series (title description &optional cover)
+    "Create and export a series page from the website Org buffer.
+  TITLE names the series. DESCRIPTION introduces it on the page.
+  COVER, when supplied, is a Hugo asset path relative to assets/."
+    (interactive (list (read-string "New series title: ")
+                       (read-string "Series description: ")
+                       (read-string "Cover path under assets/ (optional): ")))
+    (unless (and (derived-mode-p 'org-mode) buffer-file-name)
+      (user-error "Run this from your website Org file"))
+    (require 'ox-hugo)
+    (setq title (string-trim (replace-regexp-in-string "[[:space:]]+" " " title)))
+    ;; Hugo looks up term content by the lowercased term with spaces replaced.
+    (let* ((term (replace-regexp-in-string " " "-" (downcase title)))
+           (bundle (concat "series/" term))
+           (output (expand-file-name (concat "../content/" bundle "/_index.md")
+                                     (file-name-directory buffer-file-name))))
+      (unless (and (string-match-p "[[:alnum:]]" term)
+                   (not (string-prefix-p "." term))
+                   (not (string-match-p "[/\\\\]" title)))
+        (user-error "Use a title with letters or numbers, no slashes, and no leading dot"))
+      (org-with-wide-buffer
+       (when (or (assoc-string title (zz/org-hugo--series-catalog) t)
+                 (file-exists-p output) (get-file-buffer output))
+         (user-error "A series page already exists for %s" title))
+       (let ((section
+              (org-find-exact-headline-in-buffer "Series section")))
+         (unless section (user-error "Could not find the Series section heading"))
+         (save-excursion
+           (goto-char section)
+           (let ((stars (make-string (1+ (org-outline-level)) ?*)))
+             (org-end-of-subtree t t)
+             (atomic-change-group
+               (unless (bolp) (insert "\n"))
+               (unless (save-excursion (forward-line -1) (looking-at-p "^[ \t]*$"))
+                 (insert "\n"))
+               (let ((heading (point)))
+                 (insert stars " " title "\n")
+                 (save-excursion
+                   (goto-char heading)
+                   (unless (equal title (org-get-heading t t t t))
+                     (user-error "Use a plain title without Org heading keywords or tags")))
+                 (insert ":PROPERTIES:\n"
+                         ":export_hugo_section: /\n"
+                         ":export_hugo_bundle: " bundle "\n"
+                         ":export_file_name: _index\n")
+                 (when (and cover (not (string-blank-p cover)))
+                   (insert ":export_hugo_custom_front_matter+: :featureImage "
+                           (prin1-to-string (string-trim cover)) "\n"))
+                 (insert ":END:\n\n")
+                 (unless (string-blank-p description)
+                   (insert "  " (string-trim (replace-regexp-in-string
+                                              "[\r\n]+" " " description)) "\n\n"))
+                 (goto-char heading)))
+             ;; ox-hugo scans the entire file's links, including the Org-only TOC.
+             (let ((org-export-with-broken-links
+                    (or org-export-with-broken-links 'mark)))
+               (org-hugo-export-wim-to-md))))))
+      (unless (file-exists-p output)
+        (user-error "Series source was added, but ox-hugo did not write %s" output))
+      (message "Created %s" (abbreviate-file-name output)))))
 ```
 
 

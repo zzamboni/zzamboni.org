@@ -102,6 +102,8 @@ My repository contains a `netlify.toml` file which is used to configure some Hug
     else
       unset HUGO_PARAMS_DEPLOYMENTBANNER
     fi
+    # Show the Colophon timestamp
+    export HUGO_PARAMS_SHOWBUILDTIMESTAMP=true
     if [ "$BUILD_DRAFTS" = "true" ]; then
       echo "Build command: hugo --gc --minify --buildDrafts -b $URL"
       hugo --gc --minify --buildDrafts -b $URL

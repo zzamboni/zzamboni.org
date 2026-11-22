@@ -6,6 +6,8 @@ date = 2026-11-07T00:00:00+01:00
 tags = ["blogging", "hugo", "blowfish", "templates", "howto"]
 draft = true
 creator = "Emacs (Org mode + ox-hugo)"
+series = ["My website setup"]
+series_order = 14
 +++
 
 I recently grouped my blogging infrastructure articles into a [My website setup](/series/my-website-setup/) series. Some installments are published; others are still drafts. Blowfish orders the articles using `series_order`, so production visitors could see parts 1, 2, 4, and 5 with no explanation of the missing part 3.

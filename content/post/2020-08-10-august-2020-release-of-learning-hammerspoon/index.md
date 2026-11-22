@@ -11,6 +11,8 @@ tags = ["publishing", "hammerspoon", "mac", "books", "announcements"]
 draft = false
 creator = "Emacs (Org mode + ox-hugo)"
 featureimage = "img/learning-hs-cover.jpg"
+series = ["Learning Hammerspoon"]
+series_order = 5
 +++
 
 {{< leanpubbook book="learning-hammerspoon" style="float:right" >}}

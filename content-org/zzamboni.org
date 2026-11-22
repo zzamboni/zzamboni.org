@@ -45,9 +45,6 @@ This file is the source for all new and updated content on [[http://zzamboni.org
     - [[#books-section][Books section]]
     - [[#code-section][Code section]]
 - [[#ideas][Ideas]]
-  - [[#enabling-menubar-indicators-in-elementary-os][Enabling menubar indicators in Elementary OS]]
-  - [[#how-to-set-up-copyq-in-eos-with-wayland][How to set up CopyQ in eOS with Wayland]]
-  - [[#networking-related-setup][Networking-related setup]]
 - [[#posts][Posts]]
   - [[#literate-configurations][Literate configurations]]
     - [[#my-doom-emacs-configuration-with-commentary][My Doom Emacs configuration, with commentary]]
@@ -248,7 +245,8 @@ These are all the tags used in my posts.
 
 **** Photos
 :PROPERTIES:
-:export_hugo_section: tags/photos
+:export_hugo_section: /
+:export_hugo_bundle: photos
 :export_file_name: _index
 :export_hugo_custom_front_matter+: :cardView true
 :END:
@@ -298,6 +296,16 @@ Literate-config all the things!
 :END:
 
 How I build and maintain this site with Org mode, Hugo, Netlify and more.
+
+**** Learning Hammerspoon
+:PROPERTIES:
+:export_hugo_section: /
+:export_hugo_bundle: series/learning-hammerspoon
+:export_file_name: _index
+:export_hugo_custom_front_matter+: :featureImage "img/hammerspoon.jpg"
+:END:
+
+Learn incrementally why and how to use Hammerspoon, a powerful automation utility for macOS.
 
 *** Books section
 :PROPERTIES:
@@ -531,45 +539,7 @@ A comic-summarizing utility. Modular and extensible. It's one of my oldest open-
 :END:
 
 Ideas for new blog posts and posts in progress.
-** TODO Enabling menubar indicators in Elementary OS
-:PROPERTIES:
-:export_hugo_bundle: 2025-11-04-enabling-menubar-indicators-in-elementary-os
-:export_file_name: index
-:custom_id: enabling-menubar-indicators-in-elementary-os
-:export_hugo_custom_front_matter: :featureimage img/tram-zurich.jpg 
-:END:
-#+BEGIN_DESCRIPTION
 
-#+END_DESCRIPTION
-
-https://github.com/barunespadhy/wingpanel-indicator-appicontray
-<write here>
-** TODO How to set up CopyQ in eOS with Wayland
-:PROPERTIES:
-:export_hugo_bundle: 2025-11-04-how-to-set-up-copyq-in-eos-with-wayland
-:export_file_name: index
-:custom_id: how-to-set-up-copyq-in-eos-with-wayland
-:export_hugo_custom_front_matter: :featureimage img/tram-zurich.jpg 
-:END:
-#+BEGIN_DESCRIPTION
-
-#+END_DESCRIPTION
-
-<write here>
-** TODO Networking-related setup
-:PROPERTIES:
-:export_hugo_bundle: 2025-11-06-networking-related-setup
-:export_file_name: index
-:custom_id: networking-related-setup
-:export_hugo_custom_front_matter: :featureimage img/tram-zurich.jpg 
-:END:
-#+BEGIN_DESCRIPTION
-Various network-related configuration tips for eOS.
-#+END_DESCRIPTION
-
-- Preventing lockup when waking from sleep with Ethernet connected.
-- Fixing low-speed Ethernet negotiation when waking from sleep.
-- Automatically disabling/enabling WiFi when Ethernet is connected/disconnected.
 * Posts
 :PROPERTIES:
 :export_hugo_section: post
@@ -1228,6 +1198,7 @@ CLOSED: [2017-08-21 Mon 16:34]
 :export_hugo_bundle: 2017-08-21-getting-started-with-hammerspoon
 :export_file_name: index
 :CUSTOM_ID: getting-started-with-hammerspoon
+:export_hugo_custom_front_matter+: :series '("Learning Hammerspoon") :series_order 1
 :END:
 #+begin_description
 This is the first installment of a series of posts about Hammerspoon, a staggeringly powerful automation utility which gives you an amazing degree of control over your Mac, allowing you to automate and control almost anything. In the word of Hammerspoon's motto: /Making the runtime, funtime/.
@@ -1337,6 +1308,7 @@ CLOSED: [2017-09-01 Fri 17:55]
 :PROPERTIES:
 :export_hugo_bundle: 2017-09-01-using-spoons-in-hammerspoon
 :export_file_name: index
+:export_hugo_custom_front_matter+: :series '("Learning Hammerspoon") :series_order 2
 :END:
 #+begin_description
 In this second article about Hammerspoon, we look into /Spoons/, modules written in Lua which can be easily installed and loaded into Hammerspoon to provide ready-to-use functionality. Spoons provide a predefined API to configure and use them. They are also a good way to share your own work with other users.
@@ -1599,6 +1571,7 @@ CLOSED: [2017-10-21 Sat 20:36]
 :export_file_name: index
 :export_hugo_custom_front_matter: :featureimage img/lua-logo.svg
 :CUSTOM_ID: just-enough-lua-to-be-productive-in-hammerspoon--part-1
+:export_hugo_custom_front_matter+: :series '("Learning Hammerspoon") :series_order 3
 :END:
 #+begin_description
 Hammerspoon's configuration files are written in Lua, so a basic knowledge of the language is very useful to be an effective user of Hammerspoon. In this two-part article I will show you the basics of Lua so you can read and write Hammerspoon configuration. Along the way you will discover that Lua is a surprisingly powerful language.
@@ -1767,6 +1740,7 @@ CLOSED: [2017-11-01 Wed 08:16]
 :export_file_name: index
 :export_hugo_custom_front_matter: :featureimage img/lua-logo.svg
 :CUSTOM_ID: just-enough-lua-to-be-productive-in-hammerspoon--part-2
+:export_hugo_custom_front_matter+: :series '("Learning Hammerspoon") :series_order 4
 :END:
 #+begin_description
 In this second article of the "Just Enough Lua" series, we dive into Lua's types and data structures.
@@ -3083,6 +3057,7 @@ Don't forget to declare the appropriate blocks with =#+hugo_paired_shortcodes:= 
 :export_hugo_bundle: 2026-11-07-hugo-series-unpublished-posts
 :export_file_name: index
 :custom_id: hugo-series-unpublished-posts
+:export_hugo_custom_front_matter+: :series '("My website setup") :series_order 14
 :END:
 #+begin_description
 My website setup series includes unfinished articles. A small template override lists their titles as Upcoming, preserving the numbering without publishing draft pages.
@@ -4234,6 +4209,7 @@ CLOSED: [2020-08-10 Mon 09:35]
 :EXPORT_HUGO_BUNDLE: 2020-08-10-august-2020-release-of-learning-hammerspoon
 :EXPORT_FILE_NAME: index
 :export_hugo_custom_front_matter: :featureimage img/learning-hs-cover.jpg
+:export_hugo_custom_front_matter+: :series '("Learning Hammerspoon") :series_order 5
 :END:
 #+begin_description
 I am happy to announce a new release of my new book "Learning Hammerspoon", including a brand new chapter /Hammerspoon Cookbook, Tips and Tricks/ and many other improvements.
