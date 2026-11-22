@@ -1,5 +1,5 @@
 +++
-title = "Bringing Blowfish admonitions to Org mode and Hugo"
+title = "Using Blowfish admonitions with Org mode and Hugo"
 author = ["Diego Zamboni"]
 summary = "How I map Org special blocks to Blowfish admonitions for a consistent look and feel across old and new posts."
 date = 2026-11-15T18:26:00+01:00

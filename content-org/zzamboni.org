@@ -2911,7 +2911,7 @@ In the next posts I will log some of the further configuration I have done in my
 
 *** Implementation and workflows
 
-**** DONE Bringing Blowfish admonitions to Org mode and Hugo :orgmode:hugo:blowfish:howto:
+**** DONE Using Blowfish admonitions with Org mode and Hugo :orgmode:hugo:blowfish:howto:
 CLOSED: [2026-11-15 Sun 18:26]
 :PROPERTIES:
 :export_date: <2026-11-07 Sat>
