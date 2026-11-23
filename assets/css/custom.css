@@ -208,6 +208,14 @@
   font-size: 0.875rem;
 }
 
+.external-link-callout .external-link-favicon {
+  flex: 0 0 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+  border-radius: 0.2rem;
+}
+
 .external-link-domain {
   color: rgb(var(--color-neutral-500));
 }

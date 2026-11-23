@@ -1,11 +1,17 @@
 {{ with .Params.externalUrl }}
   {{ $url := . }}
   {{ $parsed := urls.Parse $url }}
-  <!-- {{ $label := $parsed.Host | default $url }} -->
+  {{/* Use the same cached favicon as link entries; never fetch remote assets at build time. */}}
+  {{ $favicon := resources.Get (printf "img/linkblog-favicons/%s.png" (sha256 (lower $parsed.Host))) }}
   {{ $label := $url }}
 
   <div class="external-link-callout max-w-prose print:hidden">
     <a href="{{ $url }}" rel="external noopener noreferrer">
+      {{ with $favicon }}
+        {{ $image := . | fingerprint }}
+        <img class="external-link-favicon nozoom" src="{{ $image.RelPermalink }}"
+             alt="" width="24" height="24" loading="lazy" decoding="async">
+      {{ end }}
       {{ partial "badge.html" "External link" }}
       <span class="external-link-domain">{{ $label }}</span>
       <span aria-hidden="true">↗</span>
